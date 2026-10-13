@@ -46,7 +46,8 @@ STATE_FILE = "state/pages.json"  # lastmod of every exported page, for increment
 FULL_REFRESH_EVERY = timedelta(days=7)  # re-download everything weekly as a safety net
 PUBLIC_BASE = "https://raw.githubusercontent.com/a-casolino/bricks-docs-md/main/"
 
-SECTION_TITLES = {
+SECTION_TITLES = {  # also the output order
+    "home": "Home",
     "getting-started": "Getting Started",
     "builder": "Builder",
     "developer": "Developer",
@@ -156,7 +157,29 @@ def clean_markdown(text: str) -> str:
     out: list[str] = []
     fence = None
     quote_depth = 0  # nesting level of ::: directives rendered as blockquotes
-    for line in text.split("\n"):
+    lines = text.split("\n")
+    joined: list[str] = []
+    i = 0
+    in_code = None
+    while i < len(lines):
+        # Join components whose attributes span several lines: <Foo\n  a="b"\n/>
+        line = lines[i]
+        fm = FENCE_RE.match(line)
+        if fm:
+            if in_code is None:
+                in_code = fm.group(1)
+            elif fm.group(1)[0] == in_code[0] and len(fm.group(1)) >= len(in_code):
+                in_code = None
+        elif in_code is None and re.match(r"^\s*<[A-Z]\w*\b[^>]*$", line):
+            j = i
+            while j + 1 < len(lines) and ">" not in lines[j] and j - i < 20:
+                j += 1
+            if ">" in lines[j]:
+                line = " ".join(l.strip() for l in lines[i:j + 1])
+                i = j
+        joined.append(line)
+        i += 1
+    for line in joined:
         m = FENCE_RE.match(line)
         if fence:
             out.append(("> " * quote_depth) + line if quote_depth else line)
@@ -188,7 +211,7 @@ def clean_markdown(text: str) -> str:
             attrs = {a[0]: a[1] or a[2] or a[3] for a in ATTR_RE.findall(attrs_src)}
             if not closing and name in ("TabItem", "Tab"):
                 line = f"\n**{attrs.get('label', 'Tab')}**\n"
-            elif not closing and name in ("LinkCard", "Card", "LinkButton") and attrs.get("href"):
+            elif not closing and attrs.get("href"):
                 line = f"- [{attrs.get('title') or attrs.get('label') or attrs['href']}]({attrs['href']})"
             elif not closing and name in ("Card",) and attrs.get("title"):
                 line = f"**{attrs['title']}**"
@@ -536,7 +559,9 @@ def build(out_dir: Path, full: bool = False) -> bool:
         raise RuntimeError(f"Only {len(done)} of {len(pages)} pages fetched, aborting")
 
     # Keep the index order, grouped by section in order of first appearance.
-    sections = list(dict.fromkeys(section_of(u) for u, _, _ in done))
+    order = list(SECTION_TITLES)
+    sections = sorted(dict.fromkeys(section_of(u) for u, _, _ in done),
+                      key=lambda sec: order.index(sec) if sec in order else len(order))
     done.sort(key=lambda e: sections.index(section_of(e[0])))
 
     note = (f"Unofficial Markdown export of the Bricks Builder Academy ({BASE}), "
