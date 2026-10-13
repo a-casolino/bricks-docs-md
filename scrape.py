@@ -396,13 +396,13 @@ def get_page(page: dict) -> tuple[str, str] | None:
             md = strip_title(clean_markdown(body), title)
             if meta.get("description"):
                 md = f"*{meta['description']}*\n\n{md}"
-            return title, md
+            return title, md.strip()
     resp = fetch(url)
     if resp.status_code != 200 or "text/html" not in resp.headers.get("content-type", ""):
         print(f"  ! {resp.status_code} {url}", file=sys.stderr)
         return None
     title, md, _ = parse_page(url, resp.text)
-    return page.get("title") or title, md
+    return page.get("title") or title, md.strip()
 
 
 def anchor_for(url: str) -> str:
