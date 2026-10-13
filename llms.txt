@@ -6,8 +6,8 @@
 
 - [All pages](https://raw.githubusercontent.com/a-casolino/bricks-docs-md/main/bricks-docs.md): the complete documentation in one file
 - [Home](https://raw.githubusercontent.com/a-casolino/bricks-docs-md/main/sections/home.md): 1 pages
-- [Developer](https://raw.githubusercontent.com/a-casolino/bricks-docs-md/main/sections/developer.md): 333 pages
 - [Getting Started](https://raw.githubusercontent.com/a-casolino/bricks-docs-md/main/sections/getting-started.md): 13 pages
 - [Builder](https://raw.githubusercontent.com/a-casolino/bricks-docs-md/main/sections/builder.md): 220 pages
-- [Integrations](https://raw.githubusercontent.com/a-casolino/bricks-docs-md/main/sections/integrations.md): 28 pages
+- [Developer](https://raw.githubusercontent.com/a-casolino/bricks-docs-md/main/sections/developer.md): 333 pages
 - [Schema (Bricks Data Model)](https://raw.githubusercontent.com/a-casolino/bricks-docs-md/main/sections/schema.md): 231 pages
+- [Integrations](https://raw.githubusercontent.com/a-casolino/bricks-docs-md/main/sections/integrations.md): 28 pages

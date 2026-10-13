@@ -16,11 +16,7 @@ Bricks tries to stay as unopinionated as possible, so there is no single "correc
 
 1. Download the preset:
 
-   <SchemaDownload
-     href="https://academy.bricksbuilder.io/downloads/getting-started-bricks-settings.json"
-     label="Download preset (JSON)"
-     fileName="getting-started-bricks-settings.json"
-   />
+- [Download preset (JSON)](https://academy.bricksbuilder.io/downloads/getting-started-bricks-settings.json)
 
 2. In the WordPress dashboard, go to **Bricks > Settings** → **Import Settings**.
 3. Drop the JSON onto the upload area or use **Select file**.

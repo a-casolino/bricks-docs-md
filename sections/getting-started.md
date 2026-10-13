@@ -1,7 +1,7 @@
 # Bricks Builder Documentation: Getting Started
 
-<!-- content-sha256: f1446a0713508b1d626578c3fd5a8c273ee7da3efb00047bd60b57961a89bc2d -->
-<!-- content last changed: 2026-10-13 20:16 UTC -->
+<!-- content-sha256: 53a2c7577679af5377792b33ce76ab107198740208867b537b6596b781608178 -->
+<!-- content last changed: 2026-10-13 20:31 UTC -->
 
 Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricksbuilder.io/), refreshed daily. Content © Bricks. 13 pages.
 
@@ -1271,11 +1271,7 @@ Bricks tries to stay as unopinionated as possible, so there is no single "correc
 
 1. Download the preset:
 
-   <SchemaDownload
-     href="https://academy.bricksbuilder.io/downloads/getting-started-bricks-settings.json"
-     label="Download preset (JSON)"
-     fileName="getting-started-bricks-settings.json"
-   />
+- [Download preset (JSON)](https://academy.bricksbuilder.io/downloads/getting-started-bricks-settings.json)
 
 2. In the WordPress dashboard, go to **Bricks > Settings** → **Import Settings**.
 3. Drop the JSON onto the upload area or use **Select file**.
