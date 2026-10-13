@@ -11,6 +11,8 @@ Unofficial, automatically updated Markdown export of the [Bricks Builder Academy
 | [`sections/schema.md`](sections/schema.md) | Bricks Data Model: JSON schema of elements, controls, global classes, variables |
 | [`sections/integrations.md`](sections/integrations.md), … | Other sections |
 | [`llms.txt`](llms.txt) | Index of the files above |
+| [`skill/bricks-docs/`](skill/bricks-docs) | Agent Skill: `SKILL.md` + one file per page in `references/` |
+| [`dist/bricks-docs-skill.zip`](dist/bricks-docs-skill.zip) | The same skill zipped, ready to upload to claude.ai |
 
 Public URLs:
 
@@ -29,6 +31,13 @@ Replace `bricks-docs.md` with `sections/<name>.md` or `llms.txt` for the other f
 pip install -r requirements.txt
 python scrape.py --out-dir .
 ```
+
+## Using the skill
+
+The skill gives an AI assistant the whole documentation without loading it all at once: it reads the short `SKILL.md`, then opens only the pages it needs.
+
+- **Claude Code**: copy or symlink `skill/bricks-docs` into `~/.claude/skills/` (or `.claude/skills/` in a project). Running `git pull` in a clone of this repository keeps it current.
+- **claude.ai**: Settings → Capabilities → Skills → upload `dist/bricks-docs-skill.zip`. Uploaded skills do not update themselves: upload the new zip when the docs change.
 
 ## GitHub Pages
 

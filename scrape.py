@@ -19,7 +19,9 @@ import argparse
 import hashlib
 import json
 import re
+import shutil
 import sys
+import zipfile
 import time
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
@@ -98,7 +100,8 @@ def index_pages() -> list[dict]:
         items = resp.json()["items"]
         pages = [
             {"url": normalize(i["url"]), "title": i.get("title"),
-             "markdownUrl": i.get("markdownUrl"), "lastmod": i.get("lastmod")}
+             "markdownUrl": i.get("markdownUrl"), "lastmod": i.get("lastmod"),
+             "description": i.get("description")}
             for i in items if i.get("url")
         ]
         if pages:
@@ -403,6 +406,76 @@ def write_if_changed(path: Path, text: str) -> bool:
     return True
 
 
+# ---------------------------------------------------------------- skill
+
+SKILL_NAME = "bricks-docs"
+SKILL_MD = """---
+name: bricks-docs
+description: Bricks Builder (WordPress) documentation and data-model reference. Use when building, editing or debugging a site with Bricks Builder, writing Bricks element JSON, global classes, variables, query loops, dynamic data, conditions, interactions, hooks or custom elements, or when using the Bricks MCP abilities.
+---
+
+# Bricks Builder documentation
+
+Complete, daily-refreshed copy of the official Bricks Academy ({base}), one Markdown file per page under `references/`. Content © Bricks.
+
+## How to use
+
+1. Find the right page in the section indexes below (each lists page title, file and a one-line summary), or search across all pages, e.g. `grep -ril "query loop" references/`.
+2. Read only the pages you need. Every page starts with its title and source URL.
+3. For element/control/global settings JSON (what the builder stores and what the Bricks MCP abilities read and write), use the **Schema** section: `references/developer/schema/`.
+4. Prefer what these pages say over memory: Bricks changes often. When a page and the live site disagree (for example ability names exposed by the Bricks MCP server), trust the live site.
+
+## Sections
+
+{sections}
+"""
+
+
+def page_file(url: str) -> str:
+    parts = path_parts(url) or ["index"]
+    return "references/" + "/".join(parts) + ".md"
+
+
+def write_skill(out_dir: Path, done: list[tuple[str, str, str]], descriptions: dict, sections: list[str]) -> None:
+    """Regenerate skill/bricks-docs/ and a deterministic zip of it (dist/bricks-docs-skill.zip)."""
+    root = out_dir / "skill" / SKILL_NAME
+    if root.exists():
+        shutil.rmtree(root)
+    section_lines = []
+    for sec in sections:
+        entries = [e for e in done if section_of(e[0]) == sec]
+        name = SECTION_TITLES.get(sec, sec.replace("-", " ").title())
+        index_name = f"references/_index-{sec}.md"
+        rows = [f"# {name}: page index", ""]
+        for url, title, _ in entries:
+            desc = (descriptions.get(url) or "").replace("\n", " ").strip()
+            rows.append(f"- [{title}]({page_file(url)[len('references/'):]})" + (f": {desc}" if desc else ""))
+        (root / "references").mkdir(parents=True, exist_ok=True)
+        (root / index_name).write_text("\n".join(rows) + "\n", encoding="utf-8")
+        section_lines.append(f"- **{name}** ({len(entries)} pages): [{index_name}]({index_name})")
+        for url, title, md in entries:
+            f = root / page_file(url)
+            f.parent.mkdir(parents=True, exist_ok=True)
+            f.write_text(f"# {title}\n\nSource: {url}\n\n{md}\n", encoding="utf-8")
+    (root / "SKILL.md").write_text(
+        SKILL_MD.format(base=BASE, sections="\n".join(section_lines)), encoding="utf-8")
+
+    # Deterministic zip (fixed timestamps, sorted entries) so it only changes with the content.
+    zip_path = out_dir / "dist" / f"{SKILL_NAME}-skill.zip"
+    zip_path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = zip_path.with_suffix(".tmp")
+    with zipfile.ZipFile(tmp, "w", zipfile.ZIP_DEFLATED) as zf:
+        for f in sorted(p for p in root.rglob("*") if p.is_file()):
+            info = zipfile.ZipInfo(f"{SKILL_NAME}/{f.relative_to(root).as_posix()}", (1980, 1, 1, 0, 0, 0))
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.external_attr = 0o644 << 16
+            zf.writestr(info, f.read_bytes())
+    if zip_path.exists() and zip_path.read_bytes() == tmp.read_bytes():
+        tmp.unlink()
+    else:
+        tmp.replace(zip_path)
+
+
 def build(out_dir: Path) -> bool:
     # Fetch robots.txt with our own session (urllib's default client may be blocked).
     rp = robotparser.RobotFileParser()
@@ -455,6 +528,8 @@ def build(out_dir: Path) -> bool:
     if not llms_path.exists() or llms_path.read_text(encoding="utf-8") != llms_text:
         llms_path.write_text(llms_text, encoding="utf-8")
         changed = True
+
+    write_skill(out_dir, done, {p["url"]: p.get("description") for p in pages}, sections)
 
     print("Changes written." if changed else "No changes in the documentation.", file=sys.stderr)
     return changed
