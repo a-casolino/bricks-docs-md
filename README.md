@@ -25,7 +25,7 @@ Replace `bricks-docs.md` with `sections/<name>.md` or `llms.txt` for the other f
 
 - `scrape.py` reads the Academy's `content-index.json`, downloads the Markdown source each page publishes (`<page>.md`), removes Astro/Starlight syntax (frontmatter, MDX imports, components, `:::` callouts) and writes the files above. Pages without a Markdown source fall back to HTML conversion. One request per second, `robots.txt` respected.
 - Runs are incremental: `content-index.json` gives each page's `lastmod`, so only pages that changed since the last run are downloaded (`state/pages.json` keeps track). Everything is re-downloaded once a week as a safety net, or on demand with `--full`.
-- `.github/workflows/update.yml` runs every day at 04:17 UTC and commits only when the content changed.
+- `.github/workflows/update.yml` runs every day at 02:00 Italian time (CET/CEST) and commits only when the content changed.
 - Run it manually from the **Actions** tab (*Run workflow*) or locally:
 
 ```bash
