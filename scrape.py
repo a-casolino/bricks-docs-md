@@ -11,6 +11,8 @@ index, downloads each Markdown source, strips the Astro/Starlight-specific synta
   llms.txt                  index of the files above
 
 Pages without a Markdown alternate fall back to HTML-to-Markdown conversion.
+Runs are incremental: only pages whose `lastmod` in content-index.json changed are
+downloaded again (state/pages.json), with a full refresh once a week or with --full.
 Files are rewritten only when their content changed, so the daily GitHub Actions
 run commits only when Bricks updates its docs.
 """
@@ -24,7 +26,7 @@ import sys
 import zipfile
 import time
 import xml.etree.ElementTree as ET
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
 from urllib import robotparser
@@ -40,6 +42,8 @@ USER_AGENT = "bricks-docs-md/1.0 (+https://github.com/a-casolino/bricks-docs-md)
 DELAY_SECONDS = 1.0  # polite crawl rate: at most one request per second
 SKIP_PATHS = {"/privacy/", "/404/"}
 HASH_MARKER = "<!-- content-sha256: {} -->"
+STATE_FILE = "state/pages.json"  # lastmod of every exported page, for incremental runs
+FULL_REFRESH_EVERY = timedelta(days=7)  # re-download everything weekly as a safety net
 PUBLIC_BASE = "https://raw.githubusercontent.com/a-casolino/bricks-docs-md/main/"
 
 SECTION_TITLES = {
@@ -436,6 +440,16 @@ def page_file(url: str) -> str:
     return "references/" + "/".join(parts) + ".md"
 
 
+def read_cached(out_dir: Path, url: str, title: str) -> str | None:
+    """Page Markdown from the skill reference file written by a previous run."""
+    f = out_dir / "skill" / SKILL_NAME / page_file(url)
+    if not f.exists():
+        return None
+    header = f"# {title}\n\nSource: {url}\n\n"
+    text = f.read_text(encoding="utf-8")
+    return text[len(header):].rstrip("\n") if text.startswith(header) else None
+
+
 def write_skill(out_dir: Path, done: list[tuple[str, str, str]], descriptions: dict, sections: list[str]) -> None:
     """Regenerate skill/bricks-docs/ and a deterministic zip of it (dist/bricks-docs-skill.zip)."""
     root = out_dir / "skill" / SKILL_NAME
@@ -476,7 +490,7 @@ def write_skill(out_dir: Path, done: list[tuple[str, str, str]], descriptions: d
         tmp.replace(zip_path)
 
 
-def build(out_dir: Path) -> bool:
+def build(out_dir: Path, full: bool = False) -> bool:
     # Fetch robots.txt with our own session (urllib's default client may be blocked).
     rp = robotparser.RobotFileParser()
     robots = fetch(urljoin(BASE, "robots.txt"))
@@ -487,15 +501,36 @@ def build(out_dir: Path) -> bool:
     if not pages:
         raise RuntimeError("Empty page list, aborting so the existing files are kept")
 
+    # Incremental mode: reuse pages whose lastmod in content-index.json did not change.
+    state_path = out_dir / STATE_FILE
+    state = {}
+    if state_path.exists():
+        state = json.loads(state_path.read_text(encoding="utf-8"))
+    last_full = state.get("last_full_refresh")
+    if not full and (not last_full or datetime.now(timezone.utc) - datetime.fromisoformat(last_full) > FULL_REFRESH_EVERY):
+        print("Weekly full refresh", file=sys.stderr)
+        full = True
+    known = state.get("pages", {})
+
     done: list[tuple[str, str, str]] = []
+    fetched = 0
     for i, page in enumerate(pages, 1):
-        if not rp.can_fetch(USER_AGENT, page["url"]):
-            print(f"  - robots.txt disallows {page['url']}", file=sys.stderr)
+        url = page["url"]
+        if not rp.can_fetch(USER_AGENT, url):
+            print(f"  - robots.txt disallows {url}", file=sys.stderr)
             continue
+        prev = known.get(url)
+        if not full and prev and page.get("lastmod") and prev.get("lastmod") == page["lastmod"]:
+            cached = read_cached(out_dir, url, prev["title"])
+            if cached is not None:
+                done.append((url, prev["title"], cached))
+                continue
         result = get_page(page)
+        fetched += 1
         if result:
-            done.append((page["url"], *result))
+            done.append((url, *result))
             print(f"[{i}/{len(pages)}] {result[0]}", file=sys.stderr)
+    print(f"Downloaded {fetched} pages, reused {len(done) - fetched} unchanged ones", file=sys.stderr)
 
     if len(done) < max(5, int(len(pages) * 0.8)):
         raise RuntimeError(f"Only {len(done)} of {len(pages)} pages fetched, aborting")
@@ -531,6 +566,14 @@ def build(out_dir: Path) -> bool:
 
     write_skill(out_dir, done, {p["url"]: p.get("description") for p in pages}, sections)
 
+    lastmods = {p["url"]: p.get("lastmod") for p in pages}
+    new_state = {
+        "last_full_refresh": datetime.now(timezone.utc).isoformat(timespec="seconds") if full else last_full,
+        "pages": {u: {"lastmod": lastmods.get(u), "title": t} for u, t, _ in done},
+    }
+    state_path.parent.mkdir(parents=True, exist_ok=True)
+    state_path.write_text(json.dumps(new_state, indent=1, sort_keys=True) + "\n", encoding="utf-8")
+
     print("Changes written." if changed else "No changes in the documentation.", file=sys.stderr)
     return changed
 
@@ -538,5 +581,6 @@ def build(out_dir: Path) -> bool:
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("-o", "--out-dir", default=".", type=Path)
+    ap.add_argument("--full", action="store_true", help="re-download every page, ignoring lastmod")
     args = ap.parse_args()
-    build(args.out_dir)
+    build(args.out_dir, full=args.full)
