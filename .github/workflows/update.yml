@@ -25,17 +25,17 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - name: Scrape academy.bricksbuilder.io
-        run: python scrape.py --output bricks-docs.md
+      - name: Export academy.bricksbuilder.io to Markdown
+        run: python scrape.py --out-dir .
 
       - name: Commit if the docs changed
         run: |
-          if git diff --quiet -- bricks-docs.md && git ls-files --error-unmatch bricks-docs.md >/dev/null 2>&1; then
+          git add bricks-docs.md sections llms.txt
+          if git diff --cached --quiet; then
             echo "No changes."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add bricks-docs.md
           git commit -m "Update Bricks docs $(date -u +%Y-%m-%d)"
           git push
