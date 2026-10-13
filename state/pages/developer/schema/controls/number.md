@@ -1,0 +1,1 @@
+*Value schema for number control type*

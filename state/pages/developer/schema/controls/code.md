@@ -1,0 +1,1 @@
+*Value schema for code control type*

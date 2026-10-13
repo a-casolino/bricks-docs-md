@@ -1,0 +1,1 @@
+*Value schema for align-items control type*

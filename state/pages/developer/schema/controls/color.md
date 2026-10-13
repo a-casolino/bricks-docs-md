@@ -1,0 +1,1 @@
+*Value schema for color control type*

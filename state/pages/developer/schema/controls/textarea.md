@@ -1,0 +1,1 @@
+*Value schema for textarea control type*

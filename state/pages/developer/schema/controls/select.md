@@ -1,0 +1,1 @@
+*Value schema for select control type*

@@ -1,0 +1,1 @@
+*Value schema for text control type*

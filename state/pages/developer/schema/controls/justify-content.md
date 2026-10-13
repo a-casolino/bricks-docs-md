@@ -1,0 +1,1 @@
+*Value schema for justify-content control type*

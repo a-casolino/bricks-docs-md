@@ -42,6 +42,7 @@ USER_AGENT = "bricks-docs-md/1.0 (+https://github.com/a-casolino/bricks-docs-md)
 DELAY_SECONDS = 1.0  # polite crawl rate: at most one request per second
 SKIP_PATHS = {"/privacy/", "/404/"}
 HASH_MARKER = "<!-- content-sha256: {} -->"
+CACHE_DIR = "state/pages"  # cleaned Markdown of every page, reused when lastmod is unchanged
 STATE_FILE = "state/pages.json"  # lastmod of every exported page, for incremental runs
 FULL_REFRESH_EVERY = timedelta(days=7)  # re-download everything weekly as a safety net
 PUBLIC_BASE = "https://raw.githubusercontent.com/a-casolino/bricks-docs-md/main/"
@@ -443,13 +444,13 @@ description: Bricks Builder (WordPress) documentation and data-model reference. 
 
 # Bricks Builder documentation
 
-Complete, daily-refreshed copy of the official Bricks Academy ({base}), one Markdown file per page under `references/`. Content © Bricks.
+Complete, daily-refreshed copy of the official Bricks Academy ({base}) in `references/`, pages grouped by topic (for example `developer-hooks-1.md`, `builder-elements.md`). Content © Bricks.
 
 ## How to use
 
-1. Find the right page in the section indexes below (each lists page title, file and a one-line summary), or search across all pages, e.g. `grep -ril "query loop" references/`.
-2. Read only the pages you need. Every page starts with its title and source URL.
-3. For element/control/global settings JSON (what the builder stores and what the Bricks MCP abilities read and write), use the **Schema** section: `references/developer/schema/`.
+1. Find the right page in the section indexes below (each lists page title, the file containing it and a one-line summary), or search across all pages, e.g. `grep -il "query loop" references/*.md`.
+2. Read only the pages you need: inside a file every page starts with `# <title>` and its source URL, so search for the title (`grep -n "^# Query Loop" references/*.md`) and read from that line.
+3. For element/control/global settings JSON (what the builder stores and what the Bricks MCP abilities read and write), use the **Schema** section (files `developer-schema-*.md`).
 4. Prefer what these pages say over memory: Bricks changes often. When a page and the live site disagree (for example ability names exposed by the Bricks MCP server), trust the live site.
 
 ## Sections
@@ -458,51 +459,95 @@ Complete, daily-refreshed copy of the official Bricks Academy ({base}), one Mark
 """
 
 
-def page_file(url: str) -> str:
-    parts = path_parts(url) or ["index"]
-    return "references/" + "/".join(parts) + ".md"
+MAX_SKILL_FILES = 200  # claude.ai rejects skills with more files
+CHUNK_BYTES = 100_000  # split a topic file when it grows past this size
+
+
+def cache_file(out_dir: Path, url: str) -> Path:
+    return out_dir / CACHE_DIR / ("/".join(path_parts(url) or ["index"]) + ".md")
 
 
 def read_cached(out_dir: Path, url: str, title: str) -> str | None:
-    """Page Markdown from the skill reference file written by a previous run."""
-    f = out_dir / "skill" / SKILL_NAME / page_file(url)
-    if not f.exists():
-        return None
-    header = f"# {title}\n\nSource: {url}\n\n"
-    text = f.read_text(encoding="utf-8")
-    return text[len(header):].rstrip("\n") if text.startswith(header) else None
+    """Page Markdown saved by a previous run."""
+    f = cache_file(out_dir, url)
+    return f.read_text(encoding="utf-8") if f.exists() else None
+
+
+def write_cache(out_dir: Path, done: list[tuple[str, str, str]]) -> None:
+    root = out_dir / CACHE_DIR
+    if root.exists():
+        shutil.rmtree(root)
+    for url, _, md in done:
+        f = cache_file(out_dir, url)
+        f.parent.mkdir(parents=True, exist_ok=True)
+        f.write_text(md, encoding="utf-8")
+
+
+def topic_of(url: str) -> str:
+    """Two-level topic used to group pages into one skill file (e.g. developer-hooks)."""
+    parts = path_parts(url)
+    return "-".join(parts[:2]) if len(parts) > 1 else (parts[0] if parts else "home")
 
 
 def write_skill(out_dir: Path, done: list[tuple[str, str, str]], descriptions: dict, sections: list[str]) -> None:
-    """Regenerate skill/bricks-docs/ and a deterministic zip of it (dist/bricks-docs-skill.zip)."""
+    """Regenerate skill/bricks-docs/ and a deterministic zip of it (dist/bricks-docs-skill.zip).
+
+    Pages are grouped by topic into a few dozen files (split every ~100 KB) so the
+    skill stays well under the 200-file limit of claude.ai.
+    """
     root = out_dir / "skill" / SKILL_NAME
     if root.exists():
         shutil.rmtree(root)
+    (root / "references").mkdir(parents=True)
+
+    # Group pages by topic, keeping the documentation order, then chunk by size.
+    topics: dict[str, list[tuple[str, str, str]]] = {}
+    for entry in done:
+        topics.setdefault(topic_of(entry[0]), []).append(entry)
+    location: dict[str, str] = {}
+    for topic, entries in topics.items():
+        chunks: list[list[tuple[str, str]]] = [[]]
+        size = 0
+        for url, title, md in entries:
+            block = f"# {title}\n\nSource: {url}\n\n{md}\n"
+            if chunks[-1] and size + len(block.encode()) > CHUNK_BYTES:
+                chunks.append([])
+                size = 0
+            chunks[-1].append((url, block))
+            size += len(block.encode())
+        for n, chunk in enumerate(chunks, 1):
+            name = f"{topic}-{n}.md" if len(chunks) > 1 else f"{topic}.md"
+            for url, _ in chunk:
+                location[url] = name
+            (root / "references" / name).write_text("\n---\n\n".join(b for _, b in chunk), encoding="utf-8")
+
     section_lines = []
     for sec in sections:
         entries = [e for e in done if section_of(e[0]) == sec]
         name = SECTION_TITLES.get(sec, sec.replace("-", " ").title())
-        index_name = f"references/_index-{sec}.md"
-        rows = [f"# {name}: page index", ""]
+        index_name = f"_index-{sec}.md"
+        rows = [f"# {name}: page index", "",
+                "Each line: page title, the file in this folder that contains it, and a summary. "
+                "Inside the file every page starts with `# <title>`.", ""]
         for url, title, _ in entries:
             desc = (descriptions.get(url) or "").replace("\n", " ").strip()
-            rows.append(f"- [{title}]({page_file(url)[len('references/'):]})" + (f": {desc}" if desc else ""))
-        (root / "references").mkdir(parents=True, exist_ok=True)
-        (root / index_name).write_text("\n".join(rows) + "\n", encoding="utf-8")
-        section_lines.append(f"- **{name}** ({len(entries)} pages): [{index_name}]({index_name})")
-        for url, title, md in entries:
-            f = root / page_file(url)
-            f.parent.mkdir(parents=True, exist_ok=True)
-            f.write_text(f"# {title}\n\nSource: {url}\n\n{md}\n", encoding="utf-8")
+            rows.append(f"- {title} → `{location[url]}`" + (f": {desc}" if desc else ""))
+        (root / "references" / index_name).write_text("\n".join(rows) + "\n", encoding="utf-8")
+        section_lines.append(f"- **{name}** ({len(entries)} pages): `references/{index_name}`")
     (root / "SKILL.md").write_text(
         SKILL_MD.format(base=BASE, sections="\n".join(section_lines)), encoding="utf-8")
+
+    files = sorted(p for p in root.rglob("*") if p.is_file())
+    if len(files) > MAX_SKILL_FILES:
+        raise RuntimeError(f"Skill has {len(files)} files, more than {MAX_SKILL_FILES}")
+    print(f"Skill: {len(files)} files", file=sys.stderr)
 
     # Deterministic zip (fixed timestamps, sorted entries) so it only changes with the content.
     zip_path = out_dir / "dist" / f"{SKILL_NAME}-skill.zip"
     zip_path.parent.mkdir(parents=True, exist_ok=True)
     tmp = zip_path.with_suffix(".tmp")
     with zipfile.ZipFile(tmp, "w", zipfile.ZIP_DEFLATED) as zf:
-        for f in sorted(p for p in root.rglob("*") if p.is_file()):
+        for f in files:
             info = zipfile.ZipInfo(f"{SKILL_NAME}/{f.relative_to(root).as_posix()}", (1980, 1, 1, 0, 0, 0))
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o644 << 16
@@ -590,6 +635,7 @@ def build(out_dir: Path, full: bool = False) -> bool:
         changed = True
 
     write_skill(out_dir, done, {p["url"]: p.get("description") for p in pages}, sections)
+    write_cache(out_dir, done)
 
     lastmods = {p["url"]: p.get("lastmod") for p in pages}
     new_state = {
