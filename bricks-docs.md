@@ -1,7 +1,7 @@
 # Bricks Builder Documentation
 
-<!-- content-sha256: 3ff5a3d65b99d53401be4482a8243a95ccd57da4d8660ca646c816d2b26ba9bf -->
-<!-- content last changed: 2026-10-13 20:31 UTC -->
+<!-- content-sha256: 75d8c9a30bc351993c43f44cae43be1e0dbb70e92aa5040944128b8857f57913 -->
+<!-- content last changed: 2026-10-13 20:46 UTC -->
 
 Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricksbuilder.io/), refreshed daily. Content © Bricks. 826 pages.
 
@@ -843,8 +843,6 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
 Source: https://academy.bricksbuilder.io/
 
 *Official documentation for Bricks, the visual site builder for WordPress. Guides, references, and tutorials from first install to custom code.*
-
-
 
 ---
 
@@ -39266,8 +39264,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/align-items/
 
 *Value schema for align-items control type*
 
-
-
 ---
 
 <a id="developer-schema-controls-audio"></a>
@@ -39355,8 +39351,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/button/
 
 *UI-only control, no stored value*
 
-
-
 ---
 
 <a id="developer-schema-controls-checkbox"></a>
@@ -39366,8 +39360,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/button/
 Source: https://academy.bricksbuilder.io/developer/schema/controls/checkbox/
 
 *Value schema for checkbox control type*
-
-
 
 ---
 
@@ -39379,8 +39371,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/code/
 
 *Value schema for code control type*
 
-
-
 ---
 
 <a id="developer-schema-controls-color"></a>
@@ -39390,8 +39380,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/code/
 Source: https://academy.bricksbuilder.io/developer/schema/controls/color/
 
 *Value schema for color control type*
-
-
 
 ---
 
@@ -39403,8 +39391,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/dimensions/
 
 *Unknown control type: dimensions*
 
-
-
 ---
 
 <a id="developer-schema-controls-datepicker"></a>
@@ -39414,8 +39400,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/dimensions/
 Source: https://academy.bricksbuilder.io/developer/schema/controls/datepicker/
 
 *Date/time string*
-
-
 
 ---
 
@@ -39427,8 +39411,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/direction/
 
 *Value schema for direction control type*
 
-
-
 ---
 
 <a id="developer-schema-controls-editor"></a>
@@ -39438,8 +39420,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/direction/
 Source: https://academy.bricksbuilder.io/developer/schema/controls/editor/
 
 *Rich text/HTML content*
-
-
 
 ---
 
@@ -39547,8 +39527,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/justify-conte
 
 *Value schema for justify-content control type*
 
-
-
 ---
 
 <a id="developer-schema-controls-link"></a>
@@ -39583,8 +39561,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/number/
 
 *Value schema for number control type*
 
-
-
 ---
 
 <a id="developer-schema-controls-query-list"></a>
@@ -39594,8 +39570,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/number/
 Source: https://academy.bricksbuilder.io/developer/schema/controls/query-list/
 
 *Unknown control type: query-list*
-
-
 
 ---
 
@@ -39663,8 +39637,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/radio/
 
 *Unknown control type: radio*
 
-
-
 ---
 
 <a id="developer-schema-controls-repeater"></a>
@@ -39674,8 +39646,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/radio/
 Source: https://academy.bricksbuilder.io/developer/schema/controls/repeater/
 
 *Repeatable fields array*
-
-
 
 ---
 
@@ -39724,8 +39694,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/select/
 
 *Value schema for select control type*
 
-
-
 ---
 
 <a id="developer-schema-controls-text-align"></a>
@@ -39736,8 +39704,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/text-align/
 
 *Value schema for text-align control type*
 
-
-
 ---
 
 <a id="developer-schema-controls-text"></a>
@@ -39747,8 +39713,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/text-align/
 Source: https://academy.bricksbuilder.io/developer/schema/controls/text/
 
 *Value schema for text control type*
-
-
 
 ---
 
@@ -39775,8 +39739,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/text-shadow/
 Source: https://academy.bricksbuilder.io/developer/schema/controls/textarea/
 
 *Value schema for textarea control type*
-
-
 
 ---
 
@@ -40026,8 +39988,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/global/global-variable
 Source: https://academy.bricksbuilder.io/developer/schema/global/pseudo-classes/
 
 *CSS pseudo-classes available in the builder for responsive/state variants. Stored as a WordPress option, user-configurable via Bricks settings.*
-
-
 
 ---
 
