@@ -1,0 +1,26 @@
+# Filter: bricks/theme_styles/controls
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-theme_styles-controls/
+
+*Filters the individual controls available within the Theme Styles settings. This allows you to add custom fields to existing Theme Style groups or to your own.*
+
+Filters the individual controls available within the Theme Styles settings. This allows you to add custom fields to existing Theme Style groups or to your own custom groups.
+
+## Parameters
+
+- `$controls` (*array*): Associative array of controls.
+
+## Example usage
+
+```php
+add_filter( 'bricks/theme_styles/controls', function( $controls ) {
+    // Add a custom color control to the 'colors' group
+    $controls['myCustomColor'] = [
+        'group' => 'colors', // Target existing group
+        'label' => esc_html__( 'My Custom Color', 'my-plugin' ),
+        'type'  => 'color',
+    ];
+
+    return $controls;
+} );
+```

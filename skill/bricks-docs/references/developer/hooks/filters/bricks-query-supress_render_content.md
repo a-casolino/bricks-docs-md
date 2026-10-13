@@ -1,0 +1,25 @@
+# Filter: bricks/query/supress_render_content
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-supress_render_content/
+
+*Determines whether to suppress the rendering of the query loop content. This is used by the \"Live Search\" feature to prevent rendering initial results on page.*
+
+Determines whether to suppress the rendering of the query loop content. This is used by the "Live Search" feature to prevent rendering initial results on page load if they are going to be immediately replaced by AJAX results.
+
+## Parameters
+
+- `$suppress` (*bool*): Whether to suppress rendering.
+- `$query` (*object*): The Bricks Query instance.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query/supress_render_content', function( $suppress, $query ) {
+    // Example: Suppress content rendering for a specific query ID on mobile devices
+    if ( $query->id === 'heavy_query' && wp_is_mobile() ) {
+        return true;
+    }
+
+    return $suppress;
+}, 10, 2 );
+```
