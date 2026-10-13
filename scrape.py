@@ -558,7 +558,26 @@ def write_skill(out_dir: Path, done: list[tuple[str, str, str]], descriptions: d
         tmp.replace(zip_path)
 
 
-def build(out_dir: Path, full: bool = False) -> bool:
+def write_report(path: Path, added: list, updated: list, removed: list) -> None:
+    """Markdown summary of what changed (Italian), used as the body of the notification issue."""
+    lines = [f"La documentazione di Bricks è cambiata: {len(updated)} pagine aggiornate, "
+             f"{len(added)} nuove, {len(removed)} rimosse.", ""]
+    for heading, items in (("Pagine aggiornate", updated), ("Pagine nuove", added), ("Pagine rimosse", removed)):
+        if items:
+            lines += [f"### {heading}", ""] + [f"- [{t}]({u})" for u, t in items[:200]]
+            if len(items) > 200:
+                lines.append(f"- … e altre {len(items) - 200}")
+            lines.append("")
+    lines += [
+        "File aggiornati:",
+        f"- [bricks-docs.md]({PUBLIC_BASE}bricks-docs.md)",
+        f"- [Skill (zip)]({PUBLIC_BASE}dist/{SKILL_NAME}-skill.zip): da ricaricare su claude.ai",
+    ]
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print(f"Change report written to {path}", file=sys.stderr)
+
+
+def build(out_dir: Path, full: bool = False, report: Path | None = None) -> bool:
     # Fetch robots.txt with our own session (urllib's default client may be blocked).
     rp = robotparser.RobotFileParser()
     robots = fetch(urljoin(BASE, "robots.txt"))
@@ -634,6 +653,19 @@ def build(out_dir: Path, full: bool = False) -> bool:
         llms_path.write_text(llms_text, encoding="utf-8")
         changed = True
 
+    # Pages whose content differs from the previous run, for the update notification.
+    added, updated = [], []
+    for url, title, md in done:
+        prev_md = read_cached(out_dir, url, title)
+        if url not in known or prev_md is None:
+            added.append((url, title))
+        elif prev_md != md:
+            updated.append((url, title))
+    current = {u for u, _, _ in done}
+    removed = [(u, info.get("title", u)) for u, info in known.items() if u not in current]
+    if report and changed and known and (added or updated or removed):
+        write_report(report, added, updated, removed)
+
     write_skill(out_dir, done, {p["url"]: p.get("description") for p in pages}, sections)
     write_cache(out_dir, done)
 
@@ -653,5 +685,6 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("-o", "--out-dir", default=".", type=Path)
     ap.add_argument("--full", action="store_true", help="re-download every page, ignoring lastmod")
+    ap.add_argument("--report", type=Path, help="write a Markdown summary of changed pages here")
     args = ap.parse_args()
-    build(args.out_dir, full=args.full)
+    build(args.out_dir, full=args.full, report=args.report)

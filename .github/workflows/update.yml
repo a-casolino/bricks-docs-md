@@ -15,6 +15,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: update-docs
@@ -50,7 +51,7 @@ jobs:
 
       - name: Export academy.bricksbuilder.io to Markdown
         if: steps.tz.outputs.run == 'true'
-        run: python scrape.py --out-dir . ${{ inputs.full && '--full' || '' }}
+        run: python scrape.py --out-dir . --report "$RUNNER_TEMP/changes.md" ${{ inputs.full && '--full' || '' }}
 
       - name: Commit if the docs changed
         if: steps.tz.outputs.run == 'true'
@@ -65,3 +66,17 @@ jobs:
           git commit -m "Update Bricks docs $(date -u +%Y-%m-%d)"
           git pull --rebase origin main
           git push
+
+      # GitHub emails the repository owner when an issue is assigned to them.
+      - name: Notify by email (GitHub issue)
+        if: steps.tz.outputs.run == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -f "$RUNNER_TEMP/changes.md" ] || exit 0
+          printf '\n@%s\n' "${{ github.repository_owner }}" >> "$RUNNER_TEMP/changes.md"
+          url=$(gh issue create \
+            --title "Documentazione Bricks aggiornata ($(TZ=Europe/Rome date +%Y-%m-%d))" \
+            --body-file "$RUNNER_TEMP/changes.md" \
+            --assignee "${{ github.repository_owner }}")
+          gh issue close "$url"
