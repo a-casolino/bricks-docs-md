@@ -404,8 +404,10 @@ def write_if_changed(path: Path, text: str) -> bool:
 
 
 def build(out_dir: Path) -> bool:
-    rp = robotparser.RobotFileParser(urljoin(BASE, "robots.txt"))
-    rp.read()
+    # Fetch robots.txt with our own session (urllib's default client may be blocked).
+    rp = robotparser.RobotFileParser()
+    robots = fetch(urljoin(BASE, "robots.txt"))
+    rp.parse(robots.text.splitlines() if robots.status_code == 200 else [])
 
     pages = [p for p in index_pages() if urlparse(p["url"]).path not in SKIP_PATHS]
     print(f"{len(pages)} pages in the index", file=sys.stderr)
