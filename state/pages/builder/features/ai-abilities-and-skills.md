@@ -258,6 +258,36 @@ Open `Bricks > AI > Abilities` to control which Bricks abilities AI clients can 
 >
 > The Abilities tab controls site-level availability. It does not grant permissions to the WordPress user behind the MCP connection. An ability can be enabled here and still not be callable for that user if they do not have the required WordPress capability, builder access, or Bricks builder permission.
 
+### Scope abilities by user or role
+
+Ability toggles are site-wide. Per-user and per-role access comes from the WordPress account used by the MCP connection:
+
+1. Go to `Bricks > Settings > Builder access` and create a custom builder capability.
+2. Enable only the actions that account needs, including the relevant post types and element editing permissions.
+3. Assign the capability to a WordPress role or to one user from that user's WordPress profile.
+4. In `Bricks > AI > Configuration`, generate the application password for that user and use it in the AI client's MCP config.
+
+For example, a `Client editor` capability can allow content and element editing while leaving every permission under `Components` disabled. An AI client connected with that user's application password can edit the permitted content, but component abilities and component operations inside element writes are rejected.
+
+WordPress capabilities still apply alongside Builder access. Avoid using an administrator account for a restricted client workflow because users with `manage_options` receive full builder access. See [Builder Access & Capabilities](https://academy.bricksbuilder.io/builder/interface/builder-access/) for every permission and the steps for assigning capabilities to roles and individual users.
+
+You can:
+
+- Search abilities by name or description.
+- Filter by category, enabled state, disabled state, and default-off state.
+- Enable all, disable all, or reset to defaults.
+- Review badges such as `Default off` and `Destructive`.
+
+Some diagnostic abilities are always available so clients and admins can understand the connection state:
+
+- `bricks/start-here`
+- `bricks/get-mcp-version`
+- `bricks/list-ability-status`
+
+Most abilities are enabled by default once Bricks abilities are enabled. Sensitive categories, such as builder permission management, are default-off until an admin enables them. Abilities marked destructive can remove data or make changes that are not easy to reverse, so treat them as actions that need clear user approval.
+
+![](https://academy.bricksbuilder.io/assets/bricks-ai-abilities.png)
+
 ## Fast-path tools and dispatcher tools
 
 Bricks registers many abilities, but only common abilities appear directly in an MCP client's tool list.
