@@ -74,7 +74,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           [ -f "$RUNNER_TEMP/changes.md" ] || exit 0
-          printf '\n@%s\n' "${{ github.repository_owner }}" >> "$RUNNER_TEMP/changes.md"
+          sha=$(git rev-parse HEAD)
+          printf -- '- [Tutte le modifiche di questo aggiornamento](%s/%s/commit/%s)\n\n@%s\n' \
+            "${{ github.server_url }}" "${{ github.repository }}" "$sha" "${{ github.repository_owner }}" >> "$RUNNER_TEMP/changes.md"
           url=$(gh issue create \
             --title "Documentazione Bricks aggiornata ($(TZ=Europe/Rome date +%Y-%m-%d))" \
             --body-file "$RUNNER_TEMP/changes.md" \

@@ -18,6 +18,7 @@ run commits only when Bricks updates its docs.
 """
 
 import argparse
+import difflib
 import hashlib
 import json
 import re
@@ -558,22 +559,59 @@ def write_skill(out_dir: Path, done: list[tuple[str, str, str]], descriptions: d
         tmp.replace(zip_path)
 
 
+VIDEO_LINE_RE = re.compile(r"^\s*https?://(www\.)?(youtu\.be|youtube\.com)/\S*\s*$")
+MAX_REPORT_CHARS = 60_000  # GitHub issue bodies are limited to 65,536 characters
+MAX_DIFF_LINES = 80
+
+
+def page_diff(old: str, new: str) -> tuple[list[str], bool]:
+    """Unified diff lines between two versions of a page, and whether only video links changed."""
+    lines = list(difflib.unified_diff(old.splitlines(), new.splitlines(), lineterm="", n=1))[2:]
+    changed = [l[1:] for l in lines if l[:1] in "+-" and not l.startswith(("+++", "---"))]
+    only_video = bool(changed) and all(VIDEO_LINE_RE.match(l) or not l.strip() for l in changed)
+    return lines, only_video
+
+
 def write_report(path: Path, added: list, updated: list, removed: list) -> None:
-    """Markdown summary of what changed (Italian), used as the body of the notification issue."""
+    """Markdown summary of what changed (Italian), used as the body of the notification issue.
+
+    `updated` holds (url, title, old_md, new_md); each page gets a collapsible diff.
+    """
     lines = [f"La documentazione di Bricks è cambiata: {len(updated)} pagine aggiornate, "
              f"{len(added)} nuove, {len(removed)} rimosse.", ""]
-    for heading, items in (("Pagine aggiornate", updated), ("Pagine nuove", added), ("Pagine rimosse", removed)):
+    if updated:
+        lines += ["### Pagine aggiornate", ""]
+        diffs = []
+        for url, title, old, new in updated:
+            diff, only_video = page_diff(old, new)
+            plus = sum(1 for l in diff if l.startswith("+"))
+            minus = sum(1 for l in diff if l.startswith("-"))
+            note = " (solo link video)" if only_video else ""
+            lines.append(f"- [{title}]({url}): +{plus} −{minus}{note}")
+            shown = diff[:MAX_DIFF_LINES]
+            if len(diff) > MAX_DIFF_LINES:
+                shown.append(f"… altre {len(diff) - MAX_DIFF_LINES} righe")
+            fence = "````" if any("```" in l for l in shown) else "```"
+            diffs += [f"<details><summary>{title}{note}</summary>", "", f"{fence}diff", *shown, fence, "", "</details>", ""]
+        lines.append("")
+        lines += ["### Cosa è cambiato, pagina per pagina", ""] + diffs
+    for heading, items in (("Pagine nuove", added), ("Pagine rimosse", removed)):
         if items:
             lines += [f"### {heading}", ""] + [f"- [{t}]({u})" for u, t in items[:200]]
             if len(items) > 200:
                 lines.append(f"- … e altre {len(items) - 200}")
             lines.append("")
-    lines += [
+    footer = [
         "File aggiornati:",
         f"- [bricks-docs.md]({PUBLIC_BASE}bricks-docs.md)",
         f"- [Skill (zip)]({PUBLIC_BASE}dist/{SKILL_NAME}-skill.zip): da ricaricare su claude.ai",
     ]
-    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    body = "\n".join(lines)
+    if len(body) > MAX_REPORT_CHARS:
+        # Too long for an issue: drop the per-page diffs, the commit link has them all.
+        cut = body.index("### Cosa è cambiato, pagina per pagina")
+        body = body[:cut] + "Le differenze sono troppe per la mail: aprile dal link al commit qui sotto.\n"
+    path.write_text(body.rstrip() + "\n\n" + "\n".join(footer) + "\n", encoding="utf-8")
     print(f"Change report written to {path}", file=sys.stderr)
 
 
@@ -660,7 +698,7 @@ def build(out_dir: Path, full: bool = False, report: Path | None = None) -> bool
         if url not in known or prev_md is None:
             added.append((url, title))
         elif prev_md != md:
-            updated.append((url, title))
+            updated.append((url, title, prev_md, md))
     current = {u for u, _, _ in done}
     removed = [(u, info.get("title", u)) for u, info in known.items() if u not in current]
     if report and changed and known and (added or updated or removed):
