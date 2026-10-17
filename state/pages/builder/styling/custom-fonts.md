@@ -12,7 +12,7 @@ You can also preload uploaded custom fonts under **Bricks > Settings > Performan
 
 ## How To Create & Upload Custom Fonts
 
-https://youtu.be/Zu2RZFl6eAE
+https://youtu.be/6QB84hoycgw
 
 To create a new custom font go to **Bricks > Custom Fonts** in your WordPress dashboard, and click **Add New**.
 

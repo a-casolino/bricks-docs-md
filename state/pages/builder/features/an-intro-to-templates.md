@@ -11,7 +11,7 @@ A template can be a small reusable section, a global header or footer, or the fu
 
 Templates are also used by the Template Library, remote template sources, the Template element, popups, WooCommerce layouts, and password protection.
 
-https://www.youtube.com/watch?v=9v2TUaA-oFg
+https://www.youtube.com/watch?v=x0hHUXzk3wg
 
 ## The template mental model
 

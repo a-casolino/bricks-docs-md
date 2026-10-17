@@ -498,7 +498,7 @@ You can also preload uploaded custom fonts under **Bricks > Settings > Performan
 
 ## How To Create & Upload Custom Fonts
 
-https://youtu.be/Zu2RZFl6eAE
+https://youtu.be/6QB84hoycgw
 
 To create a new custom font go to **Bricks > Custom Fonts** in your WordPress dashboard, and click **Add New**.
 
@@ -699,6 +699,8 @@ Within the preview window, several actions are available for managing and testin
 Source: https://academy.bricksbuilder.io/builder/styling/font-manager/
 
 *Manage project fonts in Bricks, including uploads, font organization, and how fonts are exposed throughout the builder.*
+
+https://youtu.be/6QB84hoycgw
 
 The Font Manager is the central place to browse, favorite, download, upload, edit, and remove the fonts available in Bricks typography controls.
 
@@ -918,46 +920,6 @@ Confirm that the file is `.woff2`, `.woff`, or `.ttf`, that the current user has
 ### The wrong Google Font loads instead of a custom font
 
 If a custom font and a Google Font share the same family name, Bricks skips the Google font when generating frontend webfont links. If you still see an unexpected font, check for custom CSS or third-party font loading outside Bricks.
-
----
-
-# Global class import manager
-
-Source: https://academy.bricksbuilder.io/builder/styling/global-class-import-manager/
-
-*Import global classes into Bricks and control how shared class libraries are brought into a project.*
-
-The global class import manager addresses a key challenge in managing imported classes. Previously, conflicting classes were always automatically discarded, and users had no way to prepare or organize classes before importing them.
-
-This feature provides a clear and structured way to handle imported classes, giving users the ability to resolve conflicts, categorize classes, and maintain a clean workflow. To further streamline the process, we’ve included a setting that lets users decide when they’d like to be prompted, ensuring the feature suits their workflow.
-
-![](https://academy.bricksbuilder.io/assets/bricks-class-import-manager.png)
-
-## When does this show up?
-
-The global class import manager opens whenever global classes are imported into the builder. This includes importing a global classes JSON file, pasting elements, or importing a template. Depending on your settings, it can open for specific situations, such as new classes, conflicting classes, or both.
-
-## Types of classes in the import manager
-
-The import manager displays two types of classes:
-
-- **New classes**: These are classes that do not exist in the current site. Users can choose to import and categorize these classes before they are added to the site.
-- **Conflicting classes**: These are classes that either share the same name or the same internal ID as an existing local class, but have different settings. Conflicting classes are highlighted in red, and users must resolve each conflict before completing the import. Conflicts can be resolved by:
-  - **Overriding the local class**: Replace the existing class with the imported one.
-  - **Discarding the conflicting class**: Skip importing the conflicting class.
-
-![](https://academy.bricksbuilder.io/assets/bricks-class-import-manager-override-zoomed.png)
-
-![](https://academy.bricksbuilder.io/assets/bricks-class-import-manager-import-zoomed.png)
-
-## Configuring when the import manager opens
-
-You can control when the global class import manager opens by navigating to **WordPress admin > Bricks Settings > Builder > Global class import manager**. The available options are:
-
-- **Show for class conflicts (default)**: The manager opens only when conflicts are detected. New classes are imported automatically.
-- **Show for new classes**: The manager opens for all new classes, allowing users to review and manage them, while conflicting classes are automatically discarded.
-- **Show for new & conflicting classes**: The manager opens for both new and conflicting classes, providing full control over the import process.
-- **Never**: The manager is disabled. New classes are imported automatically, and conflicting classes are automatically discarded.
 
 ---
 
@@ -1225,6 +1187,46 @@ Check whether imported classes were accepted, mapped to local classes, or reject
 
 ---
 
+# Global class import manager
+
+Source: https://academy.bricksbuilder.io/builder/styling/global-class-import-manager/
+
+*Import global classes into Bricks and control how shared class libraries are brought into a project.*
+
+The global class import manager addresses a key challenge in managing imported classes. Previously, conflicting classes were always automatically discarded, and users had no way to prepare or organize classes before importing them.
+
+This feature provides a clear and structured way to handle imported classes, giving users the ability to resolve conflicts, categorize classes, and maintain a clean workflow. To further streamline the process, we’ve included a setting that lets users decide when they’d like to be prompted, ensuring the feature suits their workflow.
+
+![](https://academy.bricksbuilder.io/assets/bricks-class-import-manager.png)
+
+## When does this show up?
+
+The global class import manager opens whenever global classes are imported into the builder. This includes importing a global classes JSON file, pasting elements, or importing a template. Depending on your settings, it can open for specific situations, such as new classes, conflicting classes, or both.
+
+## Types of classes in the import manager
+
+The import manager displays two types of classes:
+
+- **New classes**: These are classes that do not exist in the current site. Users can choose to import and categorize these classes before they are added to the site.
+- **Conflicting classes**: These are classes that either share the same name or the same internal ID as an existing local class, but have different settings. Conflicting classes are highlighted in red, and users must resolve each conflict before completing the import. Conflicts can be resolved by:
+  - **Overriding the local class**: Replace the existing class with the imported one.
+  - **Discarding the conflicting class**: Skip importing the conflicting class.
+
+![](https://academy.bricksbuilder.io/assets/bricks-class-import-manager-override-zoomed.png)
+
+![](https://academy.bricksbuilder.io/assets/bricks-class-import-manager-import-zoomed.png)
+
+## Configuring when the import manager opens
+
+You can control when the global class import manager opens by navigating to **WordPress admin > Bricks Settings > Builder > Global class import manager**. The available options are:
+
+- **Show for class conflicts (default)**: The manager opens only when conflicts are detected. New classes are imported automatically.
+- **Show for new classes**: The manager opens for all new classes, allowing users to review and manage them, while conflicting classes are automatically discarded.
+- **Show for new & conflicting classes**: The manager opens for both new and conflicting classes, providing full control over the import process.
+- **Never**: The manager is disabled. New classes are imported automatically, and conflicting classes are automatically discarded.
+
+---
+
 # Global CSS Classes
 
 Source: https://academy.bricksbuilder.io/builder/styling/global-css-classes/
@@ -1235,7 +1237,7 @@ A global CSS class is a reusable Bricks style target. Instead of styling one ele
 
 Use global classes for repeated design decisions: buttons, cards, grids, spacing wrappers, headings, badges, form rows, or any element pattern that should stay consistent across a page or site.
 
-https://youtu.be/JMCkE6dneTM
+https://youtu.be/V9bzI6poe-Y
 
 ## The mental model
 
@@ -1427,55 +1429,6 @@ Check your builder permissions and whether the Global Class Manager is disabled 
 Bricks tracks classes by ID and name. If an imported class has the same ID or name as a local class, Bricks may map it to the existing class or ask you to review the conflict, depending on your import settings.
 
 Review conflicts before accepting imports on production sites, especially when classes are part of a design system.
-
----
-
-# Gradients & Overlays
-
-Source: https://academy.bricksbuilder.io/builder/styling/gradients-overlays/
-
-*Create gradients and overlays in Bricks to add layered backgrounds, image treatments, and color effects.*
-
-Spice up your site's design by adding background, overlay, and text gradients to any element. When editing an element, the Gradients & Overlays control group is under the Style tab.
-
-https://youtu.be/fHjio0iWkk8
-
-## Available controls:
-
-- **Apply to**: Select the type of content you want to add a gradient to (text, background, overlay).
-- **CSS selector**: To target a specific HTML within an element.
-- **Colors**: Add at least two colors to see a gradient. When you apply the gradient to an overlay make sure to reduce the color transparency in order to see through it.
-- **Type**: Choose the gradient type—linear, radial, or conic.
-- **Repeat (since 1.9.4)**: Allows the gradient to repeat across the element. Define 'stops' to control the transition points of each color, using units like percentages or pixels.
-
-### Linear gradient controls:
-
-- **Angle in °**: Set a specific angle for your linear gradient between 0 to 360°.
-
-### Radial gradient controls:
-
-- **Shape**: Choose between 'circle' or 'ellipse'.
-- **Size**: Select from 'closest-side', 'farthest-side', 'closest-corner', 'farthest-corner'. For details on these settings, see the [Mozilla Documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient#size).
-- **Position**: Define the central point of the gradient.
-
-### Conic gradient controls:
-
-- **Starting angle in °**: Specify the starting angle of the gradient between 0 to 360°.
-- **Position**: Set the gradient's center.
-
----
-
-# Hover Styles
-
-Source: https://academy.bricksbuilder.io/builder/styling/hover-styles/
-
-*Style hover states in Bricks so links, buttons, cards, and other interactive elements respond consistently.*
-
-Bring your site to life and boost visitor engagement by styling the hover state of any interactive element.
-
-In the builder, select the element or class you want to style. Open the pseudo-class menu and choose `:hover`. Any styles you add while `:hover` is active are saved to that hover state instead of the default state.
-
-Use the same pseudo-class workflow for global classes, element ID styles, and other supported states. Learn more in [Styling Element States & Parts](https://academy.bricksbuilder.io/builder/styling/pseudo-classes/).
 
 ---
 
@@ -1731,6 +1684,55 @@ Remote template variable imports do not import variable categories. JSON imports
 ### Utility classes are missing
 
 Check that the variable category is a scale, that utility classes are configured for that scale, and that Bricks can generate and enqueue the Style Manager CSS file.
+
+---
+
+# Hover Styles
+
+Source: https://academy.bricksbuilder.io/builder/styling/hover-styles/
+
+*Style hover states in Bricks so links, buttons, cards, and other interactive elements respond consistently.*
+
+Bring your site to life and boost visitor engagement by styling the hover state of any interactive element.
+
+In the builder, select the element or class you want to style. Open the pseudo-class menu and choose `:hover`. Any styles you add while `:hover` is active are saved to that hover state instead of the default state.
+
+Use the same pseudo-class workflow for global classes, element ID styles, and other supported states. Learn more in [Styling Element States & Parts](https://academy.bricksbuilder.io/builder/styling/pseudo-classes/).
+
+---
+
+# Gradients & Overlays
+
+Source: https://academy.bricksbuilder.io/builder/styling/gradients-overlays/
+
+*Create gradients and overlays in Bricks to add layered backgrounds, image treatments, and color effects.*
+
+Spice up your site's design by adding background, overlay, and text gradients to any element. When editing an element, the Gradients & Overlays control group is under the Style tab.
+
+https://youtu.be/U0x0vCAzuc0
+
+## Available controls:
+
+- **Apply to**: Select the type of content you want to add a gradient to (text, background, overlay).
+- **CSS selector**: To target a specific HTML within an element.
+- **Colors**: Add at least two colors to see a gradient. When you apply the gradient to an overlay make sure to reduce the color transparency in order to see through it.
+- **Type**: Choose the gradient type—linear, radial, or conic.
+- **Repeat (since 1.9.4)**: Allows the gradient to repeat across the element. Define 'stops' to control the transition points of each color, using units like percentages or pixels.
+
+### Linear gradient controls:
+
+- **Angle in °**: Set a specific angle for your linear gradient between 0 to 360°.
+
+### Radial gradient controls:
+
+- **Shape**: Choose between 'circle' or 'ellipse'.
+- **Size**: Select from 'closest-side', 'farthest-side', 'closest-corner', 'farthest-corner'. For details on these settings, see the [Mozilla Documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient#size).
+- **Position**: Define the central point of the gradient.
+
+### Conic gradient controls:
+
+- **Starting angle in °**: Specify the starting angle of the gradient between 0 to 360°.
+- **Position**: Set the gradient's center.
 
 ---
 

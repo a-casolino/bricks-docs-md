@@ -4,7 +4,7 @@ A global CSS class is a reusable Bricks style target. Instead of styling one ele
 
 Use global classes for repeated design decisions: buttons, cards, grids, spacing wrappers, headings, badges, form rows, or any element pattern that should stay consistent across a page or site.
 
-https://youtu.be/JMCkE6dneTM
+https://youtu.be/V9bzI6poe-Y
 
 ## The mental model
 

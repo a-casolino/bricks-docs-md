@@ -1,7 +1,7 @@
 # Bricks Builder Documentation: Integrations
 
-<!-- content-sha256: eececd5f1c08040f33d0ff9523aebec54b0855c82e09400d0c55e3b66cf9cf9a -->
-<!-- content last changed: 2026-10-13 20:16 UTC -->
+<!-- content-sha256: 80d33b2925d04bee706dd79043fac4dd6c993c3dfa695e6a00f01a84906ccf9d -->
+<!-- content last changed: 2026-10-17 02:30 UTC -->
 
 Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricksbuilder.io/), refreshed daily. Content © Bricks. 28 pages.
 
@@ -10,9 +10,9 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
   - [Gutenberg](#integrations-gutenberg)
   - [How to set up your Google Maps API key](#integrations-how-to-set-up-your-google-maps-api-key)
   - [How to use WPML with Bricks](#integrations-how-to-use-wpml-with-bricks)
+  - [How to get your Instagram Access Token](#integrations-instagram-access-token)
 - [Integrations](#integrations)
   - [Map (Leaflet)](#integrations-map-leaflet)
-  - [How to get your Instagram Access Token](#integrations-instagram-access-token)
   - [How to use Polylang with Bricks](#integrations-polylang)
   - [Unsplash Integration](#integrations-unsplash)
     - [Bricks components as blocks](#integrations-gutenberg-components-as-blocks)
@@ -20,8 +20,8 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
     - [Cart (WooCommerce)](#integrations-woocommerce-cart)
     - [Checkout (WooCommerce)](#integrations-woocommerce-checkout)
     - [Create a custom mini cart with Dynamic fragment](#integrations-woocommerce-create-custom-mini-cart-dynamic-fragment)
-    - [Creating dynamic WooCommerce archive pages](#integrations-woocommerce-creating-dynamic-woocommerce-archive-pages)
     - [Element: Checkout Coupon](#integrations-woocommerce-element-checkout-coupon)
+    - [Creating dynamic WooCommerce archive pages](#integrations-woocommerce-creating-dynamic-woocommerce-archive-pages)
     - [Element: Checkout Login](#integrations-woocommerce-element-checkout-login)
     - [How to Create Product Quick View with Bricks](#integrations-woocommerce-how-to-create-product-quick-view-with-bricks)
   - [WooCommerce](#integrations-woocommerce)
@@ -29,11 +29,11 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
     - [Product Archive (WooCommerce)](#integrations-woocommerce-product-archive-woocommerce)
     - [Product Variation Swatches (WooCommerce)](#integrations-woocommerce-product-variation-swatches)
     - [Single Product (WooCommerce)](#integrations-woocommerce-single-product)
-    - [Woo Setup Wizard](#integrations-woocommerce-woo-setup-wizard)
     - [WooCommerce Account Builder](#integrations-woocommerce-woocommerce-account-builder)
+    - [Woo Setup Wizard](#integrations-woocommerce-woo-setup-wizard)
+    - [WooCommerce Template Hooks](#integrations-woocommerce-woocommerce-template-hooks)
     - [WooCommerce Builder](#integrations-woocommerce-woocommerce-builder)
     - [WooCommerce Notices](#integrations-woocommerce-woocommerce-notices)
-    - [WooCommerce Template Hooks](#integrations-woocommerce-woocommerce-template-hooks)
     - [WooCommerce v2 query loops and dynamic tags](#integrations-woocommerce-woocommerce-v2-query-loops-dynamic-tags)
 
 ---
@@ -345,6 +345,76 @@ If you found this post insightful and you're considering giving WPML a try, we e
 
 ---
 
+<a id="integrations-instagram-access-token"></a>
+
+# How to get your Instagram Access Token
+
+Source: https://academy.bricksbuilder.io/integrations/instagram-access-token/
+
+*Generate an Instagram access token for Bricks so Instagram-based elements can retrieve and display feed content.*
+
+To use the Instagram Feed element (@since 1.9.1), you need an access token. This token allows secure retrieval of your Instagram account data. This guide explains how to get the token using the Instagram API with Instagram Login.
+
+> **Note**
+>
+> Before you can publish your app and generate an access token, you must connect your app to a **Business that has completed Business Verification**. Follow Meta’s [Business Verification guide](https://developers.facebook.com/docs/development/release/business-verification/) for instructions.
+
+## Step 1: Ensure you have an Instagram Creator or Business account
+
+Before proceeding, make sure your Instagram account is either a **Creator** or **Business** account.
+
+1. Log in to your Instagram account.
+2. Convert your account by following these instructions:
+  - [Set up a Creator Account](https://help.instagram.com/2358103564437429?helpref=faq_content).
+  - [Convert to a Business Account](https://help.instagram.com/502981923235522).
+
+## Step 2: Set up an application
+
+You first have to set up an application on the Meta for Developers platform by following these steps:
+
+1. Access your [Meta for Developers platform](https://developers.facebook.com/apps). You can use an existing account or [create a new one](https://developers.facebook.com/docs/development/register/).
+2. Provide an **App Name** and **Contact Email**.
+3. Click **Create App**, then:
+  - Under **Add use cases**, select **Manage messaging & content on Instagram** (from the **Content management category**), then click **Next**.
+  - When prompted, you may connect a Business account now or skip and do it later.
+4. Click **Next** and then **Go to dashboard** to complete the setup.
+
+You will be redirected to the app dashboard for your new app with products you can add to your app.
+
+## Step 3: Add the Instagram product to your app
+
+1. On the app dashboard, scroll down to **Products** and locate **Instagram**.
+2. Click **Set Up** next to Instagram.
+3. Select **API Setup with Instagram Login** (NOT API Setup with Facebook Login).
+
+## Step 4: Generate your Instagram access token
+
+To retrieve an access token:
+
+1. Assign an Instagram account for token generation:
+  - In the App Dashboard, go to **Instagram > API Setup with Instagram Login**.
+  - Click **Add an Instagram Account**.
+  - Log in with your Instagram Creator or Business account credentials.
+
+![](https://academy.bricksbuilder.io/assets/bricks-instagram-generate-access-token-1024x684.png)
+
+1. Confirm the account connection:
+  - Your Instagram account must be public.
+  - If you manage multiple accounts, ensure the correct one is selected.
+2. Copy the generated access token tied to the assigned Instagram account.
+
+## Step 5: Add the access token to Bricks
+
+To finalize the setup, navigate to `Bricks settings > API keys` from your WordPress dashboard and paste the access token into the `Instagram Access Token` input field, and save your changes.
+
+![](https://academy.bricksbuilder.io/assets/bricks-instagram-access-token-20-1024x101.png)
+
+For more information, refer to Meta’s official documentation: [Create a Meta App for Instagram Platform](https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/create-a-meta-app-with-instagram).
+
+**Note:** Once you retrieve and add the access token, Bricks will automatically refresh it every **20 days** using the `bricks_refresh_instagram_access_token` CRON job. No manual updates are required.
+
+---
+
 <a id="integrations"></a>
 
 # Integrations
@@ -432,76 +502,6 @@ You can set:
 The **Map** group controls the basic setup of your map. The most important settings are the **map height**, which is set to 300 px by default but can be adjusted to match your layout, along with the **map center** (latitude and longitude) and the **initial zoom level**. These define how the map looks and where it is focused when first loaded.
 
 Beyond that, you’ll also find controls grouped around **zoom behaviour**, **map interactions** (like dragging and clicking), and **display options** (such as attribution and resizing). All of these settings are based on Leaflet.js, and you can find full descriptions in the [Leaflet documentation](https://leafletjs.com/reference.html#map).
-
----
-
-<a id="integrations-instagram-access-token"></a>
-
-# How to get your Instagram Access Token
-
-Source: https://academy.bricksbuilder.io/integrations/instagram-access-token/
-
-*Generate an Instagram access token for Bricks so Instagram-based elements can retrieve and display feed content.*
-
-To use the Instagram Feed element (@since 1.9.1), you need an access token. This token allows secure retrieval of your Instagram account data. This guide explains how to get the token using the Instagram API with Instagram Login.
-
-> **Note**
->
-> Before you can publish your app and generate an access token, you must connect your app to a **Business that has completed Business Verification**. Follow Meta’s [Business Verification guide](https://developers.facebook.com/docs/development/release/business-verification/) for instructions.
-
-## Step 1: Ensure you have an Instagram Creator or Business account
-
-Before proceeding, make sure your Instagram account is either a **Creator** or **Business** account.
-
-1. Log in to your Instagram account.
-2. Convert your account by following these instructions:
-  - [Set up a Creator Account](https://help.instagram.com/2358103564437429?helpref=faq_content).
-  - [Convert to a Business Account](https://help.instagram.com/502981923235522).
-
-## Step 2: Set up an application
-
-You first have to set up an application on the Meta for Developers platform by following these steps:
-
-1. Access your [Meta for Developers platform](https://developers.facebook.com/apps). You can use an existing account or [create a new one](https://developers.facebook.com/docs/development/register/).
-2. Provide an **App Name** and **Contact Email**.
-3. Click **Create App**, then:
-  - Under **Add use cases**, select **Manage messaging & content on Instagram** (from the **Content management category**), then click **Next**.
-  - When prompted, you may connect a Business account now or skip and do it later.
-4. Click **Next** and then **Go to dashboard** to complete the setup.
-
-You will be redirected to the app dashboard for your new app with products you can add to your app.
-
-## Step 3: Add the Instagram product to your app
-
-1. On the app dashboard, scroll down to **Products** and locate **Instagram**.
-2. Click **Set Up** next to Instagram.
-3. Select **API Setup with Instagram Login** (NOT API Setup with Facebook Login).
-
-## Step 4: Generate your Instagram access token
-
-To retrieve an access token:
-
-1. Assign an Instagram account for token generation:
-  - In the App Dashboard, go to **Instagram > API Setup with Instagram Login**.
-  - Click **Add an Instagram Account**.
-  - Log in with your Instagram Creator or Business account credentials.
-
-![](https://academy.bricksbuilder.io/assets/bricks-instagram-generate-access-token-1024x684.png)
-
-1. Confirm the account connection:
-  - Your Instagram account must be public.
-  - If you manage multiple accounts, ensure the correct one is selected.
-2. Copy the generated access token tied to the assigned Instagram account.
-
-## Step 5: Add the access token to Bricks
-
-To finalize the setup, navigate to `Bricks settings > API keys` from your WordPress dashboard and paste the access token into the `Instagram Access Token` input field, and save your changes.
-
-![](https://academy.bricksbuilder.io/assets/bricks-instagram-access-token-20-1024x101.png)
-
-For more information, refer to Meta’s official documentation: [Create a Meta App for Instagram Platform](https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/create-a-meta-app-with-instagram).
-
-**Note:** Once you retrieve and add the access token, Bricks will automatically refresh it every **20 days** using the `bricks_refresh_instagram_access_token` CRON job. No manual updates are required.
 
 ---
 
@@ -1538,6 +1538,45 @@ To test the mini cart:
 
 ---
 
+<a id="integrations-woocommerce-element-checkout-coupon"></a>
+
+# Element: Checkout Coupon
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/
+
+*Use the Bricks Checkout Coupon element inside WooCommerce checkout templates to render and style the coupon form.*
+
+This Checkout coupon element, available @since 1.11.1, allows you to display the coupon field in various locations on the checkout page, making it easy for customers to apply discount codes during their purchase.
+
+In previous versions, you couldn’t control the location of the checkout coupon. Additionally, styling options were limited, and adjustments required custom CSS. With this new, dedicated checkout coupon element you now have greater control over placement and design.
+
+To use this element, first enable it under **`Bricks > Settings > WooCommerce`** by turning on **`Enable Bricks WooCommerce "Checkout coupon" element`**.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-setting.png)
+
+> **Note**
+>
+> WooCommerce **`Enable the use of coupon codes`** must also be active under **WooCommerce > Settings > General**. When the Bricks Checkout Coupon element is enabled, the native WooCommerce checkout coupon form is removed, so add this element where you want the coupon form to appear.
+
+> **Note**
+>
+> **Note:** This element is specifically designed for the Checkout page and will only work when placed on the **Checkout template** or the Checkout page itself, depending on your design requirements.
+
+**Key Controls**
+
+**Location:**
+
+- By default, the **Checkout Coupon** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment
+- Custom location settings only apply on the actual frontend (Checkout page). To ensure correct placement, add this element at the top of your Checkout template.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-element-controls.png)
+
+![](https://academy.bricksbuilder.io/assets/element-location-example.png)
+
+You can set the form to be toggle-able, hiding it by default and revealing it only when the toggle is clicked, for a cleaner layout.
+
+---
+
 <a id="integrations-woocommerce-creating-dynamic-woocommerce-archive-pages"></a>
 
 # Creating dynamic WooCommerce archive pages
@@ -1683,45 +1722,6 @@ Now, your shop page and product category pages should be able to work as expecte
 Custom WooCommerce Archive Template
 
 </figcaption>
-
----
-
-<a id="integrations-woocommerce-element-checkout-coupon"></a>
-
-# Element: Checkout Coupon
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/
-
-*Use the Bricks Checkout Coupon element inside WooCommerce checkout templates to render and style the coupon form.*
-
-This Checkout coupon element, available @since 1.11.1, allows you to display the coupon field in various locations on the checkout page, making it easy for customers to apply discount codes during their purchase.
-
-In previous versions, you couldn’t control the location of the checkout coupon. Additionally, styling options were limited, and adjustments required custom CSS. With this new, dedicated checkout coupon element you now have greater control over placement and design.
-
-To use this element, first enable it under **`Bricks > Settings > WooCommerce`** by turning on **`Enable Bricks WooCommerce "Checkout coupon" element`**.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-setting.png)
-
-> **Note**
->
-> WooCommerce **`Enable the use of coupon codes`** must also be active under **WooCommerce > Settings > General**. When the Bricks Checkout Coupon element is enabled, the native WooCommerce checkout coupon form is removed, so add this element where you want the coupon form to appear.
-
-> **Note**
->
-> **Note:** This element is specifically designed for the Checkout page and will only work when placed on the **Checkout template** or the Checkout page itself, depending on your design requirements.
-
-**Key Controls**
-
-**Location:**
-
-- By default, the **Checkout Coupon** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment
-- Custom location settings only apply on the actual frontend (Checkout page). To ensure correct placement, add this element at the top of your Checkout template.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-element-controls.png)
-
-![](https://academy.bricksbuilder.io/assets/element-location-example.png)
-
-You can set the form to be toggle-able, hiding it by default and revealing it only when the toggle is clicked, for a cleaner layout.
 
 ---
 
@@ -2300,132 +2300,6 @@ WooCommerce product editor screen - Linked Products
 
 ---
 
-<a id="integrations-woocommerce-woo-setup-wizard"></a>
-
-# Woo Setup Wizard
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/
-
-*Create or repair Bricks WooCommerce shop, product, cart, checkout, and account layouts with guided setup checks and presets.*
-
-The Woo Setup Wizard helps you check, create, and repair the main WooCommerce layouts used by Bricks.
-
-Go to **Bricks > Woo Setup Wizard** to review the current setup status for the store. The wizard checks the Shop, Single product, Cart, Checkout, and My Account areas, then shows the available setup actions for each area.
-
-![](https://academy.bricksbuilder.io/assets/woo-setup-wizard.png)
-
-The wizard is not dependent on **Enable advanced modular elements**. It can set up the classic WooCommerce builder workflow without that setting. Advanced v2 setup types may appear in the wizard, but they stay disabled until advanced modular elements are enabled under **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
-
-## When to use it
-
-Use the wizard when you want Bricks to review the WooCommerce setup and create the expected page or template structure for you.
-
-- Set up WooCommerce pages after installing Bricks on a new store.
-- Repair a Cart, Checkout, or My Account page that is missing the expected Bricks content.
-- Replace WooCommerce block content with Bricks page content.
-- Create the classic Bricks WooCommerce templates for shop, product, cart, checkout, or account areas.
-- Create Cart v2, Checkout v2, or Account Page v2 structures for the assigned WooCommerce pages.
-- Review whether existing published WooCommerce templates may conflict with a selected setup.
-
-> **Caution**
->
-> The wizard can replace Bricks page content, clear WooCommerce block markup from the assigned page, switch the page editor mode to Bricks, create Bricks templates, or draft existing published WooCommerce templates for the same area. Review the setup summary before running an action on an existing store.
-
-## Areas checked
-
-The wizard checks these WooCommerce areas:
-
-- **Shop**: shop page and product archive template setup.
-- **Single product**: single product template setup.
-- **Cart**: assigned Cart page, classic cart templates, and Cart v2 page structure.
-- **Checkout**: assigned Checkout page, classic checkout templates, and Checkout v2 page structure.
-- **My Account**: assigned My Account page, classic account templates, and Account Page v2 page structure.
-
-## Setup types
-
-Each area can offer one or more setup types, depending on the selected WooCommerce area and whether advanced modular elements are enabled.
-
-| Area | Setup types |
-| --- | --- |
-| Shop | Standard (v1) |
-| Single product | Standard (v1) |
-| Cart | Standard (v1), Advanced (v2) |
-| Checkout | Standard (v1), Advanced (v2), Advanced multistep (v2) |
-| My Account | Standard (v1), Advanced (v2) |
-
-![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-advanced-off.png)
-
-**Standard (v1)** creates or repairs the classic Bricks WooCommerce workflow. This setup uses the assigned WooCommerce page together with the traditional Bricks WooCommerce template types or shortcode-based page content.
-
-**Advanced (v2)** replaces the assigned WooCommerce page content with the matching v2 parent element and generated state structure. Use it for Cart, Checkout, and My Account pages when you want to edit related WooCommerce screens as states on one page.
-
-**Advanced multistep (v2)** is available for Checkout. It creates a Checkout v2 page with a ready-made [multistep checkout structure](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/).
-
-## Status checks
-
-The wizard reports missing, incomplete, or incompatible setup details before you run an action.
-
-Common checks include:
-
-- Required WooCommerce page is not assigned.
-- Assigned WooCommerce page was deleted.
-- Assigned page is still edited with the WordPress editor instead of Bricks.
-- Assigned page contains WooCommerce block content.
-- Required v2 parent element is missing from the assigned page.
-- Required v2 states are missing. My Account v2 includes Order withdrawal only when the WooCommerce feature is enabled.
-- Required v2 state elements are empty.
-- Existing published WooCommerce templates may conflict with the selected setup.
-- Classic setup is missing expected WooCommerce shortcodes or template types.
-
-![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-errors.png)
-
-The wizard does not create or assign missing WooCommerce pages. If a page is not assigned, assign it first in the WooCommerce settings, then return to **Bricks > Woo Setup Wizard**.
-
-## What setup can change
-
-Depending on the selected area and setup type, the wizard can:
-
-- Write Bricks page content to the assigned WooCommerce page.
-- Clear WordPress `post_content` when it contains WooCommerce block markup.
-- Set the assigned page editor mode to Bricks.
-- Create Bricks WooCommerce templates from presets.
-- Draft existing published WooCommerce templates for the same template type when they would conflict.
-- Generate external CSS files when file-based CSS generation is enabled.
-- Ask for overwrite confirmation when the target page already contains Bricks data.
-
-![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-confirmation.png)
-
-## Before running setup
-
-Review the setup summary before confirming any action.
-
-- Confirm the correct WooCommerce pages are assigned in the WooCommerce settings.
-- Duplicate or export important pages and templates on existing stores.
-- Check whether the selected setup edits pages, templates, or both.
-- Review whether existing WooCommerce templates will be drafted.
-- If the site uses custom breakpoints, review responsive styles after setup. Presets are authored with the default Bricks breakpoint keys, such as `mobile_landscape` and `mobile_portrait`.
-
-## After setup
-
-Open the generated page or template in Bricks and review the result.
-
-- For classic layouts, confirm the expected WooCommerce template types and shortcodes are in place.
-- For Cart v2, review the Filled cart and Empty cart states.
-- For Checkout v2, review Checkout, Login required, Pay, Thank you, and Order receipt states.
-- For Advanced multistep Checkout v2, test the checkout step navigation and interactions.
-- For Account Page v2, review the account navigation, login, password, address, order, download, and edit account states. Include Order withdrawal when enabled.
-- Test the live Cart, Checkout, and My Account flows with WooCommerce products and customer sessions.
-
-## Related docs
-
-- [WooCommerce Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/)
-- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/)
-- [Cart](https://academy.bricksbuilder.io/integrations/woocommerce/cart/)
-- [Checkout](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/)
-- [WooCommerce Account Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/)
-
----
-
 <a id="integrations-woocommerce-woocommerce-account-builder"></a>
 
 # WooCommerce Account Builder
@@ -2570,6 +2444,270 @@ The process of creating those account endpoint templates is the same for all oth
 | WooCommerce - Account - Addresses | `edit-address/` | Account - Addresses |
 | WooCommerce - Account - Edit address | `edit-address/billing/`<br />`edit-address/shipping/` | Account - Edit address |
 | WooCommerce - Account - Edit account | `edit-account/` | Account - Edit account |
+
+---
+
+<a id="integrations-woocommerce-woo-setup-wizard"></a>
+
+# Woo Setup Wizard
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/
+
+*Create or repair Bricks WooCommerce shop, product, cart, checkout, and account layouts with guided setup checks and presets.*
+
+The Woo Setup Wizard helps you check, create, and repair the main WooCommerce layouts used by Bricks.
+
+Go to **Bricks > Woo Setup Wizard** to review the current setup status for the store. The wizard checks the Shop, Single product, Cart, Checkout, and My Account areas, then shows the available setup actions for each area.
+
+![](https://academy.bricksbuilder.io/assets/woo-setup-wizard.png)
+
+The wizard is not dependent on **Enable advanced modular elements**. It can set up the classic WooCommerce builder workflow without that setting. Advanced v2 setup types may appear in the wizard, but they stay disabled until advanced modular elements are enabled under **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
+
+## When to use it
+
+Use the wizard when you want Bricks to review the WooCommerce setup and create the expected page or template structure for you.
+
+- Set up WooCommerce pages after installing Bricks on a new store.
+- Repair a Cart, Checkout, or My Account page that is missing the expected Bricks content.
+- Replace WooCommerce block content with Bricks page content.
+- Create the classic Bricks WooCommerce templates for shop, product, cart, checkout, or account areas.
+- Create Cart v2, Checkout v2, or Account Page v2 structures for the assigned WooCommerce pages.
+- Review whether existing published WooCommerce templates may conflict with a selected setup.
+
+> **Caution**
+>
+> The wizard can replace Bricks page content, clear WooCommerce block markup from the assigned page, switch the page editor mode to Bricks, create Bricks templates, or draft existing published WooCommerce templates for the same area. Review the setup summary before running an action on an existing store.
+
+## Areas checked
+
+The wizard checks these WooCommerce areas:
+
+- **Shop**: shop page and product archive template setup.
+- **Single product**: single product template setup.
+- **Cart**: assigned Cart page, classic cart templates, and Cart v2 page structure.
+- **Checkout**: assigned Checkout page, classic checkout templates, and Checkout v2 page structure.
+- **My Account**: assigned My Account page, classic account templates, and Account Page v2 page structure.
+
+## Setup types
+
+Each area can offer one or more setup types, depending on the selected WooCommerce area and whether advanced modular elements are enabled.
+
+| Area | Setup types |
+| --- | --- |
+| Shop | Standard (v1) |
+| Single product | Standard (v1) |
+| Cart | Standard (v1), Advanced (v2) |
+| Checkout | Standard (v1), Advanced (v2), Advanced multistep (v2) |
+| My Account | Standard (v1), Advanced (v2) |
+
+![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-advanced-off.png)
+
+**Standard (v1)** creates or repairs the classic Bricks WooCommerce workflow. This setup uses the assigned WooCommerce page together with the traditional Bricks WooCommerce template types or shortcode-based page content.
+
+**Advanced (v2)** replaces the assigned WooCommerce page content with the matching v2 parent element and generated state structure. Use it for Cart, Checkout, and My Account pages when you want to edit related WooCommerce screens as states on one page.
+
+**Advanced multistep (v2)** is available for Checkout. It creates a Checkout v2 page with a ready-made [multistep checkout structure](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/).
+
+## Status checks
+
+The wizard reports missing, incomplete, or incompatible setup details before you run an action.
+
+Common checks include:
+
+- Required WooCommerce page is not assigned.
+- Assigned WooCommerce page was deleted.
+- Assigned page is still edited with the WordPress editor instead of Bricks.
+- Assigned page contains WooCommerce block content.
+- Required v2 parent element is missing from the assigned page.
+- Required v2 states are missing. My Account v2 includes Order withdrawal only when the WooCommerce feature is enabled.
+- Required v2 state elements are empty.
+- Existing published WooCommerce templates may conflict with the selected setup.
+- Classic setup is missing expected WooCommerce shortcodes or template types.
+
+![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-errors.png)
+
+The wizard does not create or assign missing WooCommerce pages. If a page is not assigned, assign it first in the WooCommerce settings, then return to **Bricks > Woo Setup Wizard**.
+
+## What setup can change
+
+Depending on the selected area and setup type, the wizard can:
+
+- Write Bricks page content to the assigned WooCommerce page.
+- Clear WordPress `post_content` when it contains WooCommerce block markup.
+- Set the assigned page editor mode to Bricks.
+- Create Bricks WooCommerce templates from presets.
+- Draft existing published WooCommerce templates for the same template type when they would conflict.
+- Generate external CSS files when file-based CSS generation is enabled.
+- Ask for overwrite confirmation when the target page already contains Bricks data.
+
+![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-confirmation.png)
+
+## Before running setup
+
+Review the setup summary before confirming any action.
+
+- Confirm the correct WooCommerce pages are assigned in the WooCommerce settings.
+- Duplicate or export important pages and templates on existing stores.
+- Check whether the selected setup edits pages, templates, or both.
+- Review whether existing WooCommerce templates will be drafted.
+- If the site uses custom breakpoints, review responsive styles after setup. Presets are authored with the default Bricks breakpoint keys, such as `mobile_landscape` and `mobile_portrait`.
+
+## After setup
+
+Open the generated page or template in Bricks and review the result.
+
+- For classic layouts, confirm the expected WooCommerce template types and shortcodes are in place.
+- For Cart v2, review the Filled cart and Empty cart states.
+- For Checkout v2, review Checkout, Login required, Pay, Thank you, and Order receipt states.
+- For Advanced multistep Checkout v2, test the checkout step navigation and interactions.
+- For Account Page v2, review the account navigation, login, password, address, order, download, and edit account states. Include Order withdrawal when enabled.
+- Test the live Cart, Checkout, and My Account flows with WooCommerce products and customer sessions.
+
+## Related docs
+
+- [WooCommerce Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/)
+- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/)
+- [Cart](https://academy.bricksbuilder.io/integrations/woocommerce/cart/)
+- [Checkout](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/)
+- [WooCommerce Account Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/)
+
+---
+
+<a id="integrations-woocommerce-woocommerce-template-hooks"></a>
+
+# WooCommerce Template Hooks
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/
+
+*Use WooCommerce template hooks in Bricks to preserve third-party plugin output and place additional content in key storefront locations.*
+
+Bricks 1.7 introduces a new [`do_action`](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/#do_action) dynamic tag, which is designed to address the majority of compatibility issues between Bricks and third-party WooCommerce plugins. This new dynamic tag not only solves these compatibility issues but also enhances the flexibility of design by allowing users to place hooks anywhere they desire.
+
+This article will guide you through the templates that need to be updated with the new `do_action` dynamic tag, though this step is optional if your Bricks-built WooCommerce website is already functioning properly.
+
+Please note that when using the `do_action` dynamic tag with the specified hooks, Bricks will automatically remove certain native WooCommerce actions to prevent duplicate content.
+
+As an example, consider using `{do_action:woocommerce_after_shop_loop_item_title}` dynamic tag in Bricks. This tag will automatically remove the `woocommerce_template_loop_rating` and `woocommerce_template_loop_price` actions. The reason for this is because the Product price and Product rating elements will be used to output the information in the desired location. At the same time, other plugins or codes will still be able to successfully hook onto the dynamic tag.
+
+#### WooCommerce actions list removed by Bricks when using the do_action tag {#woo-special-actions-list}
+
+| Hook | Actions removed by Bricks, Priority |
+| --- | --- |
+| woocommerce_before_shop_loop_item | woocommerce_template_loop_product_link_open, 10 |
+| woocommerce_before_shop_loop_item_title | woocommerce_show_product_loop_sale_flash, 10<br />woocommerce_template_loop_product_thumbnail, 10 |
+| woocommerce_shop_loop_item_title | woocommerce_template_loop_product_title,10 |
+| woocommerce_after_shop_loop_item_title | woocommerce_template_loop_rating, 5<br />woocommerce_template_loop_price, 10 |
+| woocommerce_after_shop_loop_item | woocommerce_template_loop_product_link_close, 5<br />woocommerce_template_loop_add_to_cart, 10 |
+| woocommerce_before_single_product_summary | woocommerce_show_product_sale_flash, 10<br />woocommerce_show_product_images, 20 |
+| woocommerce_single_product_summary | woocommerce_template_single_title, 5<br />woocommerce_template_single_rating, 10<br />woocommerce_template_single_price, 10<br />woocommerce_template_single_excerpt, 20<br />woocommerce_template_single_add_to_cart, 30<br />woocommerce_template_single_meta, 40<br />woocommerce_template_single_sharing, 50 |
+| woocommerce_after_single_product_summary | woocommerce_output_product_data_tabs, 10<br />woocommerce_upsell_display, 15<br />woocommerce_output_related_products, 20 |
+| woocommerce_before_main_content | woocommerce_output_content_wrapper,10<br />woocommerce_breadcrumb, 20 |
+| woocommerce_archive_description | woocommerce_taxonomy_archive_description, 10<br />woocommerce_product_archive_description, 10 |
+| woocommerce_before_shop_loop | woocommerce_result_count, 20<br />woocommerce_catalog_ordering, 30 |
+| woocommerce_after_shop_loop | woocommerce_pagination, 10 |
+| woocommerce_after_main_content | woocommerce_output_content_wrapper_end, 10 |
+| woocommerce_cart_is_empty | wc_empty_cart_message, 10 |
+
+> **Note**
+>
+> Simply use a Basic Text element when applying the `{do_action:xxx}` dynamic tag within your template.
+
+## WooCommerce Single Product Template Hooks {#single-product-template-hooks}
+
+For the WooCommerce Single Product template, the following hooks are recommended to be used with the `do_action` dynamic tag:
+
+- `{do_action:woocommerce_before_single_product}` - Important (WooCommerce notice)
+- `{do_action:woocommerce_before_single_product_summary}`
+- `{do_action:woocommerce_single_product_summary}` - Important (Many third-party plugins using this hook to inject their code)
+- `{do_action:woocommerce_after_single_product_summary}`
+- `{do_action:woocommerce_after_single_product}`
+
+Best to place all of these in your single product template if you are not sure which hook will be using by the third-party plugins.
+
+![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-single-product-template-hooks.png)
+
+<figcaption>
+
+Single product template hooks location
+
+</figcaption>
+
+## WooCommerce Product Archive Template Hooks {#product-archive-template-hooks}
+
+For the WooCommerce Product Archive template, the following hooks are recommended to be used with the `do_action` dynamic tag:
+
+- `{do_action:woocommerce_archive_description}`
+- `{do_action:woocommerce_before_shop_loop}` - Important (WooCommerce notice)
+- `{do_action:woocommerce_before_shop_loop_item}`
+- `{do_action:woocommerce_before_shop_loop_item_title}`
+- `{do_action:woocommerce_shop_loop_item_title}`
+- `{do_action:woocommerce_after_shop_loop_item_title}`
+- `{do_action:woocommerce_after_shop_loop_item}`
+- `{do_action:woocommerce_after_shop_loop}`
+
+![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-product-archive-template-hooks.png)
+
+<figcaption>
+
+Product archive template hooks location (Custom Query Loop)
+
+</figcaption>
+
+In Bricks 1.7, the dynamic tag `do_action` hooks will be automatically included in the fields of the Products element (for newly inserted Products elements only).
+
+![](https://academy.bricksbuilder.io/assets/Products-element-with-do_action-included-since-1_6_3.png)
+
+<figcaption>
+
+Default Products element with do_action hooks (Bricks 1.7+)
+
+</figcaption>
+
+## WooCommerce Empty Cart Template Hooks {#empty-cart-template-hooks}
+
+For the WooCommerce Empty Cart template, the following hook is recommended to be used with the `do_action` dynamic tag:
+
+- `{do_action:woocommerce_cart_is_empty}` - Important (WooCommerce notice)
+
+![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-empty-cart-template-hooks.png)
+
+<figcaption>
+
+Empty cart template hook location
+
+</figcaption>
+
+## WooCommerce Cart Template Hooks {#cart-template-hooks}
+
+For the WooCommerce Cart template, the following hooks are recommended to be used with the `do_action` dynamic tag:
+
+- `{do_action:woocommerce_before_cart}` - Important (WooCommerce notice)
+- `{do_action:woocommerce_before_cart_collaterals}`
+- `{do_action:woocommerce_after_cart}`
+
+![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-cart-template-hooks.png)
+
+<figcaption>
+
+Cart template hooks location
+
+</figcaption>
+
+## WooCommerce Pay Template {#pay-template-hooks}
+
+For the WooCommerce Pay template, the following hooks are recommended to be used with the `do_action` dynamic tag:
+
+- `{do_action:woocommerce_pay_order_before_payment}`
+
+![](https://academy.bricksbuilder.io/assets/woo-pay-template.png)
+
+<figcaption>
+
+Pay template hooks location
+
+</figcaption>
+
+By following this guide, you can ensure that the templates created in Bricks are fully compatible with WooCommerce and that all necessary actions and details are displayed as intended.
 
 ---
 
@@ -2901,144 +3039,6 @@ In addition to the Bricks templates mentioned above, several pages within your W
 **Only one Notice element is needed per page.**
 
 If you happen to add multiple WC notice elements, only the first one will output the actual notices, following the native WooCommerce behavior. WooCommerce clears notices after the 1st output. Check WooCommerce `wc_print_notices()` for more information.
-
----
-
-<a id="integrations-woocommerce-woocommerce-template-hooks"></a>
-
-# WooCommerce Template Hooks
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/
-
-*Use WooCommerce template hooks in Bricks to preserve third-party plugin output and place additional content in key storefront locations.*
-
-Bricks 1.7 introduces a new [`do_action`](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/#do_action) dynamic tag, which is designed to address the majority of compatibility issues between Bricks and third-party WooCommerce plugins. This new dynamic tag not only solves these compatibility issues but also enhances the flexibility of design by allowing users to place hooks anywhere they desire.
-
-This article will guide you through the templates that need to be updated with the new `do_action` dynamic tag, though this step is optional if your Bricks-built WooCommerce website is already functioning properly.
-
-Please note that when using the `do_action` dynamic tag with the specified hooks, Bricks will automatically remove certain native WooCommerce actions to prevent duplicate content.
-
-As an example, consider using `{do_action:woocommerce_after_shop_loop_item_title}` dynamic tag in Bricks. This tag will automatically remove the `woocommerce_template_loop_rating` and `woocommerce_template_loop_price` actions. The reason for this is because the Product price and Product rating elements will be used to output the information in the desired location. At the same time, other plugins or codes will still be able to successfully hook onto the dynamic tag.
-
-#### WooCommerce actions list removed by Bricks when using the do_action tag {#woo-special-actions-list}
-
-| Hook | Actions removed by Bricks, Priority |
-| --- | --- |
-| woocommerce_before_shop_loop_item | woocommerce_template_loop_product_link_open, 10 |
-| woocommerce_before_shop_loop_item_title | woocommerce_show_product_loop_sale_flash, 10<br />woocommerce_template_loop_product_thumbnail, 10 |
-| woocommerce_shop_loop_item_title | woocommerce_template_loop_product_title,10 |
-| woocommerce_after_shop_loop_item_title | woocommerce_template_loop_rating, 5<br />woocommerce_template_loop_price, 10 |
-| woocommerce_after_shop_loop_item | woocommerce_template_loop_product_link_close, 5<br />woocommerce_template_loop_add_to_cart, 10 |
-| woocommerce_before_single_product_summary | woocommerce_show_product_sale_flash, 10<br />woocommerce_show_product_images, 20 |
-| woocommerce_single_product_summary | woocommerce_template_single_title, 5<br />woocommerce_template_single_rating, 10<br />woocommerce_template_single_price, 10<br />woocommerce_template_single_excerpt, 20<br />woocommerce_template_single_add_to_cart, 30<br />woocommerce_template_single_meta, 40<br />woocommerce_template_single_sharing, 50 |
-| woocommerce_after_single_product_summary | woocommerce_output_product_data_tabs, 10<br />woocommerce_upsell_display, 15<br />woocommerce_output_related_products, 20 |
-| woocommerce_before_main_content | woocommerce_output_content_wrapper,10<br />woocommerce_breadcrumb, 20 |
-| woocommerce_archive_description | woocommerce_taxonomy_archive_description, 10<br />woocommerce_product_archive_description, 10 |
-| woocommerce_before_shop_loop | woocommerce_result_count, 20<br />woocommerce_catalog_ordering, 30 |
-| woocommerce_after_shop_loop | woocommerce_pagination, 10 |
-| woocommerce_after_main_content | woocommerce_output_content_wrapper_end, 10 |
-| woocommerce_cart_is_empty | wc_empty_cart_message, 10 |
-
-> **Note**
->
-> Simply use a Basic Text element when applying the `{do_action:xxx}` dynamic tag within your template.
-
-## WooCommerce Single Product Template Hooks {#single-product-template-hooks}
-
-For the WooCommerce Single Product template, the following hooks are recommended to be used with the `do_action` dynamic tag:
-
-- `{do_action:woocommerce_before_single_product}` - Important (WooCommerce notice)
-- `{do_action:woocommerce_before_single_product_summary}`
-- `{do_action:woocommerce_single_product_summary}` - Important (Many third-party plugins using this hook to inject their code)
-- `{do_action:woocommerce_after_single_product_summary}`
-- `{do_action:woocommerce_after_single_product}`
-
-Best to place all of these in your single product template if you are not sure which hook will be using by the third-party plugins.
-
-![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-single-product-template-hooks.png)
-
-<figcaption>
-
-Single product template hooks location
-
-</figcaption>
-
-## WooCommerce Product Archive Template Hooks {#product-archive-template-hooks}
-
-For the WooCommerce Product Archive template, the following hooks are recommended to be used with the `do_action` dynamic tag:
-
-- `{do_action:woocommerce_archive_description}`
-- `{do_action:woocommerce_before_shop_loop}` - Important (WooCommerce notice)
-- `{do_action:woocommerce_before_shop_loop_item}`
-- `{do_action:woocommerce_before_shop_loop_item_title}`
-- `{do_action:woocommerce_shop_loop_item_title}`
-- `{do_action:woocommerce_after_shop_loop_item_title}`
-- `{do_action:woocommerce_after_shop_loop_item}`
-- `{do_action:woocommerce_after_shop_loop}`
-
-![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-product-archive-template-hooks.png)
-
-<figcaption>
-
-Product archive template hooks location (Custom Query Loop)
-
-</figcaption>
-
-In Bricks 1.7, the dynamic tag `do_action` hooks will be automatically included in the fields of the Products element (for newly inserted Products elements only).
-
-![](https://academy.bricksbuilder.io/assets/Products-element-with-do_action-included-since-1_6_3.png)
-
-<figcaption>
-
-Default Products element with do_action hooks (Bricks 1.7+)
-
-</figcaption>
-
-## WooCommerce Empty Cart Template Hooks {#empty-cart-template-hooks}
-
-For the WooCommerce Empty Cart template, the following hook is recommended to be used with the `do_action` dynamic tag:
-
-- `{do_action:woocommerce_cart_is_empty}` - Important (WooCommerce notice)
-
-![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-empty-cart-template-hooks.png)
-
-<figcaption>
-
-Empty cart template hook location
-
-</figcaption>
-
-## WooCommerce Cart Template Hooks {#cart-template-hooks}
-
-For the WooCommerce Cart template, the following hooks are recommended to be used with the `do_action` dynamic tag:
-
-- `{do_action:woocommerce_before_cart}` - Important (WooCommerce notice)
-- `{do_action:woocommerce_before_cart_collaterals}`
-- `{do_action:woocommerce_after_cart}`
-
-![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-cart-template-hooks.png)
-
-<figcaption>
-
-Cart template hooks location
-
-</figcaption>
-
-## WooCommerce Pay Template {#pay-template-hooks}
-
-For the WooCommerce Pay template, the following hooks are recommended to be used with the `do_action` dynamic tag:
-
-- `{do_action:woocommerce_pay_order_before_payment}`
-
-![](https://academy.bricksbuilder.io/assets/woo-pay-template.png)
-
-<figcaption>
-
-Pay template hooks location
-
-</figcaption>
-
-By following this guide, you can ensure that the templates created in Bricks are fully compatible with WooCommerce and that all necessary actions and details are displayed as intended.
 
 ---
 

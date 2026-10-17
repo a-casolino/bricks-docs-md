@@ -1023,134 +1023,6 @@ For a full list of all available tooltip HTML attributes please visit the offici
 
 ---
 
-# Custom Authentication Pages
-
-Source: https://academy.bricksbuilder.io/builder/features/custom-authentication-pages/
-
-*Build custom login, registration, lost-password, and reset-password flows in Bricks instead of relying on default WordPress screens.*
-
-Since Bricks 1.9.2, you can assign custom Bricks-built pages for WordPress authentication flows. This lets you replace the default WordPress screens for login, registration, lost password, and reset password with pages that match your site design.
-
-![Bricks custom authentication settings screen showing options to assign custom pages for login, registration, lost password, and reset password. The "WordPress authentication page access" dropdown is set to "Error page", and the "Disable custom authentication page bypass" toggle is enabled.](https://academy.bricksbuilder.io/assets/bricks-custom-authentication-settings.png)
-
-> **Note**
->
-> Custom authentication pages change where visitors are sent, but the form actions still use WordPress authentication functions such as login, registration, password reset email generation, and password reset validation.
-
-## How to set custom authentication pages
-
-1. Navigate to the WordPress dashboard
-2. Navigate to **Bricks** > **Settings** > **General**
-3. Scroll down to **Custom authentication pages**
-
-Here, you can choose a custom page for the following processes:
-
-- Login
-- Registration
-- Lost Password
-- Reset Password
-
-If WooCommerce handles the current authentication page, Bricks leaves that page to WooCommerce and skips its custom authentication redirect handling.
-
-## Setting up your custom pages
-
-Each custom page should contain a [Form element](https://academy.bricksbuilder.io/builder/elements/general/form/#actions) with the matching authentication action selected under the Form element's **Actions** control group.
-
-| Page | Required form action | Typical fields |
-| --- | --- | --- |
-| Login | User login | Login, password, optional remember me |
-| Registration | User registration | Email, optional username, optional password, optional first/last name |
-| Lost password | Lost password | Email or username |
-| Reset password | Reset password | New password |
-
-### Login page
-
-Add a form with the **User login** action. Map the login field, password field, and optional remember-me field in the **User Login** control group.
-
-If your custom login URL receives a `redirect_to` query parameter, Bricks adds it as a hidden field and redirects there after successful login when your form does not already use an explicit Redirect action.
-
-For better privacy and security, set a generic login error message. Otherwise, the default WordPress login error can reveal why the login failed.
-
-### Registration page
-
-Add a form with the **User registration** action. Map at least the email field. Username and password can be auto-generated if they are not mapped or submitted.
-
-The **Role** setting cannot be set to Administrator or Super Admin. If either is selected by data manipulation, Bricks falls back to the site's default role.
-
-If [User activation](https://academy.bricksbuilder.io/builder/features/user-activation/) is enabled, the Form element's **Auto log in user** setting is hidden and registration does not auto-login immediately. Activation controls the post-registration login flow instead.
-
-### Lost password page
-
-Add a form with the **Lost password** action and map the **Email or username** field.
-
-For privacy, Bricks returns a success response even when the submitted account does not exist. If the account exists, WordPress sends the password reset email.
-
-### Reset password page
-
-Add a form with the **Reset password** action and map the new password field.
-
-When a user clicks a WordPress reset link, Bricks redirects the reset URL to your custom reset password page and preserves the reset query parameters. The Form element then renders hidden `key` and `login` fields from the URL so WordPress can validate the reset key on submission.
-
-## WordPress authentication page access {#wp-auth}
-
-As of Bricks 1.11, you have control over what happens when someone visits a default WordPress authentication URL (such as `wp-login.php`), provided custom authentication pages are set.
-
-To manage this:
-
-1. Navigate to **Bricks** > **Settings** > **General** > **Custom authentication pages**.
-2. Under **WordPress authentication page access**, select one of the following options:
-- **Redirect to custom authentication page (default)**: The user will be redirected to the corresponding custom authentication page you have set.
-- **Error page**: Bricks returns the site's 404 error page for matching default auth URLs.
-- **Home URL**: Redirects visitors to the homepage.
-- **Redirect to specific page**: Allows you to choose a specific page on your site to redirect visitors to.
-
-This setting only changes behavior for a default auth URL when the corresponding custom page has been set. For example, the login behavior applies when a custom login page is selected.
-
-If **Redirect to specific page** is selected and no valid published page is selected, Bricks falls back to the home URL.
-
-Bricks preserves query parameters when redirecting from the default auth URL to a custom auth page. This is important for reset-password keys and login redirects.
-
-### Logout behavior
-
-For logged-in users, Bricks lets WordPress process logout first. If WordPress would send the user back to the default login page after logout and you have a valid custom login page, Bricks redirects to the custom login page with `?logged_out=true`.
-
-## Bypassing custom login (since 1.9.4):
-
-By default, when visiting any authentication page on your site, you can access the default WordPress login page by adding `brx_use_wp_login` as a URL parameter, for example:
-
-```text
-https://example.com/wp-login.php?brx_use_wp_login=1
-```
-
-This feature allows site owners to bypass the custom login page if needed.
-
-Adding this parameter sets a bypass cookie for 5 minutes. During that window, Bricks lets the default WordPress authentication page load instead of redirecting to the custom page.
-
-In Bricks settings, you can disable this feature:
-
-1. Navigate to **Bricks > Settings > General > Custom authentication pages**.
-2. Enable **Disable custom authentication page bypass**.
-
-When disabled, the `brx_use_wp_login` URL parameter no longer sets the bypass cookie.
-
-> **Note**
->
-> Before disabling the bypass and blocking default auth URLs, make sure your custom login page works and that you know its URL. Otherwise you can lock yourself out of the normal login screen.
-
-## Developer filters
-
-Bricks exposes filters for custom redirect logic:
-
-- `bricks/auth/custom_redirect_url`: Override the redirect URL based on the current auth URL path.
-- `bricks/auth/custom_login_redirect`: Change the selected custom login page.
-- `bricks/auth/custom_registration_redirect`: Change the selected custom registration page.
-- `bricks/auth/custom_lost_password_redirect`: Change the selected custom lost password page.
-- `bricks/auth/custom_reset_password_redirect`: Change the selected custom reset password page.
-
-Use these filters when a multilingual, membership, or custom routing setup needs more control than the global page selectors provide.
-
----
-
 # Custom Code
 
 Source: https://academy.bricksbuilder.io/builder/features/custom-code/
@@ -1159,7 +1031,7 @@ Source: https://academy.bricksbuilder.io/builder/features/custom-code/
 
 Bricks allows you to add custom code (CSS, JavaScript, HTML, and PHP) to different parts of your website.
 
-https://www.youtube.com/watch?v=LiYwBZ_R-f8
+https://www.youtube.com/watch?v=oJNm1AFgAGU
 
 ## Where custom code can be added
 
@@ -1333,6 +1205,170 @@ You can use abbreviations to generate your HTML structures much faster via a fam
 
 ---
 
+# Custom Authentication Pages
+
+Source: https://academy.bricksbuilder.io/builder/features/custom-authentication-pages/
+
+*Build custom login, registration, lost-password, and reset-password flows in Bricks instead of relying on default WordPress screens.*
+
+Since Bricks 1.9.2, you can assign custom Bricks-built pages for WordPress authentication flows. This lets you replace the default WordPress screens for login, registration, lost password, and reset password with pages that match your site design.
+
+![Bricks custom authentication settings screen showing options to assign custom pages for login, registration, lost password, and reset password. The "WordPress authentication page access" dropdown is set to "Error page", and the "Disable custom authentication page bypass" toggle is enabled.](https://academy.bricksbuilder.io/assets/bricks-custom-authentication-settings.png)
+
+> **Note**
+>
+> Custom authentication pages change where visitors are sent, but the form actions still use WordPress authentication functions such as login, registration, password reset email generation, and password reset validation.
+
+## How to set custom authentication pages
+
+1. Navigate to the WordPress dashboard
+2. Navigate to **Bricks** > **Settings** > **General**
+3. Scroll down to **Custom authentication pages**
+
+Here, you can choose a custom page for the following processes:
+
+- Login
+- Registration
+- Lost Password
+- Reset Password
+
+If WooCommerce handles the current authentication page, Bricks leaves that page to WooCommerce and skips its custom authentication redirect handling.
+
+## Setting up your custom pages
+
+Each custom page should contain a [Form element](https://academy.bricksbuilder.io/builder/elements/general/form/#actions) with the matching authentication action selected under the Form element's **Actions** control group.
+
+| Page | Required form action | Typical fields |
+| --- | --- | --- |
+| Login | User login | Login, password, optional remember me |
+| Registration | User registration | Email, optional username, optional password, optional first/last name |
+| Lost password | Lost password | Email or username |
+| Reset password | Reset password | New password |
+
+### Login page
+
+Add a form with the **User login** action. Map the login field, password field, and optional remember-me field in the **User Login** control group.
+
+If your custom login URL receives a `redirect_to` query parameter, Bricks adds it as a hidden field and redirects there after successful login when your form does not already use an explicit Redirect action.
+
+For better privacy and security, set a generic login error message. Otherwise, the default WordPress login error can reveal why the login failed.
+
+### Registration page
+
+Add a form with the **User registration** action. Map at least the email field. Username and password can be auto-generated if they are not mapped or submitted.
+
+The **Role** setting cannot be set to Administrator or Super Admin. If either is selected by data manipulation, Bricks falls back to the site's default role.
+
+If [User activation](https://academy.bricksbuilder.io/builder/features/user-activation/) is enabled, the Form element's **Auto log in user** setting is hidden and registration does not auto-login immediately. Activation controls the post-registration login flow instead.
+
+### Lost password page
+
+Add a form with the **Lost password** action and map the **Email or username** field.
+
+For privacy, Bricks returns a success response even when the submitted account does not exist. If the account exists, WordPress sends the password reset email.
+
+### Reset password page
+
+Add a form with the **Reset password** action and map the new password field.
+
+When a user clicks a WordPress reset link, Bricks redirects the reset URL to your custom reset password page and preserves the reset query parameters. The Form element then renders hidden `key` and `login` fields from the URL so WordPress can validate the reset key on submission.
+
+## WordPress authentication page access {#wp-auth}
+
+As of Bricks 1.11, you have control over what happens when someone visits a default WordPress authentication URL (such as `wp-login.php`), provided custom authentication pages are set.
+
+To manage this:
+
+1. Navigate to **Bricks** > **Settings** > **General** > **Custom authentication pages**.
+2. Under **WordPress authentication page access**, select one of the following options:
+- **Redirect to custom authentication page (default)**: The user will be redirected to the corresponding custom authentication page you have set.
+- **Error page**: Bricks returns the site's 404 error page for matching default auth URLs.
+- **Home URL**: Redirects visitors to the homepage.
+- **Redirect to specific page**: Allows you to choose a specific page on your site to redirect visitors to.
+
+This setting only changes behavior for a default auth URL when the corresponding custom page has been set. For example, the login behavior applies when a custom login page is selected.
+
+If **Redirect to specific page** is selected and no valid published page is selected, Bricks falls back to the home URL.
+
+Bricks preserves query parameters when redirecting from the default auth URL to a custom auth page. This is important for reset-password keys and login redirects.
+
+### Logout behavior
+
+For logged-in users, Bricks lets WordPress process logout first. If WordPress would send the user back to the default login page after logout and you have a valid custom login page, Bricks redirects to the custom login page with `?logged_out=true`.
+
+## Bypassing custom login (since 1.9.4):
+
+By default, when visiting any authentication page on your site, you can access the default WordPress login page by adding `brx_use_wp_login` as a URL parameter, for example:
+
+```text
+https://example.com/wp-login.php?brx_use_wp_login=1
+```
+
+This feature allows site owners to bypass the custom login page if needed.
+
+Adding this parameter sets a bypass cookie for 5 minutes. During that window, Bricks lets the default WordPress authentication page load instead of redirecting to the custom page.
+
+In Bricks settings, you can disable this feature:
+
+1. Navigate to **Bricks > Settings > General > Custom authentication pages**.
+2. Enable **Disable custom authentication page bypass**.
+
+When disabled, the `brx_use_wp_login` URL parameter no longer sets the bypass cookie.
+
+> **Note**
+>
+> Before disabling the bypass and blocking default auth URLs, make sure your custom login page works and that you know its URL. Otherwise you can lock yourself out of the normal login screen.
+
+## Developer filters
+
+Bricks exposes filters for custom redirect logic:
+
+- `bricks/auth/custom_redirect_url`: Override the redirect URL based on the current auth URL path.
+- `bricks/auth/custom_login_redirect`: Change the selected custom login page.
+- `bricks/auth/custom_registration_redirect`: Change the selected custom registration page.
+- `bricks/auth/custom_lost_password_redirect`: Change the selected custom lost password page.
+- `bricks/auth/custom_reset_password_redirect`: Change the selected custom reset password page.
+
+Use these filters when a multilingual, membership, or custom routing setup needs more control than the global page selectors provide.
+
+---
+
+# Global Elements
+
+Source: https://academy.bricksbuilder.io/builder/features/global-elements/
+
+*Review legacy global elements in Bricks, convert them to components, and understand why new reusable work should use Components instead.*
+
+> **Note**
+>
+> **Global elements are deprecated since Bricks 2.0. Use Components for new reusable builder structures, and convert existing global elements as soon as possible.**
+
+Global elements remain visible for sites that already use them, but they are now a legacy feature. New reusable work should be created as [Components](https://academy.bricksbuilder.io/builder/features/components/), not as global elements.
+
+## Review existing global elements
+
+To find existing global element instances:
+
+1. Go to `Bricks > Settings > General`.
+2. Scroll to **Global elements** under the **Convert** section.
+3. Start the global-elements review to retrieve a list of global element instances.
+
+From there, review the affected pages and templates before converting, unlinking, or deleting anything.
+
+## Convert to components
+
+Use the converter under `Bricks > Settings > General > Convert` to convert global elements to components.
+
+Bricks can convert global elements individually or in bulk. Nestable global elements cannot always be converted directly to components; in those cases, unlink them manually in the builder or use the converter flow that unlinks nestable global elements.
+
+After conversion, delete the remaining global elements from the builder's elements panel.
+
+## When to use templates instead
+
+If you need to reuse a larger section or layout pattern without linked shared editing, save it as a template and insert it where needed. For linked reusable structures, use Components.
+
+---
+
 # Element Conditions
 
 Source: https://academy.bricksbuilder.io/builder/features/element-conditions/
@@ -1345,9 +1381,11 @@ Conditions are validated server-side and are meant to filter out/not load an ele
 
 Not rendering an element means **the element HTML doesn't exist in the source code**.
 
+https://youtu.be/w8DW0VH-4pc
+
 This is perfect for restricting content to logged-in users or users with a specific role (e.g., membership sites) to hide time-sensitive information according to a certain weekday/date/time, according to dynamic data, etc.
 
-Element conditions are display logic. They are useful for hiding interface, marketing, membership, or product-state content, but they are not a replacement for server-side permissions around truly sensitive data, downloads, or actions.
+Element conditions are display logic. They are useful for hiding interface, marketing, membership, or product-state content, but they are not a replacement for server-side permissions around truly sensitive data, downloads, or actions. For example, hiding a download button removes the link from the page, but anyone who already has the file URL can still open the file. Protect private files and actions with your membership, file protection, or permission setup.
 
 If you need full programmatic power to define your element conditions, use the [bricks/element/render](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-render/) Bricks filter.
 
@@ -1427,13 +1465,40 @@ And the horizontal "**OR**" label between condition sets.
 
 This visualizes the element conditions logic.
 
+### Repeat shared conditions in every set {#repeat-shared-conditions}
+
+Bricks checks each set on its own. Inside a set, it stops at the first condition that fails and moves on to the next set. A condition in one set does not apply to the other sets.
+
+If a requirement applies in every case, add it to each set. For example, a "Download recipe card" button should appear for logged-in visitors, or on recipes that are free for everyone, but only when the recipe actually has a card file:
+
+- **Set 1**: User login **is** Logged in, AND Dynamic data `{acf_recipe_card}` **is not empty**
+- **Set 2**: Dynamic data `{acf_card_access}` **==** `Everyone`, AND Dynamic data `{acf_recipe_card}` **is not empty**
+
+Without the card check in the second set, a free recipe without a card file would still render the button.
+
+## Show content only when a field has a value {#empty-fields}
+
+A single post template often contains sections that only some posts can fill, such as a video, a download, or a "Chef's tip" box. Without a condition, posts that leave the field empty still render the section's heading and an empty player or box.
+
+Add a **Dynamic data** condition to the section, pick the field, and set the comparison to **is not empty**. Leave the value empty. The section then renders only on posts where the field has content.
+
+<div className="screenshot screenshot--control-panel">
+
+![Conditions panel for a Section named Video with one condition: Dynamic data, {acf_recipe_video}, is not empty.](https://academy.bricksbuilder.io/assets/element-conditions-dynamic-data-is-not-empty.webp)
+
+</div>
+
+**is empty** and **is not empty** are available for the **Dynamic data** condition. They check whether the rendered output of the tag is an empty string, so a field that was never filled in counts as empty, the same as a field that was cleared. Use **is empty** to show fallback content in the posts that have no value.
+
 ## Comparison behavior
 
 `==` and `!=` comparisons use PHP-style loose comparison and convert common boolean-like values such as `true`, `false`, `1`, `0`, and empty strings before comparing. Numeric comparisons (`>`, `<`, `>=`, `<=`) compare the resolved values directly.
 
 For multi-select values such as user roles, post statuses, WooCommerce product categories, and product tags, `is` matches if any selected value overlaps. `is not` matches when there is no overlap.
 
-The `contains` and `does not contain` comparisons are string checks. Use them for text-like values such as post titles, dynamic data output, URLs, and referrers.
+The `contains` and `does not contain` comparisons are string checks. Use them for text-like values such as post titles, dynamic data output, URLs, and referrers. Both return false when the checked value is empty, so a `does not contain` condition hides the element on posts where the field has no value. Add a separate set with **is empty** if those posts should still show the element.
+
+If you leave the comparison empty, the condition uses `==`.
 
 ### How to compare dynamic data against the value {#dynamic-data}
 
@@ -1625,233 +1690,3 @@ function run_my_custom_condition( $result, $condition_key, $condition ) {
   return $condition_met;
 }
 ```
-
----
-
-# Global Elements
-
-Source: https://academy.bricksbuilder.io/builder/features/global-elements/
-
-*Review legacy global elements in Bricks, convert them to components, and understand why new reusable work should use Components instead.*
-
-> **Note**
->
-> **Global elements are deprecated since Bricks 2.0. Use Components for new reusable builder structures, and convert existing global elements as soon as possible.**
-
-Global elements remain visible for sites that already use them, but they are now a legacy feature. New reusable work should be created as [Components](https://academy.bricksbuilder.io/builder/features/components/), not as global elements.
-
-## Review existing global elements
-
-To find existing global element instances:
-
-1. Go to `Bricks > Settings > General`.
-2. Scroll to **Global elements** under the **Convert** section.
-3. Start the global-elements review to retrieve a list of global element instances.
-
-From there, review the affected pages and templates before converting, unlinking, or deleting anything.
-
-## Convert to components
-
-Use the converter under `Bricks > Settings > General > Convert` to convert global elements to components.
-
-Bricks can convert global elements individually or in bulk. Nestable global elements cannot always be converted directly to components; in those cases, unlink them manually in the builder or use the converter flow that unlinks nestable global elements.
-
-After conversion, delete the remaining global elements from the builder's elements panel.
-
-## When to use templates instead
-
-If you need to reuse a larger section or layout pattern without linked shared editing, save it as a template and insert it where needed. For linked reusable structures, use Components.
-
----
-
-# Global Import / Export
-
-Source: https://academy.bricksbuilder.io/builder/features/global-import-export/
-
-*Move Bricks global builder data between sites with one ZIP package, including styles, structure, templates, settings, and related dependencies.*
-
-Global Import / Export lets you move selected Bricks global data between sites through one ZIP package.
-
-Use it when you want to transfer a starter design system, reuse global classes and variables across projects, move components or templates with their dependencies, or back up global builder data before major changes.
-
-https://www.youtube.com/watch?v=YTsRaQ8-Q-Y
-
-## Where to Open It
-
-In the builder, open **Settings** and click **Import / Export**.
-
-You can also open the command palette and run **Manage: Import / Export**.
-
-## What You Can Transfer
-
-Global Import / Export supports these data types:
-
-| Type           | What is included                                                                 |
-| -------------- | -------------------------------------------------------------------------------- |
-| Theme styles   | Selected theme styles                                                            |
-| Classes        | Selected global classes and class categories                                     |
-| Variables      | Selected global variables and variable categories                                |
-| Color palettes | Selected colors and their palette categories                                     |
-| Breakpoints    | The breakpoint configuration, including default and custom breakpoints           |
-| Components     | Selected components                                                              |
-| Templates      | Selected templates                                                               |
-| Custom fonts   | Selected custom font families                                                    |
-| Icons          | Selected custom icon sets, their SVG files, and disabled state for exported sets |
-| Queries        | Selected global queries and query categories                                     |
-| Settings       | Supported Bricks settings tabs from the WordPress dashboard                      |
-
-Supported settings tabs include **General**, **Templates**, **Builder**, **Performance**, **Maintenance mode**, **API keys**, **Custom code**, and **WooCommerce**.
-
-Settings transfer is limited to supported, non-security or sensitive settings. It does not replace the full WordPress database or every Bricks option.
-
-## Before You Export
-
-Before creating a package, decide what the target site should receive.
-
-For a starter site or design system, you may want to export shared color palettes, theme styles, global classes, variables, fonts, custom icon sets, breakpoints, and reusable components. For a smaller handoff, select only the specific templates, components, queries, or settings needed for that project.
-
-Review names before exporting. Clear labels for classes, variables, templates, components, and categories make the import review easier to understand on the target site.
-
-If the target site already has a design system, be careful with shared items such as global classes, variables, breakpoints, and theme styles. Replacing them can affect existing layouts.
-
-![](https://academy.bricksbuilder.io/assets/bricks-global-import-export-screen.webp)
-
-## Export a Package
-
-1. Open **Import / Export**.
-2. Make sure **Export** is selected.
-3. Select one or more data types from the left sidebar.
-4. Select the items you want to include.
-5. Click **Export bundle**.
-
-Bricks downloads a ZIP package. The ZIP contains a `manifest.json` file, JSON files for the selected data, and supported assets for selected custom fonts or custom icon sets.
-
-Use the search field, categories, and select/deselect controls to narrow large lists before exporting.
-
-## Import a Package
-
-1. Open **Import / Export**.
-2. Select **Import**.
-3. Upload or drag in a Bricks transfer ZIP package.
-4. Review the package contents.
-5. Select the data types and items to import.
-6. Review conflicts, warnings, and dependencies.
-7. Click **Import bundle**.
-
-![](https://academy.bricksbuilder.io/assets/bricks-global-import-mode.webp)
-
-Bricks inspects the package before applying changes. The review screen shows which items are ready to import, which items conflict with existing data, and which selected conflicts will be skipped or replaced.
-
-Nothing is imported until you click **Import bundle**. Use the review step to deselect items you do not need, check warnings, and decide how conflicts should be handled.
-
-Bricks only imports selected items that your current user is allowed to import. If a package contains data types you cannot access, those items are not available to import.
-
-The unified importer also accepts supported JSON exports from individual managers, such as classes, variables, global queries, color palettes, theme styles, components, templates, settings, and icon manager data. Bricks wraps those JSON files into the same review flow so you can check conflicts before applying the import.
-
-## Conflict Handling
-
-When imported data matches existing data on the site, Bricks marks it as a conflict.
-
-The default behavior is **Keep existing**. In that case, the conflicting item is skipped and the existing local item remains unchanged.
-
-Choose **Replace** only for items you intentionally want to overwrite. You can set the conflict behavior for selected conflicts in bulk or per item.
-
-![](https://academy.bricksbuilder.io/assets/bricks-global-import-conflict-resolution.webp)
-
-Common conflicts include:
-
-- A color with the same variable name.
-- A theme style with the same label.
-- A global class or variable with the same name.
-- A custom font with the same ID or family.
-- An icon set with the same name or ID.
-- Breakpoints that differ from the current site configuration.
-- A global query or component with the same ID.
-- A template with the same title and template type.
-
-## Dependencies
-
-Components and templates can depend on global classes, variables, and other components. Bricks adds those dependencies to the package manifest and marks them in the import review.
-
-Before importing a component or template, check its dependency preview. Select the dependency classes, variables, and components that should come with it, especially when the target site does not already have the same design system.
-
-If a dependency already exists on the target site, review the conflict before replacing it. Replacing a shared class or variable can affect existing layouts on that site.
-
-![](https://academy.bricksbuilder.io/assets/bricks-global-import-dependencies.webp)
-
-Dependencies can be included even when you did not select the full **Classes**, **Variables**, or **Components** type for export. This helps components and templates keep the styles and component definitions they rely on without forcing you to transfer every global class, variable, or component from the source site.
-
-When a template uses Bricks components, Bricks includes the required component definitions in the template export. If the package does not include a separate **Components** transfer type, Bricks imports missing embedded component definitions while importing the template and keeps existing local components unchanged.
-
-## Template Images
-
-When importing templates, Bricks can import supported image assets into the Media Library.
-
-Select **Import images** when you want template images copied into the target site. Leave it disabled when the target site should keep the image references from the package.
-
-Template image import only applies to supported images referenced by the imported templates. It is not a full Media Library migration.
-
-## Settings Notes
-
-Settings are transferred by supported Bricks settings tab. This makes settings transfer useful for copying builder configuration between similar sites, but it is not a replacement for a site backup or migration tool.
-
-Review imported settings carefully on production sites. **API keys** are hidden in the preview, and **Custom code** settings can affect the frontend or builder as soon as they are applied.
-
-Settings and custom builder access capabilities require the WordPress `manage_options` capability.
-
-## Permissions and Sensitive Data
-
-Global Import / Export follows [builder permissions](https://academy.bricksbuilder.io/builder/interface/builder-access/).
-
-Access depends on the data type:
-
-- Color palettes require **Edit color palettes**.
-- Theme styles require **Access theme styles**.
-- Classes require **Access class manager**. Importing classes also requires permission to create or edit global classes.
-- Variables require **Access variable manager**.
-- Custom fonts require **Access font manager**. Importing custom fonts also requires permission to upload files.
-- Icon manager requires **Access icon manager**. Importing custom icon sets also requires permission to upload files and upload SVGs.
-- Breakpoints require **Access breakpoints manager**.
-- Global queries require **Access query manager**.
-- Components require **Import/export components**.
-- Templates require **Import/export templates**.
-- Settings and custom capabilities require the WordPress `manage_options` capability.
-
-Sensitive data needs extra care. Settings such as API keys and custom code are marked during review, and API key values are hidden in the preview. Code-bearing component and template data is also guarded by code execution permissions.
-
-Only import a package from a source you trust. Review settings, custom code, templates, components, and dependencies before replacing existing data.
-
-## After Importing
-
-Check the imported data in its manager:
-
-- Open the [Style Manager](https://academy.bricksbuilder.io/builder/features/style-manager/) for theme styles, classes, variables, and colors.
-- Open the [Font Manager](https://academy.bricksbuilder.io/builder/styling/font-manager/) for custom fonts.
-- Open the [Icon Manager](https://academy.bricksbuilder.io/builder/features/icon-manager/) for custom icon sets.
-- Open the breakpoint manager for breakpoints.
-- Open [Query Manager](https://academy.bricksbuilder.io/builder/dynamic-content/global-queries-query-manager/) for global queries.
-- Open [Components](https://academy.bricksbuilder.io/builder/features/components/) for imported components.
-- Open [Templates](https://academy.bricksbuilder.io/builder/templates/) for imported templates.
-- Open **Bricks > Settings** for imported settings.
-
-For templates and components, also check whether global classes, variables, custom fonts, custom icon sets, images, queries, and site-specific data exist on the target site. A package can move Bricks data, but it cannot create missing post types, taxonomies, API credentials, or third-party plugin data.
-
-## Troubleshooting
-
-### I Do Not See a Data Type or Item
-
-The current user may not have permission to access that data type, or the source site may not have any exportable items of that type.
-
-### An Item Was Skipped
-
-Skipped items are usually caused by conflicts set to **Keep existing**, deselected items, or unavailable permissions. Reopen the package, review the item, and choose **Replace** only when you want to overwrite the existing local item.
-
-### An Imported Template Looks Different
-
-Check whether the target site has the required global classes, variables, custom fonts, images, queries, custom fields, post types, taxonomies, and plugin data. Importing the template does not automatically recreate everything the source site used outside the supported Bricks data.
-
-### The ZIP Is Not Accepted
-
-Use a ZIP package created by Bricks Global Import / Export. The package must contain the expected manifest and data files, and it must fit within the server upload limits for the target site.
-
-If you are importing an older JSON export from an individual manager, upload the original JSON file in the relevant import flow. Bricks supports selected legacy manager JSON formats, but unsupported or edited JSON files are rejected.

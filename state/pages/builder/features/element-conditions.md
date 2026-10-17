@@ -6,9 +6,11 @@ Conditions are validated server-side and are meant to filter out/not load an ele
 
 Not rendering an element means **the element HTML doesn't exist in the source code**.
 
+https://youtu.be/w8DW0VH-4pc
+
 This is perfect for restricting content to logged-in users or users with a specific role (e.g., membership sites) to hide time-sensitive information according to a certain weekday/date/time, according to dynamic data, etc.
 
-Element conditions are display logic. They are useful for hiding interface, marketing, membership, or product-state content, but they are not a replacement for server-side permissions around truly sensitive data, downloads, or actions.
+Element conditions are display logic. They are useful for hiding interface, marketing, membership, or product-state content, but they are not a replacement for server-side permissions around truly sensitive data, downloads, or actions. For example, hiding a download button removes the link from the page, but anyone who already has the file URL can still open the file. Protect private files and actions with your membership, file protection, or permission setup.
 
 If you need full programmatic power to define your element conditions, use the [bricks/element/render](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-render/) Bricks filter.
 
@@ -88,13 +90,40 @@ And the horizontal "**OR**" label between condition sets.
 
 This visualizes the element conditions logic.
 
+### Repeat shared conditions in every set {#repeat-shared-conditions}
+
+Bricks checks each set on its own. Inside a set, it stops at the first condition that fails and moves on to the next set. A condition in one set does not apply to the other sets.
+
+If a requirement applies in every case, add it to each set. For example, a "Download recipe card" button should appear for logged-in visitors, or on recipes that are free for everyone, but only when the recipe actually has a card file:
+
+- **Set 1**: User login **is** Logged in, AND Dynamic data `{acf_recipe_card}` **is not empty**
+- **Set 2**: Dynamic data `{acf_card_access}` **==** `Everyone`, AND Dynamic data `{acf_recipe_card}` **is not empty**
+
+Without the card check in the second set, a free recipe without a card file would still render the button.
+
+## Show content only when a field has a value {#empty-fields}
+
+A single post template often contains sections that only some posts can fill, such as a video, a download, or a "Chef's tip" box. Without a condition, posts that leave the field empty still render the section's heading and an empty player or box.
+
+Add a **Dynamic data** condition to the section, pick the field, and set the comparison to **is not empty**. Leave the value empty. The section then renders only on posts where the field has content.
+
+<div className="screenshot screenshot--control-panel">
+
+![Conditions panel for a Section named Video with one condition: Dynamic data, {acf_recipe_video}, is not empty.](https://academy.bricksbuilder.io/assets/element-conditions-dynamic-data-is-not-empty.webp)
+
+</div>
+
+**is empty** and **is not empty** are available for the **Dynamic data** condition. They check whether the rendered output of the tag is an empty string, so a field that was never filled in counts as empty, the same as a field that was cleared. Use **is empty** to show fallback content in the posts that have no value.
+
 ## Comparison behavior
 
 `==` and `!=` comparisons use PHP-style loose comparison and convert common boolean-like values such as `true`, `false`, `1`, `0`, and empty strings before comparing. Numeric comparisons (`>`, `<`, `>=`, `<=`) compare the resolved values directly.
 
 For multi-select values such as user roles, post statuses, WooCommerce product categories, and product tags, `is` matches if any selected value overlaps. `is not` matches when there is no overlap.
 
-The `contains` and `does not contain` comparisons are string checks. Use them for text-like values such as post titles, dynamic data output, URLs, and referrers.
+The `contains` and `does not contain` comparisons are string checks. Use them for text-like values such as post titles, dynamic data output, URLs, and referrers. Both return false when the checked value is empty, so a `does not contain` condition hides the element on posts where the field has no value. Add a separate set with **is empty** if those posts should still show the element.
+
+If you leave the comparison empty, the condition uses `==`.
 
 ### How to compare dynamic data against the value {#dynamic-data}
 

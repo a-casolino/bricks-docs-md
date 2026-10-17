@@ -1123,16 +1123,16 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Shipping Options Schema
+# Products Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-shipping-options/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-products/
 
-*Schema for Bricks Shipping options element*
+*Schema for Bricks Products element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-shipping-options |
-| `category` | woocommerce_checkout |
+| `name` | woocommerce-products |
+| `category` | woocommerce |
 | `tag` | div |
 | `nestable` | false |
 
@@ -1140,37 +1140,12 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-s
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `showPackageTitle` | checkbox | Show package title | — |
-| `emptyMessage` | text | Empty message | — |
-| `controlFlexDirection` | direction | Direction | `flex-direction` on `.brx-shipping-options__control` |
-| `controlJustifyContent` | justify-content | Justify content | `justify-content` on `.brx-shipping-options__control` |
-| `controlAlignItems` | align-items | Align items | `align-items` on `.brx-shipping-options__control` |
-| `controlGap` | number | Gap | `gap` on `.brx-shipping-options__control` |
-| `packageTitleTypography` | typography | Title typography | `font` on `.brx-shipping-options__package-title` |
-| `packageTitleColor` | color | Title color | `color` on `.brx-shipping-options__package-title` |
-| `optionGap` | number | Gap | `gap` on `.brx-shipping-options__label-group` |
-| `optionHoverBackgroundColor` | color | Hover background color | `background-color` on `.brx-shipping-options__option:hover` |
-| `optionCheckedBackgroundColor` | color | Background color | `background-color` |
-| `optionCheckedBorder` | border | Border | `border` |
-| `optionCheckedBoxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `labelTypography` | typography | Typography | `font` on `.brx-shipping-options__label` |
-| `labelColor` | color | Color | `color` on `.brx-shipping-options__label` |
-| `labelCheckedTypography` | typography | Typography | `font` |
-| `labelCheckedColor` | color | Color | `color` |
-| `secondaryTypography` | typography | Typography | `font` on `.brx-shipping-options__secondary-label` |
-| `secondaryColor` | color | Color | `color` on `.brx-shipping-options__secondary-label` |
-| `secondaryCheckedTypography` | typography | Typography | `font` |
-| `secondaryCheckedColor` | color | Color | `color` |
-| `packageMargin` | spacing | Margin | `margin` on `.brx-shipping-options__package` |
-| `packagePadding` | spacing | Padding | `padding` on `.brx-shipping-options__package` |
-| `packageBackgroundColor` | color | Background color | `background-color` on `.brx-shipping-options__package` |
-| `packageBorder` | border | Border | `border` on `.brx-shipping-options__package` |
-| `packageBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.brx-shipping-options__package` |
-| `optionMargin` | spacing | Margin | `margin` on `.brx-shipping-options__option` |
-| `optionPadding` | spacing | Padding | `padding` on `.brx-shipping-options__option` |
-| `optionBackgroundColor` | color | Background color | `background-color` on `.brx-shipping-options__option` |
-| `optionBorder` | border | Border | `border` on `.brx-shipping-options__option` |
-| `optionBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.brx-shipping-options__option` |
+| `columns` | number | Columns | `grid-template-columns` on `.products` |
+| `gap` | number | Gap | `gap` on `.products` |
+| `linkProduct` | checkbox | Link entire product | — |
+| `beforeGrid` | select | Show Before Grid | — |
+| `afterGrid` | select | Show After Grid | — |
+| `sortbyOptions` | select | Sort by options | — |
 
 ## Inherited CSS controls
 
@@ -1342,16 +1317,16 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Products Schema
+# WordPress Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-products/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/wordpress/
 
-*Schema for Bricks Products element*
+*Schema for Bricks WordPress element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-products |
-| `category` | woocommerce |
+| `name` | wordpress |
+| `category` | wordpress |
 | `tag` | div |
 | `nestable` | false |
 
@@ -1359,12 +1334,28 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-p
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `columns` | number | Columns | `grid-template-columns` on `.products` |
-| `gap` | number | Gap | `gap` on `.products` |
-| `linkProduct` | checkbox | Link entire product | — |
-| `beforeGrid` | select | Show Before Grid | — |
-| `afterGrid` | select | Show After Grid | — |
-| `sortbyOptions` | select | Sort by options | — |
+| `type` | select | Widget | — |
+| `icon` | icon | Icon | — |
+| `iconTypography` | typography | Icon typography | `font` on `.bricks-widget-wrapper i` |
+| `showCount` | checkbox | Show count | — |
+| `sortBy` | select | Sort by | — |
+| `include` | select | Include | — |
+| `exclude` | select | Exclude | — |
+| `commentsNumber` | number | Number of comments | — |
+| `postsNumber` | number | Number of posts | — |
+| `direction` | direction | Direction | `flex-direction` on `&.posts a` |
+| `postsDate` | checkbox | Show date | — |
+| `postsFeaturedImage` | checkbox | Show featured image | — |
+| `postsFeaturedImageSize` | select | Featured image sizes | — |
+| `postsImageWidth` | text | Featured image width | `width` on `img` |
+| `postsImageHeight` | text | Featured image height | `height` on `img` |
+| `postsTitleTypography` | typography | Post title typography | `font` on `.post-title` |
+| `postsMetaTypography` | typography | Post meta typography | `font` on `.post-meta` |
+| `taxonomy` | select | Taxonomy | — |
+| `title` | text | Title | — |
+| `titletag` | select | HTML tag | — |
+| `titleBorder` | border | Border | `font` on `.bricks-widget-title` |
+| `titleTypography` | typography | Typography | `font` on `.bricks-widget-title` |
 
 ## Inherited CSS controls
 
@@ -1440,16 +1431,16 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# WordPress Schema
+# Shipping Options Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/wordpress/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-shipping-options/
 
-*Schema for Bricks WordPress element*
+*Schema for Bricks Shipping options element*
 
 | Property | Value |
 |---|---|
-| `name` | wordpress |
-| `category` | wordpress |
+| `name` | woocommerce-shipping-options |
+| `category` | woocommerce_checkout |
 | `tag` | div |
 | `nestable` | false |
 
@@ -1457,28 +1448,37 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/wordpress/
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `type` | select | Widget | — |
-| `icon` | icon | Icon | — |
-| `iconTypography` | typography | Icon typography | `font` on `.bricks-widget-wrapper i` |
-| `showCount` | checkbox | Show count | — |
-| `sortBy` | select | Sort by | — |
-| `include` | select | Include | — |
-| `exclude` | select | Exclude | — |
-| `commentsNumber` | number | Number of comments | — |
-| `postsNumber` | number | Number of posts | — |
-| `direction` | direction | Direction | `flex-direction` on `&.posts a` |
-| `postsDate` | checkbox | Show date | — |
-| `postsFeaturedImage` | checkbox | Show featured image | — |
-| `postsFeaturedImageSize` | select | Featured image sizes | — |
-| `postsImageWidth` | text | Featured image width | `width` on `img` |
-| `postsImageHeight` | text | Featured image height | `height` on `img` |
-| `postsTitleTypography` | typography | Post title typography | `font` on `.post-title` |
-| `postsMetaTypography` | typography | Post meta typography | `font` on `.post-meta` |
-| `taxonomy` | select | Taxonomy | — |
-| `title` | text | Title | — |
-| `titletag` | select | HTML tag | — |
-| `titleBorder` | border | Border | `font` on `.bricks-widget-title` |
-| `titleTypography` | typography | Typography | `font` on `.bricks-widget-title` |
+| `showPackageTitle` | checkbox | Show package title | — |
+| `emptyMessage` | text | Empty message | — |
+| `controlFlexDirection` | direction | Direction | `flex-direction` on `.brx-shipping-options__control` |
+| `controlJustifyContent` | justify-content | Justify content | `justify-content` on `.brx-shipping-options__control` |
+| `controlAlignItems` | align-items | Align items | `align-items` on `.brx-shipping-options__control` |
+| `controlGap` | number | Gap | `gap` on `.brx-shipping-options__control` |
+| `packageTitleTypography` | typography | Title typography | `font` on `.brx-shipping-options__package-title` |
+| `packageTitleColor` | color | Title color | `color` on `.brx-shipping-options__package-title` |
+| `optionGap` | number | Gap | `gap` on `.brx-shipping-options__label-group` |
+| `optionHoverBackgroundColor` | color | Hover background color | `background-color` on `.brx-shipping-options__option:hover` |
+| `optionCheckedBackgroundColor` | color | Background color | `background-color` |
+| `optionCheckedBorder` | border | Border | `border` |
+| `optionCheckedBoxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `labelTypography` | typography | Typography | `font` on `.brx-shipping-options__label` |
+| `labelColor` | color | Color | `color` on `.brx-shipping-options__label` |
+| `labelCheckedTypography` | typography | Typography | `font` |
+| `labelCheckedColor` | color | Color | `color` |
+| `secondaryTypography` | typography | Typography | `font` on `.brx-shipping-options__secondary-label` |
+| `secondaryColor` | color | Color | `color` on `.brx-shipping-options__secondary-label` |
+| `secondaryCheckedTypography` | typography | Typography | `font` |
+| `secondaryCheckedColor` | color | Color | `color` |
+| `packageMargin` | spacing | Margin | `margin` on `.brx-shipping-options__package` |
+| `packagePadding` | spacing | Padding | `padding` on `.brx-shipping-options__package` |
+| `packageBackgroundColor` | color | Background color | `background-color` on `.brx-shipping-options__package` |
+| `packageBorder` | border | Border | `border` on `.brx-shipping-options__package` |
+| `packageBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.brx-shipping-options__package` |
+| `optionMargin` | spacing | Margin | `margin` on `.brx-shipping-options__option` |
+| `optionPadding` | spacing | Padding | `padding` on `.brx-shipping-options__option` |
+| `optionBackgroundColor` | color | Background color | `background-color` on `.brx-shipping-options__option` |
+| `optionBorder` | border | Border | `border` on `.brx-shipping-options__option` |
+| `optionBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.brx-shipping-options__option` |
 
 ## Inherited CSS controls
 
@@ -1674,6 +1674,167 @@ Third-party plugins can introduce additional condition keys beyond those listed 
 
 ---
 
+# Element Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/elements/common/element/
+
+*Canonical reference for a Bricks element: the envelope structure, settings layers, meta-settings, and selectors.*
+
+Every element in Bricks uses the same envelope structure, regardless of type. Element-specific controls are documented in each [individual element schema](../../elements/accordion/); content areas (the flat arrays that hold elements) are documented in the [content area schema](../../general/content-area/).
+
+## Element envelope
+
+Every element object has these top-level fields:
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | Unique 6-character alphanumeric identifier (e.g. `"dlceeu"`) |
+| `name` | string | Yes | Element type, matches the element schema filename (e.g. `"button"`, `"heading"`) |
+| `parent` | string \| 0 | Yes | Parent element ID, or `0` for root-level elements |
+| `children` | string[] | Yes | Ordered array of child element IDs |
+| `settings` | object | Yes | All control values for this element (element-specific + inherited + meta) |
+| `selectors` | array | No | Custom CSS selectors with scoped settings (since Bricks 2.0) |
+| `label` | string | No | Custom label assigned by the user in the builder |
+| `themeStyles` | array | No | Theme style overrides applied to this element |
+
+## Settings: three layers
+
+The `settings` object combines three layers of keys:
+
+1. **Element-specific controls:** unique to each element type (e.g. `text`, `tag`, `link` on a button). Documented in each element's schema.
+2. **Inherited CSS controls:** shared by all elements, prefixed with `_` (e.g. `_typography`, `_margin`, `_padding`, `_background`). These support responsive and pseudo-class variants via colon suffixes (e.g. `_typography:tablet_portrait:hover`). Documented in each element's schema under the `_`-prefixed keys.
+3. **Meta-settings:** shared by all elements but not listed in individual element schemas. These control visibility, behavior, and class assignment. Documented below.
+
+## Meta-settings
+
+These keys can appear in any element's `settings` object. They are not included in per-element schemas to avoid duplication across 182+ elements.
+
+### `_cssGlobalClasses`
+
+Array of global class IDs applied to this element. Each ID references a global class defined in the [global classes](../../global/global-classes/) data.
+
+```json
+"_cssGlobalClasses": ["mmdqed", "xkatss"]
+```
+
+### `_conditions`
+
+Element display conditions that control whether this element renders. Structured as an array of arrays: outer array is OR groups, inner arrays are AND items.
+
+```json
+"_conditions": [
+  [
+    { "id": "abc123", "key": "user_logged_in", "compare": "==", "value": true }
+  ]
+]
+```
+
+See the [Element Conditions](./conditions/) page for the full `conditionItem` schema, all 32 condition keys, and available comparison operators.
+
+### `_interactions`
+
+Array of interaction rules that trigger actions in response to events (click, scroll, hover, etc.). Each interaction specifies a trigger, action, and target.
+
+```json
+"_interactions": [
+  {
+    "id": "abc123",
+    "trigger": "click",
+    "action": "startAnimation",
+    "target": "self"
+  }
+]
+```
+
+See the [Element Interactions](./interactions/) page for the full `interactionItem` schema, all triggers, actions, and sub-conditions.
+
+### `_hideElementBuilder`
+
+Boolean (default `false`). When `true`, the element is hidden on the builder canvas but still renders on the frontend.
+
+### `_hideElementFrontend`
+
+Boolean (default `false`). When `true`, the element is hidden on the frontend but remains visible in the builder.
+
+### `_attributes`
+
+Array of custom HTML attributes added to the element's root DOM node.
+
+```json
+"_attributes": [
+  { "id": "abc123", "name": "data-aos", "value": "fade-up" }
+]
+```
+
+## Selectors
+
+The `selectors` array allows scoping control settings to arbitrary CSS selectors on an element (since Bricks 2.0). Each selector entry has its own `settings` object that follows the same structure as the element's main settings.
+
+```json
+"selectors": [
+  {
+    "id": "nopzhs",
+    "selector": "#brxe-opxcoa h3",
+    "settings": {
+      "_typography": { "color": { "raw": "blue" } }
+    },
+    "label": "Heading within container"
+  }
+]
+```
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | Unique identifier for this selector entry |
+| `selector` | string | Yes | CSS selector string (e.g. `".my-class"`, `"&::before"`, `"& > span"`) |
+| `settings` | object | Yes | Control settings scoped to this selector |
+| `label` | string | No | Display label in the builder UI |
+
+### Selector item schema
+
+```json
+{
+  "type": "object",
+  "description": "Custom CSS selector on an element or global class (since Bricks 2.0). Allows scoping control settings to arbitrary CSS selectors.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for this selector entry"
+    },
+    "selector": {
+      "type": "string",
+      "description": "CSS selector string (e.g. \".my-class\", \"&::before\", \"& > span\")"
+    },
+    "settings": {
+      "description": "Control settings scoped to this selector (same shape as element settings)",
+      "_note": "Dynamic map of all settings for this element or class. Keys are element-specific control names (e.g. `text`, `style`) or inherited CSS setting keys, optionally suffixed with a breakpoint and/or pseudo-class using colon syntax (e.g. `_typography:tablet_portrait:hover`). See the individual element schemas for available control keys."
+    },
+    "label": {
+      "type": "string",
+      "description": "Optional display label for this selector in the builder UI"
+    }
+  },
+  "required": [
+    "id",
+    "selector",
+    "settings"
+  ],
+  "additionalProperties": false
+}
+```
+
+## How this relates to individual element schemas
+
+Each element schema (e.g. [button](../../elements/button/), [heading](../../elements/heading/)) documents the element-specific and inherited CSS controls that go into the `settings` object. The envelope fields (`id`, `name`, `parent`, `children`, `selectors`, `label`, `themeStyles`) and meta-settings (`_cssGlobalClasses`, `_conditions`, `_interactions`, etc.) documented on this page apply identically to every element type.
+
+To construct a complete element, combine:
+1. The envelope fields from this page
+2. Element-specific controls from the individual element schema
+3. Inherited CSS controls (the `_`-prefixed keys in the element schema)
+4. Any applicable meta-settings from this page
+
+---
+
 # Element Interactions Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/elements/common/interactions/
@@ -1854,164 +2015,3 @@ Each interaction can optionally include sub-conditions that must be met before t
   "interactionConditionsRelation": "and"
 }
 ```
-
----
-
-# Element Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/common/element/
-
-*Canonical reference for a Bricks element: the envelope structure, settings layers, meta-settings, and selectors.*
-
-Every element in Bricks uses the same envelope structure, regardless of type. Element-specific controls are documented in each [individual element schema](../../elements/accordion/); content areas (the flat arrays that hold elements) are documented in the [content area schema](../../general/content-area/).
-
-## Element envelope
-
-Every element object has these top-level fields:
-
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `id` | string | Yes | Unique 6-character alphanumeric identifier (e.g. `"dlceeu"`) |
-| `name` | string | Yes | Element type, matches the element schema filename (e.g. `"button"`, `"heading"`) |
-| `parent` | string \| 0 | Yes | Parent element ID, or `0` for root-level elements |
-| `children` | string[] | Yes | Ordered array of child element IDs |
-| `settings` | object | Yes | All control values for this element (element-specific + inherited + meta) |
-| `selectors` | array | No | Custom CSS selectors with scoped settings (since Bricks 2.0) |
-| `label` | string | No | Custom label assigned by the user in the builder |
-| `themeStyles` | array | No | Theme style overrides applied to this element |
-
-## Settings: three layers
-
-The `settings` object combines three layers of keys:
-
-1. **Element-specific controls:** unique to each element type (e.g. `text`, `tag`, `link` on a button). Documented in each element's schema.
-2. **Inherited CSS controls:** shared by all elements, prefixed with `_` (e.g. `_typography`, `_margin`, `_padding`, `_background`). These support responsive and pseudo-class variants via colon suffixes (e.g. `_typography:tablet_portrait:hover`). Documented in each element's schema under the `_`-prefixed keys.
-3. **Meta-settings:** shared by all elements but not listed in individual element schemas. These control visibility, behavior, and class assignment. Documented below.
-
-## Meta-settings
-
-These keys can appear in any element's `settings` object. They are not included in per-element schemas to avoid duplication across 182+ elements.
-
-### `_cssGlobalClasses`
-
-Array of global class IDs applied to this element. Each ID references a global class defined in the [global classes](../../global/global-classes/) data.
-
-```json
-"_cssGlobalClasses": ["mmdqed", "xkatss"]
-```
-
-### `_conditions`
-
-Element display conditions that control whether this element renders. Structured as an array of arrays: outer array is OR groups, inner arrays are AND items.
-
-```json
-"_conditions": [
-  [
-    { "id": "abc123", "key": "user_logged_in", "compare": "==", "value": true }
-  ]
-]
-```
-
-See the [Element Conditions](./conditions/) page for the full `conditionItem` schema, all 32 condition keys, and available comparison operators.
-
-### `_interactions`
-
-Array of interaction rules that trigger actions in response to events (click, scroll, hover, etc.). Each interaction specifies a trigger, action, and target.
-
-```json
-"_interactions": [
-  {
-    "id": "abc123",
-    "trigger": "click",
-    "action": "startAnimation",
-    "target": "self"
-  }
-]
-```
-
-See the [Element Interactions](./interactions/) page for the full `interactionItem` schema, all triggers, actions, and sub-conditions.
-
-### `_hideElementBuilder`
-
-Boolean (default `false`). When `true`, the element is hidden on the builder canvas but still renders on the frontend.
-
-### `_hideElementFrontend`
-
-Boolean (default `false`). When `true`, the element is hidden on the frontend but remains visible in the builder.
-
-### `_attributes`
-
-Array of custom HTML attributes added to the element's root DOM node.
-
-```json
-"_attributes": [
-  { "id": "abc123", "name": "data-aos", "value": "fade-up" }
-]
-```
-
-## Selectors
-
-The `selectors` array allows scoping control settings to arbitrary CSS selectors on an element (since Bricks 2.0). Each selector entry has its own `settings` object that follows the same structure as the element's main settings.
-
-```json
-"selectors": [
-  {
-    "id": "nopzhs",
-    "selector": "#brxe-opxcoa h3",
-    "settings": {
-      "_typography": { "color": { "raw": "blue" } }
-    },
-    "label": "Heading within container"
-  }
-]
-```
-
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `id` | string | Yes | Unique identifier for this selector entry |
-| `selector` | string | Yes | CSS selector string (e.g. `".my-class"`, `"&::before"`, `"& > span"`) |
-| `settings` | object | Yes | Control settings scoped to this selector |
-| `label` | string | No | Display label in the builder UI |
-
-### Selector item schema
-
-```json
-{
-  "type": "object",
-  "description": "Custom CSS selector on an element or global class (since Bricks 2.0). Allows scoping control settings to arbitrary CSS selectors.",
-  "properties": {
-    "id": {
-      "type": "string",
-      "description": "Unique identifier for this selector entry"
-    },
-    "selector": {
-      "type": "string",
-      "description": "CSS selector string (e.g. \".my-class\", \"&::before\", \"& > span\")"
-    },
-    "settings": {
-      "description": "Control settings scoped to this selector (same shape as element settings)",
-      "_note": "Dynamic map of all settings for this element or class. Keys are element-specific control names (e.g. `text`, `style`) or inherited CSS setting keys, optionally suffixed with a breakpoint and/or pseudo-class using colon syntax (e.g. `_typography:tablet_portrait:hover`). See the individual element schemas for available control keys."
-    },
-    "label": {
-      "type": "string",
-      "description": "Optional display label for this selector in the builder UI"
-    }
-  },
-  "required": [
-    "id",
-    "selector",
-    "settings"
-  ],
-  "additionalProperties": false
-}
-```
-
-## How this relates to individual element schemas
-
-Each element schema (e.g. [button](../../elements/button/), [heading](../../elements/heading/)) documents the element-specific and inherited CSS controls that go into the `settings` object. The envelope fields (`id`, `name`, `parent`, `children`, `selectors`, `label`, `themeStyles`) and meta-settings (`_cssGlobalClasses`, `_conditions`, `_interactions`, etc.) documented on this page apply identically to every element type.
-
-To construct a complete element, combine:
-1. The envelope fields from this page
-2. Element-specific controls from the individual element schema
-3. Inherited CSS controls (the `_`-prefixed keys in the element schema)
-4. Any applicable meta-settings from this page

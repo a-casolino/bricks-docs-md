@@ -2,7 +2,7 @@
 
 Spice up your site's design by adding background, overlay, and text gradients to any element. When editing an element, the Gradients & Overlays control group is under the Style tab.
 
-https://youtu.be/fHjio0iWkk8
+https://youtu.be/U0x0vCAzuc0
 
 ## Available controls:
 

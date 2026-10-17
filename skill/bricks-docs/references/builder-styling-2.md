@@ -10,7 +10,7 @@ You can also apply different styles to specific parts of an element via pseudo-e
 
 The video below shows how to work with pseudo-classes & pseudo-elements in Bricks (1.3.5+) and how you can add pseudo keywords yourself to Bricks:
 
-https://youtu.be/0a9teO2moEE
+https://youtu.be/38tXZSkw40U
 
 <figcaption>
 
@@ -164,7 +164,7 @@ To create a Theme Style:
 5. Add conditions.
 6. Configure the style groups.
 
-https://youtu.be/UgoMtcacMus
+https://youtu.be/SgTBp34J3CQ
 
 ## The mental model
 

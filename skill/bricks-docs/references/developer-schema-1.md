@@ -538,14 +538,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/color/
 
 ---
 
-# Dimensions Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/dimensions/
-
-*Unknown control type: dimensions*
-
----
-
 # Datepicker Control Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/controls/datepicker/
@@ -554,11 +546,11 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/datepicker/
 
 ---
 
-# Direction Control Schema
+# Dimensions Control Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/controls/direction/
+Source: https://academy.bricksbuilder.io/developer/schema/controls/dimensions/
 
-*Value schema for direction control type*
+*Unknown control type: dimensions*
 
 ---
 
@@ -664,6 +656,14 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/justify-conte
 
 ---
 
+# Number Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/number/
+
+*Value schema for number control type*
+
+---
+
 # Link Control Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/controls/link/
@@ -686,11 +686,11 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/link/
 
 ---
 
-# Number Control Schema
+# Direction Control Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/controls/number/
+Source: https://academy.bricksbuilder.io/developer/schema/controls/direction/
 
-*Value schema for number control type*
+*Value schema for direction control type*
 
 ---
 
@@ -699,6 +699,14 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/number/
 Source: https://academy.bricksbuilder.io/developer/schema/controls/query-list/
 
 *Unknown control type: query-list*
+
+---
+
+# Radio Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/radio/
+
+*Unknown control type: radio*
 
 ---
 
@@ -756,14 +764,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/query/
 
 ---
 
-# Radio Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/radio/
-
-*Unknown control type: radio*
-
----
-
 # Repeater Control Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/controls/repeater/
@@ -772,19 +772,11 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/repeater/
 
 ---
 
-# Svg Control Schema
+# Select Control Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/controls/svg/
+Source: https://academy.bricksbuilder.io/developer/schema/controls/select/
 
-*Value schema for svg control type*
-
-## Properties
-
-| Property | Type | Description |
-|---|---|---|
-| `id` | string \| integer | — |
-| `url` | string | — |
-| `library` | string | — |
+*Value schema for select control type*
 
 ---
 
@@ -805,11 +797,19 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/spacing/
 
 ---
 
-# Select Control Schema
+# Svg Control Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/controls/select/
+Source: https://academy.bricksbuilder.io/developer/schema/controls/svg/
 
-*Value schema for select control type*
+*Value schema for svg control type*
+
+## Properties
+
+| Property | Type | Description |
+|---|---|---|
+| `id` | string \| integer | — |
+| `url` | string | — |
+| `library` | string | — |
 
 ---
 
@@ -818,14 +818,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/select/
 Source: https://academy.bricksbuilder.io/developer/schema/controls/text-align/
 
 *Value schema for text-align control type*
-
----
-
-# Text Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/text/
-
-*Value schema for text control type*
 
 ---
 
@@ -840,6 +832,14 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/text-shadow/
 | Property | Type | Description |
 |---|---|---|
 | `values` | array | — |
+
+---
+
+# Text Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/text/
+
+*Value schema for text control type*
 
 ---
 
@@ -876,6 +876,28 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/transform/
 
 ---
 
+# Video Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/video/
+
+*Value schema for video control type*
+
+## Properties
+
+| Property | Type | Description |
+|---|---|---|
+| `source` | string | One of: `media`, `youtube`, `vimeo`, `url` |
+| `id` | string \| integer | — |
+| `url` | string | — |
+| `youtubeId` | string | — |
+| `vimeoId` | string | — |
+| `autoplay` | boolean | — |
+| `loop` | boolean | — |
+| `muted` | boolean | — |
+| `controls` | boolean | — |
+
+---
+
 # Typography Control Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/controls/typography/
@@ -896,28 +918,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/typography/
 | `text-transform` | string | One of: `none`, `uppercase`, `lowercase`, `capitalize` |
 | `text-decoration` | string | — |
 | `color` | any | Color value in various formats |
-
----
-
-# Video Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/video/
-
-*Value schema for video control type*
-
-## Properties
-
-| Property | Type | Description |
-|---|---|---|
-| `source` | string | One of: `media`, `youtube`, `vimeo`, `url` |
-| `id` | string \| integer | — |
-| `url` | string | — |
-| `youtubeId` | string | — |
-| `vimeoId` | string | — |
-| `autoplay` | boolean | — |
-| `loop` | boolean | — |
-| `muted` | boolean | — |
-| `controls` | boolean | — |
 
 ---
 

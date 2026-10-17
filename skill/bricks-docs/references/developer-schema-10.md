@@ -1375,15 +1375,15 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Checkout Customer Details Schema
+# Checkout Coupon Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-customer-details/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-coupon/
 
-*Schema for Bricks Checkout customer details element*
+*Schema for Bricks Checkout coupon element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-checkout-customer-details |
+| `name` | woocommerce-checkout-coupon |
 | `category` | woocommerce_checkout |
 | `tag` | div |
 | `nestable` | false |
@@ -1392,16 +1392,54 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-c
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `removeBillingFields` | select | Remove billing fields | — |
-| `removeShippingFields` | select | Remove shipping fields | — |
-| `hideTitle` | checkbox | Hide | `display` on `.woocommerce-billing-fields h3` |
-| `titleTypography` | typography | Typography | `font` on `.woocommerce-billing-fields h3` |
-| `hideLabels` | checkbox | Hide | `display` on `.woocommerce-billing-fields__field-wrapper label, .woocommerce-shipping-fields__field-wrapper label` |
-| `labelTypography` | typography | Typography | `font` on `.woocommerce-billing-fields__field-wrapper label, .woocommerce-shipping-fields__field-wrapper label` |
-| `labelMargin` | spacing | Margin | `margin` on `.woocommerce-billing-fields__field-wrapper label, .woocommerce-shipping-fields__field-wrapper label` |
-| `fieldTypography` | typography | Typography | `font` on `input:not([type=submit])`, `font` on `select`, `font` on `.select2-selection__rendered`, `font` on `textarea` |
-| `placeholderTypography` | typography | Placeholder typography | `font` on `::placeholder` |
-| `hideAdditionalInformation` | checkbox | Hide additional information | `display` on `.woocommerce-additional-fields` |
+| `location` | select | Location | — |
+| `toggleableForm` | checkbox | Toggleable form | — |
+| `toggleText` | text | Text | — |
+| `toggleDivJustifyContent` | justify-content | Justify content | `justify-content` on `.coupon-toggle` |
+| `toggleDivGap` | number | Gap | `gap` on `.coupon-toggle` |
+| `toggleButtonNoText` | checkbox | Disable text | — |
+| `toggleButtonText` | text | Text | — |
+| `toggleIcon` | icon | Icon | — |
+| `toggleIconTypography` | typography | Icon typography | `font` on `.coupon-toggle .showcoupon i` |
+| `disableCouponMessage` | checkbox | Disable coupon message | — |
+| `couponMessage` | text | Coupon message | — |
+| `fieldsWrapperFlexDirection` | direction | Flex direction | `flex-direction` on `.coupon-form` |
+| `applyButtonText` | text | Button text | — |
+| `toggleDivMargin` | spacing | Margin | `margin` on `.coupon-toggle` |
+| `toggleDivPadding` | spacing | Padding | `padding` on `.coupon-toggle` |
+| `toggleDivBackgroundColor` | color | Background color | `background-color` on `.coupon-toggle` |
+| `toggleDivBorder` | border | Border | `border` on `.coupon-toggle` |
+| `toggleDivBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.coupon-toggle` |
+| `toggleDivTypography` | typography | Typography | `font` on `.coupon-toggle` |
+| `toggleButtonMargin` | spacing | Margin | `margin` on `.coupon-toggle .showcoupon` |
+| `toggleButtonPadding` | spacing | Padding | `padding` on `.coupon-toggle .showcoupon` |
+| `toggleButtonBackgroundColor` | color | Background color | `background-color` on `.coupon-toggle .showcoupon` |
+| `toggleButtonBorder` | border | Border | `border` on `.coupon-toggle .showcoupon` |
+| `toggleButtonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.coupon-toggle .showcoupon` |
+| `toggleButtonTypography` | typography | Typography | `font` on `.coupon-toggle .showcoupon` |
+| `formWrapperMargin` | spacing | Margin | `margin` on `.coupon-div` |
+| `formWrapperPadding` | spacing | Padding | `padding` on `.coupon-div` |
+| `formWrapperBackgroundColor` | color | Background color | `background-color` on `.coupon-div` |
+| `formWrapperBorder` | border | Border | `border` on `.coupon-div` |
+| `formWrapperBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.coupon-div` |
+| `formWrapperTypography` | typography | Typography | `font` on `.coupon-div` |
+| `fieldsAlignItems` | align-items | Align items | `align-items` |
+| `fieldsWidth` | number | Width | `width` on `.password-input, .woocommerce-Input` |
+| `fieldsGap` | number | Gap | `gap` |
+| `placeholderTypography` | typography | Placeholder typography | `font` on `::placeholder`, `font` on `select` |
+| `fieldsInputMargin` | spacing | Margin | `margin` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
+| `fieldsInputPadding` | spacing | Padding | `padding` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
+| `fieldsInputBackgroundColor` | color | Background color | `background-color` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
+| `fieldsInputBorder` | border | Border | `border` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
+| `fieldsInputBoxShadow` | box-shadow | Box shadow | `box-shadow` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
+| `fieldsInputTypography` | typography | Typography | `font` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
+| `submitButtonWidth` | number | Width | `width` on `button[type=submit]` |
+| `submitButtonMargin` | spacing | Margin | `margin` on `button[type=submit]` |
+| `submitButtonPadding` | spacing | Padding | `padding` on `button[type=submit]` |
+| `submitButtonBackgroundColor` | color | Background color | `background-color` on `button[type=submit]` |
+| `submitButtonBorder` | border | Border | `border` on `button[type=submit]` |
+| `submitButtonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `button[type=submit]` |
+| `submitButtonTypography` | typography | Typography | `font` on `button[type=submit]` |
 
 ## Inherited CSS controls
 
@@ -1477,15 +1515,15 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Checkout Coupon Schema
+# Checkout Customer Details Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-coupon/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-customer-details/
 
-*Schema for Bricks Checkout coupon element*
+*Schema for Bricks Checkout customer details element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-checkout-coupon |
+| `name` | woocommerce-checkout-customer-details |
 | `category` | woocommerce_checkout |
 | `tag` | div |
 | `nestable` | false |
@@ -1494,54 +1532,16 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-c
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `location` | select | Location | — |
-| `toggleableForm` | checkbox | Toggleable form | — |
-| `toggleText` | text | Text | — |
-| `toggleDivJustifyContent` | justify-content | Justify content | `justify-content` on `.coupon-toggle` |
-| `toggleDivGap` | number | Gap | `gap` on `.coupon-toggle` |
-| `toggleButtonNoText` | checkbox | Disable text | — |
-| `toggleButtonText` | text | Text | — |
-| `toggleIcon` | icon | Icon | — |
-| `toggleIconTypography` | typography | Icon typography | `font` on `.coupon-toggle .showcoupon i` |
-| `disableCouponMessage` | checkbox | Disable coupon message | — |
-| `couponMessage` | text | Coupon message | — |
-| `fieldsWrapperFlexDirection` | direction | Flex direction | `flex-direction` on `.coupon-form` |
-| `applyButtonText` | text | Button text | — |
-| `toggleDivMargin` | spacing | Margin | `margin` on `.coupon-toggle` |
-| `toggleDivPadding` | spacing | Padding | `padding` on `.coupon-toggle` |
-| `toggleDivBackgroundColor` | color | Background color | `background-color` on `.coupon-toggle` |
-| `toggleDivBorder` | border | Border | `border` on `.coupon-toggle` |
-| `toggleDivBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.coupon-toggle` |
-| `toggleDivTypography` | typography | Typography | `font` on `.coupon-toggle` |
-| `toggleButtonMargin` | spacing | Margin | `margin` on `.coupon-toggle .showcoupon` |
-| `toggleButtonPadding` | spacing | Padding | `padding` on `.coupon-toggle .showcoupon` |
-| `toggleButtonBackgroundColor` | color | Background color | `background-color` on `.coupon-toggle .showcoupon` |
-| `toggleButtonBorder` | border | Border | `border` on `.coupon-toggle .showcoupon` |
-| `toggleButtonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.coupon-toggle .showcoupon` |
-| `toggleButtonTypography` | typography | Typography | `font` on `.coupon-toggle .showcoupon` |
-| `formWrapperMargin` | spacing | Margin | `margin` on `.coupon-div` |
-| `formWrapperPadding` | spacing | Padding | `padding` on `.coupon-div` |
-| `formWrapperBackgroundColor` | color | Background color | `background-color` on `.coupon-div` |
-| `formWrapperBorder` | border | Border | `border` on `.coupon-div` |
-| `formWrapperBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.coupon-div` |
-| `formWrapperTypography` | typography | Typography | `font` on `.coupon-div` |
-| `fieldsAlignItems` | align-items | Align items | `align-items` |
-| `fieldsWidth` | number | Width | `width` on `.password-input, .woocommerce-Input` |
-| `fieldsGap` | number | Gap | `gap` |
-| `placeholderTypography` | typography | Placeholder typography | `font` on `::placeholder`, `font` on `select` |
-| `fieldsInputMargin` | spacing | Margin | `margin` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
-| `fieldsInputPadding` | spacing | Padding | `padding` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
-| `fieldsInputBackgroundColor` | color | Background color | `background-color` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
-| `fieldsInputBorder` | border | Border | `border` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
-| `fieldsInputBoxShadow` | box-shadow | Box shadow | `box-shadow` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
-| `fieldsInputTypography` | typography | Typography | `font` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
-| `submitButtonWidth` | number | Width | `width` on `button[type=submit]` |
-| `submitButtonMargin` | spacing | Margin | `margin` on `button[type=submit]` |
-| `submitButtonPadding` | spacing | Padding | `padding` on `button[type=submit]` |
-| `submitButtonBackgroundColor` | color | Background color | `background-color` on `button[type=submit]` |
-| `submitButtonBorder` | border | Border | `border` on `button[type=submit]` |
-| `submitButtonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `button[type=submit]` |
-| `submitButtonTypography` | typography | Typography | `font` on `button[type=submit]` |
+| `removeBillingFields` | select | Remove billing fields | — |
+| `removeShippingFields` | select | Remove shipping fields | — |
+| `hideTitle` | checkbox | Hide | `display` on `.woocommerce-billing-fields h3` |
+| `titleTypography` | typography | Typography | `font` on `.woocommerce-billing-fields h3` |
+| `hideLabels` | checkbox | Hide | `display` on `.woocommerce-billing-fields__field-wrapper label, .woocommerce-shipping-fields__field-wrapper label` |
+| `labelTypography` | typography | Typography | `font` on `.woocommerce-billing-fields__field-wrapper label, .woocommerce-shipping-fields__field-wrapper label` |
+| `labelMargin` | spacing | Margin | `margin` on `.woocommerce-billing-fields__field-wrapper label, .woocommerce-shipping-fields__field-wrapper label` |
+| `fieldTypography` | typography | Typography | `font` on `input:not([type=submit])`, `font` on `select`, `font` on `.select2-selection__rendered`, `font` on `textarea` |
+| `placeholderTypography` | typography | Placeholder typography | `font` on `::placeholder` |
+| `hideAdditionalInformation` | checkbox | Hide additional information | `display` on `.woocommerce-additional-fields` |
 
 ## Inherited CSS controls
 

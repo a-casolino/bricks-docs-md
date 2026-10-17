@@ -215,15 +215,15 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Meta Data Schema
+# Excerpt Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/post-meta/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/post-excerpt/
 
-*Schema for Bricks Meta Data element*
+*Schema for Bricks Excerpt element*
 
 | Property | Value |
 |---|---|
-| `name` | post-meta |
+| `name` | post-excerpt |
 | `category` | single |
 | `tag` | div |
 | `nestable` | false |
@@ -232,11 +232,9 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/post-meta/
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `meta` | repeater | Dynamic data | — |
-| `direction` | direction | Direction | `flex-direction` |
-| `gutter` | number | Gap | `gap` |
-| `separator` | text | Separator | — |
-| `separatorColor` | color | Separator color | `color` on `.separator` |
+| `length` | number | Excerpt length | — |
+| `more` | text | More text | — |
+| `keepHTML` | checkbox | Keep formatting | — |
 
 ## Inherited CSS controls
 
@@ -312,15 +310,15 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Excerpt Schema
+# Meta Data Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/post-excerpt/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/post-meta/
 
-*Schema for Bricks Excerpt element*
+*Schema for Bricks Meta Data element*
 
 | Property | Value |
 |---|---|
-| `name` | post-excerpt |
+| `name` | post-meta |
 | `category` | single |
 | `tag` | div |
 | `nestable` | false |
@@ -329,9 +327,11 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/post-excerpt/
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `length` | number | Excerpt length | — |
-| `more` | text | More text | — |
-| `keepHTML` | checkbox | Keep formatting | — |
+| `meta` | repeater | Dynamic data | — |
+| `direction` | direction | Direction | `flex-direction` |
+| `gutter` | number | Gap | `gap` |
+| `separator` | text | Separator | — |
+| `separatorColor` | color | Separator color | `color` on `.separator` |
 
 ## Inherited CSS controls
 
@@ -614,15 +614,15 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Reading Time Schema
+# Social Sharing Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/post-reading-time/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/post-sharing/
 
-*Schema for Bricks Reading time element*
+*Schema for Bricks Social Sharing element*
 
 | Property | Value |
 |---|---|
-| `name` | post-reading-time |
+| `name` | post-sharing |
 | `category` | single |
 | `tag` | div |
 | `nestable` | false |
@@ -631,12 +631,11 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/post-reading-
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `contentSelector` | text | Content selector | — |
-| `prefix` | text | Prefix | — |
-| `suffix` | text | Suffix | — |
-| `calculationMethod` | select | Calculation method | — |
-| `wordsPerMinute` | number | Words per minutes | — |
-| `charactersPerMinute` | number | Characters per minute | — |
+| `items` | repeater | Share via | `background-color` on `a` |
+| `brandColors` | checkbox | Use brand colors | — |
+| `direction` | direction | Direction | `flex-direction` |
+| `newTab` | checkbox | Open in new tab | — |
+| `linkRel` | text | Rel attribute | — |
 
 ## Inherited CSS controls
 
@@ -813,28 +812,36 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Social Sharing Schema
+# Post Title Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/post-sharing/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/post-title/
 
-*Schema for Bricks Social Sharing element*
+*Schema for Bricks Post title element*
 
 | Property | Value |
 |---|---|
-| `name` | post-sharing |
+| `name` | post-title |
 | `category` | single |
-| `tag` | div |
+| `tag` | h3 |
 | `nestable` | false |
 
 ## Controls
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `items` | repeater | Share via | `background-color` on `a` |
-| `brandColors` | checkbox | Use brand colors | — |
-| `direction` | direction | Direction | `flex-direction` |
-| `newTab` | checkbox | Open in new tab | — |
-| `linkRel` | text | Rel attribute | — |
+| `tag` | select | HTML tag | — |
+| `type` | select | Type | — |
+| `style` | select | Style | — |
+| `linkToPost` | checkbox | Link to post | — |
+| `context` | checkbox | Add context | — |
+| `prefix` | text | Prefix | — |
+| `prefixSpacing` | number | Spacing | `margin-inline-end` on `.post-prefix` |
+| `prefixBlock` | checkbox | Block | `display` on `.post-prefix` |
+| `prefixTypography` | typography | Typography | `font` on `.post-prefix` |
+| `suffix` | text | Suffix | — |
+| `suffixSpacing` | number | Spacing | `margin-inline-start` on `.post-suffix` |
+| `suffixBlock` | checkbox | Block | `display` on `.post-suffix` |
+| `suffixTypography` | typography | Typography | `font` on `.post-suffix` |
 
 ## Inherited CSS controls
 
@@ -910,36 +917,29 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Post Title Schema
+# Reading Time Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/post-title/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/post-reading-time/
 
-*Schema for Bricks Post title element*
+*Schema for Bricks Reading time element*
 
 | Property | Value |
 |---|---|
-| `name` | post-title |
+| `name` | post-reading-time |
 | `category` | single |
-| `tag` | h3 |
+| `tag` | div |
 | `nestable` | false |
 
 ## Controls
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `tag` | select | HTML tag | — |
-| `type` | select | Type | — |
-| `style` | select | Style | — |
-| `linkToPost` | checkbox | Link to post | — |
-| `context` | checkbox | Add context | — |
+| `contentSelector` | text | Content selector | — |
 | `prefix` | text | Prefix | — |
-| `prefixSpacing` | number | Spacing | `margin-inline-end` on `.post-prefix` |
-| `prefixBlock` | checkbox | Block | `display` on `.post-prefix` |
-| `prefixTypography` | typography | Typography | `font` on `.post-prefix` |
 | `suffix` | text | Suffix | — |
-| `suffixSpacing` | number | Spacing | `margin-inline-start` on `.post-suffix` |
-| `suffixBlock` | checkbox | Block | `display` on `.post-suffix` |
-| `suffixTypography` | typography | Typography | `font` on `.post-suffix` |
+| `calculationMethod` | select | Calculation method | — |
+| `wordsPerMinute` | number | Words per minutes | — |
+| `charactersPerMinute` | number | Characters per minute | — |
 
 ## Inherited CSS controls
 

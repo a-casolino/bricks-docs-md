@@ -4,7 +4,7 @@ The Bricks context menu gives you quick access to actions for the selected eleme
 
 To open it, right-click an element on the canvas or in the Structure panel.
 
-https://youtu.be/WGVpLuzuKuE
+https://youtu.be/7HpRF6jRSlc
 
 ## How the context menu selects an element
 

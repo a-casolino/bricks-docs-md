@@ -1,6 +1,6 @@
 *Use the Bricks Query Loop to repeat layouts from posts, terms, users, arrays, or API data while keeping every repeated item fully designable.*
 
-https://www.youtube.com/watch?v=LxrLROitgn8
+https://www.youtube.com/watch?v=GQicN9DWEVg
 
 The **Query Loop** builder is available for [layout elements](https://academy.bricksbuilder.io/builder/styling/layout/) such as Container, Section, Block, and Div. It is also available on the classic Accordion and Slider elements.
 
@@ -160,6 +160,10 @@ If you set the TTL to 10 minutes, the query result remains the same for the next
 **Is main query (Archive, Search)**: When creating an archive or search template, choose one of the loops as the main query. This will prevent a 404 error from occurring when visitors navigate to different pages. Turn on to designate the main query. Remember to set the correct query on your pagination element as well.
 
 However, do not turn on this option for multiple queries on the same page, as only the first one will be set as the archive main query. `(@since 1.8)`
+
+Watch this example to build a custom post type archive with a main query loop and pagination:
+
+https://youtu.be/PeemZuvI3Fc
 
 ### Enhanced Ordering Options {#enhanced-ordering-options}
 

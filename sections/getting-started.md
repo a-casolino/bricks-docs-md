@@ -1,25 +1,25 @@
 # Bricks Builder Documentation: Getting Started
 
-<!-- content-sha256: 53a2c7577679af5377792b33ce76ab107198740208867b537b6596b781608178 -->
-<!-- content last changed: 2026-10-13 20:31 UTC -->
+<!-- content-sha256: cbbdebe526c28e4ca26faea6afd21088006a829305cbcc79bbfcff05304e81fc -->
+<!-- content last changed: 2026-10-17 02:30 UTC -->
 
 Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricksbuilder.io/), refreshed daily. Content © Bricks. 13 pages.
 
 ## Table of contents
 
   - [Blog post template](#getting-started-blog-post-template)
-  - [Start your first page](#getting-started-building-your-first-page)
-  - [Building a header template](#getting-started-header-template)
   - [Global classes](#getting-started-global-classes)
+  - [Building a header template](#getting-started-header-template)
+  - [Start your first page](#getting-started-building-your-first-page)
 - [Getting Started](#getting-started)
   - [Installation and setup](#getting-started-installation-setup)
   - [Interface tour](#getting-started-interface-tour)
-  - [Query loops and dynamic data](#getting-started-query-loops-dynamic-data)
-  - [An intro to templates](#getting-started-templates-intro)
-  - [Settings and defaults](#getting-started-settings-defaults)
-  - [Theme styles](#getting-started-theme-styles)
   - [Next steps](#getting-started-next-steps)
+  - [Query loops and dynamic data](#getting-started-query-loops-dynamic-data)
   - [Responsive basics](#getting-started-responsive-basics)
+  - [Settings and defaults](#getting-started-settings-defaults)
+  - [An intro to templates](#getting-started-templates-intro)
+  - [Theme styles](#getting-started-theme-styles)
 
 ---
 
@@ -188,292 +188,6 @@ You can now:
 - Use the Post Content element
 - Separate design (Bricks) from content (WordPress)
 - Customize templates that apply to all posts
-
----
-
-<a id="getting-started-building-your-first-page"></a>
-
-# Start your first page
-
-Source: https://academy.bricksbuilder.io/getting-started/building-your-first-page/
-
-*Start building your first Bricks page by setting up the homepage, creating the hero section, and learning the core layout workflow.*
-
-https://youtu.be/d2mWTDfW6mE
-
-Time to build. We will start your homepage by creating the hero section. This is where you'll learn the core workflow and understand how layout elements work. We will add more sections (like a latest posts grid) later in the series.
-
-## Open your Home page
-
-In the previous article you already created a **Home** page and opened it in the builder.
-
-If the builder is not open anymore:
-
-1. In your WordPress dashboard, go to **Pages > All Pages**
-2. Find the page titled **Home**
-3. Hover it and click **Edit with Bricks**
-
-The builder opens with your Home page ready to work on. If you do not have a Home page yet, quickly create one now and open it with Bricks.
-
-## Set this page as your homepage
-
-Before we build, tell WordPress to use **Home** as the static front page:
-
-1. In the WordPress dashboard, go to **Settings > Reading**
-2. Under **Your homepage displays**, select **A static page**
-3. Set **Homepage** to your **Home** page
-4. Optionally set **Posts page** to a page named **Blog** (or leave default for now)
-5. Click **Save Changes**
-
-## How most web pages are structured
-
-Before we touch anything, notice how most websites are laid out when you scroll:
-
-- A **header** at the very top (logo and navigation, usually global)
-- A **hero** section that introduces the page
-- One or more **content sections** (features, testimonials, blog posts, contact)
-- A **footer** at the bottom
-
-Visually, the page is a vertical stack of horizontal bands. In Bricks, we build those bands with the **Section** element.
-
-Under the hood, each section is just a semantic HTML box. Inside that box we place more boxes, and inside those we place content.
-
-## Layout elements in Bricks
-
-To build those bands and columns, Bricks gives you four layout elements. You will use them to hold all other elements.
-
-**Section** → **Container** → **Block / Div** → **Elements**
-
-- **Section**: The root band. Spans the full width of the screen. Used to separate major parts of your page (header, hero, features, footer).
-- **Container**: Sits inside the section. Keeps your content centered and bounded (width 1100px by default).
-- **Block**: A layout box that uses flexbox and takes up 100 percent width by default. Great for columns and cards inside a section or container.
-- **Div**: A plain, unstyled `div` that grows with its content. Use it as a lightweight wrapper when you want full control.
-- **Elements**: The actual content (headings, images, buttons) that live inside those layout boxes.
-
-### When to use each layout element
-
-You can think of these layout elements as different kinds of wrappers for your content.
-
-- **Section**: Use when you want a new horizontal band on the page. A typical page is one section for hero, one for features, one for testimonials, one for contact, and so on.
-- **Container**: Use when you want the content of a section to have a fixed maximum width and be centered. Most sections have exactly one container.
-- **Block**: Use when you want to divide a container into columns or repeated boxes. For example, in a hero section, one Block for text and another for the image. In a features section, one Block per feature card.
-- **Div**: Use when you just need a simple box inside other layout elements. For example, to group a heading and an icon, or to wrap part of a card without affecting the overall layout.
-
-Where you apply styles matters:
-
-- Background colors and borders on the **Section** affect the full width band.
-- Styles on the **Container** affect the centered content area.
-- Styles on a **Block** or **Div** affect just that column or card.
-
-If you inspect your page in the browser later and hover over these elements in the dev tools, you will see colored overlays showing content, padding, and margin for each box. That is the box model in action.
-
-These layout elements are just wrappers. Where you place them determines width, positioning, and which parts of your design share the same background or border.
-
-We will keep coming back to them as you build more pages and templates.
-
-## Build the hero section
-
-For this first hero we will create a very common pattern:
-
-- Text and button on the left  
-- Image on the right  
-- Both aligned nicely in the middle of the screen
-
-### 1. Add a section
-
-1. In the Settings Panel (left), click **Section** (under Layout)
-2. A **Section** with a **Container** inside is automatically added to your canvas
-
-![](https://academy.bricksbuilder.io/assets/add-section-element.png)
-
-### 2. Add your hero content
-
-We will first add all the content, then turn it into two columns.
-
-1. Select the **Container** from the structure panel or by clicking on the canvas
-
-![](https://academy.bricksbuilder.io/assets/container-element-selected.png)
-2. Add a **Heading** element
-3. Add a **Rich Text** element below the heading
-4. Add a **Button** element below the text
-5. Add an **Image** element below the button
-
-Right now everything is in one column (stacked). We will group elements into columns next.
-
-![](https://academy.bricksbuilder.io/assets/bulk-selected-elements-inside-container.png)
-
-### 3. Group content into columns with Blocks
-
-Blocks are perfect for columns. Instead of adding them empty and dragging elements in, we will wrap existing elements in Blocks.
-
-**Left column (text + button):**
-
-1. Open the **Structure Panel** on the right
-2. In the Container, click the **Heading**
-3. Hold **Shift** and click the **Button**  
-   → This selects the Heading, Rich Text, and Button together  
-   (Optionally, hold `Cmd/Ctrl` and click items one by one to select them)
-4. Right-click on the selection and choose **Wrap → Block**
-
-Bricks wraps those three elements in a new Block. This Block will be your left column.
-
-**Right column (image):**
-
-1. In the Structure Panel, select the **Image**
-2. Right-click it and choose **Wrap → Block**
-
-You now have a Container with **two Blocks** inside: one for text/button, one for the image. Next we will tell Bricks to lay those Blocks out as columns.
-
-![](https://academy.bricksbuilder.io/assets/hero-section-two-columns-structure-panel.png)
-
-### 4. Layout the columns
-
-Now let's make them sit side-by-side using Flexbox.
-
-1. Select the **Container**
-2. Go to **Content > Layout**
-3. Set **Direction** to `Row` (horizontal)
-4. Set **Align cross axis** to `Center` (vertically centers content)
-5. Set **Column gap** to `24` (adds space between first column and second column)
-6. Set a background color from the "Styles" tab > "Background" 
-
-![](https://academy.bricksbuilder.io/assets/hero-section-styles.png)
-
-### A quick note on flexbox
-
-In CSS, the `display` property controls how elements are laid out. By default, many elements are `block` (stacked vertically) or `inline` (flow with text).
-
-**Flexbox** is a layout mode that makes it easy to arrange children of a container in a row or a column. In Bricks, Section, Container, and Block all use flexbox by default.
-
-When you set **Direction** to `Row`, you tell the container to line up its children horizontally. If you changed it to `Column`, they would stack vertically.
-
-A simple way to think about the main controls:
-
-- **Direction**: chooses the main axis (row = side by side, column = stacked).
-- **Gap**: spaces out the children along that main axis (the white space between our text Block and Image).
-- **Align items**: lines up the children along the cross axis (here: vertically) so both columns share the same vertical center.
-
-Flexbox is perfect for one dimensional layouts like our two column hero. If you want to go deeper into flexbox itself, you can read the [Flexbox basics guide on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox). We will stay focused on using it visually in Bricks.
-
-### 5. Style the content
-
-**Left column Block:**
-1. Select the **Block**
-2. Set **Row gap** to `8` (adds space between heading, text, and button)
-
-**Heading:**
-1. Change text to: "Welcome to Bricks"
-2. Set **Tag** to `H1`
-
-**Image:**
-1. Select the Image element
-2. Choose a photo from the media library
-
-## See the HTML Bricks generates
-
-You might have heard that Bricks outputs clean, semantic, non-bloated markup. Let's take a quick look at what that actually means.
-
-1. Click **Preview** in the toolbar to open your Home page on the front end  
-2. In your browser, right-click somewhere in your hero section and choose **Inspect** (or use the browser's developer tools shortcut)  
-3. Look for the `<main>` element and expand it
-
-You should see something very close to:
-
-- A `<section>` for the hero
-- A `<div>` (Container) inside it
-- Inside that, your content boxes and elements (heading, text, button, image)
-
-There are no mysterious extra wrapper divs, no huge chains of nested containers you did not create.
-
-Even if you're not familiar with HTML yet, the important idea is:
-
-- What you add in the builder is what you get in the markup  
-- Bricks keeps the structure lean so you have full control over layout and performance
-
-## The spacing problem
-
-Your section looks good, but it's hugging the top and bottom of the screen. We need padding.
-
-You *could* select the Section and add `80px` padding manually. But then you'd have to do that for every single section on your site. That's tedious and hard to maintain.
-
-**The solution?** Theme Styles.
-
-Instead of styling each section individually, we'll set a global rule: "All sections should have 80px padding."
-
-Let's do that in the next article.
-
-> **Help improve this lesson**
->
-> Bricks Academy is new. If a step in this lesson felt confusing, incomplete, or out of date, use the feedback box in the right sidebar and tell us what to improve.
-
----
-
-<a id="getting-started-header-template"></a>
-
-# Building a header template
-
-Source: https://academy.bricksbuilder.io/getting-started/header-template/
-
-*Build a reusable Bricks header template with site branding, navigation, and the template settings needed to apply it across your site.*
-
-https://youtu.be/CL-viLFWjDg
-
-Let's build a global header with a logo and menu.
-
-## Create the template
-
-1. Go to **Bricks > Templates**
-2. Add New: "Header"
-3. Edit with Bricks
-
-## Settings
-
-1. **Settings (gear) > Template Settings**
-2. **Type**: Header
-3. **Conditions**: Entire Website
-
-## Build the structure
-
-1. Add a **Section**
-2. Inside the **Container**:
-   - Add a **Logo** element (or Image/Text)
-   - Add a **Nav Menu** element (we'll use the standard WordPress menu)
-
-## Style the layout
-
-**Container:**
-1. **Direction**: `Row` (horizontal)
-2. **Justify content**: `Space between` (pushes logo and menu apart)
-3. **Align items**: `Center` (vertically aligned)
-
-**Section:**
-1. **Background color**: Pick a light gray or your brand color
-2. **Padding**: `12` top/bottom (this intentionally overrides our global 80px for this specific section)
-
-Your header is part of the site chrome, not page content. It usually needs tighter spacing than regular sections, so it is a good place to make a deliberate exception to your global section padding.
-
-## Create a WordPress menu (if you do not have one yet)
-
-The Nav Menu element uses a normal WordPress menu. If **Appearance > Menus** is empty or you have never built a menu:
-
-1. From the WordPress dashboard, go to **Appearance > Menus**
-2. Enter a **Menu name** (for example `Main`) and click **Create Menu**
-3. Add a few items from the left (**Pages**, **Custom links**, and so on), then click **Save Menu**
-
-Then return to this template in the builder.
-
-## Configure the menu
-
-1. Select the **Nav Menu** element
-2. Under **Menu**, choose the WordPress menu you created (for example **Main**)
-
-## Save and verify
-
-1. Save the template
-2. Go to your **Pages** panel (top bar) -> **Home**
-3. You should see your new header sitting perfectly atop your hero section!
-
-![](https://academy.bricksbuilder.io/assets/header-template.png)
 
 ---
 
@@ -763,6 +477,292 @@ Global classes are how you build sites that scale. They transform your workflow 
 
 ---
 
+<a id="getting-started-header-template"></a>
+
+# Building a header template
+
+Source: https://academy.bricksbuilder.io/getting-started/header-template/
+
+*Build a reusable Bricks header template with site branding, navigation, and the template settings needed to apply it across your site.*
+
+https://youtu.be/CL-viLFWjDg
+
+Let's build a global header with a logo and menu.
+
+## Create the template
+
+1. Go to **Bricks > Templates**
+2. Add New: "Header"
+3. Edit with Bricks
+
+## Settings
+
+1. **Settings (gear) > Template Settings**
+2. **Type**: Header
+3. **Conditions**: Entire Website
+
+## Build the structure
+
+1. Add a **Section**
+2. Inside the **Container**:
+   - Add a **Logo** element (or Image/Text)
+   - Add a **Nav Menu** element (we'll use the standard WordPress menu)
+
+## Style the layout
+
+**Container:**
+1. **Direction**: `Row` (horizontal)
+2. **Justify content**: `Space between` (pushes logo and menu apart)
+3. **Align items**: `Center` (vertically aligned)
+
+**Section:**
+1. **Background color**: Pick a light gray or your brand color
+2. **Padding**: `12` top/bottom (this intentionally overrides our global 80px for this specific section)
+
+Your header is part of the site chrome, not page content. It usually needs tighter spacing than regular sections, so it is a good place to make a deliberate exception to your global section padding.
+
+## Create a WordPress menu (if you do not have one yet)
+
+The Nav Menu element uses a normal WordPress menu. If **Appearance > Menus** is empty or you have never built a menu:
+
+1. From the WordPress dashboard, go to **Appearance > Menus**
+2. Enter a **Menu name** (for example `Main`) and click **Create Menu**
+3. Add a few items from the left (**Pages**, **Custom links**, and so on), then click **Save Menu**
+
+Then return to this template in the builder.
+
+## Configure the menu
+
+1. Select the **Nav Menu** element
+2. Under **Menu**, choose the WordPress menu you created (for example **Main**)
+
+## Save and verify
+
+1. Save the template
+2. Go to your **Pages** panel (top bar) -> **Home**
+3. You should see your new header sitting perfectly atop your hero section!
+
+![](https://academy.bricksbuilder.io/assets/header-template.png)
+
+---
+
+<a id="getting-started-building-your-first-page"></a>
+
+# Start your first page
+
+Source: https://academy.bricksbuilder.io/getting-started/building-your-first-page/
+
+*Start building your first Bricks page by setting up the homepage, creating the hero section, and learning the core layout workflow.*
+
+https://youtu.be/d2mWTDfW6mE
+
+Time to build. We will start your homepage by creating the hero section. This is where you'll learn the core workflow and understand how layout elements work. We will add more sections (like a latest posts grid) later in the series.
+
+## Open your Home page
+
+In the previous article you already created a **Home** page and opened it in the builder.
+
+If the builder is not open anymore:
+
+1. In your WordPress dashboard, go to **Pages > All Pages**
+2. Find the page titled **Home**
+3. Hover it and click **Edit with Bricks**
+
+The builder opens with your Home page ready to work on. If you do not have a Home page yet, quickly create one now and open it with Bricks.
+
+## Set this page as your homepage
+
+Before we build, tell WordPress to use **Home** as the static front page:
+
+1. In the WordPress dashboard, go to **Settings > Reading**
+2. Under **Your homepage displays**, select **A static page**
+3. Set **Homepage** to your **Home** page
+4. Optionally set **Posts page** to a page named **Blog** (or leave default for now)
+5. Click **Save Changes**
+
+## How most web pages are structured
+
+Before we touch anything, notice how most websites are laid out when you scroll:
+
+- A **header** at the very top (logo and navigation, usually global)
+- A **hero** section that introduces the page
+- One or more **content sections** (features, testimonials, blog posts, contact)
+- A **footer** at the bottom
+
+Visually, the page is a vertical stack of horizontal bands. In Bricks, we build those bands with the **Section** element.
+
+Under the hood, each section is just a semantic HTML box. Inside that box we place more boxes, and inside those we place content.
+
+## Layout elements in Bricks
+
+To build those bands and columns, Bricks gives you four layout elements. You will use them to hold all other elements.
+
+**Section** → **Container** → **Block / Div** → **Elements**
+
+- **Section**: The root band. Spans the full width of the screen. Used to separate major parts of your page (header, hero, features, footer).
+- **Container**: Sits inside the section. Keeps your content centered and bounded (width 1100px by default).
+- **Block**: A layout box that uses flexbox and takes up 100 percent width by default. Great for columns and cards inside a section or container.
+- **Div**: A plain, unstyled `div` that grows with its content. Use it as a lightweight wrapper when you want full control.
+- **Elements**: The actual content (headings, images, buttons) that live inside those layout boxes.
+
+### When to use each layout element
+
+You can think of these layout elements as different kinds of wrappers for your content.
+
+- **Section**: Use when you want a new horizontal band on the page. A typical page is one section for hero, one for features, one for testimonials, one for contact, and so on.
+- **Container**: Use when you want the content of a section to have a fixed maximum width and be centered. Most sections have exactly one container.
+- **Block**: Use when you want to divide a container into columns or repeated boxes. For example, in a hero section, one Block for text and another for the image. In a features section, one Block per feature card.
+- **Div**: Use when you just need a simple box inside other layout elements. For example, to group a heading and an icon, or to wrap part of a card without affecting the overall layout.
+
+Where you apply styles matters:
+
+- Background colors and borders on the **Section** affect the full width band.
+- Styles on the **Container** affect the centered content area.
+- Styles on a **Block** or **Div** affect just that column or card.
+
+If you inspect your page in the browser later and hover over these elements in the dev tools, you will see colored overlays showing content, padding, and margin for each box. That is the box model in action.
+
+These layout elements are just wrappers. Where you place them determines width, positioning, and which parts of your design share the same background or border.
+
+We will keep coming back to them as you build more pages and templates.
+
+## Build the hero section
+
+For this first hero we will create a very common pattern:
+
+- Text and button on the left  
+- Image on the right  
+- Both aligned nicely in the middle of the screen
+
+### 1. Add a section
+
+1. In the Settings Panel (left), click **Section** (under Layout)
+2. A **Section** with a **Container** inside is automatically added to your canvas
+
+![](https://academy.bricksbuilder.io/assets/add-section-element.png)
+
+### 2. Add your hero content
+
+We will first add all the content, then turn it into two columns.
+
+1. Select the **Container** from the structure panel or by clicking on the canvas
+
+![](https://academy.bricksbuilder.io/assets/container-element-selected.png)
+2. Add a **Heading** element
+3. Add a **Rich Text** element below the heading
+4. Add a **Button** element below the text
+5. Add an **Image** element below the button
+
+Right now everything is in one column (stacked). We will group elements into columns next.
+
+![](https://academy.bricksbuilder.io/assets/bulk-selected-elements-inside-container.png)
+
+### 3. Group content into columns with Blocks
+
+Blocks are perfect for columns. Instead of adding them empty and dragging elements in, we will wrap existing elements in Blocks.
+
+**Left column (text + button):**
+
+1. Open the **Structure Panel** on the right
+2. In the Container, click the **Heading**
+3. Hold **Shift** and click the **Button**  
+   → This selects the Heading, Rich Text, and Button together  
+   (Optionally, hold `Cmd/Ctrl` and click items one by one to select them)
+4. Right-click on the selection and choose **Wrap → Block**
+
+Bricks wraps those three elements in a new Block. This Block will be your left column.
+
+**Right column (image):**
+
+1. In the Structure Panel, select the **Image**
+2. Right-click it and choose **Wrap → Block**
+
+You now have a Container with **two Blocks** inside: one for text/button, one for the image. Next we will tell Bricks to lay those Blocks out as columns.
+
+![](https://academy.bricksbuilder.io/assets/hero-section-two-columns-structure-panel.png)
+
+### 4. Layout the columns
+
+Now let's make them sit side-by-side using Flexbox.
+
+1. Select the **Container**
+2. Go to **Content > Layout**
+3. Set **Direction** to `Row` (horizontal)
+4. Set **Align cross axis** to `Center` (vertically centers content)
+5. Set **Column gap** to `24` (adds space between first column and second column)
+6. Set a background color from the "Styles" tab > "Background" 
+
+![](https://academy.bricksbuilder.io/assets/hero-section-styles.png)
+
+### A quick note on flexbox
+
+In CSS, the `display` property controls how elements are laid out. By default, many elements are `block` (stacked vertically) or `inline` (flow with text).
+
+**Flexbox** is a layout mode that makes it easy to arrange children of a container in a row or a column. In Bricks, Section, Container, and Block all use flexbox by default.
+
+When you set **Direction** to `Row`, you tell the container to line up its children horizontally. If you changed it to `Column`, they would stack vertically.
+
+A simple way to think about the main controls:
+
+- **Direction**: chooses the main axis (row = side by side, column = stacked).
+- **Gap**: spaces out the children along that main axis (the white space between our text Block and Image).
+- **Align items**: lines up the children along the cross axis (here: vertically) so both columns share the same vertical center.
+
+Flexbox is perfect for one dimensional layouts like our two column hero. If you want to go deeper into flexbox itself, you can read the [Flexbox basics guide on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox). We will stay focused on using it visually in Bricks.
+
+### 5. Style the content
+
+**Left column Block:**
+1. Select the **Block**
+2. Set **Row gap** to `8` (adds space between heading, text, and button)
+
+**Heading:**
+1. Change text to: "Welcome to Bricks"
+2. Set **Tag** to `H1`
+
+**Image:**
+1. Select the Image element
+2. Choose a photo from the media library
+
+## See the HTML Bricks generates
+
+You might have heard that Bricks outputs clean, semantic, non-bloated markup. Let's take a quick look at what that actually means.
+
+1. Click **Preview** in the toolbar to open your Home page on the front end  
+2. In your browser, right-click somewhere in your hero section and choose **Inspect** (or use the browser's developer tools shortcut)  
+3. Look for the `<main>` element and expand it
+
+You should see something very close to:
+
+- A `<section>` for the hero
+- A `<div>` (Container) inside it
+- Inside that, your content boxes and elements (heading, text, button, image)
+
+There are no mysterious extra wrapper divs, no huge chains of nested containers you did not create.
+
+Even if you're not familiar with HTML yet, the important idea is:
+
+- What you add in the builder is what you get in the markup  
+- Bricks keeps the structure lean so you have full control over layout and performance
+
+## The spacing problem
+
+Your section looks good, but it's hugging the top and bottom of the screen. We need padding.
+
+You *could* select the Section and add `80px` padding manually. But then you'd have to do that for every single section on your site. That's tedious and hard to maintain.
+
+**The solution?** Theme Styles.
+
+Instead of styling each section individually, we'll set a global rule: "All sections should have 80px padding."
+
+Let's do that in the next article.
+
+> **Help improve this lesson**
+>
+> Bricks Academy is new. If a step in this lesson felt confusing, incomplete, or out of date, use the feedback box in the right sidebar and tell us what to improve.
+
+---
+
 <a id="getting-started"></a>
 
 # Getting Started
@@ -997,381 +997,6 @@ You now know:
 > **Help improve this lesson**
 >
 > Bricks Academy is new. If anything in this lesson felt unclear or missing, use the feedback box in the right sidebar and leave us a quick note.
-
----
-
-<a id="getting-started-query-loops-dynamic-data"></a>
-
-# Query loops and dynamic data
-
-Source: https://academy.bricksbuilder.io/getting-started/query-loops-dynamic-data/
-
-*Use query loops and dynamic data in Bricks to render posts, fields, and other WordPress content inside reusable layouts.*
-
-https://youtu.be/3WCyZaPtmpA
-
-We're back on the homepage. Let's add a "Latest Posts" section below the hero.
-
-## Before you begin: sample posts
-
-This section needs **at least three published blog posts** so the query loop has something to show. If you skip this, the grid can look empty or broken even when you did everything right in Bricks.
-
-**Create 3 test posts first:**
-
-1. In the WordPress dashboard, go to **Posts > Add New**
-2. Give each post a **title** and a short **excerpt** (use the excerpt field if your screen shows it, or add a couple of lines in the content and let WordPress generate one)
-3. Set a **featured image** for each post (**Featured image** in the sidebar)
-4. Click **Publish** and repeat until you have at least **3 published posts**
-
-You can use the same steps later in the [Blog post template](https://academy.bricksbuilder.io/getting-started/blog-post-template/) article; the posts you create here are what that template will display.
-
-Before we start clicking, we need two core ideas: **query loops** and **dynamic data**.
-
-## What is a query loop?
-
-In WordPress, a "query" is just a question like:
-
-- "Give me the 3 latest posts"
-- "Give me all posts in this category"
-
-A **query loop** takes the answer to that question (the list of posts) and repeats a design once for each item.
-
-You design a single **card** (image, title, excerpt, button). The loop runs through the posts and outputs one card per post. Change the query rules, and the same design shows different posts.
-
-## What is dynamic data?
-
-Until now, when you added a Heading or Text element, you typed the content manually. That is **static** text.
-
-With **dynamic data**, you connect an element to a WordPress field instead:
-
-- Heading pulls the **post title**
-- Image pulls the **featured image**
-- Text pulls the **post excerpt**
-
-In a loop, each card shows the field values for the current post in the list.
-
-You will see this as options like `{post_title}` or `{featured_image}` in Bricks. They are just visual placeholders for real WordPress fields.
-
-## Prepare content
-
-You should already have at least **3 published posts**, each with a **featured image** (see **Before you begin** above). Quick check: **Posts > All Posts** — you should see three or more posts with **Published** status.
-
-## Build the section
-
-1. Add a new **Section**
-2. Inside the Container, add a **Heading** ("Latest Posts")
-3. Add a **Block** element below the heading
-
-## Configure the Grid
-
-We want a 3-column grid for our posts.
-
-Earlier in the series you used flexbox for a simple row layout (text on the left, image on the right). **CSS Grid** is the other famous layout system. It is ideal for two dimensional layouts where you care about rows and columns at the same time, like a grid of cards.
-
-When you set a Block to use Grid, you tell the browser to place its children on a grid.
-
-- The **Grid template columns** control describes how many columns you want and how wide they should be.  
-  - `1fr 1fr 1fr` means “three equal columns”, each taking one fraction of the available width.
-- The **Gap** control sets the space between both columns and rows, so your cards are evenly spaced in all directions.
-
-As you add more cards, Grid automatically flows them into these columns, then wraps onto new rows as needed. You do not have to manually position each card.
-
-1. Select the **Block**
-2. **Display**: `Grid`
-3. **Grid template columns**: `1fr 1fr 1fr` (three equal columns)
-4. **Gap**: `24`
-
-## Create the card (Loop item)
-
-Inside the Grid Block, add another **Block** (this will be our repeating card).
-
-Inside this Card Block, add:
-1. **Image** (Featured Image)
-2. **Heading** (Post Title, H3)
-3. **Basic Text** (Post Excerpt)
-4. **Text Link** ("Read more")
-
-## Enable Query Loop
-
-1. Select the **Card Block** (the inner one)
-2. Toggle **Use query loop**
-3. **Query settings**:
-   - Post type: Posts
-   - Posts per page: 3
-
-You should now see 3 post cards!
-
-## Connect dynamic data
-
-1. **Image**: Select dynamic data -> `Featured Image`
-
-![](https://academy.bricksbuilder.io/assets/dynamic-data-featured-image.png)
-
-2. **Heading**: Select dynamic data -> `Post Title`. Link to -> `Post URL`
-
-![](https://academy.bricksbuilder.io/assets/dynamic-data-post-title.png)
-
-3. **Excerpt**: Select dynamic data -> `Post Excerpt`
-4. **Read more**: Link to -> `Post URL`
-
-![](https://academy.bricksbuilder.io/assets/query-loop.png)
-
-## Responsive check
-
-1. Switch to **Mobile Landscape**
-2. Select the **Grid Block**
-3. Change **Grid template columns** to `1fr` (stacks cards vertically)
-
-Done! You have a dynamic post grid.
-
----
-
-<a id="getting-started-templates-intro"></a>
-
-# An intro to templates
-
-Source: https://academy.bricksbuilder.io/getting-started/templates-intro/
-
-*Understand what Bricks templates are, how template types work, and where templates fit into the site-building workflow.*
-
-https://youtu.be/9v2TUaA-oFg
-
-You've built a homepage with theme styles applied. But what about elements that appear on every page, like a header or footer? You don't want to rebuild those manually on each page. That's where templates come in.
-
-## What are templates?
-
-Templates are reusable layouts that automatically appear on multiple pages based on rules you set.
-
-Think of them as layout blueprints that apply themselves.
-
-In classic WordPress, you would create different PHP template files and let WordPress decide which one to use for a given URL. With Bricks, you design those templates visually and control the rules (conditions) without touching PHP.
-
-**Common examples:**
-
-- **Header template** - Logo and navigation that appears on every page
-- **Footer template** - Copyright and footer links on every page
-- **Single post template** - The layout all blog posts share
-- **Archive template** - Layout for category pages, blog archives
-
-Build a template once, set where it should appear, and Bricks handles the rest.
-
-## Template types
-
-Bricks has different template types for different purposes:
-
-- **Header** - Site header (logo, menu)
-- **Footer** - Site footer (copyright, links)
-- **Single** - Individual post/page layouts
-- **Section** - Reusable sections you manually insert
-- **Archive** - Blog archives, category pages, author pages
-- **Error Page** - 404 page
-- **Search Results** - Search results page
-
-The template type tells Bricks how to use it.
-
-## How templates apply
-
-Templates use **conditions** to determine where they appear.
-
-**Example**: Set a Header template's condition to "Entire Website" and it shows on every page automatically.
-
-Other condition options:
-- All posts
-- All pages
-- Front page only
-- Specific pages/posts
-- Category archives
-- Etc.
-
-### Auto-loading templates
-
-Some template types load automatically if published:
-
-| Template type | Auto-loads? |
-| --- | --- |
-| Header | Yes (if no conditions set) |
-| Footer | Yes (if no conditions set) |
-| Archive | Yes |
-| Search Results | Yes |
-| Error Page | Yes |
-| Single, Section | No (conditions required) |
-
-Once you publish a Header template, it appears site-wide by default (unless you disable this in **Bricks > Settings**).
-
-## Why templates matter
-
-**Efficiency** - Build once, use everywhere. Update once, change everywhere.
-
-**Consistency** - Every page uses the same header, footer, and post layout.
-
-**Scalability** - Add 100 blog posts, they all use your single post template automatically.
-
-**Maintenance** - Need to update your footer? Edit one template, not 50 pages.
-
-This is how professionals build WordPress sites that are easy to manage.
-
-## Managing templates
-
-View all templates at **Bricks > Templates** in WordPress dashboard.
-
-![](https://academy.bricksbuilder.io/assets/template-manager.png)
-
-Here you can:
-- See template types
-- View where templates are applied (conditions)
-- Edit, duplicate, or delete templates
-- Export/import templates
-- Organize with bundles and tags
-
-## Template library
-
-Bricks also includes pre-made templates:
-
-Click **Templates** (folder icon) in the builder toolbar.
-
-**Source dropdown**:
-- **My Templates** - Your custom templates
-- **Wireframes** - Simple, unstyled layouts you can insert and customize
-- **Design Sets** - Fully designed templates
-- **Remote sites** - Browse templates from Bricks installations configured under **Bricks > Settings > Templates & components > Remote libraries**. Learn more: [Remote Templates documentation](https://academy.bricksbuilder.io/builder/features/remote-templates/)
-
-We'll use wireframes later to speed up building.
-
-## What you've learned
-
-You now understand:
-- What templates are and why they matter
-- Different template types and their purposes
-- How template conditions work
-- Which templates auto-load
-- Where to manage templates
-- The template library sources
-
-In the next article, we'll put this into practice by building a header template.
-
----
-
-<a id="getting-started-settings-defaults"></a>
-
-# Settings and defaults
-
-Source: https://academy.bricksbuilder.io/getting-started/settings-defaults/
-
-*Review the Bricks settings and defaults used in the Academy setup so your builder behavior, styling, and templates match the tutorial flow.*
-
-https://youtu.be/LBOO77mhXI8
-
-Before you start building pages, it helps to know that Bricks has a separate settings screen in the WordPress dashboard: **Bricks > Settings**.
-
-These are your global Bricks settings. They affect how Bricks behaves across the site and are separate from the builder controls you will use while designing pages and templates.
-
-Bricks tries to stay as unopinionated as possible, so there is no single "correct" setup. This preset is completely optional. If you want a simple starting point with sensible defaults for this series, import it and keep moving. If not, you can skip it and come back to the deeper settings later when a specific need comes up.
-
-## Import the preset
-
-1. Download the preset:
-
-- [Download preset (JSON)](https://academy.bricksbuilder.io/downloads/getting-started-bricks-settings.json)
-
-2. In the WordPress dashboard, go to **Bricks > Settings** → **Import Settings**.
-3. Drop the JSON onto the upload area or use **Select file**.
-4. Click **Import Settings**.
-
-This preset enables:
-
-- **Pages** only
-- **Load all matching theme styles**
-- **Query sort / filter / live search**
-- **Custom breakpoints**
-- Template thumbnails
-- Toolbar logo set to **Dashboard**
-- Structure actions
-- Breadcrumbs
-- **HTML & CSS to Bricks** with confirm-on-paste
-- **Global class import manager** on conflicts
-- Hover previews
-- **Disable jQuery migrate**
-- **Disable class chaining**
-- **Preload custom fonts**
-
-## Set it yourself
-
-If you prefer not to import anything, that is totally fine too. The defaults are good enough to continue with the series.
-
-When you start needing something specific, like builder access for editors, performance tweaks, template options, or API keys, you can revisit the full [Bricks Settings](https://academy.bricksbuilder.io/builder/setup/settings/) article.
-
----
-
-<a id="getting-started-theme-styles"></a>
-
-# Theme styles
-
-Source: https://academy.bricksbuilder.io/getting-started/theme-styles/
-
-*Set up Bricks theme styles for colors, typography, spacing, and other global defaults before you continue building pages and templates.*
-
-https://youtu.be/QnKjMKMHwEM
-
-We just built a hero section, but it needs better spacing. Instead of adding padding manually to every section (slow and inconsistent), let's set a global rule using Theme Styles.
-
-Theme Styles are your site-wide design system. They control the default look of every element. Under the hood, Bricks writes the CSS for you. Instead of hand-coding `section { padding: 80px 16px; }`, you set it visually once and it applies everywhere.
-
-## Create a theme style
-
-1. Click the **Styles** icon in the toolbar (or press `Cmd/Ctrl + .`)
-2. Click the **Select: Theme Styles** dropdown and enter a name for the theme style
-3. Click the "Create" icon
-
-![](https://academy.bricksbuilder.io/assets/style-manager-theme-styles-tab.png)
-
-This opens the **Style Manager**. This is the central place in Bricks for managing your design system. You will notice it has several tabs: Theme Styles, Classes, Variables, Colors, Typography, Spacing, Framework, and Settings. We will focus on Theme Styles for now and come back to the others as you need them.
-
-## Set global section spacing
-
-We want every section to have consistent padding and spacing.
-
-1. In the Theme Styles panel, go to **Element > Section**
-2. Set **Padding**:
-   - Top: `80`
-   - Bottom: `80`
-   - Left: `16`
-   - Right: `16`
-3. Set **Row gap** to `32`
-
-![](https://academy.bricksbuilder.io/assets/theme-styles-section-padding.png)
-
-**Watch the canvas**: Your hero section immediately updates with the new padding! You didn't touch the section itself; you just changed the global rule.
-
-Now, every new section you add will automatically have this perfect spacing.
-
-## Apply to entire website
-
-Right now, this style is only visible in the builder. Let's make it live for the whole site.
-
-1. In Theme Styles, go to **Conditions**
-2. Click **Add Condition**
-3. Select **Entire Website**
-4. Click **Save** in the toolbar
-
-![](https://academy.bricksbuilder.io/assets/theme-styles-conditions.png)
-
-## Why this is powerful
-
-**Scalability**: If you decide later that sections need `100px` padding, you change it *once* in Theme Styles, and your entire site updates.
-
-**Consistency**: You never have to remember "was it 60px or 80px?" Bricks handles it for you.
-
-Think of it this way:
-
-- **Theme Styles** define sensible **defaults** for your whole site.
-- **Global classes** (later in the series) give you reusable patterns you can apply on demand.
-- **One-off element styles** are for rare exceptions.
-
-Most of your design decisions should live in Theme Styles and classes. That is how you keep sites predictable and easy to change.
-
-## Next: templates
-
-Now that our global styles are set, let's look at another powerful global feature: Templates. We'll use them to build a header that appears on every page.
 
 ---
 
@@ -1704,6 +1329,132 @@ Now go make something great.
 
 ---
 
+<a id="getting-started-query-loops-dynamic-data"></a>
+
+# Query loops and dynamic data
+
+Source: https://academy.bricksbuilder.io/getting-started/query-loops-dynamic-data/
+
+*Use query loops and dynamic data in Bricks to render posts, fields, and other WordPress content inside reusable layouts.*
+
+https://youtu.be/3WCyZaPtmpA
+
+We're back on the homepage. Let's add a "Latest Posts" section below the hero.
+
+## Before you begin: sample posts
+
+This section needs **at least three published blog posts** so the query loop has something to show. If you skip this, the grid can look empty or broken even when you did everything right in Bricks.
+
+**Create 3 test posts first:**
+
+1. In the WordPress dashboard, go to **Posts > Add New**
+2. Give each post a **title** and a short **excerpt** (use the excerpt field if your screen shows it, or add a couple of lines in the content and let WordPress generate one)
+3. Set a **featured image** for each post (**Featured image** in the sidebar)
+4. Click **Publish** and repeat until you have at least **3 published posts**
+
+You can use the same steps later in the [Blog post template](https://academy.bricksbuilder.io/getting-started/blog-post-template/) article; the posts you create here are what that template will display.
+
+Before we start clicking, we need two core ideas: **query loops** and **dynamic data**.
+
+## What is a query loop?
+
+In WordPress, a "query" is just a question like:
+
+- "Give me the 3 latest posts"
+- "Give me all posts in this category"
+
+A **query loop** takes the answer to that question (the list of posts) and repeats a design once for each item.
+
+You design a single **card** (image, title, excerpt, button). The loop runs through the posts and outputs one card per post. Change the query rules, and the same design shows different posts.
+
+## What is dynamic data?
+
+Until now, when you added a Heading or Text element, you typed the content manually. That is **static** text.
+
+With **dynamic data**, you connect an element to a WordPress field instead:
+
+- Heading pulls the **post title**
+- Image pulls the **featured image**
+- Text pulls the **post excerpt**
+
+In a loop, each card shows the field values for the current post in the list.
+
+You will see this as options like `{post_title}` or `{featured_image}` in Bricks. They are just visual placeholders for real WordPress fields.
+
+## Prepare content
+
+You should already have at least **3 published posts**, each with a **featured image** (see **Before you begin** above). Quick check: **Posts > All Posts** — you should see three or more posts with **Published** status.
+
+## Build the section
+
+1. Add a new **Section**
+2. Inside the Container, add a **Heading** ("Latest Posts")
+3. Add a **Block** element below the heading
+
+## Configure the Grid
+
+We want a 3-column grid for our posts.
+
+Earlier in the series you used flexbox for a simple row layout (text on the left, image on the right). **CSS Grid** is the other famous layout system. It is ideal for two dimensional layouts where you care about rows and columns at the same time, like a grid of cards.
+
+When you set a Block to use Grid, you tell the browser to place its children on a grid.
+
+- The **Grid template columns** control describes how many columns you want and how wide they should be.  
+  - `1fr 1fr 1fr` means “three equal columns”, each taking one fraction of the available width.
+- The **Gap** control sets the space between both columns and rows, so your cards are evenly spaced in all directions.
+
+As you add more cards, Grid automatically flows them into these columns, then wraps onto new rows as needed. You do not have to manually position each card.
+
+1. Select the **Block**
+2. **Display**: `Grid`
+3. **Grid template columns**: `1fr 1fr 1fr` (three equal columns)
+4. **Gap**: `24`
+
+## Create the card (Loop item)
+
+Inside the Grid Block, add another **Block** (this will be our repeating card).
+
+Inside this Card Block, add:
+1. **Image** (Featured Image)
+2. **Heading** (Post Title, H3)
+3. **Basic Text** (Post Excerpt)
+4. **Text Link** ("Read more")
+
+## Enable Query Loop
+
+1. Select the **Card Block** (the inner one)
+2. Toggle **Use query loop**
+3. **Query settings**:
+   - Post type: Posts
+   - Posts per page: 3
+
+You should now see 3 post cards!
+
+## Connect dynamic data
+
+1. **Image**: Select dynamic data -> `Featured Image`
+
+![](https://academy.bricksbuilder.io/assets/dynamic-data-featured-image.png)
+
+2. **Heading**: Select dynamic data -> `Post Title`. Link to -> `Post URL`
+
+![](https://academy.bricksbuilder.io/assets/dynamic-data-post-title.png)
+
+3. **Excerpt**: Select dynamic data -> `Post Excerpt`
+4. **Read more**: Link to -> `Post URL`
+
+![](https://academy.bricksbuilder.io/assets/query-loop.png)
+
+## Responsive check
+
+1. Switch to **Mobile Landscape**
+2. Select the **Grid Block**
+3. Change **Grid template columns** to `1fr` (stacks cards vertically)
+
+Done! You have a dynamic post grid.
+
+---
+
 <a id="getting-started-responsive-basics"></a>
 
 # Responsive basics
@@ -1837,3 +1588,252 @@ Test widths like 850px (between Tablet 992px and Mobile landscape 768px). If som
 - How to hide elements on specific breakpoints
 - The two approaches to responsive values: hard breakpoint overrides vs. fluid scaling
 - How to test your design across screen sizes
+
+---
+
+<a id="getting-started-settings-defaults"></a>
+
+# Settings and defaults
+
+Source: https://academy.bricksbuilder.io/getting-started/settings-defaults/
+
+*Review the Bricks settings and defaults used in the Academy setup so your builder behavior, styling, and templates match the tutorial flow.*
+
+https://youtu.be/LBOO77mhXI8
+
+Before you start building pages, it helps to know that Bricks has a separate settings screen in the WordPress dashboard: **Bricks > Settings**.
+
+These are your global Bricks settings. They affect how Bricks behaves across the site and are separate from the builder controls you will use while designing pages and templates.
+
+Bricks tries to stay as unopinionated as possible, so there is no single "correct" setup. This preset is completely optional. If you want a simple starting point with sensible defaults for this series, import it and keep moving. If not, you can skip it and come back to the deeper settings later when a specific need comes up.
+
+## Import the preset
+
+1. Download the preset:
+
+- [Download preset (JSON)](https://academy.bricksbuilder.io/downloads/getting-started-bricks-settings.json)
+
+2. In the WordPress dashboard, go to **Bricks > Settings** → **Import Settings**.
+3. Drop the JSON onto the upload area or use **Select file**.
+4. Click **Import Settings**.
+
+This preset enables:
+
+- **Pages** only
+- **Load all matching theme styles**
+- **Query sort / filter / live search**
+- **Custom breakpoints**
+- Template thumbnails
+- Toolbar logo set to **Dashboard**
+- Structure actions
+- Breadcrumbs
+- **HTML & CSS to Bricks** with confirm-on-paste
+- **Global class import manager** on conflicts
+- Hover previews
+- **Disable jQuery migrate**
+- **Disable class chaining**
+- **Preload custom fonts**
+
+## Set it yourself
+
+If you prefer not to import anything, that is totally fine too. The defaults are good enough to continue with the series.
+
+When you start needing something specific, like builder access for editors, performance tweaks, template options, or API keys, you can revisit the full [Bricks Settings](https://academy.bricksbuilder.io/builder/setup/settings/) article.
+
+---
+
+<a id="getting-started-templates-intro"></a>
+
+# An intro to templates
+
+Source: https://academy.bricksbuilder.io/getting-started/templates-intro/
+
+*Understand what Bricks templates are, how template types work, and where templates fit into the site-building workflow.*
+
+https://youtu.be/9v2TUaA-oFg
+
+You've built a homepage with theme styles applied. But what about elements that appear on every page, like a header or footer? You don't want to rebuild those manually on each page. That's where templates come in.
+
+## What are templates?
+
+Templates are reusable layouts that automatically appear on multiple pages based on rules you set.
+
+Think of them as layout blueprints that apply themselves.
+
+In classic WordPress, you would create different PHP template files and let WordPress decide which one to use for a given URL. With Bricks, you design those templates visually and control the rules (conditions) without touching PHP.
+
+**Common examples:**
+
+- **Header template** - Logo and navigation that appears on every page
+- **Footer template** - Copyright and footer links on every page
+- **Single post template** - The layout all blog posts share
+- **Archive template** - Layout for category pages, blog archives
+
+Build a template once, set where it should appear, and Bricks handles the rest.
+
+## Template types
+
+Bricks has different template types for different purposes:
+
+- **Header** - Site header (logo, menu)
+- **Footer** - Site footer (copyright, links)
+- **Single** - Individual post/page layouts
+- **Section** - Reusable sections you manually insert
+- **Archive** - Blog archives, category pages, author pages
+- **Error Page** - 404 page
+- **Search Results** - Search results page
+
+The template type tells Bricks how to use it.
+
+## How templates apply
+
+Templates use **conditions** to determine where they appear.
+
+**Example**: Set a Header template's condition to "Entire Website" and it shows on every page automatically.
+
+Other condition options:
+- All posts
+- All pages
+- Front page only
+- Specific pages/posts
+- Category archives
+- Etc.
+
+### Auto-loading templates
+
+Some template types load automatically if published:
+
+| Template type | Auto-loads? |
+| --- | --- |
+| Header | Yes (if no conditions set) |
+| Footer | Yes (if no conditions set) |
+| Archive | Yes |
+| Search Results | Yes |
+| Error Page | Yes |
+| Single, Section | No (conditions required) |
+
+Once you publish a Header template, it appears site-wide by default (unless you disable this in **Bricks > Settings**).
+
+## Why templates matter
+
+**Efficiency** - Build once, use everywhere. Update once, change everywhere.
+
+**Consistency** - Every page uses the same header, footer, and post layout.
+
+**Scalability** - Add 100 blog posts, they all use your single post template automatically.
+
+**Maintenance** - Need to update your footer? Edit one template, not 50 pages.
+
+This is how professionals build WordPress sites that are easy to manage.
+
+## Managing templates
+
+View all templates at **Bricks > Templates** in WordPress dashboard.
+
+![](https://academy.bricksbuilder.io/assets/template-manager.png)
+
+Here you can:
+- See template types
+- View where templates are applied (conditions)
+- Edit, duplicate, or delete templates
+- Export/import templates
+- Organize with bundles and tags
+
+## Template library
+
+Bricks also includes pre-made templates:
+
+Click **Templates** (folder icon) in the builder toolbar.
+
+**Source dropdown**:
+- **My Templates** - Your custom templates
+- **Wireframes** - Simple, unstyled layouts you can insert and customize
+- **Design Sets** - Fully designed templates
+- **Remote sites** - Browse templates from Bricks installations configured under **Bricks > Settings > Templates & components > Remote libraries**. Learn more: [Remote Templates documentation](https://academy.bricksbuilder.io/builder/features/remote-templates/)
+
+We'll use wireframes later to speed up building.
+
+## What you've learned
+
+You now understand:
+- What templates are and why they matter
+- Different template types and their purposes
+- How template conditions work
+- Which templates auto-load
+- Where to manage templates
+- The template library sources
+
+In the next article, we'll put this into practice by building a header template.
+
+---
+
+<a id="getting-started-theme-styles"></a>
+
+# Theme styles
+
+Source: https://academy.bricksbuilder.io/getting-started/theme-styles/
+
+*Set up Bricks theme styles for colors, typography, spacing, and other global defaults before you continue building pages and templates.*
+
+https://youtu.be/QnKjMKMHwEM
+
+We just built a hero section, but it needs better spacing. Instead of adding padding manually to every section (slow and inconsistent), let's set a global rule using Theme Styles.
+
+Theme Styles are your site-wide design system. They control the default look of every element. Under the hood, Bricks writes the CSS for you. Instead of hand-coding `section { padding: 80px 16px; }`, you set it visually once and it applies everywhere.
+
+## Create a theme style
+
+1. Click the **Styles** icon in the toolbar (or press `Cmd/Ctrl + .`)
+2. Click the **Select: Theme Styles** dropdown and enter a name for the theme style
+3. Click the "Create" icon
+
+![](https://academy.bricksbuilder.io/assets/style-manager-theme-styles-tab.png)
+
+This opens the **Style Manager**. This is the central place in Bricks for managing your design system. You will notice it has several tabs: Theme Styles, Classes, Variables, Colors, Typography, Spacing, Framework, and Settings. We will focus on Theme Styles for now and come back to the others as you need them.
+
+## Set global section spacing
+
+We want every section to have consistent padding and spacing.
+
+1. In the Theme Styles panel, go to **Element > Section**
+2. Set **Padding**:
+   - Top: `80`
+   - Bottom: `80`
+   - Left: `16`
+   - Right: `16`
+3. Set **Row gap** to `32`
+
+![](https://academy.bricksbuilder.io/assets/theme-styles-section-padding.png)
+
+**Watch the canvas**: Your hero section immediately updates with the new padding! You didn't touch the section itself; you just changed the global rule.
+
+Now, every new section you add will automatically have this perfect spacing.
+
+## Apply to entire website
+
+Right now, this style is only visible in the builder. Let's make it live for the whole site.
+
+1. In Theme Styles, go to **Conditions**
+2. Click **Add Condition**
+3. Select **Entire Website**
+4. Click **Save** in the toolbar
+
+![](https://academy.bricksbuilder.io/assets/theme-styles-conditions.png)
+
+## Why this is powerful
+
+**Scalability**: If you decide later that sections need `100px` padding, you change it *once* in Theme Styles, and your entire site updates.
+
+**Consistency**: You never have to remember "was it 60px or 80px?" Bricks handles it for you.
+
+Think of it this way:
+
+- **Theme Styles** define sensible **defaults** for your whole site.
+- **Global classes** (later in the series) give you reusable patterns you can apply on demand.
+- **One-off element styles** are for rare exceptions.
+
+Most of your design decisions should live in Theme Styles and classes. That is how you keep sites predictable and easy to change.
+
+## Next: templates
+
+Now that our global styles are set, let's look at another powerful global feature: Templates. We'll use them to build a header that appears on every page.

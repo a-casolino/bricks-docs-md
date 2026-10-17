@@ -1546,15 +1546,15 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Reset Password (StateWooCommerce Template Statebricks) Schema
+# View Order (StateWooCommerce Template Statebricks) Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-reset-password/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-view-order/
 
-*Schema for Bricks Reset password (StateWooCommerce template statebricks) element*
+*Schema for Bricks View order (StateWooCommerce template statebricks) element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-account-v2-state-reset-password |
+| `name` | woocommerce-account-v2-state-view-order |
 | `category` | woocommerce_account |
 | `tag` | div |
 | `nestable` | true |
@@ -1563,9 +1563,9 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-a
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
+| `previewOrderId` | number | Preview order ID | — |
 | `generatePredefinedElements` | select | generatePredefinedElements | — |
 | `generatePredefinedElementsApply` | button | Generate | — |
-| `floatingLabelStyle` | checkbox | Floating label | — |
 
 ## Inherited CSS controls
 
@@ -1641,15 +1641,15 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# View Order (StateWooCommerce Template Statebricks) Schema
+# Reset Password (StateWooCommerce Template Statebricks) Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-view-order/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-reset-password/
 
-*Schema for Bricks View order (StateWooCommerce template statebricks) element*
+*Schema for Bricks Reset password (StateWooCommerce template statebricks) element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-account-v2-state-view-order |
+| `name` | woocommerce-account-v2-state-reset-password |
 | `category` | woocommerce_account |
 | `tag` | div |
 | `nestable` | true |
@@ -1658,9 +1658,9 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-a
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `previewOrderId` | number | Preview order ID | — |
 | `generatePredefinedElements` | select | generatePredefinedElements | — |
 | `generatePredefinedElementsApply` | button | Generate | — |
+| `floatingLabelStyle` | checkbox | Floating label | — |
 
 ## Inherited CSS controls
 

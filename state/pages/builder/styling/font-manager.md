@@ -1,5 +1,7 @@
 *Manage project fonts in Bricks, including uploads, font organization, and how fonts are exposed throughout the builder.*
 
+https://youtu.be/6QB84hoycgw
+
 The Font Manager is the central place to browse, favorite, download, upload, edit, and remove the fonts available in Bricks typography controls.
 
 Use it when you want to:

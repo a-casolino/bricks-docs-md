@@ -247,6 +247,25 @@ add_filter( 'bricks/body/attributes', function( $attributes ) {
 
 ---
 
+# Filter: bricks/builder/elements
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-elements/
+
+*Determine which elements to use in Bricks by out-commenting the ones you don't want to use. There is a full example and list of all elements in the Bricks child.*
+
+Determine which elements to use in Bricks by out-commenting the ones you don't want to use. There is a full example and list of all elements in the Bricks child theme that you can customize to your requirements.
+
+```php
+add_filter( 'bricks/builder/elements', function( $elements ) {
+  // See Bricks child theme for a full list of all available elements
+  // var_dump( $elements ); // To see all available elements
+
+  return $elements;
+} );
+```
+
+---
+
 # Filter: bricks/builder/codemirror_config
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-codemirror_config/
@@ -287,53 +306,6 @@ In this example, the filter modifies the default CodeMirror configuration to:
 **Return:**
 
 - *(array)*: The custom configuration array, applied alongside or in place of Bricks' defaults.
-
----
-
-# Filter: bricks/builder/elements
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-elements/
-
-*Determine which elements to use in Bricks by out-commenting the ones you don't want to use. There is a full example and list of all elements in the Bricks child.*
-
-Determine which elements to use in Bricks by out-commenting the ones you don't want to use. There is a full example and list of all elements in the Bricks child theme that you can customize to your requirements.
-
-```php
-add_filter( 'bricks/builder/elements', function( $elements ) {
-  // See Bricks child theme for a full list of all available elements
-  // var_dump( $elements ); // To see all available elements
-
-  return $elements;
-} );
-```
-
----
-
-# Filter: bricks/builder/image_size_options
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-image_size_options/
-
-*The bricks/builder/imagesizes hook gives developers the ability to customize image size options in the builder.*
-
-The `bricks/builder/image_sizes` hook gives developers the ability to customize image size options in the builder.
-
-By default, when working within a query loop and using dynamic data for image sources, Bricks Builder displays all the registered WordPress image sizes.
-
-This hook allows you to modify this list if you know that certain sizes are not being used, helping you streamline your image size options to fit your needs.
-
-```php
-/**
- * $image_sizes Multidimensional array (key: image size name)
- */
-add_filter( 'bricks/builder/image_size_options', function( $image_sizes ) {
-  // Unset thumbnail, 1536x1536, 2048x2048
-  unset( $image_sizes['thumbnail'] );
-  unset( $image_sizes['1536x1536'] );
-  unset( $image_sizes['2048x2048'] );
-
-  return $image_sizes;
-});
-```
 
 ---
 
@@ -380,6 +352,34 @@ add_filter( 'bricks/code/allow_execution', function( $allow ) {
   // Only allows to return false to disable code execution programmatically
   return false;
 } );
+```
+
+---
+
+# Filter: bricks/builder/image_size_options
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-image_size_options/
+
+*The bricks/builder/imagesizes hook gives developers the ability to customize image size options in the builder.*
+
+The `bricks/builder/image_sizes` hook gives developers the ability to customize image size options in the builder.
+
+By default, when working within a query loop and using dynamic data for image sources, Bricks Builder displays all the registered WordPress image sizes.
+
+This hook allows you to modify this list if you know that certain sizes are not being used, helping you streamline your image size options to fit your needs.
+
+```php
+/**
+ * $image_sizes Multidimensional array (key: image size name)
+ */
+add_filter( 'bricks/builder/image_size_options', function( $image_sizes ) {
+  // Unset thumbnail, 1536x1536, 2048x2048
+  unset( $image_sizes['thumbnail'] );
+  unset( $image_sizes['1536x1536'] );
+  unset( $image_sizes['2048x2048'] );
+
+  return $image_sizes;
+});
 ```
 
 ---
@@ -540,27 +540,6 @@ add_filter( 'bricks/comments/timestamp', function( $timestamp, $comment ) {
 
 ---
 
-# Filter: bricks/content/attributes
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-attributes/
-
-*Programmatically add HTML attributes to the main tag.*
-
-Programmatically add HTML attributes to the `main` tag.
-
-```php
-add_filter( 'bricks/content/attributes', function( $attributes ) {
-  // Add 'data-is-content' HTML attribute to main with value 'y'
-  $attributes['data-is-content'] = 'y';
-  return $attributes;
-} );
-```
-
-- [/developer/hooks/filters/filter-bricks-header-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/)
-- [/developer/hooks/filters/filter-bricks-header-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/)
-
----
-
 # Filter: bricks/content/html_after_begin
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-html_after_begin/
@@ -585,6 +564,27 @@ add_filter( 'bricks/content/html_after_begin', function( $html_after_begin, $bri
 
 ---
 
+# Filter: bricks/content/attributes
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-attributes/
+
+*Programmatically add HTML attributes to the main tag.*
+
+Programmatically add HTML attributes to the `main` tag.
+
+```php
+add_filter( 'bricks/content/attributes', function( $attributes ) {
+  // Add 'data-is-content' HTML attribute to main with value 'y'
+  $attributes['data-is-content'] = 'y';
+  return $attributes;
+} );
+```
+
+- [/developer/hooks/filters/filter-bricks-header-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/)
+- [/developer/hooks/filters/filter-bricks-header-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/)
+
+---
+
 # Filter: bricks/content/html_before_end
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-html_before_end/
@@ -605,6 +605,29 @@ add_filter( 'bricks/content/html_before_end', function( $html_after_begin, $bric
 
     return $html_after_begin . $my_popup_html;
 }, 10, 4 );
+```
+
+---
+
+# Filter: bricks/default_page_title
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-default_page_title/
+
+*Since 1.8, Bricks automatically adds default page titles to all non-Bricks pages. However, if you wish to customize or remove this default page title, you can.*
+
+Since 1.8, Bricks automatically adds default page titles to all non-Bricks pages. However, if you wish to customize or remove this default page title, you can utilize this filter.
+
+Returning an empty string, disables the default page title.
+
+```php
+add_filter( 'bricks/default_page_title', function( $title, $post_id ) {
+  // If slug of current page is 'my-page': Return empty page title
+  if ( is_page( 'my-page' ) ) {
+    $title = '';
+  }
+
+  return $title;
+}, 10, 2 );
 ```
 
 ---
@@ -635,29 +658,6 @@ add_filter( 'bricks/content/tag', function( $tag ) {
 **Return:**
 
 - (string): The HTML tag you want to render instead of the default.
-
----
-
-# Filter: bricks/default_page_title
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-default_page_title/
-
-*Since 1.8, Bricks automatically adds default page titles to all non-Bricks pages. However, if you wish to customize or remove this default page title, you can.*
-
-Since 1.8, Bricks automatically adds default page titles to all non-Bricks pages. However, if you wish to customize or remove this default page title, you can utilize this filter.
-
-Returning an empty string, disables the default page title.
-
-```php
-add_filter( 'bricks/default_page_title', function( $title, $post_id ) {
-  // If slug of current page is 'my-page': Return empty page title
-  if ( is_page( 'my-page' ) ) {
-    $title = '';
-  }
-
-  return $title;
-}, 10, 2 );
-```
 
 ---
 
@@ -739,6 +739,28 @@ add_filter( 'bricks/dynamic_data/read_more', function( $label, $post ) {
 ```
 
 Read more about [Dynamic Data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/) in the Bricks academy.
+
+---
+
+# Filter: bricks/dynamic_data/replace_nonexistent_tags
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-replace_nonexistent_tags/
+
+*Dynamic data tags are strings with a special syntax wrapped by curly brackets. Sometimes this syntax has conflicts with other plugins (e.g. Fluent Forms) or.*
+
+Dynamic data tags are strings with a special syntax wrapped by curly brackets. Sometimes this syntax has conflicts with other plugins (e.g. Fluent Forms) or with the content itself (e.g. mathematical equations).
+
+From Bricks 1.4 onwards, the default Bricks logic is to keep the nonexistent tags (they won't be replaced by an empty string anymore). It is possible to switch off the default Bricks behavior and tell Bricks to replace the nonexistent dynamic data tags with an empty string.
+
+To replace nonexistent tags add the following PHP snippet to your `functions.php` file:
+
+```php
+add_filter( 'bricks/dynamic_data/replace_nonexistent_tags', '__return_true', 10, 1 );
+```
+
+> **Note**
+>
+> Note: Bricks 1.3.5 introduced the possibility to toggle this behavior, but by default Bricks was replacing the tags. Bricks 1.4 changed the default action.
 
 ---
 
@@ -917,28 +939,6 @@ where `huciku` is the element ID of the Button.
 Note: This will be applied as `brxe-huciku` class in the output in this case, not a ID.
 
 Also, replace `faqs` and `button_text` strings as applicable.
-
----
-
-# Filter: bricks/dynamic_data/replace_nonexistent_tags
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-replace_nonexistent_tags/
-
-*Dynamic data tags are strings with a special syntax wrapped by curly brackets. Sometimes this syntax has conflicts with other plugins (e.g. Fluent Forms) or.*
-
-Dynamic data tags are strings with a special syntax wrapped by curly brackets. Sometimes this syntax has conflicts with other plugins (e.g. Fluent Forms) or with the content itself (e.g. mathematical equations).
-
-From Bricks 1.4 onwards, the default Bricks logic is to keep the nonexistent tags (they won't be replaced by an empty string anymore). It is possible to switch off the default Bricks behavior and tell Bricks to replace the nonexistent dynamic data tags with an empty string.
-
-To replace nonexistent tags add the following PHP snippet to your `functions.php` file:
-
-```php
-add_filter( 'bricks/dynamic_data/replace_nonexistent_tags', '__return_true', 10, 1 );
-```
-
-> **Note**
->
-> Note: Bricks 1.3.5 introduced the possibility to toggle this behavior, but by default Bricks was replacing the tags. Bricks 1.4 changed the default action.
 
 ---
 
@@ -1235,6 +1235,53 @@ In this example, the filter modifies the value of the meta key 'my_meta_key' usi
 
 ---
 
+# Filter: bricks/form/update_post/meta_value
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-update_post-meta_value/
+
+*This filter is part of the Update post form action in Bricks.*
+
+This filter is part of the [**Update post**](https://academy.bricksbuilder.io/builder/features/create-update-posts-on-the-frontend/) form action in Bricks.
+
+It enables developers to customize the meta values of existing posts being updated through form submissions.
+
+**Functionality:**
+
+The `bricks/form/update_post/meta_value` filter is triggered within the 'Update post' action when a post is being updated from a form submission. It allows for altering the meta values based on custom logic or project-specific needs. This includes formatting data, validating content, handling file uploads, or applying conditional transformations to the meta values.
+
+**Example Usage:**
+
+```php
+add_filter(
+	'bricks/form/update_post/meta_value',
+	function( $meta_value, $meta_key, $post_id, $form_fields ) {
+		if ( $meta_key === 'specific_meta_key' ) {
+			// Custom logic for 'specific_meta_key'
+			$meta_value = modify_meta_value( $meta_value );
+		}
+		// Implement additional custom logic here
+		return $meta_value;
+	},
+	10,
+	4
+);
+```
+
+In this example, the filter modifies the value of a specific meta key ('specific_meta_key') using a custom function `modify_meta_value`.
+
+**Parameters:**
+
+- `$meta_value` (mixed): The original value of the meta field.
+- `$meta_key` (string): The key of the meta field being modified.
+- `$post_id` (int): The ID of the post being updated.
+- `$form_fields` (array): The form fields data.
+
+**Return:**
+
+- (mixed): The modified value of the meta field, which will be updated in the post's meta data.
+
+---
+
 # Filter: bricks/frontend/render_data
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-frontend-render_data/
@@ -1286,53 +1333,6 @@ add_filter('bricks/frontend/render_data', function($content, $post, $area) {
 ```
 
 In this example, a callback function is defined within the add_filter function call targeting the `bricks/frontend/render_data` filter. This callback function modifies every heading tag present in the content to include a unique ID attribute. This can be useful for navigation purposes, such as creating a table of contents.
-
----
-
-# Filter: bricks/form/update_post/meta_value
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-update_post-meta_value/
-
-*This filter is part of the Update post form action in Bricks.*
-
-This filter is part of the [**Update post**](https://academy.bricksbuilder.io/builder/features/create-update-posts-on-the-frontend/) form action in Bricks.
-
-It enables developers to customize the meta values of existing posts being updated through form submissions.
-
-**Functionality:**
-
-The `bricks/form/update_post/meta_value` filter is triggered within the 'Update post' action when a post is being updated from a form submission. It allows for altering the meta values based on custom logic or project-specific needs. This includes formatting data, validating content, handling file uploads, or applying conditional transformations to the meta values.
-
-**Example Usage:**
-
-```php
-add_filter(
-	'bricks/form/update_post/meta_value',
-	function( $meta_value, $meta_key, $post_id, $form_fields ) {
-		if ( $meta_key === 'specific_meta_key' ) {
-			// Custom logic for 'specific_meta_key'
-			$meta_value = modify_meta_value( $meta_value );
-		}
-		// Implement additional custom logic here
-		return $meta_value;
-	},
-	10,
-	4
-);
-```
-
-In this example, the filter modifies the value of a specific meta key ('specific_meta_key') using a custom function `modify_meta_value`.
-
-**Parameters:**
-
-- `$meta_value` (mixed): The original value of the meta field.
-- `$meta_key` (string): The key of the meta field being modified.
-- `$post_id` (int): The ID of the post being updated.
-- `$form_fields` (array): The form fields data.
-
-**Return:**
-
-- (mixed): The modified value of the meta field, which will be updated in the post's meta data.
 
 ---
 
@@ -1399,35 +1399,6 @@ add_filter( 'bricks/get_element_data/maybe_from_post_id', function( $id, $elemen
 
 ---
 
-# Filter: bricks/header/attributes
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/
-
-*Programmatically add HTML attributes to the header tag.*
-
-Programmatically add HTML attributes to the `header` tag.
-
-```php
-add_filter( 'bricks/header/attributes', function( $attributes ) {
-  // Add custom class to header
-  if ( isset( $attributes['class'] ) && is_array( $attributes['class'] ) ) {
-    $attributes['class'][] = 'my-header-class';
-  } else {
-    $attributes['class'] = ['my-header-class'];
-  }
-
-  // Add 'data-is-header' HTML attribute to header with value 'y'
-  $attributes['data-is-header'] = 'y';
-
-  return $attributes;
-} );
-```
-
-- [/developer/hooks/filters/filter-bricks-content-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-attributes/)
-- [/developer/hooks/filters/filter-bricks-footer-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-footer-attributes/)
-
----
-
 # Filter: bricks/builder/i18n
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-i18n/
@@ -1463,6 +1434,35 @@ add_filter( 'bricks/is_layout_element', function( $layout_element_names ) {
     return $layout_element_names;
 } );
 ```
+
+---
+
+# Filter: bricks/header/attributes
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/
+
+*Programmatically add HTML attributes to the header tag.*
+
+Programmatically add HTML attributes to the `header` tag.
+
+```php
+add_filter( 'bricks/header/attributes', function( $attributes ) {
+  // Add custom class to header
+  if ( isset( $attributes['class'] ) && is_array( $attributes['class'] ) ) {
+    $attributes['class'][] = 'my-header-class';
+  } else {
+    $attributes['class'] = ['my-header-class'];
+  }
+
+  // Add 'data-is-header' HTML attribute to header with value 'y'
+  $attributes['data-is-header'] = 'y';
+
+  return $attributes;
+} );
+```
+
+- [/developer/hooks/filters/filter-bricks-content-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-attributes/)
+- [/developer/hooks/filters/filter-bricks-footer-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-footer-attributes/)
 
 ---
 
@@ -2447,38 +2447,3 @@ The filter callback receives 2 arguments:
 - `$element` - the Bricks element [object](https://academy.bricksbuilder.io/developer/elements/create-your-own-elements/)
 
 **NOTE**: This filter doesn't work in builder & already possible with *[bricks/element/render_attributes](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-render_attributes/)*
-
----
-
-# Filter: bricks/setup/control_options
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/
-
-*Bricks offers a WordPress filter to add or remove control options. The control options are used throughout Bricks and allow you to manage the options of the:*
-
-Bricks offers a WordPress filter to add or remove control options. The control options are used throughout Bricks and allow you to manage the options of the:
-
-- Template Types (e.g. Header, Footer, Single, Section...)
-- Background position, repeat, attachment or size
-- Button sizes
-- Button or Heading styles
-- Border styles
-- Font weight and style
-- CSS position
-- Query types (e.g. Posts, Terms, Users, ..)
-- Query order by, compare, operator and value type
-- Image Sizes
-- Taxonomies
-- User roles
-
-To manage any of these options or add new ones, use the WP hook `bricks/setup/control_options` like so:
-
-```php
-add_filter( 'bricks/setup/control_options', function( $control_options ) {
-    $control_options['templateTypes']['my_template_type'] = esc_html__( 'My Template Type', 'my-plugin' );
-
-    return $control_options;
-} );
-```
-
-Note: the above example adds a new template type. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).

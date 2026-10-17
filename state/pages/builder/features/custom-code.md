@@ -2,7 +2,7 @@
 
 Bricks allows you to add custom code (CSS, JavaScript, HTML, and PHP) to different parts of your website.
 
-https://www.youtube.com/watch?v=LiYwBZ_R-f8
+https://www.youtube.com/watch?v=oJNm1AFgAGU
 
 ## Where custom code can be added
 

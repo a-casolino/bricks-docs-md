@@ -1,5 +1,7 @@
 *Design CSS Grid layouts in Bricks with the Visual Grid Builder instead of hand-writing grid-template values.*
 
+https://youtu.be/V-YTXvwg6Fc
+
 The new **Visual Grid Builder **allows you to visually design and manage your grid layouts. The feature is available for any element with the `display` control set to `grid`, and allows you to:
 
 - **Adjust grid size**: Modify the number of columns and rows to fit your design needs.

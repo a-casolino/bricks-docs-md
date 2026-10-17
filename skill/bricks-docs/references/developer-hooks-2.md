@@ -21,30 +21,6 @@ add_filter( 'bricks/frontend/disable_seo', function( $disable ) {
 
 ---
 
-# Filter: bricks/get_builder_edit_link
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_builder_edit_link/
-
-*Filters the \"Edit with Bricks\" URL generated for a post. This allows you to append custom query parameters or modify the link structure.*
-
-Filters the "Edit with Bricks" URL generated for a post. This allows you to append custom query parameters or modify the link structure.
-
-## Parameters
-
-- `$url` (*string*): The "Edit with Bricks" URL.
-- `$post_id` (*int*): The ID of the post.
-
-## Example usage
-
-```php
-add_filter( 'bricks/get_builder_edit_link', function( $url, $post_id ) {
-    // Example: Append a custom parameter to the builder URL
-    return add_query_arg( 'my_param', 'value', $url );
-}, 10, 2 );
-```
-
----
-
 # Filter: bricks/frontend/render_loop
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-frontend-render_loop/
@@ -66,6 +42,30 @@ add_filter( 'bricks/frontend/render_loop', function( $output, $element, $contain
     // Example: Wrap each loop item in a custom div
     return '<div class="my-custom-loop-wrapper">' . $output . '</div>';
 }, 10, 3 );
+```
+
+---
+
+# Filter: bricks/get_builder_edit_link
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_builder_edit_link/
+
+*Filters the \"Edit with Bricks\" URL generated for a post. This allows you to append custom query parameters or modify the link structure.*
+
+Filters the "Edit with Bricks" URL generated for a post. This allows you to append custom query parameters or modify the link structure.
+
+## Parameters
+
+- `$url` (*string*): The "Edit with Bricks" URL.
+- `$post_id` (*int*): The ID of the post.
+
+## Example usage
+
+```php
+add_filter( 'bricks/get_builder_edit_link', function( $url, $post_id ) {
+    // Example: Append a custom parameter to the builder URL
+    return add_query_arg( 'my_param', 'value', $url );
+}, 10, 2 );
 ```
 
 ---
@@ -155,33 +155,6 @@ add_filter( 'bricks/get_template_bundles', function( $bundles ) {
 
 ---
 
-# Filter: bricks/get_template_tags
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_template_tags/
-
-*Filters the list of template tags displayed in the Bricks template manager. Template tags are a custom taxonomy used to organize templates.*
-
-Filters the list of template tags displayed in the Bricks template manager. Template tags are a custom taxonomy used to organize templates.
-
-## Parameters
-
-- `$tags` (*array*): Associative array of template tags, where the key is the term slug and the value is the term name.
-
-## Example usage
-
-```php
-add_filter( 'bricks/get_template_tags', function( $tags ) {
-    // Example: Remove the 'dark' tag from the list
-    if ( isset( $tags['dark'] ) ) {
-        unset( $tags['dark'] );
-    }
-
-    return $tags;
-} );
-```
-
----
-
 # Filter: bricks/get_templates/query_vars
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_templates-query_vars/
@@ -205,6 +178,33 @@ add_filter( 'bricks/get_templates/query_vars', function( $query_vars ) {
     ];
 
     return $query_vars;
+} );
+```
+
+---
+
+# Filter: bricks/get_template_tags
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_template_tags/
+
+*Filters the list of template tags displayed in the Bricks template manager. Template tags are a custom taxonomy used to organize templates.*
+
+Filters the list of template tags displayed in the Bricks template manager. Template tags are a custom taxonomy used to organize templates.
+
+## Parameters
+
+- `$tags` (*array*): Associative array of template tags, where the key is the term slug and the value is the term name.
+
+## Example usage
+
+```php
+add_filter( 'bricks/get_template_tags', function( $tags ) {
+    // Example: Remove the 'dark' tag from the list
+    if ( isset( $tags['dark'] ) ) {
+        unset( $tags['dark'] );
+    }
+
+    return $tags;
 } );
 ```
 
@@ -442,6 +442,35 @@ add_filter( 'bricks/helpers/get_posts_args', function( $query_args ) {
 
 ---
 
+# Filter: bricks/metabox/show_as_map
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-metabox-show_as_map/
+
+*Determines whether a Meta Box map field should be rendered as a map (using rwmbmeta()) or as raw latitude/longitude coordinates when used in dynamic data.*
+
+Determines whether a Meta Box map field should be rendered as a map (using `rwmb_meta()`) or as raw latitude/longitude coordinates when used in dynamic data.
+
+## Parameters
+
+- `$show_as_map` (*bool*): Whether to render as a map. Default is `false` (renders coordinates).
+- `$field` (*array*): The Meta Box field settings array.
+- `$post` (*WP_Post*): The current post object.
+
+## Example usage
+
+```php
+add_filter( 'bricks/metabox/show_as_map', function( $show_as_map, $field, $post ) {
+    // Example: Render as map for a specific field ID
+    if ( $field['id'] === 'my_map_field' ) {
+        return true;
+    }
+
+    return $show_as_map;
+}, 10, 3 );
+```
+
+---
+
 # Filter: bricks/media_browser/health/file_status
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-media-browser-health-file-status/
@@ -524,35 +553,6 @@ add_filter( 'bricks/metabox/checkbox_value', function( $value, $original_value, 
     // Example: Return "Active" or "Inactive"
     return $original_value ? 'Active' : 'Inactive';
 }, 10, 4 );
-```
-
----
-
-# Filter: bricks/metabox/show_as_map
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-metabox-show_as_map/
-
-*Determines whether a Meta Box map field should be rendered as a map (using rwmbmeta()) or as raw latitude/longitude coordinates when used in dynamic data.*
-
-Determines whether a Meta Box map field should be rendered as a map (using `rwmb_meta()`) or as raw latitude/longitude coordinates when used in dynamic data.
-
-## Parameters
-
-- `$show_as_map` (*bool*): Whether to render as a map. Default is `false` (renders coordinates).
-- `$field` (*array*): The Meta Box field settings array.
-- `$post` (*WP_Post*): The current post object.
-
-## Example usage
-
-```php
-add_filter( 'bricks/metabox/show_as_map', function( $show_as_map, $field, $post ) {
-    // Example: Render as map for a specific field ID
-    if ( $field['id'] === 'my_map_field' ) {
-        return true;
-    }
-
-    return $show_as_map;
-}, 10, 3 );
 ```
 
 ---
@@ -852,31 +852,6 @@ add_filter( 'bricks/popup/attributes', function( $attributes, $popup_id ) {
 
 ---
 
-# Filter: bricks/query/archive_query_arguments
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-archive_query_arguments/
-
-*Filters the list of WPQuery arguments that are preserved from the main WordPress query when \"Is main query\" is enabled in a query loop. This ensures that.*
-
-Filters the list of `WP_Query` arguments that are preserved from the main WordPress query when "Is main query" is enabled in a query loop. This ensures that essential archive parameters (like pagination, taxonomy terms) are passed to the Bricks query.
-
-## Parameters
-
-- `$arguments` (*array*): Array of `WP_Query` argument keys (e.g., `post_type`, `posts_per_page`, `tax_query`).
-
-## Example usage
-
-```php
-add_filter( 'bricks/query/archive_query_arguments', function( $arguments ) {
-    // Example: specific custom query var from the main query
-    $arguments[] = 'my_custom_var';
-
-    return $arguments;
-} );
-```
-
----
-
 # Filter: bricks/query/archive_query_supported_object_types
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-archive_query_supported_object_types/
@@ -897,6 +872,31 @@ add_filter( 'bricks/query/archive_query_supported_object_types', function( $obje
     $object_types[] = 'user';
 
     return $object_types;
+} );
+```
+
+---
+
+# Filter: bricks/query/archive_query_arguments
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-archive_query_arguments/
+
+*Filters the list of WPQuery arguments that are preserved from the main WordPress query when \"Is main query\" is enabled in a query loop. This ensures that.*
+
+Filters the list of `WP_Query` arguments that are preserved from the main WordPress query when "Is main query" is enabled in a query loop. This ensures that essential archive parameters (like pagination, taxonomy terms) are passed to the Bricks query.
+
+## Parameters
+
+- `$arguments` (*array*): Array of `WP_Query` argument keys (e.g., `post_type`, `posts_per_page`, `tax_query`).
+
+## Example usage
+
+```php
+add_filter( 'bricks/query/archive_query_arguments', function( $arguments ) {
+    // Example: specific custom query var from the main query
+    $arguments[] = 'my_custom_var';
+
+    return $arguments;
 } );
 ```
 
@@ -1009,34 +1009,6 @@ add_filter( 'bricks/query/force_loop_index', function( $index ) {
 
 ---
 
-# Filter: bricks/query/result_end
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-result_end/
-
-*Filters the ending index used when slicing the query results. This allows you to control which portion of the results is displayed, useful for custom pagination.*
-
-Filters the ending index used when slicing the query results. This allows you to control which portion of the results is displayed, useful for custom pagination or limit logic.
-
-## Parameters
-
-- `$end` (*int*): The ending index for the result slice.
-- `$query` (*object*): The Bricks Query instance.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query/result_end', function( $end, $query ) {
-    // Example: Limit results to 5 for a specific query ID
-    if ( $query->id === 'my_limited_query' ) {
-        return 5;
-    }
-
-    return $end;
-}, 10, 2 );
-```
-
----
-
 # Filter: bricks/query/prepare_query_vars_from_settings
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-prepare_query_vars_from_settings/
@@ -1060,6 +1032,34 @@ add_filter( 'bricks/query/prepare_query_vars_from_settings', function( $settings
     }
 
     return $settings;
+}, 10, 2 );
+```
+
+---
+
+# Filter: bricks/query/result_end
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-result_end/
+
+*Filters the ending index used when slicing the query results. This allows you to control which portion of the results is displayed, useful for custom pagination.*
+
+Filters the ending index used when slicing the query results. This allows you to control which portion of the results is displayed, useful for custom pagination or limit logic.
+
+## Parameters
+
+- `$end` (*int*): The ending index for the result slice.
+- `$query` (*object*): The Bricks Query instance.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query/result_end', function( $end, $query ) {
+    // Example: Limit results to 5 for a specific query ID
+    if ( $query->id === 'my_limited_query' ) {
+        return 5;
+    }
+
+    return $end;
 }, 10, 2 );
 ```
 
@@ -1150,32 +1150,6 @@ add_filter( 'bricks/query/supress_render_content', function( $suppress, $query )
 
 ---
 
-# Filter: bricks/query_api/body
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-body/
-
-*Filters the body used by a Query API element request.*
-
-Filters the body data used by a Query API element request before Bricks adds it to the HTTP request.
-
-Bricks only builds a body for request methods that support one in the Query API implementation, currently `POST`.
-
-## Parameters
-
-- `$body_data` (string|array|null): The request body data Bricks has built.
-- `$element_id` (string): The Query API element ID.
-- `$query_api` (object): The Query API integration instance.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_api/body', function( $body_data, $element_id, $query_api ) {
-    return $body_data;
-}, 10, 3 );
-```
-
----
-
 # Filter: bricks/query_api/headers
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-headers/
@@ -1197,6 +1171,32 @@ add_filter( 'bricks/query_api/headers', function( $headers, $element_id, $query_
     $headers['X-Client'] = 'my-site';
 
     return $headers;
+}, 10, 3 );
+```
+
+---
+
+# Filter: bricks/query_api/body
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-body/
+
+*Filters the body used by a Query API element request.*
+
+Filters the body data used by a Query API element request before Bricks adds it to the HTTP request.
+
+Bricks only builds a body for request methods that support one in the Query API implementation, currently `POST`.
+
+## Parameters
+
+- `$body_data` (string|array|null): The request body data Bricks has built.
+- `$element_id` (string): The Query API element ID.
+- `$query_api` (object): The Query API integration instance.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_api/body', function( $body_data, $element_id, $query_api ) {
+    return $body_data;
 }, 10, 3 );
 ```
 
@@ -1364,33 +1364,6 @@ add_filter( 'bricks/query_filters/datepicker_custom_field_meta_query', function(
 
 ---
 
-# Filter: bricks/query_filters/element_data
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-element_data/
-
-*Filters the data for a filter element before it is saved to the internal index table (bricksfilterelements). This allows plugins to attach extra metadata (like.*
-
-Filters the data for a filter element before it is saved to the internal index table (`bricks_filter_elements`). This allows plugins to attach extra metadata (like language) to the filter configuration.
-
-## Parameters
-
-- `$element_data` (*array*): The data array to be saved (e.g., `filter_id`, `settings`, `post_id`, `language`).
-- `$element` (*array*): The raw element data from the builder.
-- `$post_id` (*int*): The ID of the post/template containing the element.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_filters/element_data', function( $element_data, $element, $post_id ) {
-    // Example: Add a custom property to the saved data
-    $element_data['my_custom_prop'] = 'value';
-
-    return $element_data;
-}, 10, 3 );
-```
-
----
-
 # Filter: bricks/query_filters/filter_query_vars
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-filter_query_vars/
@@ -1417,6 +1390,33 @@ add_filter( 'bricks/query_filters/filter_query_vars', function( $query_vars, $fi
 
     return $query_vars;
 }, 10, 4 );
+```
+
+---
+
+# Filter: bricks/query_filters/element_data
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-element_data/
+
+*Filters the data for a filter element before it is saved to the internal index table (bricksfilterelements). This allows plugins to attach extra metadata (like.*
+
+Filters the data for a filter element before it is saved to the internal index table (`bricks_filter_elements`). This allows plugins to attach extra metadata (like language) to the filter configuration.
+
+## Parameters
+
+- `$element_data` (*array*): The data array to be saved (e.g., `filter_id`, `settings`, `post_id`, `language`).
+- `$element` (*array*): The raw element data from the builder.
+- `$post_id` (*int*): The ID of the post/template containing the element.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_filters/element_data', function( $element_data, $element, $post_id ) {
+    // Example: Add a custom property to the saved data
+    $element_data['my_custom_prop'] = 'value';
+
+    return $element_data;
+}, 10, 3 );
 ```
 
 ---
@@ -2323,29 +2323,6 @@ add_filter( 'bricks/user_activation_email/subject', function( $subject, $user_id
 
 ---
 
-# Filter: bricks/webhook/timeout
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-webhook-timeout/
-
-*Allows you to modify the timeout duration (in seconds) for webhook requests triggered by the Form element.*
-
-Allows you to modify the timeout duration (in seconds) for webhook requests triggered by the Form element.
-
-## Parameters
-
-- `$timeout` (int): The timeout duration in seconds. Default is `15`.
-
-## Example usage
-
-```php
-add_filter( 'bricks/webhook/timeout', function( $timeout ) {
-    // Increase timeout to 30 seconds
-    return 30;
-} );
-```
-
----
-
 # Filter: bricks/woo_setup_wizard/register_presets
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woo_setup_wizard-register_presets/
@@ -2367,6 +2344,29 @@ add_filter( 'bricks/woo_setup_wizard/register_presets', function( $presets ) {
     ];
 
     return $presets;
+} );
+```
+
+---
+
+# Filter: bricks/webhook/timeout
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-webhook-timeout/
+
+*Allows you to modify the timeout duration (in seconds) for webhook requests triggered by the Form element.*
+
+Allows you to modify the timeout duration (in seconds) for webhook requests triggered by the Form element.
+
+## Parameters
+
+- `$timeout` (int): The timeout duration in seconds. Default is `15`.
+
+## Example usage
+
+```php
+add_filter( 'bricks/webhook/timeout', function( $timeout ) {
+    // Increase timeout to 30 seconds
+    return 30;
 } );
 ```
 

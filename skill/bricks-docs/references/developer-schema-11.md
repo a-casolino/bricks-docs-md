@@ -517,15 +517,15 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Checkout Step Nav Item Schema
+# Checkout Shipping Address Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-step-nav-item/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-shipping-address/
 
-*Schema for Bricks Checkout step nav item element*
+*Schema for Bricks Checkout shipping address element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-checkout-step-nav-item |
+| `name` | woocommerce-checkout-shipping-address |
 | `category` | woocommerce_checkout |
 | `tag` | div |
 | `nestable` | true |
@@ -604,15 +604,15 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Checkout Shipping Address Schema
+# Checkout Step Nav Item Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-shipping-address/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-step-nav-item/
 
-*Schema for Bricks Checkout shipping address element*
+*Schema for Bricks Checkout step nav item element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-checkout-shipping-address |
+| `name` | woocommerce-checkout-step-nav-item |
 | `category` | woocommerce_checkout |
 | `tag` | div |
 | `nestable` | true |
@@ -1076,15 +1076,15 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Login Required (StateWooCommerce Template Statebricks) Schema
+# Checkout (StateWooCommerce Template Statebricks) Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-v2-state-login/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-v2-state-checkout/
 
-*Schema for Bricks Login required (StateWooCommerce template statebricks) element*
+*Schema for Bricks Checkout (StateWooCommerce template statebricks) element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-checkout-v2-state-login |
+| `name` | woocommerce-checkout-v2-state-checkout |
 | `category` | woocommerce_checkout |
 | `tag` | div |
 | `nestable` | true |
@@ -1093,8 +1093,15 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-c
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
+| `removeBillingFields` | select | Billing | — |
+| `removeShippingFields` | select | Shipping | — |
 | `generatePredefinedElements` | select | generatePredefinedElements | — |
+| `generatePredefinedElementsMultistep` | checkbox | Generate as multistep | — |
 | `generatePredefinedElementsApply` | button | Generate | — |
+| `checkCheckoutFields` | button | Check checkout fields | — |
+| `generateMissingCheckoutFields` | button | Generate missing fields | — |
+| `removeInvalidCheckoutFields` | button | Remove invalid fields | — |
+| `removeDuplicateCheckoutFields` | button | Remove duplicate fields | — |
 | `floatingLabelStyle` | checkbox | Floating label | — |
 
 ## Inherited CSS controls
@@ -1171,15 +1178,15 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Checkout (StateWooCommerce Template Statebricks) Schema
+# Login Required (StateWooCommerce Template Statebricks) Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-v2-state-checkout/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-v2-state-login/
 
-*Schema for Bricks Checkout (StateWooCommerce template statebricks) element*
+*Schema for Bricks Login required (StateWooCommerce template statebricks) element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-checkout-v2-state-checkout |
+| `name` | woocommerce-checkout-v2-state-login |
 | `category` | woocommerce_checkout |
 | `tag` | div |
 | `nestable` | true |
@@ -1188,15 +1195,8 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-c
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `removeBillingFields` | select | Billing | — |
-| `removeShippingFields` | select | Shipping | — |
 | `generatePredefinedElements` | select | generatePredefinedElements | — |
-| `generatePredefinedElementsMultistep` | checkbox | Generate as multistep | — |
 | `generatePredefinedElementsApply` | button | Generate | — |
-| `checkCheckoutFields` | button | Check checkout fields | — |
-| `generateMissingCheckoutFields` | button | Generate missing fields | — |
-| `removeInvalidCheckoutFields` | button | Remove invalid fields | — |
-| `removeDuplicateCheckoutFields` | button | Remove duplicate fields | — |
 | `floatingLabelStyle` | checkbox | Floating label | — |
 
 ## Inherited CSS controls

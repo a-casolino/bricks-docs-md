@@ -707,6 +707,43 @@ To test the mini cart:
 
 ---
 
+# Element: Checkout Coupon
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/
+
+*Use the Bricks Checkout Coupon element inside WooCommerce checkout templates to render and style the coupon form.*
+
+This Checkout coupon element, available @since 1.11.1, allows you to display the coupon field in various locations on the checkout page, making it easy for customers to apply discount codes during their purchase.
+
+In previous versions, you couldn’t control the location of the checkout coupon. Additionally, styling options were limited, and adjustments required custom CSS. With this new, dedicated checkout coupon element you now have greater control over placement and design.
+
+To use this element, first enable it under **`Bricks > Settings > WooCommerce`** by turning on **`Enable Bricks WooCommerce "Checkout coupon" element`**.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-setting.png)
+
+> **Note**
+>
+> WooCommerce **`Enable the use of coupon codes`** must also be active under **WooCommerce > Settings > General**. When the Bricks Checkout Coupon element is enabled, the native WooCommerce checkout coupon form is removed, so add this element where you want the coupon form to appear.
+
+> **Note**
+>
+> **Note:** This element is specifically designed for the Checkout page and will only work when placed on the **Checkout template** or the Checkout page itself, depending on your design requirements.
+
+**Key Controls**
+
+**Location:**
+
+- By default, the **Checkout Coupon** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment
+- Custom location settings only apply on the actual frontend (Checkout page). To ensure correct placement, add this element at the top of your Checkout template.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-element-controls.png)
+
+![](https://academy.bricksbuilder.io/assets/element-location-example.png)
+
+You can set the form to be toggle-able, hiding it by default and revealing it only when the toggle is clicked, for a cleaner layout.
+
+---
+
 # Creating dynamic WooCommerce archive pages
 
 Source: https://academy.bricksbuilder.io/integrations/woocommerce/creating-dynamic-woocommerce-archive-pages/
@@ -850,43 +887,6 @@ Now, your shop page and product category pages should be able to work as expecte
 Custom WooCommerce Archive Template
 
 </figcaption>
-
----
-
-# Element: Checkout Coupon
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/
-
-*Use the Bricks Checkout Coupon element inside WooCommerce checkout templates to render and style the coupon form.*
-
-This Checkout coupon element, available @since 1.11.1, allows you to display the coupon field in various locations on the checkout page, making it easy for customers to apply discount codes during their purchase.
-
-In previous versions, you couldn’t control the location of the checkout coupon. Additionally, styling options were limited, and adjustments required custom CSS. With this new, dedicated checkout coupon element you now have greater control over placement and design.
-
-To use this element, first enable it under **`Bricks > Settings > WooCommerce`** by turning on **`Enable Bricks WooCommerce "Checkout coupon" element`**.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-setting.png)
-
-> **Note**
->
-> WooCommerce **`Enable the use of coupon codes`** must also be active under **WooCommerce > Settings > General**. When the Bricks Checkout Coupon element is enabled, the native WooCommerce checkout coupon form is removed, so add this element where you want the coupon form to appear.
-
-> **Note**
->
-> **Note:** This element is specifically designed for the Checkout page and will only work when placed on the **Checkout template** or the Checkout page itself, depending on your design requirements.
-
-**Key Controls**
-
-**Location:**
-
-- By default, the **Checkout Coupon** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment
-- Custom location settings only apply on the actual frontend (Checkout page). To ensure correct placement, add this element at the top of your Checkout template.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-element-controls.png)
-
-![](https://academy.bricksbuilder.io/assets/element-location-example.png)
-
-You can set the form to be toggle-able, hiding it by default and revealing it only when the toggle is clicked, for a cleaner layout.
 
 ---
 
@@ -1451,130 +1451,6 @@ WooCommerce product editor screen - Linked Products
 
 ---
 
-# Woo Setup Wizard
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/
-
-*Create or repair Bricks WooCommerce shop, product, cart, checkout, and account layouts with guided setup checks and presets.*
-
-The Woo Setup Wizard helps you check, create, and repair the main WooCommerce layouts used by Bricks.
-
-Go to **Bricks > Woo Setup Wizard** to review the current setup status for the store. The wizard checks the Shop, Single product, Cart, Checkout, and My Account areas, then shows the available setup actions for each area.
-
-![](https://academy.bricksbuilder.io/assets/woo-setup-wizard.png)
-
-The wizard is not dependent on **Enable advanced modular elements**. It can set up the classic WooCommerce builder workflow without that setting. Advanced v2 setup types may appear in the wizard, but they stay disabled until advanced modular elements are enabled under **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
-
-## When to use it
-
-Use the wizard when you want Bricks to review the WooCommerce setup and create the expected page or template structure for you.
-
-- Set up WooCommerce pages after installing Bricks on a new store.
-- Repair a Cart, Checkout, or My Account page that is missing the expected Bricks content.
-- Replace WooCommerce block content with Bricks page content.
-- Create the classic Bricks WooCommerce templates for shop, product, cart, checkout, or account areas.
-- Create Cart v2, Checkout v2, or Account Page v2 structures for the assigned WooCommerce pages.
-- Review whether existing published WooCommerce templates may conflict with a selected setup.
-
-> **Caution**
->
-> The wizard can replace Bricks page content, clear WooCommerce block markup from the assigned page, switch the page editor mode to Bricks, create Bricks templates, or draft existing published WooCommerce templates for the same area. Review the setup summary before running an action on an existing store.
-
-## Areas checked
-
-The wizard checks these WooCommerce areas:
-
-- **Shop**: shop page and product archive template setup.
-- **Single product**: single product template setup.
-- **Cart**: assigned Cart page, classic cart templates, and Cart v2 page structure.
-- **Checkout**: assigned Checkout page, classic checkout templates, and Checkout v2 page structure.
-- **My Account**: assigned My Account page, classic account templates, and Account Page v2 page structure.
-
-## Setup types
-
-Each area can offer one or more setup types, depending on the selected WooCommerce area and whether advanced modular elements are enabled.
-
-| Area | Setup types |
-| --- | --- |
-| Shop | Standard (v1) |
-| Single product | Standard (v1) |
-| Cart | Standard (v1), Advanced (v2) |
-| Checkout | Standard (v1), Advanced (v2), Advanced multistep (v2) |
-| My Account | Standard (v1), Advanced (v2) |
-
-![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-advanced-off.png)
-
-**Standard (v1)** creates or repairs the classic Bricks WooCommerce workflow. This setup uses the assigned WooCommerce page together with the traditional Bricks WooCommerce template types or shortcode-based page content.
-
-**Advanced (v2)** replaces the assigned WooCommerce page content with the matching v2 parent element and generated state structure. Use it for Cart, Checkout, and My Account pages when you want to edit related WooCommerce screens as states on one page.
-
-**Advanced multistep (v2)** is available for Checkout. It creates a Checkout v2 page with a ready-made [multistep checkout structure](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/).
-
-## Status checks
-
-The wizard reports missing, incomplete, or incompatible setup details before you run an action.
-
-Common checks include:
-
-- Required WooCommerce page is not assigned.
-- Assigned WooCommerce page was deleted.
-- Assigned page is still edited with the WordPress editor instead of Bricks.
-- Assigned page contains WooCommerce block content.
-- Required v2 parent element is missing from the assigned page.
-- Required v2 states are missing. My Account v2 includes Order withdrawal only when the WooCommerce feature is enabled.
-- Required v2 state elements are empty.
-- Existing published WooCommerce templates may conflict with the selected setup.
-- Classic setup is missing expected WooCommerce shortcodes or template types.
-
-![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-errors.png)
-
-The wizard does not create or assign missing WooCommerce pages. If a page is not assigned, assign it first in the WooCommerce settings, then return to **Bricks > Woo Setup Wizard**.
-
-## What setup can change
-
-Depending on the selected area and setup type, the wizard can:
-
-- Write Bricks page content to the assigned WooCommerce page.
-- Clear WordPress `post_content` when it contains WooCommerce block markup.
-- Set the assigned page editor mode to Bricks.
-- Create Bricks WooCommerce templates from presets.
-- Draft existing published WooCommerce templates for the same template type when they would conflict.
-- Generate external CSS files when file-based CSS generation is enabled.
-- Ask for overwrite confirmation when the target page already contains Bricks data.
-
-![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-confirmation.png)
-
-## Before running setup
-
-Review the setup summary before confirming any action.
-
-- Confirm the correct WooCommerce pages are assigned in the WooCommerce settings.
-- Duplicate or export important pages and templates on existing stores.
-- Check whether the selected setup edits pages, templates, or both.
-- Review whether existing WooCommerce templates will be drafted.
-- If the site uses custom breakpoints, review responsive styles after setup. Presets are authored with the default Bricks breakpoint keys, such as `mobile_landscape` and `mobile_portrait`.
-
-## After setup
-
-Open the generated page or template in Bricks and review the result.
-
-- For classic layouts, confirm the expected WooCommerce template types and shortcodes are in place.
-- For Cart v2, review the Filled cart and Empty cart states.
-- For Checkout v2, review Checkout, Login required, Pay, Thank you, and Order receipt states.
-- For Advanced multistep Checkout v2, test the checkout step navigation and interactions.
-- For Account Page v2, review the account navigation, login, password, address, order, download, and edit account states. Include Order withdrawal when enabled.
-- Test the live Cart, Checkout, and My Account flows with WooCommerce products and customer sessions.
-
-## Related docs
-
-- [WooCommerce Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/)
-- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/)
-- [Cart](https://academy.bricksbuilder.io/integrations/woocommerce/cart/)
-- [Checkout](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/)
-- [WooCommerce Account Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/)
-
----
-
 # WooCommerce Account Builder
 
 Source: https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/
@@ -1717,3 +1593,127 @@ The process of creating those account endpoint templates is the same for all oth
 | WooCommerce - Account - Addresses | `edit-address/` | Account - Addresses |
 | WooCommerce - Account - Edit address | `edit-address/billing/`<br />`edit-address/shipping/` | Account - Edit address |
 | WooCommerce - Account - Edit account | `edit-account/` | Account - Edit account |
+
+---
+
+# Woo Setup Wizard
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/
+
+*Create or repair Bricks WooCommerce shop, product, cart, checkout, and account layouts with guided setup checks and presets.*
+
+The Woo Setup Wizard helps you check, create, and repair the main WooCommerce layouts used by Bricks.
+
+Go to **Bricks > Woo Setup Wizard** to review the current setup status for the store. The wizard checks the Shop, Single product, Cart, Checkout, and My Account areas, then shows the available setup actions for each area.
+
+![](https://academy.bricksbuilder.io/assets/woo-setup-wizard.png)
+
+The wizard is not dependent on **Enable advanced modular elements**. It can set up the classic WooCommerce builder workflow without that setting. Advanced v2 setup types may appear in the wizard, but they stay disabled until advanced modular elements are enabled under **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
+
+## When to use it
+
+Use the wizard when you want Bricks to review the WooCommerce setup and create the expected page or template structure for you.
+
+- Set up WooCommerce pages after installing Bricks on a new store.
+- Repair a Cart, Checkout, or My Account page that is missing the expected Bricks content.
+- Replace WooCommerce block content with Bricks page content.
+- Create the classic Bricks WooCommerce templates for shop, product, cart, checkout, or account areas.
+- Create Cart v2, Checkout v2, or Account Page v2 structures for the assigned WooCommerce pages.
+- Review whether existing published WooCommerce templates may conflict with a selected setup.
+
+> **Caution**
+>
+> The wizard can replace Bricks page content, clear WooCommerce block markup from the assigned page, switch the page editor mode to Bricks, create Bricks templates, or draft existing published WooCommerce templates for the same area. Review the setup summary before running an action on an existing store.
+
+## Areas checked
+
+The wizard checks these WooCommerce areas:
+
+- **Shop**: shop page and product archive template setup.
+- **Single product**: single product template setup.
+- **Cart**: assigned Cart page, classic cart templates, and Cart v2 page structure.
+- **Checkout**: assigned Checkout page, classic checkout templates, and Checkout v2 page structure.
+- **My Account**: assigned My Account page, classic account templates, and Account Page v2 page structure.
+
+## Setup types
+
+Each area can offer one or more setup types, depending on the selected WooCommerce area and whether advanced modular elements are enabled.
+
+| Area | Setup types |
+| --- | --- |
+| Shop | Standard (v1) |
+| Single product | Standard (v1) |
+| Cart | Standard (v1), Advanced (v2) |
+| Checkout | Standard (v1), Advanced (v2), Advanced multistep (v2) |
+| My Account | Standard (v1), Advanced (v2) |
+
+![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-advanced-off.png)
+
+**Standard (v1)** creates or repairs the classic Bricks WooCommerce workflow. This setup uses the assigned WooCommerce page together with the traditional Bricks WooCommerce template types or shortcode-based page content.
+
+**Advanced (v2)** replaces the assigned WooCommerce page content with the matching v2 parent element and generated state structure. Use it for Cart, Checkout, and My Account pages when you want to edit related WooCommerce screens as states on one page.
+
+**Advanced multistep (v2)** is available for Checkout. It creates a Checkout v2 page with a ready-made [multistep checkout structure](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/).
+
+## Status checks
+
+The wizard reports missing, incomplete, or incompatible setup details before you run an action.
+
+Common checks include:
+
+- Required WooCommerce page is not assigned.
+- Assigned WooCommerce page was deleted.
+- Assigned page is still edited with the WordPress editor instead of Bricks.
+- Assigned page contains WooCommerce block content.
+- Required v2 parent element is missing from the assigned page.
+- Required v2 states are missing. My Account v2 includes Order withdrawal only when the WooCommerce feature is enabled.
+- Required v2 state elements are empty.
+- Existing published WooCommerce templates may conflict with the selected setup.
+- Classic setup is missing expected WooCommerce shortcodes or template types.
+
+![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-errors.png)
+
+The wizard does not create or assign missing WooCommerce pages. If a page is not assigned, assign it first in the WooCommerce settings, then return to **Bricks > Woo Setup Wizard**.
+
+## What setup can change
+
+Depending on the selected area and setup type, the wizard can:
+
+- Write Bricks page content to the assigned WooCommerce page.
+- Clear WordPress `post_content` when it contains WooCommerce block markup.
+- Set the assigned page editor mode to Bricks.
+- Create Bricks WooCommerce templates from presets.
+- Draft existing published WooCommerce templates for the same template type when they would conflict.
+- Generate external CSS files when file-based CSS generation is enabled.
+- Ask for overwrite confirmation when the target page already contains Bricks data.
+
+![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-confirmation.png)
+
+## Before running setup
+
+Review the setup summary before confirming any action.
+
+- Confirm the correct WooCommerce pages are assigned in the WooCommerce settings.
+- Duplicate or export important pages and templates on existing stores.
+- Check whether the selected setup edits pages, templates, or both.
+- Review whether existing WooCommerce templates will be drafted.
+- If the site uses custom breakpoints, review responsive styles after setup. Presets are authored with the default Bricks breakpoint keys, such as `mobile_landscape` and `mobile_portrait`.
+
+## After setup
+
+Open the generated page or template in Bricks and review the result.
+
+- For classic layouts, confirm the expected WooCommerce template types and shortcodes are in place.
+- For Cart v2, review the Filled cart and Empty cart states.
+- For Checkout v2, review Checkout, Login required, Pay, Thank you, and Order receipt states.
+- For Advanced multistep Checkout v2, test the checkout step navigation and interactions.
+- For Account Page v2, review the account navigation, login, password, address, order, download, and edit account states. Include Order withdrawal when enabled.
+- Test the live Cart, Checkout, and My Account flows with WooCommerce products and customer sessions.
+
+## Related docs
+
+- [WooCommerce Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/)
+- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/)
+- [Cart](https://academy.bricksbuilder.io/integrations/woocommerce/cart/)
+- [Checkout](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/)
+- [WooCommerce Account Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/)

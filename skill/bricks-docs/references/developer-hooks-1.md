@@ -77,24 +77,6 @@ add_action( 'bricks/query/before_loop', function( $query, $args ) {
 
 ---
 
-# Action: bricks_after_footer
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-after_footer/
-
-*Runs after Bricks renders the footer and before the site wrapper closes.*
-
-Runs after Bricks renders the footer and before the site wrapper closes. Use it when custom output needs to appear immediately after the footer template.
-
-## Example usage
-
-```php
-add_action( 'bricks_after_footer', function() {
-    echo '<div class="after-footer-note">Footer add-on output</div>';
-} );
-```
-
----
-
 # Action: bricks_after_header
 
 Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-after_header/
@@ -108,6 +90,24 @@ Runs after Bricks renders the header template. Use it for output or setup that s
 ```php
 add_action( 'bricks_after_header', function() {
     echo '<div class="after-header-banner">Announcement</div>';
+} );
+```
+
+---
+
+# Action: bricks_after_footer
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-after_footer/
+
+*Runs after Bricks renders the footer and before the site wrapper closes.*
+
+Runs after Bricks renders the footer and before the site wrapper closes. Use it when custom output needs to appear immediately after the footer template.
+
+## Example usage
+
+```php
+add_action( 'bricks_after_footer', function() {
+    echo '<div class="after-footer-note">Footer add-on output</div>';
 } );
 ```
 
@@ -157,24 +157,6 @@ add_action( 'bricks/archive_product/after', function( $bricks_data, $post_id ) {
 
 ---
 
-# Action: bricks_before_footer
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-before_footer/
-
-*Runs before Bricks renders the footer template.*
-
-Runs before Bricks renders the footer template. Use it to output markup or run logic immediately before footer rendering.
-
-## Example usage
-
-```php
-add_action( 'bricks_before_footer', function() {
-    echo '<div class="before-footer-cta">Need help?</div>';
-} );
-```
-
----
-
 # Action: bricks/archive_product/before
 
 Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-archive_product-before/
@@ -194,6 +176,24 @@ Runs before the Bricks content is rendered on a WooCommerce product archive page
 add_action( 'bricks/archive_product/before', function( $bricks_data, $post_id ) {
     // Output custom content before the product archive
     echo '<div class="custom-archive-header">Welcome to our shop</div>';
+} );
+```
+
+---
+
+# Action: bricks_before_footer
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-before_footer/
+
+*Runs before Bricks renders the footer template.*
+
+Runs before Bricks renders the footer template. Use it to output markup or run logic immediately before footer rendering.
+
+## Example usage
+
+```php
+add_action( 'bricks_before_footer', function() {
+    echo '<div class="before-footer-cta">Need help?</div>';
 } );
 ```
 
@@ -257,28 +257,6 @@ add_action( 'bricks_body', function() {
 
 ---
 
-# Action: bricks/builder/switch_locale
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-builder-switch_locale/
-
-*Runs when Bricks switches the builder locale.*
-
-Runs when Bricks switches the builder locale. Use it to synchronize integration state when the builder language changes.
-
-## Parameters
-
-- `$locale` (string): The locale Bricks is switching the builder to.
-
-## Example usage
-
-```php
-add_action( 'bricks/builder/switch_locale', function( $locale ) {
-    // Switch integration language context to match the builder.
-}, 10, 1 );
-```
-
----
-
 # Action: bricks/database/get_all_templates_by_type/after_query
 
 Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-database-get_all_templates_by_type-after_query/
@@ -300,6 +278,28 @@ This action does not run when Bricks returns templates from object cache or the 
 add_action( 'bricks/database/get_all_templates_by_type/after_query', function( $template_ids, $args ) {
     // Restore custom query or language context here.
 }, 10, 2 );
+```
+
+---
+
+# Action: bricks/builder/switch_locale
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-builder-switch_locale/
+
+*Runs when Bricks switches the builder locale.*
+
+Runs when Bricks switches the builder locale. Use it to synchronize integration state when the builder language changes.
+
+## Parameters
+
+- `$locale` (string): The locale Bricks is switching the builder to.
+
+## Example usage
+
+```php
+add_action( 'bricks/builder/switch_locale', function( $locale ) {
+    // Switch integration language context to match the builder.
+}, 10, 1 );
 ```
 
 ---
@@ -761,34 +761,6 @@ add_action( 'bricks/render_popup_content/start', function( $request_data ) {
 
 ---
 
-# Action: bricks/render_query_page/start
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-render_query_page-start/
-
-*Runs at the start of the AJAX query page rendering process (loadquerypage endpoint - used for infinite scroll/pagination). This action allows you to execute.*
-
-Runs at the start of the AJAX query page rendering process (`load_query_page` endpoint - used for infinite scroll/pagination). This action allows you to execute custom logic before the query page content is generated.
-
-## Parameters
-
-- `$request_data` (*array*): The request data parameters (e.g., queryElementId, postId, page, queryVars, etc.).
-
-## Example usage
-
-```php
-add_action( 'bricks/render_query_page/start', function( $request_data ) {
-    // Access request data
-    // $page = $request_data['page'] ?? 1;
-    
-    // Example: Switch language for multilingual plugins
-    // if ( isset( $request_data['lang'] ) ) {
-    //     // Switch language logic
-    // }
-} );
-```
-
----
-
 # Action: bricks/render_query_result/start
 
 Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-render_query_result-start/
@@ -849,22 +821,30 @@ These are all documented Bricks action hooks:
 
 ---
 
-# Action: render_footer
+# Action: bricks/render_query_page/start
 
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/render_footer/
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-render_query_page-start/
 
-*Runs at the footer render position. Bricks attaches its default footer renderer to this action.*
+*Runs at the start of the AJAX query page rendering process (loadquerypage endpoint - used for infinite scroll/pagination). This action allows you to execute.*
 
-Runs in `footer.php` between `bricks_before_footer` and `bricks_after_footer`.
+Runs at the start of the AJAX query page rendering process (`load_query_page` endpoint - used for infinite scroll/pagination). This action allows you to execute custom logic before the query page content is generated.
 
-Bricks attaches its frontend footer renderer to this action by default. Use this hook only when you need to add low-level output at the footer render position. To modify the generated footer HTML, use the `bricks/render_footer` filter instead.
+## Parameters
+
+- `$request_data` (*array*): The request data parameters (e.g., queryElementId, postId, page, queryVars, etc.).
 
 ## Example usage
 
 ```php
-add_action( 'render_footer', function() {
-    echo '<div class="after-render-footer"></div>';
-}, 20 );
+add_action( 'bricks/render_query_page/start', function( $request_data ) {
+    // Access request data
+    // $page = $request_data['page'] ?? 1;
+    
+    // Example: Switch language for multilingual plugins
+    // if ( isset( $request_data['lang'] ) ) {
+    //     // Switch language logic
+    // }
+} );
 ```
 
 ---
@@ -884,6 +864,26 @@ Bricks attaches its frontend header renderer to this action by default. Use this
 ```php
 add_action( 'render_header', function() {
     echo '<div class="after-render-header"></div>';
+}, 20 );
+```
+
+---
+
+# Action: render_footer
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/render_footer/
+
+*Runs at the footer render position. Bricks attaches its default footer renderer to this action.*
+
+Runs in `footer.php` between `bricks_before_footer` and `bricks_after_footer`.
+
+Bricks attaches its frontend footer renderer to this action by default. Use this hook only when you need to add low-level output at the footer render position. To modify the generated footer HTML, use the `bricks/render_footer` filter instead.
+
+## Example usage
+
+```php
+add_action( 'render_footer', function() {
+    echo '<div class="after-render-footer"></div>';
 }, 20 );
 ```
 
@@ -944,31 +944,6 @@ add_filter( 'bricks/acf/google_map/address_parts', function( $address_parts, $va
 
 ---
 
-# Filter: bricks/acf/google_map/show_as_address
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-acf-google_map-show_as_address/
-
-*Determines whether the ACF Google Map field dynamic data should be rendered as a formatted address or as latitude/longitude coordinates.*
-
-Determines whether the ACF Google Map field dynamic data should be rendered as a formatted address or as latitude/longitude coordinates.
-
-## Parameters
-
-- `$show_as_address` (*bool*): Whether to render as an address. Defaults to `true` if ACF version >= 5.6.8.
-- `$value` (*array*): The raw value of the ACF Google Map field.
-- `$field` (*array*): The ACF field settings.
-
-## Example usage
-
-```php
-add_filter( 'bricks/acf/google_map/show_as_address', function( $show_as_address, $value, $field ) {
-    // Force showing latitude and longitude instead of address
-    return false;
-}, 10, 3 );
-```
-
----
-
 # Filter: bricks/acf/google_map/text_output
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-acf-google_map-text_output/
@@ -989,6 +964,31 @@ Filters the final HTML output of the ACF Google Map field dynamic data. This run
 add_filter( 'bricks/acf/google_map/text_output', function( $output, $value, $field ) {
     // Example: Strip HTML tags to get plain text
     return wp_strip_all_tags( $output );
+}, 10, 3 );
+```
+
+---
+
+# Filter: bricks/acf/google_map/show_as_address
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-acf-google_map-show_as_address/
+
+*Determines whether the ACF Google Map field dynamic data should be rendered as a formatted address or as latitude/longitude coordinates.*
+
+Determines whether the ACF Google Map field dynamic data should be rendered as a formatted address or as latitude/longitude coordinates.
+
+## Parameters
+
+- `$show_as_address` (*bool*): Whether to render as an address. Defaults to `true` if ACF version >= 5.6.8.
+- `$value` (*array*): The raw value of the ACF Google Map field.
+- `$field` (*array*): The ACF field settings.
+
+## Example usage
+
+```php
+add_filter( 'bricks/acf/google_map/show_as_address', function( $show_as_address, $value, $field ) {
+    // Force showing latitude and longitude instead of address
+    return false;
 }, 10, 3 );
 ```
 
@@ -1098,6 +1098,28 @@ add_filter( 'bricks/allowed_html_tags', function( $allowed_html_tags ) {
 
 ---
 
+# Filter: bricks/breadcrumbs/home_label
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-breadcrumbs-home_label/
+
+*Filters the label text used for the \"Home\" link in the Breadcrumbs element.*
+
+Filters the label text used for the "Home" link in the Breadcrumbs element.
+
+## Parameters
+
+- `$home_label` (*string*): The home label text (may include HTML if an icon is used).
+
+## Example usage
+
+```php
+add_filter( 'bricks/breadcrumbs/home_label', function( $home_label ) {
+    return 'Start';
+} );
+```
+
+---
+
 # Filter: bricks/api/get_templates_data
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-api-get_templates_data/
@@ -1133,28 +1155,6 @@ add_filter( 'bricks/api/get_templates_data', function( $templates_data ) {
     }
 
     return $templates_data;
-} );
-```
-
----
-
-# Filter: bricks/breadcrumbs/home_label
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-breadcrumbs-home_label/
-
-*Filters the label text used for the \"Home\" link in the Breadcrumbs element.*
-
-Filters the label text used for the "Home" link in the Breadcrumbs element.
-
-## Parameters
-
-- `$home_label` (*string*): The home label text (may include HTML if an icon is used).
-
-## Example usage
-
-```php
-add_filter( 'bricks/breadcrumbs/home_label', function( $home_label ) {
-    return 'Start';
 } );
 ```
 
@@ -1754,31 +1754,6 @@ add_filter( 'bricks/custom_fonts/mime_types', function( $mime_types ) {
 
 ---
 
-# Filter: bricks/database/bricks_get_all_templates_by_type_args
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-database-bricks_get_all_templates_by_type_args/
-
-*Filters the query arguments used to retrieve all Bricks templates. This is primarily used by multilingual plugins (like WPML and Polylang) to ensure only.*
-
-Filters the query arguments used to retrieve all Bricks templates. This is primarily used by multilingual plugins (like WPML and Polylang) to ensure only templates in the current language are fetched.
-
-## Parameters
-
-- `$args` (*array*): Array of arguments passed to `get_posts()`.
-
-## Example usage
-
-```php
-add_filter( 'bricks/database/bricks_get_all_templates_by_type_args', function( $args ) {
-    // Example: Include private templates
-    $args['post_status'] = [ 'publish', 'private' ];
-
-    return $args;
-} );
-```
-
----
-
 # Filter: bricks/database/content_type
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-database-content_type/
@@ -1803,6 +1778,31 @@ add_filter( 'bricks/database/content_type', function( $content_type, $post_id ) 
 
     return $content_type;
 }, 10, 2 );
+```
+
+---
+
+# Filter: bricks/database/bricks_get_all_templates_by_type_args
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-database-bricks_get_all_templates_by_type_args/
+
+*Filters the query arguments used to retrieve all Bricks templates. This is primarily used by multilingual plugins (like WPML and Polylang) to ensure only.*
+
+Filters the query arguments used to retrieve all Bricks templates. This is primarily used by multilingual plugins (like WPML and Polylang) to ensure only templates in the current language are fetched.
+
+## Parameters
+
+- `$args` (*array*): Array of arguments passed to `get_posts()`.
+
+## Example usage
+
+```php
+add_filter( 'bricks/database/bricks_get_all_templates_by_type_args', function( $args ) {
+    // Example: Include private templates
+    $args['post_status'] = [ 'publish', 'private' ];
+
+    return $args;
+} );
 ```
 
 ---
@@ -1949,31 +1949,6 @@ add_filter( 'bricks/dynamic_data/format_value', function( $value, $tag, $post_id
 
 ---
 
-# Filter: bricks/dynamic_data/meta_value/{meta_key}
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-dynamic_data-meta_value-meta_key/
-
-*Filter the value returned for a specific custom-field key when Bricks resolves dynamic data from post meta.*
-
-Filters the value of a specific post meta key when retrieved via dynamic data (e.g., `{cf_my_key}`). The `{$meta_key}` portion of the hook name should be replaced with your actual meta key.
-
-## Parameters
-
-- `$value` (*mixed*): The value of the custom field.
-- `$post` (*WP_Post*): The post object.
-
-## Example usage
-
-```php
-// Filter the value of the custom field with key 'my_price_field'
-add_filter( 'bricks/dynamic_data/meta_value/my_price_field', function( $value, $post ) {
-    // Example: Format the price
-    return '$' . number_format( (float) $value, 2 );
-}, 10, 2 );
-```
-
----
-
 # Filter: bricks/dynamic_data/register_hook
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-dynamic_data-register_hook/
@@ -2017,6 +1992,31 @@ add_filter( 'bricks/dynamic_data/register_providers', function( $providers ) {
 
     return $providers;
 } );
+```
+
+---
+
+# Filter: bricks/dynamic_data/meta_value/{meta_key}
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-dynamic_data-meta_value-meta_key/
+
+*Filter the value returned for a specific custom-field key when Bricks resolves dynamic data from post meta.*
+
+Filters the value of a specific post meta key when retrieved via dynamic data (e.g., `{cf_my_key}`). The `{$meta_key}` portion of the hook name should be replaced with your actual meta key.
+
+## Parameters
+
+- `$value` (*mixed*): The value of the custom field.
+- `$post` (*WP_Post*): The post object.
+
+## Example usage
+
+```php
+// Filter the value of the custom field with key 'my_price_field'
+add_filter( 'bricks/dynamic_data/meta_value/my_price_field', function( $value, $post ) {
+    // Example: Format the price
+    return '$' . number_format( (float) $value, 2 );
+}, 10, 2 );
 ```
 
 ---
@@ -2232,33 +2232,6 @@ add_filter( 'bricks/element/form/datepicker_options', function( $datepicker_opti
 
 ---
 
-# Filter: bricks/element/form/honeypot/result
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-element-form-honeypot-result/
-
-*Filters the result returned when a honeypot field is triggered (spam detection). This allows you to customize the error message shown to potential bots (or.*
-
-Filters the result returned when a honeypot field is triggered (spam detection). This allows you to customize the error message shown to potential bots (or users who accidentally filled the hidden field).
-
-## Parameters
-
-- `$result` (*array*): The result array, typically containing `['type' => 'error', 'message' => '...']`.
-- `$field_id` (*string*): The ID of the honeypot field that was filled.
-- `$form` (*object*): The Form integration object.
-
-## Example usage
-
-```php
-add_filter( 'bricks/element/form/honeypot/result', function( $result, $field_id, $form ) {
-    // Customize the error message
-    $result['message'] = esc_html__( 'Spam detected. Please do not fill out the hidden fields.', 'my-domain' );
-
-    return $result;
-}, 10, 3 );
-```
-
----
-
 # Filter: bricks/element/maybe_set_aria_current_page
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-element-maybe_set_aria_current_page/
@@ -2283,6 +2256,33 @@ add_filter( 'bricks/element/maybe_set_aria_current_page', function( $set_aria_cu
 
     return $set_aria_current;
 }, 10, 2 );
+```
+
+---
+
+# Filter: bricks/element/form/honeypot/result
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-element-form-honeypot-result/
+
+*Filters the result returned when a honeypot field is triggered (spam detection). This allows you to customize the error message shown to potential bots (or.*
+
+Filters the result returned when a honeypot field is triggered (spam detection). This allows you to customize the error message shown to potential bots (or users who accidentally filled the hidden field).
+
+## Parameters
+
+- `$result` (*array*): The result array, typically containing `['type' => 'error', 'message' => '...']`.
+- `$field_id` (*string*): The ID of the honeypot field that was filled.
+- `$form` (*object*): The Form integration object.
+
+## Example usage
+
+```php
+add_filter( 'bricks/element/form/honeypot/result', function( $result, $field_id, $form ) {
+    // Customize the error message
+    $result['message'] = esc_html__( 'Spam detected. Please do not fill out the hidden fields.', 'my-domain' );
+
+    return $result;
+}, 10, 3 );
 ```
 
 ---
@@ -2335,6 +2335,29 @@ add_filter( 'bricks/elements/nav_menu/menus', function( $menus ) {
 
 ---
 
+# Filter: bricks/elements/nav_menu/name
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-elements-nav_menu-name/
+
+*Filters a nav menu label shown in the Nav Menu element.*
+
+Filters a nav menu label shown in the Nav Menu element. Use it to adjust menu names in the builder, for example by appending language or site context.
+
+## Parameters
+
+- `$name` (string): The menu name.
+- `$menu` (WP_Term): The nav menu term object.
+
+## Example usage
+
+```php
+add_filter( 'bricks/elements/nav_menu/name', function( $name, $menu ) {
+    return $name . ' (' . $menu->term_id . ')';
+}, 10, 2 );
+```
+
+---
+
 # Filter: bricks/export_template_args
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-export_template_args/
@@ -2356,29 +2379,6 @@ add_filter( 'bricks/export_template_args', function( $args, $post_id ) {
     $args['my_param'] = 'value';
 
     return $args;
-}, 10, 2 );
-```
-
----
-
-# Filter: bricks/elements/nav_menu/name
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-elements-nav_menu-name/
-
-*Filters a nav menu label shown in the Nav Menu element.*
-
-Filters a nav menu label shown in the Nav Menu element. Use it to adjust menu names in the builder, for example by appending language or site context.
-
-## Parameters
-
-- `$name` (string): The menu name.
-- `$menu` (WP_Term): The nav menu term object.
-
-## Example usage
-
-```php
-add_filter( 'bricks/elements/nav_menu/name', function( $name, $menu ) {
-    return $name . ' (' . $menu->term_id . ')';
 }, 10, 2 );
 ```
 
@@ -2470,6 +2470,42 @@ add_filter( 'bricks/filter_element/controls', function( $controls, $element ) {
 
 ---
 
+# Filter: bricks/filter_element/data_source_{filter_source}
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter_element-data_source-filter_source/
+
+*Filters the data source (options) for a specific filter source. The {$filtersource} portion of the hook name should be replaced with the actual source name.*
+
+Filters the data source (options) for a specific filter source. The `{$filter_source}` portion of the hook name should be replaced with the actual source name.
+
+Built-in `taxonomy`, `wpField`, and `customField` sources are handled before this dynamic filter runs. Use this hook for custom filter sources that Bricks does not populate internally.
+
+## Parameters
+
+- `$data_source` (*array*): Array of filter options. Each option should be an associative array with keys like `value`, `text`, `class`, etc.
+- `$element` (*object*): The filter element instance.
+
+## Example usage
+
+```php
+// Populate options for a custom source 'my_source'
+add_filter( 'bricks/filter_element/data_source_my_source', function( $data_source, $element ) {
+    $data_source[] = [
+        'value' => 'option_1',
+        'text'  => 'Option 1',
+    ];
+
+    $data_source[] = [
+        'value' => 'option_2',
+        'text'  => 'Option 2',
+    ];
+
+    return $data_source;
+}, 10, 2 );
+```
+
+---
+
 # Filter: bricks/filter_element/count_source_wcField
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter_element-count_source_wcfield/
@@ -2522,42 +2558,6 @@ add_filter( 'bricks/filter_element/count_source_wcField', function( $count_sourc
     unset( $row );
 
     return $count_source;
-}, 10, 2 );
-```
-
----
-
-# Filter: bricks/filter_element/data_source_{filter_source}
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter_element-data_source-filter_source/
-
-*Filters the data source (options) for a specific filter source. The {$filtersource} portion of the hook name should be replaced with the actual source name.*
-
-Filters the data source (options) for a specific filter source. The `{$filter_source}` portion of the hook name should be replaced with the actual source name.
-
-Built-in `taxonomy`, `wpField`, and `customField` sources are handled before this dynamic filter runs. Use this hook for custom filter sources that Bricks does not populate internally.
-
-## Parameters
-
-- `$data_source` (*array*): Array of filter options. Each option should be an associative array with keys like `value`, `text`, `class`, etc.
-- `$element` (*object*): The filter element instance.
-
-## Example usage
-
-```php
-// Populate options for a custom source 'my_source'
-add_filter( 'bricks/filter_element/data_source_my_source', function( $data_source, $element ) {
-    $data_source[] = [
-        'value' => 'option_1',
-        'text'  => 'Option 1',
-    ];
-
-    $data_source[] = [
-        'value' => 'option_2',
-        'text'  => 'Option 2',
-    ];
-
-    return $data_source;
 }, 10, 2 );
 ```
 
@@ -2769,34 +2769,6 @@ add_filter( 'bricks/form/recaptcha_score_threshold', function( $score ) {
 
 ---
 
-# Filter: bricks/form/response
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-response/
-
-*Filters the JSON response sent to the browser after a Bricks form submission. This allows you to customize the success message, redirection URL, or add extra.*
-
-Filters the JSON response sent to the browser after a Bricks form submission. This allows you to customize the success message, redirection URL, or add extra data to the response.
-
-## Parameters
-
-- `$response` (*array*): The response data array (e.g., `['type' => 'success', 'message' => '...', 'redirectUrl' => '...']`).
-- `$form` (*object*): The Form integration instance.
-
-## Example usage
-
-```php
-add_filter( 'bricks/form/response', function( $response, $form ) {
-    // Example: Append a "Thank you" note to the success message
-    if ( isset( $response['type'] ) && $response['type'] === 'success' ) {
-        $response['message'] .= ' ' . esc_html__( 'Thank you for contacting us!', 'my-domain' );
-    }
-
-    return $response;
-}, 10, 2 );
-```
-
----
-
 # Filter: bricks/form/save-submission/form_data
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-save-submission-form_data/
@@ -2842,6 +2814,34 @@ add_filter( 'bricks/form/save-submission/form_data', function( $form_data, $form
 
 ---
 
+# Filter: bricks/form/tinymce_settings
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-tinymce_settings/
+
+*Filters the TinyMCE configuration settings for \"Rich Text\" fields in Bricks forms. This allows you to customize the toolbar, menus, and other editor options.*
+
+Filters the TinyMCE configuration settings for "Rich Text" fields in Bricks forms. This allows you to customize the toolbar, menus, and other editor options.
+
+## Parameters
+
+- `$settings` (*array*): Array of TinyMCE settings.
+
+## Example usage
+
+```php
+add_filter( 'bricks/form/tinymce_settings', function( $settings ) {
+    // Example: Disable the menubar
+    $settings['menubar'] = false;
+
+    // Example: Simplify the toolbar
+    $settings['toolbar'] = 'bold italic underline | bullist numlist | link unlink';
+
+    return $settings;
+} );
+```
+
+---
+
 # Filter: bricks/form/submission-table/file_url
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-submission-table-file_url/
@@ -2871,30 +2871,30 @@ add_filter( 'bricks/form/submission-table/file_url', function( $file_url, $file,
 
 ---
 
-# Filter: bricks/form/tinymce_settings
+# Filter: bricks/form/response
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-tinymce_settings/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-response/
 
-*Filters the TinyMCE configuration settings for \"Rich Text\" fields in Bricks forms. This allows you to customize the toolbar, menus, and other editor options.*
+*Filters the JSON response sent to the browser after a Bricks form submission. This allows you to customize the success message, redirection URL, or add extra.*
 
-Filters the TinyMCE configuration settings for "Rich Text" fields in Bricks forms. This allows you to customize the toolbar, menus, and other editor options.
+Filters the JSON response sent to the browser after a Bricks form submission. This allows you to customize the success message, redirection URL, or add extra data to the response.
 
 ## Parameters
 
-- `$settings` (*array*): Array of TinyMCE settings.
+- `$response` (*array*): The response data array (e.g., `['type' => 'success', 'message' => '...', 'redirectUrl' => '...']`).
+- `$form` (*object*): The Form integration instance.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/form/tinymce_settings', function( $settings ) {
-    // Example: Disable the menubar
-    $settings['menubar'] = false;
+add_filter( 'bricks/form/response', function( $response, $form ) {
+    // Example: Append a "Thank you" note to the success message
+    if ( isset( $response['type'] ) && $response['type'] === 'success' ) {
+        $response['message'] .= ' ' . esc_html__( 'Thank you for contacting us!', 'my-domain' );
+    }
 
-    // Example: Simplify the toolbar
-    $settings['toolbar'] = 'bold italic underline | bullist numlist | link unlink';
-
-    return $settings;
-} );
+    return $response;
+}, 10, 2 );
 ```
 
 ---

@@ -10,7 +10,7 @@ You'll most likely use dynamic data when creating templates in Bricks. Such as y
 
 The dynamic data picker for text shows up when typing a "\{" onto the canvas. You can also click the "bolt" icon in the settings panel to reveal it:
 
-https://youtu.be/w4Bv-Pd6n2w
+https://youtu.be/DcWIQo2eYdI
 
 Dynamic data for non-text settings such as images, videos, etc. is available from the "Select dynamic data" dropdown menu in the panel settings.
 

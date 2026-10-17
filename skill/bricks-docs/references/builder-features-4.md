@@ -1,3 +1,414 @@
+# Popup Builder
+
+Source: https://academy.bricksbuilder.io/builder/features/popup-builder/
+
+*Build popups in Bricks with popup templates, template conditions, popup settings, interactions, limits, AJAX rendering, looping context, JavaScript helpers, and popup events.*
+
+The Popup Builder lets you create fully custom popups in Bricks. A popup is a Bricks template with the template type **Popup**. Bricks renders the popup HTML on the front end, keeps it hidden by default, and opens or closes it through [Interactions](https://academy.bricksbuilder.io/builder/features/interactions/) or JavaScript.
+
+Use popups for modals, newsletter forms, exit-intent offers, quick views, map info boxes, and contextual content in query loops.
+
+## Create a popup template {#create-popup-template}
+
+Create a new template and choose the **Popup** template type.
+
+![](https://academy.bricksbuilder.io/assets/popup-template-type.png)
+
+Save the template, then edit it with Bricks.
+
+Popup templates look different from normal page templates:
+
+- The popup content is centered on the canvas.
+- Template Settings includes a **Popup** group.
+- The template does not use Populated Content.
+
+![](https://academy.bricksbuilder.io/assets/popup-template-type-screen.png)
+
+Build the popup body like any other Bricks layout: add sections, containers, forms, buttons, icons, images, or dynamic data to the canvas.
+
+## Popup availability and template conditions {#popup-template-conditions}
+
+Template conditions decide where Bricks renders a popup template. Open **Settings > Template Settings > Conditions** and choose the pages where the popup should be available.
+
+![](https://academy.bricksbuilder.io/assets/popup-condition.png)
+
+For example, a newsletter popup that can open from the global footer usually needs a condition such as Entire website. A product quick-view popup may only need to be available on shop or product archive pages.
+
+If a popup is not rendered on the current page, an interaction cannot open it because there is no popup element in the DOM. If a page has **Disable popups** enabled in Page Settings, Bricks does not render page popups.
+
+You can render multiple popup templates on the same page.
+
+## Popup settings {#popup-settings}
+
+Popup-specific settings are under **Settings > Template Settings > Popup**.
+
+![](https://academy.bricksbuilder.io/assets/popup-settings.png)
+
+You can also define global popup defaults in Theme Styles under the Popup control group. Template settings can override those defaults for one popup.
+
+The main popup settings include:
+
+- **Padding**: padding on the popup wrapper.
+- **Align main axis** and **Align cross axis**: position the popup content inside the viewport.
+- **Close on**: choose Backdrop click, ESC key, None, or the default Backdrop and ESC behavior.
+- **Z-index**: controls popup stacking.
+- **Scroll (body)**: allow the page body to scroll while the popup is open. If disabled, Bricks adds `no-scroll` to the body while the popup is open.
+- **Scroll to top**: scroll popup content to the top when opening.
+- **Disable auto focus**: prevent Bricks from focusing the first focusable element inside the popup.
+- **Fetch content via AJAX**: render popup content on demand instead of in the initial DOM.
+- **AJAX loader**: choose a loader animation and optional selector, color, and scale for AJAX popups.
+- **Breakpoints**: choose where the popup is allowed to display.
+- **Backdrop**: configure or disable the backdrop.
+- **Content**: style the `.brx-popup-content` wrapper.
+- **Popup limit**: restrict how often the popup can open.
+
+On the front end, Bricks traps keyboard focus inside open popups, restores focus after closing, supports ESC/backdrop closing according to the **Close on** setting, and emits popup JavaScript events.
+
+> **Note**
+>
+> Clicking outside the popup or pressing ESC only closes the popup if the **Close on** setting includes that behavior. If you set Close on to None, add your own close interaction or JavaScript.
+
+## Popup interactions {#popup-interactions}
+
+Further down the popup settings panel, the **Interactions** group lets the popup react to events. Popup template interactions use the same interaction system as elements, plus two popup-specific triggers:
+
+- **Show popup**: runs after this popup opens.
+- **Hide popup**: runs after this popup closes.
+
+Use these triggers when the popup itself should run follow-up actions, such as starting an animation, setting storage, or updating another element after the popup has opened or closed.
+
+> **Note**
+>
+> For **Hide popup**, target a CSS selector rather than the popup directly. The trigger runs after the popup has already closed.
+
+Most popups are opened by an interaction on another element. For example, add a Click interaction to a Button, set **Target** to Popup, select the popup template, and use **Show element**.
+
+A common automatic popup uses **Content loaded**:
+
+![](https://academy.bricksbuilder.io/assets/bricks-popup-builder-interaction-content-loaded-465x1024.png)
+
+If no popup interaction exists on the popup itself and no other element interaction opens the popup, the popup stays hidden.
+
+## Popup open and close lifecycle {#popup-lifecycle}
+
+When Bricks opens a popup, it follows this front-end flow:
+
+1. Resolve the popup element by template ID or element node.
+2. Check popup limits.
+3. Check popup breakpoint rules.
+4. Remove the `hide` class.
+5. Add `no-scroll` to the body unless body scroll is allowed.
+6. Fetch AJAX popup content if the popup is configured for AJAX.
+7. Insert AJAX content into `.brx-popup-content`, if content was fetched.
+8. Emit `bricks/ajax/popup/loaded`, only for AJAX content that was inserted.
+9. Emit `bricks/popup/open`.
+10. Increment the popup counters.
+
+When Bricks closes a popup, it adds the `hide` class, removes `no-scroll` from the body if no other non-body-scroll popup is open, and emits `bricks/popup/close`.
+
+This lifecycle matters for custom code:
+
+- Listen to `bricks/ajax/popup/loaded` when you need newly fetched AJAX popup DOM to exist.
+- Listen to `bricks/popup/open` when you need the popup to be open.
+- Listen to `bricks/popup/close` when you need cleanup after close.
+
+## Popup limit {#limit}
+
+By default, a popup can open every time it is triggered. Use **Settings > Template Settings > Popup > Popup limit** to restrict how often it opens.
+
+Bricks checks limits before opening the popup. Once a limit is reached, the popup does not open and the open event is not emitted.
+
+There are four popup limit controls:
+
+| Limit type | Browser storage | Description |
+| --- | --- | --- |
+| Per page load | `window.brx_popup_{id}_total` | Resets after the page reloads. |
+| Per session | `sessionStorage.brx_popup_{id}_total` | Resets when the browser session/tab storage is cleared. |
+| Across sessions | `localStorage.brx_popup_{id}_total` | Persists until local storage is cleared. |
+| Show again after hours | `localStorage.brx_popup_{id}_lastShown` | Stores the last shown timestamp and waits the configured number of hours before allowing another open. |
+
+![](https://academy.bricksbuilder.io/assets/bricks-1.6-popup-limit.png)
+
+The page-load, session, and across-session counters increment each time the popup is successfully opened. The hour-based setting stores the last shown timestamp when the popup passes its limit check.
+
+## Popup breakpoints {#popup-breakpoints}
+
+Popup breakpoint settings control whether a popup is allowed to display at the current viewport width.
+
+Bricks supports two modes:
+
+- **Start display at breakpoint**: show the popup at or above the selected breakpoint width.
+- **Display on breakpoints**: show the popup only inside the selected breakpoint ranges.
+
+If the current viewport does not match the popup breakpoint rule, Bricks does not open the popup.
+
+## Closing a popup {#closing-popup}
+
+You can close a popup in several ways:
+
+- Use the popup **Close on** setting for backdrop click and/or ESC.
+- Add a close icon or button inside the popup and give it a Hide element interaction targeting the popup.
+- Use a reusable close element that targets `.brx-popup`.
+- Call `bricksClosePopup()` from JavaScript.
+
+### Example: Add popup close icon {#example-close-icon}
+
+Add an Icon element to your popup. Set its cursor to pointer under **Styles > Layout > Misc**.
+
+Open the Icon element's Interactions panel and add:
+
+- Trigger: Click
+- Target: Popup
+- Popup: the current popup
+- Action: Hide element
+
+![](https://academy.bricksbuilder.io/assets/popup-close-icon-interaction.png)
+
+If you want to reuse the same close icon in different popups, create it as a [Component](https://academy.bricksbuilder.io/builder/features/components/). Then use:
+
+- Target: CSS selector
+- CSS selector: `.brx-popup`
+- Action: Hide element
+
+![](https://academy.bricksbuilder.io/assets/popup-global-close-icon-interaction.png)
+
+## JavaScript helper functions and events {#events-functions}
+
+Bricks exposes popup helper functions and custom events on the front end.
+
+### Open or close a popup via JavaScript {#popup-js-functions}
+
+Use `bricksOpenPopup` and `bricksClosePopup` to open or close Bricks popups.
+
+Both functions accept a popup template ID or a popup element node:
+
+```php
+bricksOpenPopup(3321)
+bricksClosePopup(3321)
+```
+
+```php
+const popup = document.querySelector('.brx-popup[data-popup-id="3321"]')
+
+bricksOpenPopup(popup)
+bricksClosePopup(popup)
+```
+
+### Example: Open popup by selector {#open-popup-by-selector}
+
+```php
+document.querySelectorAll('.brxe-heading, .my-custom-selector').forEach((el) => {
+  el.addEventListener('click', () => {
+    bricksOpenPopup(3321)
+  })
+})
+```
+
+### Listen to popup open or close events {#popup-js-events}
+
+Use `bricks/popup/open` and `bricks/popup/close` to run code when a popup opens or closes.
+
+<span id="bricks-popup-open-close-code"></span>
+
+```php
+document.addEventListener('bricks/popup/open', (event) => {
+  const popupId = event.detail.popupId
+  const popupElement = event.detail.popupElement
+
+  if (popupId == 3321) {
+    console.log('3321 popup is opened')
+  }
+})
+
+document.addEventListener('bricks/popup/close', (event) => {
+  const popupId = event.detail.popupId
+  const popupElement = event.detail.popupElement
+
+  if (popupId == 3321) {
+    console.log('3321 popup is closed')
+  }
+})
+```
+
+Use `event.detail.popupId` and `event.detail.popupElement`. The property is `detail`, not `details`.
+
+## Popup inside query loop {#query-loop}
+
+You can add a popup inside a query loop with the **Template** element. Inside the popup template, dynamic data can reference the current loop item.
+
+The example below shows a Quick View button inside a product query loop. The button uses an interaction to show the selected Quick View popup.
+
+![](https://academy.bricksbuilder.io/assets/bricks-1.6-popup-inside-query-loop-1024x403.jpg)
+
+For Bricks 1.7.1 and newer, Bricks can build loop-specific popup HTML for query loop popups. For older versions, do not set the interaction on the Query Loop div itself; set it on an element inside the loop item.
+
+![](https://academy.bricksbuilder.io/assets/query-loop-popup-template-interaction-structure.png)
+
+<figcaption>
+
+Example layout structure to trigger a looping popup for Bricks versions earlier than 1.7.1
+
+</figcaption>
+
+### Example: Open a looping popup by query element ID and loop index {#open-looping-popup-by-query-element-id-and-loop-index}
+
+If a looping popup is already rendered on the page, you can target it by its query element ID and loop index:
+
+```php
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    const queryId = 'vfiqrn'
+    const targetPopup = document.querySelector(
+      `.brx-popup[data-popup-loop="${queryId}"][data-popup-loop-index="7"]`
+    )
+
+    bricksOpenPopup(targetPopup)
+  }, 200)
+})
+```
+
+The small delay is useful in custom code elements because it gives Bricks frontend globals and popup markup time to initialize.
+
+## AJAX popup {#ajax}
+
+AJAX popups were introduced in Bricks 1.9.4. Enable **Fetch content via AJAX** when you want Bricks to keep the initial DOM lighter and fetch popup content only when the popup opens.
+
+This is especially useful for popups inside query loops, where rendering every popup's full content on initial page load can be expensive.
+
+![](https://academy.bricksbuilder.io/assets/ajax-popup-controls-in-popup-template.png)
+
+When AJAX is enabled:
+
+- The popup wrapper is rendered on the page.
+- `.brx-popup-content` starts empty outside the builder preview.
+- Bricks fetches the content from the REST endpoint when the popup opens.
+- Returned HTML and dynamic CSS are inserted into `.brx-popup-content`.
+- Additional nested popup HTML can be appended to the body if the AJAX content contains looping AJAX popups.
+
+AJAX popup rendering supports post, term, and user context. Dynamic data that does not have a stable object ID, such as some repeater rows, cannot always be resolved as an AJAX popup context.
+
+### AJAX popup context settings {#ajax-context-settings}
+
+When an interaction opens a popup, Bricks exposes context controls for AJAX popups:
+
+![](https://academy.bricksbuilder.io/assets/context-controls-in-interactions-ui.png)
+
+Bricks tries to infer the current context automatically. Inside normal post, term, and user loops, this often works. In nested query loops, component instances, custom field repeaters, or more complex dynamic data setups, automatic context can be wrong or unavailable.
+
+Use these fields when dynamic data in the AJAX popup renders empty or from the wrong object:
+
+- **Context type**: Post, Term, or User.
+- **Context ID**: the object ID to render dynamic data against.
+
+You can use dynamic data such as `{post_id}`, `{term_id}`, or a custom field value that resolves to a post, term, or user ID.
+
+![](https://academy.bricksbuilder.io/assets/example-for-woo-product-quick-view-setup.png)
+
+<figcaption>
+
+A looping product quick-view popup structure in Bricks
+
+</figcaption>
+
+> **Note**
+>
+> Do not use a repeater row number as popup context. AJAX popup context expects an object Bricks can resolve, such as a post, term, or user.
+
+### Open an AJAX popup with context in JavaScript {#open-ajax-popup}
+
+Since Bricks 1.9.4, `bricksOpenPopup` accepts three parameters:
+
+- `object`: popup ID or popup element node.
+- `timeout`: timeout in milliseconds used by popup animation/counter logic.
+- `additionalParams`: AJAX popup context data.
+
+```php
+bricksOpenPopup(
+  1190,
+  0,
+  {
+    popupContextId: 668,
+    popupContextType: 'post'
+  }
+)
+
+bricksOpenPopup(
+  2350,
+  0,
+  {
+    popupContextId: 39,
+    popupContextType: 'term'
+  }
+)
+```
+
+For users, the Interactions panel usually handles these parameters. Use JavaScript when you are opening popups from custom scripts.
+
+### AJAX popup events {#ajax-events}
+
+AJAX popups emit three AJAX-specific events:
+
+- `bricks/ajax/popup/start`: emitted before the AJAX popup request is made.
+- `bricks/ajax/popup/end`: emitted after the AJAX popup request finishes.
+- `bricks/ajax/popup/loaded`: emitted after fetched popup content is inserted into the DOM.
+
+Each event uses `event.detail.popupId` and `event.detail.popupElement`.
+
+```php
+document.addEventListener('bricks/ajax/popup/loaded', (event) => {
+  const popupId = event.detail.popupId
+  const popupElement = event.detail.popupElement
+
+  if (popupId == 3321) {
+    console.log('3321 AJAX popup content DOM loaded')
+  }
+})
+```
+
+The AJAX popup open sequence is:
+
+1. `bricks/ajax/popup/start`
+2. `bricks/ajax/popup/end`
+3. `bricks/ajax/popup/loaded`
+4. `bricks/popup/open`
+
+`bricks/ajax/popup/loaded` only fires when AJAX content is inserted. Non-AJAX popups emit `bricks/popup/open` directly after opening.
+
+## Popup setup examples {#popup-setup-examples}
+
+### Example: Show popup when the mouse leaves the browser window {#example-mouse-leaves}
+
+After creating the popup template and layout, open **Settings > Template Settings > Popup**, scroll to Interactions, and add a **Mouse leave window** interaction that shows the popup.
+
+![](https://academy.bricksbuilder.io/assets/popup-builder-mouse-leave-open.png)
+
+For a real exit-intent popup, combine this with popup limits or browser storage conditions so the popup does not appear too often.
+
+### Example: Show popup before a date/time {#example-date-time}
+
+Template conditions decide where the popup template is available. Element Conditions can decide whether the popup content renders.
+
+To show a popup only before a specific date, add an [Element Condition](https://academy.bricksbuilder.io/builder/features/element-conditions/) to the outermost popup element.
+
+![](https://academy.bricksbuilder.io/assets/bricks-popup-builder-element-conditions-1536x624.png)
+
+If that condition is not fulfilled, Bricks does not render the popup content and skips the popup HTML. A trigger that targets that popup has no popup element to open on the page.
+
+### Example: Use popup open/close as triggers {#example-popup-open-close-trigger}
+
+Popup template interactions can react after the popup opens or closes.
+
+For example:
+
+1. Open **Settings > Template Settings > Popup > Interactions**.
+2. Add a **Show popup** trigger.
+3. Set the action to Browser storage: Count.
+4. Store a key such as `newsletter_popup_opened`.
+
+You can then use interaction conditions elsewhere to check that key and adjust page behavior.
+
+---
+
 # Remote Components
 
 Source: https://academy.bricksbuilder.io/builder/features/remote-components/
@@ -195,6 +606,147 @@ For local component creation, properties, variants, slots, and instance behavior
 
 ---
 
+# Remote Templates
+
+Source: https://academy.bricksbuilder.io/builder/features/remote-templates/
+
+*Connect Bricks sites, browse shared template libraries, and transfer templates with their component dependencies.*
+
+Remote Templates let you browse and insert templates from another Bricks installation without exporting and importing files manually.
+
+The workflow has two sides:
+
+- The **source site** exposes selected templates through its remote library.
+- The **destination site** adds that site under **Remote libraries** and accesses its templates from the Builder Browser.
+
+## 1. Expose Templates on the Source Site
+
+On the site that contains the templates:
+
+1. Go to **Bricks > Settings > Templates & components**.
+2. Under **My templates**, enable **My templates access**.
+3. Use **Exclude templates** to hide any templates that should not be shared.
+4. Configure the shared **Remote access** controls.
+5. Save the settings.
+
+![Bricks Templates and components settings with My templates access enabled and Exclude templates visible](https://academy.bricksbuilder.io/assets/bricks-settings-remote-templates-access.webp)
+
+The **Remote access** settings apply to remote templates and remote components:
+
+- **Whitelist URLs** restricts access to the listed destination sites. Enter one URL per line.
+- **Password protection** requires destination sites to provide the same password.
+
+If both fields are empty, any Bricks site that knows the source URL can request the templates exposed by **My templates access**.
+
+The source site's WordPress permalink structure must not be set to **Plain**.
+
+![](https://academy.bricksbuilder.io/assets/permalink-structure-not-plain-type-for-remote-templates-01.png)
+
+## 2. Add a Remote Site on the Destination Site
+
+On the site where you want to use the templates:
+
+1. Go to **Bricks > Settings > Templates & components**.
+2. Under **Remote libraries**, click **Add**.
+3. Enter the source site's full **URL**.
+4. Optionally enter a **Name**. Bricks shows this instead of the URL in source dropdowns.
+5. Enter the source site's **Remote access** password, if it uses one.
+6. Save the settings.
+
+You can add multiple remote sites. The same entry can provide templates, components, or both.
+
+![Remote libraries settings with Name, URL, and Password fields](https://academy.bricksbuilder.io/assets/bricks-settings-remote-libraries.webp)
+
+## 3. Browse Remote Templates
+
+Open the builder, click the folder icon, and select **Templates** in the [Builder Browser](https://academy.bricksbuilder.io/builder/features/builder-browser/).
+
+Choose the remote site under **Source**. You can search the library, filter its templates, switch between grid and list view, and use **Reload** to request the source again.
+
+The current user needs **Access remote templates** permission to see configured remote sites.
+
+![Builder Browser Templates view with HappyFiles selected as the remote source](https://academy.bricksbuilder.io/assets/bricks-browser-remote-templates.webp)
+
+## Insert a Remote Template
+
+Click **Insert** to add the template to the current canvas. The **Replace content** control decides whether Bricks replaces the current canvas or adds the template to it.
+
+Use **Import images** to download eligible template and component images to the destination Media Library. Leave it disabled to use placeholder images where the normal template import flow supports them.
+
+When the remote template includes related design-system data, Bricks may open additional reviews for theme styles, color palettes, variables, global classes, or Style Manager settings.
+
+Remote code signatures are not trusted. Bricks removes source signatures, and users without code-execution permission do not receive executable Code, SVG, or custom-query settings from the remote template.
+
+### Templates That Use Components
+
+In Bricks 2.4 and later, inserting a remote template also requests the components used by that template. The dependency package includes nested components and their referenced global classes, variable categories and variables, and color palettes.
+
+Bricks remaps the template to the imported local component and design-system IDs before inserting it. Save pending component, class, variable, and color changes before starting the insert.
+
+If a component from this source was imported before and changed remotely, Bricks asks whether to replace the local component before inserting the template. Replacing it updates the existing local component definition and its instances.
+
+If the template depends on a component excluded from remote access on the source site, Bricks blocks the dependency package instead of inserting an incomplete component graph.
+
+## Import to Templates
+
+Click **Import to templates** on a non-local template to save it into **My Templates** instead of inserting it directly onto the current canvas.
+
+For a configured Bricks remote site, Bricks first localizes supported component and design-system dependencies, then passes the template through the regular template import flow. The current user needs **Import/export templates** permission.
+
+## Compatibility With Older Remote Sites
+
+Bricks 2.4 introduces a versioned remote-library package for templates with component dependencies.
+
+When a configured source does not support that package protocol, Bricks falls back to the legacy Remote Templates response. The template can still use the older insertion workflow, but the legacy response does not provide the dependency-complete component package. Update the source site before sharing templates that use components.
+
+## Permissions
+
+Remote template operations use separate builder permissions:
+
+| Task                                                                 | Required permissions                                                                                                     |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| See configured remote sites                                          | **Access remote templates**                                                                                              |
+| Insert a remote template without component dependencies              | **Access remote templates** and **Insert templates**                                                                     |
+| Save a remote template under My Templates                            | **Access remote templates** and **Import/export templates**                                                              |
+| Insert a remote template with component dependencies                 | The insert permissions above, plus **Access remote components**, **Import/export components**, and **Insert components** |
+| Import a remote template with component dependencies to My Templates | The template import permissions above, plus **Access remote components** and **Import/export components**                |
+
+See [Builder Access & Capabilities](https://academy.bricksbuilder.io/builder/interface/builder-access/) for assigning these permissions.
+
+## Fetching and Caching
+
+Bricks keeps fetched template data outside the WordPress database. Remote template data can be cached in the builder browser for up to seven days per source. Use **Reload** when you need the source again before that cache expires.
+
+Remote-library capability checks and component catalogs use shorter server-side caches. In the Component Manager, **Refresh** bypasses those short caches and requests the source again.
+
+## Troubleshooting
+
+### A Remote Site Does Not Appear
+
+- Confirm the remote library row is saved under **Templates & components**.
+- Confirm the current user has **Access remote templates** permission.
+
+### A Remote Site Appears but Does Not Load
+
+Check the source site:
+
+- **My templates access** is enabled.
+- Permalinks are not set to **Plain**.
+- The destination site's URL is included under **Whitelist URLs**, when used.
+- The password saved on the destination matches **Remote access > Password protection**.
+- The expected templates are not selected under **Exclude templates**.
+
+### A Template With Components Cannot Be Inserted
+
+- Save pending component, class, variable, and color changes on the destination.
+- Confirm the user has the required component permissions.
+- Confirm every component dependency is available and not excluded on the source.
+- Update the source to Bricks 2.4 or later if it only supports the legacy template response.
+
+For the template library controls and local template actions, see [Template Library](https://academy.bricksbuilder.io/builder/features/template-library/).
+
+---
+
 # Save Form Submissions
 
 Source: https://academy.bricksbuilder.io/builder/features/save-form-submissions/
@@ -358,6 +910,22 @@ For file fields, the Form Submissions table can link to files saved in the Media
 
 ---
 
+# Create Your Own Sidebars
+
+Source: https://academy.bricksbuilder.io/builder/features/sidebars/
+
+*Create and register sidebars for Bricks so widget areas can be placed and styled inside templates and layouts.*
+
+Bricks provides you with its own, built-in sidebar generator. Located in your WordPress dashboard under **Bricks > Sidebars** it lets you to create unlimited sidebars (widgetized areas).
+
+All you need to do is give your sidebar a name and description (optional), and click Create new sidebar.
+
+Once your custom sidebar is created go to **Appearance > Widgets** and drag and drop the widgets of your choice into your newly created sidebar.
+
+You can now add this newly created sidebar inside the builder by dragging the **Sidebar** element onto the canvas.
+
+---
+
 # Search Criteria
 
 Source: https://academy.bricksbuilder.io/builder/features/search-criteria/
@@ -488,163 +1056,6 @@ Matched posts:
 **1003**, **1002**, **1001**
 
 Weight scores are integer values with a minimum of 1. Matching scores are added together, so an item that matches multiple low-weight fields can outrank an item that matches one field. Bricks preserves the weighted order by ordering the query by the matched ID list. If a Sort filter is active, that sort order takes precedence.
-
----
-
-# Create Your Own Sidebars
-
-Source: https://academy.bricksbuilder.io/builder/features/sidebars/
-
-*Create and register sidebars for Bricks so widget areas can be placed and styled inside templates and layouts.*
-
-Bricks provides you with its own, built-in sidebar generator. Located in your WordPress dashboard under **Bricks > Sidebars** it lets you to create unlimited sidebars (widgetized areas).
-
-All you need to do is give your sidebar a name and description (optional), and click Create new sidebar.
-
-Once your custom sidebar is created go to **Appearance > Widgets** and drag and drop the widgets of your choice into your newly created sidebar.
-
-You can now add this newly created sidebar inside the builder by dragging the **Sidebar** element onto the canvas.
-
----
-
-# Remote Templates
-
-Source: https://academy.bricksbuilder.io/builder/features/remote-templates/
-
-*Connect Bricks sites, browse shared template libraries, and transfer templates with their component dependencies.*
-
-Remote Templates let you browse and insert templates from another Bricks installation without exporting and importing files manually.
-
-The workflow has two sides:
-
-- The **source site** exposes selected templates through its remote library.
-- The **destination site** adds that site under **Remote libraries** and accesses its templates from the Builder Browser.
-
-## 1. Expose Templates on the Source Site
-
-On the site that contains the templates:
-
-1. Go to **Bricks > Settings > Templates & components**.
-2. Under **My templates**, enable **My templates access**.
-3. Use **Exclude templates** to hide any templates that should not be shared.
-4. Configure the shared **Remote access** controls.
-5. Save the settings.
-
-![Bricks Templates and components settings with My templates access enabled and Exclude templates visible](https://academy.bricksbuilder.io/assets/bricks-settings-remote-templates-access.webp)
-
-The **Remote access** settings apply to remote templates and remote components:
-
-- **Whitelist URLs** restricts access to the listed destination sites. Enter one URL per line.
-- **Password protection** requires destination sites to provide the same password.
-
-If both fields are empty, any Bricks site that knows the source URL can request the templates exposed by **My templates access**.
-
-The source site's WordPress permalink structure must not be set to **Plain**.
-
-![](https://academy.bricksbuilder.io/assets/permalink-structure-not-plain-type-for-remote-templates-01.png)
-
-## 2. Add a Remote Site on the Destination Site
-
-On the site where you want to use the templates:
-
-1. Go to **Bricks > Settings > Templates & components**.
-2. Under **Remote libraries**, click **Add**.
-3. Enter the source site's full **URL**.
-4. Optionally enter a **Name**. Bricks shows this instead of the URL in source dropdowns.
-5. Enter the source site's **Remote access** password, if it uses one.
-6. Save the settings.
-
-You can add multiple remote sites. The same entry can provide templates, components, or both.
-
-![Remote libraries settings with Name, URL, and Password fields](https://academy.bricksbuilder.io/assets/bricks-settings-remote-libraries.webp)
-
-## 3. Browse Remote Templates
-
-Open the builder, click the folder icon, and select **Templates** in the [Builder Browser](https://academy.bricksbuilder.io/builder/features/builder-browser/).
-
-Choose the remote site under **Source**. You can search the library, filter its templates, switch between grid and list view, and use **Reload** to request the source again.
-
-The current user needs **Access remote templates** permission to see configured remote sites.
-
-![Builder Browser Templates view with HappyFiles selected as the remote source](https://academy.bricksbuilder.io/assets/bricks-browser-remote-templates.webp)
-
-## Insert a Remote Template
-
-Click **Insert** to add the template to the current canvas. The **Replace content** control decides whether Bricks replaces the current canvas or adds the template to it.
-
-Use **Import images** to download eligible template and component images to the destination Media Library. Leave it disabled to use placeholder images where the normal template import flow supports them.
-
-When the remote template includes related design-system data, Bricks may open additional reviews for theme styles, color palettes, variables, global classes, or Style Manager settings.
-
-Remote code signatures are not trusted. Bricks removes source signatures, and users without code-execution permission do not receive executable Code, SVG, or custom-query settings from the remote template.
-
-### Templates That Use Components
-
-In Bricks 2.4 and later, inserting a remote template also requests the components used by that template. The dependency package includes nested components and their referenced global classes, variable categories and variables, and color palettes.
-
-Bricks remaps the template to the imported local component and design-system IDs before inserting it. Save pending component, class, variable, and color changes before starting the insert.
-
-If a component from this source was imported before and changed remotely, Bricks asks whether to replace the local component before inserting the template. Replacing it updates the existing local component definition and its instances.
-
-If the template depends on a component excluded from remote access on the source site, Bricks blocks the dependency package instead of inserting an incomplete component graph.
-
-## Import to Templates
-
-Click **Import to templates** on a non-local template to save it into **My Templates** instead of inserting it directly onto the current canvas.
-
-For a configured Bricks remote site, Bricks first localizes supported component and design-system dependencies, then passes the template through the regular template import flow. The current user needs **Import/export templates** permission.
-
-## Compatibility With Older Remote Sites
-
-Bricks 2.4 introduces a versioned remote-library package for templates with component dependencies.
-
-When a configured source does not support that package protocol, Bricks falls back to the legacy Remote Templates response. The template can still use the older insertion workflow, but the legacy response does not provide the dependency-complete component package. Update the source site before sharing templates that use components.
-
-## Permissions
-
-Remote template operations use separate builder permissions:
-
-| Task                                                                 | Required permissions                                                                                                     |
-| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| See configured remote sites                                          | **Access remote templates**                                                                                              |
-| Insert a remote template without component dependencies              | **Access remote templates** and **Insert templates**                                                                     |
-| Save a remote template under My Templates                            | **Access remote templates** and **Import/export templates**                                                              |
-| Insert a remote template with component dependencies                 | The insert permissions above, plus **Access remote components**, **Import/export components**, and **Insert components** |
-| Import a remote template with component dependencies to My Templates | The template import permissions above, plus **Access remote components** and **Import/export components**                |
-
-See [Builder Access & Capabilities](https://academy.bricksbuilder.io/builder/interface/builder-access/) for assigning these permissions.
-
-## Fetching and Caching
-
-Bricks keeps fetched template data outside the WordPress database. Remote template data can be cached in the builder browser for up to seven days per source. Use **Reload** when you need the source again before that cache expires.
-
-Remote-library capability checks and component catalogs use shorter server-side caches. In the Component Manager, **Refresh** bypasses those short caches and requests the source again.
-
-## Troubleshooting
-
-### A Remote Site Does Not Appear
-
-- Confirm the remote library row is saved under **Templates & components**.
-- Confirm the current user has **Access remote templates** permission.
-
-### A Remote Site Appears but Does Not Load
-
-Check the source site:
-
-- **My templates access** is enabled.
-- Permalinks are not set to **Plain**.
-- The destination site's URL is included under **Whitelist URLs**, when used.
-- The password saved on the destination matches **Remote access > Password protection**.
-- The expected templates are not selected under **Exclude templates**.
-
-### A Template With Components Cannot Be Inserted
-
-- Save pending component, class, variable, and color changes on the destination.
-- Confirm the user has the required component permissions.
-- Confirm every component dependency is available and not excluded on the source.
-- Update the source to Bricks 2.4 or later if it only supports the legacy template response.
-
-For the template library controls and local template actions, see [Template Library](https://academy.bricksbuilder.io/builder/features/template-library/).
 
 ---
 
@@ -837,143 +1248,107 @@ You can also open and close the Style Manager popup using:
 
 ---
 
-# User activation
+# Template Library
 
-Source: https://academy.bricksbuilder.io/builder/features/user-activation/
+Source: https://academy.bricksbuilder.io/builder/features/template-library/
 
-*Configure user activation in Bricks for registration flows that require email confirmation before an account becomes active.*
+*Browse, import, and manage templates from the Bricks Template Library.*
 
-Starting with **Bricks 2.1**, you can enable **User activation** for WordPress registrations. Once enabled, newly registered users receive an activation email and must click the activation link before they can log in.
+In Bricks 2.4, templates are managed inside the Builder Browser. Open it by clicking the folder icon in the builder toolbar.
 
-> **Note**
->
-> **IMPORTANT: This feature applies to all new user registrations, not just those submitted via the Form element.**
+You can also press `CMD / CTRL + SHIFT + L` to open the Browser on the Templates view if your user has template access.
 
-## Quick overview {#quick-overview}
+All of your own templates are located under the **My Templates** source. You can also browse built-in remote sources such as Wireframes and Design sets, plus any Remote Templates sources configured for your site.
 
-Here is a step-by-step overview of how this feature works once it's enabled.
+![](https://academy.bricksbuilder.io/assets/docs-template-library-1024x576.png)
 
-1. A new user account is created.
-2. Bricks stores a generated activation key and marks the user as **pending**.
-3. Bricks sends the activation email to the new user's email address.
-4. The activation link points to the configured **Verification success page** with `user_id` and `activation_key` query parameters.
-5. When the user opens that valid link, Bricks deletes the activation key and marks the user as **active**.
-6. If **Auto login after activation** is enabled, Bricks logs the user in after successful activation.
-7. If the activation link is invalid, Bricks redirects the user to the configured **Verification failure page**.
-8. Pending users cannot log in. Bricks returns an inactive-account login error.
+<figcaption>
 
-Users created before User activation was enabled do not have activation status meta. Bricks treats them as active.
+Template Library: My Templates and remote sources
 
-## Configuration and controls {#configuration-and-controls}
+</figcaption>
 
-Inside the WordPress dashboard, go to **Bricks > Settings > General** and scroll to **User activation**.
+https://www.youtube.com/watch?v=gbWPw9ebxjQ
 
-![](https://academy.bricksbuilder.io/assets/bricks-user-activation-settings.png)
+## Template Sources {#interface}
 
-**User activation**: Enable this to require new users to verify their email after registration. After enabling it, the rest of the settings become available.
+In the Templates view, the **Source** dropdown can include:
 
-> **Note**
->
-> When User activation is enabled, the Form element's registration **Auto log in user** setting is not available. Use **Auto login after activation** instead.
+- **My Templates**: Templates from the current site.
+- **Wireframes**: Structural Bricks templates based on classes and variables.
+- **Design sets**: Pre-designed Bricks template sets.
+- **Remote sites**: Templates from configured remote Bricks installations.
 
-**Auto login after activation**: Automatically logs the user in after successful email verification.
+[Remote Templates](https://academy.bricksbuilder.io/builder/features/remote-templates/) allow you to browse templates from any other Bricks installation that you have access to.
 
-**Verification success page**: The page used for successful activation links. Bricks expects the activation link to point to this page. If the user opens this page without `user_id` and `activation_key`, Bricks simply renders the page normally.
+## Import Images & Replace Content {#import-images}
 
-**Verification failure page**: The page users are redirected to when activation fails because the user ID or activation key is missing or invalid.
+The Templates view includes two import controls:
 
-**User activation: Email**:
+- **Import images**: When enabled, template images are downloaded into your Media Library. Leave it disabled to insert the template with placeholder images.
+- **Replace content**: When enabled, Bricks replaces the current canvas with the inserted template. Leave it disabled to insert the template into the existing content.
 
-- **From email address**: Optional sender email. If empty, WordPress' normal `wp_mail_from` value is used.
-- **From name**: Optional sender name. If empty, WordPress' normal `wp_mail_from_name` value is used.
-- **Subject**: Email subject. If empty, Bricks uses "Activate your account".
-- **Email content**: Email body. If empty, Bricks sends a default activation message.
-- **HTML email**: Sends the email as HTML. If enabled and the content is not a full HTML document, Bricks converts line breaks with `nl2br()`.
+## Template Filters {#filters}
 
-Available email placeholders:
+The Templates view can show these filters:
 
-| Placeholder | Output |
-| --- | --- |
-| `{{site_name}}` | Site name |
-| `{{site_tagline}}` | Site tagline |
-| `{{site_url}}` | Site URL |
-| `{{username}}` | User login |
-| `{{user_display_name}}` | User display name |
-| `{{user_first_name}}` | User first name |
-| `{{user_last_name}}` | User last name |
-| `{{user_email}}` | User email |
-| `{{activation_link}}` | Activation URL, or an HTML link when HTML email is enabled |
-| `{{activation_url}}` | Plain activation URL |
+- **Template Bundle**: Select a template bundle to show only templates that belong to the selected bundle. A template bundle can be a collection of templates of the same website (e.g. home page, contact, about us page, etc.)
+- **Template Tag**: Select a template tag to show only templates that have the selected tag assigned to them.
+- **Template Type**: Select a template type to show only templates of the selected template type.
+- **Search Templates**: Enter any keyword to search for a specific template.
 
-## Registration behavior
+## Template Actions
 
-User activation hooks into WordPress' `user_register` flow while the feature is enabled. This means it affects:
+The Templates view includes action icons for creating, saving, importing, reloading remote sources, generating local template screenshots when available, and switching between grid and list view.
 
-- Users registered through the Bricks Form element.
-- Users registered through other WordPress registration flows that trigger `user_register`.
+Individual templates can show actions such as insert, edit, export, delete, preview, and **Import to templates**, depending on the source and your builder permissions.
 
-For Bricks Form element registrations:
+**Import to templates** saves a non-local template under **My Templates**. For a configured Bricks remote site, Bricks 2.4 also localizes component dependencies and their referenced design-system data before continuing through the normal template import flow.
 
-- The registration action still validates username, email, password, password length, and role.
-- Administrator and Super Admin roles are blocked as registration targets for security.
-- If the username is not mapped, Bricks can generate it from the email address.
-- If the password is not mapped or submitted, Bricks can generate one.
-- Auto-login after registration is skipped while User activation is enabled.
+### Create Template {#create-template}
 
-If **Send WordPress notification** is enabled in the registration form action, Bricks triggers WordPress' `register_new_user` action after creating the user. The activation email is still sent by the User activation feature.
+Click the **Create template** icon to create a new template. Enter a title and select a template type. The template bundle is optional. Click **Create template** to create it.
 
-## Activation link behavior
+You can also create a new Bricks template from the WordPress dashboard by going to **Bricks → Templates** and click **Add New**. Then give your template a title, select a template type from the meta box on the right side of the editing screen and click **Publish**. Template tags and bundles are optional.
 
-The activation URL is built from your configured **Verification success page** plus two query parameters:
+### Save As Template {#save-as-template}
 
-```text
-?user_id=123&activation_key=generated_key
-```
+Click the **Save as template** icon to save your current builder content as a template. Enter a title and select a template type. Selecting a template bundle is optional.
 
-When the request reaches the success page, Bricks checks those parameters:
+To save a specific section as a template hover over a section in the builder. The Edit (pen) icon should appear in the bottom right corner. Hover over it, and click the "disk" icon (Save Section As Template). Give your template section a name and select template type "Section". Then click **SAVE NEW TEMPLATE**.
 
-- Missing `user_id` or `activation_key`: the success page renders normally.
-- Empty `user_id` or `activation_key`: the user is redirected to the failure page.
-- Invalid activation key: the user is redirected to the failure page.
-- Valid activation key: the account is marked active and the activation key is deleted.
-- Already active user: Bricks skips activation and renders the success page normally.
+### Import Template {#import-template}
 
-Both the success page and failure page should be published pages.
+Click the **Import template** icon to import existing template files. You can import a single template as JSON or multiple templates in ZIP format.
 
-## Users page {#users-page}
+Click "Select file(s) to import" and select the JSON/ZIP file from your computer or drag and drop those files into the marked drop zone.
 
-A new **Activation status** column appears on the WordPress **Users** page.
+To import templates from the WordPress dashboard go to
+**Bricks > Templates** and click **Import Templates**.
 
-![](https://academy.bricksbuilder.io/assets/bricks-user-activation-admin-column.png)
+Select your template file (JSON/ZIP) from your computer and click **Import template(s)**. Or drag and drop those files into the drop zone.
 
-Possible statuses:
+When imported templates include related data, Bricks may ask you to review imported theme styles, color palettes, global variables, global classes, or Style Manager settings before inserting the template.
 
-- **Active**: user can log in normally.
-- **Inactive**: user has pending activation status and cannot log in until activated.
+Remote templates that use components can also transfer those components, including nested component dependencies. See [Remote Templates](https://academy.bricksbuilder.io/builder/features/remote-templates/) for the access, permission, conflict, and compatibility rules.
 
-For each user, you can perform different actions based on their activation status by hovering over the user entry:
+### Sync Templates
 
-For an **active** user, **Mark as inactive** prevents the user from logging in.
+The sync icon is available for non-My Templates sources. It refreshes the selected remote source.
 
-For an **inactive** user, **Resend activation email** sends a new activation link using the current email template, and **Mark as active** manually marks the user as active without email verification.
+## Export Template(s) {#export-templates}
 
-Only users with the WordPress `edit_users` capability can change activation status or resend activation emails from the Users screen.
+To export a template, hover over the template title and click **Export Template**. This will generate and download a JSON file with your template data onto your computer.
 
-## Login behavior
+To export multiple templates at once as a ZIP file, go to **Bricks → Templates** in your WordPress dashboard, and select the templates you want to export.
 
-When a pending user tries to log in, Bricks blocks authentication and shows an inactive-account error. Users with `active` status, and users with no activation status from before the feature was enabled, can log in normally.
+Now select **Export** from the **Bulk Actions** dropdown, and click **Apply**:
 
-If you also use [Custom Authentication Pages](https://academy.bricksbuilder.io/builder/features/custom-authentication-pages/), the same activation check applies to the Bricks **User login** form action because it uses WordPress authentication.
+![](https://academy.bricksbuilder.io/assets/file-XTTkSk9tej.jpg)
 
-## Email customization filters
+A ZIP file of your selected templates will be generated and downloaded onto your computer.
 
-The email settings can also be adjusted programmatically:
-
-- `bricks/user_activation_email/from_name`
-- `bricks/user_activation_email/subject`
-- `bricks/user_activation_email/content`
-
-These filters are useful for multilingual sites or projects that need different email text per user or context.
+This ZIP file contains all templates as individual JSON files. Either unzip it to import individual templates or import the entire ZIP file to bulk import all templates at once.
 
 ---
 
@@ -1074,110 +1449,6 @@ Before enabling SVG uploads:
 - Keep sanitization enabled unless you have another trusted sanitizer in place.
 - Review any custom allowed tags or attributes.
 - Do not treat media-upload SVG sanitization as protection for SVG element source code; SVG element source code uses the code execution and code signature security model.
-
----
-
-# Template Library
-
-Source: https://academy.bricksbuilder.io/builder/features/template-library/
-
-*Browse, import, and manage templates from the Bricks Template Library.*
-
-In Bricks 2.4, templates are managed inside the Builder Browser. Open it by clicking the folder icon in the builder toolbar.
-
-You can also press `CMD / CTRL + SHIFT + L` to open the Browser on the Templates view if your user has template access.
-
-All of your own templates are located under the **My Templates** source. You can also browse built-in remote sources such as Wireframes and Design sets, plus any Remote Templates sources configured for your site.
-
-![](https://academy.bricksbuilder.io/assets/docs-template-library-1024x576.png)
-
-<figcaption>
-
-Template Library: My Templates and remote sources
-
-</figcaption>
-
-https://www.youtube.com/watch?v=Nj8uPGQ56VY
-
-## Template Sources {#interface}
-
-In the Templates view, the **Source** dropdown can include:
-
-- **My Templates**: Templates from the current site.
-- **Wireframes**: Structural Bricks templates based on classes and variables.
-- **Design sets**: Pre-designed Bricks template sets.
-- **Remote sites**: Templates from configured remote Bricks installations.
-
-[Remote Templates](https://academy.bricksbuilder.io/builder/features/remote-templates/) allow you to browse templates from any other Bricks installation that you have access to.
-
-## Import Images & Replace Content {#import-images}
-
-The Templates view includes two import controls:
-
-- **Import images**: When enabled, template images are downloaded into your Media Library. Leave it disabled to insert the template with placeholder images.
-- **Replace content**: When enabled, Bricks replaces the current canvas with the inserted template. Leave it disabled to insert the template into the existing content.
-
-## Template Filters {#filters}
-
-The Templates view can show these filters:
-
-- **Template Bundle**: Select a template bundle to show only templates that belong to the selected bundle. A template bundle can be a collection of templates of the same website (e.g. home page, contact, about us page, etc.)
-- **Template Tag**: Select a template tag to show only templates that have the selected tag assigned to them.
-- **Template Type**: Select a template type to show only templates of the selected template type.
-- **Search Templates**: Enter any keyword to search for a specific template.
-
-## Template Actions
-
-The Templates view includes action icons for creating, saving, importing, reloading remote sources, generating local template screenshots when available, and switching between grid and list view.
-
-Individual templates can show actions such as insert, edit, export, delete, preview, and **Import to templates**, depending on the source and your builder permissions.
-
-**Import to templates** saves a non-local template under **My Templates**. For a configured Bricks remote site, Bricks 2.4 also localizes component dependencies and their referenced design-system data before continuing through the normal template import flow.
-
-### Create Template {#create-template}
-
-Click the **Create template** icon to create a new template. Enter a title and select a template type. The template bundle is optional. Click **Create template** to create it.
-
-You can also create a new Bricks template from the WordPress dashboard by going to **Bricks → Templates** and click **Add New**. Then give your template a title, select a template type from the meta box on the right side of the editing screen and click **Publish**. Template tags and bundles are optional.
-
-### Save As Template {#save-as-template}
-
-Click the **Save as template** icon to save your current builder content as a template. Enter a title and select a template type. Selecting a template bundle is optional.
-
-To save a specific section as a template hover over a section in the builder. The Edit (pen) icon should appear in the bottom right corner. Hover over it, and click the "disk" icon (Save Section As Template). Give your template section a name and select template type "Section". Then click **SAVE NEW TEMPLATE**.
-
-### Import Template {#import-template}
-
-Click the **Import template** icon to import existing template files. You can import a single template as JSON or multiple templates in ZIP format.
-
-Click "Select file(s) to import" and select the JSON/ZIP file from your computer or drag and drop those files into the marked drop zone.
-
-To import templates from the WordPress dashboard go to
-**Bricks > Templates** and click **Import Templates**.
-
-Select your template file (JSON/ZIP) from your computer and click **Import template(s)**. Or drag and drop those files into the drop zone.
-
-When imported templates include related data, Bricks may ask you to review imported theme styles, color palettes, global variables, global classes, or Style Manager settings before inserting the template.
-
-Remote templates that use components can also transfer those components, including nested component dependencies. See [Remote Templates](https://academy.bricksbuilder.io/builder/features/remote-templates/) for the access, permission, conflict, and compatibility rules.
-
-### Sync Templates
-
-The sync icon is available for non-My Templates sources. It refreshes the selected remote source.
-
-## Export Template(s) {#export-templates}
-
-To export a template, hover over the template title and click **Export Template**. This will generate and download a JSON file with your template data onto your computer.
-
-To export multiple templates at once as a ZIP file, go to **Bricks → Templates** in your WordPress dashboard, and select the templates you want to export.
-
-Now select **Export** from the **Bulk Actions** dropdown, and click **Apply**:
-
-![](https://academy.bricksbuilder.io/assets/file-XTTkSk9tej.jpg)
-
-A ZIP file of your selected templates will be generated and downloaded onto your computer.
-
-This ZIP file contains all templates as individual JSON files. Either unzip it to import individual templates or import the entire ZIP file to bulk import all templates at once.
 
 ---
 
@@ -1412,11 +1683,153 @@ Use preview images to make large template libraries easier to scan. They do not 
 
 ---
 
+# User activation
+
+Source: https://academy.bricksbuilder.io/builder/features/user-activation/
+
+*Configure user activation in Bricks for registration flows that require email confirmation before an account becomes active.*
+
+Starting with **Bricks 2.1**, you can enable **User activation** for WordPress registrations. Once enabled, newly registered users receive an activation email and must click the activation link before they can log in.
+
+> **Note**
+>
+> **IMPORTANT: This feature applies to all new user registrations, not just those submitted via the Form element.**
+
+## Quick overview {#quick-overview}
+
+Here is a step-by-step overview of how this feature works once it's enabled.
+
+1. A new user account is created.
+2. Bricks stores a generated activation key and marks the user as **pending**.
+3. Bricks sends the activation email to the new user's email address.
+4. The activation link points to the configured **Verification success page** with `user_id` and `activation_key` query parameters.
+5. When the user opens that valid link, Bricks deletes the activation key and marks the user as **active**.
+6. If **Auto login after activation** is enabled, Bricks logs the user in after successful activation.
+7. If the activation link is invalid, Bricks redirects the user to the configured **Verification failure page**.
+8. Pending users cannot log in. Bricks returns an inactive-account login error.
+
+Users created before User activation was enabled do not have activation status meta. Bricks treats them as active.
+
+## Configuration and controls {#configuration-and-controls}
+
+Inside the WordPress dashboard, go to **Bricks > Settings > General** and scroll to **User activation**.
+
+![](https://academy.bricksbuilder.io/assets/bricks-user-activation-settings.png)
+
+**User activation**: Enable this to require new users to verify their email after registration. After enabling it, the rest of the settings become available.
+
+> **Note**
+>
+> When User activation is enabled, the Form element's registration **Auto log in user** setting is not available. Use **Auto login after activation** instead.
+
+**Auto login after activation**: Automatically logs the user in after successful email verification.
+
+**Verification success page**: The page used for successful activation links. Bricks expects the activation link to point to this page. If the user opens this page without `user_id` and `activation_key`, Bricks simply renders the page normally.
+
+**Verification failure page**: The page users are redirected to when activation fails because the user ID or activation key is missing or invalid.
+
+**User activation: Email**:
+
+- **From email address**: Optional sender email. If empty, WordPress' normal `wp_mail_from` value is used.
+- **From name**: Optional sender name. If empty, WordPress' normal `wp_mail_from_name` value is used.
+- **Subject**: Email subject. If empty, Bricks uses "Activate your account".
+- **Email content**: Email body. If empty, Bricks sends a default activation message.
+- **HTML email**: Sends the email as HTML. If enabled and the content is not a full HTML document, Bricks converts line breaks with `nl2br()`.
+
+Available email placeholders:
+
+| Placeholder | Output |
+| --- | --- |
+| `{{site_name}}` | Site name |
+| `{{site_tagline}}` | Site tagline |
+| `{{site_url}}` | Site URL |
+| `{{username}}` | User login |
+| `{{user_display_name}}` | User display name |
+| `{{user_first_name}}` | User first name |
+| `{{user_last_name}}` | User last name |
+| `{{user_email}}` | User email |
+| `{{activation_link}}` | Activation URL, or an HTML link when HTML email is enabled |
+| `{{activation_url}}` | Plain activation URL |
+
+## Registration behavior
+
+User activation hooks into WordPress' `user_register` flow while the feature is enabled. This means it affects:
+
+- Users registered through the Bricks Form element.
+- Users registered through other WordPress registration flows that trigger `user_register`.
+
+For Bricks Form element registrations:
+
+- The registration action still validates username, email, password, password length, and role.
+- Administrator and Super Admin roles are blocked as registration targets for security.
+- If the username is not mapped, Bricks can generate it from the email address.
+- If the password is not mapped or submitted, Bricks can generate one.
+- Auto-login after registration is skipped while User activation is enabled.
+
+If **Send WordPress notification** is enabled in the registration form action, Bricks triggers WordPress' `register_new_user` action after creating the user. The activation email is still sent by the User activation feature.
+
+## Activation link behavior
+
+The activation URL is built from your configured **Verification success page** plus two query parameters:
+
+```text
+?user_id=123&activation_key=generated_key
+```
+
+When the request reaches the success page, Bricks checks those parameters:
+
+- Missing `user_id` or `activation_key`: the success page renders normally.
+- Empty `user_id` or `activation_key`: the user is redirected to the failure page.
+- Invalid activation key: the user is redirected to the failure page.
+- Valid activation key: the account is marked active and the activation key is deleted.
+- Already active user: Bricks skips activation and renders the success page normally.
+
+Both the success page and failure page should be published pages.
+
+## Users page {#users-page}
+
+A new **Activation status** column appears on the WordPress **Users** page.
+
+![](https://academy.bricksbuilder.io/assets/bricks-user-activation-admin-column.png)
+
+Possible statuses:
+
+- **Active**: user can log in normally.
+- **Inactive**: user has pending activation status and cannot log in until activated.
+
+For each user, you can perform different actions based on their activation status by hovering over the user entry:
+
+For an **active** user, **Mark as inactive** prevents the user from logging in.
+
+For an **inactive** user, **Resend activation email** sends a new activation link using the current email template, and **Mark as active** manually marks the user as active without email verification.
+
+Only users with the WordPress `edit_users` capability can change activation status or resend activation emails from the Users screen.
+
+## Login behavior
+
+When a pending user tries to log in, Bricks blocks authentication and shows an inactive-account error. Users with `active` status, and users with no activation status from before the feature was enabled, can log in normally.
+
+If you also use [Custom Authentication Pages](https://academy.bricksbuilder.io/builder/features/custom-authentication-pages/), the same activation check applies to the Bricks **User login** form action because it uses WordPress authentication.
+
+## Email customization filters
+
+The email settings can also be adjusted programmatically:
+
+- `bricks/user_activation_email/from_name`
+- `bricks/user_activation_email/subject`
+- `bricks/user_activation_email/content`
+
+These filters are useful for multilingual sites or projects that need different email text per user or context.
+
+---
+
 # Visual Grid Builder
 
 Source: https://academy.bricksbuilder.io/builder/features/visual-grid-builder/
 
 *Design CSS Grid layouts in Bricks with the Visual Grid Builder instead of hand-writing grid-template values.*
+
+https://youtu.be/V-YTXvwg6Fc
 
 The new **Visual Grid Builder **allows you to visually design and manage your grid layouts. The feature is available for any element with the `display` control set to `grid`, and allows you to:
 

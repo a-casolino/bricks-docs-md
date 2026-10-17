@@ -158,497 +158,250 @@ Now, you can use this new animation on any element from the "Interactions" panel
 
 ---
 
-# AI Abilities and Skills
+# An Intro To Templates
 
-Source: https://academy.bricksbuilder.io/builder/features/ai-abilities-and-skills/
+Source: https://academy.bricksbuilder.io/builder/features/an-intro-to-templates/
 
-*Use Bricks AI abilities through MCP-compatible clients or WP-CLI, manage which actions are available, and install optional Bricks skills.*
+*Learn how Bricks templates work, which template types are available, and how conditions determine where each template is rendered.*
 
-https://www.youtube.com/watch?v=DcmoqqXWGcs
+Templates are reusable Bricks layouts that can render in specific parts of your site. They are different from ordinary pages because Bricks can choose them automatically for the current request: the site header, site footer, blog posts, archives, search results, error pages, popups, password gates, and WooCommerce routes.
 
-Bricks 2.4 introduces experimental AI abilities for Bricks. Abilities are actions registered with the WordPress Abilities API that an AI agent can run through an MCP-compatible client. Developers can also inspect and run the same registered abilities from WP-CLI when the `wp ability` command is available.
+A template can be a small reusable section, a global header or footer, or the full main layout for a page type. The most common starting set is:
 
-With abilities enabled, a connected agent can read and update parts of a Bricks site: design system, templates, elements, [dynamic data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/), media, WooCommerce templates, and [revisions](https://academy.bricksbuilder.io/builder/interface/revisions/).
+- A **Header** template for the site header.
+- A **Footer** template for the site footer.
+- A **Single** template for blog posts or another post type.
+- An **Archive** template for archive views.
 
-Bricks skills are optional companion instructions for AI clients that support skills, rules, or reusable project guidance. They do not add new site permissions or new Bricks actions. They teach the agent how to work with Bricks more carefully, for example when to inspect the existing design system, avoid duplicate classes or variables, preview before saving, and choose the right ability for the task.
+Templates are also used by the Template Library, remote template sources, the Template element, popups, WooCommerce layouts, and password protection.
 
-Use `Bricks > AI` to set up the MCP connection, choose which abilities are available on the site, create credentials, and install optional Bricks skills.
+https://www.youtube.com/watch?v=x0hHUXzk3wg
 
-> **Experimental feature**
->
-> AI abilities can write to your site. Test on a local or staging site first. Keep this feature off on production sites while it is experimental.
+## The template mental model
 
-## Where to find it
+Bricks separates a rendered page into template areas:
 
-Visit the `Bricks > AI` screen in your WordPress dashboard.
+- **Header:** the active header template.
+- **Content:** the active content template, such as a Single, Archive, Search Results, Error Page, Password Protection, or WooCommerce template.
+- **Footer:** the active footer template.
+- **Popups:** matching popup templates that are loaded for the current page.
 
-The AI screen is split into three tabs:
+When a visitor opens a frontend URL, Bricks checks the current WordPress context. For example, it can detect a single post, the front page, a search results page, an author archive, a category archive, a 404 page, or a WooCommerce route. Bricks then looks through published templates and picks the most suitable template for each area.
 
-| Tab             | What it does                                                                                                                                        |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Configuration` | Installs or detects the WordPress MCP Adapter, enables Bricks abilities, creates an application password, and generates client-specific MCP config. |
-| `Abilities`     | Lets you choose which Bricks MCP abilities are available on this site.                                                                              |
-| `Skills`        | Helps you install and verify the optional Bricks skills package in your AI client.                                                                  |
+That choice is controlled by:
 
-![](https://academy.bricksbuilder.io/assets/bricks-ai-admin-screen.png)
+1. The template type.
+2. The template conditions.
+3. Whether the template is published.
+4. Whether default templates are enabled.
+5. Page settings such as **Disable header** and **Disable footer**.
 
-## How the connection works
+## Template type
 
-The connection has three parts:
+Every template should have a template type. The type tells Bricks what kind of layout the template is and which settings or elements should be available while editing it.
 
-| Piece                 | Lives in         | Purpose                                                                                                  |
-| --------------------- | ---------------- | -------------------------------------------------------------------------------------------------------- |
-| WordPress MCP Adapter | WordPress plugin | Adds the MCP endpoint that exposes registered WordPress abilities.                                       |
-| Bricks abilities      | Bricks           | Registers Bricks actions with the WordPress Abilities API.                                               |
-| Bricks skills         | AI client        | Adds optional Bricks workflow guidance for clients that support skills, rules, or reusable instructions. |
-
-Bricks generates MCP config that runs `npx -y @automattic/mcp-wordpress-remote@latest` locally. That command connects the AI client to the WordPress MCP endpoint and authenticates with a WordPress application password.
-
-Every request uses the WordPress user behind that application password. Bricks then checks that user's WordPress capabilities, builder access, and builder permissions before abilities can read or write.
-
-## Setup
-
-Use an administrator account for setup. Installing the adapter, activating it, saving settings, and creating credentials can require WordPress permissions such as `manage_options`, `install_plugins`, `activate_plugins`, and permission to edit the selected user account.
-
-### 1. Enable Bricks abilities
-
-Go to `Bricks > AI > Configuration`. Under `Enable Bricks abilities`, turn on the toggle and save your settings.
-
-The WordPress Abilities API must be available. The screen recommends WordPress 6.9 or later if the API is missing. The toggle is also disabled when `BRICKS_DISABLE_MCP` is truthy. Remove that constant or set it to `false` to allow admin control.
-
-You can enable abilities without installing or connecting the MCP Adapter. For a WP-CLI workflow, continue with [WP-CLI access](#wp-cli-access). To connect an MCP client, complete the remaining setup steps below.
-
-### 2. Set up the MCP server
-
-Under `Connect AI client to MCP`, use `Set up MCP server` to install or activate the WordPress MCP Adapter.
-
-| MCP server status | Meaning | What to do |
+| Template type | Use it for | Notes |
 | --- | --- | --- |
-| `Not installed` | The adapter plugin is not installed. | Click `Install plugin`, or download the release ZIP through `View on GitHub`. |
-| `Inactive` | The adapter is installed but not active. | Click `Activate plugin`, or activate it from `Plugins`. |
-| `Connected` | The adapter is active and its REST route is registered. | Create a credential and connect your client. |
-| `Route missing` | The adapter is loaded, but the MCP REST route did not register. | Check REST API routing, permalinks, plugin conflicts, and PHP error logs. |
+| Header | Site header layouts | Can be used by default when published. Has Header settings. |
+| Footer | Site footer layouts | Can be used by default when published. |
+| Single | Single posts, pages, or custom post type entries | Needs conditions for predictable frontend use. |
+| Section | Reusable sections, hook-injected sections, or templates inserted manually | Inserted copies do not stay synced. Use Components for linked reusable structures. |
+| Popup | Popup layouts | Rendered through popup conditions/interactions or through the Template element. |
+| Archive | Blog, author, date, post type, taxonomy, and term archives | Can be used by default for archive contexts. |
+| Search Results | Native search results pages | Can use Search Criteria settings. |
+| Error Page | 404 pages | Can be used by default for error contexts. |
+| Password Protection | Password gate templates | Available only when password protection is enabled. |
+| WooCommerce templates | Product, product archive, cart, checkout, account, thank-you, and related routes | Visible when WooCommerce is active. Product archive and single product templates can use conditions; the other WooCommerce route templates render automatically on their route. |
 
-If the one-click installer is unavailable, download `mcp-adapter.zip` from the [WordPress MCP Adapter releases](https://github.com/WordPress/mcp-adapter/releases) and upload it under `Plugins > Add New Plugin > Upload Plugin`.
+## Template conditions {#template-conditions}
 
-Once connected, Bricks shows the MCP endpoint URL. It usually looks like this:
+Template conditions determine where a template applies.
 
-```text
-https://example.com/wp-json/mcp/mcp-adapter-default-server
-```
+Open a template in Bricks, click the **Settings** icon, then go to **Template Settings > Conditions**.
 
-If pretty permalinks are unavailable, the endpoint can use the REST route format:
+![](https://academy.bricksbuilder.io/assets/docs-template-conditions-builder-1024x782.png)
 
-```text
-https://example.com/?rest_route=/mcp/mcp-adapter-default-server
-```
+<figcaption>
 
-An MCP server connection makes enabled abilities accessible to an MCP client. It does not control whether Bricks can register abilities with WordPress.
+Template Conditions are located under Settings > Template Settings
 
-### Optional: Enable PHP abilities {#optional-enable-php-execution}
+</figcaption>
 
-PHP abilities cover two security-sensitive workflows: the `bricks/execute-php` ability runs one-off PHP without storing the submitted snippet, and authorized agents can write and sign persistent PHP in supported Bricks code fields. Both workflows use the same PHP opt-in and safeguards.
+Condition types include:
 
-`bricks/execute-php` gives an agent access to the same WordPress and PHP runtime as the site, including functions and data that are not covered by a dedicated Bricks ability.
+- **Entire website:** broad condition for the whole site.
+- **Front page:** the page configured as the WordPress front page.
+- **Post type:** posts, pages, products, or custom post types.
+- **Archive:** all archives, post type archives, author archives, date archives, or term archives.
+- **Search results:** native WordPress search results.
+- **Error page:** the 404 page.
+- **Terms:** single entries assigned to selected terms.
+- **Individual:** selected posts, pages, custom post type entries, or child pages.
 
-PHP abilities are disabled by default and cannot be enabled from wp-admin or a database setting. Define the constant in one of these PHP locations before Bricks evaluates the ability:
+Conditions can be broad or specific. A header with **Entire website** can cover the whole site. A Single template with **Post type: Posts** can cover every blog post. Another Single template with **Individual: About Us** can target only one page.
 
-- `wp-config.php`, before the "That's all, stop editing" line
-- A must-use plugin
-- A plugin
-- A child theme's `functions.php`
+## How Bricks chooses between matching templates
 
-Do not edit the Bricks parent theme because theme updates overwrite those changes. Define the constant only once:
+More than one template can match the same page. Bricks scores matching conditions and uses the highest-scoring match.
 
-```php
-define( 'BRICKS_ENABLE_PHP_ABILITIES', true );
-```
+In practical terms:
 
-In a child theme's `functions.php` or a plugin, use a guard to avoid redefining the constant:
+- **Individual** conditions are the most specific.
+- **Front page** is more specific than a general post type match.
+- **Term**, selected archive, and child-page matches are more specific than broad archive or post type matches.
+- **Post type** is more specific than **Entire website**.
+- **Entire website** is a broad fallback.
+- **Exclude** conditions can disqualify a template when the excluded context matches.
 
-```php
-if ( ! defined( 'BRICKS_ENABLE_PHP_ABILITIES' ) ) {
-	define( 'BRICKS_ENABLE_PHP_ABILITIES', true );
-}
-```
+If two templates target the same area with similar conditions, make the intended winner more specific or remove the competing condition. Avoid relying on template creation order as your template strategy.
 
-Use the boolean value `true`. Bricks 2.4 beta and release candidate builds used `BRICKS_ENABLE_EXECUTE_PHP_ABILITY`. Replace that constant with `BRICKS_ENABLE_PHP_ABILITIES` before updating. The old constant is not an alias and does not enable PHP abilities.
+## Include and exclude conditions
 
-> **Use on trusted development environments**
+Each condition can be an include condition or an exclude condition.
+
+Use include conditions to say where the template should render. Use exclude conditions to remove specific areas from a broad rule.
+
+Example:
+
+1. Header template condition: **Entire website**
+2. Header template exclude condition: **Individual > Landing Page**
+
+The header renders across the site except on the selected landing page.
+
+For terms and individual entries, Bricks also supports child matching. You can apply a condition to child terms or child pages when the relationship should inherit the same template behavior.
+
+## Default templates
+
+Bricks can use some published templates even when no conditions are set. This is controlled by **Bricks > Settings > Templates & components > Disable default templates**.
+
+When default templates are enabled, Bricks can use published templates of supported types as fallbacks. This commonly affects headers and footers, and also applies to supported archive, search, error, and WooCommerce route templates.
+
+When default templates are disabled, templates need matching conditions or route-specific WooCommerce behavior to render on the frontend.
+
+For production sites, explicit conditions are usually easier to audit and maintain.
+
+## Preview content is not a condition
+
+Template editing often needs a preview context. A Single template needs a real post to show post title, content, featured image, and other dynamic data. An Archive template needs an archive context. A Search Results template needs a search term.
+
+Use **Template Settings > Populate Content** to choose what Bricks shows on the canvas while editing.
+
+Populate Content does not decide where the template renders on the frontend. Conditions do that.
+
+## Page settings can still affect templates
+
+A page rendered through a template can still disable its header or footer.
+
+Open the page, go to **Settings > Page Settings > General**, and use **Disable header** or **Disable footer**. This is useful for landing pages, splash pages, checkout-style flows, or isolated campaign pages.
+
+This does not delete the header or footer template. It only disables that template area for the current page.
+
+## Pre-Designed Templates {#community-templates}
+
+Browse Bricks' built-in Wireframes and Design sets right from within the builder.
+
+Access pre-designed templates by clicking the folder icon in the builder's top toolbar. Then, under **Source**, select **Wireframes**, **Design sets**, or a configured remote site.
+
+Insert the template of your choice with a single click and tweak it from there.
+
+> **Note**
 >
-> Enable PHP abilities only on a local, staging, or otherwise trusted development environment. Remove the constant or set it to `false` when they are no longer needed.
+> **TIP:** When you start with Bricks, inspecting a template is a great way to learn how a certain layout is structured.
 
-On a local or staging site, an agent can use this ability to:
+## My Templates {#my-templates}
 
-- Inspect active plugins, theme and plugin versions, PHP extensions, WordPress configuration, registered hooks, scheduled events, and other runtime state.
-- Reproduce a plugin or theme function with the site's actual data instead of reasoning from an error message alone.
-- Read PHP-accessible files and logs, check paths and permissions, or inspect a plugin or child theme implementation.
-- Make an explicitly approved file or data repair, then rerun the failing operation to verify the result.
-- Run one-off maintenance, migration, or setup tasks without installing a permanent code-snippet plugin.
+You can view, create, import, and export your own templates by clicking the Templates (folder) icon in the builder toolbar or directly from the WordPress dashboard:
 
-File access is limited by the permissions of the PHP process. The ability is not sandboxed, so it can also edit or delete files and data that PHP can access. Keep the site backed up and use version control when testing file changes.
+![](https://academy.bricksbuilder.io/assets/docs-my-templates-wp-dashboard-1024x861.png)
 
-Every PHP action must still meet all of these conditions:
+<figcaption>
 
-- Bricks abilities are enabled, and `BRICKS_DISABLE_MCP` is not forcing them off.
-- The request is authenticated with a WordPress application password.
-- The application-password user has the WordPress `manage_options` capability.
-- The application-password user has the Bricks `Execute code` capability.
-- Bricks code execution is enabled under `Bricks > Settings > Custom code`.
-- `BRICKS_LOCK_CODE_SIGNATURES` is not enabled. The signature lock overrides the PHP execution constant.
+My Templates in WordPress Dashboard
 
-Persistent PHP is stored only when the agent is authorized to edit the target and the code can be signed. Bricks validates supported HTML and PHP Code field paths before accepting an update, so a field that normally accepts HTML cannot be used to bypass the PHP checks.
+</figcaption>
 
-Keeping activation in PHP configuration means the ability cannot be enabled through a WordPress option or database setting alone. The permission and configuration checks above run again for every call.
+The dashboard view shows template type, template conditions, template bundles, template tags, and the featured image used as the template screenshot.
 
-To disable PHP abilities, remove the constant or change it to:
+## Inject Section templates via hooks {#hook}
 
-```php
-define( 'BRICKS_ENABLE_PHP_ABILITIES', false );
-```
+Section templates can be injected at a WordPress action hook.
 
-The highlighted `bricks/execute-php` row appears first under `Bricks > AI > Abilities`. Select `View setup` to expand the configuration instructions inside the row. Its status shows whether `BRICKS_ENABLE_PHP_ABILITIES` is undefined, `true`, `false`, or invalid, without exposing an unexpected constant value. When the constant is `true`, a second status shows whether the ability is callable or blocked by another requirement.
+When editing a Section template, add a condition and enter the action hook name under **Hook: Name**. You can also set **Hook: Priority**. Bricks evaluates the condition first, then renders the section when that hook runs.
 
-### 3. Create a credential
+For example, a Section template with condition **Entire website** and hook name `bricks_before_header` renders at that hook across the site.
 
-Under `Connect AI client to MCP > Create a credential`, select the WordPress user the AI client should act as, enter a credential name, and click `Generate password`.
+![](https://academy.bricksbuilder.io/assets/bricks-1.9.2-section-template-condition-hook-name.png)
 
-Use a name that identifies the client or workflow, for example `Codex staging`, `Claude local`, or `Cursor design review`.
+<figcaption>
 
-Copy the generated application password before leaving the page. WordPress only shows it once.
+Section template rendered at the `bricks_before_header` hook
 
-For shared local or staging environments, create a dedicated WordPress user for the AI client instead of using your personal admin account. Give that user only the [builder access](https://academy.bricksbuilder.io/builder/interface/builder-access/) and WordPress capabilities it needs.
+</figcaption>
 
-### 4. Connect your AI client
-
-Under `Connect AI client to MCP`, choose the client you use. Bricks shows a config block, a command, or a prompt depending on the client.
-
-Use `Paste config` when the client supports config files. It keeps the setup explicit and keeps credentials out of the chat prompt.
-
-`Copy a prompt` asks the AI client to help install the MCP server using the same connection details. Use it only in a local or staging workflow, and only with a client you trust with the credential.
-
-Bricks generates client-specific config for many tools. The examples below show the shape of that config, but use the values generated on your site. The generated config includes:
-
-- `WP_API_URL`: the MCP endpoint URL.
-- `WP_API_USERNAME`: the selected WordPress username.
-- `WP_API_PASSWORD`: the generated application password.
-- `NODE_TLS_REJECT_UNAUTHORIZED=0`, only when Bricks detects a local development HTTPS domain that likely uses a self-signed certificate.
-- `npx -y @automattic/mcp-wordpress-remote@latest` as the local command that connects your AI client to WordPress.
-
-Do not put the application password in the endpoint URL, command arguments, or global shell config. Keep it in the MCP server environment for that client.
-
-**Codex**
-
-Paste the generated block into `~/.codex/config.toml`, or merge it with your existing MCP server config:
-
-```toml
-[mcp_servers.example-com]
-command = "npx"
-args = ["-y", "@automattic/mcp-wordpress-remote@latest"]
-
-[mcp_servers.example-com.env]
-WP_API_URL = "https://example.com/wp-json/mcp/mcp-adapter-default-server"
-WP_API_USERNAME = "mcp-service-user"
-WP_API_PASSWORD = "xxxx xxxx xxxx xxxx"
-```
-
-Start a new Codex chat after saving the config so Codex reloads the MCP server.
-
-**Claude Code**
-
-Run the generated command in your terminal:
-
-```bash
-claude mcp add example-com \
-  --env WP_API_URL='https://example.com/wp-json/mcp/mcp-adapter-default-server' \
-  --env WP_API_USERNAME='mcp-service-user' \
-  --env WP_API_PASSWORD='xxxx xxxx xxxx xxxx' \
-  -- npx -y @automattic/mcp-wordpress-remote@latest
-```
-
-Start a new Claude Code chat after adding the server.
-
-**Generic JSON**
-
-Many clients use a JSON config shape like this:
-
-```json
-{
-  "mcpServers": {
-    "example-com": {
-      "command": "npx",
-      "args": ["-y", "@automattic/mcp-wordpress-remote@latest"],
-      "env": {
-        "WP_API_URL": "https://example.com/wp-json/mcp/mcp-adapter-default-server",
-        "WP_API_USERNAME": "mcp-service-user",
-        "WP_API_PASSWORD": "xxxx xxxx xxxx xxxx"
-      }
-    }
-  }
-}
-```
-
-Use the exact file path and wrapper key shown in `Bricks > AI`, because each client names its MCP config differently.
-
-> **Local HTTPS**
+> **Note**
 >
-> For local domains such as `.local`, `.test`, `.localhost`, `.ddev.site`, `localhost`, or `127.0.0.1`, Bricks may add `NODE_TLS_REJECT_UNAUTHORIZED=0` to the generated MCP server environment. Keep that setting scoped to this MCP server only. Do not set it globally.
+> Templates with a hook name are injected on the actual frontend.
 
-### 5. Test the connection
+## Template Types {#template-types}
 
-Start a new chat in your AI client and ask:
+Use the table below as a quick reference when choosing a template type.
 
-```text
-Call bricks-start-here, then bricks-get-mcp-version, then bricks-list-ability-status.
-Tell me whether Bricks abilities are available, which Bricks version is connected, and whether any abilities are disabled.
-```
+| Template type | Description | Default or route behavior |
+| --- | --- | --- |
+| Header | Site header area | Can be used by default. |
+| Footer | Site footer area | Can be used by default. |
+| Single | Main layout for posts, pages, or CPT entries | Needs conditions for predictable use. |
+| Section | Reusable section or hook-injected layout | Render manually, insert into content, or inject through hooks. |
+| Popup | Popup layout | Loaded through popup conditions/interactions or Template element usage. |
+| Archive | Blog, author, date, post type, taxonomy, and term archives | Can be used by default for archive contexts. |
+| Search Results | Native search results page | Can be used by default for search results. |
+| Error Page | 404 page | Can be used by default for error pages. |
+| Password Protection | Password gate template | Available when password protection is enabled. |
+| WooCommerce - Product archive | Shop, product category, product tag, and product attribute archives | Uses WooCommerce archive routing and can use conditions. |
+| WooCommerce - Single product | Single product pages | Uses WooCommerce product routing and can use conditions. |
+| WooCommerce - Cart | Cart page with items | Automatically rendered on the cart route when the cart has items. |
+| WooCommerce - Empty cart | Empty cart page state | Automatically rendered on the cart route when the cart is empty. |
+| WooCommerce - Checkout | Checkout page | Automatically rendered on the checkout route. |
+| WooCommerce - Pay | Order payment page | Automatically rendered on the order-pay route. |
+| WooCommerce - Thank you | Post-checkout thank-you page | Automatically rendered on the order-received route. |
+| WooCommerce - Order receipt | Order receipt page | Automatically rendered on the matching WooCommerce route. |
+| WooCommerce - Account - Login | Account login form | Automatically rendered on the matching account route. |
+| WooCommerce - Account - Lost password | Lost password form | Automatically rendered on the matching account route. |
+| WooCommerce - Account - Lost password (Confirmation) | Lost password confirmation | Automatically rendered on the matching account route. |
+| WooCommerce - Account - Reset password | Reset password form | Automatically rendered on the matching account route. |
+| WooCommerce - Account - Dashboard | Account dashboard | Automatically rendered on the matching account route. |
+| WooCommerce - Account - Orders | Account orders | Automatically rendered on the matching account route. |
+| WooCommerce - Account - View order | Account view-order endpoint | Automatically rendered on the matching account route. |
+| WooCommerce - Account - Downloads | Account downloads | Automatically rendered on the matching account route. |
+| WooCommerce - Account - Addresses | Account addresses | Automatically rendered on the matching account route. |
+| WooCommerce - Account - Edit address | Account edit-address endpoint | Automatically rendered on the matching account route. |
+| WooCommerce - Account - Edit account | Account edit-account endpoint | Automatically rendered on the matching account route. |
+| WooCommerce - Account - Payment methods | Account payment methods | Automatically rendered on the matching account route. |
+| WooCommerce - Account - Add Payment method | Account add-payment-method endpoint | Automatically rendered on the matching account route. |
 
-If `bricks-start-here` is not visible as a direct tool, ask the client to call the MCP Adapter dispatcher:
-
-```json
-{
-  "ability_name": "bricks/start-here",
-  "parameters": {}
-}
-```
-
-If the client cannot list Bricks abilities, fix the MCP connection before installing skills or trying a build task.
-
-## Managing abilities
-
-Open `Bricks > AI > Abilities` to control which Bricks abilities AI clients can use on this site.
-
-> **User permissions still apply**
+> **Note**
 >
-> The Abilities tab controls site-level availability. It does not grant permissions to the WordPress user behind the MCP connection. An ability can be enabled here and still not be callable for that user if they do not have the required WordPress capability, builder access, or Bricks builder permission.
+> Section templates do not sync inserted copies between pages. If you need linked reusable structures, use [Components](https://academy.bricksbuilder.io/builder/features/components/).
 
-### Scope abilities by user or role
+## Template Bundles & Template Tags {#bundles}
 
-Ability toggles are site-wide. Per-user and per-role access comes from the WordPress account used by the MCP connection:
+These two Bricks template taxonomies can be used to organize and group your templates together. They are 100% optional.
 
-1. Go to `Bricks > Settings > Builder access` and create a custom builder capability.
-2. Enable only the actions that account needs, including the relevant post types and element editing permissions.
-3. Assign the capability to a WordPress role or to one user from that user's WordPress profile.
-4. In `Bricks > AI > Configuration`, generate the application password for that user and use it in the AI client's MCP config.
+For example, Bricks template sources can use **Template Bundles** to group individual templates of the same website design together. Feel free to use template bundles in any other way.
 
-For example, a `Client editor` capability can allow content and element editing while leaving every permission under `Components` disabled. An AI client connected with that user's application password can edit the permitted content, but component abilities and component operations inside element writes are rejected.
+**Template Tags** are simple tags. The "My Templates" screenshot above uses template tags such as "Dark" and "Light". Again, they are completely optional but often very useful. Especially as your template library grows over time.
 
-WordPress capabilities still apply alongside Builder access. Avoid using an administrator account for a restricted client workflow because users with `manage_options` receive full builder access. See [Builder Access & Capabilities](https://academy.bricksbuilder.io/builder/interface/builder-access/) for every permission and the steps for assigning capabilities to roles and individual users.
+## Troubleshooting template assignment
 
-You can:
+**Nothing renders:** Confirm the template is published, has the correct type, and has matching conditions. If it has no conditions, check whether default templates are disabled.
 
-- Search abilities by name or description.
-- Filter by category, enabled state, disabled state, and default-off state.
-- Enable all, disable all, or reset to defaults.
-- Review badges such as `Default off` and `Destructive`.
+**The wrong layout renders:** Look for another template with a more specific condition. Individual, front page, selected term, and selected archive conditions can outrank broader conditions.
 
-Some diagnostic abilities are always available so clients and admins can understand the connection state:
+**A header or footer is missing only on one page:** Check that page's **Page Settings > General** for **Disable header** or **Disable footer**.
 
-- `bricks/start-here`
-- `bricks/get-mcp-version`
-- `bricks/list-ability-status`
+**The builder preview looks unrelated to the frontend:** Adjust **Populate Content**. Preview content controls the editing canvas, not the frontend assignment.
 
-Most abilities are enabled by default once Bricks abilities are enabled. Sensitive categories, such as builder permission management, are default-off until an admin enables them. Abilities marked destructive can remove data or make changes that are not easy to reverse, so treat them as actions that need clear user approval.
-
-![](https://academy.bricksbuilder.io/assets/bricks-ai-abilities.png)
-
-## Fast-path tools and dispatcher tools
-
-Bricks registers many abilities, but only common abilities appear directly in an MCP client's tool list.
-
-Direct MCP tool names use hyphens:
-
-```text
-bricks-get-design-context
-bricks-get-page-elements
-bricks-set-page-elements
-```
-
-Ability names use slashes:
-
-```text
-bricks/get-design-context
-bricks/get-page-elements
-bricks/set-page-elements
-```
-
-If a Bricks ability is not visible as a direct tool, call it through the MCP Adapter dispatcher:
-
-```json
-{
-  "ability_name": "bricks/get-mcp-version",
-  "parameters": {}
-}
-```
-
-Use `bricks-list-ability-status` to see which abilities are enabled, which are disabled, and which are default-off.
-
-### Add a direct tool
-
-If your integration frequently calls an ability through the dispatcher, you can expose it as a direct tool on the default MCP server. Add this filter to a custom plugin or your child theme's `functions.php`:
-
-```php
-add_filter( 'bricks/abilities/named_tools', function( $tools ) {
-    $tools[] = 'bricks/get-element-schema';
-
-    return $tools;
-} );
-```
-
-Use slash-separated ability names. Bricks removes duplicates, disabled abilities, and unregistered names once the ability registry is available. Reconnect your MCP client or refresh its tools after changing the list.
-
-This changes tool discovery only. Removing a direct tool does not disable its ability: it remains callable through the dispatcher. Use **Bricks > AI > Abilities** to disable an ability. User permissions still apply.
-
-## Code authoring and HTML/CSS imports
-
-Agents can create and edit Bricks content through the same permissions that apply in the builder. An agent does not receive PHP access merely because it can edit HTML, CSS, or JavaScript.
-
-- HTML authoring requires permission to edit the target and its content settings.
-- CSS authoring follows the target resource and style-editing permissions, such as access to the Class Manager and permission to edit global classes.
-- JavaScript authoring requires permission to edit the target and the WordPress `unfiltered_html` capability.
-- PHP authoring and signing require the PHP abilities opt-in and every safeguard listed above, including `manage_options`, Bricks **Execute code**, enabled code execution, application-password authentication, and unlocked code signatures.
-
-Code elements retain their existing **Execute code** permission, global execution setting, and PHP/HTML signing requirements. These abilities do not change how Code elements render or how the builder authorizes them. Writing the signed PHP/HTML field in execution mode uses the PHP abilities safeguards, including when that field contains only HTML.
-
-When an agent imports HTML or CSS, Bricks checks the imported structure and its permissions. Content the connected user is not allowed to create is omitted automatically. A one-call import can apply the retained content and returns a prominent partial result with the omitted elements and the reason for each omission. An explicit preview is also available before applying an import.
-
-Bricks rejects an import when the retained tree is empty or invalid. It also rejects a nonempty replacement when any source content was omitted or invalid, because it could remove existing content incompletely. Review the reported omissions, adjust the source or permissions, and run the import again.
-
-## Settings Abilities and Remote Libraries
-
-The settings abilities use an allow-list rather than exposing the entire `bricks_global_settings` option:
-
-- `bricks/list-settings-schema` lists supported keys and their value types.
-- `bricks/get-global-settings` reads allowed settings.
-- `bricks/set-global-settings` updates only the keys sent in the request.
-- `bricks/list-credential-status` reports whether known credentials are configured without returning their values.
-
-The Remote Templates and Remote Components settings use these keys:
-
-| Setting key | Ability behavior |
-| --- | --- |
-| `myTemplatesAccess` | Readable and writable boolean for exposing this site's templates. |
-| `myComponentsAccess` | Readable and writable boolean for exposing this site's components. |
-| `myTemplatesWhitelist` | Readable and writable newline-separated URL whitelist shared by templates and components. Its stored key keeps the older name for compatibility. |
-| `remoteTemplates` | Reads and writes remote-library URLs and optional display names. Stored passwords are preserved but never returned or written through the abilities. |
-| `myTemplatesPassword` | Excluded from settings reads and writes. `bricks/list-credential-status` reports only whether the shared **Remote access password** is configured and identifies it as used by remote template and component access. |
-
-The `myTemplatesPassword` key also keeps its older internal name for compatibility. AI and MCP clients cannot read, replace, or clear the password. Manage it in **Bricks > Settings > Templates & components > Remote access**.
-
-## Installing Bricks skills
-
-Skills are optional. Get the MCP connection working first.
-
-Open `Bricks > AI > Skills` and copy the install prompt. Paste it into the AI client you want to use. The prompt points the client to the [Bricks skills repository](https://github.com/codeerhq/bricks-skills), asks it to install the matching skills or rules format, and asks it to report which Bricks skills were installed.
-
-Then copy the verification prompt from the same tab. Start a new chat and ask the client to list loaded Bricks skills.
-
-If no Bricks skills are loaded, the MCP connection can still work. The client can call `bricks-start-here` at the beginning of a session to get the core Bricks workflow rules, fast-path tool names, and dispatcher example.
-
-Skills help with workflows such as:
-
-- Designing or auditing a design system.
-- Creating pages and templates.
-- Working with [query loops](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/) and [dynamic data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/).
-- Writing element conditions and interactions.
-- Converting HTML and CSS into Bricks element data.
-- Verifying frontend output with screenshots or browser automation.
-
-## WP-CLI access
-
-Bricks abilities are registered with the WordPress Abilities API, so they are not limited to MCP clients.
-
-For developer checks, WP-CLI can access the same registered abilities from the command line. The WordPress Developer Resources page for [`wp ability`](https://developer.wordpress.org/cli/commands/ability/) describes it as the command for abilities registered through the WordPress Abilities API.
-
-Useful checks:
-
-```bash
-wp ability list --namespace=bricks --user=admin
-wp ability get bricks/get-mcp-version --user=admin
-wp ability run bricks/get-mcp-version --user=admin
-wp ability run bricks/list-ability-status --user=admin --format=json
-```
-
-Use `--user` so permission checks run in the same WordPress user context your MCP connection would use.
-
-This is separate from the Bricks-specific `wp bricks ...` commands, and it is not required for the MCP setup above. It is a WordPress Abilities API surface for any registered ability, including abilities from Bricks and other plugins.
-
-## Security model
-
-Treat an MCP-connected AI client like a real WordPress user.
-
-- Each call runs as the authenticated WordPress user, for example the application-password user or the `--user` passed to WP-CLI.
-- Bricks checks WordPress capabilities, builder access, and Bricks builder permissions before abilities can read or write.
-- The Abilities tab controls which Bricks abilities are available on the site.
-- `BRICKS_DISABLE_MCP` in `wp-config.php` prevents Bricks from registering abilities, including for WP-CLI use.
-- PHP execution and persistent PHP authoring share a strict boolean opt-in in PHP configuration. Each action rechecks application-password authentication, `manage_options`, Bricks **Execute code**, enabled code execution, and the code-signature lock.
-- Application passwords can be revoked from the selected user's WordPress profile.
-- Post and template element writes create Bricks [revisions](https://academy.bricksbuilder.io/builder/interface/revisions/) where supported. Global data writes, such as classes, variables, theme styles, and components, are not covered by post revisions.
-
-Recommended defaults:
-
-- Use local or staging for first tests.
-- Use a dedicated WordPress user for the AI client in shared testing environments.
-- Disable abilities that are not needed for the workflow.
-- Review destructive actions before approving them in the AI client.
-- Revoke old application passwords.
-
-## Troubleshooting
-
-| Symptom                                                    | Likely cause                                                               | What to do                                                                                                                                    |
-| ---------------------------------------------------------- | -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| The Bricks abilities toggle is disabled | The WordPress Abilities API is unavailable, or `BRICKS_DISABLE_MCP` is truthy | Use WordPress 6.9 or later if the API is missing, or remove the constant/set it to `false`. A connected MCP Adapter is not required to enable abilities. |
-| `MCP server enabled but endpoint did not register`         | The adapter loaded, but the REST route is missing                          | Check `/wp-json/`, permalink settings, plugin conflicts, and PHP error logs.                                                                  |
-| The client cannot connect                                  | Wrong endpoint, wrong credential, or the client did not reload config      | Confirm the endpoint in `Bricks > AI`, regenerate or re-copy the application password, then start a new chat.                                 |
-| Application passwords are unavailable on a local HTTP site | WordPress enables application passwords by default only over HTTPS or when the environment type is `local` | Use HTTPS when possible. For a local HTTP site, add `define( 'WP_ENVIRONMENT_TYPE', 'local' );` to `wp-config.php`.                            |
-| Application passwords are unavailable for one user         | A security plugin, filter, or user-level restriction disabled application passwords | Check the selected user, security plugins, and filters that control WordPress application password availability.                              |
-| The client only shows `mcp-adapter-*` tools                | Bricks direct tools are not loaded or the ability is outside the fast path | Use `mcp-adapter-discover-abilities`, call long-tail abilities through `mcp-adapter-execute-ability`, and check `bricks-list-ability-status`. |
-| A Bricks ability returns disabled                          | The ability is off in `Bricks > AI > Abilities`                            | Enable the ability or reset abilities to defaults.                                                                                            |
-| `bricks/execute-php` is unavailable                        | `BRICKS_ENABLE_PHP_ABILITIES` is missing, a required permission is missing, code execution is disabled, or code signatures are locked | Open `Bricks > AI > Abilities`, select `View setup` for `bricks/execute-php`, and follow the blocked requirement shown there. |
-| Local HTTPS fails                                          | The local certificate is not trusted by the local `npx` process            | Use the scoped `NODE_TLS_REJECT_UNAUTHORIZED=0` generated by Bricks for local development, or trust the local certificate.                    |
-| The AI client keeps asking for approval on every tool call | The client has per-tool approval settings                                  | Approve the Bricks MCP server or adjust that client's MCP approval settings if you trust the workflow.                                        |
-
-### Upload or conversion exceeds a size limit
-
-If an ability rejects a file or HTML/CSS input as too large, reduce its size before retrying. Bricks uses these defaults unless a site customization changes them:
-
-| Operation | Default limit |
-| --- | --- |
-| Media upload (`bricks/upload-media`) | The site's WordPress upload limit; remote downloads have a 30-second timeout |
-| Font upload (`bricks/upload-custom-font-file`) | 8 MiB per decoded font file |
-| SVG icon upload (`bricks/upload-custom-icon`) | 1 MiB of SVG markup |
-| HTML/CSS conversion (`bricks/convert-html-css-to-bricks-data`) | 2 MiB of combined HTML and CSS, including CSS-only input |
-
-1 MiB is 1,048,576 bytes. Base64 encoding makes an upload request larger than the file itself. If the request fails before Bricks returns an error, check your hosting, proxy, and MCP client's request limits as well.
-
-## Example prompts
-
-Start with explicit instructions. Ask the client to inspect the site before writing.
-
-```text
-You are connected to a Bricks site through MCP.
-Call bricks-start-here, then inspect the design system and the current page before making changes.
-Do not create duplicate global classes or variables.
-Preview or read back your changes before reporting that the task is done.
-```
-
-Build a first pass of a page:
-
-```text
-Create an About page for this Bricks site. Use the existing design system, keep the style consistent with the homepage, and show me the plan before saving.
-```
-
-Replace static content with dynamic data:
-
-```text
-Find the static listing cards on the homepage and replace them with a query loop that pulls the Listing post type. Use the existing card styling.
-```
-
-Audit before changing:
-
-```text
-Audit the site's global classes, variables, and templates for naming drift or duplicated patterns. Show me the report first. Do not change anything yet.
-```
+**WooCommerce conditions are missing:** Product archive and single product templates can use conditions. Other WooCommerce route templates, such as cart, checkout, thank-you, and account templates, render automatically on the correct WooCommerce page, so Bricks hides normal Conditions and Populate Content controls for those types.
 
 ---
 
@@ -1257,247 +1010,494 @@ Neither constant bypasses code execution permissions or `BRICKS_LOCK_CODE_SIGNAT
 
 ---
 
-# An Intro To Templates
+# AI Abilities and Skills
 
-Source: https://academy.bricksbuilder.io/builder/features/an-intro-to-templates/
+Source: https://academy.bricksbuilder.io/builder/features/ai-abilities-and-skills/
 
-*Learn how Bricks templates work, which template types are available, and how conditions determine where each template is rendered.*
+*Use Bricks AI abilities through MCP-compatible clients or WP-CLI, manage which actions are available, and install optional Bricks skills.*
 
-Templates are reusable Bricks layouts that can render in specific parts of your site. They are different from ordinary pages because Bricks can choose them automatically for the current request: the site header, site footer, blog posts, archives, search results, error pages, popups, password gates, and WooCommerce routes.
+https://www.youtube.com/watch?v=DcmoqqXWGcs
 
-A template can be a small reusable section, a global header or footer, or the full main layout for a page type. The most common starting set is:
+Bricks 2.4 introduces experimental AI abilities for Bricks. Abilities are actions registered with the WordPress Abilities API that an AI agent can run through an MCP-compatible client. Developers can also inspect and run the same registered abilities from WP-CLI when the `wp ability` command is available.
 
-- A **Header** template for the site header.
-- A **Footer** template for the site footer.
-- A **Single** template for blog posts or another post type.
-- An **Archive** template for archive views.
+With abilities enabled, a connected agent can read and update parts of a Bricks site: design system, templates, elements, [dynamic data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/), media, WooCommerce templates, and [revisions](https://academy.bricksbuilder.io/builder/interface/revisions/).
 
-Templates are also used by the Template Library, remote template sources, the Template element, popups, WooCommerce layouts, and password protection.
+Bricks skills are optional companion instructions for AI clients that support skills, rules, or reusable project guidance. They do not add new site permissions or new Bricks actions. They teach the agent how to work with Bricks more carefully, for example when to inspect the existing design system, avoid duplicate classes or variables, preview before saving, and choose the right ability for the task.
 
-https://www.youtube.com/watch?v=9v2TUaA-oFg
+Use `Bricks > AI` to set up the MCP connection, choose which abilities are available on the site, create credentials, and install optional Bricks skills.
 
-## The template mental model
+> **Experimental feature**
+>
+> AI abilities can write to your site. Test on a local or staging site first. Keep this feature off on production sites while it is experimental.
 
-Bricks separates a rendered page into template areas:
+## Where to find it
 
-- **Header:** the active header template.
-- **Content:** the active content template, such as a Single, Archive, Search Results, Error Page, Password Protection, or WooCommerce template.
-- **Footer:** the active footer template.
-- **Popups:** matching popup templates that are loaded for the current page.
+Visit the `Bricks > AI` screen in your WordPress dashboard.
 
-When a visitor opens a frontend URL, Bricks checks the current WordPress context. For example, it can detect a single post, the front page, a search results page, an author archive, a category archive, a 404 page, or a WooCommerce route. Bricks then looks through published templates and picks the most suitable template for each area.
+The AI screen is split into three tabs:
 
-That choice is controlled by:
+| Tab             | What it does                                                                                                                                        |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Configuration` | Installs or detects the WordPress MCP Adapter, enables Bricks abilities, creates an application password, and generates client-specific MCP config. |
+| `Abilities`     | Lets you choose which Bricks MCP abilities are available on this site.                                                                              |
+| `Skills`        | Helps you install and verify the optional Bricks skills package in your AI client.                                                                  |
 
-1. The template type.
-2. The template conditions.
-3. Whether the template is published.
-4. Whether default templates are enabled.
-5. Page settings such as **Disable header** and **Disable footer**.
+![](https://academy.bricksbuilder.io/assets/bricks-ai-admin-screen.png)
 
-## Template type
+## How the connection works
 
-Every template should have a template type. The type tells Bricks what kind of layout the template is and which settings or elements should be available while editing it.
+The connection has three parts:
 
-| Template type | Use it for | Notes |
+| Piece                 | Lives in         | Purpose                                                                                                  |
+| --------------------- | ---------------- | -------------------------------------------------------------------------------------------------------- |
+| WordPress MCP Adapter | WordPress plugin | Adds the MCP endpoint that exposes registered WordPress abilities.                                       |
+| Bricks abilities      | Bricks           | Registers Bricks actions with the WordPress Abilities API.                                               |
+| Bricks skills         | AI client        | Adds optional Bricks workflow guidance for clients that support skills, rules, or reusable instructions. |
+
+Bricks generates MCP config that runs `npx -y @automattic/mcp-wordpress-remote@latest` locally. That command connects the AI client to the WordPress MCP endpoint and authenticates with a WordPress application password.
+
+Every request uses the WordPress user behind that application password. Bricks then checks that user's WordPress capabilities, builder access, and builder permissions before abilities can read or write.
+
+## Setup
+
+Use an administrator account for setup. Installing the adapter, activating it, saving settings, and creating credentials can require WordPress permissions such as `manage_options`, `install_plugins`, `activate_plugins`, and permission to edit the selected user account.
+
+### 1. Enable Bricks abilities
+
+Go to `Bricks > AI > Configuration`. Under `Enable Bricks abilities`, turn on the toggle and save your settings.
+
+The WordPress Abilities API must be available. The screen recommends WordPress 6.9 or later if the API is missing. The toggle is also disabled when `BRICKS_DISABLE_MCP` is truthy. Remove that constant or set it to `false` to allow admin control.
+
+You can enable abilities without installing or connecting the MCP Adapter. For a WP-CLI workflow, continue with [WP-CLI access](#wp-cli-access). To connect an MCP client, complete the remaining setup steps below.
+
+### 2. Set up the MCP server
+
+Under `Connect AI client to MCP`, use `Set up MCP server` to install or activate the WordPress MCP Adapter.
+
+| MCP server status | Meaning | What to do |
 | --- | --- | --- |
-| Header | Site header layouts | Can be used by default when published. Has Header settings. |
-| Footer | Site footer layouts | Can be used by default when published. |
-| Single | Single posts, pages, or custom post type entries | Needs conditions for predictable frontend use. |
-| Section | Reusable sections, hook-injected sections, or templates inserted manually | Inserted copies do not stay synced. Use Components for linked reusable structures. |
-| Popup | Popup layouts | Rendered through popup conditions/interactions or through the Template element. |
-| Archive | Blog, author, date, post type, taxonomy, and term archives | Can be used by default for archive contexts. |
-| Search Results | Native search results pages | Can use Search Criteria settings. |
-| Error Page | 404 pages | Can be used by default for error contexts. |
-| Password Protection | Password gate templates | Available only when password protection is enabled. |
-| WooCommerce templates | Product, product archive, cart, checkout, account, thank-you, and related routes | Visible when WooCommerce is active. Product archive and single product templates can use conditions; the other WooCommerce route templates render automatically on their route. |
+| `Not installed` | The adapter plugin is not installed. | Click `Install plugin`, or download the release ZIP through `View on GitHub`. |
+| `Inactive` | The adapter is installed but not active. | Click `Activate plugin`, or activate it from `Plugins`. |
+| `Connected` | The adapter is active and its REST route is registered. | Create a credential and connect your client. |
+| `Route missing` | The adapter is loaded, but the MCP REST route did not register. | Check REST API routing, permalinks, plugin conflicts, and PHP error logs. |
 
-## Template conditions {#template-conditions}
+If the one-click installer is unavailable, download `mcp-adapter.zip` from the [WordPress MCP Adapter releases](https://github.com/WordPress/mcp-adapter/releases) and upload it under `Plugins > Add New Plugin > Upload Plugin`.
 
-Template conditions determine where a template applies.
+Once connected, Bricks shows the MCP endpoint URL. It usually looks like this:
 
-Open a template in Bricks, click the **Settings** icon, then go to **Template Settings > Conditions**.
+```text
+https://example.com/wp-json/mcp/mcp-adapter-default-server
+```
 
-![](https://academy.bricksbuilder.io/assets/docs-template-conditions-builder-1024x782.png)
+If pretty permalinks are unavailable, the endpoint can use the REST route format:
 
-<figcaption>
+```text
+https://example.com/?rest_route=/mcp/mcp-adapter-default-server
+```
 
-Template Conditions are located under Settings > Template Settings
+An MCP server connection makes enabled abilities accessible to an MCP client. It does not control whether Bricks can register abilities with WordPress.
 
-</figcaption>
+### Optional: Enable PHP abilities {#optional-enable-php-execution}
 
-Condition types include:
+PHP abilities cover two security-sensitive workflows: the `bricks/execute-php` ability runs one-off PHP without storing the submitted snippet, and authorized agents can write and sign persistent PHP in supported Bricks code fields. Both workflows use the same PHP opt-in and safeguards.
 
-- **Entire website:** broad condition for the whole site.
-- **Front page:** the page configured as the WordPress front page.
-- **Post type:** posts, pages, products, or custom post types.
-- **Archive:** all archives, post type archives, author archives, date archives, or term archives.
-- **Search results:** native WordPress search results.
-- **Error page:** the 404 page.
-- **Terms:** single entries assigned to selected terms.
-- **Individual:** selected posts, pages, custom post type entries, or child pages.
+`bricks/execute-php` gives an agent access to the same WordPress and PHP runtime as the site, including functions and data that are not covered by a dedicated Bricks ability.
 
-Conditions can be broad or specific. A header with **Entire website** can cover the whole site. A Single template with **Post type: Posts** can cover every blog post. Another Single template with **Individual: About Us** can target only one page.
+PHP abilities are disabled by default and cannot be enabled from wp-admin or a database setting. Define the constant in one of these PHP locations before Bricks evaluates the ability:
 
-## How Bricks chooses between matching templates
+- `wp-config.php`, before the "That's all, stop editing" line
+- A must-use plugin
+- A plugin
+- A child theme's `functions.php`
 
-More than one template can match the same page. Bricks scores matching conditions and uses the highest-scoring match.
+Do not edit the Bricks parent theme because theme updates overwrite those changes. Define the constant only once:
 
-In practical terms:
+```php
+define( 'BRICKS_ENABLE_PHP_ABILITIES', true );
+```
 
-- **Individual** conditions are the most specific.
-- **Front page** is more specific than a general post type match.
-- **Term**, selected archive, and child-page matches are more specific than broad archive or post type matches.
-- **Post type** is more specific than **Entire website**.
-- **Entire website** is a broad fallback.
-- **Exclude** conditions can disqualify a template when the excluded context matches.
+In a child theme's `functions.php` or a plugin, use a guard to avoid redefining the constant:
 
-If two templates target the same area with similar conditions, make the intended winner more specific or remove the competing condition. Avoid relying on template creation order as your template strategy.
+```php
+if ( ! defined( 'BRICKS_ENABLE_PHP_ABILITIES' ) ) {
+	define( 'BRICKS_ENABLE_PHP_ABILITIES', true );
+}
+```
 
-## Include and exclude conditions
+Use the boolean value `true`. Bricks 2.4 beta and release candidate builds used `BRICKS_ENABLE_EXECUTE_PHP_ABILITY`. Replace that constant with `BRICKS_ENABLE_PHP_ABILITIES` before updating. The old constant is not an alias and does not enable PHP abilities.
 
-Each condition can be an include condition or an exclude condition.
-
-Use include conditions to say where the template should render. Use exclude conditions to remove specific areas from a broad rule.
-
-Example:
-
-1. Header template condition: **Entire website**
-2. Header template exclude condition: **Individual > Landing Page**
-
-The header renders across the site except on the selected landing page.
-
-For terms and individual entries, Bricks also supports child matching. You can apply a condition to child terms or child pages when the relationship should inherit the same template behavior.
-
-## Default templates
-
-Bricks can use some published templates even when no conditions are set. This is controlled by **Bricks > Settings > Templates & components > Disable default templates**.
-
-When default templates are enabled, Bricks can use published templates of supported types as fallbacks. This commonly affects headers and footers, and also applies to supported archive, search, error, and WooCommerce route templates.
-
-When default templates are disabled, templates need matching conditions or route-specific WooCommerce behavior to render on the frontend.
-
-For production sites, explicit conditions are usually easier to audit and maintain.
-
-## Preview content is not a condition
-
-Template editing often needs a preview context. A Single template needs a real post to show post title, content, featured image, and other dynamic data. An Archive template needs an archive context. A Search Results template needs a search term.
-
-Use **Template Settings > Populate Content** to choose what Bricks shows on the canvas while editing.
-
-Populate Content does not decide where the template renders on the frontend. Conditions do that.
-
-## Page settings can still affect templates
-
-A page rendered through a template can still disable its header or footer.
-
-Open the page, go to **Settings > Page Settings > General**, and use **Disable header** or **Disable footer**. This is useful for landing pages, splash pages, checkout-style flows, or isolated campaign pages.
-
-This does not delete the header or footer template. It only disables that template area for the current page.
-
-## Pre-Designed Templates {#community-templates}
-
-Browse Bricks' built-in Wireframes and Design sets right from within the builder.
-
-Access pre-designed templates by clicking the folder icon in the builder's top toolbar. Then, under **Source**, select **Wireframes**, **Design sets**, or a configured remote site.
-
-Insert the template of your choice with a single click and tweak it from there.
-
-> **Note**
+> **Use on trusted development environments**
 >
-> **TIP:** When you start with Bricks, inspecting a template is a great way to learn how a certain layout is structured.
+> Enable PHP abilities only on a local, staging, or otherwise trusted development environment. Remove the constant or set it to `false` when they are no longer needed.
 
-## My Templates {#my-templates}
+On a local or staging site, an agent can use this ability to:
 
-You can view, create, import, and export your own templates by clicking the Templates (folder) icon in the builder toolbar or directly from the WordPress dashboard:
+- Inspect active plugins, theme and plugin versions, PHP extensions, WordPress configuration, registered hooks, scheduled events, and other runtime state.
+- Reproduce a plugin or theme function with the site's actual data instead of reasoning from an error message alone.
+- Read PHP-accessible files and logs, check paths and permissions, or inspect a plugin or child theme implementation.
+- Make an explicitly approved file or data repair, then rerun the failing operation to verify the result.
+- Run one-off maintenance, migration, or setup tasks without installing a permanent code-snippet plugin.
 
-![](https://academy.bricksbuilder.io/assets/docs-my-templates-wp-dashboard-1024x861.png)
+File access is limited by the permissions of the PHP process. The ability is not sandboxed, so it can also edit or delete files and data that PHP can access. Keep the site backed up and use version control when testing file changes.
 
-<figcaption>
+Every PHP action must still meet all of these conditions:
 
-My Templates in WordPress Dashboard
+- Bricks abilities are enabled, and `BRICKS_DISABLE_MCP` is not forcing them off.
+- The request is authenticated with a WordPress application password.
+- The application-password user has the WordPress `manage_options` capability.
+- The application-password user has the Bricks `Execute code` capability.
+- Bricks code execution is enabled under `Bricks > Settings > Custom code`.
+- `BRICKS_LOCK_CODE_SIGNATURES` is not enabled. The signature lock overrides the PHP execution constant.
 
-</figcaption>
+Persistent PHP is stored only when the agent is authorized to edit the target and the code can be signed. Bricks validates supported HTML and PHP Code field paths before accepting an update, so a field that normally accepts HTML cannot be used to bypass the PHP checks.
 
-The dashboard view shows template type, template conditions, template bundles, template tags, and the featured image used as the template screenshot.
+Keeping activation in PHP configuration means the ability cannot be enabled through a WordPress option or database setting alone. The permission and configuration checks above run again for every call.
 
-## Inject Section templates via hooks {#hook}
+To disable PHP abilities, remove the constant or change it to:
 
-Section templates can be injected at a WordPress action hook.
+```php
+define( 'BRICKS_ENABLE_PHP_ABILITIES', false );
+```
 
-When editing a Section template, add a condition and enter the action hook name under **Hook: Name**. You can also set **Hook: Priority**. Bricks evaluates the condition first, then renders the section when that hook runs.
+The highlighted `bricks/execute-php` row appears first under `Bricks > AI > Abilities`. Select `View setup` to expand the configuration instructions inside the row. Its status shows whether `BRICKS_ENABLE_PHP_ABILITIES` is undefined, `true`, `false`, or invalid, without exposing an unexpected constant value. When the constant is `true`, a second status shows whether the ability is callable or blocked by another requirement.
 
-For example, a Section template with condition **Entire website** and hook name `bricks_before_header` renders at that hook across the site.
+### 3. Create a credential
 
-![](https://academy.bricksbuilder.io/assets/bricks-1.9.2-section-template-condition-hook-name.png)
+Under `Connect AI client to MCP > Create a credential`, select the WordPress user the AI client should act as, enter a credential name, and click `Generate password`.
 
-<figcaption>
+Use a name that identifies the client or workflow, for example `Codex staging`, `Claude local`, or `Cursor design review`.
 
-Section template rendered at the `bricks_before_header` hook
+Copy the generated application password before leaving the page. WordPress only shows it once.
 
-</figcaption>
+For shared local or staging environments, create a dedicated WordPress user for the AI client instead of using your personal admin account. Give that user only the [builder access](https://academy.bricksbuilder.io/builder/interface/builder-access/) and WordPress capabilities it needs.
 
-> **Note**
+### 4. Connect your AI client
+
+Under `Connect AI client to MCP`, choose the client you use. Bricks shows a config block, a command, or a prompt depending on the client.
+
+Use `Paste config` when the client supports config files. It keeps the setup explicit and keeps credentials out of the chat prompt.
+
+`Copy a prompt` asks the AI client to help install the MCP server using the same connection details. Use it only in a local or staging workflow, and only with a client you trust with the credential.
+
+Bricks generates client-specific config for many tools. The examples below show the shape of that config, but use the values generated on your site. The generated config includes:
+
+- `WP_API_URL`: the MCP endpoint URL.
+- `WP_API_USERNAME`: the selected WordPress username.
+- `WP_API_PASSWORD`: the generated application password.
+- `NODE_TLS_REJECT_UNAUTHORIZED=0`, only when Bricks detects a local development HTTPS domain that likely uses a self-signed certificate.
+- `npx -y @automattic/mcp-wordpress-remote@latest` as the local command that connects your AI client to WordPress.
+
+Do not put the application password in the endpoint URL, command arguments, or global shell config. Keep it in the MCP server environment for that client.
+
+**Codex**
+
+Paste the generated block into `~/.codex/config.toml`, or merge it with your existing MCP server config:
+
+```toml
+[mcp_servers.example-com]
+command = "npx"
+args = ["-y", "@automattic/mcp-wordpress-remote@latest"]
+
+[mcp_servers.example-com.env]
+WP_API_URL = "https://example.com/wp-json/mcp/mcp-adapter-default-server"
+WP_API_USERNAME = "mcp-service-user"
+WP_API_PASSWORD = "xxxx xxxx xxxx xxxx"
+```
+
+Start a new Codex chat after saving the config so Codex reloads the MCP server.
+
+**Claude Code**
+
+Run the generated command in your terminal:
+
+```bash
+claude mcp add example-com \
+  --env WP_API_URL='https://example.com/wp-json/mcp/mcp-adapter-default-server' \
+  --env WP_API_USERNAME='mcp-service-user' \
+  --env WP_API_PASSWORD='xxxx xxxx xxxx xxxx' \
+  -- npx -y @automattic/mcp-wordpress-remote@latest
+```
+
+Start a new Claude Code chat after adding the server.
+
+**Generic JSON**
+
+Many clients use a JSON config shape like this:
+
+```json
+{
+  "mcpServers": {
+    "example-com": {
+      "command": "npx",
+      "args": ["-y", "@automattic/mcp-wordpress-remote@latest"],
+      "env": {
+        "WP_API_URL": "https://example.com/wp-json/mcp/mcp-adapter-default-server",
+        "WP_API_USERNAME": "mcp-service-user",
+        "WP_API_PASSWORD": "xxxx xxxx xxxx xxxx"
+      }
+    }
+  }
+}
+```
+
+Use the exact file path and wrapper key shown in `Bricks > AI`, because each client names its MCP config differently.
+
+> **Local HTTPS**
 >
-> Templates with a hook name are injected on the actual frontend.
+> For local domains such as `.local`, `.test`, `.localhost`, `.ddev.site`, `localhost`, or `127.0.0.1`, Bricks may add `NODE_TLS_REJECT_UNAUTHORIZED=0` to the generated MCP server environment. Keep that setting scoped to this MCP server only. Do not set it globally.
 
-## Template Types {#template-types}
+### 5. Test the connection
 
-Use the table below as a quick reference when choosing a template type.
+Start a new chat in your AI client and ask:
 
-| Template type | Description | Default or route behavior |
-| --- | --- | --- |
-| Header | Site header area | Can be used by default. |
-| Footer | Site footer area | Can be used by default. |
-| Single | Main layout for posts, pages, or CPT entries | Needs conditions for predictable use. |
-| Section | Reusable section or hook-injected layout | Render manually, insert into content, or inject through hooks. |
-| Popup | Popup layout | Loaded through popup conditions/interactions or Template element usage. |
-| Archive | Blog, author, date, post type, taxonomy, and term archives | Can be used by default for archive contexts. |
-| Search Results | Native search results page | Can be used by default for search results. |
-| Error Page | 404 page | Can be used by default for error pages. |
-| Password Protection | Password gate template | Available when password protection is enabled. |
-| WooCommerce - Product archive | Shop, product category, product tag, and product attribute archives | Uses WooCommerce archive routing and can use conditions. |
-| WooCommerce - Single product | Single product pages | Uses WooCommerce product routing and can use conditions. |
-| WooCommerce - Cart | Cart page with items | Automatically rendered on the cart route when the cart has items. |
-| WooCommerce - Empty cart | Empty cart page state | Automatically rendered on the cart route when the cart is empty. |
-| WooCommerce - Checkout | Checkout page | Automatically rendered on the checkout route. |
-| WooCommerce - Pay | Order payment page | Automatically rendered on the order-pay route. |
-| WooCommerce - Thank you | Post-checkout thank-you page | Automatically rendered on the order-received route. |
-| WooCommerce - Order receipt | Order receipt page | Automatically rendered on the matching WooCommerce route. |
-| WooCommerce - Account - Login | Account login form | Automatically rendered on the matching account route. |
-| WooCommerce - Account - Lost password | Lost password form | Automatically rendered on the matching account route. |
-| WooCommerce - Account - Lost password (Confirmation) | Lost password confirmation | Automatically rendered on the matching account route. |
-| WooCommerce - Account - Reset password | Reset password form | Automatically rendered on the matching account route. |
-| WooCommerce - Account - Dashboard | Account dashboard | Automatically rendered on the matching account route. |
-| WooCommerce - Account - Orders | Account orders | Automatically rendered on the matching account route. |
-| WooCommerce - Account - View order | Account view-order endpoint | Automatically rendered on the matching account route. |
-| WooCommerce - Account - Downloads | Account downloads | Automatically rendered on the matching account route. |
-| WooCommerce - Account - Addresses | Account addresses | Automatically rendered on the matching account route. |
-| WooCommerce - Account - Edit address | Account edit-address endpoint | Automatically rendered on the matching account route. |
-| WooCommerce - Account - Edit account | Account edit-account endpoint | Automatically rendered on the matching account route. |
-| WooCommerce - Account - Payment methods | Account payment methods | Automatically rendered on the matching account route. |
-| WooCommerce - Account - Add Payment method | Account add-payment-method endpoint | Automatically rendered on the matching account route. |
+```text
+Call bricks-start-here, then bricks-get-mcp-version, then bricks-list-ability-status.
+Tell me whether Bricks abilities are available, which Bricks version is connected, and whether any abilities are disabled.
+```
 
-> **Note**
+If `bricks-start-here` is not visible as a direct tool, ask the client to call the MCP Adapter dispatcher:
+
+```json
+{
+  "ability_name": "bricks/start-here",
+  "parameters": {}
+}
+```
+
+If the client cannot list Bricks abilities, fix the MCP connection before installing skills or trying a build task.
+
+## Managing abilities
+
+Open `Bricks > AI > Abilities` to control which Bricks abilities AI clients can use on this site.
+
+> **User permissions still apply**
 >
-> Section templates do not sync inserted copies between pages. If you need linked reusable structures, use [Components](https://academy.bricksbuilder.io/builder/features/components/).
+> The Abilities tab controls site-level availability. It does not grant permissions to the WordPress user behind the MCP connection. An ability can be enabled here and still not be callable for that user if they do not have the required WordPress capability, builder access, or Bricks builder permission.
 
-## Template Bundles & Template Tags {#bundles}
+### Scope abilities by user or role
 
-These two Bricks template taxonomies can be used to organize and group your templates together. They are 100% optional.
+Ability toggles are site-wide. Per-user and per-role access comes from the WordPress account used by the MCP connection:
 
-For example, Bricks template sources can use **Template Bundles** to group individual templates of the same website design together. Feel free to use template bundles in any other way.
+1. Go to `Bricks > Settings > Builder access` and create a custom builder capability.
+2. Enable only the actions that account needs, including the relevant post types and element editing permissions.
+3. Assign the capability to a WordPress role or to one user from that user's WordPress profile.
+4. In `Bricks > AI > Configuration`, generate the application password for that user and use it in the AI client's MCP config.
 
-**Template Tags** are simple tags. The "My Templates" screenshot above uses template tags such as "Dark" and "Light". Again, they are completely optional but often very useful. Especially as your template library grows over time.
+For example, a `Client editor` capability can allow content and element editing while leaving every permission under `Components` disabled. An AI client connected with that user's application password can edit the permitted content, but component abilities and component operations inside element writes are rejected.
 
-## Troubleshooting template assignment
+WordPress capabilities still apply alongside Builder access. Avoid using an administrator account for a restricted client workflow because users with `manage_options` receive full builder access. See [Builder Access & Capabilities](https://academy.bricksbuilder.io/builder/interface/builder-access/) for every permission and the steps for assigning capabilities to roles and individual users.
 
-**Nothing renders:** Confirm the template is published, has the correct type, and has matching conditions. If it has no conditions, check whether default templates are disabled.
+You can:
 
-**The wrong layout renders:** Look for another template with a more specific condition. Individual, front page, selected term, and selected archive conditions can outrank broader conditions.
+- Search abilities by name or description.
+- Filter by category, enabled state, disabled state, and default-off state.
+- Enable all, disable all, or reset to defaults.
+- Review badges such as `Default off` and `Destructive`.
 
-**A header or footer is missing only on one page:** Check that page's **Page Settings > General** for **Disable header** or **Disable footer**.
+Some diagnostic abilities are always available so clients and admins can understand the connection state:
 
-**The builder preview looks unrelated to the frontend:** Adjust **Populate Content**. Preview content controls the editing canvas, not the frontend assignment.
+- `bricks/start-here`
+- `bricks/get-mcp-version`
+- `bricks/list-ability-status`
 
-**WooCommerce conditions are missing:** Product archive and single product templates can use conditions. Other WooCommerce route templates, such as cart, checkout, thank-you, and account templates, render automatically on the correct WooCommerce page, so Bricks hides normal Conditions and Populate Content controls for those types.
+Most abilities are enabled by default once Bricks abilities are enabled. Sensitive categories, such as builder permission management, are default-off until an admin enables them. Abilities marked destructive can remove data or make changes that are not easy to reverse, so treat them as actions that need clear user approval.
+
+![](https://academy.bricksbuilder.io/assets/bricks-ai-abilities.png)
+
+## Fast-path tools and dispatcher tools
+
+Bricks registers many abilities, but only common abilities appear directly in an MCP client's tool list.
+
+Direct MCP tool names use hyphens:
+
+```text
+bricks-get-design-context
+bricks-get-page-elements
+bricks-set-page-elements
+```
+
+Ability names use slashes:
+
+```text
+bricks/get-design-context
+bricks/get-page-elements
+bricks/set-page-elements
+```
+
+If a Bricks ability is not visible as a direct tool, call it through the MCP Adapter dispatcher:
+
+```json
+{
+  "ability_name": "bricks/get-mcp-version",
+  "parameters": {}
+}
+```
+
+Use `bricks-list-ability-status` to see which abilities are enabled, which are disabled, and which are default-off.
+
+### Add a direct tool
+
+If your integration frequently calls an ability through the dispatcher, you can expose it as a direct tool on the default MCP server. Add this filter to a custom plugin or your child theme's `functions.php`:
+
+```php
+add_filter( 'bricks/abilities/named_tools', function( $tools ) {
+    $tools[] = 'bricks/get-element-schema';
+
+    return $tools;
+} );
+```
+
+Use slash-separated ability names. Bricks removes duplicates, disabled abilities, and unregistered names once the ability registry is available. Reconnect your MCP client or refresh its tools after changing the list.
+
+This changes tool discovery only. Removing a direct tool does not disable its ability: it remains callable through the dispatcher. Use **Bricks > AI > Abilities** to disable an ability. User permissions still apply.
+
+## Code authoring and HTML/CSS imports
+
+Agents can create and edit Bricks content through the same permissions that apply in the builder. An agent does not receive PHP access merely because it can edit HTML, CSS, or JavaScript.
+
+- HTML authoring requires permission to edit the target and its content settings.
+- CSS authoring follows the target resource and style-editing permissions, such as access to the Class Manager and permission to edit global classes.
+- JavaScript authoring requires permission to edit the target and the WordPress `unfiltered_html` capability.
+- PHP authoring and signing require the PHP abilities opt-in and every safeguard listed above, including `manage_options`, Bricks **Execute code**, enabled code execution, application-password authentication, and unlocked code signatures.
+
+Code elements retain their existing **Execute code** permission, global execution setting, and PHP/HTML signing requirements. These abilities do not change how Code elements render or how the builder authorizes them. Writing the signed PHP/HTML field in execution mode uses the PHP abilities safeguards, including when that field contains only HTML.
+
+When an agent imports HTML or CSS, Bricks checks the imported structure and its permissions. Content the connected user is not allowed to create is omitted automatically. A one-call import can apply the retained content and returns a prominent partial result with the omitted elements and the reason for each omission. An explicit preview is also available before applying an import.
+
+Bricks rejects an import when the retained tree is empty or invalid. It also rejects a nonempty replacement when any source content was omitted or invalid, because it could remove existing content incompletely. Review the reported omissions, adjust the source or permissions, and run the import again.
+
+## Settings Abilities and Remote Libraries
+
+The settings abilities use an allow-list rather than exposing the entire `bricks_global_settings` option:
+
+- `bricks/list-settings-schema` lists supported keys and their value types.
+- `bricks/get-global-settings` reads allowed settings.
+- `bricks/set-global-settings` updates only the keys sent in the request.
+- `bricks/list-credential-status` reports whether known credentials are configured without returning their values.
+
+The Remote Templates and Remote Components settings use these keys:
+
+| Setting key | Ability behavior |
+| --- | --- |
+| `myTemplatesAccess` | Readable and writable boolean for exposing this site's templates. |
+| `myComponentsAccess` | Readable and writable boolean for exposing this site's components. |
+| `myTemplatesWhitelist` | Readable and writable newline-separated URL whitelist shared by templates and components. Its stored key keeps the older name for compatibility. |
+| `remoteTemplates` | Reads and writes remote-library URLs and optional display names. Stored passwords are preserved but never returned or written through the abilities. |
+| `myTemplatesPassword` | Excluded from settings reads and writes. `bricks/list-credential-status` reports only whether the shared **Remote access password** is configured and identifies it as used by remote template and component access. |
+
+The `myTemplatesPassword` key also keeps its older internal name for compatibility. AI and MCP clients cannot read, replace, or clear the password. Manage it in **Bricks > Settings > Templates & components > Remote access**.
+
+## Installing Bricks skills
+
+Skills are optional. Get the MCP connection working first.
+
+Open `Bricks > AI > Skills` and copy the install prompt. Paste it into the AI client you want to use. The prompt points the client to the [Bricks skills repository](https://github.com/codeerhq/bricks-skills), asks it to install the matching skills or rules format, and asks it to report which Bricks skills were installed.
+
+Then copy the verification prompt from the same tab. Start a new chat and ask the client to list loaded Bricks skills.
+
+If no Bricks skills are loaded, the MCP connection can still work. The client can call `bricks-start-here` at the beginning of a session to get the core Bricks workflow rules, fast-path tool names, and dispatcher example.
+
+Skills help with workflows such as:
+
+- Designing or auditing a design system.
+- Creating pages and templates.
+- Working with [query loops](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/) and [dynamic data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/).
+- Writing element conditions and interactions.
+- Converting HTML and CSS into Bricks element data.
+- Verifying frontend output with screenshots or browser automation.
+
+## WP-CLI access
+
+Bricks abilities are registered with the WordPress Abilities API, so they are not limited to MCP clients.
+
+For developer checks, WP-CLI can access the same registered abilities from the command line. The WordPress Developer Resources page for [`wp ability`](https://developer.wordpress.org/cli/commands/ability/) describes it as the command for abilities registered through the WordPress Abilities API.
+
+Useful checks:
+
+```bash
+wp ability list --namespace=bricks --user=admin
+wp ability get bricks/get-mcp-version --user=admin
+wp ability run bricks/get-mcp-version --user=admin
+wp ability run bricks/list-ability-status --user=admin --format=json
+```
+
+Use `--user` so permission checks run in the same WordPress user context your MCP connection would use.
+
+This is separate from the Bricks-specific `wp bricks ...` commands, and it is not required for the MCP setup above. It is a WordPress Abilities API surface for any registered ability, including abilities from Bricks and other plugins.
+
+## Security model
+
+Treat an MCP-connected AI client like a real WordPress user.
+
+- Each call runs as the authenticated WordPress user, for example the application-password user or the `--user` passed to WP-CLI.
+- Bricks checks WordPress capabilities, builder access, and Bricks builder permissions before abilities can read or write.
+- The Abilities tab controls which Bricks abilities are available on the site.
+- `BRICKS_DISABLE_MCP` in `wp-config.php` prevents Bricks from registering abilities, including for WP-CLI use.
+- PHP execution and persistent PHP authoring share a strict boolean opt-in in PHP configuration. Each action rechecks application-password authentication, `manage_options`, Bricks **Execute code**, enabled code execution, and the code-signature lock.
+- Application passwords can be revoked from the selected user's WordPress profile.
+- Post and template element writes create Bricks [revisions](https://academy.bricksbuilder.io/builder/interface/revisions/) where supported. Global data writes, such as classes, variables, theme styles, and components, are not covered by post revisions.
+
+Recommended defaults:
+
+- Use local or staging for first tests.
+- Use a dedicated WordPress user for the AI client in shared testing environments.
+- Disable abilities that are not needed for the workflow.
+- Review destructive actions before approving them in the AI client.
+- Revoke old application passwords.
+
+## Troubleshooting
+
+| Symptom                                                    | Likely cause                                                               | What to do                                                                                                                                    |
+| ---------------------------------------------------------- | -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| The Bricks abilities toggle is disabled | The WordPress Abilities API is unavailable, or `BRICKS_DISABLE_MCP` is truthy | Use WordPress 6.9 or later if the API is missing, or remove the constant/set it to `false`. A connected MCP Adapter is not required to enable abilities. |
+| `MCP server enabled but endpoint did not register`         | The adapter loaded, but the REST route is missing                          | Check `/wp-json/`, permalink settings, plugin conflicts, and PHP error logs.                                                                  |
+| The client cannot connect                                  | Wrong endpoint, wrong credential, or the client did not reload config      | Confirm the endpoint in `Bricks > AI`, regenerate or re-copy the application password, then start a new chat.                                 |
+| Application passwords are unavailable on a local HTTP site | WordPress enables application passwords by default only over HTTPS or when the environment type is `local` | Use HTTPS when possible. For a local HTTP site, add `define( 'WP_ENVIRONMENT_TYPE', 'local' );` to `wp-config.php`.                            |
+| Application passwords are unavailable for one user         | A security plugin, filter, or user-level restriction disabled application passwords | Check the selected user, security plugins, and filters that control WordPress application password availability.                              |
+| The client only shows `mcp-adapter-*` tools                | Bricks direct tools are not loaded or the ability is outside the fast path | Use `mcp-adapter-discover-abilities`, call long-tail abilities through `mcp-adapter-execute-ability`, and check `bricks-list-ability-status`. |
+| A Bricks ability returns disabled                          | The ability is off in `Bricks > AI > Abilities`                            | Enable the ability or reset abilities to defaults.                                                                                            |
+| `bricks/execute-php` is unavailable                        | `BRICKS_ENABLE_PHP_ABILITIES` is missing, a required permission is missing, code execution is disabled, or code signatures are locked | Open `Bricks > AI > Abilities`, select `View setup` for `bricks/execute-php`, and follow the blocked requirement shown there. |
+| Local HTTPS fails                                          | The local certificate is not trusted by the local `npx` process            | Use the scoped `NODE_TLS_REJECT_UNAUTHORIZED=0` generated by Bricks for local development, or trust the local certificate.                    |
+| The AI client keeps asking for approval on every tool call | The client has per-tool approval settings                                  | Approve the Bricks MCP server or adjust that client's MCP approval settings if you trust the workflow.                                        |
+
+### Upload or conversion exceeds a size limit
+
+If an ability rejects a file or HTML/CSS input as too large, reduce its size before retrying. Bricks uses these defaults unless a site customization changes them:
+
+| Operation | Default limit |
+| --- | --- |
+| Media upload (`bricks/upload-media`) | The site's WordPress upload limit; remote downloads have a 30-second timeout |
+| Font upload (`bricks/upload-custom-font-file`) | 8 MiB per decoded font file |
+| SVG icon upload (`bricks/upload-custom-icon`) | 1 MiB of SVG markup |
+| HTML/CSS conversion (`bricks/convert-html-css-to-bricks-data`) | 2 MiB of combined HTML and CSS, including CSS-only input |
+
+1 MiB is 1,048,576 bytes. Base64 encoding makes an upload request larger than the file itself. If the request fails before Bricks returns an error, check your hosting, proxy, and MCP client's request limits as well.
+
+## Example prompts
+
+Start with explicit instructions. Ask the client to inspect the site before writing.
+
+```text
+You are connected to a Bricks site through MCP.
+Call bricks-start-here, then inspect the design system and the current page before making changes.
+Do not create duplicate global classes or variables.
+Preview or read back your changes before reporting that the task is done.
+```
+
+Build a first pass of a page:
+
+```text
+Create an About page for this Bricks site. Use the existing design system, keep the style consistent with the homepage, and show me the plan before saving.
+```
+
+Replace static content with dynamic data:
+
+```text
+Find the static listing cards on the homepage and replace them with a query loop that pulls the Listing post type. Use the existing card styling.
+```
+
+Audit before changing:
+
+```text
+Audit the site's global classes, variables, and templates for naming drift or duplicated patterns. Show me the report first. Do not change anything yet.
+```

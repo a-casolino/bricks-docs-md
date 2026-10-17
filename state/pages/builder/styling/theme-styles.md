@@ -19,7 +19,7 @@ To create a Theme Style:
 5. Add conditions.
 6. Configure the style groups.
 
-https://youtu.be/UgoMtcacMus
+https://youtu.be/SgTBp34J3CQ
 
 ## The mental model
 
