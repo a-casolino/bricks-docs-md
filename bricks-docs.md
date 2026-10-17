@@ -1,6 +1,6 @@
 # Bricks Builder Documentation
 
-<!-- content-sha256: 5b6a5cf48004e57766efea937ea4a7b56d05e4b0589d171b1858d7979b7f4718 -->
+<!-- content-sha256: test -->
 <!-- content last changed: 2026-10-17 02:30 UTC -->
 
 Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricksbuilder.io/), refreshed daily. Content © Bricks. 826 pages.
