@@ -53,6 +53,12 @@ jobs:
         if: steps.tz.outputs.run == 'true'
         run: python scrape.py --out-dir . --report "$RUNNER_TEMP/changes.md" ${{ inputs.full && '--full' || '' }}
 
+      - name: Summarize the changes with Claude
+        if: steps.tz.outputs.run == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python summarize.py "$RUNNER_TEMP/changes.md"
+
       - name: Commit if the docs changed
         if: steps.tz.outputs.run == 'true'
         run: |
