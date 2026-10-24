@@ -366,6 +366,84 @@ Bricks features extend the core page-building workflow with reusable systems, in
 
 ---
 
+# Maintenance Mode
+
+Source: https://academy.bricksbuilder.io/builder/features/maintenance-mode/
+
+*Set up maintenance mode in Bricks, choose what visitors see, and control access while you work on the site.*
+
+Bricks 1.9.4 introduces the **Maintenance Mode** feature. A straightforward way to manage your site's availability during updates or construction.
+
+![](https://academy.bricksbuilder.io/assets/bricks-settings-maintenance-mode-2-0.png)
+
+Maintenance Mode runs on the frontend only. It does not replace the WordPress admin, and it does not block the Bricks builder.
+
+## How to enable Maintenance Mode
+
+1. Log in to the WordPress dashboard.
+2. Navigate to Bricks > Settings > Maintenance.
+
+Here, you'll find several settings to configure:
+
+- **Mode selection**: Choose `Disabled`, `Maintenance`, or `Coming Soon`. "Maintenance" mode (HTTP status code 503) indicates that your site is temporarily unavailable, signaling search engines to come back later. "Coming soon" mode (HTTP status code 200) indicates that your site is available for search engine indexing.
+- **Template** *(optional)*: Assign a custom single template for your maintenance or coming soon mode.
+  - **Render header** *(optional)*: Enable this setting if you want the active Bricks header to render with the maintenance or coming soon template. This is **disabled by default**.
+  - **Render footer** *(optional)*: Enable this setting if you want the active Bricks footer to render with the maintenance or coming soon template. This is **disabled by default**.
+  - **Render popups** *(optional)*: Enable this setting if you want Bricks popups to be rendered on the maintenance or coming soon template. This is **disabled by default**.
+- **Bypass maintenance**: Customize access settings for different user roles.
+- **Exclude posts/pages** *(since 2.0)*: Select specific pages or posts where Maintenance Mode should **not** be applied.
+
+If no template is selected, or the selected template is not published or has no Bricks data, Bricks renders a simple default page with a `Maintenance` or `Coming soon` heading.
+
+## When maintenance mode applies
+
+Maintenance mode is skipped for:
+
+- WordPress admin requests.
+- Bricks builder requests.
+- The Bricks custom login page, if one is configured.
+- Logged-in users who can bypass maintenance.
+- Posts or pages selected under **Exclude posts/pages**.
+
+If none of those bypasses apply, Bricks serves the maintenance response. In **Maintenance** mode, Bricks sends HTTP status `503`. In **Coming soon** mode, Bricks sends HTTP status `200`.
+
+When maintenance mode is active, Bricks also removes the canonical tag and does not output Bricks Open Graph meta tags for the maintenance response.
+
+## Custom maintenance templates
+
+The selected maintenance template replaces the requested page content while maintenance mode is applied. The normal search, archive, and error templates are disabled for that response.
+
+Header and footer rendering are off by default and must be enabled with **Render header** and **Render footer**. Popups are also off by default and only load when **Render popups** is enabled, or when the current user can bypass maintenance.
+
+For multilingual sites, Bricks resolves the selected maintenance template through WPML or Polylang when those integrations are active.
+
+## Configuring role-based access
+
+In the "Bypass maintenance" setting:
+
+1. Select from the dropdown menu: `Logged-in users` allows all logged-in users to bypass maintenance mode; `Logged-in users with role` provides a more granular control.
+2. If `Logged-in users with role` is selected, checkboxes will appear to enable or disable maintenance mode bypass for specific roles such as Editor, Author, Contributor, etc.
+
+Administrators can bypass maintenance by default. If no custom role selection is enabled, logged-in users can bypass maintenance mode.
+
+## Individual user access settings
+
+To configure access on an individual user level:
+
+1. From the WordPress dashboard, go to "Users".
+2. Click to edit a specific user's profile.
+3. In the user profile, find and adjust the "Bypass Maintenance" setting.
+
+The individual user setting can explicitly enable or disable maintenance bypass for that user. This takes precedence over the role-based setting and over the default administrator/logged-in behavior.
+
+<span id="filters"></span>
+
+**Filters:**
+
+- [/developer/hooks/filters/filter-bricks-maintenance-should_apply/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-maintenance-should_apply/)
+
+---
+
 # Interactions
 
 Source: https://academy.bricksbuilder.io/builder/features/interactions/
@@ -1007,300 +1085,6 @@ Then add interactions:
 
 ---
 
-# Maintenance Mode
-
-Source: https://academy.bricksbuilder.io/builder/features/maintenance-mode/
-
-*Set up maintenance mode in Bricks, choose what visitors see, and control access while you work on the site.*
-
-Bricks 1.9.4 introduces the **Maintenance Mode** feature. A straightforward way to manage your site's availability during updates or construction.
-
-![](https://academy.bricksbuilder.io/assets/bricks-settings-maintenance-mode-2-0.png)
-
-Maintenance Mode runs on the frontend only. It does not replace the WordPress admin, and it does not block the Bricks builder.
-
-## How to enable Maintenance Mode
-
-1. Log in to the WordPress dashboard.
-2. Navigate to Bricks > Settings > Maintenance.
-
-Here, you'll find several settings to configure:
-
-- **Mode selection**: Choose `Disabled`, `Maintenance`, or `Coming Soon`. "Maintenance" mode (HTTP status code 503) indicates that your site is temporarily unavailable, signaling search engines to come back later. "Coming soon" mode (HTTP status code 200) indicates that your site is available for search engine indexing.
-- **Template** *(optional)*: Assign a custom single template for your maintenance or coming soon mode.
-  - **Render header** *(optional)*: Enable this setting if you want the active Bricks header to render with the maintenance or coming soon template. This is **disabled by default**.
-  - **Render footer** *(optional)*: Enable this setting if you want the active Bricks footer to render with the maintenance or coming soon template. This is **disabled by default**.
-  - **Render popups** *(optional)*: Enable this setting if you want Bricks popups to be rendered on the maintenance or coming soon template. This is **disabled by default**.
-- **Bypass maintenance**: Customize access settings for different user roles.
-- **Exclude posts/pages** *(since 2.0)*: Select specific pages or posts where Maintenance Mode should **not** be applied.
-
-If no template is selected, or the selected template is not published or has no Bricks data, Bricks renders a simple default page with a `Maintenance` or `Coming soon` heading.
-
-## When maintenance mode applies
-
-Maintenance mode is skipped for:
-
-- WordPress admin requests.
-- Bricks builder requests.
-- The Bricks custom login page, if one is configured.
-- Logged-in users who can bypass maintenance.
-- Posts or pages selected under **Exclude posts/pages**.
-
-If none of those bypasses apply, Bricks serves the maintenance response. In **Maintenance** mode, Bricks sends HTTP status `503`. In **Coming soon** mode, Bricks sends HTTP status `200`.
-
-When maintenance mode is active, Bricks also removes the canonical tag and does not output Bricks Open Graph meta tags for the maintenance response.
-
-## Custom maintenance templates
-
-The selected maintenance template replaces the requested page content while maintenance mode is applied. The normal search, archive, and error templates are disabled for that response.
-
-Header and footer rendering are off by default and must be enabled with **Render header** and **Render footer**. Popups are also off by default and only load when **Render popups** is enabled, or when the current user can bypass maintenance.
-
-For multilingual sites, Bricks resolves the selected maintenance template through WPML or Polylang when those integrations are active.
-
-## Configuring role-based access
-
-In the "Bypass maintenance" setting:
-
-1. Select from the dropdown menu: `Logged-in users` allows all logged-in users to bypass maintenance mode; `Logged-in users with role` provides a more granular control.
-2. If `Logged-in users with role` is selected, checkboxes will appear to enable or disable maintenance mode bypass for specific roles such as Editor, Author, Contributor, etc.
-
-Administrators can bypass maintenance by default. If no custom role selection is enabled, logged-in users can bypass maintenance mode.
-
-## Individual user access settings
-
-To configure access on an individual user level:
-
-1. From the WordPress dashboard, go to "Users".
-2. Click to edit a specific user's profile.
-3. In the user profile, find and adjust the "Bypass Maintenance" setting.
-
-The individual user setting can explicitly enable or disable maintenance bypass for that user. This takes precedence over the role-based setting and over the default administrator/logged-in behavior.
-
-<span id="filters"></span>
-
-**Filters:**
-
-- [/developer/hooks/filters/filter-bricks-maintenance-should_apply/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-maintenance-should_apply/)
-
----
-
-# Nestable Slider: Customization via JavaScript
-
-Source: https://academy.bricksbuilder.io/builder/features/nestable-slider-instance/
-
-*Customize individual Nestable Slider instances in Bricks with JavaScript while keeping the main slider reusable.*
-
-Bricks introduced the Nestable Slider in version 1.5, utilizing the [SplideJS](https://splidejs.com/) library.
-
-This article is intended for developers, walking you through how to access and customize the Splide instance.
-
-All initialized Splide instances are stored and can be accessed through `window.bricksData.splideInstances`.
-
-You must first identify the Nestable Slider element's unique ID to retrieve the appropriate instance from the variable. You can find this ID within the builder when editing this element or through your browsers' developer tools.
-
-![](https://academy.bricksbuilder.io/assets/how-to-get-nestable-slider-id.png)
-
-According to the example above, I can access my Splide Instance through `window.bricksData.splideInstances['rrbqsp']`
-
-> **Note**
->
-> If you have assigned a custom CSS ID to the Slider, please note that this ID is not the same as the element ID. In such cases, you should obtain the correct element ID through your browser's developer tools.
-
-## Update Nestable Slider options via JavaScript {#update-slider-options}
-
-Objective: Update `noDrag` option for all Nestable Sliders on the current page.
-
-```php
-<script>
-document.addEventListener('DOMContentLoaded', (event) => {
-  // Define a function to update the no-drag option for all splide instances on the page
-  const updateNoDragOption = () => {
-    for( const splideId in window.bricksData.splideInstances ) {
-      const splideInstance = window.bricksData.splideInstances[splideId]
-      if ( splideInstance ) {
-        // Tell Splide that any elements with .no-drag class is not draggable
-        splideInstance.options = { noDrag : '.no-drag' }
-      }
-    }
-  }
-
-  // Need some delay for Bricks to init the sliders
-  setTimeout(updateNoDragOption, 250)
-})
-</script>
-```
-
-## Custom navigation arrows outside the slider {#custom-arrows}
-
-Objective: Implement custom navigation buttons located outside of the Nestable Slider.
-
-![](https://academy.bricksbuilder.io/assets/slider-structure-example.png)
-
-Please set unique classes for your buttons. We assigned the `my-prev` and `my-next` CSS classes in our example.
-
-![](https://academy.bricksbuilder.io/assets/assign-css-classes-to-custom-slider-buttons.png)
-
-Next, place a Code element and write some simple JavaScript. Remember to turn **ON **the Execute code checkbox. (Arrows for the Slider remained **OFF**)
-
-![](https://academy.bricksbuilder.io/assets/slider-arrows-off.png)
-
-![](https://academy.bricksbuilder.io/assets/code-element-for-custom-navigation.png)
-
-```php
-<script>
-document.addEventListener('DOMContentLoaded', (event) => {
-  // Give some times for Bricks to init the sliders
-  setTimeout(() => {
-    // Please replace rrbqsp to your Slider element ID !!NOT CSS ID!!
-    const mySlider = window.bricksData?.splideInstances['rrbqsp'] || false
-    // Please replace the button classes to suit your scenario
-    const myPrevBtn = document.querySelector('.my-prev')
-    const myNextBtn = document.querySelector('.my-next')
-
-    if (mySlider && myPrevBtn && myNextBtn) {
-      // Add click event handlers for your custom buttons
-      myPrevBtn.addEventListener('click', function () {
-        mySlider.go('-1') // go() function by SplideJS
-      })
-      myNextBtn.addEventListener('click', function () {
-        mySlider.go('+1') // go() function by SplideJS
-      })
-    }
-  }, 250)
-})
-</script>
-
-```
-
----
-
-# Password Protection
-
-Source: https://academy.bricksbuilder.io/builder/features/password-protection/
-
-*Protect Bricks content with password gates, understand how the feature works, and customize the related templates and hooks.*
-
-Bricks 1.11.1 introduces a Bricks-native Password Protection feature, giving you a simple yet powerful way to secure content across your website without needing extra plugins.
-
-Whether you want to lock down individual pages, posts, broader areas like custom post types, or even the entire website, you can create custom templates that control access with ease.
-
-Customize the password entry experience, schedule when protection is active, and manage everything directly within Bricks.
-
-> **Note**
->
-> Password protection controls Bricks-rendered frontend output. For sensitive data, use stricter security controls such as proper authentication, authorization, and file access rules.
-
-## How to set up password protection
-
-1. Enable this feature under `Bricks > Settings > General > Password Protection`
-2. **Create a password protection template**
-  - From the WordPress dashboard, navigate to `Bricks > Templates` and create a new template.
-  - Under **Template type**, select **Password protection**.
-  - When an empty template is converted to this type, Bricks can populate it with a default section, heading, text, and form.
-3. **Configure password protection settings**
-  - Click **Edit in Bricks** to customize the template.
-  - To access the password protection settings, go to `Settings > Template settings > Password protection`.
-  - Available settings include:
-    - **Password source:** Select how passwords are managed. Options are **Template password**, **Post password**, or **Template & post password**. See details on each method in the [password source options](#password-source-options) section below.
-    - **Password:** Set the password for template-wide protection. This field is only available if the **Password source** is set to **Template password** or **Template & post password**.
-    - **Disable for logged-in users:** Allow logged-in visitors to bypass the template password.
-    - **Schedule:** Schedule when the template password protection is active.
-      - **Start date:** Set the date and time when protection begins.
-      - **End date:** Set the date and time when protection ends.
-
-The older **Disable header**, **Disable footer**, and **Disable popups** controls are deprecated and should not be treated as ordinary controls for new password-protection templates.
-
-![](https://academy.bricksbuilder.io/assets/bricks-password-protection-settings.png)
-
-![](https://academy.bricksbuilder.io/assets/bricks-password-protection-settings-group.png)
-
-![](https://academy.bricksbuilder.io/assets/bricks-password-protection-settings-1.png)
-
-1. **Set template conditions**
-  - Set [the template conditions](https://academy.bricksbuilder.io/builder/features/template-settings/#template-conditions) under `Settings > Template settings > Conditions` to define where this template applies.
-  - For more dynamic control, use the [`bricks/password_protection/is_active`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-is_active/) filter to customize when the template should be active or bypassed.
-
-![](https://academy.bricksbuilder.io/assets/bricks-password-protection-template-conditions.png)
-
-1. **Add form element for unlocking**
-  - Add a **Form Element** to the password protection template.
-  - Add an **Unlock password protection** form action. This action will allow users to unlock the protected content by entering the correct password.
-  - Add a password field. In the form action settings, choose that password field. If no field is selected, Bricks uses the first password field in the form.
-  - You can customize the form action error message. The default error is `Incorrect password.`
-
-![](https://academy.bricksbuilder.io/assets/bricks-password-protection-form-action.png)
-
-Password protection templates have priority over other matching content templates. When an active password protection template matches the current page, Bricks renders that template as the content template until the visitor unlocks the content or the protection is otherwise bypassed.
-
-## Password source options {#password-source-options}
-
-The behavior of the password protection feature depends on the selected **password source** option. Below are details on how each option works and instructions for setup:
-
-### Template password
-
-Selecting **Template password** applies the password set in the template settings to all pages or posts that meet the template conditions. No further configuration is needed on individual posts. Simply:
-
-- Set the password in `Settings > Template settings > Password protection > Password`.
-- Define the template conditions under `Settings > Template settings > Conditions` to specify where this template will apply.
-
-![](https://academy.bricksbuilder.io/assets/bricks-password-protection-template-password.png)
-
-For any content matching these conditions, the password form will be automatically rendered, restricting access to those pages.
-
-When a visitor enters the correct template password, Bricks stores a hashed password cookie named `brx_pp_` plus the WordPress cookie hash. The cookie is HTTP-only, uses the current SSL state, and expires after 10 days by default. You can customize the expiry with the [`bricks/password_protection/cookie_expires`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-cookie-expires/) filter.
-
-### Post password
-
-When **Post password** is selected, this template customizes the default WordPress password protection form but requires individual post-level password settings.
-
-To protect content using the **Post password** method:
-
-1. Enable password protection on each post or page through the WordPress editor.
-2. Set a password directly on the individual post or page (or through quick edit).
-3. The template conditions will control where the custom password form appearance applies, but protection is managed at the post level.
-
-![](https://academy.bricksbuilder.io/assets/bricks-password-protection-wp-editor.png)
-
-![](https://academy.bricksbuilder.io/assets/bricks-password-protection-post-password.png)
-
-For post passwords, Bricks uses the WordPress password-protected post flow. The Bricks form posts to the WordPress `postpass` action, and WordPress decides whether the current post still requires a password. Template password, logged-in bypass, and schedule controls are not used when the source is **Post password**.
-
-### Template & post password
-
-The **Template & post password** option uses the template password by default. However, if an individual post password is set, it will take precedence.
-
-Setup process:
-
-1. Enter a password in **Password protection > Password**.
-2. Define template conditions as needed to apply the password protection across relevant content.
-3. For any posts with an individual password set, that password will override the template password.
-
-![](https://academy.bricksbuilder.io/assets/bricks-password-protection-template-and-post-password.png)
-
-This setup provides flexibility by allowing individual content to have unique passwords while maintaining general protection for all content under the template.
-
-## Scheduling and bypass behavior
-
-The schedule applies to template-password protection. If no schedule is enabled, template-password protection is active whenever the template conditions match. If a start date is set, protection starts after that time. If an end date is set, protection stops after that time. The Start date and End date controls are labeled UTC+0, so enter schedule times in UTC+0.
-
-**Disable for logged-in users** bypasses template-password protection for any logged-in visitor. If the matched post is protected with a WordPress post password and this bypass is enabled through a template-password source, Bricks also skips the WordPress password requirement for logged-in users.
-
-If a password protection template has no template password and the source is not **Post password**, Bricks does not render the template as a password gate.
-
-## Template parts and popups
-
-Password protection templates can hide the normal header, footer, and popups through the deprecated **Disable header**, **Disable footer**, and **Disable popups** settings. These controls are kept for backwards compatibility.
-
-For new templates, prefer designing the password protection template itself as the complete gate the visitor should see. If an older template has those settings enabled, Bricks will remove the matching header/footer/popup template parts while the password protection template is active.
-
-### Password protection filters: {#filters}
-
-- [/developer/hooks/filters/filter-bricks-password_protection-cookie-expires/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-cookie-expires/)
-- [/developer/hooks/filters/filter-bricks-password_protection-is_active/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-is_active/)
-
----
-
 # Media Browser
 
 Source: https://academy.bricksbuilder.io/builder/features/media-browser/
@@ -1759,3 +1543,223 @@ As the "Nav items" element serves as the mobile menu wrapper, you can edit it to
 Now that the mobile menu no longer covers the entire screen, you can probably remove the "Toggle (Close: Mobile)" element that Bricks adds by default.
 
 Bonus tip: To prevent the mobile menu from covering your Toggle, which might happen on certain screen sizes & positioning, edit the Toggle element and set it's `z-index` under "Style > Layout > Z-index" to a value of `1001` or more.
+
+---
+
+# Nestable Slider: Customization via JavaScript
+
+Source: https://academy.bricksbuilder.io/builder/features/nestable-slider-instance/
+
+*Customize individual Nestable Slider instances in Bricks with JavaScript while keeping the main slider reusable.*
+
+Bricks introduced the Nestable Slider in version 1.5, utilizing the [SplideJS](https://splidejs.com/) library.
+
+This article is intended for developers, walking you through how to access and customize the Splide instance.
+
+All initialized Splide instances are stored and can be accessed through `window.bricksData.splideInstances`.
+
+You must first identify the Nestable Slider element's unique ID to retrieve the appropriate instance from the variable. You can find this ID within the builder when editing this element or through your browsers' developer tools.
+
+![](https://academy.bricksbuilder.io/assets/how-to-get-nestable-slider-id.png)
+
+According to the example above, I can access my Splide Instance through `window.bricksData.splideInstances['rrbqsp']`
+
+> **Note**
+>
+> If you have assigned a custom CSS ID to the Slider, please note that this ID is not the same as the element ID. In such cases, you should obtain the correct element ID through your browser's developer tools.
+
+## Update Nestable Slider options via JavaScript {#update-slider-options}
+
+Objective: Update `noDrag` option for all Nestable Sliders on the current page.
+
+```php
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  // Define a function to update the no-drag option for all splide instances on the page
+  const updateNoDragOption = () => {
+    for( const splideId in window.bricksData.splideInstances ) {
+      const splideInstance = window.bricksData.splideInstances[splideId]
+      if ( splideInstance ) {
+        // Tell Splide that any elements with .no-drag class is not draggable
+        splideInstance.options = { noDrag : '.no-drag' }
+      }
+    }
+  }
+
+  // Need some delay for Bricks to init the sliders
+  setTimeout(updateNoDragOption, 250)
+})
+</script>
+```
+
+## Custom navigation arrows outside the slider {#custom-arrows}
+
+Objective: Implement custom navigation buttons located outside of the Nestable Slider.
+
+![](https://academy.bricksbuilder.io/assets/slider-structure-example.png)
+
+Please set unique classes for your buttons. We assigned the `my-prev` and `my-next` CSS classes in our example.
+
+![](https://academy.bricksbuilder.io/assets/assign-css-classes-to-custom-slider-buttons.png)
+
+Next, place a Code element and write some simple JavaScript. Remember to turn **ON **the Execute code checkbox. (Arrows for the Slider remained **OFF**)
+
+![](https://academy.bricksbuilder.io/assets/slider-arrows-off.png)
+
+![](https://academy.bricksbuilder.io/assets/code-element-for-custom-navigation.png)
+
+```php
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  // Give some times for Bricks to init the sliders
+  setTimeout(() => {
+    // Please replace rrbqsp to your Slider element ID !!NOT CSS ID!!
+    const mySlider = window.bricksData?.splideInstances['rrbqsp'] || false
+    // Please replace the button classes to suit your scenario
+    const myPrevBtn = document.querySelector('.my-prev')
+    const myNextBtn = document.querySelector('.my-next')
+
+    if (mySlider && myPrevBtn && myNextBtn) {
+      // Add click event handlers for your custom buttons
+      myPrevBtn.addEventListener('click', function () {
+        mySlider.go('-1') // go() function by SplideJS
+      })
+      myNextBtn.addEventListener('click', function () {
+        mySlider.go('+1') // go() function by SplideJS
+      })
+    }
+  }, 250)
+})
+</script>
+
+```
+
+---
+
+# Password Protection
+
+Source: https://academy.bricksbuilder.io/builder/features/password-protection/
+
+*Protect Bricks content with password gates, understand how the feature works, and customize the related templates and hooks.*
+
+Bricks 1.11.1 introduces a Bricks-native Password Protection feature, giving you a simple yet powerful way to secure content across your website without needing extra plugins.
+
+Whether you want to lock down individual pages, posts, broader areas like custom post types, or even the entire website, you can create custom templates that control access with ease.
+
+Customize the password entry experience, schedule when protection is active, and manage everything directly within Bricks.
+
+https://youtu.be/PJ5R_XOyfRo
+
+> **Note**
+>
+> Password protection controls Bricks-rendered frontend output. For sensitive data, use stricter security controls such as proper authentication, authorization, and file access rules.
+
+## How to set up password protection
+
+1. Enable this feature under `Bricks > Settings > General > Password Protection` and save. The **Password protection** template type is only available while this setting is on.
+2. **Create a password protection template**
+  - From the WordPress dashboard, navigate to `Bricks > Templates` and create a new template.
+  - Under **Template type**, select **Password protection**.
+  - Bricks fills the empty template with a starting layout: a heading, a line of text, and a form with a password field and an **Unlock** button. The form already uses the **Unlock password protection** action.
+3. **Configure password protection settings**
+  - Click **Edit with Bricks** to customize the template.
+  - To access the password protection settings, go to `Settings > Template settings > Password protection`.
+  - Available settings include:
+    - **Password source:** Select how passwords are managed. Options are **Template password**, **Post password**, or **Template & post password**. See details on each method in the [password source options](#password-source-options) section below.
+    - **Password:** Set the password for template-wide protection. This field is only available if the **Password source** is set to **Template password** or **Template & post password**.
+    - **Disable for logged-in users:** Allow logged-in visitors to bypass the template password.
+    - **Schedule:** Schedule when the template password protection is active.
+      - **Start date:** Set the date and time when protection begins.
+      - **End date:** Set the date and time when protection ends.
+
+The older **Disable header**, **Disable footer**, and **Disable popups** controls are deprecated and should not be treated as ordinary controls for new password-protection templates.
+
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-settings.png)
+
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-settings-group.png)
+
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-settings-1.png)
+
+4. **Set template conditions**
+  - Set [the template conditions](https://academy.bricksbuilder.io/builder/features/template-settings/#template-conditions) under `Settings > Template settings > Conditions` to define where this template applies.
+  - For more dynamic control, use the [`bricks/password_protection/is_active`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-is_active/) filter to customize when the template should be active or bypassed.
+
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-template-conditions.png)
+
+5. **Add form element for unlocking**
+  - Add a **Form Element** to the password protection template.
+  - Add an **Unlock password protection** form action. This action will allow users to unlock the protected content by entering the correct password.
+  - Add a password field. In the form action settings, choose that password field. If no field is selected, Bricks uses the first password field in the form.
+  - You can customize the form action error message. The default error is `Incorrect password.`
+
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-form-action.png)
+
+Password protection templates have priority over other matching content templates. When an active password protection template matches the current page, Bricks renders that template as the content template until the visitor unlocks the content or the protection is otherwise bypassed.
+
+With a wrong password, the form shows its error message and the page stays locked. With the correct template password, the form shows its success message, and about a second later the page reloads with the protected content.
+
+## Password source options {#password-source-options}
+
+The behavior of the password protection feature depends on the selected **password source** option. Below are details on how each option works and instructions for setup:
+
+### Template password
+
+Selecting **Template password** applies the password set in the template settings to all pages or posts that meet the template conditions. No further configuration is needed on individual posts. Simply:
+
+- Set the password in `Settings > Template settings > Password protection > Password`.
+- Define the template conditions under `Settings > Template settings > Conditions` to specify where this template will apply.
+
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-template-password.png)
+
+For any content matching these conditions, the password form will be automatically rendered, restricting access to those pages.
+
+When a visitor enters the correct template password, Bricks stores a hashed password cookie named `brx_pp_` plus the WordPress cookie hash. The cookie is checked against the template password, so one unlock covers every page the template protects. The cookie is HTTP-only, uses the current SSL state, and expires after 10 days by default. You can customize the expiry with the [`bricks/password_protection/cookie_expires`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-cookie-expires/) filter.
+
+### Post password
+
+When **Post password** is selected, this template customizes the default WordPress password protection form but requires individual post-level password settings.
+
+To protect content using the **Post password** method:
+
+1. Enable password protection on each post or page through the WordPress editor.
+2. Set a password directly on the individual post or page (or through quick edit).
+3. The template conditions will control where the custom password form appearance applies, but protection is managed at the post level.
+
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-wp-editor.png)
+
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-post-password.png)
+
+For post passwords, Bricks uses the WordPress password-protected post flow. The Bricks form posts to the WordPress `postpass` action, and WordPress decides whether the current post still requires a password. Template password, logged-in bypass, and schedule controls are not used when the source is **Post password**.
+
+### Template & post password
+
+The **Template & post password** option uses the template password by default. However, if an individual post password is set, it will take precedence.
+
+Setup process:
+
+1. Enter a password in **Password protection > Password**.
+2. Define template conditions as needed to apply the password protection across relevant content.
+3. For any posts with an individual password set, that password will override the template password.
+
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-template-and-post-password.png)
+
+This setup provides flexibility by allowing individual content to have unique passwords while maintaining general protection for all content under the template.
+
+## Scheduling and bypass behavior
+
+The schedule applies to template-password protection. If no schedule is enabled, template-password protection is active whenever the template conditions match. If a start date is set, protection starts after that time. If an end date is set, protection stops after that time. The Start date and End date controls are labeled UTC+0, so enter schedule times in UTC+0.
+
+**Disable for logged-in users** bypasses template-password protection for any logged-in visitor. If the matched post is protected with a WordPress post password and this bypass is enabled through a template-password source, Bricks also skips the WordPress password requirement for logged-in users.
+
+If a password protection template has no template password and the source is not **Post password**, Bricks does not render the template as a password gate.
+
+## Template parts and popups
+
+Password protection templates can hide the normal header, footer, and popups through the deprecated **Disable header**, **Disable footer**, and **Disable popups** settings. These controls are kept for backwards compatibility.
+
+For new templates, prefer designing the password protection template itself as the complete gate the visitor should see. If an older template has those settings enabled, Bricks will remove the matching header/footer/popup template parts while the password protection template is active.
+
+### Password protection filters: {#filters}
+
+- [/developer/hooks/filters/filter-bricks-password_protection-cookie-expires/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-cookie-expires/)
+- [/developer/hooks/filters/filter-bricks-password_protection-is_active/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-is_active/)

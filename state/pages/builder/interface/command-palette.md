@@ -2,9 +2,11 @@
 
 Bricks 2.0 introduces the **Command Palette**, a powerful new feature that gives you instant keyboard-driven access to core functionality inside the builder.
 
+https://youtu.be/gOVNlRvsYc8
+
 ## How to launch it
 
-Click the command `⌘` icon in the builder toolbar or use the `CMD/CTRL + K` keyboard shortcut to open the Command Palette, which appears as an overlay, allowing you to type and filter commands across three distinct scopes.
+Click the command `⌘` icon in the builder toolbar or use the `CMD/CTRL + K` keyboard shortcut to open the Command Palette, which appears as an overlay, allowing you to type and filter commands across four scopes.
 
 ## Scope: Builder {#builder}
 
@@ -15,6 +17,10 @@ Navigate to key parts of the builder from a growing list of targets such as clas
 ## Scope: Post Types {#post-types}
 
 This scope lets you browse the registered post types your builder capability can access, create new posts when your user can edit posts, or duplicate existing posts.
+
+Besides "All" and "Template (Bricks)", a post type gets its own tab only when Bricks is enabled for it under **Bricks > Settings > General > Post types** and your role can access it in the builder. "All" searches every public post type.
+
+To create a post, select the post type tab, type the title, and click "Create". Bricks adds the post as a draft. Click a result to open it in the builder. `CMD/CTRL` + click opens it in a new browser tab. Posts of a type that is not enabled for Bricks open in the WordPress editor in a new tab.
 
 The scope auto-selects the post type that you are currently editing. So if you are editing a Bricks template the "Template (Bricks)" post type will be selected. If you edit a "Page", then "Page" is selected and so on.
 
@@ -71,6 +77,8 @@ This creates the following structure *(two times because of the multiplier: `* 2
    ├ `Text`
    └ `Button`
 
+Bricks adds the Container inside every Section automatically, so you don't type `@container` after `@section`.
+
 ### Quick element insertion
 
 > **Note**
@@ -81,13 +89,15 @@ This creates the following structure *(two times because of the multiplier: `* 2
 2. Select an element (e.g., "section")
 3. Type `>` for a child element
 4. Continue building your structure
-5. Click your element structture
+5. Insert your element structure
   - Click the "Insert" button that appears next to your query
   - Press `CMD/CTRL + ENTER`
 
+If no element is selected, Bricks adds the structure at the end of the page or template.
+
 ### Save element structures
 
-Instead of typing out your favorite structures by hand every time can just save them by clicking the "Save" button next to the command bar. Your structures are stored in this browser's `localStorage`, so they are local to that browser/profile and are not synced between users or devices.
+Instead of typing out your favorite structures by hand every time, you can save them by clicking the "Save" button next to the command bar. Your structures are stored in this browser's `localStorage`, so they are local to that browser/profile and are not synced between users or devices.
 
 ![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-saved-element-structures.png)
 
@@ -97,7 +107,11 @@ List of saved element structures
 
 </figcaption>
 
-To delete a structure, mouseover the structure item in the list, and click the "Delete" icon.
+To insert a saved structure, open the "Select element structure" dropdown in the Elements scope and pick it. To delete a structure, mouseover the structure item in the list, and click the "Delete" icon.
+
+## Scope: Components {#components}
+
+This scope lists the components on your site. Select a component to insert an instance of it, the same way you insert a single element. The scope is available when your role can insert components.
 
 ## Keyboard shortcuts
 
@@ -109,6 +123,8 @@ To delete a structure, mouseover the structure item in the list, and click the "
 | `#` (as the first character in the search input) | Enter scope “Builder” |
 | `/` (as the first character in the search input) | Enter scope “Post Types” |
 | `+` or `@` (as the first character in the search input) | Enter scope “Elements” |
+| `*` (as the first character in the search input) | Enter scope “Components” |
+| `CMD/CTRL + ENTER` | Insert the element structure typed in scope “Elements” |
 | `/0-9` (forward slash followed by number) | Navigate to a specific post type |
 | `ARROW UP/DOWN` + ENTER | Navigate to a search result and open it |
 

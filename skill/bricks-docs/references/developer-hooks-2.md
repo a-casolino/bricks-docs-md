@@ -155,6 +155,33 @@ add_filter( 'bricks/get_template_bundles', function( $bundles ) {
 
 ---
 
+# Filter: bricks/get_template_tags
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_template_tags/
+
+*Filters the list of template tags displayed in the Bricks template manager. Template tags are a custom taxonomy used to organize templates.*
+
+Filters the list of template tags displayed in the Bricks template manager. Template tags are a custom taxonomy used to organize templates.
+
+## Parameters
+
+- `$tags` (*array*): Associative array of template tags, where the key is the term slug and the value is the term name.
+
+## Example usage
+
+```php
+add_filter( 'bricks/get_template_tags', function( $tags ) {
+    // Example: Remove the 'dark' tag from the list
+    if ( isset( $tags['dark'] ) ) {
+        unset( $tags['dark'] );
+    }
+
+    return $tags;
+} );
+```
+
+---
+
 # Filter: bricks/get_templates/query_vars
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_templates-query_vars/
@@ -178,33 +205,6 @@ add_filter( 'bricks/get_templates/query_vars', function( $query_vars ) {
     ];
 
     return $query_vars;
-} );
-```
-
----
-
-# Filter: bricks/get_template_tags
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_template_tags/
-
-*Filters the list of template tags displayed in the Bricks template manager. Template tags are a custom taxonomy used to organize templates.*
-
-Filters the list of template tags displayed in the Bricks template manager. Template tags are a custom taxonomy used to organize templates.
-
-## Parameters
-
-- `$tags` (*array*): Associative array of template tags, where the key is the term slug and the value is the term name.
-
-## Example usage
-
-```php
-add_filter( 'bricks/get_template_tags', function( $tags ) {
-    // Example: Remove the 'dark' tag from the list
-    if ( isset( $tags['dark'] ) ) {
-        unset( $tags['dark'] );
-    }
-
-    return $tags;
 } );
 ```
 
@@ -442,35 +442,6 @@ add_filter( 'bricks/helpers/get_posts_args', function( $query_args ) {
 
 ---
 
-# Filter: bricks/metabox/show_as_map
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-metabox-show_as_map/
-
-*Determines whether a Meta Box map field should be rendered as a map (using rwmbmeta()) or as raw latitude/longitude coordinates when used in dynamic data.*
-
-Determines whether a Meta Box map field should be rendered as a map (using `rwmb_meta()`) or as raw latitude/longitude coordinates when used in dynamic data.
-
-## Parameters
-
-- `$show_as_map` (*bool*): Whether to render as a map. Default is `false` (renders coordinates).
-- `$field` (*array*): The Meta Box field settings array.
-- `$post` (*WP_Post*): The current post object.
-
-## Example usage
-
-```php
-add_filter( 'bricks/metabox/show_as_map', function( $show_as_map, $field, $post ) {
-    // Example: Render as map for a specific field ID
-    if ( $field['id'] === 'my_map_field' ) {
-        return true;
-    }
-
-    return $show_as_map;
-}, 10, 3 );
-```
-
----
-
 # Filter: bricks/media_browser/health/file_status
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-media-browser-health-file-status/
@@ -557,6 +528,35 @@ add_filter( 'bricks/metabox/checkbox_value', function( $value, $original_value, 
 
 ---
 
+# Filter: bricks/metabox/show_as_map
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-metabox-show_as_map/
+
+*Determines whether a Meta Box map field should be rendered as a map (using rwmbmeta()) or as raw latitude/longitude coordinates when used in dynamic data.*
+
+Determines whether a Meta Box map field should be rendered as a map (using `rwmb_meta()`) or as raw latitude/longitude coordinates when used in dynamic data.
+
+## Parameters
+
+- `$show_as_map` (*bool*): Whether to render as a map. Default is `false` (renders coordinates).
+- `$field` (*array*): The Meta Box field settings array.
+- `$post` (*WP_Post*): The current post object.
+
+## Example usage
+
+```php
+add_filter( 'bricks/metabox/show_as_map', function( $show_as_map, $field, $post ) {
+    // Example: Render as map for a specific field ID
+    if ( $field['id'] === 'my_map_field' ) {
+        return true;
+    }
+
+    return $show_as_map;
+}, 10, 3 );
+```
+
+---
+
 # Filter: bricks/metabox/taxonomy/show_as_link
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-metabox-taxonomy-show_as_link/
@@ -624,35 +624,6 @@ add_filter( 'bricks/posts/query_vars', function( $query_vars, $settings, $elemen
 
 ---
 
-# Filter: bricks/paginate_links_args
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-paginate_links_args/
-
-*Filters the arguments passed to the WordPress paginatelinks() function when generating pagination output. This allows you to customize the pagination structure,.*
-
-Filters the arguments passed to the WordPress `paginate_links()` function when generating pagination output. This allows you to customize the pagination structure, text labels, and other settings.
-
-## Parameters
-
-- `$args` (*array*): Array of arguments for `paginate_links()`.
-
-## Example usage
-
-```php
-add_filter( 'bricks/paginate_links_args', function( $args ) {
-    // Example: Change the "Previous" and "Next" text
-    $args['prev_text'] = 'Previous';
-    $args['next_text'] = 'Next';
-
-    // Example: Change the number of adjacent page links shown
-    $args['mid_size'] = 3;
-
-    return $args;
-} );
-```
-
----
-
 # Filter: bricks/pagination/current_page
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-pagination-current_page/
@@ -693,6 +664,35 @@ add_filter( 'bricks/pagination/current_page', function( $current_page, $query_se
 
   return $current_page;
 }, 10, 3);
+```
+
+---
+
+# Filter: bricks/paginate_links_args
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-paginate_links_args/
+
+*Filters the arguments passed to the WordPress paginatelinks() function when generating pagination output. This allows you to customize the pagination structure,.*
+
+Filters the arguments passed to the WordPress `paginate_links()` function when generating pagination output. This allows you to customize the pagination structure, text labels, and other settings.
+
+## Parameters
+
+- `$args` (*array*): Array of arguments for `paginate_links()`.
+
+## Example usage
+
+```php
+add_filter( 'bricks/paginate_links_args', function( $args ) {
+    // Example: Change the "Previous" and "Next" text
+    $args['prev_text'] = 'Previous';
+    $args['next_text'] = 'Next';
+
+    // Example: Change the number of adjacent page links shown
+    $args['mid_size'] = 3;
+
+    return $args;
+} );
 ```
 
 ---
@@ -852,31 +852,6 @@ add_filter( 'bricks/popup/attributes', function( $attributes, $popup_id ) {
 
 ---
 
-# Filter: bricks/query/archive_query_supported_object_types
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-archive_query_supported_object_types/
-
-*Filters the list of Bricks query object types that support the \"Is main query\" setting (archive loop). By default, only 'post' queries are supported.*
-
-Filters the list of Bricks query object types that support the "Is main query" setting (archive loop). By default, only 'post' queries are supported.
-
-## Parameters
-
-- `$object_types` (*array*): Array of supported query object types (e.g., `['post']`).
-
-## Example usage
-
-```php
-add_filter( 'bricks/query/archive_query_supported_object_types', function( $object_types ) {
-    // Example: Enable "Is main query" for user loops (if implementing custom archive logic)
-    $object_types[] = 'user';
-
-    return $object_types;
-} );
-```
-
----
-
 # Filter: bricks/query/archive_query_arguments
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-archive_query_arguments/
@@ -897,6 +872,31 @@ add_filter( 'bricks/query/archive_query_arguments', function( $arguments ) {
     $arguments[] = 'my_custom_var';
 
     return $arguments;
+} );
+```
+
+---
+
+# Filter: bricks/query/archive_query_supported_object_types
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-archive_query_supported_object_types/
+
+*Filters the list of Bricks query object types that support the \"Is main query\" setting (archive loop). By default, only 'post' queries are supported.*
+
+Filters the list of Bricks query object types that support the "Is main query" setting (archive loop). By default, only 'post' queries are supported.
+
+## Parameters
+
+- `$object_types` (*array*): Array of supported query object types (e.g., `['post']`).
+
+## Example usage
+
+```php
+add_filter( 'bricks/query/archive_query_supported_object_types', function( $object_types ) {
+    // Example: Enable "Is main query" for user loops (if implementing custom archive logic)
+    $object_types[] = 'user';
+
+    return $object_types;
 } );
 ```
 
@@ -929,34 +929,6 @@ add_filter( 'bricks/query/cache_key', function( $cache_key, $query ) {
 
 ---
 
-# Filter: bricks/query/fake_result
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-fake_result/
-
-*Filters the results of a \"fake\" query execution. Fake queries are auxiliary queries run by Bricks (e.g., to count total results for filters without pagination).*
-
-Filters the results of a "fake" query execution. Fake queries are auxiliary queries run by Bricks (e.g., to count total results for filters without pagination) that mirror the main query but with modified parameters (like `posts_per_page = -1`).
-
-## Parameters
-
-- `$results` (*array*): The query results (e.g., array of WP_Post objects or IDs).
-- `$query` (*object*): The Bricks Query instance.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query/fake_result', function( $results, $query ) {
-    // Example: Manipulate the results for a specific query ID
-    if ( $query->id === 'my_filtered_loop' ) {
-        // Custom logic to modify results
-    }
-
-    return $results;
-}, 10, 2 );
-```
-
----
-
 # Filter: bricks/query/force_is_looping
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-force_is_looping/
@@ -982,6 +954,34 @@ add_filter( 'bricks/query/force_is_looping', function( $force, $query_id, $eleme
 
     return $force;
 }, 10, 3 );
+```
+
+---
+
+# Filter: bricks/query/fake_result
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-fake_result/
+
+*Filters the results of a \"fake\" query execution. Fake queries are auxiliary queries run by Bricks (e.g., to count total results for filters without pagination).*
+
+Filters the results of a "fake" query execution. Fake queries are auxiliary queries run by Bricks (e.g., to count total results for filters without pagination) that mirror the main query but with modified parameters (like `posts_per_page = -1`).
+
+## Parameters
+
+- `$results` (*array*): The query results (e.g., array of WP_Post objects or IDs).
+- `$query` (*object*): The Bricks Query instance.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query/fake_result', function( $results, $query ) {
+    // Example: Manipulate the results for a specific query ID
+    if ( $query->id === 'my_filtered_loop' ) {
+        // Custom logic to modify results
+    }
+
+    return $results;
+}, 10, 2 );
 ```
 
 ---
@@ -1150,32 +1150,6 @@ add_filter( 'bricks/query/supress_render_content', function( $suppress, $query )
 
 ---
 
-# Filter: bricks/query_api/headers
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-headers/
-
-*Filters the headers used by a Query API element request.*
-
-Filters the headers used by a Query API element request before Bricks sends it.
-
-## Parameters
-
-- `$headers` (array): HTTP request headers.
-- `$element_id` (string): The Query API element ID.
-- `$query_api` (object): The Query API integration instance.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_api/headers', function( $headers, $element_id, $query_api ) {
-    $headers['X-Client'] = 'my-site';
-
-    return $headers;
-}, 10, 3 );
-```
-
----
-
 # Filter: bricks/query_api/body
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-body/
@@ -1197,6 +1171,32 @@ Bricks only builds a body for request methods that support one in the Query API 
 ```php
 add_filter( 'bricks/query_api/body', function( $body_data, $element_id, $query_api ) {
     return $body_data;
+}, 10, 3 );
+```
+
+---
+
+# Filter: bricks/query_api/headers
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-headers/
+
+*Filters the headers used by a Query API element request.*
+
+Filters the headers used by a Query API element request before Bricks sends it.
+
+## Parameters
+
+- `$headers` (array): HTTP request headers.
+- `$element_id` (string): The Query API element ID.
+- `$query_api` (object): The Query API integration instance.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_api/headers', function( $headers, $element_id, $query_api ) {
+    $headers['X-Client'] = 'my-site';
+
+    return $headers;
 }, 10, 3 );
 ```
 
@@ -1364,6 +1364,33 @@ add_filter( 'bricks/query_filters/datepicker_custom_field_meta_query', function(
 
 ---
 
+# Filter: bricks/query_filters/element_data
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-element_data/
+
+*Filters the data for a filter element before it is saved to the internal index table (bricksfilterelements). This allows plugins to attach extra metadata (like.*
+
+Filters the data for a filter element before it is saved to the internal index table (`bricks_filter_elements`). This allows plugins to attach extra metadata (like language) to the filter configuration.
+
+## Parameters
+
+- `$element_data` (*array*): The data array to be saved (e.g., `filter_id`, `settings`, `post_id`, `language`).
+- `$element` (*array*): The raw element data from the builder.
+- `$post_id` (*int*): The ID of the post/template containing the element.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_filters/element_data', function( $element_data, $element, $post_id ) {
+    // Example: Add a custom property to the saved data
+    $element_data['my_custom_prop'] = 'value';
+
+    return $element_data;
+}, 10, 3 );
+```
+
+---
+
 # Filter: bricks/query_filters/filter_query_vars
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-filter_query_vars/
@@ -1390,33 +1417,6 @@ add_filter( 'bricks/query_filters/filter_query_vars', function( $query_vars, $fi
 
     return $query_vars;
 }, 10, 4 );
-```
-
----
-
-# Filter: bricks/query_filters/element_data
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-element_data/
-
-*Filters the data for a filter element before it is saved to the internal index table (bricksfilterelements). This allows plugins to attach extra metadata (like.*
-
-Filters the data for a filter element before it is saved to the internal index table (`bricks_filter_elements`). This allows plugins to attach extra metadata (like language) to the filter configuration.
-
-## Parameters
-
-- `$element_data` (*array*): The data array to be saved (e.g., `filter_id`, `settings`, `post_id`, `language`).
-- `$element` (*array*): The raw element data from the builder.
-- `$post_id` (*int*): The ID of the post/template containing the element.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_filters/element_data', function( $element_data, $element, $post_id ) {
-    // Example: Add a custom property to the saved data
-    $element_data['my_custom_prop'] = 'value';
-
-    return $element_data;
-}, 10, 3 );
 ```
 
 ---
@@ -1886,31 +1886,6 @@ add_filter( 'bricks/render_footer', function( $footer_html ) {
 
 ---
 
-# Filter: bricks/render_header
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-render_header/
-
-*Filters the rendered HTML of the Bricks header template. This allows you to wrap the header in custom markup or modify its output before it is echoed to the.*
-
-Filters the rendered HTML of the Bricks header template. This allows you to wrap the header in custom markup or modify its output before it is echoed to the page.
-
-## Parameters
-
-- `$header_html` (*string*): The rendered HTML of the header.
-
-## Example usage
-
-```php
-add_filter( 'bricks/render_header', function( $header_html ) {
-    // Example: Add a notification bar before the header
-    $notification = '<div class="notification-bar">Welcome!</div>';
-    
-    return $notification . $header_html;
-} );
-```
-
----
-
 # Filter: bricks/render_with_bricks
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-render_with_bricks/
@@ -1935,6 +1910,31 @@ add_filter( 'bricks/render_with_bricks', function( $render, $post_id ) {
 
     return $render;
 }, 10, 2 );
+```
+
+---
+
+# Filter: bricks/render_header
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-render_header/
+
+*Filters the rendered HTML of the Bricks header template. This allows you to wrap the header in custom markup or modify its output before it is echoed to the.*
+
+Filters the rendered HTML of the Bricks header template. This allows you to wrap the header in custom markup or modify its output before it is echoed to the page.
+
+## Parameters
+
+- `$header_html` (*string*): The rendered HTML of the header.
+
+## Example usage
+
+```php
+add_filter( 'bricks/render_header', function( $header_html ) {
+    // Example: Add a notification bar before the header
+    $notification = '<div class="notification-bar">Welcome!</div>';
+    
+    return $notification . $header_html;
+} );
 ```
 
 ---
@@ -2323,6 +2323,29 @@ add_filter( 'bricks/user_activation_email/subject', function( $subject, $user_id
 
 ---
 
+# Filter: bricks/webhook/timeout
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-webhook-timeout/
+
+*Allows you to modify the timeout duration (in seconds) for webhook requests triggered by the Form element.*
+
+Allows you to modify the timeout duration (in seconds) for webhook requests triggered by the Form element.
+
+## Parameters
+
+- `$timeout` (int): The timeout duration in seconds. Default is `15`.
+
+## Example usage
+
+```php
+add_filter( 'bricks/webhook/timeout', function( $timeout ) {
+    // Increase timeout to 30 seconds
+    return 30;
+} );
+```
+
+---
+
 # Filter: bricks/woo_setup_wizard/register_presets
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woo_setup_wizard-register_presets/
@@ -2349,24 +2372,23 @@ add_filter( 'bricks/woo_setup_wizard/register_presets', function( $presets ) {
 
 ---
 
-# Filter: bricks/webhook/timeout
+# Filter: bricks/woocommerce/cart_proceed_label
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-webhook-timeout/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-cart_proceed_label/
 
-*Allows you to modify the timeout duration (in seconds) for webhook requests triggered by the Form element.*
+*Allows you to modify the text of the \"Proceed to checkout\" button in the WooCommerce Cart element.*
 
-Allows you to modify the timeout duration (in seconds) for webhook requests triggered by the Form element.
+Allows you to modify the text of the "Proceed to checkout" button in the WooCommerce Cart element.
 
 ## Parameters
 
-- `$timeout` (int): The timeout duration in seconds. Default is `15`.
+- `$label` (string): The button text. Default is "Proceed to checkout".
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/webhook/timeout', function( $timeout ) {
-    // Increase timeout to 30 seconds
-    return 30;
+add_filter( 'bricks/woocommerce/cart_proceed_label', function( $label ) {
+    return 'Go to Checkout';
 } );
 ```
 
@@ -2391,28 +2413,6 @@ Filters the post ID Bricks uses as context for WooCommerce AJAX rendering.
 add_filter( 'bricks/woocommerce/ajax_render_post_id', function( $post_id, $wc_page ) {
     return $post_id;
 }, 10, 2 );
-```
-
----
-
-# Filter: bricks/woocommerce/cart_proceed_label
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-cart_proceed_label/
-
-*Allows you to modify the text of the \"Proceed to checkout\" button in the WooCommerce Cart element.*
-
-Allows you to modify the text of the "Proceed to checkout" button in the WooCommerce Cart element.
-
-## Parameters
-
-- `$label` (string): The button text. Default is "Proceed to checkout".
-
-## Example usage
-
-```php
-add_filter( 'bricks/woocommerce/cart_proceed_label', function( $label ) {
-    return 'Go to Checkout';
-} );
 ```
 
 ---
@@ -2554,30 +2554,6 @@ add_filter( 'bricks/woocommerce/predefined_elements/remote_payload', function( $
 
 ---
 
-# Filter: bricks/woocommerce/predefined_elements/remote_url
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-remote_url/
-
-*Filters the remote URL for WooCommerce predefined element presets.*
-
-Filters the remote URL Bricks uses to fetch WooCommerce predefined element presets. Return an empty string to keep remote fetching disabled.
-
-When a URL is returned, Bricks appends `schemaVersion`, `site`, and `time` query arguments before making the request.
-
-## Parameters
-
-- `$remote_url` (string): The remote preset endpoint URL.
-
-## Example usage
-
-```php
-add_filter( 'bricks/woocommerce/predefined_elements/remote_url', function( $remote_url ) {
-    return 'https://example.com/bricks-woo-presets.json';
-} );
-```
-
----
-
 # Filter: bricks/woocommerce/products_filters/options
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-products_filters-options/
@@ -2603,6 +2579,30 @@ add_filter( 'bricks/woocommerce/products_filters/options', function( $options, $
 
     return $options;
 }, 10, 2 );
+```
+
+---
+
+# Filter: bricks/woocommerce/predefined_elements/remote_url
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-remote_url/
+
+*Filters the remote URL for WooCommerce predefined element presets.*
+
+Filters the remote URL Bricks uses to fetch WooCommerce predefined element presets. Return an empty string to keep remote fetching disabled.
+
+When a URL is returned, Bricks appends `schemaVersion`, `site`, and `time` query arguments before making the request.
+
+## Parameters
+
+- `$remote_url` (string): The remote preset endpoint URL.
+
+## Example usage
+
+```php
+add_filter( 'bricks/woocommerce/predefined_elements/remote_url', function( $remote_url ) {
+    return 'https://example.com/bricks-woo-presets.json';
+} );
 ```
 
 ---

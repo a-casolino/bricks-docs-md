@@ -1155,88 +1155,6 @@ After generating the multistep layout:
 
 ---
 
-# Product Archive (WooCommerce)
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/product-archive-woocommerce/
-
-*Build WooCommerce product archive templates in Bricks for shop, category, tag, and other archive views.*
-
-> **Note**
->
-> The template type "WooCommerce – Product Archive" is only visible if WooCommerce is installed & active.
-
-Create a template of type "WooCommerce – Product Archive" in Bricks to design your product archive pages (product categories, tags, attributes, etc.).
-
-To create this template, go to the Bricks templates screen and add a new template. Then select the template type **"WooCommerce – Product Archive"** from the top-right dropdown:
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-template-type-product-archive.png)
-
-Click "Publish" or "Save Draft". Then "Edit with Bricks" to open the builder.
-
-It is also possible to create/edit this and other templates in the Bricks editor interface by clicking on the Folders icon or pressing CMD / CTRL + SHIFT + L.
-
-> **Note**
->
-> Please remember to add [template hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/#product-archive-template-hooks) if you are using third-party plugins.
-
-## Product Archive Elements {#elements}
-
-![](https://academy.bricksbuilder.io/assets/woocommerc-product-archive-elements-580x1024.png)
-
-### Archive title
-
-There is no specific element to add a heading to the product archive.
-
-To add a heading to this template you could use the Post Title element or add a Heading element with the `{archive_title}` tag.
-
-### Breadcrumbs
-
-Use the breadcrumbs element to output the navigation links from "Home", and higher level categories until the content displayed in the page.
-
-This element uses the WooCommerce breadcrumbs default engine to generate each part of the breadcrumbs path.
-
-### Products archive description
-
-The products archive description will render the product category (or any other product taxonomy term) description.
-
-If used in a template that renders the **Shop** page, it will output the page content (from the Gutenberg/blocks editor).
-
-### Products
-
-This is the main element to list products in a grid. You have controls to customize the style and layout, tweak the query, and select which content (fields) you want to show for each product.
-
-This element interconnects with the **Products Filter**, **Products Pagination**, **Products Orderby** and the **Products Total Results** elements.
-
-This means that the query results will be conditioned by the filters and the orderby conditions and it will also impact the pagination and the total results elements output.
-
-The query used inside the products element to generate the grid of products will merge the query arguments from the element with the default WooCommerce query in the case the page rendered is the product archive or the product taxonomy archive (product category or product tag). This means that if you are seeing a certain product category archive page you only get a list of products from that category.
-
-### Products filter
-
-The products filter element allows you to add query filters to the page so the visitor could search/narrow down the list of products presented.
-
-This element contains three filter types:
-
-- **Taxonomy**: filter the list by one or multiple taxonomy terms.
-- **Product attributes**: filter the list by product attributes like size, color or any other custom attribute used.
-- **Others**: Special set of filters like a product **price dual-range slider**, a** stars rating** filter, a status **stock** filter or a simple **search** input. In this set, you will also find a **Reset filters** option which you would set to add a reset product filters button.
-
-When using the taxonomy or product attributes filters, you may select different filter inputs, like a dropdown, a set of checkboxes, a radio list, a text list, or a box list.
-
-### Products pagination
-
-List of page links that allow the visitor to navigate through the different products' list pages.
-
-### Products orderby
-
-Adds a dropdown to the layout where the visitor could change the order of the products in the presented list. The default sort options are by popularity, by average rating, by latest, and by price (low to high and high to low). This list uses the WooCommerce default list and it can be extended using the WooCommerce hooks or third-party plugins.
-
-### Products total results
-
-Use this element to output the number of results returned by the current products query.
-
----
-
 # Product Variation Swatches (WooCommerce)
 
 Source: https://academy.bricksbuilder.io/integrations/woocommerce/product-variation-swatches/
@@ -1353,21 +1271,21 @@ That's it. With variation swatches, you can now turn standard variation dropdown
 
 ---
 
-# Single Product (WooCommerce)
+# Product Archive (WooCommerce)
 
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/single-product/
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/product-archive-woocommerce/
 
-*Build WooCommerce single product templates in Bricks and customize the main product layout, data, and related elements.*
+*Build WooCommerce product archive templates in Bricks for shop, category, tag, and other archive views.*
 
 > **Note**
 >
-> The template type "WooCommerce - Single Product" is only visible if WooCommerce is installed & active.
+> The template type "WooCommerce – Product Archive" is only visible if WooCommerce is installed & active.
 
-Create a template of type "WooCommerce - Single product" in Bricks to design an individual layout for the single products page.
+Create a template of type "WooCommerce – Product Archive" in Bricks to design your product archive pages (product categories, tags, attributes, etc.).
 
-To create this template, go to the Bricks templates screen and add a new template. Then select the template type **"WooCommerce - Single Product"** from the top-right dropdown:
+To create this template, go to the Bricks templates screen and add a new template. Then select the template type **"WooCommerce – Product Archive"** from the top-right dropdown:
 
-![](https://academy.bricksbuilder.io/assets/WooCommerce-Template-Type-Single-Product.png)
+![](https://academy.bricksbuilder.io/assets/woocommerce-template-type-product-archive.png)
 
 Click "Publish" or "Save Draft". Then "Edit with Bricks" to open the builder.
 
@@ -1375,79 +1293,187 @@ It is also possible to create/edit this and other templates in the Bricks editor
 
 > **Note**
 >
-> Please remember to add [template hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/#single-product-template-hooks) if you are using third-party plugins.
+> Please remember to add [template hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/#product-archive-template-hooks) if you are using third-party plugins.
 
-## Single Product Elements {#elements}
+## Product Archive Elements {#elements}
 
-When editing a "Single Product" template you'll find the "Products" elements at the very top of the elements panel:
+![](https://academy.bricksbuilder.io/assets/woocommerc-product-archive-elements-580x1024.png)
 
-![](https://academy.bricksbuilder.io/assets/woocommerc-single-product-elements-379x1024.png)
+### Archive title
 
-### Product title
+There is no specific element to add a heading to the product archive.
 
-The product title renders the title of the product.
+To add a heading to this template you could use the Post Title element or add a Heading element with the `{archive_title}` tag.
 
-### Product gallery
+### Breadcrumbs
 
-The product gallery element displays the product images defined in the product image and in the product gallery meta boxes.
+Use the breadcrumbs element to output the navigation links from "Home", and higher level categories until the content displayed in the page.
 
-*To disable the image zoom or lightbox, go to "Bricks > Settings > WooCommerce > Single Product".*
+This element uses the WooCommerce breadcrumbs default engine to generate each part of the breadcrumbs path.
 
-### Product short description
+### Products archive description
 
-Renders the content of the Product short description editor.
+The products archive description will render the product category (or any other product taxonomy term) description.
 
-### Product price
+If used in a template that renders the **Shop** page, it will output the page content (from the Gutenberg/blocks editor).
 
-Renders the product price. If the product is on sale, you could hide the regular price.
+### Products
 
-### Product stock
+This is the main element to list products in a grid. You have controls to customize the style and layout, tweak the query, and select which content (fields) you want to show for each product.
 
-Displays the number of products in stock. You can replace the number of products in stock with a custom message for "in", "low", or "out of stock".
+This element interconnects with the **Products Filter**, **Products Pagination**, **Products Orderby** and the **Products Total Results** elements.
 
-### Product meta
+This means that the query results will be conditioned by the filters and the orderby conditions and it will also impact the pagination and the total results elements output.
 
-Use the product meta element to display product data like the SKU, the product categories or tags, or any other WooCommerce metadata. Use [Dynamic Data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/) to pull the values.
+The query used inside the products element to generate the grid of products will merge the query arguments from the element with the default WooCommerce query in the case the page rendered is the product archive or the product taxonomy archive (product category or product tag). This means that if you are seeing a certain product category archive page you only get a list of products from that category.
 
-### Product rating
+### Products filter
 
-Shows the product's rating on a scale of 1 to 5 stars.
+The products filter element allows you to add query filters to the page so the visitor could search/narrow down the list of products presented.
 
-### Product content
+This element contains three filter types:
 
-Renders the product's main content as written in the WordPress editor.
+- **Taxonomy**: filter the list by one or multiple taxonomy terms.
+- **Product attributes**: filter the list by product attributes like size, color or any other custom attribute used.
+- **Others**: Special set of filters like a product **price dual-range slider**, a** stars rating** filter, a status **stock** filter or a simple **search** input. In this set, you will also find a **Reset filters** option which you would set to add a reset product filters button.
 
-### Add to cart
+When using the taxonomy or product attributes filters, you may select different filter inputs, like a dropdown, a set of checkboxes, a radio list, a text list, or a box list.
 
-This element adds an "Add to cart" button to trigger the addition of this element to the cart. With this element, you may style the product variations inputs, the product stock, the quantity input, and the look & feel of the button itself.
+### Products pagination
 
-### Related products
+List of page links that allow the visitor to navigate through the different products' list pages.
 
-Shows a list of products that have the same product categories and tags of the main product displayed in the page.
+### Products orderby
 
-### Product reviews
+Adds a dropdown to the layout where the visitor could change the order of the products in the presented list. The default sort options are by popularity, by average rating, by latest, and by price (low to high and high to low). This list uses the WooCommerce default list and it can be extended using the WooCommerce hooks or third-party plugins.
 
-Renders the product reviews and review form as a standalone element. Do not use the Product reviews element together with the Product tabs element on the same page, as Product tabs can also output reviews.
+### Products total results
 
-### Product additional information
+Use this element to output the number of results returned by the current products query.
 
-Renders the list of product attributes. This information will also be part of the product tabs element.
+---
 
-### Product tabs
+# Woo Setup Wizard
 
-Renders a section with the default tabs: Description, Additional Information, and Reviews. Other tabs might be added by third-party plugins.
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/
 
-### Product up/cross-sells
+*Create or repair Bricks WooCommerce shop, product, cart, checkout, and account layouts with guided setup checks and presets.*
 
-The product up/cross-sells element renders linked product recommendations. You can set it to show **Up-sells**, **Cross-sells**, or **Cart Cross-sells** (by default, it lists up-sell products).
+The Woo Setup Wizard helps you check, create, and repair the main WooCommerce layouts used by Bricks.
 
-![](https://academy.bricksbuilder.io/assets/woocommerce-product-upsells.png)
+Go to **Bricks > Woo Setup Wizard** to review the current setup status for the store. The wizard checks the Shop, Single product, Cart, Checkout, and My Account areas, then shows the available setup actions for each area.
 
-<figcaption>
+![](https://academy.bricksbuilder.io/assets/woo-setup-wizard.png)
 
-WooCommerce product editor screen - Linked Products
+The wizard is not dependent on **Enable advanced modular elements**. It can set up the classic WooCommerce builder workflow without that setting. Advanced v2 setup types may appear in the wizard, but they stay disabled until advanced modular elements are enabled under **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
 
-</figcaption>
+## When to use it
+
+Use the wizard when you want Bricks to review the WooCommerce setup and create the expected page or template structure for you.
+
+- Set up WooCommerce pages after installing Bricks on a new store.
+- Repair a Cart, Checkout, or My Account page that is missing the expected Bricks content.
+- Replace WooCommerce block content with Bricks page content.
+- Create the classic Bricks WooCommerce templates for shop, product, cart, checkout, or account areas.
+- Create Cart v2, Checkout v2, or Account Page v2 structures for the assigned WooCommerce pages.
+- Review whether existing published WooCommerce templates may conflict with a selected setup.
+
+> **Caution**
+>
+> The wizard can replace Bricks page content, clear WooCommerce block markup from the assigned page, switch the page editor mode to Bricks, create Bricks templates, or draft existing published WooCommerce templates for the same area. Review the setup summary before running an action on an existing store.
+
+## Areas checked
+
+The wizard checks these WooCommerce areas:
+
+- **Shop**: shop page and product archive template setup.
+- **Single product**: single product template setup.
+- **Cart**: assigned Cart page, classic cart templates, and Cart v2 page structure.
+- **Checkout**: assigned Checkout page, classic checkout templates, and Checkout v2 page structure.
+- **My Account**: assigned My Account page, classic account templates, and Account Page v2 page structure.
+
+## Setup types
+
+Each area can offer one or more setup types, depending on the selected WooCommerce area and whether advanced modular elements are enabled.
+
+| Area | Setup types |
+| --- | --- |
+| Shop | Standard (v1) |
+| Single product | Standard (v1) |
+| Cart | Standard (v1), Advanced (v2) |
+| Checkout | Standard (v1), Advanced (v2), Advanced multistep (v2) |
+| My Account | Standard (v1), Advanced (v2) |
+
+![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-advanced-off.png)
+
+**Standard (v1)** creates or repairs the classic Bricks WooCommerce workflow. This setup uses the assigned WooCommerce page together with the traditional Bricks WooCommerce template types or shortcode-based page content.
+
+**Advanced (v2)** replaces the assigned WooCommerce page content with the matching v2 parent element and generated state structure. Use it for Cart, Checkout, and My Account pages when you want to edit related WooCommerce screens as states on one page.
+
+**Advanced multistep (v2)** is available for Checkout. It creates a Checkout v2 page with a ready-made [multistep checkout structure](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/).
+
+## Status checks
+
+The wizard reports missing, incomplete, or incompatible setup details before you run an action.
+
+Common checks include:
+
+- Required WooCommerce page is not assigned.
+- Assigned WooCommerce page was deleted.
+- Assigned page is still edited with the WordPress editor instead of Bricks.
+- Assigned page contains WooCommerce block content.
+- Required v2 parent element is missing from the assigned page.
+- Required v2 states are missing. My Account v2 includes Order withdrawal only when the WooCommerce feature is enabled.
+- Required v2 state elements are empty.
+- Existing published WooCommerce templates may conflict with the selected setup.
+- Classic setup is missing expected WooCommerce shortcodes or template types.
+
+![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-errors.png)
+
+The wizard does not create or assign missing WooCommerce pages. If a page is not assigned, assign it first in the WooCommerce settings, then return to **Bricks > Woo Setup Wizard**.
+
+## What setup can change
+
+Depending on the selected area and setup type, the wizard can:
+
+- Write Bricks page content to the assigned WooCommerce page.
+- Clear WordPress `post_content` when it contains WooCommerce block markup.
+- Set the assigned page editor mode to Bricks.
+- Create Bricks WooCommerce templates from presets.
+- Draft existing published WooCommerce templates for the same template type when they would conflict.
+- Generate external CSS files when file-based CSS generation is enabled.
+- Ask for overwrite confirmation when the target page already contains Bricks data.
+
+![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-confirmation.png)
+
+## Before running setup
+
+Review the setup summary before confirming any action.
+
+- Confirm the correct WooCommerce pages are assigned in the WooCommerce settings.
+- Duplicate or export important pages and templates on existing stores.
+- Check whether the selected setup edits pages, templates, or both.
+- Review whether existing WooCommerce templates will be drafted.
+- If the site uses custom breakpoints, review responsive styles after setup. Presets are authored with the default Bricks breakpoint keys, such as `mobile_landscape` and `mobile_portrait`.
+
+## After setup
+
+Open the generated page or template in Bricks and review the result.
+
+- For classic layouts, confirm the expected WooCommerce template types and shortcodes are in place.
+- For Cart v2, review the Filled cart and Empty cart states.
+- For Checkout v2, review Checkout, Login required, Pay, Thank you, and Order receipt states.
+- For Advanced multistep Checkout v2, test the checkout step navigation and interactions.
+- For Account Page v2, review the account navigation, login, password, address, order, download, and edit account states. Include Order withdrawal when enabled.
+- Test the live Cart, Checkout, and My Account flows with WooCommerce products and customer sessions.
+
+## Related docs
+
+- [WooCommerce Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/)
+- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/)
+- [Cart](https://academy.bricksbuilder.io/integrations/woocommerce/cart/)
+- [Checkout](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/)
+- [WooCommerce Account Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/)
 
 ---
 
@@ -1596,124 +1622,70 @@ The process of creating those account endpoint templates is the same for all oth
 
 ---
 
-# Woo Setup Wizard
+# WooCommerce Notices
 
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-notices/
 
-*Create or repair Bricks WooCommerce shop, product, cart, checkout, and account layouts with guided setup checks and presets.*
+*Style WooCommerce notices in Bricks and control how success, error, and info messages appear across storefront flows.*
 
-The Woo Setup Wizard helps you check, create, and repair the main WooCommerce layouts used by Bricks.
+New theme style settings under "WooCommerce - Notice" and a new "WooCommerce Notice" element were introduced in Bricks `1.8.1`. Allowing you to elevate the appearance of WooCommerce (WC) notices across your website.
 
-Go to **Bricks > Woo Setup Wizard** to review the current setup status for the store. The wizard checks the Shop, Single product, Cart, Checkout, and My Account areas, then shows the available setup actions for each area.
+With this new theme style, you can effortlessly customize the design of WC notices, ensuring they blend seamlessly with your website's overall look and feel.
 
-![](https://academy.bricksbuilder.io/assets/woo-setup-wizard.png)
+This article explains how to enable the Bricks WooCommerce Notice element, where to place it, and how it replaces native WooCommerce notice output.
 
-The wizard is not dependent on **Enable advanced modular elements**. It can set up the classic WooCommerce builder workflow without that setting. Advanced v2 setup types may appear in the wizard, but they stay disabled until advanced modular elements are enabled under **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
+## Theme Style: WooCommerce - Notice {#woocommerce-notice-theme-style}
 
-## When to use it
+You can find the "WooCommerce - Notice" settings in the builder under Settings > [Theme Styles](https://academy.bricksbuilder.io/builder/styling/theme-styles/).
 
-Use the wizard when you want Bricks to review the WooCommerce setup and create the expected page or template structure for you.
+There are three different types of notice: Error, Success, and default Notice.
 
-- Set up WooCommerce pages after installing Bricks on a new store.
-- Repair a Cart, Checkout, or My Account page that is missing the expected Bricks content.
-- Replace WooCommerce block content with Bricks page content.
-- Create the classic Bricks WooCommerce templates for shop, product, cart, checkout, or account areas.
-- Create Cart v2, Checkout v2, or Account Page v2 structures for the assigned WooCommerce pages.
-- Review whether existing published WooCommerce templates may conflict with a selected setup.
+![](https://academy.bricksbuilder.io/assets/wc-notice-theme-style.png)
 
-> **Caution**
+With the WC notice theme style, you can effortlessly align your notice styles with your brand guidelines, and achieve a uniform and professional appearance for your notices.
+
+## Element: WooCommerce Notice {#woocommerce-notice-element}
+
+One of the primary objectives of this new feature is to offer you greater control over the placement of WC notices within their website's design.
+
+Native WC notices often pose challenges, as they may appear outside of the desired design or wrapper, impacting the aesthetics and user experience.
+
+To start using the Bricks WooCommerce notice element you first have to enable it under `Bricks > Settings > WooCommerce > Enable Bricks WooCommerce "Notice" element`.
+
+![](https://academy.bricksbuilder.io/assets/bricks-wc-notice-element.png)
+
+> **Note**
 >
-> The wizard can replace Bricks page content, clear WooCommerce block markup from the assigned page, switch the page editor mode to Bricks, create Bricks templates, or draft existing published WooCommerce templates for the same area. Review the setup summary before running an action on an existing store.
+> Once enabled all native WC notices are automatically removed from your website. So you can & have to manually place the notice element in your desired template & location.
 
-## Areas checked
+![](https://academy.bricksbuilder.io/assets/bricks-wc-notice-preview.png)
 
-The wizard checks these WooCommerce areas:
+<figcaption>
 
-- **Shop**: shop page and product archive template setup.
-- **Single product**: single product template setup.
-- **Cart**: assigned Cart page, classic cart templates, and Cart v2 page structure.
-- **Checkout**: assigned Checkout page, classic checkout templates, and Checkout v2 page structure.
-- **My Account**: assigned My Account page, classic account templates, and Account Page v2 page structure.
+WC notice element. Not only theme style but can also style individual elements as well.
 
-## Setup types
+</figcaption>
 
-Each area can offer one or more setup types, depending on the selected WooCommerce area and whether advanced modular elements are enabled.
+**The following Bricks templates should be equipped with the Notice element:**
 
-| Area | Setup types |
-| --- | --- |
-| Shop | Standard (v1) |
-| Single product | Standard (v1) |
-| Cart | Standard (v1), Advanced (v2) |
-| Checkout | Standard (v1), Advanced (v2), Advanced multistep (v2) |
-| My Account | Standard (v1), Advanced (v2) |
+- WooCommerce Product Archive
+- WooCommerce Single Product
+- WooCommerce Cart
+- WooCommerce Empty Cart
+- WooCommerce Checkout
+- WooCommerce Pay
+- WooCommerce My account login
+- WooCommerce My account lost password
+- WooCommerce My account reset password
 
-![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-advanced-off.png)
+In addition to the Bricks templates mentioned above, several pages within your WooCommerce website require the Notice element **if they are edited and rendered using Bricks**. These pages include:
 
-**Standard (v1)** creates or repairs the classic Bricks WooCommerce workflow. This setup uses the assigned WooCommerce page together with the traditional Bricks WooCommerce template types or shortcode-based page content.
+- My Account page (if the WC notice is not placed in the My account login template)
+- Checkout page (if the WC notice is not placed in the Checkout template)
+- Pay / order-pay page (if the WC notice element is not placed in the Pay template)
+- Cart page (if the WC notice element is not placed in the Cart template)
+- Shop page (if the WC notice element is not placed in the Product Archive template)
 
-**Advanced (v2)** replaces the assigned WooCommerce page content with the matching v2 parent element and generated state structure. Use it for Cart, Checkout, and My Account pages when you want to edit related WooCommerce screens as states on one page.
+**Only one Notice element is needed per page.**
 
-**Advanced multistep (v2)** is available for Checkout. It creates a Checkout v2 page with a ready-made [multistep checkout structure](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/).
-
-## Status checks
-
-The wizard reports missing, incomplete, or incompatible setup details before you run an action.
-
-Common checks include:
-
-- Required WooCommerce page is not assigned.
-- Assigned WooCommerce page was deleted.
-- Assigned page is still edited with the WordPress editor instead of Bricks.
-- Assigned page contains WooCommerce block content.
-- Required v2 parent element is missing from the assigned page.
-- Required v2 states are missing. My Account v2 includes Order withdrawal only when the WooCommerce feature is enabled.
-- Required v2 state elements are empty.
-- Existing published WooCommerce templates may conflict with the selected setup.
-- Classic setup is missing expected WooCommerce shortcodes or template types.
-
-![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-errors.png)
-
-The wizard does not create or assign missing WooCommerce pages. If a page is not assigned, assign it first in the WooCommerce settings, then return to **Bricks > Woo Setup Wizard**.
-
-## What setup can change
-
-Depending on the selected area and setup type, the wizard can:
-
-- Write Bricks page content to the assigned WooCommerce page.
-- Clear WordPress `post_content` when it contains WooCommerce block markup.
-- Set the assigned page editor mode to Bricks.
-- Create Bricks WooCommerce templates from presets.
-- Draft existing published WooCommerce templates for the same template type when they would conflict.
-- Generate external CSS files when file-based CSS generation is enabled.
-- Ask for overwrite confirmation when the target page already contains Bricks data.
-
-![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-confirmation.png)
-
-## Before running setup
-
-Review the setup summary before confirming any action.
-
-- Confirm the correct WooCommerce pages are assigned in the WooCommerce settings.
-- Duplicate or export important pages and templates on existing stores.
-- Check whether the selected setup edits pages, templates, or both.
-- Review whether existing WooCommerce templates will be drafted.
-- If the site uses custom breakpoints, review responsive styles after setup. Presets are authored with the default Bricks breakpoint keys, such as `mobile_landscape` and `mobile_portrait`.
-
-## After setup
-
-Open the generated page or template in Bricks and review the result.
-
-- For classic layouts, confirm the expected WooCommerce template types and shortcodes are in place.
-- For Cart v2, review the Filled cart and Empty cart states.
-- For Checkout v2, review Checkout, Login required, Pay, Thank you, and Order receipt states.
-- For Advanced multistep Checkout v2, test the checkout step navigation and interactions.
-- For Account Page v2, review the account navigation, login, password, address, order, download, and edit account states. Include Order withdrawal when enabled.
-- Test the live Cart, Checkout, and My Account flows with WooCommerce products and customer sessions.
-
-## Related docs
-
-- [WooCommerce Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/)
-- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/)
-- [Cart](https://academy.bricksbuilder.io/integrations/woocommerce/cart/)
-- [Checkout](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/)
-- [WooCommerce Account Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/)
+If you happen to add multiple WC notice elements, only the first one will output the actual notices, following the native WooCommerce behavior. WooCommerce clears notices after the 1st output. Check WooCommerce `wc_print_notices()` for more information.

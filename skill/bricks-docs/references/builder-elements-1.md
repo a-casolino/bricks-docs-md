@@ -834,56 +834,6 @@ Provides a date picker interface for filtering content by date ranges. Supports 
 
 ---
 
-# Filter range
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-range/
-
-*Creates a range slider or input interface for filtering content by numeric ranges. Perfect for price filtering, numeric custom fields, or any data that has.*
-
-Creates a range slider or input interface for filtering content by numeric ranges. Perfect for price filtering, numeric custom fields, or any data that has minimum and maximum values. Supports both slider and input field display modes.
-
-**Tip:** Essential for e-commerce price filtering or any scenario where users need to filter by numeric ranges.
-
-## Settings
-
-- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
-- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
-- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
-- **Source** (select) - Data source for filter options. Currently limited to Custom field.
-- **Field type** (select) - Type of field when using custom field source. Options: Post, Term, User.
-- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
-- **Meta key** (text) - Custom field key containing numeric values for range filtering.
-- **Disable auto min/max value** (checkbox) - Manually set min/max values instead of auto-detecting from query results.
-- **Mode** (select) - Display mode for the range filter. Options: Slider (visual slider), Input (text inputs).
-- **Step** (number) - Increment step for range values. Default: 1.
-- **Decimal places** (number) - Number of decimal places to display. Default: 0.
-- **Thousand separator** (checkbox) - Add thousand separators to displayed values.
-- **Separator** (text) - Thousand separator character. Default: ,.
-- **Label** - Settings for range value labels.
-  - **Min** (text) - Label for minimum value.
-  - **Max** (text) - Label for maximum value.
-  - **Direction** (direction) - Layout direction for min/max labels (row/column).
-  - **Gap** (number) - Spacing between min/max labels.
-- **Input** - Settings for input field mode.
-  - **Placeholder** (text) - Placeholder text for input fields.
-  - **Typography** (typography) - Typography for input field text.
-- **Slider** - Settings for slider mode.
-  - **Track color** (color) - Color of the slider track.
-  - **Range color** (color) - Color of the selected range on the slider.
-  - **Handle color** (color) - Color of the slider handles.
-  - **Handle size** (number) - Size of the slider handles.
-  - **Track height** (number) - Height of the slider track.
-- **Active filter** - Settings for active filter display.
-  - **Prefix** (text) - Text to display before filter value.
-  - **Suffix** (text) - Text to display after filter value.
-  - **Title** (text) - Custom title attribute for filter links.
-
-> **Developer reference**
->
-> See the [Filter - Range Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-range/) for the full JSON schema of this element's settings and controls.
-
----
-
 # Filter radio
 
 Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-radio/
@@ -934,6 +884,56 @@ Creates a radio button filter interface for single-selection filtering. Users ca
 > **Developer reference**
 >
 > See the [Filter - Radio Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-radio/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Filter range
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-range/
+
+*Creates a range slider or input interface for filtering content by numeric ranges. Perfect for price filtering, numeric custom fields, or any data that has.*
+
+Creates a range slider or input interface for filtering content by numeric ranges. Perfect for price filtering, numeric custom fields, or any data that has minimum and maximum values. Supports both slider and input field display modes.
+
+**Tip:** Essential for e-commerce price filtering or any scenario where users need to filter by numeric ranges.
+
+## Settings
+
+- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
+- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
+- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
+- **Source** (select) - Data source for filter options. Currently limited to Custom field.
+- **Field type** (select) - Type of field when using custom field source. Options: Post, Term, User.
+- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
+- **Meta key** (text) - Custom field key containing numeric values for range filtering.
+- **Disable auto min/max value** (checkbox) - Manually set min/max values instead of auto-detecting from query results.
+- **Mode** (select) - Display mode for the range filter. Options: Slider (visual slider), Input (text inputs).
+- **Step** (number) - Increment step for range values. Default: 1.
+- **Decimal places** (number) - Number of decimal places to display. Default: 0.
+- **Thousand separator** (checkbox) - Add thousand separators to displayed values.
+- **Separator** (text) - Thousand separator character. Default: ,.
+- **Label** - Settings for range value labels.
+  - **Min** (text) - Label for minimum value.
+  - **Max** (text) - Label for maximum value.
+  - **Direction** (direction) - Layout direction for min/max labels (row/column).
+  - **Gap** (number) - Spacing between min/max labels.
+- **Input** - Settings for input field mode.
+  - **Placeholder** (text) - Placeholder text for input fields.
+  - **Typography** (typography) - Typography for input field text.
+- **Slider** - Settings for slider mode.
+  - **Track color** (color) - Color of the slider track.
+  - **Range color** (color) - Color of the selected range on the slider.
+  - **Handle color** (color) - Color of the slider handles.
+  - **Handle size** (number) - Size of the slider handles.
+  - **Track height** (number) - Height of the slider track.
+- **Active filter** - Settings for active filter display.
+  - **Prefix** (text) - Text to display before filter value.
+  - **Suffix** (text) - Text to display after filter value.
+  - **Title** (text) - Custom title attribute for filter links.
+
+> **Developer reference**
+>
+> See the [Filter - Range Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-range/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -1036,66 +1036,6 @@ Creates a dropdown select filter interface for single or multiple selection filt
 
 ---
 
-# Accordion (nestable)
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/accordion-nested/
-
-*The Nestable Accordion element allows creating hierarchical collapsible content with drag-and-drop nesting in the builder.*
-
-The Nestable Accordion element allows creating hierarchical collapsible content with drag-and-drop nesting in the builder.
-
-## Settings
-
-- **Children** (nestable) - Drag and drop elements to create accordion items. Each item can contain nested content. Set "ID" on items to open via anchor link (no spaces, no pound sign).
-
-- **Expand item indexes** (text) - Comma-separated indexes of items to expand on page load (starting at 0).
-
-- **Independent toggle** (checkbox) - Allow multiple items to be open simultaneously. Enable to open & close an item without toggling other items.
-
-- **Transition (ms)** (number) - Animation duration for expanding/collapsing in milliseconds. Default: 200.
-
-- **FAQ schema** (checkbox) - Generate FAQPage structured data (JSON-LD) for search engines.
-
-### Title
-
-- **Min. height** (number with units) - Minimum height for title areas. Default: 50px.
-
-- **Margin** (spacing) - Margin around title wrappers.
-
-- **Padding** (spacing) - Padding inside title wrappers.
-
-- **Background color** (color) - Background color for title wrappers.
-
-- **Border** (border) - Border styling for title wrappers.
-
-- **Typography** (typography) - Typography settings for title text and headings.
-
-#### Active Title
-
-- **Background color** (color) - Background color for active/expanded title wrappers.
-
-- **Border** (border) - Border styling for active/expanded title wrappers.
-
-- **Typography** (typography) - Typography settings for active/expanded title text and headings.
-
-### Content
-
-- **Margin** (spacing) - Margin around content wrappers.
-
-- **Padding** (spacing) - Padding inside content wrappers. Default: 15px top/bottom, 0px left/right.
-
-- **Background color** (color) - Background color for content wrappers.
-
-- **Border** (border) - Border styling for content wrappers.
-
-- **Typography** (typography) - Typography settings for content text.
-
-> **Developer reference**
->
-> See the [Accordion (Nestable) Schema](https://academy.bricksbuilder.io/developer/schema/elements/accordion-nested/) for the full JSON schema of this element's settings and controls.
-
----
-
 # Filter submit
 
 Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-submit/
@@ -1133,6 +1073,666 @@ This setting is separate from the exclusion list on the Active Filters element, 
 > **Developer reference**
 >
 > See the [Filter - Submit / Reset Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-submit/) for the schema snapshot and Bricks 2.4 settings reference.
+
+---
+
+# Block
+
+Source: https://academy.bricksbuilder.io/builder/elements/layout/block/
+
+*The Block element is one of the four layout elements in Bricks (1.5+).*
+
+The Block element is one of the four [layout elements](https://academy.bricksbuilder.io/builder/styling/layout/) in Bricks (1.5+).
+
+Introduced together with the Section & Div element, it provides the same powerful layout controls as the Container but uses a default width of 100% instead of the Container's fixed 1100px width.
+
+This makes it the perfect element to use inside of a Container (e.g. column/row based layout). Or wherever you need to span the entire available width, plus quick access to direction & alignment settings. As the Block element uses `flex` by default.
+
+Use blocks to create multi-column layouts, sidebars, or any layout where you want full-width flexbox behavior without the Container's width constraints. If you want your layout element to only take up the space of its content, use the Div element instead.
+
+**Tip:** Blocks are ideal for creating column-based layouts. When you need multiple equal-width columns, insert blocks inside a container and set the direction to horizontal - they'll automatically distribute the available space equally.
+
+## Settings
+
+- **Grid column** (text) - CSS grid column span when parent uses grid layout. Controls `grid-column` property.
+
+- **Grid row** (text) - CSS grid row span when parent uses grid layout. Controls `grid-row` property.
+
+- **Query loop** - Enable query loop functionality for dynamic content. Available for Container, Block, Div, and Section elements.
+
+- **Link** (link) - Link settings when using anchor tag. Required when HTML tag is set to 'a'.
+
+- **HTML tag** (select) - HTML tag for the block element. Options: div, section, a [Link], article, nav, ol, ul, li, aside, address, figure, custom. Default: div.
+
+- **Custom tag** (text) - Custom HTML tag when "custom" is selected. Without attributes. Required when HTML tag is 'custom'.
+
+- **Display** (select) - CSS display property. Options: flex, grid, block, inline-block, inline, none. Default: flex.
+
+### Grid Layout (when Display is grid)
+
+- **Gap** (number with units) - Gap between grid items. Controls `grid-gap` property.
+
+- **Grid template columns** (text) - CSS grid template columns. Supports dynamic data and variables.
+
+- **Grid template rows** (text) - CSS grid template rows. Supports dynamic data and variables.
+
+- **Grid auto columns** (text) - Grid auto columns size. Supports dynamic data and variables.
+
+- **Grid auto rows** (text) - Grid auto rows size. Supports dynamic data and variables.
+
+- **Grid auto flow** (select) - Grid auto flow direction. Options: row, column, dense.
+
+- **Justify items** (justify-content) - Grid justify items alignment.
+
+- **Align items** (align-items) - Grid align items alignment.
+
+- **Justify content** (justify-content) - Grid justify content alignment.
+
+- **Align content** (align-items) - Grid align content alignment.
+
+### Flex Layout (when Display is flex)
+
+- **Flex wrap** (select) - Flexbox wrapping behavior. Options: No wrap, Wrap, Wrap reverse.
+
+- **Direction** (direction) - Flexbox direction (row/column). Controls `flex-direction` property.
+
+- **Align self** (align-items) - Align self for this flex item. Controls `align-self` property with `!important`.
+
+- **Align main axis** (justify-content) - Justify content alignment. Controls `justify-content` property.
+
+- **Align cross axis** (align-items) - Align items alignment. Controls `align-items` property.
+
+- **Column gap** (number with units) - Gap between flex columns. Controls `column-gap` property.
+
+- **Row gap** (number with units) - Gap between flex rows. Controls `row-gap` property.
+
+- **Flex grow** (number) - Flex grow factor. Minimum: 0. Controls `flex-grow` property. Default placeholder: 0.
+
+- **Flex shrink** (number) - Flex shrink factor. Minimum: 0. Controls `flex-shrink` property. Default placeholder: 1.
+
+- **Flex basis** (text) - Flex basis value. Supports dynamic data and variables. Controls `flex-basis` property. Default placeholder: auto.
+
+### Order
+
+- **Order** (number) - Flexbox order. Minimum: -999. Controls `order` property. Default placeholder: 0. Available when display is not 'none'.
+
+## Style
+
+These controls can be accessed under the **Style** tab in the element settings.
+
+### Masonry
+
+- **Masonry layout** (checkbox) - Enable masonry layout for child elements.
+- **Columns** (number) - Number of masonry columns. Default: 3. Controls `--columns` CSS property.
+- **Spacing** (number with units) - Spacing between masonry items. Default: 10px. Controls `--gutter` CSS property.
+- **Horizontal order** (checkbox) - Enable horizontal ordering in masonry layout.
+- **Transition: Duration** (number with units) - Animation duration for masonry transitions. Default: 0.4s. Set to "0" to disable default animations.
+- **Reveal animation** (select) - Animation type for masonry items. Options: Scale, Fade, Slide from left, Slide from right, Skew. Default: Scale. Only applies to new items added to the DOM.
+
+## Theme Style: Element – Block
+
+You can change the following Block default settings in your theme styles under "Element – Block":
+
+- `width`
+- `min-width`
+- `max-width`
+- `margin`
+- `padding`
+
+> **Developer reference**
+>
+> See the [Block Schema](https://academy.bricksbuilder.io/developer/schema/elements/block/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Div
+
+Source: https://academy.bricksbuilder.io/builder/elements/layout/div/
+
+*The Div element is one of the four layout elements in Bricks (1.5+).*
+
+The Div element is one of the four [layout elements](https://academy.bricksbuilder.io/builder/styling/layout/) in Bricks (1.5+).
+
+Introduced together with the Section & Block element, it allows you to create flexible layouts in record time. The Div element in Bricks is a plain, unstyled div. It's the most generic element to group and lay out your content.
+
+While you use the **Container** to "contain" other elements inside a preset width of 1100px, and the **Block** element with a 100% width, the **Div** element has no presets at all.
+
+This makes it perfect to use inside other layout elements as it grows & shrinks according to its content, or to build Div-only class-based layouts. Use the Div element for grouping content, creating custom layouts, or when you need complete control over styling without any predefined properties.
+
+**Tip:** The Div element's HTML tag setting allows you to transform it into any semantic HTML element (article, nav, ul, li, a (link), etc.) while keeping all the powerful layout and styling controls. This flexibility makes it a versatile building block that can adapt to different content structures and semantic requirements.
+
+## Settings
+
+- **Grid column** (text) - CSS grid column span when parent uses grid layout. Controls `grid-column` property.
+
+- **Grid row** (text) - CSS grid row span when parent uses grid layout. Controls `grid-row` property.
+
+- **Query loop** - Enable query loop functionality for dynamic content. Available for Container, Block, Div, and Section elements.
+
+- **Link** (link) - Link settings when using anchor tag. Required when HTML tag is set to 'a'.
+
+- **HTML tag** (select) - HTML tag for the div element. Options: div, section, a [Link], article, nav, ol, ul, li, aside, address, figure, custom. Default: div.
+
+- **Custom tag** (text) - Custom HTML tag when "custom" is selected. Without attributes. Required when HTML tag is 'custom'.
+
+- **Display** (select) - CSS display property. Options: flex, grid, block, inline-block, inline, none. Default: block.
+
+### Grid Layout (when Display is grid)
+
+- **Gap** (number with units) - Gap between grid items. Controls `grid-gap` property.
+
+- **Grid template columns** (text) - CSS grid template columns. Supports dynamic data and variables.
+
+- **Grid template rows** (text) - CSS grid template rows. Supports dynamic data and variables.
+
+- **Grid auto columns** (text) - Grid auto columns size. Supports dynamic data and variables.
+
+- **Grid auto rows** (text) - Grid auto rows size. Supports dynamic data and variables.
+
+- **Grid auto flow** (select) - Grid auto flow direction. Options: row, column, dense.
+
+- **Justify items** (justify-content) - Grid justify items alignment.
+
+- **Align items** (align-items) - Grid align items alignment.
+
+- **Justify content** (justify-content) - Grid justify content alignment.
+
+- **Align content** (align-items) - Grid align content alignment.
+
+### Flex Layout (when Display is flex)
+
+- **Flex wrap** (select) - Flexbox wrapping behavior. Options: No wrap, Wrap, Wrap reverse.
+
+- **Direction** (direction) - Flexbox direction (row/column). Controls `flex-direction` property.
+
+- **Align self** (align-items) - Align self for this flex item. Controls `align-self` property with `!important`.
+
+- **Align main axis** (justify-content) - Justify content alignment. Controls `justify-content` property.
+
+- **Align cross axis** (align-items) - Align items alignment. Controls `align-items` property.
+
+- **Column gap** (number with units) - Gap between flex columns. Controls `column-gap` property.
+
+- **Row gap** (number with units) - Gap between flex rows. Controls `row-gap` property.
+
+- **Flex grow** (number) - Flex grow factor. Minimum: 0. Controls `flex-grow` property. Default placeholder: 0.
+
+- **Flex shrink** (number) - Flex shrink factor. Minimum: 0. Controls `flex-shrink` property. Default placeholder: 1.
+
+- **Flex basis** (text) - Flex basis value. Supports dynamic data and variables. Controls `flex-basis` property. Default placeholder: auto.
+
+### Order
+
+- **Order** (number) - Flexbox order. Minimum: -999. Controls `order` property. Default placeholder: 0. Available when display is not 'none'.
+
+## Style
+
+These controls can be accessed under the **Style** tab in the element settings.
+
+### Masonry
+
+- **Masonry layout** (checkbox) - Enable masonry layout for child elements.
+- **Columns** (number) - Number of masonry columns. Default: 3. Controls `--columns` CSS property.
+- **Spacing** (number with units) - Spacing between masonry items. Default: 10px. Controls `--gutter` CSS property.
+- **Horizontal order** (checkbox) - Enable horizontal ordering in masonry layout.
+- **Transition: Duration** (number with units) - Animation duration for masonry transitions. Default: 0.4s. Set to "0" to disable default animations.
+- **Reveal animation** (select) - Animation type for masonry items. Options: Scale, Fade, Slide from left, Slide from right, Skew. Default: Scale. Only applies to new items added to the DOM.
+
+## Theme Style: Element – Div
+
+You can change the defaults of the Div element in your theme styles under "Element – Div":
+
+- `display`
+- `flex-direction` (if display set to "flex")
+- `justify-content` (if display set to "flex")
+- `align-items` (if display set to "flex")
+- `width`
+- `min-width`
+- `max-width`
+- `margin`
+- `padding`
+
+> **Developer reference**
+>
+> See the [Div Schema](https://academy.bricksbuilder.io/developer/schema/elements/div/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Divider
+
+Source: https://academy.bricksbuilder.io/builder/elements/layout/divider/
+
+*The Divider element creates horizontal or vertical separator lines with optional icons.*
+
+The Divider element creates horizontal or vertical separator lines with optional icons.
+
+## Settings
+
+- **Height** (number with units) - The height/thickness of the divider line. Default: 1.
+
+- **Width** (number with units) - The width/length of the divider line.
+
+- **Style** (select) - The line style. Options: `solid`, `dashed`, `dotted`, `double`, `groove`, `ridge`, `inset`, `outset`. Default: `solid`.
+
+- **Direction** (select) - Orientation of the divider. Options: `horizontal`, `vertical`. Default: `horizontal`.
+
+- **Align** (justify-content) - Alignment of the divider within its container. Options: `flex-start`, `center`, `flex-end`.
+
+- **Color** (color) - Color of the divider line and icon.
+
+### Icon
+
+- **Icon** (icon) - Add an icon that appears on the divider line.
+
+- **Typography** (typography) - Style settings for the icon (size, font properties). Only available when an icon is selected.
+
+> **Developer reference**
+>
+> See the [Divider Schema](https://academy.bricksbuilder.io/developer/schema/elements/divider/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Container
+
+Source: https://academy.bricksbuilder.io/builder/elements/layout/container/
+
+*The Container element used to be the only layout element in Bricks until version 1.5. It has now been extended by the Section, Block, and Div element to provide.*
+
+The Container element used to be the only layout element in Bricks until version 1.5. It has now been extended by the Section, Block, and Div element to provide a more maintainable & streamlined layout creation process.
+
+The [Understanding the Layout](https://academy.bricksbuilder.io/builder/styling/layout/) article covers in more detail how to best use the layout elements in Bricks.
+
+## How To Use The Container
+
+The Container has a default width of 1100px, is centered, and uses the **flexbox** layout model. This provides various settings to easily direct, align, and space out the elements inside a Container.
+
+We recommend using the Container at the root level or inside a Section.
+
+When editing the Container, you can click the "column" layout icon on the canvas to quickly insert a pre-designed column-based layout:
+
+![](https://academy.bricksbuilder.io/assets/bricks-insert-layout-tool-1024x293.jpg)
+
+Let's explore the container capabilities and go over a few container layout examples in the video below:
+
+https://www.youtube.com/watch?v=_dhKJdNNxLI
+
+## Convert your pre-1.2 Bricks layout to Containers
+
+If you've built your site prior to version 1.2 using the "old" section, row, and column layout, you first need to convert your data to the new container layout.
+
+Bricks comes with a built-in **container migrator** that migrates your existing Bricks data to the new container layout with one-click. So you don't have to re-create your entire site from scratch.
+
+As the new container layout is fully flexible and does NOT have a pre-defined concept of "sections", "rows" or "columns" you most likely have to make some manual adjustments after running the migrator.
+
+After updating to Bricks 1.2 your old data will still be rendered on the frontend, but it's not a 100% accurate representation of your existing section layout.
+
+Once you've updated to Bricks 1.2+, please convert your existing Bricks data as soon as possible as outlined in the step-by-step migration guide below.  
+  
+We highly recommend migrating your pages one by one, to ensure you don't miss reviewing any of your migrated pages.  
+  
+As an extra precaution, you can also clone your existing site or editing it on a staging server first, and perform the migration there (rather than on any live site).  
+  
+**The migrator does NOT delete any of your existing (section) Bricks data. If you feel Bricks 1.2 and the migrator are not ready for your site yet, you can always download a previous version of Bricks (like 1.1.3) from your Bricks account to roll back and continue using the section, row, column layout for now.**
+
+https://youtu.be/3MrLHRQssrg
+
+### STEP #1: View your un-migrated data on the post type screen
+
+All un-migrated posts/pages/templates, etc. all marked as such by the "**(not migrated)**" label behind the title. As you can see in the screenshot below, we need to migrate a page named "Blank":
+
+<figure>
+
+![](https://academy.bricksbuilder.io/assets/bricks-container-migrator-step-1.png)
+
+<figcaption>
+
+Page "Blank" needs to be migrated
+
+</figcaption>
+
+</figure>
+
+### STEP #2: Select your page and run the migrator
+
+Now select the page you want to migrate, click on the "Bulk actions" dropdown. Select "Migrate Bricks Data" and click "Apply" to run the migrator:
+
+<figure>
+
+![](https://academy.bricksbuilder.io/assets/bricks-container-migrator-step-2.png)
+
+<figcaption>
+
+Select and apply the "Migrate Bricks Data" bulk action
+
+</figcaption>
+
+</figure>
+
+### STEP #3: Review the migration result
+
+To inspect the results of the one-click migrator, edit your migrated page with Bricks, and perform any necessary adjustments inside the builder. Then preview your changes on the frontend as well, to ensure your layout matches your expectations.
+
+### Migration tips:
+
+- Restore the default section margin-bottom of 30px under: Theme Styles > General > Root Container Margin
+- Restore the default element margin-bottom of 15px under: Theme Styles > General > Element Margin
+
+![](https://academy.bricksbuilder.io/assets/bricks-container-migrator-tips-1024x429.png)
+
+## Settings
+
+- **Grid column** (text) - CSS grid column span when parent uses grid layout. Controls `grid-column` property.
+
+- **Grid row** (text) - CSS grid row span when parent uses grid layout. Controls `grid-row` property.
+
+- **Query loop** - Enable query loop functionality for dynamic content. Available for Container, Block, Div, and Section elements.
+
+- **Link** (link) - Link settings when using anchor tag. Required when HTML tag is set to 'a'.
+
+- **HTML tag** (select) - HTML tag for the container element. Options: div, section, a [Link], article, nav, ol, ul, li, aside, address, figure, custom. Default: div.
+
+- **Custom tag** (text) - Custom HTML tag when "custom" is selected. Without attributes. Required when HTML tag is 'custom'.
+
+- **Display** (select) - CSS display property. Options: flex, grid, block, inline-block, inline, none. Default: flex.
+
+### Grid Layout (when Display is grid)
+
+- **Gap** (number with units) - Gap between grid items. Controls `grid-gap` property.
+
+- **Grid template columns** (text) - CSS grid template columns. Supports dynamic data and variables.
+
+- **Grid template rows** (text) - CSS grid template rows. Supports dynamic data and variables.
+
+- **Grid auto columns** (text) - Grid auto columns size. Supports dynamic data and variables.
+
+- **Grid auto rows** (text) - Grid auto rows size. Supports dynamic data and variables.
+
+- **Grid auto flow** (select) - Grid auto flow direction. Options: row, column, dense.
+
+- **Justify items** (justify-content) - Grid justify items alignment.
+
+- **Align items** (align-items) - Grid align items alignment.
+
+- **Justify content** (justify-content) - Grid justify content alignment.
+
+- **Align content** (align-items) - Grid align content alignment.
+
+### Flex Layout (when Display is flex)
+
+- **Flex wrap** (select) - Flexbox wrapping behavior. Options: No wrap, Wrap, Wrap reverse.
+
+- **Direction** (direction) - Flexbox direction (row/column). Controls `flex-direction` property.
+
+- **Align self** (align-items) - Align self for this flex item. Controls `align-self` property with `!important`.
+
+- **Align main axis** (justify-content) - Justify content alignment. Controls `justify-content` property.
+
+- **Align cross axis** (align-items) - Align items alignment. Controls `align-items` property.
+
+- **Column gap** (number with units) - Gap between flex columns. Controls `column-gap` property.
+
+- **Row gap** (number with units) - Gap between flex rows. Controls `row-gap` property.
+
+- **Flex grow** (number) - Flex grow factor. Minimum: 0. Controls `flex-grow` property. Default placeholder: 0.
+
+- **Flex shrink** (number) - Flex shrink factor. Minimum: 0. Controls `flex-shrink` property. Default placeholder: 1.
+
+- **Flex basis** (text) - Flex basis value. Supports dynamic data and variables. Controls `flex-basis` property. Default placeholder: auto.
+
+### Order
+
+- **Order** (number) - Flexbox order. Minimum: -999. Controls `order` property. Default placeholder: 0. Available when display is not 'none'.
+
+## Style
+
+These controls can be accessed under the **Style** tab in the element settings.
+
+### Masonry
+
+- **Masonry layout** (checkbox) - Enable masonry layout for child elements.
+- **Columns** (number) - Number of masonry columns. Default: 3. Controls `--columns` CSS property.
+- **Spacing** (number with units) - Spacing between masonry items. Default: 10px. Controls `--gutter` CSS property.
+- **Horizontal order** (checkbox) - Enable horizontal ordering in masonry layout.
+- **Transition: Duration** (number with units) - Animation duration for masonry transitions. Default: 0.4s. Set to "0" to disable default animations.
+- **Reveal animation** (select) - Animation type for masonry items. Options: Scale, Fade, Slide from left, Slide from right, Skew. Default: Scale. Only applies to new items added to the DOM.
+
+> **Developer reference**
+>
+> See the [Container Schema](https://academy.bricksbuilder.io/developer/schema/elements/container/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# List
+
+Source: https://academy.bricksbuilder.io/builder/elements/layout/list/
+
+*The List element creates customizable lists with icons, titles, meta information, descriptions, and optional highlight labels.*
+
+The List element creates customizable lists with icons, titles, meta information, descriptions, and optional highlight labels.
+
+## Settings
+
+### List Items
+
+- **List items** (repeater) - Add and configure list items. Each item has:
+  - **Icon** (icon) - Optional icon for the list item
+  - **Title** (text) - Main title text
+  - **Link title** (link) - Make the title clickable
+  - **Meta** (text) - Additional meta information (e.g., price, date)
+  - **Description** (textarea) - Longer description text
+  - **Highlight** (checkbox) - Mark this item as highlighted
+  - **Highlight label** (text) - Custom label text for highlighted items. Only available when highlight is enabled.
+
+### List Item
+
+- **Justify content** (justify-content) - Horizontal alignment of list item content. Controls `justify-content` property for `.content` and `.description` selectors.
+
+- **Align items** (align-items) - Vertical alignment of list item content. Options: `flex-start`, `center`, `flex-end`, `baseline`. Controls `align-items` property for `.content` and `.description` selectors. Excludes `stretch` option.
+
+- **Margin** (spacing) - Margin around each list item. Controls `margin` property for `li` selector.
+
+- **Padding** (spacing) - Padding inside each list item. Controls `padding` property for `li` selector.
+
+- **Odd background** (color) - Background color for odd-numbered list items. Controls `background-color` property for `li:nth-child(odd)` selector.
+
+- **Even background** (color) - Background color for even-numbered list items. Controls `background-color` property for `li:nth-child(even)` selector.
+
+- **Border** (border) - Border styling for list items. Controls `border` property for `li` selector.
+
+- **Auto width** (checkbox) - Enable automatic width for list items. Sets `justify-content` to `initial` for `.content` selector and `flex-grow` to `0` for `.separator` selector.
+
+### Highlight
+
+- **Block** (checkbox) - Display highlight label as block element. Controls `display` property for `li[data-highlight]::before` selector.
+
+- **Padding** (spacing) - Padding for highlight label. Controls `padding` property for `li[data-highlight]::before` selector.
+
+- **Background** (color) - Background color for highlight label. Controls `background-color` property for `li[data-highlight]::before` selector.
+
+- **Border** (border) - Border styling for highlight label. Controls `border` property for `li[data-highlight]::before` selector.
+
+- **Typography** (typography) - Typography settings for highlight label. Controls `font` property for `li[data-highlight]::before` selector.
+
+- **Content** (separator) - Visual separator in the control panel.
+
+- **Padding** (spacing) - Padding for highlighted item content. Controls `padding` property for `li[data-highlight] .content` selector.
+
+- **Background** (color) - Background color for highlighted item content. Controls `background-color` property for `li[data-highlight] .content` selector.
+
+- **Border** (border) - Border styling for highlighted item content. Controls `border` property for `li[data-highlight] .content` selector.
+
+- **Text color** (color) - Text color for highlighted item content. Controls `color` property for `li[data-highlight] .content .title`, `li[data-highlight] .content .meta`, and `li[data-highlight] .content .description` selectors.
+
+### Icon
+
+- **Icon** (icon) - Default icon for all list items.
+
+- **After title** (checkbox) - Position icon after the title instead of before.
+
+- **Width** (number with units) - Width of the icon. Controls `width` property for `.icon` selector.
+
+- **Height** (number with units) - Height of the icon. Controls `height` property for `.icon` selector.
+
+- **Size** (number with units) - Font size of the icon. Controls `font-size` property for `.icon` selector, and `height`/`width` properties for `.icon svg` selector.
+
+- **Color** (color) - Color of the icon. Controls `color` property for `.icon` selector.
+
+- **Background color** (color) - Background color of the icon. Controls `background-color` property for `.icon` selector.
+
+- **Border** (border) - Border styling for the icon. Controls `border` property for `.icon` selector.
+
+- **Box shadow** (box-shadow) - Box shadow for the icon. Controls `box-shadow` property for `.icon` selector.
+
+### Title
+
+- **Margin** (spacing) - Margin around the title. Controls `margin` property for `.title` selector.
+
+- **HTML tag** (text) - HTML tag for the title. Supports dynamic data. Default placeholder: `span`. Validates HTML tag format.
+
+- **Typography** (typography) - Typography settings for the title. Controls `font` property for `.title` selector.
+
+### Meta
+
+- **Margin** (spacing) - Margin around the meta text. Controls `margin` property for `.meta` selector.
+
+- **Typography** (typography) - Typography settings for the meta text. Controls `font` property for `.meta` selector.
+
+### Description
+
+- **Typography** (typography) - Typography settings for the description. Controls `font` property for `.description` selector.
+
+### Separator
+
+- **Disable** (checkbox) - Disable the separator line between items. Controls `display` property for `.separator` selector (sets to `none`). Triggers re-render.
+
+- **Style** (select) - Border style for the separator. Options from border style control options. Controls `border-top-style` property for `.separator` selector. Only available when separator is not disabled.
+
+- **Width** (number with units) - Width of the separator. Controls `flex-basis` property for `.separator` selector and sets `flex-grow` to `0`. Only available when separator is not disabled.
+
+- **Height** (number with units) - Height/thickness of the separator. Controls `border-top-width` property for `.separator` selector. Only available when separator is not disabled.
+
+- **Color** (color) - Color of the separator. Controls `border-top-color` property for `.separator` selector. Only available when separator is not disabled.
+
+> **Developer reference**
+>
+> See the [List Schema](https://academy.bricksbuilder.io/developer/schema/elements/list/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Section
+
+Source: https://academy.bricksbuilder.io/builder/elements/layout/section/
+
+*The Section element allows you to structure/divide your page into self-containing areas (think: one topic per section).*
+
+The Section element allows you to structure/divide your page into self-containing areas (think: one topic per section).
+
+The [Understanding the Layout](https://academy.bricksbuilder.io/builder/styling/layout/) article covers in more detail how to best use the layout elements in Bricks.
+
+The Section element is the outermost building block for structuring and dividing your page. Use sections to separate and space out individual parts of your page, such as hero sections, content areas, or footers.
+
+The Section element has a default width of 100%, uses the `section` tag, and flexbox. Sections take up 100% of the available width and adjust in height according to their content. They are stacked vertically on top of each other.
+
+It should be used at the root level to structure your page into self-containing areas. When adding a Section to the canvas, a Container element is added inside of the Section automatically. You can delete this Container if not needed. It's just the default behaviour to speed up your site creation process.
+
+<figure>
+
+![](https://academy.bricksbuilder.io/assets/bricks-1.5-section-element-1024x484.jpg)
+
+<figcaption>
+
+Example: Section > Container > Heading
+
+</figcaption>
+
+</figure>
+
+**Tip:** Use sections as the root level elements in your page structure. They work great for creating distinct page sections with different backgrounds, spacing, and layouts.
+
+## Settings
+
+- **Grid column** (text) - CSS grid column span when parent uses grid layout. Controls `grid-column` property.
+
+- **Grid row** (text) - CSS grid row span when parent uses grid layout. Controls `grid-row` property.
+
+- **Query loop** - Enable query loop functionality for dynamic content. Available for Container, Block, Div, and Section elements.
+
+- **Link** (link) - Link settings when using anchor tag. Required when HTML tag is set to 'a'.
+
+- **HTML tag** (select) - HTML tag for the section element. Options: div, section, a [Link], article, nav, ol, ul, li, aside, address, figure, custom. Default: section.
+
+- **Custom tag** (text) - Custom HTML tag when "custom" is selected. Without attributes. Required when HTML tag is 'custom'.
+
+- **Display** (select) - CSS display property. Options: flex, grid, block, inline-block, inline, none. Default: flex.
+
+### Grid Layout (when Display is grid)
+
+- **Gap** (number with units) - Gap between grid items. Controls `grid-gap` property.
+
+- **Grid template columns** (text) - CSS grid template columns. Supports dynamic data and variables.
+
+- **Grid template rows** (text) - CSS grid template rows. Supports dynamic data and variables.
+
+- **Grid auto columns** (text) - Grid auto columns size. Supports dynamic data and variables.
+
+- **Grid auto rows** (text) - Grid auto rows size. Supports dynamic data and variables.
+
+- **Grid auto flow** (select) - Grid auto flow direction. Options: row, column, dense.
+
+- **Justify items** (justify-content) - Grid justify items alignment.
+
+- **Align items** (align-items) - Grid align items alignment.
+
+- **Justify content** (justify-content) - Grid justify content alignment.
+
+- **Align content** (align-items) - Grid align content alignment.
+
+### Flex Layout (when Display is flex)
+
+- **Flex wrap** (select) - Flexbox wrapping behavior. Options: No wrap, Wrap, Wrap reverse.
+
+- **Direction** (direction) - Flexbox direction (row/column). Controls `flex-direction` property.
+
+- **Align self** (align-items) - Align self for this flex item. Controls `align-self` property with `!important`.
+
+- **Align main axis** (justify-content) - Justify content alignment. Controls `justify-content` property.
+
+- **Align cross axis** (align-items) - Align items alignment. Controls `align-items` property.
+
+- **Column gap** (number with units) - Gap between flex columns. Controls `column-gap` property.
+
+- **Row gap** (number with units) - Gap between flex rows. Controls `row-gap` property.
+
+- **Flex grow** (number) - Flex grow factor. Minimum: 0. Controls `flex-grow` property. Default placeholder: 0.
+
+- **Flex shrink** (number) - Flex shrink factor. Minimum: 0. Controls `flex-shrink` property. Default placeholder: 1.
+
+- **Flex basis** (text) - Flex basis value. Supports dynamic data and variables. Controls `flex-basis` property. Default placeholder: auto.
+
+### Order
+
+- **Order** (number) - Flexbox order. Minimum: -999. Controls `order` property. Default placeholder: 0. Available when display is not 'none'.
+
+### Style
+
+These controls can be accessed under the **Style** tab in the element settings.
+
+### Masonry
+
+- **Masonry layout** (checkbox) - Enable masonry layout for child elements.
+- **Columns** (number) - Number of masonry columns. Default: 3. Controls `--columns` CSS property.
+- **Spacing** (number with units) - Spacing between masonry items. Default: 10px. Controls `--gutter` CSS property.
+- **Horizontal order** (checkbox) - Enable horizontal ordering in masonry layout.
+- **Transition: Duration** (number with units) - Animation duration for masonry transitions. Default: 0.4s. Set to "0" to disable default animations.
+- **Reveal animation** (select) - Animation type for masonry items. Options: Scale, Fade, Slide from left, Slide from right, Skew. Default: Scale. Only applies to new items added to the DOM.
+
+## Theme Style: Element – Section
+
+You can change the section `width`, `min-width`, `max-width`, `margin`, and `padding` in your theme styles under the "Elements > Section" group.
+
+> **Developer reference**
+>
+> See the [Section Schema](https://academy.bricksbuilder.io/developer/schema/elements/section/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -1214,6 +1814,66 @@ The Accordion element creates collapsible content sections with titles and expan
 
 ---
 
+# Accordion (nestable)
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/accordion-nested/
+
+*The Nestable Accordion element allows creating hierarchical collapsible content with drag-and-drop nesting in the builder.*
+
+The Nestable Accordion element allows creating hierarchical collapsible content with drag-and-drop nesting in the builder.
+
+## Settings
+
+- **Children** (nestable) - Drag and drop elements to create accordion items. Each item can contain nested content. Set "ID" on items to open via anchor link (no spaces, no pound sign).
+
+- **Expand item indexes** (text) - Comma-separated indexes of items to expand on page load (starting at 0).
+
+- **Independent toggle** (checkbox) - Allow multiple items to be open simultaneously. Enable to open & close an item without toggling other items.
+
+- **Transition (ms)** (number) - Animation duration for expanding/collapsing in milliseconds. Default: 200.
+
+- **FAQ schema** (checkbox) - Generate FAQPage structured data (JSON-LD) for search engines.
+
+### Title
+
+- **Min. height** (number with units) - Minimum height for title areas. Default: 50px.
+
+- **Margin** (spacing) - Margin around title wrappers.
+
+- **Padding** (spacing) - Padding inside title wrappers.
+
+- **Background color** (color) - Background color for title wrappers.
+
+- **Border** (border) - Border styling for title wrappers.
+
+- **Typography** (typography) - Typography settings for title text and headings.
+
+#### Active Title
+
+- **Background color** (color) - Background color for active/expanded title wrappers.
+
+- **Border** (border) - Border styling for active/expanded title wrappers.
+
+- **Typography** (typography) - Typography settings for active/expanded title text and headings.
+
+### Content
+
+- **Margin** (spacing) - Margin around content wrappers.
+
+- **Padding** (spacing) - Padding inside content wrappers. Default: 15px top/bottom, 0px left/right.
+
+- **Background color** (color) - Background color for content wrappers.
+
+- **Border** (border) - Border styling for content wrappers.
+
+- **Typography** (typography) - Typography settings for content text.
+
+> **Developer reference**
+>
+> See the [Accordion (Nestable) Schema](https://academy.bricksbuilder.io/developer/schema/elements/accordion-nested/) for the full JSON schema of this element's settings and controls.
+
+---
+
 # Alert
 
 Source: https://academy.bricksbuilder.io/builder/elements/general/alert/
@@ -1233,482 +1893,3 @@ The Alert element displays informational messages with different types and optio
 > **Developer reference**
 >
 > See the [Alert Schema](https://academy.bricksbuilder.io/developer/schema/elements/alert/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Animated typing
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/animated-typing/
-
-*The Animated Typing element creates a typewriter effect that cycles through a list of strings with customizable timing and behavior.*
-
-The Animated Typing element creates a typewriter effect that cycles through a list of strings with customizable timing and behavior.
-
-## Settings
-
-- **Tag** (select) - The HTML tag to use for the element. Options: `div`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`. Default: `div`.
-
-- **Prefix** (text) - Text displayed before the animated strings. Default: "We ".
-
-- **Suffix** (text) - Text displayed after the animated strings. Default: " for you!".
-
-- **Strings** (repeater) - List of strings to cycle through. Each item has a **Text** field. Default: "design", "code", "launch".
-
-### Settings
-
-- **Type speed in ms** (number) - Speed of typing each character. Default: 55.
-
-- **Back speed in ms** (number) - Speed of deleting each character. Default: 30.
-
-- **Start delay in ms** (number) - Delay before starting the animation. Default: 500.
-
-- **Back delay in ms** (number) - Delay before starting to delete. Default: 500.
-
-- **Cursor character** (text) - Character used as the cursor. Default: "|".
-
-- **Loop** (checkbox) - Repeat the animation indefinitely. Default: checked.
-
-- **Shuffle** (checkbox) - Randomize the order of strings each cycle.
-
-> **Developer reference**
->
-> See the [Anim. Typing Schema](https://academy.bricksbuilder.io/developer/schema/elements/animated-typing/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Back to Top
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/back-to-top/
-
-*The Back to Top element renders a button (default tag: button) that scrolls the visitor back to the top of the page. It is nestable: you typically place an Icon.*
-
-The **Back to Top** element renders a button (default tag: `button`) that scrolls the visitor back to the top of the page. It is **nestable**: you typically place an **Icon** and/or **Text** element inside it (the defaults use an up-arrow icon and the label “Back to Top”).
-
-## Settings
-
-- **HTML tag** (text) — Root element tag. Default: `button`.
-
-- **aria-label** (text) — Accessible name when the control has no visible descriptive text.
-
-### Position
-
-- **Position** (select) — CSS `position` (placeholder suggests `fixed`).
-- **Top**, **Right**, **Bottom**, **Left** (number with units) — Position offsets.
-
-### Misc
-
-Bricks surfaces **z-index**, **gap** (space between nested children), and **CSS transition** on this element (moved from the default tabs).
-
-- **Visible after** (number) — Show the button only after the user has scrolled this many pixels. If empty and **Visible on scroll up** is off, the button stays visible.
-- **Visible on scroll up** (checkbox) — Show the button when the user scrolls upward.
-- **Smooth scroll** (checkbox) — Smooth scroll to the top when activated.
-- **Move focus to top** (checkbox) — Move keyboard focus to the top of the page after activation (accessibility).
-
-> **Developer reference**
->
-> See the [Back to Top Schema](https://academy.bricksbuilder.io/developer/schema/elements/back-to-top/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Breadcrumbs
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/breadcrumbs/
-
-*Breadcrumbs are an essential part of website navigation, providing users with a clear path to navigate through the site hierarchy. They improve the overall user.*
-
-Breadcrumbs are an essential part of website navigation, providing users with a clear path to navigate through the site hierarchy. They improve the overall user experience by helping users know their location within the site and easily navigate back to previous pages.
-
-The Breadcrumbs element generates different breadcrumb items depending on the type of page being viewed.
-
-It supports various page types, including single posts or pages (`is_singular()`), the homepage (`is_home()`), categories (`is_category()`), taxonomies (`is_tax()`), post type archives (`is_post_type_archive()`), tags (`is_tag()`), date archives (`is_date()`), author pages (`is_author()`), search results (`is_search()`), and error pages (`is_404()`).
-
-![](https://academy.bricksbuilder.io/assets/breadcrumbs-element.png)
-
-## Settings
-
-- **Gap** (number with units) - Gap between breadcrumb items. Controls `gap` property.
-
-### Structure
-
-This section allows you to customize the structure of breadcrumb items. Currently it supports single pages and the date archive.
-
-#### Date archive structure
-
-![](https://academy.bricksbuilder.io/assets/date-archive-context.png)
-
-#### Single page structure
-
-![](https://academy.bricksbuilder.io/assets/breadcrumbs-structure-section.png)
-
-By default, Bricks displays breadcrumb items as follows:
-
-For posts:  
-`Home` > `Parent categories (if any)` > `Category (if any)` > `Post parents (if any)` > `Current post`
-
-For other post types:  
-`Home` > `Post archives` > `Post parents (if any)` > `Current post`  
-  
-You can customize the breadcrumb structure for different post types. You can also group multiple post types together if you want them to share the same structure. Any post type not specifically defined in your custom structures will automatically use the default structure.
-
-**Example 1:**  
-For the Tanks post type singular page, I want to display the post type archive and the custom taxonomy as breadcrumb items.
-
-![](https://academy.bricksbuilder.io/assets/structure-example-1.png)
-
-![](https://academy.bricksbuilder.io/assets/result-example-1.png)
-
-**Example 2:**  
-For the products singular page, I want to display custom taxonomy as breadcrumb items.
-
-![](https://academy.bricksbuilder.io/assets/structure-example-2.png)
-
-![](https://academy.bricksbuilder.io/assets/result-example-2.png)
-
-- **Post types** (repeater) - Define custom breadcrumb structures for specific post types.
-  - **Post types** (select, multiple) - Select post types to apply this structure to. Options: registered post types. Default: Posts.
-  - **Hide current post** (checkbox) - Hide the current post from breadcrumbs.
-  - **Show parent posts** (checkbox) - Show parent posts in hierarchy.
-  - **Show post type archive** (checkbox) - Show post type archive link.
-  - **Show taxonomy** (checkbox) - Show taxonomy in breadcrumbs.
-  - **Taxonomy slug** (text) - Taxonomy slug to display. Required when Show taxonomy is enabled. Default: "category".
-  - **Taxonomy info** (info) - Only the first assigned term will be displayed. Only shown when Show taxonomy is enabled.
-  - **Show parent terms** (checkbox) - Show parent terms in hierarchy. Only works if the first assigned term is a child term.
-
-- **Date** (separator) - Date-related breadcrumb settings.
-
-- **Add context** (checkbox) - Add context to dates on archive templates.
-
-### Home
-
-![](https://academy.bricksbuilder.io/assets/breadcrumbs-home-section.png)
-
-In this section, you can customize the root item (home) of the breadcrumb trail. Adjust the URL, change the label text, select an icon, and determine the icon's position.
-
-- **URL** (text) - Custom URL for home link. Default: home URL.
-
-- **Text** (text) - Label for home link. Default: "Home".
-
-- **Icon** (icon) - Icon for home link.
-
-- **Icon: Gap** (number with units) - Gap between home icon and label. Controls `gap` property for `.item:has(> svg), .item:has(> i)` selector. Only available when Icon is set.
-
-- **Icon: Position** (select) - Position of home icon. Options: Before, After. Default: Before. Only available when Icon is set.
-
-- **Hide label** (checkbox) - Hide home label when icon is present. Only available when Icon is set.
-
-### Separator
-
-![](https://academy.bricksbuilder.io/assets/breadcrumbs-separator-section.png)
-
-Here, you can modify the appearance and behavior of the separators between breadcrumb links, adjusting both display mode and styling.
-
-- **Separator** (select) - Separator type. Options: Text, Icon, None. Default: Text.
-
-- **Separator** (text) - Separator text. Default: "/". Only available when Separator is Text or empty.
-
-- **Icon** (icon) - Separator icon. Only available when Separator is Icon.
-
-- **Color** (color) - Separator color. Controls `color` property for `.separator` selector.
-
-- **Size** (number with units) - Separator size. Controls `font-size` property for `.separator` selector.
-
-### Item
-
-![](https://academy.bricksbuilder.io/assets/breadcrumbs-item-section.png)
-
-This section allows you to style each breadcrumb link.
-
-- **Padding** (spacing) - Padding for breadcrumb items. Controls `padding` property for `.item` selector.
-
-- **Background color** (color) - Background color for breadcrumb items. Controls `background-color` property for `.item` selector.
-
-- **Border** (border) - Border settings for breadcrumb items. Controls `border` property for `.item` selector.
-
-- **Typography** (typography) - Typography for breadcrumb items. Controls `font` property for `.item` selector.
-
-### Current
-
-![](https://academy.bricksbuilder.io/assets/breadcrumbs-current-section.png)
-
-Use these settings to style the last item in the breadcrumb trail, which represents the current page or post.
-
-- **Padding** (spacing) - Padding for current page item. Controls `padding` property for `.item[aria-current="page"]` selector.
-
-- **Background color** (color) - Background color for current page item. Controls `background-color` property for `.item[aria-current="page"]` selector.
-
-- **Border** (border) - Border settings for current page item. Controls `border` property for `.item[aria-current="page"]` selector.
-
-- **Typography** (typography) - Typography for current page item. Controls `font` property for `.item[aria-current="page"]` selector.
-
-> **Developer reference**
->
-> See the [Breadcrumbs Schema](https://academy.bricksbuilder.io/developer/schema/elements/breadcrumbs/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Code
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/code/
-
-*The Code element allows you to add and execute PHP, HTML, CSS, or JavaScript code with syntax highlighting and optional code execution.*
-
-The Code element allows you to add and execute PHP, HTML, CSS, or JavaScript code with syntax highlighting and optional code execution.
-
-## Settings
-
-### Code Execution
-
-Available only for users with code execution permissions:
-
-- **Execute code** (checkbox) - Run the code on your site instead of displaying it. Only add code you consider safe.
-
-- **Parse dynamic data** (checkbox) - Parse dynamic data tags within the code. Only available when execute code is enabled.
-
-- **Suppress PHP errors** (checkbox) - Hide PHP errors from displaying. Add "brx_code_errors" as a URL parameter to show errors if needed. Only available when execute code is enabled.
-
-- **Render without wrapper** (checkbox) - Render on the frontend without the div wrapper. Style tab settings won't apply when this is enabled. Only available when execute code is enabled.
-
-### Code Editors
-
-Available when code execution is disabled or not allowed:
-
-- **PHP & HTML** (code editor) - PHP and HTML code editor with syntax highlighting. Supports dynamic data and variables. Default example includes HTML heading and PHP date output.
-
-- **CSS** (code editor) - CSS code editor with syntax highlighting. CSS is automatically wrapped in style tags. Supports dynamic data and variables.
-
-- **JavaScript** (code editor) - JavaScript code editor with syntax highlighting. JavaScript is automatically wrapped in script tags. Supports dynamic data.
-
-### Syntax Highlighting
-
-Available when code execution is disabled:
-
-- **Theme** (select) - Code syntax highlighting theme. Options: `github` (light), `tomorrow` (light), `tomorrow-night` (dark), `tranquil-heart` (dark). Default: None. Can also be set globally via theme styles.
-
-> **Developer reference**
->
-> See the [Code Schema](https://academy.bricksbuilder.io/developer/schema/elements/code/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Countdown
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/countdown/
-
-*The Countdown element displays a countdown timer to a specified date with customizable fields and actions.*
-
-The Countdown element displays a countdown timer to a specified date with customizable fields and actions.
-
-## Settings
-
-- **Date** (datepicker) - The target date and time for the countdown.
-
-- **Time zone** (select) - The time zone for the countdown calculation. Options include various UTC offsets. Default: UTC+00:00.
-
-- **Date Reached** (select) - Action when the countdown reaches zero. Options: `countdown` (show countdown), `hide` (hide element), `text` (show custom text). Default: `countdown`.
-
-- **Date Reached: Custom text** (text) - Custom text to display when the date is reached. Only shown when "Date Reached" is set to "text".
-
-### Fields
-
-- **Fields** (repeater) - Configure the countdown display fields. Each field has:
-  - **Prefix** (text) - Text before the field value.
-  - **Format** (text) - Format string using %D (days), %H (hours), %M (minutes), %S (seconds). Lowercase removes leading zeros. Default: "%D days", "%H hours", "%M minutes", "%S seconds".
-  - **Suffix** (text) - Text after the field value.
-
-- **Direction** (direction) - Flex direction for the fields container.
-
-- **Align main axis** (justify-content) - Justify content alignment for fields.
-
-- **Align cross axis** (align-items) - Align items for fields.
-
-### Field
-
-- **Direction** (direction) - Flex direction for individual fields.
-
-- **Margin** (spacing) - Margin around individual fields. Default: 0 5px 0 0.
-
-## Dynamic target dates
-
-The Date control accepts a date returned by dynamic data. Bricks supports common date strings such as `YYYY-MM-DD HH:MM`, `YYYY-MM-DD`, and ISO 8601, plus Unix timestamps in seconds or milliseconds.
-
-The dynamic tag must resolve to a plain date or timestamp. Place the Countdown inside a query loop or template to let each post or product resolve its own target date.
-
-For a WooCommerce sale countdown, use the sale end date as the target. The Countdown tracks one date, so use element conditions when it should appear only after a sale starts or while a product is on sale. Bricks does not provide dedicated WooCommerce sale start and end date tags. Store the target in a custom field or provide it through a custom dynamic tag or helper that returns one of the supported formats.
-
-> **Developer reference**
->
-> See the [Countdown Schema](https://academy.bricksbuilder.io/developer/schema/elements/countdown/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Counter
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/counter/
-
-*The Counter element animates a number from a starting value to an ending value with customizable prefix, suffix, and formatting.*
-
-The Counter element animates a number from a starting value to an ending value with customizable prefix, suffix, and formatting.
-
-## Settings
-
-- **Count from** (text) - The starting number for the animation. Default: 0.
-
-- **Count to** (text) - The ending number for the animation. Default: 1000.
-
-- **Animation in ms** (number) - Duration of the counting animation in milliseconds. Default: 1000.
-
-- **Typography** (typography) - Font settings for the counter number.
-
-### Prefix
-
-- **Prefix** (text) - Text displayed before the counter number.
-
-- **Typography** (typography) - Font settings for the prefix text.
-
-### Suffix
-
-- **Suffix** (text) - Text displayed after the counter number.
-
-- **Typography** (typography) - Font settings for the suffix text.
-
-### Separator
-
-- **Thousand separator** (checkbox) - Add thousand separators to the number.
-
-- **Separator** (text) - Character used as the thousand separator. Default: ",". Only shown when "Thousand separator" is enabled.
-
-> **Developer reference**
->
-> See the [Counter Schema](https://academy.bricksbuilder.io/developer/schema/elements/counter/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Dropdown
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/dropdown/
-
-*The Dropdown element is a nestable menu item: a toggle (link/text + optional icon button) with a dropdown panel (default inner structure is a Div with tag ul.*
-
-The **Dropdown** element is a **nestable** menu item: a toggle (link/text + optional icon button) with a **dropdown panel** (default inner structure is a **Div** with tag `ul` and class `brx-dropdown-content` containing links). Use it inside [Nav (Nestable)](https://academy.bricksbuilder.io/builder/elements/general/nav-nested/) or similar structures.
-
-Default HTML tag for the root is **`li`**. The script `bricksSubmenuPosition` handles positioning.
-
-## Top-level
-
-- **HTML tag** (text) — Root tag; validated in the builder. Placeholder: `li`.
-
-- **Text** (text) — Label for the trigger. Default: “Dropdown”.
-
-- **Link to** (link) — Optional link around the text (lightbox fields excluded).
-
-- **Attribute: aria-label** (text) — Applied to the **toggle button** when an icon is present. Placeholder: “Toggle dropdown”.
-
-## Icon
-
-- **Icon** (icon) — If set, shown in the toggle **button** next to the text.
-
-- **Icon padding** (spacing) — On `.brx-submenu-toggle button`.
-
-- **Gap** (number with units) — Flex gap on `.brx-submenu-toggle`.
-
-- **Icon position** (select) — Uses flex direction (`row-reverse` when set to place icon on the **left**).
-
-- **Icon size** (number with units) — `font-size` on the button.
-
-- **Icon color** (color).
-
-- **Icon transform**, **Icon transform (Open)** (transform) — Default vs `aria-expanded="true"`.
-
-- **Icon transition** (text) — CSS `transition` on the button.
-
-## Caret
-
-Optional triangle on the dropdown root (adds class `caret` when **Size** is set):
-
-- **Size** (number with units) — `border-width` on `> .brx-dropdown-content::before`.
-
-- **Color** (color) — `border-bottom-color` (when size ≠ 0).
-
-- **Transform** (transform).
-
-- **Position** (dimensions).
-
-## Content
-
-- **Position: Static** (checkbox) — Keeps the panel in document flow (e.g. inside [Offcanvas](https://academy.bricksbuilder.io/builder/elements/general/offcanvas/)). Static dropdowns **always toggle on click**, not hover.
-
-- **Toggle on** (select) — `click`, `hover`, or `click or hover`. Hidden when **Static** is enabled (click only).
-
-- **Min. width** (number with units) — On `.brx-dropdown-content`.
-
-- **Transition** (text), **Transform**, **Transform (Open)** — Panel motion (`&.open > .brx-dropdown-content` for open state).
-
-- **Background** (background), **Border**, **Box shadow**, **Typography** — Panel chrome on `.brx-dropdown-content`.
-
-### Item
-
-Row styling for direct links and submenu toggles inside the panel:
-
-- **Justify content** (justify-content).
-
-- **Padding** (spacing).
-
-- **Background** (color), **Border** (border), **Typography**, **Transition** (text).
-
-### Active
-
-States matching `aria-current="page"` / `.aria-current`:
-
-- **Background**, **Border**, **Typography**.
-
-## Mega menu
-
-- **Enable** (checkbox) — Full-width style mega panel (`brx-has-megamenu`); “covers entire available width” by default.
-
-- **CSS selector (Horizontal)** (text) — Optional: align width/horizontal position to another node.
-
-- **CSS selector (Vertical)** (text) — Optional: vertical alignment reference.
-
-## Multilevel
-
-- **Enable** (checkbox) — Shows one submenu level at a time; toggles on click; inner dropdowns inherit multilevel behavior.
-
-- **Back: Text** (text) — Back control label (default “Back”).
-
-- **Back: Typography**, **Back: Background** — `.brx-multilevel-back` styling.
-
-> **Developer reference**
->
-> See the [Dropdown Schema](https://academy.bricksbuilder.io/developer/schema/elements/dropdown/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Facebook page
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/facebook-page/
-
-*The Facebook Page element embeds a Facebook page plugin with customizable display options.*
-
-The Facebook Page element embeds a Facebook page plugin with customizable display options.
-
-## Settings
-
-- **Facebook page URL** (text) - The URL of the Facebook page to embed. Default: "https://facebook.com/facebook".
-
-- **Height (px)** (number) - Height of the embedded page in pixels. Minimum: 70, Maximum: 500. Default: 500.
-
-- **Width (px)** (number) - Width of the embedded page in pixels. Minimum: 180, Maximum: 500. Default: 340.
-
-- **Tabs** (select) - Tabs to display on the page plugin. Options: `timeline`, `events`, `messages`. Multiple selection allowed.
-
-- **Hide cover** (checkbox) - Hide the page cover photo.
-
-- **Show friends' photos** (checkbox) - Display profile photos of the page's friends.
-
-- **Hide CTA button** (checkbox) - Hide the call-to-action button.
-
-- **Small header** (checkbox) - Use a smaller header size.
-
-> **Developer reference**
->
-> See the [Facebook Page Schema](https://academy.bricksbuilder.io/developer/schema/elements/facebook-page/) for the full JSON schema of this element's settings and controls.

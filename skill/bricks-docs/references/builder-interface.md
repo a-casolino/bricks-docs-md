@@ -336,81 +336,6 @@ In the user's WordPress profile, find **Builder interface** and click **Reset bu
 
 ---
 
-# Builder Mode (Custom)
-
-Source: https://academy.bricksbuilder.io/builder/interface/builder-mode/
-
-*Customize the Bricks builder color scheme with custom builder-mode CSS variables.*
-
-Starting with Bricks 1.3.7 you can customize the builder mode (color scheme) to your liking by tweaking a few CSS variables.
-
-You first have to set the "Builder Mode" under Bricks → Settings → Builder to "Custom" and save your settings.
-
-The following new setting called "Builder Mode (Custom)" should now appear:
-
-![Builder Mode: Custom](https://academy.bricksbuilder.io/assets/bricks-setting-builder-mode-custom-1024x721.png)
-
-Below you can find a starter CSS snippet with commonly customized builder CSS variables. Bricks 2.x defines additional variables for classes, components, status colors, muted colors, and the canvas scrollbar, so use this as a starting point and override any extra variables your custom mode needs.
-
-```php
-[data-builder-mode=custom] {
-  --builder-bg: #f6f4f2;
-  --builder-bg-2: #efebe6;
-  --builder-bg-3: #e7e1da;
-  --builder-bg-4: #dbd2c8;
-  --builder-bg-accent: #EED8FD;
-
-  --builder-color: #2e271e;
-  --builder-color-description: #76634c;
-  --builder-color-accent: #7209B7;
-  --builder-color-accent-inverse: #fff;
-
-  --builder-color-knob: #c8baaa;
-  --builder-border-color: #d8cec2;
-  --builder-placeholder-opacity: .33;
-
-  --builder-color-class: #2b6cb0;
-  --builder-bg-class: #d8e8f6;
-  --builder-color-component: #6b46c1;
-  --builder-bg-component: #eadcf8;
-  --builder-color-info: #006c9c;
-  --builder-bg-info: #d9f1ff;
-  --builder-color-danger: #b42318;
-  --builder-bg-danger: #ffe4e2;
-  --builder-color-success: #027a48;
-  --builder-bg-success: #dcfae6;
-  --builder-color-muted: #7a6f63;
-  --builder-bg-muted: #e2ddd6;
-
-  --builder-canvas-scrollbar-thumb: #c8baaa;
-  --builder-canvas-scrollbar-thumb_hover: #76634c;
-  --builder-canvas-scrollbar-track: #efebe6;
-
-  --bricks-tooltip-bg:   #16130f;
-  --bricks-tooltip-text: #f6f4f2;
-}
-```
-
-If you copy the CSS above, paste it into your "Builder Mode (Custom)" setting, and save your settings, your builder should look like this:
-
-![](https://academy.bricksbuilder.io/assets/bricks-screenshot-builder-mode-custom-1024x576.png)
-
-<figcaption>
-
-Bricks builder with a custom color scheme (mode)
-
-</figcaption>
-
-### Resources
-
-- Color palettes: [https://coolors.co/palettes/trending](https://coolors.co/palettes/trending)
-- Color palettes: [https://colorhunt.co](https://colorhunt.co)
-- Generate color shades & tints: [https://www.colorhexa.com](https://www.colorhexa.com)
-
-Note: In custom builder mode, Code element's background color changes to a light color scheme.
-
----
-
 # Command Palette
 
 Source: https://academy.bricksbuilder.io/builder/interface/command-palette/
@@ -419,9 +344,11 @@ Source: https://academy.bricksbuilder.io/builder/interface/command-palette/
 
 Bricks 2.0 introduces the **Command Palette**, a powerful new feature that gives you instant keyboard-driven access to core functionality inside the builder.
 
+https://youtu.be/gOVNlRvsYc8
+
 ## How to launch it
 
-Click the command `⌘` icon in the builder toolbar or use the `CMD/CTRL + K` keyboard shortcut to open the Command Palette, which appears as an overlay, allowing you to type and filter commands across three distinct scopes.
+Click the command `⌘` icon in the builder toolbar or use the `CMD/CTRL + K` keyboard shortcut to open the Command Palette, which appears as an overlay, allowing you to type and filter commands across four scopes.
 
 ## Scope: Builder {#builder}
 
@@ -432,6 +359,10 @@ Navigate to key parts of the builder from a growing list of targets such as clas
 ## Scope: Post Types {#post-types}
 
 This scope lets you browse the registered post types your builder capability can access, create new posts when your user can edit posts, or duplicate existing posts.
+
+Besides "All" and "Template (Bricks)", a post type gets its own tab only when Bricks is enabled for it under **Bricks > Settings > General > Post types** and your role can access it in the builder. "All" searches every public post type.
+
+To create a post, select the post type tab, type the title, and click "Create". Bricks adds the post as a draft. Click a result to open it in the builder. `CMD/CTRL` + click opens it in a new browser tab. Posts of a type that is not enabled for Bricks open in the WordPress editor in a new tab.
 
 The scope auto-selects the post type that you are currently editing. So if you are editing a Bricks template the "Template (Bricks)" post type will be selected. If you edit a "Page", then "Page" is selected and so on.
 
@@ -488,6 +419,8 @@ This creates the following structure *(two times because of the multiplier: `* 2
    ├ `Text`
    └ `Button`
 
+Bricks adds the Container inside every Section automatically, so you don't type `@container` after `@section`.
+
 ### Quick element insertion
 
 > **Note**
@@ -498,13 +431,15 @@ This creates the following structure *(two times because of the multiplier: `* 2
 2. Select an element (e.g., "section")
 3. Type `>` for a child element
 4. Continue building your structure
-5. Click your element structture
+5. Insert your element structure
   - Click the "Insert" button that appears next to your query
   - Press `CMD/CTRL + ENTER`
 
+If no element is selected, Bricks adds the structure at the end of the page or template.
+
 ### Save element structures
 
-Instead of typing out your favorite structures by hand every time can just save them by clicking the "Save" button next to the command bar. Your structures are stored in this browser's `localStorage`, so they are local to that browser/profile and are not synced between users or devices.
+Instead of typing out your favorite structures by hand every time, you can save them by clicking the "Save" button next to the command bar. Your structures are stored in this browser's `localStorage`, so they are local to that browser/profile and are not synced between users or devices.
 
 ![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-saved-element-structures.png)
 
@@ -514,7 +449,11 @@ List of saved element structures
 
 </figcaption>
 
-To delete a structure, mouseover the structure item in the list, and click the "Delete" icon.
+To insert a saved structure, open the "Select element structure" dropdown in the Elements scope and pick it. To delete a structure, mouseover the structure item in the list, and click the "Delete" icon.
+
+## Scope: Components {#components}
+
+This scope lists the components on your site. Select a component to insert an instance of it, the same way you insert a single element. The scope is available when your role can insert components.
 
 ## Keyboard shortcuts
 
@@ -526,6 +465,8 @@ To delete a structure, mouseover the structure item in the list, and click the "
 | `#` (as the first character in the search input) | Enter scope “Builder” |
 | `/` (as the first character in the search input) | Enter scope “Post Types” |
 | `+` or `@` (as the first character in the search input) | Enter scope “Elements” |
+| `*` (as the first character in the search input) | Enter scope “Components” |
+| `CMD/CTRL + ENTER` | Insert the element structure typed in scope “Elements” |
 | `/0-9` (forward slash followed by number) | Navigate to a specific post type |
 | `ARROW UP/DOWN` + ENTER | Navigate to a search result and open it |
 
@@ -892,6 +833,51 @@ Before making a change, confirm:
 
 ---
 
+# Keyboard Shortcuts
+
+Source: https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/
+
+*Speed up Bricks workflows with keyboard shortcuts for editing, navigating, saving, and other builder actions.*
+
+Quickly perform the most common in-builder actions through short & simple keyboard shortcuts:
+
+| **Key Combination** | **Description** |
+| --- | --- |
+| `CMD / CTRL` | Insert element outside active nestable/parent element |
+| `CMD / CTRL + S` | Save changes |
+| `CMD / CTRL + Shift + S` | Force save all data |
+| `CMD / CTRL + K` | Open command palette |
+| `CMD / CTRL + .` | Toggle Style Manager |
+| `CMD / CTRL + Shift + .` | Toggle Builder Browser |
+| `CMD / CTRL + P` | Toggle preview mode |
+| `CMD / CTRL + B` | Switch between responsive editing modes |
+| `CMD / CTRL + C` | Copy selected element(s), when not editing text or an input and permission allows |
+| `CMD / CTRL + V` | Paste copied element(s), when not editing text or an input and permission allows |
+| `CMD / CTRL + Z` | Undo your last change |
+| `CMD / CTRL + ALT + NUMBER` | Quick Access Bar: Go to tab/control group |
+| `1-8` | Switch Style Manager tabs while the Style Manager is open |
+| `CMD / CTRL + Shift + Arrow down` | Edit next element (same level) |
+| `CMD / CTRL + Shift + Arrow up` | Edit previous element (same level) |
+| `CMD / CTRL + Shift + Arrow right` | Edit first child element |
+| `CMD / CTRL + Shift + Arrow left` | Edit parent element (container) |
+| `CMD / CTRL + Shift + Z` | Redo your last change |
+| `CMD / CTRL + Shift + D` | Duplicate selected element |
+| `CMD / CTRL + Shift + F` | Focus on element setting search input (in panel) |
+| `CMD / CTRL + Shift + L` | Open Builder Browser on the Templates view |
+| `CMD / CTRL + Shift + P` | Wrap in the configured wrapper element |
+| `CMD / CTRL + Shift + H` | Show history panel |
+| `CMD / CTRL + Shift + V` | View on frontend |
+| `CMD / CTRL + Shift + C` | Show components panel |
+| `CMD / CTRL + Shift + X` | Show structure panel |
+| `CMD / CTRL + Shift + E` | Show elements panel (and focus on search) |
+| `CMD / CTRL + Delete` | Delete active element (and its children) |
+| `CMD / CTRL + ENTER` | Toggle element classes UI |
+| `Shift (modifier)` | Hold down "Shift" to:<br />- Adjust element spacing (margin, padding) or container sizing (height, width) on the canvas in steps of 5 (custom units) or 10 (default unit = px)<br />- Directly edit new element |
+| `ESC` | Cancel/close popup (templates, documentation, etc.) |
+| `ALT/OPTION + T` | Focus on toolbar (logo). TAB through toolbar possible |
+
+---
+
 # Start Editing With Bricks
 
 Source: https://academy.bricksbuilder.io/builder/interface/editing-with-bricks/
@@ -1058,48 +1044,78 @@ If the builder detects that the current browser session is no longer logged in, 
 
 ---
 
-# Keyboard Shortcuts
+# Builder Mode (Custom)
 
-Source: https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/
+Source: https://academy.bricksbuilder.io/builder/interface/builder-mode/
 
-*Speed up Bricks workflows with keyboard shortcuts for editing, navigating, saving, and other builder actions.*
+*Customize the Bricks builder color scheme with custom builder-mode CSS variables.*
 
-Quickly perform the most common in-builder actions through short & simple keyboard shortcuts:
+Starting with Bricks 1.3.7 you can customize the builder mode (color scheme) to your liking by tweaking a few CSS variables.
 
-| **Key Combination** | **Description** |
-| --- | --- |
-| `CMD / CTRL` | Insert element outside active nestable/parent element |
-| `CMD / CTRL + S` | Save changes |
-| `CMD / CTRL + Shift + S` | Force save all data |
-| `CMD / CTRL + K` | Open command palette |
-| `CMD / CTRL + .` | Toggle Style Manager |
-| `CMD / CTRL + Shift + .` | Toggle Builder Browser |
-| `CMD / CTRL + P` | Toggle preview mode |
-| `CMD / CTRL + B` | Switch between responsive editing modes |
-| `CMD / CTRL + C` | Copy selected element(s), when not editing text or an input and permission allows |
-| `CMD / CTRL + V` | Paste copied element(s), when not editing text or an input and permission allows |
-| `CMD / CTRL + Z` | Undo your last change |
-| `CMD / CTRL + ALT + NUMBER` | Quick Access Bar: Go to tab/control group |
-| `1-8` | Switch Style Manager tabs while the Style Manager is open |
-| `CMD / CTRL + Shift + Arrow down` | Edit next element (same level) |
-| `CMD / CTRL + Shift + Arrow up` | Edit previous element (same level) |
-| `CMD / CTRL + Shift + Arrow right` | Edit first child element |
-| `CMD / CTRL + Shift + Arrow left` | Edit parent element (container) |
-| `CMD / CTRL + Shift + Z` | Redo your last change |
-| `CMD / CTRL + Shift + D` | Duplicate selected element |
-| `CMD / CTRL + Shift + F` | Focus on element setting search input (in panel) |
-| `CMD / CTRL + Shift + L` | Open Builder Browser on the Templates view |
-| `CMD / CTRL + Shift + P` | Wrap in the configured wrapper element |
-| `CMD / CTRL + Shift + H` | Show history panel |
-| `CMD / CTRL + Shift + V` | View on frontend |
-| `CMD / CTRL + Shift + C` | Show components panel |
-| `CMD / CTRL + Shift + X` | Show structure panel |
-| `CMD / CTRL + Shift + E` | Show elements panel (and focus on search) |
-| `CMD / CTRL + Delete` | Delete active element (and its children) |
-| `CMD / CTRL + ENTER` | Toggle element classes UI |
-| `Shift (modifier)` | Hold down "Shift" to:<br />- Adjust element spacing (margin, padding) or container sizing (height, width) on the canvas in steps of 5 (custom units) or 10 (default unit = px)<br />- Directly edit new element |
-| `ESC` | Cancel/close popup (templates, documentation, etc.) |
-| `ALT/OPTION + T` | Focus on toolbar (logo). TAB through toolbar possible |
+You first have to set the "Builder Mode" under Bricks → Settings → Builder to "Custom" and save your settings.
+
+The following new setting called "Builder Mode (Custom)" should now appear:
+
+![Builder Mode: Custom](https://academy.bricksbuilder.io/assets/bricks-setting-builder-mode-custom-1024x721.png)
+
+Below you can find a starter CSS snippet with commonly customized builder CSS variables. Bricks 2.x defines additional variables for classes, components, status colors, muted colors, and the canvas scrollbar, so use this as a starting point and override any extra variables your custom mode needs.
+
+```php
+[data-builder-mode=custom] {
+  --builder-bg: #f6f4f2;
+  --builder-bg-2: #efebe6;
+  --builder-bg-3: #e7e1da;
+  --builder-bg-4: #dbd2c8;
+  --builder-bg-accent: #EED8FD;
+
+  --builder-color: #2e271e;
+  --builder-color-description: #76634c;
+  --builder-color-accent: #7209B7;
+  --builder-color-accent-inverse: #fff;
+
+  --builder-color-knob: #c8baaa;
+  --builder-border-color: #d8cec2;
+  --builder-placeholder-opacity: .33;
+
+  --builder-color-class: #2b6cb0;
+  --builder-bg-class: #d8e8f6;
+  --builder-color-component: #6b46c1;
+  --builder-bg-component: #eadcf8;
+  --builder-color-info: #006c9c;
+  --builder-bg-info: #d9f1ff;
+  --builder-color-danger: #b42318;
+  --builder-bg-danger: #ffe4e2;
+  --builder-color-success: #027a48;
+  --builder-bg-success: #dcfae6;
+  --builder-color-muted: #7a6f63;
+  --builder-bg-muted: #e2ddd6;
+
+  --builder-canvas-scrollbar-thumb: #c8baaa;
+  --builder-canvas-scrollbar-thumb_hover: #76634c;
+  --builder-canvas-scrollbar-track: #efebe6;
+
+  --bricks-tooltip-bg:   #16130f;
+  --bricks-tooltip-text: #f6f4f2;
+}
+```
+
+If you copy the CSS above, paste it into your "Builder Mode (Custom)" setting, and save your settings, your builder should look like this:
+
+![](https://academy.bricksbuilder.io/assets/bricks-screenshot-builder-mode-custom-1024x576.png)
+
+<figcaption>
+
+Bricks builder with a custom color scheme (mode)
+
+</figcaption>
+
+### Resources
+
+- Color palettes: [https://coolors.co/palettes/trending](https://coolors.co/palettes/trending)
+- Color palettes: [https://colorhunt.co](https://colorhunt.co)
+- Generate color shades & tints: [https://www.colorhexa.com](https://www.colorhexa.com)
+
+Note: In custom builder mode, Code element's background color changes to a light color scheme.
 
 ---
 
@@ -1451,34 +1467,6 @@ In Bricks 1.11.1, we introduced the responsive control indicator which helps you
 
 ---
 
-# Save & Publish
-
-Source: https://academy.bricksbuilder.io/builder/interface/save-publish/
-
-*Understand how saving and publishing work in Bricks, including drafts, updates, and when frontend changes go live.*
-
-Bricks, by default, automatically creates an autosave every 60 seconds when the current builder area has unsaved element changes.
-
-Autosave creates a backup copy of the elements on the canvas. It does not save global data such as components, classes, or variables. Autosaves can be restored under **Manage > History / Revisions** from the builder toolbar.
-
-To adjust or disable the autosave interval go to **Bricks > Settings > Builder** in your WordPress admin area. The default interval is 60 seconds, and the minimum interval is 15 seconds.
-
-Bricks detects unsaved changes and will show you a prompt to help prevent data loss in case you reload the builder by accident.
-
-To manually save your changes click the **Save** (disk) icon at the very right of the builder toolbar. Or use the [keyboard shortcut](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/) CMD/CTRL + S.
-
-**Bricks creates a revision/snapshot** when changed Bricks data or page settings are saved using the standard WordPress Revisions API ([learn more about revisions](https://academy.bricksbuilder.io/builder/interface/revisions/)).
-
-Designing a stunning website or writing compelling content is hard. That's why Bricks celebrates every saved change by displaying a random save message to keep your spirit up :)
-
-You can, of course, customize those save messages via the [bricks/builder/save_messages](https://academy.bricksbuilder.io/developer/hooks/filters/filter-save-messages/) filter.
-
-## Publishing A Page
-
-When an unpublished page (draft) is saved the status does not change by itself. So once your page is ready to be published click the **Publish** (power) icon in the builder toolbar.
-
----
-
 # Revisions
 
 Source: https://academy.bricksbuilder.io/builder/interface/revisions/
@@ -1516,3 +1504,31 @@ You may set the following values:
 - true: unlimited revisions
 - false or 0: do not store any Bricks' revisions
 - value above 0: store up to this number of revisions per post. Old revisions are automatically deleted.
+
+---
+
+# Save & Publish
+
+Source: https://academy.bricksbuilder.io/builder/interface/save-publish/
+
+*Understand how saving and publishing work in Bricks, including drafts, updates, and when frontend changes go live.*
+
+Bricks, by default, automatically creates an autosave every 60 seconds when the current builder area has unsaved element changes.
+
+Autosave creates a backup copy of the elements on the canvas. It does not save global data such as components, classes, or variables. Autosaves can be restored under **Manage > History / Revisions** from the builder toolbar.
+
+To adjust or disable the autosave interval go to **Bricks > Settings > Builder** in your WordPress admin area. The default interval is 60 seconds, and the minimum interval is 15 seconds.
+
+Bricks detects unsaved changes and will show you a prompt to help prevent data loss in case you reload the builder by accident.
+
+To manually save your changes click the **Save** (disk) icon at the very right of the builder toolbar. Or use the [keyboard shortcut](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/) CMD/CTRL + S.
+
+**Bricks creates a revision/snapshot** when changed Bricks data or page settings are saved using the standard WordPress Revisions API ([learn more about revisions](https://academy.bricksbuilder.io/builder/interface/revisions/)).
+
+Designing a stunning website or writing compelling content is hard. That's why Bricks celebrates every saved change by displaying a random save message to keep your spirit up :)
+
+You can, of course, customize those save messages via the [bricks/builder/save_messages](https://academy.bricksbuilder.io/developer/hooks/filters/filter-save-messages/) filter.
+
+## Publishing A Page
+
+When an unpublished page (draft) is saved the status does not change by itself. So once your page is ready to be published click the **Publish** (power) icon in the builder toolbar.

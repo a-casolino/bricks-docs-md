@@ -6,19 +6,21 @@ Whether you want to lock down individual pages, posts, broader areas like custom
 
 Customize the password entry experience, schedule when protection is active, and manage everything directly within Bricks.
 
+https://youtu.be/PJ5R_XOyfRo
+
 > **Note**
 >
 > Password protection controls Bricks-rendered frontend output. For sensitive data, use stricter security controls such as proper authentication, authorization, and file access rules.
 
 ## How to set up password protection
 
-1. Enable this feature under `Bricks > Settings > General > Password Protection`
+1. Enable this feature under `Bricks > Settings > General > Password Protection` and save. The **Password protection** template type is only available while this setting is on.
 2. **Create a password protection template**
   - From the WordPress dashboard, navigate to `Bricks > Templates` and create a new template.
   - Under **Template type**, select **Password protection**.
-  - When an empty template is converted to this type, Bricks can populate it with a default section, heading, text, and form.
+  - Bricks fills the empty template with a starting layout: a heading, a line of text, and a form with a password field and an **Unlock** button. The form already uses the **Unlock password protection** action.
 3. **Configure password protection settings**
-  - Click **Edit in Bricks** to customize the template.
+  - Click **Edit with Bricks** to customize the template.
   - To access the password protection settings, go to `Settings > Template settings > Password protection`.
   - Available settings include:
     - **Password source:** Select how passwords are managed. Options are **Template password**, **Post password**, or **Template & post password**. See details on each method in the [password source options](#password-source-options) section below.
@@ -36,13 +38,13 @@ The older **Disable header**, **Disable footer**, and **Disable popups** control
 
 ![](https://academy.bricksbuilder.io/assets/bricks-password-protection-settings-1.png)
 
-1. **Set template conditions**
+4. **Set template conditions**
   - Set [the template conditions](https://academy.bricksbuilder.io/builder/features/template-settings/#template-conditions) under `Settings > Template settings > Conditions` to define where this template applies.
   - For more dynamic control, use the [`bricks/password_protection/is_active`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-is_active/) filter to customize when the template should be active or bypassed.
 
 ![](https://academy.bricksbuilder.io/assets/bricks-password-protection-template-conditions.png)
 
-1. **Add form element for unlocking**
+5. **Add form element for unlocking**
   - Add a **Form Element** to the password protection template.
   - Add an **Unlock password protection** form action. This action will allow users to unlock the protected content by entering the correct password.
   - Add a password field. In the form action settings, choose that password field. If no field is selected, Bricks uses the first password field in the form.
@@ -51,6 +53,8 @@ The older **Disable header**, **Disable footer**, and **Disable popups** control
 ![](https://academy.bricksbuilder.io/assets/bricks-password-protection-form-action.png)
 
 Password protection templates have priority over other matching content templates. When an active password protection template matches the current page, Bricks renders that template as the content template until the visitor unlocks the content or the protection is otherwise bypassed.
+
+With a wrong password, the form shows its error message and the page stays locked. With the correct template password, the form shows its success message, and about a second later the page reloads with the protected content.
 
 ## Password source options {#password-source-options}
 
@@ -67,7 +71,7 @@ Selecting **Template password** applies the password set in the template setting
 
 For any content matching these conditions, the password form will be automatically rendered, restricting access to those pages.
 
-When a visitor enters the correct template password, Bricks stores a hashed password cookie named `brx_pp_` plus the WordPress cookie hash. The cookie is HTTP-only, uses the current SSL state, and expires after 10 days by default. You can customize the expiry with the [`bricks/password_protection/cookie_expires`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-cookie-expires/) filter.
+When a visitor enters the correct template password, Bricks stores a hashed password cookie named `brx_pp_` plus the WordPress cookie hash. The cookie is checked against the template password, so one unlock covers every page the template protects. The cookie is HTTP-only, uses the current SSL state, and expires after 10 days by default. You can customize the expiry with the [`bricks/password_protection/cookie_expires`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-cookie-expires/) filter.
 
 ### Post password
 

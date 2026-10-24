@@ -247,25 +247,6 @@ add_filter( 'bricks/body/attributes', function( $attributes ) {
 
 ---
 
-# Filter: bricks/builder/elements
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-elements/
-
-*Determine which elements to use in Bricks by out-commenting the ones you don't want to use. There is a full example and list of all elements in the Bricks child.*
-
-Determine which elements to use in Bricks by out-commenting the ones you don't want to use. There is a full example and list of all elements in the Bricks child theme that you can customize to your requirements.
-
-```php
-add_filter( 'bricks/builder/elements', function( $elements ) {
-  // See Bricks child theme for a full list of all available elements
-  // var_dump( $elements ); // To see all available elements
-
-  return $elements;
-} );
-```
-
----
-
 # Filter: bricks/builder/codemirror_config
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-codemirror_config/
@@ -306,6 +287,53 @@ In this example, the filter modifies the default CodeMirror configuration to:
 **Return:**
 
 - *(array)*: The custom configuration array, applied alongside or in place of Bricks' defaults.
+
+---
+
+# Filter: bricks/builder/elements
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-elements/
+
+*Determine which elements to use in Bricks by out-commenting the ones you don't want to use. There is a full example and list of all elements in the Bricks child.*
+
+Determine which elements to use in Bricks by out-commenting the ones you don't want to use. There is a full example and list of all elements in the Bricks child theme that you can customize to your requirements.
+
+```php
+add_filter( 'bricks/builder/elements', function( $elements ) {
+  // See Bricks child theme for a full list of all available elements
+  // var_dump( $elements ); // To see all available elements
+
+  return $elements;
+} );
+```
+
+---
+
+# Filter: bricks/builder/image_size_options
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-image_size_options/
+
+*The bricks/builder/imagesizes hook gives developers the ability to customize image size options in the builder.*
+
+The `bricks/builder/image_sizes` hook gives developers the ability to customize image size options in the builder.
+
+By default, when working within a query loop and using dynamic data for image sources, Bricks Builder displays all the registered WordPress image sizes.
+
+This hook allows you to modify this list if you know that certain sizes are not being used, helping you streamline your image size options to fit your needs.
+
+```php
+/**
+ * $image_sizes Multidimensional array (key: image size name)
+ */
+add_filter( 'bricks/builder/image_size_options', function( $image_sizes ) {
+  // Unset thumbnail, 1536x1536, 2048x2048
+  unset( $image_sizes['thumbnail'] );
+  unset( $image_sizes['1536x1536'] );
+  unset( $image_sizes['2048x2048'] );
+
+  return $image_sizes;
+});
+```
 
 ---
 
@@ -352,34 +380,6 @@ add_filter( 'bricks/code/allow_execution', function( $allow ) {
   // Only allows to return false to disable code execution programmatically
   return false;
 } );
-```
-
----
-
-# Filter: bricks/builder/image_size_options
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-image_size_options/
-
-*The bricks/builder/imagesizes hook gives developers the ability to customize image size options in the builder.*
-
-The `bricks/builder/image_sizes` hook gives developers the ability to customize image size options in the builder.
-
-By default, when working within a query loop and using dynamic data for image sources, Bricks Builder displays all the registered WordPress image sizes.
-
-This hook allows you to modify this list if you know that certain sizes are not being used, helping you streamline your image size options to fit your needs.
-
-```php
-/**
- * $image_sizes Multidimensional array (key: image size name)
- */
-add_filter( 'bricks/builder/image_size_options', function( $image_sizes ) {
-  // Unset thumbnail, 1536x1536, 2048x2048
-  unset( $image_sizes['thumbnail'] );
-  unset( $image_sizes['1536x1536'] );
-  unset( $image_sizes['2048x2048'] );
-
-  return $image_sizes;
-});
 ```
 
 ---
@@ -540,6 +540,27 @@ add_filter( 'bricks/comments/timestamp', function( $timestamp, $comment ) {
 
 ---
 
+# Filter: bricks/content/attributes
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-attributes/
+
+*Programmatically add HTML attributes to the main tag.*
+
+Programmatically add HTML attributes to the `main` tag.
+
+```php
+add_filter( 'bricks/content/attributes', function( $attributes ) {
+  // Add 'data-is-content' HTML attribute to main with value 'y'
+  $attributes['data-is-content'] = 'y';
+  return $attributes;
+} );
+```
+
+- [/developer/hooks/filters/filter-bricks-header-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/)
+- [/developer/hooks/filters/filter-bricks-header-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/)
+
+---
+
 # Filter: bricks/content/html_after_begin
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-html_after_begin/
@@ -564,27 +585,6 @@ add_filter( 'bricks/content/html_after_begin', function( $html_after_begin, $bri
 
 ---
 
-# Filter: bricks/content/attributes
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-attributes/
-
-*Programmatically add HTML attributes to the main tag.*
-
-Programmatically add HTML attributes to the `main` tag.
-
-```php
-add_filter( 'bricks/content/attributes', function( $attributes ) {
-  // Add 'data-is-content' HTML attribute to main with value 'y'
-  $attributes['data-is-content'] = 'y';
-  return $attributes;
-} );
-```
-
-- [/developer/hooks/filters/filter-bricks-header-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/)
-- [/developer/hooks/filters/filter-bricks-header-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/)
-
----
-
 # Filter: bricks/content/html_before_end
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-html_before_end/
@@ -605,29 +605,6 @@ add_filter( 'bricks/content/html_before_end', function( $html_after_begin, $bric
 
     return $html_after_begin . $my_popup_html;
 }, 10, 4 );
-```
-
----
-
-# Filter: bricks/default_page_title
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-default_page_title/
-
-*Since 1.8, Bricks automatically adds default page titles to all non-Bricks pages. However, if you wish to customize or remove this default page title, you can.*
-
-Since 1.8, Bricks automatically adds default page titles to all non-Bricks pages. However, if you wish to customize or remove this default page title, you can utilize this filter.
-
-Returning an empty string, disables the default page title.
-
-```php
-add_filter( 'bricks/default_page_title', function( $title, $post_id ) {
-  // If slug of current page is 'my-page': Return empty page title
-  if ( is_page( 'my-page' ) ) {
-    $title = '';
-  }
-
-  return $title;
-}, 10, 2 );
 ```
 
 ---
@@ -658,6 +635,29 @@ add_filter( 'bricks/content/tag', function( $tag ) {
 **Return:**
 
 - (string): The HTML tag you want to render instead of the default.
+
+---
+
+# Filter: bricks/default_page_title
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-default_page_title/
+
+*Since 1.8, Bricks automatically adds default page titles to all non-Bricks pages. However, if you wish to customize or remove this default page title, you can.*
+
+Since 1.8, Bricks automatically adds default page titles to all non-Bricks pages. However, if you wish to customize or remove this default page title, you can utilize this filter.
+
+Returning an empty string, disables the default page title.
+
+```php
+add_filter( 'bricks/default_page_title', function( $title, $post_id ) {
+  // If slug of current page is 'my-page': Return empty page title
+  if ( is_page( 'my-page' ) ) {
+    $title = '';
+  }
+
+  return $title;
+}, 10, 2 );
+```
 
 ---
 
@@ -708,22 +708,6 @@ add_filter( 'bricks/dynamic_data/post_terms_links', function( $has_links, $post,
 
 ---
 
-# Filter: bricks/dynamic_data/post_terms_separator
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-post_terms_separator/
-
-*Programmatically set the post term separator like so:*
-
-Programmatically set the post term separator like so:
-
-```php
-add_filter( 'bricks/dynamic_data/post_terms_separator', function( $sep, $post, $taxonomy ) {
-  return ' : ';
-}, 10, 3 );
-```
-
----
-
 # Filter: bricks/dynamic_data/read_more
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-read_more/
@@ -739,6 +723,22 @@ add_filter( 'bricks/dynamic_data/read_more', function( $label, $post ) {
 ```
 
 Read more about [Dynamic Data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/) in the Bricks academy.
+
+---
+
+# Filter: bricks/dynamic_data/post_terms_separator
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-post_terms_separator/
+
+*Programmatically set the post term separator like so:*
+
+Programmatically set the post term separator like so:
+
+```php
+add_filter( 'bricks/dynamic_data/post_terms_separator', function( $sep, $post, $taxonomy ) {
+  return ' : ';
+}, 10, 3 );
+```
 
 ---
 
@@ -1399,6 +1399,35 @@ add_filter( 'bricks/get_element_data/maybe_from_post_id', function( $id, $elemen
 
 ---
 
+# Filter: bricks/header/attributes
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/
+
+*Programmatically add HTML attributes to the header tag.*
+
+Programmatically add HTML attributes to the `header` tag.
+
+```php
+add_filter( 'bricks/header/attributes', function( $attributes ) {
+  // Add custom class to header
+  if ( isset( $attributes['class'] ) && is_array( $attributes['class'] ) ) {
+    $attributes['class'][] = 'my-header-class';
+  } else {
+    $attributes['class'] = ['my-header-class'];
+  }
+
+  // Add 'data-is-header' HTML attribute to header with value 'y'
+  $attributes['data-is-header'] = 'y';
+
+  return $attributes;
+} );
+```
+
+- [/developer/hooks/filters/filter-bricks-content-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-attributes/)
+- [/developer/hooks/filters/filter-bricks-footer-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-footer-attributes/)
+
+---
+
 # Filter: bricks/builder/i18n
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-i18n/
@@ -1434,61 +1463,6 @@ add_filter( 'bricks/is_layout_element', function( $layout_element_names ) {
     return $layout_element_names;
 } );
 ```
-
----
-
-# Filter: bricks/header/attributes
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/
-
-*Programmatically add HTML attributes to the header tag.*
-
-Programmatically add HTML attributes to the `header` tag.
-
-```php
-add_filter( 'bricks/header/attributes', function( $attributes ) {
-  // Add custom class to header
-  if ( isset( $attributes['class'] ) && is_array( $attributes['class'] ) ) {
-    $attributes['class'][] = 'my-header-class';
-  } else {
-    $attributes['class'] = ['my-header-class'];
-  }
-
-  // Add 'data-is-header' HTML attribute to header with value 'y'
-  $attributes['data-is-header'] = 'y';
-
-  return $attributes;
-} );
-```
-
-- [/developer/hooks/filters/filter-bricks-content-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-attributes/)
-- [/developer/hooks/filters/filter-bricks-footer-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-footer-attributes/)
-
----
-
-# Filter: bricks/link_css_selectors
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-link_css_selectors/
-
-*Use this filter in your child theme to overwrite/extend the CSS selectors the \"Theme Styles > Link\" settings are applied to like this (since Bricks 1.10 also.*
-
-Use this filter in your child theme to overwrite/extend the CSS selectors the "Theme Styles > Link" settings are applied to like this (since Bricks 1.10 also available in the builder):
-
-```php
-add_filter( 'bricks/link_css_selectors', function( $link_css_selectors ) {
-    // Add CSS link styles to .my-custom-element a
-    $link_css_selectors[] = '.my-custom-element a';
-
-    // OR return new list of CSS link selectors
-    // $link_css_selectors = ['.link-wrapper a', '.link-wrapper-2 a'];
-
-    return $link_css_selectors; // Array of selectors link styles are applied to
-} );
-```
-
-> **Note**
->
-> If the theme styles link styles do not apply to your custom selectors, force the regeneration of the theme styles by changing and saving the link color, the padding, or the text decoration, for example. Your new selectors will then be available.
 
 ---
 
@@ -1555,6 +1529,32 @@ add_filter( 'bricks/maintenance/should_apply', function( $apply_maintenance, $mo
     return $apply_maintenance;
 }, 10, 2 );
 ```
+
+---
+
+# Filter: bricks/link_css_selectors
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-link_css_selectors/
+
+*Use this filter in your child theme to overwrite/extend the CSS selectors the \"Theme Styles > Link\" settings are applied to like this (since Bricks 1.10 also.*
+
+Use this filter in your child theme to overwrite/extend the CSS selectors the "Theme Styles > Link" settings are applied to like this (since Bricks 1.10 also available in the builder):
+
+```php
+add_filter( 'bricks/link_css_selectors', function( $link_css_selectors ) {
+    // Add CSS link styles to .my-custom-element a
+    $link_css_selectors[] = '.my-custom-element a';
+
+    // OR return new list of CSS link selectors
+    // $link_css_selectors = ['.link-wrapper a', '.link-wrapper-2 a'];
+
+    return $link_css_selectors; // Array of selectors link styles are applied to
+} );
+```
+
+> **Note**
+>
+> If the theme styles link styles do not apply to your custom selectors, force the regeneration of the theme styles by changing and saving the link color, the padding, or the text decoration, for example. Your new selectors will then be available.
 
 ---
 
@@ -1661,42 +1661,6 @@ In this example, any user with the `manage_options` capability (typically admini
 
 ---
 
-# Filter: bricks/placeholder_image
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-placeholder_image/
-
-*The bricks/placeholderimage filter allows you to override the default placeholder image used in Bricks. This can be useful when you want to display a custom.*
-
-The `bricks/placeholder_image` filter allows you to override the default placeholder image used in Bricks. This can be useful when you want to display a custom placeholder for elements when performing template import or pasting elements from another website. `(@since 2.0)`
-
-## Parameters
-
-- `$image` *(string)* – The default placeholder image path or URL.
-- `$is_svg` *(bool)* – Whether the placeholder should be an SVG. Leave as is.
-- `$format` *(string)* – Can be `'url'` or `'path'` depending on the context Bricks needs it for. Leave as is.
-
-```php
-add_filter( 'bricks/placeholder_image', function( $image, $is_svg, $format ) {
-  // Custom placeholder images (SVG and non-SVG file required)
-  // SVG file: /uploads/2025/04/my-placeholder.svg
-  // Non-SVG file: /uploads/2025/04/my-placeholder-img.png
-  $relative_path = $is_svg ? '2025/04/my-placeholder.svg' : '2025/04/my-placeholder-img.png';
-  $upload_dir    = wp_get_upload_dir();
-
-  if ( $format === 'path' ) {
-    // Return absolute path to the image
-    $image = $upload_dir['basedir'] . '/' . $relative_path;
-  } else {
-    // Return full URL to the image
-    $image = $upload_dir['baseurl'] . '/' . $relative_path;
-  }
-
-  return $image;
-}, 10, 3 );
-```
-
----
-
 # Filter: bricks/posts/merge_query
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-merge_query/
@@ -1731,6 +1695,42 @@ This is triggered for all the Bricks elements containing one internal WP_Query q
 Each element in Bricks has a unique ID. You may find the element ID when editing the element and looking into the Global CSS classes input. By default, it shows the element HTML ID (e.g. `#bricks-element-wghgco`). For the purpose of this filter, we only need the last portion of the string, the six-character long element ID (e.g. `wghgco`).
 
 ![](https://academy.bricksbuilder.io/assets/Screenshot-2021-12-29-at-09.19.37.png)
+
+---
+
+# Filter: bricks/placeholder_image
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-placeholder_image/
+
+*The bricks/placeholderimage filter allows you to override the default placeholder image used in Bricks. This can be useful when you want to display a custom.*
+
+The `bricks/placeholder_image` filter allows you to override the default placeholder image used in Bricks. This can be useful when you want to display a custom placeholder for elements when performing template import or pasting elements from another website. `(@since 2.0)`
+
+## Parameters
+
+- `$image` *(string)* – The default placeholder image path or URL.
+- `$is_svg` *(bool)* – Whether the placeholder should be an SVG. Leave as is.
+- `$format` *(string)* – Can be `'url'` or `'path'` depending on the context Bricks needs it for. Leave as is.
+
+```php
+add_filter( 'bricks/placeholder_image', function( $image, $is_svg, $format ) {
+  // Custom placeholder images (SVG and non-SVG file required)
+  // SVG file: /uploads/2025/04/my-placeholder.svg
+  // Non-SVG file: /uploads/2025/04/my-placeholder-img.png
+  $relative_path = $is_svg ? '2025/04/my-placeholder.svg' : '2025/04/my-placeholder-img.png';
+  $upload_dir    = wp_get_upload_dir();
+
+  if ( $format === 'path' ) {
+    // Return absolute path to the image
+    $image = $upload_dir['basedir'] . '/' . $relative_path;
+  } else {
+    // Return full URL to the image
+    $image = $upload_dir['baseurl'] . '/' . $relative_path;
+  }
+
+  return $image;
+}, 10, 3 );
+```
 
 ---
 
@@ -2447,3 +2447,38 @@ The filter callback receives 2 arguments:
 - `$element` - the Bricks element [object](https://academy.bricksbuilder.io/developer/elements/create-your-own-elements/)
 
 **NOTE**: This filter doesn't work in builder & already possible with *[bricks/element/render_attributes](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-render_attributes/)*
+
+---
+
+# Filter: bricks/setup/control_options
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/
+
+*Bricks offers a WordPress filter to add or remove control options. The control options are used throughout Bricks and allow you to manage the options of the:*
+
+Bricks offers a WordPress filter to add or remove control options. The control options are used throughout Bricks and allow you to manage the options of the:
+
+- Template Types (e.g. Header, Footer, Single, Section...)
+- Background position, repeat, attachment or size
+- Button sizes
+- Button or Heading styles
+- Border styles
+- Font weight and style
+- CSS position
+- Query types (e.g. Posts, Terms, Users, ..)
+- Query order by, compare, operator and value type
+- Image Sizes
+- Taxonomies
+- User roles
+
+To manage any of these options or add new ones, use the WP hook `bricks/setup/control_options` like so:
+
+```php
+add_filter( 'bricks/setup/control_options', function( $control_options ) {
+    $control_options['templateTypes']['my_template_type'] = esc_html__( 'My Template Type', 'my-plugin' );
+
+    return $control_options;
+} );
+```
+
+Note: the above example adds a new template type. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
