@@ -1452,146 +1452,6 @@ This ZIP file contains all templates as individual JSON files. Either unzip it t
 
 ---
 
-# User activation
-
-Source: https://academy.bricksbuilder.io/builder/features/user-activation/
-
-*Configure user activation in Bricks for registration flows that require email confirmation before an account becomes active.*
-
-Starting with **Bricks 2.1**, you can enable **User activation** for WordPress registrations. Once enabled, newly registered users receive an activation email and must click the activation link before they can log in.
-
-> **Note**
->
-> **IMPORTANT: This feature applies to all new user registrations, not just those submitted via the Form element.**
-
-## Quick overview {#quick-overview}
-
-Here is a step-by-step overview of how this feature works once it's enabled.
-
-1. A new user account is created.
-2. Bricks stores a generated activation key and marks the user as **pending**.
-3. Bricks sends the activation email to the new user's email address.
-4. The activation link points to the configured **Verification success page** with `user_id` and `activation_key` query parameters.
-5. When the user opens that valid link, Bricks deletes the activation key and marks the user as **active**.
-6. If **Auto login after activation** is enabled, Bricks logs the user in after successful activation.
-7. If the activation link is invalid, Bricks redirects the user to the configured **Verification failure page**.
-8. Pending users cannot log in. Bricks returns an inactive-account login error.
-
-Users created before User activation was enabled do not have activation status meta. Bricks treats them as active.
-
-## Configuration and controls {#configuration-and-controls}
-
-Inside the WordPress dashboard, go to **Bricks > Settings > General** and scroll to **User activation**.
-
-![](https://academy.bricksbuilder.io/assets/bricks-user-activation-settings.png)
-
-**User activation**: Enable this to require new users to verify their email after registration. After enabling it, the rest of the settings become available.
-
-> **Note**
->
-> When User activation is enabled, the Form element's registration **Auto log in user** setting is not available. Use **Auto login after activation** instead.
-
-**Auto login after activation**: Automatically logs the user in after successful email verification.
-
-**Verification success page**: The page used for successful activation links. Bricks expects the activation link to point to this page. If the user opens this page without `user_id` and `activation_key`, Bricks simply renders the page normally.
-
-**Verification failure page**: The page users are redirected to when activation fails because the user ID or activation key is missing or invalid.
-
-**User activation: Email**:
-
-- **From email address**: Optional sender email. If empty, WordPress' normal `wp_mail_from` value is used.
-- **From name**: Optional sender name. If empty, WordPress' normal `wp_mail_from_name` value is used.
-- **Subject**: Email subject. If empty, Bricks uses "Activate your account".
-- **Email content**: Email body. If empty, Bricks sends a default activation message.
-- **HTML email**: Sends the email as HTML. If enabled and the content is not a full HTML document, Bricks converts line breaks with `nl2br()`.
-
-Available email placeholders:
-
-| Placeholder | Output |
-| --- | --- |
-| `{{site_name}}` | Site name |
-| `{{site_tagline}}` | Site tagline |
-| `{{site_url}}` | Site URL |
-| `{{username}}` | User login |
-| `{{user_display_name}}` | User display name |
-| `{{user_first_name}}` | User first name |
-| `{{user_last_name}}` | User last name |
-| `{{user_email}}` | User email |
-| `{{activation_link}}` | Activation URL, or an HTML link when HTML email is enabled |
-| `{{activation_url}}` | Plain activation URL |
-
-## Registration behavior
-
-User activation hooks into WordPress' `user_register` flow while the feature is enabled. This means it affects:
-
-- Users registered through the Bricks Form element.
-- Users registered through other WordPress registration flows that trigger `user_register`.
-
-For Bricks Form element registrations:
-
-- The registration action still validates username, email, password, password length, and role.
-- Administrator and Super Admin roles are blocked as registration targets for security.
-- If the username is not mapped, Bricks can generate it from the email address.
-- If the password is not mapped or submitted, Bricks can generate one.
-- Auto-login after registration is skipped while User activation is enabled.
-
-If **Send WordPress notification** is enabled in the registration form action, Bricks triggers WordPress' `register_new_user` action after creating the user. The activation email is still sent by the User activation feature.
-
-## Activation link behavior
-
-The activation URL is built from your configured **Verification success page** plus two query parameters:
-
-```text
-?user_id=123&activation_key=generated_key
-```
-
-When the request reaches the success page, Bricks checks those parameters:
-
-- Missing `user_id` or `activation_key`: the success page renders normally.
-- Empty `user_id` or `activation_key`: the user is redirected to the failure page.
-- Invalid activation key: the user is redirected to the failure page.
-- Valid activation key: the account is marked active and the activation key is deleted.
-- Already active user: Bricks skips activation and renders the success page normally.
-
-Both the success page and failure page should be published pages.
-
-## Users page {#users-page}
-
-A new **Activation status** column appears on the WordPress **Users** page.
-
-![](https://academy.bricksbuilder.io/assets/bricks-user-activation-admin-column.png)
-
-Possible statuses:
-
-- **Active**: user can log in normally.
-- **Inactive**: user has pending activation status and cannot log in until activated.
-
-For each user, you can perform different actions based on their activation status by hovering over the user entry:
-
-For an **active** user, **Mark as inactive** prevents the user from logging in.
-
-For an **inactive** user, **Resend activation email** sends a new activation link using the current email template, and **Mark as active** manually marks the user as active without email verification.
-
-Only users with the WordPress `edit_users` capability can change activation status or resend activation emails from the Users screen.
-
-## Login behavior
-
-When a pending user tries to log in, Bricks blocks authentication and shows an inactive-account error. Users with `active` status, and users with no activation status from before the feature was enabled, can log in normally.
-
-If you also use [Custom Authentication Pages](https://academy.bricksbuilder.io/builder/features/custom-authentication-pages/), the same activation check applies to the Bricks **User login** form action because it uses WordPress authentication.
-
-## Email customization filters
-
-The email settings can also be adjusted programmatically:
-
-- `bricks/user_activation_email/from_name`
-- `bricks/user_activation_email/subject`
-- `bricks/user_activation_email/content`
-
-These filters are useful for multilingual sites or projects that need different email text per user or context.
-
----
-
 # Template Settings
 
 Source: https://academy.bricksbuilder.io/builder/features/template-settings/
@@ -1820,3 +1680,246 @@ Use preview images to make large template libraries easier to scan. They do not 
 **Header or footer is missing only on one page:** Open that page and check **Settings > Page Settings > General** for **Disable header** or **Disable footer**.
 
 **A Search Results template does not change results:** Enable custom Search Criteria, configure the fields you need, and make sure the result Query Loop is using the main query.
+
+---
+
+# User activation
+
+Source: https://academy.bricksbuilder.io/builder/features/user-activation/
+
+*Configure user activation in Bricks for registration flows that require email confirmation before an account becomes active.*
+
+Starting with **Bricks 2.1**, you can enable **User activation** for WordPress registrations. Once enabled, newly registered users receive an activation email and must click the activation link before they can log in.
+
+> **Note**
+>
+> **IMPORTANT: This feature applies to all new user registrations, not just those submitted via the Form element.**
+
+## Quick overview {#quick-overview}
+
+Here is a step-by-step overview of how this feature works once it's enabled.
+
+1. A new user account is created.
+2. Bricks stores a generated activation key and marks the user as **pending**.
+3. Bricks sends the activation email to the new user's email address.
+4. The activation link points to the configured **Verification success page** with `user_id` and `activation_key` query parameters.
+5. When the user opens that valid link, Bricks deletes the activation key and marks the user as **active**.
+6. If **Auto login after activation** is enabled, Bricks logs the user in after successful activation.
+7. If the activation link is invalid, Bricks redirects the user to the configured **Verification failure page**.
+8. Pending users cannot log in. Bricks returns an inactive-account login error.
+
+Users created before User activation was enabled do not have activation status meta. Bricks treats them as active.
+
+## Configuration and controls {#configuration-and-controls}
+
+Inside the WordPress dashboard, go to **Bricks > Settings > General** and scroll to **User activation**.
+
+![](https://academy.bricksbuilder.io/assets/bricks-user-activation-settings.png)
+
+**User activation**: Enable this to require new users to verify their email after registration. After enabling it, the rest of the settings become available.
+
+> **Note**
+>
+> When User activation is enabled, the Form element's registration **Auto log in user** setting is not available. Use **Auto login after activation** instead.
+
+**Auto login after activation**: Automatically logs the user in after successful email verification.
+
+**Verification success page**: The page used for successful activation links. Bricks expects the activation link to point to this page. If the user opens this page without `user_id` and `activation_key`, Bricks simply renders the page normally.
+
+**Verification failure page**: The page users are redirected to when activation fails because the user ID or activation key is missing or invalid.
+
+**User activation: Email**:
+
+- **From email address**: Optional sender email. If empty, WordPress' normal `wp_mail_from` value is used.
+- **From name**: Optional sender name. If empty, WordPress' normal `wp_mail_from_name` value is used.
+- **Subject**: Email subject. If empty, Bricks uses "Activate your account".
+- **Email content**: Email body. If empty, Bricks sends a default activation message.
+- **HTML email**: Sends the email as HTML. If enabled and the content is not a full HTML document, Bricks converts line breaks with `nl2br()`.
+
+Available email placeholders:
+
+| Placeholder | Output |
+| --- | --- |
+| `{{site_name}}` | Site name |
+| `{{site_tagline}}` | Site tagline |
+| `{{site_url}}` | Site URL |
+| `{{username}}` | User login |
+| `{{user_display_name}}` | User display name |
+| `{{user_first_name}}` | User first name |
+| `{{user_last_name}}` | User last name |
+| `{{user_email}}` | User email |
+| `{{activation_link}}` | Activation URL, or an HTML link when HTML email is enabled |
+| `{{activation_url}}` | Plain activation URL |
+
+## Registration behavior
+
+User activation hooks into WordPress' `user_register` flow while the feature is enabled. This means it affects:
+
+- Users registered through the Bricks Form element.
+- Users registered through other WordPress registration flows that trigger `user_register`.
+
+For Bricks Form element registrations:
+
+- The registration action still validates username, email, password, password length, and role.
+- Administrator and Super Admin roles are blocked as registration targets for security.
+- If the username is not mapped, Bricks can generate it from the email address.
+- If the password is not mapped or submitted, Bricks can generate one.
+- Auto-login after registration is skipped while User activation is enabled.
+
+If **Send WordPress notification** is enabled in the registration form action, Bricks triggers WordPress' `register_new_user` action after creating the user. The activation email is still sent by the User activation feature.
+
+## Activation link behavior
+
+The activation URL is built from your configured **Verification success page** plus two query parameters:
+
+```text
+?user_id=123&activation_key=generated_key
+```
+
+When the request reaches the success page, Bricks checks those parameters:
+
+- Missing `user_id` or `activation_key`: the success page renders normally.
+- Empty `user_id` or `activation_key`: the user is redirected to the failure page.
+- Invalid activation key: the user is redirected to the failure page.
+- Valid activation key: the account is marked active and the activation key is deleted.
+- Already active user: Bricks skips activation and renders the success page normally.
+
+Both the success page and failure page should be published pages.
+
+## Users page {#users-page}
+
+A new **Activation status** column appears on the WordPress **Users** page.
+
+![](https://academy.bricksbuilder.io/assets/bricks-user-activation-admin-column.png)
+
+Possible statuses:
+
+- **Active**: user can log in normally.
+- **Inactive**: user has pending activation status and cannot log in until activated.
+
+For each user, you can perform different actions based on their activation status by hovering over the user entry:
+
+For an **active** user, **Mark as inactive** prevents the user from logging in.
+
+For an **inactive** user, **Resend activation email** sends a new activation link using the current email template, and **Mark as active** manually marks the user as active without email verification.
+
+Only users with the WordPress `edit_users` capability can change activation status or resend activation emails from the Users screen.
+
+## Login behavior
+
+When a pending user tries to log in, Bricks blocks authentication and shows an inactive-account error. Users with `active` status, and users with no activation status from before the feature was enabled, can log in normally.
+
+If you also use [Custom Authentication Pages](https://academy.bricksbuilder.io/builder/features/custom-authentication-pages/), the same activation check applies to the Bricks **User login** form action because it uses WordPress authentication.
+
+## Email customization filters
+
+The email settings can also be adjusted programmatically:
+
+- `bricks/user_activation_email/from_name`
+- `bricks/user_activation_email/subject`
+- `bricks/user_activation_email/content`
+
+These filters are useful for multilingual sites or projects that need different email text per user or context.
+
+---
+
+# Visual Grid Builder
+
+Source: https://academy.bricksbuilder.io/builder/features/visual-grid-builder/
+
+*Design CSS Grid layouts in Bricks with the Visual Grid Builder instead of hand-writing grid-template values.*
+
+https://youtu.be/V-YTXvwg6Fc
+
+The new **Visual Grid Builder **allows you to visually design and manage your grid layouts. The feature is available for any element with the `display` control set to `grid`, and allows you to:
+
+- **Adjust grid size**: Modify the number of columns and rows to fit your design needs.
+- **Resize and move elements**: Easily adjust the size and position of elements within your grid through simple drag and drop.
+- **Query loop support**: Tweak any query loop item inside your grid.
+- **Breakpoint support**: Create different grid layouts for various breakpoints to ensure responsiveness.
+- **Rename elements**: Organize your layout by renaming elements for better identification.
+- **Edit elements**: Hover over any grid item and click the pencil icon to continue editing it in the element panel.
+- **Reset options**: Reset the entire grid or individual elements on the current breakpoint.
+- **History**: Use history buttons to go back and forth between changes.
+- **Fill grid**: Auto-fill any empty grid cells with one click using Block elements.
+- **ID & class level**: Visually design your grid on the element ID or class-level.
+
+![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-21.17.50@2x-1.png)
+
+<figcaption>
+
+Visual Grid Builder modal
+
+</figcaption>
+
+## How it works {#how-it-works}
+
+![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-21.39.14@2x.png)
+
+### Accessing the Visual Grid Builder {#access}
+
+Begin by setting the `display` property of your grid layout element to `grid`. Once activated, the Visual Grid Builder icon appears next to the `grid` value.
+
+![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-21.43.02@2x.png)
+
+> **Note**
+>
+> *NOTE: The visual grid builder (icon) is not available when bulk-editing elements.*
+
+### Styling elements
+
+The Visual Grid Builder allows you to style both individual elements and elements that are part of a query loop. The approach to styling depends on whether you are working at the class or ID level. Here’s an overview of how this works:
+
+**Static elements:**
+
+- **ID level**: When you resize or move a static element, the changes are reflected in the `Grid Item` controls, specifically updating the `Grid Column` and `Grid Row` properties. This approach is straightforward and directly modifies the element's grid positioning.
+- **Class level**: If you have defined the grid at the class level, any resizing or movement of the element will save the changes as custom CSS. These custom styles are applied to the `Custom CSS` control of the main element.
+
+**Query loop element:**
+
+- **ID or class level**: When working with elements that are part of a query loop, changes to size or position are saved as custom CSS in the `Custom CSS` control of the main element, regardless of whether you are styling at the ID or class level.
+
+**Important**: It is crucial not to alter the auto-generated CSS styles, as they are essential for maintaining the layout's integrity. These styles are clearly marked with code comments, making them easy to identify and preserve. After moving or resizing an element, the CSS will automatically update to reflect the new values. If you choose to reset an element, the auto-generated custom CSS will be cleared, reverting the element to its original state.
+
+![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-22.04.21@2x.png)
+
+## Controls {#controls}
+
+**Grid actions:**
+
+1. **Reset (Grid)**: Resets all grid styles for the currently selected breakpoint.
+2. **Breakpoints**: Toggle between different breakpoints without leaving the editor.
+3. **History**: Undo or redo actions.
+
+![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-22.06.50@2x.png)
+
+**Grid controls: **
+
+1. **Columns and rows**: Adjust the number of columns and rows within the grid.
+2. **Gap**: Modify the gap between grid elements using any valid CSS value, including variables.
+3. **Use min/max**: Toggle to set column or row size to `minmax(0, 1fr)` for better flexibility.
+
+![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-22.11.56@2x.png)
+
+When you open the Visual Grid Builder, it will automatically detect and adjust the column and row controls to match your existing grid configuration.
+
+**Grid panel controls: **
+
+1. **Individual Columns and rows**: Precisely control the size of columns and rows.
+2. **Elements**: Edit the elements within the grid.
+
+![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-22.20.35@2x.png)
+
+Sizes aure automatically calculated from your main element settings. For instance, `repeat(3, 2fr)` is converted to `2fr 2fr 2fr`. You can also customize sizes using values like `1fr`, `300px`, or `minmax(0, 1fr)` or any other valid value, to adjust the design to your needs.
+
+**Single element controls: **
+
+1. **Resize**: Click and drag the borders to resize elements.
+2. **Move**: Click and drag within the element to reposition it.
+3. **Rename**: Click on the element label to rename it.
+4. **Reset**: Reset all styling for the element on the current breakpoint.
+5. **Edit**: Close the Visual Grid Builder and select the element in the structure panel for further editing.
+
+![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-22.31.58@2x.png)
+
+You can also view the index of each element, and if an element is part of a query loop, its specific index within the loop will be displayed, starting at 0.

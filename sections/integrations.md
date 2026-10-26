@@ -1,40 +1,40 @@
 # Bricks Builder Documentation: Integrations
 
-<!-- content-sha256: 9b9d784b242d5770a9bdad8956b3471620698fe2362a34ad7e7673103cea759b -->
-<!-- content last changed: 2026-10-24 02:52 UTC -->
+<!-- content-sha256: a91cf460da4a9929d64b0a7fb64a03a01a1d3c4313af59bcf2410193e6e55073 -->
+<!-- content last changed: 2026-10-26 06:07 UTC -->
 
 Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricksbuilder.io/), refreshed daily. Content © Bricks. 28 pages.
 
 ## Table of contents
 
   - [Gutenberg](#integrations-gutenberg)
-  - [How to set up your Google Maps API key](#integrations-how-to-set-up-your-google-maps-api-key)
   - [How to use WPML with Bricks](#integrations-how-to-use-wpml-with-bricks)
+  - [How to set up your Google Maps API key](#integrations-how-to-set-up-your-google-maps-api-key)
 - [Integrations](#integrations)
-  - [How to get your Instagram Access Token](#integrations-instagram-access-token)
   - [Map (Leaflet)](#integrations-map-leaflet)
   - [How to use Polylang with Bricks](#integrations-polylang)
   - [Unsplash Integration](#integrations-unsplash)
+  - [How to get your Instagram Access Token](#integrations-instagram-access-token)
     - [Bricks components as blocks](#integrations-gutenberg-components-as-blocks)
     - [WooCommerce advanced modular elements](#integrations-woocommerce-advanced-modular-elements)
     - [Cart (WooCommerce)](#integrations-woocommerce-cart)
     - [Checkout (WooCommerce)](#integrations-woocommerce-checkout)
     - [Create a custom mini cart with Dynamic fragment](#integrations-woocommerce-create-custom-mini-cart-dynamic-fragment)
-    - [Element: Checkout Coupon](#integrations-woocommerce-element-checkout-coupon)
     - [Creating dynamic WooCommerce archive pages](#integrations-woocommerce-creating-dynamic-woocommerce-archive-pages)
+    - [Element: Checkout Coupon](#integrations-woocommerce-element-checkout-coupon)
     - [Element: Checkout Login](#integrations-woocommerce-element-checkout-login)
-    - [How to Create Product Quick View with Bricks](#integrations-woocommerce-how-to-create-product-quick-view-with-bricks)
   - [WooCommerce](#integrations-woocommerce)
+    - [How to Create Product Quick View with Bricks](#integrations-woocommerce-how-to-create-product-quick-view-with-bricks)
     - [Checkout v2 multistep checkout](#integrations-woocommerce-multistep-checkout-v2)
-    - [Product Variation Swatches (WooCommerce)](#integrations-woocommerce-product-variation-swatches)
     - [Product Archive (WooCommerce)](#integrations-woocommerce-product-archive-woocommerce)
+    - [Product Variation Swatches (WooCommerce)](#integrations-woocommerce-product-variation-swatches)
     - [Woo Setup Wizard](#integrations-woocommerce-woo-setup-wizard)
     - [WooCommerce Account Builder](#integrations-woocommerce-woocommerce-account-builder)
-    - [WooCommerce Notices](#integrations-woocommerce-woocommerce-notices)
+    - [Single Product (WooCommerce)](#integrations-woocommerce-single-product)
     - [WooCommerce Builder](#integrations-woocommerce-woocommerce-builder)
+    - [WooCommerce Notices](#integrations-woocommerce-woocommerce-notices)
     - [WooCommerce Template Hooks](#integrations-woocommerce-woocommerce-template-hooks)
     - [WooCommerce v2 query loops and dynamic tags](#integrations-woocommerce-woocommerce-v2-query-loops-dynamic-tags)
-    - [Single Product (WooCommerce)](#integrations-woocommerce-single-product)
 
 ---
 
@@ -85,65 +85,6 @@ To change the data being used to render a page edit the page in WordPress and ho
 Render with Bricks / Render with WordPress
 
 </figcaption>
-
----
-
-<a id="integrations-how-to-set-up-your-google-maps-api-key"></a>
-
-# How to set up your Google Maps API key
-
-Source: https://academy.bricksbuilder.io/integrations/how-to-set-up-your-google-maps-api-key/
-
-*Set up a Google Maps API key for Bricks and enable the services required for map elements and location features.*
-
-Thanks to the `Map` element, adding a Google Map to Bricks is easy. The biggest hurdle is creating the Google Maps API key. This article will show you how to create an API key and how to prevent unauthorized use by setting API and application restrictions.
-
-> **Note**
->
-> Since [Bricks 1.10.2](https://bricksbuilder.io/release/bricks-1-10-2/), Google Maps can be used without an API key through the Embed API, which is very limited by Google. It only allows for one address, zoom level, and map type. For more options, you have to use an API key.
-
-## Prerequisites
-
-Before you start using the Maps JavaScript API, Google Cloud requires a project with a **billing account**, plus the **Maps JavaScript API** and **Geocoding API** enabled. Check out the [Google documentation](https://developers.google.com/maps/documentation/javascript/cloud-setup) for the current setup requirements.
-
-As soon as you have completed the setup, you will find your API key under **Keys and Credentials » API Keys**.
-
-![](https://academy.bricksbuilder.io/assets/Keys-and-credentials-%E2%80%93-Google-Maps-Platform-%E2%80%93-Bricks-%E2%80%93-Google-Clo.png)
-
-Copy and paste the key into **Bricks » Settings » API keys » Google Maps: API key** and hit save.
-
-![](https://academy.bricksbuilder.io/assets/Settings-%E2%80%B9-bricksRecent-%E2%80%94-WordPress.jpg)
-
-Now, you can use the "Map" element on any page. If your map doesn’t show properly, inspect the developer console for more information.
-
-## API and application restrictions
-
-Google Cloud lets you restrict where and for which APIs the API key can be used to prevent unauthorized use.
-
-![](https://academy.bricksbuilder.io/assets/Edit-API-key-%E2%80%93-APIs-and-services-%E2%80%93-Bricks-%E2%80%93-Google-Cloud-console-1024x617.jpg)
-
-### Application restrictions
-
-Since you're running a website, configure the key's application restriction for websites. Select "Websites" and add your URL by clicking the "Add" button. Here are some examples of URLs that Google Cloud can allow:
-
-- Any URL in a single domain with no subdomains: https://example.com
-- Any URL in a single subdomain: https://sub.example.com
-- Any subdomain in a single domain, using a wildcard asterisk (*): https://*.example.com
-- A domain and all its subdomains, using a wildcard asterisk (*):
-https://example.com
-https://*.example.com
-
-### API Restrictions
-
-**Restrict key** » Select APIs and allow the **Maps JavaScript API** and **Geocoding API**.
-
-Save your API key settings.
-
-## Common problems
-
-If the map is not showing, open the developer console. You will receive further information and how to solve your specific issue there. In most cases, no billing account is assigned, the necessary APIs are not activated, or the restrictions are incorrect.
-
-![](https://academy.bricksbuilder.io/assets/Screenshot-2023-12-05-13.33.02.jpg)
 
 ---
 
@@ -345,6 +286,65 @@ If you found this post insightful and you're considering giving WPML a try, we e
 
 ---
 
+<a id="integrations-how-to-set-up-your-google-maps-api-key"></a>
+
+# How to set up your Google Maps API key
+
+Source: https://academy.bricksbuilder.io/integrations/how-to-set-up-your-google-maps-api-key/
+
+*Set up a Google Maps API key for Bricks and enable the services required for map elements and location features.*
+
+Thanks to the `Map` element, adding a Google Map to Bricks is easy. The biggest hurdle is creating the Google Maps API key. This article will show you how to create an API key and how to prevent unauthorized use by setting API and application restrictions.
+
+> **Note**
+>
+> Since [Bricks 1.10.2](https://bricksbuilder.io/release/bricks-1-10-2/), Google Maps can be used without an API key through the Embed API, which is very limited by Google. It only allows for one address, zoom level, and map type. For more options, you have to use an API key.
+
+## Prerequisites
+
+Before you start using the Maps JavaScript API, Google Cloud requires a project with a **billing account**, plus the **Maps JavaScript API** and **Geocoding API** enabled. Check out the [Google documentation](https://developers.google.com/maps/documentation/javascript/cloud-setup) for the current setup requirements.
+
+As soon as you have completed the setup, you will find your API key under **Keys and Credentials » API Keys**.
+
+![](https://academy.bricksbuilder.io/assets/Keys-and-credentials-%E2%80%93-Google-Maps-Platform-%E2%80%93-Bricks-%E2%80%93-Google-Clo.png)
+
+Copy and paste the key into **Bricks » Settings » API keys » Google Maps: API key** and hit save.
+
+![](https://academy.bricksbuilder.io/assets/Settings-%E2%80%B9-bricksRecent-%E2%80%94-WordPress.jpg)
+
+Now, you can use the "Map" element on any page. If your map doesn’t show properly, inspect the developer console for more information.
+
+## API and application restrictions
+
+Google Cloud lets you restrict where and for which APIs the API key can be used to prevent unauthorized use.
+
+![](https://academy.bricksbuilder.io/assets/Edit-API-key-%E2%80%93-APIs-and-services-%E2%80%93-Bricks-%E2%80%93-Google-Cloud-console-1024x617.jpg)
+
+### Application restrictions
+
+Since you're running a website, configure the key's application restriction for websites. Select "Websites" and add your URL by clicking the "Add" button. Here are some examples of URLs that Google Cloud can allow:
+
+- Any URL in a single domain with no subdomains: https://example.com
+- Any URL in a single subdomain: https://sub.example.com
+- Any subdomain in a single domain, using a wildcard asterisk (*): https://*.example.com
+- A domain and all its subdomains, using a wildcard asterisk (*):
+https://example.com
+https://*.example.com
+
+### API Restrictions
+
+**Restrict key** » Select APIs and allow the **Maps JavaScript API** and **Geocoding API**.
+
+Save your API key settings.
+
+## Common problems
+
+If the map is not showing, open the developer console. You will receive further information and how to solve your specific issue there. In most cases, no billing account is assigned, the necessary APIs are not activated, or the restrictions are incorrect.
+
+![](https://academy.bricksbuilder.io/assets/Screenshot-2023-12-05-13.33.02.jpg)
+
+---
+
 <a id="integrations"></a>
 
 # Integrations
@@ -363,76 +363,6 @@ The Integrations section brings together Bricks guides for third-party platforms
 - [Polylang](https://academy.bricksbuilder.io/integrations/polylang/) for multilingual content and templates with Polylang
 - [Google Maps](https://academy.bricksbuilder.io/integrations/how-to-set-up-your-google-maps-api-key/) for map element setup
 - [Unsplash](https://academy.bricksbuilder.io/integrations/unsplash/) for external image sourcing
-
----
-
-<a id="integrations-instagram-access-token"></a>
-
-# How to get your Instagram Access Token
-
-Source: https://academy.bricksbuilder.io/integrations/instagram-access-token/
-
-*Generate an Instagram access token for Bricks so Instagram-based elements can retrieve and display feed content.*
-
-To use the Instagram Feed element (@since 1.9.1), you need an access token. This token allows secure retrieval of your Instagram account data. This guide explains how to get the token using the Instagram API with Instagram Login.
-
-> **Note**
->
-> Before you can publish your app and generate an access token, you must connect your app to a **Business that has completed Business Verification**. Follow Meta’s [Business Verification guide](https://developers.facebook.com/docs/development/release/business-verification/) for instructions.
-
-## Step 1: Ensure you have an Instagram Creator or Business account
-
-Before proceeding, make sure your Instagram account is either a **Creator** or **Business** account.
-
-1. Log in to your Instagram account.
-2. Convert your account by following these instructions:
-  - [Set up a Creator Account](https://help.instagram.com/2358103564437429?helpref=faq_content).
-  - [Convert to a Business Account](https://help.instagram.com/502981923235522).
-
-## Step 2: Set up an application
-
-You first have to set up an application on the Meta for Developers platform by following these steps:
-
-1. Access your [Meta for Developers platform](https://developers.facebook.com/apps). You can use an existing account or [create a new one](https://developers.facebook.com/docs/development/register/).
-2. Provide an **App Name** and **Contact Email**.
-3. Click **Create App**, then:
-  - Under **Add use cases**, select **Manage messaging & content on Instagram** (from the **Content management category**), then click **Next**.
-  - When prompted, you may connect a Business account now or skip and do it later.
-4. Click **Next** and then **Go to dashboard** to complete the setup.
-
-You will be redirected to the app dashboard for your new app with products you can add to your app.
-
-## Step 3: Add the Instagram product to your app
-
-1. On the app dashboard, scroll down to **Products** and locate **Instagram**.
-2. Click **Set Up** next to Instagram.
-3. Select **API Setup with Instagram Login** (NOT API Setup with Facebook Login).
-
-## Step 4: Generate your Instagram access token
-
-To retrieve an access token:
-
-1. Assign an Instagram account for token generation:
-  - In the App Dashboard, go to **Instagram > API Setup with Instagram Login**.
-  - Click **Add an Instagram Account**.
-  - Log in with your Instagram Creator or Business account credentials.
-
-![](https://academy.bricksbuilder.io/assets/bricks-instagram-generate-access-token-1024x684.png)
-
-1. Confirm the account connection:
-  - Your Instagram account must be public.
-  - If you manage multiple accounts, ensure the correct one is selected.
-2. Copy the generated access token tied to the assigned Instagram account.
-
-## Step 5: Add the access token to Bricks
-
-To finalize the setup, navigate to `Bricks settings > API keys` from your WordPress dashboard and paste the access token into the `Instagram Access Token` input field, and save your changes.
-
-![](https://academy.bricksbuilder.io/assets/bricks-instagram-access-token-20-1024x101.png)
-
-For more information, refer to Meta’s official documentation: [Create a Meta App for Instagram Platform](https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/create-a-meta-app-with-instagram).
-
-**Note:** Once you retrieve and add the access token, Bricks will automatically refresh it every **20 days** using the `bricks_refresh_instagram_access_token` CRON job. No manual updates are required.
 
 ---
 
@@ -720,6 +650,76 @@ To receive access to Unsplash's photo library you need to generate an API key. I
 6. Return to your WordPress dashboard. Go to **Bricks > Settings > API Keys** and paste your Unsplash API key under **Unsplash API Key**. Click Save.
 
 If you click on **Browse Unsplash** below an eligible image or image gallery control in the builder, the latest Unsplash photos should now appear, ready for you to download.
+
+---
+
+<a id="integrations-instagram-access-token"></a>
+
+# How to get your Instagram Access Token
+
+Source: https://academy.bricksbuilder.io/integrations/instagram-access-token/
+
+*Generate an Instagram access token for Bricks so Instagram-based elements can retrieve and display feed content.*
+
+To use the Instagram Feed element (@since 1.9.1), you need an access token. This token allows secure retrieval of your Instagram account data. This guide explains how to get the token using the Instagram API with Instagram Login.
+
+> **Note**
+>
+> Before you can publish your app and generate an access token, you must connect your app to a **Business that has completed Business Verification**. Follow Meta’s [Business Verification guide](https://developers.facebook.com/docs/development/release/business-verification/) for instructions.
+
+## Step 1: Ensure you have an Instagram Creator or Business account
+
+Before proceeding, make sure your Instagram account is either a **Creator** or **Business** account.
+
+1. Log in to your Instagram account.
+2. Convert your account by following these instructions:
+  - [Set up a Creator Account](https://help.instagram.com/2358103564437429?helpref=faq_content).
+  - [Convert to a Business Account](https://help.instagram.com/502981923235522).
+
+## Step 2: Set up an application
+
+You first have to set up an application on the Meta for Developers platform by following these steps:
+
+1. Access your [Meta for Developers platform](https://developers.facebook.com/apps). You can use an existing account or [create a new one](https://developers.facebook.com/docs/development/register/).
+2. Provide an **App Name** and **Contact Email**.
+3. Click **Create App**, then:
+  - Under **Add use cases**, select **Manage messaging & content on Instagram** (from the **Content management category**), then click **Next**.
+  - When prompted, you may connect a Business account now or skip and do it later.
+4. Click **Next** and then **Go to dashboard** to complete the setup.
+
+You will be redirected to the app dashboard for your new app with products you can add to your app.
+
+## Step 3: Add the Instagram product to your app
+
+1. On the app dashboard, scroll down to **Products** and locate **Instagram**.
+2. Click **Set Up** next to Instagram.
+3. Select **API Setup with Instagram Login** (NOT API Setup with Facebook Login).
+
+## Step 4: Generate your Instagram access token
+
+To retrieve an access token:
+
+1. Assign an Instagram account for token generation:
+  - In the App Dashboard, go to **Instagram > API Setup with Instagram Login**.
+  - Click **Add an Instagram Account**.
+  - Log in with your Instagram Creator or Business account credentials.
+
+![](https://academy.bricksbuilder.io/assets/bricks-instagram-generate-access-token-1024x684.png)
+
+1. Confirm the account connection:
+  - Your Instagram account must be public.
+  - If you manage multiple accounts, ensure the correct one is selected.
+2. Copy the generated access token tied to the assigned Instagram account.
+
+## Step 5: Add the access token to Bricks
+
+To finalize the setup, navigate to `Bricks settings > API keys` from your WordPress dashboard and paste the access token into the `Instagram Access Token` input field, and save your changes.
+
+![](https://academy.bricksbuilder.io/assets/bricks-instagram-access-token-20-1024x101.png)
+
+For more information, refer to Meta’s official documentation: [Create a Meta App for Instagram Platform](https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/create-a-meta-app-with-instagram).
+
+**Note:** Once you retrieve and add the access token, Bricks will automatically refresh it every **20 days** using the `bricks_refresh_instagram_access_token` CRON job. No manual updates are required.
 
 ---
 
@@ -1538,45 +1538,6 @@ To test the mini cart:
 
 ---
 
-<a id="integrations-woocommerce-element-checkout-coupon"></a>
-
-# Element: Checkout Coupon
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/
-
-*Use the Bricks Checkout Coupon element inside WooCommerce checkout templates to render and style the coupon form.*
-
-This Checkout coupon element, available @since 1.11.1, allows you to display the coupon field in various locations on the checkout page, making it easy for customers to apply discount codes during their purchase.
-
-In previous versions, you couldn’t control the location of the checkout coupon. Additionally, styling options were limited, and adjustments required custom CSS. With this new, dedicated checkout coupon element you now have greater control over placement and design.
-
-To use this element, first enable it under **`Bricks > Settings > WooCommerce`** by turning on **`Enable Bricks WooCommerce "Checkout coupon" element`**.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-setting.png)
-
-> **Note**
->
-> WooCommerce **`Enable the use of coupon codes`** must also be active under **WooCommerce > Settings > General**. When the Bricks Checkout Coupon element is enabled, the native WooCommerce checkout coupon form is removed, so add this element where you want the coupon form to appear.
-
-> **Note**
->
-> **Note:** This element is specifically designed for the Checkout page and will only work when placed on the **Checkout template** or the Checkout page itself, depending on your design requirements.
-
-**Key Controls**
-
-**Location:**
-
-- By default, the **Checkout Coupon** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment
-- Custom location settings only apply on the actual frontend (Checkout page). To ensure correct placement, add this element at the top of your Checkout template.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-element-controls.png)
-
-![](https://academy.bricksbuilder.io/assets/element-location-example.png)
-
-You can set the form to be toggle-able, hiding it by default and revealing it only when the toggle is clicked, for a cleaner layout.
-
----
-
 <a id="integrations-woocommerce-creating-dynamic-woocommerce-archive-pages"></a>
 
 # Creating dynamic WooCommerce archive pages
@@ -1725,6 +1686,45 @@ Custom WooCommerce Archive Template
 
 ---
 
+<a id="integrations-woocommerce-element-checkout-coupon"></a>
+
+# Element: Checkout Coupon
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/
+
+*Use the Bricks Checkout Coupon element inside WooCommerce checkout templates to render and style the coupon form.*
+
+This Checkout coupon element, available @since 1.11.1, allows you to display the coupon field in various locations on the checkout page, making it easy for customers to apply discount codes during their purchase.
+
+In previous versions, you couldn’t control the location of the checkout coupon. Additionally, styling options were limited, and adjustments required custom CSS. With this new, dedicated checkout coupon element you now have greater control over placement and design.
+
+To use this element, first enable it under **`Bricks > Settings > WooCommerce`** by turning on **`Enable Bricks WooCommerce "Checkout coupon" element`**.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-setting.png)
+
+> **Note**
+>
+> WooCommerce **`Enable the use of coupon codes`** must also be active under **WooCommerce > Settings > General**. When the Bricks Checkout Coupon element is enabled, the native WooCommerce checkout coupon form is removed, so add this element where you want the coupon form to appear.
+
+> **Note**
+>
+> **Note:** This element is specifically designed for the Checkout page and will only work when placed on the **Checkout template** or the Checkout page itself, depending on your design requirements.
+
+**Key Controls**
+
+**Location:**
+
+- By default, the **Checkout Coupon** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment
+- Custom location settings only apply on the actual frontend (Checkout page). To ensure correct placement, add this element at the top of your Checkout template.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-element-controls.png)
+
+![](https://academy.bricksbuilder.io/assets/element-location-example.png)
+
+You can set the form to be toggle-able, hiding it by default and revealing it only when the toggle is clicked, for a cleaner layout.
+
+---
+
 <a id="integrations-woocommerce-element-checkout-login"></a>
 
 # Element: Checkout Login
@@ -1765,6 +1765,35 @@ To use this element, activate it under **`Bricks > Settings > WooCommerce`** by 
 ![](https://academy.bricksbuilder.io/assets/element-location-example.png)
 
 You can set the form to be toggle-able, hiding it by default and revealing it only when the toggle is clicked, for a cleaner layout.
+
+---
+
+<a id="integrations-woocommerce"></a>
+
+# WooCommerce
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/
+
+*Build WooCommerce shop, product, cart, checkout, account, and notice experiences with Bricks templates, elements, and integration guides.*
+
+Bricks includes dedicated WooCommerce elements and template workflows so you can build the full storefront experience visually while still working with WooCommerce data and hooks.
+
+## WooCommerce guides
+
+- [WooCommerce Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/) for the main workflow
+- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) for the Bricks 2.4 Cart, Checkout, and My Account v2 workflow
+- [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) for guided WooCommerce setup checks and presets
+- [Checkout v2 multistep checkout](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/) for the multistep checkout workflow
+- [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/) for the v2 data reference
+- [Product Archive](https://academy.bricksbuilder.io/integrations/woocommerce/product-archive-woocommerce/) for shop and archive layouts
+- [Single Product](https://academy.bricksbuilder.io/integrations/woocommerce/single-product/) for product detail pages
+- [Product Quick View](https://academy.bricksbuilder.io/integrations/woocommerce/how-to-create-product-quick-view-with-bricks/) for quick-view popup workflows
+- [Product Variation Swatches](https://academy.bricksbuilder.io/integrations/woocommerce/product-variation-swatches/) for color, image, and label swatches
+- [Cart](https://academy.bricksbuilder.io/integrations/woocommerce/cart/) for cart layouts
+- [Checkout](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/) for checkout flows
+- [WooCommerce Account Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/) for account templates
+- [WooCommerce Template Hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/) for hook-aware template work
+- [WooCommerce Notices](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-notices/) for notice styling and output
 
 ---
 
@@ -1831,35 +1860,6 @@ By following these steps, you've successfully implemented a Quick View Popup fea
 This enhancement not only improves the user experience by allowing visitors to quickly access product details without navigating away from the current page, but it also provides a seamless integration with WooCommerce.
 
 Remember, fine-tuning the design and interaction settings can further optimize the effectiveness of the Quick View feature, ensuring it meets your specific needs and enhances your overall site performance.
-
----
-
-<a id="integrations-woocommerce"></a>
-
-# WooCommerce
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/
-
-*Build WooCommerce shop, product, cart, checkout, account, and notice experiences with Bricks templates, elements, and integration guides.*
-
-Bricks includes dedicated WooCommerce elements and template workflows so you can build the full storefront experience visually while still working with WooCommerce data and hooks.
-
-## WooCommerce guides
-
-- [WooCommerce Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/) for the main workflow
-- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) for the Bricks 2.4 Cart, Checkout, and My Account v2 workflow
-- [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) for guided WooCommerce setup checks and presets
-- [Checkout v2 multistep checkout](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/) for the multistep checkout workflow
-- [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/) for the v2 data reference
-- [Product Archive](https://academy.bricksbuilder.io/integrations/woocommerce/product-archive-woocommerce/) for shop and archive layouts
-- [Single Product](https://academy.bricksbuilder.io/integrations/woocommerce/single-product/) for product detail pages
-- [Product Quick View](https://academy.bricksbuilder.io/integrations/woocommerce/how-to-create-product-quick-view-with-bricks/) for quick-view popup workflows
-- [Product Variation Swatches](https://academy.bricksbuilder.io/integrations/woocommerce/product-variation-swatches/) for color, image, and label swatches
-- [Cart](https://academy.bricksbuilder.io/integrations/woocommerce/cart/) for cart layouts
-- [Checkout](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/) for checkout flows
-- [WooCommerce Account Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/) for account templates
-- [WooCommerce Template Hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/) for hook-aware template work
-- [WooCommerce Notices](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-notices/) for notice styling and output
 
 ---
 
@@ -1998,6 +1998,90 @@ After generating the multistep layout:
 
 ---
 
+<a id="integrations-woocommerce-product-archive-woocommerce"></a>
+
+# Product Archive (WooCommerce)
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/product-archive-woocommerce/
+
+*Build WooCommerce product archive templates in Bricks for shop, category, tag, and other archive views.*
+
+> **Note**
+>
+> The template type "WooCommerce – Product Archive" is only visible if WooCommerce is installed & active.
+
+Create a template of type "WooCommerce – Product Archive" in Bricks to design your product archive pages (product categories, tags, attributes, etc.).
+
+To create this template, go to the Bricks templates screen and add a new template. Then select the template type **"WooCommerce – Product Archive"** from the top-right dropdown:
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-template-type-product-archive.png)
+
+Click "Publish" or "Save Draft". Then "Edit with Bricks" to open the builder.
+
+It is also possible to create/edit this and other templates in the Bricks editor interface by clicking on the Folders icon or pressing CMD / CTRL + SHIFT + L.
+
+> **Note**
+>
+> Please remember to add [template hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/#product-archive-template-hooks) if you are using third-party plugins.
+
+## Product Archive Elements {#elements}
+
+![](https://academy.bricksbuilder.io/assets/woocommerc-product-archive-elements-580x1024.png)
+
+### Archive title
+
+There is no specific element to add a heading to the product archive.
+
+To add a heading to this template you could use the Post Title element or add a Heading element with the `{archive_title}` tag.
+
+### Breadcrumbs
+
+Use the breadcrumbs element to output the navigation links from "Home", and higher level categories until the content displayed in the page.
+
+This element uses the WooCommerce breadcrumbs default engine to generate each part of the breadcrumbs path.
+
+### Products archive description
+
+The products archive description will render the product category (or any other product taxonomy term) description.
+
+If used in a template that renders the **Shop** page, it will output the page content (from the Gutenberg/blocks editor).
+
+### Products
+
+This is the main element to list products in a grid. You have controls to customize the style and layout, tweak the query, and select which content (fields) you want to show for each product.
+
+This element interconnects with the **Products Filter**, **Products Pagination**, **Products Orderby** and the **Products Total Results** elements.
+
+This means that the query results will be conditioned by the filters and the orderby conditions and it will also impact the pagination and the total results elements output.
+
+The query used inside the products element to generate the grid of products will merge the query arguments from the element with the default WooCommerce query in the case the page rendered is the product archive or the product taxonomy archive (product category or product tag). This means that if you are seeing a certain product category archive page you only get a list of products from that category.
+
+### Products filter
+
+The products filter element allows you to add query filters to the page so the visitor could search/narrow down the list of products presented.
+
+This element contains three filter types:
+
+- **Taxonomy**: filter the list by one or multiple taxonomy terms.
+- **Product attributes**: filter the list by product attributes like size, color or any other custom attribute used.
+- **Others**: Special set of filters like a product **price dual-range slider**, a** stars rating** filter, a status **stock** filter or a simple **search** input. In this set, you will also find a **Reset filters** option which you would set to add a reset product filters button.
+
+When using the taxonomy or product attributes filters, you may select different filter inputs, like a dropdown, a set of checkboxes, a radio list, a text list, or a box list.
+
+### Products pagination
+
+List of page links that allow the visitor to navigate through the different products' list pages.
+
+### Products orderby
+
+Adds a dropdown to the layout where the visitor could change the order of the products in the presented list. The default sort options are by popularity, by average rating, by latest, and by price (low to high and high to low). This list uses the WooCommerce default list and it can be extended using the WooCommerce hooks or third-party plugins.
+
+### Products total results
+
+Use this element to output the number of results returned by the current products query.
+
+---
+
 <a id="integrations-woocommerce-product-variation-swatches"></a>
 
 # Product Variation Swatches (WooCommerce)
@@ -2113,90 +2197,6 @@ You can style unavailable swatches with custom CSS:
 There is no separate Bricks setting that forces every out-of-stock option to be hidden or disabled. If a swatch does not receive the disabled state, check the product's stock settings and the exact variation combination in WooCommerce first.
 
 That's it. With variation swatches, you can now turn standard variation dropdowns into polished, interactive product selectors, designed your way, directly in the Bricks builder.
-
----
-
-<a id="integrations-woocommerce-product-archive-woocommerce"></a>
-
-# Product Archive (WooCommerce)
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/product-archive-woocommerce/
-
-*Build WooCommerce product archive templates in Bricks for shop, category, tag, and other archive views.*
-
-> **Note**
->
-> The template type "WooCommerce – Product Archive" is only visible if WooCommerce is installed & active.
-
-Create a template of type "WooCommerce – Product Archive" in Bricks to design your product archive pages (product categories, tags, attributes, etc.).
-
-To create this template, go to the Bricks templates screen and add a new template. Then select the template type **"WooCommerce – Product Archive"** from the top-right dropdown:
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-template-type-product-archive.png)
-
-Click "Publish" or "Save Draft". Then "Edit with Bricks" to open the builder.
-
-It is also possible to create/edit this and other templates in the Bricks editor interface by clicking on the Folders icon or pressing CMD / CTRL + SHIFT + L.
-
-> **Note**
->
-> Please remember to add [template hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/#product-archive-template-hooks) if you are using third-party plugins.
-
-## Product Archive Elements {#elements}
-
-![](https://academy.bricksbuilder.io/assets/woocommerc-product-archive-elements-580x1024.png)
-
-### Archive title
-
-There is no specific element to add a heading to the product archive.
-
-To add a heading to this template you could use the Post Title element or add a Heading element with the `{archive_title}` tag.
-
-### Breadcrumbs
-
-Use the breadcrumbs element to output the navigation links from "Home", and higher level categories until the content displayed in the page.
-
-This element uses the WooCommerce breadcrumbs default engine to generate each part of the breadcrumbs path.
-
-### Products archive description
-
-The products archive description will render the product category (or any other product taxonomy term) description.
-
-If used in a template that renders the **Shop** page, it will output the page content (from the Gutenberg/blocks editor).
-
-### Products
-
-This is the main element to list products in a grid. You have controls to customize the style and layout, tweak the query, and select which content (fields) you want to show for each product.
-
-This element interconnects with the **Products Filter**, **Products Pagination**, **Products Orderby** and the **Products Total Results** elements.
-
-This means that the query results will be conditioned by the filters and the orderby conditions and it will also impact the pagination and the total results elements output.
-
-The query used inside the products element to generate the grid of products will merge the query arguments from the element with the default WooCommerce query in the case the page rendered is the product archive or the product taxonomy archive (product category or product tag). This means that if you are seeing a certain product category archive page you only get a list of products from that category.
-
-### Products filter
-
-The products filter element allows you to add query filters to the page so the visitor could search/narrow down the list of products presented.
-
-This element contains three filter types:
-
-- **Taxonomy**: filter the list by one or multiple taxonomy terms.
-- **Product attributes**: filter the list by product attributes like size, color or any other custom attribute used.
-- **Others**: Special set of filters like a product **price dual-range slider**, a** stars rating** filter, a status **stock** filter or a simple **search** input. In this set, you will also find a **Reset filters** option which you would set to add a reset product filters button.
-
-When using the taxonomy or product attributes filters, you may select different filter inputs, like a dropdown, a set of checkboxes, a radio list, a text list, or a box list.
-
-### Products pagination
-
-List of page links that allow the visitor to navigate through the different products' list pages.
-
-### Products orderby
-
-Adds a dropdown to the layout where the visitor could change the order of the products in the presented list. The default sort options are by popularity, by average rating, by latest, and by price (low to high and high to low). This list uses the WooCommerce default list and it can be extended using the WooCommerce hooks or third-party plugins.
-
-### Products total results
-
-Use this element to output the number of results returned by the current products query.
 
 ---
 
@@ -2473,75 +2473,103 @@ The process of creating those account endpoint templates is the same for all oth
 
 ---
 
-<a id="integrations-woocommerce-woocommerce-notices"></a>
+<a id="integrations-woocommerce-single-product"></a>
 
-# WooCommerce Notices
+# Single Product (WooCommerce)
 
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-notices/
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/single-product/
 
-*Style WooCommerce notices in Bricks and control how success, error, and info messages appear across storefront flows.*
-
-New theme style settings under "WooCommerce - Notice" and a new "WooCommerce Notice" element were introduced in Bricks `1.8.1`. Allowing you to elevate the appearance of WooCommerce (WC) notices across your website.
-
-With this new theme style, you can effortlessly customize the design of WC notices, ensuring they blend seamlessly with your website's overall look and feel.
-
-This article explains how to enable the Bricks WooCommerce Notice element, where to place it, and how it replaces native WooCommerce notice output.
-
-## Theme Style: WooCommerce - Notice {#woocommerce-notice-theme-style}
-
-You can find the "WooCommerce - Notice" settings in the builder under Settings > [Theme Styles](https://academy.bricksbuilder.io/builder/styling/theme-styles/).
-
-There are three different types of notice: Error, Success, and default Notice.
-
-![](https://academy.bricksbuilder.io/assets/wc-notice-theme-style.png)
-
-With the WC notice theme style, you can effortlessly align your notice styles with your brand guidelines, and achieve a uniform and professional appearance for your notices.
-
-## Element: WooCommerce Notice {#woocommerce-notice-element}
-
-One of the primary objectives of this new feature is to offer you greater control over the placement of WC notices within their website's design.
-
-Native WC notices often pose challenges, as they may appear outside of the desired design or wrapper, impacting the aesthetics and user experience.
-
-To start using the Bricks WooCommerce notice element you first have to enable it under `Bricks > Settings > WooCommerce > Enable Bricks WooCommerce "Notice" element`.
-
-![](https://academy.bricksbuilder.io/assets/bricks-wc-notice-element.png)
+*Build WooCommerce single product templates in Bricks and customize the main product layout, data, and related elements.*
 
 > **Note**
 >
-> Once enabled all native WC notices are automatically removed from your website. So you can & have to manually place the notice element in your desired template & location.
+> The template type "WooCommerce - Single Product" is only visible if WooCommerce is installed & active.
 
-![](https://academy.bricksbuilder.io/assets/bricks-wc-notice-preview.png)
+Create a template of type "WooCommerce - Single product" in Bricks to design an individual layout for the single products page.
+
+To create this template, go to the Bricks templates screen and add a new template. Then select the template type **"WooCommerce - Single Product"** from the top-right dropdown:
+
+![](https://academy.bricksbuilder.io/assets/WooCommerce-Template-Type-Single-Product.png)
+
+Click "Publish" or "Save Draft". Then "Edit with Bricks" to open the builder.
+
+It is also possible to create/edit this and other templates in the Bricks editor interface by clicking on the Folders icon or pressing CMD / CTRL + SHIFT + L.
+
+> **Note**
+>
+> Please remember to add [template hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/#single-product-template-hooks) if you are using third-party plugins.
+
+## Single Product Elements {#elements}
+
+When editing a "Single Product" template you'll find the "Products" elements at the very top of the elements panel:
+
+![](https://academy.bricksbuilder.io/assets/woocommerc-single-product-elements-379x1024.png)
+
+### Product title
+
+The product title renders the title of the product.
+
+### Product gallery
+
+The product gallery element displays the product images defined in the product image and in the product gallery meta boxes.
+
+*To disable the image zoom or lightbox, go to "Bricks > Settings > WooCommerce > Single Product".*
+
+### Product short description
+
+Renders the content of the Product short description editor.
+
+### Product price
+
+Renders the product price. If the product is on sale, you could hide the regular price.
+
+### Product stock
+
+Displays the number of products in stock. You can replace the number of products in stock with a custom message for "in", "low", or "out of stock".
+
+### Product meta
+
+Use the product meta element to display product data like the SKU, the product categories or tags, or any other WooCommerce metadata. Use [Dynamic Data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/) to pull the values.
+
+### Product rating
+
+Shows the product's rating on a scale of 1 to 5 stars.
+
+### Product content
+
+Renders the product's main content as written in the WordPress editor.
+
+### Add to cart
+
+This element adds an "Add to cart" button to trigger the addition of this element to the cart. With this element, you may style the product variations inputs, the product stock, the quantity input, and the look & feel of the button itself.
+
+### Related products
+
+Shows a list of products that have the same product categories and tags of the main product displayed in the page.
+
+### Product reviews
+
+Renders the product reviews and review form as a standalone element. Do not use the Product reviews element together with the Product tabs element on the same page, as Product tabs can also output reviews.
+
+### Product additional information
+
+Renders the list of product attributes. This information will also be part of the product tabs element.
+
+### Product tabs
+
+Renders a section with the default tabs: Description, Additional Information, and Reviews. Other tabs might be added by third-party plugins.
+
+### Product up/cross-sells
+
+The product up/cross-sells element renders linked product recommendations. You can set it to show **Up-sells**, **Cross-sells**, or **Cart Cross-sells** (by default, it lists up-sell products).
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-product-upsells.png)
 
 <figcaption>
 
-WC notice element. Not only theme style but can also style individual elements as well.
+WooCommerce product editor screen - Linked Products
 
 </figcaption>
-
-**The following Bricks templates should be equipped with the Notice element:**
-
-- WooCommerce Product Archive
-- WooCommerce Single Product
-- WooCommerce Cart
-- WooCommerce Empty Cart
-- WooCommerce Checkout
-- WooCommerce Pay
-- WooCommerce My account login
-- WooCommerce My account lost password
-- WooCommerce My account reset password
-
-In addition to the Bricks templates mentioned above, several pages within your WooCommerce website require the Notice element **if they are edited and rendered using Bricks**. These pages include:
-
-- My Account page (if the WC notice is not placed in the My account login template)
-- Checkout page (if the WC notice is not placed in the Checkout template)
-- Pay / order-pay page (if the WC notice element is not placed in the Pay template)
-- Cart page (if the WC notice element is not placed in the Cart template)
-- Shop page (if the WC notice element is not placed in the Product Archive template)
-
-**Only one Notice element is needed per page.**
-
-If you happen to add multiple WC notice elements, only the first one will output the actual notices, following the native WooCommerce behavior. WooCommerce clears notices after the 1st output. Check WooCommerce `wc_print_notices()` for more information.
 
 ---
 
@@ -2801,6 +2829,78 @@ You can use these checkboxes under WooCommerce section to easily retrieve WooCom
 Check [this article](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/#woocommerce) for more examples.
 
 Bricks 2.4 adds v2 WooCommerce query loops for cart coupons, fees, taxes, orders, order items, downloads, customer notes, account orders, account order actions, account downloads, and account addresses. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#query-loops) for the complete list.
+
+---
+
+<a id="integrations-woocommerce-woocommerce-notices"></a>
+
+# WooCommerce Notices
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-notices/
+
+*Style WooCommerce notices in Bricks and control how success, error, and info messages appear across storefront flows.*
+
+New theme style settings under "WooCommerce - Notice" and a new "WooCommerce Notice" element were introduced in Bricks `1.8.1`. Allowing you to elevate the appearance of WooCommerce (WC) notices across your website.
+
+With this new theme style, you can effortlessly customize the design of WC notices, ensuring they blend seamlessly with your website's overall look and feel.
+
+This article explains how to enable the Bricks WooCommerce Notice element, where to place it, and how it replaces native WooCommerce notice output.
+
+## Theme Style: WooCommerce - Notice {#woocommerce-notice-theme-style}
+
+You can find the "WooCommerce - Notice" settings in the builder under Settings > [Theme Styles](https://academy.bricksbuilder.io/builder/styling/theme-styles/).
+
+There are three different types of notice: Error, Success, and default Notice.
+
+![](https://academy.bricksbuilder.io/assets/wc-notice-theme-style.png)
+
+With the WC notice theme style, you can effortlessly align your notice styles with your brand guidelines, and achieve a uniform and professional appearance for your notices.
+
+## Element: WooCommerce Notice {#woocommerce-notice-element}
+
+One of the primary objectives of this new feature is to offer you greater control over the placement of WC notices within their website's design.
+
+Native WC notices often pose challenges, as they may appear outside of the desired design or wrapper, impacting the aesthetics and user experience.
+
+To start using the Bricks WooCommerce notice element you first have to enable it under `Bricks > Settings > WooCommerce > Enable Bricks WooCommerce "Notice" element`.
+
+![](https://academy.bricksbuilder.io/assets/bricks-wc-notice-element.png)
+
+> **Note**
+>
+> Once enabled all native WC notices are automatically removed from your website. So you can & have to manually place the notice element in your desired template & location.
+
+![](https://academy.bricksbuilder.io/assets/bricks-wc-notice-preview.png)
+
+<figcaption>
+
+WC notice element. Not only theme style but can also style individual elements as well.
+
+</figcaption>
+
+**The following Bricks templates should be equipped with the Notice element:**
+
+- WooCommerce Product Archive
+- WooCommerce Single Product
+- WooCommerce Cart
+- WooCommerce Empty Cart
+- WooCommerce Checkout
+- WooCommerce Pay
+- WooCommerce My account login
+- WooCommerce My account lost password
+- WooCommerce My account reset password
+
+In addition to the Bricks templates mentioned above, several pages within your WooCommerce website require the Notice element **if they are edited and rendered using Bricks**. These pages include:
+
+- My Account page (if the WC notice is not placed in the My account login template)
+- Checkout page (if the WC notice is not placed in the Checkout template)
+- Pay / order-pay page (if the WC notice element is not placed in the Pay template)
+- Cart page (if the WC notice element is not placed in the Cart template)
+- Shop page (if the WC notice element is not placed in the Product Archive template)
+
+**Only one Notice element is needed per page.**
+
+If you happen to add multiple WC notice elements, only the first one will output the actual notices, following the native WooCommerce behavior. WooCommerce clears notices after the 1st output. Check WooCommerce `wc_print_notices()` for more information.
 
 ---
 
@@ -3278,103 +3378,3 @@ Bricks' custom coupon handlers emit these WooCommerce events when the response c
 | `errored_coupon_in_checkout` | Checkout Coupon | Coupon code, raw returned notice HTML |
 
 The existing `applied_coupon` and `applied_coupon_in_checkout` events also fire for error responses. They do not confirm that a coupon was accepted.
-
----
-
-<a id="integrations-woocommerce-single-product"></a>
-
-# Single Product (WooCommerce)
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/single-product/
-
-*Build WooCommerce single product templates in Bricks and customize the main product layout, data, and related elements.*
-
-> **Note**
->
-> The template type "WooCommerce - Single Product" is only visible if WooCommerce is installed & active.
-
-Create a template of type "WooCommerce - Single product" in Bricks to design an individual layout for the single products page.
-
-To create this template, go to the Bricks templates screen and add a new template. Then select the template type **"WooCommerce - Single Product"** from the top-right dropdown:
-
-![](https://academy.bricksbuilder.io/assets/WooCommerce-Template-Type-Single-Product.png)
-
-Click "Publish" or "Save Draft". Then "Edit with Bricks" to open the builder.
-
-It is also possible to create/edit this and other templates in the Bricks editor interface by clicking on the Folders icon or pressing CMD / CTRL + SHIFT + L.
-
-> **Note**
->
-> Please remember to add [template hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/#single-product-template-hooks) if you are using third-party plugins.
-
-## Single Product Elements {#elements}
-
-When editing a "Single Product" template you'll find the "Products" elements at the very top of the elements panel:
-
-![](https://academy.bricksbuilder.io/assets/woocommerc-single-product-elements-379x1024.png)
-
-### Product title
-
-The product title renders the title of the product.
-
-### Product gallery
-
-The product gallery element displays the product images defined in the product image and in the product gallery meta boxes.
-
-*To disable the image zoom or lightbox, go to "Bricks > Settings > WooCommerce > Single Product".*
-
-### Product short description
-
-Renders the content of the Product short description editor.
-
-### Product price
-
-Renders the product price. If the product is on sale, you could hide the regular price.
-
-### Product stock
-
-Displays the number of products in stock. You can replace the number of products in stock with a custom message for "in", "low", or "out of stock".
-
-### Product meta
-
-Use the product meta element to display product data like the SKU, the product categories or tags, or any other WooCommerce metadata. Use [Dynamic Data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/) to pull the values.
-
-### Product rating
-
-Shows the product's rating on a scale of 1 to 5 stars.
-
-### Product content
-
-Renders the product's main content as written in the WordPress editor.
-
-### Add to cart
-
-This element adds an "Add to cart" button to trigger the addition of this element to the cart. With this element, you may style the product variations inputs, the product stock, the quantity input, and the look & feel of the button itself.
-
-### Related products
-
-Shows a list of products that have the same product categories and tags of the main product displayed in the page.
-
-### Product reviews
-
-Renders the product reviews and review form as a standalone element. Do not use the Product reviews element together with the Product tabs element on the same page, as Product tabs can also output reviews.
-
-### Product additional information
-
-Renders the list of product attributes. This information will also be part of the product tabs element.
-
-### Product tabs
-
-Renders a section with the default tabs: Description, Additional Information, and Reviews. Other tabs might be added by third-party plugins.
-
-### Product up/cross-sells
-
-The product up/cross-sells element renders linked product recommendations. You can set it to show **Up-sells**, **Cross-sells**, or **Cart Cross-sells** (by default, it lists up-sell products).
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-product-upsells.png)
-
-<figcaption>
-
-WooCommerce product editor screen - Linked Products
-
-</figcaption>
