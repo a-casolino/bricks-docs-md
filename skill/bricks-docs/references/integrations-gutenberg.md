@@ -127,6 +127,8 @@ All property types are supported:
 
 Each block instance can have unique property values, while the component design remains consistent.
 
+[Component slots](https://academy.bricksbuilder.io/builder/features/components/#slots) are not supported in component blocks. The block editor offers no way to add elements to a slot, so a slot stays empty in the editor and on the frontend.
+
 ## Centralized design updates
 
 All block instances remain linked to the main component in Bricks. Any design change you make in Bricks (such as adjusting layout, typography, or spacing) applies site-wide to every instance, including those inside the block editor.

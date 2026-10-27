@@ -312,6 +312,29 @@ add_filter( 'bricks/get_terms_options/excluded_taxonomies', function( $excluded_
 
 ---
 
+# Filter: bricks/handle_no_results_children_elements
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-handle_no_results_children_elements/
+
+*Determines whether Bricks should run logic to handle children elements displayed when a query loop returns no results (e.g., ensuring scripts/styles are.*
+
+Determines whether Bricks should run logic to handle children elements displayed when a query loop returns no results (e.g., ensuring scripts/styles are enqueued for "No results" content).
+
+## Parameters
+
+- `$run` (*bool*): Whether to handle "No results" children logic. Defaults to `true` if Query Filters are enabled.
+
+## Example usage
+
+```php
+add_filter( 'bricks/handle_no_results_children_elements', function( $run ) {
+    // Example: Always enable this logic, even if native Query Filters are disabled
+    return true;
+} );
+```
+
+---
+
 # Filter: bricks/get_the_title
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_the_title/
@@ -337,89 +360,6 @@ add_filter( 'bricks/get_the_title', function( $title, $post_id ) {
     return $title;
 }, 10, 2 );
 ```
-
----
-
-# Filter: bricks/handle_no_results_children_elements
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-handle_no_results_children_elements/
-
-*Determines whether Bricks should run logic to handle children elements displayed when a query loop returns no results (e.g., ensuring scripts/styles are.*
-
-Determines whether Bricks should run logic to handle children elements displayed when a query loop returns no results (e.g., ensuring scripts/styles are enqueued for "No results" content).
-
-## Parameters
-
-- `$run` (*bool*): Whether to handle "No results" children logic. Defaults to `true` if Query Filters are enabled.
-
-## Example usage
-
-```php
-add_filter( 'bricks/handle_no_results_children_elements', function( $run ) {
-    // Example: Always enable this logic, even if native Query Filters are disabled
-    return true;
-} );
-```
-
----
-
-# Filter: bricks/media_browser/health/file_status
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-media-browser-health-file-status/
-
-*Report the file status of offloaded attachments to Bricks Media Health without treating a missing local copy as a broken file.*
-
-Bricks 2.4 uses `bricks/media_browser/health/file_status` to let media integrations override the original attachment's file status in Media Health.
-
-By default, Bricks checks the attached file on the local filesystem. An offload integration can return a status based on its own storage records when the local copy has been removed.
-
-## Parameters
-
-| Parameter | Type | Description |
-| --- | --- | --- |
-| `$state` | string | Status detected by Bricks before this filter runs. |
-| `$attachment_id` | int | WordPress attachment ID. |
-| `$file` | string or false | Attached file path returned by `get_attached_file()`. |
-| `$url` | string or false | Attachment URL returned by `wp_get_attachment_url()`. |
-
-Register the callback with four accepted arguments. Return one of these strings:
-
-| Return value | Meaning | Broken-file check |
-| --- | --- | --- |
-| `exists` | The original file is available. | Does not flag the original as broken. |
-| `missing` | The original file is absent. | Flags it as broken. |
-| `unreadable` | The original file cannot be read. | Flags it as broken. |
-| `empty` | The original file has no content. | Flags it as broken. |
-| `unknown` | The integration cannot determine availability. | Does not flag the original as broken. |
-
-The broken-file check must be enabled for those issues to be reported. Bricks sanitizes the returned value and treats unsupported values as `unknown`. An `unknown` result is not confirmation that the file is healthy.
-
-## Example: use a provider's stored status
-
-Add the filter in your integration plugin. This example assumes your own offload process records a verified status in an attachment meta field named `_my_offload_file_state`. Replace that field and lookup with your provider's actual status source. Bricks does not create or refresh this metadata.
-
-```php
-add_filter( 'bricks/media_browser/health/file_status', function( $state, $attachment_id, $file, $url ) {
-    $provider_state = get_post_meta( $attachment_id, '_my_offload_file_state', true );
-
-    // Leave attachments outside this integration unchanged.
-    if ( $provider_state === '' ) {
-        return $state;
-    }
-
-    $allowed = [ 'exists', 'missing', 'unreadable', 'empty', 'unknown' ];
-
-    return in_array( $provider_state, $allowed, true ) ? $provider_state : 'unknown';
-}, 10, 4 );
-```
-
-Only return `exists` when the provider has confirmed that the remote original is available. An attachment URL alone does not prove the file exists. Keep stored results current when files are uploaded, removed, or moved; avoid a separate remote request for every attachment during a scan.
-
-## Scope and repair limits
-
-The filter changes classification of the original file. It does not download offloaded media, supply a remote file size, or make local repair actions work on remote files.
-
-Image-size checks can still inspect local derivative files. Operations such as image regeneration and optimization require a readable local source within the uploads directory. Restore a local copy through your offload integration before attempting repairs that require it.
 
 ---
 
@@ -499,6 +439,66 @@ add_filter( 'bricks/helpers/get_posts_args', function( $query_args ) {
     return $query_args;
 } );
 ```
+
+---
+
+# Filter: bricks/media_browser/health/file_status
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-media-browser-health-file-status/
+
+*Report the file status of offloaded attachments to Bricks Media Health without treating a missing local copy as a broken file.*
+
+Bricks 2.4 uses `bricks/media_browser/health/file_status` to let media integrations override the original attachment's file status in Media Health.
+
+By default, Bricks checks the attached file on the local filesystem. An offload integration can return a status based on its own storage records when the local copy has been removed.
+
+## Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `$state` | string | Status detected by Bricks before this filter runs. |
+| `$attachment_id` | int | WordPress attachment ID. |
+| `$file` | string or false | Attached file path returned by `get_attached_file()`. |
+| `$url` | string or false | Attachment URL returned by `wp_get_attachment_url()`. |
+
+Register the callback with four accepted arguments. Return one of these strings:
+
+| Return value | Meaning | Broken-file check |
+| --- | --- | --- |
+| `exists` | The original file is available. | Does not flag the original as broken. |
+| `missing` | The original file is absent. | Flags it as broken. |
+| `unreadable` | The original file cannot be read. | Flags it as broken. |
+| `empty` | The original file has no content. | Flags it as broken. |
+| `unknown` | The integration cannot determine availability. | Does not flag the original as broken. |
+
+The broken-file check must be enabled for those issues to be reported. Bricks sanitizes the returned value and treats unsupported values as `unknown`. An `unknown` result is not confirmation that the file is healthy.
+
+## Example: use a provider's stored status
+
+Add the filter in your integration plugin. This example assumes your own offload process records a verified status in an attachment meta field named `_my_offload_file_state`. Replace that field and lookup with your provider's actual status source. Bricks does not create or refresh this metadata.
+
+```php
+add_filter( 'bricks/media_browser/health/file_status', function( $state, $attachment_id, $file, $url ) {
+    $provider_state = get_post_meta( $attachment_id, '_my_offload_file_state', true );
+
+    // Leave attachments outside this integration unchanged.
+    if ( $provider_state === '' ) {
+        return $state;
+    }
+
+    $allowed = [ 'exists', 'missing', 'unreadable', 'empty', 'unknown' ];
+
+    return in_array( $provider_state, $allowed, true ) ? $provider_state : 'unknown';
+}, 10, 4 );
+```
+
+Only return `exists` when the provider has confirmed that the remote original is available. An attachment URL alone does not prove the file exists. Keep stored results current when files are uploaded, removed, or moved; avoid a separate remote request for every attachment during a scan.
+
+## Scope and repair limits
+
+The filter changes classification of the original file. It does not download offloaded media, supply a remote file size, or make local repair actions work on remote files.
+
+Image-size checks can still inspect local derivative files. Operations such as image regeneration and optimization require a readable local source within the uploads directory. Restore a local copy through your offload integration before attempting repairs that require it.
 
 ---
 
@@ -771,31 +771,6 @@ add_filter( 'bricks/pagination/total_pages', function( $total_page, $query_setti
 
 ---
 
-# Filter: bricks/polylang/builder_ajax_params
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-polylang-builder_ajax_params/
-
-*Filters the Polylang AJAX parameters injected into builder media requests.*
-
-Filters the Polylang AJAX parameters injected into builder media requests. Use it to add or adjust language-aware parameters for the media library in the builder.
-
-## Parameters
-
-- `$params` (array): Parameters added to media AJAX requests.
-- `$post_id` (int): The current builder post ID.
-
-## Example usage
-
-```php
-add_filter( 'bricks/polylang/builder_ajax_params', function( $params, $post_id ) {
-    $params['lang'] = pll_current_language();
-
-    return $params;
-}, 10, 2 );
-```
-
----
-
 # Filter: bricks/polylang/exclude_controls_from_translation
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-polylang-exclude_controls_from_translation/
@@ -819,6 +794,60 @@ add_filter( 'bricks/polylang/exclude_controls_from_translation', function( $excl
 
     return $excluded_keys;
 }, 10, 4 );
+```
+
+---
+
+# Filter: bricks/popup/attributes
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-popup-attributes/
+
+*Filters the HTML attributes of the popup container. This allows you to add custom classes, data attributes, or other attributes to the popup element.*
+
+Filters the HTML attributes of the popup container. This allows you to add custom classes, data attributes, or other attributes to the popup element.
+
+## Parameters
+
+- `$attributes` (*array*): Array of HTML attributes (e.g., `class`, `data-popup-id`).
+- `$popup_id` (*int*): The ID of the popup template.
+
+## Example usage
+
+```php
+add_filter( 'bricks/popup/attributes', function( $attributes, $popup_id ) {
+    // Example: Add a custom class to a specific popup
+    if ( $popup_id === 1234 ) {
+        $attributes['class'][] = 'my-custom-popup-class';
+        $attributes['data-custom-attr'] = 'value';
+    }
+
+    return $attributes;
+}, 10, 2 );
+```
+
+---
+
+# Filter: bricks/polylang/builder_ajax_params
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-polylang-builder_ajax_params/
+
+*Filters the Polylang AJAX parameters injected into builder media requests.*
+
+Filters the Polylang AJAX parameters injected into builder media requests. Use it to add or adjust language-aware parameters for the media library in the builder.
+
+## Parameters
+
+- `$params` (array): Parameters added to media AJAX requests.
+- `$post_id` (int): The current builder post ID.
+
+## Example usage
+
+```php
+add_filter( 'bricks/polylang/builder_ajax_params', function( $params, $post_id ) {
+    $params['lang'] = pll_current_language();
+
+    return $params;
+}, 10, 2 );
 ```
 
 ---
@@ -869,35 +898,6 @@ add_filter( 'bricks/query/archive_query_supported_object_types', function( $obje
 
     return $object_types;
 } );
-```
-
----
-
-# Filter: bricks/popup/attributes
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-popup-attributes/
-
-*Filters the HTML attributes of the popup container. This allows you to add custom classes, data attributes, or other attributes to the popup element.*
-
-Filters the HTML attributes of the popup container. This allows you to add custom classes, data attributes, or other attributes to the popup element.
-
-## Parameters
-
-- `$attributes` (*array*): Array of HTML attributes (e.g., `class`, `data-popup-id`).
-- `$popup_id` (*int*): The ID of the popup template.
-
-## Example usage
-
-```php
-add_filter( 'bricks/popup/attributes', function( $attributes, $popup_id ) {
-    // Example: Add a custom class to a specific popup
-    if ( $popup_id === 1234 ) {
-        $attributes['class'][] = 'my-custom-popup-class';
-        $attributes['data-custom-attr'] = 'value';
-    }
-
-    return $attributes;
-}, 10, 2 );
 ```
 
 ---
@@ -1256,6 +1256,36 @@ add_filter( 'bricks/query_api/request_args', function( $args, $element_id, $quer
 
 ---
 
+# Filter: bricks/query_api/total_pages
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-total_pages/
+
+*Filters the total number of pages calculated for an external API query loop. This is useful when the API response structure for pagination doesn't match Bricks'.*
+
+Filters the total number of pages calculated for an external API query loop. This is useful when the API response structure for pagination doesn't match Bricks' standard extraction logic.
+
+## Parameters
+
+- `$total_pages` (*int*): The calculated total number of pages.
+- `$element_id` (*string*): The ID of the query element.
+- `$query_api` (*object*): The `Bricks\Integrations\Query\Query_API` instance.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_api/total_pages', function( $total_pages, $element_id, $query_api ) {
+    // Example: Set total pages for a specific API query
+    if ( $element_id === 'my_api_loop' ) {
+        // Assume you stored the total in a custom property or need a fixed value
+        return 10;
+    }
+
+    return $total_pages;
+}, 10, 3 );
+```
+
+---
+
 # Filter: bricks/query_filters/custom_field_index_rows
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-custom_field_index_rows/
@@ -1289,36 +1319,6 @@ add_filter( 'bricks/query_filters/custom_field_index_rows', function( $rows, $ob
 
     return $rows;
 }, 10, 5 );
-```
-
----
-
-# Filter: bricks/query_api/total_pages
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-total_pages/
-
-*Filters the total number of pages calculated for an external API query loop. This is useful when the API response structure for pagination doesn't match Bricks'.*
-
-Filters the total number of pages calculated for an external API query loop. This is useful when the API response structure for pagination doesn't match Bricks' standard extraction logic.
-
-## Parameters
-
-- `$total_pages` (*int*): The calculated total number of pages.
-- `$element_id` (*string*): The ID of the query element.
-- `$query_api` (*object*): The `Bricks\Integrations\Query\Query_API` instance.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_api/total_pages', function( $total_pages, $element_id, $query_api ) {
-    // Example: Set total pages for a specific API query
-    if ( $element_id === 'my_api_loop' ) {
-        // Assume you stored the total in a custom property or need a fixed value
-        return 10;
-    }
-
-    return $total_pages;
-}, 10, 3 );
 ```
 
 ---
@@ -2514,6 +2514,30 @@ add_filter( 'bricks/woocommerce/dynamic_fragments/targets', function( $targets )
 
 ---
 
+# Filter: bricks/woocommerce/predefined_elements/generated_payload
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-generated_payload/
+
+*Filters a generated WooCommerce predefined element payload.*
+
+Filters a generated WooCommerce predefined element payload before Bricks returns it.
+
+## Parameters
+
+- `$response` (array): The generated payload response.
+- `$preset` (string): The preset ID being generated.
+- `$context` (array): Generation context for the preset.
+
+## Example usage
+
+```php
+add_filter( 'bricks/woocommerce/predefined_elements/generated_payload', function( $response, $preset, $context ) {
+    return $response;
+}, 10, 3 );
+```
+
+---
+
 # Filter: bricks/woocommerce/predefined_elements/local_presets
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-local_presets/
@@ -2558,30 +2582,6 @@ add_filter( 'bricks/woocommerce/predefined_elements/remote_payload', function( $
 
 ---
 
-# Filter: bricks/woocommerce/predefined_elements/generated_payload
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-generated_payload/
-
-*Filters a generated WooCommerce predefined element payload.*
-
-Filters a generated WooCommerce predefined element payload before Bricks returns it.
-
-## Parameters
-
-- `$response` (array): The generated payload response.
-- `$preset` (string): The preset ID being generated.
-- `$context` (array): Generation context for the preset.
-
-## Example usage
-
-```php
-add_filter( 'bricks/woocommerce/predefined_elements/generated_payload', function( $response, $preset, $context ) {
-    return $response;
-}, 10, 3 );
-```
-
----
-
 # Filter: bricks/woocommerce/predefined_elements/remote_url
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-remote_url/
@@ -2602,33 +2602,6 @@ When a URL is returned, Bricks appends `schemaVersion`, `site`, and `time` query
 add_filter( 'bricks/woocommerce/predefined_elements/remote_url', function( $remote_url ) {
     return 'https://example.com/bricks-woo-presets.json';
 } );
-```
-
----
-
-# Filter: bricks/wpml/exclude_controls_from_translation
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-wpml-exclude_controls_from_translation/
-
-*Filters Bricks control keys excluded from WPML translation.*
-
-Filters Bricks control keys excluded from WPML translation. Return the control keys that should not be translated for the current element/control context.
-
-## Parameters
-
-- `$excluded_keys` (array): Control keys excluded from translation.
-- `$element` (array): The Bricks element data.
-- `$control` (array): The control definition.
-- `$key` (string): The current control key or repeater field key.
-
-## Example usage
-
-```php
-add_filter( 'bricks/wpml/exclude_controls_from_translation', function( $excluded_keys, $element, $control, $key ) {
-    $excluded_keys[] = 'my_untranslated_control';
-
-    return $excluded_keys;
-}, 10, 4 );
 ```
 
 ---
@@ -2658,6 +2631,57 @@ add_filter( 'bricks/woocommerce/products_filters/options', function( $options, $
 
     return $options;
 }, 10, 2 );
+```
+
+---
+
+# Filter: bricks/woocommerce/products_orderby_options
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-products_orderby_options/
+
+*Filters WooCommerce product order-by options used by Bricks.*
+
+Filters WooCommerce product order-by options used by Bricks controls.
+
+## Parameters
+
+- `$options` (array): Order-by option keys and labels.
+
+## Example usage
+
+```php
+add_filter( 'bricks/woocommerce/products_orderby_options', function( $options ) {
+    $options['title'] = esc_html__( 'Sort by title', 'my-plugin' );
+
+    return $options;
+} );
+```
+
+---
+
+# Filter: bricks/wpml/exclude_controls_from_translation
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-wpml-exclude_controls_from_translation/
+
+*Filters Bricks control keys excluded from WPML translation.*
+
+Filters Bricks control keys excluded from WPML translation. Return the control keys that should not be translated for the current element/control context.
+
+## Parameters
+
+- `$excluded_keys` (array): Control keys excluded from translation.
+- `$element` (array): The Bricks element data.
+- `$control` (array): The control definition.
+- `$key` (string): The current control key or repeater field key.
+
+## Example usage
+
+```php
+add_filter( 'bricks/wpml/exclude_controls_from_translation', function( $excluded_keys, $element, $control, $key ) {
+    $excluded_keys[] = 'my_untranslated_control';
+
+    return $excluded_keys;
+}, 10, 4 );
 ```
 
 ---
@@ -2719,30 +2743,6 @@ Available page-level custom-code keys are:
 - `customScriptsBodyFooter`
 
 After adding the filter, update the source page and send its translation to WPML again. The opted-in code field then appears in the WPML translation job. Review the translated value before publishing, especially when automatic translation is enabled, because a changed quote, variable, selector, or function name can break the code.
-
----
-
-# Filter: bricks/woocommerce/products_orderby_options
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-products_orderby_options/
-
-*Filters WooCommerce product order-by options used by Bricks.*
-
-Filters WooCommerce product order-by options used by Bricks controls.
-
-## Parameters
-
-- `$options` (array): Order-by option keys and labels.
-
-## Example usage
-
-```php
-add_filter( 'bricks/woocommerce/products_orderby_options', function( $options ) {
-    $options['title'] = esc_html__( 'Sort by title', 'my-plugin' );
-
-    return $options;
-} );
-```
 
 ---
 

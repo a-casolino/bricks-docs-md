@@ -288,34 +288,6 @@ The following settings are only available when the icon is placed inside an Acco
 
 ---
 
-# Text basic
-
-Source: https://academy.bricksbuilder.io/builder/elements/basic/text-basic/
-
-*The Basic Text element displays simple text content with basic formatting options. Use this element for paragraphs, small text blocks, or any content that.*
-
-The Basic Text element displays simple text content with basic formatting options. Use this element for paragraphs, small text blocks, or any content that doesn't require rich text formatting.
-
-## Settings
-
-- **Text** (textarea) - The text content to display. Select text on canvas to access the formatting toolbar for styling options like bold, italic, and links. Line breaks are rendered as `<br>` tags.
-
-- **HTML tag** (select) - The HTML tag to wrap the text content. Options: `div`, `p`, `span`, `figcaption`, `address`, `figure`, `custom`. Default: `div`.
-
-- **Custom tag** (text) - Specify a custom HTML tag name without attributes. Only available when HTML tag is set to "custom".
-
-- **Link to** (link) - Make the entire text element clickable by adding a link.
-
-- **Words limit** (number) - Limit the number of words displayed. Minimum value: 1.
-
-- **Read more** (text) - Text to display after the truncated content when using words limit. Only available when words limit is set.
-
-> **Developer reference**
->
-> See the [Basic Text Schema](https://academy.bricksbuilder.io/developer/schema/elements/text-basic/) for the full JSON schema of this element's settings and controls.
-
----
-
 # Image
 
 Source: https://academy.bricksbuilder.io/builder/elements/basic/image/
@@ -483,6 +455,34 @@ Apply a mask to the image for creative shapes and effects:
 > **Developer reference**
 >
 > See the [Image Schema](https://academy.bricksbuilder.io/developer/schema/elements/image/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Text basic
+
+Source: https://academy.bricksbuilder.io/builder/elements/basic/text-basic/
+
+*The Basic Text element displays simple text content with basic formatting options. Use this element for paragraphs, small text blocks, or any content that.*
+
+The Basic Text element displays simple text content with basic formatting options. Use this element for paragraphs, small text blocks, or any content that doesn't require rich text formatting.
+
+## Settings
+
+- **Text** (textarea) - The text content to display. Select text on canvas to access the formatting toolbar for styling options like bold, italic, and links. Line breaks are rendered as `<br>` tags.
+
+- **HTML tag** (select) - The HTML tag to wrap the text content. Options: `div`, `p`, `span`, `figcaption`, `address`, `figure`, `custom`. Default: `div`.
+
+- **Custom tag** (text) - Specify a custom HTML tag name without attributes. Only available when HTML tag is set to "custom".
+
+- **Link to** (link) - Make the entire text element clickable by adding a link.
+
+- **Words limit** (number) - Limit the number of words displayed. Minimum value: 1.
+
+- **Read more** (text) - Text to display after the truncated content when using words limit. Only available when words limit is set.
+
+> **Developer reference**
+>
+> See the [Basic Text Schema](https://academy.bricksbuilder.io/developer/schema/elements/text-basic/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -937,55 +937,6 @@ Creates a range slider or input interface for filtering content by numeric range
 
 ---
 
-# Filter search
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-search/
-
-*Provides a live AJAX search input for real-time content filtering. Searches through post content, titles, and custom fields without page refresh. Features.*
-
-Provides a live AJAX search input for real-time content filtering. Searches through post content, titles, and custom fields without page refresh. Features debouncing, minimum character requirements, and optional clear functionality.
-
-**Tip:** Perfect for creating instant search experiences. Use the debounce setting to control API call frequency, and minimum characters to improve performance.
-
-## Settings
-
-- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
-- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
-- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (button click or Enter). Default: Input.
-- **Debounce (ms)** (number) - Delay before triggering search after typing stops. Default: 500ms.
-- **Min. characters** (number) - Minimum characters required to trigger search. Default: 3.
-- **Enter action** (select, Bricks 2.4) - Choose **AJAX search** (default) or **Redirect to URL**. Requires a target query.
-- **Trigger Filter Submit interactions** (checkbox, Bricks 2.4) - Run the target query's Filter Submit start/end interactions when Enter triggers an AJAX search. Disabled by default and available when Enter action is AJAX search.
-- **Redirect to** (text, Bricks 2.4) - Destination URL when Enter action is Redirect to URL. Active filters for the same query are appended as URL parameters.
-- **Open in new tab** (checkbox, Bricks 2.4) - Open the Enter-key redirect in a new tab. Available when a redirect URL is set.
-- **Input** - Settings for the search input field.
-  - **Placeholder** (text) - Placeholder text for the search input. Default: Search.
-  - **Placeholder typography** (typography) - Typography for placeholder text.
-  - **Label** (text) - Optional label text above the input field.
-  - **Label typography** (typography) - Typography for the label text.
-- **Icon (Clear)** - Settings for the clear/reset icon.
-  - **Icon** (icon) - Icon to display for clearing the search.
-  - **Icon color** (color) - Color of the clear icon.
-  - **Icon size** (number) - Size of the clear icon.
-- **Active filter** - Settings for active filter display.
-  - **Prefix** (text) - Text to display before filter value.
-  - **Suffix** (text) - Text to display after filter value.
-  - **Title** (text) - Custom title attribute for filter links.
-
-## Search with Enter
-
-Pressing Enter runs the configured action immediately, including when **Apply on** is set to **Submit**. Enter bypasses the typing debounce and minimum character threshold.
-
-For a search field that takes visitors to another results page, select a **Target query**, set **Enter action** to **Redirect to URL**, and enter the destination under **Redirect to**. Configure the destination's filters to recognize the same URL parameter names. Leave **Open in new tab** off to navigate in the current tab. An empty redirect URL falls back to an AJAX search.
-
-For an AJAX search that should close an Offcanvas after submission, enable **Trigger Filter Submit interactions** and use the [Filter Submit interaction triggers](https://academy.bricksbuilder.io/builder/features/interactions/#filter-submit-triggers). Ordinary typing does not trigger these submit interactions. The redirect action does not run them.
-
-> **Developer reference**
->
-> See the [Filter - Search Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-search/) for the schema snapshot and Bricks 2.4 settings reference.
-
----
-
 # Filter select
 
 Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-select/
@@ -1073,6 +1024,55 @@ This setting is separate from the exclusion list on the Active Filters element, 
 > **Developer reference**
 >
 > See the [Filter - Submit / Reset Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-submit/) for the schema snapshot and Bricks 2.4 settings reference.
+
+---
+
+# Filter search
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-search/
+
+*Provides a live AJAX search input for real-time content filtering. Searches through post content, titles, and custom fields without page refresh. Features.*
+
+Provides a live AJAX search input for real-time content filtering. Searches through post content, titles, and custom fields without page refresh. Features debouncing, minimum character requirements, and optional clear functionality.
+
+**Tip:** Perfect for creating instant search experiences. Use the debounce setting to control API call frequency, and minimum characters to improve performance.
+
+## Settings
+
+- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
+- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
+- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (button click or Enter). Default: Input.
+- **Debounce (ms)** (number) - Delay before triggering search after typing stops. Default: 500ms.
+- **Min. characters** (number) - Minimum characters required to trigger search. Default: 3.
+- **Enter action** (select, Bricks 2.4) - Choose **AJAX search** (default) or **Redirect to URL**. Requires a target query.
+- **Trigger Filter Submit interactions** (checkbox, Bricks 2.4) - Run the target query's Filter Submit start/end interactions when Enter triggers an AJAX search. Disabled by default and available when Enter action is AJAX search.
+- **Redirect to** (text, Bricks 2.4) - Destination URL when Enter action is Redirect to URL. Active filters for the same query are appended as URL parameters.
+- **Open in new tab** (checkbox, Bricks 2.4) - Open the Enter-key redirect in a new tab. Available when a redirect URL is set.
+- **Input** - Settings for the search input field.
+  - **Placeholder** (text) - Placeholder text for the search input. Default: Search.
+  - **Placeholder typography** (typography) - Typography for placeholder text.
+  - **Label** (text) - Optional label text above the input field.
+  - **Label typography** (typography) - Typography for the label text.
+- **Icon (Clear)** - Settings for the clear/reset icon.
+  - **Icon** (icon) - Icon to display for clearing the search.
+  - **Icon color** (color) - Color of the clear icon.
+  - **Icon size** (number) - Size of the clear icon.
+- **Active filter** - Settings for active filter display.
+  - **Prefix** (text) - Text to display before filter value.
+  - **Suffix** (text) - Text to display after filter value.
+  - **Title** (text) - Custom title attribute for filter links.
+
+## Search with Enter
+
+Pressing Enter runs the configured action immediately, including when **Apply on** is set to **Submit**. Enter bypasses the typing debounce and minimum character threshold.
+
+For a search field that takes visitors to another results page, select a **Target query**, set **Enter action** to **Redirect to URL**, and enter the destination under **Redirect to**. Configure the destination's filters to recognize the same URL parameter names. Leave **Open in new tab** off to navigate in the current tab. An empty redirect URL falls back to an AJAX search.
+
+For an AJAX search that should close an Offcanvas after submission, enable **Trigger Filter Submit interactions** and use the [Filter Submit interaction triggers](https://academy.bricksbuilder.io/builder/features/interactions/#filter-submit-triggers). Ordinary typing does not trigger these submit interactions. The redirect action does not run them.
+
+> **Developer reference**
+>
+> See the [Filter - Search Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-search/) for the schema snapshot and Bricks 2.4 settings reference.
 
 ---
 
@@ -1468,40 +1468,6 @@ You can change the defaults of the Div element in your theme styles under "Eleme
 
 ---
 
-# Divider
-
-Source: https://academy.bricksbuilder.io/builder/elements/layout/divider/
-
-*The Divider element creates horizontal or vertical separator lines with optional icons.*
-
-The Divider element creates horizontal or vertical separator lines with optional icons.
-
-## Settings
-
-- **Height** (number with units) - The height/thickness of the divider line. Default: 1.
-
-- **Width** (number with units) - The width/length of the divider line.
-
-- **Style** (select) - The line style. Options: `solid`, `dashed`, `dotted`, `double`, `groove`, `ridge`, `inset`, `outset`. Default: `solid`.
-
-- **Direction** (select) - Orientation of the divider. Options: `horizontal`, `vertical`. Default: `horizontal`.
-
-- **Align** (justify-content) - Alignment of the divider within its container. Options: `flex-start`, `center`, `flex-end`.
-
-- **Color** (color) - Color of the divider line and icon.
-
-### Icon
-
-- **Icon** (icon) - Add an icon that appears on the divider line.
-
-- **Typography** (typography) - Style settings for the icon (size, font properties). Only available when an icon is selected.
-
-> **Developer reference**
->
-> See the [Divider Schema](https://academy.bricksbuilder.io/developer/schema/elements/divider/) for the full JSON schema of this element's settings and controls.
-
----
-
 # List
 
 Source: https://academy.bricksbuilder.io/builder/elements/layout/list/
@@ -1616,6 +1582,40 @@ The List element creates customizable lists with icons, titles, meta information
 > **Developer reference**
 >
 > See the [List Schema](https://academy.bricksbuilder.io/developer/schema/elements/list/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Divider
+
+Source: https://academy.bricksbuilder.io/builder/elements/layout/divider/
+
+*The Divider element creates horizontal or vertical separator lines with optional icons.*
+
+The Divider element creates horizontal or vertical separator lines with optional icons.
+
+## Settings
+
+- **Height** (number with units) - The height/thickness of the divider line. Default: 1.
+
+- **Width** (number with units) - The width/length of the divider line.
+
+- **Style** (select) - The line style. Options: `solid`, `dashed`, `dotted`, `double`, `groove`, `ridge`, `inset`, `outset`. Default: `solid`.
+
+- **Direction** (select) - Orientation of the divider. Options: `horizontal`, `vertical`. Default: `horizontal`.
+
+- **Align** (justify-content) - Alignment of the divider within its container. Options: `flex-start`, `center`, `flex-end`.
+
+- **Color** (color) - Color of the divider line and icon.
+
+### Icon
+
+- **Icon** (icon) - Add an icon that appears on the divider line.
+
+- **Typography** (typography) - Style settings for the icon (size, font properties). Only available when an icon is selected.
+
+> **Developer reference**
+>
+> See the [Divider Schema](https://academy.bricksbuilder.io/developer/schema/elements/divider/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -1736,6 +1736,66 @@ You can change the section `width`, `min-width`, `max-width`, `margin`, and `pad
 
 ---
 
+# Accordion (nestable)
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/accordion-nested/
+
+*The Nestable Accordion element allows creating hierarchical collapsible content with drag-and-drop nesting in the builder.*
+
+The Nestable Accordion element allows creating hierarchical collapsible content with drag-and-drop nesting in the builder.
+
+## Settings
+
+- **Children** (nestable) - Drag and drop elements to create accordion items. Each item can contain nested content. Set "ID" on items to open via anchor link (no spaces, no pound sign).
+
+- **Expand item indexes** (text) - Comma-separated indexes of items to expand on page load (starting at 0).
+
+- **Independent toggle** (checkbox) - Allow multiple items to be open simultaneously. Enable to open & close an item without toggling other items.
+
+- **Transition (ms)** (number) - Animation duration for expanding/collapsing in milliseconds. Default: 200.
+
+- **FAQ schema** (checkbox) - Generate FAQPage structured data (JSON-LD) for search engines.
+
+### Title
+
+- **Min. height** (number with units) - Minimum height for title areas. Default: 50px.
+
+- **Margin** (spacing) - Margin around title wrappers.
+
+- **Padding** (spacing) - Padding inside title wrappers.
+
+- **Background color** (color) - Background color for title wrappers.
+
+- **Border** (border) - Border styling for title wrappers.
+
+- **Typography** (typography) - Typography settings for title text and headings.
+
+#### Active Title
+
+- **Background color** (color) - Background color for active/expanded title wrappers.
+
+- **Border** (border) - Border styling for active/expanded title wrappers.
+
+- **Typography** (typography) - Typography settings for active/expanded title text and headings.
+
+### Content
+
+- **Margin** (spacing) - Margin around content wrappers.
+
+- **Padding** (spacing) - Padding inside content wrappers. Default: 15px top/bottom, 0px left/right.
+
+- **Background color** (color) - Background color for content wrappers.
+
+- **Border** (border) - Border styling for content wrappers.
+
+- **Typography** (typography) - Typography settings for content text.
+
+> **Developer reference**
+>
+> See the [Accordion (Nestable) Schema](https://academy.bricksbuilder.io/developer/schema/elements/accordion-nested/) for the full JSON schema of this element's settings and controls.
+
+---
+
 # Accordion
 
 Source: https://academy.bricksbuilder.io/builder/elements/general/accordion/
@@ -1811,66 +1871,6 @@ The Accordion element creates collapsible content sections with titles and expan
 > **Developer reference**
 >
 > See the [Accordion Schema](https://academy.bricksbuilder.io/developer/schema/elements/accordion/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Accordion (nestable)
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/accordion-nested/
-
-*The Nestable Accordion element allows creating hierarchical collapsible content with drag-and-drop nesting in the builder.*
-
-The Nestable Accordion element allows creating hierarchical collapsible content with drag-and-drop nesting in the builder.
-
-## Settings
-
-- **Children** (nestable) - Drag and drop elements to create accordion items. Each item can contain nested content. Set "ID" on items to open via anchor link (no spaces, no pound sign).
-
-- **Expand item indexes** (text) - Comma-separated indexes of items to expand on page load (starting at 0).
-
-- **Independent toggle** (checkbox) - Allow multiple items to be open simultaneously. Enable to open & close an item without toggling other items.
-
-- **Transition (ms)** (number) - Animation duration for expanding/collapsing in milliseconds. Default: 200.
-
-- **FAQ schema** (checkbox) - Generate FAQPage structured data (JSON-LD) for search engines.
-
-### Title
-
-- **Min. height** (number with units) - Minimum height for title areas. Default: 50px.
-
-- **Margin** (spacing) - Margin around title wrappers.
-
-- **Padding** (spacing) - Padding inside title wrappers.
-
-- **Background color** (color) - Background color for title wrappers.
-
-- **Border** (border) - Border styling for title wrappers.
-
-- **Typography** (typography) - Typography settings for title text and headings.
-
-#### Active Title
-
-- **Background color** (color) - Background color for active/expanded title wrappers.
-
-- **Border** (border) - Border styling for active/expanded title wrappers.
-
-- **Typography** (typography) - Typography settings for active/expanded title text and headings.
-
-### Content
-
-- **Margin** (spacing) - Margin around content wrappers.
-
-- **Padding** (spacing) - Padding inside content wrappers. Default: 15px top/bottom, 0px left/right.
-
-- **Background color** (color) - Background color for content wrappers.
-
-- **Border** (border) - Border styling for content wrappers.
-
-- **Typography** (typography) - Typography settings for content text.
-
-> **Developer reference**
->
-> See the [Accordion (Nestable) Schema](https://academy.bricksbuilder.io/developer/schema/elements/accordion-nested/) for the full JSON schema of this element's settings and controls.
 
 ---
 

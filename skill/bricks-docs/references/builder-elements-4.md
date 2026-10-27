@@ -304,6 +304,66 @@ The Pagination element displays page navigation for query results with customiza
 
 ---
 
+# Search
+
+Source: https://academy.bricksbuilder.io/builder/elements/wordpress/search/
+
+*Displays a search form with input field and submit button, or an icon that opens an overlay search.*
+
+Displays a search form with input field and submit button, or an icon that opens an overlay search.
+
+## Settings
+
+- **Type** (select) - Choose between Input or Icon & Overlay. Default: Input.
+- **aria-label** (text) - Accessibility label for overlay type. Required for overlay.
+- **Action URL** (text) - URL where search form submits. Default: home URL.
+- **Additional parameters** (repeater) - Hidden input fields added to search form.
+
+### Input
+- **Height** (number) - Input field height.
+- **Width** (number) - Input field width.
+- **Placeholder** (text) - Placeholder text. Default: "Search ...".
+- **Placeholder color** (color) - Color of placeholder text.
+- **Background color** (color) - Input background color.
+- **Border** (border) - Input border settings.
+- **Box shadow** (box-shadow) - Input box shadow.
+- **Typography** (typography) - Input text typography.
+- **Show label** (checkbox) - Display label above input. Default: false.
+- **Label text** (text) - Text for input label.
+- **Label typography** (typography) - Typography for input label.
+
+### Button / Icon
+- **aria-label** (text) - Accessibility label for button.
+- **Text** (text) - Button text.
+- **Icon** (icon) - Button icon.
+- **Padding** (spacing) - Button padding.
+- **Height** (number) - Button height.
+- **Width** (number) - Button width.
+- **Background color** (color) - Button background color.
+- **Border** (border) - Button border settings.
+- **Box shadow** (box-shadow) - Button box shadow.
+- **Typography** (typography) - Button text typography.
+
+### Overlay
+- **Direction (Form)** (direction) - Flex direction of overlay form.
+- **Gap** (number) - Gap between form elements.
+- **Title** (text) - Overlay title. Default: "Search site".
+- **Title tag** (text) - HTML tag for title. Default: h4.
+- **Title typography** (typography) - Typography for overlay title.
+- **Background** (background) - Overlay background.
+- **Background: Overlay** (color) - Overlay background overlay color.
+- **Button: Width** (number) - Overlay button width.
+- **Button: Padding** (spacing) - Overlay button padding.
+- **Button: Background color** (color) - Overlay button background color.
+- **Button: Border** (border) - Overlay button border.
+- **Button: Typography** (typography) - Overlay button typography.
+
+> **Developer reference**
+>
+> See the [Search Schema](https://academy.bricksbuilder.io/developer/schema/elements/search/) for the full JSON schema of this element's settings and controls.
+
+---
+
 # Posts
 
 Source: https://academy.bricksbuilder.io/builder/elements/wordpress/posts/
@@ -388,63 +448,27 @@ The Posts element displays a list or grid of posts with customizable query, layo
 
 ---
 
-# Search
+# Shortcode
 
-Source: https://academy.bricksbuilder.io/builder/elements/wordpress/search/
+Source: https://academy.bricksbuilder.io/builder/elements/wordpress/shortcode/
 
-*Displays a search form with input field and submit button, or an icon that opens an overlay search.*
+*The Shortcode element executes WordPress shortcodes within your Bricks pages.*
 
-Displays a search form with input field and submit button, or an icon that opens an overlay search.
+The Shortcode element executes WordPress shortcodes within your Bricks pages.
 
 ## Settings
 
-- **Type** (select) - Choose between Input or Icon & Overlay. Default: Input.
-- **aria-label** (text) - Accessibility label for overlay type. Required for overlay.
-- **Action URL** (text) - URL where search form submits. Default: home URL.
-- **Additional parameters** (repeater) - Hidden input fields added to search form.
+- **Shortcode** (textarea) - Enter the shortcode to execute, including the square brackets (e.g., `[gallery ids="72,73,74,75" columns="3"]`). Supports dynamic data.
 
-### Input
-- **Height** (number) - Input field height.
-- **Width** (number) - Input field width.
-- **Placeholder** (text) - Placeholder text. Default: "Search ...".
-- **Placeholder color** (color) - Color of placeholder text.
-- **Background color** (color) - Input background color.
-- **Border** (border) - Input border settings.
-- **Box shadow** (box-shadow) - Input box shadow.
-- **Typography** (typography) - Input text typography.
-- **Show label** (checkbox) - Display label above input. Default: false.
-- **Label text** (text) - Text for input label.
-- **Label typography** (typography) - Typography for input label.
+- **Don't render in builder** (checkbox) - Show a placeholder instead of rendering the shortcode in the builder. Useful for shortcodes that slow down the builder or cause conflicts.
 
-### Button / Icon
-- **aria-label** (text) - Accessibility label for button.
-- **Text** (text) - Button text.
-- **Icon** (icon) - Button icon.
-- **Padding** (spacing) - Button padding.
-- **Height** (number) - Button height.
-- **Width** (number) - Button width.
-- **Background color** (color) - Button background color.
-- **Border** (border) - Button border settings.
-- **Box shadow** (box-shadow) - Button box shadow.
-- **Typography** (typography) - Button text typography.
+- **Placeholder: Width** (number with units) - Width of the placeholder when "Don't render in builder" is enabled.
 
-### Overlay
-- **Direction (Form)** (direction) - Flex direction of overlay form.
-- **Gap** (number) - Gap between form elements.
-- **Title** (text) - Overlay title. Default: "Search site".
-- **Title tag** (text) - HTML tag for title. Default: h4.
-- **Title typography** (typography) - Typography for overlay title.
-- **Background** (background) - Overlay background.
-- **Background: Overlay** (color) - Overlay background overlay color.
-- **Button: Width** (number) - Overlay button width.
-- **Button: Padding** (spacing) - Overlay button padding.
-- **Button: Background color** (color) - Overlay button background color.
-- **Button: Border** (border) - Overlay button border.
-- **Button: Typography** (typography) - Overlay button typography.
+- **Placeholder: Height** (number with units) - Height of the placeholder when "Don't render in builder" is enabled.
 
 > **Developer reference**
 >
-> See the [Search Schema](https://academy.bricksbuilder.io/developer/schema/elements/search/) for the full JSON schema of this element's settings and controls.
+> See the [Shortcode Schema](https://academy.bricksbuilder.io/developer/schema/elements/shortcode/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -532,30 +556,6 @@ The WordPress element displays various WordPress widgets with customizable styli
 > **Developer reference**
 >
 > See the [WordPress Schema](https://academy.bricksbuilder.io/developer/schema/elements/wordpress/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Shortcode
-
-Source: https://academy.bricksbuilder.io/builder/elements/wordpress/shortcode/
-
-*The Shortcode element executes WordPress shortcodes within your Bricks pages.*
-
-The Shortcode element executes WordPress shortcodes within your Bricks pages.
-
-## Settings
-
-- **Shortcode** (textarea) - Enter the shortcode to execute, including the square brackets (e.g., `[gallery ids="72,73,74,75" columns="3"]`). Supports dynamic data.
-
-- **Don't render in builder** (checkbox) - Show a placeholder instead of rendering the shortcode in the builder. Useful for shortcodes that slow down the builder or cause conflicts.
-
-- **Placeholder: Width** (number with units) - Width of the placeholder when "Don't render in builder" is enabled.
-
-- **Placeholder: Height** (number with units) - Height of the placeholder when "Don't render in builder" is enabled.
-
-> **Developer reference**
->
-> See the [Shortcode Schema](https://academy.bricksbuilder.io/developer/schema/elements/shortcode/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -750,38 +750,6 @@ My Account templates and My Account endpoint views.
 
 ---
 
-# Account - Lost password
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-lost-password/
-
-*Displays the Lost password request form used in My Account flows.*
-
-Displays the Lost password request form used in My Account flows.
-
-## Where this element works
-
-My Account templates and My Account endpoint views.
-
-## Key settings
-
-- **Disable** (checkbox)
-- **Typography** (typography)
-- **Align items** (align-items)
-- **Width** (number)
-- **Gap** (number)
-- **Label typography** (typography)
-- **Field** (separator)
-- **Margin** (spacing)
-- **Padding** (spacing)
-- **Background color** (color)
-
-## Usage tips
-
-- Use these elements in My Account templates or endpoint-specific templates.
-- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
-
----
-
 # Account - Register form
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-register/
@@ -814,6 +782,38 @@ My Account templates and My Account endpoint views.
 
 ---
 
+# Account - Lost password
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-lost-password/
+
+*Displays the Lost password request form used in My Account flows.*
+
+Displays the Lost password request form used in My Account flows.
+
+## Where this element works
+
+My Account templates and My Account endpoint views.
+
+## Key settings
+
+- **Disable** (checkbox)
+- **Typography** (typography)
+- **Align items** (align-items)
+- **Width** (number)
+- **Gap** (number)
+- **Label typography** (typography)
+- **Field** (separator)
+- **Margin** (spacing)
+- **Padding** (spacing)
+- **Background color** (color)
+
+## Usage tips
+
+- Use these elements in My Account templates or endpoint-specific templates.
+- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
+
+---
+
 # Account - Orders
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-orders/
@@ -838,38 +838,6 @@ My Account templates and My Account endpoint views.
 - **Box shadow** (box-shadow)
 - **Typography** (typography)
 - **Padding** (spacing)
-
-## Usage tips
-
-- Use these elements in My Account templates or endpoint-specific templates.
-- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
-
----
-
-# Account - Reset password
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-reset-password/
-
-*Displays the Reset password form used after password reset link validation.*
-
-Displays the Reset password form used after password reset link validation.
-
-## Where this element works
-
-My Account templates and My Account endpoint views.
-
-## Key settings
-
-- **Disable** (checkbox)
-- **Typography** (typography)
-- **Align items** (align-items)
-- **Width** (number)
-- **Gap** (number)
-- **Label typography** (typography)
-- **Field** (separator)
-- **Margin** (spacing)
-- **Padding** (spacing)
-- **Background color** (color)
 
 ## Usage tips
 
@@ -982,6 +950,38 @@ See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.
 - Use [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) or the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) to create the recommended Account Page v2 structure.
 - Review each state after setup so logged-in, logged-out, password reset, payment method, and order views all match your store design.
 - Use the classic [WooCommerce Account Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/) workflow if you prefer separate endpoint templates.
+
+---
+
+# Account - Reset password
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-reset-password/
+
+*Displays the Reset password form used after password reset link validation.*
+
+Displays the Reset password form used after password reset link validation.
+
+## Where this element works
+
+My Account templates and My Account endpoint views.
+
+## Key settings
+
+- **Disable** (checkbox)
+- **Typography** (typography)
+- **Align items** (align-items)
+- **Width** (number)
+- **Gap** (number)
+- **Label typography** (typography)
+- **Field** (separator)
+- **Margin** (spacing)
+- **Padding** (spacing)
+- **Background color** (color)
+
+## Usage tips
+
+- Use these elements in My Account templates or endpoint-specific templates.
+- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
 
 ---
 
@@ -1125,38 +1125,6 @@ Displays WooCommerce breadcrumb navigation.
 
 ---
 
-# Cart totals
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-collaterals/
-
-*Displays cart totals and related collateral content from the Cart page.*
-
-Displays cart totals and related collateral content from the Cart page.
-
-## Where this element works
-
-Cart page templates.
-
-## Key settings
-
-- **Disable cross sells** (checkbox)
-- **Hide title** (checkbox)
-- **Title** (typography)
-- **Subtotal** (typography)
-- **Total** (typography)
-- **Table** (separator)
-- **Margin** (spacing)
-- **Padding** (spacing)
-- **Border** (border)
-- **Button** (separator)
-
-## Usage tips
-
-- Place cart elements in a dedicated Cart template to avoid empty output on non-cart pages.
-- Keep spacing and table styling consistent across cart rows, totals, and coupon sections for better usability.
-
----
-
 # Cart coupon
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-coupon/
@@ -1181,6 +1149,38 @@ Cart page templates.
 - **Border** (border)
 - **Placeholder typography** (typography)
 - **Button** (text)
+
+## Usage tips
+
+- Place cart elements in a dedicated Cart template to avoid empty output on non-cart pages.
+- Keep spacing and table styling consistent across cart rows, totals, and coupon sections for better usability.
+
+---
+
+# Cart totals
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-collaterals/
+
+*Displays cart totals and related collateral content from the Cart page.*
+
+Displays cart totals and related collateral content from the Cart page.
+
+## Where this element works
+
+Cart page templates.
+
+## Key settings
+
+- **Disable cross sells** (checkbox)
+- **Hide title** (checkbox)
+- **Title** (typography)
+- **Subtotal** (typography)
+- **Total** (typography)
+- **Table** (separator)
+- **Margin** (spacing)
+- **Padding** (spacing)
+- **Border** (border)
+- **Button** (separator)
 
 ## Usage tips
 
@@ -1281,38 +1281,6 @@ See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.
 
 ---
 
-# Checkout coupon
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-coupon/
-
-*Displays the coupon prompt and form on the Checkout page.*
-
-Displays the coupon prompt and form on the Checkout page.
-
-## Where this element works
-
-Checkout templates (and order-received context for thank-you flows).
-
-## Key settings
-
-- **Location** (select)
-- **Toggleable form** (checkbox)
-- **Text** (text)
-- **Justify content** (justify-content)
-- **Gap** (number)
-- **Button** (separator)
-- **Disable text** (checkbox)
-- **Icon** (icon)
-- **Icon typography** (typography)
-- **Disable coupon message** (checkbox)
-
-## Usage tips
-
-- Use checkout elements only in Checkout templates so forms and order data render correctly.
-- Test logged-in and guest checkout flows after styling changes to ensure all states remain usable.
-
----
-
 # Checkout customer details
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-customer-details/
@@ -1337,6 +1305,38 @@ Checkout templates (and order-received context for thank-you flows).
 - **Fields** (separator)
 - **Placeholder typography** (typography)
 - **Hide additional information** (checkbox)
+
+## Usage tips
+
+- Use checkout elements only in Checkout templates so forms and order data render correctly.
+- Test logged-in and guest checkout flows after styling changes to ensure all states remain usable.
+
+---
+
+# Checkout coupon
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-coupon/
+
+*Displays the coupon prompt and form on the Checkout page.*
+
+Displays the coupon prompt and form on the Checkout page.
+
+## Where this element works
+
+Checkout templates (and order-received context for thank-you flows).
+
+## Key settings
+
+- **Location** (select)
+- **Toggleable form** (checkbox)
+- **Text** (text)
+- **Justify content** (justify-content)
+- **Gap** (number)
+- **Button** (separator)
+- **Disable text** (checkbox)
+- **Icon** (icon)
+- **Icon typography** (typography)
+- **Disable coupon message** (checkbox)
 
 ## Usage tips
 
@@ -1651,74 +1651,6 @@ See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.
 
 ---
 
-# Mini cart
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/mini-cart/
-
-*Displays a mini cart icon with cart count and dropdown cart details.*
-
-Displays a mini cart icon with cart count and dropdown cart details.
-
-## Settings
-
-- **Icon** (icon) - Cart icon. Default: ti-shopping-cart.
-- **Icon typography** (typography) - Typography for cart icon. Only available when Icon is set.
-- **Open on add to cart (AJAX)** (checkbox) - Open mini cart when products are added via AJAX.
-
-### Cart count
-
-- **Visibility** (select) - Show/hide cart count. Options: Hide (Always), Show (Always). Default: Hide if empty.
-- **Background color** (color) - Cart count background color. Only available when Visibility is not Hide (Always).
-- **Border** (border) - Cart count border settings. Only available when Visibility is not Hide (Always).
-- **Typography** (typography) - Cart count typography. Only available when Visibility is not Hide (Always).
-- **Transform** (transform) - Cart count transform. Only available when Visibility is not Hide (Always) and Off-Canvas is not Top or Bottom.
-- **Height** (number with units) - Cart count height. Only available when Visibility is not Hide (Always).
-- **Width** (number with units) - Cart count width. Only available when Visibility is not Hide (Always).
-- **Top** (number with units) - Cart count top position. Only available when Visibility is not Hide (Always).
-- **Right** (number with units) - Cart count right position. Only available when Visibility is not Hide (Always).
-- **Bottom** (number with units) - Cart count bottom position. Only available when Visibility is not Hide (Always).
-- **Left** (number with units) - Cart count left position. Only available when Visibility is not Hide (Always).
-
-### Cart subtotal
-
-- **Position** (select) - Subtotal position. Options: Right, Left.
-- **Gap** (number with units) - Gap between icon and subtotal. Only available when Position is set.
-- **Typography** (typography) - Subtotal typography. Only available when Position is set.
-
-### Cart details
-
-- **Hide** (checkbox) - Hide cart details dropdown.
-- **Don't close on click outside mini cart** (checkbox) - Prevent auto-close on outside clicks. Only available when Hide is not checked.
-- **Off-Canvas** (select) - Off-canvas position. Options: Top, Right, Bottom, Left. Only available when Hide is not checked.
-- **Height** (number with units) - Cart details height. Only available when Hide is not checked and Off-Canvas is not Top or Bottom.
-- **Width** (number with units) - Cart details width. Default: 400px. Only available when Hide is not checked and Off-Canvas is not Top or Bottom.
-- **Image width** (number with units) - Product image width. Default: 60px. Only available when Hide is not checked.
-- **Padding** (spacing) - Cart details padding. Only available when Hide is not checked.
-- **Position** (dimensions) - Cart details position. Only available when Hide is not checked and Off-Canvas is Disabled.
-- **Transform** (transform) - Cart details transform. Only available when Hide is not checked and Off-Canvas is not Top or Bottom.
-- **Background** (color) - Cart details background color. Only available when Hide is not checked.
-- **Border** (border) - Cart details border settings. Only available when Hide is not checked.
-- **Box shadow** (box-shadow) - Cart details box shadow. Only available when Hide is not checked.
-- **Typography (Title)** (typography) - Title typography. Only available when Hide is not checked.
-- **Typography (Quantity)** (typography) - Quantity typography. Only available when Hide is not checked.
-
-#### Buttons
-
-- **Background color** (color) - Button background color. Only available when Hide is not checked.
-- **Border** (border) - Button border settings. Only available when Hide is not checked.
-- **Typography** (typography) - Button typography. Only available when Hide is not checked.
-
-#### Close
-
-- **Icon** (icon) - Close icon. Only available when Hide is not checked.
-- **Typography** (typography) - Close typography. Only available when Hide is not checked and Icon is set. Excludes: font-family, font-weight, font-style, text-align, text-decoration, text-transform, line-height, letter-spacing.
-- **Position** (dimensions) - Close position. Only available when Hide is not checked and Icon is set.
-- **Padding** (spacing) - Close padding. Only available when Hide is not checked and Icon is set.
-- **Background color** (color) - Close background color. Only available when Hide is not checked and Icon is set.
-- **Border** (border) - Close border settings. Only available when Hide is not checked and Icon is set.
-
----
-
 # Dynamic fragment
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/
@@ -1789,6 +1721,74 @@ This refresh event also covers initial synchronization and checkout recalculatio
 - Do not place the Dynamic fragment wrapper inside a query loop.
 - Component instances are not supported.
 - The source area must be header, content, or footer.
+
+---
+
+# Mini cart
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/mini-cart/
+
+*Displays a mini cart icon with cart count and dropdown cart details.*
+
+Displays a mini cart icon with cart count and dropdown cart details.
+
+## Settings
+
+- **Icon** (icon) - Cart icon. Default: ti-shopping-cart.
+- **Icon typography** (typography) - Typography for cart icon. Only available when Icon is set.
+- **Open on add to cart (AJAX)** (checkbox) - Open mini cart when products are added via AJAX.
+
+### Cart count
+
+- **Visibility** (select) - Show/hide cart count. Options: Hide (Always), Show (Always). Default: Hide if empty.
+- **Background color** (color) - Cart count background color. Only available when Visibility is not Hide (Always).
+- **Border** (border) - Cart count border settings. Only available when Visibility is not Hide (Always).
+- **Typography** (typography) - Cart count typography. Only available when Visibility is not Hide (Always).
+- **Transform** (transform) - Cart count transform. Only available when Visibility is not Hide (Always) and Off-Canvas is not Top or Bottom.
+- **Height** (number with units) - Cart count height. Only available when Visibility is not Hide (Always).
+- **Width** (number with units) - Cart count width. Only available when Visibility is not Hide (Always).
+- **Top** (number with units) - Cart count top position. Only available when Visibility is not Hide (Always).
+- **Right** (number with units) - Cart count right position. Only available when Visibility is not Hide (Always).
+- **Bottom** (number with units) - Cart count bottom position. Only available when Visibility is not Hide (Always).
+- **Left** (number with units) - Cart count left position. Only available when Visibility is not Hide (Always).
+
+### Cart subtotal
+
+- **Position** (select) - Subtotal position. Options: Right, Left.
+- **Gap** (number with units) - Gap between icon and subtotal. Only available when Position is set.
+- **Typography** (typography) - Subtotal typography. Only available when Position is set.
+
+### Cart details
+
+- **Hide** (checkbox) - Hide cart details dropdown.
+- **Don't close on click outside mini cart** (checkbox) - Prevent auto-close on outside clicks. Only available when Hide is not checked.
+- **Off-Canvas** (select) - Off-canvas position. Options: Top, Right, Bottom, Left. Only available when Hide is not checked.
+- **Height** (number with units) - Cart details height. Only available when Hide is not checked and Off-Canvas is not Top or Bottom.
+- **Width** (number with units) - Cart details width. Default: 400px. Only available when Hide is not checked and Off-Canvas is not Top or Bottom.
+- **Image width** (number with units) - Product image width. Default: 60px. Only available when Hide is not checked.
+- **Padding** (spacing) - Cart details padding. Only available when Hide is not checked.
+- **Position** (dimensions) - Cart details position. Only available when Hide is not checked and Off-Canvas is Disabled.
+- **Transform** (transform) - Cart details transform. Only available when Hide is not checked and Off-Canvas is not Top or Bottom.
+- **Background** (color) - Cart details background color. Only available when Hide is not checked.
+- **Border** (border) - Cart details border settings. Only available when Hide is not checked.
+- **Box shadow** (box-shadow) - Cart details box shadow. Only available when Hide is not checked.
+- **Typography (Title)** (typography) - Title typography. Only available when Hide is not checked.
+- **Typography (Quantity)** (typography) - Quantity typography. Only available when Hide is not checked.
+
+#### Buttons
+
+- **Background color** (color) - Button background color. Only available when Hide is not checked.
+- **Border** (border) - Button border settings. Only available when Hide is not checked.
+- **Typography** (typography) - Button typography. Only available when Hide is not checked.
+
+#### Close
+
+- **Icon** (icon) - Close icon. Only available when Hide is not checked.
+- **Typography** (typography) - Close typography. Only available when Hide is not checked and Icon is set. Excludes: font-family, font-weight, font-style, text-align, text-decoration, text-transform, line-height, letter-spacing.
+- **Position** (dimensions) - Close position. Only available when Hide is not checked and Icon is set.
+- **Padding** (spacing) - Close padding. Only available when Hide is not checked and Icon is set.
+- **Background color** (color) - Close background color. Only available when Hide is not checked and Icon is set.
+- **Border** (border) - Close border settings. Only available when Hide is not checked and Icon is set.
 
 ---
 

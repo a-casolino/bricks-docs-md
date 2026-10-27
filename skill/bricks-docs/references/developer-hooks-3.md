@@ -208,32 +208,6 @@ If you use this filter to remove the embed of Google Fonts but you still like to
 
 ---
 
-# Filter: bricks/auth/custom_lost_password_redirect
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_lost_password_redirect/
-
-*This filter enables the modification of the redirect page ID for the lost password page.*
-
-This filter enables the modification of the redirect page ID for the lost password page.
-
-## Example Usage:
-
-```php
-add_filter( 'bricks/auth/custom_lost_password_redirect', function( $selected_lost_password_page_id ) {
-    return /* New lost password page ID */;
-});
-```
-
-**Parameters:**
-
-- `$selected_lost_password_page_id` (int|false): The ID of the custom lost password page if set, otherwise `false`.
-
-**Return:**
-
-- (int|false): The new custom lost password page ID or `false` to indicate no custom page is set.
-
----
-
 # Filter: bricks/auth/custom_login_redirect
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_login_redirect/
@@ -260,29 +234,29 @@ add_filter( 'bricks/auth/custom_login_redirect', function( $selected_login_page_
 
 ---
 
-# Filter: bricks/auth/custom_registration_redirect
+# Filter: bricks/auth/custom_lost_password_redirect
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_registration_redirect/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_lost_password_redirect/
 
-*This filter allows for the customization of the redirect page ID for the registration page.*
+*This filter enables the modification of the redirect page ID for the lost password page.*
 
-This filter allows for the customization of the redirect page ID for the registration page.
+This filter enables the modification of the redirect page ID for the lost password page.
 
 ## Example Usage:
 
 ```php
-add_filter( 'bricks/auth/custom_registration_redirect', function( $selected_registration_page_id ) {
-    return /* New registration page ID */;
+add_filter( 'bricks/auth/custom_lost_password_redirect', function( $selected_lost_password_page_id ) {
+    return /* New lost password page ID */;
 });
 ```
 
 **Parameters:**
 
-- `$selected_registration_page_id` (int|false): The ID of the custom registration page if set; otherwise, `false`.
+- `$selected_lost_password_page_id` (int|false): The ID of the custom lost password page if set, otherwise `false`.
 
 **Return:**
 
-- (int|false): The custom page ID for registration redirection, or `false` if no custom page is set.
+- (int|false): The new custom lost password page ID or `false` to indicate no custom page is set.
 
 ---
 
@@ -319,6 +293,32 @@ In this example, the redirection URL changes based on the current URL path, allo
 **Return:**
 
 - (string|null): The URL to redirect to, or null to follow default logic.
+
+---
+
+# Filter: bricks/auth/custom_registration_redirect
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_registration_redirect/
+
+*This filter allows for the customization of the redirect page ID for the registration page.*
+
+This filter allows for the customization of the redirect page ID for the registration page.
+
+## Example Usage:
+
+```php
+add_filter( 'bricks/auth/custom_registration_redirect', function( $selected_registration_page_id ) {
+    return /* New registration page ID */;
+});
+```
+
+**Parameters:**
+
+- `$selected_registration_page_id` (int|false): The ID of the custom registration page if set; otherwise, `false`.
+
+**Return:**
+
+- (int|false): The custom page ID for registration redirection, or `false` if no custom page is set.
 
 ---
 
@@ -410,25 +410,6 @@ In this example, the filter modifies the default CodeMirror configuration to:
 
 ---
 
-# Filter: bricks/builder/elements
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-elements/
-
-*Determine which elements to use in Bricks by out-commenting the ones you don't want to use. There is a full example and list of all elements in the Bricks child.*
-
-Determine which elements to use in Bricks by out-commenting the ones you don't want to use. There is a full example and list of all elements in the Bricks child theme that you can customize to your requirements.
-
-```php
-add_filter( 'bricks/builder/elements', function( $elements ) {
-  // See Bricks child theme for a full list of all available elements
-  // var_dump( $elements ); // To see all available elements
-
-  return $elements;
-} );
-```
-
----
-
 # Filter: bricks/builder/image_size_options
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-image_size_options/
@@ -453,6 +434,25 @@ add_filter( 'bricks/builder/image_size_options', function( $image_sizes ) {
 
   return $image_sizes;
 });
+```
+
+---
+
+# Filter: bricks/builder/elements
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-elements/
+
+*Determine which elements to use in Bricks by out-commenting the ones you don't want to use. There is a full example and list of all elements in the Bricks child.*
+
+Determine which elements to use in Bricks by out-commenting the ones you don't want to use. There is a full example and list of all elements in the Bricks child theme that you can customize to your requirements.
+
+```php
+add_filter( 'bricks/builder/elements', function( $elements ) {
+  // See Bricks child theme for a full list of all available elements
+  // var_dump( $elements ); // To see all available elements
+
+  return $elements;
+} );
 ```
 
 ---
@@ -541,6 +541,76 @@ add_filter( 'bricks/code/disallow_keywords', function( $keywords ) {
 
   return $</meta>keywords;
 } );
+```
+
+---
+
+# Filter: bricks/comments/timestamp
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-comments-timestamp/
+
+*When using the Bricks Post Comments element, the comment default timestamp text will show the time difference since it was published in a human-readable format.*
+
+When using the Bricks Post Comments element, the comment default timestamp text will show the time difference since it was published in a human-readable format such as "1 hour ago" or "2 days ago".
+
+Since Bricks 1.5.1, you'll be able to customize the comment timestamp text, like so:
+
+```php
+add_filter( 'bricks/comments/timestamp', function( $timestamp, $comment ) {
+  // Return the WordPress default comment timestamp
+  return sprintf( __( '%1$s at %2$s' ),
+    get_comment_date( '', $comment ),
+    get_comment_time()
+  );
+}, 10, 2 );
+```
+
+---
+
+# Filter: bricks/content/html_after_begin
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-html_after_begin/
+
+*Available since version 1.6, this filter allows you to customize or insert HTML strings after main tag, before rendering bricks data.*
+
+Available since version 1.6, this filter allows you to customize or insert HTML strings after `main` tag, before rendering bricks data.
+
+```php
+add_filter( 'bricks/content/html_after_begin', function( $html_after_begin, $bricks_data, $attributes, $tag ) {
+
+    if ( $tag !== 'main' ) {
+      return $html_after_begin;
+    }
+
+    // Insert custom div after the main tag
+    $my_additional_html = '<div class="my_notification">This is my notification</div>';
+
+    return $html_after_begin . $my_additional_html;
+}, 10, 4 );
+```
+
+---
+
+# Filter: bricks/content/html_before_end
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-html_before_end/
+
+*Available since version 1.6, this filter allows you to customize or insert HTML strings before closing main tag.*
+
+Available since version 1.6, this filter allows you to customize or insert HTML strings before closing `main` tag.
+
+```php
+add_filter( 'bricks/content/html_before_end', function( $html_after_begin, $bricks_data, $attributes, $tag ) {
+
+    if ( $tag !== 'main' ) {
+      return $html_after_begin;
+    }
+
+    // Insert custom popup HTML
+    $my_popup_html = '<div class="my_popup">This is my popup</div>';
+
+    return $html_after_begin . $my_popup_html;
+}, 10, 4 );
 ```
 
 ---
@@ -638,28 +708,6 @@ add_filter( 'bricks/code/echo_function_names', function($function_name) {
 
 ---
 
-# Filter: bricks/comments/timestamp
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-comments-timestamp/
-
-*When using the Bricks Post Comments element, the comment default timestamp text will show the time difference since it was published in a human-readable format.*
-
-When using the Bricks Post Comments element, the comment default timestamp text will show the time difference since it was published in a human-readable format such as "1 hour ago" or "2 days ago".
-
-Since Bricks 1.5.1, you'll be able to customize the comment timestamp text, like so:
-
-```php
-add_filter( 'bricks/comments/timestamp', function( $timestamp, $comment ) {
-  // Return the WordPress default comment timestamp
-  return sprintf( __( '%1$s at %2$s' ),
-    get_comment_date( '', $comment ),
-    get_comment_time()
-  );
-}, 10, 2 );
-```
-
----
-
 # Filter: bricks/content/attributes
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-attributes/
@@ -678,54 +726,6 @@ add_filter( 'bricks/content/attributes', function( $attributes ) {
 
 - [/developer/hooks/filters/filter-bricks-header-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/)
 - [/developer/hooks/filters/filter-bricks-header-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/)
-
----
-
-# Filter: bricks/content/html_after_begin
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-html_after_begin/
-
-*Available since version 1.6, this filter allows you to customize or insert HTML strings after main tag, before rendering bricks data.*
-
-Available since version 1.6, this filter allows you to customize or insert HTML strings after `main` tag, before rendering bricks data.
-
-```php
-add_filter( 'bricks/content/html_after_begin', function( $html_after_begin, $bricks_data, $attributes, $tag ) {
-
-    if ( $tag !== 'main' ) {
-      return $html_after_begin;
-    }
-
-    // Insert custom div after the main tag
-    $my_additional_html = '<div class="my_notification">This is my notification</div>';
-
-    return $html_after_begin . $my_additional_html;
-}, 10, 4 );
-```
-
----
-
-# Filter: bricks/content/html_before_end
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-html_before_end/
-
-*Available since version 1.6, this filter allows you to customize or insert HTML strings before closing main tag.*
-
-Available since version 1.6, this filter allows you to customize or insert HTML strings before closing `main` tag.
-
-```php
-add_filter( 'bricks/content/html_before_end', function( $html_after_begin, $bricks_data, $attributes, $tag ) {
-
-    if ( $tag !== 'main' ) {
-      return $html_after_begin;
-    }
-
-    // Insert custom popup HTML
-    $my_popup_html = '<div class="my_popup">This is my popup</div>';
-
-    return $html_after_begin . $my_popup_html;
-}, 10, 4 );
-```
 
 ---
 
@@ -758,29 +758,6 @@ add_filter( 'bricks/content/tag', function( $tag ) {
 
 ---
 
-# Filter: bricks/default_page_title
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-default_page_title/
-
-*Since 1.8, Bricks automatically adds default page titles to all non-Bricks pages. However, if you wish to customize or remove this default page title, you can.*
-
-Since 1.8, Bricks automatically adds default page titles to all non-Bricks pages. However, if you wish to customize or remove this default page title, you can utilize this filter.
-
-Returning an empty string, disables the default page title.
-
-```php
-add_filter( 'bricks/default_page_title', function( $title, $post_id ) {
-  // If slug of current page is 'my-page': Return empty page title
-  if ( is_page( 'my-page' ) ) {
-    $title = '';
-  }
-
-  return $title;
-}, 10, 2 );
-```
-
----
-
 # Filter: bricks/dynamic_data/exclude_tags
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-exclude_tags/
@@ -801,6 +778,29 @@ add_filter( 'bricks/dynamic_data/exclude_tags', function( $tags ) {
 ```
 
 Adding this code to your child theme will prevent Bricks from replacing these tags with an empty string.
+
+---
+
+# Filter: bricks/default_page_title
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-default_page_title/
+
+*Since 1.8, Bricks automatically adds default page titles to all non-Bricks pages. However, if you wish to customize or remove this default page title, you can.*
+
+Since 1.8, Bricks automatically adds default page titles to all non-Bricks pages. However, if you wish to customize or remove this default page title, you can utilize this filter.
+
+Returning an empty string, disables the default page title.
+
+```php
+add_filter( 'bricks/default_page_title', function( $title, $post_id ) {
+  // If slug of current page is 'my-page': Return empty page title
+  if ( is_page( 'my-page' ) ) {
+    $title = '';
+  }
+
+  return $title;
+}, 10, 2 );
+```
 
 ---
 
@@ -1308,6 +1308,53 @@ add_action(
 
 ---
 
+# Filter: bricks/form/create_post/meta_value
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-create_post-meta_value/
+
+*This filter is used within the Create post form action in Bricks.*
+
+This filter is used within the [Create post](https://academy.bricksbuilder.io/builder/features/create-update-posts-on-the-frontend/) form action in Bricks.
+
+It allows developers to alter the meta values of new posts created from form submissions before they are saved to the database.
+
+**Functionality:**
+
+This filter activates during the execution of the 'Create Post' action. It provides an opportunity to modify the meta values based on custom logic or specific project requirements. This can include data formatting, validation, files handling, or applying conditional transformations to the meta values.
+
+**Example Usage:**
+
+```php
+add_filter(
+	'bricks/form/create_post/meta_value',
+	function( $meta_value, $meta_key, $form_settings, $form_fields ) {
+		if ( $meta_key === 'my_meta_key' ) {
+			// Custom logic for 'my_meta_key'
+			$meta_value = transform_meta_value( $meta_value );
+		}
+		// Additional custom logic can be implemented here
+		return $meta_value;
+	},
+	10,
+	4
+);
+```
+
+In this example, the filter modifies the value of the meta key 'my_meta_key' using a custom function `transform_meta_value`.
+
+**Parameters:**
+
+- `$meta_value` (mixed): The original value of the meta field.
+- `$meta_key` (string): The key of the meta field being modified.
+- `$form_settings` (array): The settings of the form from which the post is created.
+- `$form_fields` (array): The form fields data.
+
+**Return:**
+
+- (mixed): The modified value of the meta field, which will be saved with the post.
+
+---
+
 # Filter: bricks/form/update_post/meta_value
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-update_post-meta_value/
@@ -1355,50 +1402,40 @@ In this example, the filter modifies the value of a specific meta key ('specific
 
 ---
 
-# Filter: bricks/form/create_post/meta_value
+# Filter: bricks/frontend/render_element
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-create_post-meta_value/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-frontend-render_element/
 
-*This filter is used within the Create post form action in Bricks.*
+*The bricks/frontend/renderelement filter allows you to modify the HTML output of any element in Bricks on the frontend. This powerful hook can be used for a.*
 
-This filter is used within the [Create post](https://academy.bricksbuilder.io/builder/features/create-update-posts-on-the-frontend/) form action in Bricks.
-
-It allows developers to alter the meta values of new posts created from form submissions before they are saved to the database.
-
-**Functionality:**
-
-This filter activates during the execution of the 'Create Post' action. It provides an opportunity to modify the meta values based on custom logic or specific project requirements. This can include data formatting, validation, files handling, or applying conditional transformations to the meta values.
-
-**Example Usage:**
+The `bricks/frontend/render_element` filter allows you to modify the HTML output of any element in Bricks on the frontend. This powerful hook can be used for a variety of customization tasks, such as adding comments, modifying content, or dynamically adjusting HTML. (@since 2.0)
 
 ```php
-add_filter(
-	'bricks/form/create_post/meta_value',
-	function( $meta_value, $meta_key, $form_settings, $form_fields ) {
-		if ( $meta_key === 'my_meta_key' ) {
-			// Custom logic for 'my_meta_key'
-			$meta_value = transform_meta_value( $meta_value );
-		}
-		// Additional custom logic can be implemented here
-		return $meta_value;
-	},
-	10,
-	4
-);
+add_filter( 'bricks/frontend/render_element', function( $html, $element ) {
+    // Do not modify the HTML in the builder
+    if (
+        bricks_is_builder_main() ||
+        bricks_is_builder_iframe() ||
+        bricks_is_builder_call()
+    ) {
+        return $html;
+    }
+
+    // Add comments before and after an element with a specific ID
+    if ( $element->id === 'regxve' ) {
+        $html = '<!-- Start of the element -->' . $html . '<!-- End of the element -->';
+    }
+
+    // Modify the content of a Basic Text element
+    if ( $element->id === 'wtktgp' ) {
+        // Replace "|" with ">>" in the HTML
+        $html = str_replace( '|', '>>', $html );
+    }
+
+    return $html;
+}, 10, 2 );
+
 ```
-
-In this example, the filter modifies the value of the meta key 'my_meta_key' using a custom function `transform_meta_value`.
-
-**Parameters:**
-
-- `$meta_value` (mixed): The original value of the meta field.
-- `$meta_key` (string): The key of the meta field being modified.
-- `$form_settings` (array): The settings of the form from which the post is created.
-- `$form_fields` (array): The form fields data.
-
-**Return:**
-
-- (mixed): The modified value of the meta field, which will be saved with the post.
 
 ---
 
@@ -1456,43 +1493,6 @@ In this example, a callback function is defined within the add_filter function c
 
 ---
 
-# Filter: bricks/frontend/render_element
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-frontend-render_element/
-
-*The bricks/frontend/renderelement filter allows you to modify the HTML output of any element in Bricks on the frontend. This powerful hook can be used for a.*
-
-The `bricks/frontend/render_element` filter allows you to modify the HTML output of any element in Bricks on the frontend. This powerful hook can be used for a variety of customization tasks, such as adding comments, modifying content, or dynamically adjusting HTML. (@since 2.0)
-
-```php
-add_filter( 'bricks/frontend/render_element', function( $html, $element ) {
-    // Do not modify the HTML in the builder
-    if (
-        bricks_is_builder_main() ||
-        bricks_is_builder_iframe() ||
-        bricks_is_builder_call()
-    ) {
-        return $html;
-    }
-
-    // Add comments before and after an element with a specific ID
-    if ( $element->id === 'regxve' ) {
-        $html = '<!-- Start of the element -->' . $html . '<!-- End of the element -->';
-    }
-
-    // Modify the content of a Basic Text element
-    if ( $element->id === 'wtktgp' ) {
-        // Replace "|" with ">>" in the HTML
-        $html = str_replace( '|', '>>', $html );
-    }
-
-    return $html;
-}, 10, 2 );
-
-```
-
----
-
 # Filter: bricks/get_element_data/maybe_from_post_id
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-get_element_data-maybe_from_post_id/
@@ -1516,6 +1516,35 @@ add_filter( 'bricks/get_element_data/maybe_from_post_id', function( $id, $elemen
 }, 10, 2 );
 
 ```
+
+---
+
+# Filter: bricks/header/attributes
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/
+
+*Programmatically add HTML attributes to the header tag.*
+
+Programmatically add HTML attributes to the `header` tag.
+
+```php
+add_filter( 'bricks/header/attributes', function( $attributes ) {
+  // Add custom class to header
+  if ( isset( $attributes['class'] ) && is_array( $attributes['class'] ) ) {
+    $attributes['class'][] = 'my-header-class';
+  } else {
+    $attributes['class'] = ['my-header-class'];
+  }
+
+  // Add 'data-is-header' HTML attribute to header with value 'y'
+  $attributes['data-is-header'] = 'y';
+
+  return $attributes;
+} );
+```
+
+- [/developer/hooks/filters/filter-bricks-content-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-attributes/)
+- [/developer/hooks/filters/filter-bricks-footer-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-footer-attributes/)
 
 ---
 
@@ -1554,35 +1583,6 @@ add_filter( 'bricks/is_layout_element', function( $layout_element_names ) {
     return $layout_element_names;
 } );
 ```
-
----
-
-# Filter: bricks/header/attributes
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/
-
-*Programmatically add HTML attributes to the header tag.*
-
-Programmatically add HTML attributes to the `header` tag.
-
-```php
-add_filter( 'bricks/header/attributes', function( $attributes ) {
-  // Add custom class to header
-  if ( isset( $attributes['class'] ) && is_array( $attributes['class'] ) ) {
-    $attributes['class'][] = 'my-header-class';
-  } else {
-    $attributes['class'] = ['my-header-class'];
-  }
-
-  // Add 'data-is-header' HTML attribute to header with value 'y'
-  $attributes['data-is-header'] = 'y';
-
-  return $attributes;
-} );
-```
-
-- [/developer/hooks/filters/filter-bricks-content-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-attributes/)
-- [/developer/hooks/filters/filter-bricks-footer-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-footer-attributes/)
 
 ---
 
@@ -2126,6 +2126,36 @@ Since 1.9.2, you can define `$query_vars['bricks_force_run'] = true` to achieve 
 
 ---
 
+# Filter: bricks/query/init_loop_index
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-init_loop_index/
+
+*Filter the initial Bricks loop index so paginated, infinite-scroll, or custom queries keep their loop-based output aligned.*
+
+The `bricks/query/init_loop_index` filter, available `@since 1.11`, allows you to modify the initial loop index when using various query types in Bricks Builder. This filter is especially useful in cases such as infinite scroll or paginated queries, where setting the correct loop index is crucial for displaying content seamlessly across multiple pages especially when using dynamic backgound images or colors. Without this hook, the generated dynamic CSS might be applied on the incorrect element when performing infinite scroll or paginate actions.
+
+### When to Use
+
+This filter is particularly useful when creating a custom query type using the [bricks/setup/control_options](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-nav_menu-menu/) hook. You can implement your own logic for handling pagination and adjust the initial loop index accordingly.
+
+```php
+add_filter( 'bricks/query/init_loop_index', function ( $initial_index, $object_type, $query ) {
+  // Check if the object type is 'my_custom_query'
+  if ( $object_type !== 'my_custom_query' ) {
+    return $initial_index;
+  }
+
+  // Add your custom logic to modify the initial loop index
+  // Example: Calculate based on custom logic
+  // $initial_index = custom_logic_to_calculate_index();
+
+  return $initial_index;
+}, 10, 3 );
+
+```
+
+---
+
 # Filter: bricks/query/loop_object
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object/
@@ -2162,6 +2192,29 @@ Related hooks:
 
 ---
 
+# Filter: bricks/query/loop_object_type
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object_type/
+
+*Bricks will use \\Bricks\\Query::getloopobjecttype() to retrieve the looping iteration's object type. This static function is used in many places. It plays an.*
+
+Bricks will use `\Bricks\Query::get_loop_object_type()` to retrieve the looping iteration's object type. This static function is used in many places. It plays an important role in many conditions. The possible return object_type should be 'post', 'term', or 'user' only.
+
+```php
+// This is the example when Bricks set the object_type in woo cart query, so inside each iteration, it will be treat as a post/product object_type
+add_filter( 'bricks/query/loop_object_type', function( $object_type, $object, $query_id ) {
+    $query_object_type = \Bricks\Query::get_query_object_type( $query_id );
+
+    if ( $query_object_type !== 'wooCart' ) {
+	return $object_type;
+    }
+
+    return 'post';
+}, 10, 3 );
+```
+
+---
+
 # Filter: bricks/query/loop_object_id
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object_id/
@@ -2190,59 +2243,6 @@ add_filter( 'bricks/query/loop_object_id', function( $object_id, $object, $query
 
 - [bricks/setup/control_options](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/): To add a custom query type to the Query control
 - [bricks/query/loop_object](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object/): To manage the object on every loop iteration
-
----
-
-# Filter: bricks/query/init_loop_index
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-init_loop_index/
-
-*Filter the initial Bricks loop index so paginated, infinite-scroll, or custom queries keep their loop-based output aligned.*
-
-The `bricks/query/init_loop_index` filter, available `@since 1.11`, allows you to modify the initial loop index when using various query types in Bricks Builder. This filter is especially useful in cases such as infinite scroll or paginated queries, where setting the correct loop index is crucial for displaying content seamlessly across multiple pages especially when using dynamic backgound images or colors. Without this hook, the generated dynamic CSS might be applied on the incorrect element when performing infinite scroll or paginate actions.
-
-### When to Use
-
-This filter is particularly useful when creating a custom query type using the [bricks/setup/control_options](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-nav_menu-menu/) hook. You can implement your own logic for handling pagination and adjust the initial loop index accordingly.
-
-```php
-add_filter( 'bricks/query/init_loop_index', function ( $initial_index, $object_type, $query ) {
-  // Check if the object type is 'my_custom_query'
-  if ( $object_type !== 'my_custom_query' ) {
-    return $initial_index;
-  }
-
-  // Add your custom logic to modify the initial loop index
-  // Example: Calculate based on custom logic
-  // $initial_index = custom_logic_to_calculate_index();
-
-  return $initial_index;
-}, 10, 3 );
-
-```
-
----
-
-# Filter: bricks/query/loop_object_type
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object_type/
-
-*Bricks will use \\Bricks\\Query::getloopobjecttype() to retrieve the looping iteration's object type. This static function is used in many places. It plays an.*
-
-Bricks will use `\Bricks\Query::get_loop_object_type()` to retrieve the looping iteration's object type. This static function is used in many places. It plays an important role in many conditions. The possible return object_type should be 'post', 'term', or 'user' only.
-
-```php
-// This is the example when Bricks set the object_type in woo cart query, so inside each iteration, it will be treat as a post/product object_type
-add_filter( 'bricks/query/loop_object_type', function( $object_type, $object, $query_id ) {
-    $query_object_type = \Bricks\Query::get_query_object_type( $query_id );
-
-    if ( $query_object_type !== 'wooCart' ) {
-	return $object_type;
-    }
-
-    return 'post';
-}, 10, 3 );
-```
 
 ---
 
@@ -2437,49 +2437,51 @@ add_filter( 'bricks/registered_post_types_args', function( $args ) {
 
 ---
 
-# Filter: bricks/screen_conditions/scores
+# Filter: bricks/related_posts/query_vars
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-screen_conditions-scores/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-related_posts-query_vars/
 
-*Bricks selects the template & theme style for a specific page according to the conditions you've defined.*
+*Since Bricks 1.3.5 you may manipulate the related posts element query vars before the query is performed like so:*
 
-Bricks selects the template & theme style for a specific page according to the conditions you've defined.
-
-Internally this is done via a scoring system from 0 to 10. 0 is the least specific. 10 being the most specific (e.g. specific post ID).
-
-For each template/theme style condition that could apply to a certain context, the template/theme style earns a specific score. After analyzing all templates/theme styles, Bricks chooses the one with the highest score.
-
-If you need to add new template conditions using the filter [`builder/settings/template/controls_data`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-builder-settings-type-controls_data/) or `bricks/theme_styles/controls` for theme styles, you then need to hook into the scoring logic to score the templates/theme styles based on the custom conditions.
-
-This is where the `bricks/screen_conditions/scores` filter comes in handy, like so:
+Since Bricks 1.3.5 you may manipulate the **related posts** element query vars before the query is performed like so:
 
 ```php
-add_filter( 'bricks/screen_conditions/scores', function( $scores, $condition, $post_id, $preview_type ) {
-  // Run custom logic to score the template/theme style $condition
-  // $scores[] = 5;
+add_filter( 'bricks/related_posts/query_vars', function( $query_vars, $settings, $element_id ) {
+    $query_vars['post_type'] = [ 'post', 'project' ];
 
-  return $scores;
-}, 10, 4 );
+    return $query_vars;
+}, 10, 3 );
 ```
 
-**Example 1: Add the score for a specific author role in an author archive template**
+The filter callback receives two arguments:
 
-After adding the control using the [`builder/settings/template/controls_data`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-builder-settings-type-controls_data/) (check example 1), we now need to hook in `bricks/screen_conditions/scores` to score the template based on the condition, like so:
+- `$query_vars` is an associative array used to feed the [WP_Query](https://developer.wordpress.org/reference/classes/wp_query/) class
+- `$settings` is an associative array containing the element settings set in the builder
+- `$element_id` is a string containing the element ID
+
+---
+
+# Filter: bricks/render_query_loop_trail
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-render_query_loop_trail/
+
+*Control whether Bricks renders the query loop trail node that frontend JavaScript uses to read query settings.*
+
+The `bricks/render_query_loop_trail` (@since 1.11.1) filter controls the output of the query loop trail node in Bricks. This node is automatically added to each query loop and records the loop's settings, which are then accessed by frontend JavaScript to manage various query-related tasks. Once these settings are read by Bricks, the node is removed from the DOM.
+
+For some third-party plugins, this node may not be needed—especially if they use custom AJAX endpoints to update query results independently of Bricks. Using this filter, you can control whether or not the query loop trail node is rendered.
 
 ```php
-add_filter( 'bricks/screen_conditions/scores', function( $scores, $condition, $post_id, $preview_type ) {
-  if ( is_author() && $condition['main'] === 'archiveType' && isset( $condition['archiveType'] ) && in_array( 'author', $condition['archiveType'] ) && isset( $condition['archiveAuthorRoles'] ) ) {
-    $user = get_queried_object();
-
-    if ( ! empty( $user->roles ) && is_array( $user->roles ) ) {
-      foreach ( $user->roles as $role_name ) {
-        if ( in_array( $role_name, $condition['archiveAuthorRoles'] ) ) {
-          $scores[] = 9;
-        }
-      }
-    }
+// Return true = render the query loop trail node
+// Return false = skip the query loop trail node
+add_filter( 'bricks/render_query_loop_trail', function( $render, $element, $query ) {
+  // Do not render query loop trail node if my-custom-param parameter exists
+  if ( isset( $_GET['my-custom-param'] ) ) {
+    $render = false;
   }
 
-  return $scores;
-}, 10, 4 );
+  return $render;
+}, 10, 3 );
 ```
+
+In this example, if the `my-custom-param` parameter is detected in the URL, the query loop trail node will not be rendered. This can be useful for third-party plugins with custom AJAX endpoints that handle query configurations independently.

@@ -178,81 +178,40 @@ The Pricing Tables element creates responsive pricing table layouts with customi
 
 ---
 
-# Rating
+# Progress bar
 
-Source: https://academy.bricksbuilder.io/builder/elements/general/rating/
+Source: https://academy.bricksbuilder.io/builder/elements/general/progress-bar/
 
-*The Rating element displays a numeric score as a row of icons (default: stars). It supports fractional values (e.g. 3.5 on a 5-point scale) by filling whole.*
+*The Progress Bar element displays animated progress bars with customizable labels, percentages, and styling.*
 
-The **Rating** element displays a numeric score as a row of icons (default: stars). It supports **fractional** values (e.g. `3.5` on a 5-point scale) by filling whole icons, one partial icon with a width mask, and empty icons for the remainder.
-
-This is separate from [Product rating](https://academy.bricksbuilder.io/builder/elements/product/product-rating/) (WooCommerce). Use **Rating** for static or dynamic review scores anywhere on the site.
+The Progress Bar element displays animated progress bars with customizable labels, percentages, and styling.
 
 ## Settings
 
-- **Rating** (number) — Current score. Min `0`, step `0.1`. Supports dynamic data. Default: `3.5`.
+- **Bars** (repeater) - Add multiple progress bars. Each bar has:
+  - **Label** (text) - Text label for the progress bar.
+  - **Percentage** (number) - Progress percentage (0-100). Supports dynamic data.
+  - **Bar color** (color) - Color of the progress fill.
 
-- **Max. rating** (number) — Scale maximum (e.g. `5`). Min `1`. Supports dynamic data.
+- **Height** (number with units) - Height of the progress bars. Default: 8px.
 
-- **Gap** (number with units) — Space between icons (`gap` on the root).
+- **Spacing** (number with units) - Gap between progress bars. Default: 20px.
 
-### Icon
+- **Show percentage** (checkbox) - Display percentage values next to labels. Default: checked.
 
-- **Icon** (icon) — Optional custom icon; default is the built-in star SVG.
+- **Bar color** (color) - Default color for all progress bars.
 
-- **Icon color: Full** (color) — Filled / active portion.
+- **Bar background color** (color) - Background color of the progress bar tracks.
 
-- **Icon color: Empty** (color) — Empty / inactive portion.
+- **Bar border** (border) - Border styling for the progress bars.
 
-- **Icon size** (number with units).
+- **Label typography** (typography) - Font settings for the labels.
 
-### Schema
-
-Optional **schema.org** **Review** + **Rating** JSON-LD.
-
-- **Generate review schema** (checkbox).
-
-When enabled, the following are required:
-
-- **Required: Reviewed item type** (text) — e.g. `Product`, `Service`.
-
-- **Required: Reviewed item name** (text).
-
-Optional:
-
-- **Optional: Review author** (text).
-
-- **Additional item reviewed properties** (repeater) — `Property name`, `Property value`, `Value type` (`Text`, `Number`, `Nested object`).
-
-- **Additional review properties** (repeater) — Same shape; adds fields on the **Review** object (e.g. `reviewBody`, `datePublished`).
-
-The structured data maps your **Rating** and **Max. rating** into a `Rating` node with `bestRating` `5` (normalized from your scale).
+- **Percentage typography** (typography) - Font settings for the percentage values. Only shown when "Show percentage" is enabled.
 
 > **Developer reference**
 >
-> See the [Rating Schema](https://academy.bricksbuilder.io/developer/schema/elements/rating/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Slot
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/slot/
-
-*The Slot element is used inside Bricks components as a placeholder: when you place a component instance on the canvas, the content you add into that instance is.*
-
-The **Slot** element is used **inside Bricks components** as a **placeholder**: when you place a component instance on the canvas, the content you add into that instance is rendered in place of each Slot.
-
-On the front end, the Slot outputs **nothing by itself**—it only renders the child elements assigned to that slot on the **component instance** (`slotChildren` for that Slot id). If there is no matching instance or no children, the Slot outputs nothing.
-
-The element shows a single **info** control explaining that it acts as a placeholder for instance content.
-
-> **Nestable**
->
-> Slot uses the nestable builder UI (`bricks-nestable`) but does not ship with default nested children; structure is defined in your **component** template.
-
-> **Developer reference**
->
-> See the [Slot Schema](https://academy.bricksbuilder.io/developer/schema/elements/slot/) for the full JSON schema of this element's settings and controls.
+> See the [Progress Bar Schema](https://academy.bricksbuilder.io/developer/schema/elements/progress-bar/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -309,6 +268,84 @@ The Nestable Tabs element allows creating tabbed content with drag-and-drop nest
 > **Developer reference**
 >
 > See the [Tabs (Nestable) Schema](https://academy.bricksbuilder.io/developer/schema/elements/tabs-nested/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Slot
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/slot/
+
+*The Slot element is used inside Bricks components as a placeholder: when you place a component instance on the canvas, the content you add into that instance is.*
+
+The **Slot** element is used **inside Bricks components** as a **placeholder**: when you place a component instance on the canvas, the content you add into that instance is rendered in place of each Slot.
+
+On the front end, the Slot outputs **nothing by itself**—it only renders the child elements assigned to that slot on the **component instance** (`slotChildren` for that Slot id). If there is no matching instance or no children, the Slot outputs nothing.
+
+The element shows a single **info** control explaining that it acts as a placeholder for instance content.
+
+> **Nestable**
+>
+> Slot uses the nestable builder UI (`bricks-nestable`) but does not ship with default nested children; structure is defined in your **component** template.
+
+> **Developer reference**
+>
+> See the [Slot Schema](https://academy.bricksbuilder.io/developer/schema/elements/slot/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Rating
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/rating/
+
+*The Rating element displays a numeric score as a row of icons (default: stars). It supports fractional values (e.g. 3.5 on a 5-point scale) by filling whole.*
+
+The **Rating** element displays a numeric score as a row of icons (default: stars). It supports **fractional** values (e.g. `3.5` on a 5-point scale) by filling whole icons, one partial icon with a width mask, and empty icons for the remainder.
+
+This is separate from [Product rating](https://academy.bricksbuilder.io/builder/elements/product/product-rating/) (WooCommerce). Use **Rating** for static or dynamic review scores anywhere on the site.
+
+## Settings
+
+- **Rating** (number) — Current score. Min `0`, step `0.1`. Supports dynamic data. Default: `3.5`.
+
+- **Max. rating** (number) — Scale maximum (e.g. `5`). Min `1`. Supports dynamic data.
+
+- **Gap** (number with units) — Space between icons (`gap` on the root).
+
+### Icon
+
+- **Icon** (icon) — Optional custom icon; default is the built-in star SVG.
+
+- **Icon color: Full** (color) — Filled / active portion.
+
+- **Icon color: Empty** (color) — Empty / inactive portion.
+
+- **Icon size** (number with units).
+
+### Schema
+
+Optional **schema.org** **Review** + **Rating** JSON-LD.
+
+- **Generate review schema** (checkbox).
+
+When enabled, the following are required:
+
+- **Required: Reviewed item type** (text) — e.g. `Product`, `Service`.
+
+- **Required: Reviewed item name** (text).
+
+Optional:
+
+- **Optional: Review author** (text).
+
+- **Additional item reviewed properties** (repeater) — `Property name`, `Property value`, `Value type` (`Text`, `Number`, `Nested object`).
+
+- **Additional review properties** (repeater) — Same shape; adds fields on the **Review** object (e.g. `reviewBody`, `datePublished`).
+
+The structured data maps your **Rating** and **Max. rating** into a `Rating` node with `bestRating` `5` (normalized from your scale).
+
+> **Developer reference**
+>
+> See the [Rating Schema](https://academy.bricksbuilder.io/developer/schema/elements/rating/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -1523,6 +1560,31 @@ The SVG element displays SVG graphics from files, dynamic data, custom code, or 
 
 ---
 
+# Product additional information
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-additional-information/
+
+*Displays the product attributes table shown in WooCommerce under Additional information.*
+
+Displays the product attributes table shown in WooCommerce under Additional information.
+
+## Where this element works
+
+Single Product templates (or product preview context).
+
+## Key settings
+
+- **Heading** (text)
+- **Typography** (typography)
+- **Width** (number)
+
+## Usage tips
+
+- Use this element inside a Single Product template to guarantee a valid product context.
+- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
+
+---
+
 # Add to cart
 
 Source: https://academy.bricksbuilder.io/builder/elements/product/product-add-to-cart/
@@ -1547,6 +1609,29 @@ Single Product templates (or product preview context).
 - **Regular price typography** (typography)
 - **Sale price typography** (typography)
 - **Wrap** (select)
+
+## Usage tips
+
+- Use this element inside a Single Product template to guarantee a valid product context.
+- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
+
+---
+
+# Product content
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-content/
+
+*Displays the full product description (main content) from the product editor.*
+
+Displays the full product description (main content) from the product editor.
+
+## Where this element works
+
+Single Product templates (or product preview context).
+
+## Key settings
+
+- This element uses standard WooCommerce output and inherited style controls.
 
 ## Usage tips
 
@@ -1585,54 +1670,6 @@ Displays the WooCommerce product gallery with main product image and thumbnail n
 - **Size** (number) - Font size for navigation arrow icons.
 - **Height** (number) - Height of navigation arrow buttons.
 - **Width** (number) - Width of navigation arrow buttons.
-
----
-
-# Product content
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-content/
-
-*Displays the full product description (main content) from the product editor.*
-
-Displays the full product description (main content) from the product editor.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- This element uses standard WooCommerce output and inherited style controls.
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
-
----
-
-# Product additional information
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-additional-information/
-
-*Displays the product attributes table shown in WooCommerce under Additional information.*
-
-Displays the product attributes table shown in WooCommerce under Additional information.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- **Heading** (text)
-- **Typography** (typography)
-- **Width** (number)
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
 
 ---
 
@@ -1809,22 +1846,35 @@ Displays the WooCommerce product stock status and quantity information.
 
 ---
 
-# Product title
+# Product up/cross-sells
 
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-title/
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-upsells/
 
-*Displays the title of the current WooCommerce product.*
+*Displays up-sell and cross-sell products linked to the current product.*
 
-Displays the title of the current WooCommerce product.
+Displays up-sell and cross-sell products linked to the current product.
 
-## Settings
+## Where this element works
 
-- **HTML tag** (select) - HTML tag for the title. Options: h1, h2, h3, h4, h5, h6. Default: h1.
-- **Prefix** (text) - Text to display before the title.
-- **Prefix block** (checkbox) - Display prefix as block element.
-- **Suffix** (text) - Text to display after the title.
-- **Suffix block** (checkbox) - Display suffix as block element.
-- **Link to product** (checkbox) - Make the title a link to the product.
+Single Product templates (or product preview context).
+
+## Key settings
+
+- **Type** (select)
+- **Heading** (text)
+- **Heading typography** (typography)
+- **Max. products** (number)
+- **Columns** (number)
+- **Gap** (number)
+- **Order by** (select)
+- **Order** (select)
+- **Padding** (spacing)
+- **Background color** (color)
+
+## Usage tips
+
+- Use this element inside a Single Product template to guarantee a valid product context.
+- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
 
 ---
 
@@ -1856,35 +1906,22 @@ Single Product templates (or product preview context).
 
 ---
 
-# Product up/cross-sells
+# Product title
 
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-upsells/
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-title/
 
-*Displays up-sell and cross-sell products linked to the current product.*
+*Displays the title of the current WooCommerce product.*
 
-Displays up-sell and cross-sell products linked to the current product.
+Displays the title of the current WooCommerce product.
 
-## Where this element works
+## Settings
 
-Single Product templates (or product preview context).
-
-## Key settings
-
-- **Type** (select)
-- **Heading** (text)
-- **Heading typography** (typography)
-- **Max. products** (number)
-- **Columns** (number)
-- **Gap** (number)
-- **Order by** (select)
-- **Order** (select)
-- **Padding** (spacing)
-- **Background color** (color)
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
+- **HTML tag** (select) - HTML tag for the title. Options: h1, h2, h3, h4, h5, h6. Default: h1.
+- **Prefix** (text) - Text to display before the title.
+- **Prefix block** (checkbox) - Display prefix as block element.
+- **Suffix** (text) - Text to display after the title.
+- **Suffix block** (checkbox) - Display suffix as block element.
+- **Link to product** (checkbox) - Make the title a link to the product.
 
 ---
 
@@ -2150,80 +2187,6 @@ Displays post meta information like author, date, comments, etc.
 
 ---
 
-# Post navigation
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/post-navigation/
-
-*Displays navigation links to previous and next posts.*
-
-Displays navigation links to previous and next posts.
-
-The element uses WordPress adjacent-post navigation. **Previous** points to the previous post according to WordPress's post-date order, and **Next** points to the next one. This can look reversed when visitors arrive from a posts list sorted by date in descending order.
-
-## Settings
-
-- **Direction** (direction) - Layout direction for navigation items.
-- **Max. post width** (number) - Maximum width for post navigation items.
-- **In same term** (checkbox) - Navigate within same taxonomy term.
-- **Excluded terms** (select) - Terms to exclude from navigation.
-- **Taxonomy** (select) - Taxonomy for same term navigation. Default: category.
-
-### Label
-- **Show label** (checkbox) - Display navigation labels. Default: true.
-- **Prev label** (text) - Label for previous post. Default: "Previous post".
-- **Next label** (text) - Label for next post. Default: "Next post".
-- **Label typography** (typography) - Typography for navigation labels.
-
-### Title
-- **Show title** (checkbox) - Display post titles in navigation. Default: true.
-- **Title tag** (text) - HTML tag for post titles. Default: h5.
-- **Title typography** (typography) - Typography for post titles.
-- **Alignment: Previous post** (justify-content) - Alignment for previous post section.
-- **Alignment: Next post** (justify-content) - Alignment for next post section.
-
-### Arrows
-- **Prev arrow** (icon) - Icon for previous post navigation.
-- **Next arrow** (icon) - Icon for next post navigation.
-- **Typography** (typography) - Typography for arrow icons.
-
-You can change the labels and arrows to match the wording used by your design. The element does not include a setting that reverses the underlying adjacent-post lookup. Changing that order requires custom PHP through WordPress's adjacent-post filters, or a custom navigation implementation.
-
-### Image
-- **Show image** (checkbox) - Display post featured images. Default: true.
-- **Size** (select) - WordPress image size. Default: Thumbnail.
-- **Height** (number) - Image height. Default: 60px.
-- **Width** (number) - Image width. Default: 60px.
-- **Border** (border) - Image border settings.
-
-> **Developer reference**
->
-> See the [Post Navigation Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-navigation/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Post reading progress bar
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/post-reading-progress-bar/
-
-*Shows a progress bar indicating how much of the post has been read.*
-
-Shows a progress bar indicating how much of the post has been read.
-
-## Settings
-
-- **Content** (select) - Choose the content to track reading progress for. Options: post_content, post_excerpt, custom_content. Default: post_content.
-- **Position** (select) - Position of the progress bar. Options: top, bottom. Default: top.
-- **Height** (number) - Height of the progress bar in pixels. Default: 4.
-- **Background color** (color) - Background color of the progress bar.
-- **Progress color** (color) - Color of the progress indicator.
-- **Show percentage** (checkbox) - Display the reading percentage as text.
-
-> **Developer reference**
->
-> See the [Reading Progress Bar Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-reading-progress-bar/) for the full JSON schema of this element's settings and controls.
-
----
-
 # Post content
 
 Source: https://academy.bricksbuilder.io/builder/elements/single/post-content/
@@ -2291,6 +2254,57 @@ Bricks Page Template using a Post Content element to fetch page bricks data
 
 ---
 
+# Post navigation
+
+Source: https://academy.bricksbuilder.io/builder/elements/single/post-navigation/
+
+*Displays navigation links to previous and next posts.*
+
+Displays navigation links to previous and next posts.
+
+The element uses WordPress adjacent-post navigation. **Previous** points to the previous post according to WordPress's post-date order, and **Next** points to the next one. This can look reversed when visitors arrive from a posts list sorted by date in descending order.
+
+## Settings
+
+- **Direction** (direction) - Layout direction for navigation items.
+- **Max. post width** (number) - Maximum width for post navigation items.
+- **In same term** (checkbox) - Navigate within same taxonomy term.
+- **Excluded terms** (select) - Terms to exclude from navigation.
+- **Taxonomy** (select) - Taxonomy for same term navigation. Default: category.
+
+### Label
+- **Show label** (checkbox) - Display navigation labels. Default: true.
+- **Prev label** (text) - Label for previous post. Default: "Previous post".
+- **Next label** (text) - Label for next post. Default: "Next post".
+- **Label typography** (typography) - Typography for navigation labels.
+
+### Title
+- **Show title** (checkbox) - Display post titles in navigation. Default: true.
+- **Title tag** (text) - HTML tag for post titles. Default: h5.
+- **Title typography** (typography) - Typography for post titles.
+- **Alignment: Previous post** (justify-content) - Alignment for previous post section.
+- **Alignment: Next post** (justify-content) - Alignment for next post section.
+
+### Arrows
+- **Prev arrow** (icon) - Icon for previous post navigation.
+- **Next arrow** (icon) - Icon for next post navigation.
+- **Typography** (typography) - Typography for arrow icons.
+
+You can change the labels and arrows to match the wording used by your design. The element does not include a setting that reverses the underlying adjacent-post lookup. Changing that order requires custom PHP through WordPress's adjacent-post filters, or a custom navigation implementation.
+
+### Image
+- **Show image** (checkbox) - Display post featured images. Default: true.
+- **Size** (select) - WordPress image size. Default: Thumbnail.
+- **Height** (number) - Image height. Default: 60px.
+- **Width** (number) - Image width. Default: 60px.
+- **Border** (border) - Image border settings.
+
+> **Developer reference**
+>
+> See the [Post Navigation Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-navigation/) for the full JSON schema of this element's settings and controls.
+
+---
+
 # Post reading time
 
 Source: https://academy.bricksbuilder.io/builder/elements/single/post-reading-time/
@@ -2313,30 +2327,26 @@ Displays the estimated reading time for a post based on the selected content.
 
 ---
 
-# Post table of contents
+# Post reading progress bar
 
-Source: https://academy.bricksbuilder.io/builder/elements/single/post-toc/
+Source: https://academy.bricksbuilder.io/builder/elements/single/post-reading-progress-bar/
 
-*Generates a table of contents based on the headings in the post content.*
+*Shows a progress bar indicating how much of the post has been read.*
 
-Generates a table of contents based on the headings in the post content.
+Shows a progress bar indicating how much of the post has been read.
 
 ## Settings
 
-- **Content** (select) - Choose the content to generate table of contents from. Options: post_content, post_excerpt, custom_content. Default: post_content.
-- **Heading selectors** (text) - CSS selectors for headings to include. Default: "h1,h2,h3,h4,h5,h6".
-- **List style** (select) - Style for the list items. Options: none, disc, circle, square, decimal, decimal-leading-zero, lower-roman, upper-roman, lower-greek, lower-latin, upper-latin, armenian, georgian, lower-alpha, upper-alpha. Default: none.
-- **Item typography** (typography) - Typography settings for list items.
-- **Item padding** (dimensions) - Padding for list items.
-- **Item background color** (color) - Background color for list items.
-- **Item border** (border) - Border settings for list items.
-- **Active item typography** (typography) - Typography settings for active list items.
-- **Active item background color** (color) - Background color for active list items.
-- **Active item border** (border) - Border settings for active list items.
+- **Content** (select) - Choose the content to track reading progress for. Options: post_content, post_excerpt, custom_content. Default: post_content.
+- **Position** (select) - Position of the progress bar. Options: top, bottom. Default: top.
+- **Height** (number) - Height of the progress bar in pixels. Default: 4.
+- **Background color** (color) - Background color of the progress bar.
+- **Progress color** (color) - Color of the progress indicator.
+- **Show percentage** (checkbox) - Display the reading percentage as text.
 
 > **Developer reference**
 >
-> See the [Table Of Contents Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-toc/) for the full JSON schema of this element's settings and controls.
+> See the [Reading Progress Bar Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-reading-progress-bar/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -2371,6 +2381,33 @@ Displays the title of the current post or page.
 > **Developer reference**
 >
 > See the [Post Title Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-title/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Post table of contents
+
+Source: https://academy.bricksbuilder.io/builder/elements/single/post-toc/
+
+*Generates a table of contents based on the headings in the post content.*
+
+Generates a table of contents based on the headings in the post content.
+
+## Settings
+
+- **Content** (select) - Choose the content to generate table of contents from. Options: post_content, post_excerpt, custom_content. Default: post_content.
+- **Heading selectors** (text) - CSS selectors for headings to include. Default: "h1,h2,h3,h4,h5,h6".
+- **List style** (select) - Style for the list items. Options: none, disc, circle, square, decimal, decimal-leading-zero, lower-roman, upper-roman, lower-greek, lower-latin, upper-latin, armenian, georgian, lower-alpha, upper-alpha. Default: none.
+- **Item typography** (typography) - Typography settings for list items.
+- **Item padding** (dimensions) - Padding for list items.
+- **Item background color** (color) - Background color for list items.
+- **Item border** (border) - Border settings for list items.
+- **Active item typography** (typography) - Typography settings for active list items.
+- **Active item background color** (color) - Background color for active list items.
+- **Active item border** (border) - Border settings for active list items.
+
+> **Developer reference**
+>
+> See the [Table Of Contents Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-toc/) for the full JSON schema of this element's settings and controls.
 
 ---
 

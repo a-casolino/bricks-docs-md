@@ -4,6 +4,8 @@ The Color Manager is where you create and maintain the reusable colors for a Bri
 
 Instead of setting isolated hex, RGB, or HSL values on individual elements, save the color once and then select it from color controls. When you later update the saved color, every control that references that color can use the updated value.
 
+https://youtu.be/u8p8olaPXY8
+
 ## How Color Manager works
 
 Color Manager stores colors in palettes. A palette is a named group of colors, and each color has:
@@ -28,12 +30,12 @@ Dark-mode values are output separately under `:root[data-brx-theme="dark"]`. Uti
 To access the Color Manager:
 
 1. Open the builder
-2. Click the **Settings** icon in the left builder toolbar
+2. Click the **Styles** icon in the builder toolbar (or press `CMD + .` / `CTRL + .`) to open the Style Manager
 3. Open the **Colors** tab
 
 ![](https://academy.bricksbuilder.io/assets/bricks-2.2-color-manager-scaled.png)
 
-If no palettes exist yet, Bricks prompts you to create one or import a JSON palette.
+On a new site, the Colors tab shows a palette named **Default** with generic variable names such as `var(--bricks-color-grey-100)`. To use names that fit your project, create your own palette. A new, empty palette asks you to add its first color.
 
 ## Palettes
 
@@ -72,6 +74,8 @@ Bricks blocks duplicate variable names across Color Manager palettes and Global 
 
 Click the edit icon on a color to edit its variable name, light value, dark value, shades, or utility classes.
 
+To see a change on the page while you edit, turn on **Toggle canvas preview** (eye icon) in the Style Manager header. The canvas preview appears next to the palette and updates as soon as you change a color value.
+
 When you rename a color variable, Bricks also updates the generated shade variable names for that color. For example, if `var(--primary)` has light shades, those shades use names such as `var(--primary-l-1)`. Renaming the base variable updates those shade names to match.
 
 ### Adding a color from a color control
@@ -85,7 +89,7 @@ This is useful when you discover a useful color while designing, but the better 
 Most color controls can open the color palette popup. The popup lets you:
 
 - Choose the active palette.
-- Switch between list view and grid view.
+- Switch between list view and grid view. List view shows each color's variable name and value, with its generated shades below it.
 - Select root colors and generated shades.
 - Add the current color value to a palette if you have permission.
 - Open Color Manager from the settings icon if you have permission.
@@ -135,6 +139,8 @@ Shade variables follow the base variable name:
 - `var(--primary-t-1)` for transparent shades
 
 The number at the end is the shade step.
+
+Shades are useful for interaction states. For example, set a button's **Background color** to `var(--primary)` and its `:hover` background to `var(--primary-d-1)`. When you later change `primary`, the hover color is regenerated from the new value.
 
 Disabling a shade group removes the generated shade entries for that root color.
 

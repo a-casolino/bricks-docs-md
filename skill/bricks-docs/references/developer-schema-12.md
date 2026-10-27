@@ -1,13 +1,13 @@
-# Mini Cart Schema
+# Woocommerce Item Data Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-mini-cart/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-item-data/
 
-*Schema for Bricks Mini cart element*
+*Schema for Bricks Woocommerce Item Data element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-mini-cart |
-| `category` | woocommerce |
+| `name` | woocommerce-item-data |
+| `category` | general |
 | `tag` | div |
 | `nestable` | false |
 
@@ -15,46 +15,43 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-m
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `icon` | icon | Icon | — |
-| `iconTypography` | typography | Icon typography | `font` on `.mini-cart-link i` |
-| `openMiniCartOnAddedToCart` | checkbox | Open on add to cart (AJAX) | — |
-| `cartCount` | select | Visibility | `display` on `.cart-count` |
-| `cartCountBackground` | color | Background color | `background-color` on `.cart-count` |
-| `cartCountBorder` | border | Border | `border` on `.mini-cart-link .cart-icon .cart-count` |
-| `cartCountTypography` | typography | Typography | `font` on `.mini-cart-link .cart-icon .cart-count` |
-| `cartCountTransform` | transform | Transform | `transform` on `.mini-cart-link .cart-icon .cart-count` |
-| `cartCountHeight` | number | Height | `height` on `.cart-count` |
-| `cartCountWidth` | number | Width | `width` on `.cart-count` |
-| `cartCountTop` | number | cartCountTop | `top` on `.mini-cart-link .cart-icon .cart-count` |
-| `cartCountRight` | number | Right | `right` on `.mini-cart-link .cart-icon .cart-count` |
-| `cartCountBottom` | number | Bottom | `bottom` on `.mini-cart-link .cart-icon .cart-count` |
-| `cartCountLeft` | number | Left | `left` on `.mini-cart-link .cart-icon .cart-count` |
-| `subtotalPosition` | select | Position | `flex-direction` on `.mini-cart-link` |
-| `subtotalGap` | number | Gap | `gap` on `.mini-cart-link` |
-| `subtotalTypography` | typography | Typography | `font` on `.mini-cart-link .cart-subtotal` |
-| `hideCartDetails` | checkbox | Hide | — |
-| `skipClickOutside` | checkbox | Don\ | — |
-| `cartDetailsOffCanvas` | select | Off-Canvas | — |
-| `cartDetailsHeight` | number | Height | `height` on `.cart-detail` |
-| `cartDetailsWidth` | number | Width | `width` on `.cart-detail` |
-| `cartDetailsImageWidth` | number | Image width | `width` on `.cart-detail img` |
-| `cartDetailsPadding` | spacing | Padding | `padding` on `.cart-detail .widget_shopping_cart_content` |
-| `cartDetailsPosition` | dimensions | Position | `—` on `.cart-detail` |
-| `cartDetailsTransform` | transform | Transform | `transform` on `.cart-detail` |
-| `cartDetailsBackground` | color | Background | `background-color` on `.cart-detail` |
-| `cartDetailsBorder` | border | Border | `border` on `.cart-detail` |
-| `cartDetailsBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.cart-detail` |
-| `cartDetailsTypography` | typography | Typography | `font` on `.woocommerce-mini-cart-item a:not(.remove)` |
-| `cartDetailsTypographyQuantity` | typography | Typography | `font` on `.cart-detail .woocommerce-mini-cart-item .quantity` |
-| `buttonBackgroundColor` | color | Background color | `background-color` on `.cart-detail .woocommerce-mini-cart__buttons .button` |
-| `buttonBorder` | border | Border | `border` on `.cart-detail .woocommerce-mini-cart__buttons .button` |
-| `buttonTypography` | typography | Typography | `font` on `.cart-detail .woocommerce-mini-cart__buttons .button` |
-| `cartDetailsCloseIcon` | icon | Icon | — |
-| `cartDetailsCloseTypography` | typography | Typography | `font` on `.bricks-mini-cart-close > *` |
-| `cartDetailsClosePosition` | dimensions | Position | `—` on `.bricks-mini-cart-close` |
-| `cartDetailsClosePadding` | spacing | Padding | `padding` on `.bricks-mini-cart-close` |
-| `cartDetailsCloseBackgroundColor` | color | Background color | `background-color` on `.bricks-mini-cart-close` |
-| `cartDetailsCloseBorder` | border | Border | `border` on `.bricks-mini-cart-close` |
+| `showLabels` | checkbox | Show labels | — |
+| `labelSuffix` | text | Label suffix | — |
+| `showSeparators` | checkbox | Show separators | — |
+| `separatorText` | text | Separator | — |
+| `layoutDirection` | direction | Direction | `flex-direction` |
+| `layoutWrap` | select | layoutWrap | `flex-wrap` |
+| `layoutJustifyContent` | justify-content | Justify content | `justify-content` |
+| `layoutAlignItems` | align-items | Align items | `align-items` |
+| `layoutRowGap` | number | Row gap | `row-gap` |
+| `layoutColumnGap` | number | Column gap | `column-gap` |
+| `itemDirection` | direction | Direction | `flex-direction` on `.\{$class_prefix\}__item` |
+| `itemAlignItems` | align-items | Align items | `align-items` on `.\{$class_prefix\}__item` |
+| `itemGap` | number | Gap | `gap` on `.\{$class_prefix\}__item` |
+| `labelWidth` | number | Width | `width` on `.\{$class_prefix\}__label` |
+| `labelFlexGrow` | number | Flex grow | `flex-grow` on `.\{$class_prefix\}__label` |
+| `labelFlexShrink` | number | Flex shrink | `flex-shrink` on `.\{$class_prefix\}__label` |
+| `valueWidth` | number | Width | `width` on `.\{$class_prefix\}__value` |
+| `valueFlexGrow` | number | Flex grow | `flex-grow` on `.\{$class_prefix\}__value` |
+| `valueFlexShrink` | number | Flex shrink | `flex-shrink` on `.\{$class_prefix\}__value` |
+| `separatorTypography` | typography | Typography | `font` on `.\{$class_prefix\}__separator` |
+| `separatorMargin` | spacing | Margin | `margin` on `.\{$class_prefix\}__separator` |
+| `itemPadding` | spacing | Padding | `padding` on `.\{$class_prefix\}__item` |
+| `itemBackgroundColor` | color | Background color | `background-color` on `.\{$class_prefix\}__item` |
+| `itemBorder` | border | Border | `border` on `.\{$class_prefix\}__item` |
+| `itemBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.\{$class_prefix\}__item` |
+| `labelMargin` | spacing | Margin | `margin` on `.\{$class_prefix\}__label` |
+| `labelPadding` | spacing | Padding | `padding` on `.\{$class_prefix\}__label` |
+| `labelBackgroundColor` | color | Background color | `background-color` on `.\{$class_prefix\}__label` |
+| `labelBorder` | border | Border | `border` on `.\{$class_prefix\}__label` |
+| `labelBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.\{$class_prefix\}__label` |
+| `labelTypography` | typography | Typography | `font` on `.\{$class_prefix\}__label` |
+| `valueMargin` | spacing | Margin | `margin` on `.\{$class_prefix\}__value` |
+| `valuePadding` | spacing | Padding | `padding` on `.\{$class_prefix\}__value` |
+| `valueBackgroundColor` | color | Background color | `background-color` on `.\{$class_prefix\}__value` |
+| `valueBorder` | border | Border | `border` on `.\{$class_prefix\}__value` |
+| `valueBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.\{$class_prefix\}__value` |
+| `valueTypography` | typography | Typography | `font` on `.\{$class_prefix\}__value` |
 
 ## Inherited CSS controls
 
@@ -439,6 +436,138 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-p
 | `category` | woocommerce |
 | `tag` | div |
 | `nestable` | false |
+
+## Inherited CSS controls
+
+Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `_content` | text | Content | `content` |
+| `_margin` | spacing | Margin | `margin` |
+| `_padding` | spacing | Padding | `padding` |
+| `_width` | number | Width | `width` |
+| `_widthMin` | number | Min. width | `min-width` |
+| `_widthMax` | number | Max. width | `max-width` |
+| `_height` | number | Height | `height` |
+| `_heightMin` | number | Min. height | `min-height` |
+| `_heightMax` | number | Max. height | `max-height` |
+| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
+| `_position` | select | Position | `position` |
+| `_top` | number | _top | `top` |
+| `_right` | number | Right | `right` |
+| `_bottom` | number | Bottom | `bottom` |
+| `_left` | number | Left | `left` |
+| `_zIndex` | number | Z-index | `z-index` |
+| `_order` | number | _order | `order` |
+| `_display` | select | Display | `display`, `align-items` |
+| `_visibility` | select | Visibility | `visibility` |
+| `_overflow` | text | Overflow | `overflow` |
+| `_opacity` | number | Opacity | `opacity` |
+| `_cursor` | select | Cursor | `cursor` |
+| `_isolation` | select | Isolation | `isolation` |
+| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
+| `_pointerEvents` | text | Pointer events | `pointer-events` |
+| `_perspective` | number | Perspective | `perspective` |
+| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
+| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
+| `_flexDirection` | direction | Direction | `flex-direction` |
+| `_alignSelf` | align-items | Align self | `align-self` |
+| `_justifyContent` | justify-content | Align main axis | `justify-content` |
+| `_alignItems` | align-items | Align cross axis | `align-items` |
+| `_gap` | number | Gap | `gap` |
+| `_flexGrow` | number | Flex grow | `flex-grow` |
+| `_flexShrink` | number | Flex shrink | `flex-shrink` |
+| `_flexBasis` | text | Flex basis | `flex-basis` |
+| `_useMasonry` | checkbox | %s layout | — |
+| `_masonryColumn` | number | Columns | `--columns` |
+| `_masonryGutter` | number | Spacing | `--gutter` |
+| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
+| `_masonryTransitionDuration` | number | Transition | — |
+| `_masonryTransitionMode` | select | Reveal animation | — |
+| `_typography` | typography | _typography | `font` |
+| `_background` | background | _background | `background` |
+| `_shapeDividers` | repeater | Custom shape | — |
+| `_gradient` | gradient | _gradient | `background-image` |
+| `_border` | border | Border | `border` |
+| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `_transform` | transform | Transform | `transform` |
+| `_transformOrigin` | text | Transform origin | `transform-origin` |
+| `_motionElementParallax` | checkbox | Element parallax | — |
+| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
+| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
+| `_motionBackgroundParallax` | checkbox | Background parallax | — |
+| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
+| `_motionStartVisiblePercent` | number | Parallax start point | — |
+| `_cssCustom` | code | Custom CSS | — |
+| `_cssClasses` | text | CSS classes | — |
+| `_cssId` | text | CSS ID | — |
+| `_cssFilters` | filters | CSS Filters | `filter` |
+| `_cssTransition` | text | Transition | `transition` |
+| `_attributes` | repeater | Name | — |
+| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+
+---
+
+# Mini Cart Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-mini-cart/
+
+*Schema for Bricks Mini cart element*
+
+| Property | Value |
+|---|---|
+| `name` | woocommerce-mini-cart |
+| `category` | woocommerce |
+| `tag` | div |
+| `nestable` | false |
+
+## Controls
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `icon` | icon | Icon | — |
+| `iconTypography` | typography | Icon typography | `font` on `.mini-cart-link i` |
+| `openMiniCartOnAddedToCart` | checkbox | Open on add to cart (AJAX) | — |
+| `cartCount` | select | Visibility | `display` on `.cart-count` |
+| `cartCountBackground` | color | Background color | `background-color` on `.cart-count` |
+| `cartCountBorder` | border | Border | `border` on `.mini-cart-link .cart-icon .cart-count` |
+| `cartCountTypography` | typography | Typography | `font` on `.mini-cart-link .cart-icon .cart-count` |
+| `cartCountTransform` | transform | Transform | `transform` on `.mini-cart-link .cart-icon .cart-count` |
+| `cartCountHeight` | number | Height | `height` on `.cart-count` |
+| `cartCountWidth` | number | Width | `width` on `.cart-count` |
+| `cartCountTop` | number | cartCountTop | `top` on `.mini-cart-link .cart-icon .cart-count` |
+| `cartCountRight` | number | Right | `right` on `.mini-cart-link .cart-icon .cart-count` |
+| `cartCountBottom` | number | Bottom | `bottom` on `.mini-cart-link .cart-icon .cart-count` |
+| `cartCountLeft` | number | Left | `left` on `.mini-cart-link .cart-icon .cart-count` |
+| `subtotalPosition` | select | Position | `flex-direction` on `.mini-cart-link` |
+| `subtotalGap` | number | Gap | `gap` on `.mini-cart-link` |
+| `subtotalTypography` | typography | Typography | `font` on `.mini-cart-link .cart-subtotal` |
+| `hideCartDetails` | checkbox | Hide | — |
+| `skipClickOutside` | checkbox | Don\ | — |
+| `cartDetailsOffCanvas` | select | Off-Canvas | — |
+| `cartDetailsHeight` | number | Height | `height` on `.cart-detail` |
+| `cartDetailsWidth` | number | Width | `width` on `.cart-detail` |
+| `cartDetailsImageWidth` | number | Image width | `width` on `.cart-detail img` |
+| `cartDetailsPadding` | spacing | Padding | `padding` on `.cart-detail .widget_shopping_cart_content` |
+| `cartDetailsPosition` | dimensions | Position | `—` on `.cart-detail` |
+| `cartDetailsTransform` | transform | Transform | `transform` on `.cart-detail` |
+| `cartDetailsBackground` | color | Background | `background-color` on `.cart-detail` |
+| `cartDetailsBorder` | border | Border | `border` on `.cart-detail` |
+| `cartDetailsBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.cart-detail` |
+| `cartDetailsTypography` | typography | Typography | `font` on `.woocommerce-mini-cart-item a:not(.remove)` |
+| `cartDetailsTypographyQuantity` | typography | Typography | `font` on `.cart-detail .woocommerce-mini-cart-item .quantity` |
+| `buttonBackgroundColor` | color | Background color | `background-color` on `.cart-detail .woocommerce-mini-cart__buttons .button` |
+| `buttonBorder` | border | Border | `border` on `.cart-detail .woocommerce-mini-cart__buttons .button` |
+| `buttonTypography` | typography | Typography | `font` on `.cart-detail .woocommerce-mini-cart__buttons .button` |
+| `cartDetailsCloseIcon` | icon | Icon | — |
+| `cartDetailsCloseTypography` | typography | Typography | `font` on `.bricks-mini-cart-close > *` |
+| `cartDetailsClosePosition` | dimensions | Position | `—` on `.bricks-mini-cart-close` |
+| `cartDetailsClosePadding` | spacing | Padding | `padding` on `.bricks-mini-cart-close` |
+| `cartDetailsCloseBackgroundColor` | color | Background color | `background-color` on `.bricks-mini-cart-close` |
+| `cartDetailsCloseBorder` | border | Border | `border` on `.bricks-mini-cart-close` |
 
 ## Inherited CSS controls
 
@@ -1115,16 +1244,16 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# WooCommerce Template Hook Schema
+# WordPress Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-template-hook/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/wordpress/
 
-*Schema for Bricks WooCommerce Template Hook element*
+*Schema for Bricks WordPress element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-template-hook |
-| `category` | woocommerce |
+| `name` | wordpress |
+| `category` | wordpress |
 | `tag` | div |
 | `nestable` | false |
 
@@ -1132,10 +1261,28 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-t
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `template` | select | Template | — |
-| `singleProductHook` | select | Hook | — |
-| `shopHook` | select | Hook | — |
-| `showTips` | checkbox | Show tips | — |
+| `type` | select | Widget | — |
+| `icon` | icon | Icon | — |
+| `iconTypography` | typography | Icon typography | `font` on `.bricks-widget-wrapper i` |
+| `showCount` | checkbox | Show count | — |
+| `sortBy` | select | Sort by | — |
+| `include` | select | Include | — |
+| `exclude` | select | Exclude | — |
+| `commentsNumber` | number | Number of comments | — |
+| `postsNumber` | number | Number of posts | — |
+| `direction` | direction | Direction | `flex-direction` on `&.posts a` |
+| `postsDate` | checkbox | Show date | — |
+| `postsFeaturedImage` | checkbox | Show featured image | — |
+| `postsFeaturedImageSize` | select | Featured image sizes | — |
+| `postsImageWidth` | text | Featured image width | `width` on `img` |
+| `postsImageHeight` | text | Featured image height | `height` on `img` |
+| `postsTitleTypography` | typography | Post title typography | `font` on `.post-title` |
+| `postsMetaTypography` | typography | Post meta typography | `font` on `.post-meta` |
+| `taxonomy` | select | Taxonomy | — |
+| `title` | text | Title | — |
+| `titletag` | select | HTML tag | — |
+| `titleBorder` | border | Border | `font` on `.bricks-widget-title` |
+| `titleTypography` | typography | Typography | `font` on `.bricks-widget-title` |
 
 ## Inherited CSS controls
 
@@ -1211,16 +1358,16 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# WordPress Schema
+# WooCommerce Template Hook Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/wordpress/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-template-hook/
 
-*Schema for Bricks WordPress element*
+*Schema for Bricks WooCommerce Template Hook element*
 
 | Property | Value |
 |---|---|
-| `name` | wordpress |
-| `category` | wordpress |
+| `name` | woocommerce-template-hook |
+| `category` | woocommerce |
 | `tag` | div |
 | `nestable` | false |
 
@@ -1228,28 +1375,10 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/wordpress/
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `type` | select | Widget | — |
-| `icon` | icon | Icon | — |
-| `iconTypography` | typography | Icon typography | `font` on `.bricks-widget-wrapper i` |
-| `showCount` | checkbox | Show count | — |
-| `sortBy` | select | Sort by | — |
-| `include` | select | Include | — |
-| `exclude` | select | Exclude | — |
-| `commentsNumber` | number | Number of comments | — |
-| `postsNumber` | number | Number of posts | — |
-| `direction` | direction | Direction | `flex-direction` on `&.posts a` |
-| `postsDate` | checkbox | Show date | — |
-| `postsFeaturedImage` | checkbox | Show featured image | — |
-| `postsFeaturedImageSize` | select | Featured image sizes | — |
-| `postsImageWidth` | text | Featured image width | `width` on `img` |
-| `postsImageHeight` | text | Featured image height | `height` on `img` |
-| `postsTitleTypography` | typography | Post title typography | `font` on `.post-title` |
-| `postsMetaTypography` | typography | Post meta typography | `font` on `.post-meta` |
-| `taxonomy` | select | Taxonomy | — |
-| `title` | text | Title | — |
-| `titletag` | select | HTML tag | — |
-| `titleBorder` | border | Border | `font` on `.bricks-widget-title` |
-| `titleTypography` | typography | Typography | `font` on `.bricks-widget-title` |
+| `template` | select | Template | — |
+| `singleProductHook` | select | Hook | — |
+| `shopHook` | select | Hook | — |
+| `showTips` | checkbox | Show tips | — |
 
 ## Inherited CSS controls
 

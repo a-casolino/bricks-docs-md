@@ -1,51 +1,49 @@
-# Filter: bricks/related_posts/query_vars
+# Filter: bricks/screen_conditions/scores
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-related_posts-query_vars/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-screen_conditions-scores/
 
-*Since Bricks 1.3.5 you may manipulate the related posts element query vars before the query is performed like so:*
+*Bricks selects the template & theme style for a specific page according to the conditions you've defined.*
 
-Since Bricks 1.3.5 you may manipulate the **related posts** element query vars before the query is performed like so:
+Bricks selects the template & theme style for a specific page according to the conditions you've defined.
+
+Internally this is done via a scoring system from 0 to 10. 0 is the least specific. 10 being the most specific (e.g. specific post ID).
+
+For each template/theme style condition that could apply to a certain context, the template/theme style earns a specific score. After analyzing all templates/theme styles, Bricks chooses the one with the highest score.
+
+If you need to add new template conditions using the filter [`builder/settings/template/controls_data`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-builder-settings-type-controls_data/) or `bricks/theme_styles/controls` for theme styles, you then need to hook into the scoring logic to score the templates/theme styles based on the custom conditions.
+
+This is where the `bricks/screen_conditions/scores` filter comes in handy, like so:
 
 ```php
-add_filter( 'bricks/related_posts/query_vars', function( $query_vars, $settings, $element_id ) {
-    $query_vars['post_type'] = [ 'post', 'project' ];
+add_filter( 'bricks/screen_conditions/scores', function( $scores, $condition, $post_id, $preview_type ) {
+  // Run custom logic to score the template/theme style $condition
+  // $scores[] = 5;
 
-    return $query_vars;
-}, 10, 3 );
+  return $scores;
+}, 10, 4 );
 ```
 
-The filter callback receives two arguments:
+**Example 1: Add the score for a specific author role in an author archive template**
 
-- `$query_vars` is an associative array used to feed the [WP_Query](https://developer.wordpress.org/reference/classes/wp_query/) class
-- `$settings` is an associative array containing the element settings set in the builder
-- `$element_id` is a string containing the element ID
-
----
-
-# Filter: bricks/render_query_loop_trail
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-render_query_loop_trail/
-
-*Control whether Bricks renders the query loop trail node that frontend JavaScript uses to read query settings.*
-
-The `bricks/render_query_loop_trail` (@since 1.11.1) filter controls the output of the query loop trail node in Bricks. This node is automatically added to each query loop and records the loop's settings, which are then accessed by frontend JavaScript to manage various query-related tasks. Once these settings are read by Bricks, the node is removed from the DOM.
-
-For some third-party plugins, this node may not be needed—especially if they use custom AJAX endpoints to update query results independently of Bricks. Using this filter, you can control whether or not the query loop trail node is rendered.
+After adding the control using the [`builder/settings/template/controls_data`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-builder-settings-type-controls_data/) (check example 1), we now need to hook in `bricks/screen_conditions/scores` to score the template based on the condition, like so:
 
 ```php
-// Return true = render the query loop trail node
-// Return false = skip the query loop trail node
-add_filter( 'bricks/render_query_loop_trail', function( $render, $element, $query ) {
-  // Do not render query loop trail node if my-custom-param parameter exists
-  if ( isset( $_GET['my-custom-param'] ) ) {
-    $render = false;
+add_filter( 'bricks/screen_conditions/scores', function( $scores, $condition, $post_id, $preview_type ) {
+  if ( is_author() && $condition['main'] === 'archiveType' && isset( $condition['archiveType'] ) && in_array( 'author', $condition['archiveType'] ) && isset( $condition['archiveAuthorRoles'] ) ) {
+    $user = get_queried_object();
+
+    if ( ! empty( $user->roles ) && is_array( $user->roles ) ) {
+      foreach ( $user->roles as $role_name ) {
+        if ( in_array( $role_name, $condition['archiveAuthorRoles'] ) ) {
+          $scores[] = 9;
+        }
+      }
+    }
   }
 
-  return $render;
-}, 10, 3 );
+  return $scores;
+}, 10, 4 );
 ```
-
-In this example, if the `my-custom-param` parameter is detected in the URL, the query loop trail node will not be rendered. This can be useful for third-party plugins with custom AJAX endpoints that handle query configurations independently.
 
 ---
 

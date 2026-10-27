@@ -2,6 +2,8 @@
 
 Bricks 1.9.4 introduces the **Maintenance Mode** feature. A straightforward way to manage your site's availability during updates or construction.
 
+https://youtu.be/df7nzqiv32s
+
 ![](https://academy.bricksbuilder.io/assets/bricks-settings-maintenance-mode-2-0.png)
 
 Maintenance Mode runs on the frontend only. It does not replace the WordPress admin, and it does not block the Bricks builder.
@@ -9,11 +11,11 @@ Maintenance Mode runs on the frontend only. It does not replace the WordPress ad
 ## How to enable Maintenance Mode
 
 1. Log in to the WordPress dashboard.
-2. Navigate to Bricks > Settings > Maintenance.
+2. Navigate to Bricks > Settings > Maintenance mode.
 
 Here, you'll find several settings to configure:
 
-- **Mode selection**: Choose `Disabled`, `Maintenance`, or `Coming Soon`. "Maintenance" mode (HTTP status code 503) indicates that your site is temporarily unavailable, signaling search engines to come back later. "Coming soon" mode (HTTP status code 200) indicates that your site is available for search engine indexing.
+- **Mode selection**: Choose `Disabled`, `Maintenance`, or `Coming soon`. "Maintenance" mode (HTTP status code 503) indicates that your site is temporarily unavailable, signaling search engines to come back later. "Coming soon" mode (HTTP status code 200) indicates that your site is available for search engine indexing.
 - **Template** *(optional)*: Assign a custom single template for your maintenance or coming soon mode.
   - **Render header** *(optional)*: Enable this setting if you want the active Bricks header to render with the maintenance or coming soon template. This is **disabled by default**.
   - **Render footer** *(optional)*: Enable this setting if you want the active Bricks footer to render with the maintenance or coming soon template. This is **disabled by default**.
@@ -36,6 +38,14 @@ Maintenance mode is skipped for:
 If none of those bypasses apply, Bricks serves the maintenance response. In **Maintenance** mode, Bricks sends HTTP status `503`. In **Coming soon** mode, Bricks sends HTTP status `200`.
 
 When maintenance mode is active, Bricks also removes the canonical tag and does not output Bricks Open Graph meta tags for the maintenance response.
+
+## Check what visitors see
+
+Because logged-in users bypass maintenance mode by default, the site looks unchanged while you are logged in. Inside the WordPress admin, the admin bar shows a **Mode: Maintenance** (or **Mode: Coming soon**) label while the mode is active. The label links to the **Maintenance mode** settings tab.
+
+To see what visitors get, open the site in a private browser window where you are not logged in.
+
+To switch maintenance mode off, set **Mode** to `Disabled` and save the settings.
 
 ## Custom maintenance templates
 

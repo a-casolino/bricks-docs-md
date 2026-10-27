@@ -2,3307 +2,3307 @@
  "last_full_refresh": "2026-10-21T02:52:51+00:00",
  "pages": {
   "https://academy.bricksbuilder.io/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Bricks Academy"
   },
   "https://academy.bricksbuilder.io/builder/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Builder"
   },
   "https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Dynamic Data"
   },
   "https://academy.bricksbuilder.io/builder/dynamic-content/global-queries-query-manager/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Global Queries & Query Manager"
   },
   "https://academy.bricksbuilder.io/builder/dynamic-content/query-data-from-apis/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Query Data from APIs"
   },
   "https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Query Sort, Filter & Live Search"
   },
   "https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Query Loop"
   },
   "https://academy.bricksbuilder.io/builder/elements/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Elements"
   },
   "https://academy.bricksbuilder.io/builder/elements/basic/button/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Button"
   },
   "https://academy.bricksbuilder.io/builder/elements/basic/heading/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Heading"
   },
   "https://academy.bricksbuilder.io/builder/elements/basic/icon/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Icon"
   },
   "https://academy.bricksbuilder.io/builder/elements/basic/image/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Image"
   },
   "https://academy.bricksbuilder.io/builder/elements/basic/text-basic/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Text basic"
   },
   "https://academy.bricksbuilder.io/builder/elements/basic/text-link/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Text Link"
   },
   "https://academy.bricksbuilder.io/builder/elements/basic/text/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Rich text"
   },
   "https://academy.bricksbuilder.io/builder/elements/basic/video/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Video"
   },
   "https://academy.bricksbuilder.io/builder/elements/filter/filter-active-filters/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter active filters"
   },
   "https://academy.bricksbuilder.io/builder/elements/filter/filter-checkbox/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter checkbox"
   },
   "https://academy.bricksbuilder.io/builder/elements/filter/filter-datepicker/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter datepicker"
   },
   "https://academy.bricksbuilder.io/builder/elements/filter/filter-radio/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter radio"
   },
   "https://academy.bricksbuilder.io/builder/elements/filter/filter-range/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter range"
   },
   "https://academy.bricksbuilder.io/builder/elements/filter/filter-search/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter search"
   },
   "https://academy.bricksbuilder.io/builder/elements/filter/filter-select/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter select"
   },
   "https://academy.bricksbuilder.io/builder/elements/filter/filter-submit/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter submit"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/accordion-nested/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Accordion (nestable)"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/accordion/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Accordion"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/alert/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Alert"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/animated-typing/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Animated typing"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/back-to-top/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Back to Top"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/breadcrumbs/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Breadcrumbs"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/code/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Code"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/countdown/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Countdown"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/counter/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Counter"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/dropdown/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Dropdown"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/facebook-page/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Facebook page"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/form/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Form"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/html/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "HTML"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/icon-box/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Icon box"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/icon-list/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Icon list"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/map-connector/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Map Connector"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Map (Leaflet)"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/map/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Map"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/nav-nested/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Nav (Nestable)"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/offcanvas/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Offcanvas"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/pie-chart/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Pie chart"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/pricing-tables/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Pricing tables"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/progress-bar/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Progress bar"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/rating/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Rating"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/slot/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Slot"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/tabs-nested/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Tabs (nestable)"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/tabs/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Tabs"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/team-members/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Team members"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/template/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Template"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/testimonials/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Testimonials"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/toggle-mode/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Toggle - Mode"
   },
   "https://academy.bricksbuilder.io/builder/elements/general/toggle/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Toggle"
   },
   "https://academy.bricksbuilder.io/builder/elements/layout/block/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Block"
   },
   "https://academy.bricksbuilder.io/builder/elements/layout/container/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Container"
   },
   "https://academy.bricksbuilder.io/builder/elements/layout/div/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Div"
   },
   "https://academy.bricksbuilder.io/builder/elements/layout/divider/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Divider"
   },
   "https://academy.bricksbuilder.io/builder/elements/layout/list/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "List"
   },
   "https://academy.bricksbuilder.io/builder/elements/layout/section/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Section"
   },
   "https://academy.bricksbuilder.io/builder/elements/media/audio/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Audio"
   },
   "https://academy.bricksbuilder.io/builder/elements/media/carousel/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Carousel"
   },
   "https://academy.bricksbuilder.io/builder/elements/media/file/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "File"
   },
   "https://academy.bricksbuilder.io/builder/elements/media/image-gallery/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Image gallery"
   },
   "https://academy.bricksbuilder.io/builder/elements/media/instagram-feed/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Instagram feed"
   },
   "https://academy.bricksbuilder.io/builder/elements/media/logo/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Logo"
   },
   "https://academy.bricksbuilder.io/builder/elements/media/slider-nested/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Slider (nestable)"
   },
   "https://academy.bricksbuilder.io/builder/elements/media/slider/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Slider"
   },
   "https://academy.bricksbuilder.io/builder/elements/media/svg/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "SVG"
   },
   "https://academy.bricksbuilder.io/builder/elements/product/product-add-to-cart/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Add to cart"
   },
   "https://academy.bricksbuilder.io/builder/elements/product/product-additional-information/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product additional information"
   },
   "https://academy.bricksbuilder.io/builder/elements/product/product-content/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product content"
   },
   "https://academy.bricksbuilder.io/builder/elements/product/product-gallery/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product gallery"
   },
   "https://academy.bricksbuilder.io/builder/elements/product/product-meta/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product meta"
   },
   "https://academy.bricksbuilder.io/builder/elements/product/product-price/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product price"
   },
   "https://academy.bricksbuilder.io/builder/elements/product/product-rating/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product rating"
   },
   "https://academy.bricksbuilder.io/builder/elements/product/product-related/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Related products"
   },
   "https://academy.bricksbuilder.io/builder/elements/product/product-reviews/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product reviews"
   },
   "https://academy.bricksbuilder.io/builder/elements/product/product-short-description/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product short description"
   },
   "https://academy.bricksbuilder.io/builder/elements/product/product-stock/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product stock"
   },
   "https://academy.bricksbuilder.io/builder/elements/product/product-tabs/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product tabs"
   },
   "https://academy.bricksbuilder.io/builder/elements/product/product-title/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product title"
   },
   "https://academy.bricksbuilder.io/builder/elements/product/product-upsells/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product up/cross-sells"
   },
   "https://academy.bricksbuilder.io/builder/elements/query/query-results-summary/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Query results summary"
   },
   "https://academy.bricksbuilder.io/builder/elements/single/author/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Author"
   },
   "https://academy.bricksbuilder.io/builder/elements/single/comments/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Comments"
   },
   "https://academy.bricksbuilder.io/builder/elements/single/excerpt/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Excerpt"
   },
   "https://academy.bricksbuilder.io/builder/elements/single/meta-data/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Meta data"
   },
   "https://academy.bricksbuilder.io/builder/elements/single/post-content/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Post content"
   },
   "https://academy.bricksbuilder.io/builder/elements/single/post-navigation/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Post navigation"
   },
   "https://academy.bricksbuilder.io/builder/elements/single/post-reading-progress-bar/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Post reading progress bar"
   },
   "https://academy.bricksbuilder.io/builder/elements/single/post-reading-time/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Post reading time"
   },
   "https://academy.bricksbuilder.io/builder/elements/single/post-title/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Post title"
   },
   "https://academy.bricksbuilder.io/builder/elements/single/post-toc/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Post table of contents"
   },
   "https://academy.bricksbuilder.io/builder/elements/single/related-posts/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Related posts"
   },
   "https://academy.bricksbuilder.io/builder/elements/single/social-sharing/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Social sharing"
   },
   "https://academy.bricksbuilder.io/builder/elements/single/taxonomy/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Taxonomy"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/account-add-payment-method/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Add payment method"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/account-addresses/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Addresses"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/account-downloads/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Downloads"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-edit-account/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Edit account"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-edit-address/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Edit address"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-login/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Login form"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-lost-password/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Lost password"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-register/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Register form"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-reset-password/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Reset password"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/account-orders/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Orders"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page-v2/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Page v2"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Page"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/account-payment-methods/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Payment methods"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/account-view-order/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - View order"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/breadcrumbs/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "WooCommerce Breadcrumbs"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-collaterals/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Cart totals"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-coupon/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Cart coupon"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-items/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Cart items"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-v2/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Cart v2"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-coupon/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout coupon"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-customer-details/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout customer details"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-login/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout login"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-order-payment/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout order payment"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-order-review/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout order review"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-order-table/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout order table"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-thankyou/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout thank you"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout v2"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Dynamic fragment"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/mini-cart/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Mini cart"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/notice/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Notice"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/products-archive-description/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Products archive description"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/products-filter/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Products filter"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/products-orderby/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Products orderby"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/products-pagination/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Products pagination"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/products-total-results/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Products total results"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/products/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Products"
   },
   "https://academy.bricksbuilder.io/builder/elements/woocommerce/template-hook/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "WooCommerce Template Hook"
   },
   "https://academy.bricksbuilder.io/builder/elements/wordpress/nav-menu/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Nav menu"
   },
   "https://academy.bricksbuilder.io/builder/elements/wordpress/pagination/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Pagination"
   },
   "https://academy.bricksbuilder.io/builder/elements/wordpress/posts/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Posts"
   },
   "https://academy.bricksbuilder.io/builder/elements/wordpress/search/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Search"
   },
   "https://academy.bricksbuilder.io/builder/elements/wordpress/shortcode/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Shortcode"
   },
   "https://academy.bricksbuilder.io/builder/elements/wordpress/sidebar/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Sidebar"
   },
   "https://academy.bricksbuilder.io/builder/elements/wordpress/wordpress/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "WordPress"
   },
   "https://academy.bricksbuilder.io/builder/features/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Features"
   },
   "https://academy.bricksbuilder.io/builder/features/accessibility/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Accessibility"
   },
   "https://academy.bricksbuilder.io/builder/features/add-custom-animation-to-interaction/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "How to add a custom animation in interaction"
   },
   "https://academy.bricksbuilder.io/builder/features/ai-abilities-and-skills/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "AI Abilities and Skills"
   },
   "https://academy.bricksbuilder.io/builder/features/an-intro-to-templates/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "An Intro To Templates"
   },
   "https://academy.bricksbuilder.io/builder/features/bricks-rce/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Recovering a compromised Bricks or WordPress site"
   },
   "https://academy.bricksbuilder.io/builder/features/builder-browser/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Builder Browser"
   },
   "https://academy.bricksbuilder.io/builder/features/code-review/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Code review"
   },
   "https://academy.bricksbuilder.io/builder/features/code-signatures/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Code signatures"
   },
   "https://academy.bricksbuilder.io/builder/features/color-manager/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Color Manager"
   },
   "https://academy.bricksbuilder.io/builder/features/components/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Components"
   },
   "https://academy.bricksbuilder.io/builder/features/create-template/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Creating Your First Template"
   },
   "https://academy.bricksbuilder.io/builder/features/create-update-posts-on-the-frontend/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Create & Update Posts on the Frontend"
   },
   "https://academy.bricksbuilder.io/builder/features/custom-attributes/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Custom Attributes"
   },
   "https://academy.bricksbuilder.io/builder/features/custom-authentication-pages/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Custom Authentication Pages"
   },
   "https://academy.bricksbuilder.io/builder/features/custom-code/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Custom Code"
   },
   "https://academy.bricksbuilder.io/builder/features/element-conditions/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Element Conditions"
   },
   "https://academy.bricksbuilder.io/builder/features/global-elements/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Global Elements"
   },
   "https://academy.bricksbuilder.io/builder/features/global-import-export/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Global Import / Export"
   },
   "https://academy.bricksbuilder.io/builder/features/html-css-to-bricks/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "HTML & CSS to Bricks"
   },
   "https://academy.bricksbuilder.io/builder/features/icon-manager/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Icon Manager"
   },
   "https://academy.bricksbuilder.io/builder/features/interactions/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Interactions"
   },
   "https://academy.bricksbuilder.io/builder/features/maintenance-mode/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Maintenance Mode"
   },
   "https://academy.bricksbuilder.io/builder/features/media-browser/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Media Browser"
   },
   "https://academy.bricksbuilder.io/builder/features/menu-builder/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Menu Builder"
   },
   "https://academy.bricksbuilder.io/builder/features/nestable-slider-instance/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Nestable Slider: Customization via JavaScript"
   },
   "https://academy.bricksbuilder.io/builder/features/password-protection/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Password Protection"
   },
   "https://academy.bricksbuilder.io/builder/features/popup-builder/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Popup Builder"
   },
   "https://academy.bricksbuilder.io/builder/features/remote-components/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Remote Components"
   },
   "https://academy.bricksbuilder.io/builder/features/remote-templates/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Remote Templates"
   },
   "https://academy.bricksbuilder.io/builder/features/save-form-submissions/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Save Form Submissions"
   },
   "https://academy.bricksbuilder.io/builder/features/search-criteria/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Search Criteria"
   },
   "https://academy.bricksbuilder.io/builder/features/sidebars/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Create Your Own Sidebars"
   },
   "https://academy.bricksbuilder.io/builder/features/style-manager/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Style Manager"
   },
   "https://academy.bricksbuilder.io/builder/features/svg-uploads/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "SVG Uploads"
   },
   "https://academy.bricksbuilder.io/builder/features/template-library/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Template Library"
   },
   "https://academy.bricksbuilder.io/builder/features/template-settings/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Template Settings"
   },
   "https://academy.bricksbuilder.io/builder/features/user-activation/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "User activation"
   },
   "https://academy.bricksbuilder.io/builder/features/visual-grid-builder/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Visual Grid Builder"
   },
   "https://academy.bricksbuilder.io/builder/features/wireframe-templates/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Wireframe Templates"
   },
   "https://academy.bricksbuilder.io/builder/interface/builder-access/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Builder Access & Capabilities"
   },
   "https://academy.bricksbuilder.io/builder/interface/builder-interface-customiser-profiles/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Builder Interface Customiser and Profiles"
   },
   "https://academy.bricksbuilder.io/builder/interface/builder-mode/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Builder Mode (Custom)"
   },
   "https://academy.bricksbuilder.io/builder/interface/command-palette/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Command Palette"
   },
   "https://academy.bricksbuilder.io/builder/interface/context-menu/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Context Menu"
   },
   "https://academy.bricksbuilder.io/builder/interface/editing-elements/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Adding & Editing Elements"
   },
   "https://academy.bricksbuilder.io/builder/interface/editing-with-bricks/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Start Editing With Bricks"
   },
   "https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Keyboard Shortcuts"
   },
   "https://academy.bricksbuilder.io/builder/interface/page-settings/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Page Settings"
   },
   "https://academy.bricksbuilder.io/builder/interface/responsive-editing/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Responsive Editing"
   },
   "https://academy.bricksbuilder.io/builder/interface/revisions/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Revisions"
   },
   "https://academy.bricksbuilder.io/builder/interface/save-publish/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Save & Publish"
   },
   "https://academy.bricksbuilder.io/builder/license/license-and-updates/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "License, updates, and your account"
   },
   "https://academy.bricksbuilder.io/builder/license/restrict-license-key-usage/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Restrict License Key Usage"
   },
   "https://academy.bricksbuilder.io/builder/setup/known-issues/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Known issues"
   },
   "https://academy.bricksbuilder.io/builder/setup/requirements/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Requirements"
   },
   "https://academy.bricksbuilder.io/builder/setup/settings/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Bricks Settings"
   },
   "https://academy.bricksbuilder.io/builder/setup/troubleshooting/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Troubleshooting a Bricks Website"
   },
   "https://academy.bricksbuilder.io/builder/styling/adobe-fonts/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Integration: Adobe Fonts"
   },
   "https://academy.bricksbuilder.io/builder/styling/cascade-layer/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Cascade layer"
   },
   "https://academy.bricksbuilder.io/builder/styling/contextual-spacing/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Contextual Spacing"
   },
   "https://academy.bricksbuilder.io/builder/styling/css-grid-layout/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "CSS Grid Layout"
   },
   "https://academy.bricksbuilder.io/builder/styling/custom-fonts/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Custom Fonts"
   },
   "https://academy.bricksbuilder.io/builder/styling/fluid-typography/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Fluid Typography"
   },
   "https://academy.bricksbuilder.io/builder/styling/font-manager/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Font Manager"
   },
   "https://academy.bricksbuilder.io/builder/styling/global-class-import-manager/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Global class import manager"
   },
   "https://academy.bricksbuilder.io/builder/styling/global-class-manager/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Global Class Manager"
   },
   "https://academy.bricksbuilder.io/builder/styling/global-css-classes/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Global CSS Classes"
   },
   "https://academy.bricksbuilder.io/builder/styling/global-variables-manager/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Global Variables Manager"
   },
   "https://academy.bricksbuilder.io/builder/styling/gradients-overlays/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Gradients & Overlays"
   },
   "https://academy.bricksbuilder.io/builder/styling/hover-styles/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Hover Styles"
   },
   "https://academy.bricksbuilder.io/builder/styling/layout/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Understanding The Layout"
   },
   "https://academy.bricksbuilder.io/builder/styling/masonry-layout/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Masonry Layout"
   },
   "https://academy.bricksbuilder.io/builder/styling/pseudo-classes/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Styling Element States & Parts"
   },
   "https://academy.bricksbuilder.io/builder/styling/scroll-snap/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Scroll Snap"
   },
   "https://academy.bricksbuilder.io/builder/styling/shape-dividers/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Shape Dividers"
   },
   "https://academy.bricksbuilder.io/builder/styling/theme-styles/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Theme Styles"
   },
   "https://academy.bricksbuilder.io/builder/templates/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Templates"
   },
   "https://academy.bricksbuilder.io/developer/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Developer"
   },
   "https://academy.bricksbuilder.io/developer/controls/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Controls"
   },
   "https://academy.bricksbuilder.io/developer/controls/align-items-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Align Items Control (Flexbox)"
   },
   "https://academy.bricksbuilder.io/developer/controls/apply-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Apply Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/audio-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Audio Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/background-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Background Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/border-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Border Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/box-shadow-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Box Shadow Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/checkbox-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkbox Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/code-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Code Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/color-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Color Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/datepicker-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Datepicker Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/dimensions-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Dimensions Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/direction-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Direction Control (Flexbox)"
   },
   "https://academy.bricksbuilder.io/developer/controls/editor-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Editor Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/element-controls/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Element Controls"
   },
   "https://academy.bricksbuilder.io/developer/controls/filters-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filters Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/gradient-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Gradient Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/icon-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Icon Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/image-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Image Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/image-gallery-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Image Gallery Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/info-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Info Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/justify-content-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Justify Content Control (Flexbox)"
   },
   "https://academy.bricksbuilder.io/developer/controls/link-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Link Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/number-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Number Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/query-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Query Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/repeater-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Repeater Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/select-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Select Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/slider-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Slider Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/svg-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "SVG Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/text-align-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Text Align Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/text-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Text Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/text-decoration-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Text Decoration Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/text-shadow-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Text Shadow Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/text-transform-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Text Transform Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/textarea-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Textarea Control"
   },
   "https://academy.bricksbuilder.io/developer/controls/typography-control/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Typography Control"
   },
   "https://academy.bricksbuilder.io/developer/dynamic-data/create-your-own-dynamic-data-tag/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Create Your Own Dynamic Data Tag"
   },
   "https://academy.bricksbuilder.io/developer/elements/create-your-own-elements/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Create Your Own Elements"
   },
   "https://academy.bricksbuilder.io/developer/elements/nestable-elements/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Nestable Elements (API)"
   },
   "https://academy.bricksbuilder.io/developer/functions/function-bricks_render_dynamic_data/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Function: bricks_render_dynamic_data"
   },
   "https://academy.bricksbuilder.io/developer/guides/asset-loading/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Asset Loading Optimization"
   },
   "https://academy.bricksbuilder.io/developer/guides/best-practices/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Best Practices"
   },
   "https://academy.bricksbuilder.io/developer/guides/bricks-cli/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Bricks CLI"
   },
   "https://academy.bricksbuilder.io/developer/guides/bricks-css-compatibility-guidelines/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Bricks CSS: Compatibility guidelines"
   },
   "https://academy.bricksbuilder.io/developer/guides/child-theme/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Child Theme"
   },
   "https://academy.bricksbuilder.io/developer/guides/converter/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Converter"
   },
   "https://academy.bricksbuilder.io/developer/guides/custom-javascript-events-in-bricks/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Custom JavaScript events in Bricks"
   },
   "https://academy.bricksbuilder.io/developer/hooks/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Hooks"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action Hooks"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/action-bricks-generate_css_file/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/generate_css_file"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/action-bricks-query-after_loop/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/query/after_loop"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/action-bricks-query-before_loop/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/query/before_loop"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-after_footer/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks_after_footer"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-after_header/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks_after_header"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-after_site_wrapper/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks_after_site_wrapper"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-archive_product-after/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/archive_product/after"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-archive_product-before/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/archive_product/before"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-before_footer/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks_before_footer"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-before_header/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks_before_header"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-before_site_wrapper/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks_before_site_wrapper"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-body/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks_body"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-builder-switch_locale/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/builder/switch_locale"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-database-get_all_templates_by_type-after_query/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/database/get_all_templates_by_type/after_query"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-dynamic_data-after_do_action/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/dynamic_data/after_do_action"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-dynamic_data-before_do_action/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/dynamic_data/before_do_action"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-dynamic_data-tag_value_parsed/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/dynamic_data/tag_value_parsed"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-dynamic_data-tags_registered/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/dynamic_data/tags_registered"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-execute_filter_index_job/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks_execute_filter_index_job"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-filter_element-before_set_data_source_from_custom_field/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/filter_element/before_set_data_source_from_custom_field"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-form-custom_action/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/form/custom_action"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-frontend-after_render_data/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/frontend/after_render_data"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-frontend-before_render_data/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/frontend/before_render_data"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-get_templates-query_after/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/get_templates/query_after"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-indexer/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks_indexer"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-load_elements-after/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/load_elements/after"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-load_elements-before/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/load_elements/before"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-meta_tags/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks_meta_tags"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-query-query_api_response/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/query/query_api_response"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-query_filters-index_post-before/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/query_filters/index_post/before"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-query_filters-index_user-before/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/query_filters/index_user/before"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-render_popup_content-start/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/render_popup_content/start"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-render_query_page-start/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/render_query_page/start"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-render_query_result-start/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks/render_query_result/start"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/bricks-sendgrid_double_opt_in_handler/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: bricks_sendgrid_double_opt_in_handler"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/render_footer/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: render_footer"
   },
   "https://academy.bricksbuilder.io/developer/hooks/actions/render_header/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Action: render_header"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter Hooks"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-acf-filter_field_groups/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/acf/filter_field_groups"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-acf-google_map-address_parts/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/acf/google_map/address_parts"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-acf-google_map-show_as_address/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/acf/google_map/show_as_address"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-acf-google_map-text_output/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/acf/google_map/text_output"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-acf-taxonomy-show_as_link/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/acf/taxonomy/show_as_link"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-active_templates/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/active_templates"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-ajax-get_pages_args/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/ajax/get_pages_args"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-allowed_html_tags/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/allowed_html_tags"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-api-get_templates_data/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/api/get_templates_data"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-breadcrumbs-home_label/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/breadcrumbs/home_label"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-breadcrumbs-items/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/breadcrumbs/items"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-breadcrumbs-separator/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/breadcrumbs/separator"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-builder-current_page_type/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/builder/current_page_type"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-builder-data_post_id/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/builder/data_post_id"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-builder-dynamic_wrapper/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/builder/dynamic_wrapper"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-builder-first_element_category/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/builder/first_element_category"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-builder-post_title/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/builder/post_title"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-builder-state_group_definitions/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/builder/state_group_definitions"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-builder-supported_post_types/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/builder/supported_post_types"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-builder-term_name/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/builder/term_name"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-cmb2-checkbox_value/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/cmb2/checkbox_value"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-code-echo_everywhere/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/code/echo_everywhere"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-combined_search-post_ids/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/combined_search/post_ids"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-combined_search-term_ids/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/combined_search/term_ids"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-combined_search-user_ids/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/combined_search/user_ids"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-comments-author_tag/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/comments/author_tag"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-conditions-groups/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/conditions/groups"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-conditions-options/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/conditions/options"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-conditions-result/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/conditions/result"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-content_analysis-full_post_content_id/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/content_analysis/full_post_content_id"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-custom_fonts-mime_types/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/custom_fonts/mime_types"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-database-bricks_get_all_templates_by_type_args/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/database/bricks_get_all_templates_by_type_args"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-database-content_type/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/database/content_type"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-database-get_all_templates_cache_key/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/database/get_all_templates_cache_key"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-dynamic_data-allowed_keys/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/dynamic_data/allowed_keys"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-dynamic_data-author_value/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/dynamic_data/author_value"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-dynamic_data-do_action_context/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/dynamic_data/do_action_context"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-dynamic_data-format_value/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/dynamic_data/format_value"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-dynamic_data-meta_value-meta_key/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/dynamic_data/meta_value/{meta_key}"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-dynamic_data-register_hook/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/dynamic_data/register_hook"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-dynamic_data-register_providers/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/dynamic_data/register_providers"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-dynamic_data-render_content/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/dynamic_data/render_content"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-dynamic_data-render_tag/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/dynamic_data/render_tag"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-dynamic_data-text_separator/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/dynamic_data/text_separator"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-dynamic_data-user_value/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/dynamic_data/user_value"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-dynamic_tags_list/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/dynamic_tags_list"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-element-builder_setup_query/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/element/builder_setup_query"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-element-form-datepicker_options/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/element/form/datepicker_options"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-element-form-honeypot-result/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/element/form/honeypot/result"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-element-maybe_set_aria_current_page/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/element/maybe_set_aria_current_page"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-elements-element_name-scripts/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/elements/{element_name}/scripts"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-elements-nav_menu-menus/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/elements/nav_menu/menus"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-elements-nav_menu-name/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/elements/nav_menu/name"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-export_template_args/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/export_template_args"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter-element-datepicker_options/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/filter-element/datepicker_options"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter-taxonomy_args/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/filter/taxonomy_args"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter_element-controls/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/filter_element/controls"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter_element-count_source-filter_source/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/filter_element/count_source_{filter_source}"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter_element-count_source_wcfield/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/filter_element/count_source_wcField"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter_element-data_source-filter_source/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/filter_element/data_source_{filter_source}"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter_element-data_source_wcfield/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/filter_element/data_source_wcField"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter_element-datepicker_date_format/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/filter_element/datepicker_date_format"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter_element-datepicker_db_date_format/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/filter_element/datepicker_db_date_format"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter_element-filtered_source/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/filter_element/filtered_source"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-fix_filter_element_db/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/fix_filter_element_db"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-file_directory/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/form/file_directory"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-recaptcha_score_threshold/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/form/recaptcha_score_threshold"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-response/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/form/response"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-save-submission-form_data/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/form/save-submission/form_data"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-submission-table-file_url/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/form/submission-table/file_url"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-tinymce_settings/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/form/tinymce_settings"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-validate/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/form/validate"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-frontend-disable_opengraph/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/frontend/disable_opengraph"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-frontend-disable_seo/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/frontend/disable_seo"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-frontend-render_loop/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/frontend/render_loop"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_builder_edit_link/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/get_builder_edit_link"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_remote_templates_data/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/get_remote_templates_data"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_template_authors/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/get_template_authors"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_template_bundles/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/get_template_bundles"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_template_tags/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/get_template_tags"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_templates-query_vars/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/get_templates/query_vars"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_templates/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/get_templates"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_templates_query-cache_key/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/get_templates_query/cache_key"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_terms_options-enable_limit/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/get_terms_options/enable_limit"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_terms_options-excluded_taxonomies/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/get_terms_options/excluded_taxonomies"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_the_title/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/get_the_title"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-handle_no_results_children_elements/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/handle_no_results_children_elements"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-helpers-get_posts_args/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/helpers/get_posts_args"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-media-browser-health-file-status/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/media_browser/health/file_status"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-metabox-checkbox_value/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/metabox/checkbox_value"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-metabox-show_as_map/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/metabox/show_as_map"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-metabox-taxonomy-show_as_link/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/metabox/taxonomy/show_as_link"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-object_types-query_vars/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/{object_type}s/query_vars"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-paginate_links_args/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/paginate_links_args"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-pagination-current_page/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/pagination/current_page"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-pagination-custom_logic/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/pagination/custom_logic"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-pagination-total_pages/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/pagination/total_pages"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-polylang-builder_ajax_params/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/polylang/builder_ajax_params"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-polylang-exclude_controls_from_translation/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/polylang/exclude_controls_from_translation"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-popup-attributes/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/popup/attributes"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-archive_query_arguments/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query/archive_query_arguments"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-archive_query_supported_object_types/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query/archive_query_supported_object_types"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-cache_key/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query/cache_key"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-fake_result/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query/fake_result"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-force_is_looping/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query/force_is_looping"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-force_loop_index/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query/force_loop_index"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-prepare_query_vars_from_settings/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query/prepare_query_vars_from_settings"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-result_end/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query/result_end"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-result_start/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query/result_start"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-run_fake/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query/run_fake"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-supress_render_content/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query/supress_render_content"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-body/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query_api/body"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-headers/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query_api/headers"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-request_args/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query_api/request_args"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-total_pages/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query_api/total_pages"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-custom_field_index_rows/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query_filters/custom_field_index_rows"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-custom_field_meta_query/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query_filters/custom_field_meta_query"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-datepicker_custom_field_meta_query/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query_filters/datepicker_custom_field_meta_query"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-element_data/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query_filters/element_data"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-filter_query_vars/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query_filters/filter_query_vars"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-get_filter_object_ids/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query_filters/get_filter_object_ids"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-index_args/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query_filters/index_args"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-index_post-meta_exists/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query_filters/index_post/meta_exists"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-index_post-source/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query_filters/index_post/{source}"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-index_post-wcfield/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query_filters/index_post/wcField"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-index_user-meta_exists/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query_filters/index_user/meta_exists"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-range_custom_field_meta_query/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query_filters/range_custom_field_meta_query"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-sort_query_vars/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query_filters/sort_query_vars"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters_cf_integration-register_providers/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query_filters_cf_integration/register_providers"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters_indexer-post-filter_source/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query_filters_indexer/post/{filter_source}"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters_indexer-post-wcfield/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query_filters_indexer/post/wcField"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters_indexer-validate_job_settings/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query_filters_indexer/validate_job_settings"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-remote_get/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/remote_get"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-remote_post/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/remote_post"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-render_footer/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/render_footer"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-render_header/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/render_header"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-render_with_bricks/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/render_with_bricks"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-resolve_attachment_id/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/resolve_attachment_id"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-rtl_languages/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/rtl_languages"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-security_check_before_save-new_elements/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/security_check_before_save/new_elements"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-support_masonry_element/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/support_masonry_element"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-svg-allowed_attributes/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/svg/allowed_attributes"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-svg-allowed_tags/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/svg/allowed_tags"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-svg-bypass_sanitization/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/svg/bypass_sanitization"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-template_preview-supported_content_types/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/template_preview/supported_content_types"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-theme_style_name/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/theme_style_name"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-theme_styles-control_groups/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/theme_styles/control_groups"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-theme_styles-controls/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/theme_styles/controls"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-theme_styles/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/theme_styles"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-user_activation_email-content/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/user_activation_email/content"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-user_activation_email-from_name/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/user_activation_email/from_name"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-user_activation_email-subject/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/user_activation_email/subject"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-webhook-timeout/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/webhook/timeout"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woo_setup_wizard-register_presets/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/woo_setup_wizard/register_presets"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-ajax_render_post_id/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/woocommerce/ajax_render_post_id"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-cart_proceed_label/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/woocommerce/cart_proceed_label"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-dynamic_fragments-fragments/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/woocommerce/dynamic_fragments/fragments"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-dynamic_fragments-html/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/woocommerce/dynamic_fragments/html"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-dynamic_fragments-targets/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/woocommerce/dynamic_fragments/targets"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-generated_payload/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/woocommerce/predefined_elements/generated_payload"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-local_presets/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/woocommerce/predefined_elements/local_presets"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-remote_payload/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/woocommerce/predefined_elements/remote_payload"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-remote_url/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/woocommerce/predefined_elements/remote_url"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-products_filters-options/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/woocommerce/products_filters/options"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-products_orderby_options/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/woocommerce/products_orderby_options"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-wpml-exclude_controls_from_translation/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/wpml/exclude_controls_from_translation"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks-wpml-translatable_control_types/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/wpml/translatable_control_types"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/bricks_query_max_items_in_builder/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks_query_max_items_in_builder"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-active_templates/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/active_templates"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-allowed_html_tags/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/allowed_html_tags"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-generate_css_from_element/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/assets/generate_css_from_element"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-load_webfonts/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks//assets/load_webfonts"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_login_redirect/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/auth/custom_login_redirect"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_lost_password_redirect/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/auth/custom_lost_password_redirect"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_redirect_url/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/auth/custom_redirect_url"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_registration_redirect/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/auth/custom_registration_redirect"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_reset_password_redirect/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/auth/custom_reset_password_redirect"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-body-attributes/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/body/attributes"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-codemirror_config/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/builder/codemirror_config"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-elements/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/builder/elements"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-image_size_options/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/builder/image_size_options"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-mapstyles/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/builder/map_styles"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-allow_execution/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/code/allow_execution"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-disable_execution/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/code/disable_execution"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-disallow_keywords/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/code/disallow_keywords"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-echo_function_names/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/code/echo_function_names"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-comments-timestamp/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/comments/timestamp"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-attributes/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/content/attributes"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-html_after_begin/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/content/html_after_begin"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-html_before_end/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/content/html_before_end"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-tag/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/content/tag"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-default_page_title/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/default_page_title"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-exclude_tags/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/dynamic_data/exclude_tags"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-post_terms_links/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/dynamic_data/post_terms_links"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-post_terms_separator/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/dynamic_data/post_terms_separator"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-read_more/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/dynamic_data/read_more"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-replace_nonexistent_tags/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/dynamic_data/replace_nonexistent_tags"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-render/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/element/render"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-render_attributes/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/element/render_attributes"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-settings/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/element/settings"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-elements-element_name-control_groups/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/elements/{element_name}/control_groups"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-elements-element_name-controls/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/elements/&#123;element_name&#125;/controls"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-filter_element-populated_options/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/filter_element/populated_options"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-footer-attributes/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/footer/attributes"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-action-form_action/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/form/action/{form_action}"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-create_post-meta_value/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/form/create_post/meta_value"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-update_post-meta_value/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/form/update_post/meta_value"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-frontend-render_data/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/frontend/render_data"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-frontend-render_element/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/frontend/render_element"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-get_element_data-maybe_from_post_id/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/get_element_data/maybe_from_post_id"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/header/attributes"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-i18n/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/builder/i18n"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-is_layout_element/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/is_layout_element"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-link_css_selectors/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/link_css_selectors"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-maintenance-should_apply/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/maintenance/should_apply"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-nav_menu-menu/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/nav_menu/menu"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-cookie-expires/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/password_protection/cookie_expires"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-is_active/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/password_protection/is_active"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-placeholder_image/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/placeholder_image"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-merge_query/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/posts/merge_query"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-query_vars/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/posts/query_vars"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-force_run/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query/force_run"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-init_loop_index/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query/init_loop_index"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query/loop_object"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object_id/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query/loop_object_id"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object_type/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query/loop_object_type"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-no_results_content/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query/no_results_content"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query/result"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_count/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query/result_count"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_max_num_pages/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query/result_max_num_pages"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-run/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/query/run"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-registered_post_types_args/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/registered_post_types_args"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-related_posts-query_vars/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/related_posts/query_vars"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-render_query_loop_trail/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/render_query_loop_trail"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-screen_conditions-scores/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/screen_conditions/scores"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-search_form-home_url/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/search_form/home_url"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-set_root_attributes/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/element/set_root_attributes"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/setup/control_options"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-terms-query_vars/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/terms/query_vars"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-use_duplicate_content/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/use_duplicate_content"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-users-query_vars/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/users/query_vars"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-builder-settings-type-controls_data/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: builder/settings/{type}/controls_data"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-color-palette/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/builder/color_palette"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-save-messages/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/builder/save_messages"
   },
   "https://academy.bricksbuilder.io/developer/hooks/filters/filter-standard-fonts/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter: bricks/builder/standard_fonts"
   },
   "https://academy.bricksbuilder.io/developer/schema/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Bricks Data Model"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/align-items/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Align Items Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/audio/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Audio Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/background/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Background Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/border/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Border Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/box-shadow/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Box Shadow Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/button/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Button Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/checkbox/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkbox Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/code/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Code Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/color/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Color Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/datepicker/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Datepicker Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/dimensions/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Dimensions Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/direction/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Direction Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/editor/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Editor Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/file/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "File Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/filters/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filters Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/icon/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Icon Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/image-gallery/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Image Gallery Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/image/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Image Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/justify-content/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Justify Content Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/link/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Link Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/number/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Number Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/query-list/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Query List Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/query/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Query Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/radio/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Radio Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/repeater/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Repeater Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/select/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Select Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/spacing/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Spacing Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/svg/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Svg Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/text-align/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Text Align Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/text-shadow/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Text Shadow Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/text/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Text Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/textarea/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Textarea Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/transform/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Transform Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/typography/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Typography Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/controls/video/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Video Control Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/accordion-nested/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Accordion (Nestable) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/accordion/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Accordion Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/alert/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Alert Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/animated-typing/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Anim. Typing Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/audio/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Audio Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/back-to-top/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Back To Top Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/block/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Block Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/breadcrumbs/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Breadcrumbs Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/button/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Button Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/carousel/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Carousel Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/code/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Code Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/common/conditions/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Element Conditions Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/common/element/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Element Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/common/interactions/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Element Interactions Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/container/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Container Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/countdown/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Countdown Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/counter/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Counter Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/div/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Div Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/divider/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Divider Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/dropdown/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Dropdown Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/facebook-page/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Facebook Page Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/file/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "File Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/filter-active-filters/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter - Active Filters Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/filter-checkbox/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter - Checkbox Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/filter-datepicker/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter - Datepicker Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/filter-radio/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter - Radio Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/filter-range/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter - Range Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/filter-search/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter - Search Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/filter-select/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter - Select Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/filter-submit/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filter - Submit / Reset Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/form-checkbox/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Form - Checkbox Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/form/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Form Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/heading/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Heading Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/html/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "HTML Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/icon-box/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Icon Box Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/icon/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Icon Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/image-gallery/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Image Gallery Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/image/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Image Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/instagram-feed/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Instagram Feed Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/list/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "List Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/logo/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Logo Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/map-connector/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Map Connector Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/map-leaflet/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Map (Leaflet) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/map/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Map (Google) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/nav-menu/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Nav Menu Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/nav-nested/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Nav (Nestable) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/offcanvas/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Offcanvas Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/pagination/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Pagination Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/pie-chart/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Pie Chart Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/post-author/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Author Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/post-comments/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Comments Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/post-content/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Post Content Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/post-excerpt/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Excerpt Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/post-meta/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Meta Data Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/post-navigation/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Post Navigation Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/post-reading-progress-bar/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Reading Progress Bar Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/post-reading-time/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Reading Time Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/post-sharing/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Social Sharing Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/post-taxonomy/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Taxonomy Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/post-title/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Post Title Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/post-toc/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Table Of Contents Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/posts/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Posts Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/pricing-tables/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Pricing Tables Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/product-add-to-cart/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Add To Cart Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/product-additional-information/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product Additional Information Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/product-content/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product Content Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/product-gallery/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product Gallery Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/product-meta/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product Meta Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/product-price/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product Price Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/product-rating/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product Rating Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/product-related/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Related Products Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/product-reviews/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product Reviews Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/product-short-description/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product Short Description Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/product-stock/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product Stock Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/product-tabs/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product Tabs Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/product-title/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product Title Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/product-upsells/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product Up/Cross-Sells Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/progress-bar/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Progress Bar Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/query-results-summary/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Query Results Summary Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/rating/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Rating Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/related-posts/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Related Posts Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/search/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Search Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/section/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Section Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/shortcode/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Shortcode Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/sidebar/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Sidebar Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/slider-nested/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Slidercarousel Elementbricks (Nestable) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/slider/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Slidercarousel Elementbricks Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/slot/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Slot Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/social-icons/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Icon List Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/svg/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "SVG Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/tabs-nested/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Tabs (Nestable) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/tabs/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Tabs Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/team-members/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Team Members Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/template/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Template Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/testimonials/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Testimonials Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/text-basic/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Basic Text Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/text-link/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Text Link Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/text/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Rich Text Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/toggle-mode/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Toggle - Mode Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/toggle/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Toggle Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/video/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Video Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-add-payment-method/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Add Payment Method Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-addresses/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Addresses Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-downloads/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Downloads Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-edit-account-form/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account Edit Account Form Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-edit-address-form/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account Edit Address Form Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-form-edit-account/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Edit Account Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-form-edit-address/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Edit Address Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-form-login/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Login Form Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-form-lost-password/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Lost Password Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-form-register/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Register Form Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-form-reset-password/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Reset Password Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-login-form/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "WooCommerce Login Form Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-lost-password-form/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account Lost Password Form Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-order-withdrawal-form/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account Order Withdrawal Form Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-orders-pagination/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Orders Pagination Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-orders/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Orders Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-page-v2/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Page V2 Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-page/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Page Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-payment-methods/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - Payment Methods Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-register-form/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account Register Form Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-reset-password-form/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account Reset Password Form Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-add-payment-method/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Add Payment Method (StateWooCommerce Template Statebricks) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-addresses/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Addresses (StateWooCommerce Template Statebricks) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-dashboard/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Dashboard (StateWooCommerce Template Statebricks) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-downloads/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Downloads (StateWooCommerce Template Statebricks) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-edit-account/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Edit Account (StateWooCommerce Template Statebricks) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-edit-address/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Edit Address (StateWooCommerce Template Statebricks) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-login/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Login (StateWooCommerce Template Statebricks) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-lost-password-confirmation/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Lost Password Confirmation (StateWooCommerce Template Statebricks) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-lost-password/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Lost Password (StateWooCommerce Template Statebricks) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-order-withdrawal/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Order Withdrawal (StateWooCommerce Template Statebricks) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-orders/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Orders (StateWooCommerce Template Statebricks) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-payment-methods/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Payment Methods (StateWooCommerce Template Statebricks) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-reset-password/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Reset Password (StateWooCommerce Template Statebricks) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-view-order/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "View Order (StateWooCommerce Template Statebricks) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-view-order/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Account - View Order Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-breadcrumbs/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Breadcrumbs (WooCommerce) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-cart-collaterals/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Cart Totals Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-cart-coupon/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Cart Coupon Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-cart-form/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Cart Form Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-cart-item-data/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Cart Item Data Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-cart-items/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Cart Items Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-cart-quantity/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Cart Quantity Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-cart-v2-state-cart/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Filled Cart (StateWooCommerce Template Statebricks) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-cart-v2-state-empty/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Empty Cart (StateWooCommerce Template Statebricks) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-cart-v2/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Cart (V2) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-account-fields/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout Account Fields Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-billing-address/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout Billing Address Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-coupon/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout Coupon Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-customer-details/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout Customer Details Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-login/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout Login Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-order-payment/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout Order Payment Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-order-review/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout Order Review Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-order-summary/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout Order Summary Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-order-table/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout Order Table Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-place-order/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout Place Order Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-shipping-address/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout Shipping Address Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-step-nav-item/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout Step Nav Item Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-step/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout Step Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-steps-nav/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout Steps Navigation Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-thankyou/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout Thank You Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-v2-state-checkout/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout (StateWooCommerce Template Statebricks) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-v2-state-login/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Login Required (StateWooCommerce Template Statebricks) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-v2-state-pay/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Pay (StateWooCommerce Template Statebricks) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-v2-state-receipt/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Order Receipt (StateWooCommerce Template Statebricks) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-v2-state-thankyou/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Thank You (StateWooCommerce Template Statebricks) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-v2/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout (V2) Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-dynamic-fragment/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Dynamic Fragment Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-form-field/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "WooCommerce Form Field Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-form-submit/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "WooCommerce Form Submit Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-item-data/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Woocommerce Item Data Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-mini-cart/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Mini Cart Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-notice/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Notice Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-order-item-data/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Order Item Data Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-payment-options/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Payment Options Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-products-archive-description/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Products Archive Description Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-products-filter/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Products Filter Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-products-orderby/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Products Orderby Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-products-pagination/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Products Pagination Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-products-total-results/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Products Total Results Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-products/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Products Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-shipping-options/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Shipping Options Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-template-hook/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "WooCommerce Template Hook Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/elements/wordpress/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "WordPress Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/general/content-area/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Content Area Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/global/breakpoints/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Breakpoints Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/global/color-palettes/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Color Palettes Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/global/components/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Components Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/global/global-classes/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Global Classes Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/global/global-variables/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Global Variables Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/global/pseudo-classes/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Pseudo-Classes Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/global/theme-styles/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Theme Styles Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/settings/page/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Page Settings Schema"
   },
   "https://academy.bricksbuilder.io/developer/schema/settings/template/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Template Settings Schema"
   },
   "https://academy.bricksbuilder.io/getting-started/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Getting Started"
   },
   "https://academy.bricksbuilder.io/getting-started/blog-post-template/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Blog post template"
   },
   "https://academy.bricksbuilder.io/getting-started/building-your-first-page/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Start your first page"
   },
   "https://academy.bricksbuilder.io/getting-started/global-classes/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Global classes"
   },
   "https://academy.bricksbuilder.io/getting-started/header-template/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Building a header template"
   },
   "https://academy.bricksbuilder.io/getting-started/installation-setup/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Installation and setup"
   },
   "https://academy.bricksbuilder.io/getting-started/interface-tour/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Interface tour"
   },
   "https://academy.bricksbuilder.io/getting-started/next-steps/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Next steps"
   },
   "https://academy.bricksbuilder.io/getting-started/query-loops-dynamic-data/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Query loops and dynamic data"
   },
   "https://academy.bricksbuilder.io/getting-started/responsive-basics/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Responsive basics"
   },
   "https://academy.bricksbuilder.io/getting-started/settings-defaults/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Settings and defaults"
   },
   "https://academy.bricksbuilder.io/getting-started/templates-intro/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "An intro to templates"
   },
   "https://academy.bricksbuilder.io/getting-started/theme-styles/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Theme styles"
   },
   "https://academy.bricksbuilder.io/integrations/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Integrations"
   },
   "https://academy.bricksbuilder.io/integrations/gutenberg/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Gutenberg"
   },
   "https://academy.bricksbuilder.io/integrations/gutenberg/components-as-blocks/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Bricks components as blocks"
   },
   "https://academy.bricksbuilder.io/integrations/how-to-set-up-your-google-maps-api-key/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "How to set up your Google Maps API key"
   },
   "https://academy.bricksbuilder.io/integrations/how-to-use-wpml-with-bricks/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "How to use WPML with Bricks"
   },
   "https://academy.bricksbuilder.io/integrations/instagram-access-token/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "How to get your Instagram Access Token"
   },
   "https://academy.bricksbuilder.io/integrations/map-leaflet/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Map (Leaflet)"
   },
   "https://academy.bricksbuilder.io/integrations/polylang/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "How to use Polylang with Bricks"
   },
   "https://academy.bricksbuilder.io/integrations/unsplash/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Unsplash Integration"
   },
   "https://academy.bricksbuilder.io/integrations/woocommerce/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "WooCommerce"
   },
   "https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "WooCommerce advanced modular elements"
   },
   "https://academy.bricksbuilder.io/integrations/woocommerce/cart/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Cart (WooCommerce)"
   },
   "https://academy.bricksbuilder.io/integrations/woocommerce/checkout/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout (WooCommerce)"
   },
   "https://academy.bricksbuilder.io/integrations/woocommerce/create-custom-mini-cart-dynamic-fragment/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Create a custom mini cart with Dynamic fragment"
   },
   "https://academy.bricksbuilder.io/integrations/woocommerce/creating-dynamic-woocommerce-archive-pages/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Creating dynamic WooCommerce archive pages"
   },
   "https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Element: Checkout Coupon"
   },
   "https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-login/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Element: Checkout Login"
   },
   "https://academy.bricksbuilder.io/integrations/woocommerce/how-to-create-product-quick-view-with-bricks/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "How to Create Product Quick View with Bricks"
   },
   "https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Checkout v2 multistep checkout"
   },
   "https://academy.bricksbuilder.io/integrations/woocommerce/product-archive-woocommerce/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product Archive (WooCommerce)"
   },
   "https://academy.bricksbuilder.io/integrations/woocommerce/product-variation-swatches/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Product Variation Swatches (WooCommerce)"
   },
   "https://academy.bricksbuilder.io/integrations/woocommerce/single-product/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Single Product (WooCommerce)"
   },
   "https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "Woo Setup Wizard"
   },
   "https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "WooCommerce Account Builder"
   },
   "https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "WooCommerce Builder"
   },
   "https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-notices/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "WooCommerce Notices"
   },
   "https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "WooCommerce Template Hooks"
   },
   "https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/": {
-   "lastmod": "2026-10-26T01:36:32.000Z",
+   "lastmod": "2026-10-26T15:19:59.000Z",
    "title": "WooCommerce v2 query loops and dynamic tags"
   }
  }

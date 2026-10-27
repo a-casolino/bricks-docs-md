@@ -317,9 +317,36 @@ You can also connect a `Text` control to the attributes value if you want users 
 
 ## Slots {#slots}
 
+https://youtu.be/OiCHwfRSiLY
+
 The Slot element lets a component define a placeholder for instance-specific children. Add a Slot inside the main component where instance content should appear, then add elements to that slot from a component instance.
 
 A Slot element in the main component is a placeholder. When you select an instance, Bricks exposes virtual slot areas where you can add instance-specific children. Those children are saved on the instance and rendered inside that slot for that instance only.
+
+To add a slot, edit the main component and select the element that should hold the instance content. While you edit a component, the Elements panel shows the `Slot` element in the `Component` group. Click it to add the slot. To name the slot, double-click it in the Structure panel, for example `Actions`. Every instance shows this name for its slot.
+
+<div className="screenshot screenshot--control-panel">
+
+![Elements panel in component edit mode with the Slot element in the Component group.](https://academy.bricksbuilder.io/assets/bricks-component-slot-element.webp)
+
+</div>
+
+To fill a slot, select the instance. In the Structure panel, select its slot row and click an element in the Elements panel, drag an existing element onto the slot row, or right-click the slot row and select `Paste`. Elements in a slot are regular elements of the page, so you can edit and style them like any other element.
+
+<div className="screenshot screenshot--control-panel">
+
+![Structure panel with a component instance, its Actions slot and two elements inside the slot.](https://academy.bricksbuilder.io/assets/bricks-component-instance-slot-structure.webp)
+
+</div>
+
+> **Shared text styles for slot content**
+>
+> New elements start with the default element styles. Set shared typography, such as text color and font size, on an outer element of the component. Elements you add to a slot then inherit it on every instance.
+
+- A slot adds no wrapper element. Bricks renders only the instance's elements in its place.
+- An empty slot outputs nothing. A slot has no default content.
+- If you delete a slot from the main component, the elements that instances added to it are no longer rendered.
+- Component blocks in the block editor do not support slots. See [Components as Blocks](https://academy.bricksbuilder.io/integrations/gutenberg/components-as-blocks/).
 
 ## Components as Blocks
 

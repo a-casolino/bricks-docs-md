@@ -593,15 +593,15 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Map (Leaflet) Schema
+# Map Connector Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/map-leaflet/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/map-connector/
 
-*Schema for Bricks Map (Leaflet) element*
+*Schema for Bricks Map Connector element*
 
 | Property | Value |
 |---|---|
-| `name` | map-leaflet |
+| `name` | map-connector |
 | `category` | general |
 | `tag` | div |
 | `nestable` | false |
@@ -610,26 +610,10 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/map-leaflet/
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `layers` | repeater | Name | — |
-| `markers` | repeater | Coordinates | — |
-| `markerIcon` | image | Icon | — |
-| `markerIconHeight` | number | Icon | — |
-| `markerIconWidth` | number | Icon | — |
-| `height` | number | Height | `height` |
-| `center` | text | Map center | — |
-| `zoom` | number | Zoom level | — |
-| `minZoom` | number | Zoom level | — |
-| `maxZoom` | number | Zoom level | — |
-| `zoomSnap` | number | Zoom | — |
-| `zoomDelta` | number | Zoom | — |
-| `doubleClickZoom` | select | Zoom | — |
-| `scrollWheelZoom` | select | Zoom | — |
-| `boxZoom` | checkbox | Box Zoom | — |
-| `zoomControl` | checkbox | Zoom Control | — |
-| `attributionControl` | checkbox | Attribution Control | — |
-| `closePopupOnClick` | checkbox | Close popup on click | — |
-| `dragging` | checkbox | Dragging | — |
-| `trackResize` | checkbox | Track resize | — |
+| `latitude` | text | Latitude | — |
+| `longitude` | text | Longitude | — |
+| `address` | text | Address | — |
+| `infoBoxTemplateId` | select | Info Box | — |
 
 ## Inherited CSS controls
 
@@ -705,15 +689,15 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Map Connector Schema
+# Map (Leaflet) Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/map-connector/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/map-leaflet/
 
-*Schema for Bricks Map Connector element*
+*Schema for Bricks Map (Leaflet) element*
 
 | Property | Value |
 |---|---|
-| `name` | map-connector |
+| `name` | map-leaflet |
 | `category` | general |
 | `tag` | div |
 | `nestable` | false |
@@ -722,10 +706,26 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/map-connector
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `latitude` | text | Latitude | — |
-| `longitude` | text | Longitude | — |
-| `address` | text | Address | — |
-| `infoBoxTemplateId` | select | Info Box | — |
+| `layers` | repeater | Name | — |
+| `markers` | repeater | Coordinates | — |
+| `markerIcon` | image | Icon | — |
+| `markerIconHeight` | number | Icon | — |
+| `markerIconWidth` | number | Icon | — |
+| `height` | number | Height | `height` |
+| `center` | text | Map center | — |
+| `zoom` | number | Zoom level | — |
+| `minZoom` | number | Zoom level | — |
+| `maxZoom` | number | Zoom level | — |
+| `zoomSnap` | number | Zoom | — |
+| `zoomDelta` | number | Zoom | — |
+| `doubleClickZoom` | select | Zoom | — |
+| `scrollWheelZoom` | select | Zoom | — |
+| `boxZoom` | checkbox | Box Zoom | — |
+| `zoomControl` | checkbox | Zoom Control | — |
+| `attributionControl` | checkbox | Attribution Control | — |
+| `closePopupOnClick` | checkbox | Close popup on click | — |
+| `dragging` | checkbox | Dragging | — |
+| `trackResize` | checkbox | Track resize | — |
 
 ## Inherited CSS controls
 
