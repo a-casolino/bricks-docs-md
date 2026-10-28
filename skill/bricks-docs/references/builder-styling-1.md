@@ -76,6 +76,111 @@ You can view available variable Adobe fonts by selecting "Variable Fonts" under 
 
 ---
 
+# Cascade layer
+
+Source: https://academy.bricksbuilder.io/builder/styling/cascade-layer/
+
+*Use CSS cascade layers in Bricks to control style order more predictably across theme styles, classes, and custom code.*
+
+The specificity of default Bricks styles has always been a balancing act. While we aim to keep these styles as non-intrusive as possible, providing a blank canvas for users to build upon, achieving this solely through selector specificity has its limitations. In some cases, it’s been challenging for users to override specific selectors, even when desired.
+
+Bricks 1.12 introduces a promising solution to this longstanding issue through [CSS cascade layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer), which as of December 2024 reach an impressive 96% browser support and "Widely available" Baseline.
+
+Since Bricks 2.0, this feature has been **enabled by default**. You can disable it from **Bricks Settings > Performance > Cascade layer**, though it is not recommended.
+
+This feature leverages cascade layers to define how Bricks' default styles interact with other styles on the page.
+
+## How it works
+
+This feature introduces a Bricks layer stack:
+
+- **`bricks.reset`** (a lower-priority layer): This sublayer is empty, providing a safety net for advanced users. Bricks itself does not apply any styles in this layer.
+- **`bricks`**: This layer contains Bricks' default styles and element CSS, making them easier to override using un-layered styles or styles in higher-priority user-defined layers.
+- **Additional Bricks layers**: Some frontend assets use more specific layers such as `bricks.gutenberg`, `bricks.icons`, or `bricks.libs` so related reset, editor, icon, or library styles can keep their intended order.
+
+Here’s an example to illustrate the problem and the solution:
+
+### The problem: Selector specificity
+
+In the default Bricks styles, a common pattern might look like this:
+
+```php
+[class*="brxe-"] {
+    max-width: 100%;
+}
+```
+
+If you tried to override this with a general element selector, such as:
+
+```php
+div {
+    max-width: 400px;
+}
+```
+
+…the override wouldn't work because the attribute selector `[class*="brxe-"]` has a higher specificity then the `div`.
+
+One potential workaround could be wrapping Bricks' attribute selectors in `:where()` to reduce specificity:
+
+```php
+:where([class*="brxe-"]) {
+    max-width: 100%;
+}
+```
+
+However, this approach would require wrapping every selector, which is not only complex but also impractical at scale.
+
+### The solution: Cascade layers
+
+With cascade layers, we can simply define the default styles within a layer named `bricks`.
+
+Styles outside this layer (un-layered) or in a higher-priority layer automatically precede the default Bricks styles.
+
+Here's how the layers are structured:
+
+```php
+@layer bricks.reset;
+
+@layer bricks {
+    [class*="brxe-"] {
+        max-width: 100%;
+    }
+    /* Other default Bricks styles */
+}
+```
+
+Now, when you add your own styles outside the `bricks` layer, like this:
+
+```php
+div {
+    max-width: 400px;
+}
+```
+
+…they will precede the default Bricks styles because un-layered styles and higher-priority layers take precedence, regardless of the selector.
+
+### The role of `bricks.reset` {#bricks-reset}
+
+The `bricks.reset` sublayer ensures flexibility when overriding default Bricks styles.
+
+Normally, styles in the `bricks` layer are easy to override, but if a default style uses `!important`, the cascade order flips, making it harder to override with un-layered styles or higher-priority layers. You can learn more about this behaviour [here](https://css-tricks.com/css-cascade-layers/#aa-establishing-a-layer-order).
+
+The `bricks.reset` layer, being lower priority, provides a fallback for safely defining custom styles in these rare cases. While we aim to avoid using `!important` in our default styles unless absolutely required, this sublayer is there as a safeguard.
+
+## Why this matters
+
+By moving default Bricks styles into a dedicated cascade layer, we ensure:
+
+1. **Easier overrides**: Un-layered or higher-priority layered styles can override the default Bricks styles without battling selector specificity.
+2. **Simplified maintenance**: Instead of manually tweaking every selector's specificity, cascade layers offer a clean, scalable solution.
+
+## Resources
+
+- **Kevin Powell's YouTube video on cascade layers**: [A look at CSS Cascade Layers](https://www.youtube.com/watch?v=NDNRGW-_1EE)
+- **In-depth guide on CSS cascade layers**: [CSS-Tricks: Cascade Layers Guide](https://css-tricks.com/css-cascade-layers/)
+
+---
+
 # Contextual Spacing
 
 Source: https://academy.bricksbuilder.io/builder/styling/contextual-spacing/
@@ -220,216 +325,6 @@ To unify the layout:
 ![](https://academy.bricksbuilder.io/assets/bricks-contextual-spacing-apply-to-utility-class-scaled.png)
 
 **Result**: All elements within that wrapper now follow your contextual spacing rules.
-
----
-
-# Custom Fonts
-
-Source: https://academy.bricksbuilder.io/builder/styling/custom-fonts/
-
-*Upload and manage custom fonts in Bricks so they can be used across theme styles, classes, and element typography.*
-
-Your website typography has a huge impact on how your site is perceived, and it'll pay off to spend some time to get this aspect right.
-
-Bricks allows you to add any font you want. From web-safe fonts to Google fonts, and of course, uploading your own custom fonts in your WordPress dashboard under **Bricks > Custom Fonts**. The latter which we are going to have a more in-depth look at now.
-
-> **Note**
->
-> **Bricks 2.0 introduces the [Font Manager](https://academy.bricksbuilder.io/builder/styling/font-manager/) for uploading and managing custom fonts directly inside the builder. This is the recommended workflow for Bricks 2.0 and newer. The legacy Bricks > Custom Fonts screen remains available in the WordPress dashboard.**
-
-You can also preload uploaded custom fonts under **Bricks > Settings > Performance > Preload custom fonts** to help avoid FOUT (Flash of unstyled text).
-
-## How To Create & Upload Custom Fonts
-
-https://youtu.be/6QB84hoycgw
-
-To create a new custom font go to **Bricks > Custom Fonts** in your WordPress dashboard, and click **Add New**.
-
-First, let's give your custom font a title. This title shows in the *font-family* dropdown control when editing the typography in the builder.
-
-Now your can start uploading your font files for all the font variants (*font-weight* and *font-style*) you plan to use on your site:
-
-![](https://academy.bricksbuilder.io/assets/doce-custom-fonts-edit-font-variants-1024x786.png)
-
-<figcaption>
-
-Editing your custom font and managing all its font files and variant.
-
-</figcaption>
-
-You can see in the example above that we've uploaded a .WOFF and .WOFF2 font file for the standard font-weight (400) and a "Normal" font style.
-
-If we'd have font files for font-weight 700 (bold) and font-style "Italic" we'd click the "Add a font variant" button. Select the font-weight value "700" and the font-style "Italic", and then upload the correct font files for this variant.
-
-Once you've created all relevant font variants and uploaded all font files accordingly, you can save your fonts. Your new custom font is now available in the builder.
-
-Uploading a custom font only makes it available in Bricks typography controls. To use it on the frontend, select the font in a typography setting, such as an element, global class, Theme Style, page setting, or template setting.
-
-When a custom font has multiple weights or styles, select the matching font family and weight/style together in the same typography control. This lets Bricks match the setting to the correct saved variation, especially when **Preload custom fonts** is enabled.
-
-You can also see a font preview when editing your font or on the "Custom Fonts" page.
-
-> **Note**
->
-> If your custom fonts are not showing correctly, please check your [WordPress URL settings](https://academy.bricksbuilder.io/builder/setup/known-issues/#custom-fonts).
-
-## Supported Font Formats
-
-The following font formats are enabled by default:
-
-- **WOFF (Web Open Font Format)**: This is the recommend font format used by all modern browsers. Font data is compressed and therefore loads faster than the same font provided via TrueType or OpenType files. Full support for IE9+.
-- **WOFF2 (Web Open Font Format 2.0)**: TrueType/OpenType font with even better compression than WOFF 1.0. No IE browser support.
-- **TTF (TrueType Font)**: Uncompressed font data, but partial IE9+ support.
-
-The recommended font format is WOFF, with a current [browser](https://caniuse.com/woff)[support of 98.26%](https://caniuse.com/woff), and full support for IE9+.
-
-## How To Enable More Font Formats
-
-If you need to support IE8 you can programatically enable the EOT font format (or any other font format) by adding the following code to your Bricks child theme:
-
-```php
-add_filter( 'bricks/custom_fonts/mime_types', function( $mime_types ) {
-  // Enable EOT font format for <IE9 browser support
-  array_unshift( $mime_types, ['eot' => 'font/eot'] );
-
-  return $mime_types;
-} );
-```
-
-Once you've created at least one custom font a "Custom Fonts" section with all your custom fonts will show underneath the "Standard Fonts" in any "font-family" control:
-
-![](https://academy.bricksbuilder.io/assets/docs-custom-fonts-control.png)
-
-#### Pro Tip: How To Become GDPR Compliant By Hosting Google Fonts Yourself {#google-fonts}
-
-When using a Google Font on your website, you have to get consent from your website visitors before displaying the font.
-
-You can avoid this whole issue by downloading all relevant font variants for the Google Fonts you want to use on your site, and then upload them as "Custom fonts" in Bricks.
-
-> **Note**
->
-> The "[Google Webfonts Helper](https://gwfh.mranftl.com/fonts)" project is a great resource to directly download all `.eot`, `.woff`, `.woff2`, `.svg`, `.ttf` files of a Google font.
-
-Bricks 1.4 allows you to “Disable Google Fonts” altogether via the Bricks settings under “Performance”:
-
-![](https://academy.bricksbuilder.io/assets/bricks-1.4-disable-google-fonts-setting-1024x944.png)
-
-<figcaption>
-
-Bricks > Settings > Performance: Disable Google Fonts
-
-</figcaption>
-
-### Free Fonts Resources
-
-- [fontsquirrel.com](https://www.fontsquirrel.com)
-- [reedesignresources.net/category/free-fonts](https://freedesignresources.net/category/free-fonts)
-- [awwwards.com/awwwards/collections/free-fonts](https://www.awwwards.com/awwwards/collections/free-fonts)
-
----
-
-# Cascade layer
-
-Source: https://academy.bricksbuilder.io/builder/styling/cascade-layer/
-
-*Use CSS cascade layers in Bricks to control style order more predictably across theme styles, classes, and custom code.*
-
-The specificity of default Bricks styles has always been a balancing act. While we aim to keep these styles as non-intrusive as possible, providing a blank canvas for users to build upon, achieving this solely through selector specificity has its limitations. In some cases, it’s been challenging for users to override specific selectors, even when desired.
-
-Bricks 1.12 introduces a promising solution to this longstanding issue through [CSS cascade layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer), which as of December 2024 reach an impressive 96% browser support and "Widely available" Baseline.
-
-Since Bricks 2.0, this feature has been **enabled by default**. You can disable it from **Bricks Settings > Performance > Cascade layer**, though it is not recommended.
-
-This feature leverages cascade layers to define how Bricks' default styles interact with other styles on the page.
-
-## How it works
-
-This feature introduces a Bricks layer stack:
-
-- **`bricks.reset`** (a lower-priority layer): This sublayer is empty, providing a safety net for advanced users. Bricks itself does not apply any styles in this layer.
-- **`bricks`**: This layer contains Bricks' default styles and element CSS, making them easier to override using un-layered styles or styles in higher-priority user-defined layers.
-- **Additional Bricks layers**: Some frontend assets use more specific layers such as `bricks.gutenberg`, `bricks.icons`, or `bricks.libs` so related reset, editor, icon, or library styles can keep their intended order.
-
-Here’s an example to illustrate the problem and the solution:
-
-### The problem: Selector specificity
-
-In the default Bricks styles, a common pattern might look like this:
-
-```php
-[class*="brxe-"] {
-    max-width: 100%;
-}
-```
-
-If you tried to override this with a general element selector, such as:
-
-```php
-div {
-    max-width: 400px;
-}
-```
-
-…the override wouldn't work because the attribute selector `[class*="brxe-"]` has a higher specificity then the `div`.
-
-One potential workaround could be wrapping Bricks' attribute selectors in `:where()` to reduce specificity:
-
-```php
-:where([class*="brxe-"]) {
-    max-width: 100%;
-}
-```
-
-However, this approach would require wrapping every selector, which is not only complex but also impractical at scale.
-
-### The solution: Cascade layers
-
-With cascade layers, we can simply define the default styles within a layer named `bricks`.
-
-Styles outside this layer (un-layered) or in a higher-priority layer automatically precede the default Bricks styles.
-
-Here's how the layers are structured:
-
-```php
-@layer bricks.reset;
-
-@layer bricks {
-    [class*="brxe-"] {
-        max-width: 100%;
-    }
-    /* Other default Bricks styles */
-}
-```
-
-Now, when you add your own styles outside the `bricks` layer, like this:
-
-```php
-div {
-    max-width: 400px;
-}
-```
-
-…they will precede the default Bricks styles because un-layered styles and higher-priority layers take precedence, regardless of the selector.
-
-### The role of `bricks.reset` {#bricks-reset}
-
-The `bricks.reset` sublayer ensures flexibility when overriding default Bricks styles.
-
-Normally, styles in the `bricks` layer are easy to override, but if a default style uses `!important`, the cascade order flips, making it harder to override with un-layered styles or higher-priority layers. You can learn more about this behaviour [here](https://css-tricks.com/css-cascade-layers/#aa-establishing-a-layer-order).
-
-The `bricks.reset` layer, being lower priority, provides a fallback for safely defining custom styles in these rare cases. While we aim to avoid using `!important` in our default styles unless absolutely required, this sublayer is there as a safeguard.
-
-## Why this matters
-
-By moving default Bricks styles into a dedicated cascade layer, we ensure:
-
-1. **Easier overrides**: Un-layered or higher-priority layered styles can override the default Bricks styles without battling selector specificity.
-2. **Simplified maintenance**: Instead of manually tweaking every selector's specificity, cascade layers offer a clean, scalable solution.
-
-## Resources
-
-- **Kevin Powell's YouTube video on cascade layers**: [A look at CSS Cascade Layers](https://www.youtube.com/watch?v=NDNRGW-_1EE)
-- **In-depth guide on CSS cascade layers**: [CSS-Tricks: Cascade Layers Guide](https://css-tricks.com/css-cascade-layers/)
 
 ---
 
@@ -582,6 +477,111 @@ This article is meant to provide an overview of CSS grid, and not a complete ref
 - [A Complete Guide to CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid/) (by CSS tricks)
 - [learncssgrid.com](https://learncssgrid.com/) (comprehensive CSS grid overview)
 - [cssgrid.io](https://cssgrid.io/) (free CSS grid course by Wes Bos)
+
+---
+
+# Custom Fonts
+
+Source: https://academy.bricksbuilder.io/builder/styling/custom-fonts/
+
+*Upload and manage custom fonts in Bricks so they can be used across theme styles, classes, and element typography.*
+
+Your website typography has a huge impact on how your site is perceived, and it'll pay off to spend some time to get this aspect right.
+
+Bricks allows you to add any font you want. From web-safe fonts to Google fonts, and of course, uploading your own custom fonts in your WordPress dashboard under **Bricks > Custom Fonts**. The latter which we are going to have a more in-depth look at now.
+
+> **Note**
+>
+> **Bricks 2.0 introduces the [Font Manager](https://academy.bricksbuilder.io/builder/styling/font-manager/) for uploading and managing custom fonts directly inside the builder. This is the recommended workflow for Bricks 2.0 and newer. The legacy Bricks > Custom Fonts screen remains available in the WordPress dashboard.**
+
+You can also preload uploaded custom fonts under **Bricks > Settings > Performance > Preload custom fonts** to help avoid FOUT (Flash of unstyled text).
+
+## How To Create & Upload Custom Fonts
+
+https://youtu.be/6QB84hoycgw
+
+To create a new custom font go to **Bricks > Custom Fonts** in your WordPress dashboard, and click **Add New**.
+
+First, let's give your custom font a title. This title shows in the *font-family* dropdown control when editing the typography in the builder.
+
+Now your can start uploading your font files for all the font variants (*font-weight* and *font-style*) you plan to use on your site:
+
+![](https://academy.bricksbuilder.io/assets/doce-custom-fonts-edit-font-variants-1024x786.png)
+
+<figcaption>
+
+Editing your custom font and managing all its font files and variant.
+
+</figcaption>
+
+You can see in the example above that we've uploaded a .WOFF and .WOFF2 font file for the standard font-weight (400) and a "Normal" font style.
+
+If we'd have font files for font-weight 700 (bold) and font-style "Italic" we'd click the "Add a font variant" button. Select the font-weight value "700" and the font-style "Italic", and then upload the correct font files for this variant.
+
+Once you've created all relevant font variants and uploaded all font files accordingly, you can save your fonts. Your new custom font is now available in the builder.
+
+Uploading a custom font only makes it available in Bricks typography controls. To use it on the frontend, select the font in a typography setting, such as an element, global class, Theme Style, page setting, or template setting.
+
+When a custom font has multiple weights or styles, select the matching font family and weight/style together in the same typography control. This lets Bricks match the setting to the correct saved variation, especially when **Preload custom fonts** is enabled.
+
+You can also see a font preview when editing your font or on the "Custom Fonts" page.
+
+> **Note**
+>
+> If your custom fonts are not showing correctly, please check your [WordPress URL settings](https://academy.bricksbuilder.io/builder/setup/known-issues/#custom-fonts).
+
+## Supported Font Formats
+
+The following font formats are enabled by default:
+
+- **WOFF (Web Open Font Format)**: This is the recommend font format used by all modern browsers. Font data is compressed and therefore loads faster than the same font provided via TrueType or OpenType files. Full support for IE9+.
+- **WOFF2 (Web Open Font Format 2.0)**: TrueType/OpenType font with even better compression than WOFF 1.0. No IE browser support.
+- **TTF (TrueType Font)**: Uncompressed font data, but partial IE9+ support.
+
+The recommended font format is WOFF, with a current [browser](https://caniuse.com/woff)[support of 98.26%](https://caniuse.com/woff), and full support for IE9+.
+
+## How To Enable More Font Formats
+
+If you need to support IE8 you can programatically enable the EOT font format (or any other font format) by adding the following code to your Bricks child theme:
+
+```php
+add_filter( 'bricks/custom_fonts/mime_types', function( $mime_types ) {
+  // Enable EOT font format for <IE9 browser support
+  array_unshift( $mime_types, ['eot' => 'font/eot'] );
+
+  return $mime_types;
+} );
+```
+
+Once you've created at least one custom font a "Custom Fonts" section with all your custom fonts will show underneath the "Standard Fonts" in any "font-family" control:
+
+![](https://academy.bricksbuilder.io/assets/docs-custom-fonts-control.png)
+
+#### Pro Tip: How To Become GDPR Compliant By Hosting Google Fonts Yourself {#google-fonts}
+
+When using a Google Font on your website, you have to get consent from your website visitors before displaying the font.
+
+You can avoid this whole issue by downloading all relevant font variants for the Google Fonts you want to use on your site, and then upload them as "Custom fonts" in Bricks.
+
+> **Note**
+>
+> The "[Google Webfonts Helper](https://gwfh.mranftl.com/fonts)" project is a great resource to directly download all `.eot`, `.woff`, `.woff2`, `.svg`, `.ttf` files of a Google font.
+
+Bricks 1.4 allows you to “Disable Google Fonts” altogether via the Bricks settings under “Performance”:
+
+![](https://academy.bricksbuilder.io/assets/bricks-1.4-disable-google-fonts-setting-1024x944.png)
+
+<figcaption>
+
+Bricks > Settings > Performance: Disable Google Fonts
+
+</figcaption>
+
+### Free Fonts Resources
+
+- [fontsquirrel.com](https://www.fontsquirrel.com)
+- [reedesignresources.net/category/free-fonts](https://freedesignresources.net/category/free-fonts)
+- [awwwards.com/awwwards/collections/free-fonts](https://www.awwwards.com/awwwards/collections/free-fonts)
 
 ---
 
@@ -1692,6 +1692,20 @@ Check that the variable category is a scale, that utility classes are configured
 
 ---
 
+# Hover Styles
+
+Source: https://academy.bricksbuilder.io/builder/styling/hover-styles/
+
+*Style hover states in Bricks so links, buttons, cards, and other interactive elements respond consistently.*
+
+Bring your site to life and boost visitor engagement by styling the hover state of any interactive element.
+
+In the builder, select the element or class you want to style. Open the pseudo-class menu and choose `:hover`. Any styles you add while `:hover` is active are saved to that hover state instead of the default state.
+
+Use the same pseudo-class workflow for global classes, element ID styles, and other supported states. Learn more in [Styling Element States & Parts](https://academy.bricksbuilder.io/builder/styling/pseudo-classes/).
+
+---
+
 # Gradients & Overlays
 
 Source: https://academy.bricksbuilder.io/builder/styling/gradients-overlays/
@@ -1724,20 +1738,6 @@ https://youtu.be/U0x0vCAzuc0
 
 - **Starting angle in °**: Specify the starting angle of the gradient between 0 to 360°.
 - **Position**: Set the gradient's center.
-
----
-
-# Hover Styles
-
-Source: https://academy.bricksbuilder.io/builder/styling/hover-styles/
-
-*Style hover states in Bricks so links, buttons, cards, and other interactive elements respond consistently.*
-
-Bring your site to life and boost visitor engagement by styling the hover state of any interactive element.
-
-In the builder, select the element or class you want to style. Open the pseudo-class menu and choose `:hover`. Any styles you add while `:hover` is active are saved to that hover state instead of the default state.
-
-Use the same pseudo-class workflow for global classes, element ID styles, and other supported states. Learn more in [Styling Element States & Parts](https://academy.bricksbuilder.io/builder/styling/pseudo-classes/).
 
 ---
 
@@ -1910,3 +1910,60 @@ Located under: Bricks > Settings > General > Converter
 ## Masonry layout {#masonry}
 
 Starting at Bricks 1.11.1 you can enable the "Masonry layout" for all layout elements under `Style > Layout > Masonry`. Learn more at [/builder/styling/masonry-layout/](https://academy.bricksbuilder.io/builder/styling/masonry-layout/)
+
+---
+
+# Masonry Layout
+
+Source: https://academy.bricksbuilder.io/builder/styling/masonry-layout/
+
+*Create masonry-style layouts in Bricks and understand the current options and constraints for staggered grids.*
+
+Starting with version 1.11.1, you can easily apply a masonry layout to any layout element in Bricks.
+
+The new Masonry Layout controls are available under `Style > Layout > Masonry` for all layout elements (Section, Container, Block, Div).
+
+![](https://academy.bricksbuilder.io/assets/masonry-layout-controls.png)
+
+Bricks utilizes the [IsotopeJS](https://isotope.metafizzy.co/) library to create the masonry layout, which it also uses for the **Image Gallery** and **Posts** elements, for optimal performance.
+
+## How It Works {#how-it-works}
+
+When the Masonry layout is enabled, all direct child elements become masonry items.
+
+You can customize the number of columns and adjust spacing for different breakpoints to achieve a responsive layout.
+
+> **Note**
+>
+> **Tip:** Ensure that no conflicting CSS styles are applied to the masonry-enabled element, as they may interfere with the masonry layout. It’s best to clear all custom styles for the element to allow the masonry effect to work smoothly.
+
+You can also use the masonry layout to wrap items in a **query loop** for a dynamic grid effect. This is particularly useful for layouts with posts, products, or any repeated content, enabling you to display query items in a visually engaging, staggered grid format.
+
+![](https://academy.bricksbuilder.io/assets/masonry-layout-example-query-loop.png)
+
+## Use Bricks Interaction Animation
+
+If you want to apply custom animations using the **Interactions** panel (e.g., setting an **Entry Viewport Trigger** and **Start Animation** for masonry children), you can disable the default masonry animations by setting **Transition: Duration** to `0`.
+
+This prevents any overlap between the default masonry transitions and your custom animations, ensuring a smoother effect.
+
+![](https://academy.bricksbuilder.io/assets/masonry-layout-disable-animation.png)
+
+## Troubleshooting {#troubleshoot}
+
+### Custom CSS Conflicts
+
+If the masonry columns don’t align with your settings, inspect the CSS styles applied to the child elements. Styles such as **width**, **flex-basis** or **align-self** within flex layouts can override the masonry column settings. Adjust or remove these styles to ensure the masonry layout functions as expected.
+
+### Dynamic Content Updates via Custom JavaScript/AJAX
+
+If you have custom code/plugins that adds masonry child nodes via JavaScript or AJAX, it’s likely that the masonry layout may not update correctly. To fix this, you can manually refresh the masonry instance by running the following JavaScript.
+
+```php
+bricksUtils.updateIsotopeInstance('BRICKS_ID');
+
+```
+
+Replace `'BRICKS_ID'` with the specific ID of your masonry element. This function will reinitialize the masonry layout to accommodate the new nodes, ensuring the layout remains intact.
+
+![](https://academy.bricksbuilder.io/assets/masonry-copy-bricks-id-2.png)

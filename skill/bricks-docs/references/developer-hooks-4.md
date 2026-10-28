@@ -383,29 +383,13 @@ add_filter( 'bricks/builder/color_palette', function( $colors ) {
 
 ---
 
-# Filter: bricks/builder/standard_fonts
+# Filter Hooks
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-standard-fonts/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/
 
-*Place and customize the following filter to display a different set of web-safe fonts in the typography control.*
+*Documented Bricks filter hooks for builder settings, rendering, queries, authentication, code execution, and frontend behavior.*
 
-Place and customize the following filter to display a different set of web-safe fonts in the typography control.
-
-```php
-add_filter( 'bricks/builder/standard_fonts', function( $standard_fonts ) {
-  // Option #1: Add individual standard font
-  $standard_fonts[] = 'Verdana';
-
-  // Option #2: Replace all standard fonts
-  $standard_fonts = [
-    'Georgia',
-    'Times New Roman',
-    'Verdana',
-  ];
-
-  return $standard_fonts;
-} );
-```
+These are all documented Bricks filter hooks:
 
 ---
 
@@ -435,10 +419,26 @@ add_filter( 'bricks/builder/save_messages', function( $messages ) {
 
 ---
 
-# Filter Hooks
+# Filter: bricks/builder/standard_fonts
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-standard-fonts/
 
-*Documented Bricks filter hooks for builder settings, rendering, queries, authentication, code execution, and frontend behavior.*
+*Place and customize the following filter to display a different set of web-safe fonts in the typography control.*
 
-These are all documented Bricks filter hooks:
+Place and customize the following filter to display a different set of web-safe fonts in the typography control.
+
+```php
+add_filter( 'bricks/builder/standard_fonts', function( $standard_fonts ) {
+  // Option #1: Add individual standard font
+  $standard_fonts[] = 'Verdana';
+
+  // Option #2: Replace all standard fonts
+  $standard_fonts = [
+    'Georgia',
+    'Times New Roman',
+    'Verdana',
+  ];
+
+  return $standard_fonts;
+} );
+```

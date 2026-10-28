@@ -1,12 +1,12 @@
-# Account - Page Schema
+# Account - Payment Methods Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-page/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-payment-methods/
 
-*Schema for Bricks Account - Page element*
+*Schema for Bricks Account - Payment methods element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-account-page |
+| `name` | woocommerce-account-payment-methods |
 | `category` | woocommerce_account |
 | `tag` | div |
 | `nestable` | false |
@@ -15,30 +15,34 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-a
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `direction` | direction | Direction | `flex-direction` on `.woocommerce:not(#brx-content)` |
-| `gap` | number | Gap | `gap` on `.woocommerce:not(#brx-content)` |
-| `disableNav` | checkbox | Disable navigation | — |
-| `navDirection` | direction | Direction | `flex-direction` on `.woocommerce-MyAccount-navigation ul` |
-| `navAlignItems` | align-items | Align items | `align-items` on `.woocommerce-MyAccount-navigation ul` |
-| `navJustifyContent` | justify-content | Justify content | `justify-content` on `.woocommerce-MyAccount-navigation ul` |
-| `navGap` | number | Gap | `gap` on `.woocommerce-MyAccount-navigation ul` |
-| `navBackground` | color | Background | `background-color` on `.woocommerce-MyAccount-navigation` |
-| `navBorder` | border | Border | `border` on `.woocommerce-MyAccount-navigation` |
-| `navBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-navigation` |
-| `navItemPadding` | spacing | Padding | `padding` on `.woocommerce-MyAccount-navigation a` |
-| `navItemBackground` | color | Background | `background-color` on `.woocommerce-MyAccount-navigation a` |
-| `navItemBorder` | border | Border | `border` on `.woocommerce-MyAccount-navigation a` |
-| `navItemBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-navigation a` |
-| `navItemTypogaphy` | typography | Typography | `font` on `.woocommerce-MyAccount-navigation a` |
-| `navItemBackgroundActive` | color | Background | `background-color` on `.woocommerce-MyAccount-navigation .is-active a` |
-| `navItemBorderActive` | border | Border | `border` on `.woocommerce-MyAccount-navigation .is-active a` |
-| `navItemBoxShadowActive` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-navigation .is-active a` |
-| `navItemTypogaphyActive` | typography | Typography | `font` on `.woocommerce-MyAccount-navigation .is-active a` |
-| `contentPadding` | spacing | Padding | `padding` on `.woocommerce-MyAccount-content` |
-| `contentBackground` | color | Background | `background-color` on `.woocommerce-MyAccount-content` |
-| `contentBorder` | border | Border | `border` on `.woocommerce-MyAccount-content` |
-| `contentBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-content` |
-| `contentTypogaphy` | typography | Typography | `font` on `.woocommerce-MyAccount-content` |
+| `tableBackgroundColor` | color | Background color | `background-color` on `.woocommerce-MyAccount-paymentMethods` |
+| `tableBorder` | border | Border | `border` on `.woocommerce-MyAccount-paymentMethods` |
+| `tableBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-paymentMethods` |
+| `tableTypography` | typography | Typography | `font` on `.woocommerce-MyAccount-paymentMethods` |
+| `theadPadding` | spacing | Padding | `padding` on `.woocommerce-MyAccount-paymentMethods thead th` |
+| `theadBackgroundColor` | color | Background color | `background-color` on `.woocommerce-MyAccount-paymentMethods thead th` |
+| `theadBorder` | border | Border | `border` on `.woocommerce-MyAccount-paymentMethods thead th` |
+| `theadTypography` | typography | Typography | `font` on `.woocommerce-MyAccount-paymentMethods thead th` |
+| `tbodyPadding` | spacing | Padding | `padding` on `.woocommerce-MyAccount-paymentMethods tbody td` |
+| `tbodyBackgroundColor` | color | Background color | `background-color` on `.woocommerce-MyAccount-paymentMethods tbody td` |
+| `tbodyBorder` | border | Border | `border` on `.woocommerce-MyAccount-paymentMethods tbody td` |
+| `tbodyTypography` | typography | Typography | `font` on `.woocommerce-MyAccount-paymentMethods tbody td` |
+| `deleteButtonPadding` | spacing | Padding | `padding` on `.woocommerce-MyAccount-paymentMethods tbody td .button.delete` |
+| `deleteButtonBackgroundColor` | color | Background color | `background-color` on `.woocommerce-MyAccount-paymentMethods tbody td .button.delete` |
+| `deleteButtonBorder` | border | Border | `border` on `.woocommerce-MyAccount-paymentMethods tbody td .button.delete` |
+| `deleteButtonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-paymentMethods tbody td .button.delete` |
+| `deleteButtonTypography` | typography | Typography | `font` on `.woocommerce-MyAccount-paymentMethods tbody td .button.delete` |
+| `makeDefaultButtonPadding` | spacing | Padding | `padding` on `.woocommerce-MyAccount-paymentMethods tbody td .button.default` |
+| `makeDefaultButtonBackgroundColor` | color | Background color | `background-color` on `.woocommerce-MyAccount-paymentMethods tbody td .button.default` |
+| `makeDefaultButtonBorder` | border | Border | `border` on `.woocommerce-MyAccount-paymentMethods tbody td .button.default` |
+| `makeDefaultButtonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-paymentMethods tbody td .button.default` |
+| `makeDefaultButtonTypography` | typography | Typography | `font` on `.woocommerce-MyAccount-paymentMethods tbody td .button.default` |
+| `addButtonMargin` | spacing | Margin | `margin` on `> a.button` |
+| `addButtonPadding` | spacing | Padding | `padding` on `> a.button` |
+| `addButtonBackgroundColor` | color | Background color | `background-color` on `> a.button` |
+| `addButtonBorder` | border | Border | `border` on `> a.button` |
+| `addButtonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `> a.button` |
+| `addButtonTypography` | typography | Typography | `font` on `> a.button` |
 
 ## Inherited CSS controls
 
@@ -114,51 +118,49 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Account - Payment Methods Schema
+# Account - Page V2 Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-payment-methods/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-page-v2/
 
-*Schema for Bricks Account - Payment methods element*
+*Schema for Bricks Account - Page v2 element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-account-payment-methods |
+| `name` | woocommerce-account-page-v2 |
 | `category` | woocommerce_account |
 | `tag` | div |
-| `nestable` | false |
+| `nestable` | true |
 
 ## Controls
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `tableBackgroundColor` | color | Background color | `background-color` on `.woocommerce-MyAccount-paymentMethods` |
-| `tableBorder` | border | Border | `border` on `.woocommerce-MyAccount-paymentMethods` |
-| `tableBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-paymentMethods` |
-| `tableTypography` | typography | Typography | `font` on `.woocommerce-MyAccount-paymentMethods` |
-| `theadPadding` | spacing | Padding | `padding` on `.woocommerce-MyAccount-paymentMethods thead th` |
-| `theadBackgroundColor` | color | Background color | `background-color` on `.woocommerce-MyAccount-paymentMethods thead th` |
-| `theadBorder` | border | Border | `border` on `.woocommerce-MyAccount-paymentMethods thead th` |
-| `theadTypography` | typography | Typography | `font` on `.woocommerce-MyAccount-paymentMethods thead th` |
-| `tbodyPadding` | spacing | Padding | `padding` on `.woocommerce-MyAccount-paymentMethods tbody td` |
-| `tbodyBackgroundColor` | color | Background color | `background-color` on `.woocommerce-MyAccount-paymentMethods tbody td` |
-| `tbodyBorder` | border | Border | `border` on `.woocommerce-MyAccount-paymentMethods tbody td` |
-| `tbodyTypography` | typography | Typography | `font` on `.woocommerce-MyAccount-paymentMethods tbody td` |
-| `deleteButtonPadding` | spacing | Padding | `padding` on `.woocommerce-MyAccount-paymentMethods tbody td .button.delete` |
-| `deleteButtonBackgroundColor` | color | Background color | `background-color` on `.woocommerce-MyAccount-paymentMethods tbody td .button.delete` |
-| `deleteButtonBorder` | border | Border | `border` on `.woocommerce-MyAccount-paymentMethods tbody td .button.delete` |
-| `deleteButtonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-paymentMethods tbody td .button.delete` |
-| `deleteButtonTypography` | typography | Typography | `font` on `.woocommerce-MyAccount-paymentMethods tbody td .button.delete` |
-| `makeDefaultButtonPadding` | spacing | Padding | `padding` on `.woocommerce-MyAccount-paymentMethods tbody td .button.default` |
-| `makeDefaultButtonBackgroundColor` | color | Background color | `background-color` on `.woocommerce-MyAccount-paymentMethods tbody td .button.default` |
-| `makeDefaultButtonBorder` | border | Border | `border` on `.woocommerce-MyAccount-paymentMethods tbody td .button.default` |
-| `makeDefaultButtonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-paymentMethods tbody td .button.default` |
-| `makeDefaultButtonTypography` | typography | Typography | `font` on `.woocommerce-MyAccount-paymentMethods tbody td .button.default` |
-| `addButtonMargin` | spacing | Margin | `margin` on `> a.button` |
-| `addButtonPadding` | spacing | Padding | `padding` on `> a.button` |
-| `addButtonBackgroundColor` | color | Background color | `background-color` on `> a.button` |
-| `addButtonBorder` | border | Border | `border` on `> a.button` |
-| `addButtonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `> a.button` |
-| `addButtonTypography` | typography | Typography | `font` on `> a.button` |
+| `previewMode` | radio | previewMode | — |
+| `addMissingStates` | button | Add missing states | — |
+| `direction` | direction | Direction | `flex-direction` on `.woocommerce:not(#brx-content)` |
+| `gap` | number | Gap | `gap` on `.woocommerce:not(#brx-content)` |
+| `disableNav` | checkbox | Disable navigation | — |
+| `navDirection` | direction | Direction | `flex-direction` on `.woocommerce-MyAccount-navigation ul` |
+| `navAlignItems` | align-items | Align items | `align-items` on `.woocommerce-MyAccount-navigation ul` |
+| `navJustifyContent` | justify-content | Justify content | `justify-content` on `.woocommerce-MyAccount-navigation ul` |
+| `navGap` | number | Gap | `gap` on `.woocommerce-MyAccount-navigation ul` |
+| `navBorder` | border | Border | `border` on `.woocommerce-MyAccount-navigation` |
+| `navBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-navigation` |
+| `navBackground` | color | Background | `background-color` on `.woocommerce-MyAccount-navigation` |
+| `navItemPadding` | spacing | Item padding | `padding` on `.woocommerce-MyAccount-navigation a` |
+| `navItemBackground` | color | Background | `background-color` on `.woocommerce-MyAccount-navigation a` |
+| `navItemBorder` | border | Border | `border` on `.woocommerce-MyAccount-navigation a` |
+| `navItemBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-navigation a` |
+| `navItemTypography` | typography | Typography | `font` on `.woocommerce-MyAccount-navigation a` |
+| `navItemBackgroundActive` | color | Active background | `background-color` on `.woocommerce-MyAccount-navigation .is-active a` |
+| `navItemBorderActive` | border | Border | `border` on `.woocommerce-MyAccount-navigation .is-active a` |
+| `navItemBoxShadowActive` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-navigation .is-active a` |
+| `navItemTypographyActive` | typography | Typography | `font` on `.woocommerce-MyAccount-navigation .is-active a` |
+| `contentPadding` | spacing | Padding | `padding` on `.woocommerce-MyAccount-content` |
+| `contentBackground` | color | Background | `background-color` on `.woocommerce-MyAccount-content` |
+| `contentBorder` | border | Border | `border` on `.woocommerce-MyAccount-content` |
+| `contentBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-content` |
+| `contentTypography` | typography | Typography | `font` on `.woocommerce-MyAccount-content` |
 
 ## Inherited CSS controls
 
@@ -784,15 +786,15 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Edit Address (StateWooCommerce Template Statebricks) Schema
+# Edit Account (StateWooCommerce Template Statebricks) Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-edit-address/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-edit-account/
 
-*Schema for Bricks Edit address (StateWooCommerce template statebricks) element*
+*Schema for Bricks Edit account (StateWooCommerce template statebricks) element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-account-v2-state-edit-address |
+| `name` | woocommerce-account-v2-state-edit-account |
 | `category` | woocommerce_account |
 | `tag` | div |
 | `nestable` | true |
@@ -801,13 +803,8 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-a
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `previewAddressType` | select | Preview address type | — |
 | `generatePredefinedElements` | select | generatePredefinedElements | — |
 | `generatePredefinedElementsApply` | button | Generate | — |
-| `checkAccountEditAddressFields` | button | Check address fields | — |
-| `generateMissingAccountEditAddressFields` | button | Generate missing fields | — |
-| `removeInvalidAccountEditAddressFields` | button | Remove invalid fields | — |
-| `removeDuplicateAccountEditAddressFields` | button | Remove duplicate fields | — |
 | `floatingLabelStyle` | checkbox | Floating label | — |
 
 ## Inherited CSS controls
@@ -884,15 +881,15 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Edit Account (StateWooCommerce Template Statebricks) Schema
+# Edit Address (StateWooCommerce Template Statebricks) Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-edit-account/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-edit-address/
 
-*Schema for Bricks Edit account (StateWooCommerce template statebricks) element*
+*Schema for Bricks Edit address (StateWooCommerce template statebricks) element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-account-v2-state-edit-account |
+| `name` | woocommerce-account-v2-state-edit-address |
 | `category` | woocommerce_account |
 | `tag` | div |
 | `nestable` | true |
@@ -901,8 +898,13 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-a
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
+| `previewAddressType` | select | Preview address type | — |
 | `generatePredefinedElements` | select | generatePredefinedElements | — |
 | `generatePredefinedElementsApply` | button | Generate | — |
+| `checkAccountEditAddressFields` | button | Check address fields | — |
+| `generateMissingAccountEditAddressFields` | button | Generate missing fields | — |
+| `removeInvalidAccountEditAddressFields` | button | Remove invalid fields | — |
+| `removeDuplicateAccountEditAddressFields` | button | Remove duplicate fields | — |
 | `floatingLabelStyle` | checkbox | Floating label | — |
 
 ## Inherited CSS controls
@@ -1661,113 +1663,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-a
 | `previewOrderId` | number | Preview order ID | — |
 | `generatePredefinedElements` | select | generatePredefinedElements | — |
 | `generatePredefinedElementsApply` | button | Generate | — |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
-# Breadcrumbs (WooCommerce) Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-breadcrumbs/
-
-*Schema for Bricks Breadcrumbs (WooCommerce) element*
-
-| Property | Value |
-|---|---|
-| `name` | woocommerce-breadcrumbs |
-| `category` | woocommerce |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `beforeLabel` | text | Before | — |
-| `homeURL` | text | Home | — |
-| `homeLabel` | text | Home | — |
-| `homeIcon` | icon | Home | `—` on `svg.home` |
-| `homeIconGap` | number | Home | `gap` on `.navigation > a:has(.home)` |
-| `homeIconSize` | number | Home | `font-size` on `i.home`, `width` on `svg.home`, `height` on `svg.home` |
-| `hideHomeLabel` | checkbox | Hide label | — |
-| `prefix` | text | Prefix | — |
-| `suffix` | text | Suffix | — |
-| `separatorType` | select | Type | — |
-| `separatorText` | text | Separator | — |
-| `separatorIcon` | icon | Icon | `—` on `svg.separator` |
-| `separatorIconTypography` | typography | Icon typography | `font` on `.separator` |
-| `separatorGap` | number | Gap | `gap` on `.navigation` |
-| `separatorMargin` | spacing | Margin | `margin` on `.separator` |
 
 ## Inherited CSS controls
 

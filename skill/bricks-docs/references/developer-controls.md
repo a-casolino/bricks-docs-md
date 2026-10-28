@@ -35,6 +35,25 @@ public function set_controls() {
 
 ---
 
+# Apply Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/apply-control/
+
+*Reference for the Bricks Apply control, including its options, CSS mapping, and usage in custom elements.*
+
+The `apply` control saves your settings. You can set the `reload` control property to **true** in order to trigger a builder reload after the "Apply" button has been clicked. We use it in the builder for settings like the template "Populate Content" or the "SEO" page settings.
+
+```php
+$this->controls['apply'] = [
+  'group' => 'template-preview',
+  'type' => 'apply',
+  'reload' => true,
+  'label' => esc_html__( 'Apply preview', 'bricks' ),
+];
+```
+
+---
+
 # Audio Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/audio-control/
@@ -155,25 +174,6 @@ class Prefix_Element_Background extends \Bricks\Element {
     echo '</div>';
   }
 }
-```
-
----
-
-# Apply Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/apply-control/
-
-*Reference for the Bricks Apply control, including its options, CSS mapping, and usage in custom elements.*
-
-The `apply` control saves your settings. You can set the `reload` control property to **true** in order to trigger a builder reload after the "Apply" button has been clicked. We use it in the builder for settings like the template "Populate Content" or the "SEO" page settings.
-
-```php
-$this->controls['apply'] = [
-  'group' => 'template-preview',
-  'type' => 'apply',
-  'reload' => true,
-  'label' => esc_html__( 'Apply preview', 'bricks' ),
-];
 ```
 
 ---
@@ -680,45 +680,6 @@ class Prefix_Element_Editor extends \Bricks\Element {
 
 ---
 
-# Filters Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/filters-control/
-
-*Reference for the Bricks Filters control, including its options, CSS mapping, and usage in custom elements.*
-
-The filters control offers the following [CSS filters](https://developer.mozilla.org/en-US/docs/Web/CSS/filter): `blur`, `brightness`, `contrast`, `hue`, `invert`, `opacity`, `saturation`, `sepia`.
-
-```php
-class Prefix_Element_Filters extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleFilters'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'CSS filters', 'bricks' ),
-      'type' => 'filters',
-      'inline' => true,
-      'css' => [
-        [
-          'property' => 'filter',
-          'selector' => '.css-filter',
-        ],
-      ],
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    echo '<div class="css-filter">' . echo get_bloginfo( 'name' ); . '</div>';
-  }
-}
-```
-
-> **Note**
->
-> All sections, rows, columns, and elements already have a **CSS Filters** control under the Style tab CSS group.
-
----
-
 # Element Controls
 
 Source: https://academy.bricksbuilder.io/developer/controls/element-controls/
@@ -817,27 +778,27 @@ The following control parameters are available for all control types. To dive de
 
 ---
 
-# Gradient Control
+# Filters Control
 
-Source: https://academy.bricksbuilder.io/developer/controls/gradient-control/
+Source: https://academy.bricksbuilder.io/developer/controls/filters-control/
 
-*Reference for the Bricks Gradient control, including its options, CSS mapping, and usage in custom elements.*
+*Reference for the Bricks Filters control, including its options, CSS mapping, and usage in custom elements.*
 
-The gradient control lets you define an unlimited number of gradients that you can apply to text, background, and as an overlay.
-
-You can set the CSS selector in the control, adjust the angle between 0 and 360°, and set a color stop for each color.
+The filters control offers the following [CSS filters](https://developer.mozilla.org/en-US/docs/Web/CSS/filter): `blur`, `brightness`, `contrast`, `hue`, `invert`, `opacity`, `saturation`, `sepia`.
 
 ```php
-class Prefix_Element_Gradient extends \Bricks\Element {
+class Prefix_Element_Filters extends \Bricks\Element {
   // Set builder controls
   public function set_controls() {
-    $this->controls['exampleGradient'] = [
+    $this->controls['exampleFilters'] = [
       'tab' => 'content',
-      'label' => esc_html__( 'Gradient', 'bricks' ),
-      'type' => 'gradient',
+      'label' => esc_html__( 'CSS filters', 'bricks' ),
+      'type' => 'filters',
+      'inline' => true,
       'css' => [
         [
-          'property' => 'background-image',
+          'property' => 'filter',
+          'selector' => '.css-filter',
         ],
       ],
     ];
@@ -845,14 +806,14 @@ class Prefix_Element_Gradient extends \Bricks\Element {
 
   // Render element HTML
   public function render() {
-    echo get_bloginfo( 'name' );
+    echo '<div class="css-filter">' . echo get_bloginfo( 'name' ); . '</div>';
   }
 }
 ```
 
 > **Note**
 >
-> All sections, rows, columns, and elements already have a **CSS Gradient** control under the Style tab Gradient / Overlay group.
+> All sections, rows, columns, and elements already have a **CSS Filters** control under the Style tab CSS group.
 
 ---
 
@@ -902,52 +863,42 @@ class Prefix_Element_Icon extends \Bricks\Element {
 
 ---
 
-# Image Gallery Control
+# Gradient Control
 
-Source: https://academy.bricksbuilder.io/developer/controls/image-gallery-control/
+Source: https://academy.bricksbuilder.io/developer/controls/gradient-control/
 
-*Reference for the Bricks Image Gallery control, including its options, CSS mapping, and usage in custom elements.*
+*Reference for the Bricks Gradient control, including its options, CSS mapping, and usage in custom elements.*
 
-The image gallery control lets you select multiple images from your media library. Once images have been selected you can choose the image size.
+The gradient control lets you define an unlimited number of gradients that you can apply to text, background, and as an overlay.
 
-Your selected images are stored in an array, which you have to loop through (see code example below). Use the `id` and `size`  of each image to render it on your page.
-
-> **Note**
->
-> **Tip #1:** Hold down the *SHIFT* key in order to select multiple image in your media library.
-
-> **Note**
->
-> **Tip #2:** Select the smallest possible image size in which the image still looks crisp. This helps to reduce the loading time of your website and is great for SEO, as loading times are an important ranking factor for search engines.
+You can set the CSS selector in the control, adjust the angle between 0 and 360°, and set a color stop for each color.
 
 ```php
-class Prefix_Element_Image extends \Bricks\Element {
+class Prefix_Element_Gradient extends \Bricks\Element {
   // Set builder controls
   public function set_controls() {
-    $this->controls['exampleImageGallery'] = [
+    $this->controls['exampleGradient'] = [
       'tab' => 'content',
-      'label' => esc_html__( 'Image gallery', 'bricks' ),
-      'type' => 'image-gallery',
+      'label' => esc_html__( 'Gradient', 'bricks' ),
+      'type' => 'gradient',
+      'css' => [
+        [
+          'property' => 'background-image',
+        ],
+      ],
     ];
   }
 
   // Render element HTML
   public function render() {
-    if ( isset( $this->settings['exampleImageGallery'] ) ) {
-      foreach( $this->settings['exampleImageGallery'] as $index => $image ) {
-        echo wp_get_attachment_image(
-          $image['id'],
-          $image['size'],
-          false,
-          ['class' => 'css-filter']
-        );
-      }
-    } else {
-      esc_html_e( 'No image(s) selected.', 'bricks' );
-    }
+    echo get_bloginfo( 'name' );
   }
 }
 ```
+
+> **Note**
+>
+> All sections, rows, columns, and elements already have a **CSS Gradient** control under the Style tab Gradient / Overlay group.
 
 ---
 
@@ -1024,38 +975,50 @@ Bricks controls define how users edit custom element settings inside the builder
 
 ---
 
-# Justify Content Control (Flexbox)
+# Image Gallery Control
 
-Source: https://academy.bricksbuilder.io/developer/controls/justify-content-control/
+Source: https://academy.bricksbuilder.io/developer/controls/image-gallery-control/
 
-*Reference for the Bricks Justify Content Control (Flexbox) control, including its options, CSS mapping, and usage in custom elements.*
+*Reference for the Bricks Image Gallery control, including its options, CSS mapping, and usage in custom elements.*
 
-Use the justify-content control to allow users to set the `justify-content` CSS property (alignment along the [main-axis](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)) of your CSS flexbox layout.
+The image gallery control lets you select multiple images from your media library. Once images have been selected you can choose the image size.
 
-There is also a [`align-items`](https://academy.bricksbuilder.io/developer/controls/align-items-control/) control to allow users to set the alignment along the cross axis of your CSS flexbox layout:
+Your selected images are stored in an array, which you have to loop through (see code example below). Use the `id` and `size`  of each image to render it on your page.
+
+> **Note**
+>
+> **Tip #1:** Hold down the *SHIFT* key in order to select multiple image in your media library.
+
+> **Note**
+>
+> **Tip #2:** Select the smallest possible image size in which the image still looks crisp. This helps to reduce the loading time of your website and is great for SEO, as loading times are an important ranking factor for search engines.
 
 ```php
-public function set_controls() {
-  $this->controls['justifyContent'] = [
-    'tab'   => 'content',
-    'label' => esc_html__( 'Justify content', 'bricks' ),
-    'type'  => 'justify-content',
-    'css'   => [
-      [
-        'property' => 'justify-content',
-        'selector' => '.flexbox-wrapper',
-      ],
-    ],
-    // 'isHorizontal' => false,
-    // 'exclude' => [
-      // 'flex-start',
-      // 'center',
-      // 'flex-end',
-      // 'space-between',
-      // 'space-around',
-      // 'space-evenly',
-    // ],
-  ];
+class Prefix_Element_Image extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleImageGallery'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Image gallery', 'bricks' ),
+      'type' => 'image-gallery',
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    if ( isset( $this->settings['exampleImageGallery'] ) ) {
+      foreach( $this->settings['exampleImageGallery'] as $index => $image ) {
+        echo wp_get_attachment_image(
+          $image['id'],
+          $image['size'],
+          false,
+          ['class' => 'css-filter']
+        );
+      }
+    } else {
+      esc_html_e( 'No image(s) selected.', 'bricks' );
+    }
+  }
 }
 ```
 
@@ -1105,58 +1068,83 @@ class Prefix_Element_Info extends \Bricks\Element {
 
 ---
 
-# Number Control
+# Link Control
 
-Source: https://academy.bricksbuilder.io/developer/controls/number-control/
+Source: https://academy.bricksbuilder.io/developer/controls/link-control/
 
-*Reference for the Bricks Number control, including its options, CSS mapping, and usage in custom elements.*
+*Reference for the Bricks Link control, including its options, CSS mapping, and usage in custom elements.*
 
-The number control represents a simple number input field. It has the following custom properties:
+The link control give you the choice of different link types:
 
-- units (optional: boolean or array)
-- unit (string: `px`, `em`, `rem` etc.)
-- min (number)
-- step (Default: 1) (Custom: '0.1' etc.)
-
-Use it to render a number to the page or set the `css` control property to target a specific CSS style.
+- Internal post/page
+- External URL
+- Popup (image, video)
 
 ```php
-class Prefix_Element_Number extends \Bricks\Element {
+class Prefix_Element_Link extends \Bricks\Element {
   // Set builder controls
   public function set_controls() {
-    $this->controls['exampleNumber'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Number', 'bricks' ),
-      'type' => 'number',
-      'min' => 0,
-      'step' => '0.1', // Default: 1
-      'inline' => true,
-      'default' => 123,
-    ];
-
-    $this->controls['examplePadding'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Padding in px', 'bricks' ),
-      'type' => 'number',
-      'unit' => 'px',
-      'inline' => true,
-      'css' => [
-        [
-          'property' => 'padding',
-        ],
-      ],
-      'default' => 33,
+    $this->controls['exampleLink'] = [
+      'tab'         => 'content',
+      'label'       => esc_html__( 'Link', 'bricks' ),
+      'type'        => 'link',
+      'pasteStyles' => false,
+      'placeholder' => esc_html__( 'http://yoursite.com', 'bricks' ),
+      // 'exclude'     => [
+      //  'rel',
+      //  'newTab',
+      // ],
     ];
   }
 
   // Render element HTML
   public function render() {
-    if ( isset( $this->settings['exampleNumber'] ) ) {
-      echo esc_html__( 'Number: ', 'bricks' ) . $this->settings['exampleNumber'];
+    if ( isset( $this->settings['exampleLink'] ) ) {
+      // Set link attributes by passing attribute key and link settings
+      $this->set_link_attributes( 'a', $this->settings['exampleLink'] );
+
+      echo '<a ' . $this->render_attributes( 'a' ) . '>' . get_bloginfo( 'name' ) . '</a>';
     } else {
-      esc_html_e( 'No number provided.', 'bricks' );
+      esc_html_e( 'No link provided.', 'bricks' );
     }
   }
+}
+```
+
+---
+
+# Justify Content Control (Flexbox)
+
+Source: https://academy.bricksbuilder.io/developer/controls/justify-content-control/
+
+*Reference for the Bricks Justify Content Control (Flexbox) control, including its options, CSS mapping, and usage in custom elements.*
+
+Use the justify-content control to allow users to set the `justify-content` CSS property (alignment along the [main-axis](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)) of your CSS flexbox layout.
+
+There is also a [`align-items`](https://academy.bricksbuilder.io/developer/controls/align-items-control/) control to allow users to set the alignment along the cross axis of your CSS flexbox layout:
+
+```php
+public function set_controls() {
+  $this->controls['justifyContent'] = [
+    'tab'   => 'content',
+    'label' => esc_html__( 'Justify content', 'bricks' ),
+    'type'  => 'justify-content',
+    'css'   => [
+      [
+        'property' => 'justify-content',
+        'selector' => '.flexbox-wrapper',
+      ],
+    ],
+    // 'isHorizontal' => false,
+    // 'exclude' => [
+      // 'flex-start',
+      // 'center',
+      // 'flex-end',
+      // 'space-between',
+      // 'space-around',
+      // 'space-evenly',
+    // ],
+  ];
 }
 ```
 
@@ -1212,44 +1200,56 @@ class Prefix_Element_Posts extends \Bricks\Element {
 
 ---
 
-# Link Control
+# Number Control
 
-Source: https://academy.bricksbuilder.io/developer/controls/link-control/
+Source: https://academy.bricksbuilder.io/developer/controls/number-control/
 
-*Reference for the Bricks Link control, including its options, CSS mapping, and usage in custom elements.*
+*Reference for the Bricks Number control, including its options, CSS mapping, and usage in custom elements.*
 
-The link control give you the choice of different link types:
+The number control represents a simple number input field. It has the following custom properties:
 
-- Internal post/page
-- External URL
-- Popup (image, video)
+- units (optional: boolean or array)
+- unit (string: `px`, `em`, `rem` etc.)
+- min (number)
+- step (Default: 1) (Custom: '0.1' etc.)
+
+Use it to render a number to the page or set the `css` control property to target a specific CSS style.
 
 ```php
-class Prefix_Element_Link extends \Bricks\Element {
+class Prefix_Element_Number extends \Bricks\Element {
   // Set builder controls
   public function set_controls() {
-    $this->controls['exampleLink'] = [
-      'tab'         => 'content',
-      'label'       => esc_html__( 'Link', 'bricks' ),
-      'type'        => 'link',
-      'pasteStyles' => false,
-      'placeholder' => esc_html__( 'http://yoursite.com', 'bricks' ),
-      // 'exclude'     => [
-      //  'rel',
-      //  'newTab',
-      // ],
+    $this->controls['exampleNumber'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Number', 'bricks' ),
+      'type' => 'number',
+      'min' => 0,
+      'step' => '0.1', // Default: 1
+      'inline' => true,
+      'default' => 123,
+    ];
+
+    $this->controls['examplePadding'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Padding in px', 'bricks' ),
+      'type' => 'number',
+      'unit' => 'px',
+      'inline' => true,
+      'css' => [
+        [
+          'property' => 'padding',
+        ],
+      ],
+      'default' => 33,
     ];
   }
 
   // Render element HTML
   public function render() {
-    if ( isset( $this->settings['exampleLink'] ) ) {
-      // Set link attributes by passing attribute key and link settings
-      $this->set_link_attributes( 'a', $this->settings['exampleLink'] );
-
-      echo '<a ' . $this->render_attributes( 'a' ) . '>' . get_bloginfo( 'name' ) . '</a>';
+    if ( isset( $this->settings['exampleNumber'] ) ) {
+      echo esc_html__( 'Number: ', 'bricks' ) . $this->settings['exampleNumber'];
     } else {
-      esc_html_e( 'No link provided.', 'bricks' );
+      esc_html_e( 'No number provided.', 'bricks' );
     }
   }
 }

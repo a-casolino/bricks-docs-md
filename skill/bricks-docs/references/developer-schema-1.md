@@ -429,6 +429,14 @@ Page and template settings schemas describing the available settings controls.
 
 ---
 
+# Align Items Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/align-items/
+
+*Value schema for align-items control type*
+
+---
+
 # Audio Control Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/controls/audio/
@@ -444,14 +452,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/audio/
 | `autoplay` | boolean | — |
 | `loop` | boolean | — |
 | `controls` | boolean | — |
-
----
-
-# Align Items Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/align-items/
-
-*Value schema for align-items control type*
 
 ---
 
@@ -546,19 +546,19 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/datepicker/
 
 ---
 
+# Dimensions Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/dimensions/
+
+*Unknown control type: dimensions*
+
+---
+
 # Direction Control Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/controls/direction/
 
 *Value schema for direction control type*
-
----
-
-# Editor Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/editor/
-
-*Rich text/HTML content*
 
 ---
 
@@ -574,6 +574,14 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/file/
 |---|---|---|
 | `id` | string \| integer | — |
 | `url` | string | — |
+
+---
+
+# Editor Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/editor/
+
+*Rich text/HTML content*
 
 ---
 
@@ -596,14 +604,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/filters/
 | `opacity` | string | — |
 | `saturate` | string | — |
 | `sepia` | string | — |
-
----
-
-# Dimensions Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/dimensions/
-
-*Unknown control type: dimensions*
 
 ---
 
@@ -661,6 +661,28 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/image/
 Source: https://academy.bricksbuilder.io/developer/schema/controls/justify-content/
 
 *Value schema for justify-content control type*
+
+---
+
+# Link Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/link/
+
+*Value schema for link control type*
+
+## Properties
+
+| Property | Type | Description |
+|---|---|---|
+| `type` | string | — |
+| `url` | string | — |
+| `postId` | string \| integer | — |
+| `newTab` | boolean | — |
+| `rel` | string | — |
+| `title` | string | — |
+| `ariaLabel` | string | — |
+| `lightboxId` | string | — |
+| `lightboxType` | string | — |
 
 ---
 
@@ -791,28 +813,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/svg/
 
 ---
 
-# Link Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/link/
-
-*Value schema for link control type*
-
-## Properties
-
-| Property | Type | Description |
-|---|---|---|
-| `type` | string | — |
-| `url` | string | — |
-| `postId` | string \| integer | — |
-| `newTab` | boolean | — |
-| `rel` | string | — |
-| `title` | string | — |
-| `ariaLabel` | string | — |
-| `lightboxId` | string | — |
-| `lightboxType` | string | — |
-
----
-
 # Text Align Control Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/controls/text-align/
@@ -843,6 +843,14 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/text/
 
 ---
 
+# Textarea Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/textarea/
+
+*Value schema for textarea control type*
+
+---
+
 # Transform Control Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/controls/transform/
@@ -865,14 +873,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/transform/
 | `skewX` | string | — |
 | `skewY` | string | — |
 | `perspective` | string | — |
-
----
-
-# Textarea Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/textarea/
-
-*Value schema for textarea control type*
 
 ---
 
@@ -1077,6 +1077,55 @@ Source: https://academy.bricksbuilder.io/developer/schema/global/global-variable
 Source: https://academy.bricksbuilder.io/developer/schema/global/pseudo-classes/
 
 *CSS pseudo-classes available in the builder for responsive/state variants. Stored as a WordPress option, user-configurable via Bricks settings.*
+
+---
+
+# Page Settings Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/settings/page/
+
+*Schema for Bricks page settings controls*
+
+## Controls
+
+| Key | Type | Label |
+|---|---|---|
+| `bodyClasses` | text | CSS classes |
+| `customCss` | code | Custom CSS |
+| `customScriptsBodyFooter` | code | Body (footer) scripts |
+| `customScriptsBodyHeader` | code | Body (header) scripts |
+| `customScriptsHeader` | code | Header scripts |
+| `disableLazyLoad` | checkbox | Disable lazy load |
+| `documentTitle` | text | Document title |
+| `footerDisabled` | checkbox | Disable footer |
+| `headerDisabled` | checkbox | Disable header |
+| `metaDescription` | textarea | Meta description |
+| `metaKeywords` | text | Meta keywords |
+| `metaRobots` | select | Meta robots |
+| `onePageNavigation` | checkbox | Show navigation |
+| `onePageNavigationItemBorder` | border | Border |
+| `onePageNavigationItemBorderActive` | border | Border |
+| `onePageNavigationItemBoxShadow` | box-shadow | Box shadow |
+| `onePageNavigationItemBoxShadowActive` | box-shadow | Box shadow |
+| `onePageNavigationItemColor` | color | Color |
+| `onePageNavigationItemColorActive` | color | Color |
+| `onePageNavigationItemHeight` | number | Height |
+| `onePageNavigationItemHeightActive` | number | Height |
+| `onePageNavigationItemSpacing` | number | Spacing |
+| `onePageNavigationItemWidth` | number | Width |
+| `onePageNavigationItemWidthActive` | number | Width |
+| `popupDisabled` | checkbox | Disable popups |
+| `postName` | text | Permalink |
+| `postTitle` | text | Title |
+| `scrollMargin` | number | Margin |
+| `scrollPadding` | number | Padding |
+| `scrollSnapAlign` | select | Align |
+| `scrollSnapSelector` | text | Snapping elements selector |
+| `scrollSnapStop` | select | Stop |
+| `scrollSnapType` | select | Type |
+| `sharingDescription` | text | Description |
+| `sharingImage` | image | Image |
+| `sharingTitle` | text | Title |
 
 ---
 
@@ -2065,55 +2114,6 @@ Each `contextualSpacingCustomTarget` entry contains a `selector` and the spacing
 
 ---
 
-# Page Settings Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/settings/page/
-
-*Schema for Bricks page settings controls*
-
-## Controls
-
-| Key | Type | Label |
-|---|---|---|
-| `bodyClasses` | text | CSS classes |
-| `customCss` | code | Custom CSS |
-| `customScriptsBodyFooter` | code | Body (footer) scripts |
-| `customScriptsBodyHeader` | code | Body (header) scripts |
-| `customScriptsHeader` | code | Header scripts |
-| `disableLazyLoad` | checkbox | Disable lazy load |
-| `documentTitle` | text | Document title |
-| `footerDisabled` | checkbox | Disable footer |
-| `headerDisabled` | checkbox | Disable header |
-| `metaDescription` | textarea | Meta description |
-| `metaKeywords` | text | Meta keywords |
-| `metaRobots` | select | Meta robots |
-| `onePageNavigation` | checkbox | Show navigation |
-| `onePageNavigationItemBorder` | border | Border |
-| `onePageNavigationItemBorderActive` | border | Border |
-| `onePageNavigationItemBoxShadow` | box-shadow | Box shadow |
-| `onePageNavigationItemBoxShadowActive` | box-shadow | Box shadow |
-| `onePageNavigationItemColor` | color | Color |
-| `onePageNavigationItemColorActive` | color | Color |
-| `onePageNavigationItemHeight` | number | Height |
-| `onePageNavigationItemHeightActive` | number | Height |
-| `onePageNavigationItemSpacing` | number | Spacing |
-| `onePageNavigationItemWidth` | number | Width |
-| `onePageNavigationItemWidthActive` | number | Width |
-| `popupDisabled` | checkbox | Disable popups |
-| `postName` | text | Permalink |
-| `postTitle` | text | Title |
-| `scrollMargin` | number | Margin |
-| `scrollPadding` | number | Padding |
-| `scrollSnapAlign` | select | Align |
-| `scrollSnapSelector` | text | Snapping elements selector |
-| `scrollSnapStop` | select | Stop |
-| `scrollSnapType` | select | Type |
-| `sharingDescription` | text | Description |
-| `sharingImage` | image | Image |
-| `sharingTitle` | text | Title |
-
----
-
 # Template Settings Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/settings/template/
@@ -2188,41 +2188,50 @@ Source: https://academy.bricksbuilder.io/developer/schema/settings/template/
 
 ---
 
-# Accordion (Nestable) Schema
+# Accordion Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/accordion-nested/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/accordion/
 
-*Schema for Bricks Accordion (Nestable) element*
+*Schema for Bricks Accordion element*
 
 | Property | Value |
 |---|---|
-| `name` | accordion-nested |
+| `name` | accordion |
 | `category` | general |
 | `tag` | div |
-| `nestable` | true |
+| `nestable` | false |
 
 ## Controls
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
+| `accordions` | repeater | Title | — |
 | `expandItem` | text | Expand item indexes | — |
 | `independentToggle` | checkbox | Independent toggle | — |
 | `transition` | number | Transition | — |
 | `faqSchema` | checkbox | FAQ schema | — |
-| `titleHeight` | number | Min. height | `min-height` on `.accordion-title-wrapper` |
+| `titleTag` | select | HTML tag | — |
+| `icon` | icon | Icon | — |
+| `iconTypography` | typography | Icon typography | `font` on `.accordion-title\{pseudo\} .icon` |
+| `iconExpanded` | icon | Icon expanded | — |
+| `iconExpandedTypography` | typography | Icon expanded typography | `font` on `.accordion-title\{pseudo\} .icon.expanded` |
+| `iconPosition` | select | Icon position | — |
+| `iconRotate` | number | Icon rotate in ° | `transform:rotate` on `.brx-open .title + .icon` |
 | `titleMargin` | spacing | Margin | `margin` on `.accordion-title-wrapper` |
 | `titlePadding` | spacing | Padding | `padding` on `.accordion-title-wrapper` |
+| `titleTypography` | typography | Title typography | `font` on `.accordion-title\{pseudo\} .title` |
+| `subtitleTypography` | typography | Subtitle typography | `font` on `.accordion-subtitle` |
 | `titleBackgroundColor` | color | Background color | `background-color` on `.accordion-title-wrapper` |
 | `titleBorder` | border | Border | `border` on `.accordion-title-wrapper` |
-| `titleTypography` | typography | Typography | `font` on `.accordion-title-wrapper`, `font` on `.accordion-title-wrapper .brxe-heading` |
-| `titleActiveBackgroundColor` | color | Background color | `background-color` on `.brx-open .accordion-title-wrapper` |
-| `titleActiveBorder` | border | Border | `border` on `.brx-open .accordion-title-wrapper` |
-| `titleActiveTypography` | typography | Typography | `font` on `.brx-open .accordion-title-wrapper`, `font` on `.brx-open .accordion-title-wrapper .brxe-heading` |
+| `titleActiveBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.accordion-title-wrapper` |
+| `titleActiveTypography` | typography | Active typography | `font` on `.brx-open .title` |
+| `titleActiveBackgroundColor` | color | Active background | `background-color` on `.brx-open .accordion-title-wrapper` |
+| `titleActiveBorder` | border | Active border | `border` on `.brx-open .accordion-title-wrapper` |
 | `contentMargin` | spacing | Margin | `margin` on `.accordion-content-wrapper` |
 | `contentPadding` | spacing | Padding | `padding` on `.accordion-content-wrapper` |
+| `contentTypography` | typography | Content typography | `font` on `.accordion-content-wrapper` |
 | `contentBackgroundColor` | color | Background color | `background-color` on `.accordion-content-wrapper` |
 | `contentBorder` | border | Border | `border` on `.accordion-content-wrapper` |
-| `contentTypography` | typography | Typography | `font` on `.accordion-content-wrapper` |
 
 ## Inherited CSS controls
 

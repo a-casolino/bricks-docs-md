@@ -3,8 +3,8 @@
 Each line: page title, the file in this folder that contains it, and a summary. Inside the file every page starts with `# <title>`.
 
 - Bricks Data Model → `developer-schema-1.md`: How Bricks stores and structures data: elements, content areas, page/template settings, and global data structures.
-- Audio Control Schema → `developer-schema-1.md`: Value schema for audio control type
 - Align Items Control Schema → `developer-schema-1.md`: Value schema for align-items control type
+- Audio Control Schema → `developer-schema-1.md`: Value schema for audio control type
 - Background Control Schema → `developer-schema-1.md`: Value schema for background control type
 - Border Control Schema → `developer-schema-1.md`: Value schema for border control type
 - Box Shadow Control Schema → `developer-schema-1.md`: Value schema for box-shadow control type
@@ -13,15 +13,16 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Code Control Schema → `developer-schema-1.md`: Value schema for code control type
 - Color Control Schema → `developer-schema-1.md`: Value schema for color control type
 - Datepicker Control Schema → `developer-schema-1.md`: Date/time string
-- Direction Control Schema → `developer-schema-1.md`: Value schema for direction control type
-- Editor Control Schema → `developer-schema-1.md`: Rich text/HTML content
-- File Control Schema → `developer-schema-1.md`: Value schema for file control type
-- Filters Control Schema → `developer-schema-1.md`: Value schema for filters control type
 - Dimensions Control Schema → `developer-schema-1.md`: Unknown control type: dimensions
+- Direction Control Schema → `developer-schema-1.md`: Value schema for direction control type
+- File Control Schema → `developer-schema-1.md`: Value schema for file control type
+- Editor Control Schema → `developer-schema-1.md`: Rich text/HTML content
+- Filters Control Schema → `developer-schema-1.md`: Value schema for filters control type
 - Icon Control Schema → `developer-schema-1.md`: Value schema for icon control type
 - Image Gallery Control Schema → `developer-schema-1.md`: Value schema for image-gallery control type
 - Image Control Schema → `developer-schema-1.md`: Value schema for image control type
 - Justify Content Control Schema → `developer-schema-1.md`: Value schema for justify-content control type
+- Link Control Schema → `developer-schema-1.md`: Value schema for link control type
 - Number Control Schema → `developer-schema-1.md`: Value schema for number control type
 - Query List Control Schema → `developer-schema-1.md`: Unknown control type: query-list
 - Query Control Schema → `developer-schema-1.md`: Value schema for query control type
@@ -30,12 +31,11 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Select Control Schema → `developer-schema-1.md`: Value schema for select control type
 - Spacing Control Schema → `developer-schema-1.md`: Value schema for spacing control type
 - Svg Control Schema → `developer-schema-1.md`: Value schema for svg control type
-- Link Control Schema → `developer-schema-1.md`: Value schema for link control type
 - Text Align Control Schema → `developer-schema-1.md`: Value schema for text-align control type
 - Text Shadow Control Schema → `developer-schema-1.md`: Value schema for text-shadow control type
 - Text Control Schema → `developer-schema-1.md`: Value schema for text control type
-- Transform Control Schema → `developer-schema-1.md`: Value schema for transform control type
 - Textarea Control Schema → `developer-schema-1.md`: Value schema for textarea control type
+- Transform Control Schema → `developer-schema-1.md`: Value schema for transform control type
 - Typography Control Schema → `developer-schema-1.md`: Value schema for typography control type
 - Video Control Schema → `developer-schema-1.md`: Value schema for video control type
 - Content Area Schema → `developer-schema-1.md`: A Bricks content area is a flat array of elements stored in post meta. This page documents the array structure and storage.
@@ -45,21 +45,21 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Global Classes Schema → `developer-schema-1.md`: Documentation for Global Classes Schema in Bricks Academy.
 - Global Variables Schema → `developer-schema-1.md`: Documentation for Global Variables Schema in Bricks Academy.
 - Pseudo-Classes Schema → `developer-schema-1.md`: CSS pseudo-classes available in the builder for responsive/state variants. Stored as a WordPress option, user-configurable via Bricks settings.
-- Theme Styles Schema → `developer-schema-1.md`: Full schema for Bricks theme styles: per-section controls, types, CSS properties, and selectors.
 - Page Settings Schema → `developer-schema-1.md`: Schema for Bricks page settings controls
+- Theme Styles Schema → `developer-schema-1.md`: Full schema for Bricks theme styles: per-section controls, types, CSS properties, and selectors.
 - Template Settings Schema → `developer-schema-1.md`: Schema for Bricks template settings controls
-- Accordion (Nestable) Schema → `developer-schema-1.md`: Schema for Bricks Accordion (Nestable) element
-- Accordion Schema → `developer-schema-2.md`: Schema for Bricks Accordion element
+- Accordion Schema → `developer-schema-1.md`: Schema for Bricks Accordion element
+- Accordion (Nestable) Schema → `developer-schema-2.md`: Schema for Bricks Accordion (Nestable) element
 - Alert Schema → `developer-schema-2.md`: Schema for Bricks Alert element
-- Anim. Typing Schema → `developer-schema-2.md`: Schema for Bricks Anim. Typing element
 - Audio Schema → `developer-schema-2.md`: Schema for Bricks Audio element
-- Back To Top Schema → `developer-schema-2.md`: Schema for Bricks Back to Top element
 - Block Schema → `developer-schema-2.md`: Schema for Bricks Block element
+- Anim. Typing Schema → `developer-schema-2.md`: Schema for Bricks Anim. Typing element
 - Breadcrumbs Schema → `developer-schema-2.md`: Schema for Bricks Breadcrumbs element
+- Back To Top Schema → `developer-schema-2.md`: Schema for Bricks Back to Top element
 - Button Schema → `developer-schema-2.md`: Schema for Bricks Button element
 - Carousel Schema → `developer-schema-2.md`: Schema for Bricks Carousel element
-- Code Schema → `developer-schema-2.md`: Schema for Bricks Code element
 - Container Schema → `developer-schema-2.md`: Schema for Bricks Container element
+- Code Schema → `developer-schema-2.md`: Schema for Bricks Code element
 - Countdown Schema → `developer-schema-2.md`: Schema for Bricks Countdown element
 - Counter Schema → `developer-schema-2.md`: Schema for Bricks Counter element
 - Div Schema → `developer-schema-2.md`: Schema for Bricks Div element
@@ -101,16 +101,16 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Meta Data Schema → `developer-schema-5.md`: Schema for Bricks Meta Data element
 - Post Navigation Schema → `developer-schema-5.md`: Schema for Bricks Post navigation element
 - Reading Progress Bar Schema → `developer-schema-5.md`: Schema for Bricks Reading progress bar element
-- Social Sharing Schema → `developer-schema-5.md`: Schema for Bricks Social Sharing element
 - Reading Time Schema → `developer-schema-5.md`: Schema for Bricks Reading time element
+- Social Sharing Schema → `developer-schema-5.md`: Schema for Bricks Social Sharing element
 - Taxonomy Schema → `developer-schema-5.md`: Schema for Bricks Taxonomy element
-- Post Title Schema → `developer-schema-5.md`: Schema for Bricks Post title element
 - Table Of Contents Schema → `developer-schema-5.md`: Schema for Bricks Table of contents element
 - Posts Schema → `developer-schema-5.md`: Schema for Bricks Posts element
+- Post Title Schema → `developer-schema-5.md`: Schema for Bricks Post title element
 - Pricing Tables Schema → `developer-schema-5.md`: Schema for Bricks Pricing Tables element
-- Product Content Schema → `developer-schema-5.md`: Schema for Bricks Product content element
-- Product Additional Information Schema → `developer-schema-5.md`: Schema for Bricks Product additional information element
 - Add To Cart Schema → `developer-schema-5.md`: Schema for Bricks Add to cart element
+- Product Additional Information Schema → `developer-schema-5.md`: Schema for Bricks Product additional information element
+- Product Content Schema → `developer-schema-5.md`: Schema for Bricks Product content element
 - Product Gallery Schema → `developer-schema-5.md`: Schema for Bricks Product gallery element
 - Product Meta Schema → `developer-schema-6.md`: Schema for Bricks Product meta element
 - Product Price Schema → `developer-schema-6.md`: Schema for Bricks Product price element
@@ -132,25 +132,25 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Sidebar Schema → `developer-schema-6.md`: Schema for Bricks Sidebar element
 - Slidercarousel Elementbricks (Nestable) Schema → `developer-schema-7.md`: Schema for Bricks Slidercarousel elementbricks (Nestable) element
 - Slidercarousel Elementbricks Schema → `developer-schema-7.md`: Schema for Bricks Slidercarousel elementbricks element
-- Slot Schema → `developer-schema-7.md`: Schema for Bricks Slot element
 - Icon List Schema → `developer-schema-7.md`: Schema for Bricks Icon List element
+- Slot Schema → `developer-schema-7.md`: Schema for Bricks Slot element
 - SVG Schema → `developer-schema-7.md`: Schema for Bricks SVG element
 - Tabs (Nestable) Schema → `developer-schema-7.md`: Schema for Bricks Tabs (Nestable) element
 - Tabs Schema → `developer-schema-7.md`: Schema for Bricks Tabs element
 - Team Members Schema → `developer-schema-7.md`: Schema for Bricks Team members element
 - Template Schema → `developer-schema-7.md`: Schema for Bricks Template element
-- Testimonials Schema → `developer-schema-7.md`: Schema for Bricks Testimonials element
 - Basic Text Schema → `developer-schema-7.md`: Schema for Bricks Basic Text element
+- Testimonials Schema → `developer-schema-7.md`: Schema for Bricks Testimonials element
 - Text Link Schema → `developer-schema-7.md`: Schema for Bricks Text link element
 - Rich Text Schema → `developer-schema-7.md`: Schema for Bricks Rich text element
 - Toggle - Mode Schema → `developer-schema-7.md`: Schema for Bricks Toggle - Mode element
 - Toggle Schema → `developer-schema-7.md`: Schema for Bricks Toggle element
 - Video Schema → `developer-schema-7.md`: Schema for Bricks Video element
-- Account - Add Payment Method Schema → `developer-schema-7.md`: Schema for Bricks Account - Add payment method element
-- Account - Addresses Schema → `developer-schema-8.md`: Schema for Bricks Account - Addresses element
+- Account - Addresses Schema → `developer-schema-7.md`: Schema for Bricks Account - Addresses element
 - Account - Downloads Schema → `developer-schema-8.md`: Schema for Bricks Account - Downloads element
-- Account Edit Account Form Schema → `developer-schema-8.md`: Schema for Bricks Account edit account form element
 - Account Edit Address Form Schema → `developer-schema-8.md`: Schema for Bricks Account edit address form element
+- Account Edit Account Form Schema → `developer-schema-8.md`: Schema for Bricks Account edit account form element
+- Account - Add Payment Method Schema → `developer-schema-8.md`: Schema for Bricks Account - Add payment method element
 - Account - Edit Account Schema → `developer-schema-8.md`: Schema for Bricks Account - Edit account element
 - Account - Edit Address Schema → `developer-schema-8.md`: Schema for Bricks Account - Edit address element
 - Account - Login Form Schema → `developer-schema-8.md`: Schema for Bricks Account - Login form element
@@ -158,21 +158,21 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Account - Register Form Schema → `developer-schema-8.md`: Schema for Bricks Account - Register form element
 - Account - Reset Password Schema → `developer-schema-8.md`: Schema for Bricks Account - Reset password element
 - WooCommerce Login Form Schema → `developer-schema-8.md`: Schema for Bricks WooCommerce login form element
-- Account Lost Password Form Schema → `developer-schema-8.md`: Schema for Bricks Account lost password form element
 - Account Order Withdrawal Form Schema → `developer-schema-8.md`: Schema for Bricks Account order withdrawal form element
+- Account Lost Password Form Schema → `developer-schema-8.md`: Schema for Bricks Account lost password form element
 - Account - Orders Pagination Schema → `developer-schema-8.md`: Schema for Bricks Account - Orders pagination element
 - Account - Orders Schema → `developer-schema-8.md`: Schema for Bricks Account - Orders element
-- Account - Page V2 Schema → `developer-schema-8.md`: Schema for Bricks Account - Page v2 element
-- Account - Page Schema → `developer-schema-9.md`: Schema for Bricks Account - Page element
+- Account - Page Schema → `developer-schema-8.md`: Schema for Bricks Account - Page element
 - Account - Payment Methods Schema → `developer-schema-9.md`: Schema for Bricks Account - Payment methods element
+- Account - Page V2 Schema → `developer-schema-9.md`: Schema for Bricks Account - Page v2 element
 - Account Register Form Schema → `developer-schema-9.md`: Schema for Bricks Account register form element
 - Account Reset Password Form Schema → `developer-schema-9.md`: Schema for Bricks Account reset password form element
 - Add Payment Method (StateWooCommerce Template Statebricks) Schema → `developer-schema-9.md`: Schema for Bricks Add payment method (StateWooCommerce template statebricks) element
 - Addresses (StateWooCommerce Template Statebricks) Schema → `developer-schema-9.md`: Schema for Bricks Addresses (StateWooCommerce template statebricks) element
 - Dashboard (StateWooCommerce Template Statebricks) Schema → `developer-schema-9.md`: Schema for Bricks Dashboard (StateWooCommerce template statebricks) element
 - Downloads (StateWooCommerce Template Statebricks) Schema → `developer-schema-9.md`: Schema for Bricks Downloads (StateWooCommerce template statebricks) element
-- Edit Address (StateWooCommerce Template Statebricks) Schema → `developer-schema-9.md`: Schema for Bricks Edit address (StateWooCommerce template statebricks) element
 - Edit Account (StateWooCommerce Template Statebricks) Schema → `developer-schema-9.md`: Schema for Bricks Edit account (StateWooCommerce template statebricks) element
+- Edit Address (StateWooCommerce Template Statebricks) Schema → `developer-schema-9.md`: Schema for Bricks Edit address (StateWooCommerce template statebricks) element
 - Login (StateWooCommerce Template Statebricks) Schema → `developer-schema-9.md`: Schema for Bricks Login (StateWooCommerce template statebricks) element
 - Lost Password Confirmation (StateWooCommerce Template Statebricks) Schema → `developer-schema-9.md`: Schema for Bricks Lost password confirmation (StateWooCommerce template statebricks) element
 - Lost Password (StateWooCommerce Template Statebricks) Schema → `developer-schema-9.md`: Schema for Bricks Lost password (StateWooCommerce template statebricks) element
@@ -181,11 +181,11 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Payment Methods (StateWooCommerce Template Statebricks) Schema → `developer-schema-9.md`: Schema for Bricks Payment methods (StateWooCommerce template statebricks) element
 - Reset Password (StateWooCommerce Template Statebricks) Schema → `developer-schema-9.md`: Schema for Bricks Reset password (StateWooCommerce template statebricks) element
 - View Order (StateWooCommerce Template Statebricks) Schema → `developer-schema-9.md`: Schema for Bricks View order (StateWooCommerce template statebricks) element
-- Breadcrumbs (WooCommerce) Schema → `developer-schema-9.md`: Schema for Bricks Breadcrumbs (WooCommerce) element
 - Account - View Order Schema → `developer-schema-10.md`: Schema for Bricks Account - View order element
+- Breadcrumbs (WooCommerce) Schema → `developer-schema-10.md`: Schema for Bricks Breadcrumbs (WooCommerce) element
 - Cart Totals Schema → `developer-schema-10.md`: Schema for Bricks Cart totals element
-- Cart Coupon Schema → `developer-schema-10.md`: Schema for Bricks Cart coupon element
 - Cart Form Schema → `developer-schema-10.md`: Schema for Bricks Cart form element
+- Cart Coupon Schema → `developer-schema-10.md`: Schema for Bricks Cart coupon element
 - Cart Item Data Schema → `developer-schema-10.md`: Schema for Bricks Cart item data element
 - Cart Items Schema → `developer-schema-10.md`: Schema for Bricks Cart items element
 - Cart Quantity Schema → `developer-schema-10.md`: Schema for Bricks Cart quantity element
@@ -197,8 +197,8 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Checkout Coupon Schema → `developer-schema-10.md`: Schema for Bricks Checkout coupon element
 - Checkout Customer Details Schema → `developer-schema-10.md`: Schema for Bricks Checkout customer details element
 - Checkout Login Schema → `developer-schema-10.md`: Schema for Bricks Checkout login element
-- Checkout Order Review Schema → `developer-schema-10.md`: Schema for Bricks Checkout order review element
 - Checkout Order Payment Schema → `developer-schema-11.md`: Schema for Bricks Checkout order payment element
+- Checkout Order Review Schema → `developer-schema-11.md`: Schema for Bricks Checkout order review element
 - Checkout Order Summary Schema → `developer-schema-11.md`: Schema for Bricks Checkout order summary element
 - Checkout Order Table Schema → `developer-schema-11.md`: Schema for Bricks Checkout order table element
 - Checkout Place Order Schema → `developer-schema-11.md`: Schema for Bricks Checkout place order element
@@ -208,28 +208,28 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Checkout Steps Navigation Schema → `developer-schema-11.md`: Schema for Bricks Checkout steps navigation element
 - Checkout Thank You Schema → `developer-schema-11.md`: Schema for Bricks Checkout thank you element
 - Checkout (StateWooCommerce Template Statebricks) Schema → `developer-schema-11.md`: Schema for Bricks Checkout (StateWooCommerce template statebricks) element
+- Login Required (StateWooCommerce Template Statebricks) Schema → `developer-schema-11.md`: Schema for Bricks Login required (StateWooCommerce template statebricks) element
 - Order Receipt (StateWooCommerce Template Statebricks) Schema → `developer-schema-11.md`: Schema for Bricks Order receipt (StateWooCommerce template statebricks) element
 - Pay (StateWooCommerce Template Statebricks) Schema → `developer-schema-11.md`: Schema for Bricks Pay (StateWooCommerce template statebricks) element
 - Thank You (StateWooCommerce Template Statebricks) Schema → `developer-schema-11.md`: Schema for Bricks Thank you (StateWooCommerce template statebricks) element
-- Login Required (StateWooCommerce Template Statebricks) Schema → `developer-schema-11.md`: Schema for Bricks Login required (StateWooCommerce template statebricks) element
 - Checkout (V2) Schema → `developer-schema-11.md`: Schema for Bricks Checkout (v2) element
 - Dynamic Fragment Schema → `developer-schema-11.md`: Schema for Bricks Dynamic fragment element
 - WooCommerce Form Field Schema → `developer-schema-11.md`: Schema for Bricks WooCommerce form field element
-- WooCommerce Form Submit Schema → `developer-schema-11.md`: Schema for Bricks WooCommerce form submit element
+- WooCommerce Form Submit Schema → `developer-schema-12.md`: Schema for Bricks WooCommerce form submit element
 - Woocommerce Item Data Schema → `developer-schema-12.md`: Schema for Bricks Woocommerce Item Data element
+- Mini Cart Schema → `developer-schema-12.md`: Schema for Bricks Mini cart element
 - Notice Schema → `developer-schema-12.md`: Schema for Bricks Notice element
 - Order Item Data Schema → `developer-schema-12.md`: Schema for Bricks Order item data element
 - Payment Options Schema → `developer-schema-12.md`: Schema for Bricks Payment options element
 - Products Archive Description Schema → `developer-schema-12.md`: Schema for Bricks Products archive description element
-- Mini Cart Schema → `developer-schema-12.md`: Schema for Bricks Mini cart element
 - Products Filter Schema → `developer-schema-12.md`: Schema for Bricks Products filter element
 - Products Orderby Schema → `developer-schema-12.md`: Schema for Bricks Products orderby element
 - Products Pagination Schema → `developer-schema-12.md`: Schema for Bricks Products pagination element
 - Products Total Results Schema → `developer-schema-12.md`: Schema for Bricks Products total results element
 - Products Schema → `developer-schema-12.md`: Schema for Bricks Products element
+- WooCommerce Template Hook Schema → `developer-schema-12.md`: Schema for Bricks WooCommerce Template Hook element
 - Shipping Options Schema → `developer-schema-12.md`: Schema for Bricks Shipping options element
 - WordPress Schema → `developer-schema-12.md`: Schema for Bricks WordPress element
-- WooCommerce Template Hook Schema → `developer-schema-12.md`: Schema for Bricks WooCommerce Template Hook element
 - Element Conditions Schema → `developer-schema-12.md`: Full schema for element display conditions: condition keys, comparison operators, and the OR-of-AND data structure.
-- Element Schema → `developer-schema-12.md`: Canonical reference for a Bricks element: the envelope structure, settings layers, meta-settings, and selectors.
 - Element Interactions Schema → `developer-schema-12.md`: Full schema for element interactions: triggers, actions, targets, animation settings, and sub-conditions.
+- Element Schema → `developer-schema-12.md`: Canonical reference for a Bricks element: the envelope structure, settings layers, meta-settings, and selectors.

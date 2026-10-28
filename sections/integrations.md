@@ -1,7 +1,7 @@
 # Bricks Builder Documentation: Integrations
 
-<!-- content-sha256: 7b60a00956854182a3d5140223ed1a1b7885213202411c0feb2b282280fffba7 -->
-<!-- content last changed: 2026-10-27 06:20 UTC -->
+<!-- content-sha256: af81ea60feaca5efb7054baaaa5f5089c555fd12235b4d4e00f2009c03b8fc84 -->
+<!-- content last changed: 2026-10-28 06:58 UTC -->
 
 Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricksbuilder.io/), refreshed daily. Content © Bricks. 28 pages.
 
@@ -20,8 +20,8 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
     - [Cart (WooCommerce)](#integrations-woocommerce-cart)
     - [Checkout (WooCommerce)](#integrations-woocommerce-checkout)
     - [Create a custom mini cart with Dynamic fragment](#integrations-woocommerce-create-custom-mini-cart-dynamic-fragment)
-    - [Element: Checkout Coupon](#integrations-woocommerce-element-checkout-coupon)
     - [Creating dynamic WooCommerce archive pages](#integrations-woocommerce-creating-dynamic-woocommerce-archive-pages)
+    - [Element: Checkout Coupon](#integrations-woocommerce-element-checkout-coupon)
     - [Element: Checkout Login](#integrations-woocommerce-element-checkout-login)
     - [How to Create Product Quick View with Bricks](#integrations-woocommerce-how-to-create-product-quick-view-with-bricks)
   - [WooCommerce](#integrations-woocommerce)
@@ -31,10 +31,10 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
     - [Single Product (WooCommerce)](#integrations-woocommerce-single-product)
     - [Woo Setup Wizard](#integrations-woocommerce-woo-setup-wizard)
     - [WooCommerce Account Builder](#integrations-woocommerce-woocommerce-account-builder)
-    - [WooCommerce Builder](#integrations-woocommerce-woocommerce-builder)
-    - [WooCommerce Notices](#integrations-woocommerce-woocommerce-notices)
     - [WooCommerce Template Hooks](#integrations-woocommerce-woocommerce-template-hooks)
+    - [WooCommerce Builder](#integrations-woocommerce-woocommerce-builder)
     - [WooCommerce v2 query loops and dynamic tags](#integrations-woocommerce-woocommerce-v2-query-loops-dynamic-tags)
+    - [WooCommerce Notices](#integrations-woocommerce-woocommerce-notices)
 
 ---
 
@@ -1540,45 +1540,6 @@ To test the mini cart:
 
 ---
 
-<a id="integrations-woocommerce-element-checkout-coupon"></a>
-
-# Element: Checkout Coupon
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/
-
-*Use the Bricks Checkout Coupon element inside WooCommerce checkout templates to render and style the coupon form.*
-
-This Checkout coupon element, available @since 1.11.1, allows you to display the coupon field in various locations on the checkout page, making it easy for customers to apply discount codes during their purchase.
-
-In previous versions, you couldn’t control the location of the checkout coupon. Additionally, styling options were limited, and adjustments required custom CSS. With this new, dedicated checkout coupon element you now have greater control over placement and design.
-
-To use this element, first enable it under **`Bricks > Settings > WooCommerce`** by turning on **`Enable Bricks WooCommerce "Checkout coupon" element`**.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-setting.png)
-
-> **Note**
->
-> WooCommerce **`Enable the use of coupon codes`** must also be active under **WooCommerce > Settings > General**. When the Bricks Checkout Coupon element is enabled, the native WooCommerce checkout coupon form is removed, so add this element where you want the coupon form to appear.
-
-> **Note**
->
-> **Note:** This element is specifically designed for the Checkout page and will only work when placed on the **Checkout template** or the Checkout page itself, depending on your design requirements.
-
-**Key Controls**
-
-**Location:**
-
-- By default, the **Checkout Coupon** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment
-- Custom location settings only apply on the actual frontend (Checkout page). To ensure correct placement, add this element at the top of your Checkout template.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-element-controls.png)
-
-![](https://academy.bricksbuilder.io/assets/element-location-example.png)
-
-You can set the form to be toggle-able, hiding it by default and revealing it only when the toggle is clicked, for a cleaner layout.
-
----
-
 <a id="integrations-woocommerce-creating-dynamic-woocommerce-archive-pages"></a>
 
 # Creating dynamic WooCommerce archive pages
@@ -1724,6 +1685,45 @@ Now, your shop page and product category pages should be able to work as expecte
 Custom WooCommerce Archive Template
 
 </figcaption>
+
+---
+
+<a id="integrations-woocommerce-element-checkout-coupon"></a>
+
+# Element: Checkout Coupon
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/
+
+*Use the Bricks Checkout Coupon element inside WooCommerce checkout templates to render and style the coupon form.*
+
+This Checkout coupon element, available @since 1.11.1, allows you to display the coupon field in various locations on the checkout page, making it easy for customers to apply discount codes during their purchase.
+
+In previous versions, you couldn’t control the location of the checkout coupon. Additionally, styling options were limited, and adjustments required custom CSS. With this new, dedicated checkout coupon element you now have greater control over placement and design.
+
+To use this element, first enable it under **`Bricks > Settings > WooCommerce`** by turning on **`Enable Bricks WooCommerce "Checkout coupon" element`**.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-setting.png)
+
+> **Note**
+>
+> WooCommerce **`Enable the use of coupon codes`** must also be active under **WooCommerce > Settings > General**. When the Bricks Checkout Coupon element is enabled, the native WooCommerce checkout coupon form is removed, so add this element where you want the coupon form to appear.
+
+> **Note**
+>
+> **Note:** This element is specifically designed for the Checkout page and will only work when placed on the **Checkout template** or the Checkout page itself, depending on your design requirements.
+
+**Key Controls**
+
+**Location:**
+
+- By default, the **Checkout Coupon** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment
+- Custom location settings only apply on the actual frontend (Checkout page). To ensure correct placement, add this element at the top of your Checkout template.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-element-controls.png)
+
+![](https://academy.bricksbuilder.io/assets/element-location-example.png)
+
+You can set the form to be toggle-able, hiding it by default and revealing it only when the toggle is clicked, for a cleaner layout.
 
 ---
 
@@ -2575,6 +2575,144 @@ The process of creating those account endpoint templates is the same for all oth
 
 ---
 
+<a id="integrations-woocommerce-woocommerce-template-hooks"></a>
+
+# WooCommerce Template Hooks
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/
+
+*Use WooCommerce template hooks in Bricks to preserve third-party plugin output and place additional content in key storefront locations.*
+
+Bricks 1.7 introduces a new [`do_action`](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/#do_action) dynamic tag, which is designed to address the majority of compatibility issues between Bricks and third-party WooCommerce plugins. This new dynamic tag not only solves these compatibility issues but also enhances the flexibility of design by allowing users to place hooks anywhere they desire.
+
+This article will guide you through the templates that need to be updated with the new `do_action` dynamic tag, though this step is optional if your Bricks-built WooCommerce website is already functioning properly.
+
+Please note that when using the `do_action` dynamic tag with the specified hooks, Bricks will automatically remove certain native WooCommerce actions to prevent duplicate content.
+
+As an example, consider using `{do_action:woocommerce_after_shop_loop_item_title}` dynamic tag in Bricks. This tag will automatically remove the `woocommerce_template_loop_rating` and `woocommerce_template_loop_price` actions. The reason for this is because the Product price and Product rating elements will be used to output the information in the desired location. At the same time, other plugins or codes will still be able to successfully hook onto the dynamic tag.
+
+#### WooCommerce actions list removed by Bricks when using the do_action tag {#woo-special-actions-list}
+
+| Hook | Actions removed by Bricks, Priority |
+| --- | --- |
+| woocommerce_before_shop_loop_item | woocommerce_template_loop_product_link_open, 10 |
+| woocommerce_before_shop_loop_item_title | woocommerce_show_product_loop_sale_flash, 10<br />woocommerce_template_loop_product_thumbnail, 10 |
+| woocommerce_shop_loop_item_title | woocommerce_template_loop_product_title,10 |
+| woocommerce_after_shop_loop_item_title | woocommerce_template_loop_rating, 5<br />woocommerce_template_loop_price, 10 |
+| woocommerce_after_shop_loop_item | woocommerce_template_loop_product_link_close, 5<br />woocommerce_template_loop_add_to_cart, 10 |
+| woocommerce_before_single_product_summary | woocommerce_show_product_sale_flash, 10<br />woocommerce_show_product_images, 20 |
+| woocommerce_single_product_summary | woocommerce_template_single_title, 5<br />woocommerce_template_single_rating, 10<br />woocommerce_template_single_price, 10<br />woocommerce_template_single_excerpt, 20<br />woocommerce_template_single_add_to_cart, 30<br />woocommerce_template_single_meta, 40<br />woocommerce_template_single_sharing, 50 |
+| woocommerce_after_single_product_summary | woocommerce_output_product_data_tabs, 10<br />woocommerce_upsell_display, 15<br />woocommerce_output_related_products, 20 |
+| woocommerce_before_main_content | woocommerce_output_content_wrapper,10<br />woocommerce_breadcrumb, 20 |
+| woocommerce_archive_description | woocommerce_taxonomy_archive_description, 10<br />woocommerce_product_archive_description, 10 |
+| woocommerce_before_shop_loop | woocommerce_result_count, 20<br />woocommerce_catalog_ordering, 30 |
+| woocommerce_after_shop_loop | woocommerce_pagination, 10 |
+| woocommerce_after_main_content | woocommerce_output_content_wrapper_end, 10 |
+| woocommerce_cart_is_empty | wc_empty_cart_message, 10 |
+
+> **Note**
+>
+> Simply use a Basic Text element when applying the `{do_action:xxx}` dynamic tag within your template.
+
+## WooCommerce Single Product Template Hooks {#single-product-template-hooks}
+
+For the WooCommerce Single Product template, the following hooks are recommended to be used with the `do_action` dynamic tag:
+
+- `{do_action:woocommerce_before_single_product}` - Important (WooCommerce notice)
+- `{do_action:woocommerce_before_single_product_summary}`
+- `{do_action:woocommerce_single_product_summary}` - Important (Many third-party plugins using this hook to inject their code)
+- `{do_action:woocommerce_after_single_product_summary}`
+- `{do_action:woocommerce_after_single_product}`
+
+Best to place all of these in your single product template if you are not sure which hook will be using by the third-party plugins.
+
+![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-single-product-template-hooks.png)
+
+<figcaption>
+
+Single product template hooks location
+
+</figcaption>
+
+## WooCommerce Product Archive Template Hooks {#product-archive-template-hooks}
+
+For the WooCommerce Product Archive template, the following hooks are recommended to be used with the `do_action` dynamic tag:
+
+- `{do_action:woocommerce_archive_description}`
+- `{do_action:woocommerce_before_shop_loop}` - Important (WooCommerce notice)
+- `{do_action:woocommerce_before_shop_loop_item}`
+- `{do_action:woocommerce_before_shop_loop_item_title}`
+- `{do_action:woocommerce_shop_loop_item_title}`
+- `{do_action:woocommerce_after_shop_loop_item_title}`
+- `{do_action:woocommerce_after_shop_loop_item}`
+- `{do_action:woocommerce_after_shop_loop}`
+
+![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-product-archive-template-hooks.png)
+
+<figcaption>
+
+Product archive template hooks location (Custom Query Loop)
+
+</figcaption>
+
+In Bricks 1.7, the dynamic tag `do_action` hooks will be automatically included in the fields of the Products element (for newly inserted Products elements only).
+
+![](https://academy.bricksbuilder.io/assets/Products-element-with-do_action-included-since-1_6_3.png)
+
+<figcaption>
+
+Default Products element with do_action hooks (Bricks 1.7+)
+
+</figcaption>
+
+## WooCommerce Empty Cart Template Hooks {#empty-cart-template-hooks}
+
+For the WooCommerce Empty Cart template, the following hook is recommended to be used with the `do_action` dynamic tag:
+
+- `{do_action:woocommerce_cart_is_empty}` - Important (WooCommerce notice)
+
+![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-empty-cart-template-hooks.png)
+
+<figcaption>
+
+Empty cart template hook location
+
+</figcaption>
+
+## WooCommerce Cart Template Hooks {#cart-template-hooks}
+
+For the WooCommerce Cart template, the following hooks are recommended to be used with the `do_action` dynamic tag:
+
+- `{do_action:woocommerce_before_cart}` - Important (WooCommerce notice)
+- `{do_action:woocommerce_before_cart_collaterals}`
+- `{do_action:woocommerce_after_cart}`
+
+![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-cart-template-hooks.png)
+
+<figcaption>
+
+Cart template hooks location
+
+</figcaption>
+
+## WooCommerce Pay Template {#pay-template-hooks}
+
+For the WooCommerce Pay template, the following hooks are recommended to be used with the `do_action` dynamic tag:
+
+- `{do_action:woocommerce_pay_order_before_payment}`
+
+![](https://academy.bricksbuilder.io/assets/woo-pay-template.png)
+
+<figcaption>
+
+Pay template hooks location
+
+</figcaption>
+
+By following this guide, you can ensure that the templates created in Bricks are fully compatible with WooCommerce and that all necessary actions and details are displayed as intended.
+
+---
+
 <a id="integrations-woocommerce-woocommerce-builder"></a>
 
 # WooCommerce Builder
@@ -2831,216 +2969,6 @@ You can use these checkboxes under WooCommerce section to easily retrieve WooCom
 Check [this article](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/#woocommerce) for more examples.
 
 Bricks 2.4 adds v2 WooCommerce query loops for cart coupons, fees, taxes, orders, order items, downloads, customer notes, account orders, account order actions, account downloads, and account addresses. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#query-loops) for the complete list.
-
----
-
-<a id="integrations-woocommerce-woocommerce-notices"></a>
-
-# WooCommerce Notices
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-notices/
-
-*Style WooCommerce notices in Bricks and control how success, error, and info messages appear across storefront flows.*
-
-New theme style settings under "WooCommerce - Notice" and a new "WooCommerce Notice" element were introduced in Bricks `1.8.1`. Allowing you to elevate the appearance of WooCommerce (WC) notices across your website.
-
-With this new theme style, you can effortlessly customize the design of WC notices, ensuring they blend seamlessly with your website's overall look and feel.
-
-This article explains how to enable the Bricks WooCommerce Notice element, where to place it, and how it replaces native WooCommerce notice output.
-
-## Theme Style: WooCommerce - Notice {#woocommerce-notice-theme-style}
-
-You can find the "WooCommerce - Notice" settings in the builder under Settings > [Theme Styles](https://academy.bricksbuilder.io/builder/styling/theme-styles/).
-
-There are three different types of notice: Error, Success, and default Notice.
-
-![](https://academy.bricksbuilder.io/assets/wc-notice-theme-style.png)
-
-With the WC notice theme style, you can effortlessly align your notice styles with your brand guidelines, and achieve a uniform and professional appearance for your notices.
-
-## Element: WooCommerce Notice {#woocommerce-notice-element}
-
-One of the primary objectives of this new feature is to offer you greater control over the placement of WC notices within their website's design.
-
-Native WC notices often pose challenges, as they may appear outside of the desired design or wrapper, impacting the aesthetics and user experience.
-
-To start using the Bricks WooCommerce notice element you first have to enable it under `Bricks > Settings > WooCommerce > Enable Bricks WooCommerce "Notice" element`.
-
-![](https://academy.bricksbuilder.io/assets/bricks-wc-notice-element.png)
-
-> **Note**
->
-> Once enabled all native WC notices are automatically removed from your website. So you can & have to manually place the notice element in your desired template & location.
-
-![](https://academy.bricksbuilder.io/assets/bricks-wc-notice-preview.png)
-
-<figcaption>
-
-WC notice element. Not only theme style but can also style individual elements as well.
-
-</figcaption>
-
-**The following Bricks templates should be equipped with the Notice element:**
-
-- WooCommerce Product Archive
-- WooCommerce Single Product
-- WooCommerce Cart
-- WooCommerce Empty Cart
-- WooCommerce Checkout
-- WooCommerce Pay
-- WooCommerce My account login
-- WooCommerce My account lost password
-- WooCommerce My account reset password
-
-In addition to the Bricks templates mentioned above, several pages within your WooCommerce website require the Notice element **if they are edited and rendered using Bricks**. These pages include:
-
-- My Account page (if the WC notice is not placed in the My account login template)
-- Checkout page (if the WC notice is not placed in the Checkout template)
-- Pay / order-pay page (if the WC notice element is not placed in the Pay template)
-- Cart page (if the WC notice element is not placed in the Cart template)
-- Shop page (if the WC notice element is not placed in the Product Archive template)
-
-**Only one Notice element is needed per page.**
-
-If you happen to add multiple WC notice elements, only the first one will output the actual notices, following the native WooCommerce behavior. WooCommerce clears notices after the 1st output. Check WooCommerce `wc_print_notices()` for more information.
-
----
-
-<a id="integrations-woocommerce-woocommerce-template-hooks"></a>
-
-# WooCommerce Template Hooks
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/
-
-*Use WooCommerce template hooks in Bricks to preserve third-party plugin output and place additional content in key storefront locations.*
-
-Bricks 1.7 introduces a new [`do_action`](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/#do_action) dynamic tag, which is designed to address the majority of compatibility issues between Bricks and third-party WooCommerce plugins. This new dynamic tag not only solves these compatibility issues but also enhances the flexibility of design by allowing users to place hooks anywhere they desire.
-
-This article will guide you through the templates that need to be updated with the new `do_action` dynamic tag, though this step is optional if your Bricks-built WooCommerce website is already functioning properly.
-
-Please note that when using the `do_action` dynamic tag with the specified hooks, Bricks will automatically remove certain native WooCommerce actions to prevent duplicate content.
-
-As an example, consider using `{do_action:woocommerce_after_shop_loop_item_title}` dynamic tag in Bricks. This tag will automatically remove the `woocommerce_template_loop_rating` and `woocommerce_template_loop_price` actions. The reason for this is because the Product price and Product rating elements will be used to output the information in the desired location. At the same time, other plugins or codes will still be able to successfully hook onto the dynamic tag.
-
-#### WooCommerce actions list removed by Bricks when using the do_action tag {#woo-special-actions-list}
-
-| Hook | Actions removed by Bricks, Priority |
-| --- | --- |
-| woocommerce_before_shop_loop_item | woocommerce_template_loop_product_link_open, 10 |
-| woocommerce_before_shop_loop_item_title | woocommerce_show_product_loop_sale_flash, 10<br />woocommerce_template_loop_product_thumbnail, 10 |
-| woocommerce_shop_loop_item_title | woocommerce_template_loop_product_title,10 |
-| woocommerce_after_shop_loop_item_title | woocommerce_template_loop_rating, 5<br />woocommerce_template_loop_price, 10 |
-| woocommerce_after_shop_loop_item | woocommerce_template_loop_product_link_close, 5<br />woocommerce_template_loop_add_to_cart, 10 |
-| woocommerce_before_single_product_summary | woocommerce_show_product_sale_flash, 10<br />woocommerce_show_product_images, 20 |
-| woocommerce_single_product_summary | woocommerce_template_single_title, 5<br />woocommerce_template_single_rating, 10<br />woocommerce_template_single_price, 10<br />woocommerce_template_single_excerpt, 20<br />woocommerce_template_single_add_to_cart, 30<br />woocommerce_template_single_meta, 40<br />woocommerce_template_single_sharing, 50 |
-| woocommerce_after_single_product_summary | woocommerce_output_product_data_tabs, 10<br />woocommerce_upsell_display, 15<br />woocommerce_output_related_products, 20 |
-| woocommerce_before_main_content | woocommerce_output_content_wrapper,10<br />woocommerce_breadcrumb, 20 |
-| woocommerce_archive_description | woocommerce_taxonomy_archive_description, 10<br />woocommerce_product_archive_description, 10 |
-| woocommerce_before_shop_loop | woocommerce_result_count, 20<br />woocommerce_catalog_ordering, 30 |
-| woocommerce_after_shop_loop | woocommerce_pagination, 10 |
-| woocommerce_after_main_content | woocommerce_output_content_wrapper_end, 10 |
-| woocommerce_cart_is_empty | wc_empty_cart_message, 10 |
-
-> **Note**
->
-> Simply use a Basic Text element when applying the `{do_action:xxx}` dynamic tag within your template.
-
-## WooCommerce Single Product Template Hooks {#single-product-template-hooks}
-
-For the WooCommerce Single Product template, the following hooks are recommended to be used with the `do_action` dynamic tag:
-
-- `{do_action:woocommerce_before_single_product}` - Important (WooCommerce notice)
-- `{do_action:woocommerce_before_single_product_summary}`
-- `{do_action:woocommerce_single_product_summary}` - Important (Many third-party plugins using this hook to inject their code)
-- `{do_action:woocommerce_after_single_product_summary}`
-- `{do_action:woocommerce_after_single_product}`
-
-Best to place all of these in your single product template if you are not sure which hook will be using by the third-party plugins.
-
-![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-single-product-template-hooks.png)
-
-<figcaption>
-
-Single product template hooks location
-
-</figcaption>
-
-## WooCommerce Product Archive Template Hooks {#product-archive-template-hooks}
-
-For the WooCommerce Product Archive template, the following hooks are recommended to be used with the `do_action` dynamic tag:
-
-- `{do_action:woocommerce_archive_description}`
-- `{do_action:woocommerce_before_shop_loop}` - Important (WooCommerce notice)
-- `{do_action:woocommerce_before_shop_loop_item}`
-- `{do_action:woocommerce_before_shop_loop_item_title}`
-- `{do_action:woocommerce_shop_loop_item_title}`
-- `{do_action:woocommerce_after_shop_loop_item_title}`
-- `{do_action:woocommerce_after_shop_loop_item}`
-- `{do_action:woocommerce_after_shop_loop}`
-
-![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-product-archive-template-hooks.png)
-
-<figcaption>
-
-Product archive template hooks location (Custom Query Loop)
-
-</figcaption>
-
-In Bricks 1.7, the dynamic tag `do_action` hooks will be automatically included in the fields of the Products element (for newly inserted Products elements only).
-
-![](https://academy.bricksbuilder.io/assets/Products-element-with-do_action-included-since-1_6_3.png)
-
-<figcaption>
-
-Default Products element with do_action hooks (Bricks 1.7+)
-
-</figcaption>
-
-## WooCommerce Empty Cart Template Hooks {#empty-cart-template-hooks}
-
-For the WooCommerce Empty Cart template, the following hook is recommended to be used with the `do_action` dynamic tag:
-
-- `{do_action:woocommerce_cart_is_empty}` - Important (WooCommerce notice)
-
-![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-empty-cart-template-hooks.png)
-
-<figcaption>
-
-Empty cart template hook location
-
-</figcaption>
-
-## WooCommerce Cart Template Hooks {#cart-template-hooks}
-
-For the WooCommerce Cart template, the following hooks are recommended to be used with the `do_action` dynamic tag:
-
-- `{do_action:woocommerce_before_cart}` - Important (WooCommerce notice)
-- `{do_action:woocommerce_before_cart_collaterals}`
-- `{do_action:woocommerce_after_cart}`
-
-![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-cart-template-hooks.png)
-
-<figcaption>
-
-Cart template hooks location
-
-</figcaption>
-
-## WooCommerce Pay Template {#pay-template-hooks}
-
-For the WooCommerce Pay template, the following hooks are recommended to be used with the `do_action` dynamic tag:
-
-- `{do_action:woocommerce_pay_order_before_payment}`
-
-![](https://academy.bricksbuilder.io/assets/woo-pay-template.png)
-
-<figcaption>
-
-Pay template hooks location
-
-</figcaption>
-
-By following this guide, you can ensure that the templates created in Bricks are fully compatible with WooCommerce and that all necessary actions and details are displayed as intended.
 
 ---
 
@@ -3380,3 +3308,75 @@ Bricks' custom coupon handlers emit these WooCommerce events when the response c
 | `errored_coupon_in_checkout` | Checkout Coupon | Coupon code, raw returned notice HTML |
 
 The existing `applied_coupon` and `applied_coupon_in_checkout` events also fire for error responses. They do not confirm that a coupon was accepted.
+
+---
+
+<a id="integrations-woocommerce-woocommerce-notices"></a>
+
+# WooCommerce Notices
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-notices/
+
+*Style WooCommerce notices in Bricks and control how success, error, and info messages appear across storefront flows.*
+
+New theme style settings under "WooCommerce - Notice" and a new "WooCommerce Notice" element were introduced in Bricks `1.8.1`. Allowing you to elevate the appearance of WooCommerce (WC) notices across your website.
+
+With this new theme style, you can effortlessly customize the design of WC notices, ensuring they blend seamlessly with your website's overall look and feel.
+
+This article explains how to enable the Bricks WooCommerce Notice element, where to place it, and how it replaces native WooCommerce notice output.
+
+## Theme Style: WooCommerce - Notice {#woocommerce-notice-theme-style}
+
+You can find the "WooCommerce - Notice" settings in the builder under Settings > [Theme Styles](https://academy.bricksbuilder.io/builder/styling/theme-styles/).
+
+There are three different types of notice: Error, Success, and default Notice.
+
+![](https://academy.bricksbuilder.io/assets/wc-notice-theme-style.png)
+
+With the WC notice theme style, you can effortlessly align your notice styles with your brand guidelines, and achieve a uniform and professional appearance for your notices.
+
+## Element: WooCommerce Notice {#woocommerce-notice-element}
+
+One of the primary objectives of this new feature is to offer you greater control over the placement of WC notices within their website's design.
+
+Native WC notices often pose challenges, as they may appear outside of the desired design or wrapper, impacting the aesthetics and user experience.
+
+To start using the Bricks WooCommerce notice element you first have to enable it under `Bricks > Settings > WooCommerce > Enable Bricks WooCommerce "Notice" element`.
+
+![](https://academy.bricksbuilder.io/assets/bricks-wc-notice-element.png)
+
+> **Note**
+>
+> Once enabled all native WC notices are automatically removed from your website. So you can & have to manually place the notice element in your desired template & location.
+
+![](https://academy.bricksbuilder.io/assets/bricks-wc-notice-preview.png)
+
+<figcaption>
+
+WC notice element. Not only theme style but can also style individual elements as well.
+
+</figcaption>
+
+**The following Bricks templates should be equipped with the Notice element:**
+
+- WooCommerce Product Archive
+- WooCommerce Single Product
+- WooCommerce Cart
+- WooCommerce Empty Cart
+- WooCommerce Checkout
+- WooCommerce Pay
+- WooCommerce My account login
+- WooCommerce My account lost password
+- WooCommerce My account reset password
+
+In addition to the Bricks templates mentioned above, several pages within your WooCommerce website require the Notice element **if they are edited and rendered using Bricks**. These pages include:
+
+- My Account page (if the WC notice is not placed in the My account login template)
+- Checkout page (if the WC notice is not placed in the Checkout template)
+- Pay / order-pay page (if the WC notice element is not placed in the Pay template)
+- Cart page (if the WC notice element is not placed in the Cart template)
+- Shop page (if the WC notice element is not placed in the Product Archive template)
+
+**Only one Notice element is needed per page.**
+
+If you happen to add multiple WC notice elements, only the first one will output the actual notices, following the native WooCommerce behavior. WooCommerce clears notices after the 1st output. Check WooCommerce `wc_print_notices()` for more information.

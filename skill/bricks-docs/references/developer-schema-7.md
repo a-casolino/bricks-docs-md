@@ -267,18 +267,31 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Slot Schema
+# Icon List Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/slot/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/social-icons/
 
-*Schema for Bricks Slot element*
+*Schema for Bricks Icon List element*
 
 | Property | Value |
 |---|---|
-| `name` | slot |
+| `name` | social-icons |
 | `category` | general |
 | `tag` | div |
-| `nestable` | true |
+| `nestable` | false |
+
+## Controls
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `icons` | repeater | Icons | `color` on `.icon` |
+| `iconColor` | color | Icon | `color` on `.icon` |
+| `iconSize` | number | Icon | `font-size` on `.icon`, `height` on `svg`, `width` on `svg` |
+| `direction` | direction | Direction | `flex-direction` |
+| `alignIcons` | align-items | Align items | `align-items` |
+| `justifyIcons` | justify-content | Justify content | `justify-content` |
+| `gap` | number | Spacing | `gap` |
+| `gapItem` | number | Spacing | `gap` |
 
 ## Inherited CSS controls
 
@@ -354,31 +367,18 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Icon List Schema
+# Slot Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/social-icons/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/slot/
 
-*Schema for Bricks Icon List element*
+*Schema for Bricks Slot element*
 
 | Property | Value |
 |---|---|
-| `name` | social-icons |
+| `name` | slot |
 | `category` | general |
 | `tag` | div |
-| `nestable` | false |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `icons` | repeater | Icons | `color` on `.icon` |
-| `iconColor` | color | Icon | `color` on `.icon` |
-| `iconSize` | number | Icon | `font-size` on `.icon`, `height` on `svg`, `width` on `svg` |
-| `direction` | direction | Direction | `flex-direction` |
-| `alignIcons` | align-items | Align items | `align-items` |
-| `justifyIcons` | justify-content | Justify content | `justify-content` |
-| `gap` | number | Spacing | `gap` |
-| `gapItem` | number | Spacing | `gap` |
+| `nestable` | true |
 
 ## Inherited CSS controls
 
@@ -979,16 +979,16 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Testimonials Schema
+# Basic Text Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/testimonials/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/text-basic/
 
-*Schema for Bricks Testimonials element*
+*Schema for Bricks Basic Text element*
 
 | Property | Value |
 |---|---|
-| `name` | testimonials |
-| `category` | general |
+| `name` | text-basic |
+| `category` | basic |
 | `tag` | div |
 | `nestable` | false |
 
@@ -996,18 +996,12 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/testimonials/
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `items` | repeater | Content | — |
-| `alignItems` | justify-content | Align items | `justify-content` on `.repeater-item` |
-| `textAlign` | text-align | Text align | `text-align` |
-| `random` | checkbox | Random order | — |
-| `imageAlign` | align-items | Image align | `align-items` on `.repeater-item` |
-| `imagePosition` | select | Image position | — |
-| `imageSize` | number | Image size | `width` on `.image`, `height` on `.image` |
-| `imageBorder` | border | Image border | `border` on `.image` |
-| `imageBoxShadow` | box-shadow | Image box shadow | `box-shadow` on `.image` |
-| `typographyContent` | typography | Testimonial | `font` on `.testimonial-content-wrapper` |
-| `typographyName` | typography | Name | `font` on `.testimonial-name` |
-| `typographyTitle` | typography | Title | `font` on `.testimonial-title` |
+| `text` | textarea | text | — |
+| `tag` | select | HTML tag | — |
+| `customTag` | text | Custom tag | — |
+| `link` | link | Link to | — |
+| `wordsLimit` | number | Words limit | — |
+| `readMore` | text | Read more | — |
 
 ## Inherited CSS controls
 
@@ -1083,16 +1077,16 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Basic Text Schema
+# Testimonials Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/text-basic/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/testimonials/
 
-*Schema for Bricks Basic Text element*
+*Schema for Bricks Testimonials element*
 
 | Property | Value |
 |---|---|
-| `name` | text-basic |
-| `category` | basic |
+| `name` | testimonials |
+| `category` | general |
 | `tag` | div |
 | `nestable` | false |
 
@@ -1100,12 +1094,18 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/text-basic/
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `text` | textarea | text | — |
-| `tag` | select | HTML tag | — |
-| `customTag` | text | Custom tag | — |
-| `link` | link | Link to | — |
-| `wordsLimit` | number | Words limit | — |
-| `readMore` | text | Read more | — |
+| `items` | repeater | Content | — |
+| `alignItems` | justify-content | Align items | `justify-content` on `.repeater-item` |
+| `textAlign` | text-align | Text align | `text-align` |
+| `random` | checkbox | Random order | — |
+| `imageAlign` | align-items | Image align | `align-items` on `.repeater-item` |
+| `imagePosition` | select | Image position | — |
+| `imageSize` | number | Image size | `width` on `.image`, `height` on `.image` |
+| `imageBorder` | border | Image border | `border` on `.image` |
+| `imageBoxShadow` | box-shadow | Image box shadow | `box-shadow` on `.image` |
+| `typographyContent` | typography | Testimonial | `font` on `.testimonial-content-wrapper` |
+| `typographyName` | typography | Name | `font` on `.testimonial-name` |
+| `typographyTitle` | typography | Title | `font` on `.testimonial-title` |
 
 ## Inherited CSS controls
 
@@ -1735,15 +1735,15 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Account - Add Payment Method Schema
+# Account - Addresses Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-add-payment-method/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-addresses/
 
-*Schema for Bricks Account - Add payment method element*
+*Schema for Bricks Account - Addresses element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-account-add-payment-method |
+| `name` | woocommerce-account-addresses |
 | `category` | woocommerce_account |
 | `tag` | div |
 | `nestable` | false |
@@ -1752,43 +1752,32 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-a
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `radioCheckedColor` | color | Color | `background-color` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentMethod input.input-radio:checked + label::before`, `border-color` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentMethod input.input-radio:checked + label::before` |
-| `wrapperMargin` | spacing | Margin | `margin` on `ul.woocommerce-PaymentMethods` |
-| `wrapperPadding` | spacing | Padding | `padding` on `ul.woocommerce-PaymentMethods` |
-| `wrapperBackgroundColor` | color | Background color | `background-color` on `ul.woocommerce-PaymentMethods` |
-| `wrapperBorder` | border | Border | `border` on `ul.woocommerce-PaymentMethods` |
-| `wrapperBoxShadow` | box-shadow | Box shadow | `box-shadow` on `ul.woocommerce-PaymentMethods` |
-| `wrapperTypography` | typography | Typography | `font` on `ul.woocommerce-PaymentMethods` |
-| `listMargin` | spacing | Margin | `margin` on `ul.woocommerce-PaymentMethods` |
-| `listPadding` | spacing | Padding | `padding` on `ul.woocommerce-PaymentMethods` |
-| `listBackgroundColor` | color | Background color | `background-color` on `ul.woocommerce-PaymentMethods` |
-| `listBorder` | border | Border | `border` on `ul.woocommerce-PaymentMethods` |
-| `listBoxShadow` | box-shadow | Box shadow | `box-shadow` on `ul.woocommerce-PaymentMethods` |
-| `listTypography` | typography | Typography | `font` on `ul.woocommerce-PaymentMethods` |
-| `itemMargin` | spacing | Margin | `margin` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod` |
-| `itemPadding` | spacing | Padding | `padding` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod` |
-| `itemBackgroundColor` | color | Background color | `background-color` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod` |
-| `itemBorder` | border | Border | `border` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod` |
-| `itemBoxShadow` | box-shadow | Box shadow | `box-shadow` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod` |
-| `itemTypography` | typography | Typography | `font` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod` |
-| `labelMargin` | spacing | Margin | `margin` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod label` |
-| `labelPadding` | spacing | Padding | `padding` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod label` |
-| `labelBackgroundColor` | color | Background color | `background-color` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod label` |
-| `labelBorder` | border | Border | `border` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod label` |
-| `labelBoxShadow` | box-shadow | Box shadow | `box-shadow` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod label` |
-| `labelTypography` | typography | Typography | `font` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod label` |
-| `paymentBoxMargin` | spacing | Margin | `margin` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentBox` |
-| `paymentBoxPadding` | spacing | Padding | `padding` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentBox` |
-| `paymentBoxBackgroundColor` | color | Background color | `background-color` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentBox` |
-| `paymentBoxBorder` | border | Border | `border` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentBox` |
-| `paymentBoxBoxShadow` | box-shadow | Box shadow | `box-shadow` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentBox` |
-| `paymentBoxTypography` | typography | Typography | `font` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentBox` |
-| `buttonMargin` | spacing | Margin | `margin` on `.woocommerce-Payment .form-row .woocommerce-Button` |
-| `buttonPadding` | spacing | Padding | `padding` on `.woocommerce-Payment .form-row .woocommerce-Button` |
-| `buttonBackgroundColor` | color | Background color | `background-color` on `.woocommerce-Payment .form-row .woocommerce-Button` |
-| `buttonBorder` | border | Border | `border` on `.woocommerce-Payment .form-row .woocommerce-Button` |
-| `buttonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-Payment .form-row .woocommerce-Button` |
-| `buttonTypography` | typography | Typography | `font` on `.woocommerce-Payment .form-row .woocommerce-Button` |
+| `addressesDirection` | direction | Direction | `flex-direction` on `.woocommerce-Addresses` |
+| `addressesGap` | number | Gap | `gap` on `.woocommerce-Addresses` |
+| `wrapperMargin` | spacing | Margin | `margin` on `.woocommerce-Address` |
+| `wrapperPadding` | spacing | Padding | `padding` on `.woocommerce-Address` |
+| `wrapperBackgroundColor` | color | Background color | `background-color` on `.woocommerce-Address` |
+| `wrapperBorder` | border | Border | `border` on `.woocommerce-Address` |
+| `wrapperBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-Address` |
+| `wrapperTypography` | typography | Typography | `font` on `.woocommerce-Address` |
+| `titleMargin` | spacing | Margin | `margin` on `.woocommerce-Address-title h2` |
+| `titlePadding` | spacing | Padding | `padding` on `.woocommerce-Address-title h2` |
+| `titleBackgroundColor` | color | Background color | `background-color` on `.woocommerce-Address-title h2` |
+| `titleBorder` | border | Border | `border` on `.woocommerce-Address-title h2` |
+| `titleBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-Address-title h2` |
+| `titleTypography` | typography | Typography | `font` on `.woocommerce-Address-title h2` |
+| `editLinkMargin` | spacing | Margin | `margin` on `.edit` |
+| `editLinkPadding` | spacing | Padding | `padding` on `.edit` |
+| `editLinkBackgroundColor` | color | Background color | `background-color` on `.edit` |
+| `editLinkBorder` | border | Border | `border` on `.edit` |
+| `editLinkBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.edit` |
+| `editLinkTypography` | typography | Typography | `font` on `.edit` |
+| `addressMargin` | spacing | Margin | `margin` on `address` |
+| `addressPadding` | spacing | Padding | `padding` on `address` |
+| `addressBackgroundColor` | color | Background color | `background-color` on `address` |
+| `addressBorder` | border | Border | `border` on `address` |
+| `addressBoxShadow` | box-shadow | Box shadow | `box-shadow` on `address` |
+| `addressTypography` | typography | Typography | `font` on `address` |
 
 ## Inherited CSS controls
 

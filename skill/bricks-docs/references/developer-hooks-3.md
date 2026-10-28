@@ -410,6 +410,25 @@ In this example, the filter modifies the default CodeMirror configuration to:
 
 ---
 
+# Filter: bricks/builder/elements
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-elements/
+
+*Determine which elements to use in Bricks by out-commenting the ones you don't want to use. There is a full example and list of all elements in the Bricks child.*
+
+Determine which elements to use in Bricks by out-commenting the ones you don't want to use. There is a full example and list of all elements in the Bricks child theme that you can customize to your requirements.
+
+```php
+add_filter( 'bricks/builder/elements', function( $elements ) {
+  // See Bricks child theme for a full list of all available elements
+  // var_dump( $elements ); // To see all available elements
+
+  return $elements;
+} );
+```
+
+---
+
 # Filter: bricks/builder/image_size_options
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-image_size_options/
@@ -434,25 +453,6 @@ add_filter( 'bricks/builder/image_size_options', function( $image_sizes ) {
 
   return $image_sizes;
 });
-```
-
----
-
-# Filter: bricks/builder/elements
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-elements/
-
-*Determine which elements to use in Bricks by out-commenting the ones you don't want to use. There is a full example and list of all elements in the Bricks child.*
-
-Determine which elements to use in Bricks by out-commenting the ones you don't want to use. There is a full example and list of all elements in the Bricks child theme that you can customize to your requirements.
-
-```php
-add_filter( 'bricks/builder/elements', function( $elements ) {
-  // See Bricks child theme for a full list of all available elements
-  // var_dump( $elements ); // To see all available elements
-
-  return $elements;
-} );
 ```
 
 ---
@@ -485,25 +485,6 @@ add_filter( 'bricks/builder/map_styles', function( $map_styles ) {
 
 ---
 
-# Filter: bricks/code/allow_execution
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-allow_execution/
-
-*An alternative to the Disable code execution setting under Bricks > Settings > Builder Access. You can use this PHP filter to disable/enable code execution.*
-
-An alternative to the **Disable code execution** setting under `Bricks > Settings > Builder Access`. You can use this PHP filter to disable/enable code execution programmatically.
-
-![](https://academy.bricksbuilder.io/assets/disallow-code-execution-hook.png)
-
-```php
-add_filter( 'bricks/code/allow_execution', function( $allow ) {
-  // Only allows to return false to disable code execution programmatically
-  return false;
-} );
-```
-
----
-
 # Filter: bricks/code/disable_execution
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-disable_execution/
@@ -525,6 +506,25 @@ Use this filter to enforce stricter security by disabling code execution, regard
 
 ---
 
+# Filter: bricks/code/allow_execution
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-allow_execution/
+
+*An alternative to the Disable code execution setting under Bricks > Settings > Builder Access. You can use this PHP filter to disable/enable code execution.*
+
+An alternative to the **Disable code execution** setting under `Bricks > Settings > Builder Access`. You can use this PHP filter to disable/enable code execution programmatically.
+
+![](https://academy.bricksbuilder.io/assets/disallow-code-execution-hook.png)
+
+```php
+add_filter( 'bricks/code/allow_execution', function( $allow ) {
+  // Only allows to return false to disable code execution programmatically
+  return false;
+} );
+```
+
+---
+
 # Filter: bricks/code/disallow_keywords
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-disallow_keywords/
@@ -541,76 +541,6 @@ add_filter( 'bricks/code/disallow_keywords', function( $keywords ) {
 
   return $</meta>keywords;
 } );
-```
-
----
-
-# Filter: bricks/comments/timestamp
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-comments-timestamp/
-
-*When using the Bricks Post Comments element, the comment default timestamp text will show the time difference since it was published in a human-readable format.*
-
-When using the Bricks Post Comments element, the comment default timestamp text will show the time difference since it was published in a human-readable format such as "1 hour ago" or "2 days ago".
-
-Since Bricks 1.5.1, you'll be able to customize the comment timestamp text, like so:
-
-```php
-add_filter( 'bricks/comments/timestamp', function( $timestamp, $comment ) {
-  // Return the WordPress default comment timestamp
-  return sprintf( __( '%1$s at %2$s' ),
-    get_comment_date( '', $comment ),
-    get_comment_time()
-  );
-}, 10, 2 );
-```
-
----
-
-# Filter: bricks/content/html_after_begin
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-html_after_begin/
-
-*Available since version 1.6, this filter allows you to customize or insert HTML strings after main tag, before rendering bricks data.*
-
-Available since version 1.6, this filter allows you to customize or insert HTML strings after `main` tag, before rendering bricks data.
-
-```php
-add_filter( 'bricks/content/html_after_begin', function( $html_after_begin, $bricks_data, $attributes, $tag ) {
-
-    if ( $tag !== 'main' ) {
-      return $html_after_begin;
-    }
-
-    // Insert custom div after the main tag
-    $my_additional_html = '<div class="my_notification">This is my notification</div>';
-
-    return $html_after_begin . $my_additional_html;
-}, 10, 4 );
-```
-
----
-
-# Filter: bricks/content/html_before_end
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-html_before_end/
-
-*Available since version 1.6, this filter allows you to customize or insert HTML strings before closing main tag.*
-
-Available since version 1.6, this filter allows you to customize or insert HTML strings before closing `main` tag.
-
-```php
-add_filter( 'bricks/content/html_before_end', function( $html_after_begin, $bricks_data, $attributes, $tag ) {
-
-    if ( $tag !== 'main' ) {
-      return $html_after_begin;
-    }
-
-    // Insert custom popup HTML
-    $my_popup_html = '<div class="my_popup">This is my popup</div>';
-
-    return $html_after_begin . $my_popup_html;
-}, 10, 4 );
 ```
 
 ---
@@ -708,6 +638,52 @@ add_filter( 'bricks/code/echo_function_names', function($function_name) {
 
 ---
 
+# Filter: bricks/comments/timestamp
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-comments-timestamp/
+
+*When using the Bricks Post Comments element, the comment default timestamp text will show the time difference since it was published in a human-readable format.*
+
+When using the Bricks Post Comments element, the comment default timestamp text will show the time difference since it was published in a human-readable format such as "1 hour ago" or "2 days ago".
+
+Since Bricks 1.5.1, you'll be able to customize the comment timestamp text, like so:
+
+```php
+add_filter( 'bricks/comments/timestamp', function( $timestamp, $comment ) {
+  // Return the WordPress default comment timestamp
+  return sprintf( __( '%1$s at %2$s' ),
+    get_comment_date( '', $comment ),
+    get_comment_time()
+  );
+}, 10, 2 );
+```
+
+---
+
+# Filter: bricks/content/html_after_begin
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-html_after_begin/
+
+*Available since version 1.6, this filter allows you to customize or insert HTML strings after main tag, before rendering bricks data.*
+
+Available since version 1.6, this filter allows you to customize or insert HTML strings after `main` tag, before rendering bricks data.
+
+```php
+add_filter( 'bricks/content/html_after_begin', function( $html_after_begin, $bricks_data, $attributes, $tag ) {
+
+    if ( $tag !== 'main' ) {
+      return $html_after_begin;
+    }
+
+    // Insert custom div after the main tag
+    $my_additional_html = '<div class="my_notification">This is my notification</div>';
+
+    return $html_after_begin . $my_additional_html;
+}, 10, 4 );
+```
+
+---
+
 # Filter: bricks/content/attributes
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-attributes/
@@ -726,6 +702,30 @@ add_filter( 'bricks/content/attributes', function( $attributes ) {
 
 - [/developer/hooks/filters/filter-bricks-header-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/)
 - [/developer/hooks/filters/filter-bricks-header-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/)
+
+---
+
+# Filter: bricks/content/html_before_end
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-html_before_end/
+
+*Available since version 1.6, this filter allows you to customize or insert HTML strings before closing main tag.*
+
+Available since version 1.6, this filter allows you to customize or insert HTML strings before closing `main` tag.
+
+```php
+add_filter( 'bricks/content/html_before_end', function( $html_after_begin, $bricks_data, $attributes, $tag ) {
+
+    if ( $tag !== 'main' ) {
+      return $html_after_begin;
+    }
+
+    // Insert custom popup HTML
+    $my_popup_html = '<div class="my_popup">This is my popup</div>';
+
+    return $html_after_begin . $my_popup_html;
+}, 10, 4 );
+```
 
 ---
 
@@ -758,29 +758,6 @@ add_filter( 'bricks/content/tag', function( $tag ) {
 
 ---
 
-# Filter: bricks/dynamic_data/exclude_tags
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-exclude_tags/
-
-*Dynamic data tags are strings with a special syntax wrapped by curly brackets. Sometimes this syntax has conflicts with other plugins which cause a specific tag.*
-
-Dynamic data tags are strings with a special syntax wrapped by curly brackets. Sometimes this syntax has conflicts with other plugins which cause a specific tag to be removed by the content.
-
-Since Bricks 1.3.5 it is possible to exclude a list of tags from the Bricks dynamic data logic using the following PHP snippet in your `functions.php` file:
-
-```php
-add_filter( 'bricks/dynamic_data/exclude_tags', function( $tags ) {
-    return [
-        'my_specific_tag',
-        'my_other_specific_tag'
-    ];
-});
-```
-
-Adding this code to your child theme will prevent Bricks from replacing these tags with an empty string.
-
----
-
 # Filter: bricks/default_page_title
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-default_page_title/
@@ -801,6 +778,29 @@ add_filter( 'bricks/default_page_title', function( $title, $post_id ) {
   return $title;
 }, 10, 2 );
 ```
+
+---
+
+# Filter: bricks/dynamic_data/exclude_tags
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-exclude_tags/
+
+*Dynamic data tags are strings with a special syntax wrapped by curly brackets. Sometimes this syntax has conflicts with other plugins which cause a specific tag.*
+
+Dynamic data tags are strings with a special syntax wrapped by curly brackets. Sometimes this syntax has conflicts with other plugins which cause a specific tag to be removed by the content.
+
+Since Bricks 1.3.5 it is possible to exclude a list of tags from the Bricks dynamic data logic using the following PHP snippet in your `functions.php` file:
+
+```php
+add_filter( 'bricks/dynamic_data/exclude_tags', function( $tags ) {
+    return [
+        'my_specific_tag',
+        'my_other_specific_tag'
+    ];
+});
+```
+
+Adding this code to your child theme will prevent Bricks from replacing these tags with an empty string.
 
 ---
 
@@ -828,19 +828,21 @@ add_filter( 'bricks/dynamic_data/post_terms_links', function( $has_links, $post,
 
 ---
 
-# Filter: bricks/dynamic_data/post_terms_separator
+# Filter: bricks/dynamic_data/read_more
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-post_terms_separator/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-read_more/
 
-*Programmatically set the post term separator like so:*
+*If you use the dynamic data tag {readmore} you'll get an anchor tag (link) to the post with the label \"Read more\" by default. To change this label use the.*
 
-Programmatically set the post term separator like so:
+If you use the dynamic data tag `{read_more}` you'll get an anchor tag (link) to the post with the label "Read more" by default. To change this label use the following code:
 
 ```php
-add_filter( 'bricks/dynamic_data/post_terms_separator', function( $sep, $post, $taxonomy ) {
-  return ' : ';
-}, 10, 3 );
+add_filter( 'bricks/dynamic_data/read_more', function( $label, $post ) {
+   return 'My New Label';
+}, 10, 2 );
 ```
+
+Read more about [Dynamic Data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/) in the Bricks academy.
 
 ---
 
@@ -866,21 +868,108 @@ add_filter( 'bricks/dynamic_data/replace_nonexistent_tags', '__return_true', 10,
 
 ---
 
-# Filter: bricks/dynamic_data/read_more
+# Filter: bricks/dynamic_data/post_terms_separator
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-read_more/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-post_terms_separator/
 
-*If you use the dynamic data tag {readmore} you'll get an anchor tag (link) to the post with the label \"Read more\" by default. To change this label use the.*
+*Programmatically set the post term separator like so:*
 
-If you use the dynamic data tag `{read_more}` you'll get an anchor tag (link) to the post with the label "Read more" by default. To change this label use the following code:
+Programmatically set the post term separator like so:
 
 ```php
-add_filter( 'bricks/dynamic_data/read_more', function( $label, $post ) {
-   return 'My New Label';
+add_filter( 'bricks/dynamic_data/post_terms_separator', function( $sep, $post, $taxonomy ) {
+  return ' : ';
+}, 10, 3 );
+```
+
+---
+
+# Filter: bricks/element/render_attributes
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-render_attributes/
+
+*Starting with Bricks 1.3.7 you may manipulate the HTML attributes of a given element using the following filter:*
+
+Starting with Bricks 1.3.7 you may manipulate the HTML** **attributes of a given element using the following filter:
+
+```php
+add_filter( 'bricks/element/render_attributes', function( $attributes, $key, $element ) {
+    if ( isset( $element->settings['my_setting'] )
+       && $element->settings['my_setting'] == 'xpto' ) {
+        $attributes[ $key ]['data-xpto'] = 'my data';
+    }
+
+    return $attributes;
+}, 10, 3 );
+```
+
+The filter callback receives 3 arguments:
+
+- `$attributes` - an associative array of the element attributes, grouped by the $key identifier
+- `$key` - the HTML element identifier to render attributes for
+- `$element` - the Bricks element object (since Bricks 1.5)
+
+Since Bricks 1.4, if you need to get access to the `$is_frontend` value (whether the element is rendering in the frontend or in the builder), please use the global function `bricks_is_frontend()`.
+
+Since Bricks 1.5, the `$settings` and `$name` arguments are deprecated. You may use the callback 3rd argument to get those: `$element->settings` and `$element->name`.
+
+---
+
+# Filter: bricks/element/settings
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-settings/
+
+*Bricks 1.5 adds the possibility to change the element settings before it is rendered.*
+
+Bricks 1.5 adds the possibility to change the element settings before it is rendered.
+
+This allows you to change a text element content programmatically, or add styles based on a custom conditional logic, like so:
+
+```php
+add_filter( 'bricks/element/settings', function( $settings, $element ) {
+    // Add "[online]" text to all the headings elements if the visitor is logged in
+    if ( $element->name === 'heading' && is_user_logged_in() ) {
+        $settings['text'] .= ' [online]';
+    }
+
+    return $settings;
 }, 10, 2 );
 ```
 
-Read more about [Dynamic Data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/) in the Bricks academy.
+In case you need to programmatically add an element conditional display logic, check the filter [`bricks/element/render`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-render/).
+
+##### Example: Dynamically set WooCommerce Product Filter (Price) max price from all products
+
+![](https://academy.bricksbuilder.io/assets/bricks-products-filter-max-price-from-all-products.png)
+
+```php
+add_filter('bricks/element/settings', function( $settings, $element ) {
+  // Change the zyjhwa to your element ID
+  if( $element->id !== 'zyjhwa' || ! isset( $settings['filters'] ) ) {
+    return $settings;
+  }
+
+  // Get all products
+  $products = wc_get_products(array(
+    'status' => 'publish',
+    'limit' => -1, // Retrieve all products
+  ));
+
+  $highest_price = max(array_map(function ($product) {
+    return $product->get_price();
+  }, $products));
+
+  foreach( $settings['filters'] as $key => $filter ) {
+    if( ! isset( $filter['otherFilter'] ) || $filter['otherFilter'] !== 'price' ) {
+      continue;
+    }
+
+    $settings['filters'][$key]['sliderMax'] = $highest_price;
+  }
+
+  return $settings;
+}, 10, 2);
+```
 
 ---
 
@@ -1059,95 +1148,6 @@ where `huciku` is the element ID of the Button.
 Note: This will be applied as `brxe-huciku` class in the output in this case, not a ID.
 
 Also, replace `faqs` and `button_text` strings as applicable.
-
----
-
-# Filter: bricks/element/render_attributes
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-render_attributes/
-
-*Starting with Bricks 1.3.7 you may manipulate the HTML attributes of a given element using the following filter:*
-
-Starting with Bricks 1.3.7 you may manipulate the HTML** **attributes of a given element using the following filter:
-
-```php
-add_filter( 'bricks/element/render_attributes', function( $attributes, $key, $element ) {
-    if ( isset( $element->settings['my_setting'] )
-       && $element->settings['my_setting'] == 'xpto' ) {
-        $attributes[ $key ]['data-xpto'] = 'my data';
-    }
-
-    return $attributes;
-}, 10, 3 );
-```
-
-The filter callback receives 3 arguments:
-
-- `$attributes` - an associative array of the element attributes, grouped by the $key identifier
-- `$key` - the HTML element identifier to render attributes for
-- `$element` - the Bricks element object (since Bricks 1.5)
-
-Since Bricks 1.4, if you need to get access to the `$is_frontend` value (whether the element is rendering in the frontend or in the builder), please use the global function `bricks_is_frontend()`.
-
-Since Bricks 1.5, the `$settings` and `$name` arguments are deprecated. You may use the callback 3rd argument to get those: `$element->settings` and `$element->name`.
-
----
-
-# Filter: bricks/element/settings
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-settings/
-
-*Bricks 1.5 adds the possibility to change the element settings before it is rendered.*
-
-Bricks 1.5 adds the possibility to change the element settings before it is rendered.
-
-This allows you to change a text element content programmatically, or add styles based on a custom conditional logic, like so:
-
-```php
-add_filter( 'bricks/element/settings', function( $settings, $element ) {
-    // Add "[online]" text to all the headings elements if the visitor is logged in
-    if ( $element->name === 'heading' && is_user_logged_in() ) {
-        $settings['text'] .= ' [online]';
-    }
-
-    return $settings;
-}, 10, 2 );
-```
-
-In case you need to programmatically add an element conditional display logic, check the filter [`bricks/element/render`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-render/).
-
-##### Example: Dynamically set WooCommerce Product Filter (Price) max price from all products
-
-![](https://academy.bricksbuilder.io/assets/bricks-products-filter-max-price-from-all-products.png)
-
-```php
-add_filter('bricks/element/settings', function( $settings, $element ) {
-  // Change the zyjhwa to your element ID
-  if( $element->id !== 'zyjhwa' || ! isset( $settings['filters'] ) ) {
-    return $settings;
-  }
-
-  // Get all products
-  $products = wc_get_products(array(
-    'status' => 'publish',
-    'limit' => -1, // Retrieve all products
-  ));
-
-  $highest_price = max(array_map(function ($product) {
-    return $product->get_price();
-  }, $products));
-
-  foreach( $settings['filters'] as $key => $filter ) {
-    if( ! isset( $filter['otherFilter'] ) || $filter['otherFilter'] !== 'price' ) {
-      continue;
-    }
-
-    $settings['filters'][$key]['sliderMax'] = $highest_price;
-  }
-
-  return $settings;
-}, 10, 2);
-```
 
 ---
 
@@ -1402,43 +1402,6 @@ In this example, the filter modifies the value of a specific meta key ('specific
 
 ---
 
-# Filter: bricks/frontend/render_element
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-frontend-render_element/
-
-*The bricks/frontend/renderelement filter allows you to modify the HTML output of any element in Bricks on the frontend. This powerful hook can be used for a.*
-
-The `bricks/frontend/render_element` filter allows you to modify the HTML output of any element in Bricks on the frontend. This powerful hook can be used for a variety of customization tasks, such as adding comments, modifying content, or dynamically adjusting HTML. (@since 2.0)
-
-```php
-add_filter( 'bricks/frontend/render_element', function( $html, $element ) {
-    // Do not modify the HTML in the builder
-    if (
-        bricks_is_builder_main() ||
-        bricks_is_builder_iframe() ||
-        bricks_is_builder_call()
-    ) {
-        return $html;
-    }
-
-    // Add comments before and after an element with a specific ID
-    if ( $element->id === 'regxve' ) {
-        $html = '<!-- Start of the element -->' . $html . '<!-- End of the element -->';
-    }
-
-    // Modify the content of a Basic Text element
-    if ( $element->id === 'wtktgp' ) {
-        // Replace "|" with ">>" in the HTML
-        $html = str_replace( '|', '>>', $html );
-    }
-
-    return $html;
-}, 10, 2 );
-
-```
-
----
-
 # Filter: bricks/frontend/render_data
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-frontend-render_data/
@@ -1490,6 +1453,43 @@ add_filter('bricks/frontend/render_data', function($content, $post, $area) {
 ```
 
 In this example, a callback function is defined within the add_filter function call targeting the `bricks/frontend/render_data` filter. This callback function modifies every heading tag present in the content to include a unique ID attribute. This can be useful for navigation purposes, such as creating a table of contents.
+
+---
+
+# Filter: bricks/frontend/render_element
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-frontend-render_element/
+
+*The bricks/frontend/renderelement filter allows you to modify the HTML output of any element in Bricks on the frontend. This powerful hook can be used for a.*
+
+The `bricks/frontend/render_element` filter allows you to modify the HTML output of any element in Bricks on the frontend. This powerful hook can be used for a variety of customization tasks, such as adding comments, modifying content, or dynamically adjusting HTML. (@since 2.0)
+
+```php
+add_filter( 'bricks/frontend/render_element', function( $html, $element ) {
+    // Do not modify the HTML in the builder
+    if (
+        bricks_is_builder_main() ||
+        bricks_is_builder_iframe() ||
+        bricks_is_builder_call()
+    ) {
+        return $html;
+    }
+
+    // Add comments before and after an element with a specific ID
+    if ( $element->id === 'regxve' ) {
+        $html = '<!-- Start of the element -->' . $html . '<!-- End of the element -->';
+    }
+
+    // Modify the content of a Basic Text element
+    if ( $element->id === 'wtktgp' ) {
+        // Replace "|" with ">>" in the HTML
+        $html = str_replace( '|', '>>', $html );
+    }
+
+    return $html;
+}, 10, 2 );
+
+```
 
 ---
 

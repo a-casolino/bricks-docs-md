@@ -1,12 +1,12 @@
-# Account - Addresses Schema
+# Account - Downloads Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-addresses/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-downloads/
 
-*Schema for Bricks Account - Addresses element*
+*Schema for Bricks Account - Downloads element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-account-addresses |
+| `name` | woocommerce-account-downloads |
 | `category` | woocommerce_account |
 | `tag` | div |
 | `nestable` | false |
@@ -15,32 +15,29 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-a
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `addressesDirection` | direction | Direction | `flex-direction` on `.woocommerce-Addresses` |
-| `addressesGap` | number | Gap | `gap` on `.woocommerce-Addresses` |
-| `wrapperMargin` | spacing | Margin | `margin` on `.woocommerce-Address` |
-| `wrapperPadding` | spacing | Padding | `padding` on `.woocommerce-Address` |
-| `wrapperBackgroundColor` | color | Background color | `background-color` on `.woocommerce-Address` |
-| `wrapperBorder` | border | Border | `border` on `.woocommerce-Address` |
-| `wrapperBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-Address` |
-| `wrapperTypography` | typography | Typography | `font` on `.woocommerce-Address` |
-| `titleMargin` | spacing | Margin | `margin` on `.woocommerce-Address-title h2` |
-| `titlePadding` | spacing | Padding | `padding` on `.woocommerce-Address-title h2` |
-| `titleBackgroundColor` | color | Background color | `background-color` on `.woocommerce-Address-title h2` |
-| `titleBorder` | border | Border | `border` on `.woocommerce-Address-title h2` |
-| `titleBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-Address-title h2` |
-| `titleTypography` | typography | Typography | `font` on `.woocommerce-Address-title h2` |
-| `editLinkMargin` | spacing | Margin | `margin` on `.edit` |
-| `editLinkPadding` | spacing | Padding | `padding` on `.edit` |
-| `editLinkBackgroundColor` | color | Background color | `background-color` on `.edit` |
-| `editLinkBorder` | border | Border | `border` on `.edit` |
-| `editLinkBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.edit` |
-| `editLinkTypography` | typography | Typography | `font` on `.edit` |
-| `addressMargin` | spacing | Margin | `margin` on `address` |
-| `addressPadding` | spacing | Padding | `padding` on `address` |
-| `addressBackgroundColor` | color | Background color | `background-color` on `address` |
-| `addressBorder` | border | Border | `border` on `address` |
-| `addressBoxShadow` | box-shadow | Box shadow | `box-shadow` on `address` |
-| `addressTypography` | typography | Typography | `font` on `address` |
+| `tableBackgroundColor` | color | Background color | `background-color` on `.woocommerce-table--order-downloads` |
+| `tableBorder` | border | Border | `border` on `.woocommerce-table--order-downloads` |
+| `tableBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-table--order-downloads` |
+| `tableTypography` | typography | Typography | `font` on `.woocommerce-table--order-downloads` |
+| `theadPadding` | spacing | Padding | `padding` on `thead th, tbody td::before` |
+| `theadBackgroundColor` | color | Background color | `background-color` on `thead th, tbody td::before` |
+| `theadBorder` | border | Border | `border` on `thead th, tbody td::before` |
+| `theadTypography` | typography | Typography | `font` on `thead th, tbody td::before` |
+| `tbodyPadding` | spacing | Padding | `padding` on `tbody td` |
+| `tbodyBackgroundColor` | color | Background color | `background-color` on `tbody td` |
+| `tbodyBorder` | border | Border | `border` on `tbody td` |
+| `tbodyTypography` | typography | Typography | `font` on `tbody td` |
+| `tbodyLinksMargin` | spacing | Margin | `margin` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
+| `tbodyLinksPadding` | spacing | Padding | `padding` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
+| `tbodyLinksBackgroundColor` | color | Background color | `background-color` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
+| `tbodyLinksBorder` | border | Border | `border` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
+| `tbodyLinksBoxShadow` | box-shadow | Box shadow | `box-shadow` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
+| `tbodyLinksTypography` | typography | Typography | `font` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
+| `buttonPadding` | spacing | Padding | `padding` on `.woocommerce-MyAccount-downloads-file.button` |
+| `buttonBackgroundColor` | color | Background color | `background-color` on `.woocommerce-MyAccount-downloads-file.button` |
+| `buttonBorder` | border | Border | `border` on `.woocommerce-MyAccount-downloads-file.button` |
+| `buttonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-downloads-file.button` |
+| `buttonTypography` | typography | Typography | `font` on `.woocommerce-MyAccount-downloads-file.button` |
 
 ## Inherited CSS controls
 
@@ -116,46 +113,18 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Account - Downloads Schema
+# Account Edit Address Form Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-downloads/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-edit-address-form/
 
-*Schema for Bricks Account - Downloads element*
+*Schema for Bricks Account edit address form element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-account-downloads |
+| `name` | woocommerce-account-edit-address-form |
 | `category` | woocommerce_account |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `tableBackgroundColor` | color | Background color | `background-color` on `.woocommerce-table--order-downloads` |
-| `tableBorder` | border | Border | `border` on `.woocommerce-table--order-downloads` |
-| `tableBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-table--order-downloads` |
-| `tableTypography` | typography | Typography | `font` on `.woocommerce-table--order-downloads` |
-| `theadPadding` | spacing | Padding | `padding` on `thead th, tbody td::before` |
-| `theadBackgroundColor` | color | Background color | `background-color` on `thead th, tbody td::before` |
-| `theadBorder` | border | Border | `border` on `thead th, tbody td::before` |
-| `theadTypography` | typography | Typography | `font` on `thead th, tbody td::before` |
-| `tbodyPadding` | spacing | Padding | `padding` on `tbody td` |
-| `tbodyBackgroundColor` | color | Background color | `background-color` on `tbody td` |
-| `tbodyBorder` | border | Border | `border` on `tbody td` |
-| `tbodyTypography` | typography | Typography | `font` on `tbody td` |
-| `tbodyLinksMargin` | spacing | Margin | `margin` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
-| `tbodyLinksPadding` | spacing | Padding | `padding` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
-| `tbodyLinksBackgroundColor` | color | Background color | `background-color` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
-| `tbodyLinksBorder` | border | Border | `border` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
-| `tbodyLinksBoxShadow` | box-shadow | Box shadow | `box-shadow` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
-| `tbodyLinksTypography` | typography | Typography | `font` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
-| `buttonPadding` | spacing | Padding | `padding` on `.woocommerce-MyAccount-downloads-file.button` |
-| `buttonBackgroundColor` | color | Background color | `background-color` on `.woocommerce-MyAccount-downloads-file.button` |
-| `buttonBorder` | border | Border | `border` on `.woocommerce-MyAccount-downloads-file.button` |
-| `buttonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-downloads-file.button` |
-| `buttonTypography` | typography | Typography | `font` on `.woocommerce-MyAccount-downloads-file.button` |
+| `tag` | form |
+| `nestable` | true |
 
 ## Inherited CSS controls
 
@@ -318,18 +287,60 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Account Edit Address Form Schema
+# Account - Add Payment Method Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-edit-address-form/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-add-payment-method/
 
-*Schema for Bricks Account edit address form element*
+*Schema for Bricks Account - Add payment method element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-account-edit-address-form |
+| `name` | woocommerce-account-add-payment-method |
 | `category` | woocommerce_account |
-| `tag` | form |
-| `nestable` | true |
+| `tag` | div |
+| `nestable` | false |
+
+## Controls
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `radioCheckedColor` | color | Color | `background-color` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentMethod input.input-radio:checked + label::before`, `border-color` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentMethod input.input-radio:checked + label::before` |
+| `wrapperMargin` | spacing | Margin | `margin` on `ul.woocommerce-PaymentMethods` |
+| `wrapperPadding` | spacing | Padding | `padding` on `ul.woocommerce-PaymentMethods` |
+| `wrapperBackgroundColor` | color | Background color | `background-color` on `ul.woocommerce-PaymentMethods` |
+| `wrapperBorder` | border | Border | `border` on `ul.woocommerce-PaymentMethods` |
+| `wrapperBoxShadow` | box-shadow | Box shadow | `box-shadow` on `ul.woocommerce-PaymentMethods` |
+| `wrapperTypography` | typography | Typography | `font` on `ul.woocommerce-PaymentMethods` |
+| `listMargin` | spacing | Margin | `margin` on `ul.woocommerce-PaymentMethods` |
+| `listPadding` | spacing | Padding | `padding` on `ul.woocommerce-PaymentMethods` |
+| `listBackgroundColor` | color | Background color | `background-color` on `ul.woocommerce-PaymentMethods` |
+| `listBorder` | border | Border | `border` on `ul.woocommerce-PaymentMethods` |
+| `listBoxShadow` | box-shadow | Box shadow | `box-shadow` on `ul.woocommerce-PaymentMethods` |
+| `listTypography` | typography | Typography | `font` on `ul.woocommerce-PaymentMethods` |
+| `itemMargin` | spacing | Margin | `margin` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod` |
+| `itemPadding` | spacing | Padding | `padding` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod` |
+| `itemBackgroundColor` | color | Background color | `background-color` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod` |
+| `itemBorder` | border | Border | `border` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod` |
+| `itemBoxShadow` | box-shadow | Box shadow | `box-shadow` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod` |
+| `itemTypography` | typography | Typography | `font` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod` |
+| `labelMargin` | spacing | Margin | `margin` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod label` |
+| `labelPadding` | spacing | Padding | `padding` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod label` |
+| `labelBackgroundColor` | color | Background color | `background-color` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod label` |
+| `labelBorder` | border | Border | `border` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod label` |
+| `labelBoxShadow` | box-shadow | Box shadow | `box-shadow` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod label` |
+| `labelTypography` | typography | Typography | `font` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod label` |
+| `paymentBoxMargin` | spacing | Margin | `margin` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentBox` |
+| `paymentBoxPadding` | spacing | Padding | `padding` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentBox` |
+| `paymentBoxBackgroundColor` | color | Background color | `background-color` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentBox` |
+| `paymentBoxBorder` | border | Border | `border` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentBox` |
+| `paymentBoxBoxShadow` | box-shadow | Box shadow | `box-shadow` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentBox` |
+| `paymentBoxTypography` | typography | Typography | `font` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentBox` |
+| `buttonMargin` | spacing | Margin | `margin` on `.woocommerce-Payment .form-row .woocommerce-Button` |
+| `buttonPadding` | spacing | Padding | `padding` on `.woocommerce-Payment .form-row .woocommerce-Button` |
+| `buttonBackgroundColor` | color | Background color | `background-color` on `.woocommerce-Payment .form-row .woocommerce-Button` |
+| `buttonBorder` | border | Border | `border` on `.woocommerce-Payment .form-row .woocommerce-Button` |
+| `buttonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-Payment .form-row .woocommerce-Button` |
+| `buttonTypography` | typography | Typography | `font` on `.woocommerce-Payment .form-row .woocommerce-Button` |
 
 ## Inherited CSS controls
 
@@ -1166,15 +1177,15 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Account Lost Password Form Schema
+# Account Order Withdrawal Form Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-lost-password-form/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-order-withdrawal-form/
 
-*Schema for Bricks Account lost password form element*
+*Schema for Bricks Account order withdrawal form element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-account-lost-password-form |
+| `name` | woocommerce-account-order-withdrawal-form |
 | `category` | woocommerce_account |
 | `tag` | form |
 | `nestable` | true |
@@ -1253,15 +1264,15 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Account Order Withdrawal Form Schema
+# Account Lost Password Form Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-order-withdrawal-form/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-lost-password-form/
 
-*Schema for Bricks Account order withdrawal form element*
+*Schema for Bricks Account lost password form element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-account-order-withdrawal-form |
+| `name` | woocommerce-account-lost-password-form |
 | `category` | woocommerce_account |
 | `tag` | form |
 | `nestable` | true |
@@ -1576,25 +1587,23 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Account - Page V2 Schema
+# Account - Page Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-page-v2/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-page/
 
-*Schema for Bricks Account - Page v2 element*
+*Schema for Bricks Account - Page element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-account-page-v2 |
+| `name` | woocommerce-account-page |
 | `category` | woocommerce_account |
 | `tag` | div |
-| `nestable` | true |
+| `nestable` | false |
 
 ## Controls
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `previewMode` | radio | previewMode | — |
-| `addMissingStates` | button | Add missing states | — |
 | `direction` | direction | Direction | `flex-direction` on `.woocommerce:not(#brx-content)` |
 | `gap` | number | Gap | `gap` on `.woocommerce:not(#brx-content)` |
 | `disableNav` | checkbox | Disable navigation | — |
@@ -1602,23 +1611,23 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-a
 | `navAlignItems` | align-items | Align items | `align-items` on `.woocommerce-MyAccount-navigation ul` |
 | `navJustifyContent` | justify-content | Justify content | `justify-content` on `.woocommerce-MyAccount-navigation ul` |
 | `navGap` | number | Gap | `gap` on `.woocommerce-MyAccount-navigation ul` |
+| `navBackground` | color | Background | `background-color` on `.woocommerce-MyAccount-navigation` |
 | `navBorder` | border | Border | `border` on `.woocommerce-MyAccount-navigation` |
 | `navBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-navigation` |
-| `navBackground` | color | Background | `background-color` on `.woocommerce-MyAccount-navigation` |
-| `navItemPadding` | spacing | Item padding | `padding` on `.woocommerce-MyAccount-navigation a` |
+| `navItemPadding` | spacing | Padding | `padding` on `.woocommerce-MyAccount-navigation a` |
 | `navItemBackground` | color | Background | `background-color` on `.woocommerce-MyAccount-navigation a` |
 | `navItemBorder` | border | Border | `border` on `.woocommerce-MyAccount-navigation a` |
 | `navItemBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-navigation a` |
-| `navItemTypography` | typography | Typography | `font` on `.woocommerce-MyAccount-navigation a` |
-| `navItemBackgroundActive` | color | Active background | `background-color` on `.woocommerce-MyAccount-navigation .is-active a` |
+| `navItemTypogaphy` | typography | Typography | `font` on `.woocommerce-MyAccount-navigation a` |
+| `navItemBackgroundActive` | color | Background | `background-color` on `.woocommerce-MyAccount-navigation .is-active a` |
 | `navItemBorderActive` | border | Border | `border` on `.woocommerce-MyAccount-navigation .is-active a` |
 | `navItemBoxShadowActive` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-navigation .is-active a` |
-| `navItemTypographyActive` | typography | Typography | `font` on `.woocommerce-MyAccount-navigation .is-active a` |
+| `navItemTypogaphyActive` | typography | Typography | `font` on `.woocommerce-MyAccount-navigation .is-active a` |
 | `contentPadding` | spacing | Padding | `padding` on `.woocommerce-MyAccount-content` |
 | `contentBackground` | color | Background | `background-color` on `.woocommerce-MyAccount-content` |
 | `contentBorder` | border | Border | `border` on `.woocommerce-MyAccount-content` |
 | `contentBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-content` |
-| `contentTypography` | typography | Typography | `font` on `.woocommerce-MyAccount-content` |
+| `contentTypogaphy` | typography | Typography | `font` on `.woocommerce-MyAccount-content` |
 
 ## Inherited CSS controls
 
