@@ -153,45 +153,18 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Slidercarousel Elementbricks Schema
+# Slot Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/slider/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/slot/
 
-*Schema for Bricks Slidercarousel elementbricks element*
+*Schema for Bricks Slot element*
 
 | Property | Value |
 |---|---|
-| `name` | slider |
-| `category` | media |
+| `name` | slot |
+| `category` | general |
 | `tag` | div |
-| `nestable` | false |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `items` | repeater | Slides | `width` on `.bricks-button` |
-| `titleMargin` | spacing | Title margin | `margin` on `.slider-content .title` |
-| `titleTypography` | typography | Title typography | `font` on `.title` |
-| `contentWidth` | number | Content width | `width` on `.slider-content` |
-| `contentBackgroundColor` | color | Content background | `background-color` on `.slider-content` |
-| `contentTypography` | typography | Content typography | `font` on `.content` |
-| `contentMargin` | spacing | Content margin | `margin` on `.slider-content` |
-| `contentPadding` | spacing | Content padding | `padding` on `.slider-content` |
-| `contentAlignHorizontal` | justify-content | Content align horizontal | `justify-content` on `.swiper-slide` |
-| `contentAlignVertical` | align-items | Content align vertical | `align-items` on `.swiper-slide` |
-| `contentTextAlign` | text-align | Content text align | `text-align` on `.slider-content` |
-| `buttonStyle` | select | Button style | — |
-| `buttonSize` | select | Button size | — |
-| `buttonWidth` | number | Button width | `width` on `.bricks-button` |
-| `buttonBackground` | color | Background | `background-color` on `.bricks-button` |
-| `buttonBorder` | border | Border | `border` on `.bricks-button` |
-| `buttonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.bricks-button` |
-| `buttonTypography` | typography | Typography | `font` on `.bricks-button` |
-| `backgroundPositionTop` | number | backgroundPositionTop | `top` on `.image` |
-| `backgroundPositionRight` | number | Right | `right` on `.image` |
-| `backgroundPositionBottom` | number | Bottom | `bottom` on `.image` |
-| `backgroundPositionLeft` | number | Left | `left` on `.image` |
+| `nestable` | true |
 
 ## Inherited CSS controls
 
@@ -292,93 +265,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/social-icons/
 | `justifyIcons` | justify-content | Justify content | `justify-content` |
 | `gap` | number | Spacing | `gap` |
 | `gapItem` | number | Spacing | `gap` |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
-# Slot Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/slot/
-
-*Schema for Bricks Slot element*
-
-| Property | Value |
-|---|---|
-| `name` | slot |
-| `category` | general |
-| `tag` | div |
-| `nestable` | true |
 
 ## Inherited CSS controls
 
@@ -979,16 +865,16 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Basic Text Schema
+# Testimonials Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/text-basic/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/testimonials/
 
-*Schema for Bricks Basic Text element*
+*Schema for Bricks Testimonials element*
 
 | Property | Value |
 |---|---|
-| `name` | text-basic |
-| `category` | basic |
+| `name` | testimonials |
+| `category` | general |
 | `tag` | div |
 | `nestable` | false |
 
@@ -996,12 +882,18 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/text-basic/
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `text` | textarea | text | — |
-| `tag` | select | HTML tag | — |
-| `customTag` | text | Custom tag | — |
-| `link` | link | Link to | — |
-| `wordsLimit` | number | Words limit | — |
-| `readMore` | text | Read more | — |
+| `items` | repeater | Content | — |
+| `alignItems` | justify-content | Align items | `justify-content` on `.repeater-item` |
+| `textAlign` | text-align | Text align | `text-align` |
+| `random` | checkbox | Random order | — |
+| `imageAlign` | align-items | Image align | `align-items` on `.repeater-item` |
+| `imagePosition` | select | Image position | — |
+| `imageSize` | number | Image size | `width` on `.image`, `height` on `.image` |
+| `imageBorder` | border | Image border | `border` on `.image` |
+| `imageBoxShadow` | box-shadow | Image box shadow | `box-shadow` on `.image` |
+| `typographyContent` | typography | Testimonial | `font` on `.testimonial-content-wrapper` |
+| `typographyName` | typography | Name | `font` on `.testimonial-name` |
+| `typographyTitle` | typography | Title | `font` on `.testimonial-title` |
 
 ## Inherited CSS controls
 
@@ -1077,16 +969,16 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Testimonials Schema
+# Basic Text Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/testimonials/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/text-basic/
 
-*Schema for Bricks Testimonials element*
+*Schema for Bricks Basic Text element*
 
 | Property | Value |
 |---|---|
-| `name` | testimonials |
-| `category` | general |
+| `name` | text-basic |
+| `category` | basic |
 | `tag` | div |
 | `nestable` | false |
 
@@ -1094,18 +986,12 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/testimonials/
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `items` | repeater | Content | — |
-| `alignItems` | justify-content | Align items | `justify-content` on `.repeater-item` |
-| `textAlign` | text-align | Text align | `text-align` |
-| `random` | checkbox | Random order | — |
-| `imageAlign` | align-items | Image align | `align-items` on `.repeater-item` |
-| `imagePosition` | select | Image position | — |
-| `imageSize` | number | Image size | `width` on `.image`, `height` on `.image` |
-| `imageBorder` | border | Image border | `border` on `.image` |
-| `imageBoxShadow` | box-shadow | Image box shadow | `box-shadow` on `.image` |
-| `typographyContent` | typography | Testimonial | `font` on `.testimonial-content-wrapper` |
-| `typographyName` | typography | Name | `font` on `.testimonial-name` |
-| `typographyTitle` | typography | Title | `font` on `.testimonial-title` |
+| `text` | textarea | text | — |
+| `tag` | select | HTML tag | — |
+| `customTag` | text | Custom tag | — |
+| `link` | link | Link to | — |
+| `wordsLimit` | number | Words limit | — |
+| `readMore` | text | Read more | — |
 
 ## Inherited CSS controls
 
@@ -1385,105 +1271,6 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Toggle - Mode Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/toggle-mode/
-
-*Schema for Bricks Toggle - Mode element*
-
-| Property | Value |
-|---|---|
-| `name` | toggle-mode |
-| `category` | general |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `icon` | icon | Icon | — |
-| `iconColor` | color | Color | `color` on `.toggle.light > *`, `fill` on `.toggle.light > *` |
-| `iconSize` | number | Size | `font-size` on `.toggle.light > *` |
-| `iconDark` | icon | Icon | — |
-| `iconDarkColor` | color | Color | `color` on `.toggle.dark > *`, `fill` on `.toggle.dark > *` |
-| `iconDarkSize` | number | Size | `font-size` on `.toggle.dark > *` |
-| `ariaLabel` | text | aria-label | — |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
 # Toggle Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/elements/toggle/
@@ -1660,6 +1447,234 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/video/
 | `overlayIconBackgroundColor` | color | Icon background color | `background-color` on `.bricks-video-overlay-icon` |
 | `overlayIconBorder` | border | Icon border | `border` on `.bricks-video-overlay-icon` |
 | `overlayIconBoxShadow` | box-shadow | Icon box shadow | `box-shadow` on `.bricks-video-overlay-icon` |
+
+## Inherited CSS controls
+
+Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `_content` | text | Content | `content` |
+| `_margin` | spacing | Margin | `margin` |
+| `_padding` | spacing | Padding | `padding` |
+| `_width` | number | Width | `width` |
+| `_widthMin` | number | Min. width | `min-width` |
+| `_widthMax` | number | Max. width | `max-width` |
+| `_height` | number | Height | `height` |
+| `_heightMin` | number | Min. height | `min-height` |
+| `_heightMax` | number | Max. height | `max-height` |
+| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
+| `_position` | select | Position | `position` |
+| `_top` | number | _top | `top` |
+| `_right` | number | Right | `right` |
+| `_bottom` | number | Bottom | `bottom` |
+| `_left` | number | Left | `left` |
+| `_zIndex` | number | Z-index | `z-index` |
+| `_order` | number | _order | `order` |
+| `_display` | select | Display | `display`, `align-items` |
+| `_visibility` | select | Visibility | `visibility` |
+| `_overflow` | text | Overflow | `overflow` |
+| `_opacity` | number | Opacity | `opacity` |
+| `_cursor` | select | Cursor | `cursor` |
+| `_isolation` | select | Isolation | `isolation` |
+| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
+| `_pointerEvents` | text | Pointer events | `pointer-events` |
+| `_perspective` | number | Perspective | `perspective` |
+| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
+| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
+| `_flexDirection` | direction | Direction | `flex-direction` |
+| `_alignSelf` | align-items | Align self | `align-self` |
+| `_justifyContent` | justify-content | Align main axis | `justify-content` |
+| `_alignItems` | align-items | Align cross axis | `align-items` |
+| `_gap` | number | Gap | `gap` |
+| `_flexGrow` | number | Flex grow | `flex-grow` |
+| `_flexShrink` | number | Flex shrink | `flex-shrink` |
+| `_flexBasis` | text | Flex basis | `flex-basis` |
+| `_useMasonry` | checkbox | %s layout | — |
+| `_masonryColumn` | number | Columns | `--columns` |
+| `_masonryGutter` | number | Spacing | `--gutter` |
+| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
+| `_masonryTransitionDuration` | number | Transition | — |
+| `_masonryTransitionMode` | select | Reveal animation | — |
+| `_typography` | typography | _typography | `font` |
+| `_background` | background | _background | `background` |
+| `_shapeDividers` | repeater | Custom shape | — |
+| `_gradient` | gradient | _gradient | `background-image` |
+| `_border` | border | Border | `border` |
+| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `_transform` | transform | Transform | `transform` |
+| `_transformOrigin` | text | Transform origin | `transform-origin` |
+| `_motionElementParallax` | checkbox | Element parallax | — |
+| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
+| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
+| `_motionBackgroundParallax` | checkbox | Background parallax | — |
+| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
+| `_motionStartVisiblePercent` | number | Parallax start point | — |
+| `_cssCustom` | code | Custom CSS | — |
+| `_cssClasses` | text | CSS classes | — |
+| `_cssId` | text | CSS ID | — |
+| `_cssFilters` | filters | CSS Filters | `filter` |
+| `_cssTransition` | text | Transition | `transition` |
+| `_attributes` | repeater | Name | — |
+| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+
+---
+
+# Toggle - Mode Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/elements/toggle-mode/
+
+*Schema for Bricks Toggle - Mode element*
+
+| Property | Value |
+|---|---|
+| `name` | toggle-mode |
+| `category` | general |
+| `tag` | div |
+| `nestable` | false |
+
+## Controls
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `icon` | icon | Icon | — |
+| `iconColor` | color | Color | `color` on `.toggle.light > *`, `fill` on `.toggle.light > *` |
+| `iconSize` | number | Size | `font-size` on `.toggle.light > *` |
+| `iconDark` | icon | Icon | — |
+| `iconDarkColor` | color | Color | `color` on `.toggle.dark > *`, `fill` on `.toggle.dark > *` |
+| `iconDarkSize` | number | Size | `font-size` on `.toggle.dark > *` |
+| `ariaLabel` | text | aria-label | — |
+
+## Inherited CSS controls
+
+Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `_content` | text | Content | `content` |
+| `_margin` | spacing | Margin | `margin` |
+| `_padding` | spacing | Padding | `padding` |
+| `_width` | number | Width | `width` |
+| `_widthMin` | number | Min. width | `min-width` |
+| `_widthMax` | number | Max. width | `max-width` |
+| `_height` | number | Height | `height` |
+| `_heightMin` | number | Min. height | `min-height` |
+| `_heightMax` | number | Max. height | `max-height` |
+| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
+| `_position` | select | Position | `position` |
+| `_top` | number | _top | `top` |
+| `_right` | number | Right | `right` |
+| `_bottom` | number | Bottom | `bottom` |
+| `_left` | number | Left | `left` |
+| `_zIndex` | number | Z-index | `z-index` |
+| `_order` | number | _order | `order` |
+| `_display` | select | Display | `display`, `align-items` |
+| `_visibility` | select | Visibility | `visibility` |
+| `_overflow` | text | Overflow | `overflow` |
+| `_opacity` | number | Opacity | `opacity` |
+| `_cursor` | select | Cursor | `cursor` |
+| `_isolation` | select | Isolation | `isolation` |
+| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
+| `_pointerEvents` | text | Pointer events | `pointer-events` |
+| `_perspective` | number | Perspective | `perspective` |
+| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
+| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
+| `_flexDirection` | direction | Direction | `flex-direction` |
+| `_alignSelf` | align-items | Align self | `align-self` |
+| `_justifyContent` | justify-content | Align main axis | `justify-content` |
+| `_alignItems` | align-items | Align cross axis | `align-items` |
+| `_gap` | number | Gap | `gap` |
+| `_flexGrow` | number | Flex grow | `flex-grow` |
+| `_flexShrink` | number | Flex shrink | `flex-shrink` |
+| `_flexBasis` | text | Flex basis | `flex-basis` |
+| `_useMasonry` | checkbox | %s layout | — |
+| `_masonryColumn` | number | Columns | `--columns` |
+| `_masonryGutter` | number | Spacing | `--gutter` |
+| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
+| `_masonryTransitionDuration` | number | Transition | — |
+| `_masonryTransitionMode` | select | Reveal animation | — |
+| `_typography` | typography | _typography | `font` |
+| `_background` | background | _background | `background` |
+| `_shapeDividers` | repeater | Custom shape | — |
+| `_gradient` | gradient | _gradient | `background-image` |
+| `_border` | border | Border | `border` |
+| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `_transform` | transform | Transform | `transform` |
+| `_transformOrigin` | text | Transform origin | `transform-origin` |
+| `_motionElementParallax` | checkbox | Element parallax | — |
+| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
+| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
+| `_motionBackgroundParallax` | checkbox | Background parallax | — |
+| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
+| `_motionStartVisiblePercent` | number | Parallax start point | — |
+| `_cssCustom` | code | Custom CSS | — |
+| `_cssClasses` | text | CSS classes | — |
+| `_cssId` | text | CSS ID | — |
+| `_cssFilters` | filters | CSS Filters | `filter` |
+| `_cssTransition` | text | Transition | `transition` |
+| `_attributes` | repeater | Name | — |
+| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+
+---
+
+# Account - Add Payment Method Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-add-payment-method/
+
+*Schema for Bricks Account - Add payment method element*
+
+| Property | Value |
+|---|---|
+| `name` | woocommerce-account-add-payment-method |
+| `category` | woocommerce_account |
+| `tag` | div |
+| `nestable` | false |
+
+## Controls
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `radioCheckedColor` | color | Color | `background-color` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentMethod input.input-radio:checked + label::before`, `border-color` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentMethod input.input-radio:checked + label::before` |
+| `wrapperMargin` | spacing | Margin | `margin` on `ul.woocommerce-PaymentMethods` |
+| `wrapperPadding` | spacing | Padding | `padding` on `ul.woocommerce-PaymentMethods` |
+| `wrapperBackgroundColor` | color | Background color | `background-color` on `ul.woocommerce-PaymentMethods` |
+| `wrapperBorder` | border | Border | `border` on `ul.woocommerce-PaymentMethods` |
+| `wrapperBoxShadow` | box-shadow | Box shadow | `box-shadow` on `ul.woocommerce-PaymentMethods` |
+| `wrapperTypography` | typography | Typography | `font` on `ul.woocommerce-PaymentMethods` |
+| `listMargin` | spacing | Margin | `margin` on `ul.woocommerce-PaymentMethods` |
+| `listPadding` | spacing | Padding | `padding` on `ul.woocommerce-PaymentMethods` |
+| `listBackgroundColor` | color | Background color | `background-color` on `ul.woocommerce-PaymentMethods` |
+| `listBorder` | border | Border | `border` on `ul.woocommerce-PaymentMethods` |
+| `listBoxShadow` | box-shadow | Box shadow | `box-shadow` on `ul.woocommerce-PaymentMethods` |
+| `listTypography` | typography | Typography | `font` on `ul.woocommerce-PaymentMethods` |
+| `itemMargin` | spacing | Margin | `margin` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod` |
+| `itemPadding` | spacing | Padding | `padding` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod` |
+| `itemBackgroundColor` | color | Background color | `background-color` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod` |
+| `itemBorder` | border | Border | `border` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod` |
+| `itemBoxShadow` | box-shadow | Box shadow | `box-shadow` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod` |
+| `itemTypography` | typography | Typography | `font` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod` |
+| `labelMargin` | spacing | Margin | `margin` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod label` |
+| `labelPadding` | spacing | Padding | `padding` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod label` |
+| `labelBackgroundColor` | color | Background color | `background-color` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod label` |
+| `labelBorder` | border | Border | `border` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod label` |
+| `labelBoxShadow` | box-shadow | Box shadow | `box-shadow` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod label` |
+| `labelTypography` | typography | Typography | `font` on `ul.woocommerce-PaymentMethods li.woocommerce-PaymentMethod label` |
+| `paymentBoxMargin` | spacing | Margin | `margin` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentBox` |
+| `paymentBoxPadding` | spacing | Padding | `padding` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentBox` |
+| `paymentBoxBackgroundColor` | color | Background color | `background-color` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentBox` |
+| `paymentBoxBorder` | border | Border | `border` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentBox` |
+| `paymentBoxBoxShadow` | box-shadow | Box shadow | `box-shadow` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentBox` |
+| `paymentBoxTypography` | typography | Typography | `font` on `ul.woocommerce-PaymentMethods .woocommerce-PaymentBox` |
+| `buttonMargin` | spacing | Margin | `margin` on `.woocommerce-Payment .form-row .woocommerce-Button` |
+| `buttonPadding` | spacing | Padding | `padding` on `.woocommerce-Payment .form-row .woocommerce-Button` |
+| `buttonBackgroundColor` | color | Background color | `background-color` on `.woocommerce-Payment .form-row .woocommerce-Button` |
+| `buttonBorder` | border | Border | `border` on `.woocommerce-Payment .form-row .woocommerce-Button` |
+| `buttonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-Payment .form-row .woocommerce-Button` |
+| `buttonTypography` | typography | Typography | `font` on `.woocommerce-Payment .form-row .woocommerce-Button` |
 
 ## Inherited CSS controls
 

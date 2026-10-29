@@ -68,19 +68,29 @@ Existing attachments cannot be renamed from this workflow. Changing an existing 
 
 Select **From URL**, then enter one public HTTP or HTTPS file URL per line. Bricks downloads the files into the WordPress Media Library. WordPress upload permissions, allowed file types, and upload-size limits still apply.
 
+### Upload destinations
+
+Open the destination folder before adding files or URLs to the upload queue. Each queued file keeps the folder selected when it was added, even if you browse to another folder before uploading or retry a failed upload.
+
+From Bricks 2.4.4, both local uploads and URL imports support folders from custom media-folder providers as well as HappyFiles.
+
+For custom providers, **No folder assignment** means Bricks has not requested a destination folder. The provider's default upload behavior applies, so the file may still be assigned to a folder. HappyFiles shows **Uncategorized** when no folder is selected.
+
+A provider can also exclude an individual folder from automatic upload assignment, for example a virtual grouping called Collections. Uploads queued there show **No folder assignment** and follow the provider's defaults. This does not prevent uploads into its child folders.
+
 ### Edit uploaded files
 
 After an upload completes, you can edit its title, alternative text, caption, and description. Changes to an individual attachment save after you leave the edited field. Select several completed uploads to apply metadata changes in bulk.
 
-For a completed upload, choose **View in library** to find the attachment even if the current folder or filters would hide it. **Remove from list** only clears the upload workspace entry; the attachment stays in the Media Library. When a HappyFiles folder assignment cannot be confirmed, use **Retry folder assignment** on that upload instead of uploading the file again.
+For a completed upload, choose **View in library** to find the attachment even if the current folder or filters would hide it. **Remove from list** only clears the upload workspace entry; the attachment stays in the Media Library.
+
+When an intended folder assignment cannot be confirmed, use **Retry folder assignment** on that upload. This retries the assignment on the existing attachment without uploading another copy. From Bricks 2.4.4, this also works with custom media-folder providers.
 
 Completed uploads also offer **Move** when a compatible folder integration is available, plus **Trash** or **Delete permanently** according to the site's Media Trash setting. These actions change the Media Library attachment and require the relevant attachment permissions. A successful Trash or Delete action removes the entry from the upload list.
 
 When Media Health is enabled, images can also be marked **Decorative** during upload. This clears their alternative text and excludes them from the missing-alt check.
 
 If you started the upload from a media control, compatible files can be inserted directly into that control. An uploaded file that does not match the control remains in the Media Library but cannot be inserted into that control.
-
-When uploading while viewing a supported media folder, new files are assigned to that folder.
 
 ![](https://academy.bricksbuilder.io/assets/media-browser-upload-screen.webp)
 

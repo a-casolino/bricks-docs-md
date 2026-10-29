@@ -178,62 +178,6 @@ class Prefix_Element_Background extends \Bricks\Element {
 
 ---
 
-# Border Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/border-control/
-
-*Reference for the Bricks Border control, including its options, CSS mapping, and usage in custom elements.*
-
-The border control lets you set the following border properties:
-
-- Border width (top/right/bottom/left)
-- Background style (top/right/bottom/left)
-- Background color (none/solid/double/dotted/dashed)
-- Border radius (top/right/bottom/left)
-
-The example below illustrates how to apply a border via the `css` parameter and how to set border defaults.
-
-```php
-class Builder_Element_Prefix_Test extends \Bricks\Element {
-  public function set_controls() {
-    $this->controls['titleBorder'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Title border', 'bricks' ),
-      'type' => 'border',
-      'css' => [
-        [
-          'property' => 'border',
-          'selector' => '.prefix-test-title',
-        ],
-      ],
-      'inline' => true,
-      'small' => true,
-      'default' => [
-        'width' => [
-          'top' => 1,
-          'right' => 0,
-          'bottom' => 0,
-          'left' => 0,
-        ],
-        'style' => 'solid',
-        'color' => [
-          'hex' => '#ffff00',
-        ],
-        'radius' => [
-          'top' => 1,
-          'right' => 1,
-          'bottom' => 1,
-          'left' => 1,
-        ],
-      ],
-
-    ];
-  }
-}
-```
-
----
-
 # Box Shadow Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/box-shadow-control/
@@ -291,6 +235,62 @@ class Prefix_Element_Box_Shadow extends \Bricks\Element {
 ### Resources
 
 [https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow)
+
+---
+
+# Border Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/border-control/
+
+*Reference for the Bricks Border control, including its options, CSS mapping, and usage in custom elements.*
+
+The border control lets you set the following border properties:
+
+- Border width (top/right/bottom/left)
+- Background style (top/right/bottom/left)
+- Background color (none/solid/double/dotted/dashed)
+- Border radius (top/right/bottom/left)
+
+The example below illustrates how to apply a border via the `css` parameter and how to set border defaults.
+
+```php
+class Builder_Element_Prefix_Test extends \Bricks\Element {
+  public function set_controls() {
+    $this->controls['titleBorder'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Title border', 'bricks' ),
+      'type' => 'border',
+      'css' => [
+        [
+          'property' => 'border',
+          'selector' => '.prefix-test-title',
+        ],
+      ],
+      'inline' => true,
+      'small' => true,
+      'default' => [
+        'width' => [
+          'top' => 1,
+          'right' => 0,
+          'bottom' => 0,
+          'left' => 0,
+        ],
+        'style' => 'solid',
+        'color' => [
+          'hex' => '#ffff00',
+        ],
+        'radius' => [
+          'top' => 1,
+          'right' => 1,
+          'bottom' => 1,
+          'left' => 1,
+        ],
+      ],
+
+    ];
+  }
+}
+```
 
 ---
 
@@ -817,6 +817,45 @@ class Prefix_Element_Filters extends \Bricks\Element {
 
 ---
 
+# Gradient Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/gradient-control/
+
+*Reference for the Bricks Gradient control, including its options, CSS mapping, and usage in custom elements.*
+
+The gradient control lets you define an unlimited number of gradients that you can apply to text, background, and as an overlay.
+
+You can set the CSS selector in the control, adjust the angle between 0 and 360°, and set a color stop for each color.
+
+```php
+class Prefix_Element_Gradient extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleGradient'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Gradient', 'bricks' ),
+      'type' => 'gradient',
+      'css' => [
+        [
+          'property' => 'background-image',
+        ],
+      ],
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    echo get_bloginfo( 'name' );
+  }
+}
+```
+
+> **Note**
+>
+> All sections, rows, columns, and elements already have a **CSS Gradient** control under the Style tab Gradient / Overlay group.
+
+---
+
 # Icon Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/icon-control/
@@ -860,45 +899,6 @@ class Prefix_Element_Icon extends \Bricks\Element {
   }
 }
 ```
-
----
-
-# Gradient Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/gradient-control/
-
-*Reference for the Bricks Gradient control, including its options, CSS mapping, and usage in custom elements.*
-
-The gradient control lets you define an unlimited number of gradients that you can apply to text, background, and as an overlay.
-
-You can set the CSS selector in the control, adjust the angle between 0 and 360°, and set a color stop for each color.
-
-```php
-class Prefix_Element_Gradient extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleGradient'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Gradient', 'bricks' ),
-      'type' => 'gradient',
-      'css' => [
-        [
-          'property' => 'background-image',
-        ],
-      ],
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    echo get_bloginfo( 'name' );
-  }
-}
-```
-
-> **Note**
->
-> All sections, rows, columns, and elements already have a **CSS Gradient** control under the Style tab Gradient / Overlay group.
 
 ---
 
@@ -957,24 +957,6 @@ class Prefix_Element_Image extends \Bricks\Element {
 
 ---
 
-# Controls
-
-Source: https://academy.bricksbuilder.io/developer/controls/
-
-*Reference the Bricks controls used in custom elements and builder extensions, from layout and typography controls to media, code, query, and repeater controls.*
-
-Bricks controls define how users edit custom element settings inside the builder. This section helps you understand the available control types, the data they store, and when to use each one.
-
-## Common control groups
-
-- [Element Controls](https://academy.bricksbuilder.io/developer/controls/element-controls/) for the overall structure of element settings
-- [Content Controls](https://academy.bricksbuilder.io/developer/controls/text-control/) for text, textarea, editor, select, and checkbox inputs
-- [Styling Controls](https://academy.bricksbuilder.io/developer/controls/color-control/) for visual styling fields such as color, typography, border, and shadow
-- [Media Controls](https://academy.bricksbuilder.io/developer/controls/image-control/) for images, galleries, icons, SVG, and audio
-- [Advanced Controls](https://academy.bricksbuilder.io/developer/controls/query-control/) for query, repeater, code, filters, and apply workflows
-
----
-
 # Image Gallery Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/image-gallery-control/
@@ -1024,6 +1006,24 @@ class Prefix_Element_Image extends \Bricks\Element {
 
 ---
 
+# Controls
+
+Source: https://academy.bricksbuilder.io/developer/controls/
+
+*Reference the Bricks controls used in custom elements and builder extensions, from layout and typography controls to media, code, query, and repeater controls.*
+
+Bricks controls define how users edit custom element settings inside the builder. This section helps you understand the available control types, the data they store, and when to use each one.
+
+## Common control groups
+
+- [Element Controls](https://academy.bricksbuilder.io/developer/controls/element-controls/) for the overall structure of element settings
+- [Content Controls](https://academy.bricksbuilder.io/developer/controls/text-control/) for text, textarea, editor, select, and checkbox inputs
+- [Styling Controls](https://academy.bricksbuilder.io/developer/controls/color-control/) for visual styling fields such as color, typography, border, and shadow
+- [Media Controls](https://academy.bricksbuilder.io/developer/controls/image-control/) for images, galleries, icons, SVG, and audio
+- [Advanced Controls](https://academy.bricksbuilder.io/developer/controls/query-control/) for query, repeater, code, filters, and apply workflows
+
+---
+
 # Info Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/info-control/
@@ -1063,6 +1063,43 @@ class Prefix_Element_Info extends \Bricks\Element {
       'required' => ['type', '=', 'custom'], // Show info control if 'type' = 'custom'
     ];
   }
+}
+```
+
+---
+
+# Justify Content Control (Flexbox)
+
+Source: https://academy.bricksbuilder.io/developer/controls/justify-content-control/
+
+*Reference for the Bricks Justify Content Control (Flexbox) control, including its options, CSS mapping, and usage in custom elements.*
+
+Use the justify-content control to allow users to set the `justify-content` CSS property (alignment along the [main-axis](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)) of your CSS flexbox layout.
+
+There is also a [`align-items`](https://academy.bricksbuilder.io/developer/controls/align-items-control/) control to allow users to set the alignment along the cross axis of your CSS flexbox layout:
+
+```php
+public function set_controls() {
+  $this->controls['justifyContent'] = [
+    'tab'   => 'content',
+    'label' => esc_html__( 'Justify content', 'bricks' ),
+    'type'  => 'justify-content',
+    'css'   => [
+      [
+        'property' => 'justify-content',
+        'selector' => '.flexbox-wrapper',
+      ],
+    ],
+    // 'isHorizontal' => false,
+    // 'exclude' => [
+      // 'flex-start',
+      // 'center',
+      // 'flex-end',
+      // 'space-between',
+      // 'space-around',
+      // 'space-evenly',
+    // ],
+  ];
 }
 ```
 
@@ -1110,93 +1147,6 @@ class Prefix_Element_Link extends \Bricks\Element {
   }
 }
 ```
-
----
-
-# Justify Content Control (Flexbox)
-
-Source: https://academy.bricksbuilder.io/developer/controls/justify-content-control/
-
-*Reference for the Bricks Justify Content Control (Flexbox) control, including its options, CSS mapping, and usage in custom elements.*
-
-Use the justify-content control to allow users to set the `justify-content` CSS property (alignment along the [main-axis](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)) of your CSS flexbox layout.
-
-There is also a [`align-items`](https://academy.bricksbuilder.io/developer/controls/align-items-control/) control to allow users to set the alignment along the cross axis of your CSS flexbox layout:
-
-```php
-public function set_controls() {
-  $this->controls['justifyContent'] = [
-    'tab'   => 'content',
-    'label' => esc_html__( 'Justify content', 'bricks' ),
-    'type'  => 'justify-content',
-    'css'   => [
-      [
-        'property' => 'justify-content',
-        'selector' => '.flexbox-wrapper',
-      ],
-    ],
-    // 'isHorizontal' => false,
-    // 'exclude' => [
-      // 'flex-start',
-      // 'center',
-      // 'flex-end',
-      // 'space-between',
-      // 'space-around',
-      // 'space-evenly',
-    // ],
-  ];
-}
-```
-
----
-
-# Query Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/query-control/
-
-*Reference for the Bricks Query control, including its options, CSS mapping, and usage in custom elements.*
-
-The query control lets you set query arguments to retrieve items of any post type. Use the returned value to set up a custom `WP_Query` to render the matching posts in any way you want.
-
-```php
-class Prefix_Element_Posts extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleQueryArgs'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Posts', 'bricks' ),
-      'type' => 'query',
-      // Default required for query to populate
-      'default' => [
-        'post_type' => 'post',
-      ],
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    $query_args = $this->settings['exampleQueryArgs'];
-    $posts_query = new WP_Query( $query_args );
-
-    // Standard WordPress loop
-    if ( $posts_query->have_posts() ) :
-      while ( $posts_query->have_posts() ) : $posts_query->the_post();
-        // Render post title and thumbnail
-        the_title( '<h5>', '</h5>' );
-        the_post_thumbnail( 'thumbnail' );
-      endwhile;
-
-      wp_reset_postdata();
-    else :
-     esc_html_e( 'No posts matched your criteria.', 'bricks' );
-    endif;
-  }
-}
-```
-
-### Resources
-
-- [https://codex.wordpress.org/Class_Reference/WP_Query#Parameters](https://codex.wordpress.org/Class_Reference/WP_Query#Parameters)
 
 ---
 
@@ -1254,6 +1204,56 @@ class Prefix_Element_Number extends \Bricks\Element {
   }
 }
 ```
+
+---
+
+# Query Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/query-control/
+
+*Reference for the Bricks Query control, including its options, CSS mapping, and usage in custom elements.*
+
+The query control lets you set query arguments to retrieve items of any post type. Use the returned value to set up a custom `WP_Query` to render the matching posts in any way you want.
+
+```php
+class Prefix_Element_Posts extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleQueryArgs'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Posts', 'bricks' ),
+      'type' => 'query',
+      // Default required for query to populate
+      'default' => [
+        'post_type' => 'post',
+      ],
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    $query_args = $this->settings['exampleQueryArgs'];
+    $posts_query = new WP_Query( $query_args );
+
+    // Standard WordPress loop
+    if ( $posts_query->have_posts() ) :
+      while ( $posts_query->have_posts() ) : $posts_query->the_post();
+        // Render post title and thumbnail
+        the_title( '<h5>', '</h5>' );
+        the_post_thumbnail( 'thumbnail' );
+      endwhile;
+
+      wp_reset_postdata();
+    else :
+     esc_html_e( 'No posts matched your criteria.', 'bricks' );
+    endif;
+  }
+}
+```
+
+### Resources
+
+- [https://codex.wordpress.org/Class_Reference/WP_Query#Parameters](https://codex.wordpress.org/Class_Reference/WP_Query#Parameters)
 
 ---
 
@@ -1507,6 +1507,32 @@ public function set_controls() {
 
 ---
 
+# Text Decoration Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/text-decoration-control/
+
+*Reference for the Bricks Text Decoration control, including its options, CSS mapping, and usage in custom elements.*
+
+Use the **text-decoration** control to allow users to set the text-decoration CSS property like so:
+
+```php
+public function set_controls() {
+  $this->controls['textDecoration'] = [ // Setting key
+    'tab' => 'content',
+    'label' => esc_html__( 'Text decoration', 'bricks' ),
+    'type' => 'text-decoration',
+    'css' => [
+      [
+        'property' => 'text-decoration',
+        'selector' => '.text-wrapper',
+      ],
+    ],
+  ];
+}
+```
+
+---
+
 # Text Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/text-control/
@@ -1549,32 +1575,6 @@ class Prefix_Element_Text extends \Bricks\Element {
 
 - [https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg)
 - [https://css-tricks.com/using-svg/](https://css-tricks.com/using-svg/)
-
----
-
-# Text Decoration Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/text-decoration-control/
-
-*Reference for the Bricks Text Decoration control, including its options, CSS mapping, and usage in custom elements.*
-
-Use the **text-decoration** control to allow users to set the text-decoration CSS property like so:
-
-```php
-public function set_controls() {
-  $this->controls['textDecoration'] = [ // Setting key
-    'tab' => 'content',
-    'label' => esc_html__( 'Text decoration', 'bricks' ),
-    'type' => 'text-decoration',
-    'css' => [
-      [
-        'property' => 'text-decoration',
-        'selector' => '.text-wrapper',
-      ],
-    ],
-  ];
-}
-```
 
 ---
 

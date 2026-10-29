@@ -537,15 +537,15 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Filter - Range Schema
+# Filter - Search Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/filter-range/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/filter-search/
 
-*Schema for Bricks Filter - Range element*
+*Schema for Bricks Filter - Search element*
 
 | Property | Value |
 |---|---|
-| `name` | filter-range |
+| `name` | filter-search |
 | `category` | general |
 | `tag` | div |
 | `nestable` | false |
@@ -557,53 +557,51 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/filter-range/
 | `filterQueryId` | query-list | Target query | — |
 | `filterNiceName` | text | URL parameter | — |
 | `filterApplyOn` | select | Apply on | — |
-| `filterSource` | select | Source | — |
-| `sourceFieldType` | select | Field type | — |
-| `wpPostField` | select | Field | — |
-| `wpUserField` | select | Field | — |
-| `wpTermField` | select | Field | — |
-| `filterTaxonomyOrderBy` | select | Order by | — |
-| `filterTaxonomyOrderMetaKey` | text | Order meta key | — |
-| `filterTaxonomyOrder` | select | filterTaxonomyOrder | — |
-| `filterTermInclude` | select | filterTermInclude | — |
-| `filterTermExclude` | select | filterTermExclude | — |
-| `filterTermTopLevel` | checkbox | Top level terms only | — |
-| `fieldProvider` | select | Provider | — |
-| `customFieldKey` | text | Meta key | — |
 | `filterActivePrefix` | text | Prefix | — |
 | `filterActiveSuffix` | text | Suffix | — |
 | `filterActiveTitle` | text | Title | — |
-| `disableAutoMinMax` | checkbox | Disable auto min/max value | — |
-| `displayMode` | select | Mode | — |
-| `step` | number | step | — |
-| `decimalPlaces` | number | Decimal places | — |
-| `labelThousandSeparator` | checkbox | Thousand separator | — |
-| `labelSeparatorText` | text | Separator | — |
-| `labelMin` | text | Min | — |
-| `labelMax` | text | Max | — |
-| `labelDirection` | direction | Direction | `flex-direction` on `.min-max-wrap > *, .value-wrap > *` |
-| `labelGap` | number | Gap | `gap` on `.value-wrap > span`, `gap` on `.min-max-wrap > div` |
-| `labelTypography` | typography | Typography | `font` on `.label` |
-| `placeholderMin` | text | Placeholder | — |
-| `placeholderMax` | text | Placeholder | — |
-| `inputBackgroundColor` | color | Background color | `background-color` on `.min-max-wrap input` |
-| `inputBorder` | border | Border | `border` on `.min-max-wrap input` |
-| `inputTypography` | typography | Typography | `font` on `.min-max-wrap input` |
-| `inputWidth` | number | Width | `width` on `.min-max-wrap input` |
-| `inputUseCustomStepper` | checkbox | Custom stepper | — |
-| `inputCustomStepperButtonGap` | number | Gap | `gap` on `.min-max-wrap.has-custom-stepper .brx-stepper` |
-| `inputCustomStepperInputGap` | number | Gap | `margin-inline-start` on `.min-max-wrap.has-custom-stepper .brx-stepper` |
-| `inputCustomStepperButtonBackgroundColor` | color | Button | `background-color` on `.min-max-wrap.has-custom-stepper .brx-stepper-button` |
-| `inputCustomStepperButtonBorder` | border | Button | `border` on `.min-max-wrap.has-custom-stepper .brx-stepper-button` |
-| `inputCustomStepperButtonTypography` | typography | Button | `font` on `.min-max-wrap.has-custom-stepper .brx-stepper-button` |
-| `sliderSpacing` | number | Spacing | `padding-top` on `.double-slider-wrap`, `margin-top` on `.double-slider-wrap .value-wrap` |
-| `sliderBarHeight` | number | Bar | `border-width` on `.double-slider-wrap .slider-wrap .slider-base`, `border-width` on `.double-slider-wrap .slider-wrap .slider-track` |
-| `sliderBarColor` | color | Bar | `border-color` on `.double-slider-wrap .slider-wrap .slider-base` |
-| `sliderBarColorActive` | color | Bar | `border-color` on `.double-slider-wrap .slider-wrap .slider-track`, `border-color` on `.double-slider-wrap input[type="range"]::-moz-range-thumb`, `border-color` on `.double-slider-wrap input[type="range"]::-webkit-slider-thumb` |
-| `sliderThumbSize` | number | Thumb | `width` on `.double-slider-wrap input[type="range"]::-moz-range-thumb`, `width` on `.double-slider-wrap input[type="range"]::-webkit-slider-thumb`, `height` on `.double-slider-wrap input[type="range"]::-moz-range-thumb`, `height` on `.double-slider-wrap input[type="range"]::-webkit-slider-thumb`, `border-radius` on `:scope > .double-slider-wrap input[type="range"]::-moz-range-thumb`, `border-radius` on `:scope > .double-slider-wrap input[type="range"]::-webkit-slider-thumb` |
-| `sliderThumbBackgroundColor` | color | Thumb | `background-color` on `.double-slider-wrap input[type="range"]::-moz-range-thumb`, `background-color` on `.double-slider-wrap input[type="range"]::-webkit-slider-thumb` |
-| `sliderThumbBorderFull` | border | Thumb | `border` on `.double-slider-wrap input[type="range"]::-moz-range-thumb`, `border` on `.double-slider-wrap input[type="range"]::-webkit-slider-thumb` |
-| `sliderThumbBoxShadow` | box-shadow | Thumb | `box-shadow` on `.double-slider-wrap input[type="range"]::-moz-range-thumb`, `box-shadow` on `.double-slider-wrap input[type="range"]::-webkit-slider-thumb` |
+| `filterInputDebounce` | number | Debounce | — |
+| `filterMinChars` | number | Min. characters | — |
+| `filterEnterAction` | select | Enter action | — |
+| `filterEnterTriggerSubmit` | checkbox | Trigger Filter Submit interactions | — |
+| `redirectTo` | text | Redirect to | — |
+| `newTab` | checkbox | Open in new tab | — |
+| `searchCriteriaCustom` | checkbox | Custom search criteria | — |
+| `useWeightScore` | checkbox | Use weight score | — |
+| `searchPostFields` | checkbox | Search post fields | — |
+| `searchPostQuery` | repeater | Post fields | — |
+| `searchPostMeta` | checkbox | Search post meta fields | — |
+| `searchPostMetaKeys` | repeater | Post meta keys | — |
+| `searchPostTerms` | checkbox | Search post terms | — |
+| `searchPostTaxonomies` | repeater | Taxonomies | — |
+| `searchTermFields` | checkbox | Search term fields | — |
+| `searchTermQuery` | repeater | Term fields | — |
+| `searchTermMeta` | checkbox | Search term meta fields | — |
+| `searchTermMetaKeys` | repeater | Term meta keys | — |
+| `searchUserFields` | checkbox | Search user fields | — |
+| `searchUserQuery` | repeater | User fields | — |
+| `searchUserMeta` | checkbox | Search user meta fields | — |
+| `searchUserMetaKeys` | repeater | User meta keys | — |
+| `placeholder` | text | Placeholder | — |
+| `placeholderTypography` | typography | Placeholder typography | `font` on `input::placeholder` |
+| `label` | text | Label | — |
+| `labelTypography` | typography | Label typography | `font` on `label` |
+| `icon` | icon | Icon | — |
+| `iconColor` | color | Icon color | `color` on `.icon` |
+| `iconSize` | number | Icon size | `font-size` on `.icon` |
+
+## Bricks 2.4 search submission settings
+
+These query-filter settings are available when Query Filters are enabled. Use the controls above to configure the Enter-key behavior below.
+
+| Key | Type | Values and behavior |
+| --- | --- | --- |
+| `filterEnterAction` | string | `default` for AJAX search, or `redirect` for Redirect to URL. Omitted values use AJAX search. Requires `filterQueryId`. |
+| `filterEnterTriggerSubmit` | boolean | Opt into Filter Submit start/end interactions for an Enter-key AJAX search. Default: `false`. |
+| `redirectTo` | string | Destination URL for `filterEnterAction: "redirect"`. Active filters for the target query become URL parameters. Empty values fall back to AJAX search. |
+| `newTab` | boolean | Open the configured redirect in a new tab. Default: `false`. |
+
+See [Filter Search](https://academy.bricksbuilder.io/builder/elements/filter/filter-search/#search-with-enter) for setup and Enter-key behavior.
 
 ## Inherited CSS controls
 
@@ -679,15 +677,15 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Filter - Search Schema
+# Filter - Range Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/filter-search/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/filter-range/
 
-*Schema for Bricks Filter - Search element*
+*Schema for Bricks Filter - Range element*
 
 | Property | Value |
 |---|---|
-| `name` | filter-search |
+| `name` | filter-range |
 | `category` | general |
 | `tag` | div |
 | `nestable` | false |
@@ -699,51 +697,53 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/filter-search
 | `filterQueryId` | query-list | Target query | — |
 | `filterNiceName` | text | URL parameter | — |
 | `filterApplyOn` | select | Apply on | — |
+| `filterSource` | select | Source | — |
+| `sourceFieldType` | select | Field type | — |
+| `wpPostField` | select | Field | — |
+| `wpUserField` | select | Field | — |
+| `wpTermField` | select | Field | — |
+| `filterTaxonomyOrderBy` | select | Order by | — |
+| `filterTaxonomyOrderMetaKey` | text | Order meta key | — |
+| `filterTaxonomyOrder` | select | filterTaxonomyOrder | — |
+| `filterTermInclude` | select | filterTermInclude | — |
+| `filterTermExclude` | select | filterTermExclude | — |
+| `filterTermTopLevel` | checkbox | Top level terms only | — |
+| `fieldProvider` | select | Provider | — |
+| `customFieldKey` | text | Meta key | — |
 | `filterActivePrefix` | text | Prefix | — |
 | `filterActiveSuffix` | text | Suffix | — |
 | `filterActiveTitle` | text | Title | — |
-| `filterInputDebounce` | number | Debounce | — |
-| `filterMinChars` | number | Min. characters | — |
-| `filterEnterAction` | select | Enter action | — |
-| `filterEnterTriggerSubmit` | checkbox | Trigger Filter Submit interactions | — |
-| `redirectTo` | text | Redirect to | — |
-| `newTab` | checkbox | Open in new tab | — |
-| `searchCriteriaCustom` | checkbox | Custom search criteria | — |
-| `useWeightScore` | checkbox | Use weight score | — |
-| `searchPostFields` | checkbox | Search post fields | — |
-| `searchPostQuery` | repeater | Post fields | — |
-| `searchPostMeta` | checkbox | Search post meta fields | — |
-| `searchPostMetaKeys` | repeater | Post meta keys | — |
-| `searchPostTerms` | checkbox | Search post terms | — |
-| `searchPostTaxonomies` | repeater | Taxonomies | — |
-| `searchTermFields` | checkbox | Search term fields | — |
-| `searchTermQuery` | repeater | Term fields | — |
-| `searchTermMeta` | checkbox | Search term meta fields | — |
-| `searchTermMetaKeys` | repeater | Term meta keys | — |
-| `searchUserFields` | checkbox | Search user fields | — |
-| `searchUserQuery` | repeater | User fields | — |
-| `searchUserMeta` | checkbox | Search user meta fields | — |
-| `searchUserMetaKeys` | repeater | User meta keys | — |
-| `placeholder` | text | Placeholder | — |
-| `placeholderTypography` | typography | Placeholder typography | `font` on `input::placeholder` |
-| `label` | text | Label | — |
-| `labelTypography` | typography | Label typography | `font` on `label` |
-| `icon` | icon | Icon | — |
-| `iconColor` | color | Icon color | `color` on `.icon` |
-| `iconSize` | number | Icon size | `font-size` on `.icon` |
-
-## Bricks 2.4 search submission settings
-
-These query-filter settings are available when Query Filters are enabled. Use the controls above to configure the Enter-key behavior below.
-
-| Key | Type | Values and behavior |
-| --- | --- | --- |
-| `filterEnterAction` | string | `default` for AJAX search, or `redirect` for Redirect to URL. Omitted values use AJAX search. Requires `filterQueryId`. |
-| `filterEnterTriggerSubmit` | boolean | Opt into Filter Submit start/end interactions for an Enter-key AJAX search. Default: `false`. |
-| `redirectTo` | string | Destination URL for `filterEnterAction: "redirect"`. Active filters for the target query become URL parameters. Empty values fall back to AJAX search. |
-| `newTab` | boolean | Open the configured redirect in a new tab. Default: `false`. |
-
-See [Filter Search](https://academy.bricksbuilder.io/builder/elements/filter/filter-search/#search-with-enter) for setup and Enter-key behavior.
+| `disableAutoMinMax` | checkbox | Disable auto min/max value | — |
+| `displayMode` | select | Mode | — |
+| `step` | number | step | — |
+| `decimalPlaces` | number | Decimal places | — |
+| `labelThousandSeparator` | checkbox | Thousand separator | — |
+| `labelSeparatorText` | text | Separator | — |
+| `labelMin` | text | Min | — |
+| `labelMax` | text | Max | — |
+| `labelDirection` | direction | Direction | `flex-direction` on `.min-max-wrap > *, .value-wrap > *` |
+| `labelGap` | number | Gap | `gap` on `.value-wrap > span`, `gap` on `.min-max-wrap > div` |
+| `labelTypography` | typography | Typography | `font` on `.label` |
+| `placeholderMin` | text | Placeholder | — |
+| `placeholderMax` | text | Placeholder | — |
+| `inputBackgroundColor` | color | Background color | `background-color` on `.min-max-wrap input` |
+| `inputBorder` | border | Border | `border` on `.min-max-wrap input` |
+| `inputTypography` | typography | Typography | `font` on `.min-max-wrap input` |
+| `inputWidth` | number | Width | `width` on `.min-max-wrap input` |
+| `inputUseCustomStepper` | checkbox | Custom stepper | — |
+| `inputCustomStepperButtonGap` | number | Gap | `gap` on `.min-max-wrap.has-custom-stepper .brx-stepper` |
+| `inputCustomStepperInputGap` | number | Gap | `margin-inline-start` on `.min-max-wrap.has-custom-stepper .brx-stepper` |
+| `inputCustomStepperButtonBackgroundColor` | color | Button | `background-color` on `.min-max-wrap.has-custom-stepper .brx-stepper-button` |
+| `inputCustomStepperButtonBorder` | border | Button | `border` on `.min-max-wrap.has-custom-stepper .brx-stepper-button` |
+| `inputCustomStepperButtonTypography` | typography | Button | `font` on `.min-max-wrap.has-custom-stepper .brx-stepper-button` |
+| `sliderSpacing` | number | Spacing | `padding-top` on `.double-slider-wrap`, `margin-top` on `.double-slider-wrap .value-wrap` |
+| `sliderBarHeight` | number | Bar | `border-width` on `.double-slider-wrap .slider-wrap .slider-base`, `border-width` on `.double-slider-wrap .slider-wrap .slider-track` |
+| `sliderBarColor` | color | Bar | `border-color` on `.double-slider-wrap .slider-wrap .slider-base` |
+| `sliderBarColorActive` | color | Bar | `border-color` on `.double-slider-wrap .slider-wrap .slider-track`, `border-color` on `.double-slider-wrap input[type="range"]::-moz-range-thumb`, `border-color` on `.double-slider-wrap input[type="range"]::-webkit-slider-thumb` |
+| `sliderThumbSize` | number | Thumb | `width` on `.double-slider-wrap input[type="range"]::-moz-range-thumb`, `width` on `.double-slider-wrap input[type="range"]::-webkit-slider-thumb`, `height` on `.double-slider-wrap input[type="range"]::-moz-range-thumb`, `height` on `.double-slider-wrap input[type="range"]::-webkit-slider-thumb`, `border-radius` on `:scope > .double-slider-wrap input[type="range"]::-moz-range-thumb`, `border-radius` on `:scope > .double-slider-wrap input[type="range"]::-webkit-slider-thumb` |
+| `sliderThumbBackgroundColor` | color | Thumb | `background-color` on `.double-slider-wrap input[type="range"]::-moz-range-thumb`, `background-color` on `.double-slider-wrap input[type="range"]::-webkit-slider-thumb` |
+| `sliderThumbBorderFull` | border | Thumb | `border` on `.double-slider-wrap input[type="range"]::-moz-range-thumb`, `border` on `.double-slider-wrap input[type="range"]::-webkit-slider-thumb` |
+| `sliderThumbBoxShadow` | box-shadow | Thumb | `box-shadow` on `.double-slider-wrap input[type="range"]::-moz-range-thumb`, `box-shadow` on `.double-slider-wrap input[type="range"]::-webkit-slider-thumb` |
 
 ## Inherited CSS controls
 

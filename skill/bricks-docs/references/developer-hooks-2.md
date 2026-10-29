@@ -1,47 +1,26 @@
-# Filter: bricks/frontend/disable_seo
+# Filter: bricks/frontend/disable_opengraph
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-frontend-disable_seo/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-frontend-disable_opengraph/
 
-*Determines whether Bricks should generate and output SEO meta tags (e.g., description, keywords, robots) and modify the document title. Use this to disable.*
+*Determines whether Bricks should generate and output Open Graph meta tags (e.g., og:title, og:image). Use this to disable Bricks' Open Graph implementation if.*
 
-Determines whether Bricks should generate and output SEO meta tags (e.g., description, keywords, robots) and modify the document title. Use this to disable Bricks' built-in SEO features if you are using a dedicated SEO plugin.
+Determines whether Bricks should generate and output Open Graph meta tags (e.g., `og:title`, `og:image`). Use this to disable Bricks' Open Graph implementation if you are using a third-party SEO plugin that already handles this.
 
 ## Parameters
 
-- `$disable` (*bool*): Whether to disable SEO tags.
+- `$disable` (*bool*): Whether to disable Open Graph tags.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/frontend/disable_seo', function( $disable ) {
-    // Example: Always disable Bricks SEO features
-    return true;
+add_filter( 'bricks/frontend/disable_opengraph', function( $disable ) {
+    // Example: Disable Open Graph tags on 'product' post type
+    if ( is_singular( 'product' ) ) {
+        return true;
+    }
+
+    return $disable;
 } );
-```
-
----
-
-# Filter: bricks/frontend/render_loop
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-frontend-render_loop/
-
-*Filters the HTML output of a query loop iteration. This allows you to modify the content of each item rendered within a loop.*
-
-Filters the HTML output of a query loop iteration. This allows you to modify the content of each item rendered within a loop.
-
-## Parameters
-
-- `$output` (*string*): The rendered HTML of the loop item.
-- `$element` (*array*): The element data array.
-- `$container` (*object*): The container element instance managing the loop.
-
-## Example usage
-
-```php
-add_filter( 'bricks/frontend/render_loop', function( $output, $element, $container ) {
-    // Example: Wrap each loop item in a custom div
-    return '<div class="my-custom-loop-wrapper">' . $output . '</div>';
-}, 10, 3 );
 ```
 
 ---
@@ -77,28 +56,24 @@ add_filter( 'bricks/get_remote_templates_data', function( $remote_templates ) {
 
 ---
 
-# Filter: bricks/get_template_authors
+# Filter: bricks/frontend/disable_seo
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_template_authors/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-frontend-disable_seo/
 
-*Filters the list of authors displayed in the Bricks template manager. This allows you to customize which authors are selectable when filtering templates.*
+*Determines whether Bricks should generate and output SEO meta tags (e.g., description, keywords, robots) and modify the document title. Use this to disable.*
 
-Filters the list of authors displayed in the Bricks template manager. This allows you to customize which authors are selectable when filtering templates.
+Determines whether Bricks should generate and output SEO meta tags (e.g., description, keywords, robots) and modify the document title. Use this to disable Bricks' built-in SEO features if you are using a dedicated SEO plugin.
 
 ## Parameters
 
-- `$authors` (*array*): Array of author display names.
+- `$disable` (*bool*): Whether to disable SEO tags.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/get_template_authors', function( $authors ) {
-    // Example: Remove 'admin' from the authors list
-    if ( ( $key = array_search( 'admin', $authors ) ) !== false ) {
-        unset( $authors[ $key ] );
-    }
-
-    return $authors;
+add_filter( 'bricks/frontend/disable_seo', function( $disable ) {
+    // Example: Always disable Bricks SEO features
+    return true;
 } );
 ```
 
@@ -128,6 +103,33 @@ add_filter( 'bricks/get_builder_edit_link', function( $url, $post_id ) {
 
 ---
 
+# Filter: bricks/get_template_authors
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_template_authors/
+
+*Filters the list of authors displayed in the Bricks template manager. This allows you to customize which authors are selectable when filtering templates.*
+
+Filters the list of authors displayed in the Bricks template manager. This allows you to customize which authors are selectable when filtering templates.
+
+## Parameters
+
+- `$authors` (*array*): Array of author display names.
+
+## Example usage
+
+```php
+add_filter( 'bricks/get_template_authors', function( $authors ) {
+    // Example: Remove 'admin' from the authors list
+    if ( ( $key = array_search( 'admin', $authors ) ) !== false ) {
+        unset( $authors[ $key ] );
+    }
+
+    return $authors;
+} );
+```
+
+---
+
 # Filter: bricks/get_template_bundles
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_template_bundles/
@@ -150,6 +152,33 @@ add_filter( 'bricks/get_template_bundles', function( $bundles ) {
     }
 
     return $bundles;
+} );
+```
+
+---
+
+# Filter: bricks/get_template_tags
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_template_tags/
+
+*Filters the list of template tags displayed in the Bricks template manager. Template tags are a custom taxonomy used to organize templates.*
+
+Filters the list of template tags displayed in the Bricks template manager. Template tags are a custom taxonomy used to organize templates.
+
+## Parameters
+
+- `$tags` (*array*): Associative array of template tags, where the key is the term slug and the value is the term name.
+
+## Example usage
+
+```php
+add_filter( 'bricks/get_template_tags', function( $tags ) {
+    // Example: Remove the 'dark' tag from the list
+    if ( isset( $tags['dark'] ) ) {
+        unset( $tags['dark'] );
+    }
+
+    return $tags;
 } );
 ```
 
@@ -183,33 +212,6 @@ add_filter( 'bricks/get_templates/query_vars', function( $query_vars ) {
 
 ---
 
-# Filter: bricks/get_template_tags
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_template_tags/
-
-*Filters the list of template tags displayed in the Bricks template manager. Template tags are a custom taxonomy used to organize templates.*
-
-Filters the list of template tags displayed in the Bricks template manager. Template tags are a custom taxonomy used to organize templates.
-
-## Parameters
-
-- `$tags` (*array*): Associative array of template tags, where the key is the term slug and the value is the term name.
-
-## Example usage
-
-```php
-add_filter( 'bricks/get_template_tags', function( $tags ) {
-    // Example: Remove the 'dark' tag from the list
-    if ( isset( $tags['dark'] ) ) {
-        unset( $tags['dark'] );
-    }
-
-    return $tags;
-} );
-```
-
----
-
 # Filter: bricks/get_templates
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_templates/
@@ -238,6 +240,32 @@ add_filter( 'bricks/get_templates', function( $templates, $custom_args ) {
 
 ---
 
+# Filter: bricks/get_templates_query/cache_key
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_templates_query-cache_key/
+
+*Filters the cache key used by Templates::gettemplatesquery() to store and retrieve template queries. Use this to create unique cache entries when modifying the.*
+
+Filters the cache key used by `Templates::get_templates_query()` to store and retrieve template queries. Use this to create unique cache entries when modifying the template query arguments based on custom context (e.g., user role, language).
+
+## Parameters
+
+- `$cache_key` (*string*): The unique cache key string.
+
+## Example usage
+
+```php
+add_filter( 'bricks/get_templates_query/cache_key', function( $cache_key ) {
+    // Example: Append current user role to cache key
+    $user = wp_get_current_user();
+    $role = ( array ) $user->roles;
+    
+    return $cache_key . '_' . implode( '-', $role );
+} );
+```
+
+---
+
 # Filter: bricks/get_terms_options/enable_limit
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_terms_options-enable_limit/
@@ -261,28 +289,30 @@ add_filter( 'bricks/get_terms_options/enable_limit', function( $enable_limit ) {
 
 ---
 
-# Filter: bricks/get_templates_query/cache_key
+# Filter: bricks/get_the_title
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_templates_query-cache_key/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_the_title/
 
-*Filters the cache key used by Templates::gettemplatesquery() to store and retrieve template queries. Use this to create unique cache entries when modifying the.*
+*Filters the page title returned by Helpers::getthetitle(). This function determines the appropriate title based on the context (single post, archive, search.*
 
-Filters the cache key used by `Templates::get_templates_query()` to store and retrieve template queries. Use this to create unique cache entries when modifying the template query arguments based on custom context (e.g., user role, language).
+Filters the page title returned by `Helpers::get_the_title()`. This function determines the appropriate title based on the context (single post, archive, search results, etc.).
 
 ## Parameters
 
-- `$cache_key` (*string*): The unique cache key string.
+- `$title` (*string*): The generated page title.
+- `$post_id` (*int*): The ID of the current post or template.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/get_templates_query/cache_key', function( $cache_key ) {
-    // Example: Append current user role to cache key
-    $user = wp_get_current_user();
-    $role = ( array ) $user->roles;
-    
-    return $cache_key . '_' . implode( '-', $role );
-} );
+add_filter( 'bricks/get_the_title', function( $title, $post_id ) {
+    // Example: Add a prefix to the title for search results
+    if ( is_search() ) {
+        return 'Searching: ' . $title;
+    }
+
+    return $title;
+}, 10, 2 );
 ```
 
 ---
@@ -331,34 +361,6 @@ add_filter( 'bricks/handle_no_results_children_elements', function( $run ) {
     // Example: Always enable this logic, even if native Query Filters are disabled
     return true;
 } );
-```
-
----
-
-# Filter: bricks/get_the_title
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_the_title/
-
-*Filters the page title returned by Helpers::getthetitle(). This function determines the appropriate title based on the context (single post, archive, search.*
-
-Filters the page title returned by `Helpers::get_the_title()`. This function determines the appropriate title based on the context (single post, archive, search results, etc.).
-
-## Parameters
-
-- `$title` (*string*): The generated page title.
-- `$post_id` (*int*): The ID of the current post or template.
-
-## Example usage
-
-```php
-add_filter( 'bricks/get_the_title', function( $title, $post_id ) {
-    // Example: Add a prefix to the title for search results
-    if ( is_search() ) {
-        return 'Searching: ' . $title;
-    }
-
-    return $title;
-}, 10, 2 );
 ```
 
 ---
@@ -877,59 +879,6 @@ add_filter( 'bricks/query/archive_query_arguments', function( $arguments ) {
 
 ---
 
-# Filter: bricks/query/archive_query_supported_object_types
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-archive_query_supported_object_types/
-
-*Filters the list of Bricks query object types that support the \"Is main query\" setting (archive loop). By default, only 'post' queries are supported.*
-
-Filters the list of Bricks query object types that support the "Is main query" setting (archive loop). By default, only 'post' queries are supported.
-
-## Parameters
-
-- `$object_types` (*array*): Array of supported query object types (e.g., `['post']`).
-
-## Example usage
-
-```php
-add_filter( 'bricks/query/archive_query_supported_object_types', function( $object_types ) {
-    // Example: Enable "Is main query" for user loops (if implementing custom archive logic)
-    $object_types[] = 'user';
-
-    return $object_types;
-} );
-```
-
----
-
-# Filter: bricks/query/fake_result
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-fake_result/
-
-*Filters the results of a \"fake\" query execution. Fake queries are auxiliary queries run by Bricks (e.g., to count total results for filters without pagination).*
-
-Filters the results of a "fake" query execution. Fake queries are auxiliary queries run by Bricks (e.g., to count total results for filters without pagination) that mirror the main query but with modified parameters (like `posts_per_page = -1`).
-
-## Parameters
-
-- `$results` (*array*): The query results (e.g., array of WP_Post objects or IDs).
-- `$query` (*object*): The Bricks Query instance.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query/fake_result', function( $results, $query ) {
-    // Example: Manipulate the results for a specific query ID
-    if ( $query->id === 'my_filtered_loop' ) {
-        // Custom logic to modify results
-    }
-
-    return $results;
-}, 10, 2 );
-```
-
----
-
 # Filter: bricks/query/cache_key
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-cache_key/
@@ -953,6 +902,31 @@ add_filter( 'bricks/query/cache_key', function( $cache_key, $query ) {
 
     return $cache_key;
 }, 10, 2 );
+```
+
+---
+
+# Filter: bricks/query/archive_query_supported_object_types
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-archive_query_supported_object_types/
+
+*Filters the list of Bricks query object types that support the \"Is main query\" setting (archive loop). By default, only 'post' queries are supported.*
+
+Filters the list of Bricks query object types that support the "Is main query" setting (archive loop). By default, only 'post' queries are supported.
+
+## Parameters
+
+- `$object_types` (*array*): Array of supported query object types (e.g., `['post']`).
+
+## Example usage
+
+```php
+add_filter( 'bricks/query/archive_query_supported_object_types', function( $object_types ) {
+    // Example: Enable "Is main query" for user loops (if implementing custom archive logic)
+    $object_types[] = 'user';
+
+    return $object_types;
+} );
 ```
 
 ---
@@ -986,29 +960,29 @@ add_filter( 'bricks/query/force_is_looping', function( $force, $query_id, $eleme
 
 ---
 
-# Filter: bricks/query/prepare_query_vars_from_settings
+# Filter: bricks/query/fake_result
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-prepare_query_vars_from_settings/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-fake_result/
 
-*Filters the element settings before they are converted into query variables. This runs early in the query setup process, allowing you to modify the raw query.*
+*Filters the results of a \"fake\" query execution. Fake queries are auxiliary queries run by Bricks (e.g., to count total results for filters without pagination).*
 
-Filters the element settings before they are converted into query variables. This runs early in the query setup process, allowing you to modify the raw query settings of an element.
+Filters the results of a "fake" query execution. Fake queries are auxiliary queries run by Bricks (e.g., to count total results for filters without pagination) that mirror the main query but with modified parameters (like `posts_per_page = -1`).
 
 ## Parameters
 
-- `$settings` (*array*): The element settings array. The query settings are typically located in `$settings['query']`.
-- `$element_id` (*string*): The ID of the element being queried.
+- `$results` (*array*): The query results (e.g., array of WP_Post objects or IDs).
+- `$query` (*object*): The Bricks Query instance.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/query/prepare_query_vars_from_settings', function( $settings, $element_id ) {
-    // Example: Force a specific post type for a query element with ID 'my_query_element'
-    if ( $element_id === 'my_query_element' ) {
-        $settings['query']['post_type'] = 'my_custom_post_type';
+add_filter( 'bricks/query/fake_result', function( $results, $query ) {
+    // Example: Manipulate the results for a specific query ID
+    if ( $query->id === 'my_filtered_loop' ) {
+        // Custom logic to modify results
     }
 
-    return $settings;
+    return $results;
 }, 10, 2 );
 ```
 
@@ -1033,6 +1007,34 @@ add_filter( 'bricks/query/force_loop_index', function( $index ) {
     // Example: Force loop index to 0
     return 0;
 } );
+```
+
+---
+
+# Filter: bricks/query/prepare_query_vars_from_settings
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-prepare_query_vars_from_settings/
+
+*Filters the element settings before they are converted into query variables. This runs early in the query setup process, allowing you to modify the raw query.*
+
+Filters the element settings before they are converted into query variables. This runs early in the query setup process, allowing you to modify the raw query settings of an element.
+
+## Parameters
+
+- `$settings` (*array*): The element settings array. The query settings are typically located in `$settings['query']`.
+- `$element_id` (*string*): The ID of the element being queried.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query/prepare_query_vars_from_settings', function( $settings, $element_id ) {
+    // Example: Force a specific post type for a query element with ID 'my_query_element'
+    if ( $element_id === 'my_query_element' ) {
+        $settings['query']['post_type'] = 'my_custom_post_type';
+    }
+
+    return $settings;
+}, 10, 2 );
 ```
 
 ---
@@ -1323,6 +1325,36 @@ add_filter( 'bricks/query_filters/custom_field_index_rows', function( $rows, $ob
 
 ---
 
+# Filter: bricks/query_filters/custom_field_meta_query
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-custom_field_meta_query/
+
+*Filters the metaquery generated for a custom field filter in the Query Filters system. This allows you to customize how the filtering logic is applied to the.*
+
+Filters the `meta_query` generated for a custom field filter in the Query Filters system. This allows you to customize how the filtering logic is applied to the main query.
+
+## Parameters
+
+- `$meta_query` (*array*): The generated `meta_query` array (e.g., `['key' => '...', 'value' => '...', 'compare' => '...']`).
+- `$filter` (*array*): The active filter data, including settings and selected values.
+- `$provider` (*string*): The data provider (e.g., `acf`, `metabox`).
+- `$query_id` (*string*): The ID of the query loop being filtered.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_filters/custom_field_meta_query', function( $meta_query, $filter, $provider, $query_id ) {
+    // Example: Change comparison to 'LIKE' for a specific field
+    if ( $filter['settings']['fieldName'] === 'my_text_field' ) {
+        $meta_query['compare'] = 'LIKE';
+    }
+
+    return $meta_query;
+}, 10, 4 );
+```
+
+---
+
 # Filter: bricks/query_filters/datepicker_custom_field_meta_query
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-datepicker_custom_field_meta_query/
@@ -1385,36 +1417,6 @@ add_filter( 'bricks/query_filters/element_data', function( $element_data, $eleme
 
     return $element_data;
 }, 10, 3 );
-```
-
----
-
-# Filter: bricks/query_filters/custom_field_meta_query
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-custom_field_meta_query/
-
-*Filters the metaquery generated for a custom field filter in the Query Filters system. This allows you to customize how the filtering logic is applied to the.*
-
-Filters the `meta_query` generated for a custom field filter in the Query Filters system. This allows you to customize how the filtering logic is applied to the main query.
-
-## Parameters
-
-- `$meta_query` (*array*): The generated `meta_query` array (e.g., `['key' => '...', 'value' => '...', 'compare' => '...']`).
-- `$filter` (*array*): The active filter data, including settings and selected values.
-- `$provider` (*string*): The data provider (e.g., `acf`, `metabox`).
-- `$query_id` (*string*): The ID of the query loop being filtered.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_filters/custom_field_meta_query', function( $meta_query, $filter, $provider, $query_id ) {
-    // Example: Change comparison to 'LIKE' for a specific field
-    if ( $filter['settings']['fieldName'] === 'my_text_field' ) {
-        $meta_query['compare'] = 'LIKE';
-    }
-
-    return $meta_query;
-}, 10, 4 );
 ```
 
 ---
@@ -1578,35 +1580,33 @@ add_filter( 'bricks/query_filters/index_post/my_custom_source', function( $rows,
 
 ---
 
-# Filter: bricks/query_filters/index_post/wcField
+# Filter: bricks/query_filters/index_user/meta_exists
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-index_post-wcfield/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-index_user-meta_exists/
 
-*A specialized hook for indexing WooCommerce product fields (like price, stock status, rating) when a product is saved. This allows the Query Filters index to.*
+*Determines if a custom field (meta key) exists for a specific user during the indexing process. This is used when a third-party provider (like ACF or Meta Box).*
 
-A specialized hook for indexing WooCommerce product fields (like price, stock status, rating) when a product is saved. This allows the Query Filters index to stay updated with WooCommerce product data.
+Determines if a custom field (meta key) exists for a specific user during the indexing process. This is used when a third-party provider (like ACF or Meta Box) is selected, to avoid indexing empty or non-existent fields for users.
 
 ## Parameters
 
-- `$rows` (*array*): Array of index rows to be inserted.
-- `$post_id` (*int*): The ID of the product (post) being indexed.
-- `$elements` (*array*): Array of filter elements targeting this product.
+- `$exists` (*bool*): Whether the meta key exists. Default is `false`.
+- `$user_id` (*int*): The ID of the user being checked.
+- `$meta_key` (*string*): The meta key of the custom field.
+- `$provider` (*string*): The data provider (e.g., `acf`, `metabox`).
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/query_filters/index_post/wcField', function( $rows, $post_id, $elements ) {
-    // This filter is typically used internally by Bricks to handle WooCommerce fields.
-    // However, you could hook into it to index custom WooCommerce product data.
-    
-    // Example: Index a custom product property
-    $product = wc_get_product( $post_id );
-    if ( $product ) {
-        // ... generate index rows ...
+add_filter( 'bricks/query_filters/index_user/meta_exists', function( $exists, $user_id, $meta_key, $provider ) {
+    // Example: Custom check for a serialized meta field on a user
+    if ( $meta_key === 'user_custom_data' ) {
+        $data = get_user_meta( $user_id, $meta_key, true );
+        return ! empty( $data );
     }
 
-    return $rows;
-}, 10, 3 );
+    return $exists;
+}, 10, 4 );
 ```
 
 ---
@@ -1641,33 +1641,35 @@ add_filter( 'bricks/query_filters/range_custom_field_meta_query', function( $met
 
 ---
 
-# Filter: bricks/query_filters/index_user/meta_exists
+# Filter: bricks/query_filters/index_post/wcField
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-index_user-meta_exists/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-index_post-wcfield/
 
-*Determines if a custom field (meta key) exists for a specific user during the indexing process. This is used when a third-party provider (like ACF or Meta Box).*
+*A specialized hook for indexing WooCommerce product fields (like price, stock status, rating) when a product is saved. This allows the Query Filters index to.*
 
-Determines if a custom field (meta key) exists for a specific user during the indexing process. This is used when a third-party provider (like ACF or Meta Box) is selected, to avoid indexing empty or non-existent fields for users.
+A specialized hook for indexing WooCommerce product fields (like price, stock status, rating) when a product is saved. This allows the Query Filters index to stay updated with WooCommerce product data.
 
 ## Parameters
 
-- `$exists` (*bool*): Whether the meta key exists. Default is `false`.
-- `$user_id` (*int*): The ID of the user being checked.
-- `$meta_key` (*string*): The meta key of the custom field.
-- `$provider` (*string*): The data provider (e.g., `acf`, `metabox`).
+- `$rows` (*array*): Array of index rows to be inserted.
+- `$post_id` (*int*): The ID of the product (post) being indexed.
+- `$elements` (*array*): Array of filter elements targeting this product.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/query_filters/index_user/meta_exists', function( $exists, $user_id, $meta_key, $provider ) {
-    // Example: Custom check for a serialized meta field on a user
-    if ( $meta_key === 'user_custom_data' ) {
-        $data = get_user_meta( $user_id, $meta_key, true );
-        return ! empty( $data );
+add_filter( 'bricks/query_filters/index_post/wcField', function( $rows, $post_id, $elements ) {
+    // This filter is typically used internally by Bricks to handle WooCommerce fields.
+    // However, you could hook into it to index custom WooCommerce product data.
+    
+    // Example: Index a custom product property
+    $product = wc_get_product( $post_id );
+    if ( $product ) {
+        // ... generate index rows ...
     }
 
-    return $exists;
-}, 10, 4 );
+    return $rows;
+}, 10, 3 );
 ```
 
 ---
@@ -1891,31 +1893,6 @@ add_filter( 'bricks/remote_post', function( $args, $url ) {
 
 ---
 
-# Filter: bricks/render_header
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-render_header/
-
-*Filters the rendered HTML of the Bricks header template. This allows you to wrap the header in custom markup or modify its output before it is echoed to the.*
-
-Filters the rendered HTML of the Bricks header template. This allows you to wrap the header in custom markup or modify its output before it is echoed to the page.
-
-## Parameters
-
-- `$header_html` (*string*): The rendered HTML of the header.
-
-## Example usage
-
-```php
-add_filter( 'bricks/render_header', function( $header_html ) {
-    // Example: Add a notification bar before the header
-    $notification = '<div class="notification-bar">Welcome!</div>';
-    
-    return $notification . $header_html;
-} );
-```
-
----
-
 # Filter: bricks/render_footer
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-render_footer/
@@ -1967,25 +1944,26 @@ add_filter( 'bricks/render_with_bricks', function( $render, $post_id ) {
 
 ---
 
-# Filter: bricks/resolve_attachment_id
+# Filter: bricks/render_header
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-resolve_attachment_id/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-render_header/
 
-*Filters an attachment ID before Bricks uses it for frontend output.*
+*Filters the rendered HTML of the Bricks header template. This allows you to wrap the header in custom markup or modify its output before it is echoed to the.*
 
-Filters an attachment ID before Bricks uses it for frontend output. This is useful for multilingual plugins or media integrations that need to resolve translated attachment IDs.
-
-Bricks casts the filtered value with `absint()`. If the filtered value is empty or invalid, Bricks keeps the original attachment ID so image output does not break.
+Filters the rendered HTML of the Bricks header template. This allows you to wrap the header in custom markup or modify its output before it is echoed to the page.
 
 ## Parameters
 
-- `$attachment_id` (int): The attachment post ID Bricks is about to use.
+- `$header_html` (*string*): The rendered HTML of the header.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/resolve_attachment_id', function( $attachment_id ) {
-    return $attachment_id;
+add_filter( 'bricks/render_header', function( $header_html ) {
+    // Example: Add a notification bar before the header
+    $notification = '<div class="notification-bar">Welcome!</div>';
+    
+    return $notification . $header_html;
 } );
 ```
 
@@ -2011,6 +1989,30 @@ add_filter( 'bricks/rtl_languages', function( $languages ) {
     $languages[] = 'abc';
 
     return $languages;
+} );
+```
+
+---
+
+# Filter: bricks/resolve_attachment_id
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-resolve_attachment_id/
+
+*Filters an attachment ID before Bricks uses it for frontend output.*
+
+Filters an attachment ID before Bricks uses it for frontend output. This is useful for multilingual plugins or media integrations that need to resolve translated attachment IDs.
+
+Bricks casts the filtered value with `absint()`. If the filtered value is empty or invalid, Bricks keeps the original attachment ID so image output does not break.
+
+## Parameters
+
+- `$attachment_id` (int): The attachment post ID Bricks is about to use.
+
+## Example usage
+
+```php
+add_filter( 'bricks/resolve_attachment_id', function( $attachment_id ) {
+    return $attachment_id;
 } );
 ```
 
@@ -2069,31 +2071,6 @@ add_filter( 'bricks/support_masonry_element', function( $element_names ) {
 
 ---
 
-# Filter: bricks/svg/allowed_attributes
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-svg-allowed_attributes/
-
-*Filters the list of allowed SVG attributes during sanitization. This is used by the Bricks SVG sanitizer to ensure that uploaded or rendered SVGs do not contain.*
-
-Filters the list of allowed SVG attributes during sanitization. This is used by the Bricks SVG sanitizer to ensure that uploaded or rendered SVGs do not contain malicious attributes.
-
-## Parameters
-
-- `$attributes` (*array*): Array of allowed SVG attributes.
-
-## Example usage
-
-```php
-add_filter( 'bricks/svg/allowed_attributes', function( $attributes ) {
-    // Example: Allow 'data-custom' attribute
-    $attributes[] = 'data-custom';
-
-    return $attributes;
-} );
-```
-
----
-
 # Filter: bricks/svg/allowed_tags
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-svg-allowed_tags/
@@ -2147,26 +2124,26 @@ add_filter( 'bricks/svg/bypass_sanitization', function( $bypass, $file ) {
 
 ---
 
-# Filter: bricks/template_preview/supported_content_types
+# Filter: bricks/svg/allowed_attributes
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-template_preview-supported_content_types/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-svg-allowed_attributes/
 
-*Filters the list of content types available for selection in the \"Populate Content\" (Template Preview) setting. This allows you to add custom preview contexts.*
+*Filters the list of allowed SVG attributes during sanitization. This is used by the Bricks SVG sanitizer to ensure that uploaded or rendered SVGs do not contain.*
 
-Filters the list of content types available for selection in the "Populate Content" (Template Preview) setting. This allows you to add custom preview contexts.
+Filters the list of allowed SVG attributes during sanitization. This is used by the Bricks SVG sanitizer to ensure that uploaded or rendered SVGs do not contain malicious attributes.
 
 ## Parameters
 
-- `$types` (*array*): Associative array where keys are the content type IDs and values are their labels.
+- `$attributes` (*array*): Array of allowed SVG attributes.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/template_preview/supported_content_types', function( $types ) {
-    // Example: Add a custom preview type
-    $types['my_custom_preview'] = esc_html__( 'My Custom Preview', 'my-plugin' );
+add_filter( 'bricks/svg/allowed_attributes', function( $attributes ) {
+    // Example: Allow 'data-custom' attribute
+    $attributes[] = 'data-custom';
 
-    return $types;
+    return $attributes;
 } );
 ```
 
@@ -2192,6 +2169,31 @@ add_filter( 'bricks/theme_style_name', function( $name, $theme_style ) {
     // Example: Prefix theme style file names
     return 'custom-prefix-' . $name;
 }, 10, 2 );
+```
+
+---
+
+# Filter: bricks/template_preview/supported_content_types
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-template_preview-supported_content_types/
+
+*Filters the list of content types available for selection in the \"Populate Content\" (Template Preview) setting. This allows you to add custom preview contexts.*
+
+Filters the list of content types available for selection in the "Populate Content" (Template Preview) setting. This allows you to add custom preview contexts.
+
+## Parameters
+
+- `$types` (*array*): Associative array where keys are the content type IDs and values are their labels.
+
+## Example usage
+
+```php
+add_filter( 'bricks/template_preview/supported_content_types', function( $types ) {
+    // Example: Add a custom preview type
+    $types['my_custom_preview'] = esc_html__( 'My Custom Preview', 'my-plugin' );
+
+    return $types;
+} );
 ```
 
 ---
@@ -2492,6 +2494,30 @@ add_filter( 'bricks/woocommerce/dynamic_fragments/html', function( $html, $targe
 
 ---
 
+# Filter: bricks/woocommerce/predefined_elements/generated_payload
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-generated_payload/
+
+*Filters a generated WooCommerce predefined element payload.*
+
+Filters a generated WooCommerce predefined element payload before Bricks returns it.
+
+## Parameters
+
+- `$response` (array): The generated payload response.
+- `$preset` (string): The preset ID being generated.
+- `$context` (array): Generation context for the preset.
+
+## Example usage
+
+```php
+add_filter( 'bricks/woocommerce/predefined_elements/generated_payload', function( $response, $preset, $context ) {
+    return $response;
+}, 10, 3 );
+```
+
+---
+
 # Filter: bricks/woocommerce/dynamic_fragments/targets
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-dynamic_fragments-targets/
@@ -2532,30 +2558,6 @@ Filters local WooCommerce predefined element presets after Bricks loads JSON pre
 add_filter( 'bricks/woocommerce/predefined_elements/local_presets', function( $presets ) {
     return $presets;
 } );
-```
-
----
-
-# Filter: bricks/woocommerce/predefined_elements/generated_payload
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-generated_payload/
-
-*Filters a generated WooCommerce predefined element payload.*
-
-Filters a generated WooCommerce predefined element payload before Bricks returns it.
-
-## Parameters
-
-- `$response` (array): The generated payload response.
-- `$preset` (string): The preset ID being generated.
-- `$context` (array): Generation context for the preset.
-
-## Example usage
-
-```php
-add_filter( 'bricks/woocommerce/predefined_elements/generated_payload', function( $response, $preset, $context ) {
-    return $response;
-}, 10, 3 );
 ```
 
 ---
@@ -2743,33 +2745,3 @@ Available page-level custom-code keys are:
 - `customScriptsBodyFooter`
 
 After adding the filter, update the source page and send its translation to WPML again. The opted-in code field then appears in the WPML translation job. Review the translated value before publishing, especially when automatic translation is enabled, because a changed quote, variable, selector, or function name can break the code.
-
----
-
-# Filter: bricks_query_max_items_in_builder
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks_query_max_items_in_builder/
-
-*Filters builder query results for custom object types when Bricks applies the builder max-results limit.*
-
-Filters dynamic query results in the builder when Bricks applies the builder query max-results limit.
-
-Bricks handles built-in `post`, `term`, `user`, and supported provider object types internally. This filter runs for custom query object types that Bricks does not know how to trim itself.
-
-## Parameters
-
-- `$result` (mixed): The current query result.
-- `$query_instance` (Bricks\Query): The Bricks query instance.
-- `$builder_query_max_results` (int): The maximum number of results Bricks allows in the builder.
-
-## Example usage
-
-```php
-add_filter( 'bricks_query_max_items_in_builder', function( $result, $query_instance, $builder_query_max_results ) {
-    if ( is_array( $result ) ) {
-        return array_slice( $result, 0, $builder_query_max_results );
-    }
-
-    return $result;
-}, 10, 3 );
-```

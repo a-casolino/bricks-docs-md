@@ -26,7 +26,7 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Single Product (WooCommerce) → `integrations-woocommerce-1.md`: Build WooCommerce single product templates in Bricks and customize the main product layout, data, and related elements.
 - Woo Setup Wizard → `integrations-woocommerce-1.md`: Create or repair Bricks WooCommerce shop, product, cart, checkout, and account layouts with guided setup checks and presets.
 - WooCommerce Account Builder → `integrations-woocommerce-1.md`: Customize WooCommerce account-area screens in Bricks with the classic Account builder templates or the Account Page v2 advanced modular workflow.
-- WooCommerce Template Hooks → `integrations-woocommerce-2.md`: Use WooCommerce template hooks in Bricks to preserve third-party plugin output and place additional content in key storefront locations.
 - WooCommerce Builder → `integrations-woocommerce-2.md`: Understand how Bricks works with WooCommerce templates, advanced modular elements, and dynamic product data across shop flows.
-- WooCommerce v2 query loops and dynamic tags → `integrations-woocommerce-2.md`: Use the WooCommerce v2 query loops, dynamic data tags, conditions, and interactions added for advanced modular WooCommerce layouts in Bricks 2.4.
 - WooCommerce Notices → `integrations-woocommerce-2.md`: Style WooCommerce notices in Bricks and control how success, error, and info messages appear across storefront flows.
+- WooCommerce Template Hooks → `integrations-woocommerce-2.md`: Use WooCommerce template hooks in Bricks to preserve third-party plugin output and place additional content in key storefront locations.
+- WooCommerce v2 query loops and dynamic tags → `integrations-woocommerce-2.md`: Use the WooCommerce v2 query loops, dynamic data tags, conditions, and interactions added for advanced modular WooCommerce layouts in Bricks 2.4.

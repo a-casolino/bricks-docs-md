@@ -562,6 +562,14 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/direction/
 
 ---
 
+# Editor Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/editor/
+
+*Rich text/HTML content*
+
+---
+
 # File Control Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/controls/file/
@@ -574,14 +582,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/file/
 |---|---|---|
 | `id` | string \| integer | — |
 | `url` | string | — |
-
----
-
-# Editor Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/editor/
-
-*Rich text/HTML content*
 
 ---
 
@@ -813,14 +813,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/svg/
 
 ---
 
-# Text Align Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/text-align/
-
-*Value schema for text-align control type*
-
----
-
 # Text Shadow Control Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/controls/text-shadow/
@@ -848,6 +840,14 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/text/
 Source: https://academy.bricksbuilder.io/developer/schema/controls/textarea/
 
 *Value schema for textarea control type*
+
+---
+
+# Text Align Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/text-align/
+
+*Value schema for text-align control type*
 
 ---
 
@@ -1006,33 +1006,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/global/color-palettes/
 
 ---
 
-# Components Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/global/components/
-
-*Documentation for Components Schema in Bricks Academy.*
-
-## Item properties
-
-| Property | Type | Description |
-|---|---|---|
-| `id` | string | — |
-| `category` | string | — |
-| `desc` | string | — |
-| `elements` | array | — |
-| `properties` | array | — |
-| `propertyGroups` | array | — |
-| `_created` | integer \| string | — |
-| `_user_id` | integer \| string | — |
-| `_version` | string | — |
-| `variants` | array | — |
-| `blockEditor` | integer \| boolean | — |
-| `blockCategory` | string | — |
-| `blockIcon` | object | — |
-| `blockPreviewImage` | object | Image settings |
-
----
-
 # Global Classes Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/global/global-classes/
@@ -1077,6 +1050,33 @@ Source: https://academy.bricksbuilder.io/developer/schema/global/global-variable
 Source: https://academy.bricksbuilder.io/developer/schema/global/pseudo-classes/
 
 *CSS pseudo-classes available in the builder for responsive/state variants. Stored as a WordPress option, user-configurable via Bricks settings.*
+
+---
+
+# Components Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/global/components/
+
+*Documentation for Components Schema in Bricks Academy.*
+
+## Item properties
+
+| Property | Type | Description |
+|---|---|---|
+| `id` | string | — |
+| `category` | string | — |
+| `desc` | string | — |
+| `elements` | array | — |
+| `properties` | array | — |
+| `propertyGroups` | array | — |
+| `_created` | integer \| string | — |
+| `_user_id` | integer \| string | — |
+| `_version` | string | — |
+| `variants` | array | — |
+| `blockEditor` | integer \| boolean | — |
+| `blockCategory` | string | — |
+| `blockIcon` | object | — |
+| `blockPreviewImage` | object | Image settings |
 
 ---
 
@@ -2114,124 +2114,41 @@ Each `contextualSpacingCustomTarget` entry contains a `selector` and the spacing
 
 ---
 
-# Template Settings Schema
+# Accordion (Nestable) Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/settings/template/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/accordion-nested/
 
-*Schema for Bricks template settings controls*
-
-## Controls
-
-| Key | Type | Label |
-|---|---|---|
-| `headerPosition` | select | Header location |
-| `headerSticky` | checkbox | Sticky header |
-| `headerStickyOnScroll` | checkbox | Sticky on scroll |
-| `headerStickyScrollingBackground` | background | Scrolling background |
-| `headerStickyScrollingBoxShadow` | box-shadow | Scrolling box shadow |
-| `headerStickyScrollingColor` | color | Scrolling text color |
-| `headerStickyScrollingColorHover` | color | Scrolling text color |
-| `headerStickySlideUpAfter` | number | Slide up after |
-| `headerStickyTransition` | text | Transition |
-| `headerWidth` | number | Header width |
-| `passwordProtectionBypassLoggedIn` | checkbox | Disable for logged-in users |
-| `passwordProtectionEndDate` | datepicker | End date |
-| `passwordProtectionPassword` | text | Password |
-| `passwordProtectionSchedule` | checkbox | Schedule |
-| `passwordProtectionSource` | select | Password source |
-| `passwordProtectionStartDate` | datepicker | Start date |
-| `popupAjax` | checkbox | Fetch content via AJAX |
-| `popupAjaxLoaderAnimation` | select | Animation |
-| `popupAjaxLoaderColor` | color | Color |
-| `popupAjaxLoaderScale` | number | Scale |
-| `popupAjaxLoaderSelector` | text | CSS selector |
-| `popupAlignItems` | align-items | Align cross axis |
-| `popupBackdropTransition` | text | Transition |
-| `popupBackground` | background | Background |
-| `popupBodyScroll` | checkbox | Scroll |
-| `popupBreakpointMode` | select | popupBreakpointMode |
-| `popupCloseOn` | select | Close on |
-| `popupContentBackground` | background | Background |
-| `popupContentBorder` | border | Border |
-| `popupContentBoxShadow` | box-shadow | Box shadow |
-| `popupContentHeight` | number | Height |
-| `popupContentMaxHeight` | number | Max. height |
-| `popupContentMaxWidth` | number | Max. width |
-| `popupContentMinHeight` | number | Min. height |
-| `popupContentMinWidth` | number | Min. width |
-| `popupContentPadding` | spacing | Padding |
-| `popupContentWidth` | number | Width |
-| `popupDisableAutoFocus` | checkbox | Disable auto focus |
-| `popupDisableAutoFocusOnClose` | checkbox | Disable auto focus on close |
-| `popupDisableBackdrop` | checkbox | Disable backdrop |
-| `popupInfoBoxWidth` | number | Width |
-| `popupIsInfoBox` | checkbox | Info Box |
-| `popupIsWoo` | checkbox | WooCommerce  |
-| `popupJustifyConent` | justify-content | Align main axis |
-| `popupLimitLocalStorage` | number | Across sessions |
-| `popupLimitSessionStorage` | number | Per session |
-| `popupLimitTimeStorage` | number | Show again after .. hours |
-| `popupLimitWindow` | number | Per page load |
-| `popupPadding` | spacing | Padding |
-| `popupScrollToTop` | checkbox | Scroll to top |
-| `popupShowAt` | select | popupShowAt |
-| `popupShowOn` | select | popupShowOn |
-| `popupZindex` | number | Z-index |
-| `templateConditions` | repeater | Archive type |
-| `templatePreviewAuthor` | select | Author |
-| `templatePreviewPostId` | select | Single |
-| `templatePreviewPostType` | select | Post type |
-| `templatePreviewSearchTerm` | text | Search term |
-| `templatePreviewTerm` | select | Term |
-| `templatePreviewType` | select | Content type |
-| `template_interactions` | repeater | Interactions |
-
----
-
-# Accordion Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/accordion/
-
-*Schema for Bricks Accordion element*
+*Schema for Bricks Accordion (Nestable) element*
 
 | Property | Value |
 |---|---|
-| `name` | accordion |
+| `name` | accordion-nested |
 | `category` | general |
 | `tag` | div |
-| `nestable` | false |
+| `nestable` | true |
 
 ## Controls
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `accordions` | repeater | Title | — |
 | `expandItem` | text | Expand item indexes | — |
 | `independentToggle` | checkbox | Independent toggle | — |
 | `transition` | number | Transition | — |
 | `faqSchema` | checkbox | FAQ schema | — |
-| `titleTag` | select | HTML tag | — |
-| `icon` | icon | Icon | — |
-| `iconTypography` | typography | Icon typography | `font` on `.accordion-title\{pseudo\} .icon` |
-| `iconExpanded` | icon | Icon expanded | — |
-| `iconExpandedTypography` | typography | Icon expanded typography | `font` on `.accordion-title\{pseudo\} .icon.expanded` |
-| `iconPosition` | select | Icon position | — |
-| `iconRotate` | number | Icon rotate in ° | `transform:rotate` on `.brx-open .title + .icon` |
+| `titleHeight` | number | Min. height | `min-height` on `.accordion-title-wrapper` |
 | `titleMargin` | spacing | Margin | `margin` on `.accordion-title-wrapper` |
 | `titlePadding` | spacing | Padding | `padding` on `.accordion-title-wrapper` |
-| `titleTypography` | typography | Title typography | `font` on `.accordion-title\{pseudo\} .title` |
-| `subtitleTypography` | typography | Subtitle typography | `font` on `.accordion-subtitle` |
 | `titleBackgroundColor` | color | Background color | `background-color` on `.accordion-title-wrapper` |
 | `titleBorder` | border | Border | `border` on `.accordion-title-wrapper` |
-| `titleActiveBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.accordion-title-wrapper` |
-| `titleActiveTypography` | typography | Active typography | `font` on `.brx-open .title` |
-| `titleActiveBackgroundColor` | color | Active background | `background-color` on `.brx-open .accordion-title-wrapper` |
-| `titleActiveBorder` | border | Active border | `border` on `.brx-open .accordion-title-wrapper` |
+| `titleTypography` | typography | Typography | `font` on `.accordion-title-wrapper`, `font` on `.accordion-title-wrapper .brxe-heading` |
+| `titleActiveBackgroundColor` | color | Background color | `background-color` on `.brx-open .accordion-title-wrapper` |
+| `titleActiveBorder` | border | Border | `border` on `.brx-open .accordion-title-wrapper` |
+| `titleActiveTypography` | typography | Typography | `font` on `.brx-open .accordion-title-wrapper`, `font` on `.brx-open .accordion-title-wrapper .brxe-heading` |
 | `contentMargin` | spacing | Margin | `margin` on `.accordion-content-wrapper` |
 | `contentPadding` | spacing | Padding | `padding` on `.accordion-content-wrapper` |
-| `contentTypography` | typography | Content typography | `font` on `.accordion-content-wrapper` |
 | `contentBackgroundColor` | color | Background color | `background-color` on `.accordion-content-wrapper` |
 | `contentBorder` | border | Border | `border` on `.accordion-content-wrapper` |
+| `contentTypography` | typography | Typography | `font` on `.accordion-content-wrapper` |
 
 ## Inherited CSS controls
 
@@ -2304,3 +2221,77 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
 | `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
 | `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+
+---
+
+# Template Settings Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/settings/template/
+
+*Schema for Bricks template settings controls*
+
+## Controls
+
+| Key | Type | Label |
+|---|---|---|
+| `headerPosition` | select | Header location |
+| `headerSticky` | checkbox | Sticky header |
+| `headerStickyOnScroll` | checkbox | Sticky on scroll |
+| `headerStickyScrollingBackground` | background | Scrolling background |
+| `headerStickyScrollingBoxShadow` | box-shadow | Scrolling box shadow |
+| `headerStickyScrollingColor` | color | Scrolling text color |
+| `headerStickyScrollingColorHover` | color | Scrolling text color |
+| `headerStickySlideUpAfter` | number | Slide up after |
+| `headerStickyTransition` | text | Transition |
+| `headerWidth` | number | Header width |
+| `passwordProtectionBypassLoggedIn` | checkbox | Disable for logged-in users |
+| `passwordProtectionEndDate` | datepicker | End date |
+| `passwordProtectionPassword` | text | Password |
+| `passwordProtectionSchedule` | checkbox | Schedule |
+| `passwordProtectionSource` | select | Password source |
+| `passwordProtectionStartDate` | datepicker | Start date |
+| `popupAjax` | checkbox | Fetch content via AJAX |
+| `popupAjaxLoaderAnimation` | select | Animation |
+| `popupAjaxLoaderColor` | color | Color |
+| `popupAjaxLoaderScale` | number | Scale |
+| `popupAjaxLoaderSelector` | text | CSS selector |
+| `popupAlignItems` | align-items | Align cross axis |
+| `popupBackdropTransition` | text | Transition |
+| `popupBackground` | background | Background |
+| `popupBodyScroll` | checkbox | Scroll |
+| `popupBreakpointMode` | select | popupBreakpointMode |
+| `popupCloseOn` | select | Close on |
+| `popupContentBackground` | background | Background |
+| `popupContentBorder` | border | Border |
+| `popupContentBoxShadow` | box-shadow | Box shadow |
+| `popupContentHeight` | number | Height |
+| `popupContentMaxHeight` | number | Max. height |
+| `popupContentMaxWidth` | number | Max. width |
+| `popupContentMinHeight` | number | Min. height |
+| `popupContentMinWidth` | number | Min. width |
+| `popupContentPadding` | spacing | Padding |
+| `popupContentWidth` | number | Width |
+| `popupDisableAutoFocus` | checkbox | Disable auto focus |
+| `popupDisableAutoFocusOnClose` | checkbox | Disable auto focus on close |
+| `popupDisableBackdrop` | checkbox | Disable backdrop |
+| `popupInfoBoxWidth` | number | Width |
+| `popupIsInfoBox` | checkbox | Info Box |
+| `popupIsWoo` | checkbox | WooCommerce  |
+| `popupJustifyConent` | justify-content | Align main axis |
+| `popupLimitLocalStorage` | number | Across sessions |
+| `popupLimitSessionStorage` | number | Per session |
+| `popupLimitTimeStorage` | number | Show again after .. hours |
+| `popupLimitWindow` | number | Per page load |
+| `popupPadding` | spacing | Padding |
+| `popupScrollToTop` | checkbox | Scroll to top |
+| `popupShowAt` | select | popupShowAt |
+| `popupShowOn` | select | popupShowOn |
+| `popupZindex` | number | Z-index |
+| `templateConditions` | repeater | Archive type |
+| `templatePreviewAuthor` | select | Author |
+| `templatePreviewPostId` | select | Single |
+| `templatePreviewPostType` | select | Post type |
+| `templatePreviewSearchTerm` | text | Search term |
+| `templatePreviewTerm` | select | Term |
+| `templatePreviewType` | select | Content type |
+| `template_interactions` | repeater | Interactions |

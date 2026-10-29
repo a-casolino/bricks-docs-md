@@ -366,94 +366,6 @@ Bricks features extend the core page-building workflow with reusable systems, in
 
 ---
 
-# Maintenance Mode
-
-Source: https://academy.bricksbuilder.io/builder/features/maintenance-mode/
-
-*Set up maintenance mode in Bricks, choose what visitors see, and control access while you work on the site.*
-
-Bricks 1.9.4 introduces the **Maintenance Mode** feature. A straightforward way to manage your site's availability during updates or construction.
-
-https://youtu.be/df7nzqiv32s
-
-![](https://academy.bricksbuilder.io/assets/bricks-settings-maintenance-mode-2-0.png)
-
-Maintenance Mode runs on the frontend only. It does not replace the WordPress admin, and it does not block the Bricks builder.
-
-## How to enable Maintenance Mode
-
-1. Log in to the WordPress dashboard.
-2. Navigate to Bricks > Settings > Maintenance mode.
-
-Here, you'll find several settings to configure:
-
-- **Mode selection**: Choose `Disabled`, `Maintenance`, or `Coming soon`. "Maintenance" mode (HTTP status code 503) indicates that your site is temporarily unavailable, signaling search engines to come back later. "Coming soon" mode (HTTP status code 200) indicates that your site is available for search engine indexing.
-- **Template** *(optional)*: Assign a custom single template for your maintenance or coming soon mode.
-  - **Render header** *(optional)*: Enable this setting if you want the active Bricks header to render with the maintenance or coming soon template. This is **disabled by default**.
-  - **Render footer** *(optional)*: Enable this setting if you want the active Bricks footer to render with the maintenance or coming soon template. This is **disabled by default**.
-  - **Render popups** *(optional)*: Enable this setting if you want Bricks popups to be rendered on the maintenance or coming soon template. This is **disabled by default**.
-- **Bypass maintenance**: Customize access settings for different user roles.
-- **Exclude posts/pages** *(since 2.0)*: Select specific pages or posts where Maintenance Mode should **not** be applied.
-
-If no template is selected, or the selected template is not published or has no Bricks data, Bricks renders a simple default page with a `Maintenance` or `Coming soon` heading.
-
-## When maintenance mode applies
-
-Maintenance mode is skipped for:
-
-- WordPress admin requests.
-- Bricks builder requests.
-- The Bricks custom login page, if one is configured.
-- Logged-in users who can bypass maintenance.
-- Posts or pages selected under **Exclude posts/pages**.
-
-If none of those bypasses apply, Bricks serves the maintenance response. In **Maintenance** mode, Bricks sends HTTP status `503`. In **Coming soon** mode, Bricks sends HTTP status `200`.
-
-When maintenance mode is active, Bricks also removes the canonical tag and does not output Bricks Open Graph meta tags for the maintenance response.
-
-## Check what visitors see
-
-Because logged-in users bypass maintenance mode by default, the site looks unchanged while you are logged in. Inside the WordPress admin, the admin bar shows a **Mode: Maintenance** (or **Mode: Coming soon**) label while the mode is active. The label links to the **Maintenance mode** settings tab.
-
-To see what visitors get, open the site in a private browser window where you are not logged in.
-
-To switch maintenance mode off, set **Mode** to `Disabled` and save the settings.
-
-## Custom maintenance templates
-
-The selected maintenance template replaces the requested page content while maintenance mode is applied. The normal search, archive, and error templates are disabled for that response.
-
-Header and footer rendering are off by default and must be enabled with **Render header** and **Render footer**. Popups are also off by default and only load when **Render popups** is enabled, or when the current user can bypass maintenance.
-
-For multilingual sites, Bricks resolves the selected maintenance template through WPML or Polylang when those integrations are active.
-
-## Configuring role-based access
-
-In the "Bypass maintenance" setting:
-
-1. Select from the dropdown menu: `Logged-in users` allows all logged-in users to bypass maintenance mode; `Logged-in users with role` provides a more granular control.
-2. If `Logged-in users with role` is selected, checkboxes will appear to enable or disable maintenance mode bypass for specific roles such as Editor, Author, Contributor, etc.
-
-Administrators can bypass maintenance by default. If no custom role selection is enabled, logged-in users can bypass maintenance mode.
-
-## Individual user access settings
-
-To configure access on an individual user level:
-
-1. From the WordPress dashboard, go to "Users".
-2. Click to edit a specific user's profile.
-3. In the user profile, find and adjust the "Bypass Maintenance" setting.
-
-The individual user setting can explicitly enable or disable maintenance bypass for that user. This takes precedence over the role-based setting and over the default administrator/logged-in behavior.
-
-<span id="filters"></span>
-
-**Filters:**
-
-- [/developer/hooks/filters/filter-bricks-maintenance-should_apply/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-maintenance-should_apply/)
-
----
-
 # Interactions
 
 Source: https://academy.bricksbuilder.io/builder/features/interactions/
@@ -1095,6 +1007,94 @@ Then add interactions:
 
 ---
 
+# Maintenance Mode
+
+Source: https://academy.bricksbuilder.io/builder/features/maintenance-mode/
+
+*Set up maintenance mode in Bricks, choose what visitors see, and control access while you work on the site.*
+
+Bricks 1.9.4 introduces the **Maintenance Mode** feature. A straightforward way to manage your site's availability during updates or construction.
+
+https://youtu.be/df7nzqiv32s
+
+![](https://academy.bricksbuilder.io/assets/bricks-settings-maintenance-mode-2-0.png)
+
+Maintenance Mode runs on the frontend only. It does not replace the WordPress admin, and it does not block the Bricks builder.
+
+## How to enable Maintenance Mode
+
+1. Log in to the WordPress dashboard.
+2. Navigate to Bricks > Settings > Maintenance mode.
+
+Here, you'll find several settings to configure:
+
+- **Mode selection**: Choose `Disabled`, `Maintenance`, or `Coming soon`. "Maintenance" mode (HTTP status code 503) indicates that your site is temporarily unavailable, signaling search engines to come back later. "Coming soon" mode (HTTP status code 200) indicates that your site is available for search engine indexing.
+- **Template** *(optional)*: Assign a custom single template for your maintenance or coming soon mode.
+  - **Render header** *(optional)*: Enable this setting if you want the active Bricks header to render with the maintenance or coming soon template. This is **disabled by default**.
+  - **Render footer** *(optional)*: Enable this setting if you want the active Bricks footer to render with the maintenance or coming soon template. This is **disabled by default**.
+  - **Render popups** *(optional)*: Enable this setting if you want Bricks popups to be rendered on the maintenance or coming soon template. This is **disabled by default**.
+- **Bypass maintenance**: Customize access settings for different user roles.
+- **Exclude posts/pages** *(since 2.0)*: Select specific pages or posts where Maintenance Mode should **not** be applied.
+
+If no template is selected, or the selected template is not published or has no Bricks data, Bricks renders a simple default page with a `Maintenance` or `Coming soon` heading.
+
+## When maintenance mode applies
+
+Maintenance mode is skipped for:
+
+- WordPress admin requests.
+- Bricks builder requests.
+- The Bricks custom login page, if one is configured.
+- Logged-in users who can bypass maintenance.
+- Posts or pages selected under **Exclude posts/pages**.
+
+If none of those bypasses apply, Bricks serves the maintenance response. In **Maintenance** mode, Bricks sends HTTP status `503`. In **Coming soon** mode, Bricks sends HTTP status `200`.
+
+When maintenance mode is active, Bricks also removes the canonical tag and does not output Bricks Open Graph meta tags for the maintenance response.
+
+## Check what visitors see
+
+Because logged-in users bypass maintenance mode by default, the site looks unchanged while you are logged in. Inside the WordPress admin, the admin bar shows a **Mode: Maintenance** (or **Mode: Coming soon**) label while the mode is active. The label links to the **Maintenance mode** settings tab.
+
+To see what visitors get, open the site in a private browser window where you are not logged in.
+
+To switch maintenance mode off, set **Mode** to `Disabled` and save the settings.
+
+## Custom maintenance templates
+
+The selected maintenance template replaces the requested page content while maintenance mode is applied. The normal search, archive, and error templates are disabled for that response.
+
+Header and footer rendering are off by default and must be enabled with **Render header** and **Render footer**. Popups are also off by default and only load when **Render popups** is enabled, or when the current user can bypass maintenance.
+
+For multilingual sites, Bricks resolves the selected maintenance template through WPML or Polylang when those integrations are active.
+
+## Configuring role-based access
+
+In the "Bypass maintenance" setting:
+
+1. Select from the dropdown menu: `Logged-in users` allows all logged-in users to bypass maintenance mode; `Logged-in users with role` provides a more granular control.
+2. If `Logged-in users with role` is selected, checkboxes will appear to enable or disable maintenance mode bypass for specific roles such as Editor, Author, Contributor, etc.
+
+Administrators can bypass maintenance by default. If no custom role selection is enabled, logged-in users can bypass maintenance mode.
+
+## Individual user access settings
+
+To configure access on an individual user level:
+
+1. From the WordPress dashboard, go to "Users".
+2. Click to edit a specific user's profile.
+3. In the user profile, find and adjust the "Bypass Maintenance" setting.
+
+The individual user setting can explicitly enable or disable maintenance bypass for that user. This takes precedence over the role-based setting and over the default administrator/logged-in behavior.
+
+<span id="filters"></span>
+
+**Filters:**
+
+- [/developer/hooks/filters/filter-bricks-maintenance-should_apply/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-maintenance-should_apply/)
+
+---
+
 # Media Browser
 
 Source: https://academy.bricksbuilder.io/builder/features/media-browser/
@@ -1169,19 +1169,29 @@ Existing attachments cannot be renamed from this workflow. Changing an existing 
 
 Select **From URL**, then enter one public HTTP or HTTPS file URL per line. Bricks downloads the files into the WordPress Media Library. WordPress upload permissions, allowed file types, and upload-size limits still apply.
 
+### Upload destinations
+
+Open the destination folder before adding files or URLs to the upload queue. Each queued file keeps the folder selected when it was added, even if you browse to another folder before uploading or retry a failed upload.
+
+From Bricks 2.4.4, both local uploads and URL imports support folders from custom media-folder providers as well as HappyFiles.
+
+For custom providers, **No folder assignment** means Bricks has not requested a destination folder. The provider's default upload behavior applies, so the file may still be assigned to a folder. HappyFiles shows **Uncategorized** when no folder is selected.
+
+A provider can also exclude an individual folder from automatic upload assignment, for example a virtual grouping called Collections. Uploads queued there show **No folder assignment** and follow the provider's defaults. This does not prevent uploads into its child folders.
+
 ### Edit uploaded files
 
 After an upload completes, you can edit its title, alternative text, caption, and description. Changes to an individual attachment save after you leave the edited field. Select several completed uploads to apply metadata changes in bulk.
 
-For a completed upload, choose **View in library** to find the attachment even if the current folder or filters would hide it. **Remove from list** only clears the upload workspace entry; the attachment stays in the Media Library. When a HappyFiles folder assignment cannot be confirmed, use **Retry folder assignment** on that upload instead of uploading the file again.
+For a completed upload, choose **View in library** to find the attachment even if the current folder or filters would hide it. **Remove from list** only clears the upload workspace entry; the attachment stays in the Media Library.
+
+When an intended folder assignment cannot be confirmed, use **Retry folder assignment** on that upload. This retries the assignment on the existing attachment without uploading another copy. From Bricks 2.4.4, this also works with custom media-folder providers.
 
 Completed uploads also offer **Move** when a compatible folder integration is available, plus **Trash** or **Delete permanently** according to the site's Media Trash setting. These actions change the Media Library attachment and require the relevant attachment permissions. A successful Trash or Delete action removes the entry from the upload list.
 
 When Media Health is enabled, images can also be marked **Decorative** during upload. This clears their alternative text and excludes them from the missing-alt check.
 
 If you started the upload from a media control, compatible files can be inserted directly into that control. An uploaded file that does not match the control remains in the Media Library but cannot be inserted into that control.
-
-When uploading while viewing a supported media folder, new files are assigned to that folder.
 
 ![](https://academy.bricksbuilder.io/assets/media-browser-upload-screen.webp)
 
@@ -1331,96 +1341,6 @@ The Media Browser follows WordPress attachment capabilities:
 - Site-wide Media Health auditing requires permission to edit attachments uploaded by other users.
 
 Users can inspect attachments they are allowed to see even when they cannot edit or delete them. Bulk actions are only offered when every selected attachment supports the action.
-
----
-
-# Nestable Slider: Customization via JavaScript
-
-Source: https://academy.bricksbuilder.io/builder/features/nestable-slider-instance/
-
-*Customize individual Nestable Slider instances in Bricks with JavaScript while keeping the main slider reusable.*
-
-Bricks introduced the Nestable Slider in version 1.5, utilizing the [SplideJS](https://splidejs.com/) library.
-
-This article is intended for developers, walking you through how to access and customize the Splide instance.
-
-All initialized Splide instances are stored and can be accessed through `window.bricksData.splideInstances`.
-
-You must first identify the Nestable Slider element's unique ID to retrieve the appropriate instance from the variable. You can find this ID within the builder when editing this element or through your browsers' developer tools.
-
-![](https://academy.bricksbuilder.io/assets/how-to-get-nestable-slider-id.png)
-
-According to the example above, I can access my Splide Instance through `window.bricksData.splideInstances['rrbqsp']`
-
-> **Note**
->
-> If you have assigned a custom CSS ID to the Slider, please note that this ID is not the same as the element ID. In such cases, you should obtain the correct element ID through your browser's developer tools.
-
-## Update Nestable Slider options via JavaScript {#update-slider-options}
-
-Objective: Update `noDrag` option for all Nestable Sliders on the current page.
-
-```php
-<script>
-document.addEventListener('DOMContentLoaded', (event) => {
-  // Define a function to update the no-drag option for all splide instances on the page
-  const updateNoDragOption = () => {
-    for( const splideId in window.bricksData.splideInstances ) {
-      const splideInstance = window.bricksData.splideInstances[splideId]
-      if ( splideInstance ) {
-        // Tell Splide that any elements with .no-drag class is not draggable
-        splideInstance.options = { noDrag : '.no-drag' }
-      }
-    }
-  }
-
-  // Need some delay for Bricks to init the sliders
-  setTimeout(updateNoDragOption, 250)
-})
-</script>
-```
-
-## Custom navigation arrows outside the slider {#custom-arrows}
-
-Objective: Implement custom navigation buttons located outside of the Nestable Slider.
-
-![](https://academy.bricksbuilder.io/assets/slider-structure-example.png)
-
-Please set unique classes for your buttons. We assigned the `my-prev` and `my-next` CSS classes in our example.
-
-![](https://academy.bricksbuilder.io/assets/assign-css-classes-to-custom-slider-buttons.png)
-
-Next, place a Code element and write some simple JavaScript. Remember to turn **ON **the Execute code checkbox. (Arrows for the Slider remained **OFF**)
-
-![](https://academy.bricksbuilder.io/assets/slider-arrows-off.png)
-
-![](https://academy.bricksbuilder.io/assets/code-element-for-custom-navigation.png)
-
-```php
-<script>
-document.addEventListener('DOMContentLoaded', (event) => {
-  // Give some times for Bricks to init the sliders
-  setTimeout(() => {
-    // Please replace rrbqsp to your Slider element ID !!NOT CSS ID!!
-    const mySlider = window.bricksData?.splideInstances['rrbqsp'] || false
-    // Please replace the button classes to suit your scenario
-    const myPrevBtn = document.querySelector('.my-prev')
-    const myNextBtn = document.querySelector('.my-next')
-
-    if (mySlider && myPrevBtn && myNextBtn) {
-      // Add click event handlers for your custom buttons
-      myPrevBtn.addEventListener('click', function () {
-        mySlider.go('-1') // go() function by SplideJS
-      })
-      myNextBtn.addEventListener('click', function () {
-        mySlider.go('+1') // go() function by SplideJS
-      })
-    }
-  }, 250)
-})
-</script>
-
-```
 
 ---
 
@@ -1643,6 +1563,96 @@ As the "Nav items" element serves as the mobile menu wrapper, you can edit it to
 Now that the mobile menu no longer covers the entire screen, you can probably remove the "Toggle (Close: Mobile)" element that Bricks adds by default.
 
 Bonus tip: To prevent the mobile menu from covering your Toggle, which might happen on certain screen sizes & positioning, edit the Toggle element and set it's `z-index` under "Style > Layout > Z-index" to a value of `1001` or more.
+
+---
+
+# Nestable Slider: Customization via JavaScript
+
+Source: https://academy.bricksbuilder.io/builder/features/nestable-slider-instance/
+
+*Customize individual Nestable Slider instances in Bricks with JavaScript while keeping the main slider reusable.*
+
+Bricks introduced the Nestable Slider in version 1.5, utilizing the [SplideJS](https://splidejs.com/) library.
+
+This article is intended for developers, walking you through how to access and customize the Splide instance.
+
+All initialized Splide instances are stored and can be accessed through `window.bricksData.splideInstances`.
+
+You must first identify the Nestable Slider element's unique ID to retrieve the appropriate instance from the variable. You can find this ID within the builder when editing this element or through your browsers' developer tools.
+
+![](https://academy.bricksbuilder.io/assets/how-to-get-nestable-slider-id.png)
+
+According to the example above, I can access my Splide Instance through `window.bricksData.splideInstances['rrbqsp']`
+
+> **Note**
+>
+> If you have assigned a custom CSS ID to the Slider, please note that this ID is not the same as the element ID. In such cases, you should obtain the correct element ID through your browser's developer tools.
+
+## Update Nestable Slider options via JavaScript {#update-slider-options}
+
+Objective: Update `noDrag` option for all Nestable Sliders on the current page.
+
+```php
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  // Define a function to update the no-drag option for all splide instances on the page
+  const updateNoDragOption = () => {
+    for( const splideId in window.bricksData.splideInstances ) {
+      const splideInstance = window.bricksData.splideInstances[splideId]
+      if ( splideInstance ) {
+        // Tell Splide that any elements with .no-drag class is not draggable
+        splideInstance.options = { noDrag : '.no-drag' }
+      }
+    }
+  }
+
+  // Need some delay for Bricks to init the sliders
+  setTimeout(updateNoDragOption, 250)
+})
+</script>
+```
+
+## Custom navigation arrows outside the slider {#custom-arrows}
+
+Objective: Implement custom navigation buttons located outside of the Nestable Slider.
+
+![](https://academy.bricksbuilder.io/assets/slider-structure-example.png)
+
+Please set unique classes for your buttons. We assigned the `my-prev` and `my-next` CSS classes in our example.
+
+![](https://academy.bricksbuilder.io/assets/assign-css-classes-to-custom-slider-buttons.png)
+
+Next, place a Code element and write some simple JavaScript. Remember to turn **ON **the Execute code checkbox. (Arrows for the Slider remained **OFF**)
+
+![](https://academy.bricksbuilder.io/assets/slider-arrows-off.png)
+
+![](https://academy.bricksbuilder.io/assets/code-element-for-custom-navigation.png)
+
+```php
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  // Give some times for Bricks to init the sliders
+  setTimeout(() => {
+    // Please replace rrbqsp to your Slider element ID !!NOT CSS ID!!
+    const mySlider = window.bricksData?.splideInstances['rrbqsp'] || false
+    // Please replace the button classes to suit your scenario
+    const myPrevBtn = document.querySelector('.my-prev')
+    const myNextBtn = document.querySelector('.my-next')
+
+    if (mySlider && myPrevBtn && myNextBtn) {
+      // Add click event handlers for your custom buttons
+      myPrevBtn.addEventListener('click', function () {
+        mySlider.go('-1') // go() function by SplideJS
+      })
+      myNextBtn.addEventListener('click', function () {
+        mySlider.go('+1') // go() function by SplideJS
+      })
+    }
+  }, 250)
+})
+</script>
+
+```
 
 ---
 
