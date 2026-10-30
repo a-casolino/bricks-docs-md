@@ -153,36 +153,6 @@ add_filter( 'bricks/allowed_html_tags', function( $allowed_html_tags ) {
 
 ---
 
-# Filter: bricks_query_max_items_in_builder
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks_query_max_items_in_builder/
-
-*Filters builder query results for custom object types when Bricks applies the builder max-results limit.*
-
-Filters dynamic query results in the builder when Bricks applies the builder query max-results limit.
-
-Bricks handles built-in `post`, `term`, `user`, and supported provider object types internally. This filter runs for custom query object types that Bricks does not know how to trim itself.
-
-## Parameters
-
-- `$result` (mixed): The current query result.
-- `$query_instance` (Bricks\Query): The Bricks query instance.
-- `$builder_query_max_results` (int): The maximum number of results Bricks allows in the builder.
-
-## Example usage
-
-```php
-add_filter( 'bricks_query_max_items_in_builder', function( $result, $query_instance, $builder_query_max_results ) {
-    if ( is_array( $result ) ) {
-        return array_slice( $result, 0, $builder_query_max_results );
-    }
-
-    return $result;
-}, 10, 3 );
-```
-
----
-
 # Filter: bricks/assets/generate_css_from_element
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-generate_css_from_element/
@@ -211,30 +181,29 @@ add_filter( 'bricks/assets/generate_css_from_element', function( $element_names,
 
 ---
 
-# Filter: bricks//assets/load_webfonts
+# Filter: bricks/auth/custom_login_redirect
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-load_webfonts/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_login_redirect/
 
-*Bricks 1.4 introduces the possibility to \"Disable Google Fonts\". Either via the Bricks settings under \"Performance\" or programmatically using the filter as.*
+*This filter allows customization of the redirect page ID for the login page.*
 
-Bricks 1.4 introduces the possibility to "Disable Google Fonts". Either via the Bricks settings under "Performance" or programmatically using the filter as explained below:
+This filter allows customization of the redirect page ID for the login page.
 
-![](https://academy.bricksbuilder.io/assets/bricks-1.4-disable-google-fonts-setting-1024x944.png)
-
-<figcaption>
-
-Bricks > Settings > Performance: Disable Google Fonts
-
-</figcaption>
-
-With the filter `bricks/assets/load_webfonts` you'll be able to prevent Google Fonts to load in the frontend by returning `false`:
+## Example Usage:
 
 ```php
-// Prevent Google Fonts loading
-add_filter( 'bricks/assets/load_webfonts', '__return_false' );
+add_filter( 'bricks/auth/custom_login_redirect', function( $selected_login_page_id ) {
+    return /* New login page ID */;
+});
 ```
 
-If you use this filter to remove the embed of Google Fonts but you still like to use Google Fonts, just head to the [Google Fonts website](https://fonts.google.com/) and download the fonts you need. Then, add them manually to your website, using the [Custom Fonts](https://academy.bricksbuilder.io/builder/styling/custom-fonts/) screen.
+**Parameters:**
+
+- `$selected_login_page_id` (int|false): The ID of the custom login page if set; otherwise, `false`.
+
+**Return:**
+
+- (int|false): The custom page ID for login redirection, or `false` if no custom page is designated.
 
 ---
 
@@ -264,29 +233,30 @@ add_filter( 'bricks/auth/custom_lost_password_redirect', function( $selected_los
 
 ---
 
-# Filter: bricks/auth/custom_login_redirect
+# Filter: bricks//assets/load_webfonts
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_login_redirect/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-load_webfonts/
 
-*This filter allows customization of the redirect page ID for the login page.*
+*Bricks 1.4 introduces the possibility to \"Disable Google Fonts\". Either via the Bricks settings under \"Performance\" or programmatically using the filter as.*
 
-This filter allows customization of the redirect page ID for the login page.
+Bricks 1.4 introduces the possibility to "Disable Google Fonts". Either via the Bricks settings under "Performance" or programmatically using the filter as explained below:
 
-## Example Usage:
+![](https://academy.bricksbuilder.io/assets/bricks-1.4-disable-google-fonts-setting-1024x944.png)
+
+<figcaption>
+
+Bricks > Settings > Performance: Disable Google Fonts
+
+</figcaption>
+
+With the filter `bricks/assets/load_webfonts` you'll be able to prevent Google Fonts to load in the frontend by returning `false`:
 
 ```php
-add_filter( 'bricks/auth/custom_login_redirect', function( $selected_login_page_id ) {
-    return /* New login page ID */;
-});
+// Prevent Google Fonts loading
+add_filter( 'bricks/assets/load_webfonts', '__return_false' );
 ```
 
-**Parameters:**
-
-- `$selected_login_page_id` (int|false): The ID of the custom login page if set; otherwise, `false`.
-
-**Return:**
-
-- (int|false): The custom page ID for login redirection, or `false` if no custom page is designated.
+If you use this filter to remove the embed of Google Fonts but you still like to use Google Fonts, just head to the [Google Fonts website](https://fonts.google.com/) and download the fonts you need. Then, add them manually to your website, using the [Custom Fonts](https://academy.bricksbuilder.io/builder/styling/custom-fonts/) screen.
 
 ---
 
@@ -515,6 +485,25 @@ add_filter( 'bricks/builder/map_styles', function( $map_styles ) {
 
 ---
 
+# Filter: bricks/code/allow_execution
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-allow_execution/
+
+*An alternative to the Disable code execution setting under Bricks > Settings > Builder Access. You can use this PHP filter to disable/enable code execution.*
+
+An alternative to the **Disable code execution** setting under `Bricks > Settings > Builder Access`. You can use this PHP filter to disable/enable code execution programmatically.
+
+![](https://academy.bricksbuilder.io/assets/disallow-code-execution-hook.png)
+
+```php
+add_filter( 'bricks/code/allow_execution', function( $allow ) {
+  // Only allows to return false to disable code execution programmatically
+  return false;
+} );
+```
+
+---
+
 # Filter: bricks/code/disable_execution
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-disable_execution/
@@ -533,25 +522,6 @@ add_filter( 'bricks/code/disable_execution', function( $disable ) {
 ```
 
 Use this filter to enforce stricter security by disabling code execution, regardless of other configurations on your site.
-
----
-
-# Filter: bricks/code/allow_execution
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-allow_execution/
-
-*An alternative to the Disable code execution setting under Bricks > Settings > Builder Access. You can use this PHP filter to disable/enable code execution.*
-
-An alternative to the **Disable code execution** setting under `Bricks > Settings > Builder Access`. You can use this PHP filter to disable/enable code execution programmatically.
-
-![](https://academy.bricksbuilder.io/assets/disallow-code-execution-hook.png)
-
-```php
-add_filter( 'bricks/code/allow_execution', function( $allow ) {
-  // Only allows to return false to disable code execution programmatically
-  return false;
-} );
-```
 
 ---
 
@@ -811,29 +781,6 @@ add_filter( 'bricks/default_page_title', function( $title, $post_id ) {
 
 ---
 
-# Filter: bricks/dynamic_data/exclude_tags
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-exclude_tags/
-
-*Dynamic data tags are strings with a special syntax wrapped by curly brackets. Sometimes this syntax has conflicts with other plugins which cause a specific tag.*
-
-Dynamic data tags are strings with a special syntax wrapped by curly brackets. Sometimes this syntax has conflicts with other plugins which cause a specific tag to be removed by the content.
-
-Since Bricks 1.3.5 it is possible to exclude a list of tags from the Bricks dynamic data logic using the following PHP snippet in your `functions.php` file:
-
-```php
-add_filter( 'bricks/dynamic_data/exclude_tags', function( $tags ) {
-    return [
-        'my_specific_tag',
-        'my_other_specific_tag'
-    ];
-});
-```
-
-Adding this code to your child theme will prevent Bricks from replacing these tags with an empty string.
-
----
-
 # Filter: bricks/dynamic_data/post_terms_links
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-post_terms_links/
@@ -855,6 +802,29 @@ add_filter( 'bricks/dynamic_data/post_terms_links', function( $has_links, $post,
   return $taxonomy !== 'my_custom_tax';
 }, 10, 3);
 ```
+
+---
+
+# Filter: bricks/dynamic_data/exclude_tags
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-exclude_tags/
+
+*Dynamic data tags are strings with a special syntax wrapped by curly brackets. Sometimes this syntax has conflicts with other plugins which cause a specific tag.*
+
+Dynamic data tags are strings with a special syntax wrapped by curly brackets. Sometimes this syntax has conflicts with other plugins which cause a specific tag to be removed by the content.
+
+Since Bricks 1.3.5 it is possible to exclude a list of tags from the Bricks dynamic data logic using the following PHP snippet in your `functions.php` file:
+
+```php
+add_filter( 'bricks/dynamic_data/exclude_tags', function( $tags ) {
+    return [
+        'my_specific_tag',
+        'my_other_specific_tag'
+    ];
+});
+```
+
+Adding this code to your child theme will prevent Bricks from replacing these tags with an empty string.
 
 ---
 
@@ -911,6 +881,37 @@ add_filter( 'bricks/dynamic_data/replace_nonexistent_tags', '__return_true', 10,
 > **Note**
 >
 > Note: Bricks 1.3.5 introduced the possibility to toggle this behavior, but by default Bricks was replacing the tags. Bricks 1.4 changed the default action.
+
+---
+
+# Filter: bricks/element/render_attributes
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-render_attributes/
+
+*Starting with Bricks 1.3.7 you may manipulate the HTML attributes of a given element using the following filter:*
+
+Starting with Bricks 1.3.7 you may manipulate the HTML** **attributes of a given element using the following filter:
+
+```php
+add_filter( 'bricks/element/render_attributes', function( $attributes, $key, $element ) {
+    if ( isset( $element->settings['my_setting'] )
+       && $element->settings['my_setting'] == 'xpto' ) {
+        $attributes[ $key ]['data-xpto'] = 'my data';
+    }
+
+    return $attributes;
+}, 10, 3 );
+```
+
+The filter callback receives 3 arguments:
+
+- `$attributes` - an associative array of the element attributes, grouped by the $key identifier
+- `$key` - the HTML element identifier to render attributes for
+- `$element` - the Bricks element object (since Bricks 1.5)
+
+Since Bricks 1.4, if you need to get access to the `$is_frontend` value (whether the element is rendering in the frontend or in the builder), please use the global function `bricks_is_frontend()`.
+
+Since Bricks 1.5, the `$settings` and `$name` arguments are deprecated. You may use the callback 3rd argument to get those: `$element->settings` and `$element->name`.
 
 ---
 
@@ -1089,37 +1090,6 @@ where `huciku` is the element ID of the Button.
 Note: This will be applied as `brxe-huciku` class in the output in this case, not a ID.
 
 Also, replace `faqs` and `button_text` strings as applicable.
-
----
-
-# Filter: bricks/element/render_attributes
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-render_attributes/
-
-*Starting with Bricks 1.3.7 you may manipulate the HTML attributes of a given element using the following filter:*
-
-Starting with Bricks 1.3.7 you may manipulate the HTML** **attributes of a given element using the following filter:
-
-```php
-add_filter( 'bricks/element/render_attributes', function( $attributes, $key, $element ) {
-    if ( isset( $element->settings['my_setting'] )
-       && $element->settings['my_setting'] == 'xpto' ) {
-        $attributes[ $key ]['data-xpto'] = 'my data';
-    }
-
-    return $attributes;
-}, 10, 3 );
-```
-
-The filter callback receives 3 arguments:
-
-- `$attributes` - an associative array of the element attributes, grouped by the $key identifier
-- `$key` - the HTML element identifier to render attributes for
-- `$element` - the Bricks element object (since Bricks 1.5)
-
-Since Bricks 1.4, if you need to get access to the `$is_frontend` value (whether the element is rendering in the frontend or in the builder), please use the global function `bricks_is_frontend()`.
-
-Since Bricks 1.5, the `$settings` and `$name` arguments are deprecated. You may use the callback 3rd argument to get those: `$element->settings` and `$element->name`.
 
 ---
 
@@ -1642,44 +1612,6 @@ add_filter( 'bricks/link_css_selectors', function( $link_css_selectors ) {
 
 ---
 
-# Filter: bricks/nav_menu/menu
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-nav_menu-menu/
-
-*The bricks/navmenu/menu filter allows you to modify the navigation menu dynamically in Bricks Builder based on your conditions.*
-
-The `bricks/nav_menu/menu` filter allows you to modify the navigation menu dynamically in Bricks Builder based on your conditions.
-
-In the following example, we'll demonstrate how to change the navigation menu if the user is logged in.
-
-This can be useful for displaying different menus to guests and logged-in users without using multiple Nab Menu elements and Bricks conditions.
-
-**Example: **Use "My Account Menu" on the "Nav Menu" element (id: `kybsde`) if the user is logged in.
-
-![](https://academy.bricksbuilder.io/assets/nav_menu-filter.png)
-
-You can retrieve the menu ID via the URL parameter after selecting it.
-
-![](https://academy.bricksbuilder.io/assets/nav_menu-menu-id.png)
-
-```php
-add_filter( 'bricks/nav_menu/menu', function( $menu, $post_id, $element ) {
-  // Only target this nav menu element
-  if( $element['id'] !== 'kdkdge' ) {
-    return $menu;
-  }
-
-  // If logged-in, use the menu ID 4
-  if( is_user_logged_in() ) {
-    $menu = 4;
-  }
-
-  return $menu;
-}, 10, 3 );
-```
-
----
-
 # Filter: bricks/maintenance/should_apply
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-maintenance-should_apply/
@@ -1742,6 +1674,44 @@ add_filter( 'bricks/maintenance/should_apply', function( $apply_maintenance, $mo
 
     return $apply_maintenance;
 }, 10, 2 );
+```
+
+---
+
+# Filter: bricks/nav_menu/menu
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-nav_menu-menu/
+
+*The bricks/navmenu/menu filter allows you to modify the navigation menu dynamically in Bricks Builder based on your conditions.*
+
+The `bricks/nav_menu/menu` filter allows you to modify the navigation menu dynamically in Bricks Builder based on your conditions.
+
+In the following example, we'll demonstrate how to change the navigation menu if the user is logged in.
+
+This can be useful for displaying different menus to guests and logged-in users without using multiple Nab Menu elements and Bricks conditions.
+
+**Example: **Use "My Account Menu" on the "Nav Menu" element (id: `kybsde`) if the user is logged in.
+
+![](https://academy.bricksbuilder.io/assets/nav_menu-filter.png)
+
+You can retrieve the menu ID via the URL parameter after selecting it.
+
+![](https://academy.bricksbuilder.io/assets/nav_menu-menu-id.png)
+
+```php
+add_filter( 'bricks/nav_menu/menu', function( $menu, $post_id, $element ) {
+  // Only target this nav menu element
+  if( $element['id'] !== 'kdkdge' ) {
+    return $menu;
+  }
+
+  // If logged-in, use the menu ID 4
+  if( is_user_logged_in() ) {
+    $menu = 4;
+  }
+
+  return $menu;
+}, 10, 3 );
 ```
 
 ---
@@ -2299,6 +2269,30 @@ add_filter( 'bricks/query/no_results_content', function( $content, $settings, $e
 
 ---
 
+# Filter: bricks/query/result_max_num_pages
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_max_num_pages/
+
+*Filter the maximum number of pages Bricks reports for a query object, including the value used by Pagination.*
+
+This filter allows you to modify the query result maximum number of pages (@since 1.9.1). This value is used for the Pagination element as well.
+
+```php
+add_filter( 'bricks/query/result_max_num_pages', function( $max_num_pages, $query_obj ) {
+  // Return: Element ID is not "lbsijo", nor is it a post query
+  if( $query_obj->element_id !== 'lbsijo' || $query_obj->object_type !== 'post' ) {
+    return $max_num_pages;
+  }
+
+  // Perform your logic here
+  // Use $query_obj->query_result to access the query result
+  $max_num_pages = 3;
+  return $max_num_pages;
+}, 10, 2 );
+```
+
+---
+
 # Filter: bricks/query/result
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result/
@@ -2357,54 +2351,6 @@ For native query limits and offsets, use the [Query Loop controls](https://acade
 
 ---
 
-# Filter: bricks/query/result_count
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_count/
-
-*Filter the result count Bricks reports for a query object before pagination or related UI uses that total.*
-
-This filter allows you to modify the query result count (@since 1.8).
-
-```php
-add_filter( 'bricks/query/result_count', function( $result_count, $query_obj ) {
-  // Return: Element ID is not "lbsijo", nor is it a post query
-  if( $query_obj->element_id !== 'lbsijo' || $query_obj->object_type !== 'post' ) {
-    return $result_count;
-  }
-
-  // Perform your logic here
-  // Use $query_obj->query_result to access the query result
-  $new_count = 123;
-  return $new_count;
-}, 10, 2 );
-```
-
----
-
-# Filter: bricks/query/result_max_num_pages
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_max_num_pages/
-
-*Filter the maximum number of pages Bricks reports for a query object, including the value used by Pagination.*
-
-This filter allows you to modify the query result maximum number of pages (@since 1.9.1). This value is used for the Pagination element as well.
-
-```php
-add_filter( 'bricks/query/result_max_num_pages', function( $max_num_pages, $query_obj ) {
-  // Return: Element ID is not "lbsijo", nor is it a post query
-  if( $query_obj->element_id !== 'lbsijo' || $query_obj->object_type !== 'post' ) {
-    return $max_num_pages;
-  }
-
-  // Perform your logic here
-  // Use $query_obj->query_result to access the query result
-  $max_num_pages = 3;
-  return $max_num_pages;
-}, 10, 2 );
-```
-
----
-
 # Filter: bricks/query/run
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-run/
@@ -2444,6 +2390,30 @@ Related hooks:
 
 ---
 
+# Filter: bricks/related_posts/query_vars
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-related_posts-query_vars/
+
+*Since Bricks 1.3.5 you may manipulate the related posts element query vars before the query is performed like so:*
+
+Since Bricks 1.3.5 you may manipulate the **related posts** element query vars before the query is performed like so:
+
+```php
+add_filter( 'bricks/related_posts/query_vars', function( $query_vars, $settings, $element_id ) {
+    $query_vars['post_type'] = [ 'post', 'project' ];
+
+    return $query_vars;
+}, 10, 3 );
+```
+
+The filter callback receives two arguments:
+
+- `$query_vars` is an associative array used to feed the [WP_Query](https://developer.wordpress.org/reference/classes/wp_query/) class
+- `$settings` is an associative array containing the element settings set in the builder
+- `$element_id` is a string containing the element ID
+
+---
+
 # Filter: bricks/registered_post_types_args
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-registered_post_types_args/
@@ -2467,24 +2437,51 @@ add_filter( 'bricks/registered_post_types_args', function( $args ) {
 
 ---
 
-# Filter: bricks/related_posts/query_vars
+# Filter: bricks/render_query_loop_trail
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-related_posts-query_vars/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-render_query_loop_trail/
 
-*Since Bricks 1.3.5 you may manipulate the related posts element query vars before the query is performed like so:*
+*Control whether Bricks renders the query loop trail node that frontend JavaScript uses to read query settings.*
 
-Since Bricks 1.3.5 you may manipulate the **related posts** element query vars before the query is performed like so:
+The `bricks/render_query_loop_trail` (@since 1.11.1) filter controls the output of the query loop trail node in Bricks. This node is automatically added to each query loop and records the loop's settings, which are then accessed by frontend JavaScript to manage various query-related tasks. Once these settings are read by Bricks, the node is removed from the DOM.
+
+For some third-party plugins, this node may not be needed—especially if they use custom AJAX endpoints to update query results independently of Bricks. Using this filter, you can control whether or not the query loop trail node is rendered.
 
 ```php
-add_filter( 'bricks/related_posts/query_vars', function( $query_vars, $settings, $element_id ) {
-    $query_vars['post_type'] = [ 'post', 'project' ];
+// Return true = render the query loop trail node
+// Return false = skip the query loop trail node
+add_filter( 'bricks/render_query_loop_trail', function( $render, $element, $query ) {
+  // Do not render query loop trail node if my-custom-param parameter exists
+  if ( isset( $_GET['my-custom-param'] ) ) {
+    $render = false;
+  }
 
-    return $query_vars;
+  return $render;
 }, 10, 3 );
 ```
 
-The filter callback receives two arguments:
+In this example, if the `my-custom-param` parameter is detected in the URL, the query loop trail node will not be rendered. This can be useful for third-party plugins with custom AJAX endpoints that handle query configurations independently.
 
-- `$query_vars` is an associative array used to feed the [WP_Query](https://developer.wordpress.org/reference/classes/wp_query/) class
-- `$settings` is an associative array containing the element settings set in the builder
-- `$element_id` is a string containing the element ID
+---
+
+# Filter: bricks/query/result_count
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_count/
+
+*Filter the result count Bricks reports for a query object before pagination or related UI uses that total.*
+
+This filter allows you to modify the query result count (@since 1.8).
+
+```php
+add_filter( 'bricks/query/result_count', function( $result_count, $query_obj ) {
+  // Return: Element ID is not "lbsijo", nor is it a post query
+  if( $query_obj->element_id !== 'lbsijo' || $query_obj->object_type !== 'post' ) {
+    return $result_count;
+  }
+
+  // Perform your logic here
+  // Use $query_obj->query_result to access the query result
+  $new_count = 123;
+  return $new_count;
+}, 10, 2 );
+```

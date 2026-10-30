@@ -1,7 +1,7 @@
 # Bricks Builder Documentation: Getting Started
 
-<!-- content-sha256: 50a99b9fdb5e578e656c35027fcb3145cc6b9df5ead35362e11793d40f960b05 -->
-<!-- content last changed: 2026-10-28 06:58 UTC -->
+<!-- content-sha256: 0e4cb983861d130e2786cd7cd8e42a8209b0e75fcc1f369effb7588eeb6001bf -->
+<!-- content last changed: 2026-10-30 07:09 UTC -->
 
 Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricksbuilder.io/), refreshed daily. Content © Bricks. 13 pages.
 
@@ -13,13 +13,13 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
   - [Building a header template](#getting-started-header-template)
 - [Getting Started](#getting-started)
   - [Installation and setup](#getting-started-installation-setup)
-  - [Interface tour](#getting-started-interface-tour)
   - [Next steps](#getting-started-next-steps)
+  - [Interface tour](#getting-started-interface-tour)
   - [Query loops and dynamic data](#getting-started-query-loops-dynamic-data)
-  - [Responsive basics](#getting-started-responsive-basics)
   - [Settings and defaults](#getting-started-settings-defaults)
-  - [An intro to templates](#getting-started-templates-intro)
+  - [Responsive basics](#getting-started-responsive-basics)
   - [Theme styles](#getting-started-theme-styles)
+  - [An intro to templates](#getting-started-templates-intro)
 
 ---
 
@@ -886,120 +886,6 @@ You now have Bricks installed and licensed.
 
 ---
 
-<a id="getting-started-interface-tour"></a>
-
-# Interface tour
-
-Source: https://academy.bricksbuilder.io/getting-started/interface-tour/
-
-*Tour the Bricks builder interface, learn what each main panel does, and understand the core editing workflow before you start building.*
-
-https://youtu.be/zOaFPlcgSeg
-
-Before you start building, let's get oriented. This quick tour shows you where everything is in the Bricks builder interface.
-
-## Open the builder
-
-Let's create a Home page so you can follow along:
-
-1. In your WordPress dashboard, go to **Pages > Add New**
-2. Give it a title: "Home"
-3. Click **Edit with Bricks**
-
-![](https://academy.bricksbuilder.io/assets/admin-edit-with-bricks-button.png)
-
-The builder opens. This is where you'll build your site.
-
-![](https://academy.bricksbuilder.io/assets/builder-empty-canvas.png)
-
-## The interface
-
-The builder has four main areas: Toolbar (top), Settings Panel (left), Canvas (center), and Structure Panel (right).
-
-A simple mental map:
-
-- **Toolbar** = global tools and actions
-- **Settings Panel** = what you can add or how you style what is selected
-- **Canvas** = what you are currently designing (page or template)
-- **Structure Panel** = the outline of your HTML structure
-
-### Toolbar
-
-The toolbar at the top is always visible. Here's what the main icons do:
-
-![](https://academy.bricksbuilder.io/assets/builder-toolbar-styles-icon.png)
-
-- **Bricks logo** - Open the link configured in Bricks settings (defaults to the WordPress dashboard; you can change this later)
-- **Styles** - Open the Style Manager, where you manage classes, variables, colors, typography scales, and spacing scales (`Cmd/Ctrl + .`)
-- **Pages** - Switch between pages while staying in the builder
-- **Templates** - Open the template library and your saved templates
-- **Manage** - Access builder-related settings and tools
-- **Command palette** - Search for elements and actions (`Cmd/Ctrl + K`)
-- **Elements / Components** - Toggle the elements and components panel
-- **Reload canvas** - Reload the preview if something looks out of sync
-- **Breakpoints and preview size** - Switch between desktop, tablet, and mobile editing and adjust the preview width
-- **Undo / Redo** - Step backward or forward through changes
-- **Structure** - Toggle the Structure Panel on the right
-- **Edit in WordPress** - Jump back to the WordPress editor for this page
-- **View on front end** - Open the current page on the front end in a new tab
-- **Preview mode** - Hide builder overlays so you can see a cleaner preview
-- **Save** - Save your work
-
-### Settings panel (left)
-
-This panel changes based on what you're doing.
-
-**By default**: Shows all available elements you can add (Layout, Basic, Media, WordPress, etc.)
-
-**When element selected**: Shows that element's controls (typography, colors, spacing, etc.)
-
-**When Theme Styles clicked**: Shows global design settings
-
-**When Page settings clicked**: Shows page-specific settings
-
-### Canvas (center)
-
-Your visual workspace. This is where you build your page or template.
-
-- Drag elements from the Settings Panel onto the canvas
-- Click elements to select them
-- Selected elements show a blue outline
-- Changes update in real-time
-- Right-click for quick actions (duplicate, delete, etc.)
-
-**Important**: The canvas shows your design accurately, but always preview on the front end to see the final result.
-
-### Structure panel (right)
-
-Shows the hierarchy of everything on your current page as a nested tree.
-
-```
-Section
-  └─ Container
-      ├─ Heading
-      ├─ Text
-      └─ Button
-```
-
-**Why this is useful:**
-- Click elements here instead of hunting for them on the canvas
-- Drag to reorder elements or change hierarchy
-- See your page structure at a glance
-
-You can toggle it on/off with the tree icon in the toolbar, but most people keep it visible.
-
-## What you've learned
-
-You now know:
-- Where the toolbar, settings panel, canvas, and structure panel are
-- What each area shows
-
-> **Help improve this lesson**
->
-> Bricks Academy is new. If anything in this lesson felt unclear or missing, use the feedback box in the right sidebar and leave us a quick note.
-
----
-
 <a id="getting-started-next-steps"></a>
 
 # Next steps
@@ -1329,6 +1215,120 @@ Now go make something great.
 
 ---
 
+<a id="getting-started-interface-tour"></a>
+
+# Interface tour
+
+Source: https://academy.bricksbuilder.io/getting-started/interface-tour/
+
+*Tour the Bricks builder interface, learn what each main panel does, and understand the core editing workflow before you start building.*
+
+https://youtu.be/zOaFPlcgSeg
+
+Before you start building, let's get oriented. This quick tour shows you where everything is in the Bricks builder interface.
+
+## Open the builder
+
+Let's create a Home page so you can follow along:
+
+1. In your WordPress dashboard, go to **Pages > Add New**
+2. Give it a title: "Home"
+3. Click **Edit with Bricks**
+
+![](https://academy.bricksbuilder.io/assets/admin-edit-with-bricks-button.png)
+
+The builder opens. This is where you'll build your site.
+
+![](https://academy.bricksbuilder.io/assets/builder-empty-canvas.png)
+
+## The interface
+
+The builder has four main areas: Toolbar (top), Settings Panel (left), Canvas (center), and Structure Panel (right).
+
+A simple mental map:
+
+- **Toolbar** = global tools and actions
+- **Settings Panel** = what you can add or how you style what is selected
+- **Canvas** = what you are currently designing (page or template)
+- **Structure Panel** = the outline of your HTML structure
+
+### Toolbar
+
+The toolbar at the top is always visible. Here's what the main icons do:
+
+![](https://academy.bricksbuilder.io/assets/builder-toolbar-styles-icon.png)
+
+- **Bricks logo** - Open the link configured in Bricks settings (defaults to the WordPress dashboard; you can change this later)
+- **Styles** - Open the Style Manager, where you manage classes, variables, colors, typography scales, and spacing scales (`Cmd/Ctrl + .`)
+- **Pages** - Switch between pages while staying in the builder
+- **Templates** - Open the template library and your saved templates
+- **Manage** - Access builder-related settings and tools
+- **Command palette** - Search for elements and actions (`Cmd/Ctrl + K`)
+- **Elements / Components** - Toggle the elements and components panel
+- **Reload canvas** - Reload the preview if something looks out of sync
+- **Breakpoints and preview size** - Switch between desktop, tablet, and mobile editing and adjust the preview width
+- **Undo / Redo** - Step backward or forward through changes
+- **Structure** - Toggle the Structure Panel on the right
+- **Edit in WordPress** - Jump back to the WordPress editor for this page
+- **View on front end** - Open the current page on the front end in a new tab
+- **Preview mode** - Hide builder overlays so you can see a cleaner preview
+- **Save** - Save your work
+
+### Settings panel (left)
+
+This panel changes based on what you're doing.
+
+**By default**: Shows all available elements you can add (Layout, Basic, Media, WordPress, etc.)
+
+**When element selected**: Shows that element's controls (typography, colors, spacing, etc.)
+
+**When Theme Styles clicked**: Shows global design settings
+
+**When Page settings clicked**: Shows page-specific settings
+
+### Canvas (center)
+
+Your visual workspace. This is where you build your page or template.
+
+- Drag elements from the Settings Panel onto the canvas
+- Click elements to select them
+- Selected elements show a blue outline
+- Changes update in real-time
+- Right-click for quick actions (duplicate, delete, etc.)
+
+**Important**: The canvas shows your design accurately, but always preview on the front end to see the final result.
+
+### Structure panel (right)
+
+Shows the hierarchy of everything on your current page as a nested tree.
+
+```
+Section
+  └─ Container
+      ├─ Heading
+      ├─ Text
+      └─ Button
+```
+
+**Why this is useful:**
+- Click elements here instead of hunting for them on the canvas
+- Drag to reorder elements or change hierarchy
+- See your page structure at a glance
+
+You can toggle it on/off with the tree icon in the toolbar, but most people keep it visible.
+
+## What you've learned
+
+You now know:
+- Where the toolbar, settings panel, canvas, and structure panel are
+- What each area shows
+
+> **Help improve this lesson**
+>
+> Bricks Academy is new. If anything in this lesson felt unclear or missing, use the feedback box in the right sidebar and leave us a quick note.
+
+---
+
 <a id="getting-started-query-loops-dynamic-data"></a>
 
 # Query loops and dynamic data
@@ -1452,6 +1452,57 @@ You should now see 3 post cards!
 3. Change **Grid template columns** to `1fr` (stacks cards vertically)
 
 Done! You have a dynamic post grid.
+
+---
+
+<a id="getting-started-settings-defaults"></a>
+
+# Settings and defaults
+
+Source: https://academy.bricksbuilder.io/getting-started/settings-defaults/
+
+*Review the Bricks settings and defaults used in the Academy setup so your builder behavior, styling, and templates match the tutorial flow.*
+
+https://youtu.be/LBOO77mhXI8
+
+Before you start building pages, it helps to know that Bricks has a separate settings screen in the WordPress dashboard: **Bricks > Settings**.
+
+These are your global Bricks settings. They affect how Bricks behaves across the site and are separate from the builder controls you will use while designing pages and templates.
+
+Bricks tries to stay as unopinionated as possible, so there is no single "correct" setup. This preset is completely optional. If you want a simple starting point with sensible defaults for this series, import it and keep moving. If not, you can skip it and come back to the deeper settings later when a specific need comes up.
+
+## Import the preset
+
+1. Download the preset:
+
+- [Download preset (JSON)](https://academy.bricksbuilder.io/downloads/getting-started-bricks-settings.json)
+
+2. In the WordPress dashboard, go to **Bricks > Settings** → **Import Settings**.
+3. Drop the JSON onto the upload area or use **Select file**.
+4. Click **Import Settings**.
+
+This preset enables:
+
+- **Pages** only
+- **Load all matching theme styles**
+- **Query sort / filter / live search**
+- **Custom breakpoints**
+- Template thumbnails
+- Toolbar logo set to **Dashboard**
+- Structure actions
+- Breadcrumbs
+- **HTML & CSS to Bricks** with confirm-on-paste
+- **Global class import manager** on conflicts
+- Hover previews
+- **Disable jQuery migrate**
+- **Disable class chaining**
+- **Preload custom fonts**
+
+## Set it yourself
+
+If you prefer not to import anything, that is totally fine too. The defaults are good enough to continue with the series.
+
+When you start needing something specific, like builder access for editors, performance tweaks, template options, or API keys, you can revisit the full [Bricks Settings](https://academy.bricksbuilder.io/builder/setup/settings/) article.
 
 ---
 
@@ -1591,54 +1642,76 @@ Test widths like 850px (between Tablet 992px and Mobile landscape 768px). If som
 
 ---
 
-<a id="getting-started-settings-defaults"></a>
+<a id="getting-started-theme-styles"></a>
 
-# Settings and defaults
+# Theme styles
 
-Source: https://academy.bricksbuilder.io/getting-started/settings-defaults/
+Source: https://academy.bricksbuilder.io/getting-started/theme-styles/
 
-*Review the Bricks settings and defaults used in the Academy setup so your builder behavior, styling, and templates match the tutorial flow.*
+*Set up Bricks theme styles for colors, typography, spacing, and other global defaults before you continue building pages and templates.*
 
-https://youtu.be/LBOO77mhXI8
+https://youtu.be/QnKjMKMHwEM
 
-Before you start building pages, it helps to know that Bricks has a separate settings screen in the WordPress dashboard: **Bricks > Settings**.
+We just built a hero section, but it needs better spacing. Instead of adding padding manually to every section (slow and inconsistent), let's set a global rule using Theme Styles.
 
-These are your global Bricks settings. They affect how Bricks behaves across the site and are separate from the builder controls you will use while designing pages and templates.
+Theme Styles are your site-wide design system. They control the default look of every element. Under the hood, Bricks writes the CSS for you. Instead of hand-coding `section { padding: 80px 16px; }`, you set it visually once and it applies everywhere.
 
-Bricks tries to stay as unopinionated as possible, so there is no single "correct" setup. This preset is completely optional. If you want a simple starting point with sensible defaults for this series, import it and keep moving. If not, you can skip it and come back to the deeper settings later when a specific need comes up.
+## Create a theme style
 
-## Import the preset
+1. Click the **Styles** icon in the toolbar (or press `Cmd/Ctrl + .`)
+2. Click the **Select: Theme Styles** dropdown and enter a name for the theme style
+3. Click the "Create" icon
 
-1. Download the preset:
+![](https://academy.bricksbuilder.io/assets/style-manager-theme-styles-tab.png)
 
-- [Download preset (JSON)](https://academy.bricksbuilder.io/downloads/getting-started-bricks-settings.json)
+This opens the **Style Manager**. This is the central place in Bricks for managing your design system. You will notice it has several tabs: Theme Styles, Classes, Variables, Colors, Typography, Spacing, Framework, and Settings. We will focus on Theme Styles for now and come back to the others as you need them.
 
-2. In the WordPress dashboard, go to **Bricks > Settings** → **Import Settings**.
-3. Drop the JSON onto the upload area or use **Select file**.
-4. Click **Import Settings**.
+## Set global section spacing
 
-This preset enables:
+We want every section to have consistent padding and spacing.
 
-- **Pages** only
-- **Load all matching theme styles**
-- **Query sort / filter / live search**
-- **Custom breakpoints**
-- Template thumbnails
-- Toolbar logo set to **Dashboard**
-- Structure actions
-- Breadcrumbs
-- **HTML & CSS to Bricks** with confirm-on-paste
-- **Global class import manager** on conflicts
-- Hover previews
-- **Disable jQuery migrate**
-- **Disable class chaining**
-- **Preload custom fonts**
+1. In the Theme Styles panel, go to **Element > Section**
+2. Set **Padding**:
+   - Top: `80`
+   - Bottom: `80`
+   - Left: `16`
+   - Right: `16`
+3. Set **Row gap** to `32`
 
-## Set it yourself
+![](https://academy.bricksbuilder.io/assets/theme-styles-section-padding.png)
 
-If you prefer not to import anything, that is totally fine too. The defaults are good enough to continue with the series.
+**Watch the canvas**: Your hero section immediately updates with the new padding! You didn't touch the section itself; you just changed the global rule.
 
-When you start needing something specific, like builder access for editors, performance tweaks, template options, or API keys, you can revisit the full [Bricks Settings](https://academy.bricksbuilder.io/builder/setup/settings/) article.
+Now, every new section you add will automatically have this perfect spacing.
+
+## Apply to entire website
+
+Right now, this style is only visible in the builder. Let's make it live for the whole site.
+
+1. In Theme Styles, go to **Conditions**
+2. Click **Add Condition**
+3. Select **Entire Website**
+4. Click **Save** in the toolbar
+
+![](https://academy.bricksbuilder.io/assets/theme-styles-conditions.png)
+
+## Why this is powerful
+
+**Scalability**: If you decide later that sections need `100px` padding, you change it *once* in Theme Styles, and your entire site updates.
+
+**Consistency**: You never have to remember "was it 60px or 80px?" Bricks handles it for you.
+
+Think of it this way:
+
+- **Theme Styles** define sensible **defaults** for your whole site.
+- **Global classes** (later in the series) give you reusable patterns you can apply on demand.
+- **One-off element styles** are for rare exceptions.
+
+Most of your design decisions should live in Theme Styles and classes. That is how you keep sites predictable and easy to change.
+
+## Next: templates
+
+Now that our global styles are set, let's look at another powerful global feature: Templates. We'll use them to build a header that appears on every page.
 
 ---
 
@@ -1764,76 +1837,3 @@ You now understand:
 - The template library sources
 
 In the next article, we'll put this into practice by building a header template.
-
----
-
-<a id="getting-started-theme-styles"></a>
-
-# Theme styles
-
-Source: https://academy.bricksbuilder.io/getting-started/theme-styles/
-
-*Set up Bricks theme styles for colors, typography, spacing, and other global defaults before you continue building pages and templates.*
-
-https://youtu.be/QnKjMKMHwEM
-
-We just built a hero section, but it needs better spacing. Instead of adding padding manually to every section (slow and inconsistent), let's set a global rule using Theme Styles.
-
-Theme Styles are your site-wide design system. They control the default look of every element. Under the hood, Bricks writes the CSS for you. Instead of hand-coding `section { padding: 80px 16px; }`, you set it visually once and it applies everywhere.
-
-## Create a theme style
-
-1. Click the **Styles** icon in the toolbar (or press `Cmd/Ctrl + .`)
-2. Click the **Select: Theme Styles** dropdown and enter a name for the theme style
-3. Click the "Create" icon
-
-![](https://academy.bricksbuilder.io/assets/style-manager-theme-styles-tab.png)
-
-This opens the **Style Manager**. This is the central place in Bricks for managing your design system. You will notice it has several tabs: Theme Styles, Classes, Variables, Colors, Typography, Spacing, Framework, and Settings. We will focus on Theme Styles for now and come back to the others as you need them.
-
-## Set global section spacing
-
-We want every section to have consistent padding and spacing.
-
-1. In the Theme Styles panel, go to **Element > Section**
-2. Set **Padding**:
-   - Top: `80`
-   - Bottom: `80`
-   - Left: `16`
-   - Right: `16`
-3. Set **Row gap** to `32`
-
-![](https://academy.bricksbuilder.io/assets/theme-styles-section-padding.png)
-
-**Watch the canvas**: Your hero section immediately updates with the new padding! You didn't touch the section itself; you just changed the global rule.
-
-Now, every new section you add will automatically have this perfect spacing.
-
-## Apply to entire website
-
-Right now, this style is only visible in the builder. Let's make it live for the whole site.
-
-1. In Theme Styles, go to **Conditions**
-2. Click **Add Condition**
-3. Select **Entire Website**
-4. Click **Save** in the toolbar
-
-![](https://academy.bricksbuilder.io/assets/theme-styles-conditions.png)
-
-## Why this is powerful
-
-**Scalability**: If you decide later that sections need `100px` padding, you change it *once* in Theme Styles, and your entire site updates.
-
-**Consistency**: You never have to remember "was it 60px or 80px?" Bricks handles it for you.
-
-Think of it this way:
-
-- **Theme Styles** define sensible **defaults** for your whole site.
-- **Global classes** (later in the series) give you reusable patterns you can apply on demand.
-- **One-off element styles** are for rare exceptions.
-
-Most of your design decisions should live in Theme Styles and classes. That is how you keep sites predictable and easy to change.
-
-## Next: templates
-
-Now that our global styles are set, let's look at another powerful global feature: Templates. We'll use them to build a header that appears on every page.

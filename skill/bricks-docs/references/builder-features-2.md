@@ -252,6 +252,158 @@ Review variable names, duplicate naming conventions, dark-mode values, shade gro
 
 ---
 
+# Creating Your First Template
+
+Source: https://academy.bricksbuilder.io/builder/features/create-template/
+
+*Create your first Bricks template, choose the right template type, and prepare it for conditions and reusable content.*
+
+Templates let you design parts of your site once and let Bricks render them in the right place. A header template can render above your content, a footer template below it, and a single template can replace the main layout for posts, pages, or custom post types.
+
+This article walks through the first three templates most sites need:
+
+- A site header
+- A site footer
+- A single post layout
+
+The same workflow applies to archive, search, error, popup, password protection, WooCommerce product archive, and WooCommerce single product templates. The important decisions are usually the same: choose the right template type, build the layout, set the preview content, decide where the template should render, then publish and test it on the frontend.
+
+Other WooCommerce route templates, such as cart, checkout, thank-you, and account templates, use the same create-build-publish flow, but Bricks renders them automatically on the matching WooCommerce route. Those route templates do not use the normal Conditions or Populate Content controls.
+
+https://youtu.be/bLZDN9UcUyo
+
+## Create a template
+
+You can create templates from the WordPress dashboard or from inside the builder.
+
+From the WordPress dashboard:
+
+1. Go to **Bricks > Templates**.
+2. Click **Add New Template**.
+3. Enter a clear name, such as "Main Header", "Main Footer", or "Single Post".
+4. Select the **Template type** in the sidebar.
+5. Publish the template.
+6. Click **Edit with Bricks**.
+
+From inside the builder:
+
+1. Open the **Templates** popup from the folder icon in the toolbar.
+2. Open **My Templates**.
+3. Click **New template**.
+4. Enter a title and select the template type.
+5. Create the template, then start editing it.
+
+The template type controls how Bricks treats the template. For example, a **Header** template is stored and rendered as the site header area, while a **Single** template is stored and rendered as the main content area for matching pages.
+
+## Create a header template
+
+Use a header template for the site area that appears before the main content. A normal header usually contains a logo, navigation, call-to-action button, search, account links, or similar site-wide elements.
+
+1. Create a new template named "Main Header".
+2. Set **Template type** to **Header**.
+3. Publish it and open it with Bricks.
+4. Build the header layout on the canvas.
+5. Open **Settings > Template Settings > Populate Content**.
+6. Select content that makes sense for previewing the header, such as a page or single post.
+7. Open **Settings > Template Settings > Conditions**.
+8. Add **Entire website** if the header should appear everywhere.
+9. Save the template and test a normal frontend page.
+
+By default, Bricks can use a published header template even if it has no conditions. This default-template behavior is controlled from **Bricks > Settings > Templates & components > Disable default templates**.
+
+If default templates are enabled and you have a published header without conditions, Bricks can use it as the site header. If default templates are disabled, set template conditions explicitly.
+
+## Header settings
+
+Header templates have an additional **Header** settings group under **Settings > Template Settings**.
+
+Use it to control:
+
+- **Header location:** top, left, or right.
+- **Header width:** available for left and right headers.
+- **Sticky header:** available for top headers.
+- **Sticky on scroll:** keeps the header in normal flow on page load, then makes it sticky after scrolling.
+- **Slide up after:** lets a sticky header hide after a scroll distance.
+- **Scrolling styles:** text color, hover color, background, box shadow, and transition while the sticky header is in its scrolling state.
+
+Left and right headers affect the layout beside the content and footer. Top headers are the usual choice for most websites.
+
+## Create a footer template
+
+Use a footer template for the site area that appears after the main content. A normal footer contains copyright text, footer navigation, contact links, social links, newsletter forms, or legal links.
+
+1. Create a new template named "Main Footer".
+2. Set **Template type** to **Footer**.
+3. Publish it and open it with Bricks.
+4. Build the footer layout.
+5. Use **Populate Content** to preview the footer with a real page or post.
+6. Add a condition, usually **Entire website**.
+7. Save and test the frontend.
+
+Like headers, published footer templates can be used by default when no conditions are set, unless default templates are disabled in Bricks settings.
+
+## Create a single post template
+
+Use a **Single** template when you want Bricks to control the layout for posts, pages, or custom post type entries. For a blog post template, the canvas usually contains elements such as Post Title, Featured Image, Post Content, Author, Date, Terms, Comments, and related content.
+
+1. Create a new template named "Single Post".
+2. Set **Template type** to **Single**.
+3. Publish it and open it with Bricks.
+4. Open **Settings > Template Settings > Populate Content**.
+5. Set **Content type** to **Single (Post/Page/CPT)**.
+6. Select a real post to preview.
+7. Build the post layout using dynamic data and post elements.
+8. Open **Settings > Template Settings > Conditions**.
+9. Add **Post type** and select **Posts**.
+10. Save and test several published posts on the frontend.
+
+The preview post only controls what you see while editing the template. The condition controls where the template is used on the frontend.
+
+## Conditions or default templates?
+
+For production sites, set conditions deliberately. Conditions make the template assignment visible and predictable.
+
+Default templates are useful while getting started because Bricks can automatically use published templates of certain types when no conditions are set. This is most common for headers and footers, but Bricks also supports default behavior for archive, search, error, and supported WooCommerce route templates.
+
+Disable default templates when you want every rendered template to be controlled by explicit conditions. You can do this in **Bricks > Settings > Templates & components > Disable default templates**.
+
+## Disable a header or footer on one page
+
+Landing pages and campaign pages often need no global header or footer.
+
+To disable the header or footer for a specific page:
+
+1. Open the page with Bricks.
+2. Open **Settings > Page Settings > General**.
+3. Enable **Disable header** or **Disable footer**.
+4. Save the page.
+
+This page setting applies to the page being rendered. It does not delete or change the template.
+
+## Preview content vs frontend output
+
+Template editing needs a preview context. For example, a single post template needs one post to show dynamic data on the canvas. An archive template needs an archive context. A header or footer may need a page or post behind it so you can judge spacing and overlap.
+
+Preview content does not assign the template to that content. It only changes the canvas context while editing.
+
+Use conditions to control frontend assignment.
+
+## Common mistakes
+
+**The template is published but not visible:** Check whether it has matching conditions. If default templates are disabled, a template without conditions will not be used automatically.
+
+**The wrong template appears:** Look for a more specific matching template. Individual conditions outrank broad conditions such as Entire website. Exclude conditions can also disqualify a template.
+
+**The canvas looks empty or the dynamic data is wrong:** Set **Populate Content** to a real page, post, archive, or search context that matches the template you are building.
+
+**A header or footer is missing on one page:** Check that page's **Page Settings > General** for **Disable header** or **Disable footer**.
+
+**A Single template does not affect posts:** Make sure the template type is **Single**, the template is published, and the condition targets the correct post type or individual entries.
+
+**A Section template does not update inserted copies:** Section templates are reusable library items. They do not sync inserted content between pages. Use Components for linked reusable structures.
+
+---
+
 # Components
 
 Source: https://academy.bricksbuilder.io/builder/features/components/
@@ -658,155 +810,75 @@ These details explain how Bricks stores and renders component instances:
 
 ---
 
-# Creating Your First Template
+# Custom Attributes
 
-Source: https://academy.bricksbuilder.io/builder/features/create-template/
+Source: https://academy.bricksbuilder.io/builder/features/custom-attributes/
 
-*Create your first Bricks template, choose the right template type, and prepare it for conditions and reusable content.*
+*Add custom HTML attributes in Bricks for integrations, JavaScript hooks, accessibility, and advanced frontend behavior.*
 
-Templates let you design parts of your site once and let Bricks render them in the right place. A header template can render above your content, a footer template below it, and a single template can replace the main layout for posts, pages, or custom post types.
+Bricks 1.3 introduces the possibility to add your own custom HTML attributes to any element.
 
-This article walks through the first three templates most sites need:
+You can add custom attributes under "Style > Attributes". Set a "Name" and a "Value" and your attribute(s) will be added to the elements' most relevant node. By default, your attributes are added to the element root node. Besides manually entered values you can populate custom attribute values with dynamic data, too.
 
-- A site header
-- A site footer
-- A single post layout
+In there you'll be able to insert multiple attributes (name and value). Dynamic Data is rendered for attribute values on the frontend.
 
-The same workflow applies to archive, search, error, popup, password protection, WooCommerce product archive, and WooCommerce single product templates. The important decisions are usually the same: choose the right template type, build the layout, set the preview content, decide where the template should render, then publish and test it on the frontend.
+![](https://academy.bricksbuilder.io/assets/feature-custom-attributes.png)
 
-Other WooCommerce route templates, such as cart, checkout, thank-you, and account templates, use the same create-build-publish flow, but Bricks renders them automatically on the matching WooCommerce route. Those route templates do not use the normal Conditions or Populate Content controls.
+<figcaption>
 
-https://youtu.be/bLZDN9UcUyo
+Container: Custom Attributes
 
-## Create a template
+</figcaption>
 
-You can create templates from the WordPress dashboard or from inside the builder.
+Let's say you want to add an ARIA **role** and **label** to a container that contains multiple images that should be [considered as a single image](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Role_Img). You'd add the following two attributes when editing your container:
 
-From the WordPress dashboard:
+- Attribute #1 name: **role**
+- Attribute #1 value: **img**
+- Attribute #2 name: **aria-label**
+- Attribute #2 value: **Description of the overall image**
 
-1. Go to **Bricks > Templates**.
-2. Click **Add New Template**.
-3. Enter a clear name, such as "Main Header", "Main Footer", or "Single Post".
-4. Select the **Template type** in the sidebar.
-5. Publish the template.
-6. Click **Edit with Bricks**.
+This results in the following container HTML:
 
-From inside the builder:
+```html
+<div id="brxe-sfglik" class="brxe-sfglik brxe-container" role="img" aria-label="Description of the overall image">
+... Container elements ...
+</div>
+```
 
-1. Open the **Templates** popup from the folder icon in the toolbar.
-2. Open **My Templates**.
-3. Click **New template**.
-4. Enter a title and select the template type.
-5. Create the template, then start editing it.
+Custom attributes take precedence over default attributes. So if you set a custom **alt** attribute when editing your image, this custom attribute will be used instead of the default image **alt** attribute.
 
-The template type controls how Bricks treats the template. For example, a **Header** template is stored and rendered as the site header area, while a **Single** template is stored and rendered as the main content area for matching pages.
+Elements where custom attributes are added to the following specific HTML tags:
 
-## Create a header template
+| **Bricks Element** | **HTML tag** |
+| --- | --- |
+| Nav Menu | `<nav>` |
+| Heading | `<h1>` or any other heading tag |
+| Text | `<div>` |
+| Button | `<button>` or `<a>` depending if there is a link |
+| Image | `<img>` |
+| Video | `<div>` |
+| Form | `<form>` |
 
-Use a header template for the site area that appears before the main content. A normal header usually contains a logo, navigation, call-to-action button, search, account links, or similar site-wide elements.
+### How To Add Tooltips {#tooltips}
 
-1. Create a new template named "Main Header".
-2. Set **Template type** to **Header**.
-3. Publish it and open it with Bricks.
-4. Build the header layout on the canvas.
-5. Open **Settings > Template Settings > Populate Content**.
-6. Select content that makes sense for previewing the header, such as a page or single post.
-7. Open **Settings > Template Settings > Conditions**.
-8. Add **Entire website** if the header should appear everywhere.
-9. Save the template and test a normal frontend page.
+Bricks comes with built-in (CSS-only) tooltips that you can set via custom attributes.
 
-By default, Bricks can use a published header template even if it has no conditions. This default-template behavior is controlled from **Bricks > Settings > Templates & components > Disable default templates**.
+Make sure to set the attribute "Name" to `data-balloon` and the value to whatever you want your tooltip text to be. You also have to set a second HTML attribute named `data-balloon-pos` and then set the value to whatever you want your tooltip to be positioned like:
 
-If default templates are enabled and you have a published header without conditions, Bricks can use it as the site header. If default templates are disabled, set template conditions explicitly.
+- top | top-right | top-left
+- right
+- bottom | bottom-right | bottom-left
+- left
 
-## Header settings
+For a full list of all available tooltip HTML attributes please visit the official website of the Balloon.css library Bricks uses for its tooltips: [https://kazzkiq.github.io/balloon.css/](https://kazzkiq.github.io/balloon.css/)
 
-Header templates have an additional **Header** settings group under **Settings > Template Settings**.
+> **Note**
+>
+> If you are planning to add tooltips on the Icon element, please wrap the Icon element in a Div element and set the attribute on the Div element. Otherwise, balloon library CSS will overwrite the Icon element's CSS and cause it invisible in the frontend.
 
-Use it to control:
+#### Resources:
 
-- **Header location:** top, left, or right.
-- **Header width:** available for left and right headers.
-- **Sticky header:** available for top headers.
-- **Sticky on scroll:** keeps the header in normal flow on page load, then makes it sticky after scrolling.
-- **Slide up after:** lets a sticky header hide after a scroll distance.
-- **Scrolling styles:** text color, hover color, background, box shadow, and transition while the sticky header is in its scrolling state.
-
-Left and right headers affect the layout beside the content and footer. Top headers are the usual choice for most websites.
-
-## Create a footer template
-
-Use a footer template for the site area that appears after the main content. A normal footer contains copyright text, footer navigation, contact links, social links, newsletter forms, or legal links.
-
-1. Create a new template named "Main Footer".
-2. Set **Template type** to **Footer**.
-3. Publish it and open it with Bricks.
-4. Build the footer layout.
-5. Use **Populate Content** to preview the footer with a real page or post.
-6. Add a condition, usually **Entire website**.
-7. Save and test the frontend.
-
-Like headers, published footer templates can be used by default when no conditions are set, unless default templates are disabled in Bricks settings.
-
-## Create a single post template
-
-Use a **Single** template when you want Bricks to control the layout for posts, pages, or custom post type entries. For a blog post template, the canvas usually contains elements such as Post Title, Featured Image, Post Content, Author, Date, Terms, Comments, and related content.
-
-1. Create a new template named "Single Post".
-2. Set **Template type** to **Single**.
-3. Publish it and open it with Bricks.
-4. Open **Settings > Template Settings > Populate Content**.
-5. Set **Content type** to **Single (Post/Page/CPT)**.
-6. Select a real post to preview.
-7. Build the post layout using dynamic data and post elements.
-8. Open **Settings > Template Settings > Conditions**.
-9. Add **Post type** and select **Posts**.
-10. Save and test several published posts on the frontend.
-
-The preview post only controls what you see while editing the template. The condition controls where the template is used on the frontend.
-
-## Conditions or default templates?
-
-For production sites, set conditions deliberately. Conditions make the template assignment visible and predictable.
-
-Default templates are useful while getting started because Bricks can automatically use published templates of certain types when no conditions are set. This is most common for headers and footers, but Bricks also supports default behavior for archive, search, error, and supported WooCommerce route templates.
-
-Disable default templates when you want every rendered template to be controlled by explicit conditions. You can do this in **Bricks > Settings > Templates & components > Disable default templates**.
-
-## Disable a header or footer on one page
-
-Landing pages and campaign pages often need no global header or footer.
-
-To disable the header or footer for a specific page:
-
-1. Open the page with Bricks.
-2. Open **Settings > Page Settings > General**.
-3. Enable **Disable header** or **Disable footer**.
-4. Save the page.
-
-This page setting applies to the page being rendered. It does not delete or change the template.
-
-## Preview content vs frontend output
-
-Template editing needs a preview context. For example, a single post template needs one post to show dynamic data on the canvas. An archive template needs an archive context. A header or footer may need a page or post behind it so you can judge spacing and overlap.
-
-Preview content does not assign the template to that content. It only changes the canvas context while editing.
-
-Use conditions to control frontend assignment.
-
-## Common mistakes
-
-**The template is published but not visible:** Check whether it has matching conditions. If default templates are disabled, a template without conditions will not be used automatically.
-
-**The wrong template appears:** Look for a more specific matching template. Individual conditions outrank broad conditions such as Entire website. Exclude conditions can also disqualify a template.
-
-**The canvas looks empty or the dynamic data is wrong:** Set **Populate Content** to a real page, post, archive, or search context that matches the template you are building.
-
-**A header or footer is missing on one page:** Check that page's **Page Settings > General** for **Disable header** or **Disable footer**.
-
-**A Single template does not affect posts:** Make sure the template type is **Single**, the template is published, and the condition targets the correct post type or individual entries.
-
-**A Section template does not update inserted copies:** Section templates are reusable library items. They do not sync inserted content between pages. Use Components for linked reusable structures.
+- HTML attribute reference: [https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes)
 
 ---
 
@@ -984,78 +1056,6 @@ Bricks supports many ACF and Meta Box field types out of the box, but every cust
 
 ---
 
-# Custom Attributes
-
-Source: https://academy.bricksbuilder.io/builder/features/custom-attributes/
-
-*Add custom HTML attributes in Bricks for integrations, JavaScript hooks, accessibility, and advanced frontend behavior.*
-
-Bricks 1.3 introduces the possibility to add your own custom HTML attributes to any element.
-
-You can add custom attributes under "Style > Attributes". Set a "Name" and a "Value" and your attribute(s) will be added to the elements' most relevant node. By default, your attributes are added to the element root node. Besides manually entered values you can populate custom attribute values with dynamic data, too.
-
-In there you'll be able to insert multiple attributes (name and value). Dynamic Data is rendered for attribute values on the frontend.
-
-![](https://academy.bricksbuilder.io/assets/feature-custom-attributes.png)
-
-<figcaption>
-
-Container: Custom Attributes
-
-</figcaption>
-
-Let's say you want to add an ARIA **role** and **label** to a container that contains multiple images that should be [considered as a single image](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Role_Img). You'd add the following two attributes when editing your container:
-
-- Attribute #1 name: **role**
-- Attribute #1 value: **img**
-- Attribute #2 name: **aria-label**
-- Attribute #2 value: **Description of the overall image**
-
-This results in the following container HTML:
-
-```html
-<div id="brxe-sfglik" class="brxe-sfglik brxe-container" role="img" aria-label="Description of the overall image">
-... Container elements ...
-</div>
-```
-
-Custom attributes take precedence over default attributes. So if you set a custom **alt** attribute when editing your image, this custom attribute will be used instead of the default image **alt** attribute.
-
-Elements where custom attributes are added to the following specific HTML tags:
-
-| **Bricks Element** | **HTML tag** |
-| --- | --- |
-| Nav Menu | `<nav>` |
-| Heading | `<h1>` or any other heading tag |
-| Text | `<div>` |
-| Button | `<button>` or `<a>` depending if there is a link |
-| Image | `<img>` |
-| Video | `<div>` |
-| Form | `<form>` |
-
-### How To Add Tooltips {#tooltips}
-
-Bricks comes with built-in (CSS-only) tooltips that you can set via custom attributes.
-
-Make sure to set the attribute "Name" to `data-balloon` and the value to whatever you want your tooltip text to be. You also have to set a second HTML attribute named `data-balloon-pos` and then set the value to whatever you want your tooltip to be positioned like:
-
-- top | top-right | top-left
-- right
-- bottom | bottom-right | bottom-left
-- left
-
-For a full list of all available tooltip HTML attributes please visit the official website of the Balloon.css library Bricks uses for its tooltips: [https://kazzkiq.github.io/balloon.css/](https://kazzkiq.github.io/balloon.css/)
-
-> **Note**
->
-> If you are planning to add tooltips on the Icon element, please wrap the Icon element in a Div element and set the attribute on the Div element. Otherwise, balloon library CSS will overwrite the Icon element's CSS and cause it invisible in the frontend.
-
-#### Resources:
-
-- HTML attribute reference: [https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes)
-
----
-
 # Custom Authentication Pages
 
 Source: https://academy.bricksbuilder.io/builder/features/custom-authentication-pages/
@@ -1181,188 +1181,6 @@ Bricks exposes filters for custom redirect logic:
 - `bricks/auth/custom_reset_password_redirect`: Change the selected custom reset password page.
 
 Use these filters when a multilingual, membership, or custom routing setup needs more control than the global page selectors provide.
-
----
-
-# Custom Code
-
-Source: https://academy.bricksbuilder.io/builder/features/custom-code/
-
-*Add custom CSS, JavaScript, and PHP in Bricks, understand where each code type runs, and manage it safely.*
-
-Bricks allows you to add custom code (CSS, JavaScript, HTML, and PHP) to different parts of your website.
-
-https://www.youtube.com/watch?v=oJNm1AFgAGU
-
-## Where custom code can be added
-
-Bricks has several custom-code locations. Choose the smallest location that matches what you need:
-
-- **Global CSS and scripts**: Use this for code that should load across the entire site.
-- **Page-specific CSS and scripts**: Use this for code that should load only on one page or template.
-- **Element-specific CSS**: Use this for CSS tied to one element or global class.
-- **Code element**: Use this when you need to place PHP/HTML, CSS, or JavaScript at a specific point in the page output.
-
-Executable PHP and SVG code are security-sensitive. They only run when code execution is enabled, the current user has code execution capability, and the saved code has a valid code signature.
-
-## Global CSS and JavaScript
-
-You can add global **Custom CSS** and **Custom JavaScript** under **Bricks > Settings > Custom code**.
-
-Global Custom CSS is added at the end of the document `<head>`.
-
-Custom scripts can be added in three document locations:
-
-- **Header scripts**: Added right before the closing `</head>` tag.
-- **Body (header) scripts**: Added right after the opening `<body>` tag.
-- **Body (footer) scripts**: Added right before the closing `</body>` tag.
-
-Wrap JavaScript entered in the global script fields in `<script>` tags. These fields are intended for items such as analytics snippets, third-party embeds, and other site-wide scripts.
-
-## Page-Specific CSS and JavaScript
-
-To apply custom CSS and JavaScript to a specific page or template, edit it with Bricks and open **Settings > Page Settings > Custom Code**. Code entered there is scoped to the page or template you are editing instead of the entire site.
-
-## Element-Specific Custom CSS {#custom-css}
-
-![](https://academy.bricksbuilder.io/assets/bricks-1.9.1-custom-css-root-placeholder-591x1024.png)
-
-Extend the styles of any element and global class by adding your own custom CSS to it.
-
-First, select the element you want to style. Then open the **Style** tab and expand the **CSS** control group.
-
-Use the `%root%` placeholder to target the element or global class you are currently editing. Bricks automatically converts `%root%` to the element ID or global class selector.
-
-Keyboard shortcut to insert `%root%`: type `r` and press `TAB`.
-
-Example:
-
-```css
-%root% {
-  border: 1px solid red;
-}
-```
-
-### CSS code completion via Emmet
-
-You can use CSS abbreviations to write your CSS faster. Instead of writing `margin: 10px`, type `m10` and press `TAB`.
-
-[https://docs.emmet.io/css-abbreviations/](https://docs.emmet.io/css-abbreviations/)
-
-## Bi-directional CSS Sync
-
-Introduced in Bricks 2.4, Bi-directional CSS Sync keeps an element's or global class's Custom CSS synchronized with the corresponding Bricks style controls.
-
-https://www.youtube.com/watch?v=jZZA42hcS-U
-
-Enable this experimental feature under **Bricks > Settings > Builder > CSS Sync**.
-
-Change a supported property in the CSS editor, and its corresponding style control updates automatically. Changes made through a style control are written back to Custom CSS. Unrelated or unsupported CSS remains untouched.
-
-CSS Sync respects the active breakpoint and pseudo-class. If the same property is defined in Custom CSS and a style control, Custom CSS takes precedence in the builder and on the frontend.
-
-## Code Element (PHP, HTML, CSS, JS) {#code-element}
-
-The **Code** element lets you place PHP/HTML, CSS, and JavaScript at a specific location in the page output.
-
-By default, code entered in the Code element is displayed as a formatted code snippet. To execute PHP/HTML output instead, enable the element's **Execute code** setting.
-
-The Code element has separate editors for:
-
-- **PHP and HTML**: Can be rendered as a code snippet or executed when **Execute code** is enabled.
-- **CSS**: Automatically wrapped in `<style>` tags when executed, unless you already include style tags.
-- **JavaScript**: Automatically wrapped in `<script>` tags when executed, unless you already include script tags.
-
-### Enable code execution
-
-To execute Code element PHP/HTML, first enable **Code execution** under **Bricks > Settings > Custom code**.
-
-Code execution has two layers:
-
-- The global **Enable code execution** setting must be enabled.
-- The user must have the Bricks **Execute code** capability, either through their role or an individual user-profile override.
-
-If code execution is disabled, or if your user does not have the capability, Bricks does not show the executable controls and displays a "Code execution not allowed" notice.
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-code-execution-1024x803.png)
-
-<figcaption>
-
-Code execution enabled for the Administrator role
-
-</figcaption>
-
-Make sure to only enable code execution for users and roles you trust.
-
-Code execution can also be disabled by code using the `bricks/code/disable_execution` filter. Older sites may still use the deprecated `bricks/code/allow_execution` filter set to `false`; that also disables execution.
-
-### Code signatures
-
-Executable code only runs when code execution is enabled and the saved code has a valid code signature. Regenerate code signatures whenever your WordPress salts or secret keys change.
-
-Code signatures apply to executable Bricks code such as Code element PHP/HTML, SVG element source code, Query editor code, component query properties, and global query records. Changing signed code invalidates the old signature until the code is signed again.
-
-See [Code signatures](https://academy.bricksbuilder.io/builder/features/code-signatures/) for signing workflows, global regeneration, and the dangerous automatic signing constants.
-
-### How to add PHP and HTML code to your element {#execute}
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-code-element-execution.png)
-
-<figcaption>
-
-Code Element: Executing HTML and PHP code
-
-</figcaption>
-
-1. Add a **Code** element to the canvas.
-2. Enter PHP/HTML in the **PHP and HTML** editor.
-3. Enable **Execute code**.
-4. Review the code.
-5. Click the **Sign code** icon at the top-right of the code editor, or use `CMD/CTRL + R`.
-6. Save the page.
-
-When **Execute code** is enabled, Bricks verifies the code signature before running the PHP/HTML. If the signature is missing or invalid, Bricks renders an error placeholder instead of executing the code.
-
-The Code element also has optional execution settings:
-
-- **Parse dynamic data**: Parses Bricks dynamic data inside the executable PHP/HTML.
-- **Suppress PHP errors**: Hides PHP errors unless the URL includes `brx_code_errors`.
-- **Render without wrapper**: Outputs the executed result without the Code element wrapper on the frontend.
-
-## Security checklist
-
-Before enabling or signing executable code:
-
-- Grant code execution to the fewest trusted users possible.
-- Prefer page-specific or element-specific CSS/JS when PHP is not needed.
-- Review the code before signing it.
-- Re-sign code after editing it.
-- Regenerate signatures after changing WordPress salts.
-- Run a Code review before global signature regeneration.
-
-### HTML Code Completion via Emmet
-
-You can use abbreviations to generate your HTML structures much faster via a familiar CSS-based syntax.
-
-**Abbreviation:** `#header` (+ TAB key)
-
-**Generates:**
-
-```html
-<div id="header"></div>
-```
-
-**Abbreviation:** `h$[title=item$]{Header $}*3`
-
-**Generates:**
-
-```html
-<h1 title="item1">Header 1</h1>
-<h2 title="item2">Header 2</h2>
-<h3 title="item3">Header 3</h3>
-```
-
-[https://docs.emmet.io/cheat-sheet/](https://docs.emmet.io/cheat-sheet/)
 
 ---
 
@@ -1687,6 +1505,188 @@ function run_my_custom_condition( $result, $condition_key, $condition ) {
   return $condition_met;
 }
 ```
+
+---
+
+# Custom Code
+
+Source: https://academy.bricksbuilder.io/builder/features/custom-code/
+
+*Add custom CSS, JavaScript, and PHP in Bricks, understand where each code type runs, and manage it safely.*
+
+Bricks allows you to add custom code (CSS, JavaScript, HTML, and PHP) to different parts of your website.
+
+https://www.youtube.com/watch?v=oJNm1AFgAGU
+
+## Where custom code can be added
+
+Bricks has several custom-code locations. Choose the smallest location that matches what you need:
+
+- **Global CSS and scripts**: Use this for code that should load across the entire site.
+- **Page-specific CSS and scripts**: Use this for code that should load only on one page or template.
+- **Element-specific CSS**: Use this for CSS tied to one element or global class.
+- **Code element**: Use this when you need to place PHP/HTML, CSS, or JavaScript at a specific point in the page output.
+
+Executable PHP and SVG code are security-sensitive. They only run when code execution is enabled, the current user has code execution capability, and the saved code has a valid code signature.
+
+## Global CSS and JavaScript
+
+You can add global **Custom CSS** and **Custom JavaScript** under **Bricks > Settings > Custom code**.
+
+Global Custom CSS is added at the end of the document `<head>`.
+
+Custom scripts can be added in three document locations:
+
+- **Header scripts**: Added right before the closing `</head>` tag.
+- **Body (header) scripts**: Added right after the opening `<body>` tag.
+- **Body (footer) scripts**: Added right before the closing `</body>` tag.
+
+Wrap JavaScript entered in the global script fields in `<script>` tags. These fields are intended for items such as analytics snippets, third-party embeds, and other site-wide scripts.
+
+## Page-Specific CSS and JavaScript
+
+To apply custom CSS and JavaScript to a specific page or template, edit it with Bricks and open **Settings > Page Settings > Custom Code**. Code entered there is scoped to the page or template you are editing instead of the entire site.
+
+## Element-Specific Custom CSS {#custom-css}
+
+![](https://academy.bricksbuilder.io/assets/bricks-1.9.1-custom-css-root-placeholder-591x1024.png)
+
+Extend the styles of any element and global class by adding your own custom CSS to it.
+
+First, select the element you want to style. Then open the **Style** tab and expand the **CSS** control group.
+
+Use the `%root%` placeholder to target the element or global class you are currently editing. Bricks automatically converts `%root%` to the element ID or global class selector.
+
+Keyboard shortcut to insert `%root%`: type `r` and press `TAB`.
+
+Example:
+
+```css
+%root% {
+  border: 1px solid red;
+}
+```
+
+### CSS code completion via Emmet
+
+You can use CSS abbreviations to write your CSS faster. Instead of writing `margin: 10px`, type `m10` and press `TAB`.
+
+[https://docs.emmet.io/css-abbreviations/](https://docs.emmet.io/css-abbreviations/)
+
+## Bi-directional CSS Sync
+
+Introduced in Bricks 2.4, Bi-directional CSS Sync keeps an element's or global class's Custom CSS synchronized with the corresponding Bricks style controls.
+
+https://www.youtube.com/watch?v=jZZA42hcS-U
+
+Enable this experimental feature under **Bricks > Settings > Builder > CSS Sync**.
+
+Change a supported property in the CSS editor, and its corresponding style control updates automatically. Changes made through a style control are written back to Custom CSS. Unrelated or unsupported CSS remains untouched.
+
+CSS Sync respects the active breakpoint and pseudo-class. If the same property is defined in Custom CSS and a style control, Custom CSS takes precedence in the builder and on the frontend.
+
+## Code Element (PHP, HTML, CSS, JS) {#code-element}
+
+The **Code** element lets you place PHP/HTML, CSS, and JavaScript at a specific location in the page output.
+
+By default, code entered in the Code element is displayed as a formatted code snippet. To execute PHP/HTML output instead, enable the element's **Execute code** setting.
+
+The Code element has separate editors for:
+
+- **PHP and HTML**: Can be rendered as a code snippet or executed when **Execute code** is enabled.
+- **CSS**: Automatically wrapped in `<style>` tags when executed, unless you already include style tags.
+- **JavaScript**: Automatically wrapped in `<script>` tags when executed, unless you already include script tags.
+
+### Enable code execution
+
+To execute Code element PHP/HTML, first enable **Code execution** under **Bricks > Settings > Custom code**.
+
+Code execution has two layers:
+
+- The global **Enable code execution** setting must be enabled.
+- The user must have the Bricks **Execute code** capability, either through their role or an individual user-profile override.
+
+If code execution is disabled, or if your user does not have the capability, Bricks does not show the executable controls and displays a "Code execution not allowed" notice.
+
+![](https://academy.bricksbuilder.io/assets/bricks-builder-code-execution-1024x803.png)
+
+<figcaption>
+
+Code execution enabled for the Administrator role
+
+</figcaption>
+
+Make sure to only enable code execution for users and roles you trust.
+
+Code execution can also be disabled by code using the `bricks/code/disable_execution` filter. Older sites may still use the deprecated `bricks/code/allow_execution` filter set to `false`; that also disables execution.
+
+### Code signatures
+
+Executable code only runs when code execution is enabled and the saved code has a valid code signature. Regenerate code signatures whenever your WordPress salts or secret keys change.
+
+Code signatures apply to executable Bricks code such as Code element PHP/HTML, SVG element source code, Query editor code, component query properties, and global query records. Changing signed code invalidates the old signature until the code is signed again.
+
+See [Code signatures](https://academy.bricksbuilder.io/builder/features/code-signatures/) for signing workflows, global regeneration, and the dangerous automatic signing constants.
+
+### How to add PHP and HTML code to your element {#execute}
+
+![](https://academy.bricksbuilder.io/assets/bricks-builder-code-element-execution.png)
+
+<figcaption>
+
+Code Element: Executing HTML and PHP code
+
+</figcaption>
+
+1. Add a **Code** element to the canvas.
+2. Enter PHP/HTML in the **PHP and HTML** editor.
+3. Enable **Execute code**.
+4. Review the code.
+5. Click the **Sign code** icon at the top-right of the code editor, or use `CMD/CTRL + R`.
+6. Save the page.
+
+When **Execute code** is enabled, Bricks verifies the code signature before running the PHP/HTML. If the signature is missing or invalid, Bricks renders an error placeholder instead of executing the code.
+
+The Code element also has optional execution settings:
+
+- **Parse dynamic data**: Parses Bricks dynamic data inside the executable PHP/HTML.
+- **Suppress PHP errors**: Hides PHP errors unless the URL includes `brx_code_errors`.
+- **Render without wrapper**: Outputs the executed result without the Code element wrapper on the frontend.
+
+## Security checklist
+
+Before enabling or signing executable code:
+
+- Grant code execution to the fewest trusted users possible.
+- Prefer page-specific or element-specific CSS/JS when PHP is not needed.
+- Review the code before signing it.
+- Re-sign code after editing it.
+- Regenerate signatures after changing WordPress salts.
+- Run a Code review before global signature regeneration.
+
+### HTML Code Completion via Emmet
+
+You can use abbreviations to generate your HTML structures much faster via a familiar CSS-based syntax.
+
+**Abbreviation:** `#header` (+ TAB key)
+
+**Generates:**
+
+```html
+<div id="header"></div>
+```
+
+**Abbreviation:** `h$[title=item$]{Header $}*3`
+
+**Generates:**
+
+```html
+<h1 title="item1">Header 1</h1>
+<h2 title="item2">Header 2</h2>
+<h3 title="item3">Header 3</h3>
+```
+
+[https://docs.emmet.io/cheat-sheet/](https://docs.emmet.io/cheat-sheet/)
 
 ---
 

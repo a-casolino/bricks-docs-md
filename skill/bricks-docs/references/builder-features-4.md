@@ -606,6 +606,155 @@ For local component creation, properties, variants, slots, and instance behavior
 
 ---
 
+# Search Criteria
+
+Source: https://academy.bricksbuilder.io/builder/features/search-criteria/
+
+*Use Search Criteria in Bricks to control which WordPress fields and meta values are searched for native search and query-filter search inputs.*
+
+Bricks 2.2 introduces a powerful new way to control **how search results are generated**, whether the search is triggered by:
+
+- the **native WordPress search** (via the Search element), or
+- the **Filter – Search** element - Query Filters feature.
+
+With **Search Criteria**, you can define exactly where Bricks should search: post fields, assigned post terms, term fields, user fields, and custom meta fields. This gives you far more control than the default WordPress `"s"` search and allows fully customized search behaviour across your site.
+
+> **Note**
+>
+> Search Criteria does not build or maintain a separate search index. It searches the selected WordPress database fields at query time, caches the matched IDs briefly, and then passes those IDs into the target query.
+
+## Override Native WordPress Search ("s" parameter)
+
+The native WordPress search is usually triggered through the **Search element**, and the results land on the **Search Result template**.
+
+By default, WordPress only searches the following post fields:
+
+- post_title
+- post_content
+- post_excerpt
+
+If you want to override or extend this behaviour for native search results, configure Search Criteria **inside your Search Result template**.
+
+## Search Criteria in the Search Result Template
+
+![](https://academy.bricksbuilder.io/assets/bricks-search-criteria-search-results-template.png)
+
+Inside the builder, open your **Search Result** template → Template Settings → **Search Criteria** section.
+
+**Custom search criteria**: This reveals all available search settings for controlling how the native `s` search behaves.
+
+**Use weight score (optional):** When enabled, Bricks will calculate a ranking score based on your defined weight values and order the results accordingly. More about [weight scoring](#weight-score).
+
+#### Search Controls
+
+Search post fields - Enable to define which standard WordPress post fields should be searched. Available fields are Title, Content, and Excerpt.
+
+Search post meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
+
+Search post terms - Search assigned terms of selected taxonomies by term name, slug, and description.
+
+Search Result templates only provide post-search criteria, because native WordPress search returns posts. Term and user search criteria are available in the **Filter – Search** element when that filter targets a term or user query.
+
+> **Note**
+>
+> Make sure the **main Query Loop inside the Search Result template** has **"Is main query"** enabled. Otherwise the native search override will not apply.
+
+Once configured, perform a search on the frontend and your results will follow the criteria defined in the Search Result template. If **Custom search criteria** is enabled but no post fields, meta fields, or taxonomies are enabled, the search has no custom source to search and will return no matches.
+
+## Search Criteria in the "Filter – Search" Element
+
+When [Query Filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/) are enabled in Bricks, you can create advanced filtering systems for any Query Loop on any page.
+
+Before Bricks 2.2, the **Filter – Search** element always used the default WordPress `"s"` logic. Now, you can define custom search criteria per filter element. Inside the Filter – Search element settings, you will now see a **Search Criteria** section.
+
+If the Filter – Search element uses the native WordPress search URL parameter `s`, Bricks expects the search criteria to come from the Search Result template instead of the individual filter element. This keeps the frontend search box, URL parameter, and Search Result template aligned.
+
+> **Note**
+>
+> Meta field search: ACF, Meta Box, and JetEngine Post Object, Relationship, and User fields usually store IDs in post meta. **Search Criteria searches the raw meta value** and does not automatically resolve those IDs to related post titles, post content, or user display names. To search those labels, store them in a separate searchable text meta field and include that meta key in Search Criteria.
+
+#### Post Query
+
+Search post fields - Enable to define whether to search in Title, Content, and Excerpt
+
+Search post meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
+
+Search post terms - Search assigned terms of selected taxonomies by term name, slug, and description. Useful for product categories, tags, brands, or other taxonomy-based relationships.
+
+#### Term Query
+
+Search term fields - Enable to define whether to search in Name, Slug, and Description.
+
+Search term meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
+
+#### User Query
+
+Search user fields - Enable to define whether to search in Username, Nicename, Email, URL, and Display name.
+
+Search user meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
+
+## How matches are applied
+
+For post queries, Bricks searches the selected sources and sets the matching post IDs on the query. For term and user queries, Bricks sets the matching term or user IDs on the query. If there are no matches, Bricks passes an impossible ID/slug so the target query returns no results.
+
+Search Criteria uses partial `LIKE` matching. For post terms, Bricks searches the assigned term name, slug, and description for each selected taxonomy. For custom meta fields, it searches the raw stored `meta_value`.
+
+Every enabled field, meta key, or taxonomy adds work to the database query. Use the smallest set of searchable fields that matches the frontend experience you need.
+
+## What is "Use weight score"? {#weight-score}
+
+Weight score lets you control the order of your search results. The higher the weight score for a specific search field, the higher the result will appear if that field matches the search term.
+
+> **Note**
+>
+> Important Notes:
+> - You must enable **Use weight score** for ranking to take effect.
+> - If a **Sort** filter is active, it will override the weight-score ordering.
+
+#### Example: How weight scoring works
+
+Search Criteria setup:
+
+Search post fields:
+- Title → **weight 1**
+- Content → **weight 1**
+
+Search post meta fields:
+- my_field → **weight 3**
+
+Search term: **car**
+
+Matched posts:
+
+| Post ID | Found in | Weight |
+| --- | --- | --- |
+| 1001 | Title | 1 |
+| 1002 | Title + Content | 1 + 1 = 2 |
+| 1003 | my_field | 3 |
+
+**Final result order:**
+**1003**, **1002**, **1001**
+
+Weight scores are integer values with a minimum of 1. Matching scores are added together, so an item that matches multiple low-weight fields can outrank an item that matches one field. Bricks preserves the weighted order by ordering the query by the matched ID list. If a Sort filter is active, that sort order takes precedence.
+
+---
+
+# Create Your Own Sidebars
+
+Source: https://academy.bricksbuilder.io/builder/features/sidebars/
+
+*Create and register sidebars for Bricks so widget areas can be placed and styled inside templates and layouts.*
+
+Bricks provides you with its own, built-in sidebar generator. Located in your WordPress dashboard under **Bricks > Sidebars** it lets you to create unlimited sidebars (widgetized areas).
+
+All you need to do is give your sidebar a name and description (optional), and click Create new sidebar.
+
+Once your custom sidebar is created go to **Appearance > Widgets** and drag and drop the widgets of your choice into your newly created sidebar.
+
+You can now add this newly created sidebar inside the builder by dragging the **Sidebar** element onto the canvas.
+
+---
+
 # Remote Templates
 
 Source: https://academy.bricksbuilder.io/builder/features/remote-templates/
@@ -744,302 +893,6 @@ Check the source site:
 - Update the source to Bricks 2.4 or later if it only supports the legacy template response.
 
 For the template library controls and local template actions, see [Template Library](https://academy.bricksbuilder.io/builder/features/template-library/).
-
----
-
-# Save Form Submissions
-
-Source: https://academy.bricksbuilder.io/builder/features/save-form-submissions/
-
-*Store Bricks form submissions in WordPress so you can review entries, keep records, and work with the saved data later.*
-
-Bricks 1.9.2 introduced the ability to save Form element submissions in your WordPress database. Once enabled globally, each form can use the **Save submission** action to store entries in a Bricks-managed database table and review them from the WordPress dashboard.
-
-Use this for contact forms, quote requests, event registrations, lead capture, and other workflows where you need a dashboard record in addition to email, webhook, or third-party integrations.
-
-> **Note**
->
-> Saved submissions are stored in your WordPress database. Treat them as personal data when forms collect names, emails, IP addresses, files, or account-related information.
-
-## How to enable {#how-to-activate}
-
-Enable **Save form submissions in database** under **Bricks > Settings > General > Form submissions**.
-
-![](https://academy.bricksbuilder.io/assets/bricks-form-submissions-settings.png)
-
-After enabling it, save your settings. Bricks now creates a custom table named `bricks_form_submissions` in your database (plus your WP database prefix).
-
-You should now also see the following action buttons:
-
-- **Reset database table**: Removes all saved submission rows from the table.
-- **Delete database table**: Deletes the custom submissions table and disables the global setting.
-
-> **Note**
->
-> These actions are permanent. Make sure you have a backup before resetting or deleting the table.
-
-## Form action: Save submission {#save-submission-form-action}
-
-![](https://academy.bricksbuilder.io/assets/save-submission-action-in-form-element.png)
-
-After the global setting is enabled, edit a Form element and select **Save submission** under the **Actions** control group.
-
-In the example below, the form uses **Save submission** and **Email**.
-
-The sequence of your actions matters. If an action fails, execution of all subsequent form actions is halted. Set the order according to your workflow.
-
-In this example, if **Save submission** fails, the **Email** action that follows it will not be triggered.
-
-Bricks always moves the **Redirect** action to the end of the action list during submission processing.
-
-## What Bricks saves
-
-The saved entry includes the submitted form fields and selected metadata:
-
-- The post ID where the form was submitted from, when available.
-- The Form element ID. If the form is a global element, Bricks uses the global element ID.
-- The submission date in the database.
-- Submitted form field data, stored as JSON.
-- Browser and operating system, derived from the user agent.
-- Referrer URL, when submitted by the form.
-- Logged-in user ID, when the submitter is logged in.
-- IP address, only when **Save IP address** is enabled for that form.
-
-HTML fields and honeypot fields are not saved as submitted form data.
-
-Bricks sanitizes data before inserting it into the database. For example, email fields are sanitized as email addresses, URL fields as URLs, number fields as numbers, textarea values as post-safe HTML, and most other values as text or URLs.
-
-## Save submission settings
-
-![](https://academy.bricksbuilder.io/assets/save-submission-settings.png)
-
-### Form name
-
-Give your form a unique and descriptive name. This name is used on the **Form Submissions** page in the dashboard. If no name is set, Bricks displays the form as **[No name]** and still identifies it by Form ID.
-
-### Save IP address
-
-Enable this to save the submitter's IP address in the submission entry. Only enable it when you have a clear reason to store the IP address and have updated any required privacy notice.
-
-### Max. entries
-
-Set the maximum number of submissions to store for this form. This is useful for event registration, limited waitlists, and other capacity-based workflows.
-
-When the limit is reached, Bricks returns an error and does not save the new entry. You can customize the error message. Because this is an action error, later actions in the form action list are not executed.
-
-### Prevent duplicates
-
-You can prevent storing duplicate submissions when matching data already exists for the same form.
-
-![](https://academy.bricksbuilder.io/assets/save-submission-prevent-duplicate-for-2-form-fields.png)
-
-Copy the unique six-character ID of the field you want to check, create a new item under **Prevent duplicates**, and paste the field ID into **Compare with (Field ID)**.
-
-If **Save IP address** is enabled, you can use the `ip` keyword to prevent saving more than one submission from the same IP address.
-
-A submission is considered a duplicate only if all configured duplicate checks match an existing entry for that form. Field values are compared case-insensitively after trimming whitespace.
-
-Submissions flagged as duplicates are not saved. A customizable error message appears, and all subsequent form actions are halted.
-
-## Viewing form submissions
-
-To view collected submissions, navigate to **Bricks > Form Submissions** in the WordPress dashboard.
-
-### Overview page
-
-The overview page groups submissions by Form ID and shows each form's name and entry count. This helps you quickly understand which forms have stored submissions.
-
-![](https://academy.bricksbuilder.io/assets/form-submissions-admin-overview-page.png)
-
-The **Delete** button in each form row deletes all entries for that form.
-
-This action permanently removes all submissions for the selected form, so make sure you have a backup or genuinely intend to delete them.
-
-### Individual form submission
-
-Click a form name on the overview page to view all entries for that specific form.
-
-![](https://academy.bricksbuilder.io/assets/form-submissions-single-form-view.png)
-
-Click **Screen options** in the top-right corner to toggle metadata columns. Available metadata columns include Date, Browser, IP address, OS, Referrer, and User.
-
-The search box searches the stored form data JSON. It is useful for submitted field values, but it does not search metadata columns such as browser, IP address, OS, referrer, or user.
-
-You can select multiple entries from the list and delete them in bulk. This feature simplifies the process of removing specific submissions, especially if you want to clear out any irrelevant, outdated, or test data.
-
-Click **Download (CSV)** to export all submissions for the form you are viewing.
-
-CSV exports include the visible submission columns and submitted field values. Bricks prefixes cells that could be interpreted as spreadsheet formulas, helping reduce CSV formula-injection risk when exported files are opened in spreadsheet software.
-
-### Form submission access {#access}
-
-Bricks 1.11 introduces more granular control over who can view form submissions on your site. With the new `bricks_form_submission_access` capability, you can specify which user roles or individual users have permission to access form submissions.
-
-Administrators have form submission access by default and cannot be disabled in the role list.
-
-#### User role access
-
-To configure role-based access:
-
-1. Navigate to **Bricks** > **Settings** > **General** > **Form submissions**.
-2. Under **Form submission access**, you will see checkboxes for available user roles such as Administrator, Editor, Author, and Contributor.
-
-The **Administrator** role is always enabled by default and cannot be disabled. For other roles, check or uncheck the boxes to grant or revoke access to form submissions.
-
-This allows you to easily control who on your team can view form submissions based on their user role.
-
-#### Individual user access
-
-To configure access on an individual user level:
-
-1. From the WordPress dashboard, go to **Users**.
-2. Click to edit a specific user's profile.
-3. In the user profile, find and adjust the **Form submission access** setting.
-
-This lets you manage form submissions access for specific users, overriding the broader role-based settings if needed.
-
-Users with form submission access but without broader Bricks admin access can still get a limited **Bricks - Form Submissions** admin menu when submissions are enabled.
-
-Only users who can manage options can reset or delete the whole submissions table, delete all entries for a form from the overview, or delete selected entries in bulk.
-
-## Developer notes
-
-Before saving, Bricks passes the form data through the [`bricks/form/save-submission/form_data`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-save-submission-form_data/) filter. Use this if you need to normalize, remove, or add stored fields before the database insert.
-
-For file fields, the Form Submissions table can link to files saved in the Media Library, the uploads directory, or a custom directory. The file URL used in the submissions table can be adjusted with the `bricks/form/submission-table/file_url` filter.
-
----
-
-# Search Criteria
-
-Source: https://academy.bricksbuilder.io/builder/features/search-criteria/
-
-*Use Search Criteria in Bricks to control which WordPress fields and meta values are searched for native search and query-filter search inputs.*
-
-Bricks 2.2 introduces a powerful new way to control **how search results are generated**, whether the search is triggered by:
-
-- the **native WordPress search** (via the Search element), or
-- the **Filter – Search** element - Query Filters feature.
-
-With **Search Criteria**, you can define exactly where Bricks should search: post fields, assigned post terms, term fields, user fields, and custom meta fields. This gives you far more control than the default WordPress `"s"` search and allows fully customized search behaviour across your site.
-
-> **Note**
->
-> Search Criteria does not build or maintain a separate search index. It searches the selected WordPress database fields at query time, caches the matched IDs briefly, and then passes those IDs into the target query.
-
-## Override Native WordPress Search ("s" parameter)
-
-The native WordPress search is usually triggered through the **Search element**, and the results land on the **Search Result template**.
-
-By default, WordPress only searches the following post fields:
-
-- post_title
-- post_content
-- post_excerpt
-
-If you want to override or extend this behaviour for native search results, configure Search Criteria **inside your Search Result template**.
-
-## Search Criteria in the Search Result Template
-
-![](https://academy.bricksbuilder.io/assets/bricks-search-criteria-search-results-template.png)
-
-Inside the builder, open your **Search Result** template → Template Settings → **Search Criteria** section.
-
-**Custom search criteria**: This reveals all available search settings for controlling how the native `s` search behaves.
-
-**Use weight score (optional):** When enabled, Bricks will calculate a ranking score based on your defined weight values and order the results accordingly. More about [weight scoring](#weight-score).
-
-#### Search Controls
-
-Search post fields - Enable to define which standard WordPress post fields should be searched. Available fields are Title, Content, and Excerpt.
-
-Search post meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
-
-Search post terms - Search assigned terms of selected taxonomies by term name, slug, and description.
-
-Search Result templates only provide post-search criteria, because native WordPress search returns posts. Term and user search criteria are available in the **Filter – Search** element when that filter targets a term or user query.
-
-> **Note**
->
-> Make sure the **main Query Loop inside the Search Result template** has **"Is main query"** enabled. Otherwise the native search override will not apply.
-
-Once configured, perform a search on the frontend and your results will follow the criteria defined in the Search Result template. If **Custom search criteria** is enabled but no post fields, meta fields, or taxonomies are enabled, the search has no custom source to search and will return no matches.
-
-## Search Criteria in the "Filter – Search" Element
-
-When [Query Filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/) are enabled in Bricks, you can create advanced filtering systems for any Query Loop on any page.
-
-Before Bricks 2.2, the **Filter – Search** element always used the default WordPress `"s"` logic. Now, you can define custom search criteria per filter element. Inside the Filter – Search element settings, you will now see a **Search Criteria** section.
-
-If the Filter – Search element uses the native WordPress search URL parameter `s`, Bricks expects the search criteria to come from the Search Result template instead of the individual filter element. This keeps the frontend search box, URL parameter, and Search Result template aligned.
-
-> **Note**
->
-> Meta field search: ACF, Meta Box, and JetEngine Post Object, Relationship, and User fields usually store IDs in post meta. **Search Criteria searches the raw meta value** and does not automatically resolve those IDs to related post titles, post content, or user display names. To search those labels, store them in a separate searchable text meta field and include that meta key in Search Criteria.
-
-#### Post Query
-
-Search post fields - Enable to define whether to search in Title, Content, and Excerpt
-
-Search post meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
-
-Search post terms - Search assigned terms of selected taxonomies by term name, slug, and description. Useful for product categories, tags, brands, or other taxonomy-based relationships.
-
-#### Term Query
-
-Search term fields - Enable to define whether to search in Name, Slug, and Description.
-
-Search term meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
-
-#### User Query
-
-Search user fields - Enable to define whether to search in Username, Nicename, Email, URL, and Display name.
-
-Search user meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
-
-## How matches are applied
-
-For post queries, Bricks searches the selected sources and sets the matching post IDs on the query. For term and user queries, Bricks sets the matching term or user IDs on the query. If there are no matches, Bricks passes an impossible ID/slug so the target query returns no results.
-
-Search Criteria uses partial `LIKE` matching. For post terms, Bricks searches the assigned term name, slug, and description for each selected taxonomy. For custom meta fields, it searches the raw stored `meta_value`.
-
-Every enabled field, meta key, or taxonomy adds work to the database query. Use the smallest set of searchable fields that matches the frontend experience you need.
-
-## What is "Use weight score"? {#weight-score}
-
-Weight score lets you control the order of your search results. The higher the weight score for a specific search field, the higher the result will appear if that field matches the search term.
-
-> **Note**
->
-> Important Notes:
-> - You must enable **Use weight score** for ranking to take effect.
-> - If a **Sort** filter is active, it will override the weight-score ordering.
-
-#### Example: How weight scoring works
-
-Search Criteria setup:
-
-Search post fields:
-- Title → **weight 1**
-- Content → **weight 1**
-
-Search post meta fields:
-- my_field → **weight 3**
-
-Search term: **car**
-
-Matched posts:
-
-| Post ID | Found in | Weight |
-| --- | --- | --- |
-| 1001 | Title | 1 |
-| 1002 | Title + Content | 1 + 1 = 2 |
-| 1003 | my_field | 3 |
-
-**Final result order:**
-**1003**, **1002**, **1001**
-
-Weight scores are integer values with a minimum of 1. Matching scores are added together, so an item that matches multiple low-weight fields can outrank an item that matches one field. Bricks preserves the weighted order by ordering the query by the matched ID list. If a Sort filter is active, that sort order takes precedence.
 
 ---
 
@@ -1229,22 +1082,6 @@ You can also open and close the Style Manager popup using:
 
 `CMD + .` (macOS)
 `CTRL + .` (Windows/Linux)
-
----
-
-# Create Your Own Sidebars
-
-Source: https://academy.bricksbuilder.io/builder/features/sidebars/
-
-*Create and register sidebars for Bricks so widget areas can be placed and styled inside templates and layouts.*
-
-Bricks provides you with its own, built-in sidebar generator. Located in your WordPress dashboard under **Bricks > Sidebars** it lets you to create unlimited sidebars (widgetized areas).
-
-All you need to do is give your sidebar a name and description (optional), and click Create new sidebar.
-
-Once your custom sidebar is created go to **Appearance > Widgets** and drag and drop the widgets of your choice into your newly created sidebar.
-
-You can now add this newly created sidebar inside the builder by dragging the **Sidebar** element onto the canvas.
 
 ---
 
@@ -1449,6 +1286,169 @@ Now select **Export** from the **Bulk Actions** dropdown, and click **Apply**:
 A ZIP file of your selected templates will be generated and downloaded onto your computer.
 
 This ZIP file contains all templates as individual JSON files. Either unzip it to import individual templates or import the entire ZIP file to bulk import all templates at once.
+
+---
+
+# Save Form Submissions
+
+Source: https://academy.bricksbuilder.io/builder/features/save-form-submissions/
+
+*Store Bricks form submissions in WordPress so you can review entries, keep records, and work with the saved data later.*
+
+Bricks 1.9.2 introduced the ability to save Form element submissions in your WordPress database. Once enabled globally, each form can use the **Save submission** action to store entries in a Bricks-managed database table and review them from the WordPress dashboard.
+
+Use this for contact forms, quote requests, event registrations, lead capture, and other workflows where you need a dashboard record in addition to email, webhook, or third-party integrations.
+
+> **Note**
+>
+> Saved submissions are stored in your WordPress database. Treat them as personal data when forms collect names, emails, IP addresses, files, or account-related information.
+
+## How to enable {#how-to-activate}
+
+Enable **Save form submissions in database** under **Bricks > Settings > General > Form submissions**.
+
+![](https://academy.bricksbuilder.io/assets/bricks-form-submissions-settings.png)
+
+After enabling it, save your settings. Bricks now creates a custom table named `bricks_form_submissions` in your database (plus your WP database prefix).
+
+You should now also see the following action buttons:
+
+- **Reset database table**: Removes all saved submission rows from the table.
+- **Delete database table**: Deletes the custom submissions table and disables the global setting.
+
+> **Note**
+>
+> These actions are permanent. Make sure you have a backup before resetting or deleting the table.
+
+## Form action: Save submission {#save-submission-form-action}
+
+![](https://academy.bricksbuilder.io/assets/save-submission-action-in-form-element.png)
+
+After the global setting is enabled, edit a Form element and select **Save submission** under the **Actions** control group.
+
+In the example below, the form uses **Save submission** and **Email**.
+
+The sequence of your actions matters. If an action fails, execution of all subsequent form actions is halted. Set the order according to your workflow.
+
+In this example, if **Save submission** fails, the **Email** action that follows it will not be triggered.
+
+Bricks always moves the **Redirect** action to the end of the action list during submission processing.
+
+## What Bricks saves
+
+The saved entry includes the submitted form fields and selected metadata:
+
+- The post ID where the form was submitted from, when available.
+- The Form element ID. If the form is a global element, Bricks uses the global element ID.
+- The submission date in the database.
+- Submitted form field data, stored as JSON.
+- Browser and operating system, derived from the user agent.
+- Referrer URL, when submitted by the form.
+- Logged-in user ID, when the submitter is logged in.
+- IP address, only when **Save IP address** is enabled for that form.
+
+HTML fields and honeypot fields are not saved as submitted form data.
+
+Bricks sanitizes data before inserting it into the database. For example, email fields are sanitized as email addresses, URL fields as URLs, number fields as numbers, textarea values as post-safe HTML, and most other values as text or URLs.
+
+## Save submission settings
+
+![](https://academy.bricksbuilder.io/assets/save-submission-settings.png)
+
+### Form name
+
+Give your form a unique and descriptive name. This name is used on the **Form Submissions** page in the dashboard. If no name is set, Bricks displays the form as **[No name]** and still identifies it by Form ID.
+
+### Save IP address
+
+Enable this to save the submitter's IP address in the submission entry. Only enable it when you have a clear reason to store the IP address and have updated any required privacy notice.
+
+### Max. entries
+
+Set the maximum number of submissions to store for this form. This is useful for event registration, limited waitlists, and other capacity-based workflows.
+
+When the limit is reached, Bricks returns an error and does not save the new entry. You can customize the error message. Because this is an action error, later actions in the form action list are not executed.
+
+### Prevent duplicates
+
+You can prevent storing duplicate submissions when matching data already exists for the same form.
+
+![](https://academy.bricksbuilder.io/assets/save-submission-prevent-duplicate-for-2-form-fields.png)
+
+Copy the unique six-character ID of the field you want to check, create a new item under **Prevent duplicates**, and paste the field ID into **Compare with (Field ID)**.
+
+If **Save IP address** is enabled, you can use the `ip` keyword to prevent saving more than one submission from the same IP address.
+
+A submission is considered a duplicate only if all configured duplicate checks match an existing entry for that form. Field values are compared case-insensitively after trimming whitespace.
+
+Submissions flagged as duplicates are not saved. A customizable error message appears, and all subsequent form actions are halted.
+
+## Viewing form submissions
+
+To view collected submissions, navigate to **Bricks > Form Submissions** in the WordPress dashboard.
+
+### Overview page
+
+The overview page groups submissions by Form ID and shows each form's name and entry count. This helps you quickly understand which forms have stored submissions.
+
+![](https://academy.bricksbuilder.io/assets/form-submissions-admin-overview-page.png)
+
+The **Delete** button in each form row deletes all entries for that form.
+
+This action permanently removes all submissions for the selected form, so make sure you have a backup or genuinely intend to delete them.
+
+### Individual form submission
+
+Click a form name on the overview page to view all entries for that specific form.
+
+![](https://academy.bricksbuilder.io/assets/form-submissions-single-form-view.png)
+
+Click **Screen options** in the top-right corner to toggle metadata columns. Available metadata columns include Date, Browser, IP address, OS, Referrer, and User.
+
+The search box searches the stored form data JSON. It is useful for submitted field values, but it does not search metadata columns such as browser, IP address, OS, referrer, or user.
+
+You can select multiple entries from the list and delete them in bulk. This feature simplifies the process of removing specific submissions, especially if you want to clear out any irrelevant, outdated, or test data.
+
+Click **Download (CSV)** to export all submissions for the form you are viewing.
+
+CSV exports include the visible submission columns and submitted field values. Bricks prefixes cells that could be interpreted as spreadsheet formulas, helping reduce CSV formula-injection risk when exported files are opened in spreadsheet software.
+
+### Form submission access {#access}
+
+Bricks 1.11 introduces more granular control over who can view form submissions on your site. With the new `bricks_form_submission_access` capability, you can specify which user roles or individual users have permission to access form submissions.
+
+Administrators have form submission access by default and cannot be disabled in the role list.
+
+#### User role access
+
+To configure role-based access:
+
+1. Navigate to **Bricks** > **Settings** > **General** > **Form submissions**.
+2. Under **Form submission access**, you will see checkboxes for available user roles such as Administrator, Editor, Author, and Contributor.
+
+The **Administrator** role is always enabled by default and cannot be disabled. For other roles, check or uncheck the boxes to grant or revoke access to form submissions.
+
+This allows you to easily control who on your team can view form submissions based on their user role.
+
+#### Individual user access
+
+To configure access on an individual user level:
+
+1. From the WordPress dashboard, go to **Users**.
+2. Click to edit a specific user's profile.
+3. In the user profile, find and adjust the **Form submission access** setting.
+
+This lets you manage form submissions access for specific users, overriding the broader role-based settings if needed.
+
+Users with form submission access but without broader Bricks admin access can still get a limited **Bricks - Form Submissions** admin menu when submissions are enabled.
+
+Only users who can manage options can reset or delete the whole submissions table, delete all entries for a form from the overview, or delete selected entries in bulk.
+
+## Developer notes
+
+Before saving, Bricks passes the form data through the [`bricks/form/save-submission/form_data`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-save-submission-form_data/) filter. Use this if you need to normalize, remove, or add stored fields before the database insert.
+
+For file fields, the Form Submissions table can link to files saved in the Media Library, the uploads directory, or a custom directory. The file URL used in the submissions table can be adjusted with the `bricks/form/submission-table/file_url` filter.
 
 ---
 

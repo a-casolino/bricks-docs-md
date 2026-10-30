@@ -1,30 +1,3 @@
-# Filter: bricks/render_query_loop_trail
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-render_query_loop_trail/
-
-*Control whether Bricks renders the query loop trail node that frontend JavaScript uses to read query settings.*
-
-The `bricks/render_query_loop_trail` (@since 1.11.1) filter controls the output of the query loop trail node in Bricks. This node is automatically added to each query loop and records the loop's settings, which are then accessed by frontend JavaScript to manage various query-related tasks. Once these settings are read by Bricks, the node is removed from the DOM.
-
-For some third-party plugins, this node may not be needed—especially if they use custom AJAX endpoints to update query results independently of Bricks. Using this filter, you can control whether or not the query loop trail node is rendered.
-
-```php
-// Return true = render the query loop trail node
-// Return false = skip the query loop trail node
-add_filter( 'bricks/render_query_loop_trail', function( $render, $element, $query ) {
-  // Do not render query loop trail node if my-custom-param parameter exists
-  if ( isset( $_GET['my-custom-param'] ) ) {
-    $render = false;
-  }
-
-  return $render;
-}, 10, 3 );
-```
-
-In this example, if the `my-custom-param` parameter is detected in the URL, the query loop trail node will not be rendered. This can be useful for third-party plugins with custom AJAX endpoints that handle query configurations independently.
-
----
-
 # Filter: bricks/screen_conditions/scores
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-screen_conditions-scores/
@@ -103,6 +76,34 @@ In this simple example, the search form action URL is changed to a custom page. 
 
 ---
 
+# Filter: bricks/element/set_root_attributes
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-set_root_attributes/
+
+*Bricks 1.4 with its improved & slimmer DOM structure now requires to add the element ID, root classes, and other element root HTML attributes directly inside.*
+
+Bricks 1.4 with its improved & slimmer DOM structure now requires to add the element ID, root classes, and other element root HTML attributes directly inside the `render()` function. You can programmatically manipulate the returns element root attributes like so:
+
+```php
+add_filter( 'bricks/element/set_root_attributes', function( $attributes, $element ) {
+    // Add CSS class 'heading-bg' to every heading element
+    if ( $element->name === 'heading' ) {
+        $attributes['class'][] = 'heading-bg';
+    }
+
+    return $attributes;
+}, 10, 2 );
+```
+
+The filter callback receives 2 arguments:
+
+- `$attributes` – an associative array of the element root attributes, grouped by the attribute name (e.g. "class", "data-animation", ...)
+- `$element` - the Bricks element [object](https://academy.bricksbuilder.io/developer/elements/create-your-own-elements/)
+
+**NOTE**: This filter doesn't work in builder & already possible with *[bricks/element/render_attributes](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-render_attributes/)*
+
+---
+
 # Filter: bricks/setup/control_options
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/
@@ -135,34 +136,6 @@ add_filter( 'bricks/setup/control_options', function( $control_options ) {
 ```
 
 Note: the above example adds a new template type. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
-
----
-
-# Filter: bricks/element/set_root_attributes
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-set_root_attributes/
-
-*Bricks 1.4 with its improved & slimmer DOM structure now requires to add the element ID, root classes, and other element root HTML attributes directly inside.*
-
-Bricks 1.4 with its improved & slimmer DOM structure now requires to add the element ID, root classes, and other element root HTML attributes directly inside the `render()` function. You can programmatically manipulate the returns element root attributes like so:
-
-```php
-add_filter( 'bricks/element/set_root_attributes', function( $attributes, $element ) {
-    // Add CSS class 'heading-bg' to every heading element
-    if ( $element->name === 'heading' ) {
-        $attributes['class'][] = 'heading-bg';
-    }
-
-    return $attributes;
-}, 10, 2 );
-```
-
-The filter callback receives 2 arguments:
-
-- `$attributes` – an associative array of the element root attributes, grouped by the attribute name (e.g. "class", "data-animation", ...)
-- `$element` - the Bricks element [object](https://academy.bricksbuilder.io/developer/elements/create-your-own-elements/)
-
-**NOTE**: This filter doesn't work in builder & already possible with *[bricks/element/render_attributes](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-render_attributes/)*
 
 ---
 

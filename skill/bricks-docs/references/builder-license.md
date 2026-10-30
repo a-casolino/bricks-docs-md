@@ -50,7 +50,7 @@ This way you know exactly what changed, if any adjustments or steps need to be p
 
 These rules are enforced by the Bricks account/licensing service. During license activation, validation, and update checks, the Bricks theme sends the current site/license data, including the site URL/domain and Bricks version, to the licensing service. The service then decides whether a URL counts toward your license limit.
 
-The following URL structures are treated as local, staging, or intranet sites and do not count against your license limit.
+Bricks classifies sites matching the following URL patterns as local, staging, or intranet installations for licensing purposes. These installations do not count against your license activation limit. This classification does not necessarily describe how a site is used.
 
 **Local URLs:**
 
@@ -69,21 +69,26 @@ The following URL structures are treated as local, staging, or intranet sites an
   - `dev.yoursite.com`
   - `staging.yoursite.com`
   - `test.yoursite.com`
-- Cloudways: `.cloudwaysapps.com`
-- Dreamhost: `.stage.site`
-- Flywheel: `.mysites.io`
+- BlogVault: `.wpstage.net`
+- Cloudways: `.cloudwaysapps.com` & `.cloudwayssites.com`
+- DreamHost / DreamPress: `.stage.site` & `.dream.press`
+- Flywheel: `.mysites.io` & `.flywheelsites.com`
 - GoDaddy: `.myftpupload.com`
 - Hostinger: `.hostingersite.com`
-- InstaWP: `.instawp.site` & `.instawp.xyz` & `instawp.com`
+- InstaWP: `.instawp.site` & `.instawp.xyz` & `instawp.com` & `.instawp.co` & `.instawp.link`
 - Kinsta: `.kinsta.cloud`
 - Lando Pantheon: `.lndo.site`
+- Nexcess: `.nxcli.net` & `.nxcli.io`
+- Pantheon: `.pantheonsite.io`
 - Plesk: `.plesk.page`
 - Raidboxes: `.myrdbx.io`
+- Rocket.net: `.onrocket.site` & `.wpdns.site`
 - Runcloud: `.temp-site.link`
 - SiteGround: `.sg-host.com`
 - SpinupWP: `.spinupwp.site`
 - TasteWP: `.tastewp.com`
-- WP Engine:`.wpenginepowered.com`
+- WP Engine: `.wpenginepowered.com` & `.wpengine.com`
+- WP Stagecoach: `.wpstagecoach.com` & `.wpsc.site`
 - wp-space.de: `.wpspace.partners`
 - xCloud: `1wp.site`, `.wp1.site`, `wp1.sh`, `wp1.host`
 - ZipWP: `.zipwp.link`

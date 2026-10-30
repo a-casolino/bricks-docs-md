@@ -1,3 +1,81 @@
+# Integration: Adobe Fonts
+
+Source: https://academy.bricksbuilder.io/builder/styling/adobe-fonts/
+
+*Connect Adobe Fonts to Bricks so your project can use synced Typekit fonts inside the builder and on the frontend.*
+
+## How to use Adobe Fonts with Bricks
+
+All you need to do is provide Bricks with your Adobe Fonts "Project ID".
+
+First, visit the "web projects" section inside your Adobe Fonts account: [https://fonts.adobe.com/my_fonts#web_projects-section](https://fonts.adobe.com/my_fonts#web_projects-section)
+
+Each of your web projects contains a unique "Project ID".
+
+Copy the project ID of the web project whose fonts you want to use on your Bricks site.
+
+![](https://academy.bricksbuilder.io/assets/bricks-adobe-fonts-web-project-id.png)
+
+<figcaption>
+
+Copy the project ID into your clipboard
+
+</figcaption>
+
+Next, inside your WordPress dashboard, go to `Bricks > Settings > API keys` and paste the project ID into the "Adobe fonts (Project ID)" input field. Then save your settings.
+
+![](https://academy.bricksbuilder.io/assets/bricks-adobe-fonts-project-id-saved.png)
+
+<figcaption>
+
+Click "Sync fonts" to fetch all fonts of this project
+
+</figcaption>
+
+Next to the project ID input, a "Sync fonts" button should now be visible. Click it to fetch the Adobe fonts of this project. A success message should appear & the "Published Adobe fonts" counter should reflect the number of published fonts.
+
+![](https://academy.bricksbuilder.io/assets/bricks-adobe-fonts-synced.png)
+
+<figcaption>
+
+Fonts are now synced & available in the builder
+
+</figcaption>
+
+Those fonts are now available inside the builder in any `font-family` dropdown:
+
+![](https://academy.bricksbuilder.io/assets/bricks-adobe-fonts-in-bricks.png)
+
+Syncing an Adobe Fonts project only makes its fonts available in Bricks typography controls. To apply and load an Adobe font on the frontend, select it in a typography setting, such as an element, global class, Theme Style, page setting, or template setting.
+
+Bricks loads the Adobe Fonts project CSS only when an Adobe font from the synced project is detected in the generated page CSS.
+
+> **Note**
+>
+> NOTE: Bricks recognizes when you use an Adobe font that is also available as a Google font. Bricks will load only the Adobe font to prevent loading this font from Google as well.
+
+## Variable fonts {#font-variation-settings}
+
+Bricks also provides a new `font-variation-settings`. This CSS property allows you to control the four-letter axis names of a variable Adobe font. Such as the `wght`, `wdth`, `slnt`, and `ital`.
+
+For more information about the specifics please visit [https://developer.mozilla.org/en-US/docs/Web/CSS/font-variation-settings](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variation-settings)
+
+![](https://academy.bricksbuilder.io/assets/bricks-adobe-fonts-variable-font-variation-settings.png)
+
+<figcaption>
+
+Variable Adobe font with a custom font-weight (axis: "wght") of 535
+
+</figcaption>
+
+You can view available variable Adobe fonts by selecting "Variable Fonts" under "Font technology on [https://fonts.adobe.com/fonts](https://fonts.adobe.com/fonts).
+
+> **Note**
+>
+> NOTE: This new `font-variation-settings` is also available for [custom fonts](https://academy.bricksbuilder.io/builder/styling/custom-fonts/). For Google Fonts, Bricks can collect multiple variation axes from the selected font and your typography settings; the available axes depend on the font and the Google Fonts API.
+
+---
+
 # Cascade layer
 
 Source: https://academy.bricksbuilder.io/builder/styling/cascade-layer/
@@ -100,84 +178,6 @@ By moving default Bricks styles into a dedicated cascade layer, we ensure:
 
 - **Kevin Powell's YouTube video on cascade layers**: [A look at CSS Cascade Layers](https://www.youtube.com/watch?v=NDNRGW-_1EE)
 - **In-depth guide on CSS cascade layers**: [CSS-Tricks: Cascade Layers Guide](https://css-tricks.com/css-cascade-layers/)
-
----
-
-# Integration: Adobe Fonts
-
-Source: https://academy.bricksbuilder.io/builder/styling/adobe-fonts/
-
-*Connect Adobe Fonts to Bricks so your project can use synced Typekit fonts inside the builder and on the frontend.*
-
-## How to use Adobe Fonts with Bricks
-
-All you need to do is provide Bricks with your Adobe Fonts "Project ID".
-
-First, visit the "web projects" section inside your Adobe Fonts account: [https://fonts.adobe.com/my_fonts#web_projects-section](https://fonts.adobe.com/my_fonts#web_projects-section)
-
-Each of your web projects contains a unique "Project ID".
-
-Copy the project ID of the web project whose fonts you want to use on your Bricks site.
-
-![](https://academy.bricksbuilder.io/assets/bricks-adobe-fonts-web-project-id.png)
-
-<figcaption>
-
-Copy the project ID into your clipboard
-
-</figcaption>
-
-Next, inside your WordPress dashboard, go to `Bricks > Settings > API keys` and paste the project ID into the "Adobe fonts (Project ID)" input field. Then save your settings.
-
-![](https://academy.bricksbuilder.io/assets/bricks-adobe-fonts-project-id-saved.png)
-
-<figcaption>
-
-Click "Sync fonts" to fetch all fonts of this project
-
-</figcaption>
-
-Next to the project ID input, a "Sync fonts" button should now be visible. Click it to fetch the Adobe fonts of this project. A success message should appear & the "Published Adobe fonts" counter should reflect the number of published fonts.
-
-![](https://academy.bricksbuilder.io/assets/bricks-adobe-fonts-synced.png)
-
-<figcaption>
-
-Fonts are now synced & available in the builder
-
-</figcaption>
-
-Those fonts are now available inside the builder in any `font-family` dropdown:
-
-![](https://academy.bricksbuilder.io/assets/bricks-adobe-fonts-in-bricks.png)
-
-Syncing an Adobe Fonts project only makes its fonts available in Bricks typography controls. To apply and load an Adobe font on the frontend, select it in a typography setting, such as an element, global class, Theme Style, page setting, or template setting.
-
-Bricks loads the Adobe Fonts project CSS only when an Adobe font from the synced project is detected in the generated page CSS.
-
-> **Note**
->
-> NOTE: Bricks recognizes when you use an Adobe font that is also available as a Google font. Bricks will load only the Adobe font to prevent loading this font from Google as well.
-
-## Variable fonts {#font-variation-settings}
-
-Bricks also provides a new `font-variation-settings`. This CSS property allows you to control the four-letter axis names of a variable Adobe font. Such as the `wght`, `wdth`, `slnt`, and `ital`.
-
-For more information about the specifics please visit [https://developer.mozilla.org/en-US/docs/Web/CSS/font-variation-settings](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variation-settings)
-
-![](https://academy.bricksbuilder.io/assets/bricks-adobe-fonts-variable-font-variation-settings.png)
-
-<figcaption>
-
-Variable Adobe font with a custom font-weight (axis: "wght") of 535
-
-</figcaption>
-
-You can view available variable Adobe fonts by selecting "Variable Fonts" under "Font technology on [https://fonts.adobe.com/fonts](https://fonts.adobe.com/fonts).
-
-> **Note**
->
-> NOTE: This new `font-variation-settings` is also available for [custom fonts](https://academy.bricksbuilder.io/builder/styling/custom-fonts/). For Google Fonts, Bricks can collect multiple variation axes from the selected font and your typography settings; the available axes depend on the font and the Google Fonts API.
 
 ---
 
@@ -585,120 +585,6 @@ Bricks > Settings > Performance: Disable Google Fonts
 
 ---
 
-# Fluid Typography
-
-Source: https://academy.bricksbuilder.io/builder/styling/fluid-typography/
-
-*Create fluid typography in Bricks so text scales smoothly across viewport sizes instead of changing only at breakpoints.*
-
-Starting with Bricks 2.1, the **Fluid Typography Generator** lets you create pixel-perfect & responsive font sizes (through CSS variables using `clamp`) that scale smoothly between defined minimum and maximum values, ensuring consistent readability across all screen sizes and devices. Simplifying the process of managing font sizes while maintaining flexibility and precision in your design.
-
-https://youtu.be/wsxOmDqjfaQ
-
-## Accessing fluid typography {#access}
-
-Open the **Style Manager** from the builder toolbar, then select **Typography** in the Style Manager sidebar. From there you can create and edit fluid typography scales.
-
-Global scale settings, including the HTML font-size used for rem calculations and the minimum and maximum screen widths, are available in the Style Manager settings.
-
-## Fluid typography categories {#adding-category}
-
-Bricks lets you create unlimited Fluid Typography Scales for your Headings, Text, etc. through categories.
-
-So, **every Category is a Fluid Typography Scale**, that stores all its scale settings alongside it.
-
-You can keep it simple and just create a `Headings` and `Text` category for those two scales as we did in the following screenshot:
-
-![](https://academy.bricksbuilder.io/assets/bricks-fluid-typo-category-text-empty.png)
-
-## Fluid typography variables {#generating-variables}
-
-Fluid typography variables can be generated with the Scale Generator on the right-hand side.
-
-Scale changes are previewed in the list first. Click **Regenerate variables** to create or update the variables of the category (without pending changes, the button reads **Generate variables**). The icon in the Style Manager header, **Regenerate variables and save**, does both in one step.
-
-Whenever variables are generated, all existing variables within the selected category are deleted and replaced with the newly created variables. If the category already has variables, Bricks asks you to confirm this first. The number of variables is the same as in the previous set, but the names and values will be regenerated. So, any manual edits made to variable names or values are lost once the variables are regenerated. As long as the number of steps and the scale type stay the same, the names stay the same too, so every place that uses a variable (for example `var(--heading-xl)`) picks up the new value.
-
-## Scale controls {#controls-overview}
-
-### Prefix {#control-prefix}
-
-The prefix determines how variable names are structured. For instance, setting the prefix to `text-` results in variables being named `--text-m` or `--text-xl`, depending on the scale. It is recommended to use a prefix that is both unique and descriptive to maintain clarity and avoid conflicts.
-
-### Scale type {#control-scale-type}
-
-The scale type specifies the naming convention used for fluid typography variables. There are three available options:
-
-1. **T-shirt:** Generates variable names based on standard t-shirt sizes, such as `2xs, xs, s, m, l, xl, 2xl`. An example output would be `--text-m`.
-2. **Numeric:** Generates variable names using numbers, typically ranging from 1 through 6. An example output would be `--text-4`.
-3. **Custom:** Allows complete manual control over the naming convention. For example, scale names such as `small, medium, large, title` could be entered, resulting in variable names such as `--text-medium`.
-
-### Custom scale type {#control-custom-scale-type}
-
-This control only shows when the scale type is set to **Custom**. It provides the ability to define custom scale names, offering flexibility in aligning the naming convention with project-specific requirements.
-
-### Baseline step {#control-baseline-step}
-
-The baseline step acts as the foundation of the scale. The baseline variable will directly reflect the minimum and maximum font sizes defined, and all other scale steps will be calculated relative to this baseline. Proper definition of the baseline ensures accurate scaling across all steps.
-
-### HTML font-size {#control-px-to-rem}
-
-The Style Manager **HTML font-size** setting defines the rem baseline used for scale generation. You can set it explicitly to `10px` or `16px`, or leave it on auto so Bricks resolves the value from Theme Styles where possible and otherwise falls back to the default.
-
-### Base font size (px) {#control-base-font-size}
-
-The scale settings have two groups, **Minimum (Mobile)** and **Maximum (Desktop)**. Each has its own base font size and type scale ratio (defaults: `16px` with 1.25, and `20px` with 1.333). The two base font sizes establish the minimum and maximum values for the baseline step. Font sizes for all other steps will be calculated automatically based on the defined **Type Scale Ratio**.
-
-### Screen width (px) {#control-screen-width}
-
-The minimum and maximum screen widths are set once in the Style Manager settings and apply to all scales (default: `360px` and `1440px`). At the minimum width every step uses its minimum size, at the maximum width its maximum size. Outside these widths, font sizes stay constant.
-
-### Type scale ratio {#control-type-scale-ratio}
-
-This control defines the ratio by which font sizes increase or decrease in relation to the next adjacent variable. For example, with a baseline of 16px and a scale ratio of 1.5, the next step above the baseline will be calculated as 24px. Ratios are applied upward and downward, generating consistent scaling in both directions. Because the minimum and maximum have their own ratio, a larger ratio for large screens gives more contrast between headings on desktop while keeping them compact on phones. Steps below the baseline then shrink more on large screens, so for the smallest steps the maximum value can end up below the minimum.
-
-For advanced use cases, it is possible to enter a custom ratio. A new control for defining custom values becomes available only when the **Custom** option is selected. This allows precise manual control over how each step in the scale is calculated.
-
-## Editing variables {#editing-variables}
-
-Once generated, variables are displayed in the central panel. These variables may be managed in several ways.
-
-![](https://academy.bricksbuilder.io/assets/bricks-fluid-typo-category-text-generated.png)
-
-### Adding variables {#add-variables}
-
-Hover over the first or the last step in the list. A **+** button on its left edge adds a step: above the first row it adds a smaller step, below the last row a larger one (for example `3xl` after `2xl`).
-
-The new step is inserted at the appropriate position, either above or below the baseline. Both the variable name and value are automatically generated.
-
-In cases where the **Custom** scale type is used, variable names may need to be updated manually, or additional values can be added directly in the custom scale definition.
-
-**Note:** If you used the **Custom** scale type, then you will need to update the variable name, or even better, add new value to the **Custom** scale directly.
-
-### Deleting variables {#delete-and-export}
-
-To remove the smallest or the largest step, hover over the first or last row and click the **−** button. Bricks prevents removing the baseline step because the other steps depend on it.
-
-### Editing variables {#manually-editing}
-
-Variable names and values can be directly edited by selecting them in the center column. Manual edits apply only to the selected variable and do not affect any calculations. This allows fine-tuned adjustments while maintaining overall scale consistency.
-
-## Using the variables {#using-variables}
-
-Generated variables appear in the variable picker of every size control, grouped by their category. To give all headings of the same level one size across the site, set them in a theme style: **Theme Styles** > **Typography** > **Heading H1** (H2, H3 …) > **Typography** > **Font size**, then pick the variable, for example `var(--heading-xl)` for H2.
-
-A font size set directly on an element, including a size set on a breakpoint, takes precedence over the theme style. Clear those sizes on the elements that should follow the theme style. For an element that should deliberately differ, such as a larger hero headline, pick another step of the same scale instead of typing a value.
-
-## Typography preview {#typography-preview}
-
-The list in the center shows every step of the scale with its minimum and maximum size, each rendered as a line of preview text. Changes to the scale settings are previewed in this list right away. They reach the variables only after you click **Regenerate variables**.
-
-The `eye` icon in the Style Manager header toggles the canvas preview, so you can see the page next to the Style Manager while you work.
-
-![Style Manager Typography tab with a Headings scale: prefix heading-, minimum and maximum settings, and steps from heading-2xs to heading-3xl with their minimum and maximum preview.](https://academy.bricksbuilder.io/assets/bricks-fluid-typo-scale-list.webp)
-
----
-
 # Font Manager
 
 Source: https://academy.bricksbuilder.io/builder/styling/font-manager/
@@ -925,6 +811,120 @@ Confirm that the file is `.woff2`, `.woff`, or `.ttf`, that the current user has
 ### The wrong Google Font loads instead of a custom font
 
 If a custom font and a Google Font share the same family name, Bricks skips the Google font when generating frontend webfont links. If you still see an unexpected font, check for custom CSS or third-party font loading outside Bricks.
+
+---
+
+# Fluid Typography
+
+Source: https://academy.bricksbuilder.io/builder/styling/fluid-typography/
+
+*Create fluid typography in Bricks so text scales smoothly across viewport sizes instead of changing only at breakpoints.*
+
+Starting with Bricks 2.1, the **Fluid Typography Generator** lets you create pixel-perfect & responsive font sizes (through CSS variables using `clamp`) that scale smoothly between defined minimum and maximum values, ensuring consistent readability across all screen sizes and devices. Simplifying the process of managing font sizes while maintaining flexibility and precision in your design.
+
+https://youtu.be/wsxOmDqjfaQ
+
+## Accessing fluid typography {#access}
+
+Open the **Style Manager** from the builder toolbar, then select **Typography** in the Style Manager sidebar. From there you can create and edit fluid typography scales.
+
+Global scale settings, including the HTML font-size used for rem calculations and the minimum and maximum screen widths, are available in the Style Manager settings.
+
+## Fluid typography categories {#adding-category}
+
+Bricks lets you create unlimited Fluid Typography Scales for your Headings, Text, etc. through categories.
+
+So, **every Category is a Fluid Typography Scale**, that stores all its scale settings alongside it.
+
+You can keep it simple and just create a `Headings` and `Text` category for those two scales as we did in the following screenshot:
+
+![](https://academy.bricksbuilder.io/assets/bricks-fluid-typo-category-text-empty.png)
+
+## Fluid typography variables {#generating-variables}
+
+Fluid typography variables can be generated with the Scale Generator on the right-hand side.
+
+Scale changes are previewed in the list first. Click **Regenerate variables** to create or update the variables of the category (without pending changes, the button reads **Generate variables**). The icon in the Style Manager header, **Regenerate variables and save**, does both in one step.
+
+Whenever variables are generated, all existing variables within the selected category are deleted and replaced with the newly created variables. If the category already has variables, Bricks asks you to confirm this first. The number of variables is the same as in the previous set, but the names and values will be regenerated. So, any manual edits made to variable names or values are lost once the variables are regenerated. As long as the number of steps and the scale type stay the same, the names stay the same too, so every place that uses a variable (for example `var(--heading-xl)`) picks up the new value.
+
+## Scale controls {#controls-overview}
+
+### Prefix {#control-prefix}
+
+The prefix determines how variable names are structured. For instance, setting the prefix to `text-` results in variables being named `--text-m` or `--text-xl`, depending on the scale. It is recommended to use a prefix that is both unique and descriptive to maintain clarity and avoid conflicts.
+
+### Scale type {#control-scale-type}
+
+The scale type specifies the naming convention used for fluid typography variables. There are three available options:
+
+1. **T-shirt:** Generates variable names based on standard t-shirt sizes, such as `2xs, xs, s, m, l, xl, 2xl`. An example output would be `--text-m`.
+2. **Numeric:** Generates variable names using numbers, typically ranging from 1 through 6. An example output would be `--text-4`.
+3. **Custom:** Allows complete manual control over the naming convention. For example, scale names such as `small, medium, large, title` could be entered, resulting in variable names such as `--text-medium`.
+
+### Custom scale type {#control-custom-scale-type}
+
+This control only shows when the scale type is set to **Custom**. It provides the ability to define custom scale names, offering flexibility in aligning the naming convention with project-specific requirements.
+
+### Baseline step {#control-baseline-step}
+
+The baseline step acts as the foundation of the scale. The baseline variable will directly reflect the minimum and maximum font sizes defined, and all other scale steps will be calculated relative to this baseline. Proper definition of the baseline ensures accurate scaling across all steps.
+
+### HTML font-size {#control-px-to-rem}
+
+The Style Manager **HTML font-size** setting defines the rem baseline used for scale generation. You can set it explicitly to `10px` or `16px`, or leave it on auto so Bricks resolves the value from Theme Styles where possible and otherwise falls back to the default.
+
+### Base font size (px) {#control-base-font-size}
+
+The scale settings have two groups, **Minimum (Mobile)** and **Maximum (Desktop)**. Each has its own base font size and type scale ratio (defaults: `16px` with 1.25, and `20px` with 1.333). The two base font sizes establish the minimum and maximum values for the baseline step. Font sizes for all other steps will be calculated automatically based on the defined **Type Scale Ratio**.
+
+### Screen width (px) {#control-screen-width}
+
+The minimum and maximum screen widths are set once in the Style Manager settings and apply to all scales (default: `360px` and `1440px`). At the minimum width every step uses its minimum size, at the maximum width its maximum size. Outside these widths, font sizes stay constant.
+
+### Type scale ratio {#control-type-scale-ratio}
+
+This control defines the ratio by which font sizes increase or decrease in relation to the next adjacent variable. For example, with a baseline of 16px and a scale ratio of 1.5, the next step above the baseline will be calculated as 24px. Ratios are applied upward and downward, generating consistent scaling in both directions. Because the minimum and maximum have their own ratio, a larger ratio for large screens gives more contrast between headings on desktop while keeping them compact on phones. Steps below the baseline then shrink more on large screens, so for the smallest steps the maximum value can end up below the minimum.
+
+For advanced use cases, it is possible to enter a custom ratio. A new control for defining custom values becomes available only when the **Custom** option is selected. This allows precise manual control over how each step in the scale is calculated.
+
+## Editing variables {#editing-variables}
+
+Once generated, variables are displayed in the central panel. These variables may be managed in several ways.
+
+![](https://academy.bricksbuilder.io/assets/bricks-fluid-typo-category-text-generated.png)
+
+### Adding variables {#add-variables}
+
+Hover over the first or the last step in the list. A **+** button on its left edge adds a step: above the first row it adds a smaller step, below the last row a larger one (for example `3xl` after `2xl`).
+
+The new step is inserted at the appropriate position, either above or below the baseline. Both the variable name and value are automatically generated.
+
+In cases where the **Custom** scale type is used, variable names may need to be updated manually, or additional values can be added directly in the custom scale definition.
+
+**Note:** If you used the **Custom** scale type, then you will need to update the variable name, or even better, add new value to the **Custom** scale directly.
+
+### Deleting variables {#delete-and-export}
+
+To remove the smallest or the largest step, hover over the first or last row and click the **−** button. Bricks prevents removing the baseline step because the other steps depend on it.
+
+### Editing variables {#manually-editing}
+
+Variable names and values can be directly edited by selecting them in the center column. Manual edits apply only to the selected variable and do not affect any calculations. This allows fine-tuned adjustments while maintaining overall scale consistency.
+
+## Using the variables {#using-variables}
+
+Generated variables appear in the variable picker of every size control, grouped by their category. To give all headings of the same level one size across the site, set them in a theme style: **Theme Styles** > **Typography** > **Heading H1** (H2, H3 …) > **Typography** > **Font size**, then pick the variable, for example `var(--heading-xl)` for H2.
+
+A font size set directly on an element, including a size set on a breakpoint, takes precedence over the theme style. Clear those sizes on the elements that should follow the theme style. For an element that should deliberately differ, such as a larger hero headline, pick another step of the same scale instead of typing a value.
+
+## Typography preview {#typography-preview}
+
+The list in the center shows every step of the scale with its minimum and maximum size, each rendered as a line of preview text. Changes to the scale settings are previewed in this list right away. They reach the variables only after you click **Regenerate variables**.
+
+The `eye` icon in the Style Manager header toggles the canvas preview, so you can see the page next to the Style Manager while you work.
+
+![Style Manager Typography tab with a Headings scale: prefix heading-, minimum and maximum settings, and steps from heading-2xs to heading-3xl with their minimum and maximum preview.](https://academy.bricksbuilder.io/assets/bricks-fluid-typo-scale-list.webp)
 
 ---
 
@@ -1232,6 +1232,260 @@ You can control when the global class import manager opens by navigating to **Wo
 
 ---
 
+# Global CSS Classes
+
+Source: https://academy.bricksbuilder.io/builder/styling/global-css-classes/
+
+*Use global CSS classes in Bricks to apply shared styles across multiple elements and keep designs easier to maintain.*
+
+A global CSS class is a reusable Bricks style target. Instead of styling one element's ID only, you create a class, assign it to one or more elements, and edit the class visually with the same controls you use for element styling.
+
+Use global classes for repeated design decisions: buttons, cards, grids, spacing wrappers, headings, badges, form rows, or any element pattern that should stay consistent across a page or site.
+
+https://youtu.be/V9bzI6poe-Y
+
+## The mental model
+
+Every element in Bricks has an element ID. When no global class is selected, visual style controls apply to that element ID only.
+
+When a global class is selected as the active selector, style controls apply to the class instead. Any element that uses that class can receive the same class styles.
+
+Think of the selector field at the top of the element panel as the current styling target:
+
+- `#my-element`: you are styling only that element.
+- `.card`: you are styling the global class named `card`.
+- `.card:hover`, `.card::before`, or another selector/pseudo state: you are styling that state or selector for the class.
+
+The important part is the active class state. Adding a class to an element and selecting that class are related, but not identical:
+
+- Assigned class: the element uses the class on the frontend.
+- Active class: the builder controls currently write styles to that class.
+
+If you add `.card` to an element, then deselect the class, you are back to styling the element ID. If you select `.card`, your style changes update the class.
+
+## Class styles vs element ID styles
+
+Element ID styles are more specific than global class styles. If the same CSS property is set on both the element ID and a global class, the element ID style usually wins.
+
+Use that on purpose:
+
+- Put shared defaults on the class.
+- Put one-off overrides on the element ID.
+- If a style is meant to be reusable, avoid leaving the same property on the element ID.
+
+> **Note**
+>
+> If a class appears not to work, check whether the selected element already has the same property set on its element ID, page settings, or custom CSS.
+
+## How to create a global class
+
+![](https://academy.bricksbuilder.io/assets/adding-global-classes-bricks.png)
+
+1. Select any element by clicking on it in the canvas or via the structure panel.
+2. Click the selector input that shows the element's ID under its name in the left panel.
+3. Type a class name in the class input.
+4. Press `Enter` or click the save icon.
+5. Select the class so it becomes the active selector.
+6. Change style controls as needed.
+
+Bricks accepts class names with or without a leading dot. The builder stores the class name without the dot and displays it as `.class-name`.
+
+You can enter more than one class name separated by spaces or commas when creating classes. Bricks creates the missing classes and reuses existing classes with the same name.
+
+## Assign an existing class to an element
+
+1. Select the element.
+2. Open the selector/class dropdown at the top of the element panel.
+3. Search for the class name.
+4. Click the class to add it to the element.
+
+The class then appears in the element's active class list. Click the class chip to make it active for editing. Click the close icon on the chip to remove it from the element.
+
+Removing a class from an element does not delete the global class. It only removes that class assignment from the selected element.
+
+## Deselect a class before styling the element itself
+
+When a global class is active, the style controls edit the class. To return to the element ID:
+
+1. Click the active selector field.
+2. Choose the element ID entry, or click the clear icon.
+3. Confirm the selector field shows the element ID instead of the class name.
+
+This is the safest way to avoid accidentally changing every element that uses the class.
+
+## Multiple classes on one element
+
+An element can have multiple global classes. This lets you separate responsibilities:
+
+```text
+.button
+.button--primary
+.margin-top-l
+```
+
+A common pattern is:
+
+- One base class for structure and default styling.
+- One modifier class for a variation.
+- One utility class for a single property such as spacing or color.
+
+When two classes set the same property with similar specificity, normal CSS cascade rules decide the final value. Avoid relying on conflicting class definitions as your main workflow. It is clearer to keep each class focused.
+
+Starting in Bricks 2.4, admins can enable **Output global class CSS in Class Manager order** under [Bricks settings](https://academy.bricksbuilder.io/builder/setup/settings/#miscellaneous). When enabled, same-specificity global class rules follow the class order in the Class Manager. When disabled, Bricks uses the previous output order based on how classes are encountered on rendered elements.
+
+## Pseudo classes and custom selectors
+
+Global classes can have pseudo-class and custom-selector styles.
+
+Use pseudo classes for states such as:
+
+```text
+:hover
+:focus
+:active
+```
+
+Use custom selectors when you need to style a child or related selector from the class context. For example, you might style an icon inside a card class, or a nested heading inside a reusable wrapper.
+
+When a selector starts with `:`, Bricks attaches it directly to the class selector. Other selectors are treated as nested selectors.
+
+> **Tip**
+>
+> Use class selectors for reusable states and child styling. Use element ID selectors only for one-off exceptions.
+
+## Copy, paste, reset, and rename class styles
+
+The class selector actions let you work with styles without manually copying CSS:
+
+- Copy styles from an element ID or class.
+- Paste styles into an element ID or class.
+- Reset styles on an element ID.
+- Reset styles on a class.
+- Rename the element CSS ID or the active class.
+
+When a class is renamed, Bricks updates the class name and also updates custom CSS stored inside that class where the old class root selector is used.
+
+Renaming a class does not rename unrelated CSS that you wrote outside Bricks-managed class settings.
+
+## Locked classes
+
+Locked classes cannot be edited until they are unlocked. This protects shared design-system classes from accidental changes while still allowing them to be assigned where permissions allow.
+
+If a class is locked and you cannot edit it, check whether your user role has permission to lock, unlock, and edit global classes.
+
+## Bulk editing
+
+When multiple elements are selected, the global classes panel shows classes that all selected elements have in common. You can add or remove a class across the selected elements.
+
+Bulk editing is useful for applying a shared utility or layout class to multiple elements. It is not the right place to do detailed per-element cleanup.
+
+## Permissions and disabled interface
+
+Administrators can control access to global class features. Depending on your permissions, you may be able to:
+
+- Create global classes.
+- Edit global classes.
+- Assign or unassign classes.
+- Delete global classes.
+- Lock or unlock classes.
+- Copy and paste global class styles.
+
+Administrators can also disable the Global Class Manager under `Bricks > Settings > General > Disable global class manager`. That hides the manager tab. Element-panel class actions are controlled by the global-class permissions above.
+
+## Relationship to Class Manager
+
+The element panel is where you apply a class and edit the active class while working on an element.
+
+The Global Class Manager is where you maintain the class library: custom CSS for a selected class, categories, bulk renaming, locks, trash, import/export, usage filters, and conflict review.
+
+You can create and use classes from either workflow, but they serve different jobs:
+
+- Element panel: "Use or edit this class on this element."
+- Class Manager: "Maintain the whole class system."
+
+## Relationship to utility classes
+
+Some Style Manager features can generate utility classes from colors or variable scales. Those utility classes are stored as global classes too, so they can appear in the class list and be assigned like other classes.
+
+Generated utility classes are best used as small, single-purpose classes. Avoid editing them into large component classes unless that is intentional.
+
+## Troubleshooting
+
+### The class is assigned, but the style does not show
+
+Check these first:
+
+1. Is the class selected as the active selector when you edit it?
+2. Does the element ID already set the same property?
+3. Is the class locked?
+4. Does the class have styles for the current element type?
+5. Is the class output affected by custom CSS with higher specificity?
+
+### I changed a class and many elements changed
+
+That is expected. A global class is reusable. If only one element should change, clear the active class and style the element ID instead, or create a more specific modifier class.
+
+### I cannot create or edit a class
+
+Check your builder permissions and whether the Global Class Manager is disabled in Bricks settings.
+
+### A class from an imported template conflicts with an existing class
+
+Bricks tracks classes by ID and name. If an imported class has the same ID or name as a local class, Bricks may map it to the existing class or ask you to review the conflict, depending on your import settings.
+
+Review conflicts before accepting imports on production sites, especially when classes are part of a design system.
+
+---
+
+# Gradients & Overlays
+
+Source: https://academy.bricksbuilder.io/builder/styling/gradients-overlays/
+
+*Create gradients and overlays in Bricks to add layered backgrounds, image treatments, and color effects.*
+
+Spice up your site's design by adding background, overlay, and text gradients to any element. When editing an element, the Gradients & Overlays control group is under the Style tab.
+
+https://youtu.be/U0x0vCAzuc0
+
+## Available controls:
+
+- **Apply to**: Select the type of content you want to add a gradient to (text, background, overlay).
+- **CSS selector**: To target a specific HTML within an element.
+- **Colors**: Add at least two colors to see a gradient. When you apply the gradient to an overlay make sure to reduce the color transparency in order to see through it.
+- **Type**: Choose the gradient type—linear, radial, or conic.
+- **Repeat (since 1.9.4)**: Allows the gradient to repeat across the element. Define 'stops' to control the transition points of each color, using units like percentages or pixels.
+
+### Linear gradient controls:
+
+- **Angle in °**: Set a specific angle for your linear gradient between 0 to 360°.
+
+### Radial gradient controls:
+
+- **Shape**: Choose between 'circle' or 'ellipse'.
+- **Size**: Select from 'closest-side', 'farthest-side', 'closest-corner', 'farthest-corner'. For details on these settings, see the [Mozilla Documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient#size).
+- **Position**: Define the central point of the gradient.
+
+### Conic gradient controls:
+
+- **Starting angle in °**: Specify the starting angle of the gradient between 0 to 360°.
+- **Position**: Set the gradient's center.
+
+---
+
+# Hover Styles
+
+Source: https://academy.bricksbuilder.io/builder/styling/hover-styles/
+
+*Style hover states in Bricks so links, buttons, cards, and other interactive elements respond consistently.*
+
+Bring your site to life and boost visitor engagement by styling the hover state of any interactive element.
+
+In the builder, select the element or class you want to style. Open the pseudo-class menu and choose `:hover`. Any styles you add while `:hover` is active are saved to that hover state instead of the default state.
+
+Use the same pseudo-class workflow for global classes, element ID styles, and other supported states. Learn more in [Styling Element States & Parts](https://academy.bricksbuilder.io/builder/styling/pseudo-classes/).
+
+---
+
 # Global Variables Manager
 
 Source: https://academy.bricksbuilder.io/builder/styling/global-variables-manager/
@@ -1484,260 +1738,6 @@ Remote template variable imports do not import variable categories. JSON imports
 ### Utility classes are missing
 
 Check that the variable category is a scale, that utility classes are configured for that scale, and that Bricks can generate and enqueue the Style Manager CSS file.
-
----
-
-# Global CSS Classes
-
-Source: https://academy.bricksbuilder.io/builder/styling/global-css-classes/
-
-*Use global CSS classes in Bricks to apply shared styles across multiple elements and keep designs easier to maintain.*
-
-A global CSS class is a reusable Bricks style target. Instead of styling one element's ID only, you create a class, assign it to one or more elements, and edit the class visually with the same controls you use for element styling.
-
-Use global classes for repeated design decisions: buttons, cards, grids, spacing wrappers, headings, badges, form rows, or any element pattern that should stay consistent across a page or site.
-
-https://youtu.be/V9bzI6poe-Y
-
-## The mental model
-
-Every element in Bricks has an element ID. When no global class is selected, visual style controls apply to that element ID only.
-
-When a global class is selected as the active selector, style controls apply to the class instead. Any element that uses that class can receive the same class styles.
-
-Think of the selector field at the top of the element panel as the current styling target:
-
-- `#my-element`: you are styling only that element.
-- `.card`: you are styling the global class named `card`.
-- `.card:hover`, `.card::before`, or another selector/pseudo state: you are styling that state or selector for the class.
-
-The important part is the active class state. Adding a class to an element and selecting that class are related, but not identical:
-
-- Assigned class: the element uses the class on the frontend.
-- Active class: the builder controls currently write styles to that class.
-
-If you add `.card` to an element, then deselect the class, you are back to styling the element ID. If you select `.card`, your style changes update the class.
-
-## Class styles vs element ID styles
-
-Element ID styles are more specific than global class styles. If the same CSS property is set on both the element ID and a global class, the element ID style usually wins.
-
-Use that on purpose:
-
-- Put shared defaults on the class.
-- Put one-off overrides on the element ID.
-- If a style is meant to be reusable, avoid leaving the same property on the element ID.
-
-> **Note**
->
-> If a class appears not to work, check whether the selected element already has the same property set on its element ID, page settings, or custom CSS.
-
-## How to create a global class
-
-![](https://academy.bricksbuilder.io/assets/adding-global-classes-bricks.png)
-
-1. Select any element by clicking on it in the canvas or via the structure panel.
-2. Click the selector input that shows the element's ID under its name in the left panel.
-3. Type a class name in the class input.
-4. Press `Enter` or click the save icon.
-5. Select the class so it becomes the active selector.
-6. Change style controls as needed.
-
-Bricks accepts class names with or without a leading dot. The builder stores the class name without the dot and displays it as `.class-name`.
-
-You can enter more than one class name separated by spaces or commas when creating classes. Bricks creates the missing classes and reuses existing classes with the same name.
-
-## Assign an existing class to an element
-
-1. Select the element.
-2. Open the selector/class dropdown at the top of the element panel.
-3. Search for the class name.
-4. Click the class to add it to the element.
-
-The class then appears in the element's active class list. Click the class chip to make it active for editing. Click the close icon on the chip to remove it from the element.
-
-Removing a class from an element does not delete the global class. It only removes that class assignment from the selected element.
-
-## Deselect a class before styling the element itself
-
-When a global class is active, the style controls edit the class. To return to the element ID:
-
-1. Click the active selector field.
-2. Choose the element ID entry, or click the clear icon.
-3. Confirm the selector field shows the element ID instead of the class name.
-
-This is the safest way to avoid accidentally changing every element that uses the class.
-
-## Multiple classes on one element
-
-An element can have multiple global classes. This lets you separate responsibilities:
-
-```text
-.button
-.button--primary
-.margin-top-l
-```
-
-A common pattern is:
-
-- One base class for structure and default styling.
-- One modifier class for a variation.
-- One utility class for a single property such as spacing or color.
-
-When two classes set the same property with similar specificity, normal CSS cascade rules decide the final value. Avoid relying on conflicting class definitions as your main workflow. It is clearer to keep each class focused.
-
-Starting in Bricks 2.4, admins can enable **Output global class CSS in Class Manager order** under [Bricks settings](https://academy.bricksbuilder.io/builder/setup/settings/#miscellaneous). When enabled, same-specificity global class rules follow the class order in the Class Manager. When disabled, Bricks uses the previous output order based on how classes are encountered on rendered elements.
-
-## Pseudo classes and custom selectors
-
-Global classes can have pseudo-class and custom-selector styles.
-
-Use pseudo classes for states such as:
-
-```text
-:hover
-:focus
-:active
-```
-
-Use custom selectors when you need to style a child or related selector from the class context. For example, you might style an icon inside a card class, or a nested heading inside a reusable wrapper.
-
-When a selector starts with `:`, Bricks attaches it directly to the class selector. Other selectors are treated as nested selectors.
-
-> **Tip**
->
-> Use class selectors for reusable states and child styling. Use element ID selectors only for one-off exceptions.
-
-## Copy, paste, reset, and rename class styles
-
-The class selector actions let you work with styles without manually copying CSS:
-
-- Copy styles from an element ID or class.
-- Paste styles into an element ID or class.
-- Reset styles on an element ID.
-- Reset styles on a class.
-- Rename the element CSS ID or the active class.
-
-When a class is renamed, Bricks updates the class name and also updates custom CSS stored inside that class where the old class root selector is used.
-
-Renaming a class does not rename unrelated CSS that you wrote outside Bricks-managed class settings.
-
-## Locked classes
-
-Locked classes cannot be edited until they are unlocked. This protects shared design-system classes from accidental changes while still allowing them to be assigned where permissions allow.
-
-If a class is locked and you cannot edit it, check whether your user role has permission to lock, unlock, and edit global classes.
-
-## Bulk editing
-
-When multiple elements are selected, the global classes panel shows classes that all selected elements have in common. You can add or remove a class across the selected elements.
-
-Bulk editing is useful for applying a shared utility or layout class to multiple elements. It is not the right place to do detailed per-element cleanup.
-
-## Permissions and disabled interface
-
-Administrators can control access to global class features. Depending on your permissions, you may be able to:
-
-- Create global classes.
-- Edit global classes.
-- Assign or unassign classes.
-- Delete global classes.
-- Lock or unlock classes.
-- Copy and paste global class styles.
-
-Administrators can also disable the Global Class Manager under `Bricks > Settings > General > Disable global class manager`. That hides the manager tab. Element-panel class actions are controlled by the global-class permissions above.
-
-## Relationship to Class Manager
-
-The element panel is where you apply a class and edit the active class while working on an element.
-
-The Global Class Manager is where you maintain the class library: custom CSS for a selected class, categories, bulk renaming, locks, trash, import/export, usage filters, and conflict review.
-
-You can create and use classes from either workflow, but they serve different jobs:
-
-- Element panel: "Use or edit this class on this element."
-- Class Manager: "Maintain the whole class system."
-
-## Relationship to utility classes
-
-Some Style Manager features can generate utility classes from colors or variable scales. Those utility classes are stored as global classes too, so they can appear in the class list and be assigned like other classes.
-
-Generated utility classes are best used as small, single-purpose classes. Avoid editing them into large component classes unless that is intentional.
-
-## Troubleshooting
-
-### The class is assigned, but the style does not show
-
-Check these first:
-
-1. Is the class selected as the active selector when you edit it?
-2. Does the element ID already set the same property?
-3. Is the class locked?
-4. Does the class have styles for the current element type?
-5. Is the class output affected by custom CSS with higher specificity?
-
-### I changed a class and many elements changed
-
-That is expected. A global class is reusable. If only one element should change, clear the active class and style the element ID instead, or create a more specific modifier class.
-
-### I cannot create or edit a class
-
-Check your builder permissions and whether the Global Class Manager is disabled in Bricks settings.
-
-### A class from an imported template conflicts with an existing class
-
-Bricks tracks classes by ID and name. If an imported class has the same ID or name as a local class, Bricks may map it to the existing class or ask you to review the conflict, depending on your import settings.
-
-Review conflicts before accepting imports on production sites, especially when classes are part of a design system.
-
----
-
-# Gradients & Overlays
-
-Source: https://academy.bricksbuilder.io/builder/styling/gradients-overlays/
-
-*Create gradients and overlays in Bricks to add layered backgrounds, image treatments, and color effects.*
-
-Spice up your site's design by adding background, overlay, and text gradients to any element. When editing an element, the Gradients & Overlays control group is under the Style tab.
-
-https://youtu.be/U0x0vCAzuc0
-
-## Available controls:
-
-- **Apply to**: Select the type of content you want to add a gradient to (text, background, overlay).
-- **CSS selector**: To target a specific HTML within an element.
-- **Colors**: Add at least two colors to see a gradient. When you apply the gradient to an overlay make sure to reduce the color transparency in order to see through it.
-- **Type**: Choose the gradient type—linear, radial, or conic.
-- **Repeat (since 1.9.4)**: Allows the gradient to repeat across the element. Define 'stops' to control the transition points of each color, using units like percentages or pixels.
-
-### Linear gradient controls:
-
-- **Angle in °**: Set a specific angle for your linear gradient between 0 to 360°.
-
-### Radial gradient controls:
-
-- **Shape**: Choose between 'circle' or 'ellipse'.
-- **Size**: Select from 'closest-side', 'farthest-side', 'closest-corner', 'farthest-corner'. For details on these settings, see the [Mozilla Documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient#size).
-- **Position**: Define the central point of the gradient.
-
-### Conic gradient controls:
-
-- **Starting angle in °**: Specify the starting angle of the gradient between 0 to 360°.
-- **Position**: Set the gradient's center.
-
----
-
-# Hover Styles
-
-Source: https://academy.bricksbuilder.io/builder/styling/hover-styles/
-
-*Style hover states in Bricks so links, buttons, cards, and other interactive elements respond consistently.*
-
-Bring your site to life and boost visitor engagement by styling the hover state of any interactive element.
-
-In the builder, select the element or class you want to style. Open the pseudo-class menu and choose `:hover`. Any styles you add while `:hover` is active are saved to that hover state instead of the default state.
-
-Use the same pseudo-class workflow for global classes, element ID styles, and other supported states. Learn more in [Styling Element States & Parts](https://academy.bricksbuilder.io/builder/styling/pseudo-classes/).
 
 ---
 
