@@ -1,3 +1,115 @@
+# Pagination
+
+Source: https://academy.bricksbuilder.io/builder/elements/wordpress/pagination/
+
+*The Pagination element displays page navigation for query results with customizable styling.*
+
+The Pagination element displays page navigation for query results with customizable styling.
+
+## Settings
+
+- **Query** (query-list) - Select which query this pagination controls.
+
+- **Alignment** (justify-content) - Horizontal alignment of pagination links.
+
+- **Height** (number with units) - Height of pagination buttons.
+
+- **Width** (number with units) - Width of pagination buttons.
+
+- **Spacing** (number with units) - Gap between pagination buttons. Default: 20px.
+
+- **Background** (color) - Background color of pagination buttons.
+
+- **Border** (border) - Border styling for pagination buttons.
+
+- **Typography** (typography) - Font settings for pagination buttons.
+
+### Current
+
+- **Background** (color) - Background color of the current page button.
+
+- **Border** (border) - Border styling for the current page button.
+
+- **Typography** (typography) - Font settings for the current page button.
+
+### Icons
+
+- **Previous Icon** (icon) - Icon for the previous page button.
+
+- **Next Icon** (icon) - Icon for the next page button.
+
+### Miscellaneous
+
+- **End Size** (number) - Number of page numbers shown at the start and end. Default: 1.
+
+- **Mid Size** (number) - Number of page numbers shown on each side of current page. Default: 2.
+
+> **Developer reference**
+>
+> See the [Pagination Schema](https://academy.bricksbuilder.io/developer/schema/elements/pagination/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Search
+
+Source: https://academy.bricksbuilder.io/builder/elements/wordpress/search/
+
+*Displays a search form with input field and submit button, or an icon that opens an overlay search.*
+
+Displays a search form with input field and submit button, or an icon that opens an overlay search.
+
+## Settings
+
+- **Type** (select) - Choose between Input or Icon & Overlay. Default: Input.
+- **aria-label** (text) - Accessibility label for overlay type. Required for overlay.
+- **Action URL** (text) - URL where search form submits. Default: home URL.
+- **Additional parameters** (repeater) - Hidden input fields added to search form.
+
+### Input
+- **Height** (number) - Input field height.
+- **Width** (number) - Input field width.
+- **Placeholder** (text) - Placeholder text. Default: "Search ...".
+- **Placeholder color** (color) - Color of placeholder text.
+- **Background color** (color) - Input background color.
+- **Border** (border) - Input border settings.
+- **Box shadow** (box-shadow) - Input box shadow.
+- **Typography** (typography) - Input text typography.
+- **Show label** (checkbox) - Display label above input. Default: false.
+- **Label text** (text) - Text for input label.
+- **Label typography** (typography) - Typography for input label.
+
+### Button / Icon
+- **aria-label** (text) - Accessibility label for button.
+- **Text** (text) - Button text.
+- **Icon** (icon) - Button icon.
+- **Padding** (spacing) - Button padding.
+- **Height** (number) - Button height.
+- **Width** (number) - Button width.
+- **Background color** (color) - Button background color.
+- **Border** (border) - Button border settings.
+- **Box shadow** (box-shadow) - Button box shadow.
+- **Typography** (typography) - Button text typography.
+
+### Overlay
+- **Direction (Form)** (direction) - Flex direction of overlay form.
+- **Gap** (number) - Gap between form elements.
+- **Title** (text) - Overlay title. Default: "Search site".
+- **Title tag** (text) - HTML tag for title. Default: h4.
+- **Title typography** (typography) - Typography for overlay title.
+- **Background** (background) - Overlay background.
+- **Background: Overlay** (color) - Overlay background overlay color.
+- **Button: Width** (number) - Overlay button width.
+- **Button: Padding** (spacing) - Overlay button padding.
+- **Button: Background color** (color) - Overlay button background color.
+- **Button: Border** (border) - Overlay button border.
+- **Button: Typography** (typography) - Overlay button typography.
+
+> **Developer reference**
+>
+> See the [Search Schema](https://academy.bricksbuilder.io/developer/schema/elements/search/) for the full JSON schema of this element's settings and controls.
+
+---
+
 # Nav menu
 
 Source: https://academy.bricksbuilder.io/builder/elements/wordpress/nav-menu/
@@ -252,6 +364,30 @@ The Nav Menu element displays WordPress navigation menus with customizable styli
 
 ---
 
+# Shortcode
+
+Source: https://academy.bricksbuilder.io/builder/elements/wordpress/shortcode/
+
+*The Shortcode element executes WordPress shortcodes within your Bricks pages.*
+
+The Shortcode element executes WordPress shortcodes within your Bricks pages.
+
+## Settings
+
+- **Shortcode** (textarea) - Enter the shortcode to execute, including the square brackets (e.g., `[gallery ids="72,73,74,75" columns="3"]`). Supports dynamic data.
+
+- **Don't render in builder** (checkbox) - Show a placeholder instead of rendering the shortcode in the builder. Useful for shortcodes that slow down the builder or cause conflicts.
+
+- **Placeholder: Width** (number with units) - Width of the placeholder when "Don't render in builder" is enabled.
+
+- **Placeholder: Height** (number with units) - Height of the placeholder when "Don't render in builder" is enabled.
+
+> **Developer reference**
+>
+> See the [Shortcode Schema](https://academy.bricksbuilder.io/developer/schema/elements/shortcode/) for the full JSON schema of this element's settings and controls.
+
+---
+
 # Posts
 
 Source: https://academy.bricksbuilder.io/builder/elements/wordpress/posts/
@@ -336,142 +472,6 @@ The Posts element displays a list or grid of posts with customizable query, layo
 
 ---
 
-# Pagination
-
-Source: https://academy.bricksbuilder.io/builder/elements/wordpress/pagination/
-
-*The Pagination element displays page navigation for query results with customizable styling.*
-
-The Pagination element displays page navigation for query results with customizable styling.
-
-## Settings
-
-- **Query** (query-list) - Select which query this pagination controls.
-
-- **Alignment** (justify-content) - Horizontal alignment of pagination links.
-
-- **Height** (number with units) - Height of pagination buttons.
-
-- **Width** (number with units) - Width of pagination buttons.
-
-- **Spacing** (number with units) - Gap between pagination buttons. Default: 20px.
-
-- **Background** (color) - Background color of pagination buttons.
-
-- **Border** (border) - Border styling for pagination buttons.
-
-- **Typography** (typography) - Font settings for pagination buttons.
-
-### Current
-
-- **Background** (color) - Background color of the current page button.
-
-- **Border** (border) - Border styling for the current page button.
-
-- **Typography** (typography) - Font settings for the current page button.
-
-### Icons
-
-- **Previous Icon** (icon) - Icon for the previous page button.
-
-- **Next Icon** (icon) - Icon for the next page button.
-
-### Miscellaneous
-
-- **End Size** (number) - Number of page numbers shown at the start and end. Default: 1.
-
-- **Mid Size** (number) - Number of page numbers shown on each side of current page. Default: 2.
-
-> **Developer reference**
->
-> See the [Pagination Schema](https://academy.bricksbuilder.io/developer/schema/elements/pagination/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Search
-
-Source: https://academy.bricksbuilder.io/builder/elements/wordpress/search/
-
-*Displays a search form with input field and submit button, or an icon that opens an overlay search.*
-
-Displays a search form with input field and submit button, or an icon that opens an overlay search.
-
-## Settings
-
-- **Type** (select) - Choose between Input or Icon & Overlay. Default: Input.
-- **aria-label** (text) - Accessibility label for overlay type. Required for overlay.
-- **Action URL** (text) - URL where search form submits. Default: home URL.
-- **Additional parameters** (repeater) - Hidden input fields added to search form.
-
-### Input
-- **Height** (number) - Input field height.
-- **Width** (number) - Input field width.
-- **Placeholder** (text) - Placeholder text. Default: "Search ...".
-- **Placeholder color** (color) - Color of placeholder text.
-- **Background color** (color) - Input background color.
-- **Border** (border) - Input border settings.
-- **Box shadow** (box-shadow) - Input box shadow.
-- **Typography** (typography) - Input text typography.
-- **Show label** (checkbox) - Display label above input. Default: false.
-- **Label text** (text) - Text for input label.
-- **Label typography** (typography) - Typography for input label.
-
-### Button / Icon
-- **aria-label** (text) - Accessibility label for button.
-- **Text** (text) - Button text.
-- **Icon** (icon) - Button icon.
-- **Padding** (spacing) - Button padding.
-- **Height** (number) - Button height.
-- **Width** (number) - Button width.
-- **Background color** (color) - Button background color.
-- **Border** (border) - Button border settings.
-- **Box shadow** (box-shadow) - Button box shadow.
-- **Typography** (typography) - Button text typography.
-
-### Overlay
-- **Direction (Form)** (direction) - Flex direction of overlay form.
-- **Gap** (number) - Gap between form elements.
-- **Title** (text) - Overlay title. Default: "Search site".
-- **Title tag** (text) - HTML tag for title. Default: h4.
-- **Title typography** (typography) - Typography for overlay title.
-- **Background** (background) - Overlay background.
-- **Background: Overlay** (color) - Overlay background overlay color.
-- **Button: Width** (number) - Overlay button width.
-- **Button: Padding** (spacing) - Overlay button padding.
-- **Button: Background color** (color) - Overlay button background color.
-- **Button: Border** (border) - Overlay button border.
-- **Button: Typography** (typography) - Overlay button typography.
-
-> **Developer reference**
->
-> See the [Search Schema](https://academy.bricksbuilder.io/developer/schema/elements/search/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Shortcode
-
-Source: https://academy.bricksbuilder.io/builder/elements/wordpress/shortcode/
-
-*The Shortcode element executes WordPress shortcodes within your Bricks pages.*
-
-The Shortcode element executes WordPress shortcodes within your Bricks pages.
-
-## Settings
-
-- **Shortcode** (textarea) - Enter the shortcode to execute, including the square brackets (e.g., `[gallery ids="72,73,74,75" columns="3"]`). Supports dynamic data.
-
-- **Don't render in builder** (checkbox) - Show a placeholder instead of rendering the shortcode in the builder. Useful for shortcodes that slow down the builder or cause conflicts.
-
-- **Placeholder: Width** (number with units) - Width of the placeholder when "Don't render in builder" is enabled.
-
-- **Placeholder: Height** (number with units) - Height of the placeholder when "Don't render in builder" is enabled.
-
-> **Developer reference**
->
-> See the [Shortcode Schema](https://academy.bricksbuilder.io/developer/schema/elements/shortcode/) for the full JSON schema of this element's settings and controls.
-
----
-
 # Sidebar
 
 Source: https://academy.bricksbuilder.io/builder/elements/wordpress/sidebar/
@@ -492,38 +492,6 @@ Displays a WordPress sidebar with its widgets.
 > **Developer reference**
 >
 > See the [Sidebar Schema](https://academy.bricksbuilder.io/developer/schema/elements/sidebar/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Account - Add payment method
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-add-payment-method/
-
-*Displays the Add payment method endpoint content inside My Account templates.*
-
-Displays the Add payment method endpoint content inside My Account templates.
-
-## Where this element works
-
-My Account templates and My Account endpoint views.
-
-## Key settings
-
-- **Wrapper** (separator)
-- **Payment Methods List** (separator)
-- **Payment Method Item** (separator)
-- **Label** (separator)
-- **Custom Radio (Checked)** (separator)
-- **Color** (color)
-- **Payment Box** (separator)
-- **Add Payment Method Button** (separator)
-- **Margin** (spacing)
-- **Padding** (spacing)
-
-## Usage tips
-
-- Use these elements in My Account templates or endpoint-specific templates.
-- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
 
 ---
 
@@ -591,6 +559,38 @@ The WordPress element displays various WordPress widgets with customizable styli
 
 ---
 
+# Account - Add payment method
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-add-payment-method/
+
+*Displays the Add payment method endpoint content inside My Account templates.*
+
+Displays the Add payment method endpoint content inside My Account templates.
+
+## Where this element works
+
+My Account templates and My Account endpoint views.
+
+## Key settings
+
+- **Wrapper** (separator)
+- **Payment Methods List** (separator)
+- **Payment Method Item** (separator)
+- **Label** (separator)
+- **Custom Radio (Checked)** (separator)
+- **Color** (color)
+- **Payment Box** (separator)
+- **Add Payment Method Button** (separator)
+- **Margin** (spacing)
+- **Padding** (spacing)
+
+## Usage tips
+
+- Use these elements in My Account templates or endpoint-specific templates.
+- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
+
+---
+
 # Account - Addresses
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-addresses/
@@ -615,37 +615,6 @@ My Account templates and My Account endpoint views.
 - **Border** (border)
 - **Box shadow** (box-shadow)
 - **Typography** (typography)
-
-## Usage tips
-
-- Use these elements in My Account templates or endpoint-specific templates.
-- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
-
----
-
-# Account - Edit account
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-edit-account/
-
-*Displays the Edit account form inside My Account.*
-
-Displays the Edit account form inside My Account.
-
-## Where this element works
-
-My Account templates and My Account endpoint views.
-
-## Key settings
-
-- **Label typography** (typography)
-- **Margin** (spacing)
-- **Padding** (spacing)
-- **Background color** (color)
-- **Border** (border)
-- **Box shadow** (box-shadow)
-- **Typography** (typography)
-- **Width** (number)
-- **Gap** (number)
 
 ## Usage tips
 
@@ -686,13 +655,13 @@ My Account templates and My Account endpoint views.
 
 ---
 
-# Account - Edit address
+# Account - Edit account
 
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-edit-address/
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-edit-account/
 
-*Displays the Edit address form inside My Account.*
+*Displays the Edit account form inside My Account.*
 
-Displays the Edit address form inside My Account.
+Displays the Edit account form inside My Account.
 
 ## Where this element works
 
@@ -700,16 +669,15 @@ My Account templates and My Account endpoint views.
 
 ## Key settings
 
-- **Hide** (checkbox)
+- **Label typography** (typography)
 - **Margin** (spacing)
 - **Padding** (spacing)
 - **Background color** (color)
 - **Border** (border)
 - **Box shadow** (box-shadow)
 - **Typography** (typography)
-- **Label typography** (typography)
-- **Placeholder typography** (typography)
-- **Field** (separator)
+- **Width** (number)
+- **Gap** (number)
 
 ## Usage tips
 
@@ -750,6 +718,38 @@ My Account templates and My Account endpoint views.
 
 ---
 
+# Account - Edit address
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-edit-address/
+
+*Displays the Edit address form inside My Account.*
+
+Displays the Edit address form inside My Account.
+
+## Where this element works
+
+My Account templates and My Account endpoint views.
+
+## Key settings
+
+- **Hide** (checkbox)
+- **Margin** (spacing)
+- **Padding** (spacing)
+- **Background color** (color)
+- **Border** (border)
+- **Box shadow** (box-shadow)
+- **Typography** (typography)
+- **Label typography** (typography)
+- **Placeholder typography** (typography)
+- **Field** (separator)
+
+## Usage tips
+
+- Use these elements in My Account templates or endpoint-specific templates.
+- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
+
+---
+
 # Account - Lost password
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-lost-password/
@@ -757,6 +757,38 @@ Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-fo
 *Displays the Lost password request form used in My Account flows.*
 
 Displays the Lost password request form used in My Account flows.
+
+## Where this element works
+
+My Account templates and My Account endpoint views.
+
+## Key settings
+
+- **Disable** (checkbox)
+- **Typography** (typography)
+- **Align items** (align-items)
+- **Width** (number)
+- **Gap** (number)
+- **Label typography** (typography)
+- **Field** (separator)
+- **Margin** (spacing)
+- **Padding** (spacing)
+- **Background color** (color)
+
+## Usage tips
+
+- Use these elements in My Account templates or endpoint-specific templates.
+- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
+
+---
+
+# Account - Reset password
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-reset-password/
+
+*Displays the Reset password form used after password reset link validation.*
+
+Displays the Reset password form used after password reset link validation.
 
 ## Where this element works
 
@@ -814,13 +846,13 @@ My Account templates and My Account endpoint views.
 
 ---
 
-# Account - Reset password
+# Account - Orders
 
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-reset-password/
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-orders/
 
-*Displays the Reset password form used after password reset link validation.*
+*Displays the customer orders table inside My Account.*
 
-Displays the Reset password form used after password reset link validation.
+Displays the customer orders table inside My Account.
 
 ## Where this element works
 
@@ -828,16 +860,16 @@ My Account templates and My Account endpoint views.
 
 ## Key settings
 
-- **Disable** (checkbox)
-- **Typography** (typography)
-- **Align items** (align-items)
-- **Width** (number)
-- **Gap** (number)
-- **Label typography** (typography)
-- **Field** (separator)
-- **Margin** (spacing)
-- **Padding** (spacing)
+- **Head** (separator)
+- **Body** (separator)
+- **Body - Heading** (separator)
+- **Links** (separator)
+- **Button** (separator)
 - **Background color** (color)
+- **Border** (border)
+- **Box shadow** (box-shadow)
+- **Typography** (typography)
+- **Padding** (spacing)
 
 ## Usage tips
 
@@ -953,38 +985,6 @@ See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.
 
 ---
 
-# Account - Orders
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-orders/
-
-*Displays the customer orders table inside My Account.*
-
-Displays the customer orders table inside My Account.
-
-## Where this element works
-
-My Account templates and My Account endpoint views.
-
-## Key settings
-
-- **Head** (separator)
-- **Body** (separator)
-- **Body - Heading** (separator)
-- **Links** (separator)
-- **Button** (separator)
-- **Background color** (color)
-- **Border** (border)
-- **Box shadow** (box-shadow)
-- **Typography** (typography)
-- **Padding** (spacing)
-
-## Usage tips
-
-- Use these elements in My Account templates or endpoint-specific templates.
-- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
-
----
-
 # Account - Page
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page/
@@ -1049,38 +1049,6 @@ My Account templates and My Account endpoint views.
 
 ---
 
-# Account - View order
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-view-order/
-
-*Displays order details for a selected order in My Account.*
-
-Displays order details for a selected order in My Account.
-
-## Where this element works
-
-My Account templates and My Account endpoint views.
-
-## Key settings
-
-- **Preview order ID** (number)
-- **Hide** (checkbox)
-- **Typography** (typography)
-- **Mark** (separator)
-- **Padding** (spacing)
-- **Background color** (color)
-- **Title** (separator)
-- **Meta** (separator)
-- **Description** (separator)
-- **Table** (separator)
-
-## Usage tips
-
-- Use these elements in My Account templates or endpoint-specific templates.
-- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
-
----
-
 # WooCommerce Breadcrumbs
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/breadcrumbs/
@@ -1122,6 +1090,38 @@ Displays WooCommerce breadcrumb navigation.
 - **Gap** (number with units) - Gap between breadcrumb items.
 
 - **Margin** (spacing) - Margin around separators.
+
+---
+
+# Account - View order
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-view-order/
+
+*Displays order details for a selected order in My Account.*
+
+Displays order details for a selected order in My Account.
+
+## Where this element works
+
+My Account templates and My Account endpoint views.
+
+## Key settings
+
+- **Preview order ID** (number)
+- **Hide** (checkbox)
+- **Typography** (typography)
+- **Mark** (separator)
+- **Padding** (spacing)
+- **Background color** (color)
+- **Title** (separator)
+- **Meta** (separator)
+- **Description** (separator)
+- **Table** (separator)
+
+## Usage tips
+
+- Use these elements in My Account templates or endpoint-specific templates.
+- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
 
 ---
 
@@ -1815,13 +1815,17 @@ Shop/archive templates and WooCommerce pages where the related data exists.
 
 ---
 
-# Products archive description
+# Products orderby
 
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-archive-description/
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-orderby/
 
-*Displays the description for WooCommerce product archives (shop page, categories, tags).*
+*Displays a dropdown to sort WooCommerce products.*
 
-Displays the description for WooCommerce product archives (shop page, categories, tags).
+Displays a dropdown to sort WooCommerce products.
+
+## Settings
+
+- **Order by** (select) - Available sorting options. Multiple selection. Leave empty to use WooCommerce default list.
 
 ---
 
@@ -1855,20 +1859,6 @@ Displays product filters for WooCommerce product listings.
 
 ---
 
-# Products orderby
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-orderby/
-
-*Displays a dropdown to sort WooCommerce products.*
-
-Displays a dropdown to sort WooCommerce products.
-
-## Settings
-
-- **Order by** (select) - Available sorting options. Multiple selection. Leave empty to use WooCommerce default list.
-
----
-
 # Products pagination
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-pagination/
@@ -1884,6 +1874,16 @@ Displays pagination for WooCommerce product listings.
 - **Next Icon** (icon) - Icon for next page link.
 - **End Size** (number) - How many numbers on either the start and the end list edges. Minimum: 1.
 - **Mid Size** (number) - How many numbers to either side of the current page. Minimum: 1.
+
+---
+
+# Products archive description
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-archive-description/
+
+*Displays the description for WooCommerce product archives (shop page, categories, tags).*
+
+Displays the description for WooCommerce product archives (shop page, categories, tags).
 
 ---
 

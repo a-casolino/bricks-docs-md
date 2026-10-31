@@ -1,5 +1,7 @@
 *Apply contextual spacing in Bricks to create more consistent rhythm between elements without manually tweaking every margin.*
 
+https://youtu.be/X8Brq1epsfk
+
 Bricks 2.0 introduces **Contextual spacing** to give you full control over vertical spacing (margin) between elements like headings, paragraphs, and lists within embedded content.
 
 Contextual spacing automatically applies to elements within:
@@ -18,9 +20,9 @@ Whether you are styling embedded content, working with dynamic layouts, or creat
 
 ## How to use contextual spacing
 
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-contextual-spacing-1.png)
+You can enable Contextual spacing inside the builder under **Style Manager → Theme Styles → Contextual Spacing**. The Style Manager preview updates while you change the values.
 
-You can enable Contextual spacing inside the builder under **Style Manager → Theme Styles → Contextual Spacing**.
+![Contextual spacing settings in a theme style: Heading var(--space-xl), Paragraph and Fallback spacing var(--space-s), and an additional target for list items with a top margin of 0, next to the live preview of a blog post.](https://academy.bricksbuilder.io/assets/contextual-spacing-theme-style-settings.webp)
 
 **Remove default margins**: Lets you select the HTML tags from which you want to remove the default margins (i.e. Heading, Paragraph, Lists, etc.). This creates a clean starting point for spacing that fits your layout needs, without interference from inherited or default styles.
 
@@ -46,6 +48,10 @@ You can enable Contextual spacing inside the builder under **Style Manager → T
 | **Additional target elements** | Define spacing rules for elements like `ul`, `blockquote`, or any custom selector. Lets you block margin (top, bottom) and inline padding (left, right). |
 | **Apply spacing inside** | Extend contextual spacing to other parts of your layout by targeting wrapper selectors such as `.contextual-spacing`. |
 
+### Use spacing variables
+
+The Heading, Paragraph, Fallback spacing and target fields accept variables. Pick them with the variable picker next to each field, for example `var(--space-xl)` for headings and `var(--space-s)` for paragraphs. If the variables come from a fluid spacing scale ([Style Manager → Spacing](https://academy.bricksbuilder.io/builder/features/style-manager/#spacing)), the spacing between text blocks grows and shrinks with the screen like the rest of your layout.
+
 ## Additional target elements
 
 Use the **Additional target elements** repeater to extend Contextual spacing to more than headings and paragraphs.
@@ -67,6 +73,10 @@ For each, you can set:
 
 This gives you spacing consistency across all types of content.
 
+> **Note**
+>
+> Fallback spacing applies to every element that follows another element inside the content, including list items. If the items of a list drift apart after you set a fallback, add a target for **List item (li)** and set **Margin: Top** to `0`.
+
 ## Apply to more content areas
 
 > **Note**
@@ -74,6 +84,19 @@ This gives you spacing consistency across all types of content.
 > By default, Contextual spacing only targets Rich Text, Post Content, and WooCommerce content. But you can easily extend it by defining **Apply spacing inside** selectors to apply Contextual spacing to any wrapper of your choice, such as `.contextual-spacing, .brxe-shortcode`.
 
 Add these utility classes to wrappers (i.e. Container, Div, Block elements) that hold a mix of content elements, and Bricks will apply your Contextual spacing settings to them.
+
+![Apply spacing inside set to .contextual-spacing in the theme style, with the preview of a block of separate Heading and Basic Text elements that now follows the contextual spacing.](https://academy.bricksbuilder.io/assets/contextual-spacing-apply-spacing-inside.webp)
+
+Inside a selector from **Apply spacing inside**, the rules work slightly differently than inside Rich Text and Post Content:
+
+- **Heading** spacing applies to `h1` through `h6` elements that are not the first child.
+- **Paragraph** spacing applies to `p` elements that are not the first child. A **Basic Text** element renders a `div` by default, so it takes the fallback spacing instead.
+- **Fallback spacing** applies to direct children of the wrapper that follow another child.
+- **Additional target elements** apply to matching elements anywhere inside the wrapper when they follow another element.
+
+> **Caution**
+>
+> Margins add to the wrapper's gap. If the wrapper has a row gap, clear it, or the space between elements becomes gap plus margin. Clear the gap before you add the class: once a class is added, the panel edits the class, not the element, so the element's own gap would stay.
 
 ### Why not apply spacing to all headings and paragraphs by default?
 
@@ -130,8 +153,9 @@ To unify the layout:
   - Heading: `2rem`
   - Paragraph: `1.25rem`
   - Fallback: `1rem`
-3. Add a global class like `.contextual-spacing` to the container
-4. Enter `.contextual-spacing` under **Apply spacing inside**
+3. Clear the container's row gap, so it does not add to the margins
+4. Add a global class like `.contextual-spacing` to the container
+5. Enter `.contextual-spacing` under **Apply spacing inside**
 
 ![](https://academy.bricksbuilder.io/assets/bricks-contextual-spacing-utility-class-scaled.png)
 

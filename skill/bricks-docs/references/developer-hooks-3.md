@@ -153,6 +153,33 @@ add_filter( 'bricks/allowed_html_tags', function( $allowed_html_tags ) {
 
 ---
 
+# Filter: bricks//assets/load_webfonts
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-load_webfonts/
+
+*Bricks 1.4 introduces the possibility to \"Disable Google Fonts\". Either via the Bricks settings under \"Performance\" or programmatically using the filter as.*
+
+Bricks 1.4 introduces the possibility to "Disable Google Fonts". Either via the Bricks settings under "Performance" or programmatically using the filter as explained below:
+
+![](https://academy.bricksbuilder.io/assets/bricks-1.4-disable-google-fonts-setting-1024x944.png)
+
+<figcaption>
+
+Bricks > Settings > Performance: Disable Google Fonts
+
+</figcaption>
+
+With the filter `bricks/assets/load_webfonts` you'll be able to prevent Google Fonts to load in the frontend by returning `false`:
+
+```php
+// Prevent Google Fonts loading
+add_filter( 'bricks/assets/load_webfonts', '__return_false' );
+```
+
+If you use this filter to remove the embed of Google Fonts but you still like to use Google Fonts, just head to the [Google Fonts website](https://fonts.google.com/) and download the fonts you need. Then, add them manually to your website, using the [Custom Fonts](https://academy.bricksbuilder.io/builder/styling/custom-fonts/) screen.
+
+---
+
 # Filter: bricks/assets/generate_css_from_element
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-generate_css_from_element/
@@ -230,33 +257,6 @@ add_filter( 'bricks/auth/custom_lost_password_redirect', function( $selected_los
 **Return:**
 
 - (int|false): The new custom lost password page ID or `false` to indicate no custom page is set.
-
----
-
-# Filter: bricks//assets/load_webfonts
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-load_webfonts/
-
-*Bricks 1.4 introduces the possibility to \"Disable Google Fonts\". Either via the Bricks settings under \"Performance\" or programmatically using the filter as.*
-
-Bricks 1.4 introduces the possibility to "Disable Google Fonts". Either via the Bricks settings under "Performance" or programmatically using the filter as explained below:
-
-![](https://academy.bricksbuilder.io/assets/bricks-1.4-disable-google-fonts-setting-1024x944.png)
-
-<figcaption>
-
-Bricks > Settings > Performance: Disable Google Fonts
-
-</figcaption>
-
-With the filter `bricks/assets/load_webfonts` you'll be able to prevent Google Fonts to load in the frontend by returning `false`:
-
-```php
-// Prevent Google Fonts loading
-add_filter( 'bricks/assets/load_webfonts', '__return_false' );
-```
-
-If you use this filter to remove the embed of Google Fonts but you still like to use Google Fonts, just head to the [Google Fonts website](https://fonts.google.com/) and download the fonts you need. Then, add them manually to your website, using the [Custom Fonts](https://academy.bricksbuilder.io/builder/styling/custom-fonts/) screen.
 
 ---
 
@@ -367,25 +367,6 @@ add_filter( 'bricks/body/attributes', function( $attributes ) {
 
 ---
 
-# Filter: bricks/builder/elements
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-elements/
-
-*Determine which elements to use in Bricks by out-commenting the ones you don't want to use. There is a full example and list of all elements in the Bricks child.*
-
-Determine which elements to use in Bricks by out-commenting the ones you don't want to use. There is a full example and list of all elements in the Bricks child theme that you can customize to your requirements.
-
-```php
-add_filter( 'bricks/builder/elements', function( $elements ) {
-  // See Bricks child theme for a full list of all available elements
-  // var_dump( $elements ); // To see all available elements
-
-  return $elements;
-} );
-```
-
----
-
 # Filter: bricks/builder/codemirror_config
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-codemirror_config/
@@ -426,6 +407,25 @@ In this example, the filter modifies the default CodeMirror configuration to:
 **Return:**
 
 - *(array)*: The custom configuration array, applied alongside or in place of Bricks' defaults.
+
+---
+
+# Filter: bricks/builder/elements
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-elements/
+
+*Determine which elements to use in Bricks by out-commenting the ones you don't want to use. There is a full example and list of all elements in the Bricks child.*
+
+Determine which elements to use in Bricks by out-commenting the ones you don't want to use. There is a full example and list of all elements in the Bricks child theme that you can customize to your requirements.
+
+```php
+add_filter( 'bricks/builder/elements', function( $elements ) {
+  // See Bricks child theme for a full list of all available elements
+  // var_dump( $elements ); // To see all available elements
+
+  return $elements;
+} );
+```
 
 ---
 
@@ -781,30 +781,6 @@ add_filter( 'bricks/default_page_title', function( $title, $post_id ) {
 
 ---
 
-# Filter: bricks/dynamic_data/post_terms_links
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-post_terms_links/
-
-*When rendering the terms assigned to a post using the dynamic data tag {posttermsmytaxonomy}, Bricks wraps each term with a link to the term archive page. To.*
-
-When rendering the terms assigned to a post using the dynamic data tag `{post_terms_my_taxonomy}`, Bricks wraps each term with a link to the term archive page. To disable this default behavior, you may hook into the `bricks/dynamic_data/post_terms_links` filter, like so:
-
-```php
-// Disable links for all the {post_terms_my_taxonomy} tags
-add_filter( 'bricks/dynamic_data/post_terms_links', '__return_false' );
-```
-
-or, for a specific taxonomy:
-
-```php
-add_filter( 'bricks/dynamic_data/post_terms_links', function( $has_links, $post, $taxonomy) {
-  // Disable links for my_custom_tax taxonomy
-  return $taxonomy !== 'my_custom_tax';
-}, 10, 3);
-```
-
----
-
 # Filter: bricks/dynamic_data/exclude_tags
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-exclude_tags/
@@ -828,18 +804,26 @@ Adding this code to your child theme will prevent Bricks from replacing these ta
 
 ---
 
-# Filter: bricks/dynamic_data/post_terms_separator
+# Filter: bricks/dynamic_data/post_terms_links
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-post_terms_separator/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-post_terms_links/
 
-*Programmatically set the post term separator like so:*
+*When rendering the terms assigned to a post using the dynamic data tag {posttermsmytaxonomy}, Bricks wraps each term with a link to the term archive page. To.*
 
-Programmatically set the post term separator like so:
+When rendering the terms assigned to a post using the dynamic data tag `{post_terms_my_taxonomy}`, Bricks wraps each term with a link to the term archive page. To disable this default behavior, you may hook into the `bricks/dynamic_data/post_terms_links` filter, like so:
 
 ```php
-add_filter( 'bricks/dynamic_data/post_terms_separator', function( $sep, $post, $taxonomy ) {
-  return ' : ';
-}, 10, 3 );
+// Disable links for all the {post_terms_my_taxonomy} tags
+add_filter( 'bricks/dynamic_data/post_terms_links', '__return_false' );
+```
+
+or, for a specific taxonomy:
+
+```php
+add_filter( 'bricks/dynamic_data/post_terms_links', function( $has_links, $post, $taxonomy) {
+  // Disable links for my_custom_tax taxonomy
+  return $taxonomy !== 'my_custom_tax';
+}, 10, 3);
 ```
 
 ---
@@ -884,34 +868,19 @@ add_filter( 'bricks/dynamic_data/replace_nonexistent_tags', '__return_true', 10,
 
 ---
 
-# Filter: bricks/element/render_attributes
+# Filter: bricks/dynamic_data/post_terms_separator
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-render_attributes/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-post_terms_separator/
 
-*Starting with Bricks 1.3.7 you may manipulate the HTML attributes of a given element using the following filter:*
+*Programmatically set the post term separator like so:*
 
-Starting with Bricks 1.3.7 you may manipulate the HTML** **attributes of a given element using the following filter:
+Programmatically set the post term separator like so:
 
 ```php
-add_filter( 'bricks/element/render_attributes', function( $attributes, $key, $element ) {
-    if ( isset( $element->settings['my_setting'] )
-       && $element->settings['my_setting'] == 'xpto' ) {
-        $attributes[ $key ]['data-xpto'] = 'my data';
-    }
-
-    return $attributes;
+add_filter( 'bricks/dynamic_data/post_terms_separator', function( $sep, $post, $taxonomy ) {
+  return ' : ';
 }, 10, 3 );
 ```
-
-The filter callback receives 3 arguments:
-
-- `$attributes` - an associative array of the element attributes, grouped by the $key identifier
-- `$key` - the HTML element identifier to render attributes for
-- `$element` - the Bricks element object (since Bricks 1.5)
-
-Since Bricks 1.4, if you need to get access to the `$is_frontend` value (whether the element is rendering in the frontend or in the builder), please use the global function `bricks_is_frontend()`.
-
-Since Bricks 1.5, the `$settings` and `$name` arguments are deprecated. You may use the callback 3rd argument to get those: `$element->settings` and `$element->name`.
 
 ---
 
@@ -1093,6 +1062,37 @@ Also, replace `faqs` and `button_text` strings as applicable.
 
 ---
 
+# Filter: bricks/element/render_attributes
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-render_attributes/
+
+*Starting with Bricks 1.3.7 you may manipulate the HTML attributes of a given element using the following filter:*
+
+Starting with Bricks 1.3.7 you may manipulate the HTML** **attributes of a given element using the following filter:
+
+```php
+add_filter( 'bricks/element/render_attributes', function( $attributes, $key, $element ) {
+    if ( isset( $element->settings['my_setting'] )
+       && $element->settings['my_setting'] == 'xpto' ) {
+        $attributes[ $key ]['data-xpto'] = 'my data';
+    }
+
+    return $attributes;
+}, 10, 3 );
+```
+
+The filter callback receives 3 arguments:
+
+- `$attributes` - an associative array of the element attributes, grouped by the $key identifier
+- `$key` - the HTML element identifier to render attributes for
+- `$element` - the Bricks element object (since Bricks 1.5)
+
+Since Bricks 1.4, if you need to get access to the `$is_frontend` value (whether the element is rendering in the frontend or in the builder), please use the global function `bricks_is_frontend()`.
+
+Since Bricks 1.5, the `$settings` and `$name` arguments are deprecated. You may use the callback 3rd argument to get those: `$element->settings` and `$element->name`.
+
+---
+
 # Filter: bricks/element/settings
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-settings/
@@ -1151,29 +1151,6 @@ add_filter('bricks/element/settings', function( $settings, $element ) {
 
 ---
 
-# Filter: bricks/elements/{element_name}/control_groups
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-elements-element_name-control_groups/
-
-*Since Bricks 1.4 it is possible to add custom control groups to a specific element like so:*
-
-Since Bricks 1.4 it is possible to add custom control groups to a specific element like so:
-
-```php
-add_filter( 'bricks/elements/heading/control_groups', function( $control_groups ) {
-    $control_groups['custom_controls'] = [
-        'tab'      => 'content', // or 'style'
-        'title'    => esc_html__( 'Custom controls', 'my_plugin' ),
-    ];
-
-    return $control_groups;
-} );
-```
-
-Note: the above example adds a new control group with the title "**Custom controls**" to the **heading** element, using the filter `bricks/elements/**heading**/control_groups`. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
-
----
-
 # Filter: bricks/elements/&#123;element_name&#125;/controls
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-elements-element_name-controls/
@@ -1198,6 +1175,51 @@ add_filter( 'bricks/elements/posts/controls', function( $controls ) {
 Note: the above example adds a new checkbox to the **posts** element, using the filter `bricks/elements/**posts**/controls`. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
 
 You might also be interested in the filter [`bricks/posts/query_vars`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-query_vars/) to manipulate the posts element query.
+
+---
+
+# Filter: bricks/elements/{element_name}/control_groups
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-elements-element_name-control_groups/
+
+*Since Bricks 1.4 it is possible to add custom control groups to a specific element like so:*
+
+Since Bricks 1.4 it is possible to add custom control groups to a specific element like so:
+
+```php
+add_filter( 'bricks/elements/heading/control_groups', function( $control_groups ) {
+    $control_groups['custom_controls'] = [
+        'tab'      => 'content', // or 'style'
+        'title'    => esc_html__( 'Custom controls', 'my_plugin' ),
+    ];
+
+    return $control_groups;
+} );
+```
+
+Note: the above example adds a new control group with the title "**Custom controls**" to the **heading** element, using the filter `bricks/elements/**heading**/control_groups`. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
+
+---
+
+# Filter: bricks/footer/attributes
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-footer-attributes/
+
+*Programmatically add HTML attributes to the footer tag.*
+
+Programmatically add HTML attributes to the `footer` tag.
+
+```php
+add_filter( 'bricks/footer/attributes', function( $attributes ) {
+  // Add 'data-is-footer' HTML attribute to footer with value 'y'
+  $attributes['data-is-footer'] = 'y';
+
+  return $attributes;
+} );
+```
+
+- [/developer/hooks/filters/filter-bricks-header-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/)
+- [/developer/hooks/filters/filter-bricks-content-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-attributes/)
 
 ---
 
@@ -1238,73 +1260,6 @@ add_filter( 'bricks/filter_element/populated_options', function( $options, $elem
   return $options;
 }, 10, 2 );
 ```
-
----
-
-# Filter: bricks/footer/attributes
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-footer-attributes/
-
-*Programmatically add HTML attributes to the footer tag.*
-
-Programmatically add HTML attributes to the `footer` tag.
-
-```php
-add_filter( 'bricks/footer/attributes', function( $attributes ) {
-  // Add 'data-is-footer' HTML attribute to footer with value 'y'
-  $attributes['data-is-footer'] = 'y';
-
-  return $attributes;
-} );
-```
-
-- [/developer/hooks/filters/filter-bricks-header-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/)
-- [/developer/hooks/filters/filter-bricks-content-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-attributes/)
-
----
-
-# Filter: bricks/form/action/{form_action}
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-action-form_action/
-
-*The bricks/form/action/{formaction} filter is triggered when a custom action (one that is not reserved by Bricks) is selected in a form. It allows developers to.*
-
-The `bricks/form/action/{form_action}` filter is triggered when a custom action (one that is not reserved by Bricks) is selected in a form. It allows developers to define custom logic for handling such actions dynamically.
-
-Bricks provides several reserved actions out of the box, including:
-
-- **email**
-- **redirect**
-- **mailchimp**
-- **sendgrid**
-- **login**
-- **registration**
-- **lost-password**
-- **reset-password**
-- **custom**
-
-If the user's selected action is not in this list, the `bricks/form/action/{form_action}` filter is triggered.
-
-## Example usage
-
-Here’s how you can handle a custom action called `slack-notification`:
-
-```php
-// Handle the Slack notification action
-add_action(
-    'bricks/form/action/slack-notification',
-    function ( $form ) {
-        $settings = $form->get_settings();
-        $fields   = $form->get_fields();
-
-        // Implement Slack notification logic
-    }
-);
-```
-
-## Parameters:
-
-- **`$form` (\Bricks\Integrations\Form\Init)**: The current form instance, providing access to settings and submitted fields.
 
 ---
 
@@ -1352,6 +1307,51 @@ In this example, the filter modifies the value of the meta key 'my_meta_key' usi
 **Return:**
 
 - (mixed): The modified value of the meta field, which will be saved with the post.
+
+---
+
+# Filter: bricks/form/action/{form_action}
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-action-form_action/
+
+*The bricks/form/action/{formaction} filter is triggered when a custom action (one that is not reserved by Bricks) is selected in a form. It allows developers to.*
+
+The `bricks/form/action/{form_action}` filter is triggered when a custom action (one that is not reserved by Bricks) is selected in a form. It allows developers to define custom logic for handling such actions dynamically.
+
+Bricks provides several reserved actions out of the box, including:
+
+- **email**
+- **redirect**
+- **mailchimp**
+- **sendgrid**
+- **login**
+- **registration**
+- **lost-password**
+- **reset-password**
+- **custom**
+
+If the user's selected action is not in this list, the `bricks/form/action/{form_action}` filter is triggered.
+
+## Example usage
+
+Here’s how you can handle a custom action called `slack-notification`:
+
+```php
+// Handle the Slack notification action
+add_action(
+    'bricks/form/action/slack-notification',
+    function ( $form ) {
+        $settings = $form->get_settings();
+        $fields   = $form->get_fields();
+
+        // Implement Slack notification logic
+    }
+);
+```
+
+## Parameters:
+
+- **`$form` (\Bricks\Integrations\Form\Init)**: The current form instance, providing access to settings and submitted fields.
 
 ---
 
@@ -2269,30 +2269,6 @@ add_filter( 'bricks/query/no_results_content', function( $content, $settings, $e
 
 ---
 
-# Filter: bricks/query/result_max_num_pages
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_max_num_pages/
-
-*Filter the maximum number of pages Bricks reports for a query object, including the value used by Pagination.*
-
-This filter allows you to modify the query result maximum number of pages (@since 1.9.1). This value is used for the Pagination element as well.
-
-```php
-add_filter( 'bricks/query/result_max_num_pages', function( $max_num_pages, $query_obj ) {
-  // Return: Element ID is not "lbsijo", nor is it a post query
-  if( $query_obj->element_id !== 'lbsijo' || $query_obj->object_type !== 'post' ) {
-    return $max_num_pages;
-  }
-
-  // Perform your logic here
-  // Use $query_obj->query_result to access the query result
-  $max_num_pages = 3;
-  return $max_num_pages;
-}, 10, 2 );
-```
-
----
-
 # Filter: bricks/query/result
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result/
@@ -2351,6 +2327,54 @@ For native query limits and offsets, use the [Query Loop controls](https://acade
 
 ---
 
+# Filter: bricks/query/result_count
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_count/
+
+*Filter the result count Bricks reports for a query object before pagination or related UI uses that total.*
+
+This filter allows you to modify the query result count (@since 1.8).
+
+```php
+add_filter( 'bricks/query/result_count', function( $result_count, $query_obj ) {
+  // Return: Element ID is not "lbsijo", nor is it a post query
+  if( $query_obj->element_id !== 'lbsijo' || $query_obj->object_type !== 'post' ) {
+    return $result_count;
+  }
+
+  // Perform your logic here
+  // Use $query_obj->query_result to access the query result
+  $new_count = 123;
+  return $new_count;
+}, 10, 2 );
+```
+
+---
+
+# Filter: bricks/query/result_max_num_pages
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_max_num_pages/
+
+*Filter the maximum number of pages Bricks reports for a query object, including the value used by Pagination.*
+
+This filter allows you to modify the query result maximum number of pages (@since 1.9.1). This value is used for the Pagination element as well.
+
+```php
+add_filter( 'bricks/query/result_max_num_pages', function( $max_num_pages, $query_obj ) {
+  // Return: Element ID is not "lbsijo", nor is it a post query
+  if( $query_obj->element_id !== 'lbsijo' || $query_obj->object_type !== 'post' ) {
+    return $max_num_pages;
+  }
+
+  // Perform your logic here
+  // Use $query_obj->query_result to access the query result
+  $max_num_pages = 3;
+  return $max_num_pages;
+}, 10, 2 );
+```
+
+---
+
 # Filter: bricks/query/run
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-run/
@@ -2390,6 +2414,29 @@ Related hooks:
 
 ---
 
+# Filter: bricks/registered_post_types_args
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-registered_post_types_args/
+
+*Available since version 1.6, this filter allows you to customise the post type args that are used to query the post type as shown in the Bricks settings & the.*
+
+Available since version 1.6, this filter allows you to customise the post type args that are used to query the post type as shown in the Bricks settings & the builder (e.g. Query control post types, etc.)
+
+```php
+add_filter( 'bricks/registered_post_types_args', function( $args ) {
+  // Default: Return only public post types
+  // $args['public'] = true;
+
+  // Custom: Return all registered post types
+  unset( $args['public'] );
+
+  // Available arguments: https://developer.wordpress.org/reference/functions/get_post_types/#comment-2184
+  return $args;
+} );
+```
+
+---
+
 # Filter: bricks/related_posts/query_vars
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-related_posts-query_vars/
@@ -2411,29 +2458,6 @@ The filter callback receives two arguments:
 - `$query_vars` is an associative array used to feed the [WP_Query](https://developer.wordpress.org/reference/classes/wp_query/) class
 - `$settings` is an associative array containing the element settings set in the builder
 - `$element_id` is a string containing the element ID
-
----
-
-# Filter: bricks/registered_post_types_args
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-registered_post_types_args/
-
-*Available since version 1.6, this filter allows you to customise the post type args that are used to query the post type as shown in the Bricks settings & the.*
-
-Available since version 1.6, this filter allows you to customise the post type args that are used to query the post type as shown in the Bricks settings & the builder (e.g. Query control post types, etc.)
-
-```php
-add_filter( 'bricks/registered_post_types_args', function( $args ) {
-  // Default: Return only public post types
-  // $args['public'] = true;
-
-  // Custom: Return all registered post types
-  unset( $args['public'] );
-
-  // Available arguments: https://developer.wordpress.org/reference/functions/get_post_types/#comment-2184
-  return $args;
-} );
-```
 
 ---
 
@@ -2461,27 +2485,3 @@ add_filter( 'bricks/render_query_loop_trail', function( $render, $element, $quer
 ```
 
 In this example, if the `my-custom-param` parameter is detected in the URL, the query loop trail node will not be rendered. This can be useful for third-party plugins with custom AJAX endpoints that handle query configurations independently.
-
----
-
-# Filter: bricks/query/result_count
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_count/
-
-*Filter the result count Bricks reports for a query object before pagination or related UI uses that total.*
-
-This filter allows you to modify the query result count (@since 1.8).
-
-```php
-add_filter( 'bricks/query/result_count', function( $result_count, $query_obj ) {
-  // Return: Element ID is not "lbsijo", nor is it a post query
-  if( $query_obj->element_id !== 'lbsijo' || $query_obj->object_type !== 'post' ) {
-    return $result_count;
-  }
-
-  // Perform your logic here
-  // Use $query_obj->query_result to access the query result
-  $new_count = 123;
-  return $new_count;
-}, 10, 2 );
-```

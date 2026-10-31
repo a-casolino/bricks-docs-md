@@ -10,6 +10,8 @@ Open the **Style Manager** from the builder toolbar, then select **Typography** 
 
 Global scale settings, including the HTML font-size used for rem calculations and the minimum and maximum screen widths, are available in the Style Manager settings.
 
+Spacing scales for padding, margins and gaps work the same way in the **Spacing** tab. See [Fluid Spacing](https://academy.bricksbuilder.io/builder/styling/fluid-spacing/).
+
 ## Fluid typography categories {#adding-category}
 
 Bricks lets you create unlimited Fluid Typography Scales for your Headings, Text, etc. through categories.

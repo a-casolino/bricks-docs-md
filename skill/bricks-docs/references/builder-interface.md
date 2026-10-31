@@ -1,241 +1,3 @@
-# Builder Mode (Custom)
-
-Source: https://academy.bricksbuilder.io/builder/interface/builder-mode/
-
-*Customize the Bricks builder color scheme with custom builder-mode CSS variables.*
-
-Starting with Bricks 1.3.7 you can customize the builder mode (color scheme) to your liking by tweaking a few CSS variables.
-
-You first have to set the "Builder Mode" under Bricks → Settings → Builder to "Custom" and save your settings.
-
-The following new setting called "Builder Mode (Custom)" should now appear:
-
-![Builder Mode: Custom](https://academy.bricksbuilder.io/assets/bricks-setting-builder-mode-custom-1024x721.png)
-
-Below you can find a starter CSS snippet with commonly customized builder CSS variables. Bricks 2.x defines additional variables for classes, components, status colors, muted colors, and the canvas scrollbar, so use this as a starting point and override any extra variables your custom mode needs.
-
-```php
-[data-builder-mode=custom] {
-  --builder-bg: #f6f4f2;
-  --builder-bg-2: #efebe6;
-  --builder-bg-3: #e7e1da;
-  --builder-bg-4: #dbd2c8;
-  --builder-bg-accent: #EED8FD;
-
-  --builder-color: #2e271e;
-  --builder-color-description: #76634c;
-  --builder-color-accent: #7209B7;
-  --builder-color-accent-inverse: #fff;
-
-  --builder-color-knob: #c8baaa;
-  --builder-border-color: #d8cec2;
-  --builder-placeholder-opacity: .33;
-
-  --builder-color-class: #2b6cb0;
-  --builder-bg-class: #d8e8f6;
-  --builder-color-component: #6b46c1;
-  --builder-bg-component: #eadcf8;
-  --builder-color-info: #006c9c;
-  --builder-bg-info: #d9f1ff;
-  --builder-color-danger: #b42318;
-  --builder-bg-danger: #ffe4e2;
-  --builder-color-success: #027a48;
-  --builder-bg-success: #dcfae6;
-  --builder-color-muted: #7a6f63;
-  --builder-bg-muted: #e2ddd6;
-
-  --builder-canvas-scrollbar-thumb: #c8baaa;
-  --builder-canvas-scrollbar-thumb_hover: #76634c;
-  --builder-canvas-scrollbar-track: #efebe6;
-
-  --bricks-tooltip-bg:   #16130f;
-  --bricks-tooltip-text: #f6f4f2;
-}
-```
-
-If you copy the CSS above, paste it into your "Builder Mode (Custom)" setting, and save your settings, your builder should look like this:
-
-![](https://academy.bricksbuilder.io/assets/bricks-screenshot-builder-mode-custom-1024x576.png)
-
-<figcaption>
-
-Bricks builder with a custom color scheme (mode)
-
-</figcaption>
-
-### Resources
-
-- Color palettes: [https://coolors.co/palettes/trending](https://coolors.co/palettes/trending)
-- Color palettes: [https://colorhunt.co](https://colorhunt.co)
-- Generate color shades & tints: [https://www.colorhexa.com](https://www.colorhexa.com)
-
-Note: In custom builder mode, Code element's background color changes to a light color scheme.
-
----
-
-# Builder Access & Capabilities
-
-Source: https://academy.bricksbuilder.io/builder/interface/builder-access/
-
-*Control who can access Bricks and which builder capabilities are available for different WordPress roles.*
-
-Bricks gives you full control over who can access the builder, and what actions they're allowed to perform. You can either assign a **predefined capability**, or create your own **custom capability** that allows only the specific permissions you enable for it.
-
-This gives you complete freedom and control to tailor the builder experience to any roles (i.e. content editor, designer, client, etc.) depending on what they should be able to do.
-
-![](https://academy.bricksbuilder.io/assets/bricks-settings-builder-access.png)
-
-## Access levels
-
-There are two ways to manage builder access:
-
-1. Use one of the predefined capabilities: **Full access**, **Edit content**, or **No access**
-2. Create your own custom builder capability with detailed permission control
-
-### Predefined capabilities
-
-- **Full access**: Grants access to all features and permissions in the Bricks builder.
-- **Edit content**: Limits the user to content editing only. Layout, styling, and structural controls are disabled. More specifically, this includes the following permissions:
-  - Access revisions
-  - Set component properties (instance)
-  - Access content (HTML) settings
-  - Edit all elements
-  - Edit all Bricks-enabled post types
-- **No access**: Blocks access to the Bricks builder entirely.
-
-## Creating a custom capability {#custom}
-
-If you need precise control over the actions a user or role should be able to perform, you can create your very own custom builder capability, following the steps outlines below.
-
-1. Go to **Bricks > Settings > Builder access**
-2. Under **Builder capabilities**, click **Add new capability**
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-access-add-custom-capability.png)
-
-Inside the capability popup, you can:
-
-- Give the capability a name & a description
-- Enable exactly the permissions you want to grant
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-access-permissions.png)
-
-Once created, you can assign this capability to specific users or user roles.
-
-## Assigning capabilities
-
-You can assign any builder capability, whether predefined or custom:
-
-- To a **user role**, under **Bricks > Settings > Builder access > Builder access**
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-access-custom-capabilities.png)
-
-- To a **specific user**, by editing their WordPress user profile
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-edit-user-profile.png)
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-access-user-settings.png)
-
-This gives you flexibility to apply permissions globally or individually.
-
-## Available permissions
-
-When editing a capability, the following permissions are available and grouped by category:
-
-### Post types {#post-types}
-
-Choose which post types can be edited using Bricks.
-
-### General {#general}
-
-- Access breakpoints manager
-- Access page settings
-- Access template settings
-- Access revisions
-- Delete revisions
-- Access font manager
-- Access icon manager
-- Access query manager
-- Customize builder interface
-- Manage builder interface profiles
-- Manage global elements (only if legacy Global Elements exist)
-
-### Templates {#templates}
-
-- Create templates
-- Edit templates
-- Delete templates
-- Insert templates
-- Access remote templates
-- Import/export templates
-
-### Global styles & settings {#styles-setting}
-
-- Access theme styles
-- Access color manager
-- Access variable manager
-- Access class manager
-- Create global classes
-- Edit global classes
-- Assign/unassign global classes
-- Delete global classes
-- Lock/unlock global classes
-- Copy/paste global class styles
-- Access pseudos & selectors
-
-### Components {#components}
-
-- Access remote components
-- Insert components
-- Edit properties (instance)
-- Edit components
-- Create components
-- Delete components
-- Import/export components
-
-Remote workflows combine these permissions instead of using one broad access flag:
-
-| Workflow | Required permissions |
-| --- | --- |
-| Browse a configured remote component library | **Access remote components** |
-| Import a remote component | **Access remote components** and **Import/export components** |
-| Insert an imported component | **Insert components** |
-| Insert a remote template without components | **Access remote templates** and **Insert templates** |
-| Insert a remote template with component dependencies | **Access remote templates**, **Insert templates**, **Access remote components**, **Import/export components**, and **Insert components** |
-| Save a remote template to My Templates | **Access remote templates** and **Import/export templates** |
-| Save a remote template with component dependencies to My Templates | The template import permissions above, plus **Access remote components** and **Import/export components** |
-
-See [Remote Templates](https://academy.bricksbuilder.io/builder/features/remote-templates/) for the corresponding template setup.
-
-### Element editing & styling {#element-edit-style}
-
-- Access content (HTML) settings
-- Access style (CSS) settings
-- Access query loop builder
-- Access element hide
-- Access element conditions
-- Access element interactions
-- Duplicate elements
-- Delete elements
-- Move elements
-- Copy/paste elements
-- Copy/paste element styles
-- Copy/paste element conditions
-- Copy/paste element interactions
-- Copy/paste element attributes
-- Pin/unpin elements
-
-### Edit elements {#edit-elements}
-
-Controls general editing of existing elements.
-
-_Note: Requires access to content and/or style settings._
-
-### Add elements {#add-elements}
-
-Define which elements can be inserted.
-
----
-
 # Builder Interface Customiser and Profiles
 
 Source: https://academy.bricksbuilder.io/builder/interface/builder-interface-customiser-profiles/
@@ -411,6 +173,388 @@ In the user's WordPress profile, find **Builder interface** and click **Reset bu
 
 ---
 
+# Builder Access & Capabilities
+
+Source: https://academy.bricksbuilder.io/builder/interface/builder-access/
+
+*Control who can access Bricks and which builder capabilities are available for different WordPress roles.*
+
+Bricks gives you full control over who can access the builder, and what actions they're allowed to perform. You can either assign a **predefined capability**, or create your own **custom capability** that allows only the specific permissions you enable for it.
+
+This gives you complete freedom and control to tailor the builder experience to any roles (i.e. content editor, designer, client, etc.) depending on what they should be able to do.
+
+![](https://academy.bricksbuilder.io/assets/bricks-settings-builder-access.png)
+
+## Access levels
+
+There are two ways to manage builder access:
+
+1. Use one of the predefined capabilities: **Full access**, **Edit content**, or **No access**
+2. Create your own custom builder capability with detailed permission control
+
+### Predefined capabilities
+
+- **Full access**: Grants access to all features and permissions in the Bricks builder.
+- **Edit content**: Limits the user to content editing only. Layout, styling, and structural controls are disabled. More specifically, this includes the following permissions:
+  - Access revisions
+  - Set component properties (instance)
+  - Access content (HTML) settings
+  - Edit all elements
+  - Edit all Bricks-enabled post types
+- **No access**: Blocks access to the Bricks builder entirely.
+
+## Creating a custom capability {#custom}
+
+If you need precise control over the actions a user or role should be able to perform, you can create your very own custom builder capability, following the steps outlines below.
+
+1. Go to **Bricks > Settings > Builder access**
+2. Under **Builder capabilities**, click **Add new capability**
+
+![](https://academy.bricksbuilder.io/assets/bricks-builder-access-add-custom-capability.png)
+
+Inside the capability popup, you can:
+
+- Give the capability a name & a description
+- Enable exactly the permissions you want to grant
+
+![](https://academy.bricksbuilder.io/assets/bricks-builder-access-permissions.png)
+
+Once created, you can assign this capability to specific users or user roles.
+
+## Assigning capabilities
+
+You can assign any builder capability, whether predefined or custom:
+
+- To a **user role**, under **Bricks > Settings > Builder access > Builder access**
+
+![](https://academy.bricksbuilder.io/assets/bricks-builder-access-custom-capabilities.png)
+
+- To a **specific user**, by editing their WordPress user profile
+
+![](https://academy.bricksbuilder.io/assets/bricks-builder-edit-user-profile.png)
+
+![](https://academy.bricksbuilder.io/assets/bricks-builder-access-user-settings.png)
+
+This gives you flexibility to apply permissions globally or individually.
+
+## Available permissions
+
+When editing a capability, the following permissions are available and grouped by category:
+
+### Post types {#post-types}
+
+Choose which post types can be edited using Bricks.
+
+### General {#general}
+
+- Access breakpoints manager
+- Access page settings
+- Access template settings
+- Access revisions
+- Delete revisions
+- Access font manager
+- Access icon manager
+- Access query manager
+- Customize builder interface
+- Manage builder interface profiles
+- Manage global elements (only if legacy Global Elements exist)
+
+### Templates {#templates}
+
+- Create templates
+- Edit templates
+- Delete templates
+- Insert templates
+- Access remote templates
+- Import/export templates
+
+### Global styles & settings {#styles-setting}
+
+- Access theme styles
+- Access color manager
+- Access variable manager
+- Access class manager
+- Create global classes
+- Edit global classes
+- Assign/unassign global classes
+- Delete global classes
+- Lock/unlock global classes
+- Copy/paste global class styles
+- Access pseudos & selectors
+
+### Components {#components}
+
+- Access remote components
+- Insert components
+- Edit properties (instance)
+- Edit components
+- Create components
+- Delete components
+- Import/export components
+
+Remote workflows combine these permissions instead of using one broad access flag:
+
+| Workflow | Required permissions |
+| --- | --- |
+| Browse a configured remote component library | **Access remote components** |
+| Import a remote component | **Access remote components** and **Import/export components** |
+| Insert an imported component | **Insert components** |
+| Insert a remote template without components | **Access remote templates** and **Insert templates** |
+| Insert a remote template with component dependencies | **Access remote templates**, **Insert templates**, **Access remote components**, **Import/export components**, and **Insert components** |
+| Save a remote template to My Templates | **Access remote templates** and **Import/export templates** |
+| Save a remote template with component dependencies to My Templates | The template import permissions above, plus **Access remote components** and **Import/export components** |
+
+See [Remote Templates](https://academy.bricksbuilder.io/builder/features/remote-templates/) for the corresponding template setup.
+
+### Element editing & styling {#element-edit-style}
+
+- Access content (HTML) settings
+- Access style (CSS) settings
+- Access query loop builder
+- Access element hide
+- Access element conditions
+- Access element interactions
+- Duplicate elements
+- Delete elements
+- Move elements
+- Copy/paste elements
+- Copy/paste element styles
+- Copy/paste element conditions
+- Copy/paste element interactions
+- Copy/paste element attributes
+- Pin/unpin elements
+
+### Edit elements {#edit-elements}
+
+Controls general editing of existing elements.
+
+_Note: Requires access to content and/or style settings._
+
+### Add elements {#add-elements}
+
+Define which elements can be inserted.
+
+---
+
+# Builder Mode (Custom)
+
+Source: https://academy.bricksbuilder.io/builder/interface/builder-mode/
+
+*Customize the Bricks builder color scheme with custom builder-mode CSS variables.*
+
+Starting with Bricks 1.3.7 you can customize the builder mode (color scheme) to your liking by tweaking a few CSS variables.
+
+You first have to set the "Builder Mode" under Bricks → Settings → Builder to "Custom" and save your settings.
+
+The following new setting called "Builder Mode (Custom)" should now appear:
+
+![Builder Mode: Custom](https://academy.bricksbuilder.io/assets/bricks-setting-builder-mode-custom-1024x721.png)
+
+Below you can find a starter CSS snippet with commonly customized builder CSS variables. Bricks 2.x defines additional variables for classes, components, status colors, muted colors, and the canvas scrollbar, so use this as a starting point and override any extra variables your custom mode needs.
+
+```php
+[data-builder-mode=custom] {
+  --builder-bg: #f6f4f2;
+  --builder-bg-2: #efebe6;
+  --builder-bg-3: #e7e1da;
+  --builder-bg-4: #dbd2c8;
+  --builder-bg-accent: #EED8FD;
+
+  --builder-color: #2e271e;
+  --builder-color-description: #76634c;
+  --builder-color-accent: #7209B7;
+  --builder-color-accent-inverse: #fff;
+
+  --builder-color-knob: #c8baaa;
+  --builder-border-color: #d8cec2;
+  --builder-placeholder-opacity: .33;
+
+  --builder-color-class: #2b6cb0;
+  --builder-bg-class: #d8e8f6;
+  --builder-color-component: #6b46c1;
+  --builder-bg-component: #eadcf8;
+  --builder-color-info: #006c9c;
+  --builder-bg-info: #d9f1ff;
+  --builder-color-danger: #b42318;
+  --builder-bg-danger: #ffe4e2;
+  --builder-color-success: #027a48;
+  --builder-bg-success: #dcfae6;
+  --builder-color-muted: #7a6f63;
+  --builder-bg-muted: #e2ddd6;
+
+  --builder-canvas-scrollbar-thumb: #c8baaa;
+  --builder-canvas-scrollbar-thumb_hover: #76634c;
+  --builder-canvas-scrollbar-track: #efebe6;
+
+  --bricks-tooltip-bg:   #16130f;
+  --bricks-tooltip-text: #f6f4f2;
+}
+```
+
+If you copy the CSS above, paste it into your "Builder Mode (Custom)" setting, and save your settings, your builder should look like this:
+
+![](https://academy.bricksbuilder.io/assets/bricks-screenshot-builder-mode-custom-1024x576.png)
+
+<figcaption>
+
+Bricks builder with a custom color scheme (mode)
+
+</figcaption>
+
+### Resources
+
+- Color palettes: [https://coolors.co/palettes/trending](https://coolors.co/palettes/trending)
+- Color palettes: [https://colorhunt.co](https://colorhunt.co)
+- Generate color shades & tints: [https://www.colorhexa.com](https://www.colorhexa.com)
+
+Note: In custom builder mode, Code element's background color changes to a light color scheme.
+
+---
+
+# Command Palette
+
+Source: https://academy.bricksbuilder.io/builder/interface/command-palette/
+
+*Use the Bricks Command Palette to run common actions, navigate faster, and insert element structures with keyboard-driven workflows.*
+
+Bricks 2.0 introduces the **Command Palette**, a powerful new feature that gives you instant keyboard-driven access to core functionality inside the builder.
+
+https://youtu.be/gOVNlRvsYc8
+
+## How to launch it
+
+Click the command `⌘` icon in the builder toolbar or use the `CMD/CTRL + K` keyboard shortcut to open the Command Palette, which appears as an overlay, allowing you to type and filter commands across four scopes.
+
+## Scope: Builder {#builder}
+
+Navigate to key parts of the builder from a growing list of targets such as classes, variables, templates, theme styles, settings, etc.
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-builder.png)
+
+## Scope: Post Types {#post-types}
+
+This scope lets you browse the registered post types your builder capability can access, create new posts when your user can edit posts, or duplicate existing posts.
+
+Besides "All" and "Template (Bricks)", a post type gets its own tab only when Bricks is enabled for it under **Bricks > Settings > General > Post types** and your role can access it in the builder. "All" searches every public post type.
+
+To create a post, select the post type tab, type the title, and click "Create". Bricks adds the post as a draft. Click a result to open it in the builder. `CMD/CTRL` + click opens it in a new browser tab. Posts of a type that is not enabled for Bricks open in the WordPress editor in a new tab.
+
+The scope auto-selects the post type that you are currently editing. So if you are editing a Bricks template the "Template (Bricks)" post type will be selected. If you edit a "Page", then "Page" is selected and so on.
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-post-types.png)
+
+## Scope: Elements {#elements}
+
+The "Elements" scope will dramatically speed up your workflow by allowing you to insert multiple elements with specific structure in a single action.
+
+By mastering the Emmet-like syntax, you can create complex layouts in seconds rather than minutes, making your design process significantly more efficient.
+
+With practice, this feature becomes second nature and an essential part of your Bricks Builder toolkit, especially for quickly creating common page structures and element combinations that you use frequently, which you can also save for instant access to use whenever needed.
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-elements.png)
+
+### Insert single element
+
+To insert a single element simply type its name, such as "Section", then `ARROW`-navigate to it in the elements list, and insert it by pressing `ENTER` or just click on the element name.
+
+### Insert element structure
+
+Each element starts with an **@** symbol.
+
+The element name that the command bar requires is displayed in square brackets in the results list:
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-element-name.png)
+
+<figcaption>
+
+Text link element command: `@text-link`
+
+</figcaption>
+
+### Supported operators
+
+Use the following operators to define nested structure, siblings, a multiplier, or to move back up one nesting level.
+
+| Symbol | Meaning |
+| --- | --- |
+| `@` | Bricks element name (e.g. `@heading`) |
+| `>` | Nest inside |
+| `+` | Insert element as sibling |
+| `*` | How often to insert the element |
+| `^` | Move one level up before inserting the next element |
+
+### Element structure example
+
+`@section * 2 > @heading + @text + @button`
+This creates the following structure *(two times because of the multiplier: `* 2`)*:
+
+- `Section`
+ └ `Container`
+   ├ `Heading`
+   ├ `Text`
+   └ `Button`
+
+Bricks adds the Container inside every Section automatically, so you don't type `@container` after `@section`.
+
+### Quick element insertion
+
+> **Note**
+>
+> After selecting an element from the search results, its name is added to your query with the `@` prefix, allowing you to quickly build complex queries:
+
+1. Type `@` to activate insertion mode
+2. Select an element (e.g., "section")
+3. Type `>` for a child element
+4. Continue building your structure
+5. Insert your element structure
+  - Click the "Insert" button that appears next to your query
+  - Press `CMD/CTRL + ENTER`
+
+If no element is selected, Bricks adds the structure at the end of the page or template.
+
+### Save element structures
+
+Instead of typing out your favorite structures by hand every time, you can save them by clicking the "Save" button next to the command bar. Your structures are stored in this browser's `localStorage`, so they are local to that browser/profile and are not synced between users or devices.
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-saved-element-structures.png)
+
+<figcaption>
+
+List of saved element structures
+
+</figcaption>
+
+To insert a saved structure, open the "Select element structure" dropdown in the Elements scope and pick it. To delete a structure, mouseover the structure item in the list, and click the "Delete" icon.
+
+## Scope: Components {#components}
+
+This scope lists the components on your site. Select a component to insert an instance of it, the same way you insert a single element. The scope is available when your role can insert components.
+
+## Keyboard shortcuts
+
+| **Keyboard shortcut** | **Action** |
+| --- | --- |
+| `CMD/CTRL + K` | Open/close the command palette |
+| `ESC` | Close the command palette |
+| `TAB > ENTER` (to enter selected scope) | Navigate between search and scopes |
+| `#` (as the first character in the search input) | Enter scope “Builder” |
+| `/` (as the first character in the search input) | Enter scope “Post Types” |
+| `+` or `@` (as the first character in the search input) | Enter scope “Elements” |
+| `*` (as the first character in the search input) | Enter scope “Components” |
+| `CMD/CTRL + ENTER` | Insert the element structure typed in scope “Elements” |
+| `/0-9` (forward slash followed by number) | Navigate to a specific post type |
+| `ARROW UP/DOWN` + ENTER | Navigate to a search result and open it |
+
+## Notes
+
+Bricks remembers your last selected scope, even after builder reload (stored in your localStorage).
+
+The "Pages" panel remains available from the builder toolbar. The Command Palette is an additional fast way to browse, create, duplicate, and open posts.
+
+The docs entry is also accessible from the "Builder" scope.
+
+---
+
 # Context Menu
 
 Source: https://academy.bricksbuilder.io/builder/interface/context-menu/
@@ -575,172 +719,6 @@ Review [Builder Access](https://academy.bricksbuilder.io/builder/interface/build
 - **Copy/paste behaves differently in Safari:** Safari can be stricter about clipboard access, so perform copy and paste from direct user gestures.
 - **Save as Component is missing or disabled:** Check permissions and make sure you are not bulk editing, editing an active Component, selecting a Component or legacy Global Element, or selecting a Template or Filter element.
 - **Wrap is missing or disabled:** Confirm the selected elements share the same parent and can be wrapped in the current hierarchy.
-
----
-
-# Start Editing With Bricks
-
-Source: https://academy.bricksbuilder.io/builder/interface/editing-with-bricks/
-
-*Start editing with Bricks by understanding the builder layout, canvas behavior, and the basic flow for working on a page.*
-
-This article explains how to open the Bricks builder, what each main area of the interface does, and how editing with Bricks relates to rendering the page on the frontend.
-
-## Before you open the builder
-
-Bricks shows builder entry points when the current post can be edited with Bricks:
-
-- The current user has permission to use the builder.
-- The post type is enabled for Bricks.
-- The post can be edited by the current user.
-
-Bricks checks the license when the builder opens. If the license is not valid, Bricks redirects to the [license screen](https://academy.bricksbuilder.io/builder/license/license-and-updates/) instead of loading the builder.
-
-Go to **Bricks -> Settings** and select the post types you want to edit with Bricks:
-
-![](https://academy.bricksbuilder.io/assets/bricks-settings-post-types.png)
-
-> **Note**
->
-> While you can enable Bricks for blog posts, most sites work better when posts are written in the WordPress editor and displayed through a Bricks template. Use Bricks for the layout, and use WordPress for the editorial content.
-
-## Open the builder
-
-You can open the builder from several places in WordPress.
-
-### Posts list
-
-Hover over a supported post, page, or custom post type in the WordPress dashboard and click **Edit with Bricks**:
-
-![](https://academy.bricksbuilder.io/assets/docs-edit-with-bricks-button.png)
-
-### Post edit screen
-
-When editing an existing post or creating a new one, click **Edit with Bricks** in the Bricks editor area:
-
-![](https://academy.bricksbuilder.io/assets/bricks-post-edit-screen-1024x576.png)
-
-### Frontend admin bar
-
-When you are logged in and viewing the page on the frontend, use the WordPress admin bar. The Bricks menu can open the current page, the active header template, the active content template, the active footer template, or the Templates screen when those links apply to the current page.
-
-If the **Edit with Bricks** link is missing, check the current user's builder permissions and make sure the post type is enabled under **Bricks -> Settings**.
-
-## Edit with Bricks vs render with Bricks
-
-Editing with Bricks opens the visual builder. Rendering with Bricks controls which content source the frontend uses.
-
-A post can have WordPress editor content, Bricks data, or both. The **Render with Bricks** / **Render with WordPress** option in the admin bar switches the editor mode for the current post. If a post is set to render with WordPress, its Bricks data remains stored, but the frontend uses the WordPress content instead.
-
-Bricks templates are different. Templates are Bricks documents by definition, so the editor mode toggle does not apply to them.
-
-Use the render mode deliberately:
-
-- Choose **Render with Bricks** when the page itself is built in Bricks.
-- Choose **Render with WordPress** when the page should use normal WordPress content, usually with a Bricks template controlling the surrounding layout.
-- Do not use the render toggle as a content backup system. It only chooses the frontend render source.
-
-If a page is rendered with Bricks, the post list shows a **- Bricks** status after the title:
-
-![](https://academy.bricksbuilder.io/assets/bricks-post-screen-post-status.png)
-
-<figcaption>
-
-Post status "Bricks" shows you that a page is rendered with Bricks
-
-</figcaption>
-
-## Delete Bricks data
-
-The admin bar and post edit screen can show a **Delete Bricks data** button when this option is enabled in **Bricks -> Settings**.
-
-This removes Bricks-generated data from the current post, including page content, page settings, header/footer data, editor mode, and template type metadata. Treat it as destructive. Use it only when you want the post to stop using its stored Bricks layout data.
-
-## Builder anatomy
-
-The builder is made of four main working areas.
-
-### Toolbar
-
-The toolbar runs across the top of the builder. It gives you access to global builder actions and mode switches, including:
-
-- Style Manager
-- Pages panel
-- Templates
-- Settings
-- Command Palette
-- Elements and Components
-- Breakpoints
-- Preview width, height, and scale
-- Reload canvas
-- Undo and redo
-- Preview and save actions
-
-Which buttons you see depends on your permissions and global builder settings. For example, template actions require template permissions, and the breakpoints manager requires breakpoint access.
-
-### Panel
-
-The left panel changes depending on what you are doing. It can show the element library, the selected element controls, page/template settings, revisions, pages, or other manager views.
-
-The panel can be resized and minimized. When an element is selected, the panel shows the element label, element actions, class/selector controls, and the relevant Content and Style controls.
-
-### Canvas
-
-The canvas is the live visual preview of the current page. It renders the Bricks layout in an iframe, so selecting and editing elements feels close to editing the frontend output.
-
-The canvas can be reloaded from the toolbar. Reloading is useful after changing settings that need a fresh render, or when external scripts, query data, or dynamic content affect the preview.
-
-### Structure panel
-
-The Structure panel shows the element tree. It is the safest place to understand nesting, select hard-to-click elements, move elements, and work with deeply nested layouts.
-
-Use the Structure panel whenever the canvas view is visually crowded, an element is hidden, or you need to confirm parent-child relationships.
-
-## First successful edit workflow
-
-Use this workflow when creating or editing a normal page:
-
-1. Enable the page post type under **Bricks -> Settings**.
-2. Create or open the page in WordPress.
-3. Click **Edit with Bricks**.
-4. Open the Elements panel and add a layout element, such as a Section or Container.
-5. Add content elements inside the layout.
-6. Select an element on the canvas or in the Structure panel.
-7. Edit its Content controls for markup and data.
-8. Edit its Style controls for design.
-9. Switch breakpoints and adjust responsive styles where needed.
-10. Save the builder.
-11. Preview the page and confirm it is rendered with Bricks.
-
-## Common builder states
-
-### Preview mode
-
-Preview mode hides the normal editing controls so you can inspect the layout. While previewing, builder editing actions such as the custom context menu are disabled.
-
-### Unsaved changes
-
-The builder tracks history and unsaved changes. Use save before leaving the builder, switching important context, or testing frontend-only behavior.
-
-### Unsupported post type
-
-If a post type is not enabled for Bricks, Bricks redirects you back to WordPress admin instead of opening the builder. Enable the post type under **Bricks -> Settings** or use a Bricks template for that content type.
-
-### Missing permissions
-
-Users can have full access, content-editing access, or custom permission sets. Missing permissions can hide toolbar buttons, element categories, manager popups, settings panels, and editing controls. Review [Builder Access](https://academy.bricksbuilder.io/builder/interface/builder-access/) if a user can open the builder but cannot see or edit a specific area.
-
-### Login or license redirects
-
-If the builder detects that the current browser session is no longer logged in, it redirects to the login page. If the license is not valid, Bricks redirects to the [license screen](https://academy.bricksbuilder.io/builder/license/license-and-updates/).
-
-## Troubleshooting checklist
-
-- **No Edit with Bricks button:** Check post type support, user permissions, and whether the current user can edit the post.
-- **The page opens in WordPress instead of Bricks:** Confirm the page has Bricks data or switch the admin bar render mode to **Render with Bricks**.
-- **Builder opens but controls are missing:** Check builder permissions and whether the selected element is disabled.
-- **Canvas looks stale:** Reload the canvas from the toolbar.
-- **Page looks different on the frontend:** Save the builder, confirm render mode, and test outside preview mode.
 
 ---
 
@@ -930,6 +908,172 @@ Before making a change, confirm:
 
 ---
 
+# Start Editing With Bricks
+
+Source: https://academy.bricksbuilder.io/builder/interface/editing-with-bricks/
+
+*Start editing with Bricks by understanding the builder layout, canvas behavior, and the basic flow for working on a page.*
+
+This article explains how to open the Bricks builder, what each main area of the interface does, and how editing with Bricks relates to rendering the page on the frontend.
+
+## Before you open the builder
+
+Bricks shows builder entry points when the current post can be edited with Bricks:
+
+- The current user has permission to use the builder.
+- The post type is enabled for Bricks.
+- The post can be edited by the current user.
+
+Bricks checks the license when the builder opens. If the license is not valid, Bricks redirects to the [license screen](https://academy.bricksbuilder.io/builder/license/license-and-updates/) instead of loading the builder.
+
+Go to **Bricks -> Settings** and select the post types you want to edit with Bricks:
+
+![](https://academy.bricksbuilder.io/assets/bricks-settings-post-types.png)
+
+> **Note**
+>
+> While you can enable Bricks for blog posts, most sites work better when posts are written in the WordPress editor and displayed through a Bricks template. Use Bricks for the layout, and use WordPress for the editorial content.
+
+## Open the builder
+
+You can open the builder from several places in WordPress.
+
+### Posts list
+
+Hover over a supported post, page, or custom post type in the WordPress dashboard and click **Edit with Bricks**:
+
+![](https://academy.bricksbuilder.io/assets/docs-edit-with-bricks-button.png)
+
+### Post edit screen
+
+When editing an existing post or creating a new one, click **Edit with Bricks** in the Bricks editor area:
+
+![](https://academy.bricksbuilder.io/assets/bricks-post-edit-screen-1024x576.png)
+
+### Frontend admin bar
+
+When you are logged in and viewing the page on the frontend, use the WordPress admin bar. The Bricks menu can open the current page, the active header template, the active content template, the active footer template, or the Templates screen when those links apply to the current page.
+
+If the **Edit with Bricks** link is missing, check the current user's builder permissions and make sure the post type is enabled under **Bricks -> Settings**.
+
+## Edit with Bricks vs render with Bricks
+
+Editing with Bricks opens the visual builder. Rendering with Bricks controls which content source the frontend uses.
+
+A post can have WordPress editor content, Bricks data, or both. The **Render with Bricks** / **Render with WordPress** option in the admin bar switches the editor mode for the current post. If a post is set to render with WordPress, its Bricks data remains stored, but the frontend uses the WordPress content instead.
+
+Bricks templates are different. Templates are Bricks documents by definition, so the editor mode toggle does not apply to them.
+
+Use the render mode deliberately:
+
+- Choose **Render with Bricks** when the page itself is built in Bricks.
+- Choose **Render with WordPress** when the page should use normal WordPress content, usually with a Bricks template controlling the surrounding layout.
+- Do not use the render toggle as a content backup system. It only chooses the frontend render source.
+
+If a page is rendered with Bricks, the post list shows a **- Bricks** status after the title:
+
+![](https://academy.bricksbuilder.io/assets/bricks-post-screen-post-status.png)
+
+<figcaption>
+
+Post status "Bricks" shows you that a page is rendered with Bricks
+
+</figcaption>
+
+## Delete Bricks data
+
+The admin bar and post edit screen can show a **Delete Bricks data** button when this option is enabled in **Bricks -> Settings**.
+
+This removes Bricks-generated data from the current post, including page content, page settings, header/footer data, editor mode, and template type metadata. Treat it as destructive. Use it only when you want the post to stop using its stored Bricks layout data.
+
+## Builder anatomy
+
+The builder is made of four main working areas.
+
+### Toolbar
+
+The toolbar runs across the top of the builder. It gives you access to global builder actions and mode switches, including:
+
+- Style Manager
+- Pages panel
+- Templates
+- Settings
+- Command Palette
+- Elements and Components
+- Breakpoints
+- Preview width, height, and scale
+- Reload canvas
+- Undo and redo
+- Preview and save actions
+
+Which buttons you see depends on your permissions and global builder settings. For example, template actions require template permissions, and the breakpoints manager requires breakpoint access.
+
+### Panel
+
+The left panel changes depending on what you are doing. It can show the element library, the selected element controls, page/template settings, revisions, pages, or other manager views.
+
+The panel can be resized and minimized. When an element is selected, the panel shows the element label, element actions, class/selector controls, and the relevant Content and Style controls.
+
+### Canvas
+
+The canvas is the live visual preview of the current page. It renders the Bricks layout in an iframe, so selecting and editing elements feels close to editing the frontend output.
+
+The canvas can be reloaded from the toolbar. Reloading is useful after changing settings that need a fresh render, or when external scripts, query data, or dynamic content affect the preview.
+
+### Structure panel
+
+The Structure panel shows the element tree. It is the safest place to understand nesting, select hard-to-click elements, move elements, and work with deeply nested layouts.
+
+Use the Structure panel whenever the canvas view is visually crowded, an element is hidden, or you need to confirm parent-child relationships.
+
+## First successful edit workflow
+
+Use this workflow when creating or editing a normal page:
+
+1. Enable the page post type under **Bricks -> Settings**.
+2. Create or open the page in WordPress.
+3. Click **Edit with Bricks**.
+4. Open the Elements panel and add a layout element, such as a Section or Container.
+5. Add content elements inside the layout.
+6. Select an element on the canvas or in the Structure panel.
+7. Edit its Content controls for markup and data.
+8. Edit its Style controls for design.
+9. Switch breakpoints and adjust responsive styles where needed.
+10. Save the builder.
+11. Preview the page and confirm it is rendered with Bricks.
+
+## Common builder states
+
+### Preview mode
+
+Preview mode hides the normal editing controls so you can inspect the layout. While previewing, builder editing actions such as the custom context menu are disabled.
+
+### Unsaved changes
+
+The builder tracks history and unsaved changes. Use save before leaving the builder, switching important context, or testing frontend-only behavior.
+
+### Unsupported post type
+
+If a post type is not enabled for Bricks, Bricks redirects you back to WordPress admin instead of opening the builder. Enable the post type under **Bricks -> Settings** or use a Bricks template for that content type.
+
+### Missing permissions
+
+Users can have full access, content-editing access, or custom permission sets. Missing permissions can hide toolbar buttons, element categories, manager popups, settings panels, and editing controls. Review [Builder Access](https://academy.bricksbuilder.io/builder/interface/builder-access/) if a user can open the builder but cannot see or edit a specific area.
+
+### Login or license redirects
+
+If the builder detects that the current browser session is no longer logged in, it redirects to the login page. If the license is not valid, Bricks redirects to the [license screen](https://academy.bricksbuilder.io/builder/license/license-and-updates/).
+
+## Troubleshooting checklist
+
+- **No Edit with Bricks button:** Check post type support, user permissions, and whether the current user can edit the post.
+- **The page opens in WordPress instead of Bricks:** Confirm the page has Bricks data or switch the admin bar render mode to **Render with Bricks**.
+- **Builder opens but controls are missing:** Check builder permissions and whether the selected element is disabled.
+- **Canvas looks stale:** Reload the canvas from the toolbar.
+- **Page looks different on the frontend:** Save the builder, confirm render mode, and test outside preview mode.
+
+---
+
 # Keyboard Shortcuts
 
 Source: https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/
@@ -972,150 +1116,6 @@ Quickly perform the most common in-builder actions through short & simple keyboa
 | `Shift (modifier)` | Hold down "Shift" to:<br />- Adjust element spacing (margin, padding) or container sizing (height, width) on the canvas in steps of 5 (custom units) or 10 (default unit = px)<br />- Directly edit new element |
 | `ESC` | Cancel/close popup (templates, documentation, etc.) |
 | `ALT/OPTION + T` | Focus on toolbar (logo). TAB through toolbar possible |
-
----
-
-# Command Palette
-
-Source: https://academy.bricksbuilder.io/builder/interface/command-palette/
-
-*Use the Bricks Command Palette to run common actions, navigate faster, and insert element structures with keyboard-driven workflows.*
-
-Bricks 2.0 introduces the **Command Palette**, a powerful new feature that gives you instant keyboard-driven access to core functionality inside the builder.
-
-https://youtu.be/gOVNlRvsYc8
-
-## How to launch it
-
-Click the command `⌘` icon in the builder toolbar or use the `CMD/CTRL + K` keyboard shortcut to open the Command Palette, which appears as an overlay, allowing you to type and filter commands across four scopes.
-
-## Scope: Builder {#builder}
-
-Navigate to key parts of the builder from a growing list of targets such as classes, variables, templates, theme styles, settings, etc.
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-builder.png)
-
-## Scope: Post Types {#post-types}
-
-This scope lets you browse the registered post types your builder capability can access, create new posts when your user can edit posts, or duplicate existing posts.
-
-Besides "All" and "Template (Bricks)", a post type gets its own tab only when Bricks is enabled for it under **Bricks > Settings > General > Post types** and your role can access it in the builder. "All" searches every public post type.
-
-To create a post, select the post type tab, type the title, and click "Create". Bricks adds the post as a draft. Click a result to open it in the builder. `CMD/CTRL` + click opens it in a new browser tab. Posts of a type that is not enabled for Bricks open in the WordPress editor in a new tab.
-
-The scope auto-selects the post type that you are currently editing. So if you are editing a Bricks template the "Template (Bricks)" post type will be selected. If you edit a "Page", then "Page" is selected and so on.
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-post-types.png)
-
-## Scope: Elements {#elements}
-
-The "Elements" scope will dramatically speed up your workflow by allowing you to insert multiple elements with specific structure in a single action.
-
-By mastering the Emmet-like syntax, you can create complex layouts in seconds rather than minutes, making your design process significantly more efficient.
-
-With practice, this feature becomes second nature and an essential part of your Bricks Builder toolkit, especially for quickly creating common page structures and element combinations that you use frequently, which you can also save for instant access to use whenever needed.
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-elements.png)
-
-### Insert single element
-
-To insert a single element simply type its name, such as "Section", then `ARROW`-navigate to it in the elements list, and insert it by pressing `ENTER` or just click on the element name.
-
-### Insert element structure
-
-Each element starts with an **@** symbol.
-
-The element name that the command bar requires is displayed in square brackets in the results list:
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-element-name.png)
-
-<figcaption>
-
-Text link element command: `@text-link`
-
-</figcaption>
-
-### Supported operators
-
-Use the following operators to define nested structure, siblings, a multiplier, or to move back up one nesting level.
-
-| Symbol | Meaning |
-| --- | --- |
-| `@` | Bricks element name (e.g. `@heading`) |
-| `>` | Nest inside |
-| `+` | Insert element as sibling |
-| `*` | How often to insert the element |
-| `^` | Move one level up before inserting the next element |
-
-### Element structure example
-
-`@section * 2 > @heading + @text + @button`
-This creates the following structure *(two times because of the multiplier: `* 2`)*:
-
-- `Section`
- └ `Container`
-   ├ `Heading`
-   ├ `Text`
-   └ `Button`
-
-Bricks adds the Container inside every Section automatically, so you don't type `@container` after `@section`.
-
-### Quick element insertion
-
-> **Note**
->
-> After selecting an element from the search results, its name is added to your query with the `@` prefix, allowing you to quickly build complex queries:
-
-1. Type `@` to activate insertion mode
-2. Select an element (e.g., "section")
-3. Type `>` for a child element
-4. Continue building your structure
-5. Insert your element structure
-  - Click the "Insert" button that appears next to your query
-  - Press `CMD/CTRL + ENTER`
-
-If no element is selected, Bricks adds the structure at the end of the page or template.
-
-### Save element structures
-
-Instead of typing out your favorite structures by hand every time, you can save them by clicking the "Save" button next to the command bar. Your structures are stored in this browser's `localStorage`, so they are local to that browser/profile and are not synced between users or devices.
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-saved-element-structures.png)
-
-<figcaption>
-
-List of saved element structures
-
-</figcaption>
-
-To insert a saved structure, open the "Select element structure" dropdown in the Elements scope and pick it. To delete a structure, mouseover the structure item in the list, and click the "Delete" icon.
-
-## Scope: Components {#components}
-
-This scope lists the components on your site. Select a component to insert an instance of it, the same way you insert a single element. The scope is available when your role can insert components.
-
-## Keyboard shortcuts
-
-| **Keyboard shortcut** | **Action** |
-| --- | --- |
-| `CMD/CTRL + K` | Open/close the command palette |
-| `ESC` | Close the command palette |
-| `TAB > ENTER` (to enter selected scope) | Navigate between search and scopes |
-| `#` (as the first character in the search input) | Enter scope “Builder” |
-| `/` (as the first character in the search input) | Enter scope “Post Types” |
-| `+` or `@` (as the first character in the search input) | Enter scope “Elements” |
-| `*` (as the first character in the search input) | Enter scope “Components” |
-| `CMD/CTRL + ENTER` | Insert the element structure typed in scope “Elements” |
-| `/0-9` (forward slash followed by number) | Navigate to a specific post type |
-| `ARROW UP/DOWN` + ENTER | Navigate to a search result and open it |
-
-## Notes
-
-Bricks remembers your last selected scope, even after builder reload (stored in your localStorage).
-
-The "Pages" panel remains available from the builder toolbar. The Command Palette is an additional fast way to browse, create, duplicate, and open posts.
-
-The docs entry is also accessible from the "Builder" scope.
 
 ---
 
@@ -1261,46 +1261,6 @@ Use page-level code sparingly. Prefer element settings, classes, Theme Styles, g
 - **Testing scroll snap only in the builder:** Always test on the frontend.
 - **Adding scripts without the right capability:** Script fields require permission to add unfiltered HTML.
 - **Using page code for reusable behavior:** Page Custom Code is local to the current page. Use global settings or enqueue code for site-wide behavior.
-
----
-
-# Revisions
-
-Source: https://academy.bricksbuilder.io/builder/interface/revisions/
-
-*Review, restore, and manage Bricks revisions so you can safely recover earlier builder states.*
-
-When you save builder data changes, Bricks creates a revision/snapshot of the relevant Bricks data and page settings (template, page, etc.) using the official WordPress Revisions API.
-
-Bricks also stores autosaves separately. Autosaves are backup copies from the autosave process, while regular revisions are created when Bricks element data or page settings are included in a manual save. After a regular revision is created, Bricks clears the related autosave.
-
-You can browse, preview, and apply your revisions inside the builder by clicking the **Revisions** (clock) icon in the builder toolbar, then going to the "Revisions" tab.
-
-Select any revision in this list to preview it. The canvas should automatically update showing you the selected revision.
-
-Click **Apply** to continue editing the selected revision. Click **Discard** to continue editing your current version.
-
-If your builder capability includes **Delete revisions**, you can delete individual revisions or delete all revisions from the Revisions panel.
-
-![](https://academy.bricksbuilder.io/assets/builder-revisions-1024x576.png)
-
-## Manage the number of Bricks revisions {#bricks_max_revisions_to_keep}
-
-In order to limit the number of Bricks revisions, you may define the constant `BRICKS_MAX_REVISIONS_TO_KEEP` like so (insert this code in the Bricks child theme):
-
-```php
-if ( ! defined( 'BRICKS_MAX_REVISIONS_TO_KEEP' ) ) {
-    define( 'BRICKS_MAX_REVISIONS_TO_KEEP', 10 );
-}
-```
-
-By default, Bricks sets the maximum to 100 revisions per post for the Bricks templates and enabled post types.
-
-You may set the following values:
-
-- true: unlimited revisions
-- false or 0: do not store any Bricks' revisions
-- value above 0: store up to this number of revisions per post. Old revisions are automatically deleted.
 
 ---
 
@@ -1504,6 +1464,46 @@ In Bricks 1.11.1, we introduced the responsive control indicator which helps you
 - **Disable**.
 
 ![](https://academy.bricksbuilder.io/assets/bricks-responsive-control-indicator.png)
+
+---
+
+# Revisions
+
+Source: https://academy.bricksbuilder.io/builder/interface/revisions/
+
+*Review, restore, and manage Bricks revisions so you can safely recover earlier builder states.*
+
+When you save builder data changes, Bricks creates a revision/snapshot of the relevant Bricks data and page settings (template, page, etc.) using the official WordPress Revisions API.
+
+Bricks also stores autosaves separately. Autosaves are backup copies from the autosave process, while regular revisions are created when Bricks element data or page settings are included in a manual save. After a regular revision is created, Bricks clears the related autosave.
+
+You can browse, preview, and apply your revisions inside the builder by clicking the **Revisions** (clock) icon in the builder toolbar, then going to the "Revisions" tab.
+
+Select any revision in this list to preview it. The canvas should automatically update showing you the selected revision.
+
+Click **Apply** to continue editing the selected revision. Click **Discard** to continue editing your current version.
+
+If your builder capability includes **Delete revisions**, you can delete individual revisions or delete all revisions from the Revisions panel.
+
+![](https://academy.bricksbuilder.io/assets/builder-revisions-1024x576.png)
+
+## Manage the number of Bricks revisions {#bricks_max_revisions_to_keep}
+
+In order to limit the number of Bricks revisions, you may define the constant `BRICKS_MAX_REVISIONS_TO_KEEP` like so (insert this code in the Bricks child theme):
+
+```php
+if ( ! defined( 'BRICKS_MAX_REVISIONS_TO_KEEP' ) ) {
+    define( 'BRICKS_MAX_REVISIONS_TO_KEEP', 10 );
+}
+```
+
+By default, Bricks sets the maximum to 100 revisions per post for the Bricks templates and enabled post types.
+
+You may set the following values:
+
+- true: unlimited revisions
+- false or 0: do not store any Bricks' revisions
+- value above 0: store up to this number of revisions per post. Old revisions are automatically deleted.
 
 ---
 

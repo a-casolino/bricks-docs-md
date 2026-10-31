@@ -1,25 +1,21 @@
-# Filter: bricks/frontend/disable_opengraph
+# Filter: bricks/frontend/disable_seo
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-frontend-disable_opengraph/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-frontend-disable_seo/
 
-*Determines whether Bricks should generate and output Open Graph meta tags (e.g., og:title, og:image). Use this to disable Bricks' Open Graph implementation if.*
+*Determines whether Bricks should generate and output SEO meta tags (e.g., description, keywords, robots) and modify the document title. Use this to disable.*
 
-Determines whether Bricks should generate and output Open Graph meta tags (e.g., `og:title`, `og:image`). Use this to disable Bricks' Open Graph implementation if you are using a third-party SEO plugin that already handles this.
+Determines whether Bricks should generate and output SEO meta tags (e.g., description, keywords, robots) and modify the document title. Use this to disable Bricks' built-in SEO features if you are using a dedicated SEO plugin.
 
 ## Parameters
 
-- `$disable` (*bool*): Whether to disable Open Graph tags.
+- `$disable` (*bool*): Whether to disable SEO tags.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/frontend/disable_opengraph', function( $disable ) {
-    // Example: Disable Open Graph tags on 'product' post type
-    if ( is_singular( 'product' ) ) {
-        return true;
-    }
-
-    return $disable;
+add_filter( 'bricks/frontend/disable_seo', function( $disable ) {
+    // Example: Always disable Bricks SEO features
+    return true;
 } );
 ```
 
@@ -74,32 +70,28 @@ add_filter( 'bricks/get_builder_edit_link', function( $url, $post_id ) {
 
 ---
 
-# Filter: bricks/get_remote_templates_data
+# Filter: bricks/get_template_bundles
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_remote_templates_data/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_template_bundles/
 
-*Filters the data retrieved from a remote template source (e.g., the Bricks Community Templates or a custom remote library). This allows you to modify, add, or.*
+*Filters the list of template bundles displayed in the Bricks template manager. Template bundles are a custom taxonomy used to categorize templates.*
 
-Filters the data retrieved from a remote template source (e.g., the Bricks Community Templates or a custom remote library). This allows you to modify, add, or remove templates before they are displayed in the template manager.
+Filters the list of template bundles displayed in the Bricks template manager. Template bundles are a custom taxonomy used to categorize templates.
 
 ## Parameters
 
-- `$remote_templates` (*array*): The decoded JSON response from the remote source, containing template data.
+- `$bundles` (*array*): Associative array of template bundles, where the key is the term slug and the value is the term name.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/get_remote_templates_data', function( $remote_templates ) {
-    // Example: Remove templates with a specific tag
-    if ( ! empty( $remote_templates['templates'] ) ) {
-        foreach ( $remote_templates['templates'] as $key => $template ) {
-            if ( isset( $template['tags'] ) && in_array( 'deprecated', $template['tags'] ) ) {
-                unset( $remote_templates['templates'][ $key ] );
-            }
-        }
+add_filter( 'bricks/get_template_bundles', function( $bundles ) {
+    // Example: Rename a specific bundle
+    if ( isset( $bundles['my-bundle'] ) ) {
+        $bundles['my-bundle'] = 'My Renamed Bundle';
     }
 
-    return $remote_templates;
+    return $bundles;
 } );
 ```
 
@@ -132,28 +124,32 @@ add_filter( 'bricks/get_template_authors', function( $authors ) {
 
 ---
 
-# Filter: bricks/get_template_bundles
+# Filter: bricks/get_remote_templates_data
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_template_bundles/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_remote_templates_data/
 
-*Filters the list of template bundles displayed in the Bricks template manager. Template bundles are a custom taxonomy used to categorize templates.*
+*Filters the data retrieved from a remote template source (e.g., the Bricks Community Templates or a custom remote library). This allows you to modify, add, or.*
 
-Filters the list of template bundles displayed in the Bricks template manager. Template bundles are a custom taxonomy used to categorize templates.
+Filters the data retrieved from a remote template source (e.g., the Bricks Community Templates or a custom remote library). This allows you to modify, add, or remove templates before they are displayed in the template manager.
 
 ## Parameters
 
-- `$bundles` (*array*): Associative array of template bundles, where the key is the term slug and the value is the term name.
+- `$remote_templates` (*array*): The decoded JSON response from the remote source, containing template data.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/get_template_bundles', function( $bundles ) {
-    // Example: Rename a specific bundle
-    if ( isset( $bundles['my-bundle'] ) ) {
-        $bundles['my-bundle'] = 'My Renamed Bundle';
+add_filter( 'bricks/get_remote_templates_data', function( $remote_templates ) {
+    // Example: Remove templates with a specific tag
+    if ( ! empty( $remote_templates['templates'] ) ) {
+        foreach ( $remote_templates['templates'] as $key => $template ) {
+            if ( isset( $template['tags'] ) && in_array( 'deprecated', $template['tags'] ) ) {
+                unset( $remote_templates['templates'][ $key ] );
+            }
+        }
     }
 
-    return $bundles;
+    return $remote_templates;
 } );
 ```
 
@@ -856,31 +852,6 @@ add_filter( 'bricks/popup/attributes', function( $attributes, $popup_id ) {
 
 ---
 
-# Filter: bricks/query/archive_query_supported_object_types
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-archive_query_supported_object_types/
-
-*Filters the list of Bricks query object types that support the \"Is main query\" setting (archive loop). By default, only 'post' queries are supported.*
-
-Filters the list of Bricks query object types that support the "Is main query" setting (archive loop). By default, only 'post' queries are supported.
-
-## Parameters
-
-- `$object_types` (*array*): Array of supported query object types (e.g., `['post']`).
-
-## Example usage
-
-```php
-add_filter( 'bricks/query/archive_query_supported_object_types', function( $object_types ) {
-    // Example: Enable "Is main query" for user loops (if implementing custom archive logic)
-    $object_types[] = 'user';
-
-    return $object_types;
-} );
-```
-
----
-
 # Filter: bricks/query/archive_query_arguments
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-archive_query_arguments/
@@ -906,30 +877,27 @@ add_filter( 'bricks/query/archive_query_arguments', function( $arguments ) {
 
 ---
 
-# Filter: bricks/query/fake_result
+# Filter: bricks/query/archive_query_supported_object_types
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-fake_result/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-archive_query_supported_object_types/
 
-*Filters the results of a \"fake\" query execution. Fake queries are auxiliary queries run by Bricks (e.g., to count total results for filters without pagination).*
+*Filters the list of Bricks query object types that support the \"Is main query\" setting (archive loop). By default, only 'post' queries are supported.*
 
-Filters the results of a "fake" query execution. Fake queries are auxiliary queries run by Bricks (e.g., to count total results for filters without pagination) that mirror the main query but with modified parameters (like `posts_per_page = -1`).
+Filters the list of Bricks query object types that support the "Is main query" setting (archive loop). By default, only 'post' queries are supported.
 
 ## Parameters
 
-- `$results` (*array*): The query results (e.g., array of WP_Post objects or IDs).
-- `$query` (*object*): The Bricks Query instance.
+- `$object_types` (*array*): Array of supported query object types (e.g., `['post']`).
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/query/fake_result', function( $results, $query ) {
-    // Example: Manipulate the results for a specific query ID
-    if ( $query->id === 'my_filtered_loop' ) {
-        // Custom logic to modify results
-    }
+add_filter( 'bricks/query/archive_query_supported_object_types', function( $object_types ) {
+    // Example: Enable "Is main query" for user loops (if implementing custom archive logic)
+    $object_types[] = 'user';
 
-    return $results;
-}, 10, 2 );
+    return $object_types;
+} );
 ```
 
 ---
@@ -986,6 +954,34 @@ add_filter( 'bricks/query/force_is_looping', function( $force, $query_id, $eleme
 
     return $force;
 }, 10, 3 );
+```
+
+---
+
+# Filter: bricks/query/fake_result
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-fake_result/
+
+*Filters the results of a \"fake\" query execution. Fake queries are auxiliary queries run by Bricks (e.g., to count total results for filters without pagination).*
+
+Filters the results of a "fake" query execution. Fake queries are auxiliary queries run by Bricks (e.g., to count total results for filters without pagination) that mirror the main query but with modified parameters (like `posts_per_page = -1`).
+
+## Parameters
+
+- `$results` (*array*): The query results (e.g., array of WP_Post objects or IDs).
+- `$query` (*object*): The Bricks Query instance.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query/fake_result', function( $results, $query ) {
+    // Example: Manipulate the results for a specific query ID
+    if ( $query->id === 'my_filtered_loop' ) {
+        // Custom logic to modify results
+    }
+
+    return $results;
+}, 10, 2 );
 ```
 
 ---
@@ -1208,32 +1204,6 @@ add_filter( 'bricks/query_api/body', function( $body_data, $element_id, $query_a
 
 ---
 
-# Filter: bricks/query_api/headers
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-headers/
-
-*Filters the headers used by a Query API element request.*
-
-Filters the headers used by a Query API element request before Bricks sends it.
-
-## Parameters
-
-- `$headers` (array): HTTP request headers.
-- `$element_id` (string): The Query API element ID.
-- `$query_api` (object): The Query API integration instance.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_api/headers', function( $headers, $element_id, $query_api ) {
-    $headers['X-Client'] = 'my-site';
-
-    return $headers;
-}, 10, 3 );
-```
-
----
-
 # Filter: bricks/query_api/request_args
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-request_args/
@@ -1255,6 +1225,32 @@ add_filter( 'bricks/query_api/request_args', function( $args, $element_id, $quer
     $args['timeout'] = 20;
 
     return $args;
+}, 10, 3 );
+```
+
+---
+
+# Filter: bricks/query_api/headers
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-headers/
+
+*Filters the headers used by a Query API element request.*
+
+Filters the headers used by a Query API element request before Bricks sends it.
+
+## Parameters
+
+- `$headers` (array): HTTP request headers.
+- `$element_id` (string): The Query API element ID.
+- `$query_api` (object): The Query API integration instance.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_api/headers', function( $headers, $element_id, $query_api ) {
+    $headers['X-Client'] = 'my-site';
+
+    return $headers;
 }, 10, 3 );
 ```
 
@@ -1396,6 +1392,33 @@ add_filter( 'bricks/query_filters/datepicker_custom_field_meta_query', function(
 
 ---
 
+# Filter: bricks/query_filters/element_data
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-element_data/
+
+*Filters the data for a filter element before it is saved to the internal index table (bricksfilterelements). This allows plugins to attach extra metadata (like.*
+
+Filters the data for a filter element before it is saved to the internal index table (`bricks_filter_elements`). This allows plugins to attach extra metadata (like language) to the filter configuration.
+
+## Parameters
+
+- `$element_data` (*array*): The data array to be saved (e.g., `filter_id`, `settings`, `post_id`, `language`).
+- `$element` (*array*): The raw element data from the builder.
+- `$post_id` (*int*): The ID of the post/template containing the element.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_filters/element_data', function( $element_data, $element, $post_id ) {
+    // Example: Add a custom property to the saved data
+    $element_data['my_custom_prop'] = 'value';
+
+    return $element_data;
+}, 10, 3 );
+```
+
+---
+
 # Filter: bricks/query_filters/filter_query_vars
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-filter_query_vars/
@@ -1422,33 +1445,6 @@ add_filter( 'bricks/query_filters/filter_query_vars', function( $query_vars, $fi
 
     return $query_vars;
 }, 10, 4 );
-```
-
----
-
-# Filter: bricks/query_filters/element_data
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-element_data/
-
-*Filters the data for a filter element before it is saved to the internal index table (bricksfilterelements). This allows plugins to attach extra metadata (like.*
-
-Filters the data for a filter element before it is saved to the internal index table (`bricks_filter_elements`). This allows plugins to attach extra metadata (like language) to the filter configuration.
-
-## Parameters
-
-- `$element_data` (*array*): The data array to be saved (e.g., `filter_id`, `settings`, `post_id`, `language`).
-- `$element` (*array*): The raw element data from the builder.
-- `$post_id` (*int*): The ID of the post/template containing the element.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_filters/element_data', function( $element_data, $element, $post_id ) {
-    // Example: Add a custom property to the saved data
-    $element_data['my_custom_prop'] = 'value';
-
-    return $element_data;
-}, 10, 3 );
 ```
 
 ---
@@ -1867,29 +1863,6 @@ add_filter( 'bricks/remote_get', function( $args, $url ) {
 
 ---
 
-# Filter: bricks/render_footer
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-render_footer/
-
-*Filters the rendered HTML of the Bricks footer template. This allows you to wrap the footer in custom markup or modify its output before it is echoed to the.*
-
-Filters the rendered HTML of the Bricks footer template. This allows you to wrap the footer in custom markup or modify its output before it is echoed to the page.
-
-## Parameters
-
-- `$footer_html` (*string*): The rendered HTML of the footer.
-
-## Example usage
-
-```php
-add_filter( 'bricks/render_footer', function( $footer_html ) {
-    // Example: Wrap the footer in a custom container
-    return '<div class="custom-footer-wrapper">' . $footer_html . '</div>';
-} );
-```
-
----
-
 # Filter: bricks/remote_post
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-remote_post/
@@ -1914,6 +1887,29 @@ add_filter( 'bricks/remote_post', function( $args, $url ) {
 
     return $args;
 }, 10, 2 );
+```
+
+---
+
+# Filter: bricks/render_footer
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-render_footer/
+
+*Filters the rendered HTML of the Bricks footer template. This allows you to wrap the footer in custom markup or modify its output before it is echoed to the.*
+
+Filters the rendered HTML of the Bricks footer template. This allows you to wrap the footer in custom markup or modify its output before it is echoed to the page.
+
+## Parameters
+
+- `$footer_html` (*string*): The rendered HTML of the footer.
+
+## Example usage
+
+```php
+add_filter( 'bricks/render_footer', function( $footer_html ) {
+    // Example: Wrap the footer in a custom container
+    return '<div class="custom-footer-wrapper">' . $footer_html . '</div>';
+} );
 ```
 
 ---
@@ -2564,28 +2560,6 @@ add_filter( 'bricks/woocommerce/predefined_elements/local_presets', function( $p
 
 ---
 
-# Filter: bricks/woocommerce/predefined_elements/remote_payload
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-remote_payload/
-
-*Filters the remote WooCommerce predefined elements payload.*
-
-Filters the remote WooCommerce predefined elements payload after Bricks decodes the response and before it validates/caches the payload.
-
-## Parameters
-
-- `$remote_payload` (array|mixed): Decoded remote payload data.
-
-## Example usage
-
-```php
-add_filter( 'bricks/woocommerce/predefined_elements/remote_payload', function( $remote_payload ) {
-    return $remote_payload;
-} );
-```
-
----
-
 # Filter: bricks/woocommerce/predefined_elements/remote_url
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-remote_url/
@@ -2605,6 +2579,28 @@ When a URL is returned, Bricks appends `schemaVersion`, `site`, and `time` query
 ```php
 add_filter( 'bricks/woocommerce/predefined_elements/remote_url', function( $remote_url ) {
     return 'https://example.com/bricks-woo-presets.json';
+} );
+```
+
+---
+
+# Filter: bricks/woocommerce/predefined_elements/remote_payload
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-remote_payload/
+
+*Filters the remote WooCommerce predefined elements payload.*
+
+Filters the remote WooCommerce predefined elements payload after Bricks decodes the response and before it validates/caches the payload.
+
+## Parameters
+
+- `$remote_payload` (array|mixed): Decoded remote payload data.
+
+## Example usage
+
+```php
+add_filter( 'bricks/woocommerce/predefined_elements/remote_payload', function( $remote_payload ) {
+    return $remote_payload;
 } );
 ```
 

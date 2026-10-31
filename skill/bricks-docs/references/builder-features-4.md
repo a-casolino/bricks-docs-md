@@ -606,6 +606,310 @@ For local component creation, properties, variants, slots, and instance behavior
 
 ---
 
+# Remote Templates
+
+Source: https://academy.bricksbuilder.io/builder/features/remote-templates/
+
+*Connect Bricks sites, browse shared template libraries, and transfer templates with their component dependencies.*
+
+Remote Templates let you browse and insert templates from another Bricks installation without exporting and importing files manually.
+
+The workflow has two sides:
+
+- The **source site** exposes selected templates through its remote library.
+- The **destination site** adds that site under **Remote libraries** and accesses its templates from the Builder Browser.
+
+## 1. Expose Templates on the Source Site
+
+On the site that contains the templates:
+
+1. Go to **Bricks > Settings > Templates & components**.
+2. Under **My templates**, enable **My templates access**.
+3. Use **Exclude templates** to hide any templates that should not be shared.
+4. Configure the shared **Remote access** controls.
+5. Save the settings.
+
+![Bricks Templates and components settings with My templates access enabled and Exclude templates visible](https://academy.bricksbuilder.io/assets/bricks-settings-remote-templates-access.webp)
+
+The **Remote access** settings apply to remote templates and remote components:
+
+- **Whitelist URLs** restricts access to the listed destination sites. Enter one URL per line.
+- **Password protection** requires destination sites to provide the same password.
+
+If both fields are empty, any Bricks site that knows the source URL can request the templates exposed by **My templates access**.
+
+The source site's WordPress permalink structure must not be set to **Plain**.
+
+![](https://academy.bricksbuilder.io/assets/permalink-structure-not-plain-type-for-remote-templates-01.png)
+
+## 2. Add a Remote Site on the Destination Site
+
+On the site where you want to use the templates:
+
+1. Go to **Bricks > Settings > Templates & components**.
+2. Under **Remote libraries**, click **Add**.
+3. Enter the source site's full **URL**.
+4. Optionally enter a **Name**. Bricks shows this instead of the URL in source dropdowns.
+5. Enter the source site's **Remote access** password, if it uses one.
+6. Save the settings.
+
+You can add multiple remote sites. The same entry can provide templates, components, or both.
+
+![Remote libraries settings with Name, URL, and Password fields](https://academy.bricksbuilder.io/assets/bricks-settings-remote-libraries.webp)
+
+## 3. Browse Remote Templates
+
+Open the builder, click the folder icon, and select **Templates** in the [Builder Browser](https://academy.bricksbuilder.io/builder/features/builder-browser/).
+
+Choose the remote site under **Source**. You can search the library, filter its templates, switch between grid and list view, and use **Reload** to request the source again.
+
+The current user needs **Access remote templates** permission to see configured remote sites.
+
+![Builder Browser Templates view with HappyFiles selected as the remote source](https://academy.bricksbuilder.io/assets/bricks-browser-remote-templates.webp)
+
+## Insert a Remote Template
+
+Click **Insert** to add the template to the current canvas. The **Replace content** control decides whether Bricks replaces the current canvas or adds the template to it.
+
+Use **Import images** to download eligible template and component images to the destination Media Library. Leave it disabled to use placeholder images where the normal template import flow supports them.
+
+When the remote template includes related design-system data, Bricks may open additional reviews for theme styles, color palettes, variables, global classes, or Style Manager settings.
+
+Remote code signatures are not trusted. Bricks removes source signatures, and users without code-execution permission do not receive executable Code, SVG, or custom-query settings from the remote template.
+
+### Templates That Use Components
+
+In Bricks 2.4 and later, inserting a remote template also requests the components used by that template. The dependency package includes nested components and their referenced global classes, variable categories and variables, and color palettes.
+
+Bricks remaps the template to the imported local component and design-system IDs before inserting it. Save pending component, class, variable, and color changes before starting the insert.
+
+If a component from this source was imported before and changed remotely, Bricks asks whether to replace the local component before inserting the template. Replacing it updates the existing local component definition and its instances.
+
+If the template depends on a component excluded from remote access on the source site, Bricks blocks the dependency package instead of inserting an incomplete component graph.
+
+## Import to Templates
+
+Click **Import to templates** on a non-local template to save it into **My Templates** instead of inserting it directly onto the current canvas.
+
+For a configured Bricks remote site, Bricks first localizes supported component and design-system dependencies, then passes the template through the regular template import flow. The current user needs **Import/export templates** permission.
+
+## Compatibility With Older Remote Sites
+
+Bricks 2.4 introduces a versioned remote-library package for templates with component dependencies.
+
+When a configured source does not support that package protocol, Bricks falls back to the legacy Remote Templates response. The template can still use the older insertion workflow, but the legacy response does not provide the dependency-complete component package. Update the source site before sharing templates that use components.
+
+## Permissions
+
+Remote template operations use separate builder permissions:
+
+| Task                                                                 | Required permissions                                                                                                     |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| See configured remote sites                                          | **Access remote templates**                                                                                              |
+| Insert a remote template without component dependencies              | **Access remote templates** and **Insert templates**                                                                     |
+| Save a remote template under My Templates                            | **Access remote templates** and **Import/export templates**                                                              |
+| Insert a remote template with component dependencies                 | The insert permissions above, plus **Access remote components**, **Import/export components**, and **Insert components** |
+| Import a remote template with component dependencies to My Templates | The template import permissions above, plus **Access remote components** and **Import/export components**                |
+
+See [Builder Access & Capabilities](https://academy.bricksbuilder.io/builder/interface/builder-access/) for assigning these permissions.
+
+## Fetching and Caching
+
+Bricks keeps fetched template data outside the WordPress database. Remote template data can be cached in the builder browser for up to seven days per source. Use **Reload** when you need the source again before that cache expires.
+
+Remote-library capability checks and component catalogs use shorter server-side caches. In the Component Manager, **Refresh** bypasses those short caches and requests the source again.
+
+## Troubleshooting
+
+### A Remote Site Does Not Appear
+
+- Confirm the remote library row is saved under **Templates & components**.
+- Confirm the current user has **Access remote templates** permission.
+
+### A Remote Site Appears but Does Not Load
+
+Check the source site:
+
+- **My templates access** is enabled.
+- Permalinks are not set to **Plain**.
+- The destination site's URL is included under **Whitelist URLs**, when used.
+- The password saved on the destination matches **Remote access > Password protection**.
+- The expected templates are not selected under **Exclude templates**.
+
+### A Template With Components Cannot Be Inserted
+
+- Save pending component, class, variable, and color changes on the destination.
+- Confirm the user has the required component permissions.
+- Confirm every component dependency is available and not excluded on the source.
+- Update the source to Bricks 2.4 or later if it only supports the legacy template response.
+
+For the template library controls and local template actions, see [Template Library](https://academy.bricksbuilder.io/builder/features/template-library/).
+
+---
+
+# Save Form Submissions
+
+Source: https://academy.bricksbuilder.io/builder/features/save-form-submissions/
+
+*Store Bricks form submissions in WordPress so you can review entries, keep records, and work with the saved data later.*
+
+Bricks 1.9.2 introduced the ability to save Form element submissions in your WordPress database. Once enabled globally, each form can use the **Save submission** action to store entries in a Bricks-managed database table and review them from the WordPress dashboard.
+
+Use this for contact forms, quote requests, event registrations, lead capture, and other workflows where you need a dashboard record in addition to email, webhook, or third-party integrations.
+
+> **Note**
+>
+> Saved submissions are stored in your WordPress database. Treat them as personal data when forms collect names, emails, IP addresses, files, or account-related information.
+
+## How to enable {#how-to-activate}
+
+Enable **Save form submissions in database** under **Bricks > Settings > General > Form submissions**.
+
+![](https://academy.bricksbuilder.io/assets/bricks-form-submissions-settings.png)
+
+After enabling it, save your settings. Bricks now creates a custom table named `bricks_form_submissions` in your database (plus your WP database prefix).
+
+You should now also see the following action buttons:
+
+- **Reset database table**: Removes all saved submission rows from the table.
+- **Delete database table**: Deletes the custom submissions table and disables the global setting.
+
+> **Note**
+>
+> These actions are permanent. Make sure you have a backup before resetting or deleting the table.
+
+## Form action: Save submission {#save-submission-form-action}
+
+![](https://academy.bricksbuilder.io/assets/save-submission-action-in-form-element.png)
+
+After the global setting is enabled, edit a Form element and select **Save submission** under the **Actions** control group.
+
+In the example below, the form uses **Save submission** and **Email**.
+
+The sequence of your actions matters. If an action fails, execution of all subsequent form actions is halted. Set the order according to your workflow.
+
+In this example, if **Save submission** fails, the **Email** action that follows it will not be triggered.
+
+Bricks always moves the **Redirect** action to the end of the action list during submission processing.
+
+## What Bricks saves
+
+The saved entry includes the submitted form fields and selected metadata:
+
+- The post ID where the form was submitted from, when available.
+- The Form element ID. If the form is a global element, Bricks uses the global element ID.
+- The submission date in the database.
+- Submitted form field data, stored as JSON.
+- Browser and operating system, derived from the user agent.
+- Referrer URL, when submitted by the form.
+- Logged-in user ID, when the submitter is logged in.
+- IP address, only when **Save IP address** is enabled for that form.
+
+HTML fields and honeypot fields are not saved as submitted form data.
+
+Bricks sanitizes data before inserting it into the database. For example, email fields are sanitized as email addresses, URL fields as URLs, number fields as numbers, textarea values as post-safe HTML, and most other values as text or URLs.
+
+## Save submission settings
+
+![](https://academy.bricksbuilder.io/assets/save-submission-settings.png)
+
+### Form name
+
+Give your form a unique and descriptive name. This name is used on the **Form Submissions** page in the dashboard. If no name is set, Bricks displays the form as **[No name]** and still identifies it by Form ID.
+
+### Save IP address
+
+Enable this to save the submitter's IP address in the submission entry. Only enable it when you have a clear reason to store the IP address and have updated any required privacy notice.
+
+### Max. entries
+
+Set the maximum number of submissions to store for this form. This is useful for event registration, limited waitlists, and other capacity-based workflows.
+
+When the limit is reached, Bricks returns an error and does not save the new entry. You can customize the error message. Because this is an action error, later actions in the form action list are not executed.
+
+### Prevent duplicates
+
+You can prevent storing duplicate submissions when matching data already exists for the same form.
+
+![](https://academy.bricksbuilder.io/assets/save-submission-prevent-duplicate-for-2-form-fields.png)
+
+Copy the unique six-character ID of the field you want to check, create a new item under **Prevent duplicates**, and paste the field ID into **Compare with (Field ID)**.
+
+If **Save IP address** is enabled, you can use the `ip` keyword to prevent saving more than one submission from the same IP address.
+
+A submission is considered a duplicate only if all configured duplicate checks match an existing entry for that form. Field values are compared case-insensitively after trimming whitespace.
+
+Submissions flagged as duplicates are not saved. A customizable error message appears, and all subsequent form actions are halted.
+
+## Viewing form submissions
+
+To view collected submissions, navigate to **Bricks > Form Submissions** in the WordPress dashboard.
+
+### Overview page
+
+The overview page groups submissions by Form ID and shows each form's name and entry count. This helps you quickly understand which forms have stored submissions.
+
+![](https://academy.bricksbuilder.io/assets/form-submissions-admin-overview-page.png)
+
+The **Delete** button in each form row deletes all entries for that form.
+
+This action permanently removes all submissions for the selected form, so make sure you have a backup or genuinely intend to delete them.
+
+### Individual form submission
+
+Click a form name on the overview page to view all entries for that specific form.
+
+![](https://academy.bricksbuilder.io/assets/form-submissions-single-form-view.png)
+
+Click **Screen options** in the top-right corner to toggle metadata columns. Available metadata columns include Date, Browser, IP address, OS, Referrer, and User.
+
+The search box searches the stored form data JSON. It is useful for submitted field values, but it does not search metadata columns such as browser, IP address, OS, referrer, or user.
+
+You can select multiple entries from the list and delete them in bulk. This feature simplifies the process of removing specific submissions, especially if you want to clear out any irrelevant, outdated, or test data.
+
+Click **Download (CSV)** to export all submissions for the form you are viewing.
+
+CSV exports include the visible submission columns and submitted field values. Bricks prefixes cells that could be interpreted as spreadsheet formulas, helping reduce CSV formula-injection risk when exported files are opened in spreadsheet software.
+
+### Form submission access {#access}
+
+Bricks 1.11 introduces more granular control over who can view form submissions on your site. With the new `bricks_form_submission_access` capability, you can specify which user roles or individual users have permission to access form submissions.
+
+Administrators have form submission access by default and cannot be disabled in the role list.
+
+#### User role access
+
+To configure role-based access:
+
+1. Navigate to **Bricks** > **Settings** > **General** > **Form submissions**.
+2. Under **Form submission access**, you will see checkboxes for available user roles such as Administrator, Editor, Author, and Contributor.
+
+The **Administrator** role is always enabled by default and cannot be disabled. For other roles, check or uncheck the boxes to grant or revoke access to form submissions.
+
+This allows you to easily control who on your team can view form submissions based on their user role.
+
+#### Individual user access
+
+To configure access on an individual user level:
+
+1. From the WordPress dashboard, go to **Users**.
+2. Click to edit a specific user's profile.
+3. In the user profile, find and adjust the **Form submission access** setting.
+
+This lets you manage form submissions access for specific users, overriding the broader role-based settings if needed.
+
+Users with form submission access but without broader Bricks admin access can still get a limited **Bricks - Form Submissions** admin menu when submissions are enabled.
+
+Only users who can manage options can reset or delete the whole submissions table, delete all entries for a form from the overview, or delete selected entries in bulk.
+
+## Developer notes
+
+Before saving, Bricks passes the form data through the [`bricks/form/save-submission/form_data`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-save-submission-form_data/) filter. Use this if you need to normalize, remove, or add stored fields before the database insert.
+
+For file fields, the Form Submissions table can link to files saved in the Media Library, the uploads directory, or a custom directory. The file URL used in the submissions table can be adjusted with the `bricks/form/submission-table/file_url` filter.
+
+---
+
 # Search Criteria
 
 Source: https://academy.bricksbuilder.io/builder/features/search-criteria/
@@ -755,147 +1059,6 @@ You can now add this newly created sidebar inside the builder by dragging the **
 
 ---
 
-# Remote Templates
-
-Source: https://academy.bricksbuilder.io/builder/features/remote-templates/
-
-*Connect Bricks sites, browse shared template libraries, and transfer templates with their component dependencies.*
-
-Remote Templates let you browse and insert templates from another Bricks installation without exporting and importing files manually.
-
-The workflow has two sides:
-
-- The **source site** exposes selected templates through its remote library.
-- The **destination site** adds that site under **Remote libraries** and accesses its templates from the Builder Browser.
-
-## 1. Expose Templates on the Source Site
-
-On the site that contains the templates:
-
-1. Go to **Bricks > Settings > Templates & components**.
-2. Under **My templates**, enable **My templates access**.
-3. Use **Exclude templates** to hide any templates that should not be shared.
-4. Configure the shared **Remote access** controls.
-5. Save the settings.
-
-![Bricks Templates and components settings with My templates access enabled and Exclude templates visible](https://academy.bricksbuilder.io/assets/bricks-settings-remote-templates-access.webp)
-
-The **Remote access** settings apply to remote templates and remote components:
-
-- **Whitelist URLs** restricts access to the listed destination sites. Enter one URL per line.
-- **Password protection** requires destination sites to provide the same password.
-
-If both fields are empty, any Bricks site that knows the source URL can request the templates exposed by **My templates access**.
-
-The source site's WordPress permalink structure must not be set to **Plain**.
-
-![](https://academy.bricksbuilder.io/assets/permalink-structure-not-plain-type-for-remote-templates-01.png)
-
-## 2. Add a Remote Site on the Destination Site
-
-On the site where you want to use the templates:
-
-1. Go to **Bricks > Settings > Templates & components**.
-2. Under **Remote libraries**, click **Add**.
-3. Enter the source site's full **URL**.
-4. Optionally enter a **Name**. Bricks shows this instead of the URL in source dropdowns.
-5. Enter the source site's **Remote access** password, if it uses one.
-6. Save the settings.
-
-You can add multiple remote sites. The same entry can provide templates, components, or both.
-
-![Remote libraries settings with Name, URL, and Password fields](https://academy.bricksbuilder.io/assets/bricks-settings-remote-libraries.webp)
-
-## 3. Browse Remote Templates
-
-Open the builder, click the folder icon, and select **Templates** in the [Builder Browser](https://academy.bricksbuilder.io/builder/features/builder-browser/).
-
-Choose the remote site under **Source**. You can search the library, filter its templates, switch between grid and list view, and use **Reload** to request the source again.
-
-The current user needs **Access remote templates** permission to see configured remote sites.
-
-![Builder Browser Templates view with HappyFiles selected as the remote source](https://academy.bricksbuilder.io/assets/bricks-browser-remote-templates.webp)
-
-## Insert a Remote Template
-
-Click **Insert** to add the template to the current canvas. The **Replace content** control decides whether Bricks replaces the current canvas or adds the template to it.
-
-Use **Import images** to download eligible template and component images to the destination Media Library. Leave it disabled to use placeholder images where the normal template import flow supports them.
-
-When the remote template includes related design-system data, Bricks may open additional reviews for theme styles, color palettes, variables, global classes, or Style Manager settings.
-
-Remote code signatures are not trusted. Bricks removes source signatures, and users without code-execution permission do not receive executable Code, SVG, or custom-query settings from the remote template.
-
-### Templates That Use Components
-
-In Bricks 2.4 and later, inserting a remote template also requests the components used by that template. The dependency package includes nested components and their referenced global classes, variable categories and variables, and color palettes.
-
-Bricks remaps the template to the imported local component and design-system IDs before inserting it. Save pending component, class, variable, and color changes before starting the insert.
-
-If a component from this source was imported before and changed remotely, Bricks asks whether to replace the local component before inserting the template. Replacing it updates the existing local component definition and its instances.
-
-If the template depends on a component excluded from remote access on the source site, Bricks blocks the dependency package instead of inserting an incomplete component graph.
-
-## Import to Templates
-
-Click **Import to templates** on a non-local template to save it into **My Templates** instead of inserting it directly onto the current canvas.
-
-For a configured Bricks remote site, Bricks first localizes supported component and design-system dependencies, then passes the template through the regular template import flow. The current user needs **Import/export templates** permission.
-
-## Compatibility With Older Remote Sites
-
-Bricks 2.4 introduces a versioned remote-library package for templates with component dependencies.
-
-When a configured source does not support that package protocol, Bricks falls back to the legacy Remote Templates response. The template can still use the older insertion workflow, but the legacy response does not provide the dependency-complete component package. Update the source site before sharing templates that use components.
-
-## Permissions
-
-Remote template operations use separate builder permissions:
-
-| Task                                                                 | Required permissions                                                                                                     |
-| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| See configured remote sites                                          | **Access remote templates**                                                                                              |
-| Insert a remote template without component dependencies              | **Access remote templates** and **Insert templates**                                                                     |
-| Save a remote template under My Templates                            | **Access remote templates** and **Import/export templates**                                                              |
-| Insert a remote template with component dependencies                 | The insert permissions above, plus **Access remote components**, **Import/export components**, and **Insert components** |
-| Import a remote template with component dependencies to My Templates | The template import permissions above, plus **Access remote components** and **Import/export components**                |
-
-See [Builder Access & Capabilities](https://academy.bricksbuilder.io/builder/interface/builder-access/) for assigning these permissions.
-
-## Fetching and Caching
-
-Bricks keeps fetched template data outside the WordPress database. Remote template data can be cached in the builder browser for up to seven days per source. Use **Reload** when you need the source again before that cache expires.
-
-Remote-library capability checks and component catalogs use shorter server-side caches. In the Component Manager, **Refresh** bypasses those short caches and requests the source again.
-
-## Troubleshooting
-
-### A Remote Site Does Not Appear
-
-- Confirm the remote library row is saved under **Templates & components**.
-- Confirm the current user has **Access remote templates** permission.
-
-### A Remote Site Appears but Does Not Load
-
-Check the source site:
-
-- **My templates access** is enabled.
-- Permalinks are not set to **Plain**.
-- The destination site's URL is included under **Whitelist URLs**, when used.
-- The password saved on the destination matches **Remote access > Password protection**.
-- The expected templates are not selected under **Exclude templates**.
-
-### A Template With Components Cannot Be Inserted
-
-- Save pending component, class, variable, and color changes on the destination.
-- Confirm the user has the required component permissions.
-- Confirm every component dependency is available and not excluded on the source.
-- Update the source to Bricks 2.4 or later if it only supports the legacy template response.
-
-For the template library controls and local template actions, see [Template Library](https://academy.bricksbuilder.io/builder/features/template-library/).
-
----
-
 # Style Manager
 
 Source: https://academy.bricksbuilder.io/builder/features/style-manager/
@@ -1015,15 +1178,19 @@ You can use t-shirt sizing, numeric steps, or custom names. Generated variables 
 
 Manual mode allows overriding calculated values when precise control is required.
 
+For all scale controls and how to use the variables in a theme style, see [Fluid Typography](https://academy.bricksbuilder.io/builder/styling/fluid-typography/).
+
 ## Spacing
 
-![](https://academy.bricksbuilder.io/assets/bricks-2.2-style-manager-spacing-scales-scaled.png)
+![Style Manager Spacing tab with a scale named Spacing: prefix space-, scale type T-shirt, baseline step m, minimum and maximum settings, and steps from space-2xs to space-4xl with their minimum and maximum values.](https://academy.bricksbuilder.io/assets/bricks-style-manager-spacing-scale.webp)
 
 The Spacing tab generates fluid spacing values for margins, padding, and gaps using the same scale-based system as typography.
 
-This helps enforce consistent layout rhythm across pages.
+Each value is a CSS variable with a `clamp()` value that grows smoothly between small and large screens, so one variable can replace a padding value and its breakpoint overrides. Set the variables once in a theme style, for example on every section, to keep the spacing consistent across pages.
 
 You can generate utility classes such as `gap-m` or `p-l`, but only generate what you actually use.
+
+For creating a scale, adding steps and using the variables in a theme style, see [Fluid Spacing](https://academy.bricksbuilder.io/builder/styling/fluid-spacing/).
 
 ## Framework
 
@@ -1286,169 +1453,6 @@ Now select **Export** from the **Bulk Actions** dropdown, and click **Apply**:
 A ZIP file of your selected templates will be generated and downloaded onto your computer.
 
 This ZIP file contains all templates as individual JSON files. Either unzip it to import individual templates or import the entire ZIP file to bulk import all templates at once.
-
----
-
-# Save Form Submissions
-
-Source: https://academy.bricksbuilder.io/builder/features/save-form-submissions/
-
-*Store Bricks form submissions in WordPress so you can review entries, keep records, and work with the saved data later.*
-
-Bricks 1.9.2 introduced the ability to save Form element submissions in your WordPress database. Once enabled globally, each form can use the **Save submission** action to store entries in a Bricks-managed database table and review them from the WordPress dashboard.
-
-Use this for contact forms, quote requests, event registrations, lead capture, and other workflows where you need a dashboard record in addition to email, webhook, or third-party integrations.
-
-> **Note**
->
-> Saved submissions are stored in your WordPress database. Treat them as personal data when forms collect names, emails, IP addresses, files, or account-related information.
-
-## How to enable {#how-to-activate}
-
-Enable **Save form submissions in database** under **Bricks > Settings > General > Form submissions**.
-
-![](https://academy.bricksbuilder.io/assets/bricks-form-submissions-settings.png)
-
-After enabling it, save your settings. Bricks now creates a custom table named `bricks_form_submissions` in your database (plus your WP database prefix).
-
-You should now also see the following action buttons:
-
-- **Reset database table**: Removes all saved submission rows from the table.
-- **Delete database table**: Deletes the custom submissions table and disables the global setting.
-
-> **Note**
->
-> These actions are permanent. Make sure you have a backup before resetting or deleting the table.
-
-## Form action: Save submission {#save-submission-form-action}
-
-![](https://academy.bricksbuilder.io/assets/save-submission-action-in-form-element.png)
-
-After the global setting is enabled, edit a Form element and select **Save submission** under the **Actions** control group.
-
-In the example below, the form uses **Save submission** and **Email**.
-
-The sequence of your actions matters. If an action fails, execution of all subsequent form actions is halted. Set the order according to your workflow.
-
-In this example, if **Save submission** fails, the **Email** action that follows it will not be triggered.
-
-Bricks always moves the **Redirect** action to the end of the action list during submission processing.
-
-## What Bricks saves
-
-The saved entry includes the submitted form fields and selected metadata:
-
-- The post ID where the form was submitted from, when available.
-- The Form element ID. If the form is a global element, Bricks uses the global element ID.
-- The submission date in the database.
-- Submitted form field data, stored as JSON.
-- Browser and operating system, derived from the user agent.
-- Referrer URL, when submitted by the form.
-- Logged-in user ID, when the submitter is logged in.
-- IP address, only when **Save IP address** is enabled for that form.
-
-HTML fields and honeypot fields are not saved as submitted form data.
-
-Bricks sanitizes data before inserting it into the database. For example, email fields are sanitized as email addresses, URL fields as URLs, number fields as numbers, textarea values as post-safe HTML, and most other values as text or URLs.
-
-## Save submission settings
-
-![](https://academy.bricksbuilder.io/assets/save-submission-settings.png)
-
-### Form name
-
-Give your form a unique and descriptive name. This name is used on the **Form Submissions** page in the dashboard. If no name is set, Bricks displays the form as **[No name]** and still identifies it by Form ID.
-
-### Save IP address
-
-Enable this to save the submitter's IP address in the submission entry. Only enable it when you have a clear reason to store the IP address and have updated any required privacy notice.
-
-### Max. entries
-
-Set the maximum number of submissions to store for this form. This is useful for event registration, limited waitlists, and other capacity-based workflows.
-
-When the limit is reached, Bricks returns an error and does not save the new entry. You can customize the error message. Because this is an action error, later actions in the form action list are not executed.
-
-### Prevent duplicates
-
-You can prevent storing duplicate submissions when matching data already exists for the same form.
-
-![](https://academy.bricksbuilder.io/assets/save-submission-prevent-duplicate-for-2-form-fields.png)
-
-Copy the unique six-character ID of the field you want to check, create a new item under **Prevent duplicates**, and paste the field ID into **Compare with (Field ID)**.
-
-If **Save IP address** is enabled, you can use the `ip` keyword to prevent saving more than one submission from the same IP address.
-
-A submission is considered a duplicate only if all configured duplicate checks match an existing entry for that form. Field values are compared case-insensitively after trimming whitespace.
-
-Submissions flagged as duplicates are not saved. A customizable error message appears, and all subsequent form actions are halted.
-
-## Viewing form submissions
-
-To view collected submissions, navigate to **Bricks > Form Submissions** in the WordPress dashboard.
-
-### Overview page
-
-The overview page groups submissions by Form ID and shows each form's name and entry count. This helps you quickly understand which forms have stored submissions.
-
-![](https://academy.bricksbuilder.io/assets/form-submissions-admin-overview-page.png)
-
-The **Delete** button in each form row deletes all entries for that form.
-
-This action permanently removes all submissions for the selected form, so make sure you have a backup or genuinely intend to delete them.
-
-### Individual form submission
-
-Click a form name on the overview page to view all entries for that specific form.
-
-![](https://academy.bricksbuilder.io/assets/form-submissions-single-form-view.png)
-
-Click **Screen options** in the top-right corner to toggle metadata columns. Available metadata columns include Date, Browser, IP address, OS, Referrer, and User.
-
-The search box searches the stored form data JSON. It is useful for submitted field values, but it does not search metadata columns such as browser, IP address, OS, referrer, or user.
-
-You can select multiple entries from the list and delete them in bulk. This feature simplifies the process of removing specific submissions, especially if you want to clear out any irrelevant, outdated, or test data.
-
-Click **Download (CSV)** to export all submissions for the form you are viewing.
-
-CSV exports include the visible submission columns and submitted field values. Bricks prefixes cells that could be interpreted as spreadsheet formulas, helping reduce CSV formula-injection risk when exported files are opened in spreadsheet software.
-
-### Form submission access {#access}
-
-Bricks 1.11 introduces more granular control over who can view form submissions on your site. With the new `bricks_form_submission_access` capability, you can specify which user roles or individual users have permission to access form submissions.
-
-Administrators have form submission access by default and cannot be disabled in the role list.
-
-#### User role access
-
-To configure role-based access:
-
-1. Navigate to **Bricks** > **Settings** > **General** > **Form submissions**.
-2. Under **Form submission access**, you will see checkboxes for available user roles such as Administrator, Editor, Author, and Contributor.
-
-The **Administrator** role is always enabled by default and cannot be disabled. For other roles, check or uncheck the boxes to grant or revoke access to form submissions.
-
-This allows you to easily control who on your team can view form submissions based on their user role.
-
-#### Individual user access
-
-To configure access on an individual user level:
-
-1. From the WordPress dashboard, go to **Users**.
-2. Click to edit a specific user's profile.
-3. In the user profile, find and adjust the **Form submission access** setting.
-
-This lets you manage form submissions access for specific users, overriding the broader role-based settings if needed.
-
-Users with form submission access but without broader Bricks admin access can still get a limited **Bricks - Form Submissions** admin menu when submissions are enabled.
-
-Only users who can manage options can reset or delete the whole submissions table, delete all entries for a form from the overview, or delete selected entries in bulk.
-
-## Developer notes
-
-Before saving, Bricks passes the form data through the [`bricks/form/save-submission/form_data`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-save-submission-form_data/) filter. Use this if you need to normalize, remove, or add stored fields before the database insert.
-
-For file fields, the Form Submissions table can link to files saved in the Media Library, the uploads directory, or a custom directory. The file URL used in the submissions table can be adjusted with the `bricks/form/submission-table/file_url` filter.
 
 ---
 

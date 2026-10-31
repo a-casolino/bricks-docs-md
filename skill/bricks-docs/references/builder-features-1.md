@@ -1,82 +1,3 @@
-# How to add a custom animation in interaction
-
-Source: https://academy.bricksbuilder.io/builder/features/add-custom-animation-to-interaction/
-
-*Add a custom GSAP animation to a Bricks interaction and connect it to triggers, timelines, and interaction events.*
-
-## Step 1: Add a new option via bricks/setup/control_options hook
-
-Hook documentation: [/developer/hooks/filters/filter-bricks-setup-control_options/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/)
-
-```php
-add_filter( 'bricks/setup/control_options', function( $options ) {
-  // Add custom animation into animationTypes
-  // Note that the key is very important, must be unique
-  $options['animationTypes']['myAnim1'] = esc_html__( 'My animation 1', 'bricks' );
-
-  return $options;
-}, 10 );
-```
-
-![](https://academy.bricksbuilder.io/assets/custom-animation-added.png)
-
-Custom animation added to the interaction "Animation" dropdown
-
-## Step 2: Add animation CSS
-
-When the interaction is set, Bricks will assign a class to the element using your animation key (`myAnim1` in our example), and it will be prefixed with `brx-animate-`.
-
-All you have to do is create a CSS class that sets the animation name for your element, along with the corresponding keyframes for your animation. You can place these CSS inside `Bricks > Settings > Custom Code > Custom CSS`.
-
-![](https://academy.bricksbuilder.io/assets/custom-css-code-for-animation.png)
-
-```php
-.brx-animate-myAnim1 {
-  animation-name: my-anim-1;
-}
-
-@keyframes my-anim-1 {
-  0% {
-    animation-timing-function: ease-in;
-    opacity: 0;
-    transform: translateY(-250px);
-  }
-  38% {
-    animation-timing-function: ease-out;
-    opacity: 1;
-    transform: translateY(0);
-  }
-  55% {
-    animation-timing-function: ease-in;
-    transform: translateY(-65px);
-  }
-  72% {
-    animation-timing-function: ease-out;
-    transform: translateY(0);
-  }
-  81% {
-    animation-timing-function: ease-in;
-    transform: translateY(-28px);
-  }
-  90% {
-    animation-timing-function: ease-out;
-    transform: translateY(0);
-  }
-  95% {
-    animation-timing-function: ease-in;
-    transform: translateY(-8px);
-  }
-  100% {
-    animation-timing-function: ease-out;
-    transform: translateY(0);
-  }
-}
-```
-
-Now, you can use this new animation on any element from the "Interactions" panel.
-
----
-
 # Accessibility
 
 Source: https://academy.bricksbuilder.io/builder/features/accessibility/
@@ -155,6 +76,85 @@ Bricks implements the keyboard menu navigation using the [fly-out menu](https://
 > **Note**
 >
 > As accessibility requirements and best practices evolve, so does Bricks. If you spot any potential accessibility improvements, [please let us know](https://bricksbuilder.io/contact/).
+
+---
+
+# How to add a custom animation in interaction
+
+Source: https://academy.bricksbuilder.io/builder/features/add-custom-animation-to-interaction/
+
+*Add a custom GSAP animation to a Bricks interaction and connect it to triggers, timelines, and interaction events.*
+
+## Step 1: Add a new option via bricks/setup/control_options hook
+
+Hook documentation: [/developer/hooks/filters/filter-bricks-setup-control_options/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/)
+
+```php
+add_filter( 'bricks/setup/control_options', function( $options ) {
+  // Add custom animation into animationTypes
+  // Note that the key is very important, must be unique
+  $options['animationTypes']['myAnim1'] = esc_html__( 'My animation 1', 'bricks' );
+
+  return $options;
+}, 10 );
+```
+
+![](https://academy.bricksbuilder.io/assets/custom-animation-added.png)
+
+Custom animation added to the interaction "Animation" dropdown
+
+## Step 2: Add animation CSS
+
+When the interaction is set, Bricks will assign a class to the element using your animation key (`myAnim1` in our example), and it will be prefixed with `brx-animate-`.
+
+All you have to do is create a CSS class that sets the animation name for your element, along with the corresponding keyframes for your animation. You can place these CSS inside `Bricks > Settings > Custom Code > Custom CSS`.
+
+![](https://academy.bricksbuilder.io/assets/custom-css-code-for-animation.png)
+
+```php
+.brx-animate-myAnim1 {
+  animation-name: my-anim-1;
+}
+
+@keyframes my-anim-1 {
+  0% {
+    animation-timing-function: ease-in;
+    opacity: 0;
+    transform: translateY(-250px);
+  }
+  38% {
+    animation-timing-function: ease-out;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  55% {
+    animation-timing-function: ease-in;
+    transform: translateY(-65px);
+  }
+  72% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+  81% {
+    animation-timing-function: ease-in;
+    transform: translateY(-28px);
+  }
+  90% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+  95% {
+    animation-timing-function: ease-in;
+    transform: translateY(-8px);
+  }
+  100% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+}
+```
+
+Now, you can use this new animation on any element from the "Interactions" panel.
 
 ---
 
@@ -1089,6 +1089,114 @@ Check **Replace content**. When enabled, Bricks replaces the current canvas with
 
 ---
 
+# Code review
+
+Source: https://academy.bricksbuilder.io/builder/features/code-review/
+
+*Review custom code in Bricks before signing it globally or investigating a security issue.*
+
+The **Code review** screen helps you find and inspect custom code stored in Bricks before you sign code globally or investigate a security issue.
+
+It is a reporting and inspection tool. It does not store an approval state and does not mark code as permanently "reviewed". Use it to inspect code instances, check signature status, and decide what should be fixed, removed, allowlisted, or signed.
+
+> **Note**
+>
+> Run a Code review before regenerating code signatures globally. Global signature regeneration signs all eligible code that Bricks finds, so you should review the code first.
+
+## Start a Code review
+
+Go to **Bricks > Settings > Custom code** and click **Start: Code review**.
+
+![](https://academy.bricksbuilder.io/assets/bricks-settings-code-review.png)
+
+<figcaption>
+
+Code review results
+
+</figcaption>
+
+## What Bricks reviews
+
+The Code review screen can show:
+
+- **Code elements** that contain PHP/HTML code. If **Execute code** is enabled, the review also checks the code signature.
+- **SVG elements** where **Source** is set to **Code**.
+- **Query editor** code used in Query loops.
+- **Component query properties** that contain Query editor code.
+- **Global query records** that contain Query editor code.
+- **Dynamic `echo:` tags** found in Bricks element settings.
+
+The review scans Bricks data in pages, templates, components, global elements, and global queries. It groups results by page/template where possible, and groups component and global query results separately.
+
+## Filters and navigation
+
+Use the Code review filter to inspect:
+
+- **All code instances**
+- **Code elements**
+- **SVG elements**
+- **Query editor**
+- **Echo tags**
+
+The review screen includes **Show all**, **Individual**, **Previous**, and **Next** controls so you can inspect code one item at a time or review the full result list.
+
+## Signature statuses
+
+For code types that require signatures, Bricks shows one of these statuses:
+
+- **Valid signature**: The stored signature matches the stored code. The code can run if code execution is enabled and the runtime gate allows it.
+- **Invalid signature**: The stored signature does not match the current code. Bricks blocks execution.
+- **No signature**: No signature is stored. Bricks blocks execution.
+
+When available, Bricks also shows who signed the code and when it was signed.
+
+## Location details
+
+Each review item can include:
+
+- The page, post type, template, component, or global query location.
+- The element label.
+- The element ID.
+- Whether the item is a global element, component, global query, query, echo tag, or executable code item.
+- The stored code in a read-only editor.
+
+If the item belongs to a regular page or template, click the title to open it in the builder and edit the code there.
+
+## Echo tag allowlist helper
+
+Dynamic `echo:` tags can call PHP functions only when those function names pass the [`bricks/code/echo_function_names`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-echo_function_names/) allowlist check.
+
+When the Code review finds `echo:` tags, Bricks collects the function names and shows a starter snippet that you can place in a child theme, custom plugin, or code-management plugin. The helper can also include function names detected in theme styles, global classes, and raw color palette values:
+
+```php
+add_filter( 'bricks/code/echo_function_names', function() {
+  return [
+    'my_allowed_function',
+  ];
+} );
+```
+
+Review the generated list before using it. Remove any functions you do not want Bricks dynamic data to call.
+
+## Advantages of centralized code monitoring
+
+- **Centralized code oversight:** Review Bricks-managed executable code from one settings screen instead of opening each page manually.
+- **Signature visibility:** Find missing and invalid signatures before code fails on the frontend.
+- **Safer global signing:** Inspect code before using the global **Regenerate code signatures** action.
+- **Echo tag hardening:** See which function names are being requested through `echo:` tags and allowlist only the functions you trust.
+
+## Security checklist
+
+Before regenerating code signatures globally:
+
+- Review every Code, SVG, Query editor, component, and global query item.
+- Remove code you do not recognize.
+- Fix invalid signatures by reviewing and signing the intended code again.
+- Do not copy the full `echo:` allowlist snippet without checking each function.
+- Back up the site before global signature regeneration.
+
+---
+
 # Recovering a compromised Bricks or WordPress site
 
 Source: https://academy.bricksbuilder.io/builder/features/bricks-rce/
@@ -1208,114 +1316,6 @@ Continue monitoring the site after it is back online.
 ## Historical note
 
 This page was created after a February 2024 vulnerability affecting Bricks versions before 1.9.6.1. Bricks 1.9.6.1 included the security patch for that vulnerability. For current sites, the guidance is simpler: keep Bricks on the latest available version and follow the recovery checklist above if you suspect compromise.
-
----
-
-# Code review
-
-Source: https://academy.bricksbuilder.io/builder/features/code-review/
-
-*Review custom code in Bricks before signing it globally or investigating a security issue.*
-
-The **Code review** screen helps you find and inspect custom code stored in Bricks before you sign code globally or investigate a security issue.
-
-It is a reporting and inspection tool. It does not store an approval state and does not mark code as permanently "reviewed". Use it to inspect code instances, check signature status, and decide what should be fixed, removed, allowlisted, or signed.
-
-> **Note**
->
-> Run a Code review before regenerating code signatures globally. Global signature regeneration signs all eligible code that Bricks finds, so you should review the code first.
-
-## Start a Code review
-
-Go to **Bricks > Settings > Custom code** and click **Start: Code review**.
-
-![](https://academy.bricksbuilder.io/assets/bricks-settings-code-review.png)
-
-<figcaption>
-
-Code review results
-
-</figcaption>
-
-## What Bricks reviews
-
-The Code review screen can show:
-
-- **Code elements** that contain PHP/HTML code. If **Execute code** is enabled, the review also checks the code signature.
-- **SVG elements** where **Source** is set to **Code**.
-- **Query editor** code used in Query loops.
-- **Component query properties** that contain Query editor code.
-- **Global query records** that contain Query editor code.
-- **Dynamic `echo:` tags** found in Bricks element settings.
-
-The review scans Bricks data in pages, templates, components, global elements, and global queries. It groups results by page/template where possible, and groups component and global query results separately.
-
-## Filters and navigation
-
-Use the Code review filter to inspect:
-
-- **All code instances**
-- **Code elements**
-- **SVG elements**
-- **Query editor**
-- **Echo tags**
-
-The review screen includes **Show all**, **Individual**, **Previous**, and **Next** controls so you can inspect code one item at a time or review the full result list.
-
-## Signature statuses
-
-For code types that require signatures, Bricks shows one of these statuses:
-
-- **Valid signature**: The stored signature matches the stored code. The code can run if code execution is enabled and the runtime gate allows it.
-- **Invalid signature**: The stored signature does not match the current code. Bricks blocks execution.
-- **No signature**: No signature is stored. Bricks blocks execution.
-
-When available, Bricks also shows who signed the code and when it was signed.
-
-## Location details
-
-Each review item can include:
-
-- The page, post type, template, component, or global query location.
-- The element label.
-- The element ID.
-- Whether the item is a global element, component, global query, query, echo tag, or executable code item.
-- The stored code in a read-only editor.
-
-If the item belongs to a regular page or template, click the title to open it in the builder and edit the code there.
-
-## Echo tag allowlist helper
-
-Dynamic `echo:` tags can call PHP functions only when those function names pass the [`bricks/code/echo_function_names`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-echo_function_names/) allowlist check.
-
-When the Code review finds `echo:` tags, Bricks collects the function names and shows a starter snippet that you can place in a child theme, custom plugin, or code-management plugin. The helper can also include function names detected in theme styles, global classes, and raw color palette values:
-
-```php
-add_filter( 'bricks/code/echo_function_names', function() {
-  return [
-    'my_allowed_function',
-  ];
-} );
-```
-
-Review the generated list before using it. Remove any functions you do not want Bricks dynamic data to call.
-
-## Advantages of centralized code monitoring
-
-- **Centralized code oversight:** Review Bricks-managed executable code from one settings screen instead of opening each page manually.
-- **Signature visibility:** Find missing and invalid signatures before code fails on the frontend.
-- **Safer global signing:** Inspect code before using the global **Regenerate code signatures** action.
-- **Echo tag hardening:** See which function names are being requested through `echo:` tags and allowlist only the functions you trust.
-
-## Security checklist
-
-Before regenerating code signatures globally:
-
-- Review every Code, SVG, Query editor, component, and global query item.
-- Remove code you do not recognize.
-- Fix invalid signatures by reviewing and signing the intended code again.
-- Do not copy the full `echo:` allowlist snippet without checking each function.
-- Back up the site before global signature regeneration.
 
 ---
 

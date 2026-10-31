@@ -1,50 +1,32 @@
-# Map Connector
+# Facebook page
 
-Source: https://academy.bricksbuilder.io/builder/elements/general/map-connector/
+Source: https://academy.bricksbuilder.io/builder/elements/general/facebook-page/
 
-*The Map Connector works with the Google Map element when Sync with query is enabled. Place one Map Connector inside each item of the query loop that should.*
+*The Facebook Page element embeds a Facebook page plugin with customizable display options.*
 
-The **Map Connector** works with the Google [Map](https://academy.bricksbuilder.io/builder/elements/general/map/) element when **Sync with query** is enabled. Place **one Map Connector inside each item** of the query loop that should produce a marker.
-
-It renders an invisible **`<template>`** node that stores latitude, longitude, and/or address plus optional **Info Box** popup template data and **per-item marker overrides**. The Map reads these nodes to build markers when the query updates (pagination, filters, load more, etc.).
-
-See [Map → Sync with query](https://academy.bricksbuilder.io/builder/elements/general/map/#sync-with-query) for the full workflow.
+The Facebook Page element embeds a Facebook page plugin with customizable display options.
 
 ## Settings
 
-- **Latitude** (text) — Use dynamic data from the looped post (placeholder shows Berlin-area example).
+- **Facebook page URL** (text) - The URL of the Facebook page to embed. Default: "https://facebook.com/facebook".
 
-- **Longitude** (text).
+- **Height (px)** (number) - Height of the embedded page in pixels. Minimum: 70, Maximum: 500. Default: 500.
 
-- **Address** (text) — Alternative to coordinates; may geocode via Google when coordinates are not set.
+- **Width (px)** (number) - Width of the embedded page in pixels. Minimum: 180, Maximum: 500. Default: 340.
 
-An **error** info appears when all three are empty—Bricks expects at least one source of location via dynamic tags.
+- **Tabs** (select) - Tabs to display on the page plugin. Options: `timeline`, `events`, `messages`. Multiple selection allowed.
 
-### Info Box (Popup)
+- **Hide cover** (checkbox) - Hide the page cover photo.
 
-- **Info Box: Template (Popup)** (select) — Popup template with **Template Settings → Popup → Info Box (Map)** enabled.
+- **Show friends' photos** (checkbox) - Display profile photos of the page's friends.
 
-- **Info** — Reminds you to enable the Info Box option on the popup template.
+- **Hide CTA button** (checkbox) - Hide the call-to-action button.
 
-### Markers
-
-An **info** control notes that **Marker: Type** (text vs image) is configured on the **Map** element, while fields here **override** that map’s defaults for **this** loop item.
-
-On the connector, Bricks only exposes marker fields that are **not** flagged `mainOnly` in the shared map-marker control set—so you set **per-loop values**, not the global marker typography or image dimensions (those stay on the **Map** element):
-
-- **Label** (text) — Screen reader label (`aria-label`) for the marker.
-
-- **Marker: Text** — **Text** field for the default text marker.
-
-- **Marker: Text (Active)** — **Text** field for the active text marker.
-
-- **Marker: Image** — **Icon** (image) for the default image marker.
-
-- **Marker: Image (Active)** — **Icon** (image) for the active image marker.
+- **Small header** (checkbox) - Use a smaller header size.
 
 > **Developer reference**
 >
-> See the [Map Connector Schema](https://academy.bricksbuilder.io/developer/schema/elements/map-connector/) for the full JSON schema of this element's settings and controls.
+> See the [Facebook Page Schema](https://academy.bricksbuilder.io/developer/schema/elements/facebook-page/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -116,6 +98,56 @@ Global defaults when a marker has no custom icon:
 > **Developer reference**
 >
 > See the [Map (Leaflet) Schema](https://academy.bricksbuilder.io/developer/schema/elements/map-leaflet/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Map Connector
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/map-connector/
+
+*The Map Connector works with the Google Map element when Sync with query is enabled. Place one Map Connector inside each item of the query loop that should.*
+
+The **Map Connector** works with the Google [Map](https://academy.bricksbuilder.io/builder/elements/general/map/) element when **Sync with query** is enabled. Place **one Map Connector inside each item** of the query loop that should produce a marker.
+
+It renders an invisible **`<template>`** node that stores latitude, longitude, and/or address plus optional **Info Box** popup template data and **per-item marker overrides**. The Map reads these nodes to build markers when the query updates (pagination, filters, load more, etc.).
+
+See [Map → Sync with query](https://academy.bricksbuilder.io/builder/elements/general/map/#sync-with-query) for the full workflow.
+
+## Settings
+
+- **Latitude** (text) — Use dynamic data from the looped post (placeholder shows Berlin-area example).
+
+- **Longitude** (text).
+
+- **Address** (text) — Alternative to coordinates; may geocode via Google when coordinates are not set.
+
+An **error** info appears when all three are empty—Bricks expects at least one source of location via dynamic tags.
+
+### Info Box (Popup)
+
+- **Info Box: Template (Popup)** (select) — Popup template with **Template Settings → Popup → Info Box (Map)** enabled.
+
+- **Info** — Reminds you to enable the Info Box option on the popup template.
+
+### Markers
+
+An **info** control notes that **Marker: Type** (text vs image) is configured on the **Map** element, while fields here **override** that map’s defaults for **this** loop item.
+
+On the connector, Bricks only exposes marker fields that are **not** flagged `mainOnly` in the shared map-marker control set—so you set **per-loop values**, not the global marker typography or image dimensions (those stay on the **Map** element):
+
+- **Label** (text) — Screen reader label (`aria-label`) for the marker.
+
+- **Marker: Text** — **Text** field for the default text marker.
+
+- **Marker: Text (Active)** — **Text** field for the active text marker.
+
+- **Marker: Image** — **Icon** (image) for the default image marker.
+
+- **Marker: Image (Active)** — **Icon** (image) for the active image marker.
+
+> **Developer reference**
+>
+> See the [Map Connector Schema](https://academy.bricksbuilder.io/developer/schema/elements/map-connector/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -410,48 +442,6 @@ When no Google Maps API key is configured, the element falls back to Google Maps
 
 ---
 
-# Icon list
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/icon-list/
-
-*The Icon List element creates a list of social media icons or custom icons with customizable styling, labels, and links.*
-
-The Icon List element creates a list of social media icons or custom icons with customizable styling, labels, and links.
-
-## Settings
-
-- **Icons** (repeater) - Add and configure icons. Each icon has:
-  - **Icon** (icon) - Icon selection. Default: `ion-logo-twitter`.
-  - **Icon: Color** (color) - Individual icon color.
-  - **Icon: Size** (number with units) - Individual icon size.
-  - **Label** (text) - Text label for the icon.
-  - **Label: Size** (number with units) - Label text size.
-  - **Color** (color) - Text color for the icon/label combination.
-  - **Background** (color) - Background color for the icon item.
-  - **Link** (link) - Link destination for the icon.
-
-- **Icon: Color** (color) - Global icon color for all icons.
-
-- **Icon: Size** (number with units) - Global icon size for all icons.
-
-### Alignment
-
-- **Direction** (direction) - Layout direction. Options: `row`, `column`.
-
-- **Align items** (align-items) - Vertical alignment of icons. Options: `flex-start`, `center`, `flex-end`, `baseline`.
-
-- **Justify content** (justify-content) - Horizontal alignment of icons. Options: `flex-start`, `center`, `flex-end`, `space-between`, `space-around`, `space-evenly`.
-
-- **Spacing (Items)** (number with units) - Spacing between icon items. Default: 0.
-
-- **Spacing (Item)** (number with units) - Internal spacing within each icon item. Default: 5px.
-
-> **Developer reference**
->
-> See the [Icon List Schema](https://academy.bricksbuilder.io/developer/schema/elements/social-icons/) for the full JSON schema of this element's settings and controls.
-
----
-
 # Nav (Nestable)
 
 Source: https://academy.bricksbuilder.io/builder/elements/general/nav-nested/
@@ -696,6 +686,43 @@ The Pie Chart element displays a circular progress chart with customizable perce
 
 ---
 
+# Progress bar
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/progress-bar/
+
+*The Progress Bar element displays animated progress bars with customizable labels, percentages, and styling.*
+
+The Progress Bar element displays animated progress bars with customizable labels, percentages, and styling.
+
+## Settings
+
+- **Bars** (repeater) - Add multiple progress bars. Each bar has:
+  - **Label** (text) - Text label for the progress bar.
+  - **Percentage** (number) - Progress percentage (0-100). Supports dynamic data.
+  - **Bar color** (color) - Color of the progress fill.
+
+- **Height** (number with units) - Height of the progress bars. Default: 8px.
+
+- **Spacing** (number with units) - Gap between progress bars. Default: 20px.
+
+- **Show percentage** (checkbox) - Display percentage values next to labels. Default: checked.
+
+- **Bar color** (color) - Default color for all progress bars.
+
+- **Bar background color** (color) - Background color of the progress bar tracks.
+
+- **Bar border** (border) - Border styling for the progress bars.
+
+- **Label typography** (typography) - Font settings for the labels.
+
+- **Percentage typography** (typography) - Font settings for the percentage values. Only shown when "Show percentage" is enabled.
+
+> **Developer reference**
+>
+> See the [Progress Bar Schema](https://academy.bricksbuilder.io/developer/schema/elements/progress-bar/) for the full JSON schema of this element's settings and controls.
+
+---
+
 # Pricing tables
 
 Source: https://academy.bricksbuilder.io/builder/elements/general/pricing-tables/
@@ -876,40 +903,59 @@ The Pricing Tables element creates responsive pricing table layouts with customi
 
 ---
 
-# Progress bar
+# Rating
 
-Source: https://academy.bricksbuilder.io/builder/elements/general/progress-bar/
+Source: https://academy.bricksbuilder.io/builder/elements/general/rating/
 
-*The Progress Bar element displays animated progress bars with customizable labels, percentages, and styling.*
+*The Rating element displays a numeric score as a row of icons (default: stars). It supports fractional values (e.g. 3.5 on a 5-point scale) by filling whole.*
 
-The Progress Bar element displays animated progress bars with customizable labels, percentages, and styling.
+The **Rating** element displays a numeric score as a row of icons (default: stars). It supports **fractional** values (e.g. `3.5` on a 5-point scale) by filling whole icons, one partial icon with a width mask, and empty icons for the remainder.
+
+This is separate from [Product rating](https://academy.bricksbuilder.io/builder/elements/product/product-rating/) (WooCommerce). Use **Rating** for static or dynamic review scores anywhere on the site.
 
 ## Settings
 
-- **Bars** (repeater) - Add multiple progress bars. Each bar has:
-  - **Label** (text) - Text label for the progress bar.
-  - **Percentage** (number) - Progress percentage (0-100). Supports dynamic data.
-  - **Bar color** (color) - Color of the progress fill.
+- **Rating** (number) — Current score. Min `0`, step `0.1`. Supports dynamic data. Default: `3.5`.
 
-- **Height** (number with units) - Height of the progress bars. Default: 8px.
+- **Max. rating** (number) — Scale maximum (e.g. `5`). Min `1`. Supports dynamic data.
 
-- **Spacing** (number with units) - Gap between progress bars. Default: 20px.
+- **Gap** (number with units) — Space between icons (`gap` on the root).
 
-- **Show percentage** (checkbox) - Display percentage values next to labels. Default: checked.
+### Icon
 
-- **Bar color** (color) - Default color for all progress bars.
+- **Icon** (icon) — Optional custom icon; default is the built-in star SVG.
 
-- **Bar background color** (color) - Background color of the progress bar tracks.
+- **Icon color: Full** (color) — Filled / active portion.
 
-- **Bar border** (border) - Border styling for the progress bars.
+- **Icon color: Empty** (color) — Empty / inactive portion.
 
-- **Label typography** (typography) - Font settings for the labels.
+- **Icon size** (number with units).
 
-- **Percentage typography** (typography) - Font settings for the percentage values. Only shown when "Show percentage" is enabled.
+### Schema
+
+Optional **schema.org** **Review** + **Rating** JSON-LD.
+
+- **Generate review schema** (checkbox).
+
+When enabled, the following are required:
+
+- **Required: Reviewed item type** (text) — e.g. `Product`, `Service`.
+
+- **Required: Reviewed item name** (text).
+
+Optional:
+
+- **Optional: Review author** (text).
+
+- **Additional item reviewed properties** (repeater) — `Property name`, `Property value`, `Value type` (`Text`, `Number`, `Nested object`).
+
+- **Additional review properties** (repeater) — Same shape; adds fields on the **Review** object (e.g. `reviewBody`, `datePublished`).
+
+The structured data maps your **Rating** and **Max. rating** into a `Rating` node with `bestRating` `5` (normalized from your scale).
 
 > **Developer reference**
 >
-> See the [Progress Bar Schema](https://academy.bricksbuilder.io/developer/schema/elements/progress-bar/) for the full JSON schema of this element's settings and controls.
+> See the [Rating Schema](https://academy.bricksbuilder.io/developer/schema/elements/rating/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -988,62 +1034,6 @@ The Nestable Tabs element allows creating tabbed content with drag-and-drop nest
 > **Developer reference**
 >
 > See the [Tabs (Nestable) Schema](https://academy.bricksbuilder.io/developer/schema/elements/tabs-nested/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Rating
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/rating/
-
-*The Rating element displays a numeric score as a row of icons (default: stars). It supports fractional values (e.g. 3.5 on a 5-point scale) by filling whole.*
-
-The **Rating** element displays a numeric score as a row of icons (default: stars). It supports **fractional** values (e.g. `3.5` on a 5-point scale) by filling whole icons, one partial icon with a width mask, and empty icons for the remainder.
-
-This is separate from [Product rating](https://academy.bricksbuilder.io/builder/elements/product/product-rating/) (WooCommerce). Use **Rating** for static or dynamic review scores anywhere on the site.
-
-## Settings
-
-- **Rating** (number) — Current score. Min `0`, step `0.1`. Supports dynamic data. Default: `3.5`.
-
-- **Max. rating** (number) — Scale maximum (e.g. `5`). Min `1`. Supports dynamic data.
-
-- **Gap** (number with units) — Space between icons (`gap` on the root).
-
-### Icon
-
-- **Icon** (icon) — Optional custom icon; default is the built-in star SVG.
-
-- **Icon color: Full** (color) — Filled / active portion.
-
-- **Icon color: Empty** (color) — Empty / inactive portion.
-
-- **Icon size** (number with units).
-
-### Schema
-
-Optional **schema.org** **Review** + **Rating** JSON-LD.
-
-- **Generate review schema** (checkbox).
-
-When enabled, the following are required:
-
-- **Required: Reviewed item type** (text) — e.g. `Product`, `Service`.
-
-- **Required: Reviewed item name** (text).
-
-Optional:
-
-- **Optional: Review author** (text).
-
-- **Additional item reviewed properties** (repeater) — `Property name`, `Property value`, `Value type` (`Text`, `Number`, `Nested object`).
-
-- **Additional review properties** (repeater) — Same shape; adds fields on the **Review** object (e.g. `reviewBody`, `datePublished`).
-
-The structured data maps your **Rating** and **Max. rating** into a `Rating` node with `bestRating` `5` (normalized from your scale).
-
-> **Developer reference**
->
-> See the [Rating Schema](https://academy.bricksbuilder.io/developer/schema/elements/rating/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -1391,31 +1381,6 @@ If you add an **Icon**, the bar animation is hidden and the icon is used instead
 
 ---
 
-# Product additional information
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-additional-information/
-
-*Displays the product attributes table shown in WooCommerce under Additional information.*
-
-Displays the product attributes table shown in WooCommerce under Additional information.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- **Heading** (text)
-- **Typography** (typography)
-- **Width** (number)
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
-
----
-
 # Add to cart
 
 Source: https://academy.bricksbuilder.io/builder/elements/product/product-add-to-cart/
@@ -1440,6 +1405,29 @@ Single Product templates (or product preview context).
 - **Regular price typography** (typography)
 - **Sale price typography** (typography)
 - **Wrap** (select)
+
+## Usage tips
+
+- Use this element inside a Single Product template to guarantee a valid product context.
+- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
+
+---
+
+# Product content
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-content/
+
+*Displays the full product description (main content) from the product editor.*
+
+Displays the full product description (main content) from the product editor.
+
+## Where this element works
+
+Single Product templates (or product preview context).
+
+## Key settings
+
+- This element uses standard WooCommerce output and inherited style controls.
 
 ## Usage tips
 
@@ -1478,6 +1466,31 @@ Displays the WooCommerce product gallery with main product image and thumbnail n
 - **Size** (number) - Font size for navigation arrow icons.
 - **Height** (number) - Height of navigation arrow buttons.
 - **Width** (number) - Width of navigation arrow buttons.
+
+---
+
+# Product additional information
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-additional-information/
+
+*Displays the product attributes table shown in WooCommerce under Additional information.*
+
+Displays the product attributes table shown in WooCommerce under Additional information.
+
+## Where this element works
+
+Single Product templates (or product preview context).
+
+## Key settings
+
+- **Heading** (text)
+- **Typography** (typography)
+- **Width** (number)
+
+## Usage tips
+
+- Use this element inside a Single Product template to guarantee a valid product context.
+- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
 
 ---
 
@@ -1554,29 +1567,6 @@ Single Product templates (or product preview context).
 
 ---
 
-# Product content
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-content/
-
-*Displays the full product description (main content) from the product editor.*
-
-Displays the full product description (main content) from the product editor.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- This element uses standard WooCommerce output and inherited style controls.
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
-
----
-
 # Related products
 
 Source: https://academy.bricksbuilder.io/builder/elements/product/product-related/
@@ -1640,6 +1630,16 @@ Single Product templates (or product preview context).
 
 ---
 
+# Product short description
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-short-description/
+
+*Displays the WooCommerce product short description (excerpt) on single product pages.*
+
+Displays the WooCommerce product short description (excerpt) on single product pages.
+
+---
+
 # Product stock
 
 Source: https://academy.bricksbuilder.io/builder/elements/product/product-stock/
@@ -1664,35 +1664,6 @@ Displays the WooCommerce product stock status and quantity information.
 - **Custom text** (text) - Custom text to display when product is out of stock.
 - **Typography** (typography) - Typography settings for out of stock text.
 - **Background color** (color) - Background color for out of stock status.
-
----
-
-# Product title
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-title/
-
-*Displays the title of the current WooCommerce product.*
-
-Displays the title of the current WooCommerce product.
-
-## Settings
-
-- **HTML tag** (select) - HTML tag for the title. Options: h1, h2, h3, h4, h5, h6. Default: h1.
-- **Prefix** (text) - Text to display before the title.
-- **Prefix block** (checkbox) - Display prefix as block element.
-- **Suffix** (text) - Text to display after the title.
-- **Suffix block** (checkbox) - Display suffix as block element.
-- **Link to product** (checkbox) - Make the title a link to the product.
-
----
-
-# Product short description
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-short-description/
-
-*Displays the WooCommerce product short description (excerpt) on single product pages.*
-
-Displays the WooCommerce product short description (excerpt) on single product pages.
 
 ---
 
@@ -1721,6 +1692,25 @@ Single Product templates (or product preview context).
 
 - Use this element inside a Single Product template to guarantee a valid product context.
 - Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
+
+---
+
+# Product title
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-title/
+
+*Displays the title of the current WooCommerce product.*
+
+Displays the title of the current WooCommerce product.
+
+## Settings
+
+- **HTML tag** (select) - HTML tag for the title. Options: h1, h2, h3, h4, h5, h6. Default: h1.
+- **Prefix** (text) - Text to display before the title.
+- **Prefix block** (checkbox) - Display prefix as block element.
+- **Suffix** (text) - Text to display after the title.
+- **Suffix block** (checkbox) - Display suffix as block element.
+- **Link to product** (checkbox) - Make the title a link to the product.
 
 ---
 
@@ -2136,6 +2126,29 @@ You can change the labels and arrows to match the wording used by your design. T
 
 ---
 
+# Post reading progress bar
+
+Source: https://academy.bricksbuilder.io/builder/elements/single/post-reading-progress-bar/
+
+*Shows a progress bar indicating how much of the post has been read.*
+
+Shows a progress bar indicating how much of the post has been read.
+
+## Settings
+
+- **Content** (select) - Choose the content to track reading progress for. Options: post_content, post_excerpt, custom_content. Default: post_content.
+- **Position** (select) - Position of the progress bar. Options: top, bottom. Default: top.
+- **Height** (number) - Height of the progress bar in pixels. Default: 4.
+- **Background color** (color) - Background color of the progress bar.
+- **Progress color** (color) - Color of the progress indicator.
+- **Show percentage** (checkbox) - Display the reading percentage as text.
+
+> **Developer reference**
+>
+> See the [Reading Progress Bar Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-reading-progress-bar/) for the full JSON schema of this element's settings and controls.
+
+---
+
 # Post reading time
 
 Source: https://academy.bricksbuilder.io/builder/elements/single/post-reading-time/
@@ -2158,26 +2171,30 @@ Displays the estimated reading time for a post based on the selected content.
 
 ---
 
-# Post reading progress bar
+# Post table of contents
 
-Source: https://academy.bricksbuilder.io/builder/elements/single/post-reading-progress-bar/
+Source: https://academy.bricksbuilder.io/builder/elements/single/post-toc/
 
-*Shows a progress bar indicating how much of the post has been read.*
+*Generates a table of contents based on the headings in the post content.*
 
-Shows a progress bar indicating how much of the post has been read.
+Generates a table of contents based on the headings in the post content.
 
 ## Settings
 
-- **Content** (select) - Choose the content to track reading progress for. Options: post_content, post_excerpt, custom_content. Default: post_content.
-- **Position** (select) - Position of the progress bar. Options: top, bottom. Default: top.
-- **Height** (number) - Height of the progress bar in pixels. Default: 4.
-- **Background color** (color) - Background color of the progress bar.
-- **Progress color** (color) - Color of the progress indicator.
-- **Show percentage** (checkbox) - Display the reading percentage as text.
+- **Content** (select) - Choose the content to generate table of contents from. Options: post_content, post_excerpt, custom_content. Default: post_content.
+- **Heading selectors** (text) - CSS selectors for headings to include. Default: "h1,h2,h3,h4,h5,h6".
+- **List style** (select) - Style for the list items. Options: none, disc, circle, square, decimal, decimal-leading-zero, lower-roman, upper-roman, lower-greek, lower-latin, upper-latin, armenian, georgian, lower-alpha, upper-alpha. Default: none.
+- **Item typography** (typography) - Typography settings for list items.
+- **Item padding** (dimensions) - Padding for list items.
+- **Item background color** (color) - Background color for list items.
+- **Item border** (border) - Border settings for list items.
+- **Active item typography** (typography) - Typography settings for active list items.
+- **Active item background color** (color) - Background color for active list items.
+- **Active item border** (border) - Border settings for active list items.
 
 > **Developer reference**
 >
-> See the [Reading Progress Bar Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-reading-progress-bar/) for the full JSON schema of this element's settings and controls.
+> See the [Table Of Contents Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-toc/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -2212,60 +2229,6 @@ Displays the title of the current post or page.
 > **Developer reference**
 >
 > See the [Post Title Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-title/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Social sharing
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/social-sharing/
-
-*Displays social media sharing buttons for the current post.*
-
-Displays social media sharing buttons for the current post.
-
-## Settings
-
-- **Share via** (repeater) - Social media services to include. Default includes: Facebook, X, LinkedIn, WhatsApp, Pinterest, Telegram, VKontakte, Bluesky, Email.
-  - **Service** (select) - Social media platform.
-  - **Excerpt** (checkbox) - Include post excerpt in share (WhatsApp only).
-  - **Icon** (icon) - Custom icon for the service.
-  - **Background** (color) - Button background color.
-  - **Color** (color) - Button text/icon color.
-- **Use brand colors** (checkbox) - Apply default brand colors to buttons. Default: true.
-- **Direction** (direction) - Layout direction for sharing buttons.
-- **Open in new tab** (checkbox) - Open sharing links in new tabs.
-- **Rel attribute** (text) - Link rel attribute. Default: "nofollow".
-
-> **Developer reference**
->
-> See the [Social Sharing Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-sharing/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Post table of contents
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/post-toc/
-
-*Generates a table of contents based on the headings in the post content.*
-
-Generates a table of contents based on the headings in the post content.
-
-## Settings
-
-- **Content** (select) - Choose the content to generate table of contents from. Options: post_content, post_excerpt, custom_content. Default: post_content.
-- **Heading selectors** (text) - CSS selectors for headings to include. Default: "h1,h2,h3,h4,h5,h6".
-- **List style** (select) - Style for the list items. Options: none, disc, circle, square, decimal, decimal-leading-zero, lower-roman, upper-roman, lower-greek, lower-latin, upper-latin, armenian, georgian, lower-alpha, upper-alpha. Default: none.
-- **Item typography** (typography) - Typography settings for list items.
-- **Item padding** (dimensions) - Padding for list items.
-- **Item background color** (color) - Background color for list items.
-- **Item border** (border) - Border settings for list items.
-- **Active item typography** (typography) - Typography settings for active list items.
-- **Active item background color** (color) - Background color for active list items.
-- **Active item border** (border) - Border settings for active list items.
-
-> **Developer reference**
->
-> See the [Table Of Contents Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-toc/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -2326,6 +2289,33 @@ Displays posts related to the current post based on shared taxonomies.
 > **Developer reference**
 >
 > See the [Related Posts Schema](https://academy.bricksbuilder.io/developer/schema/elements/related-posts/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Social sharing
+
+Source: https://academy.bricksbuilder.io/builder/elements/single/social-sharing/
+
+*Displays social media sharing buttons for the current post.*
+
+Displays social media sharing buttons for the current post.
+
+## Settings
+
+- **Share via** (repeater) - Social media services to include. Default includes: Facebook, X, LinkedIn, WhatsApp, Pinterest, Telegram, VKontakte, Bluesky, Email.
+  - **Service** (select) - Social media platform.
+  - **Excerpt** (checkbox) - Include post excerpt in share (WhatsApp only).
+  - **Icon** (icon) - Custom icon for the service.
+  - **Background** (color) - Button background color.
+  - **Color** (color) - Button text/icon color.
+- **Use brand colors** (checkbox) - Apply default brand colors to buttons. Default: true.
+- **Direction** (direction) - Layout direction for sharing buttons.
+- **Open in new tab** (checkbox) - Open sharing links in new tabs.
+- **Rel attribute** (text) - Link rel attribute. Default: "nofollow".
+
+> **Developer reference**
+>
+> See the [Social Sharing Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-sharing/) for the full JSON schema of this element's settings and controls.
 
 ---
 

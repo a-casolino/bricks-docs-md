@@ -76,6 +76,173 @@ You can view available variable Adobe fonts by selecting "Variable Fonts" under 
 
 ---
 
+# Build a Design System in Bricks
+
+Source: https://academy.bricksbuilder.io/builder/styling/build-a-design-system/
+
+*Build a design system in Bricks from an unstyled page: color palette and shades, fluid type and spacing scales, variables, a theme style, classes, and components.*
+
+A design system is a set of decisions you make once and reuse everywhere: your colors, font sizes, spacing, the default look of plain elements, and the patterns and blocks that repeat. In Bricks, those decisions live in the Style Manager, in a theme style, in global classes, and in components. Once they are in place, a new page needs no new styles, and changing one value updates every page that uses it.
+
+This article builds a design system for a small coffee roaster's website, starting from a page with content and no styling. It follows the same steps as the video.
+
+https://youtu.be/lo2L313Cpko
+
+## The four layers
+
+Each layer builds on the one below it:
+
+| Layer | In Bricks | Example |
+| --- | --- | --- |
+| Values | Colors and variables in the [Style Manager](https://academy.bricksbuilder.io/builder/features/style-manager/) | `var(--brand)`, `var(--heading-xl)`, `var(--space-m)` |
+| Rules | A [theme style](https://academy.bricksbuilder.io/builder/styling/theme-styles/) | Body text, headings, buttons, section padding |
+| Classes | [Global classes](https://academy.bricksbuilder.io/builder/styling/global-css-classes/) | `.eyebrow` for the small label above a heading |
+| Components | [Components](https://academy.bricksbuilder.io/builder/features/components/) | A product card |
+
+A component uses classes, and classes use variables. When a value changes, everything above it follows.
+
+## Starting point
+
+The example starts with a header template, a footer template, and a home page with its content in place. Nothing is styled yet: default fonts, default colors, no spacing.
+
+You could style this page element by element. A second page would then mean doing it all again and keeping both pages in sync by hand. The steps below put every decision in one place first.
+
+{/* screenshot: The unstyled home page in the Builder: header and footer templates, hero, product cards and panels with Bricks default styles. */}
+
+## 1. Colors
+
+Open the Style Manager and select **Colors**. See [Color Manager](https://academy.bricksbuilder.io/builder/features/color-manager/) for every setting.
+
+1. Create a palette for the site.
+2. Add the brand color and name it `brand`, not `orange`. If the brand color changes later, the name is still correct.
+3. Enable **Light shades** and **Dark shades**. Bricks generates ten steps of each from the base color and names them after it: `brand-d-1` is one step darker than `brand`, `brand-l-9` is a soft tint for backgrounds.
+4. Add the neutrals: `ink` for text, `ink-muted` for quieter text, and `paper` for the page background.
+5. Add the colors that only serve one purpose. The example uses six pastels for the product cards (`blush`, `butter`, `lilac`, `mint`, `sky`, `clay`).
+6. For the pastels, enable the `background-color` utility class. Bricks then creates a global class for each color, such as `bg-butter`.
+
+Only enable utility classes for colors you will apply as classes. Each one adds a global class per shade.
+
+{/* screenshot: Color Manager with the brand color expanded, light and dark shades enabled and the generated shade strips visible. */}
+
+## 2. Typography and spacing scales
+
+Open **Typography** in the Style Manager and create a scale for headings:
+
+1. Give the scale the prefix `heading-`.
+2. Set a base size and a ratio for the minimum (mobile) and another pair for the maximum (desktop). The example uses 20 px at 1.25 for mobile and 24 px at 1.5 for desktop.
+3. Generate the variables.
+
+Bricks turns every step into a `clamp()` value, from `--heading-2xs` to `--heading-2xl`. A heading grows with the screen instead of jumping at breakpoints. See [Fluid Typography](https://academy.bricksbuilder.io/builder/styling/fluid-typography/) for how the values are calculated.
+
+Create a second scale with the prefix `text-` for body sizes.
+
+Spacing works the same way. Open **Spacing** and create a scale with the prefix `space-`, from `--space-2xs` to `--space-2xl`.
+
+{/* screenshot: Typography scale "Headings" with prefix heading-, minimum and maximum values and the generated preview rows. */}
+
+## 3. Variables and categories
+
+A few values are not part of a scale. Add them in **Variables** and give each group its own category:
+
+| Category | Variable | Value |
+| --- | --- | --- |
+| Layout | `container` | `1240px` |
+| Shape | `radius-s` | `10px` (buttons) |
+| Shape | `radius-m` | `24px` (cards) |
+
+The scales already sit in their own categories, so the variable picker stays readable as the list grows. See [Global Variables Manager](https://academy.bricksbuilder.io/builder/styling/global-variables-manager/).
+
+Name variables by role or step, like `radius-s` and `radius-m`. A name like `radius-24` is wrong the moment you change the value.
+
+Values do nothing until something uses them. The page still looks the same after this step.
+
+## 4. Theme style
+
+The theme style sets the defaults for every element, so plain headings, text and buttons never need their own settings.
+
+Create a theme style. A new theme style applies to the entire website by default. Then set:
+
+| Group | Setting | Value |
+| --- | --- | --- |
+| Typography | Body | Figtree, `var(--text-m)`, `var(--ink)` |
+| Typography | Headings | Fraunces, `var(--brand)` |
+| Typography | H1 / H2 / H3 | `var(--heading-2xl)` / `var(--heading-l)` / `var(--heading-m)` |
+| Elements > Button | Background, text color, border radius | `var(--brand)`, `var(--brand-d-8)`, `var(--radius-s)` |
+| Elements > Section | Padding | `var(--space-2xl)` top and bottom, `var(--space-m)` left and right |
+| Elements > Container | Width | `var(--container)` |
+| Elements > Container and Block | Row gap | `var(--space-s)` |
+
+The row gap on Container and Block gives stacked headings and text even space without a single margin.
+
+Save, and the whole page changes, including the header and footer templates. Switch to the mobile breakpoint: headings and section padding shrink with the screen, without any breakpoint-specific setting.
+
+{/* screenshot: Theme style Typography group with Body and Headings set, live preview of the styled home page on the right. */}
+
+## 5. Classes
+
+A theme style styles headings, text and buttons. It does not know the small label above a heading or the quieter line under a title. Those are patterns, and patterns need [global classes](https://academy.bricksbuilder.io/builder/styling/global-css-classes/).
+
+1. Select the label above the hero heading and add a class named `eyebrow`.
+2. Style it once: `var(--text-s)`, uppercase, a little letter spacing, and `var(--brand-d-4)`.
+3. Add the same class to the other labels.
+4. Add `text-l` for intro paragraphs and `text-muted` for quieter text.
+
+Name classes by purpose, in lowercase with hyphens. `text-muted` still makes sense when the color changes; `grey-text` does not.
+
+In the [Global Class Manager](https://academy.bricksbuilder.io/builder/styling/global-class-manager/), put the three classes into a category called **Typography**. Layout classes such as `card-grid` (below) go into a second category, **Layout**.
+
+## 6. Components
+
+The coffee card repeats eight times on the home page. That makes it a component.
+
+1. Style one card first: `var(--space-m)` as padding and `var(--radius-m)` as border radius. In the variable picker, open the **Shape** category to find the radius quickly.
+2. Give the origin the `eyebrow` class, the tasting notes `text-muted`, and the name a darker brand shade.
+3. Right-click the card in the Structure panel, choose **Save as component**, and name it `Coffee card`.
+4. Add a property for everything that changes from card to card (image, origin, name, notes, price) and connect each one to its element. See [Property types](https://academy.bricksbuilder.io/builder/features/components/#property-types).
+
+A component has no color property type, but it has a [global classes property](https://academy.bricksbuilder.io/builder/features/components/#global-classes). Create one named `Color`, add an option for each pastel, assign each option its `bg-*` class, and connect the property to the card's root element. Each instance now only asks for its content and a color.
+
+Give the row of cards a class too:
+
+```css
+/* card-grid: as many columns as fit, four on a desktop */
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+gap: var(--space-m);
+```
+
+The numbered section headings and the café panel become components the same way: `Section head`, and `Feature panel` with a `Style` option (global classes property) for a soft or a bold background.
+
+{/* screenshot: Coffee card component with its properties in the panel, the Color property dropdown open with the pastel options. */}
+
+## 7. Build a new page
+
+On a new page, the header and footer are already there because they are templates.
+
+1. Add a heading and an intro. They pick up the theme style without a single setting.
+2. Insert a `Section head`, then a Block with the `card-grid` class and `Coffee card` instances. Fill in the content and pick a color.
+3. Add a `Feature panel` with its own image and text.
+
+The page has no new styles. Everything on it comes from the system.
+
+{/* screenshot: The finished shop page on the frontend, built only from components, classes and the theme style. */}
+
+## Change the brand color
+
+Open the Color Manager and change `brand` to a new color. Bricks regenerates the shades from it, and headings, buttons, labels and panels follow on every page, in the header and in the footer.
+
+## Related
+
+- [Style Manager](https://academy.bricksbuilder.io/builder/features/style-manager/)
+- [Color Manager](https://academy.bricksbuilder.io/builder/features/color-manager/)
+- [Fluid Typography](https://academy.bricksbuilder.io/builder/styling/fluid-typography/)
+- [Global Variables Manager](https://academy.bricksbuilder.io/builder/styling/global-variables-manager/)
+- [Theme Styles](https://academy.bricksbuilder.io/builder/styling/theme-styles/)
+- [Global Class Manager](https://academy.bricksbuilder.io/builder/styling/global-class-manager/)
+- [Components](https://academy.bricksbuilder.io/builder/features/components/)
+
+---
+
 # Cascade layer
 
 Source: https://academy.bricksbuilder.io/builder/styling/cascade-layer/
@@ -187,6 +354,8 @@ Source: https://academy.bricksbuilder.io/builder/styling/contextual-spacing/
 
 *Apply contextual spacing in Bricks to create more consistent rhythm between elements without manually tweaking every margin.*
 
+https://youtu.be/X8Brq1epsfk
+
 Bricks 2.0 introduces **Contextual spacing** to give you full control over vertical spacing (margin) between elements like headings, paragraphs, and lists within embedded content.
 
 Contextual spacing automatically applies to elements within:
@@ -205,9 +374,9 @@ Whether you are styling embedded content, working with dynamic layouts, or creat
 
 ## How to use contextual spacing
 
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-contextual-spacing-1.png)
+You can enable Contextual spacing inside the builder under **Style Manager → Theme Styles → Contextual Spacing**. The Style Manager preview updates while you change the values.
 
-You can enable Contextual spacing inside the builder under **Style Manager → Theme Styles → Contextual Spacing**.
+![Contextual spacing settings in a theme style: Heading var(--space-xl), Paragraph and Fallback spacing var(--space-s), and an additional target for list items with a top margin of 0, next to the live preview of a blog post.](https://academy.bricksbuilder.io/assets/contextual-spacing-theme-style-settings.webp)
 
 **Remove default margins**: Lets you select the HTML tags from which you want to remove the default margins (i.e. Heading, Paragraph, Lists, etc.). This creates a clean starting point for spacing that fits your layout needs, without interference from inherited or default styles.
 
@@ -233,6 +402,10 @@ You can enable Contextual spacing inside the builder under **Style Manager → T
 | **Additional target elements** | Define spacing rules for elements like `ul`, `blockquote`, or any custom selector. Lets you block margin (top, bottom) and inline padding (left, right). |
 | **Apply spacing inside** | Extend contextual spacing to other parts of your layout by targeting wrapper selectors such as `.contextual-spacing`. |
 
+### Use spacing variables
+
+The Heading, Paragraph, Fallback spacing and target fields accept variables. Pick them with the variable picker next to each field, for example `var(--space-xl)` for headings and `var(--space-s)` for paragraphs. If the variables come from a fluid spacing scale ([Style Manager → Spacing](https://academy.bricksbuilder.io/builder/features/style-manager/#spacing)), the spacing between text blocks grows and shrinks with the screen like the rest of your layout.
+
 ## Additional target elements
 
 Use the **Additional target elements** repeater to extend Contextual spacing to more than headings and paragraphs.
@@ -254,6 +427,10 @@ For each, you can set:
 
 This gives you spacing consistency across all types of content.
 
+> **Note**
+>
+> Fallback spacing applies to every element that follows another element inside the content, including list items. If the items of a list drift apart after you set a fallback, add a target for **List item (li)** and set **Margin: Top** to `0`.
+
 ## Apply to more content areas
 
 > **Note**
@@ -261,6 +438,19 @@ This gives you spacing consistency across all types of content.
 > By default, Contextual spacing only targets Rich Text, Post Content, and WooCommerce content. But you can easily extend it by defining **Apply spacing inside** selectors to apply Contextual spacing to any wrapper of your choice, such as `.contextual-spacing, .brxe-shortcode`.
 
 Add these utility classes to wrappers (i.e. Container, Div, Block elements) that hold a mix of content elements, and Bricks will apply your Contextual spacing settings to them.
+
+![Apply spacing inside set to .contextual-spacing in the theme style, with the preview of a block of separate Heading and Basic Text elements that now follows the contextual spacing.](https://academy.bricksbuilder.io/assets/contextual-spacing-apply-spacing-inside.webp)
+
+Inside a selector from **Apply spacing inside**, the rules work slightly differently than inside Rich Text and Post Content:
+
+- **Heading** spacing applies to `h1` through `h6` elements that are not the first child.
+- **Paragraph** spacing applies to `p` elements that are not the first child. A **Basic Text** element renders a `div` by default, so it takes the fallback spacing instead.
+- **Fallback spacing** applies to direct children of the wrapper that follow another child.
+- **Additional target elements** apply to matching elements anywhere inside the wrapper when they follow another element.
+
+> **Caution**
+>
+> Margins add to the wrapper's gap. If the wrapper has a row gap, clear it, or the space between elements becomes gap plus margin. Clear the gap before you add the class: once a class is added, the panel edits the class, not the element, so the element's own gap would stay.
 
 ### Why not apply spacing to all headings and paragraphs by default?
 
@@ -317,8 +507,9 @@ To unify the layout:
   - Heading: `2rem`
   - Paragraph: `1.25rem`
   - Fallback: `1rem`
-3. Add a global class like `.contextual-spacing` to the container
-4. Enter `.contextual-spacing` under **Apply spacing inside**
+3. Clear the container's row gap, so it does not add to the margins
+4. Add a global class like `.contextual-spacing` to the container
+5. Enter `.contextual-spacing` under **Apply spacing inside**
 
 ![](https://academy.bricksbuilder.io/assets/bricks-contextual-spacing-utility-class-scaled.png)
 
@@ -585,6 +776,198 @@ Bricks > Settings > Performance: Disable Google Fonts
 
 ---
 
+# Fluid Spacing
+
+Source: https://academy.bricksbuilder.io/builder/styling/fluid-spacing/
+
+*Create a fluid spacing scale in Bricks and use its variables for padding, margins and gaps that grow smoothly from small to large screens.*
+
+A fluid spacing scale replaces fixed padding, margin and gap values with CSS variables that grow with the screen. Each variable uses a `clamp()` value: its minimum on small screens, its maximum on large screens, and a smooth transition in between. One spacing variable can replace a padding value and the separate values you would otherwise set on each breakpoint.
+
+https://youtu.be/plfRsthxOXI
+
+## Accessing fluid spacing {#access}
+
+Open the **Style Manager** from the builder toolbar, then select **Spacing** in the Style Manager sidebar. From there you can create and edit spacing scales.
+
+The minimum and maximum screen widths and the HTML font-size used for rem calculations are set once in the [Style Manager settings](https://academy.bricksbuilder.io/builder/features/style-manager/#settings) and apply to all spacing and typography scales (default: `360px` and `1440px`).
+
+![Style Manager Spacing tab with a scale named Spacing: prefix space-, scale type T-shirt, baseline step m, minimum and maximum settings, and steps from space-2xs to space-4xl with their minimum and maximum values.](https://academy.bricksbuilder.io/assets/bricks-style-manager-spacing-scale.webp)
+
+## Creating a spacing scale {#create-scale}
+
+Every spacing scale is a variable category. Enter a scale name, for example `Spacing`, and click **Create**. A new scale starts with these settings:
+
+- **Variable prefix:** `space-`
+- **Scale type:** T-shirt, with seven steps from `2xs` to `2xl`
+- **Baseline step:** `m`
+- **Minimum (Mobile):** base size `16px`, scale ratio 1.25
+- **Maximum (Desktop):** base size `20px`, scale ratio 1.333
+
+With these settings, `space-m` runs from `16px` on small screens to `20px` on large screens, and every other step is calculated from it with the scale ratio.
+
+The prefix, scale type, baseline step and ratios work the same way as in the typography scale generator. See [Fluid Typography](https://academy.bricksbuilder.io/builder/styling/fluid-typography/#controls-overview) for each control.
+
+## Generating variables {#generating-variables}
+
+Changes to the scale settings are previewed in the list first. Click **Regenerate variables** to create or update the variables of the category (without pending changes, the button reads **Generate variables**).
+
+Generating replaces all variables of the category, and Bricks asks you to confirm this when the category already has variables. As long as the number of steps and the scale type stay the same, the names stay the same too, so every `var(--space-l)` in your design picks up the new value.
+
+Generated variables appear in the variable picker of every spacing and size control, grouped by their category.
+
+## Adding larger steps for section padding {#add-steps}
+
+With the default settings, the largest step, `space-2xl`, ends at about `47px`. That is usually too small for the padding of a section.
+
+Hover over the last row of the list and click **+** to add a larger step (`3xl`, then `4xl`, `5xl` and so on). With the default settings, `space-5xl` runs from about `61px` on small screens to `112px` on large screens. Hover over the first row to add a smaller step instead. To remove the smallest or largest step, hover over the first or last row and click **−**.
+
+## Using spacing in a theme style {#theme-style}
+
+To give every section the same padding, set it once in a [theme style](https://academy.bricksbuilder.io/builder/styling/theme-styles/) instead of on each section: **Theme styles** > your theme style > **Elements** > **Section** > **Padding**.
+
+Each side has its own variable picker. With **Opposites linked** turned on, setting the top value also sets the bottom value, and setting the left value also sets the right value. For example, use `var(--space-5xl)` for top and bottom and `var(--space-l)` for the sides. The **Container** group in the same theme style has its own padding, row gap and column gap.
+
+<div className="screenshot screenshot--control-panel">
+
+![Theme style Section settings: the Padding control with var(--space-5xl) on top and bottom and var(--space-l) on the left and right, opposites linked.](https://academy.bricksbuilder.io/assets/bricks-theme-style-section-padding-variables.webp)
+
+</div>
+
+To make a whole page tighter or roomier later, change the step in the theme style, for example from `var(--space-5xl)` to `var(--space-4xl)`. Every section that follows the theme style updates on every page.
+
+## Clearing padding on elements {#clear-element-padding}
+
+Padding set directly on an element, including padding set on a breakpoint, takes precedence over the theme style. Clear it on the sections that should follow the theme style.
+
+To clear several sections at once, select them in the Structure panel. Click the first section, then Shift-click the last one to select all sections in between, or hold `CMD` (macOS) or `CTRL` (Windows/Linux) and click to add single elements. The panel switches to **Bulk edit** and shows how many elements are selected. Clearing a field clears it on all of them. If the sections have their own padding on a breakpoint, switch to that breakpoint and clear it there as well.
+
+![Bulk edit of five selected sections in the Builder: the cleared Padding fields show the inherited theme style values as placeholders.](https://academy.bricksbuilder.io/assets/bricks-structure-bulk-edit-section-padding.webp)
+
+For an element that should deliberately differ, pick another step of the same scale instead of typing a value.
+
+## Utility classes {#utility-classes}
+
+Below the list, the spacing scale can generate utility classes such as `gap-m` or `p-l`. Only generate the classes you actually use.
+
+---
+
+# Fluid Typography
+
+Source: https://academy.bricksbuilder.io/builder/styling/fluid-typography/
+
+*Create fluid typography in Bricks so text scales smoothly across viewport sizes instead of changing only at breakpoints.*
+
+Starting with Bricks 2.1, the **Fluid Typography Generator** lets you create pixel-perfect & responsive font sizes (through CSS variables using `clamp`) that scale smoothly between defined minimum and maximum values, ensuring consistent readability across all screen sizes and devices. Simplifying the process of managing font sizes while maintaining flexibility and precision in your design.
+
+https://youtu.be/wsxOmDqjfaQ
+
+## Accessing fluid typography {#access}
+
+Open the **Style Manager** from the builder toolbar, then select **Typography** in the Style Manager sidebar. From there you can create and edit fluid typography scales.
+
+Global scale settings, including the HTML font-size used for rem calculations and the minimum and maximum screen widths, are available in the Style Manager settings.
+
+Spacing scales for padding, margins and gaps work the same way in the **Spacing** tab. See [Fluid Spacing](https://academy.bricksbuilder.io/builder/styling/fluid-spacing/).
+
+## Fluid typography categories {#adding-category}
+
+Bricks lets you create unlimited Fluid Typography Scales for your Headings, Text, etc. through categories.
+
+So, **every Category is a Fluid Typography Scale**, that stores all its scale settings alongside it.
+
+You can keep it simple and just create a `Headings` and `Text` category for those two scales as we did in the following screenshot:
+
+![](https://academy.bricksbuilder.io/assets/bricks-fluid-typo-category-text-empty.png)
+
+## Fluid typography variables {#generating-variables}
+
+Fluid typography variables can be generated with the Scale Generator on the right-hand side.
+
+Scale changes are previewed in the list first. Click **Regenerate variables** to create or update the variables of the category (without pending changes, the button reads **Generate variables**). The icon in the Style Manager header, **Regenerate variables and save**, does both in one step.
+
+Whenever variables are generated, all existing variables within the selected category are deleted and replaced with the newly created variables. If the category already has variables, Bricks asks you to confirm this first. The number of variables is the same as in the previous set, but the names and values will be regenerated. So, any manual edits made to variable names or values are lost once the variables are regenerated. As long as the number of steps and the scale type stay the same, the names stay the same too, so every place that uses a variable (for example `var(--heading-xl)`) picks up the new value.
+
+## Scale controls {#controls-overview}
+
+### Prefix {#control-prefix}
+
+The prefix determines how variable names are structured. For instance, setting the prefix to `text-` results in variables being named `--text-m` or `--text-xl`, depending on the scale. It is recommended to use a prefix that is both unique and descriptive to maintain clarity and avoid conflicts.
+
+### Scale type {#control-scale-type}
+
+The scale type specifies the naming convention used for fluid typography variables. There are three available options:
+
+1. **T-shirt:** Generates variable names based on standard t-shirt sizes, such as `2xs, xs, s, m, l, xl, 2xl`. An example output would be `--text-m`.
+2. **Numeric:** Generates variable names using numbers, typically ranging from 1 through 6. An example output would be `--text-4`.
+3. **Custom:** Allows complete manual control over the naming convention. For example, scale names such as `small, medium, large, title` could be entered, resulting in variable names such as `--text-medium`.
+
+### Custom scale type {#control-custom-scale-type}
+
+This control only shows when the scale type is set to **Custom**. It provides the ability to define custom scale names, offering flexibility in aligning the naming convention with project-specific requirements.
+
+### Baseline step {#control-baseline-step}
+
+The baseline step acts as the foundation of the scale. The baseline variable will directly reflect the minimum and maximum font sizes defined, and all other scale steps will be calculated relative to this baseline. Proper definition of the baseline ensures accurate scaling across all steps.
+
+### HTML font-size {#control-px-to-rem}
+
+The Style Manager **HTML font-size** setting defines the rem baseline used for scale generation. You can set it explicitly to `10px` or `16px`, or leave it on auto so Bricks resolves the value from Theme Styles where possible and otherwise falls back to the default.
+
+### Base font size (px) {#control-base-font-size}
+
+The scale settings have two groups, **Minimum (Mobile)** and **Maximum (Desktop)**. Each has its own base font size and type scale ratio (defaults: `16px` with 1.25, and `20px` with 1.333). The two base font sizes establish the minimum and maximum values for the baseline step. Font sizes for all other steps will be calculated automatically based on the defined **Type Scale Ratio**.
+
+### Screen width (px) {#control-screen-width}
+
+The minimum and maximum screen widths are set once in the Style Manager settings and apply to all scales (default: `360px` and `1440px`). At the minimum width every step uses its minimum size, at the maximum width its maximum size. Outside these widths, font sizes stay constant.
+
+### Type scale ratio {#control-type-scale-ratio}
+
+This control defines the ratio by which font sizes increase or decrease in relation to the next adjacent variable. For example, with a baseline of 16px and a scale ratio of 1.5, the next step above the baseline will be calculated as 24px. Ratios are applied upward and downward, generating consistent scaling in both directions. Because the minimum and maximum have their own ratio, a larger ratio for large screens gives more contrast between headings on desktop while keeping them compact on phones. Steps below the baseline then shrink more on large screens, so for the smallest steps the maximum value can end up below the minimum.
+
+For advanced use cases, it is possible to enter a custom ratio. A new control for defining custom values becomes available only when the **Custom** option is selected. This allows precise manual control over how each step in the scale is calculated.
+
+## Editing variables {#editing-variables}
+
+Once generated, variables are displayed in the central panel. These variables may be managed in several ways.
+
+![](https://academy.bricksbuilder.io/assets/bricks-fluid-typo-category-text-generated.png)
+
+### Adding variables {#add-variables}
+
+Hover over the first or the last step in the list. A **+** button on its left edge adds a step: above the first row it adds a smaller step, below the last row a larger one (for example `3xl` after `2xl`).
+
+The new step is inserted at the appropriate position, either above or below the baseline. Both the variable name and value are automatically generated.
+
+In cases where the **Custom** scale type is used, variable names may need to be updated manually, or additional values can be added directly in the custom scale definition.
+
+**Note:** If you used the **Custom** scale type, then you will need to update the variable name, or even better, add new value to the **Custom** scale directly.
+
+### Deleting variables {#delete-and-export}
+
+To remove the smallest or the largest step, hover over the first or last row and click the **−** button. Bricks prevents removing the baseline step because the other steps depend on it.
+
+### Editing variables {#manually-editing}
+
+Variable names and values can be directly edited by selecting them in the center column. Manual edits apply only to the selected variable and do not affect any calculations. This allows fine-tuned adjustments while maintaining overall scale consistency.
+
+## Using the variables {#using-variables}
+
+Generated variables appear in the variable picker of every size control, grouped by their category. To give all headings of the same level one size across the site, set them in a theme style: **Theme Styles** > **Typography** > **Heading H1** (H2, H3 …) > **Typography** > **Font size**, then pick the variable, for example `var(--heading-xl)` for H2.
+
+A font size set directly on an element, including a size set on a breakpoint, takes precedence over the theme style. Clear those sizes on the elements that should follow the theme style. For an element that should deliberately differ, such as a larger hero headline, pick another step of the same scale instead of typing a value.
+
+## Typography preview {#typography-preview}
+
+The list in the center shows every step of the scale with its minimum and maximum size, each rendered as a line of preview text. Changes to the scale settings are previewed in this list right away. They reach the variables only after you click **Regenerate variables**.
+
+The `eye` icon in the Style Manager header toggles the canvas preview, so you can see the page next to the Style Manager while you work.
+
+![Style Manager Typography tab with a Headings scale: prefix heading-, minimum and maximum settings, and steps from heading-2xs to heading-3xl with their minimum and maximum preview.](https://academy.bricksbuilder.io/assets/bricks-fluid-typo-scale-list.webp)
+
+---
+
 # Font Manager
 
 Source: https://academy.bricksbuilder.io/builder/styling/font-manager/
@@ -814,117 +1197,43 @@ If a custom font and a Google Font share the same family name, Bricks skips the 
 
 ---
 
-# Fluid Typography
+# Global class import manager
 
-Source: https://academy.bricksbuilder.io/builder/styling/fluid-typography/
+Source: https://academy.bricksbuilder.io/builder/styling/global-class-import-manager/
 
-*Create fluid typography in Bricks so text scales smoothly across viewport sizes instead of changing only at breakpoints.*
+*Import global classes into Bricks and control how shared class libraries are brought into a project.*
 
-Starting with Bricks 2.1, the **Fluid Typography Generator** lets you create pixel-perfect & responsive font sizes (through CSS variables using `clamp`) that scale smoothly between defined minimum and maximum values, ensuring consistent readability across all screen sizes and devices. Simplifying the process of managing font sizes while maintaining flexibility and precision in your design.
+The global class import manager addresses a key challenge in managing imported classes. Previously, conflicting classes were always automatically discarded, and users had no way to prepare or organize classes before importing them.
 
-https://youtu.be/wsxOmDqjfaQ
+This feature provides a clear and structured way to handle imported classes, giving users the ability to resolve conflicts, categorize classes, and maintain a clean workflow. To further streamline the process, we’ve included a setting that lets users decide when they’d like to be prompted, ensuring the feature suits their workflow.
 
-## Accessing fluid typography {#access}
+![](https://academy.bricksbuilder.io/assets/bricks-class-import-manager.png)
 
-Open the **Style Manager** from the builder toolbar, then select **Typography** in the Style Manager sidebar. From there you can create and edit fluid typography scales.
+## When does this show up?
 
-Global scale settings, including the HTML font-size used for rem calculations and the minimum and maximum screen widths, are available in the Style Manager settings.
+The global class import manager opens whenever global classes are imported into the builder. This includes importing a global classes JSON file, pasting elements, or importing a template. Depending on your settings, it can open for specific situations, such as new classes, conflicting classes, or both.
 
-## Fluid typography categories {#adding-category}
+## Types of classes in the import manager
 
-Bricks lets you create unlimited Fluid Typography Scales for your Headings, Text, etc. through categories.
+The import manager displays two types of classes:
 
-So, **every Category is a Fluid Typography Scale**, that stores all its scale settings alongside it.
+- **New classes**: These are classes that do not exist in the current site. Users can choose to import and categorize these classes before they are added to the site.
+- **Conflicting classes**: These are classes that either share the same name or the same internal ID as an existing local class, but have different settings. Conflicting classes are highlighted in red, and users must resolve each conflict before completing the import. Conflicts can be resolved by:
+  - **Overriding the local class**: Replace the existing class with the imported one.
+  - **Discarding the conflicting class**: Skip importing the conflicting class.
 
-You can keep it simple and just create a `Headings` and `Text` category for those two scales as we did in the following screenshot:
+![](https://academy.bricksbuilder.io/assets/bricks-class-import-manager-override-zoomed.png)
 
-![](https://academy.bricksbuilder.io/assets/bricks-fluid-typo-category-text-empty.png)
+![](https://academy.bricksbuilder.io/assets/bricks-class-import-manager-import-zoomed.png)
 
-## Fluid typography variables {#generating-variables}
+## Configuring when the import manager opens
 
-Fluid typography variables can be generated with the Scale Generator on the right-hand side.
+You can control when the global class import manager opens by navigating to **WordPress admin > Bricks Settings > Builder > Global class import manager**. The available options are:
 
-Scale changes are previewed in the list first. Click **Regenerate variables** to create or update the variables of the category (without pending changes, the button reads **Generate variables**). The icon in the Style Manager header, **Regenerate variables and save**, does both in one step.
-
-Whenever variables are generated, all existing variables within the selected category are deleted and replaced with the newly created variables. If the category already has variables, Bricks asks you to confirm this first. The number of variables is the same as in the previous set, but the names and values will be regenerated. So, any manual edits made to variable names or values are lost once the variables are regenerated. As long as the number of steps and the scale type stay the same, the names stay the same too, so every place that uses a variable (for example `var(--heading-xl)`) picks up the new value.
-
-## Scale controls {#controls-overview}
-
-### Prefix {#control-prefix}
-
-The prefix determines how variable names are structured. For instance, setting the prefix to `text-` results in variables being named `--text-m` or `--text-xl`, depending on the scale. It is recommended to use a prefix that is both unique and descriptive to maintain clarity and avoid conflicts.
-
-### Scale type {#control-scale-type}
-
-The scale type specifies the naming convention used for fluid typography variables. There are three available options:
-
-1. **T-shirt:** Generates variable names based on standard t-shirt sizes, such as `2xs, xs, s, m, l, xl, 2xl`. An example output would be `--text-m`.
-2. **Numeric:** Generates variable names using numbers, typically ranging from 1 through 6. An example output would be `--text-4`.
-3. **Custom:** Allows complete manual control over the naming convention. For example, scale names such as `small, medium, large, title` could be entered, resulting in variable names such as `--text-medium`.
-
-### Custom scale type {#control-custom-scale-type}
-
-This control only shows when the scale type is set to **Custom**. It provides the ability to define custom scale names, offering flexibility in aligning the naming convention with project-specific requirements.
-
-### Baseline step {#control-baseline-step}
-
-The baseline step acts as the foundation of the scale. The baseline variable will directly reflect the minimum and maximum font sizes defined, and all other scale steps will be calculated relative to this baseline. Proper definition of the baseline ensures accurate scaling across all steps.
-
-### HTML font-size {#control-px-to-rem}
-
-The Style Manager **HTML font-size** setting defines the rem baseline used for scale generation. You can set it explicitly to `10px` or `16px`, or leave it on auto so Bricks resolves the value from Theme Styles where possible and otherwise falls back to the default.
-
-### Base font size (px) {#control-base-font-size}
-
-The scale settings have two groups, **Minimum (Mobile)** and **Maximum (Desktop)**. Each has its own base font size and type scale ratio (defaults: `16px` with 1.25, and `20px` with 1.333). The two base font sizes establish the minimum and maximum values for the baseline step. Font sizes for all other steps will be calculated automatically based on the defined **Type Scale Ratio**.
-
-### Screen width (px) {#control-screen-width}
-
-The minimum and maximum screen widths are set once in the Style Manager settings and apply to all scales (default: `360px` and `1440px`). At the minimum width every step uses its minimum size, at the maximum width its maximum size. Outside these widths, font sizes stay constant.
-
-### Type scale ratio {#control-type-scale-ratio}
-
-This control defines the ratio by which font sizes increase or decrease in relation to the next adjacent variable. For example, with a baseline of 16px and a scale ratio of 1.5, the next step above the baseline will be calculated as 24px. Ratios are applied upward and downward, generating consistent scaling in both directions. Because the minimum and maximum have their own ratio, a larger ratio for large screens gives more contrast between headings on desktop while keeping them compact on phones. Steps below the baseline then shrink more on large screens, so for the smallest steps the maximum value can end up below the minimum.
-
-For advanced use cases, it is possible to enter a custom ratio. A new control for defining custom values becomes available only when the **Custom** option is selected. This allows precise manual control over how each step in the scale is calculated.
-
-## Editing variables {#editing-variables}
-
-Once generated, variables are displayed in the central panel. These variables may be managed in several ways.
-
-![](https://academy.bricksbuilder.io/assets/bricks-fluid-typo-category-text-generated.png)
-
-### Adding variables {#add-variables}
-
-Hover over the first or the last step in the list. A **+** button on its left edge adds a step: above the first row it adds a smaller step, below the last row a larger one (for example `3xl` after `2xl`).
-
-The new step is inserted at the appropriate position, either above or below the baseline. Both the variable name and value are automatically generated.
-
-In cases where the **Custom** scale type is used, variable names may need to be updated manually, or additional values can be added directly in the custom scale definition.
-
-**Note:** If you used the **Custom** scale type, then you will need to update the variable name, or even better, add new value to the **Custom** scale directly.
-
-### Deleting variables {#delete-and-export}
-
-To remove the smallest or the largest step, hover over the first or last row and click the **−** button. Bricks prevents removing the baseline step because the other steps depend on it.
-
-### Editing variables {#manually-editing}
-
-Variable names and values can be directly edited by selecting them in the center column. Manual edits apply only to the selected variable and do not affect any calculations. This allows fine-tuned adjustments while maintaining overall scale consistency.
-
-## Using the variables {#using-variables}
-
-Generated variables appear in the variable picker of every size control, grouped by their category. To give all headings of the same level one size across the site, set them in a theme style: **Theme Styles** > **Typography** > **Heading H1** (H2, H3 …) > **Typography** > **Font size**, then pick the variable, for example `var(--heading-xl)` for H2.
-
-A font size set directly on an element, including a size set on a breakpoint, takes precedence over the theme style. Clear those sizes on the elements that should follow the theme style. For an element that should deliberately differ, such as a larger hero headline, pick another step of the same scale instead of typing a value.
-
-## Typography preview {#typography-preview}
-
-The list in the center shows every step of the scale with its minimum and maximum size, each rendered as a line of preview text. Changes to the scale settings are previewed in this list right away. They reach the variables only after you click **Regenerate variables**.
-
-The `eye` icon in the Style Manager header toggles the canvas preview, so you can see the page next to the Style Manager while you work.
-
-![Style Manager Typography tab with a Headings scale: prefix heading-, minimum and maximum settings, and steps from heading-2xs to heading-3xl with their minimum and maximum preview.](https://academy.bricksbuilder.io/assets/bricks-fluid-typo-scale-list.webp)
+- **Show for class conflicts (default)**: The manager opens only when conflicts are detected. New classes are imported automatically.
+- **Show for new classes**: The manager opens for all new classes, allowing users to review and manage them, while conflicting classes are automatically discarded.
+- **Show for new & conflicting classes**: The manager opens for both new and conflicting classes, providing full control over the import process.
+- **Never**: The manager is disabled. New classes are imported automatically, and conflicting classes are automatically discarded.
 
 ---
 
@@ -1192,46 +1501,6 @@ Check whether imported classes were accepted, mapped to local classes, or reject
 
 ---
 
-# Global class import manager
-
-Source: https://academy.bricksbuilder.io/builder/styling/global-class-import-manager/
-
-*Import global classes into Bricks and control how shared class libraries are brought into a project.*
-
-The global class import manager addresses a key challenge in managing imported classes. Previously, conflicting classes were always automatically discarded, and users had no way to prepare or organize classes before importing them.
-
-This feature provides a clear and structured way to handle imported classes, giving users the ability to resolve conflicts, categorize classes, and maintain a clean workflow. To further streamline the process, we’ve included a setting that lets users decide when they’d like to be prompted, ensuring the feature suits their workflow.
-
-![](https://academy.bricksbuilder.io/assets/bricks-class-import-manager.png)
-
-## When does this show up?
-
-The global class import manager opens whenever global classes are imported into the builder. This includes importing a global classes JSON file, pasting elements, or importing a template. Depending on your settings, it can open for specific situations, such as new classes, conflicting classes, or both.
-
-## Types of classes in the import manager
-
-The import manager displays two types of classes:
-
-- **New classes**: These are classes that do not exist in the current site. Users can choose to import and categorize these classes before they are added to the site.
-- **Conflicting classes**: These are classes that either share the same name or the same internal ID as an existing local class, but have different settings. Conflicting classes are highlighted in red, and users must resolve each conflict before completing the import. Conflicts can be resolved by:
-  - **Overriding the local class**: Replace the existing class with the imported one.
-  - **Discarding the conflicting class**: Skip importing the conflicting class.
-
-![](https://academy.bricksbuilder.io/assets/bricks-class-import-manager-override-zoomed.png)
-
-![](https://academy.bricksbuilder.io/assets/bricks-class-import-manager-import-zoomed.png)
-
-## Configuring when the import manager opens
-
-You can control when the global class import manager opens by navigating to **WordPress admin > Bricks Settings > Builder > Global class import manager**. The available options are:
-
-- **Show for class conflicts (default)**: The manager opens only when conflicts are detected. New classes are imported automatically.
-- **Show for new classes**: The manager opens for all new classes, allowing users to review and manage them, while conflicting classes are automatically discarded.
-- **Show for new & conflicting classes**: The manager opens for both new and conflicting classes, providing full control over the import process.
-- **Never**: The manager is disabled. New classes are imported automatically, and conflicting classes are automatically discarded.
-
----
-
 # Global CSS Classes
 
 Source: https://academy.bricksbuilder.io/builder/styling/global-css-classes/
@@ -1434,536 +1703,3 @@ Check your builder permissions and whether the Global Class Manager is disabled 
 Bricks tracks classes by ID and name. If an imported class has the same ID or name as a local class, Bricks may map it to the existing class or ask you to review the conflict, depending on your import settings.
 
 Review conflicts before accepting imports on production sites, especially when classes are part of a design system.
-
----
-
-# Gradients & Overlays
-
-Source: https://academy.bricksbuilder.io/builder/styling/gradients-overlays/
-
-*Create gradients and overlays in Bricks to add layered backgrounds, image treatments, and color effects.*
-
-Spice up your site's design by adding background, overlay, and text gradients to any element. When editing an element, the Gradients & Overlays control group is under the Style tab.
-
-https://youtu.be/U0x0vCAzuc0
-
-## Available controls:
-
-- **Apply to**: Select the type of content you want to add a gradient to (text, background, overlay).
-- **CSS selector**: To target a specific HTML within an element.
-- **Colors**: Add at least two colors to see a gradient. When you apply the gradient to an overlay make sure to reduce the color transparency in order to see through it.
-- **Type**: Choose the gradient type—linear, radial, or conic.
-- **Repeat (since 1.9.4)**: Allows the gradient to repeat across the element. Define 'stops' to control the transition points of each color, using units like percentages or pixels.
-
-### Linear gradient controls:
-
-- **Angle in °**: Set a specific angle for your linear gradient between 0 to 360°.
-
-### Radial gradient controls:
-
-- **Shape**: Choose between 'circle' or 'ellipse'.
-- **Size**: Select from 'closest-side', 'farthest-side', 'closest-corner', 'farthest-corner'. For details on these settings, see the [Mozilla Documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient#size).
-- **Position**: Define the central point of the gradient.
-
-### Conic gradient controls:
-
-- **Starting angle in °**: Specify the starting angle of the gradient between 0 to 360°.
-- **Position**: Set the gradient's center.
-
----
-
-# Hover Styles
-
-Source: https://academy.bricksbuilder.io/builder/styling/hover-styles/
-
-*Style hover states in Bricks so links, buttons, cards, and other interactive elements respond consistently.*
-
-Bring your site to life and boost visitor engagement by styling the hover state of any interactive element.
-
-In the builder, select the element or class you want to style. Open the pseudo-class menu and choose `:hover`. Any styles you add while `:hover` is active are saved to that hover state instead of the default state.
-
-Use the same pseudo-class workflow for global classes, element ID styles, and other supported states. Learn more in [Styling Element States & Parts](https://academy.bricksbuilder.io/builder/styling/pseudo-classes/).
-
----
-
-# Global Variables Manager
-
-Source: https://academy.bricksbuilder.io/builder/styling/global-variables-manager/
-
-*Manage reusable design tokens in Bricks with Global Variables Manager for consistent spacing, sizing, and color values.*
-
-The Global Variables Manager lets you create and maintain reusable CSS custom properties in Bricks.
-
-Use global variables for values that should stay consistent across controls, classes, templates, and pages: spacing sizes, typography sizes, radii, layout widths, color values, shadows, or any repeated design token.
-
-For example, instead of typing `clamp(1rem, 2vw, 1.5rem)` into several controls, create a variable named `text-m` and use `var(--text-m)` wherever that value is needed.
-
-## Accessing the Variable Manager
-
-To access the Variable Manager, click the **Style Manager** icon in the builder toolbar. Then select the **Variables** tab.
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.2-style-manager-variable-manager-scaled.png)
-
-You can disable the Variable Manager under `Bricks > Settings > General > Disable CSS variables manager`.
-
-The variable picker value display can be hidden under `Bricks > Settings > Builder > Variable dropdown: Hide value`.
-
-## The mental model
-
-Global variables are stored as site-level Bricks data. A variable has:
-
-- An internal ID.
-- A name, stored without the leading `--`.
-- A value.
-- An optional category.
-
-On the frontend, Bricks outputs variables as CSS custom properties with the `--` prefix:
-
-```css
-:root {
-  --text-m: clamp(1rem, 2vw, 1.5rem);
-}
-```
-
-In a Bricks control or CSS field, use the variable like this:
-
-```css
-var(--text-m)
-```
-
-Bricks only outputs variables that have a name and a non-empty value.
-
-## Create a variable
-
-1. Open **Style Manager > Variables**.
-2. Enter a variable name without the leading `--`, such as `space-m`.
-3. Enter the value, such as `clamp(1rem, 2vw, 2rem)`.
-4. Press `Enter` or click the save icon.
-
-If you paste a name that starts with `--` or `var(--...)`, Bricks normalizes it to the stored variable name.
-
-Variable names must be unique. Bricks also prevents duplicate variable names that conflict with variable-based colors in the Color Manager.
-
-![](https://academy.bricksbuilder.io/assets/bricks-css-variables-manager.png)
-
-## Use variables in controls
-
-Many builder controls include a variable picker. Open the picker and select a variable to insert it into the active control.
-
-The picker inserts a `var(--name)` reference. You can also type `var(--name)` manually in controls that accept CSS values.
-
-![](https://academy.bricksbuilder.io/assets/bricks-variables-picker.png)
-
-Variables are useful in:
-
-- Element ID styles.
-- Global class styles.
-- Theme Styles.
-- Page settings.
-- Custom CSS fields.
-- Other Bricks-managed style settings that accept CSS values.
-
-## Update, rename, duplicate, and delete variables
-
-Select one or more variables to edit them.
-
-You can:
-
-- Rename a single variable.
-- Bulk rename variables with find/replace, prefix, or suffix.
-- Duplicate variables.
-- Categorize variables.
-- Delete selected variables.
-- Reorder variables by drag and drop.
-
-When a variable is renamed, Bricks updates Bricks-managed references from `var(--old-name)` to `var(--new-name)` in builder data. This update runs in the builder and again on save.
-
-> **Note**
->
-> Variable rename updates apply to Bricks-managed data. CSS or code written outside Bricks-managed settings may still need to be updated manually.
-
-## Categories
-
-Categories organize variables in the manager and picker. They do not change the variable name by themselves.
-
-You can:
-
-- Create categories.
-- Rename categories.
-- Reorder categories.
-- Filter variables by category.
-- Export categories with selected variables.
-
-If a variable has no category, or its category no longer exists, Bricks treats it as uncategorized.
-
-## Search, sorting, and usage filters
-
-Use the manager header to narrow the variable list.
-
-You can filter by:
-
-- Text include/exclude filters.
-- Alphabetical sorting.
-- Used on this page.
-- Unused on this page.
-
-![](https://academy.bricksbuilder.io/assets/bricks-css-variables-manager-subheader.png)
-
-Usage filters are helpful for cleanup, but review before deleting. A variable can be unused on the current page and still be used elsewhere.
-
-## Scales and utility classes
-
-Style Manager scales use variable categories. A typography or spacing scale is stored as a variable category with scale settings.
-
-A scale can generate variables such as:
-
-```text
-text-xs
-text-s
-text-m
-text-l
-space-xs
-space-s
-space-m
-space-l
-```
-
-Scale categories can also define utility class patterns. For example:
-
-```text
-Class name: text-*
-CSS property: font-size
-```
-
-For a variable named `text-m`, Bricks can generate:
-
-```css
-.text-m {
-  font-size: var(--text-m);
-}
-```
-
-If a class pattern does not contain `*`, Bricks appends the scale step name to the class pattern.
-
-Generated utility classes are part of the Style Manager CSS output and are also reflected in the builder preview.
-
-## CSS output
-
-Global variables with non-empty values are output as `:root` CSS custom properties.
-
-Bricks also generates a Style Manager CSS file when relevant Style Manager data changes. That file can contain:
-
-- Color palette variables.
-- Color utility classes.
-- Variables from scale categories.
-- Utility classes generated from scale categories.
-
-If the Style Manager CSS file exists, Bricks enqueues it on the frontend. If file generation fails because of filesystem permissions, cache configuration, or another environment issue, regenerate Bricks CSS files and check the site's file permissions.
-
-## Exporting and importing variables
-
-The Global Variables Manager facilitates the exporting and importing of CSS variables, making it easier to maintain a consistent styling framework across various Bricks projects.
-
-### Exporting variables
-
-You have two options for exporting variables:
-
-1. **Export all:** Click the export button at the top of the manager to export all variables and categories.
-
-![](https://academy.bricksbuilder.io/assets/bricks-css-variables-manager-export-all.png)
-
-2. **Export selected:** Select one or more variables and click the export-selected icon in the variables column.
-
-![](https://academy.bricksbuilder.io/assets/bricks-css-variables-manager-export-selected-1024x682.png)
-
-Selected exports include the categories used by the selected variables.
-
-### Importing variables
-
-Importing variables into Bricks is flexible and user-friendly, accommodating different scenarios:
-
-**Importing via JSON file:** In the import popup, drag and drop a JSON file containing exported variables.
-
-![](https://academy.bricksbuilder.io/assets/bricks-css-variables-manager-import-1024x682.png)
-
-![](https://academy.bricksbuilder.io/assets/bricks-css-variables-manager-import-file-1024x682.png)
-
-When importing a JSON file, Bricks adds variables that do not already exist by name. If the file includes categories, Bricks can also import categories that do not already exist by name.
-
-**Manual text entry:** You can manually enter variables into a textarea. This is useful for quickly importing variables from a child theme, custom plugin, stylesheet, or snippet.
-
-The expected format is a semicolon-separated list of CSS variable definitions:
-
-```css
---bricks-color-primary: #ffd64f;
---bricks-color-secondary: #fc5778;
---bricks-text-dark: #212121;
-```
-
-![](https://academy.bricksbuilder.io/assets/bricks-css-variables-manager-import-textarea-1024x682.png)
-
-Manual imports add variables that do not already exist by name.
-
-**Importing from remote templates:** When inserting a remote template, Bricks can offer to import variables from the remote source. Remote template variables are matched by name. New variables can be imported; existing local variables with the same name are not duplicated.
-
-Remote template variable categories are not imported with the template variables, so imported variables may appear uncategorized.
-
-## Best practices
-
-- Name variables by purpose: `space-m`, `radius-card`, `text-step-2`.
-- Use variables for repeated values, not every one-off value.
-- Keep values valid CSS for the controls where you plan to use them.
-- Prefer scale-generated variables for typography and spacing systems.
-- Avoid renaming variables casually on production sites with lots of custom CSS.
-- After large variable changes, regenerate Bricks CSS files and review important templates.
-
-## Troubleshooting
-
-### A variable does not appear in the picker
-
-Check whether the variable exists, has a valid name, and whether the current control supports variable insertion.
-
-### A variable exists but does not output CSS
-
-Check whether it has a non-empty value. Bricks skips variables with empty values.
-
-### A renamed variable still appears in custom CSS
-
-Bricks updates Bricks-managed `var(--old-name)` references. External stylesheets, child theme CSS, custom plugin CSS, or manually written code outside Bricks-managed data may still need manual updates.
-
-### Imported variables are uncategorized
-
-Remote template variable imports do not import variable categories. JSON imports can import categories when the file includes them and you confirm the category import.
-
-### Utility classes are missing
-
-Check that the variable category is a scale, that utility classes are configured for that scale, and that Bricks can generate and enqueue the Style Manager CSS file.
-
----
-
-# Understanding The Layout
-
-Source: https://academy.bricksbuilder.io/builder/styling/layout/
-
-*Understand the Bricks layout model so you know when to use sections, containers, blocks, divs, flexbox, and grid.*
-
-Bricks has four layout elements (since 1.5) to group & lay out your content in a fast, predictable, and streamlined approach:
-
-- **Section**: Use to structure/divide your page (think: one topic per section)
-- **Container**: Contain elements at 1100px width (centered)
-- **Block**: Flexbox with 100% width (e.g. column)
-- **Div**: Plain, unstyled div (grows according to inner elements)
-
-![](https://academy.bricksbuilder.io/assets/bricks-layout-elements-1024x626.png)
-
-<figcaption>
-
-Two-column layout inside a section
-
-</figcaption>
-
-If you are new to web design, we recommend using the Section, Container, and Block element. As they come with presets that work well out-of-the-box without having to configure commonly used settings for every layout element.
-
-![](https://academy.bricksbuilder.io/assets/Bricks-1.5-Layout-Elements.png)
-
-**The Section, Container, & Block element are just Divs with some presets**. By default they use the [flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox) layout model. So you can easily direct, align, and space out elements inside of them.
-
-**The Div element is the most basic element to group & lay out your content.** In Bricks the Div is plain (no predefined styles). So you can style it any way you want.
-
-All layout elements expose a **Display** control. You can keep the flex defaults, switch to `grid` to use CSS grid controls, or use `block`, `inline-block`, `inline`, or `none` when the layout calls for it.
-
-You can customize the defaults of any layout element in your [Theme Styles](https://academy.bricksbuilder.io/builder/styling/theme-styles/).
-
-Quick overview of the main properties of each layout element:
-
-| **Element ** | ** Tag** | **Display** | **Width** | **Where To Use** |
-| --- | --- | --- | --- | --- |
-| Section | `section` | flex | 100% | Root level |
-| Container | `div` | flex | 1100px | Inside Section |
-| Block | `div` | flex | 100% | Inside Section or Container |
-| Div | `div` | No Bricks display preset | - | Anywhere |
-
-## Section {#section}
-
-Use sections as the outermost building block. To separate & space out individuals parts of your page.
-
-A section takes up 100% of the available width. It adjusts in height according to its content. Sections are stacked on top of one another.
-
-When adding a new Section, a "Container" element is automatically added inside the section.
-
-You can remove this Container if you don't need to "contain" any other elements inside of it. As we did in the following hero section example:
-
-![](https://academy.bricksbuilder.io/assets/bricks-hero-section-1024x576.jpg)
-
-<figcaption>
-
-Example: Hero Section (height: 100vh)
-
-</figcaption>
-
-You can overwrite the section defaults under Style Manager → Theme Styles → Element - Section.
-
-To space out your sections, you can set the `margin` or `padding` to your liking. You can also change the default `display` and `height` values.
-
-*Learn more: [Section element](https://academy.bricksbuilder.io/builder/elements/layout/section/)*
-
-## Container {#container}
-
-A Container is automatically centered, and has a default width of 1100px. Which you can customize under Style Manager → Theme Styles → Element - Container.
-
-Place your Container inside a Section. And Block / Div elements inside your Container for a multi-column or multi-row layout.
-
-The following screenshot shows a Container (with 60px `padding`) inside a Section (with `background-image`):
-
-![](https://academy.bricksbuilder.io/assets/bricks-container-inside-section-1024x576.jpg)
-
-*Learn more: [Container element](https://academy.bricksbuilder.io/builder/elements/layout/container/)*
-
-## Block {#block}
-
-The Block element provides the same controls as the Container (layout, query loop, etc.). The difference is that the Block uses a default width of 100% instead of a predefined 1100px width like the Container.
-
-Use the Block element to create equal column/row layouts inside a Section or Container.
-
-*Learn more: *[Block element](https://academy.bricksbuilder.io/builder/elements/layout/block/)
-
-### How To Create Multi-Column Layouts {#columns}
-
-To create a three-column layout inside a Container:
-
-1. Select the Container
-2. Change "Direction" to "Horizontal"
-3. Click the little "+" icon on the canvas 3x to insert 3 Block elements.
-
-The result should look like this:
-
-![](https://academy.bricksbuilder.io/assets/bricks-blocks-inside-container-1024x459.jpg)
-
-<figcaption>
-
-Section > Container > 3 Blocks: 3-column-layout
-
-</figcaption>
-
-The fastest way to create a multi-column layout is to select the Container, click the little "column" layout icon on the canvas, and select the pre-defined column layout of your choice:
-
-![](https://academy.bricksbuilder.io/assets/bricks-insert-layout-tool-1024x293.jpg)
-
-<figcaption>
-
-"Insert Layout" Tool
-
-</figcaption>
-
-[By default](#default), the inserted layout consists of "Block" elements. The "Column" label is just that: a label. It's still a Block element. Visible by the icon in the structure panel. You can also see the element name when you hover over the element icon in the structure panel:
-
-![](https://academy.bricksbuilder.io/assets/bricks-3-column-block-layout-1024x256.jpg)
-
-## Div {#div}
-
-The Div element is the most generic element to group and lay out your content.
-
-In contrast to the other layout elements, **the Div element in Bricks is completely unstyled**. Giving you 100% freedom regarding its markup & styling.
-
-When used inside one of the other layout elements the Div grows and shrinks according to the elements it contains.
-
-*Learn more: *[Div element](https://academy.bricksbuilder.io/builder/elements/layout/div/)
-
-## How to Insert, Wrap, and Convert layout elements {#actions}
-
-You can right-click on any layout element to reveal the context menu. From there you can "Insert", "Wrap", and "Convert" layout elements with one click.
-
-The screenshot below shows how to convert a root Container to a Section by right-clicking on the "Hero" Container in the structure panel, and then selecting the "Section" icon under "Convert":
-
-![](https://academy.bricksbuilder.io/assets/bricks-1.5-context-menu-convert-to-section-1024x550.jpg)
-
-<figcaption>
-
-Context menu: Convert "Container" into a "Section"
-
-</figcaption>
-
-When editing a layout element, you can insert any other layout element by hovering over the "+" icon on the canvas, which provides you with "Container", "Block", "Div" options.
-
-Hold down "CMD / CRTL" to insert an element after the active element.
-
-![](https://academy.bricksbuilder.io/assets/bricks-1.5-element-action-insert.png)
-
-### Element actions: Setting the default element {#default}
-
-Under "Bricks → Settings → Builder → Element actions" you can change the layout element that's being used by default for "Insert", "Wrap", and the "Layout" tool:
-
-![](https://academy.bricksbuilder.io/assets/bricks-1.5-setting-element-actions-1024x363.png)
-
-### Optional: Converting your Container-based layout
-
-To convert your existing "Container"-based site to use the new "Section" & "Block" elements, you can run the Converter with the **'Convert "Container" to new "Section" & "Block" elements'** option enabled:
-
-![](https://academy.bricksbuilder.io/assets/bricks-1.5-convert-container-to-section-block-1024x192.png)
-
-<figcaption>
-
-Located under: Bricks > Settings > General > Converter
-
-</figcaption>
-
-## Masonry layout {#masonry}
-
-Starting at Bricks 1.11.1 you can enable the "Masonry layout" for all layout elements under `Style > Layout > Masonry`. Learn more at [/builder/styling/masonry-layout/](https://academy.bricksbuilder.io/builder/styling/masonry-layout/)
-
----
-
-# Masonry Layout
-
-Source: https://academy.bricksbuilder.io/builder/styling/masonry-layout/
-
-*Create masonry-style layouts in Bricks and understand the current options and constraints for staggered grids.*
-
-Starting with version 1.11.1, you can easily apply a masonry layout to any layout element in Bricks.
-
-The new Masonry Layout controls are available under `Style > Layout > Masonry` for all layout elements (Section, Container, Block, Div).
-
-![](https://academy.bricksbuilder.io/assets/masonry-layout-controls.png)
-
-Bricks utilizes the [IsotopeJS](https://isotope.metafizzy.co/) library to create the masonry layout, which it also uses for the **Image Gallery** and **Posts** elements, for optimal performance.
-
-## How It Works {#how-it-works}
-
-When the Masonry layout is enabled, all direct child elements become masonry items.
-
-You can customize the number of columns and adjust spacing for different breakpoints to achieve a responsive layout.
-
-> **Note**
->
-> **Tip:** Ensure that no conflicting CSS styles are applied to the masonry-enabled element, as they may interfere with the masonry layout. It’s best to clear all custom styles for the element to allow the masonry effect to work smoothly.
-
-You can also use the masonry layout to wrap items in a **query loop** for a dynamic grid effect. This is particularly useful for layouts with posts, products, or any repeated content, enabling you to display query items in a visually engaging, staggered grid format.
-
-![](https://academy.bricksbuilder.io/assets/masonry-layout-example-query-loop.png)
-
-## Use Bricks Interaction Animation
-
-If you want to apply custom animations using the **Interactions** panel (e.g., setting an **Entry Viewport Trigger** and **Start Animation** for masonry children), you can disable the default masonry animations by setting **Transition: Duration** to `0`.
-
-This prevents any overlap between the default masonry transitions and your custom animations, ensuring a smoother effect.
-
-![](https://academy.bricksbuilder.io/assets/masonry-layout-disable-animation.png)
-
-## Troubleshooting {#troubleshoot}
-
-### Custom CSS Conflicts
-
-If the masonry columns don’t align with your settings, inspect the CSS styles applied to the child elements. Styles such as **width**, **flex-basis** or **align-self** within flex layouts can override the masonry column settings. Adjust or remove these styles to ensure the masonry layout functions as expected.
-
-### Dynamic Content Updates via Custom JavaScript/AJAX
-
-If you have custom code/plugins that adds masonry child nodes via JavaScript or AJAX, it’s likely that the masonry layout may not update correctly. To fix this, you can manually refresh the masonry instance by running the following JavaScript.
-
-```php
-bricksUtils.updateIsotopeInstance('BRICKS_ID');
-
-```
-
-Replace `'BRICKS_ID'` with the specific ID of your masonry element. This function will reinitialize the masonry layout to accommodate the new nodes, ensuring the layout remains intact.
-
-![](https://academy.bricksbuilder.io/assets/masonry-copy-bricks-id-2.png)

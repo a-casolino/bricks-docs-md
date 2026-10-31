@@ -76,34 +76,6 @@ In this simple example, the search form action URL is changed to a custom page. 
 
 ---
 
-# Filter: bricks/element/set_root_attributes
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-set_root_attributes/
-
-*Bricks 1.4 with its improved & slimmer DOM structure now requires to add the element ID, root classes, and other element root HTML attributes directly inside.*
-
-Bricks 1.4 with its improved & slimmer DOM structure now requires to add the element ID, root classes, and other element root HTML attributes directly inside the `render()` function. You can programmatically manipulate the returns element root attributes like so:
-
-```php
-add_filter( 'bricks/element/set_root_attributes', function( $attributes, $element ) {
-    // Add CSS class 'heading-bg' to every heading element
-    if ( $element->name === 'heading' ) {
-        $attributes['class'][] = 'heading-bg';
-    }
-
-    return $attributes;
-}, 10, 2 );
-```
-
-The filter callback receives 2 arguments:
-
-- `$attributes` – an associative array of the element root attributes, grouped by the attribute name (e.g. "class", "data-animation", ...)
-- `$element` - the Bricks element [object](https://academy.bricksbuilder.io/developer/elements/create-your-own-elements/)
-
-**NOTE**: This filter doesn't work in builder & already possible with *[bricks/element/render_attributes](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-render_attributes/)*
-
----
-
 # Filter: bricks/setup/control_options
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/
@@ -136,6 +108,34 @@ add_filter( 'bricks/setup/control_options', function( $control_options ) {
 ```
 
 Note: the above example adds a new template type. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
+
+---
+
+# Filter: bricks/element/set_root_attributes
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-set_root_attributes/
+
+*Bricks 1.4 with its improved & slimmer DOM structure now requires to add the element ID, root classes, and other element root HTML attributes directly inside.*
+
+Bricks 1.4 with its improved & slimmer DOM structure now requires to add the element ID, root classes, and other element root HTML attributes directly inside the `render()` function. You can programmatically manipulate the returns element root attributes like so:
+
+```php
+add_filter( 'bricks/element/set_root_attributes', function( $attributes, $element ) {
+    // Add CSS class 'heading-bg' to every heading element
+    if ( $element->name === 'heading' ) {
+        $attributes['class'][] = 'heading-bg';
+    }
+
+    return $attributes;
+}, 10, 2 );
+```
+
+The filter callback receives 2 arguments:
+
+- `$attributes` – an associative array of the element root attributes, grouped by the attribute name (e.g. "class", "data-animation", ...)
+- `$element` - the Bricks element [object](https://academy.bricksbuilder.io/developer/elements/create-your-own-elements/)
+
+**NOTE**: This filter doesn't work in builder & already possible with *[bricks/element/render_attributes](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-render_attributes/)*
 
 ---
 
@@ -294,6 +294,63 @@ The filter callback receives three arguments:
 
 ---
 
+# Filter: bricks/builder/color_palette
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-color-palette/
+
+*Place and customize the following filter to display a different default color palette for the color control.*
+
+Place and customize the following filter to display a different default color palette for the color control.
+
+```php
+add_filter( 'bricks/builder/color_palette', function( $colors ) {
+  // Option #1: Add an individual color
+    $colors[] = [
+      'hex' => '#3ce77b',
+      'rgb' => 'rgba(60, 231, 123, 0.56)',
+    ];
+
+  // Option #2: Override entire color palette
+  $colors = [
+    ['hex' => '#3ce77b'],
+    ['hex' => '#f1faee'],
+    ['hex' => '#a8dadc'],
+    ['hex' => '#457b9d'],
+    ['hex' => '#1d3557'],
+  ];
+
+  return $colors;
+} );
+```
+
+---
+
+# Filter: bricks/builder/save_messages
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-save-messages/
+
+*Place and customize the following filter to display different save message every time you manually save your progress when editing with Bricks.*
+
+Place and customize the following filter to display different save message every time you manually save your progress when editing with Bricks.
+
+```php
+add_filter( 'bricks/builder/save_messages', function( $messages ) {
+  // Option #1: Append individual save message to existing message collection
+    $messages[] = 'Yasss';
+
+  // Option #2: Replace all existing builder save messages
+    $messages = [
+      'Done',
+      'Cool',
+      'High five!',
+    ];
+
+  return $messages;
+} );
+```
+
+---
+
 # Filter: builder/settings/{type}/controls_data
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-builder-settings-type-controls_data/
@@ -347,63 +404,6 @@ add_filter( 'builder/settings/template/controls_data', function( $data ) {
   ];
 
   return $data;
-} );
-```
-
----
-
-# Filter: bricks/builder/color_palette
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-color-palette/
-
-*Place and customize the following filter to display a different default color palette for the color control.*
-
-Place and customize the following filter to display a different default color palette for the color control.
-
-```php
-add_filter( 'bricks/builder/color_palette', function( $colors ) {
-  // Option #1: Add an individual color
-    $colors[] = [
-      'hex' => '#3ce77b',
-      'rgb' => 'rgba(60, 231, 123, 0.56)',
-    ];
-
-  // Option #2: Override entire color palette
-  $colors = [
-    ['hex' => '#3ce77b'],
-    ['hex' => '#f1faee'],
-    ['hex' => '#a8dadc'],
-    ['hex' => '#457b9d'],
-    ['hex' => '#1d3557'],
-  ];
-
-  return $colors;
-} );
-```
-
----
-
-# Filter: bricks/builder/save_messages
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-save-messages/
-
-*Place and customize the following filter to display different save message every time you manually save your progress when editing with Bricks.*
-
-Place and customize the following filter to display different save message every time you manually save your progress when editing with Bricks.
-
-```php
-add_filter( 'bricks/builder/save_messages', function( $messages ) {
-  // Option #1: Append individual save message to existing message collection
-    $messages[] = 'Yasss';
-
-  // Option #2: Replace all existing builder save messages
-    $messages = [
-      'Done',
-      'Cool',
-      'High five!',
-    ];
-
-  return $messages;
 } );
 ```
 

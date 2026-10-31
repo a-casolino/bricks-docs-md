@@ -168,378 +168,6 @@ These are the elements that Bricks comes with:
 
 ---
 
-# Filter active filters
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-active-filters/
-
-*Displays the currently active or selected filters, allowing users to easily remove a filter with a single click for faster navigation. This element shows all.*
-
-Displays the currently active or selected filters, allowing users to easily remove a filter with a single click for faster navigation. This element shows all active filters from the connected target query and provides quick access to clear individual filters.
-
-**Tip:** Use this element alongside other filter elements to give users clear visibility of their current filter selections and easy ways to modify their search criteria.
-
-## Settings
-
-- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
-- **Exclude filter IDs** (text) - Enter Bricks IDs, separated by comma, of filter elements to exclude from the active filters list.
-- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
-- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
-- **Button** - Settings for the remove filter buttons.
-  - **Padding** (spacing) - Padding for filter remove buttons.
-  - **Gap** (number) - Gap between filter buttons.
-  - **Size** (select) - Button size preset. Options: Default, Small, Medium, Large, Extra Large.
-  - **Style** (select) - Button style. Options: None, Primary, Secondary, Success, Info, Warning, Danger, Dark, Light.
-  - **Circle** (checkbox) - Make buttons circular.
-  - **Outline** (checkbox) - Use outline button style.
-  - **Background color** (color) - Custom background color for buttons.
-  - **Border** (border) - Border styling for buttons.
-  - **Typography** (typography) - Typography settings for button text.
-- **Icon** - Settings for filter remove icons.
-  - **Icon** (icon) - Icon to display on filter buttons.
-  - **Color** (color) - Icon color.
-  - **Size** (number) - Icon size.
-  - **Gap** (number) - Gap between icon and text.
-  - **Position** (select) - Icon position. Options: Left, Right. Default: Right.
-- **Active filter** - Settings for active filter display.
-  - **Prefix** (text) - Text to display before filter value.
-  - **Suffix** (text) - Text to display after filter value.
-  - **Title** (text) - Custom title attribute for filter links.
-
-> **Developer reference**
->
-> See the [Filter - Active Filters Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-active-filters/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Filter checkbox
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-checkbox/
-
-*Creates a checkbox filter interface for AJAX-powered content filtering. Users can select multiple options to narrow down query results. Supports taxonomy terms,.*
-
-Creates a checkbox filter interface for AJAX-powered content filtering. Users can select multiple options to narrow down query results. Supports taxonomy terms, WordPress fields, and custom fields as filter sources.
-
-**Tip:** Perfect for allowing users to filter by multiple categories, tags, or custom attributes simultaneously.
-
-## Settings
-
-- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
-- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
-- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
-- **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
-- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
-- **Field** (select) - Specific field to filter by (varies based on field type).
-- **Taxonomy** (select) - Taxonomy to use for filtering when source is taxonomy.
-- **Order by** (select) - How to order taxonomy terms. Options: Name, Slug, Term ID, Description, Parent, Count, Include, Menu Order, Meta Value, Meta Value Num.
-- **Order meta key** (text) - Meta key for ordering when using meta value ordering.
-- **Order** (select) - Sort direction. Options: ASC, DESC. Default: ASC.
-- **Terms: Include** (select) - Specific taxonomy terms to include in filter options.
-- **Terms: Exclude** (select) - Specific taxonomy terms to exclude from filter options.
-- **Top level terms only** (checkbox) - Display only top-level terms (parent = 0) when source is taxonomy.
-- **Hide count** (checkbox) - Hide the result count for each option.
-- **Hide empty** (checkbox) - Hide options with zero results.
-- **Hide count bracket** (checkbox) - Remove brackets around count values. Style count via .brx-option-count.
-- **Hierarchical** (checkbox) - Display taxonomy terms in hierarchical structure.
-- **Auto toggle child terms** (checkbox) - Automatically toggle child term checkboxes when parent is clicked.
-- **Indent: Prefix** (text) - Prefix text for hierarchical indentation. Default: —.
-- **Indent: Gap** (number) - Gap spacing for hierarchical indentation.
-- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
-- **Meta key** (text) - Custom field key for filtering.
-- **Compare** (select) - Comparison operator for filtering. Options: IN, NOT IN, BETWEEN, NOT BETWEEN.
-- **Mode** (select) - Display mode for checkboxes. Options: Default (traditional checkboxes), Button (modern button style).
-- **Active filter** - Settings for active filter display.
-  - **Prefix** (text) - Text to display before filter value.
-  - **Suffix** (text) - Text to display after filter value.
-  - **Title** (text) - Custom title attribute for filter links.
-
-> **Developer reference**
->
-> See the [Filter - Checkbox Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-checkbox/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Filter datepicker
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-datepicker/
-
-*Provides a date picker interface for filtering content by date ranges. Supports single dates or date ranges with time selection. Can filter by post dates, user.*
-
-Provides a date picker interface for filtering content by date ranges. Supports single dates or date ranges with time selection. Can filter by post dates, user registration dates, or custom date fields.
-
-**Tip:** Ideal for filtering content by publication date, event dates, or any time-based data. Enable "Date range" for before/after date filtering, and "Enable time" for precise time-based queries.
-
-## Settings
-
-- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
-- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
-- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
-- **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
-- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
-- **Field** (select) - Specific date field to filter by (post date, modified date, user registered date).
-- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
-- **Meta key** (text) - Custom field key containing date values.
-- **Enable time** (checkbox) - Add time selection capability to the date picker.
-- **Date range** (checkbox) - Enable selection of date ranges instead of single dates.
-- **Date format** (text) - Date format matching the database storage format. Default: Y-m-d H:i:s. ACF uses Ymd format.
-- **Min/max date** (checkbox) - Use minimum and maximum dates from the index table for date picker limits.
-- **Compare** (select) - Comparison operator for date filtering. Options: == (is), < (before), > (after).
-- **Input** - Settings for the date input field.
-  - **Placeholder** (text) - Placeholder text for the input field. Default: Date.
-  - **Placeholder typography** (typography) - Typography for placeholder text.
-  - **Language** (text) - Language code for date picker localization (de, es, fr, etc.).
-- **Active filter** - Settings for active filter display.
-  - **Prefix** (text) - Text to display before filter value.
-  - **Suffix** (text) - Text to display after filter value.
-  - **Title** (text) - Custom title attribute for filter links.
-
-> **Developer reference**
->
-> See the [Filter - Datepicker Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-datepicker/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Filter radio
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-radio/
-
-*Creates a radio button filter interface for single-selection filtering. Users can select one option at a time to filter query results. Supports taxonomy terms,.*
-
-Creates a radio button filter interface for single-selection filtering. Users can select one option at a time to filter query results. Supports taxonomy terms, WordPress fields, custom fields, and can also function as a sorting or results-per-page control.
-
-**Tip:** Use radio buttons when users should select only one filter option. Combine with the "Action" setting to create sorting dropdowns or results-per-page selectors.
-
-## Settings
-
-- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
-- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
-- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
-- **Action** (select) - Filter behavior. Options: Filter (traditional filtering), Sort (sorting control), Results per page (pagination control).
-- **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
-- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
-- **Field** (select) - Specific field to filter/sort by (varies based on field type and action).
-- **Taxonomy** (select) - Taxonomy to use for filtering when source is taxonomy.
-- **Order by** (select) - How to order taxonomy terms. Options: Name, Slug, Term ID, Description, Parent, Count, Include, Menu Order, Meta Value, Meta Value Num.
-- **Order meta key** (text) - Meta key for ordering when using meta value ordering.
-- **Order** (select) - Sort direction. Options: ASC, DESC. Default: ASC.
-- **Terms: Include** (select) - Specific taxonomy terms to include in filter options.
-- **Terms: Exclude** (select) - Specific taxonomy terms to exclude from filter options.
-- **Top level terms only** (checkbox) - Display only top-level terms (parent = 0) when source is taxonomy.
-- **Hide count** (checkbox) - Hide the result count for each option.
-- **Hide empty** (checkbox) - Hide options with zero results.
-- **Hide count bracket** (checkbox) - Remove brackets around count values. Style count via .brx-option-count.
-- **Hierarchical** (checkbox) - Display taxonomy terms in hierarchical structure.
-- **Indent: Prefix** (text) - Prefix text for hierarchical indentation. Default: —.
-- **Indent: Gap** (number) - Gap spacing for hierarchical indentation.
-- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
-- **Meta key** (text) - Custom field key for filtering.
-- **Compare** (select) - Comparison operator for filtering. Default: Equal.
-- **Mode** (select) - Display mode for radio buttons. Options: Default (traditional radio buttons), Button (modern button style).
-- **Sort options** (repeater) - Configure sorting options when Action is set to Sort.
-  - **Option source** (text) - Sort field and direction (e.g., post_date_DESC).
-  - **Option label** (text) - Display label for the sort option.
-  - **Option order** (select) - Sort direction override.
-  - **Option meta key** (text) - Meta key for meta-based sorting.
-- **Results per page options** (text) - Comma-separated list of results per page options when Action is set to Results per page. Default: 10, 20, 50, 100.
-- **Active filter** - Settings for active filter display.
-  - **Prefix** (text) - Text to display before filter value.
-  - **Suffix** (text) - Text to display after filter value.
-  - **Title** (text) - Custom title attribute for filter links.
-
-> **Developer reference**
->
-> See the [Filter - Radio Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-radio/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Filter range
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-range/
-
-*Creates a range slider or input interface for filtering content by numeric ranges. Perfect for price filtering, numeric custom fields, or any data that has.*
-
-Creates a range slider or input interface for filtering content by numeric ranges. Perfect for price filtering, numeric custom fields, or any data that has minimum and maximum values. Supports both slider and input field display modes.
-
-**Tip:** Essential for e-commerce price filtering or any scenario where users need to filter by numeric ranges.
-
-## Settings
-
-- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
-- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
-- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
-- **Source** (select) - Data source for filter options. Currently limited to Custom field.
-- **Field type** (select) - Type of field when using custom field source. Options: Post, Term, User.
-- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
-- **Meta key** (text) - Custom field key containing numeric values for range filtering.
-- **Disable auto min/max value** (checkbox) - Manually set min/max values instead of auto-detecting from query results.
-- **Mode** (select) - Display mode for the range filter. Options: Slider (visual slider), Input (text inputs).
-- **Step** (number) - Increment step for range values. Default: 1.
-- **Decimal places** (number) - Number of decimal places to display. Default: 0.
-- **Thousand separator** (checkbox) - Add thousand separators to displayed values.
-- **Separator** (text) - Thousand separator character. Default: ,.
-- **Label** - Settings for range value labels.
-  - **Min** (text) - Label for minimum value.
-  - **Max** (text) - Label for maximum value.
-  - **Direction** (direction) - Layout direction for min/max labels (row/column).
-  - **Gap** (number) - Spacing between min/max labels.
-- **Input** - Settings for input field mode.
-  - **Placeholder** (text) - Placeholder text for input fields.
-  - **Typography** (typography) - Typography for input field text.
-- **Slider** - Settings for slider mode.
-  - **Track color** (color) - Color of the slider track.
-  - **Range color** (color) - Color of the selected range on the slider.
-  - **Handle color** (color) - Color of the slider handles.
-  - **Handle size** (number) - Size of the slider handles.
-  - **Track height** (number) - Height of the slider track.
-- **Active filter** - Settings for active filter display.
-  - **Prefix** (text) - Text to display before filter value.
-  - **Suffix** (text) - Text to display after filter value.
-  - **Title** (text) - Custom title attribute for filter links.
-
-> **Developer reference**
->
-> See the [Filter - Range Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-range/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Filter search
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-search/
-
-*Provides a live AJAX search input for real-time content filtering. Searches through post content, titles, and custom fields without page refresh. Features.*
-
-Provides a live AJAX search input for real-time content filtering. Searches through post content, titles, and custom fields without page refresh. Features debouncing, minimum character requirements, and optional clear functionality.
-
-**Tip:** Perfect for creating instant search experiences. Use the debounce setting to control API call frequency, and minimum characters to improve performance.
-
-## Settings
-
-- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
-- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
-- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (button click or Enter). Default: Input.
-- **Debounce (ms)** (number) - Delay before triggering search after typing stops. Default: 500ms.
-- **Min. characters** (number) - Minimum characters required to trigger search. Default: 3.
-- **Enter action** (select, Bricks 2.4) - Choose **AJAX search** (default) or **Redirect to URL**. Requires a target query.
-- **Trigger Filter Submit interactions** (checkbox, Bricks 2.4) - Run the target query's Filter Submit start/end interactions when Enter triggers an AJAX search. Disabled by default and available when Enter action is AJAX search.
-- **Redirect to** (text, Bricks 2.4) - Destination URL when Enter action is Redirect to URL. Active filters for the same query are appended as URL parameters.
-- **Open in new tab** (checkbox, Bricks 2.4) - Open the Enter-key redirect in a new tab. Available when a redirect URL is set.
-- **Input** - Settings for the search input field.
-  - **Placeholder** (text) - Placeholder text for the search input. Default: Search.
-  - **Placeholder typography** (typography) - Typography for placeholder text.
-  - **Label** (text) - Optional label text above the input field.
-  - **Label typography** (typography) - Typography for the label text.
-- **Icon (Clear)** - Settings for the clear/reset icon.
-  - **Icon** (icon) - Icon to display for clearing the search.
-  - **Icon color** (color) - Color of the clear icon.
-  - **Icon size** (number) - Size of the clear icon.
-- **Active filter** - Settings for active filter display.
-  - **Prefix** (text) - Text to display before filter value.
-  - **Suffix** (text) - Text to display after filter value.
-  - **Title** (text) - Custom title attribute for filter links.
-
-## Search with Enter
-
-Pressing Enter runs the configured action immediately, including when **Apply on** is set to **Submit**. Enter bypasses the typing debounce and minimum character threshold.
-
-For a search field that takes visitors to another results page, select a **Target query**, set **Enter action** to **Redirect to URL**, and enter the destination under **Redirect to**. Configure the destination's filters to recognize the same URL parameter names. Leave **Open in new tab** off to navigate in the current tab. An empty redirect URL falls back to an AJAX search.
-
-For an AJAX search that should close an Offcanvas after submission, enable **Trigger Filter Submit interactions** and use the [Filter Submit interaction triggers](https://academy.bricksbuilder.io/builder/features/interactions/#filter-submit-triggers). Ordinary typing does not trigger these submit interactions. The redirect action does not run them.
-
-> **Developer reference**
->
-> See the [Filter - Search Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-search/) for the schema snapshot and Bricks 2.4 settings reference.
-
----
-
-# Filter select
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-select/
-
-*Creates a dropdown select filter interface for single or multiple selection filtering. Supports taxonomy terms, WordPress fields, and custom fields. Can also.*
-
-Creates a dropdown select filter interface for single or multiple selection filtering. Supports taxonomy terms, WordPress fields, and custom fields. Can also function as a sorting or results-per-page control.
-
-## Settings
-
-- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
-- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
-- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
-- **Action** (select) - Filter behavior. Options: Filter (traditional filtering), Sort (sorting control), Results per page (pagination control).
-- **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
-- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
-- **Field** (select) - Specific field to filter/sort by (varies based on field type and action).
-- **Taxonomy** (select) - Taxonomy to use for filtering when source is taxonomy.
-- **Order by** (select) - How to order taxonomy terms. Options: Name, Slug, Term ID, Description, Parent, Count, Include, Menu Order, Meta Value, Meta Value Num.
-- **Order meta key** (text) - Meta key for ordering when using meta value ordering.
-- **Order** (select) - Sort direction. Options: ASC, DESC. Default: ASC.
-- **Terms: Include** (select) - Specific taxonomy terms to include in filter options.
-- **Terms: Exclude** (select) - Specific taxonomy terms to exclude from filter options.
-- **Top level terms only** (checkbox) - Display only top-level terms (parent = 0) when source is taxonomy.
-- **Hide count** (checkbox) - Hide the result count for each option.
-- **Hide empty** (checkbox) - Hide options with zero results.
-- **Hierarchical** (checkbox) - Display taxonomy terms in hierarchical structure.
-- **Indent: Prefix** (text) - Prefix text for hierarchical indentation. Default: —.
-- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
-- **Meta key** (text) - Custom field key for filtering.
-- **Compare** (select) - Comparison operator for filtering. Default: Equal.
-- **Input** - Settings for the select dropdown.
-  - **Placeholder** (text) - Placeholder text for the select dropdown.
-- **Sort options** (repeater) - Configure sorting options when Action is set to Sort.
-  - **Option source** (text) - Sort field and direction (e.g., post_date_DESC).
-  - **Option label** (text) - Display label for the sort option.
-  - **Option order** (select) - Sort direction override.
-  - **Option meta key** (text) - Meta key for meta-based sorting.
-- **Results per page options** (text) - Comma-separated list of results per page options when Action is set to Results per page. Default: 10, 20, 50, 100.
-- **Active filter** - Settings for active filter display.
-  - **Prefix** (text) - Text to display before filter value.
-  - **Suffix** (text) - Text to display after filter value.
-  - **Title** (text) - Custom title attribute for filter links.
-
-> **Developer reference**
->
-> See the [Filter - Select Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-select/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Filter submit
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-submit/
-
-*Creates submit/reset buttons for filter forms. Provides control over when filters are applied - either as a submit button to apply all filters at once, or as a.*
-
-Creates submit/reset buttons for filter forms. Provides control over when filters are applied - either as a submit button to apply all filters at once, or as a reset button to clear all active filters. Supports redirection to specific URLs after submission.
-
-## Settings
-
-- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
-- **Action** (select) - Button behavior. Options: Submit (apply filters), Reset (clear filters).
-- **Redirect to** (text) - URL to redirect to after applying filters (Submit action only).
-- **Open in new tab** (checkbox) - Open redirect URL in new tab (Submit action only).
-- **Exclude filter IDs** (text, Bricks 2.4) - Comma-separated Bricks element IDs of filters to preserve when resetting (Reset action only).
-- **Hide if no active filter** (checkbox) - Hide the reset button when no filters it can reset are active. Excluded filters do not keep the button visible. Adds .brx-no-active-filter class for styling (Reset action only).
-- **Button** - Settings for the submit/reset button.
-  - **Text** (text) - Button text. Default: Filter.
-  - **Size** (select) - Button size preset. Options: Default, Small, Medium, Large, Extra Large.
-  - **Style** (select) - Button style. Options: None, Primary, Secondary, Success, Info, Warning, Danger, Dark, Light. Default: Primary.
-  - **Circle** (checkbox) - Make button circular.
-  - **Outline** (checkbox) - Use outline button style.
-  - **Icon** (icon) - Icon to display on the button.
-  - **Icon color** (color) - Color of the button icon.
-  - **Icon size** (number) - Size of the button icon.
-
-## Preserve a search while resetting refinements
-
-Set **Action** to **Reset**, then enter the Search filter's Bricks element ID in **Exclude filter IDs**. For example, enter `q1w2e3,mn9456` to preserve two filters. Use the filter elements' IDs, not the target query ID or URL parameter names.
-
-Reset clears the other filters for the target query while keeping the excluded values, such as the visitor's search term. With **Hide if no active filter** enabled, the reset button hides once only excluded filters remain active.
-
-This setting is separate from the exclusion list on the Active Filters element, which controls which filters appear in that element.
-
-> **Developer reference**
->
-> See the [Filter - Submit / Reset Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-submit/) for the schema snapshot and Bricks 2.4 settings reference.
-
----
-
 # Button
 
 Source: https://academy.bricksbuilder.io/builder/elements/basic/button/
@@ -623,6 +251,40 @@ The Heading element displays text in heading tags (h1-h6) with optional separato
 > **Developer reference**
 >
 > See the [Heading Schema](https://academy.bricksbuilder.io/developer/schema/elements/heading/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Icon
+
+Source: https://academy.bricksbuilder.io/builder/elements/basic/icon/
+
+*The Icon element displays an icon from various icon libraries or custom SVG icons.*
+
+The Icon element displays an icon from various icon libraries or custom SVG icons.
+
+## Settings
+
+- **Icon** (icon) - Select an icon from the available icon libraries (Themify, Font Awesome, Ionicons, etc.). Default: `ti-star` from Themify library.
+
+- **Color** (color) - The icon color. Applies to both icon font and SVG fill.
+
+- **Size** (number with units) - The icon size using font-size property.
+
+- **Link** (link) - Make the icon clickable by adding a link.
+
+### Accordion integration
+
+The following settings are only available when the icon is placed inside an Accordion (Nestable) element title wrapper:
+
+- **Is Accordion (Nestable) Icon** (checkbox) - Enable accordion-specific behavior for the icon.
+
+- **Show** (select) - Control icon visibility based on accordion state. Options: `collapsed`, `expanded`. Default: Always visible. When set to a specific state, duplicate the icon element and set different states to show different icons.
+
+- **Transform (Expanded)** (transform) - CSS transform properties to apply when the accordion item is expanded. By default, icons rotate 90° when expanded.
+
+> **Developer reference**
+>
+> See the [Icon Schema](https://academy.bricksbuilder.io/developer/schema/elements/icon/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -793,40 +455,6 @@ Apply a mask to the image for creative shapes and effects:
 > **Developer reference**
 >
 > See the [Image Schema](https://academy.bricksbuilder.io/developer/schema/elements/image/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Icon
-
-Source: https://academy.bricksbuilder.io/builder/elements/basic/icon/
-
-*The Icon element displays an icon from various icon libraries or custom SVG icons.*
-
-The Icon element displays an icon from various icon libraries or custom SVG icons.
-
-## Settings
-
-- **Icon** (icon) - Select an icon from the available icon libraries (Themify, Font Awesome, Ionicons, etc.). Default: `ti-star` from Themify library.
-
-- **Color** (color) - The icon color. Applies to both icon font and SVG fill.
-
-- **Size** (number with units) - The icon size using font-size property.
-
-- **Link** (link) - Make the icon clickable by adding a link.
-
-### Accordion integration
-
-The following settings are only available when the icon is placed inside an Accordion (Nestable) element title wrapper:
-
-- **Is Accordion (Nestable) Icon** (checkbox) - Enable accordion-specific behavior for the icon.
-
-- **Show** (select) - Control icon visibility based on accordion state. Options: `collapsed`, `expanded`. Default: Always visible. When set to a specific state, duplicate the icon element and set different states to show different icons.
-
-- **Transform (Expanded)** (transform) - CSS transform properties to apply when the accordion item is expanded. By default, icons rotate 90° when expanded.
-
-> **Developer reference**
->
-> See the [Icon Schema](https://academy.bricksbuilder.io/developer/schema/elements/icon/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -1073,6 +701,378 @@ Enabling the "YouTube Preview Thumbnails" setting of the Perfmatters plugin migh
 > **Developer reference**
 >
 > See the [Video Schema](https://academy.bricksbuilder.io/developer/schema/elements/video/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Filter active filters
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-active-filters/
+
+*Displays the currently active or selected filters, allowing users to easily remove a filter with a single click for faster navigation. This element shows all.*
+
+Displays the currently active or selected filters, allowing users to easily remove a filter with a single click for faster navigation. This element shows all active filters from the connected target query and provides quick access to clear individual filters.
+
+**Tip:** Use this element alongside other filter elements to give users clear visibility of their current filter selections and easy ways to modify their search criteria.
+
+## Settings
+
+- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
+- **Exclude filter IDs** (text) - Enter Bricks IDs, separated by comma, of filter elements to exclude from the active filters list.
+- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
+- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
+- **Button** - Settings for the remove filter buttons.
+  - **Padding** (spacing) - Padding for filter remove buttons.
+  - **Gap** (number) - Gap between filter buttons.
+  - **Size** (select) - Button size preset. Options: Default, Small, Medium, Large, Extra Large.
+  - **Style** (select) - Button style. Options: None, Primary, Secondary, Success, Info, Warning, Danger, Dark, Light.
+  - **Circle** (checkbox) - Make buttons circular.
+  - **Outline** (checkbox) - Use outline button style.
+  - **Background color** (color) - Custom background color for buttons.
+  - **Border** (border) - Border styling for buttons.
+  - **Typography** (typography) - Typography settings for button text.
+- **Icon** - Settings for filter remove icons.
+  - **Icon** (icon) - Icon to display on filter buttons.
+  - **Color** (color) - Icon color.
+  - **Size** (number) - Icon size.
+  - **Gap** (number) - Gap between icon and text.
+  - **Position** (select) - Icon position. Options: Left, Right. Default: Right.
+- **Active filter** - Settings for active filter display.
+  - **Prefix** (text) - Text to display before filter value.
+  - **Suffix** (text) - Text to display after filter value.
+  - **Title** (text) - Custom title attribute for filter links.
+
+> **Developer reference**
+>
+> See the [Filter - Active Filters Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-active-filters/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Filter datepicker
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-datepicker/
+
+*Provides a date picker interface for filtering content by date ranges. Supports single dates or date ranges with time selection. Can filter by post dates, user.*
+
+Provides a date picker interface for filtering content by date ranges. Supports single dates or date ranges with time selection. Can filter by post dates, user registration dates, or custom date fields.
+
+**Tip:** Ideal for filtering content by publication date, event dates, or any time-based data. Enable "Date range" for before/after date filtering, and "Enable time" for precise time-based queries.
+
+## Settings
+
+- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
+- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
+- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
+- **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
+- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
+- **Field** (select) - Specific date field to filter by (post date, modified date, user registered date).
+- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
+- **Meta key** (text) - Custom field key containing date values.
+- **Enable time** (checkbox) - Add time selection capability to the date picker.
+- **Date range** (checkbox) - Enable selection of date ranges instead of single dates.
+- **Date format** (text) - Date format matching the database storage format. Default: Y-m-d H:i:s. ACF uses Ymd format.
+- **Min/max date** (checkbox) - Use minimum and maximum dates from the index table for date picker limits.
+- **Compare** (select) - Comparison operator for date filtering. Options: == (is), < (before), > (after).
+- **Input** - Settings for the date input field.
+  - **Placeholder** (text) - Placeholder text for the input field. Default: Date.
+  - **Placeholder typography** (typography) - Typography for placeholder text.
+  - **Language** (text) - Language code for date picker localization (de, es, fr, etc.).
+- **Active filter** - Settings for active filter display.
+  - **Prefix** (text) - Text to display before filter value.
+  - **Suffix** (text) - Text to display after filter value.
+  - **Title** (text) - Custom title attribute for filter links.
+
+> **Developer reference**
+>
+> See the [Filter - Datepicker Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-datepicker/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Filter range
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-range/
+
+*Creates a range slider or input interface for filtering content by numeric ranges. Perfect for price filtering, numeric custom fields, or any data that has.*
+
+Creates a range slider or input interface for filtering content by numeric ranges. Perfect for price filtering, numeric custom fields, or any data that has minimum and maximum values. Supports both slider and input field display modes.
+
+**Tip:** Essential for e-commerce price filtering or any scenario where users need to filter by numeric ranges.
+
+## Settings
+
+- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
+- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
+- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
+- **Source** (select) - Data source for filter options. Currently limited to Custom field.
+- **Field type** (select) - Type of field when using custom field source. Options: Post, Term, User.
+- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
+- **Meta key** (text) - Custom field key containing numeric values for range filtering.
+- **Disable auto min/max value** (checkbox) - Manually set min/max values instead of auto-detecting from query results.
+- **Mode** (select) - Display mode for the range filter. Options: Slider (visual slider), Input (text inputs).
+- **Step** (number) - Increment step for range values. Default: 1.
+- **Decimal places** (number) - Number of decimal places to display. Default: 0.
+- **Thousand separator** (checkbox) - Add thousand separators to displayed values.
+- **Separator** (text) - Thousand separator character. Default: ,.
+- **Label** - Settings for range value labels.
+  - **Min** (text) - Label for minimum value.
+  - **Max** (text) - Label for maximum value.
+  - **Direction** (direction) - Layout direction for min/max labels (row/column).
+  - **Gap** (number) - Spacing between min/max labels.
+- **Input** - Settings for input field mode.
+  - **Placeholder** (text) - Placeholder text for input fields.
+  - **Typography** (typography) - Typography for input field text.
+- **Slider** - Settings for slider mode.
+  - **Track color** (color) - Color of the slider track.
+  - **Range color** (color) - Color of the selected range on the slider.
+  - **Handle color** (color) - Color of the slider handles.
+  - **Handle size** (number) - Size of the slider handles.
+  - **Track height** (number) - Height of the slider track.
+- **Active filter** - Settings for active filter display.
+  - **Prefix** (text) - Text to display before filter value.
+  - **Suffix** (text) - Text to display after filter value.
+  - **Title** (text) - Custom title attribute for filter links.
+
+> **Developer reference**
+>
+> See the [Filter - Range Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-range/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Filter checkbox
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-checkbox/
+
+*Creates a checkbox filter interface for AJAX-powered content filtering. Users can select multiple options to narrow down query results. Supports taxonomy terms,.*
+
+Creates a checkbox filter interface for AJAX-powered content filtering. Users can select multiple options to narrow down query results. Supports taxonomy terms, WordPress fields, and custom fields as filter sources.
+
+**Tip:** Perfect for allowing users to filter by multiple categories, tags, or custom attributes simultaneously.
+
+## Settings
+
+- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
+- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
+- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
+- **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
+- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
+- **Field** (select) - Specific field to filter by (varies based on field type).
+- **Taxonomy** (select) - Taxonomy to use for filtering when source is taxonomy.
+- **Order by** (select) - How to order taxonomy terms. Options: Name, Slug, Term ID, Description, Parent, Count, Include, Menu Order, Meta Value, Meta Value Num.
+- **Order meta key** (text) - Meta key for ordering when using meta value ordering.
+- **Order** (select) - Sort direction. Options: ASC, DESC. Default: ASC.
+- **Terms: Include** (select) - Specific taxonomy terms to include in filter options.
+- **Terms: Exclude** (select) - Specific taxonomy terms to exclude from filter options.
+- **Top level terms only** (checkbox) - Display only top-level terms (parent = 0) when source is taxonomy.
+- **Hide count** (checkbox) - Hide the result count for each option.
+- **Hide empty** (checkbox) - Hide options with zero results.
+- **Hide count bracket** (checkbox) - Remove brackets around count values. Style count via .brx-option-count.
+- **Hierarchical** (checkbox) - Display taxonomy terms in hierarchical structure.
+- **Auto toggle child terms** (checkbox) - Automatically toggle child term checkboxes when parent is clicked.
+- **Indent: Prefix** (text) - Prefix text for hierarchical indentation. Default: —.
+- **Indent: Gap** (number) - Gap spacing for hierarchical indentation.
+- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
+- **Meta key** (text) - Custom field key for filtering.
+- **Compare** (select) - Comparison operator for filtering. Options: IN, NOT IN, BETWEEN, NOT BETWEEN.
+- **Mode** (select) - Display mode for checkboxes. Options: Default (traditional checkboxes), Button (modern button style).
+- **Active filter** - Settings for active filter display.
+  - **Prefix** (text) - Text to display before filter value.
+  - **Suffix** (text) - Text to display after filter value.
+  - **Title** (text) - Custom title attribute for filter links.
+
+> **Developer reference**
+>
+> See the [Filter - Checkbox Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-checkbox/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Filter radio
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-radio/
+
+*Creates a radio button filter interface for single-selection filtering. Users can select one option at a time to filter query results. Supports taxonomy terms,.*
+
+Creates a radio button filter interface for single-selection filtering. Users can select one option at a time to filter query results. Supports taxonomy terms, WordPress fields, custom fields, and can also function as a sorting or results-per-page control.
+
+**Tip:** Use radio buttons when users should select only one filter option. Combine with the "Action" setting to create sorting dropdowns or results-per-page selectors.
+
+## Settings
+
+- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
+- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
+- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
+- **Action** (select) - Filter behavior. Options: Filter (traditional filtering), Sort (sorting control), Results per page (pagination control).
+- **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
+- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
+- **Field** (select) - Specific field to filter/sort by (varies based on field type and action).
+- **Taxonomy** (select) - Taxonomy to use for filtering when source is taxonomy.
+- **Order by** (select) - How to order taxonomy terms. Options: Name, Slug, Term ID, Description, Parent, Count, Include, Menu Order, Meta Value, Meta Value Num.
+- **Order meta key** (text) - Meta key for ordering when using meta value ordering.
+- **Order** (select) - Sort direction. Options: ASC, DESC. Default: ASC.
+- **Terms: Include** (select) - Specific taxonomy terms to include in filter options.
+- **Terms: Exclude** (select) - Specific taxonomy terms to exclude from filter options.
+- **Top level terms only** (checkbox) - Display only top-level terms (parent = 0) when source is taxonomy.
+- **Hide count** (checkbox) - Hide the result count for each option.
+- **Hide empty** (checkbox) - Hide options with zero results.
+- **Hide count bracket** (checkbox) - Remove brackets around count values. Style count via .brx-option-count.
+- **Hierarchical** (checkbox) - Display taxonomy terms in hierarchical structure.
+- **Indent: Prefix** (text) - Prefix text for hierarchical indentation. Default: —.
+- **Indent: Gap** (number) - Gap spacing for hierarchical indentation.
+- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
+- **Meta key** (text) - Custom field key for filtering.
+- **Compare** (select) - Comparison operator for filtering. Default: Equal.
+- **Mode** (select) - Display mode for radio buttons. Options: Default (traditional radio buttons), Button (modern button style).
+- **Sort options** (repeater) - Configure sorting options when Action is set to Sort.
+  - **Option source** (text) - Sort field and direction (e.g., post_date_DESC).
+  - **Option label** (text) - Display label for the sort option.
+  - **Option order** (select) - Sort direction override.
+  - **Option meta key** (text) - Meta key for meta-based sorting.
+- **Results per page options** (text) - Comma-separated list of results per page options when Action is set to Results per page. Default: 10, 20, 50, 100.
+- **Active filter** - Settings for active filter display.
+  - **Prefix** (text) - Text to display before filter value.
+  - **Suffix** (text) - Text to display after filter value.
+  - **Title** (text) - Custom title attribute for filter links.
+
+> **Developer reference**
+>
+> See the [Filter - Radio Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-radio/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Filter select
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-select/
+
+*Creates a dropdown select filter interface for single or multiple selection filtering. Supports taxonomy terms, WordPress fields, and custom fields. Can also.*
+
+Creates a dropdown select filter interface for single or multiple selection filtering. Supports taxonomy terms, WordPress fields, and custom fields. Can also function as a sorting or results-per-page control.
+
+## Settings
+
+- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
+- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
+- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
+- **Action** (select) - Filter behavior. Options: Filter (traditional filtering), Sort (sorting control), Results per page (pagination control).
+- **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
+- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
+- **Field** (select) - Specific field to filter/sort by (varies based on field type and action).
+- **Taxonomy** (select) - Taxonomy to use for filtering when source is taxonomy.
+- **Order by** (select) - How to order taxonomy terms. Options: Name, Slug, Term ID, Description, Parent, Count, Include, Menu Order, Meta Value, Meta Value Num.
+- **Order meta key** (text) - Meta key for ordering when using meta value ordering.
+- **Order** (select) - Sort direction. Options: ASC, DESC. Default: ASC.
+- **Terms: Include** (select) - Specific taxonomy terms to include in filter options.
+- **Terms: Exclude** (select) - Specific taxonomy terms to exclude from filter options.
+- **Top level terms only** (checkbox) - Display only top-level terms (parent = 0) when source is taxonomy.
+- **Hide count** (checkbox) - Hide the result count for each option.
+- **Hide empty** (checkbox) - Hide options with zero results.
+- **Hierarchical** (checkbox) - Display taxonomy terms in hierarchical structure.
+- **Indent: Prefix** (text) - Prefix text for hierarchical indentation. Default: —.
+- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
+- **Meta key** (text) - Custom field key for filtering.
+- **Compare** (select) - Comparison operator for filtering. Default: Equal.
+- **Input** - Settings for the select dropdown.
+  - **Placeholder** (text) - Placeholder text for the select dropdown.
+- **Sort options** (repeater) - Configure sorting options when Action is set to Sort.
+  - **Option source** (text) - Sort field and direction (e.g., post_date_DESC).
+  - **Option label** (text) - Display label for the sort option.
+  - **Option order** (select) - Sort direction override.
+  - **Option meta key** (text) - Meta key for meta-based sorting.
+- **Results per page options** (text) - Comma-separated list of results per page options when Action is set to Results per page. Default: 10, 20, 50, 100.
+- **Active filter** - Settings for active filter display.
+  - **Prefix** (text) - Text to display before filter value.
+  - **Suffix** (text) - Text to display after filter value.
+  - **Title** (text) - Custom title attribute for filter links.
+
+> **Developer reference**
+>
+> See the [Filter - Select Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-select/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Filter submit
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-submit/
+
+*Creates submit/reset buttons for filter forms. Provides control over when filters are applied - either as a submit button to apply all filters at once, or as a.*
+
+Creates submit/reset buttons for filter forms. Provides control over when filters are applied - either as a submit button to apply all filters at once, or as a reset button to clear all active filters. Supports redirection to specific URLs after submission.
+
+## Settings
+
+- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
+- **Action** (select) - Button behavior. Options: Submit (apply filters), Reset (clear filters).
+- **Redirect to** (text) - URL to redirect to after applying filters (Submit action only).
+- **Open in new tab** (checkbox) - Open redirect URL in new tab (Submit action only).
+- **Exclude filter IDs** (text, Bricks 2.4) - Comma-separated Bricks element IDs of filters to preserve when resetting (Reset action only).
+- **Hide if no active filter** (checkbox) - Hide the reset button when no filters it can reset are active. Excluded filters do not keep the button visible. Adds .brx-no-active-filter class for styling (Reset action only).
+- **Button** - Settings for the submit/reset button.
+  - **Text** (text) - Button text. Default: Filter.
+  - **Size** (select) - Button size preset. Options: Default, Small, Medium, Large, Extra Large.
+  - **Style** (select) - Button style. Options: None, Primary, Secondary, Success, Info, Warning, Danger, Dark, Light. Default: Primary.
+  - **Circle** (checkbox) - Make button circular.
+  - **Outline** (checkbox) - Use outline button style.
+  - **Icon** (icon) - Icon to display on the button.
+  - **Icon color** (color) - Color of the button icon.
+  - **Icon size** (number) - Size of the button icon.
+
+## Preserve a search while resetting refinements
+
+Set **Action** to **Reset**, then enter the Search filter's Bricks element ID in **Exclude filter IDs**. For example, enter `q1w2e3,mn9456` to preserve two filters. Use the filter elements' IDs, not the target query ID or URL parameter names.
+
+Reset clears the other filters for the target query while keeping the excluded values, such as the visitor's search term. With **Hide if no active filter** enabled, the reset button hides once only excluded filters remain active.
+
+This setting is separate from the exclusion list on the Active Filters element, which controls which filters appear in that element.
+
+> **Developer reference**
+>
+> See the [Filter - Submit / Reset Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-submit/) for the schema snapshot and Bricks 2.4 settings reference.
+
+---
+
+# Filter search
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-search/
+
+*Provides a live AJAX search input for real-time content filtering. Searches through post content, titles, and custom fields without page refresh. Features.*
+
+Provides a live AJAX search input for real-time content filtering. Searches through post content, titles, and custom fields without page refresh. Features debouncing, minimum character requirements, and optional clear functionality.
+
+**Tip:** Perfect for creating instant search experiences. Use the debounce setting to control API call frequency, and minimum characters to improve performance.
+
+## Settings
+
+- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
+- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
+- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (button click or Enter). Default: Input.
+- **Debounce (ms)** (number) - Delay before triggering search after typing stops. Default: 500ms.
+- **Min. characters** (number) - Minimum characters required to trigger search. Default: 3.
+- **Enter action** (select, Bricks 2.4) - Choose **AJAX search** (default) or **Redirect to URL**. Requires a target query.
+- **Trigger Filter Submit interactions** (checkbox, Bricks 2.4) - Run the target query's Filter Submit start/end interactions when Enter triggers an AJAX search. Disabled by default and available when Enter action is AJAX search.
+- **Redirect to** (text, Bricks 2.4) - Destination URL when Enter action is Redirect to URL. Active filters for the same query are appended as URL parameters.
+- **Open in new tab** (checkbox, Bricks 2.4) - Open the Enter-key redirect in a new tab. Available when a redirect URL is set.
+- **Input** - Settings for the search input field.
+  - **Placeholder** (text) - Placeholder text for the search input. Default: Search.
+  - **Placeholder typography** (typography) - Typography for placeholder text.
+  - **Label** (text) - Optional label text above the input field.
+  - **Label typography** (typography) - Typography for the label text.
+- **Icon (Clear)** - Settings for the clear/reset icon.
+  - **Icon** (icon) - Icon to display for clearing the search.
+  - **Icon color** (color) - Color of the clear icon.
+  - **Icon size** (number) - Size of the clear icon.
+- **Active filter** - Settings for active filter display.
+  - **Prefix** (text) - Text to display before filter value.
+  - **Suffix** (text) - Text to display after filter value.
+  - **Title** (text) - Custom title attribute for filter links.
+
+## Search with Enter
+
+Pressing Enter runs the configured action immediately, including when **Apply on** is set to **Submit**. Enter bypasses the typing debounce and minimum character threshold.
+
+For a search field that takes visitors to another results page, select a **Target query**, set **Enter action** to **Redirect to URL**, and enter the destination under **Redirect to**. Configure the destination's filters to recognize the same URL parameter names. Leave **Open in new tab** off to navigate in the current tab. An empty redirect URL falls back to an AJAX search.
+
+For an AJAX search that should close an Offcanvas after submission, enable **Trigger Filter Submit interactions** and use the [Filter Submit interaction triggers](https://academy.bricksbuilder.io/builder/features/interactions/#filter-submit-triggers). Ordinary typing does not trigger these submit interactions. The redirect action does not run them.
+
+> **Developer reference**
+>
+> See the [Filter - Search Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-search/) for the schema snapshot and Bricks 2.4 settings reference.
 
 ---
 

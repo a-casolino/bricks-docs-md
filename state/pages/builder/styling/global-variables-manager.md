@@ -6,11 +6,15 @@ Use global variables for values that should stay consistent across controls, cla
 
 For example, instead of typing `clamp(1rem, 2vw, 1.5rem)` into several controls, create a variable named `text-m` and use `var(--text-m)` wherever that value is needed.
 
+https://www.youtube.com/watch?v=K-c6OFHVhpQ
+
 ## Accessing the Variable Manager
 
 To access the Variable Manager, click the **Style Manager** icon in the builder toolbar. Then select the **Variables** tab.
 
-![](https://academy.bricksbuilder.io/assets/bricks-2.2-style-manager-variable-manager-scaled.png)
+The **Categories** column lists your variable categories next to **All** and **Uncategorized**. Color palettes from the [Color Manager](https://academy.bricksbuilder.io/builder/features/color-manager/) appear there too, marked with a **COLORS** badge, because every palette color is also a CSS variable (for example `moss` for `var(--moss)`).
+
+![Style Manager Variables tab with the categories All, Uncategorized, Radius, Shadows, Layout and two color palettes, next to the variable list.](https://academy.bricksbuilder.io/assets/bricks-style-manager-variables-categories.webp)
 
 You can disable the Variable Manager under `Bricks > Settings > General > Disable CSS variables manager`.
 
@@ -44,9 +48,11 @@ Bricks only outputs variables that have a name and a non-empty value.
 ## Create a variable
 
 1. Open **Style Manager > Variables**.
-2. Enter a variable name without the leading `--`, such as `space-m`.
-3. Enter the value, such as `clamp(1rem, 2vw, 2rem)`.
-4. Press `Enter` or click the save icon.
+2. Optional: select the category the variable belongs to. A new variable is added to the selected category. To create a category, type its name into **New category name** below the list and press `Enter`; the new category is selected right away.
+3. In the **New variable name** field, enter a name without the leading `--`, such as `space-m`. Bricks adds the `--` prefix for you.
+4. In the **Value** field, enter the value, such as `clamp(1rem, 2vw, 2rem)`.
+5. Press `Enter` or click the save icon at the end of the row.
+6. Click **Save** in the Style Manager toolbar to store your changes.
 
 If you paste a name that starts with `--` or `var(--...)`, Bricks normalizes it to the stored variable name.
 
@@ -56,11 +62,17 @@ Variable names must be unique. Bricks also prevents duplicate variable names tha
 
 ## Use variables in controls
 
-Many builder controls include a variable picker. Open the picker and select a variable to insert it into the active control.
+Many builder controls include a variable picker: the small CSS icon at the end of the field. Open the picker and select a variable to insert it into the active control.
 
-The picker inserts a `var(--name)` reference. You can also type `var(--name)` manually in controls that accept CSS values.
+The picker has a search field and groups the variables by category, including **Uncategorized** and your color palettes. Open a group to see its variables.
 
-![](https://academy.bricksbuilder.io/assets/bricks-variables-picker.png)
+The picker inserts a `var(--name)` reference. If the sides of a control are linked, such as the four corners of **Border > Radius**, picking a variable for one side sets all linked sides. You can also type `var(--name)` manually in controls that accept CSS values.
+
+<div className="screenshot screenshot--control-panel">
+
+![Border settings of an image. The radius fields show var(--radius-card), and the open variable picker lists the groups Uncategorized, Radius, Shadows, Layout, Default and Fernlow.](https://academy.bricksbuilder.io/assets/bricks-variable-picker-categories.webp)
+
+</div>
 
 Variables are useful in:
 
@@ -73,22 +85,23 @@ Variables are useful in:
 
 ## Update, rename, duplicate, and delete variables
 
-Select one or more variables to edit them.
+Click a variable in the list to select it. A selected variable's name and value become editable in place: change them and press `Enter`. Clicking the same row again clears the selection.
 
-You can:
+To select several variables, click the first one and `Shift`-click the last one, or use the select-all checkbox in the list header. With more than one variable selected, an **Edit** panel opens next to the list with three tabs:
 
-- Rename a single variable.
-- Bulk rename variables with find/replace, prefix, or suffix.
-- Duplicate variables.
-- Categorize variables.
-- Delete selected variables.
-- Reorder variables by drag and drop.
+- **Rename**: rename the selected variables at once with **Find** and **Replace with**, **Add prefix**, or **Add suffix**. The **Preview** shows the new names before you click **Rename**.
+- **Categorize**: move the selected variables into a category. Choose it under **Category** and click **Update**. This tab appears once at least one category exists.
+- **Duplicate**: create copies of the selected variables.
+
+The list header also has icons to export the selected variables, move them to the trash, and clear the selection. You can reorder variables by drag and drop.
+
+![Variables tab with card-shadow and card-shadow-hover selected. The Edit panel shows the Rename tab with Find card-shadow, Replace with shadow-card, and the preview of the new names.](https://academy.bricksbuilder.io/assets/bricks-variables-bulk-rename.webp)
 
 When a variable is renamed, Bricks updates Bricks-managed references from `var(--old-name)` to `var(--new-name)` in builder data. This update runs in the builder and again on save.
 
 > **Note**
 >
-> Variable rename updates apply to Bricks-managed data. CSS or code written outside Bricks-managed settings may still need to be updated manually.
+> Variable rename updates apply to Bricks-managed data. A `var(--old-name)` typed into an element's **Custom CSS** field keeps the old name, and so does CSS written outside Bricks-managed settings. Update those references manually.
 
 ## Categories
 
@@ -106,14 +119,12 @@ If a variable has no category, or its category no longer exists, Bricks treats i
 
 ## Search, sorting, and usage filters
 
-Use the manager header to narrow the variable list.
+Use the manager header to narrow the variable list:
 
-You can filter by:
-
-- Text include/exclude filters.
-- Alphabetical sorting.
-- Used on this page.
-- Unused on this page.
+- **Name (Include)** shows only variables whose names contain the text.
+- **Name (Exclude)** hides variables whose names contain the text. Combine both, for example `shadow` included and `hover` excluded.
+- **Sort** orders the list alphabetically.
+- **Filter** shows only the variables **Used on this page** or **Unused on this page**. A selected filter appears as a tag in the field; click its remove icon to clear it.
 
 ![](https://academy.bricksbuilder.io/assets/bricks-css-variables-manager-subheader.png)
 
@@ -170,7 +181,7 @@ If the Style Manager CSS file exists, Bricks enqueues it on the frontend. If fil
 
 ## Exporting and importing variables
 
-The Global Variables Manager facilitates the exporting and importing of CSS variables, making it easier to maintain a consistent styling framework across various Bricks projects.
+Export and import variables to reuse the same set across Bricks sites.
 
 ### Exporting variables
 
@@ -188,7 +199,7 @@ Selected exports include the categories used by the selected variables.
 
 ### Importing variables
 
-Importing variables into Bricks is flexible and user-friendly, accommodating different scenarios:
+You can import variables in three ways:
 
 **Importing via JSON file:** In the import popup, drag and drop a JSON file containing exported variables.
 

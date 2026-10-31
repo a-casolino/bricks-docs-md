@@ -3,106 +3,108 @@
 Each line: page title, the file in this folder that contains it, and a summary. Inside the file every page starts with `# <title>`.
 
 - Builder → `builder.md`: Learn the Bricks builder workflow, including setup, interface tools, elements, styling, templates, dynamic content, and core features.
+- Elements → `builder-elements-1.md`: Browse the built-in Bricks elements across layout, content, WordPress, WooCommerce, media, filters, and query-related use cases.
 - Dynamic Data → `builder-dynamic-content-1.md`: Use Bricks dynamic data to render WordPress fields, custom-field values, and other live content inside text, media, links, and supported element settings.
 - Global Queries & Query Manager → `builder-dynamic-content-1.md`: Create, manage, reuse, import, and export global query definitions in Bricks.
 - Query Data from APIs → `builder-dynamic-content-1.md`: Fetch JSON data from external APIs in Bricks and render the returned array inside a Query Loop.
 - Query Sort, Filter & Live Search → `builder-dynamic-content-1.md`: Build sortable, filterable, and searchable query listings in Bricks with query filters, live search, URL parameters, and indexed filter data.
-- Elements → `builder-elements-1.md`: Browse the built-in Bricks elements across layout, content, WordPress, WooCommerce, media, filters, and query-related use cases.
-- How to add a custom animation in interaction → `builder-features-1.md`: Add a custom GSAP animation to a Bricks interaction and connect it to triggers, timelines, and interaction events.
-- Query Loop → `builder-dynamic-content-2.md`: Use the Bricks Query Loop to repeat layouts from posts, terms, users, arrays, or API data while keeping every repeated item fully designable.
 - Accessibility → `builder-features-1.md`: Improve accessibility in Bricks with better semantic structure, keyboard support, contrast, and other practical checks for templates and content.
+- Query Loop → `builder-dynamic-content-2.md`: Use the Bricks Query Loop to repeat layouts from posts, terms, users, arrays, or API data while keeping every repeated item fully designable.
+- How to add a custom animation in interaction → `builder-features-1.md`: Add a custom GSAP animation to a Bricks interaction and connect it to triggers, timelines, and interaction events.
 - AI Abilities and Skills → `builder-features-1.md`: Use Bricks AI abilities through MCP-compatible clients or WP-CLI, manage which actions are available, and install optional Bricks skills.
 - An Intro To Templates → `builder-features-1.md`: Learn how Bricks templates work, which template types are available, and how conditions determine where each template is rendered.
 - Builder Browser → `builder-features-1.md`: Use the Builder Browser to browse and manage templates, components, posts, pages, media, and builder managers from one popup.
-- Recovering a compromised Bricks or WordPress site → `builder-features-1.md`: Inspect, clean, and recover a Bricks or WordPress site after a suspected compromise.
 - Code review → `builder-features-1.md`: Review custom code in Bricks before signing it globally or investigating a security issue.
+- Recovering a compromised Bricks or WordPress site → `builder-features-1.md`: Inspect, clean, and recover a Bricks or WordPress site after a suspected compromise.
 - Code signatures → `builder-features-1.md`: Use Bricks code signatures to protect executable custom code from silent database changes.
 - Color Manager → `builder-features-2.md`: Manage saved colors in Bricks with Color Manager so you can organize, reuse, and maintain consistent color values.
 - Creating Your First Template → `builder-features-2.md`: Create your first Bricks template, choose the right template type, and prepare it for conditions and reusable content.
 - Components → `builder-features-2.md`: Create reusable Bricks components, customize each instance through properties, and manage them from the Components library.
-- Custom Attributes → `builder-features-2.md`: Add custom HTML attributes in Bricks for integrations, JavaScript hooks, accessibility, and advanced frontend behavior.
 - Create & Update Posts on the Frontend → `builder-features-2.md`: Build frontend forms in Bricks that create or update WordPress posts without sending users into wp-admin.
+- Custom Attributes → `builder-features-2.md`: Add custom HTML attributes in Bricks for integrations, JavaScript hooks, accessibility, and advanced frontend behavior.
 - Custom Authentication Pages → `builder-features-2.md`: Build custom login, registration, lost-password, and reset-password flows in Bricks instead of relying on default WordPress screens.
-- Element Conditions → `builder-features-2.md`: Use Bricks element conditions to show or hide content based on post data, user state, query results, and other runtime rules.
 - Custom Code → `builder-features-2.md`: Add custom CSS, JavaScript, and PHP in Bricks, understand where each code type runs, and manage it safely.
+- Element Conditions → `builder-features-2.md`: Use Bricks element conditions to show or hide content based on post data, user state, query results, and other runtime rules.
 - Global Elements → `builder-features-2.md`: Review legacy global elements in Bricks, convert them to components, and understand why new reusable work should use Components instead.
 - Global Import / Export → `builder-features-3.md`: Move Bricks global builder data between sites with one ZIP package, including styles, structure, templates, settings, and related dependencies.
 - HTML & CSS to Bricks → `builder-features-3.md`: Convert existing HTML and CSS into Bricks layouts more efficiently by using the builder structure, classes, and styling tools.
-- Interactions → `builder-features-3.md`: Create interactive behaviors in Bricks with triggers, actions, targets, conditions, animations, browser storage, query events, forms, popups, maps, and WooCommerce events.
 - Icon Manager → `builder-features-3.md`: Manage icon sets in Bricks, add custom packs, and control which icons are available inside the builder.
 - Features → `builder-features-3.md`: Explore Bricks features such as components, interactions, popups, templates, custom code, search criteria, and workflow tools.
 - Maintenance Mode → `builder-features-3.md`: Set up maintenance mode in Bricks, choose what visitors see, and control access while you work on the site.
+- Interactions → `builder-features-3.md`: Create interactive behaviors in Bricks with triggers, actions, targets, conditions, animations, browser storage, query events, forms, popups, maps, and WooCommerce events.
 - Media Browser → `builder-features-3.md`: Search, upload, organize, inspect, repair, and select WordPress media from the Bricks Builder Browser.
-- Menu Builder → `builder-features-3.md`: Build fully custom navigation menus in Bricks with template-driven layouts, dynamic menus, and responsive behavior.
 - Nestable Slider: Customization via JavaScript → `builder-features-3.md`: Customize individual Nestable Slider instances in Bricks with JavaScript while keeping the main slider reusable.
 - Password Protection → `builder-features-3.md`: Protect Bricks content with password gates, understand how the feature works, and customize the related templates and hooks.
+- Menu Builder → `builder-features-3.md`: Build fully custom navigation menus in Bricks with template-driven layouts, dynamic menus, and responsive behavior.
 - Popup Builder → `builder-features-4.md`: Build popups in Bricks with popup templates, template conditions, popup settings, interactions, limits, AJAX rendering, looping context, JavaScript helpers, and popup events.
 - Remote Components → `builder-features-4.md`: Share Bricks components between sites, review their dependencies, and import updates from the Component Manager.
+- Remote Templates → `builder-features-4.md`: Connect Bricks sites, browse shared template libraries, and transfer templates with their component dependencies.
+- Save Form Submissions → `builder-features-4.md`: Store Bricks form submissions in WordPress so you can review entries, keep records, and work with the saved data later.
 - Search Criteria → `builder-features-4.md`: Use Search Criteria in Bricks to control which WordPress fields and meta values are searched for native search and query-filter search inputs.
 - Create Your Own Sidebars → `builder-features-4.md`: Create and register sidebars for Bricks so widget areas can be placed and styled inside templates and layouts.
-- Remote Templates → `builder-features-4.md`: Connect Bricks sites, browse shared template libraries, and transfer templates with their component dependencies.
 - Style Manager → `builder-features-4.md`: Use Bricks Style Manager to manage theme styles, classes, variables, colors, spacing, and other design-system primitives in one place.
 - SVG Uploads → `builder-features-4.md`: Enable SVG uploads in Bricks, understand the security tradeoffs, and manage SVG assets inside the builder workflow.
 - Template Library → `builder-features-4.md`: Browse, import, and manage templates from the Bricks Template Library.
-- Save Form Submissions → `builder-features-4.md`: Store Bricks form submissions in WordPress so you can review entries, keep records, and work with the saved data later.
 - Template Settings → `builder-features-4.md`: Use Bricks template settings to control template type, conditions, popup behavior, headers, and other template-level options.
 - User activation → `builder-features-4.md`: Configure user activation in Bricks for registration flows that require email confirmation before an account becomes active.
 - Visual Grid Builder → `builder-features-4.md`: Design CSS Grid layouts in Bricks with the Visual Grid Builder instead of hand-writing grid-template values.
 - Wireframe Templates → `builder-features-5.md`: Start from Bricks wireframe templates to speed up structure planning before you commit to final styling and content.
-- Builder Mode (Custom) → `builder-interface.md`: Customize the Bricks builder color scheme with custom builder-mode CSS variables.
-- Builder Access & Capabilities → `builder-interface.md`: Control who can access Bricks and which builder capabilities are available for different WordPress roles.
 - Builder Interface Customiser and Profiles → `builder-interface.md`: Customize the Bricks builder workspace, save reusable interface profiles, and assign layouts to roles or users.
-- Context Menu → `builder-interface.md`: Use the Bricks context menu for quick element actions such as edit, clone, delete, structure moves, and style copy and paste.
-- Start Editing With Bricks → `builder-interface.md`: Start editing with Bricks by understanding the builder layout, canvas behavior, and the basic flow for working on a page.
-- Adding & Editing Elements → `builder-interface.md`: Add elements to the canvas, edit their settings, and understand the main element editing workflow in Bricks.
-- Keyboard Shortcuts → `builder-interface.md`: Speed up Bricks workflows with keyboard shortcuts for editing, navigating, saving, and other builder actions.
+- Builder Access & Capabilities → `builder-interface.md`: Control who can access Bricks and which builder capabilities are available for different WordPress roles.
+- Builder Mode (Custom) → `builder-interface.md`: Customize the Bricks builder color scheme with custom builder-mode CSS variables.
 - Command Palette → `builder-interface.md`: Use the Bricks Command Palette to run common actions, navigate faster, and insert element structures with keyboard-driven workflows.
+- Context Menu → `builder-interface.md`: Use the Bricks context menu for quick element actions such as edit, clone, delete, structure moves, and style copy and paste.
+- Adding & Editing Elements → `builder-interface.md`: Add elements to the canvas, edit their settings, and understand the main element editing workflow in Bricks.
+- Start Editing With Bricks → `builder-interface.md`: Start editing with Bricks by understanding the builder layout, canvas behavior, and the basic flow for working on a page.
+- Keyboard Shortcuts → `builder-interface.md`: Speed up Bricks workflows with keyboard shortcuts for editing, navigating, saving, and other builder actions.
 - Page Settings → `builder-interface.md`: Use Bricks page settings to control per-page markup, styling, SEO metadata, social sharing output, and custom code.
-- Revisions → `builder-interface.md`: Review, restore, and manage Bricks revisions so you can safely recover earlier builder states.
 - Responsive Editing → `builder-interface.md`: Edit Bricks designs responsively across breakpoints and adjust layout, spacing, and element settings for smaller screens.
+- Revisions → `builder-interface.md`: Review, restore, and manage Bricks revisions so you can safely recover earlier builder states.
 - Save & Publish → `builder-interface.md`: Understand how saving and publishing work in Bricks, including drafts, updates, and when frontend changes go live.
 - License, updates, and your account → `builder-license.md`: Update Bricks safely, manage your license and sites, and understand staging and local URLs.
 - Restrict License Key Usage → `builder-license.md`: Restrict where a Bricks license key can be used so updates stay available only on approved production, staging, or local sites.
-- Requirements → `builder-setup.md`: PHP, memory, upload size, browser, and troubleshooting for Bricks.
 - Known issues → `builder-setup.md`: Review common Bricks setup and runtime issues, along with the environment checks and fixes that usually resolve them.
-- Troubleshooting a Bricks Website → `builder-setup.md`: Find the source of problems across Bricks, WordPress, plugins, browsers, caching, hosting, and other parts of your website.
+- Requirements → `builder-setup.md`: PHP, memory, upload size, browser, and troubleshooting for Bricks.
 - Bricks Settings → `builder-setup.md`: Configure the main Bricks settings in WordPress, including builder behavior, performance options, integrations, and advanced features.
+- Troubleshooting a Bricks Website → `builder-setup.md`: Find the source of problems across Bricks, WordPress, plugins, browsers, caching, hosting, and other parts of your website.
 - Templates → `builder-templates.md`: Learn how Bricks templates work, including template types, conditions, settings, the template library, remote templates, and wireframes.
 - Integration: Adobe Fonts → `builder-styling-1.md`: Connect Adobe Fonts to Bricks so your project can use synced Typekit fonts inside the builder and on the frontend.
+- Build a Design System in Bricks → `builder-styling-1.md`: Build a design system in Bricks from an unstyled page: color palette and shades, fluid type and spacing scales, variables, a theme style, classes, and components.
 - Cascade layer → `builder-styling-1.md`: Use CSS cascade layers in Bricks to control style order more predictably across theme styles, classes, and custom code.
 - Contextual Spacing → `builder-styling-1.md`: Apply contextual spacing in Bricks to create more consistent rhythm between elements without manually tweaking every margin.
 - CSS Grid Layout → `builder-styling-1.md`: Build CSS Grid layouts in Bricks and control columns, rows, placement, and alignment directly from the builder.
 - Custom Fonts → `builder-styling-1.md`: Upload and manage custom fonts in Bricks so they can be used across theme styles, classes, and element typography.
-- Font Manager → `builder-styling-1.md`: Manage project fonts in Bricks, including uploads, font organization, and how fonts are exposed throughout the builder.
+- Fluid Spacing → `builder-styling-1.md`: Create a fluid spacing scale in Bricks and use its variables for padding, margins and gaps that grow smoothly from small to large screens.
 - Fluid Typography → `builder-styling-1.md`: Create fluid typography in Bricks so text scales smoothly across viewport sizes instead of changing only at breakpoints.
-- Global Class Manager → `builder-styling-1.md`: Create, organize, and maintain CSS classes directly in Bricks with Global Class Manager.
+- Font Manager → `builder-styling-1.md`: Manage project fonts in Bricks, including uploads, font organization, and how fonts are exposed throughout the builder.
 - Global class import manager → `builder-styling-1.md`: Import global classes into Bricks and control how shared class libraries are brought into a project.
+- Global Class Manager → `builder-styling-1.md`: Create, organize, and maintain CSS classes directly in Bricks with Global Class Manager.
 - Global CSS Classes → `builder-styling-1.md`: Use global CSS classes in Bricks to apply shared styles across multiple elements and keep designs easier to maintain.
-- Gradients & Overlays → `builder-styling-1.md`: Create gradients and overlays in Bricks to add layered backgrounds, image treatments, and color effects.
-- Hover Styles → `builder-styling-1.md`: Style hover states in Bricks so links, buttons, cards, and other interactive elements respond consistently.
-- Global Variables Manager → `builder-styling-1.md`: Manage reusable design tokens in Bricks with Global Variables Manager for consistent spacing, sizing, and color values.
-- Understanding The Layout → `builder-styling-1.md`: Understand the Bricks layout model so you know when to use sections, containers, blocks, divs, flexbox, and grid.
-- Masonry Layout → `builder-styling-1.md`: Create masonry-style layouts in Bricks and understand the current options and constraints for staggered grids.
+- Global Variables Manager → `builder-styling-2.md`: Manage reusable design tokens in Bricks with Global Variables Manager for consistent spacing, sizing, and color values.
+- Gradients & Overlays → `builder-styling-2.md`: Create gradients and overlays in Bricks to add layered backgrounds, image treatments, and color effects.
+- Hover Styles → `builder-styling-2.md`: Style hover states in Bricks so links, buttons, cards, and other interactive elements respond consistently.
+- Understanding The Layout → `builder-styling-2.md`: Understand the Bricks layout model so you know when to use sections, containers, blocks, divs, flexbox, and grid.
+- Masonry Layout → `builder-styling-2.md`: Create masonry-style layouts in Bricks and understand the current options and constraints for staggered grids.
 - Styling Element States & Parts → `builder-styling-2.md`: Style different element states and parts in Bricks with pseudo-classes, pseudo-elements, and responsive variants.
 - Scroll Snap → `builder-styling-2.md`: Use CSS Scroll Snap in Bricks to create scroll-controlled sections, sliders, and other snapping layouts.
 - Shape Dividers → `builder-styling-2.md`: Add and style shape dividers in Bricks to separate sections with SVG-based visual transitions.
 - Theme Styles → `builder-styling-2.md`: Set up Bricks theme styles so colors, typography, buttons, forms, and other defaults stay consistent across the site.
-- Filter active filters → `builder-elements-1.md`: Displays the currently active or selected filters, allowing users to easily remove a filter with a single click for faster navigation. This element shows all.
-- Filter checkbox → `builder-elements-1.md`: Creates a checkbox filter interface for AJAX-powered content filtering. Users can select multiple options to narrow down query results. Supports taxonomy terms,.
-- Filter datepicker → `builder-elements-1.md`: Provides a date picker interface for filtering content by date ranges. Supports single dates or date ranges with time selection. Can filter by post dates, user.
-- Filter radio → `builder-elements-1.md`: Creates a radio button filter interface for single-selection filtering. Users can select one option at a time to filter query results. Supports taxonomy terms,.
-- Filter range → `builder-elements-1.md`: Creates a range slider or input interface for filtering content by numeric ranges. Perfect for price filtering, numeric custom fields, or any data that has.
-- Filter search → `builder-elements-1.md`: Provides a live AJAX search input for real-time content filtering. Searches through post content, titles, and custom fields without page refresh. Features.
-- Filter select → `builder-elements-1.md`: Creates a dropdown select filter interface for single or multiple selection filtering. Supports taxonomy terms, WordPress fields, and custom fields. Can also.
-- Filter submit → `builder-elements-1.md`: Creates submit/reset buttons for filter forms. Provides control over when filters are applied - either as a submit button to apply all filters at once, or as a.
 - Button → `builder-elements-1.md`: The Button element creates clickable buttons with customizable styles, sizes, and optional icons.
 - Heading → `builder-elements-1.md`: The Heading element displays text in heading tags (h1-h6) with optional separator lines and styling options.
-- Image → `builder-elements-1.md`: The Image element displays images with support for responsive sources, captions, lightbox functionality, masks, and various other styling options.
 - Icon → `builder-elements-1.md`: The Icon element displays an icon from various icon libraries or custom SVG icons.
+- Image → `builder-elements-1.md`: The Image element displays images with support for responsive sources, captions, lightbox functionality, masks, and various other styling options.
 - Text basic → `builder-elements-1.md`: The Basic Text element displays simple text content with basic formatting options. Use this element for paragraphs, small text blocks, or any content that.
 - Text Link → `builder-elements-1.md`: The Text Link element creates a clickable text link with optional icon and advanced styling options.
 - Rich text → `builder-elements-1.md`: The Rich Text element provides a full WYSIWYG editor for creating formatted content with headings, paragraphs, lists, and other rich text elements.
 - Video → `builder-elements-1.md`: The Video element embeds YouTube, Vimeo, or self-hosted videos with support for custom players, preview images, and overlay icons.
+- Filter active filters → `builder-elements-1.md`: Displays the currently active or selected filters, allowing users to easily remove a filter with a single click for faster navigation. This element shows all.
+- Filter datepicker → `builder-elements-1.md`: Provides a date picker interface for filtering content by date ranges. Supports single dates or date ranges with time selection. Can filter by post dates, user.
+- Filter range → `builder-elements-1.md`: Creates a range slider or input interface for filtering content by numeric ranges. Perfect for price filtering, numeric custom fields, or any data that has.
+- Filter checkbox → `builder-elements-1.md`: Creates a checkbox filter interface for AJAX-powered content filtering. Users can select multiple options to narrow down query results. Supports taxonomy terms,.
+- Filter radio → `builder-elements-1.md`: Creates a radio button filter interface for single-selection filtering. Users can select one option at a time to filter query results. Supports taxonomy terms,.
+- Filter select → `builder-elements-1.md`: Creates a dropdown select filter interface for single or multiple selection filtering. Supports taxonomy terms, WordPress fields, and custom fields. Can also.
+- Filter submit → `builder-elements-1.md`: Creates submit/reset buttons for filter forms. Provides control over when filters are applied - either as a submit button to apply all filters at once, or as a.
+- Filter search → `builder-elements-1.md`: Provides a live AJAX search input for real-time content filtering. Searches through post content, titles, and custom fields without page refresh. Features.
 - Block → `builder-elements-1.md`: The Block element is one of the four layout elements in Bricks (1.5+).
 - Container → `builder-elements-1.md`: The Container element used to be the only layout element in Bricks until version 1.5. It has now been extended by the Section, Block, and Div element to provide.
 - Div → `builder-elements-1.md`: The Div element is one of the four layout elements in Bricks (1.5+).
@@ -111,58 +113,58 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Section → `builder-elements-1.md`: The Section element allows you to structure/divide your page into self-containing areas (think: one topic per section).
 - Audio → `builder-elements-1.md`: The Audio element embeds audio files with a customizable player interface.
 - File → `builder-elements-2.md`: Add downloadable files and links in Bricks from the Media Library, external URLs, or dynamic data, with optional inline PDF previews.
+- Carousel → `builder-elements-2.md`: The Carousel element displays images or posts in a swipeable carousel with customizable navigation and effects, using the Swiper library.
 - Image gallery → `builder-elements-2.md`: The Image Gallery element displays a collection of images in various layouts with optional lightbox functionality.
 - Instagram feed → `builder-elements-2.md`: The Instagram feed element loads media from the Instagram Graph API using an access token saved in Bricks → Settings → API keys (instagramAccessToken). Without.
 - Logo → `builder-elements-2.md`: The Logo element displays your site logo with support for regular, inverse, and dark-mode logo variants, custom dimensions, and fallback text.
 - Slider (nestable) → `builder-elements-2.md`: The Nestable Slider element allows creating sliders with drag-and-drop nesting in the builder, using the Splide library.
-- Carousel → `builder-elements-2.md`: The Carousel element displays images or posts in a swipeable carousel with customizable navigation and effects, using the Swiper library.
 - Slider → `builder-elements-2.md`: The Slider element creates a full-width image slider with customizable slides containing titles, content, and buttons, using the Swiper library.
 - SVG → `builder-elements-2.md`: The SVG element displays SVG graphics from files, dynamic data, custom code, or icon sets.
 - Accordion (nestable) → `builder-elements-2.md`: The Nestable Accordion element allows creating hierarchical collapsible content with drag-and-drop nesting in the builder.
+- Accordion → `builder-elements-2.md`: The Accordion element creates collapsible content sections with titles and expandable content.
 - Alert → `builder-elements-2.md`: The Alert element displays informational messages with different types and optional dismiss functionality.
 - Animated typing → `builder-elements-2.md`: The Animated Typing element creates a typewriter effect that cycles through a list of strings with customizable timing and behavior.
-- Accordion → `builder-elements-2.md`: The Accordion element creates collapsible content sections with titles and expandable content.
 - Back to Top → `builder-elements-2.md`: The Back to Top element renders a button (default tag: button) that scrolls the visitor back to the top of the page. It is nestable: you typically place an Icon.
 - Breadcrumbs → `builder-elements-2.md`: Breadcrumbs are an essential part of website navigation, providing users with a clear path to navigate through the site hierarchy. They improve the overall user.
 - Code → `builder-elements-2.md`: The Code element allows you to add and execute PHP, HTML, CSS, or JavaScript code with syntax highlighting and optional code execution.
 - Countdown → `builder-elements-2.md`: The Countdown element displays a countdown timer to a specified date with customizable fields and actions.
 - Counter → `builder-elements-2.md`: The Counter element animates a number from a starting value to an ending value with customizable prefix, suffix, and formatting.
-- Dropdown → `builder-elements-2.md`: The Dropdown element is a nestable menu item: a toggle (link/text + optional icon button) with a dropdown panel (default inner structure is a Div with tag ul.
-- Facebook page → `builder-elements-2.md`: The Facebook Page element embeds a Facebook page plugin with customizable display options.
 - Form → `builder-elements-2.md`: Build forms, validate submissions, and run email, integration, authentication, post, and custom actions with the Form element.
-- HTML → `builder-elements-2.md`: The HTML element outputs raw HTML from a single code field. In the theme it is marked deprecated (deprecated flag): prefer the Code element, blocks, or native.
 - Icon box → `builder-elements-2.md`: The Icon Box element combines an icon with content in a flexible layout.
-- Map Connector → `builder-elements-3.md`: The Map Connector works with the Google Map element when Sync with query is enabled. Place one Map Connector inside each item of the query loop that should.
+- HTML → `builder-elements-2.md`: The HTML element outputs raw HTML from a single code field. In the theme it is marked deprecated (deprecated flag): prefer the Code element, blocks, or native.
+- Icon list → `builder-elements-2.md`: The Icon List element creates a list of social media icons or custom icons with customizable styling, labels, and links.
+- Dropdown → `builder-elements-2.md`: The Dropdown element is a nestable menu item: a toggle (link/text + optional icon button) with a dropdown panel (default inner structure is a Div with tag ul.
+- Facebook page → `builder-elements-3.md`: The Facebook Page element embeds a Facebook page plugin with customizable display options.
 - Map (Leaflet) → `builder-elements-3.md`: Map (Leaflet) (map-leaflet) embeds an interactive map using Leaflet and tile layers (default: OpenStreetMap). Unlike the Google Map element, it does not use the.
+- Map Connector → `builder-elements-3.md`: The Map Connector works with the Google Map element when Sync with query is enabled. Place one Map Connector inside each item of the query loop that should.
 - Map → `builder-elements-3.md`: The Map element in Bricks allows you to display Google Maps with a range of capabilities, from showing a single location to dynamically rendering multiple.
-- Icon list → `builder-elements-3.md`: The Icon List element creates a list of social media icons or custom icons with customizable styling, labels, and links.
 - Nav (Nestable) → `builder-elements-3.md`: The Nav (Nestable) element creates hierarchical navigation menus with dropdown functionality, multilevel support, and mobile-responsive behavior. It supports.
 - Offcanvas → `builder-elements-3.md`: The Offcanvas element is a nestable panel that slides (or offsets) in from a chosen edge of the viewport. Typical use: mobile navigation. Bricks suggests adding.
 - Pie chart → `builder-elements-3.md`: The Pie Chart element displays a circular progress chart with customizable percentage, colors, and content.
-- Pricing tables → `builder-elements-3.md`: The Pricing Tables element creates responsive pricing table layouts with customizable headers, pricing information, feature lists, and call-to-action buttons.
 - Progress bar → `builder-elements-3.md`: The Progress Bar element displays animated progress bars with customizable labels, percentages, and styling.
+- Pricing tables → `builder-elements-3.md`: The Pricing Tables element creates responsive pricing table layouts with customizable headers, pricing information, feature lists, and call-to-action buttons.
+- Rating → `builder-elements-3.md`: The Rating element displays a numeric score as a row of icons (default: stars). It supports fractional values (e.g. 3.5 on a 5-point scale) by filling whole.
 - Slot → `builder-elements-3.md`: The Slot element is used inside Bricks components as a placeholder: when you place a component instance on the canvas, the content you add into that instance is.
 - Tabs (nestable) → `builder-elements-3.md`: The Nestable Tabs element allows creating tabbed content with drag-and-drop nesting in the builder.
-- Rating → `builder-elements-3.md`: The Rating element displays a numeric score as a row of icons (default: stars). It supports fractional values (e.g. 3.5 on a 5-point scale) by filling whole.
 - Tabs → `builder-elements-3.md`: The Tabs element creates tabbed content with horizontal or vertical layouts and responsive accordion fallback.
 - Team members → `builder-elements-3.md`: The Team Members element displays a responsive grid of team member profiles with images, names, titles, and descriptions.
 - Template → `builder-elements-3.md`: The Template element allows including reusable Bricks templates (sections, content, or popups) within a page.
 - Testimonials → `builder-elements-3.md`: The Testimonials element displays testimonials in a swipeable carousel with images, names, titles, and content.
 - Toggle - Mode → `builder-elements-3.md`: The Toggle - Mode element (toggle-mode) lets visitors switch between light and dark color modes on the front end. It relies on dark variants defined in the.
 - Toggle → `builder-elements-3.md`: The Toggle element outputs a button used to open and close other UI—most often an Offcanvas menu. You can use a custom icon or the built-in animated “hamburger”.
-- Product additional information → `builder-elements-3.md`: Displays the product attributes table shown in WooCommerce under Additional information.
 - Add to cart → `builder-elements-3.md`: Displays the Add to cart form for the current product, including quantity and variation handling for variable products.
+- Product content → `builder-elements-3.md`: Displays the full product description (main content) from the product editor.
 - Product gallery → `builder-elements-3.md`: Displays the WooCommerce product gallery with main product image and thumbnail navigation.
+- Product additional information → `builder-elements-3.md`: Displays the product attributes table shown in WooCommerce under Additional information.
 - Product meta → `builder-elements-3.md`: Displays product meta details such as SKU, categories, and tags.
 - Product price → `builder-elements-3.md`: Displays the WooCommerce product price, including regular price, sale price, and price range for variable products.
 - Product rating → `builder-elements-3.md`: Displays the product star rating and review count for the current product.
-- Product content → `builder-elements-3.md`: Displays the full product description (main content) from the product editor.
 - Related products → `builder-elements-3.md`: Displays related products based on the current product context.
 - Product reviews → `builder-elements-3.md`: Displays the WooCommerce reviews section for the current product.
-- Product stock → `builder-elements-3.md`: Displays the WooCommerce product stock status and quantity information.
-- Product title → `builder-elements-3.md`: Displays the title of the current WooCommerce product.
 - Product short description → `builder-elements-3.md`: Displays the WooCommerce product short description (excerpt) on single product pages.
+- Product stock → `builder-elements-3.md`: Displays the WooCommerce product stock status and quantity information.
 - Product tabs → `builder-elements-3.md`: Displays WooCommerce product tabs such as description, additional information, and reviews.
+- Product title → `builder-elements-3.md`: Displays the title of the current WooCommerce product.
 - Product up/cross-sells → `builder-elements-3.md`: Displays up-sell and cross-sell products linked to the current product.
 - Query results summary → `builder-elements-3.md`: Display a query's reported starting position, ending position, and total result count, with updates for pagination, Load More, Infinite Scroll, and Query Filters.
 - Author → `builder-elements-3.md`: Display the current post author in Bricks, including avatar, name, bio, and optional links to the author archive or website.
@@ -171,35 +173,35 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Meta data → `builder-elements-3.md`: Displays post meta information like author, date, comments, etc.
 - Post content → `builder-elements-3.md`: The Post Content element is a placeholder in the builder that tells Bricks to fetch the post content into the layout you're building.
 - Post navigation → `builder-elements-3.md`: Displays navigation links to previous and next posts.
-- Post reading time → `builder-elements-3.md`: Displays the estimated reading time for a post based on the selected content.
 - Post reading progress bar → `builder-elements-3.md`: Shows a progress bar indicating how much of the post has been read.
-- Post title → `builder-elements-3.md`: Displays the title of the current post or page.
-- Social sharing → `builder-elements-3.md`: Displays social media sharing buttons for the current post.
+- Post reading time → `builder-elements-3.md`: Displays the estimated reading time for a post based on the selected content.
 - Post table of contents → `builder-elements-3.md`: Generates a table of contents based on the headings in the post content.
+- Post title → `builder-elements-3.md`: Displays the title of the current post or page.
 - Related posts → `builder-elements-3.md`: Displays posts related to the current post based on shared taxonomies.
+- Social sharing → `builder-elements-3.md`: Displays social media sharing buttons for the current post.
 - Taxonomy → `builder-elements-3.md`: Displays taxonomy terms for the current post.
-- Nav menu → `builder-elements-4.md`: The Nav Menu element displays WordPress navigation menus with customizable styling and behavior. It supports mega menus, multilevel navigation, mobile.
-- Posts → `builder-elements-4.md`: The Posts element displays a list or grid of posts with customizable query, layout, and styling options.
 - Pagination → `builder-elements-4.md`: The Pagination element displays page navigation for query results with customizable styling.
 - Search → `builder-elements-4.md`: Displays a search form with input field and submit button, or an icon that opens an overlay search.
+- Nav menu → `builder-elements-4.md`: The Nav Menu element displays WordPress navigation menus with customizable styling and behavior. It supports mega menus, multilevel navigation, mobile.
 - Shortcode → `builder-elements-4.md`: The Shortcode element executes WordPress shortcodes within your Bricks pages.
+- Posts → `builder-elements-4.md`: The Posts element displays a list or grid of posts with customizable query, layout, and styling options.
 - Sidebar → `builder-elements-4.md`: Displays a WordPress sidebar with its widgets.
-- Account - Add payment method → `builder-elements-4.md`: Displays the Add payment method endpoint content inside My Account templates.
 - WordPress → `builder-elements-4.md`: The WordPress element displays various WordPress widgets with customizable styling.
+- Account - Add payment method → `builder-elements-4.md`: Displays the Add payment method endpoint content inside My Account templates.
 - Account - Addresses → `builder-elements-4.md`: Displays the customer addresses section inside My Account.
-- Account - Edit account → `builder-elements-4.md`: Displays the Edit account form inside My Account.
 - Account - Downloads → `builder-elements-4.md`: Displays customer downloadable products inside My Account.
-- Account - Edit address → `builder-elements-4.md`: Displays the Edit address form inside My Account.
+- Account - Edit account → `builder-elements-4.md`: Displays the Edit account form inside My Account.
 - Account - Login form → `builder-elements-4.md`: Displays the WooCommerce My Account login form.
+- Account - Edit address → `builder-elements-4.md`: Displays the Edit address form inside My Account.
 - Account - Lost password → `builder-elements-4.md`: Displays the Lost password request form used in My Account flows.
-- Account - Register form → `builder-elements-4.md`: Displays the WooCommerce account registration form.
 - Account - Reset password → `builder-elements-4.md`: Displays the Reset password form used after password reset link validation.
-- Account - Page v2 → `builder-elements-4.md`: Displays the WooCommerce My Account page as editable endpoint states with shared account navigation.
+- Account - Register form → `builder-elements-4.md`: Displays the WooCommerce account registration form.
 - Account - Orders → `builder-elements-4.md`: Displays the customer orders table inside My Account.
+- Account - Page v2 → `builder-elements-4.md`: Displays the WooCommerce My Account page as editable endpoint states with shared account navigation.
 - Account - Page → `builder-elements-4.md`: Displays the full My Account layout including navigation and endpoint content.
 - Account - Payment methods → `builder-elements-4.md`: Displays saved payment methods inside My Account.
-- Account - View order → `builder-elements-4.md`: Displays order details for a selected order in My Account.
 - WooCommerce Breadcrumbs → `builder-elements-4.md`: Display WooCommerce breadcrumb navigation in Bricks and customize the home link, prefixes, suffixes, separators, and spacing.
+- Account - View order → `builder-elements-4.md`: Displays order details for a selected order in My Account.
 - Cart totals → `builder-elements-4.md`: Displays cart totals and related collateral content from the Cart page.
 - Cart coupon → `builder-elements-4.md`: Displays the coupon input section for the Cart page.
 - Cart items → `builder-elements-4.md`: Displays the cart items table with product rows and quantity controls.
@@ -215,10 +217,10 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Dynamic fragment → `builder-elements-4.md`: Re-renders WooCommerce cart-dependent content after cart changes.
 - Mini cart → `builder-elements-4.md`: Displays a mini cart icon with cart count and dropdown cart details.
 - Notice → `builder-elements-4.md`: Displays WooCommerce system notices (success, info, and error messages).
-- Products archive description → `builder-elements-4.md`: Displays the description for WooCommerce product archives (shop page, categories, tags).
-- Products filter → `builder-elements-4.md`: Displays product filters for WooCommerce product listings.
 - Products orderby → `builder-elements-4.md`: Displays a dropdown to sort WooCommerce products.
+- Products filter → `builder-elements-4.md`: Displays product filters for WooCommerce product listings.
 - Products pagination → `builder-elements-4.md`: Displays pagination for WooCommerce product listings.
+- Products archive description → `builder-elements-4.md`: Displays the description for WooCommerce product archives (shop page, categories, tags).
 - Products total results → `builder-elements-4.md`: Displays the total number of products found and current result range.
 - Products → `builder-elements-4.md`: Displays WooCommerce products in a grid layout with customizable fields and widgets.
 - WooCommerce Template Hook → `builder-elements-4.md`: Renders output from a selected WooCommerce template hook so you can place WooCommerce hook content in your layout.

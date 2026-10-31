@@ -113,15 +113,19 @@ You can use t-shirt sizing, numeric steps, or custom names. Generated variables 
 
 Manual mode allows overriding calculated values when precise control is required.
 
+For all scale controls and how to use the variables in a theme style, see [Fluid Typography](https://academy.bricksbuilder.io/builder/styling/fluid-typography/).
+
 ## Spacing
 
-![](https://academy.bricksbuilder.io/assets/bricks-2.2-style-manager-spacing-scales-scaled.png)
+![Style Manager Spacing tab with a scale named Spacing: prefix space-, scale type T-shirt, baseline step m, minimum and maximum settings, and steps from space-2xs to space-4xl with their minimum and maximum values.](https://academy.bricksbuilder.io/assets/bricks-style-manager-spacing-scale.webp)
 
 The Spacing tab generates fluid spacing values for margins, padding, and gaps using the same scale-based system as typography.
 
-This helps enforce consistent layout rhythm across pages.
+Each value is a CSS variable with a `clamp()` value that grows smoothly between small and large screens, so one variable can replace a padding value and its breakpoint overrides. Set the variables once in a theme style, for example on every section, to keep the spacing consistent across pages.
 
 You can generate utility classes such as `gap-m` or `p-l`, but only generate what you actually use.
+
+For creating a scale, adding steps and using the variables in a theme style, see [Fluid Spacing](https://academy.bricksbuilder.io/builder/styling/fluid-spacing/).
 
 ## Framework
 
