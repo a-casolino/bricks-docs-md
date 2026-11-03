@@ -1,112 +1,26 @@
-# Pagination
+# Taxonomy
 
-Source: https://academy.bricksbuilder.io/builder/elements/wordpress/pagination/
+Source: https://academy.bricksbuilder.io/builder/elements/single/taxonomy/
 
-*The Pagination element displays page navigation for query results with customizable styling.*
+*Displays taxonomy terms for the current post.*
 
-The Pagination element displays page navigation for query results with customizable styling.
-
-## Settings
-
-- **Query** (query-list) - Select which query this pagination controls.
-
-- **Alignment** (justify-content) - Horizontal alignment of pagination links.
-
-- **Height** (number with units) - Height of pagination buttons.
-
-- **Width** (number with units) - Width of pagination buttons.
-
-- **Spacing** (number with units) - Gap between pagination buttons. Default: 20px.
-
-- **Background** (color) - Background color of pagination buttons.
-
-- **Border** (border) - Border styling for pagination buttons.
-
-- **Typography** (typography) - Font settings for pagination buttons.
-
-### Current
-
-- **Background** (color) - Background color of the current page button.
-
-- **Border** (border) - Border styling for the current page button.
-
-- **Typography** (typography) - Font settings for the current page button.
-
-### Icons
-
-- **Previous Icon** (icon) - Icon for the previous page button.
-
-- **Next Icon** (icon) - Icon for the next page button.
-
-### Miscellaneous
-
-- **End Size** (number) - Number of page numbers shown at the start and end. Default: 1.
-
-- **Mid Size** (number) - Number of page numbers shown on each side of current page. Default: 2.
-
-> **Developer reference**
->
-> See the [Pagination Schema](https://academy.bricksbuilder.io/developer/schema/elements/pagination/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Search
-
-Source: https://academy.bricksbuilder.io/builder/elements/wordpress/search/
-
-*Displays a search form with input field and submit button, or an icon that opens an overlay search.*
-
-Displays a search form with input field and submit button, or an icon that opens an overlay search.
+Displays taxonomy terms for the current post.
 
 ## Settings
 
-- **Type** (select) - Choose between Input or Icon & Overlay. Default: Input.
-- **aria-label** (text) - Accessibility label for overlay type. Required for overlay.
-- **Action URL** (text) - URL where search form submits. Default: home URL.
-- **Additional parameters** (repeater) - Hidden input fields added to search form.
-
-### Input
-- **Height** (number) - Input field height.
-- **Width** (number) - Input field width.
-- **Placeholder** (text) - Placeholder text. Default: "Search ...".
-- **Placeholder color** (color) - Color of placeholder text.
-- **Background color** (color) - Input background color.
-- **Border** (border) - Input border settings.
-- **Box shadow** (box-shadow) - Input box shadow.
-- **Typography** (typography) - Input text typography.
-- **Show label** (checkbox) - Display label above input. Default: false.
-- **Label text** (text) - Text for input label.
-- **Label typography** (typography) - Typography for input label.
-
-### Button / Icon
-- **aria-label** (text) - Accessibility label for button.
-- **Text** (text) - Button text.
-- **Icon** (icon) - Button icon.
-- **Padding** (spacing) - Button padding.
-- **Height** (number) - Button height.
-- **Width** (number) - Button width.
-- **Background color** (color) - Button background color.
-- **Border** (border) - Button border settings.
-- **Box shadow** (box-shadow) - Button box shadow.
-- **Typography** (typography) - Button text typography.
-
-### Overlay
-- **Direction (Form)** (direction) - Flex direction of overlay form.
-- **Gap** (number) - Gap between form elements.
-- **Title** (text) - Overlay title. Default: "Search site".
-- **Title tag** (text) - HTML tag for title. Default: h4.
-- **Title typography** (typography) - Typography for overlay title.
-- **Background** (background) - Overlay background.
-- **Background: Overlay** (color) - Overlay background overlay color.
-- **Button: Width** (number) - Overlay button width.
-- **Button: Padding** (spacing) - Overlay button padding.
-- **Button: Background color** (color) - Overlay button background color.
-- **Button: Border** (border) - Overlay button border.
-- **Button: Typography** (typography) - Overlay button typography.
+- **Taxonomy** (select) - Taxonomy to display terms from. Default: post_tag.
+- **Disable link** (checkbox) - Remove links from taxonomy terms.
+- **Separator** (text) - Text to display between terms.
+- **Order by** (select) - Sort terms by criteria. Default: Name.
+- **Order** (select) - Sort direction. Default: Ascending.
+- **Size** (select) - Button size for terms.
+- **Style** (select) - Button style for terms. Default: dark.
+- **Spacing** (number) - Gap between terms. Default: 10px.
+- **Icon** (icon) - Icon to display with each term.
 
 > **Developer reference**
 >
-> See the [Search Schema](https://academy.bricksbuilder.io/developer/schema/elements/search/) for the full JSON schema of this element's settings and controls.
+> See the [Taxonomy Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-taxonomy/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -364,27 +278,55 @@ The Nav Menu element displays WordPress navigation menus with customizable styli
 
 ---
 
-# Shortcode
+# Pagination
 
-Source: https://academy.bricksbuilder.io/builder/elements/wordpress/shortcode/
+Source: https://academy.bricksbuilder.io/builder/elements/wordpress/pagination/
 
-*The Shortcode element executes WordPress shortcodes within your Bricks pages.*
+*The Pagination element displays page navigation for query results with customizable styling.*
 
-The Shortcode element executes WordPress shortcodes within your Bricks pages.
+The Pagination element displays page navigation for query results with customizable styling.
 
 ## Settings
 
-- **Shortcode** (textarea) - Enter the shortcode to execute, including the square brackets (e.g., `[gallery ids="72,73,74,75" columns="3"]`). Supports dynamic data.
+- **Query** (query-list) - Select which query this pagination controls.
 
-- **Don't render in builder** (checkbox) - Show a placeholder instead of rendering the shortcode in the builder. Useful for shortcodes that slow down the builder or cause conflicts.
+- **Alignment** (justify-content) - Horizontal alignment of pagination links.
 
-- **Placeholder: Width** (number with units) - Width of the placeholder when "Don't render in builder" is enabled.
+- **Height** (number with units) - Height of pagination buttons.
 
-- **Placeholder: Height** (number with units) - Height of the placeholder when "Don't render in builder" is enabled.
+- **Width** (number with units) - Width of pagination buttons.
+
+- **Spacing** (number with units) - Gap between pagination buttons. Default: 20px.
+
+- **Background** (color) - Background color of pagination buttons.
+
+- **Border** (border) - Border styling for pagination buttons.
+
+- **Typography** (typography) - Font settings for pagination buttons.
+
+### Current
+
+- **Background** (color) - Background color of the current page button.
+
+- **Border** (border) - Border styling for the current page button.
+
+- **Typography** (typography) - Font settings for the current page button.
+
+### Icons
+
+- **Previous Icon** (icon) - Icon for the previous page button.
+
+- **Next Icon** (icon) - Icon for the next page button.
+
+### Miscellaneous
+
+- **End Size** (number) - Number of page numbers shown at the start and end. Default: 1.
+
+- **Mid Size** (number) - Number of page numbers shown on each side of current page. Default: 2.
 
 > **Developer reference**
 >
-> See the [Shortcode Schema](https://academy.bricksbuilder.io/developer/schema/elements/shortcode/) for the full JSON schema of this element's settings and controls.
+> See the [Pagination Schema](https://academy.bricksbuilder.io/developer/schema/elements/pagination/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -469,6 +411,90 @@ The Posts element displays a list or grid of posts with customizable query, layo
 > **Developer reference**
 >
 > See the [Posts Schema](https://academy.bricksbuilder.io/developer/schema/elements/posts/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Search
+
+Source: https://academy.bricksbuilder.io/builder/elements/wordpress/search/
+
+*Displays a search form with input field and submit button, or an icon that opens an overlay search.*
+
+Displays a search form with input field and submit button, or an icon that opens an overlay search.
+
+## Settings
+
+- **Type** (select) - Choose between Input or Icon & Overlay. Default: Input.
+- **aria-label** (text) - Accessibility label for overlay type. Required for overlay.
+- **Action URL** (text) - URL where search form submits. Default: home URL.
+- **Additional parameters** (repeater) - Hidden input fields added to search form.
+
+### Input
+- **Height** (number) - Input field height.
+- **Width** (number) - Input field width.
+- **Placeholder** (text) - Placeholder text. Default: "Search ...".
+- **Placeholder color** (color) - Color of placeholder text.
+- **Background color** (color) - Input background color.
+- **Border** (border) - Input border settings.
+- **Box shadow** (box-shadow) - Input box shadow.
+- **Typography** (typography) - Input text typography.
+- **Show label** (checkbox) - Display label above input. Default: false.
+- **Label text** (text) - Text for input label.
+- **Label typography** (typography) - Typography for input label.
+
+### Button / Icon
+- **aria-label** (text) - Accessibility label for button.
+- **Text** (text) - Button text.
+- **Icon** (icon) - Button icon.
+- **Padding** (spacing) - Button padding.
+- **Height** (number) - Button height.
+- **Width** (number) - Button width.
+- **Background color** (color) - Button background color.
+- **Border** (border) - Button border settings.
+- **Box shadow** (box-shadow) - Button box shadow.
+- **Typography** (typography) - Button text typography.
+
+### Overlay
+- **Direction (Form)** (direction) - Flex direction of overlay form.
+- **Gap** (number) - Gap between form elements.
+- **Title** (text) - Overlay title. Default: "Search site".
+- **Title tag** (text) - HTML tag for title. Default: h4.
+- **Title typography** (typography) - Typography for overlay title.
+- **Background** (background) - Overlay background.
+- **Background: Overlay** (color) - Overlay background overlay color.
+- **Button: Width** (number) - Overlay button width.
+- **Button: Padding** (spacing) - Overlay button padding.
+- **Button: Background color** (color) - Overlay button background color.
+- **Button: Border** (border) - Overlay button border.
+- **Button: Typography** (typography) - Overlay button typography.
+
+> **Developer reference**
+>
+> See the [Search Schema](https://academy.bricksbuilder.io/developer/schema/elements/search/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Shortcode
+
+Source: https://academy.bricksbuilder.io/builder/elements/wordpress/shortcode/
+
+*The Shortcode element executes WordPress shortcodes within your Bricks pages.*
+
+The Shortcode element executes WordPress shortcodes within your Bricks pages.
+
+## Settings
+
+- **Shortcode** (textarea) - Enter the shortcode to execute, including the square brackets (e.g., `[gallery ids="72,73,74,75" columns="3"]`). Supports dynamic data.
+
+- **Don't render in builder** (checkbox) - Show a placeholder instead of rendering the shortcode in the builder. Useful for shortcodes that slow down the builder or cause conflicts.
+
+- **Placeholder: Width** (number with units) - Width of the placeholder when "Don't render in builder" is enabled.
+
+- **Placeholder: Height** (number with units) - Height of the placeholder when "Don't render in builder" is enabled.
+
+> **Developer reference**
+>
+> See the [Shortcode Schema](https://academy.bricksbuilder.io/developer/schema/elements/shortcode/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -782,38 +808,6 @@ My Account templates and My Account endpoint views.
 
 ---
 
-# Account - Reset password
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-reset-password/
-
-*Displays the Reset password form used after password reset link validation.*
-
-Displays the Reset password form used after password reset link validation.
-
-## Where this element works
-
-My Account templates and My Account endpoint views.
-
-## Key settings
-
-- **Disable** (checkbox)
-- **Typography** (typography)
-- **Align items** (align-items)
-- **Width** (number)
-- **Gap** (number)
-- **Label typography** (typography)
-- **Field** (separator)
-- **Margin** (spacing)
-- **Padding** (spacing)
-- **Background color** (color)
-
-## Usage tips
-
-- Use these elements in My Account templates or endpoint-specific templates.
-- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
-
----
-
 # Account - Register form
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-register/
@@ -838,6 +832,38 @@ My Account templates and My Account endpoint views.
 - **Label typography** (typography)
 - **Field** (separator)
 - **Margin** (spacing)
+
+## Usage tips
+
+- Use these elements in My Account templates or endpoint-specific templates.
+- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
+
+---
+
+# Account - Reset password
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-reset-password/
+
+*Displays the Reset password form used after password reset link validation.*
+
+Displays the Reset password form used after password reset link validation.
+
+## Where this element works
+
+My Account templates and My Account endpoint views.
+
+## Key settings
+
+- **Disable** (checkbox)
+- **Typography** (typography)
+- **Align items** (align-items)
+- **Width** (number)
+- **Gap** (number)
+- **Label typography** (typography)
+- **Field** (separator)
+- **Margin** (spacing)
+- **Padding** (spacing)
+- **Background color** (color)
 
 ## Usage tips
 
@@ -886,9 +912,19 @@ Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-pa
 
 Displays the WooCommerce My Account page as editable endpoint states with shared account navigation.
 
+https://youtu.be/M1ZZLgnZOjM
+
 > **Note**
 >
-> This element requires **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
+> This element requires **Bricks > Settings > WooCommerce > Enable advanced modular elements**. The generated states also use the Bricks WooCommerce Notice element, so enable **Enable Bricks WooCommerce "Notice" element** on the same tab.
+
+## Set up the account page
+
+1. Go to **Bricks > Settings > WooCommerce**, enable **Enable advanced modular elements** and **Enable Bricks WooCommerce "Notice" element**, and save.
+2. Open **Bricks > Woo Setup Wizard** and choose **My account**. **Advanced (v2)** is selected by default.
+3. Click **Setup** and confirm that the existing page content will be replaced.
+
+The wizard adds **Account - Page v2** to the assigned My Account page with a generated structure for every state. See [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) for the other options.
 
 ## Where this element works
 
@@ -900,8 +936,21 @@ My Account page.
 - **Direction** (direction)
 - **Gap** (number)
 - **Disable navigation** (checkbox)
-- **Navigation** style controls
-- **Content** style controls
+- **Navigation** - Direction, Align items, Justify content, Gap, Border, and Box shadow for the menu; Background, Item padding, Border, Box shadow, and Typography for each item; Active background, Border, Box shadow, and Typography for the current item.
+- **Content** - Padding, Background, Border, Box shadow, and Typography for the content area.
+
+Navigation and Content styles apply to every logged-in state at once. Set **Direction** to row to place the menu beside the content, then set the navigation **Direction** to column for a sidebar menu.
+
+The navigation is not shown on the **Login**, **Lost password**, **Lost password (Confirmation)**, **Reset password**, and **Order withdrawal** states.
+
+## Navigation items
+
+The menu items come from the WooCommerce account endpoints. To remove an item, for example **Downloads** in a store without downloadable products, go to **WooCommerce > Settings > Advanced**, clear the endpoint's slug under **Account endpoints**, and save.
+
+## Builder preview
+
+- **Orders** and **View order** use the orders of the account you are logged in with. If that account has no orders, the canvas shows the generated dynamic tags and the empty orders message. Customers see their own orders on the frontend.
+- Sample WooCommerce notices (error, success, and info) appear above the states in the builder so you can style them. They are not shown to customers.
 
 ## States
 
@@ -967,6 +1016,14 @@ Use the field maintenance actions after plugins or WooCommerce settings change a
 - **Remove invalid fields**
 - **Remove duplicate fields**
 
+The Edit address state uses one set of address fields for billing and shipping, so the elements are named without a prefix, for example **Address: Company name**. **Check address fields** compares them with the billing and shipping address fields WooCommerce currently uses. The other buttons appear once the check has found something to fix.
+
+**Generate missing fields** adds the new elements at the top of the Edit address state, outside the edit address form. Drag each one into the **Address field wrapper**, for example below **Address: Last name**, so it renders inside the form.
+
+In Bricks 2.4.3, a field removed with **Remove invalid fields** can stay in the builder canvas until you reload the builder. For the Phone field, the canvas keeps showing "Field not available for the current address." The Structure panel is already correct, and the field is gone from the page once you save.
+
+See [Checkout v2 field maintenance](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/#field-maintenance) for the same workflow on the checkout.
+
 ![](https://academy.bricksbuilder.io/assets/account-v2-sync-address-fields.png)
 
 ## Query loops and dynamic data
@@ -981,7 +1038,41 @@ See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.
 
 - Use [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) or the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) to create the recommended Account Page v2 structure.
 - Review each state after setup so logged-in, logged-out, password reset, payment method, and order views all match your store design.
+- Floating labels are available for the account forms in the Edit address, Edit account, Login, Lost password, Reset password, and Order withdrawal states. The Edit account and Edit address forms generated by the Woo Setup Wizard have them turned on.
+- WooCommerce form buttons, such as **Save changes**, **Log in**, and **Register**, do not pick up your theme's button styles. Style them in the element settings or with a global class.
 - Use the classic [WooCommerce Account Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/) workflow if you prefer separate endpoint templates.
+
+---
+
+# Account - Payment methods
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-payment-methods/
+
+*Displays saved payment methods inside My Account.*
+
+Displays saved payment methods inside My Account.
+
+## Where this element works
+
+My Account templates and My Account endpoint views.
+
+## Key settings
+
+- **Head** (separator)
+- **Body** (separator)
+- **Delete button** (separator)
+- **Make default button** (separator)
+- **Add payment method** (separator)
+- **Background color** (color)
+- **Border** (border)
+- **Box shadow** (box-shadow)
+- **Typography** (typography)
+- **Padding** (spacing)
+
+## Usage tips
+
+- Use these elements in My Account templates or endpoint-specific templates.
+- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
 
 ---
 
@@ -1017,13 +1108,13 @@ My Account templates and My Account endpoint views.
 
 ---
 
-# Account - Payment methods
+# Account - View order
 
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-payment-methods/
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-view-order/
 
-*Displays saved payment methods inside My Account.*
+*Displays order details for a selected order in My Account.*
 
-Displays saved payment methods inside My Account.
+Displays order details for a selected order in My Account.
 
 ## Where this element works
 
@@ -1031,16 +1122,16 @@ My Account templates and My Account endpoint views.
 
 ## Key settings
 
-- **Head** (separator)
-- **Body** (separator)
-- **Delete button** (separator)
-- **Make default button** (separator)
-- **Add payment method** (separator)
-- **Background color** (color)
-- **Border** (border)
-- **Box shadow** (box-shadow)
+- **Preview order ID** (number)
+- **Hide** (checkbox)
 - **Typography** (typography)
+- **Mark** (separator)
 - **Padding** (spacing)
+- **Background color** (color)
+- **Title** (separator)
+- **Meta** (separator)
+- **Description** (separator)
+- **Table** (separator)
 
 ## Usage tips
 
@@ -1090,38 +1181,6 @@ Displays WooCommerce breadcrumb navigation.
 - **Gap** (number with units) - Gap between breadcrumb items.
 
 - **Margin** (spacing) - Margin around separators.
-
----
-
-# Account - View order
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-view-order/
-
-*Displays order details for a selected order in My Account.*
-
-Displays order details for a selected order in My Account.
-
-## Where this element works
-
-My Account templates and My Account endpoint views.
-
-## Key settings
-
-- **Preview order ID** (number)
-- **Hide** (checkbox)
-- **Typography** (typography)
-- **Mark** (separator)
-- **Padding** (spacing)
-- **Background color** (color)
-- **Title** (separator)
-- **Meta** (separator)
-- **Description** (separator)
-- **Table** (separator)
-
-## Usage tips
-
-- Use these elements in My Account templates or endpoint-specific templates.
-- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
 
 ---
 
@@ -1235,7 +1294,7 @@ Displays the WooCommerce cart page as editable Filled cart and Empty cart states
 
 ## Where this element works
 
-Cart page.
+Cart page. The element only appears in the Elements panel while you edit the page that WooCommerce uses as its cart page.
 
 ## Key settings
 
@@ -1246,7 +1305,7 @@ Cart page.
 - **Filled cart** - Used when the cart contains products.
 - **Empty cart** - Used when the cart has no products.
 
-The generated Cart v2 structure keeps both states as internal child elements, so you can edit each state from the Structure panel.
+The generated Cart v2 structure keeps both states as internal child elements, so you can edit each state from the Structure panel. The top of the Structure panel shows the state you are editing. Click **Switch** there to change the previewed state.
 
 ![](https://academy.bricksbuilder.io/assets/cart-v2-states.png)
 
@@ -1259,6 +1318,14 @@ Each state can generate starter content from **Insert a structure**:
 
 Generated structures are appended to the current state content and do not overwrite existing content.
 
+For a step-by-step setup, see [Cart v2 workflow](https://academy.bricksbuilder.io/integrations/woocommerce/cart/#cart-v2-workflow).
+
+The complete cart block contains a cart loop with one row per product (image, title, price, excerpt, item data, Cart quantity and a remove icon), a cross-sells section, a free shipping progress bar, summary rows for subtotal, coupons, fees, taxes, shipping and total, a checkout button and the Cart coupon element.
+
+> **Note**
+>
+> In Bricks 2.4.3 the complete cart block includes a WooCommerce Notice element, but generating it from **Insert a structure** does not enable that element. Enable **Bricks > Settings > WooCommerce > Enable Bricks WooCommerce "Notice" element** first, or the canvas shows that the element doesn't exist. The [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) enables it for you.
+
 ![](https://academy.bricksbuilder.io/assets/cart-v2-state-insert-structure.png)
 
 > **Note**
@@ -1266,6 +1333,18 @@ Generated structures are appended to the current state content and do not overwr
 > Cart v2 uses the Cart form and Cart quantity support elements inside the Filled cart state. If you cannot find a support element in the regular Elements panel, use **Insert a structure** and then edit the generated element in the Structure panel.
 
 ![](https://academy.bricksbuilder.io/assets/cart-v2-filled-cart-structure-example.png)
+
+## Builder preview and frontend behavior
+
+While you edit the Filled cart state, the builder previews a sample cart with sample notices. Loops without data, such as coupons or fees, show their dynamic tags on the canvas. Check the real values on the frontend.
+
+On the frontend, the Cart quantity element updates the cart via AJAX (a quantity of zero removes the product), the Cart coupon element applies coupons via AJAX, and each applied coupon gets its own summary row with a remove icon.
+
+The **Coupon total row** below the applied coupons shows the total of all coupons. If your store only allows one coupon at a time, it repeats the coupon amount, so you can delete it.
+
+> **Note**
+>
+> In Bricks 2.4.3, lazy-loaded images in the Empty cart state stay blank when the last product is removed on the frontend, until the page is reloaded. If your empty state contains images, such as a Products element, disable lazy loading under **Bricks > Settings > Performance**.
 
 ## Query loops and dynamic data
 
@@ -1345,38 +1424,6 @@ Checkout templates (and order-received context for thank-you flows).
 
 ---
 
-# Checkout login
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-login/
-
-*Displays the returning customer login prompt on Checkout.*
-
-Displays the returning customer login prompt on Checkout.
-
-## Where this element works
-
-Checkout templates (and order-received context for thank-you flows).
-
-## Key settings
-
-- **Location** (select)
-- **Toggleable form** (checkbox)
-- **Text** (text)
-- **Justify content** (justify-content)
-- **Gap** (number)
-- **Button** (separator)
-- **Disable text** (checkbox)
-- **Icon** (icon)
-- **Icon typography** (typography)
-- **Disable login message** (checkbox)
-
-## Usage tips
-
-- Use checkout elements only in Checkout templates so forms and order data render correctly.
-- Test logged-in and guest checkout flows after styling changes to ensure all states remain usable.
-
----
-
 # Checkout order payment
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-order-payment/
@@ -1401,6 +1448,38 @@ Checkout templates (and order-received context for thank-you flows).
 - **Typography** (typography)
 - **Privacy** (separator)
 - **Button** (separator)
+
+## Usage tips
+
+- Use checkout elements only in Checkout templates so forms and order data render correctly.
+- Test logged-in and guest checkout flows after styling changes to ensure all states remain usable.
+
+---
+
+# Checkout login
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-login/
+
+*Displays the returning customer login prompt on Checkout.*
+
+Displays the returning customer login prompt on Checkout.
+
+## Where this element works
+
+Checkout templates (and order-received context for thank-you flows).
+
+## Key settings
+
+- **Location** (select)
+- **Toggleable form** (checkbox)
+- **Text** (text)
+- **Justify content** (justify-content)
+- **Gap** (number)
+- **Button** (separator)
+- **Disable text** (checkbox)
+- **Icon** (icon)
+- **Icon typography** (typography)
+- **Disable login message** (checkbox)
 
 ## Usage tips
 
@@ -1554,6 +1633,39 @@ The Login required, Pay, Thank you, and Order receipt states each provide a comp
 
 ![](https://academy.bricksbuilder.io/assets/checkout-v2-structure-example.png)
 
+## Customize the Checkout state
+
+https://youtu.be/xD0ihyBFErQ
+
+Everything inside the Checkout state is a regular Bricks element. Each form field is its own **WooCommerce form field** element with **Label**, **Hide label**, and **Placeholder** settings, so you can move, group, and lay out fields like any other elements.
+
+The layout from the Woo Setup Wizard also uses the Bricks **Notice**, **Checkout coupon**, and **Checkout login** elements. Enable them under **Bricks > Settings > WooCommerce**, next to **Enable advanced modular elements**.
+
+Common changes after generating the checkout:
+
+- **Collapse the login form:** Select **Checkout login** and enable **Toggleable form**. Returning customers then see a single "Returning customer? Click here to login" line that opens the form.
+- **Remove a field:** Select the **Checkout** state and choose the field under **Remove unwanted fields** > **Billing** or **Shipping**. This removes it from WooCommerce's checkout fields. Delete the field's element in the Structure panel as well. In Bricks 2.4.3, the element otherwise still renders as an optional field, and WooCommerce ignores anything customers type into it.
+- **Reorder fields:** Drag field elements in the Structure panel. The generated layout places **Billing: Apartment** after the email field, so you may want to move it below **Billing: Street address**.
+- **Style all fields at once:** Use the **Style** groups on the **Checkout** state, such as **Input / Textarea / Select** for borders and corners, instead of styling each field. The searchable Country and State dropdowns have their own **Select2** groups, so give them the same border.
+- **Style the button:** Select **Checkout place order** to set the button's background, text color, and border radius.
+- **Show the order number:** Click **Switch**, choose the **Thank you** state, and add `{woo_order_number}` to its heading, for example `Thank you! Order #{woo_order_number} is confirmed`. The builder previews a sample order, so the number only appears on real orders.
+
+The builder preview of the Checkout state uses a sample cart and shows sample notices and hook placeholders such as `{do_action:woocommerce_...}`. They do not appear on the frontend. Test the result on the frontend with a real cart.
+
+### Floating labels
+
+The **Floating label** style (Checkout state > **Style**) places field labels inside the fields and moves them up when a field has a value. The Woo Setup Wizard enables it for the Checkout and Login required states. Keep the field labels visible for it to work.
+
+In Bricks 2.4.3, when the store sells to a single country, the Country field renders as a plain select and its floating label overlaps the selected country. Until this is fixed, add this rule under **Bricks > Settings > Custom code > Custom CSS**:
+
+```css
+.bricks-floating-label .brxe-woocommerce-form-field:has(> .woocommerce-input-wrapper > select:not(.select2-hidden-accessible)) > label {
+  top: 10px;
+  transform: scale(.75);
+  transform-origin: left top;
+}
+```
+
 ## Payment section for free orders
 
 In the **Checkout** state, payment methods are hidden when the cart does not require payment, such as after a coupon reduces the total to zero. They reappear when a shipping or coupon change makes payment necessary again.
@@ -1619,11 +1731,21 @@ Checkout v2 includes a **Sync checkout fields** control group with actions to co
 - **Remove invalid fields**
 - **Remove duplicate fields**
 
-Use these after changing WooCommerce checkout fields or installing plugins that add checkout fields.
+Use these after changing WooCommerce checkout fields, for example the **Company name**, **Address line 2**, or **Phone** field in **Appearance > Customize > WooCommerce > Checkout**, or after installing or removing plugins that change checkout fields. The layout does not follow those changes by itself, because every field is its own element.
 
-Field sync can report valid, missing, invalid, and duplicate generated fields. It can generate missing fields, remove generated fields that no longer exist in WooCommerce, remove duplicate generated fields, and update generated field labels and placeholders from the current WooCommerce field data.
+https://youtu.be/caoSy6gGefE
 
-The audit includes WooCommerce's `account` field section. Missing account fields are inserted into the **Checkout account fields** wrapper, while billing, shipping, and additional fields remain in their corresponding checkout sections.
+Select the **Checkout** state and click **Check checkout fields**. Bricks compares the field elements in the state with the checkout fields WooCommerce currently uses and lists them as missing, invalid, or duplicate. Invalid field elements are also marked in red in the Structure panel. The **Generate missing fields**, **Remove invalid fields**, and **Remove duplicate fields** buttons appear once the check has found something to fix.
+
+- **Generate missing fields** adds an element for each missing field. Billing, shipping, and additional fields are added at the top of the Checkout state, not inside their sections. Drag each one into place in the Structure panel, for example below **Billing: Last name**. A shipping field left at the top also shows when the customer does not ship to a different address.
+- **Remove invalid fields** deletes field elements that WooCommerce no longer uses, such as Phone after the field is set to **Hidden**.
+- **Remove duplicate fields** deletes extra elements for the same field.
+
+New elements copy the field's current label and placeholder from WooCommerce. Field sync does not update the labels or placeholders of existing field elements.
+
+In Bricks 2.4.3, a removed field can stay visible in the builder canvas even though the Structure panel no longer lists it. Save and reload the builder; the canvas then matches the frontend.
+
+The audit includes WooCommerce's `account` field section. Missing account fields are inserted into the **Checkout account fields** wrapper.
 
 Enabling **Generate account login** or **Send password setup link** does not remove the corresponding saved username or password element from an existing Checkout v2 structure. Until you run field sync, an element that WooCommerce no longer registers can still render as an optional field, but WooCommerce does not process its value because it generates that credential. Run **Check checkout fields**, then **Remove invalid fields**.
 
@@ -1659,6 +1781,8 @@ Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fr
 
 Re-renders WooCommerce cart-dependent content after cart changes.
 
+https://youtu.be/Q6wYRAvVN0Y
+
 > **Note**
 >
 > This element requires **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
@@ -1683,23 +1807,31 @@ Generated structures are appended to the current content and do not overwrite ex
 
 ## Usage tips
 
-- Use Dynamic fragment for cart-dependent content outside the main Cart page, such as custom mini cart content, free shipping progress, or cart totals.
+- Use Dynamic fragment for cart-dependent content outside the main Cart page, such as a [custom mini cart](https://academy.bricksbuilder.io/integrations/woocommerce/create-custom-mini-cart-dynamic-fragment/), free shipping progress, or cart totals.
 - Keep the fragment focused on content that needs to refresh after add-to-cart, remove-from-cart, or quantity changes.
 - Keep the Dynamic fragment wrapper outside other query loops. A cart loop can be placed inside the fragment.
 
-## Custom mini cart pattern
+## Free shipping progress
 
-To build a lightweight custom mini cart:
+The **Free shipping progress** structure adds a Progress Bar that shows how much more the cart needs for free shipping. Place the Dynamic fragment where shoppers see it on every page, for example a bar at the top of the header template, so it updates as products are added.
 
-1. Add a Dynamic fragment element where the mini cart should render.
-2. Inside it, add a container and enable the **Cart contents** query loop.
-3. Design the cart item row inside the loop.
-4. Use cart item tags such as `{featured_image}`, `{woo_cart_product_name}`, `{woo_cart_quantity:value}`, `{woo_cart_subtotal}`, and `{woo_cart_remove_link:url}`.
-5. Add cart total tags outside the loop but still inside the Dynamic fragment, such as `{woo_cart_items_count}`, `{woo_cart_order_subtotal}`, `{woo_cart_order_total}`, `{woo_free_shipping_remaining}`, and `{woo_free_shipping_progress}`.
+- **Minimum amount:** Bricks reads it from WooCommerce. It is the **Minimum order amount** of the **Free shipping** method in the shipping zone that matches the cart, with **Free shipping requires** set to a minimum order amount (alone or combined with a coupon). Change it in **WooCommerce > Settings > Shipping**, not in Bricks. If several free shipping methods match, Bricks uses the one with the smallest remaining amount.
+- **Cart amount:** the cart subtotal minus coupon discounts, unless **Apply minimum order rule before coupon discount** is enabled on the free shipping method.
+- **Label:** `Add {woo_free_shipping_remaining} more for free shipping`.
+- **Value:** `{woo_free_shipping_progress:value}`, a number from 0 to 100 (the percentage of the minimum the cart has reached).
+- **Conditions:** the bar only renders while a minimum exists (`{woo_free_shipping_min_amount:value}` is not 0) and the cart is below it (`{woo_free_shipping_progress:value}` is less than 100).
 
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-mini-cart-structure-example.png)
+Once the cart reaches the minimum, the bar is hidden. The structure has no message for that state. To show one, add an element such as Basic Text inside the same Dynamic fragment and give it the condition **Dynamic data** `{woo_free_shipping_progress:value}` `==` `100`.
 
-See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/) for the complete tag list.
+![Builder showing a Dynamic fragment in the header template with the generated Free shipping progress bar and a Basic Text "Your order ships free" with a condition that shows it when the free shipping progress equals 100.](https://academy.bricksbuilder.io/assets/dynamic-fragment-free-shipping-reached-condition.webp)
+
+The Builder canvas previews a sample cart, so the bar can show "Add $0.00 more" and the conditions are not applied there. Check the real amounts on the frontend with products in the cart.
+
+## Custom mini cart
+
+For a mini cart, add a Dynamic fragment inside an Offcanvas in the header template and generate the **Mini cart** structure. A second Dynamic fragment in the header holds the cart icon and item count, so the count updates too. [Create a custom mini cart with Dynamic fragment](https://academy.bricksbuilder.io/integrations/woocommerce/create-custom-mini-cart-dynamic-fragment/) walks through the full setup, including the interactions that open the panel.
+
+See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/) for the cart tags you can use inside the fragment.
 
 ## Refresh behavior
 
@@ -1815,17 +1947,13 @@ Shop/archive templates and WooCommerce pages where the related data exists.
 
 ---
 
-# Products orderby
+# Products archive description
 
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-orderby/
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-archive-description/
 
-*Displays a dropdown to sort WooCommerce products.*
+*Displays the description for WooCommerce product archives (shop page, categories, tags).*
 
-Displays a dropdown to sort WooCommerce products.
-
-## Settings
-
-- **Order by** (select) - Available sorting options. Multiple selection. Leave empty to use WooCommerce default list.
+Displays the description for WooCommerce product archives (shop page, categories, tags).
 
 ---
 
@@ -1859,6 +1987,20 @@ Displays product filters for WooCommerce product listings.
 
 ---
 
+# Products orderby
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-orderby/
+
+*Displays a dropdown to sort WooCommerce products.*
+
+Displays a dropdown to sort WooCommerce products.
+
+## Settings
+
+- **Order by** (select) - Available sorting options. Multiple selection. Leave empty to use WooCommerce default list.
+
+---
+
 # Products pagination
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-pagination/
@@ -1874,16 +2016,6 @@ Displays pagination for WooCommerce product listings.
 - **Next Icon** (icon) - Icon for next page link.
 - **End Size** (number) - How many numbers on either the start and the end list edges. Minimum: 1.
 - **Mid Size** (number) - How many numbers to either side of the current page. Minimum: 1.
-
----
-
-# Products archive description
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-archive-description/
-
-*Displays the description for WooCommerce product archives (shop page, categories, tags).*
-
-Displays the description for WooCommerce product archives (shop page, categories, tags).
 
 ---
 

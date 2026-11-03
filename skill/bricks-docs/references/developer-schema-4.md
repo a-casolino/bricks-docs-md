@@ -1362,16 +1362,16 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Pie Chart Schema
+# Pagination Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/pie-chart/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/pagination/
 
-*Schema for Bricks Pie Chart element*
+*Schema for Bricks Pagination element*
 
 | Property | Value |
 |---|---|
-| `name` | pie-chart |
-| `category` | general |
+| `name` | pagination |
+| `category` | query |
 | `tag` | div |
 | `nestable` | false |
 
@@ -1379,17 +1379,22 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/pie-chart/
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `percent` | number | Percentage | — |
-| `size` | number | Chart size in px | `height` |
-| `lineWidth` | number | Line width in px | — |
-| `lineCap` | select | Line cap | — |
-| `content` | select | Content | — |
-| `icon` | icon | Icon | — |
-| `text` | text | Text | — |
-| `barColor` | color | Bar color | — |
-| `trackColor` | color | Track color | — |
-| `scaleLength` | number | Scale length in px | — |
-| `scaleColor` | color | Scale color | — |
+| `queryId` | query-list | Query | — |
+| `justifyContent` | justify-content | Alignment | `justify-content` on `.bricks-pagination ul` |
+| `navigationHeight` | number | Height | `height` on `.bricks-pagination ul .page-numbers` |
+| `navigationWidth` | number | Width | `width` on `.bricks-pagination ul .page-numbers` |
+| `gap` | number | Spacing | `gap` on `.bricks-pagination ul` |
+| `navigationBackground` | color | Background | `background` on `.bricks-pagination ul .page-numbers` |
+| `navigationBorder` | border | Border | `border` on `.bricks-pagination ul .page-numbers` |
+| `navigationTypography` | typography | Typography | `font` on `.bricks-pagination ul .page-numbers` |
+| `navigationBackgroundActive` | color | Background | `background` on `.bricks-pagination ul .page-numbers.current` |
+| `navigationBorderActive` | border | Border | `border` on `.bricks-pagination ul .page-numbers.current` |
+| `navigationTypographyActive` | typography | Typography | `font` on `.bricks-pagination ul .page-numbers.current` |
+| `prevIcon` | icon | Previous icon | — |
+| `nextIcon` | icon | Next icon | — |
+| `endSize` | number | End Size | — |
+| `midSize` | number | Mid Size | — |
+| `ajax` | checkbox | Enable AJAX | — |
 
 ## Inherited CSS controls
 
@@ -1465,16 +1470,16 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Pagination Schema
+# Pie Chart Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/pagination/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/pie-chart/
 
-*Schema for Bricks Pagination element*
+*Schema for Bricks Pie Chart element*
 
 | Property | Value |
 |---|---|
-| `name` | pagination |
-| `category` | query |
+| `name` | pie-chart |
+| `category` | general |
 | `tag` | div |
 | `nestable` | false |
 
@@ -1482,22 +1487,17 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/pagination/
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `queryId` | query-list | Query | — |
-| `justifyContent` | justify-content | Alignment | `justify-content` on `.bricks-pagination ul` |
-| `navigationHeight` | number | Height | `height` on `.bricks-pagination ul .page-numbers` |
-| `navigationWidth` | number | Width | `width` on `.bricks-pagination ul .page-numbers` |
-| `gap` | number | Spacing | `gap` on `.bricks-pagination ul` |
-| `navigationBackground` | color | Background | `background` on `.bricks-pagination ul .page-numbers` |
-| `navigationBorder` | border | Border | `border` on `.bricks-pagination ul .page-numbers` |
-| `navigationTypography` | typography | Typography | `font` on `.bricks-pagination ul .page-numbers` |
-| `navigationBackgroundActive` | color | Background | `background` on `.bricks-pagination ul .page-numbers.current` |
-| `navigationBorderActive` | border | Border | `border` on `.bricks-pagination ul .page-numbers.current` |
-| `navigationTypographyActive` | typography | Typography | `font` on `.bricks-pagination ul .page-numbers.current` |
-| `prevIcon` | icon | Previous icon | — |
-| `nextIcon` | icon | Next icon | — |
-| `endSize` | number | End Size | — |
-| `midSize` | number | Mid Size | — |
-| `ajax` | checkbox | Enable AJAX | — |
+| `percent` | number | Percentage | — |
+| `size` | number | Chart size in px | `height` |
+| `lineWidth` | number | Line width in px | — |
+| `lineCap` | select | Line cap | — |
+| `content` | select | Content | — |
+| `icon` | icon | Icon | — |
+| `text` | text | Text | — |
+| `barColor` | color | Bar color | — |
+| `trackColor` | color | Track color | — |
+| `scaleLength` | number | Scale length in px | — |
+| `scaleColor` | color | Scale color | — |
 
 ## Inherited CSS controls
 

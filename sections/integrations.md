@@ -1,7 +1,7 @@
 # Bricks Builder Documentation: Integrations
 
-<!-- content-sha256: 0e60c8d25ca3f13002b6eeed97decb4d651cff8497475d5e76b1c52e634dbd67 -->
-<!-- content last changed: 2026-10-31 07:03 UTC -->
+<!-- content-sha256: 7a459430c9a5d40d80436d6b6ada798b093e59c3a4963da9f12e35eac82a92dd -->
+<!-- content last changed: 2026-11-03 07:58 UTC -->
 
 Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricksbuilder.io/), refreshed daily. Content © Bricks. 28 pages.
 
@@ -17,18 +17,18 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
   - [Unsplash Integration](#integrations-unsplash)
     - [Bricks components as blocks](#integrations-gutenberg-components-as-blocks)
     - [WooCommerce advanced modular elements](#integrations-woocommerce-advanced-modular-elements)
-    - [Checkout (WooCommerce)](#integrations-woocommerce-checkout)
     - [Cart (WooCommerce)](#integrations-woocommerce-cart)
-    - [Creating dynamic WooCommerce archive pages](#integrations-woocommerce-creating-dynamic-woocommerce-archive-pages)
+    - [Checkout (WooCommerce)](#integrations-woocommerce-checkout)
     - [Create a custom mini cart with Dynamic fragment](#integrations-woocommerce-create-custom-mini-cart-dynamic-fragment)
+    - [Creating dynamic WooCommerce archive pages](#integrations-woocommerce-creating-dynamic-woocommerce-archive-pages)
     - [Element: Checkout Coupon](#integrations-woocommerce-element-checkout-coupon)
     - [Element: Checkout Login](#integrations-woocommerce-element-checkout-login)
     - [How to Create Product Quick View with Bricks](#integrations-woocommerce-how-to-create-product-quick-view-with-bricks)
   - [WooCommerce](#integrations-woocommerce)
     - [Checkout v2 multistep checkout](#integrations-woocommerce-multistep-checkout-v2)
-    - [Single Product (WooCommerce)](#integrations-woocommerce-single-product)
-    - [Product Variation Swatches (WooCommerce)](#integrations-woocommerce-product-variation-swatches)
     - [Product Archive (WooCommerce)](#integrations-woocommerce-product-archive-woocommerce)
+    - [Product Variation Swatches (WooCommerce)](#integrations-woocommerce-product-variation-swatches)
+    - [Single Product (WooCommerce)](#integrations-woocommerce-single-product)
     - [Woo Setup Wizard](#integrations-woocommerce-woo-setup-wizard)
     - [WooCommerce Account Builder](#integrations-woocommerce-woocommerce-account-builder)
     - [WooCommerce Builder](#integrations-woocommerce-woocommerce-builder)
@@ -731,7 +731,7 @@ Source: https://academy.bricksbuilder.io/integrations/gutenberg/components-as-bl
 
 *Expose Bricks components as Gutenberg blocks so editors can insert styled, property-driven Bricks content directly inside the block editor.*
 
-https://youtu.be/tgpjMcZaLNc
+https://youtu.be/HPpr1QLwgAk
 
 Most sites built with Bricks follow a simple pattern: you create your pages and templates in Bricks, and write your posts or other content in the block editor (Gutenberg).
 
@@ -757,8 +757,8 @@ Three options are available:
 - **Enable individual components manually**
   - Components must be enabled individually to appear in the block editor.
   - In the builder:
-    - Open the **Components panel**, hover over a component, click **Use in block editor**, then confirm.
-    - Or edit a component and toggle **Use in block editor → Enabled** from the component settings header.
+    - Open the **Components panel**, hover over a component, click **Use in block editor**, confirm, then save in the builder.
+    - Or edit a component, toggle **Use in block editor → Enabled** from the component settings header, and save.
   - A filter in the Components panel lets you view only components enabled for the block editor.
 - **Enable all components automatically**
   - All Bricks components are instantly available in the block editor.
@@ -837,6 +837,8 @@ WooCommerce v2 lets you build these system pages from editable Bricks elements, 
 
 In the classic setup, screens such as empty cart, checkout payment, order received, account orders, account downloads, and password reset are handled through separate Bricks templates or WooCommerce endpoints. In the v2 setup, those screens live as states on the assigned WooCommerce page, so you can switch between them in the builder and edit them in one place.
 
+https://youtu.be/IPgWoKkPY1s
+
 ![](https://academy.bricksbuilder.io/assets/woo-v2-state-filled-cart.png)
 
 ![](https://academy.bricksbuilder.io/assets/woo-v2-state-empty-cart.png)
@@ -844,6 +846,8 @@ In the classic setup, screens such as empty cart, checkout payment, order receiv
 > **Note**
 >
 > Advanced modular elements are experimental. Enable them under **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
+>
+> The generated v2 layouts also use the Bricks **Notice**, **Checkout coupon**, and **Checkout login** elements. Enable **Enable Bricks WooCommerce "Notice" element**, **Enable Bricks WooCommerce "Checkout coupon" element**, and **Enable Bricks WooCommerce "Checkout login" element** on the same screen. In Bricks 2.4.3 and 2.4.4, the Woo Setup Wizard does not enable the coupon and login settings for Checkout v2, and the checkout then shows "PHP class does not exist" in place of those forms.
 >
 > ![](https://academy.bricksbuilder.io/assets/woo-advanced-modular-setting.png)
 
@@ -875,7 +879,7 @@ For guided setup checks and presets, use the [Woo Setup Wizard](https://academy.
 
 ## Predefined structures
 
-Cart, Checkout, and Account Page v2 states can generate complete starter layouts or smaller WooCommerce sections through **Insert a structure**.
+Cart, Checkout, and Account Page v2 states can generate complete starter layouts or smaller WooCommerce sections through **Insert a structure**. Select the state element in the Structure panel to see the structures that fit that state. A generated structure is appended to the state's current content and never overwrites it.
 
 ![](https://academy.bricksbuilder.io/assets/woo-v2-insert-structure-cart.png)
 
@@ -889,7 +893,7 @@ Generated structures are site-aware where needed. For checkout, checkout account
 >
 > Checkout fields can change after a layout is generated. For example, a plugin may add a VAT field, remove a company field, change labels and placeholders, or add an account field. Use field sync after installing, removing, or reconfiguring plugins that modify WooCommerce checkout or account address fields.
 
-Field sync can report valid, missing, invalid, and duplicate generated fields. It can generate missing fields, remove invalid or duplicate generated fields, and update labels and placeholders from the current WooCommerce field data.
+Field sync can report valid, missing, invalid, and duplicate generated fields. It can generate missing fields and remove invalid or duplicate generated fields. New elements copy the current WooCommerce label and placeholder; existing elements keep theirs. See [Checkout v2 field maintenance](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/#field-maintenance) for the workflow.
 
 Checkout v2 and several Account v2 form states also include a **Floating label style** option for supported generated fields. Review third-party fields manually because plugin-generated fields can use different markup.
 
@@ -921,7 +925,9 @@ The [Cart v2 element](https://academy.bricksbuilder.io/builder/elements/woocomme
 - **Filled cart** for carts that contain products.
 - **Empty cart** for carts with no products.
 
-Use the **State** control while editing to switch the builder preview between these states. Each state can contain custom layouts and generated structures, such as the complete cart block or complete empty cart block.
+Use the **State** control while editing to switch the builder preview between these states. The top of the Structure panel shows the state you are editing; its **Switch** button opens the same State control. The Structure panel lists only the elements of the current state.
+
+Each state can contain custom layouts and generated structures, such as the complete cart block or complete empty cart block. Everything inside a state is made of regular Bricks elements, so you can edit, add, or paste elements there like in any other layout. When the store has a free shipping minimum, the complete cart block also shows how much is left until free shipping.
 
 ## Checkout v2
 
@@ -1008,6 +1014,221 @@ Classic templates and v2 page states can coexist on the same site, but each WooC
 - Protected state elements are required children of their v2 parent elements. Do not remove them manually.
 - Predefined structures are authored with the default Bricks breakpoint keys. Review responsive styling on sites with custom breakpoints.
 - Third-party checkout fields may need manual review after generation or field sync.
+- The builder previews v2 states with sample data. Filled cart, checkout, and account states show sample WooCommerce notices, and loops without data (applied coupons, fees, taxes, or orders of a user without orders) show unresolved dynamic tags such as `{woo_cart_applied_coupon}`. The frontend renders the real cart, order, and account data.
+- In Bricks 2.4.3 and 2.4.4, the generated checkout shows a required terms and conditions checkbox even when no terms page is set under **WooCommerce > Settings > Advanced**. Set a terms page so the checkbox links to your terms.
+
+---
+
+<a id="integrations-woocommerce-cart"></a>
+
+# Cart (WooCommerce)
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/cart/
+
+*Build and customize the WooCommerce cart in Bricks, including the classic shortcode/template workflow and the Cart v2 advanced modular workflow.*
+
+## Overview
+
+The Cart page is a special WooCommerce page, created by default during WooCommerce installation and assigned under **WooCommerce > Settings > Advanced**.
+
+Starting in Bricks 2.4, you can choose between two Cart building workflows:
+
+- **Cart v2 workflow**: Build the assigned Cart page directly with [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) and the [Cart v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-v2/).
+- **Cart v1 workflow**: Keep the classic WooCommerce cart shortcode on the assigned Cart page and customize the output with separate Bricks Cart and Empty Cart templates.
+
+Use Cart v2 for new builds or redesigns where you want to edit the filled and empty cart states in one place. Use Cart v1 for existing sites that already rely on the classic shortcode/template setup.
+
+The [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) can check or create either workflow. The same v2 data tools can also be used with [Dynamic fragment](https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/) to build cart-dependent header content such as a custom mini cart.
+
+## Cart v2 workflow
+
+https://youtu.be/D46IAQYjX1E
+
+With advanced modular elements enabled, Cart v2 keeps the filled cart and empty cart screens as editable states on the assigned Cart page.
+
+Use the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) and choose **Advanced (v2)** to replace the assigned Cart page content with the [Cart v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-v2/) and generated state structure.
+
+You can also build the Cart page from the element yourself:
+
+1. Enable **Bricks > Settings > WooCommerce > Enable advanced modular elements** and save.
+2. Open the assigned Cart page with Bricks and add a Section.
+3. Select the Container and add **Cart (v2)** from the Elements panel. The element only appears on the assigned Cart page.
+4. Select **Filled cart (State)** in the Structure panel. Under **Insert a structure**, choose **Complete cart block** and click **Generate**.
+5. Click **Switch** at the top of the Structure panel, choose **Empty cart**, select **Empty cart (State)**, then generate the **Complete empty cart block**.
+6. Edit, style, move, or delete the generated elements like any other elements, then save.
+
+> **Note**
+>
+> In Bricks 2.4.3 the complete cart block includes a WooCommerce Notice element, but **Insert a structure** does not enable it. Enable **Bricks > Settings > WooCommerce > Enable Bricks WooCommerce "Notice" element** before step 4. The Woo Setup Wizard enables it for you.
+
+Cart v2 includes two states:
+
+- **Filled cart** for carts that contain products.
+- **Empty cart** for carts with no products.
+
+Each state can generate starter content through **Insert a structure**. Use **Complete cart block** for the Filled cart state and **Complete empty cart block** for the Empty cart state. Generated structures are appended to the current state content, so you can insert a starter block and then move, style, or remove the generated elements.
+
+On the frontend, the generated layout updates the cart without a page reload. Changing a quantity updates the line total, the shipping, and the order total. Applying or removing a coupon and removing a product recalculate the summary right away. When the last product is removed, the same page switches to the Empty cart state.
+
+Cart v2 is the recommended workflow when you want to design the Cart page directly, switch between filled and empty previews in one place, and use the v2 cart dynamic tags. The classic shortcode/template workflow below is still useful for existing sites that already use separate **WooCommerce - Cart** and **WooCommerce - Empty Cart** templates.
+
+> **Note**
+>
+> Some Cart v2 support elements, such as the cart form wrapper and cart quantity controls, are generated-only or context-specific. If you cannot find a support element in the regular Elements panel, create it through **Insert a structure** or the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/), then edit it from the Structure panel.
+
+Cart v2 layouts can use the **Cart contents** query loop and cart total tags such as `{woo_cart_items_count}`, `{woo_cart_order_subtotal}`, `{woo_cart_order_total}`, `{woo_cart_shipping_method}`, `{woo_free_shipping_remaining}`, and `{woo_free_shipping_progress}`.
+
+For the complete element reference, see [Cart v2](https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-v2/). For all new WooCommerce v2 query loops and dynamic tags, see [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#cart-tags).
+
+## Cart v1 workflow
+
+The classic Cart workflow renders the WooCommerce `[woocommerce_cart]` shortcode on the assigned Cart page, then uses Bricks WooCommerce template types to customize the filled and empty cart screens.
+
+> **Note**
+>
+> Remove the Gutenberg Cart block if it is located within your Cart Page. Instead, replace it with `[woocommerce_cart]` or use a Shortcode element if you edit the Cart page with Bricks.
+
+![](https://academy.bricksbuilder.io/assets/remove-gutenberg-cart-blocks.png)
+
+For the Cart v1 workflow, place the `[woocommerce_cart]` shortcode directly on the Cart page, or edit the Cart page with Bricks and use a Shortcode element with `[woocommerce_cart]` as its content. Bricks offers two template types to customize the cart:
+
+- **WooCommerce - Cart**: Rendered when the cart contains products.
+- **WooCommerce** - **Empty** **Cart**: Rendered when the cart is empty.
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-templates-cart.png)
+
+> **Note**
+>
+> The "Cart" and "Empty Cart" template types are only visible if you have the WooCommerce plugin installed and active. These templates are used inside the WooCommerce Cart shortcode logic and **they do not support template conditions (they are automatically rendered on the correct page)**.
+
+By default, the cart in the Bricks theme will be shown as in the image below. You'll notice there are typically two different zones: the cart items table & the cart totals:
+
+![](https://academy.bricksbuilder.io/assets/bricks-woo-cart-blocks.png)
+
+If you want to customize this screen, you'll need to create a **WooCommerce - Cart** template type.
+
+> **Note**
+>
+> Please remember to add [template hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/#cart-template-hooks) if you are using third-party plugins.
+
+## Cart template {#cart-template}
+
+You would set the **WooCommerce - Cart** template type to customize the Cart page (used when the cart contains products).
+
+When opening this template with Bricks you'll see three new elements (specific for this template type):
+
+![](https://academy.bricksbuilder.io/assets/bricks-woo-cart-elements.png)
+
+<figcaption>
+
+The specific Bricks elements to be used inside the "WooCommerce - Cart" template type
+
+</figcaption>
+
+### Cart items
+
+Render the cart contents table. With this element, you'll be able to hide different parts of the table, style the table elements and the buttons, and hide the coupon input (so you could set it separately using the **Cart Coupon** element). For custom layout, check the section down below [Cart contents loop](#loop).
+
+### Cart totals
+
+Renders the cart totals zone. With this element, you could hide the cart cross-sells, style the totals table, and style the button.
+
+### Cart Coupon
+
+Render the coupon input. Use this element if you don't want to have the coupon input attached to the cart items table. With this element, you could style the input and the apply coupon button
+
+## Empty cart template {#empty-cart-template}
+
+You would set the **WooCommerce - Empty Cart** template type to customize how the cart page renders when the cart is empty.
+
+By default, the empty cart shows a message and a button to return to the shop page.
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-empty-cart-screen.png)
+
+To customize this screen you need to create a **WooCommerce - Empty Cart** template type where you could place the required elements and configure as needed.
+
+## Cart contents loop {#loop}
+
+Bricks 1.4 introduced the **Cart Contents** query loop. This query loops through all visible products in the cart, enabling [Dynamic Data tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/#dynamic-data) for cart item data such as the product name (post title), product image (featured image), price, description, SKU, and more. This query loop is intended for cart-content layouts and is not restricted to the Cart page.
+
+This allows you to build your own cart items widget. In Bricks 2.4, the same `wooCart` query loop is also useful inside a [Dynamic fragment](https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/) for custom mini cart layouts that refresh after cart changes. Bricks 2.4 also adds separate title, item data, unit price, and savings output for custom cart rows.
+
+### Build your own cart items element inside the cart page {#custom-cart-contents-loop}
+
+By default, the list of products inside the cart appears displayed on a table layout. This happens in the default WooCommerce cart template or when using the Bricks Cart Items element.
+
+To create a different layout for the cart products list, you'll need to add a container with a query loop, and set it to **Cart Contents**. Inside this container you may use the following dynamic data tags. The cart-specific tags were introduced in Bricks 1.5.3; product SKU and GTIN support inside this loop was added in Bricks 2.4.
+
+> **Note**
+>
+> In order to make your custom cart loop work, you must add `woocommerce-cart-form__cart-item cart_item` CSS class on the loop itself and add `woocommerce-cart-form__contents` CSS class on the parent of looping div.
+
+![](https://academy.bricksbuilder.io/assets/bricks-woo-cart-loop-css-class.png)
+
+<figcaption>
+
+CSS classes needed for WooCommerce JS works in cart page
+
+</figcaption>
+
+![](https://academy.bricksbuilder.io/assets/cart-contents-query-loop.png)
+
+<figcaption>
+
+Cart Contents query loop
+
+</figcaption>
+
+- `{woo_cart_product_name}` - Renders the linked product name together with cart item metadata and other legacy WooCommerce output.
+- `{woo_cart_product_title}` - Renders the product title without cart item metadata. Use `:plain` to remove the link.
+- **Cart item data** element - Renders variation attributes and compatible extension-provided item data separately from the product title.
+- `{woo_cart_remove_link}` - Renders the anchor tag with the link to remove the product from the cart. By default, uses an "x" in the anchor content. Remember to add `product-remove` CSS class on the element that holding this dynamic tag. Do **NOT** use on Rich text element or additional `` tag will cause the AJAX not working.
+- `{woo_product_price}` - This tag shows the product price. But when used inside of the Cart Contents loop it doesn't show the sale price.
+- `{woo_cart_item_price}` - Renders the current unit price and includes WooCommerce sale-price markup when discounted. Use `:value` for the unformatted current unit price.
+- `{woo_cart_item_save}` - Renders the product savings for the full cart item quantity. Use `:value` for the unformatted savings amount or `:percentage` for the numeric discount percentage.
+- `{woo_product_sku}` - Returns the product SKU for the current cart item. (@since 2.4)
+- `{woo_product_gtin}` - Returns the product GTIN for the current cart item. (@since 2.4)
+- `{woo_cart_quantity}` - Renders the input field to add/remove the product quantity inside of the cart.
+- `{woo_cart_quantity:value}` - Outputs the cart item quantity as text.
+- `{woo_cart_subtotal}` - Renders the product price subtotal (price x quantity)
+- `{woo_cart_update}` - Renders the update cart button and nonce. Use this outside the cart item loop but inside the cart form.
+
+Bricks 2.4 also adds cart total and checkout tags such as `{woo_cart_items_count}`, `{woo_cart_order_subtotal}`, `{woo_cart_order_total}`, `{woo_cart_shipping_method}`, `{woo_free_shipping_remaining}`, and `{woo_free_shipping_progress}`. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#cart-totals-and-checkout-tags) for the complete list.
+
+For a custom mini cart, wrap the mini cart in the [Dynamic fragment element](https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/), add a child element with the **Cart contents** query loop, and place cart item tags inside that loop. Put total tags outside the loop but still inside the Dynamic fragment wrapper.
+
+To complete this component, you have to wrap the products loop inside a `form` tag in order to use the product quantity input fields. To do that, wrap the container loop inside of another container (or div, or block) and set the HTML tag to `custom` and then insert `form` in the Custom tag input field.
+
+![](https://academy.bricksbuilder.io/assets/bricks-container-form-cart-items.png)
+
+<figcaption>
+
+Wrap the products loop with a form container
+
+</figcaption>
+
+> **Note**
+>
+> **IMPORTANT**: Using Bricks 1.10.2+ you have explicitly allow the `form` HTML tag programmatically. Please follow the instructions at [/developer/hooks/filters/filter-bricks-allowed_html_tags/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-allowed_html_tags/)
+
+This form container, in order to work properly with the WooCommerce scripts needs the following configurations:
+
+- Add the custom class `woocommerce-cart-form` (Style > CSS > CSS classes)
+- Add custom attributes: method = `post` and action = `{post_url}`
+
+![](https://academy.bricksbuilder.io/assets/example-form-container.png)
+
+<figcaption>
+
+Example Form container
+
+</figcaption>
+
+![](https://academy.bricksbuilder.io/assets/bricks-cart-form-attributes-2.png)
+
+![](https://academy.bricksbuilder.io/assets/bricks-cart-form-attributes.png)
+
+To add the update cart button, there's also another dynamic data tag `{woo_cart_update}` that you'll need to add inside of the form container (but outside of the loop). This will generate a button with the proper settings to update the cart.
 
 ---
 
@@ -1187,199 +1408,168 @@ Bricks 2.4 adds additional order tags and order-aware query loops for v2 layouts
 
 ---
 
-<a id="integrations-woocommerce-cart"></a>
+<a id="integrations-woocommerce-create-custom-mini-cart-dynamic-fragment"></a>
 
-# Cart (WooCommerce)
+# Create a custom mini cart with Dynamic fragment
 
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/cart/
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/create-custom-mini-cart-dynamic-fragment/
 
-*Build and customize the WooCommerce cart in Bricks, including the classic shortcode/template workflow and the Cart v2 advanced modular workflow.*
+*Build a WooCommerce mini cart that refreshes after cart changes using Dynamic fragment, the Cart contents query loop, and cart dynamic tags.*
 
-## Overview
+Use the Dynamic fragment element when you need cart-dependent content outside the main Cart page, such as a custom mini cart in a header Offcanvas, dropdown, or popup.
 
-The Cart page is a special WooCommerce page, created by default during WooCommerce installation and assigned under **WooCommerce > Settings > Advanced**.
+Dynamic fragment re-renders itself and its children after WooCommerce cart changes. For a mini cart, place the cart item loop and cart totals inside the fragment so product rows, quantities, subtotal, and buttons stay current after add-to-cart, remove, and quantity changes.
 
-Starting in Bricks 2.4, you can choose between two Cart building workflows:
-
-- **Cart v2 workflow**: Build the assigned Cart page directly with [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) and the [Cart v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-v2/).
-- **Cart v1 workflow**: Keep the classic WooCommerce cart shortcode on the assigned Cart page and customize the output with separate Bricks Cart and Empty Cart templates.
-
-Use Cart v2 for new builds or redesigns where you want to edit the filled and empty cart states in one place. Use Cart v1 for existing sites that already rely on the classic shortcode/template setup.
-
-The [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) can check or create either workflow. The same v2 data tools can also be used with [Dynamic fragment](https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/) to build cart-dependent header content such as a custom mini cart.
-
-## Cart v2 workflow
-
-With advanced modular elements enabled, Cart v2 keeps the filled cart and empty cart screens as editable states on the assigned Cart page.
-
-Use the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) and choose **Advanced (v2)** to replace the assigned Cart page content with the [Cart v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-v2/) and generated state structure.
-
-Cart v2 includes two states:
-
-- **Filled cart** for carts that contain products.
-- **Empty cart** for carts with no products.
-
-Each state can generate starter content through **Insert a structure**. Use **Complete cart block** for the Filled cart state and **Complete empty cart block** for the Empty cart state. Generated structures are appended to the current state content, so you can insert a starter block and then move, style, or remove the generated elements.
-
-Cart v2 is the recommended workflow when you want to design the Cart page directly, switch between filled and empty previews in one place, and use the v2 cart dynamic tags. The classic shortcode/template workflow below is still useful for existing sites that already use separate **WooCommerce - Cart** and **WooCommerce - Empty Cart** templates.
+https://youtu.be/ExpIHVe2tho
 
 > **Note**
 >
-> Some Cart v2 support elements, such as the cart form wrapper and cart quantity controls, are generated-only or context-specific. If you cannot find a support element in the regular Elements panel, create it through **Insert a structure** or the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/), then edit it from the Structure panel.
+> Dynamic fragment requires **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
 
-Cart v2 layouts can use the **Cart contents** query loop and cart total tags such as `{woo_cart_items_count}`, `{woo_cart_order_subtotal}`, `{woo_cart_order_total}`, `{woo_cart_shipping_method}`, `{woo_free_shipping_remaining}`, and `{woo_free_shipping_progress}`.
+The classic [Mini cart element](https://academy.bricksbuilder.io/builder/elements/woocommerce/mini-cart/) shows WooCommerce's own mini cart list. You can style it, but not change its structure. Use Dynamic fragment when you want to build the cart rows, totals, and buttons from Bricks elements.
 
-For the complete element reference, see [Cart v2](https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-v2/). For all new WooCommerce v2 query loops and dynamic tags, see [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#cart-tags).
+## Common setup
 
-## Cart v1 workflow
+Mini carts are usually added to a header template and shown in an Offcanvas:
 
-The classic Cart workflow renders the WooCommerce `[woocommerce_cart]` shortcode on the assigned Cart page, then uses Bricks WooCommerce template types to customize the filled and empty cart screens.
+- The header contains the cart icon and cart count.
+- The cart icon toggles the Offcanvas.
+- The Offcanvas contains the generated mini cart structure.
 
-> **Note**
->
-> Remove the Gutenberg Cart block if it is located within your Cart Page. Instead, replace it with `[woocommerce_cart]` or use a Shortcode element if you edit the Cart page with Bricks.
+Place the generated mini cart in a dropdown or popup for smaller layouts. Use an Offcanvas when you want more room for product rows, quantity controls, totals, and checkout actions.
 
-![](https://academy.bricksbuilder.io/assets/remove-gutenberg-cart-blocks.png)
+## Create the Offcanvas mini cart
 
-For the Cart v1 workflow, place the `[woocommerce_cart]` shortcode directly on the Cart page, or edit the Cart page with Bricks and use a Shortcode element with `[woocommerce_cart]` as its content. Bricks offers two template types to customize the cart:
+1. Open the header template or page where the mini cart should appear.
+2. Add an **Offcanvas** element.
+3. Inside the Offcanvas content area, add a **Dynamic fragment** element.
+4. In the Dynamic fragment controls, go to **Insert a structure**.
+5. Select **Mini cart**.
+6. Click **Generate**.
 
-- **WooCommerce - Cart**: Rendered when the cart contains products.
-- **WooCommerce** - **Empty** **Cart**: Rendered when the cart is empty.
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart.png)
 
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-templates-cart.png)
+Bricks appends the generated structure inside the Dynamic fragment. It does not replace existing child elements.
 
-> **Note**
->
-> The "Cart" and "Empty Cart" template types are only visible if you have the WooCommerce plugin installed and active. These templates are used inside the WooCommerce Cart shortcode logic and **they do not support template conditions (they are automatically rendered on the correct page)**.
+## What Bricks generates
 
-By default, the cart in the Bricks theme will be shown as in the image below. You'll notice there are typically two different zones: the cart items table & the cart totals:
+The generated Mini cart structure already includes the cart item layout, totals, and buttons. You do not need to add these manually unless you want to change the design or content.
 
-![](https://academy.bricksbuilder.io/assets/bricks-woo-cart-blocks.png)
+Inside the Dynamic fragment, Bricks creates:
 
-If you want to customize this screen, you'll need to create a **WooCommerce - Cart** template type.
+- A **Details wrapper** that contains the mini cart content.
+- A **Cart loop** using the **Cart contents** query type.
+- A cart row inside the loop with product image, product title, product price, product excerpt, item data, quantity control, remove icon, and line subtotal.
+- An empty-cart message from the Cart contents query loop. Change it in the Cart loop's query settings under **No results** > **Text**.
+- A separate block after the Cart loop for the subtotal and action buttons.
+- A condition on that subtotal/actions block so it only shows when the Cart loop has more than `0` results.
+- **View Cart** and **Checkout** buttons using WooCommerce URL dynamic data.
 
-> **Note**
->
-> Please remember to add [template hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/#cart-template-hooks) if you are using third-party plugins.
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-mini-cart-structure-example.png)
 
-## Cart template {#cart-template}
+## What the generated structure uses
 
-You would set the **WooCommerce - Cart** template type to customize the Cart page (used when the cart contains products).
+The generated cart row uses WooCommerce cart tags inside the **Cart contents** loop.
 
-When opening this template with Bricks you'll see three new elements (specific for this template type):
+Common row tags:
 
-![](https://academy.bricksbuilder.io/assets/bricks-woo-cart-elements.png)
+| Tag or element | Use |
+| --- | --- |
+| `{featured_image}` | Product image. |
+| `{woo_cart_product_title:plain}` | Product title as plain text, without variation metadata. |
+| **Cart item data** | Variation attributes and compatible extension-provided item data. |
+| **Cart quantity** | Quantity input with plus and minus buttons. |
+| `{woo_cart_quantity:value}` | Quantity number as text. |
+| `{woo_cart_subtotal}` | Line subtotal. |
+| `{woo_cart_remove_link:url}` | Remove URL for a link or icon. |
 
-<figcaption>
+For a custom row, use `{woo_cart_item_price}` when you need the formatted unit price with sale-price markup. `{woo_cart_item_save}` returns the quantity-aware product savings and can be used in a condition through `{woo_cart_item_save:value}`.
 
-The specific Bricks elements to be used inside the "WooCommerce - Cart" template type
+The subtotal and buttons are outside the Cart contents loop, but still inside the Dynamic fragment. The generated structure uses:
 
-</figcaption>
+| Element              | Dynamic data                |
+| -------------------- | --------------------------- |
+| Subtotal amount      | `{woo_cart_order_subtotal}` |
+| View Cart button URL | `{woo_url:cart}`            |
+| Checkout button URL  | `{woo_url:checkout}`        |
 
-### Cart items
+The generated remove icon uses `{woo_cart_remove_link:url}` as its link URL. Keep the `product-remove` CSS class on the remove element so WooCommerce cart behavior can target it.
 
-Render the cart contents table. With this element, you'll be able to hide different parts of the table, style the table elements and the buttons, and hide the coupon input (so you could set it separately using the **Cart Coupon** element). For custom layout, check the section down below [Cart contents loop](#loop).
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-subtotal-condition.png)
 
-### Cart totals
+## Add a header cart icon
 
-Renders the cart totals zone. With this element, you could hide the cart cross-sells, style the totals table, and style the button.
+In the header template, add a second Dynamic fragment near the navigation for the cart icon and count. This fragment only needs to contain the small cart trigger, not the full mini cart.
 
-### Cart Coupon
+Inside that header Dynamic fragment:
 
-Render the coupon input. Use this element if you don't want to have the coupon input attached to the cart items table. With this element, you could style the input and the apply coupon button
+1. Add an Icon element and choose a cart icon.
+2. Add a Text Basic element for the cart count.
+3. Set the count text to `{woo_cart_items_count}`.
+4. Position the count as a small badge on the cart icon.
+5. Add an element condition to the count so it only shows when `{woo_cart_items_count}` is greater than `0`.
+6. Add an interaction to the cart icon:
+   - **Trigger**: Click
+   - **Action**: Toggle offcanvas
+   - **Offcanvas: CSS selector**: the target Offcanvas element ID, such as `#brxe-evudao`
 
-## Empty cart template {#empty-cart-template}
+Because the icon and count are inside Dynamic fragment, the count updates after cart changes. Keep the rest of the header outside the Dynamic fragment unless it also depends on cart data.
 
-You would set the **WooCommerce - Empty Cart** template type to customize how the cart page renders when the cart is empty.
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-header-mini-cart-trigger.png)
 
-By default, the empty cart shows a message and a button to return to the shop page.
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-header-mini-cart-trigger-interaction.png)
 
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-empty-cart-screen.png)
+## Open the Offcanvas after add to cart
 
-To customize this screen you need to create a **WooCommerce - Empty Cart** template type where you could place the required elements and configure as needed.
+You can open the mini cart Offcanvas when a product is added through AJAX.
 
-## Cart contents loop {#loop}
+On the Offcanvas element, add an interaction:
 
-Bricks 1.4 introduced the **Cart Contents** query loop. This query loops through all visible products in the cart, enabling [Dynamic Data tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/#dynamic-data) for cart item data such as the product name (post title), product image (featured image), price, description, SKU, and more. This query loop is intended for cart-content layouts and is not restricted to the Cart page.
+- **Trigger**: Added to cart
+- **Action**: Toggle offcanvas
+- **Offcanvas: CSS selector**: the Offcanvas element ID
 
-This allows you to build your own cart items widget. In Bricks 2.4, the same `wooCart` query loop is also useful inside a [Dynamic fragment](https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/) for custom mini cart layouts that refresh after cart changes. Bricks 2.4 also adds separate title, item data, unit price, and savings output for custom cart rows.
+Add a condition to the Offcanvas if you do not want this behavior on checkout. For example, show the Offcanvas only when the current URL does not contain `{woo_url:checkout}`.
 
-### Build your own cart items element inside the cart page {#custom-cart-contents-loop}
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-interaction.png)
 
-By default, the list of products inside the cart appears displayed on a table layout. This happens in the default WooCommerce cart template or when using the Bricks Cart Items element.
+**Added to cart** also runs for WooCommerce's own add to cart buttons on shop and category pages when **WooCommerce > Settings > Products > Enable AJAX add to cart buttons on archives** is on (the WooCommerce default).
 
-To create a different layout for the cart products list, you'll need to add a container with a query loop, and set it to **Cart Contents**. Inside this container you may use the following dynamic data tags. The cart-specific tags were introduced in Bricks 1.5.3; product SKU and GTIN support inside this loop was added in Bricks 2.4.
+Keep **Added to cart** for this interaction if the Offcanvas should toggle only after an addition. The [Bricks cart contents changed](https://academy.bricksbuilder.io/builder/features/interactions/#cart-contents-changed) trigger, available since Bricks 2.4, also runs after successful AJAX quantity changes and removals. Using it with **Toggle offcanvas** would toggle the mini cart during those updates too.
 
-> **Note**
->
-> In order to make your custom cart loop work, you must add `woocommerce-cart-form__cart-item cart_item` CSS class on the loop itself and add `woocommerce-cart-form__contents` CSS class on the parent of looping div.
+## Preview the refresh behavior
 
-![](https://academy.bricksbuilder.io/assets/bricks-woo-cart-loop-css-class.png)
+Dynamic fragment refreshes on the frontend after WooCommerce cart events such as add to cart, remove from cart, cart emptied, cart totals updated, checkout updated, and coupon apply/remove events.
 
-<figcaption>
+In the Builder, the cart loop previews your own cart, or sample products when your cart is empty. **Cart item data** shows a placeholder for products without item data, such as simple products. The frontend renders each visitor's real cart.
 
-CSS classes needed for WooCommerce JS works in cart page
+The **Bricks dynamic fragments refreshed** interaction signals that fragment content has been replaced. It can run during initial synchronization or checkout recalculation without a cart item change. To show a custom “Cart updated” confirmation, use **Bricks cart contents changed**, which waits for a confirmed item change and the related UI updates to finish.
 
-</figcaption>
+To test the mini cart:
 
-![](https://academy.bricksbuilder.io/assets/cart-contents-query-loop.png)
+1. Open the frontend page that contains the mini cart.
+2. Add a product to the cart.
+3. Confirm the mini cart updates without reloading the page.
+4. Confirm the header cart count updates.
+5. Click the cart icon and confirm the Offcanvas opens.
+6. Remove the item or change quantity if your layout includes quantity controls.
+7. Confirm the row count, subtotal, and buttons still render correctly.
 
-<figcaption>
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-frontend-added-to-cart.png)
 
-Cart Contents query loop
+## Limits
 
-</figcaption>
+- Dynamic fragment is frontend-only.
+- Keep the Dynamic fragment wrapper outside other query loops. The Cart contents loop can be inside the fragment.
+- Component instances are not supported.
+- The fragment must render from the header, content, or footer area.
+- Keep the fragment focused on cart-dependent content. Static header, menu, or layout elements do not need to be inside it.
 
-- `{woo_cart_product_name}` - Renders the linked product name together with cart item metadata and other legacy WooCommerce output.
-- `{woo_cart_product_title}` - Renders the product title without cart item metadata. Use `:plain` to remove the link.
-- **Cart item data** element - Renders variation attributes and compatible extension-provided item data separately from the product title.
-- `{woo_cart_remove_link}` - Renders the anchor tag with the link to remove the product from the cart. By default, uses an "x" in the anchor content. Remember to add `product-remove` CSS class on the element that holding this dynamic tag. Do **NOT** use on Rich text element or additional `` tag will cause the AJAX not working.
-- `{woo_product_price}` - This tag shows the product price. But when used inside of the Cart Contents loop it doesn't show the sale price.
-- `{woo_cart_item_price}` - Renders the current unit price and includes WooCommerce sale-price markup when discounted. Use `:value` for the unformatted current unit price.
-- `{woo_cart_item_save}` - Renders the product savings for the full cart item quantity. Use `:value` for the unformatted savings amount or `:percentage` for the numeric discount percentage.
-- `{woo_product_sku}` - Returns the product SKU for the current cart item. (@since 2.4)
-- `{woo_product_gtin}` - Returns the product GTIN for the current cart item. (@since 2.4)
-- `{woo_cart_quantity}` - Renders the input field to add/remove the product quantity inside of the cart.
-- `{woo_cart_quantity:value}` - Outputs the cart item quantity as text.
-- `{woo_cart_subtotal}` - Renders the product price subtotal (price x quantity)
-- `{woo_cart_update}` - Renders the update cart button and nonce. Use this outside the cart item loop but inside the cart form.
+## Related
 
-Bricks 2.4 also adds cart total and checkout tags such as `{woo_cart_items_count}`, `{woo_cart_order_subtotal}`, `{woo_cart_order_total}`, `{woo_cart_shipping_method}`, `{woo_free_shipping_remaining}`, and `{woo_free_shipping_progress}`. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#cart-totals-and-checkout-tags) for the complete list.
-
-For a custom mini cart, wrap the mini cart in the [Dynamic fragment element](https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/), add a child element with the **Cart contents** query loop, and place cart item tags inside that loop. Put total tags outside the loop but still inside the Dynamic fragment wrapper.
-
-To complete this component, you have to wrap the products loop inside a `form` tag in order to use the product quantity input fields. To do that, wrap the container loop inside of another container (or div, or block) and set the HTML tag to `custom` and then insert `form` in the Custom tag input field.
-
-![](https://academy.bricksbuilder.io/assets/bricks-container-form-cart-items.png)
-
-<figcaption>
-
-Wrap the products loop with a form container
-
-</figcaption>
-
-> **Note**
->
-> **IMPORTANT**: Using Bricks 1.10.2+ you have explicitly allow the `form` HTML tag programmatically. Please follow the instructions at [/developer/hooks/filters/filter-bricks-allowed_html_tags/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-allowed_html_tags/)
-
-This form container, in order to work properly with the WooCommerce scripts needs the following configurations:
-
-- Add the custom class `woocommerce-cart-form` (Style > CSS > CSS classes)
-- Add custom attributes: method = `post` and action = `{post_url}`
-
-![](https://academy.bricksbuilder.io/assets/example-form-container.png)
-
-<figcaption>
-
-Example Form container
-
-</figcaption>
-
-![](https://academy.bricksbuilder.io/assets/bricks-cart-form-attributes-2.png)
-
-![](https://academy.bricksbuilder.io/assets/bricks-cart-form-attributes.png)
-
-To add the update cart button, there's also another dynamic data tag `{woo_cart_update}` that you'll need to add inside of the form container (but outside of the loop). This will generate a button with the proper settings to update the cart.
+- [Dynamic fragment element](https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/)
+- [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/)
+- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/)
 
 ---
 
@@ -1528,163 +1718,6 @@ Now, your shop page and product category pages should be able to work as expecte
 Custom WooCommerce Archive Template
 
 </figcaption>
-
----
-
-<a id="integrations-woocommerce-create-custom-mini-cart-dynamic-fragment"></a>
-
-# Create a custom mini cart with Dynamic fragment
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/create-custom-mini-cart-dynamic-fragment/
-
-*Build a WooCommerce mini cart that refreshes after cart changes using Dynamic fragment, the Cart contents query loop, and cart dynamic tags.*
-
-Use the Dynamic fragment element when you need cart-dependent content outside the main Cart page, such as a custom mini cart in a header Offcanvas, dropdown, or popup.
-
-Dynamic fragment re-renders itself and its children after WooCommerce cart changes. For a mini cart, place the cart item loop and cart totals inside the fragment so product rows, quantities, subtotal, and buttons stay current after add-to-cart, remove, and quantity changes.
-
-> **Note**
->
-> Dynamic fragment requires **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
-
-## Common setup
-
-Mini carts are usually added to a header template and shown in an Offcanvas:
-
-- The header contains the cart icon and cart count.
-- The cart icon toggles the Offcanvas.
-- The Offcanvas contains the generated mini cart structure.
-
-Place the generated mini cart in a dropdown or popup for smaller layouts. Use an Offcanvas when you want more room for product rows, quantity controls, totals, and checkout actions.
-
-## Create the Offcanvas mini cart
-
-1. Open the header template or page where the mini cart should appear.
-2. Add an **Offcanvas** element.
-3. Inside the Offcanvas content area, add a **Dynamic fragment** element.
-4. In the Dynamic fragment controls, go to **Insert a structure**.
-5. Select **Mini cart**.
-6. Click **Generate**.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart.png)
-
-Bricks appends the generated structure inside the Dynamic fragment. It does not replace existing child elements.
-
-## What Bricks generates
-
-The generated Mini cart structure already includes the cart item layout, totals, and buttons. You do not need to add these manually unless you want to change the design or content.
-
-Inside the Dynamic fragment, Bricks creates:
-
-- A **Details wrapper** that contains the mini cart content.
-- A **Cart loop** using the **Cart contents** query type.
-- A cart row inside the loop with product image, product title, product price, product excerpt, item data, quantity control, remove icon, and line subtotal.
-- An empty-cart message from the Cart contents query loop.
-- A separate block after the Cart loop for the subtotal and action buttons.
-- A condition on that subtotal/actions block so it only shows when the Cart loop has more than `0` results.
-- **View Cart** and **Checkout** buttons using WooCommerce URL dynamic data.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-mini-cart-structure-example.png)
-
-## What the generated structure uses
-
-The generated cart row uses WooCommerce cart tags inside the **Cart contents** loop.
-
-Common row tags:
-
-| Tag or element | Use |
-| --- | --- |
-| `{featured_image}` | Product image. |
-| `{woo_cart_product_title:plain}` | Product title as plain text, without variation metadata. |
-| **Cart item data** | Variation attributes and compatible extension-provided item data. |
-| `{woo_cart_quantity}` | Quantity input. |
-| `{woo_cart_quantity:value}` | Quantity number as text. |
-| `{woo_cart_subtotal}` | Line subtotal. |
-| `{woo_cart_remove_link:url}` | Remove URL for a link or icon. |
-
-For a custom row, use `{woo_cart_item_price}` when you need the formatted unit price with sale-price markup. `{woo_cart_item_save}` returns the quantity-aware product savings and can be used in a condition through `{woo_cart_item_save:value}`.
-
-The subtotal and buttons are outside the Cart contents loop, but still inside the Dynamic fragment. The generated structure uses:
-
-| Element              | Dynamic data                |
-| -------------------- | --------------------------- |
-| Subtotal amount      | `{woo_cart_order_subtotal}` |
-| View Cart button URL | `{woo_url:cart}`            |
-| Checkout button URL  | `{woo_url:checkout}`        |
-
-The generated remove icon uses `{woo_cart_remove_link:url}` as its link URL. Keep the `product-remove` CSS class on the remove element so WooCommerce cart behavior can target it.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-subtotal-condition.png)
-
-## Add a header cart icon
-
-In the header template, add a second Dynamic fragment near the navigation for the cart icon and count. This fragment only needs to contain the small cart trigger, not the full mini cart.
-
-Inside that header Dynamic fragment:
-
-1. Add an Icon element and choose a cart icon.
-2. Add a Text Basic element for the cart count.
-3. Set the count text to `{woo_cart_items_count}`.
-4. Position the count as a small badge on the cart icon.
-5. Add an element condition to the count so it only shows when `{woo_cart_items_count}` is greater than `0`.
-6. Add an interaction to the cart icon:
-   - **Trigger**: Click
-   - **Action**: Toggle offcanvas
-   - **Offcanvas: CSS selector**: the target Offcanvas element ID, such as `#brxe-evudao`
-
-Because the icon and count are inside Dynamic fragment, the count updates after cart changes. Keep the rest of the header outside the Dynamic fragment unless it also depends on cart data.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-header-mini-cart-trigger.png)
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-header-mini-cart-trigger-interaction.png)
-
-## Open the Offcanvas after add to cart
-
-You can open the mini cart Offcanvas when a product is added through AJAX.
-
-On the Offcanvas element, add an interaction:
-
-- **Trigger**: Added to cart
-- **Action**: Toggle offcanvas
-- **Offcanvas: CSS selector**: the Offcanvas element ID
-
-Add a condition to the Offcanvas if you do not want this behavior on checkout. For example, show the Offcanvas only when the current URL does not contain `{woo_url:checkout}`.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-interaction.png)
-
-Keep **Added to cart** for this interaction if the Offcanvas should toggle only after an addition. The [Bricks cart contents changed](https://academy.bricksbuilder.io/builder/features/interactions/#cart-contents-changed) trigger, available since Bricks 2.4, also runs after successful AJAX quantity changes and removals. Using it with **Toggle offcanvas** would toggle the mini cart during those updates too.
-
-## Preview the refresh behavior
-
-Dynamic fragment refreshes on the frontend after WooCommerce cart events such as add to cart, remove from cart, cart emptied, cart totals updated, checkout updated, and coupon apply/remove events.
-
-The **Bricks dynamic fragments refreshed** interaction signals that fragment content has been replaced. It can run during initial synchronization or checkout recalculation without a cart item change. To show a custom “Cart updated” confirmation, use **Bricks cart contents changed**, which waits for a confirmed item change and the related UI updates to finish.
-
-To test the mini cart:
-
-1. Open the frontend page that contains the mini cart.
-2. Add a product to the cart.
-3. Confirm the mini cart updates without reloading the page.
-4. Confirm the header cart count updates.
-5. Click the cart icon and confirm the Offcanvas opens.
-6. Remove the item or change quantity if your layout includes quantity controls.
-7. Confirm the row count, subtotal, and buttons still render correctly.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-frontend-added-to-cart.png)
-
-## Limits
-
-- Dynamic fragment is frontend-only.
-- Keep the Dynamic fragment wrapper outside other query loops. The Cart contents loop can be inside the fragment.
-- Component instances are not supported.
-- The fragment must render from the header, content, or footer area.
-- Keep the fragment focused on cart-dependent content. Static header, menu, or layout elements do not need to be inside it.
-
-## Related
-
-- [Dynamic fragment element](https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/)
-- [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/)
-- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/)
 
 ---
 
@@ -1877,6 +1910,8 @@ Checkout v2 can split the WooCommerce checkout form into multiple editable steps
 
 Use this workflow when you want a guided checkout experience with separate sections for account login, customer details, shipping, extras, order review, and payment.
 
+https://youtu.be/qLco1-Un_BQ
+
 ![](https://academy.bricksbuilder.io/assets/checkout-v2-multistep-frontend.png)
 
 > **Note**
@@ -1893,6 +1928,8 @@ You can create a multistep Checkout v2 layout in either of these ways:
 ![](https://academy.bricksbuilder.io/assets/checkout-v2-multistep.png)
 
 The generated structure adds the checkout form sections, checkout step wrappers, step navigation, and next/back interactions for a complete starter flow.
+
+The layout uses the Bricks WooCommerce **Notice**, **Checkout coupon**, and **Checkout login** elements. Enable all three under **Bricks > Settings > WooCommerce** next to **Enable advanced modular elements**. In Bricks 2.4.3, the Woo Setup Wizard enables the Notice element setting on its own, but not Checkout coupon and Checkout login. Without those two settings, the Extras and Account login steps cannot render their coupon and login forms.
 
 ## Generated structure
 
@@ -1911,7 +1948,9 @@ Some of these support elements are generated-only or context-specific. If you do
 
 Checkout step order follows the order of the **Checkout step** elements in the Structure panel. The first step is the initial step.
 
-Navigation items mirror the checkout steps by order. If a checkout step is conditional, add the same condition to the matching navigation item so the visible navigation and visible steps stay aligned.
+Navigation items mirror the checkout steps by order. Items for steps the customer has not reached yet are disabled, unless the step has **Allow direct entry** enabled. Items for steps the customer has already passed stay clickable, so the navigation also works as a way back to edit earlier details.
+
+If a checkout step is conditional, add the same condition to the matching navigation item so the visible navigation and visible steps stay aligned.
 
 For the Shipping step, use **Checkout : Needs shipping** with a value of **Yes** on both the step and its navigation item. Use **Checkout : Needs shipping address** only on the **Ship to another address** control and shipping-address fields. A cart can still require shipping methods when WooCommerce is set to use the billing address for shipping.
 
@@ -1941,7 +1980,9 @@ Account creation fields follow the WooCommerce checkout settings separately from
 
 ## Step buttons and interactions
 
-Generated multistep layouts use regular Bricks buttons with the **Checkout step** interaction action.
+Generated multistep layouts use regular Bricks buttons with the **Checkout step** interaction action. Next buttons use the **Next step** mode, Back buttons **Previous step**.
+
+The generated Back buttons use the **Muted** button style. Depending on your theme colors, its default text and background can have low contrast. Adjust the Muted button style in your theme style, or change the style on the Back buttons.
 
 The action can:
 
@@ -1965,11 +2006,15 @@ Inside custom headings or labels, use `{woo_checkout_current_step_number}` to ou
 
 Enable **Validate before leave** on a Checkout step when the customer must complete required fields before moving forward.
 
+The generated layout has **Validate before leave** turned off on every step. A customer can then click **Next** through an empty Customer info step and only sees the missing fields after clicking **Place order**. For most stores, enable it on the Customer info, Shipping, and Payment steps.
+
+With the setting on, clicking **Next** keeps the customer on the step, marks the empty required fields, and focuses the first one. Hidden fields, such as the shipping address while **Ship to a different address?** is unchecked, do not block the step. Pressing Enter in a checkout text field also moves to the next step, and places the order on the last step. The coupon and login forms keep their own Enter behavior.
+
 Backward navigation is always allowed. Forward navigation checks the current step only when **Validate before leave** is enabled.
 
 Free orders do not require a payment method selection. Required terms still apply, and orders that require payment must have a selected payment method.
 
-WooCommerce notices can still link to invalid fields. The checkout step script can route the customer to the step that contains the field and focus it.
+If **Place order** still fails, for example on steps without validation, WooCommerce lists the missing fields as notices. Bricks then opens the step that contains the first invalid field and focuses that field.
 
 ## Payment section for free orders
 
@@ -2000,23 +2045,23 @@ After generating the multistep layout:
 
 ---
 
-<a id="integrations-woocommerce-single-product"></a>
+<a id="integrations-woocommerce-product-archive-woocommerce"></a>
 
-# Single Product (WooCommerce)
+# Product Archive (WooCommerce)
 
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/single-product/
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/product-archive-woocommerce/
 
-*Build WooCommerce single product templates in Bricks and customize the main product layout, data, and related elements.*
+*Build WooCommerce product archive templates in Bricks for shop, category, tag, and other archive views.*
 
 > **Note**
 >
-> The template type "WooCommerce - Single Product" is only visible if WooCommerce is installed & active.
+> The template type "WooCommerce – Product Archive" is only visible if WooCommerce is installed & active.
 
-Create a template of type "WooCommerce - Single product" in Bricks to design an individual layout for the single products page.
+Create a template of type "WooCommerce – Product Archive" in Bricks to design your product archive pages (product categories, tags, attributes, etc.).
 
-To create this template, go to the Bricks templates screen and add a new template. Then select the template type **"WooCommerce - Single Product"** from the top-right dropdown:
+To create this template, go to the Bricks templates screen and add a new template. Then select the template type **"WooCommerce – Product Archive"** from the top-right dropdown:
 
-![](https://academy.bricksbuilder.io/assets/WooCommerce-Template-Type-Single-Product.png)
+![](https://academy.bricksbuilder.io/assets/woocommerce-template-type-product-archive.png)
 
 Click "Publish" or "Save Draft". Then "Edit with Bricks" to open the builder.
 
@@ -2024,79 +2069,63 @@ It is also possible to create/edit this and other templates in the Bricks editor
 
 > **Note**
 >
-> Please remember to add [template hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/#single-product-template-hooks) if you are using third-party plugins.
+> Please remember to add [template hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/#product-archive-template-hooks) if you are using third-party plugins.
 
-## Single Product Elements {#elements}
+## Product Archive Elements {#elements}
 
-When editing a "Single Product" template you'll find the "Products" elements at the very top of the elements panel:
+![](https://academy.bricksbuilder.io/assets/woocommerc-product-archive-elements-580x1024.png)
 
-![](https://academy.bricksbuilder.io/assets/woocommerc-single-product-elements-379x1024.png)
+### Archive title
 
-### Product title
+There is no specific element to add a heading to the product archive.
 
-The product title renders the title of the product.
+To add a heading to this template you could use the Post Title element or add a Heading element with the `{archive_title}` tag.
 
-### Product gallery
+### Breadcrumbs
 
-The product gallery element displays the product images defined in the product image and in the product gallery meta boxes.
+Use the breadcrumbs element to output the navigation links from "Home", and higher level categories until the content displayed in the page.
 
-*To disable the image zoom or lightbox, go to "Bricks > Settings > WooCommerce > Single Product".*
+This element uses the WooCommerce breadcrumbs default engine to generate each part of the breadcrumbs path.
 
-### Product short description
+### Products archive description
 
-Renders the content of the Product short description editor.
+The products archive description will render the product category (or any other product taxonomy term) description.
 
-### Product price
+If used in a template that renders the **Shop** page, it will output the page content (from the Gutenberg/blocks editor).
 
-Renders the product price. If the product is on sale, you could hide the regular price.
+### Products
 
-### Product stock
+This is the main element to list products in a grid. You have controls to customize the style and layout, tweak the query, and select which content (fields) you want to show for each product.
 
-Displays the number of products in stock. You can replace the number of products in stock with a custom message for "in", "low", or "out of stock".
+This element interconnects with the **Products Filter**, **Products Pagination**, **Products Orderby** and the **Products Total Results** elements.
 
-### Product meta
+This means that the query results will be conditioned by the filters and the orderby conditions and it will also impact the pagination and the total results elements output.
 
-Use the product meta element to display product data like the SKU, the product categories or tags, or any other WooCommerce metadata. Use [Dynamic Data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/) to pull the values.
+The query used inside the products element to generate the grid of products will merge the query arguments from the element with the default WooCommerce query in the case the page rendered is the product archive or the product taxonomy archive (product category or product tag). This means that if you are seeing a certain product category archive page you only get a list of products from that category.
 
-### Product rating
+### Products filter
 
-Shows the product's rating on a scale of 1 to 5 stars.
+The products filter element allows you to add query filters to the page so the visitor could search/narrow down the list of products presented.
 
-### Product content
+This element contains three filter types:
 
-Renders the product's main content as written in the WordPress editor.
+- **Taxonomy**: filter the list by one or multiple taxonomy terms.
+- **Product attributes**: filter the list by product attributes like size, color or any other custom attribute used.
+- **Others**: Special set of filters like a product **price dual-range slider**, a** stars rating** filter, a status **stock** filter or a simple **search** input. In this set, you will also find a **Reset filters** option which you would set to add a reset product filters button.
 
-### Add to cart
+When using the taxonomy or product attributes filters, you may select different filter inputs, like a dropdown, a set of checkboxes, a radio list, a text list, or a box list.
 
-This element adds an "Add to cart" button to trigger the addition of this element to the cart. With this element, you may style the product variations inputs, the product stock, the quantity input, and the look & feel of the button itself.
+### Products pagination
 
-### Related products
+List of page links that allow the visitor to navigate through the different products' list pages.
 
-Shows a list of products that have the same product categories and tags of the main product displayed in the page.
+### Products orderby
 
-### Product reviews
+Adds a dropdown to the layout where the visitor could change the order of the products in the presented list. The default sort options are by popularity, by average rating, by latest, and by price (low to high and high to low). This list uses the WooCommerce default list and it can be extended using the WooCommerce hooks or third-party plugins.
 
-Renders the product reviews and review form as a standalone element. Do not use the Product reviews element together with the Product tabs element on the same page, as Product tabs can also output reviews.
+### Products total results
 
-### Product additional information
-
-Renders the list of product attributes. This information will also be part of the product tabs element.
-
-### Product tabs
-
-Renders a section with the default tabs: Description, Additional Information, and Reviews. Other tabs might be added by third-party plugins.
-
-### Product up/cross-sells
-
-The product up/cross-sells element renders linked product recommendations. You can set it to show **Up-sells**, **Cross-sells**, or **Cart Cross-sells** (by default, it lists up-sell products).
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-product-upsells.png)
-
-<figcaption>
-
-WooCommerce product editor screen - Linked Products
-
-</figcaption>
+Use this element to output the number of results returned by the current products query.
 
 ---
 
@@ -2218,23 +2247,23 @@ That's it. With variation swatches, you can now turn standard variation dropdown
 
 ---
 
-<a id="integrations-woocommerce-product-archive-woocommerce"></a>
+<a id="integrations-woocommerce-single-product"></a>
 
-# Product Archive (WooCommerce)
+# Single Product (WooCommerce)
 
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/product-archive-woocommerce/
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/single-product/
 
-*Build WooCommerce product archive templates in Bricks for shop, category, tag, and other archive views.*
+*Build WooCommerce single product templates in Bricks and customize the main product layout, data, and related elements.*
 
 > **Note**
 >
-> The template type "WooCommerce – Product Archive" is only visible if WooCommerce is installed & active.
+> The template type "WooCommerce - Single Product" is only visible if WooCommerce is installed & active.
 
-Create a template of type "WooCommerce – Product Archive" in Bricks to design your product archive pages (product categories, tags, attributes, etc.).
+Create a template of type "WooCommerce - Single product" in Bricks to design an individual layout for the single products page.
 
-To create this template, go to the Bricks templates screen and add a new template. Then select the template type **"WooCommerce – Product Archive"** from the top-right dropdown:
+To create this template, go to the Bricks templates screen and add a new template. Then select the template type **"WooCommerce - Single Product"** from the top-right dropdown:
 
-![](https://academy.bricksbuilder.io/assets/woocommerce-template-type-product-archive.png)
+![](https://academy.bricksbuilder.io/assets/WooCommerce-Template-Type-Single-Product.png)
 
 Click "Publish" or "Save Draft". Then "Edit with Bricks" to open the builder.
 
@@ -2242,63 +2271,79 @@ It is also possible to create/edit this and other templates in the Bricks editor
 
 > **Note**
 >
-> Please remember to add [template hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/#product-archive-template-hooks) if you are using third-party plugins.
+> Please remember to add [template hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/#single-product-template-hooks) if you are using third-party plugins.
 
-## Product Archive Elements {#elements}
+## Single Product Elements {#elements}
 
-![](https://academy.bricksbuilder.io/assets/woocommerc-product-archive-elements-580x1024.png)
+When editing a "Single Product" template you'll find the "Products" elements at the very top of the elements panel:
 
-### Archive title
+![](https://academy.bricksbuilder.io/assets/woocommerc-single-product-elements-379x1024.png)
 
-There is no specific element to add a heading to the product archive.
+### Product title
 
-To add a heading to this template you could use the Post Title element or add a Heading element with the `{archive_title}` tag.
+The product title renders the title of the product.
 
-### Breadcrumbs
+### Product gallery
 
-Use the breadcrumbs element to output the navigation links from "Home", and higher level categories until the content displayed in the page.
+The product gallery element displays the product images defined in the product image and in the product gallery meta boxes.
 
-This element uses the WooCommerce breadcrumbs default engine to generate each part of the breadcrumbs path.
+*To disable the image zoom or lightbox, go to "Bricks > Settings > WooCommerce > Single Product".*
 
-### Products archive description
+### Product short description
 
-The products archive description will render the product category (or any other product taxonomy term) description.
+Renders the content of the Product short description editor.
 
-If used in a template that renders the **Shop** page, it will output the page content (from the Gutenberg/blocks editor).
+### Product price
 
-### Products
+Renders the product price. If the product is on sale, you could hide the regular price.
 
-This is the main element to list products in a grid. You have controls to customize the style and layout, tweak the query, and select which content (fields) you want to show for each product.
+### Product stock
 
-This element interconnects with the **Products Filter**, **Products Pagination**, **Products Orderby** and the **Products Total Results** elements.
+Displays the number of products in stock. You can replace the number of products in stock with a custom message for "in", "low", or "out of stock".
 
-This means that the query results will be conditioned by the filters and the orderby conditions and it will also impact the pagination and the total results elements output.
+### Product meta
 
-The query used inside the products element to generate the grid of products will merge the query arguments from the element with the default WooCommerce query in the case the page rendered is the product archive or the product taxonomy archive (product category or product tag). This means that if you are seeing a certain product category archive page you only get a list of products from that category.
+Use the product meta element to display product data like the SKU, the product categories or tags, or any other WooCommerce metadata. Use [Dynamic Data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/) to pull the values.
 
-### Products filter
+### Product rating
 
-The products filter element allows you to add query filters to the page so the visitor could search/narrow down the list of products presented.
+Shows the product's rating on a scale of 1 to 5 stars.
 
-This element contains three filter types:
+### Product content
 
-- **Taxonomy**: filter the list by one or multiple taxonomy terms.
-- **Product attributes**: filter the list by product attributes like size, color or any other custom attribute used.
-- **Others**: Special set of filters like a product **price dual-range slider**, a** stars rating** filter, a status **stock** filter or a simple **search** input. In this set, you will also find a **Reset filters** option which you would set to add a reset product filters button.
+Renders the product's main content as written in the WordPress editor.
 
-When using the taxonomy or product attributes filters, you may select different filter inputs, like a dropdown, a set of checkboxes, a radio list, a text list, or a box list.
+### Add to cart
 
-### Products pagination
+This element adds an "Add to cart" button to trigger the addition of this element to the cart. With this element, you may style the product variations inputs, the product stock, the quantity input, and the look & feel of the button itself.
 
-List of page links that allow the visitor to navigate through the different products' list pages.
+### Related products
 
-### Products orderby
+Shows a list of products that have the same product categories and tags of the main product displayed in the page.
 
-Adds a dropdown to the layout where the visitor could change the order of the products in the presented list. The default sort options are by popularity, by average rating, by latest, and by price (low to high and high to low). This list uses the WooCommerce default list and it can be extended using the WooCommerce hooks or third-party plugins.
+### Product reviews
 
-### Products total results
+Renders the product reviews and review form as a standalone element. Do not use the Product reviews element together with the Product tabs element on the same page, as Product tabs can also output reviews.
 
-Use this element to output the number of results returned by the current products query.
+### Product additional information
+
+Renders the list of product attributes. This information will also be part of the product tabs element.
+
+### Product tabs
+
+Renders a section with the default tabs: Description, Additional Information, and Reviews. Other tabs might be added by third-party plugins.
+
+### Product up/cross-sells
+
+The product up/cross-sells element renders linked product recommendations. You can set it to show **Up-sells**, **Cross-sells**, or **Cart Cross-sells** (by default, it lists up-sell products).
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-product-upsells.png)
+
+<figcaption>
+
+WooCommerce product editor screen - Linked Products
+
+</figcaption>
 
 ---
 
@@ -3144,6 +3189,8 @@ These tags can be used in cart, checkout, and cart-dependent fragments without b
 - `{woo_url}`
 
 Some tags support `:value` to return a plain number instead of formatted WooCommerce HTML, such as `{woo_cart_shipping_total_amount:value}` and `{woo_free_shipping_progress:value}`.
+
+`{woo_free_shipping_min_amount}` and `{woo_free_shipping_remaining}` return the free shipping minimum and the amount still missing as prices. `{woo_free_shipping_progress}` returns the progress toward that minimum as a percentage from 0 to 100. The minimum comes from the WooCommerce Free shipping method of the shipping zone that matches the cart. See [Dynamic fragment](https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/#free-shipping-progress).
 
 ## Coupon, fee, and tax tags
 

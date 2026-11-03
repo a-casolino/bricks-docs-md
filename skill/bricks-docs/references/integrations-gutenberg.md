@@ -52,7 +52,7 @@ Source: https://academy.bricksbuilder.io/integrations/gutenberg/components-as-bl
 
 *Expose Bricks components as Gutenberg blocks so editors can insert styled, property-driven Bricks content directly inside the block editor.*
 
-https://youtu.be/tgpjMcZaLNc
+https://youtu.be/HPpr1QLwgAk
 
 Most sites built with Bricks follow a simple pattern: you create your pages and templates in Bricks, and write your posts or other content in the block editor (Gutenberg).
 
@@ -78,8 +78,8 @@ Three options are available:
 - **Enable individual components manually**
   - Components must be enabled individually to appear in the block editor.
   - In the builder:
-    - Open the **Components panel**, hover over a component, click **Use in block editor**, then confirm.
-    - Or edit a component and toggle **Use in block editor → Enabled** from the component settings header.
+    - Open the **Components panel**, hover over a component, click **Use in block editor**, confirm, then save in the builder.
+    - Or edit a component, toggle **Use in block editor → Enabled** from the component settings header, and save.
   - A filter in the Components panel lets you view only components enabled for the block editor.
 - **Enable all components automatically**
   - All Bricks components are instantly available in the block editor.

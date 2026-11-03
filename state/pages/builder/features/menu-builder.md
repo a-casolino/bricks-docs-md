@@ -40,7 +40,7 @@ The main purpose of this new, fully-accessible "hamburger" toggle icon/button is
 
 You can choose from various animation effects, and even set your own custom toggle icon.
 
-The Toggle automatically detects the Offcanvas or Nav (Nestable) context it is placed in. If you have multiple toggleable elements or want to trigger a specific one, simply enter its "CSS selector" into the control field.
+Without a "CSS selector", a Toggle opens the first Offcanvas on the page. Only when the page has no Offcanvas does it toggle the Nav (Nestable) it is placed in. So if a page has an Offcanvas (for example in the header template) and a Nav (Nestable) mobile menu, or several Offcanvas elements, enter the target's "CSS selector" in the Toggle.
 
 You can use it for so much more, though. As it provides settings to toggle any HTML attribute of any element on your page.
 
@@ -52,7 +52,7 @@ Being nestable, the new Offcanvas element lets you create unique mobile menus wi
 
 The Offcanvas comes with two effects: slide-in (default) & offset, and can be toggled (open/close) through the "Toggle" element. It's super simple as you can see in the [Offcanvas set up](#mobile-menu-offcanvas) section down below.
 
-Starting at Bricks 1.11, [the new "Toggle Offcanvas" interaction](https://academy.bricksbuilder.io/builder/features/interactions/#toggle-offcanvas), let's you toggle your Offcanvas from any element.
+Starting at Bricks 1.11, [the new "Toggle Offcanvas" interaction](https://academy.bricksbuilder.io/builder/features/interactions/#toggle-offcanvas), lets you toggle your Offcanvas from any element.
 
 ## Default menu structure {#menu-structure}
 
@@ -186,7 +186,7 @@ Save your changes, and head to the front end. A click on the Toggle icon should 
 
 As the Offcanvas is a nestable element, you can add any layouts & elements inside of it.
 
-The Offcanvas comes prepopulated with a close Toggle. Clicking outside the Offcanvas (on the backdrop) also closes the Offcanvas.
+The Offcanvas comes prepopulated with a close Toggle. Clicking outside the Offcanvas (on the backdrop) or pressing Esc also closes it. For focus and keyboard behavior, see [Offcanvas](https://academy.bricksbuilder.io/builder/elements/general/offcanvas/#opening-closing-and-keyboard-focus).
 
 When editing the Offcanvas in the builder make sure to enable the "Keep open while styling" setting, so the Offcanvas does not disappear when you edit different elements.
 

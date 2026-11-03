@@ -93,6 +93,8 @@ These tags can be used in cart, checkout, and cart-dependent fragments without b
 
 Some tags support `:value` to return a plain number instead of formatted WooCommerce HTML, such as `{woo_cart_shipping_total_amount:value}` and `{woo_free_shipping_progress:value}`.
 
+`{woo_free_shipping_min_amount}` and `{woo_free_shipping_remaining}` return the free shipping minimum and the amount still missing as prices. `{woo_free_shipping_progress}` returns the progress toward that minimum as a percentage from 0 to 100. The minimum comes from the WooCommerce Free shipping method of the shipping zone that matches the cart. See [Dynamic fragment](https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/#free-shipping-progress).
+
 ## Coupon, fee, and tax tags
 
 | Query loop       | Tags                                                            |

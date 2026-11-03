@@ -313,6 +313,160 @@ Use the same pseudo-class workflow for global classes, element ID styles, and ot
 
 ---
 
+# Masonry Layout
+
+Source: https://academy.bricksbuilder.io/builder/styling/masonry-layout/
+
+*Create masonry-style layouts in Bricks and understand the current options and constraints for staggered grids.*
+
+Starting with version 1.11.1, you can easily apply a masonry layout to any layout element in Bricks.
+
+The new Masonry Layout controls are available under `Style > Layout > Masonry` for all layout elements (Section, Container, Block, Div).
+
+![](https://academy.bricksbuilder.io/assets/masonry-layout-controls.png)
+
+Bricks utilizes the [IsotopeJS](https://isotope.metafizzy.co/) library to create the masonry layout, which it also uses for the **Image Gallery** and **Posts** elements, for optimal performance.
+
+## How It Works {#how-it-works}
+
+When the Masonry layout is enabled, all direct child elements become masonry items.
+
+You can customize the number of columns and adjust spacing for different breakpoints to achieve a responsive layout.
+
+> **Note**
+>
+> **Tip:** Ensure that no conflicting CSS styles are applied to the masonry-enabled element, as they may interfere with the masonry layout. It’s best to clear all custom styles for the element to allow the masonry effect to work smoothly.
+
+You can also use the masonry layout to wrap items in a **query loop** for a dynamic grid effect. This is particularly useful for layouts with posts, products, or any repeated content, enabling you to display query items in a visually engaging, staggered grid format.
+
+![](https://academy.bricksbuilder.io/assets/masonry-layout-example-query-loop.png)
+
+## Use Bricks Interaction Animation
+
+If you want to apply custom animations using the **Interactions** panel (e.g., setting an **Entry Viewport Trigger** and **Start Animation** for masonry children), you can disable the default masonry animations by setting **Transition: Duration** to `0`.
+
+This prevents any overlap between the default masonry transitions and your custom animations, ensuring a smoother effect.
+
+![](https://academy.bricksbuilder.io/assets/masonry-layout-disable-animation.png)
+
+## Troubleshooting {#troubleshoot}
+
+### Custom CSS Conflicts
+
+If the masonry columns don’t align with your settings, inspect the CSS styles applied to the child elements. Styles such as **width**, **flex-basis** or **align-self** within flex layouts can override the masonry column settings. Adjust or remove these styles to ensure the masonry layout functions as expected.
+
+### Dynamic Content Updates via Custom JavaScript/AJAX
+
+If you have custom code/plugins that adds masonry child nodes via JavaScript or AJAX, it’s likely that the masonry layout may not update correctly. To fix this, you can manually refresh the masonry instance by running the following JavaScript.
+
+```php
+bricksUtils.updateIsotopeInstance('BRICKS_ID');
+
+```
+
+Replace `'BRICKS_ID'` with the specific ID of your masonry element. This function will reinitialize the masonry layout to accommodate the new nodes, ensuring the layout remains intact.
+
+![](https://academy.bricksbuilder.io/assets/masonry-copy-bricks-id-2.png)
+
+---
+
+# Styling Element States & Parts
+
+Source: https://academy.bricksbuilder.io/builder/styling/pseudo-classes/
+
+*Style different element states and parts in Bricks with pseudo-classes, pseudo-elements, and responsive variants.*
+
+Bricks lets you apply different styles to an element depending on its state (such as on mouse `:hover` or a `:visited` link) via pseudo-classes.
+
+You can also apply different styles to specific parts of an element via pseudo-elements. Such as the `::first-letter` or the `::first-line`.
+
+The video below shows how to work with pseudo-classes & pseudo-elements in Bricks (1.3.5+) and how you can add pseudo keywords yourself to Bricks:
+
+https://youtu.be/38tXZSkw40U
+
+<figcaption>
+
+How to work with pseudo-classes & pseudo-elements in Bricks.
+
+</figcaption>
+
+> **Note**
+>
+> You can style pseudo-classes and pseudo-elements on individual elements, global classes, and in Theme Styles.
+
+## How to edit a specific element state or part of an element
+
+Click the cursor icon (**Selectors**) next to the selector field in the Element panel to toggle the pseudo-class menu:
+
+![](https://academy.bricksbuilder.io/assets/toggle-pseudo-classes-1.png)
+
+Click the text input to reveal all available pseudo-classes & pseudo-elements:
+
+![](https://academy.bricksbuilder.io/assets/default-pseudo-classes.png)
+
+## How to create your own pseudo-classes & pseudo-elements
+
+By default, Bricks shows `:hover`, `:active` and `:focus` pseudo-classes, but you can add other pseudo-classes or pseudo-elements yourself.
+
+Simply type out the pseudo-class or pseudo-element you want to create (such as `:visited`) and press enter or click the little save icon:
+
+![](https://academy.bricksbuilder.io/assets/adding-other-pseudo-classes.png)
+
+## Edit styles for element states or parts
+
+Click the **Selectors** icon next to the selector field to open the pseudo-class menu. Another click inside the text input reveals all available pseudo-classes & -elements. Select the one you want to edit.
+
+![](https://academy.bricksbuilder.io/assets/edit-styles.png)
+
+The "active" pseudo keyword will now show highlighted in the right corner. The **Selectors** icon will appear highlighted as well, indicating you're now editing the styles for a pseudo-class or pseudo-element:
+
+![](https://academy.bricksbuilder.io/assets/edit-states-styles.png)
+
+At this point, changing the styles controls will only affect the active pseudo-class or pseudo-element. To leave the state, open the Selectors menu and click it again. Avoid using X if you want to keep editing the active global class: X also deselects the class, so further changes apply to the element ID.
+
+After that, you'll notice the input will show a little indicator of how many pseudo-classes or pseudo-elements are configured to this element or theme style:
+
+![](https://academy.bricksbuilder.io/assets/pseudo-classes-assigned.png)
+
+To clear the styles associated with a pseudo-class or a pseudo-element, open the dropdown list where you'll notice a little dot indicator for the states that have styles associated with them. To clear the styles of a specific state, click the dot indicator:
+
+![](https://academy.bricksbuilder.io/assets/clear-styles-pseudo-classes.png)
+
+## Deleting pseudo keywords
+
+You can delete custom-added pseudo-classes or pseudo-elements (except the ones Bricks adds by default).
+
+To do so, open the pseudo-class menu, reveal the dropdown, hover with your mouse over the pseudo keyword you want to delete. Then click the "bin" icon.
+
+![](https://academy.bricksbuilder.io/assets/delete-pseudo-class.png)
+
+> **Note**
+>
+> Deleting a custom pseudo keyword removes it from the list site-wide. Existing styles are kept. Add the keyword again to edit those styles.
+
+## Example 1: Style a child class when a parent is hovered
+
+Let's say there's a Div having a Heading element and that the heading has a class called `text--blue` with blue color text. Now you want to change the heading text to a different color when the Div is hovered.
+
+For this:
+
+1. Set a padding of say 40px all around for the Div element so the end result can be seen.
+2. Select the Div.
+3. Click the **Selectors** icon.
+4. Click in the input field.
+5. Type `:hover .text--blue` and hit return or click the Save (floppy) icon.
+6. With the Div element still as the current element that is selected, go to STYLE → TYPOGRAPHY, click the Color control's circle and set your desired color.
+
+Save and check the frontend. Hovering the Div should change the heading color.
+
+Resources (list of available pseudo keywords):
+
+[https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes)
+
+[https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements)
+
+---
+
 # Understanding The Layout
 
 Source: https://academy.bricksbuilder.io/builder/styling/layout/
@@ -482,160 +636,6 @@ Located under: Bricks > Settings > General > Converter
 ## Masonry layout {#masonry}
 
 Starting at Bricks 1.11.1 you can enable the "Masonry layout" for all layout elements under `Style > Layout > Masonry`. Learn more at [/builder/styling/masonry-layout/](https://academy.bricksbuilder.io/builder/styling/masonry-layout/)
-
----
-
-# Masonry Layout
-
-Source: https://academy.bricksbuilder.io/builder/styling/masonry-layout/
-
-*Create masonry-style layouts in Bricks and understand the current options and constraints for staggered grids.*
-
-Starting with version 1.11.1, you can easily apply a masonry layout to any layout element in Bricks.
-
-The new Masonry Layout controls are available under `Style > Layout > Masonry` for all layout elements (Section, Container, Block, Div).
-
-![](https://academy.bricksbuilder.io/assets/masonry-layout-controls.png)
-
-Bricks utilizes the [IsotopeJS](https://isotope.metafizzy.co/) library to create the masonry layout, which it also uses for the **Image Gallery** and **Posts** elements, for optimal performance.
-
-## How It Works {#how-it-works}
-
-When the Masonry layout is enabled, all direct child elements become masonry items.
-
-You can customize the number of columns and adjust spacing for different breakpoints to achieve a responsive layout.
-
-> **Note**
->
-> **Tip:** Ensure that no conflicting CSS styles are applied to the masonry-enabled element, as they may interfere with the masonry layout. It’s best to clear all custom styles for the element to allow the masonry effect to work smoothly.
-
-You can also use the masonry layout to wrap items in a **query loop** for a dynamic grid effect. This is particularly useful for layouts with posts, products, or any repeated content, enabling you to display query items in a visually engaging, staggered grid format.
-
-![](https://academy.bricksbuilder.io/assets/masonry-layout-example-query-loop.png)
-
-## Use Bricks Interaction Animation
-
-If you want to apply custom animations using the **Interactions** panel (e.g., setting an **Entry Viewport Trigger** and **Start Animation** for masonry children), you can disable the default masonry animations by setting **Transition: Duration** to `0`.
-
-This prevents any overlap between the default masonry transitions and your custom animations, ensuring a smoother effect.
-
-![](https://academy.bricksbuilder.io/assets/masonry-layout-disable-animation.png)
-
-## Troubleshooting {#troubleshoot}
-
-### Custom CSS Conflicts
-
-If the masonry columns don’t align with your settings, inspect the CSS styles applied to the child elements. Styles such as **width**, **flex-basis** or **align-self** within flex layouts can override the masonry column settings. Adjust or remove these styles to ensure the masonry layout functions as expected.
-
-### Dynamic Content Updates via Custom JavaScript/AJAX
-
-If you have custom code/plugins that adds masonry child nodes via JavaScript or AJAX, it’s likely that the masonry layout may not update correctly. To fix this, you can manually refresh the masonry instance by running the following JavaScript.
-
-```php
-bricksUtils.updateIsotopeInstance('BRICKS_ID');
-
-```
-
-Replace `'BRICKS_ID'` with the specific ID of your masonry element. This function will reinitialize the masonry layout to accommodate the new nodes, ensuring the layout remains intact.
-
-![](https://academy.bricksbuilder.io/assets/masonry-copy-bricks-id-2.png)
-
----
-
-# Styling Element States & Parts
-
-Source: https://academy.bricksbuilder.io/builder/styling/pseudo-classes/
-
-*Style different element states and parts in Bricks with pseudo-classes, pseudo-elements, and responsive variants.*
-
-Bricks lets you apply different styles to an element depending on its state (such as on mouse `:hover` or a `:visited` link) via pseudo-classes.
-
-You can also apply different styles to specific parts of an element via pseudo-elements. Such as the `::first-letter` or the `::first-line`.
-
-The video below shows how to work with pseudo-classes & pseudo-elements in Bricks (1.3.5+) and how you can add pseudo keywords yourself to Bricks:
-
-https://youtu.be/38tXZSkw40U
-
-<figcaption>
-
-How to work with pseudo-classes & pseudo-elements in Bricks.
-
-</figcaption>
-
-> **Note**
->
-> You can style pseudo-classes and pseudo-elements on individual elements, global classes, and in Theme Styles.
-
-## How to edit a specific element state or part of an element
-
-Click the cursor icon (**Selectors**) next to the selector field in the Element panel to toggle the pseudo-class menu:
-
-![](https://academy.bricksbuilder.io/assets/toggle-pseudo-classes-1.png)
-
-Click the text input to reveal all available pseudo-classes & pseudo-elements:
-
-![](https://academy.bricksbuilder.io/assets/default-pseudo-classes.png)
-
-## How to create your own pseudo-classes & pseudo-elements
-
-By default, Bricks shows `:hover`, `:active` and `:focus` pseudo-classes, but you can add other pseudo-classes or pseudo-elements yourself.
-
-Simply type out the pseudo-class or pseudo-element you want to create (such as `:visited`) and press enter or click the little save icon:
-
-![](https://academy.bricksbuilder.io/assets/adding-other-pseudo-classes.png)
-
-## Edit styles for element states or parts
-
-Click the **Selectors** icon next to the selector field to open the pseudo-class menu. Another click inside the text input reveals all available pseudo-classes & -elements. Select the one you want to edit.
-
-![](https://academy.bricksbuilder.io/assets/edit-styles.png)
-
-The "active" pseudo keyword will now show highlighted in the right corner. The **Selectors** icon will appear highlighted as well, indicating you're now editing the styles for a pseudo-class or pseudo-element:
-
-![](https://academy.bricksbuilder.io/assets/edit-states-styles.png)
-
-At this point, changing the styles controls will only affect the active pseudo-class or pseudo-element. To leave the state, open the Selectors menu and click it again. Avoid using X if you want to keep editing the active global class: X also deselects the class, so further changes apply to the element ID.
-
-After that, you'll notice the input will show a little indicator of how many pseudo-classes or pseudo-elements are configured to this element or theme style:
-
-![](https://academy.bricksbuilder.io/assets/pseudo-classes-assigned.png)
-
-To clear the styles associated with a pseudo-class or a pseudo-element, open the dropdown list where you'll notice a little dot indicator for the states that have styles associated with them. To clear the styles of a specific state, click the dot indicator:
-
-![](https://academy.bricksbuilder.io/assets/clear-styles-pseudo-classes.png)
-
-## Deleting pseudo keywords
-
-You can delete custom-added pseudo-classes or pseudo-elements (except the ones Bricks adds by default).
-
-To do so, open the pseudo-class menu, reveal the dropdown, hover with your mouse over the pseudo keyword you want to delete. Then click the "bin" icon.
-
-![](https://academy.bricksbuilder.io/assets/delete-pseudo-class.png)
-
-> **Note**
->
-> Deleting a custom pseudo keyword removes it from the list site-wide. Existing styles are kept. Add the keyword again to edit those styles.
-
-## Example 1: Style a child class when a parent is hovered
-
-Let's say there's a Div having a Heading element and that the heading has a class called `text--blue` with blue color text. Now you want to change the heading text to a different color when the Div is hovered.
-
-For this:
-
-1. Set a padding of say 40px all around for the Div element so the end result can be seen.
-2. Select the Div.
-3. Click the **Selectors** icon.
-4. Click in the input field.
-5. Type `:hover .text--blue` and hit return or click the Save (floppy) icon.
-6. With the Div element still as the current element that is selected, go to STYLE → TYPOGRAPHY, click the Color control's circle and set your desired color.
-
-Save and check the frontend. Hovering the Div should change the heading color.
-
-Resources (list of available pseudo keywords):
-
-[https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes)
-
-[https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements)
 
 ---
 

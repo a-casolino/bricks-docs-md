@@ -4,9 +4,13 @@ Use the Dynamic fragment element when you need cart-dependent content outside th
 
 Dynamic fragment re-renders itself and its children after WooCommerce cart changes. For a mini cart, place the cart item loop and cart totals inside the fragment so product rows, quantities, subtotal, and buttons stay current after add-to-cart, remove, and quantity changes.
 
+https://youtu.be/ExpIHVe2tho
+
 > **Note**
 >
 > Dynamic fragment requires **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
+
+The classic [Mini cart element](https://academy.bricksbuilder.io/builder/elements/woocommerce/mini-cart/) shows WooCommerce's own mini cart list. You can style it, but not change its structure. Use Dynamic fragment when you want to build the cart rows, totals, and buttons from Bricks elements.
 
 ## Common setup
 
@@ -40,7 +44,7 @@ Inside the Dynamic fragment, Bricks creates:
 - A **Details wrapper** that contains the mini cart content.
 - A **Cart loop** using the **Cart contents** query type.
 - A cart row inside the loop with product image, product title, product price, product excerpt, item data, quantity control, remove icon, and line subtotal.
-- An empty-cart message from the Cart contents query loop.
+- An empty-cart message from the Cart contents query loop. Change it in the Cart loop's query settings under **No results** > **Text**.
 - A separate block after the Cart loop for the subtotal and action buttons.
 - A condition on that subtotal/actions block so it only shows when the Cart loop has more than `0` results.
 - **View Cart** and **Checkout** buttons using WooCommerce URL dynamic data.
@@ -58,7 +62,7 @@ Common row tags:
 | `{featured_image}` | Product image. |
 | `{woo_cart_product_title:plain}` | Product title as plain text, without variation metadata. |
 | **Cart item data** | Variation attributes and compatible extension-provided item data. |
-| `{woo_cart_quantity}` | Quantity input. |
+| **Cart quantity** | Quantity input with plus and minus buttons. |
 | `{woo_cart_quantity:value}` | Quantity number as text. |
 | `{woo_cart_subtotal}` | Line subtotal. |
 | `{woo_cart_remove_link:url}` | Remove URL for a link or icon. |
@@ -113,11 +117,15 @@ Add a condition to the Offcanvas if you do not want this behavior on checkout. F
 
 ![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-interaction.png)
 
+**Added to cart** also runs for WooCommerce's own add to cart buttons on shop and category pages when **WooCommerce > Settings > Products > Enable AJAX add to cart buttons on archives** is on (the WooCommerce default).
+
 Keep **Added to cart** for this interaction if the Offcanvas should toggle only after an addition. The [Bricks cart contents changed](https://academy.bricksbuilder.io/builder/features/interactions/#cart-contents-changed) trigger, available since Bricks 2.4, also runs after successful AJAX quantity changes and removals. Using it with **Toggle offcanvas** would toggle the mini cart during those updates too.
 
 ## Preview the refresh behavior
 
 Dynamic fragment refreshes on the frontend after WooCommerce cart events such as add to cart, remove from cart, cart emptied, cart totals updated, checkout updated, and coupon apply/remove events.
+
+In the Builder, the cart loop previews your own cart, or sample products when your cart is empty. **Cart item data** shows a placeholder for products without item data, such as simple products. The frontend renders each visitor's real cart.
 
 The **Bricks dynamic fragments refreshed** interaction signals that fragment content has been replaced. It can run during initial synchronization or checkout recalculation without a cart item change. To show a custom “Cart updated” confirmation, use **Bricks cart contents changed**, which waits for a confirmed item change and the related UI updates to finish.
 

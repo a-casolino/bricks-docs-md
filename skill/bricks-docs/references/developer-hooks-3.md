@@ -153,33 +153,6 @@ add_filter( 'bricks/allowed_html_tags', function( $allowed_html_tags ) {
 
 ---
 
-# Filter: bricks//assets/load_webfonts
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-load_webfonts/
-
-*Bricks 1.4 introduces the possibility to \"Disable Google Fonts\". Either via the Bricks settings under \"Performance\" or programmatically using the filter as.*
-
-Bricks 1.4 introduces the possibility to "Disable Google Fonts". Either via the Bricks settings under "Performance" or programmatically using the filter as explained below:
-
-![](https://academy.bricksbuilder.io/assets/bricks-1.4-disable-google-fonts-setting-1024x944.png)
-
-<figcaption>
-
-Bricks > Settings > Performance: Disable Google Fonts
-
-</figcaption>
-
-With the filter `bricks/assets/load_webfonts` you'll be able to prevent Google Fonts to load in the frontend by returning `false`:
-
-```php
-// Prevent Google Fonts loading
-add_filter( 'bricks/assets/load_webfonts', '__return_false' );
-```
-
-If you use this filter to remove the embed of Google Fonts but you still like to use Google Fonts, just head to the [Google Fonts website](https://fonts.google.com/) and download the fonts you need. Then, add them manually to your website, using the [Custom Fonts](https://academy.bricksbuilder.io/builder/styling/custom-fonts/) screen.
-
----
-
 # Filter: bricks/assets/generate_css_from_element
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-generate_css_from_element/
@@ -205,6 +178,33 @@ add_filter( 'bricks/assets/generate_css_from_element', function( $element_names,
   return $element_names;
 }, 10, 3 );
 ```
+
+---
+
+# Filter: bricks//assets/load_webfonts
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-load_webfonts/
+
+*Bricks 1.4 introduces the possibility to \"Disable Google Fonts\". Either via the Bricks settings under \"Performance\" or programmatically using the filter as.*
+
+Bricks 1.4 introduces the possibility to "Disable Google Fonts". Either via the Bricks settings under "Performance" or programmatically using the filter as explained below:
+
+![](https://academy.bricksbuilder.io/assets/bricks-1.4-disable-google-fonts-setting-1024x944.png)
+
+<figcaption>
+
+Bricks > Settings > Performance: Disable Google Fonts
+
+</figcaption>
+
+With the filter `bricks/assets/load_webfonts` you'll be able to prevent Google Fonts to load in the frontend by returning `false`:
+
+```php
+// Prevent Google Fonts loading
+add_filter( 'bricks/assets/load_webfonts', '__return_false' );
+```
+
+If you use this filter to remove the embed of Google Fonts but you still like to use Google Fonts, just head to the [Google Fonts website](https://fonts.google.com/) and download the fonts you need. Then, add them manually to your website, using the [Custom Fonts](https://academy.bricksbuilder.io/builder/styling/custom-fonts/) screen.
 
 ---
 
@@ -828,6 +828,22 @@ add_filter( 'bricks/dynamic_data/post_terms_links', function( $has_links, $post,
 
 ---
 
+# Filter: bricks/dynamic_data/post_terms_separator
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-post_terms_separator/
+
+*Programmatically set the post term separator like so:*
+
+Programmatically set the post term separator like so:
+
+```php
+add_filter( 'bricks/dynamic_data/post_terms_separator', function( $sep, $post, $taxonomy ) {
+  return ' : ';
+}, 10, 3 );
+```
+
+---
+
 # Filter: bricks/dynamic_data/read_more
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-read_more/
@@ -865,22 +881,6 @@ add_filter( 'bricks/dynamic_data/replace_nonexistent_tags', '__return_true', 10,
 > **Note**
 >
 > Note: Bricks 1.3.5 introduced the possibility to toggle this behavior, but by default Bricks was replacing the tags. Bricks 1.4 changed the default action.
-
----
-
-# Filter: bricks/dynamic_data/post_terms_separator
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-post_terms_separator/
-
-*Programmatically set the post term separator like so:*
-
-Programmatically set the post term separator like so:
-
-```php
-add_filter( 'bricks/dynamic_data/post_terms_separator', function( $sep, $post, $taxonomy ) {
-  return ' : ';
-}, 10, 3 );
-```
 
 ---
 
@@ -1093,6 +1093,29 @@ Since Bricks 1.5, the `$settings` and `$name` arguments are deprecated. You may 
 
 ---
 
+# Filter: bricks/elements/{element_name}/control_groups
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-elements-element_name-control_groups/
+
+*Since Bricks 1.4 it is possible to add custom control groups to a specific element like so:*
+
+Since Bricks 1.4 it is possible to add custom control groups to a specific element like so:
+
+```php
+add_filter( 'bricks/elements/heading/control_groups', function( $control_groups ) {
+    $control_groups['custom_controls'] = [
+        'tab'      => 'content', // or 'style'
+        'title'    => esc_html__( 'Custom controls', 'my_plugin' ),
+    ];
+
+    return $control_groups;
+} );
+```
+
+Note: the above example adds a new control group with the title "**Custom controls**" to the **heading** element, using the filter `bricks/elements/**heading**/control_groups`. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
+
+---
+
 # Filter: bricks/element/settings
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-settings/
@@ -1178,51 +1201,6 @@ You might also be interested in the filter [`bricks/posts/query_vars`](https://a
 
 ---
 
-# Filter: bricks/elements/{element_name}/control_groups
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-elements-element_name-control_groups/
-
-*Since Bricks 1.4 it is possible to add custom control groups to a specific element like so:*
-
-Since Bricks 1.4 it is possible to add custom control groups to a specific element like so:
-
-```php
-add_filter( 'bricks/elements/heading/control_groups', function( $control_groups ) {
-    $control_groups['custom_controls'] = [
-        'tab'      => 'content', // or 'style'
-        'title'    => esc_html__( 'Custom controls', 'my_plugin' ),
-    ];
-
-    return $control_groups;
-} );
-```
-
-Note: the above example adds a new control group with the title "**Custom controls**" to the **heading** element, using the filter `bricks/elements/**heading**/control_groups`. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
-
----
-
-# Filter: bricks/footer/attributes
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-footer-attributes/
-
-*Programmatically add HTML attributes to the footer tag.*
-
-Programmatically add HTML attributes to the `footer` tag.
-
-```php
-add_filter( 'bricks/footer/attributes', function( $attributes ) {
-  // Add 'data-is-footer' HTML attribute to footer with value 'y'
-  $attributes['data-is-footer'] = 'y';
-
-  return $attributes;
-} );
-```
-
-- [/developer/hooks/filters/filter-bricks-header-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/)
-- [/developer/hooks/filters/filter-bricks-content-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-attributes/)
-
----
-
 # Filter: bricks/filter_element/populated_options
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-filter_element-populated_options/
@@ -1260,6 +1238,73 @@ add_filter( 'bricks/filter_element/populated_options', function( $options, $elem
   return $options;
 }, 10, 2 );
 ```
+
+---
+
+# Filter: bricks/footer/attributes
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-footer-attributes/
+
+*Programmatically add HTML attributes to the footer tag.*
+
+Programmatically add HTML attributes to the `footer` tag.
+
+```php
+add_filter( 'bricks/footer/attributes', function( $attributes ) {
+  // Add 'data-is-footer' HTML attribute to footer with value 'y'
+  $attributes['data-is-footer'] = 'y';
+
+  return $attributes;
+} );
+```
+
+- [/developer/hooks/filters/filter-bricks-header-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/)
+- [/developer/hooks/filters/filter-bricks-content-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-attributes/)
+
+---
+
+# Filter: bricks/form/action/{form_action}
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-action-form_action/
+
+*The bricks/form/action/{formaction} filter is triggered when a custom action (one that is not reserved by Bricks) is selected in a form. It allows developers to.*
+
+The `bricks/form/action/{form_action}` filter is triggered when a custom action (one that is not reserved by Bricks) is selected in a form. It allows developers to define custom logic for handling such actions dynamically.
+
+Bricks provides several reserved actions out of the box, including:
+
+- **email**
+- **redirect**
+- **mailchimp**
+- **sendgrid**
+- **login**
+- **registration**
+- **lost-password**
+- **reset-password**
+- **custom**
+
+If the user's selected action is not in this list, the `bricks/form/action/{form_action}` filter is triggered.
+
+## Example usage
+
+Here’s how you can handle a custom action called `slack-notification`:
+
+```php
+// Handle the Slack notification action
+add_action(
+    'bricks/form/action/slack-notification',
+    function ( $form ) {
+        $settings = $form->get_settings();
+        $fields   = $form->get_fields();
+
+        // Implement Slack notification logic
+    }
+);
+```
+
+## Parameters:
+
+- **`$form` (\Bricks\Integrations\Form\Init)**: The current form instance, providing access to settings and submitted fields.
 
 ---
 
@@ -1307,51 +1352,6 @@ In this example, the filter modifies the value of the meta key 'my_meta_key' usi
 **Return:**
 
 - (mixed): The modified value of the meta field, which will be saved with the post.
-
----
-
-# Filter: bricks/form/action/{form_action}
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-action-form_action/
-
-*The bricks/form/action/{formaction} filter is triggered when a custom action (one that is not reserved by Bricks) is selected in a form. It allows developers to.*
-
-The `bricks/form/action/{form_action}` filter is triggered when a custom action (one that is not reserved by Bricks) is selected in a form. It allows developers to define custom logic for handling such actions dynamically.
-
-Bricks provides several reserved actions out of the box, including:
-
-- **email**
-- **redirect**
-- **mailchimp**
-- **sendgrid**
-- **login**
-- **registration**
-- **lost-password**
-- **reset-password**
-- **custom**
-
-If the user's selected action is not in this list, the `bricks/form/action/{form_action}` filter is triggered.
-
-## Example usage
-
-Here’s how you can handle a custom action called `slack-notification`:
-
-```php
-// Handle the Slack notification action
-add_action(
-    'bricks/form/action/slack-notification',
-    function ( $form ) {
-        $settings = $form->get_settings();
-        $fields   = $form->get_fields();
-
-        // Implement Slack notification logic
-    }
-);
-```
-
-## Parameters:
-
-- **`$form` (\Bricks\Integrations\Form\Init)**: The current form instance, providing access to settings and submitted fields.
 
 ---
 
@@ -1456,6 +1456,32 @@ In this example, a callback function is defined within the add_filter function c
 
 ---
 
+# Filter: bricks/get_element_data/maybe_from_post_id
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-get_element_data-maybe_from_post_id/
+
+*Provide an alternate post ID for Bricks element-data lookups when custom elements reference content stored in another post or template.*
+
+The `bricks/get_element_data/maybe_from_post_id` filter, available `@since 1.11`, allows you to specify an additional post ID from which to retrieve element data. This can be useful when dealing with custom elements that reference templates, posts, or external data sources, where the target element is not found within the standard element set. (Especially when dealing with Code element + Signed signature)
+
+### When to Use
+
+This filter is useful when working with custom elements that reference data from other templates or posts. For example, if you have a custom element that stores additional Bricks content in another post or template, and there is a code element with a signed signature located there, Bricks may not render the code element on the frontend because it doesn't know where to retrieve the signature. This filter allows you to specify the correct post or template to ensure that all elements are properly rendered.
+
+```php
+add_filter( 'bricks/get_element_data/maybe_from_post_id', function( $id, $element_data ) {
+  // Check if the element is my custom element and has custom_template_id set on the control
+  if ( isset( $element_data['name'] ) && $element_data['name'] === 'my-custom-element' && ! empty( $element_data['settings']['custom_template_id'] ) ) {
+    $id = $element_data['settings']['custom_template_id'];
+  }
+
+  return $id;
+}, 10, 2 );
+
+```
+
+---
+
 # Filter: bricks/frontend/render_element
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-frontend-render_element/
@@ -1487,32 +1513,6 @@ add_filter( 'bricks/frontend/render_element', function( $html, $element ) {
     }
 
     return $html;
-}, 10, 2 );
-
-```
-
----
-
-# Filter: bricks/get_element_data/maybe_from_post_id
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-get_element_data-maybe_from_post_id/
-
-*Provide an alternate post ID for Bricks element-data lookups when custom elements reference content stored in another post or template.*
-
-The `bricks/get_element_data/maybe_from_post_id` filter, available `@since 1.11`, allows you to specify an additional post ID from which to retrieve element data. This can be useful when dealing with custom elements that reference templates, posts, or external data sources, where the target element is not found within the standard element set. (Especially when dealing with Code element + Signed signature)
-
-### When to Use
-
-This filter is useful when working with custom elements that reference data from other templates or posts. For example, if you have a custom element that stores additional Bricks content in another post or template, and there is a code element with a signed signature located there, Bricks may not render the code element on the frontend because it doesn't know where to retrieve the signature. This filter allows you to specify the correct post or template to ensure that all elements are properly rendered.
-
-```php
-add_filter( 'bricks/get_element_data/maybe_from_post_id', function( $id, $element_data ) {
-  // Check if the element is my custom element and has custom_template_id set on the control
-  if ( isset( $element_data['name'] ) && $element_data['name'] === 'my-custom-element' && ! empty( $element_data['settings']['custom_template_id'] ) ) {
-    $id = $element_data['settings']['custom_template_id'];
-  }
-
-  return $id;
 }, 10, 2 );
 
 ```

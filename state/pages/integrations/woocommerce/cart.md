@@ -15,9 +15,24 @@ The [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce
 
 ## Cart v2 workflow
 
+https://youtu.be/D46IAQYjX1E
+
 With advanced modular elements enabled, Cart v2 keeps the filled cart and empty cart screens as editable states on the assigned Cart page.
 
 Use the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) and choose **Advanced (v2)** to replace the assigned Cart page content with the [Cart v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-v2/) and generated state structure.
+
+You can also build the Cart page from the element yourself:
+
+1. Enable **Bricks > Settings > WooCommerce > Enable advanced modular elements** and save.
+2. Open the assigned Cart page with Bricks and add a Section.
+3. Select the Container and add **Cart (v2)** from the Elements panel. The element only appears on the assigned Cart page.
+4. Select **Filled cart (State)** in the Structure panel. Under **Insert a structure**, choose **Complete cart block** and click **Generate**.
+5. Click **Switch** at the top of the Structure panel, choose **Empty cart**, select **Empty cart (State)**, then generate the **Complete empty cart block**.
+6. Edit, style, move, or delete the generated elements like any other elements, then save.
+
+> **Note**
+>
+> In Bricks 2.4.3 the complete cart block includes a WooCommerce Notice element, but **Insert a structure** does not enable it. Enable **Bricks > Settings > WooCommerce > Enable Bricks WooCommerce "Notice" element** before step 4. The Woo Setup Wizard enables it for you.
 
 Cart v2 includes two states:
 
@@ -25,6 +40,8 @@ Cart v2 includes two states:
 - **Empty cart** for carts with no products.
 
 Each state can generate starter content through **Insert a structure**. Use **Complete cart block** for the Filled cart state and **Complete empty cart block** for the Empty cart state. Generated structures are appended to the current state content, so you can insert a starter block and then move, style, or remove the generated elements.
+
+On the frontend, the generated layout updates the cart without a page reload. Changing a quantity updates the line total, the shipping, and the order total. Applying or removing a coupon and removing a product recalculate the summary right away. When the last product is removed, the same page switches to the Empty cart state.
 
 Cart v2 is the recommended workflow when you want to design the Cart page directly, switch between filled and empty previews in one place, and use the v2 cart dynamic tags. The classic shortcode/template workflow below is still useful for existing sites that already use separate **WooCommerce - Cart** and **WooCommerce - Empty Cart** templates.
 

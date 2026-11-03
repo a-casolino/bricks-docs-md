@@ -4,6 +4,8 @@ Checkout v2 can split the WooCommerce checkout form into multiple editable steps
 
 Use this workflow when you want a guided checkout experience with separate sections for account login, customer details, shipping, extras, order review, and payment.
 
+https://youtu.be/qLco1-Un_BQ
+
 ![](https://academy.bricksbuilder.io/assets/checkout-v2-multistep-frontend.png)
 
 > **Note**
@@ -20,6 +22,8 @@ You can create a multistep Checkout v2 layout in either of these ways:
 ![](https://academy.bricksbuilder.io/assets/checkout-v2-multistep.png)
 
 The generated structure adds the checkout form sections, checkout step wrappers, step navigation, and next/back interactions for a complete starter flow.
+
+The layout uses the Bricks WooCommerce **Notice**, **Checkout coupon**, and **Checkout login** elements. Enable all three under **Bricks > Settings > WooCommerce** next to **Enable advanced modular elements**. In Bricks 2.4.3, the Woo Setup Wizard enables the Notice element setting on its own, but not Checkout coupon and Checkout login. Without those two settings, the Extras and Account login steps cannot render their coupon and login forms.
 
 ## Generated structure
 
@@ -38,7 +42,9 @@ Some of these support elements are generated-only or context-specific. If you do
 
 Checkout step order follows the order of the **Checkout step** elements in the Structure panel. The first step is the initial step.
 
-Navigation items mirror the checkout steps by order. If a checkout step is conditional, add the same condition to the matching navigation item so the visible navigation and visible steps stay aligned.
+Navigation items mirror the checkout steps by order. Items for steps the customer has not reached yet are disabled, unless the step has **Allow direct entry** enabled. Items for steps the customer has already passed stay clickable, so the navigation also works as a way back to edit earlier details.
+
+If a checkout step is conditional, add the same condition to the matching navigation item so the visible navigation and visible steps stay aligned.
 
 For the Shipping step, use **Checkout : Needs shipping** with a value of **Yes** on both the step and its navigation item. Use **Checkout : Needs shipping address** only on the **Ship to another address** control and shipping-address fields. A cart can still require shipping methods when WooCommerce is set to use the billing address for shipping.
 
@@ -68,7 +74,9 @@ Account creation fields follow the WooCommerce checkout settings separately from
 
 ## Step buttons and interactions
 
-Generated multistep layouts use regular Bricks buttons with the **Checkout step** interaction action.
+Generated multistep layouts use regular Bricks buttons with the **Checkout step** interaction action. Next buttons use the **Next step** mode, Back buttons **Previous step**.
+
+The generated Back buttons use the **Muted** button style. Depending on your theme colors, its default text and background can have low contrast. Adjust the Muted button style in your theme style, or change the style on the Back buttons.
 
 The action can:
 
@@ -92,11 +100,15 @@ Inside custom headings or labels, use `{woo_checkout_current_step_number}` to ou
 
 Enable **Validate before leave** on a Checkout step when the customer must complete required fields before moving forward.
 
+The generated layout has **Validate before leave** turned off on every step. A customer can then click **Next** through an empty Customer info step and only sees the missing fields after clicking **Place order**. For most stores, enable it on the Customer info, Shipping, and Payment steps.
+
+With the setting on, clicking **Next** keeps the customer on the step, marks the empty required fields, and focuses the first one. Hidden fields, such as the shipping address while **Ship to a different address?** is unchecked, do not block the step. Pressing Enter in a checkout text field also moves to the next step, and places the order on the last step. The coupon and login forms keep their own Enter behavior.
+
 Backward navigation is always allowed. Forward navigation checks the current step only when **Validate before leave** is enabled.
 
 Free orders do not require a payment method selection. Required terms still apply, and orders that require payment must have a selected payment method.
 
-WooCommerce notices can still link to invalid fields. The checkout step script can route the customer to the step that contains the field and focus it.
+If **Place order** still fails, for example on steps without validation, WooCommerce lists the missing fields as notices. Bricks then opens the step that contains the first invalid field and focuses that field.
 
 ## Payment section for free orders
 

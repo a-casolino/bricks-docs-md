@@ -6,6 +6,8 @@ WooCommerce v2 lets you build these system pages from editable Bricks elements, 
 
 In the classic setup, screens such as empty cart, checkout payment, order received, account orders, account downloads, and password reset are handled through separate Bricks templates or WooCommerce endpoints. In the v2 setup, those screens live as states on the assigned WooCommerce page, so you can switch between them in the builder and edit them in one place.
 
+https://youtu.be/IPgWoKkPY1s
+
 ![](https://academy.bricksbuilder.io/assets/woo-v2-state-filled-cart.png)
 
 ![](https://academy.bricksbuilder.io/assets/woo-v2-state-empty-cart.png)
@@ -13,6 +15,8 @@ In the classic setup, screens such as empty cart, checkout payment, order receiv
 > **Note**
 >
 > Advanced modular elements are experimental. Enable them under **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
+>
+> The generated v2 layouts also use the Bricks **Notice**, **Checkout coupon**, and **Checkout login** elements. Enable **Enable Bricks WooCommerce "Notice" element**, **Enable Bricks WooCommerce "Checkout coupon" element**, and **Enable Bricks WooCommerce "Checkout login" element** on the same screen. In Bricks 2.4.3 and 2.4.4, the Woo Setup Wizard does not enable the coupon and login settings for Checkout v2, and the checkout then shows "PHP class does not exist" in place of those forms.
 >
 > ![](https://academy.bricksbuilder.io/assets/woo-advanced-modular-setting.png)
 
@@ -44,7 +48,7 @@ For guided setup checks and presets, use the [Woo Setup Wizard](https://academy.
 
 ## Predefined structures
 
-Cart, Checkout, and Account Page v2 states can generate complete starter layouts or smaller WooCommerce sections through **Insert a structure**.
+Cart, Checkout, and Account Page v2 states can generate complete starter layouts or smaller WooCommerce sections through **Insert a structure**. Select the state element in the Structure panel to see the structures that fit that state. A generated structure is appended to the state's current content and never overwrites it.
 
 ![](https://academy.bricksbuilder.io/assets/woo-v2-insert-structure-cart.png)
 
@@ -58,7 +62,7 @@ Generated structures are site-aware where needed. For checkout, checkout account
 >
 > Checkout fields can change after a layout is generated. For example, a plugin may add a VAT field, remove a company field, change labels and placeholders, or add an account field. Use field sync after installing, removing, or reconfiguring plugins that modify WooCommerce checkout or account address fields.
 
-Field sync can report valid, missing, invalid, and duplicate generated fields. It can generate missing fields, remove invalid or duplicate generated fields, and update labels and placeholders from the current WooCommerce field data.
+Field sync can report valid, missing, invalid, and duplicate generated fields. It can generate missing fields and remove invalid or duplicate generated fields. New elements copy the current WooCommerce label and placeholder; existing elements keep theirs. See [Checkout v2 field maintenance](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/#field-maintenance) for the workflow.
 
 Checkout v2 and several Account v2 form states also include a **Floating label style** option for supported generated fields. Review third-party fields manually because plugin-generated fields can use different markup.
 
@@ -90,7 +94,9 @@ The [Cart v2 element](https://academy.bricksbuilder.io/builder/elements/woocomme
 - **Filled cart** for carts that contain products.
 - **Empty cart** for carts with no products.
 
-Use the **State** control while editing to switch the builder preview between these states. Each state can contain custom layouts and generated structures, such as the complete cart block or complete empty cart block.
+Use the **State** control while editing to switch the builder preview between these states. The top of the Structure panel shows the state you are editing; its **Switch** button opens the same State control. The Structure panel lists only the elements of the current state.
+
+Each state can contain custom layouts and generated structures, such as the complete cart block or complete empty cart block. Everything inside a state is made of regular Bricks elements, so you can edit, add, or paste elements there like in any other layout. When the store has a free shipping minimum, the complete cart block also shows how much is left until free shipping.
 
 ## Checkout v2
 
@@ -177,3 +183,5 @@ Classic templates and v2 page states can coexist on the same site, but each WooC
 - Protected state elements are required children of their v2 parent elements. Do not remove them manually.
 - Predefined structures are authored with the default Bricks breakpoint keys. Review responsive styling on sites with custom breakpoints.
 - Third-party checkout fields may need manual review after generation or field sync.
+- The builder previews v2 states with sample data. Filled cart, checkout, and account states show sample WooCommerce notices, and loops without data (applied coupons, fees, taxes, or orders of a user without orders) show unresolved dynamic tags such as `{woo_cart_applied_coupon}`. The frontend renders the real cart, order, and account data.
+- In Bricks 2.4.3 and 2.4.4, the generated checkout shows a required terms and conditions checkbox even when no terms page is set under **WooCommerce > Settings > Advanced**. Set a terms page so the checkbox links to your terms.

@@ -2,7 +2,7 @@
 
 Query Sort, Filter & Live Search lets visitors change a Bricks Query Loop without a full page reload. You can add search inputs, checkboxes, radio buttons, selects, range sliders, date pickers, submit/reset buttons, active-filter displays, and AJAX pagination.
 
-https://youtu.be/5oDHG-bTAfQ
+https://youtu.be/mJoykCMD_e8
 
 Use Query Filters for interactive listings such as:
 
@@ -19,7 +19,7 @@ Query Filters target a specific Query Loop. The filter elements can live anywher
 
 ## Enable Query Filters {#enable}
 
-1. Go to **Bricks > Settings > Query filters**.
+1. Go to **Bricks > Settings > General** and find the **Query filters** setting.
 2. Turn on **Enable query sort / filter / live search**.
 3. Save settings.
 4. Open the builder.
@@ -71,12 +71,12 @@ The target query loop also should not be a loop inside a component unless the co
 
 <span id="how-to"></span>
 
-1. Create a Query Loop.
-2. Copy the target query ID. This is usually the six-character Bricks element ID without `#brxe-`.
-3. Add one or more Filter elements.
-4. Set **Target Query** on each filter element.
-5. Add a Pagination element if the listing should paginate.
-6. Enable **AJAX** on Pagination if it should work together with filters.
+1. Create a Query Loop. Give the loop element a label, such as "Stay card", so it is easy to find in the next step.
+2. Add one or more Filter elements.
+3. On each filter element, select the loop in the **Target query** dropdown. The dropdown lists the query loops on the page by their element label.
+4. Add a Pagination element if the listing should paginate.
+5. Enable **AJAX** on Pagination if it should work together with filters.
+6. Save the page so Bricks builds the filter index.
 7. Test the initial page load, AJAX update, browser back button, and direct URL parameter load.
 
 ![](https://academy.bricksbuilder.io/assets/bricks-1.9.6-filter-target-query-setting-594x1024.png)
@@ -108,7 +108,7 @@ For post queries, the default search uses the `s` query var. For term and user q
 
 Important controls:
 
-- **Target Query**: The query loop to refresh.
+- **Target query**: The query loop to refresh.
 - **URL parameter**: The frontend parameter name. Use `s` when the filter should integrate with native WordPress search.
 - **Debounce**: Delay before running the search after typing.
 - **Min. characters**: Minimum input length before the search runs.
@@ -284,7 +284,7 @@ Supported indexed filter element types:
 
 Search, Submit, Active Filters, and Pagination are dynamic filter controls but are not indexed in the same way.
 
-Enable **Custom fields integration** under **Bricks > Settings > Query filters** when filters should use field settings from supported providers.
+Enable **Custom fields integration** under **Bricks > Settings > General > Query filters** when filters should use field settings from supported providers.
 
 ![](https://academy.bricksbuilder.io/assets/query-filters-custom-fields-integration.png)
 
@@ -307,9 +307,9 @@ The index system tracks:
 - Indexed values for posts, terms, and users
 - Background indexing jobs and progress
 
-The index updates when relevant Bricks data, posts, terms, users, and metadata change. Large sites can require background jobs to finish before every filter option is accurate.
+The index is built when you save a page with indexable filters, and it updates when relevant Bricks data, posts, terms, users, and metadata change. Until the page is saved and indexed, Checkbox, Radio, and Select options in the builder can show a count of 0 and Range filters can show a default range. Check the counts on the frontend after saving. Large sites can require background jobs to finish before every filter option is accurate.
 
-You can manage indexing under **Bricks > Settings > Query filters**.
+You can manage indexing under **Bricks > Settings > General > Query filters**.
 
 ![](https://academy.bricksbuilder.io/assets/query-filters-regenerate-continue-index-job.png)
 
@@ -348,7 +348,7 @@ Setup:
 
 1. Add a Filter - Search element.
 2. Create a post, term, or user Query Loop.
-3. Set the Search filter's **Target Query** to the loop.
+3. Set the Search filter's **Target query** to the loop.
 4. Enable **Live Search** in the target query settings.
 5. Set **Live Search Wrapper Selector** to the wrapper that should show/hide the result area.
 
@@ -513,7 +513,7 @@ Use a Filter - Search element with Submit redirect, or use Live Search with a wr
 
 ### Filters do not affect the listing
 
-Check that every filter has the correct **Target Query** ID. Then verify that the target loop is a post, term, or user query.
+Check that every filter has the correct **Target query**. Then verify that the target loop is a post, term, or user query.
 
 ### Filter options are empty or outdated
 

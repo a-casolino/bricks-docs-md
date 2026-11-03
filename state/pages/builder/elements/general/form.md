@@ -5,23 +5,46 @@ The Form element lets you build custom forms with the following form field types
 - Email
 - Text
 - Textarea
+- Rich text
 - Telephone
 - Number
 - URL
-- Image (media library)
-- Gallery (media library)
+- Image (Media library)
+- Gallery (Media library)
 - Checkbox
-- Select (dropdown)
+- Select
 - Radio
+- Files
+- Datepicker
 - Password
 - Remember me
-- Datepicker
-- File upload
+- HTML
 - Hidden
 
 You can define **actions** triggered by form submissions like sending an email notification, redirecting to a certain page, communicating to SendGrid or Mailchimp servers, or user login/registration. If this is not enough, you can also develop your own actions.
 
 The form element also integrates with [Google reCaptcha V3](#spam), [hCaptcha](https://www.hcaptcha.com/), and [Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile/) to protect your sites from fraudulent activities, spam, and abuse. Supports dynamic data, and [form validation](#form-validation) through a new action hook.
+
+https://youtu.be/UoNv7OECMvw
+
+## How the Form element is structured {#structure}
+
+A new Form element starts with three fields: **Name** (Text), **Email** (required), and **Message** (Textarea, required), plus a **Send** button. Labels are hidden by default and only the placeholders show. Enable **Show labels** under **Fields** to display them.
+
+The settings are split into control groups:
+
+- **Fields**: The form fields and their validation settings. Each field shows its unique six-character **ID** at the end of its settings.
+- **Submit button**: Text, style, and icon of the submit button.
+- **Actions**: What happens after a valid submission, the **Success message**, and optional action conditions.
+- **Notices**: When and how success and error messages close.
+- One group for each selected action, for example **Email**, **Confirmation email**, or **Save submission**.
+- **Spam protection**: reCAPTCHA, hCaptcha, Turnstile, and honeypot information.
+
+An action's control group only appears once the action is selected under **Actions**. A new form has **Email** selected, so the **Email** and **Confirmation email** groups are visible right away.
+
+> **Note**
+>
+> Form submissions only run on the frontend. Submitting a form inside the builder does nothing, so test your form on the live page.
 
 ## Actions {#actions}
 
@@ -30,6 +53,8 @@ Form actions run after the form has been submitted successfully.
 You may set one or multiple actions for your form. Actions run in the sequence they have been selected, except for the "Redirect" action, which always runs at the very end.
 
 For each selected action, a separate control group appears.
+
+The **Success message** setting in the **Actions** group sets the text visitors see after a successful submission. Bricks shows it below the submit button and resets the form fields.
 
 ![Bricks Form element - email action settings](https://academy.bricksbuilder.io/assets/form-mail-action.jpg)
 
@@ -96,16 +121,19 @@ You may customize the form email action with the following settings:
 
 - **Subject**: The email subject
 - **Send to email address**: Fill in the email recipients. You may choose to send the email to the website administrator or to a custom email address (it accepts multiple email addresses, separated by a comma)
+- **BCC email address**: Additional recipients who receive a blind copy.
 - **From email address**: The email address that shows as the sender
-- **From name**: The name that shows as the sender
-- **Reply to email address**: In case the recipient replies to the email, this email will be used instead of the "From email address"
-- **Email content**: In case you want to personalize the email content message. For the default message containing all the fields, leave this field empty.
+- **From name**: The name that shows as the sender. It is only used when **From email address** is set.
+- **Reply to email address**: In case the recipient replies to the email, this email will be used instead of the "From email address". If empty, Bricks uses the first email address from the submitted form.
+- **Email content**: In case you want to personalize the email content message. Leave this field empty to send all submitted fields, followed by the URL of the page the form was sent from.
 - **Error message**: The message that will be presented to the site's user if the email fails for some reason.
-- **HTML email**: Enable to send HTML formatted emails. Leave disabled to send a plain text email.
+- **HTML email**: Enabled by default. Disable it to send a plain text email.
 
 ### Confirmation email {#confirmation-email}
 
 Let the person who submitted a form know that you have received their email by automatically sending out a custom confirmation email whenever the form is submitted.
+
+The **Confirmation email** group belongs to the **Email** action, so it is only available while **Email** is selected. The confirmation email is only sent when its **Email content** is filled in. By default it goes to the email address entered in the form.
 
 We highly recommend properly setting up SMTP to ensure the best possible email delivery from your website. There are plenty of free WordPress plugins available that let you configure this within a few minutes. A search for "WordPress SMTP" should bring up countless articles & plugins for it.
 
@@ -126,6 +154,8 @@ In certain scenarios, it could be useful to get some of the submitted form field
 To use the submitted data in your form settings, you have copy & paste the unique field ID (which you'll find at the end of every form field) and wrap it in two curly brackets like this: `{{form_field_id}}`
 
 Use those dynamic fields in the "Subject", "Email address", "Email content", "From name", and "From email" settings.
+
+Regular Bricks dynamic data works in these settings as well. For example, a subject like `Enquiry: {post_title}` in a single post template includes the title of the post the form was submitted on.
 
 Use the `{{referrer_url}}` in the above fields to insert the URL of the page where the form was submitted.
 
@@ -616,17 +646,19 @@ Form field: Error message
 
 </figcaption>
 
-Bricks has enhanced the form user experience by introducing the ability to display error messages immediately as soon as a field loses focus.
+Bricks can show an error message directly below a field while the visitor types and when the field loses focus.
 
 To utilize this feature:
 
 1. Add an "Error Message" to a specific form field.
-2. Upon losing focus, the form will evaluate the user input to determine if the "Error Message" should be displayed based on the following criteria:
+2. On input and when the field loses focus, the form will evaluate the user input to determine if the "Error Message" should be displayed based on the following criteria:
 
 - **Required:** Checks if mandatory fields have data.
 - **Min/Max number:** Ensures entered numbers fall within a defined range.
 - **Email:** Confirms the correctness of the email format.
 - **URL:** Validates the structure of inputted URLs.
+
+Fields without an "Error Message" do not show this inline message. The browser's own validation message appears on submit instead, unless **Don't use browser validation** is enabled under **Fields**.
 
 ### Disabling immediate input validation
 
@@ -654,6 +686,8 @@ The Bricks form element supports the latest [Google reCaptcha V3](https://develo
 
 After adding the keys, enable the reCaptcha setting when editing the Form element in the builder under the "Spam Protection" control group.
 
+The reCAPTCHA, hCaptcha, and Turnstile settings only appear once their keys are saved. Until then, the **Spam protection** group shows a note that links to **Bricks > Settings > API keys**. A [honeypot field](#honeypot) needs no keys.
+
 If you still get a lot of spam, you might need to tweak the score threshold level. The threshold is configured to 0.5 by default. Google reCaptcha V3 API returns a value between 0.0 and 1.0, where 0.0 is very likely a bot, and 1.0 is very likely a human interaction. To increase the Bricks threshold, please use the following PHP snippet:
 
 ```php
@@ -670,7 +704,7 @@ Setting the threshold to 0.8 means Bricks will only accept form submissions with
 
 Bricks integrates with hCaptcha. To utilize it, add your hCaptcha Sitekey and hCaptcha Secret Key under "Bricks > Settings > API keys".
 
-After adding the keys, enable the reCaptcha setting when editing the Form element in the builder under the "Spam Protection" control group. You'll find options to select either "Invisible" or "Visible" hCaptcha. For the "Visible" hCaptcha:
+After adding the keys, enable the hCaptcha setting when editing the Form element in the builder under the "Spam Protection" control group. You'll find options to select either "Invisible" or "Visible" hCaptcha. For the "Visible" hCaptcha:
 
 - **Theme:** Choose between a `dark` or `light` theme.
 - **Size:** Pick from `compact` or `normal`.

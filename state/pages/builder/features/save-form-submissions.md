@@ -108,6 +108,8 @@ Click a form name on the overview page to view all entries for that specific for
 
 ![](https://academy.bricksbuilder.io/assets/form-submissions-single-form-view.png)
 
+The table has one column per form field, using the field label as the column title, followed by metadata columns. **Referrer** links to the page the form was submitted from, which tells you which post an entry belongs to when the form sits in a template.
+
 Click **Screen options** in the top-right corner to toggle metadata columns. Available metadata columns include Date, Browser, IP address, OS, Referrer, and User.
 
 The search box searches the stored form data JSON. It is useful for submitted field values, but it does not search metadata columns such as browser, IP address, OS, referrer, or user.

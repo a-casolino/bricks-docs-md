@@ -2,6 +2,8 @@
 
 Interactions, available since Bricks 1.6, let you run an action when something happens on the front end. A simple interaction can show a hidden element on click. A more advanced interaction can listen for a query AJAX event, check browser storage, fetch an AJAX popup with the right post context, or call a custom JavaScript function.
 
+https://youtu.be/weFimInMJPE
+
 An interaction has three main parts:
 
 - **Trigger**: the event Bricks listens for, such as click, content loaded, scroll, enter viewport, form success, or query AJAX end.
@@ -54,6 +56,8 @@ Element triggers listen on the source element:
 - [Query AJAX loader: Start / End](#query-ajax-loader)
 - [Filter Submit: Start / End](#filter-submit-triggers)
 - [Form Submit](#trigger-form-submit), [Form Success](#trigger-form-success), [Form Error](#trigger-form-error)
+
+**Hover** listens for the browser's `mouseover` event, which fires again each time the pointer moves onto a child element. **Mouse enter** fires once when the pointer enters the element. Use Mouse enter with Mouse leave when an interaction should run once per visit, such as showing and hiding a tooltip.
 
 Click interactions call `event.preventDefault()` by default. Since Bricks 2.0, you can enable **Disable: preventDefault** for a click interaction if the clicked element should keep its normal browser behavior, such as following a link.
 
@@ -194,6 +198,8 @@ Available actions:
 
 Show and Hide can target regular elements or popup templates. For regular elements, Bricks changes the inline `display` style. For popups, Bricks calls the popup open/close logic.
 
+Show element removes an inline `display: none`. If the element is still hidden after that, for example by a class, Bricks sets `display: block`. A flex or grid element then loses its layout. In that case, toggle a class with **Toggle attribute** (key `class`) and set the hidden and visible states in that class instead.
+
 Set, Remove, and Toggle attribute work on the selected target. If the attribute key is `class`, Bricks adds, removes, or toggles class names via `classList`; otherwise it sets or removes the attribute itself.
 
 The **Click element** action calls `.click()` on each target element. This is useful when you want one UI control to trigger another existing control.
@@ -213,6 +219,8 @@ Most actions use one of these target modes:
 For target fields that accept an element selector or ID, use the copy button beside the field, then right-click the target element in the canvas or Structure panel and choose the offered copy action. Selector fields copy the element's CSS ID with `#`; form and filter event fields copy its internal Bricks ID. Press Esc to leave this mode without copying.
 
 Some actions do not use the standard target control because they have their own target field or no target at all. Examples include Load more, Browser storage, Toggle offcanvas, Map actions, and Clear form.
+
+A CSS selector matches every element on the page that fits it. Inside a query loop, an interaction on one card with the selector `.save-button` changes the button on every card. Use **Self** when the change belongs to the element that was clicked: each loop item then keeps its own state. On the front end, elements inside a query loop don't get their automatic `#brxe-` ID unless you set a CSS ID yourself, so a copied CSS ID matches nothing there. Target loop elements by class instead.
 
 When a popup interaction is inside a query loop, Bricks first tries to match the popup by both the selected popup template ID and the current loop item ID. If no loop-specific popup is found, it falls back to the popup template ID.
 
@@ -271,6 +279,21 @@ The storage actions use the same **Key** field as attribute actions:
 - **Browser storage: Count** reads the key as a number, defaults to `0`, increments it by one, and stores the result.
 
 Storage is especially useful with [interaction conditions](#conditions). For example, one interaction can count how many times a button was clicked, while another interaction only runs when that count is greater than `2`.
+
+Interaction fields accept dynamic data, so a key can be unique per post, for example `saved-{post_id}` on a button inside a query loop.
+
+### Example: Remember a saved state after reload {#example-remember-state}
+
+A save button on each card of a query loop can keep its state in the visitor's browser. Write the saved look as CSS for a class such as `is-saved` (for example, a filled icon), then add four interactions to the button:
+
+1. **Click**, **Toggle attribute**, key `class`, value `is-saved`, target **Self**. This switches the look.
+2. **Click**, **Browser storage: Count**, type **Local storage**, key `saved-{post_id}`. The first click stores `1`, the second click `2`.
+3. **Click**, **Browser storage: Remove**, type **Local storage**, key `saved-{post_id}`, with the condition **Local storage** `saved-{post_id}` `>=` `2`. The second click removes the key again, so the next click starts at `1`.
+4. **Content loaded**, **Set attribute**, key `class`, value `is-saved`, target **Self**, with the condition **Local storage** `saved-{post_id}` **Exists**. This marks the saved buttons again after a reload.
+
+Keep the interactions in this order. Interactions on the same trigger run one after another, and each condition is checked when its interaction runs. Two interactions that add and remove the same key on one click would undo each other.
+
+The saved state is stored in the visitor's browser, not in a user account. It is not shared between browsers or devices.
 
 ## Action: JavaScript (Function) {#javascript}
 

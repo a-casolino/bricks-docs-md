@@ -4,6 +4,8 @@ The Popup Builder lets you create fully custom popups in Bricks. A popup is a Br
 
 Use popups for modals, newsletter forms, exit-intent offers, quick views, map info boxes, and contextual content in query loops.
 
+https://youtu.be/R9isNzCSO_A
+
 ## Create a popup template {#create-popup-template}
 
 Create a new template and choose the **Popup** template type.
@@ -14,9 +16,8 @@ Save the template, then edit it with Bricks.
 
 Popup templates look different from normal page templates:
 
-- The popup content is centered on the canvas.
-- Template Settings includes a **Popup** group.
-- The template does not use Populated Content.
+- The canvas shows only the popup: the content box in the middle, over the dimmed backdrop.
+- Template Settings includes a **Popup** group next to **Conditions** and **Populate Content**.
 
 ![](https://academy.bricksbuilder.io/assets/popup-template-type-screen.png)
 
@@ -40,21 +41,23 @@ Popup-specific settings are under **Settings > Template Settings > Popup**.
 
 ![](https://academy.bricksbuilder.io/assets/popup-settings.png)
 
-You can also define global popup defaults in Theme Styles under the Popup control group. Template settings can override those defaults for one popup.
+Theme Styles also have a Popup control group for site-wide defaults. It covers the popup's styling, the backdrop, the content box and the breakpoint display. Behavior settings such as **Close on**, AJAX and the popup limit are only available in the template settings of each popup.
 
 The main popup settings include:
 
 - **Padding**: padding on the popup wrapper.
 - **Align main axis** and **Align cross axis**: position the popup content inside the viewport.
-- **Close on**: choose Backdrop click, ESC key, None, or the default Backdrop and ESC behavior.
+- **Close on**: by default (placeholder **Backdrop & ESC**), a click on the backdrop and the ESC key both close the popup. Choose **Backdrop (Click)**, **ESC (Key)**, or **None** to change that.
 - **Z-index**: controls popup stacking.
 - **Scroll (body)**: allow the page body to scroll while the popup is open. If disabled, Bricks adds `no-scroll` to the body while the popup is open.
 - **Scroll to top**: scroll popup content to the top when opening.
 - **Disable auto focus**: prevent Bricks from focusing the first focusable element inside the popup.
+- **Disable auto focus on close**: prevent Bricks from moving focus back to the element that was focused before the popup opened.
+- **Info Box (Map)**: use this popup template as the info box of a map element.
 - **Fetch content via AJAX**: render popup content on demand instead of in the initial DOM.
 - **AJAX loader**: choose a loader animation and optional selector, color, and scale for AJAX popups.
 - **Breakpoints**: choose where the popup is allowed to display.
-- **Backdrop**: configure or disable the backdrop.
+- **Backdrop**: **Disable backdrop**, the backdrop **Background**, and its **Transition**.
 - **Content**: style the `.brx-popup-content` wrapper.
 - **Popup limit**: restrict how often the popup can open.
 
@@ -114,6 +117,8 @@ By default, a popup can open every time it is triggered. Use **Settings > Templa
 
 Bricks checks limits before opening the popup. Once a limit is reached, the popup does not open and the open event is not emitted.
 
+The limit applies to every way of opening the popup: an automatic trigger, a click on a button, or `bricksOpenPopup()`. Use limits for popups that open on their own. A popup that a visitor opens with a button stops opening once its limit is reached.
+
 There are four popup limit controls:
 
 | Limit type | Browser storage | Description |
@@ -121,7 +126,7 @@ There are four popup limit controls:
 | Per page load | `window.brx_popup_{id}_total` | Resets after the page reloads. |
 | Per session | `sessionStorage.brx_popup_{id}_total` | Resets when the browser session/tab storage is cleared. |
 | Across sessions | `localStorage.brx_popup_{id}_total` | Persists until local storage is cleared. |
-| Show again after hours | `localStorage.brx_popup_{id}_lastShown` | Stores the last shown timestamp and waits the configured number of hours before allowing another open. |
+| Show again after .. hours | `localStorage.brx_popup_{id}_lastShown` | Stores the last shown timestamp and waits the configured number of hours before allowing another open. |
 
 ![](https://academy.bricksbuilder.io/assets/bricks-1.6-popup-limit.png)
 
@@ -150,6 +155,10 @@ You can close a popup in several ways:
 ### Example: Add popup close icon {#example-close-icon}
 
 Add an Icon element to your popup. Set its cursor to pointer under **Styles > Layout > Misc**.
+
+> **Tip**
+>
+> An icon can't be reached with the keyboard. To make the close control keyboard accessible, use a Button element instead and set its **HTML tag** to `button`. Without a link, a Button element renders as a `span` by default.
 
 Open the Icon element's Interactions panel and add:
 

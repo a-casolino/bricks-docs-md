@@ -522,14 +522,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/checkbox/
 
 ---
 
-# Code Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/code/
-
-*Value schema for code control type*
-
----
-
 # Color Control Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/controls/color/
@@ -538,11 +530,11 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/color/
 
 ---
 
-# Dimensions Control Schema
+# Code Control Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/controls/dimensions/
+Source: https://academy.bricksbuilder.io/developer/schema/controls/code/
 
-*Unknown control type: dimensions*
+*Value schema for code control type*
 
 ---
 
@@ -551,6 +543,14 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/dimensions/
 Source: https://academy.bricksbuilder.io/developer/schema/controls/datepicker/
 
 *Date/time string*
+
+---
+
+# Dimensions Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/dimensions/
+
+*Unknown control type: dimensions*
 
 ---
 
@@ -621,19 +621,46 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/image-gallery
 
 ---
 
+# Icon Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/icon/
+
+*Value schema for icon control type*
+
+## Properties
+
+| Property | Type | Description |
+|---|---|---|
+| `library` | string | — |
+| `icon` | string | — |
+| `svg` | object | — |
+
+---
+
+# Image Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/image/
+
+*Value schema for image control type*
+
+## Properties
+
+| Property | Type | Description |
+|---|---|---|
+| `id` | string \| integer | — |
+| `filename` | string | — |
+| `url` | string | — |
+| `size` | string | — |
+| `full` | string | — |
+| `useDynamicData` | string | — |
+
+---
+
 # Justify Content Control Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/controls/justify-content/
 
 *Value schema for justify-content control type*
-
----
-
-# Query List Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/query-list/
-
-*Unknown control type: query-list*
 
 ---
 
@@ -659,22 +686,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/link/
 
 ---
 
-# Icon Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/icon/
-
-*Value schema for icon control type*
-
-## Properties
-
-| Property | Type | Description |
-|---|---|---|
-| `library` | string | — |
-| `icon` | string | — |
-| `svg` | object | — |
-
----
-
 # Number Control Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/controls/number/
@@ -683,22 +694,11 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/number/
 
 ---
 
-# Image Control Schema
+# Query List Control Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/controls/image/
+Source: https://academy.bricksbuilder.io/developer/schema/controls/query-list/
 
-*Value schema for image control type*
-
-## Properties
-
-| Property | Type | Description |
-|---|---|---|
-| `id` | string \| integer | — |
-| `filename` | string | — |
-| `url` | string | — |
-| `size` | string | — |
-| `full` | string | — |
-| `useDynamicData` | string | — |
+*Unknown control type: query-list*
 
 ---
 
@@ -780,6 +780,22 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/select/
 
 ---
 
+# Svg Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/svg/
+
+*Value schema for svg control type*
+
+## Properties
+
+| Property | Type | Description |
+|---|---|---|
+| `id` | string \| integer | — |
+| `url` | string | — |
+| `library` | string | — |
+
+---
+
 # Spacing Control Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/controls/spacing/
@@ -802,22 +818,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/spacing/
 Source: https://academy.bricksbuilder.io/developer/schema/controls/text-align/
 
 *Value schema for text-align control type*
-
----
-
-# Svg Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/svg/
-
-*Value schema for svg control type*
-
-## Properties
-
-| Property | Type | Description |
-|---|---|---|
-| `id` | string \| integer | — |
-| `url` | string | — |
-| `library` | string | — |
 
 ---
 
@@ -968,6 +968,28 @@ The array may also contain component instances (identifiable by the presence of 
 
 ---
 
+# Breakpoints Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/global/breakpoints/
+
+*Documentation for Breakpoints Schema in Bricks Academy.*
+
+## Item properties
+
+| Property | Type | Description |
+|---|---|---|
+| `key` | string | — |
+| `label` | string | — |
+| `width` | integer | — |
+| `widthBuilder` | integer | — |
+| `icon` | string | — |
+| `base` | boolean | — |
+| `custom` | boolean | — |
+| `edited` | boolean | — |
+| `paused` | boolean | — |
+
+---
+
 # Components Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/global/components/
@@ -1011,28 +1033,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/global/color-palettes/
 
 ---
 
-# Breakpoints Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/global/breakpoints/
-
-*Documentation for Breakpoints Schema in Bricks Academy.*
-
-## Item properties
-
-| Property | Type | Description |
-|---|---|---|
-| `key` | string | — |
-| `label` | string | — |
-| `width` | integer | — |
-| `widthBuilder` | integer | — |
-| `icon` | string | — |
-| `base` | boolean | — |
-| `custom` | boolean | — |
-| `edited` | boolean | — |
-| `paused` | boolean | — |
-
----
-
 # Global Classes Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/global/global-classes/
@@ -1069,6 +1069,14 @@ Source: https://academy.bricksbuilder.io/developer/schema/global/global-variable
 | `value` | string | — |
 | `category` | string | — |
 | `type` | string | — |
+
+---
+
+# Pseudo-Classes Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/global/pseudo-classes/
+
+*CSS pseudo-classes available in the builder for responsive/state variants. Stored as a WordPress option, user-configurable via Bricks settings.*
 
 ---
 
@@ -2180,49 +2188,50 @@ Source: https://academy.bricksbuilder.io/developer/schema/settings/template/
 
 ---
 
-# Pseudo-Classes Schema
+# Accordion Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/global/pseudo-classes/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/accordion/
 
-*CSS pseudo-classes available in the builder for responsive/state variants. Stored as a WordPress option, user-configurable via Bricks settings.*
-
----
-
-# Accordion (Nestable) Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/accordion-nested/
-
-*Schema for Bricks Accordion (Nestable) element*
+*Schema for Bricks Accordion element*
 
 | Property | Value |
 |---|---|
-| `name` | accordion-nested |
+| `name` | accordion |
 | `category` | general |
 | `tag` | div |
-| `nestable` | true |
+| `nestable` | false |
 
 ## Controls
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
+| `accordions` | repeater | Title | — |
 | `expandItem` | text | Expand item indexes | — |
 | `independentToggle` | checkbox | Independent toggle | — |
 | `transition` | number | Transition | — |
 | `faqSchema` | checkbox | FAQ schema | — |
-| `titleHeight` | number | Min. height | `min-height` on `.accordion-title-wrapper` |
+| `titleTag` | select | HTML tag | — |
+| `icon` | icon | Icon | — |
+| `iconTypography` | typography | Icon typography | `font` on `.accordion-title\{pseudo\} .icon` |
+| `iconExpanded` | icon | Icon expanded | — |
+| `iconExpandedTypography` | typography | Icon expanded typography | `font` on `.accordion-title\{pseudo\} .icon.expanded` |
+| `iconPosition` | select | Icon position | — |
+| `iconRotate` | number | Icon rotate in ° | `transform:rotate` on `.brx-open .title + .icon` |
 | `titleMargin` | spacing | Margin | `margin` on `.accordion-title-wrapper` |
 | `titlePadding` | spacing | Padding | `padding` on `.accordion-title-wrapper` |
+| `titleTypography` | typography | Title typography | `font` on `.accordion-title\{pseudo\} .title` |
+| `subtitleTypography` | typography | Subtitle typography | `font` on `.accordion-subtitle` |
 | `titleBackgroundColor` | color | Background color | `background-color` on `.accordion-title-wrapper` |
 | `titleBorder` | border | Border | `border` on `.accordion-title-wrapper` |
-| `titleTypography` | typography | Typography | `font` on `.accordion-title-wrapper`, `font` on `.accordion-title-wrapper .brxe-heading` |
-| `titleActiveBackgroundColor` | color | Background color | `background-color` on `.brx-open .accordion-title-wrapper` |
-| `titleActiveBorder` | border | Border | `border` on `.brx-open .accordion-title-wrapper` |
-| `titleActiveTypography` | typography | Typography | `font` on `.brx-open .accordion-title-wrapper`, `font` on `.brx-open .accordion-title-wrapper .brxe-heading` |
+| `titleActiveBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.accordion-title-wrapper` |
+| `titleActiveTypography` | typography | Active typography | `font` on `.brx-open .title` |
+| `titleActiveBackgroundColor` | color | Active background | `background-color` on `.brx-open .accordion-title-wrapper` |
+| `titleActiveBorder` | border | Active border | `border` on `.brx-open .accordion-title-wrapper` |
 | `contentMargin` | spacing | Margin | `margin` on `.accordion-content-wrapper` |
 | `contentPadding` | spacing | Padding | `padding` on `.accordion-content-wrapper` |
+| `contentTypography` | typography | Content typography | `font` on `.accordion-content-wrapper` |
 | `contentBackgroundColor` | color | Background color | `background-color` on `.accordion-content-wrapper` |
 | `contentBorder` | border | Border | `border` on `.accordion-content-wrapper` |
-| `contentTypography` | typography | Typography | `font` on `.accordion-content-wrapper` |
 
 ## Inherited CSS controls
 
