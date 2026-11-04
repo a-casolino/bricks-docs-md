@@ -155,33 +155,6 @@ add_filter( 'bricks/get_template_bundles', function( $bundles ) {
 
 ---
 
-# Filter: bricks/get_template_tags
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_template_tags/
-
-*Filters the list of template tags displayed in the Bricks template manager. Template tags are a custom taxonomy used to organize templates.*
-
-Filters the list of template tags displayed in the Bricks template manager. Template tags are a custom taxonomy used to organize templates.
-
-## Parameters
-
-- `$tags` (*array*): Associative array of template tags, where the key is the term slug and the value is the term name.
-
-## Example usage
-
-```php
-add_filter( 'bricks/get_template_tags', function( $tags ) {
-    // Example: Remove the 'dark' tag from the list
-    if ( isset( $tags['dark'] ) ) {
-        unset( $tags['dark'] );
-    }
-
-    return $tags;
-} );
-```
-
----
-
 # Filter: bricks/get_templates/query_vars
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_templates-query_vars/
@@ -210,30 +183,29 @@ add_filter( 'bricks/get_templates/query_vars', function( $query_vars ) {
 
 ---
 
-# Filter: bricks/get_templates
+# Filter: bricks/get_template_tags
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_templates/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_template_tags/
 
-*Filters the list of templates returned by the Templates::gettemplates() method. This allows you to modify the templates array before it is returned to the.*
+*Filters the list of template tags displayed in the Bricks template manager. Template tags are a custom taxonomy used to organize templates.*
 
-Filters the list of templates returned by the `Templates::get_templates()` method. This allows you to modify the templates array before it is returned to the builder or other parts of the application.
+Filters the list of template tags displayed in the Bricks template manager. Template tags are a custom taxonomy used to organize templates.
 
 ## Parameters
 
-- `$templates` (*array*): Array of template data.
-- `$custom_args` (*array*): The arguments used to query the templates.
+- `$tags` (*array*): Associative array of template tags, where the key is the term slug and the value is the term name.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/get_templates', function( $templates, $custom_args ) {
-    // Example: Add a custom property to all templates
-    foreach ( $templates as $key => $template ) {
-        $templates[ $key ]['my_custom_property'] = 'value';
+add_filter( 'bricks/get_template_tags', function( $tags ) {
+    // Example: Remove the 'dark' tag from the list
+    if ( isset( $tags['dark'] ) ) {
+        unset( $tags['dark'] );
     }
 
-    return $templates;
-}, 10, 2 );
+    return $tags;
+} );
 ```
 
 ---
@@ -283,6 +255,34 @@ add_filter( 'bricks/get_terms_options/enable_limit', function( $enable_limit ) {
     // Enable the limit to improve performance on sites with many taxonomies
     return true;
 } );
+```
+
+---
+
+# Filter: bricks/get_templates
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_templates/
+
+*Filters the list of templates returned by the Templates::gettemplates() method. This allows you to modify the templates array before it is returned to the.*
+
+Filters the list of templates returned by the `Templates::get_templates()` method. This allows you to modify the templates array before it is returned to the builder or other parts of the application.
+
+## Parameters
+
+- `$templates` (*array*): Array of template data.
+- `$custom_args` (*array*): The arguments used to query the templates.
+
+## Example usage
+
+```php
+add_filter( 'bricks/get_templates', function( $templates, $custom_args ) {
+    // Example: Add a custom property to all templates
+    foreach ( $templates as $key => $template ) {
+        $templates[ $key ]['my_custom_property'] = 'value';
+    }
+
+    return $templates;
+}, 10, 2 );
 ```
 
 ---
@@ -771,33 +771,6 @@ add_filter( 'bricks/pagination/total_pages', function( $total_page, $query_setti
 
 ---
 
-# Filter: bricks/polylang/exclude_controls_from_translation
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-polylang-exclude_controls_from_translation/
-
-*Filters Bricks control keys excluded from Polylang translation.*
-
-Filters Bricks control keys excluded from Polylang translation. Return the control keys that should not be translated for the current element/control context.
-
-## Parameters
-
-- `$excluded_keys` (array): Control keys excluded from translation.
-- `$element` (array): The Bricks element data.
-- `$control` (array): The control definition.
-- `$key` (string): The current control key.
-
-## Example usage
-
-```php
-add_filter( 'bricks/polylang/exclude_controls_from_translation', function( $excluded_keys, $element, $control, $key ) {
-    $excluded_keys[] = 'my_untranslated_control';
-
-    return $excluded_keys;
-}, 10, 4 );
-```
-
----
-
 # Filter: bricks/polylang/builder_ajax_params
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-polylang-builder_ajax_params/
@@ -823,31 +796,29 @@ add_filter( 'bricks/polylang/builder_ajax_params', function( $params, $post_id )
 
 ---
 
-# Filter: bricks/popup/attributes
+# Filter: bricks/polylang/exclude_controls_from_translation
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-popup-attributes/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-polylang-exclude_controls_from_translation/
 
-*Filters the HTML attributes of the popup container. This allows you to add custom classes, data attributes, or other attributes to the popup element.*
+*Filters Bricks control keys excluded from Polylang translation.*
 
-Filters the HTML attributes of the popup container. This allows you to add custom classes, data attributes, or other attributes to the popup element.
+Filters Bricks control keys excluded from Polylang translation. Return the control keys that should not be translated for the current element/control context.
 
 ## Parameters
 
-- `$attributes` (*array*): Array of HTML attributes (e.g., `class`, `data-popup-id`).
-- `$popup_id` (*int*): The ID of the popup template.
+- `$excluded_keys` (array): Control keys excluded from translation.
+- `$element` (array): The Bricks element data.
+- `$control` (array): The control definition.
+- `$key` (string): The current control key.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/popup/attributes', function( $attributes, $popup_id ) {
-    // Example: Add a custom class to a specific popup
-    if ( $popup_id === 1234 ) {
-        $attributes['class'][] = 'my-custom-popup-class';
-        $attributes['data-custom-attr'] = 'value';
-    }
+add_filter( 'bricks/polylang/exclude_controls_from_translation', function( $excluded_keys, $element, $control, $key ) {
+    $excluded_keys[] = 'my_untranslated_control';
 
-    return $attributes;
-}, 10, 2 );
+    return $excluded_keys;
+}, 10, 4 );
 ```
 
 ---
@@ -898,6 +869,35 @@ add_filter( 'bricks/query/archive_query_supported_object_types', function( $obje
 
     return $object_types;
 } );
+```
+
+---
+
+# Filter: bricks/popup/attributes
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-popup-attributes/
+
+*Filters the HTML attributes of the popup container. This allows you to add custom classes, data attributes, or other attributes to the popup element.*
+
+Filters the HTML attributes of the popup container. This allows you to add custom classes, data attributes, or other attributes to the popup element.
+
+## Parameters
+
+- `$attributes` (*array*): Array of HTML attributes (e.g., `class`, `data-popup-id`).
+- `$popup_id` (*int*): The ID of the popup template.
+
+## Example usage
+
+```php
+add_filter( 'bricks/popup/attributes', function( $attributes, $popup_id ) {
+    // Example: Add a custom class to a specific popup
+    if ( $popup_id === 1234 ) {
+        $attributes['class'][] = 'my-custom-popup-class';
+        $attributes['data-custom-attr'] = 'value';
+    }
+
+    return $attributes;
+}, 10, 2 );
 ```
 
 ---
@@ -1449,26 +1449,32 @@ add_filter( 'bricks/query_filters/filter_query_vars', function( $query_vars, $fi
 
 ---
 
-# Filter: bricks/query_filters/get_filter_object_ids
+# Filter: bricks/query_filters/index_post/meta_exists
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-get_filter_object_ids/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-index_post-meta_exists/
 
-*Filters the object IDs used to build query filter counts.*
+*Determines if a custom field (meta key) exists for a specific post during the indexing process. This is used when a third-party provider (like ACF or Meta Box).*
 
-Filters the object IDs used to build query filter counts. Use it when an integration needs to supply or alter the base object IDs for a query/filter source.
+Determines if a custom field (meta key) exists for a specific post during the indexing process. This is used when a third-party provider (like ACF or Meta Box) is selected, to avoid indexing empty or non-existent fields.
 
 ## Parameters
 
-- `$all_object_ids` (array): The object IDs Bricks has collected.
-- `$query_id` (string): The query element ID.
-- `$query_type` (string): The query type being processed.
-- `$source` (string): The filter source.
+- `$exists` (*bool*): Whether the meta key exists. Default is `false`.
+- `$post_id` (*int*): The ID of the post being checked.
+- `$meta_key` (*string*): The meta key of the custom field.
+- `$provider` (*string*): The data provider (e.g., `acf`, `metabox`).
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/query_filters/get_filter_object_ids', function( $all_object_ids, $query_id, $query_type, $source ) {
-    return $all_object_ids;
+add_filter( 'bricks/query_filters/index_post/meta_exists', function( $exists, $post_id, $meta_key, $provider ) {
+    // Example: Custom check for a serialized meta field
+    if ( $meta_key === 'my_serialized_data' ) {
+        $data = get_post_meta( $post_id, $meta_key, true );
+        return ! empty( $data );
+    }
+
+    return $exists;
 }, 10, 4 );
 ```
 
@@ -1504,32 +1510,26 @@ add_filter( 'bricks/query_filters/index_args', function( $args, $filter_source, 
 
 ---
 
-# Filter: bricks/query_filters/index_post/meta_exists
+# Filter: bricks/query_filters/get_filter_object_ids
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-index_post-meta_exists/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-get_filter_object_ids/
 
-*Determines if a custom field (meta key) exists for a specific post during the indexing process. This is used when a third-party provider (like ACF or Meta Box).*
+*Filters the object IDs used to build query filter counts.*
 
-Determines if a custom field (meta key) exists for a specific post during the indexing process. This is used when a third-party provider (like ACF or Meta Box) is selected, to avoid indexing empty or non-existent fields.
+Filters the object IDs used to build query filter counts. Use it when an integration needs to supply or alter the base object IDs for a query/filter source.
 
 ## Parameters
 
-- `$exists` (*bool*): Whether the meta key exists. Default is `false`.
-- `$post_id` (*int*): The ID of the post being checked.
-- `$meta_key` (*string*): The meta key of the custom field.
-- `$provider` (*string*): The data provider (e.g., `acf`, `metabox`).
+- `$all_object_ids` (array): The object IDs Bricks has collected.
+- `$query_id` (string): The query element ID.
+- `$query_type` (string): The query type being processed.
+- `$source` (string): The filter source.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/query_filters/index_post/meta_exists', function( $exists, $post_id, $meta_key, $provider ) {
-    // Example: Custom check for a serialized meta field
-    if ( $meta_key === 'my_serialized_data' ) {
-        $data = get_post_meta( $post_id, $meta_key, true );
-        return ! empty( $data );
-    }
-
-    return $exists;
+add_filter( 'bricks/query_filters/get_filter_object_ids', function( $all_object_ids, $query_id, $query_type, $source ) {
+    return $all_object_ids;
 }, 10, 4 );
 ```
 
@@ -1863,6 +1863,29 @@ add_filter( 'bricks/remote_get', function( $args, $url ) {
 
 ---
 
+# Filter: bricks/render_footer
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-render_footer/
+
+*Filters the rendered HTML of the Bricks footer template. This allows you to wrap the footer in custom markup or modify its output before it is echoed to the.*
+
+Filters the rendered HTML of the Bricks footer template. This allows you to wrap the footer in custom markup or modify its output before it is echoed to the page.
+
+## Parameters
+
+- `$footer_html` (*string*): The rendered HTML of the footer.
+
+## Example usage
+
+```php
+add_filter( 'bricks/render_footer', function( $footer_html ) {
+    // Example: Wrap the footer in a custom container
+    return '<div class="custom-footer-wrapper">' . $footer_html . '</div>';
+} );
+```
+
+---
+
 # Filter: bricks/remote_post
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-remote_post/
@@ -1887,29 +1910,6 @@ add_filter( 'bricks/remote_post', function( $args, $url ) {
 
     return $args;
 }, 10, 2 );
-```
-
----
-
-# Filter: bricks/render_footer
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-render_footer/
-
-*Filters the rendered HTML of the Bricks footer template. This allows you to wrap the footer in custom markup or modify its output before it is echoed to the.*
-
-Filters the rendered HTML of the Bricks footer template. This allows you to wrap the footer in custom markup or modify its output before it is echoed to the page.
-
-## Parameters
-
-- `$footer_html` (*string*): The rendered HTML of the footer.
-
-## Example usage
-
-```php
-add_filter( 'bricks/render_footer', function( $footer_html ) {
-    // Example: Wrap the footer in a custom container
-    return '<div class="custom-footer-wrapper">' . $footer_html . '</div>';
-} );
 ```
 
 ---
@@ -1991,34 +1991,6 @@ add_filter( 'bricks/resolve_attachment_id', function( $attachment_id ) {
 
 ---
 
-# Filter: bricks/security_check_before_save/new_elements
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-security_check_before_save-new_elements/
-
-*Filters the array of new elements before they are saved to the database, specifically during the security check process (e.g., when validating {echo:} tags)..*
-
-Filters the array of new elements before they are saved to the database, specifically during the security check process (e.g., when validating `{echo:}` tags). This allows you to inspect or modify the element data before it persists.
-
-## Parameters
-
-- `$new_elements` (*array*): Array of new element data structures.
-- `$old_elements_indexed` (*array*): Array of existing elements, indexed by their ID, for comparison.
-
-## Example usage
-
-```php
-add_filter( 'bricks/security_check_before_save/new_elements', function( $new_elements, $old_elements_indexed ) {
-    // Example: Loop through new elements and log changes
-    foreach ( $new_elements as $element ) {
-        // Custom logic here
-    }
-
-    return $new_elements;
-}, 10, 2 );
-```
-
----
-
 # Filter: bricks/rtl_languages
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-rtl_languages/
@@ -2069,6 +2041,34 @@ add_filter( 'bricks/support_masonry_element', function( $element_names ) {
 
 ---
 
+# Filter: bricks/security_check_before_save/new_elements
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-security_check_before_save-new_elements/
+
+*Filters the array of new elements before they are saved to the database, specifically during the security check process (e.g., when validating {echo:} tags)..*
+
+Filters the array of new elements before they are saved to the database, specifically during the security check process (e.g., when validating `{echo:}` tags). This allows you to inspect or modify the element data before it persists.
+
+## Parameters
+
+- `$new_elements` (*array*): Array of new element data structures.
+- `$old_elements_indexed` (*array*): Array of existing elements, indexed by their ID, for comparison.
+
+## Example usage
+
+```php
+add_filter( 'bricks/security_check_before_save/new_elements', function( $new_elements, $old_elements_indexed ) {
+    // Example: Loop through new elements and log changes
+    foreach ( $new_elements as $element ) {
+        // Custom logic here
+    }
+
+    return $new_elements;
+}, 10, 2 );
+```
+
+---
+
 # Filter: bricks/svg/allowed_attributes
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-svg-allowed_attributes/
@@ -2089,31 +2089,6 @@ add_filter( 'bricks/svg/allowed_attributes', function( $attributes ) {
     $attributes[] = 'data-custom';
 
     return $attributes;
-} );
-```
-
----
-
-# Filter: bricks/svg/allowed_tags
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-svg-allowed_tags/
-
-*Filters the list of allowed SVG tags during sanitization. This is used by the Bricks SVG sanitizer to ensure that uploaded or rendered SVGs do not contain.*
-
-Filters the list of allowed SVG tags during sanitization. This is used by the Bricks SVG sanitizer to ensure that uploaded or rendered SVGs do not contain malicious tags.
-
-## Parameters
-
-- `$tags` (*array*): Array of allowed SVG tags.
-
-## Example usage
-
-```php
-add_filter( 'bricks/svg/allowed_tags', function( $tags ) {
-    // Example: Allow 'foreignObject' tag (use with caution!)
-    $tags[] = 'foreignObject';
-
-    return $tags;
 } );
 ```
 
@@ -2147,6 +2122,31 @@ add_filter( 'bricks/svg/bypass_sanitization', function( $bypass, $file ) {
 
 ---
 
+# Filter: bricks/svg/allowed_tags
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-svg-allowed_tags/
+
+*Filters the list of allowed SVG tags during sanitization. This is used by the Bricks SVG sanitizer to ensure that uploaded or rendered SVGs do not contain.*
+
+Filters the list of allowed SVG tags during sanitization. This is used by the Bricks SVG sanitizer to ensure that uploaded or rendered SVGs do not contain malicious tags.
+
+## Parameters
+
+- `$tags` (*array*): Array of allowed SVG tags.
+
+## Example usage
+
+```php
+add_filter( 'bricks/svg/allowed_tags', function( $tags ) {
+    // Example: Allow 'foreignObject' tag (use with caution!)
+    $tags[] = 'foreignObject';
+
+    return $tags;
+} );
+```
+
+---
+
 # Filter: bricks/template_preview/supported_content_types
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-template_preview-supported_content_types/
@@ -2168,6 +2168,30 @@ add_filter( 'bricks/template_preview/supported_content_types', function( $types 
 
     return $types;
 } );
+```
+
+---
+
+# Filter: bricks/theme_style_name
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-theme_style_name/
+
+*Filters the name of the Theme Style used when generating the CSS file name. This allows you to sanitize or modify the name before it is used in the file system.*
+
+Filters the name of the Theme Style used when generating the CSS file name. This allows you to sanitize or modify the name before it is used in the file system.
+
+## Parameters
+
+- `$name` (*string*): The theme style name.
+- `$theme_style` (*array*): The theme style data array.
+
+## Example usage
+
+```php
+add_filter( 'bricks/theme_style_name', function( $name, $theme_style ) {
+    // Example: Prefix theme style file names
+    return 'custom-prefix-' . $name;
+}, 10, 2 );
 ```
 
 ---
@@ -2200,30 +2224,6 @@ add_filter( 'bricks/theme_styles/control_groups', function( $control_groups ) {
 
 ---
 
-# Filter: bricks/theme_style_name
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-theme_style_name/
-
-*Filters the name of the Theme Style used when generating the CSS file name. This allows you to sanitize or modify the name before it is used in the file system.*
-
-Filters the name of the Theme Style used when generating the CSS file name. This allows you to sanitize or modify the name before it is used in the file system.
-
-## Parameters
-
-- `$name` (*string*): The theme style name.
-- `$theme_style` (*array*): The theme style data array.
-
-## Example usage
-
-```php
-add_filter( 'bricks/theme_style_name', function( $name, $theme_style ) {
-    // Example: Prefix theme style file names
-    return 'custom-prefix-' . $name;
-}, 10, 2 );
-```
-
----
-
 # Filter: bricks/theme_styles/controls
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-theme_styles-controls/
@@ -2248,35 +2248,6 @@ add_filter( 'bricks/theme_styles/controls', function( $controls ) {
     ];
 
     return $controls;
-} );
-```
-
----
-
-# Filter: bricks/theme_styles
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-theme_styles/
-
-*Filters the array of Theme Styles loaded from the database. This allows you to modify, add, or remove Theme Styles programmatically.*
-
-Filters the array of Theme Styles loaded from the database. This allows you to modify, add, or remove Theme Styles programmatically.
-
-## Parameters
-
-- `$styles` (*array*): Associative array of Theme Styles, where the key is the style name and the value is an array of style data.
-
-## Example usage
-
-```php
-add_filter( 'bricks/theme_styles', function( $styles ) {
-    // Example: Add a default property to all theme styles
-    foreach ( $styles as $key => $style ) {
-        if ( ! isset( $styles[ $key ]['settings']['typography'] ) ) {
-            $styles[ $key ]['settings']['typography'] = [ 'font-size' => '16px' ];
-        }
-    }
-
-    return $styles;
 } );
 ```
 
@@ -2324,6 +2295,35 @@ Filters the sender name for Bricks user activation emails.
 add_filter( 'bricks/user_activation_email/from_name', function( $from_name, $user_id ) {
     return get_bloginfo( 'name' );
 }, 10, 2 );
+```
+
+---
+
+# Filter: bricks/theme_styles
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-theme_styles/
+
+*Filters the array of Theme Styles loaded from the database. This allows you to modify, add, or remove Theme Styles programmatically.*
+
+Filters the array of Theme Styles loaded from the database. This allows you to modify, add, or remove Theme Styles programmatically.
+
+## Parameters
+
+- `$styles` (*array*): Associative array of Theme Styles, where the key is the style name and the value is an array of style data.
+
+## Example usage
+
+```php
+add_filter( 'bricks/theme_styles', function( $styles ) {
+    // Example: Add a default property to all theme styles
+    foreach ( $styles as $key => $style ) {
+        if ( ! isset( $styles[ $key ]['settings']['typography'] ) ) {
+            $styles[ $key ]['settings']['typography'] = [ 'font-size' => '16px' ];
+        }
+    }
+
+    return $styles;
+} );
 ```
 
 ---
@@ -2659,6 +2659,96 @@ add_filter( 'bricks/woocommerce/products_orderby_options', function( $options ) 
 
 ---
 
+# Filter: bricks/woocommerce/shipping_options/primary_label
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-shipping_options-primary_label/
+
+*Customize the primary label of each rate in the WooCommerce Shipping options element.*
+
+Use `bricks/woocommerce/shipping_options/primary_label` to customize the primary label of each shipping rate rendered by the **Shipping options** element in [Checkout v2](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/#shipping-option-labels).
+
+> **Note**
+>
+> Available since Bricks 2.4.5. Shipping options requires **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
+
+## Parameters
+
+- `$label` (string): The resolved primary label HTML. This is the method name for an ordinary rate, or the complete customized label supplied through `woocommerce_cart_shipping_method_full_label` when it contains usable content.
+- `$method` (`WC_Shipping_Rate`): The calculated shipping rate being rendered.
+- `$element` (`Bricks\Woocommerce_Shipping_Options`): The Shipping options element instance.
+
+## Return value and behavior
+
+Return a string containing the primary label text or HTML. Bricks sanitizes the returned HTML with `wp_kses_post()` and displays it using the element's **Label** styles.
+
+The filter runs after WooCommerce's full-label customization, once per rendered rate. If the returned value is empty, whitespace-only, or contains no usable content after sanitization, Bricks retains the resolved primary label. An image with meaningful `alt` text counts as usable content.
+
+This filter does not change the secondary label, calculated shipping charge, or selected rate. Use [`bricks/woocommerce/shipping_options/secondary_label`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-shipping_options-secondary_label/) to customize the secondary label separately.
+
+## Example: Add a pickup instruction
+
+Add this callback to a child theme's `functions.php` or a custom plugin. Replace `local_pickup` with the method ID you want to target.
+
+```php
+add_filter( 'bricks/woocommerce/shipping_options/primary_label', function( $label, $method, $element ) {
+    if ( $method->get_method_id() !== 'local_pickup' ) {
+        return $label;
+    }
+
+    return $label . ' <small>' . esc_html__( 'Bring your order confirmation.', 'your-textdomain' ) . '</small>';
+}, 10, 3 );
+```
+
+Returning the original `$label` for other methods preserves their existing names and any customized full labels.
+
+---
+
+# Filter: bricks/woocommerce/shipping_options/secondary_label
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-shipping_options-secondary_label/
+
+*Customize or remove the secondary label of each rate in the WooCommerce Shipping options element.*
+
+Use `bricks/woocommerce/shipping_options/secondary_label` to customize the secondary label of each shipping rate rendered by the **Shipping options** element in [Checkout v2](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/#shipping-option-labels).
+
+> **Note**
+>
+> Available since Bricks 2.4.5. Shipping options requires **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
+
+## Parameters
+
+- `$label` (string): The resolved secondary label HTML. For an ordinary rate, this is the formatted price, including any applicable tax indication, or **Free**. It is an empty string when a customized WooCommerce full label supplies the primary label.
+- `$method` (`WC_Shipping_Rate`): The calculated shipping rate being rendered.
+- `$element` (`Bricks\Woocommerce_Shipping_Options`): The Shipping options element instance.
+
+## Return value and behavior
+
+Return a string containing the secondary label text or HTML. Bricks sanitizes the returned HTML with `wp_kses_post()` and displays it using the element's **Secondary label** styles.
+
+The filter runs once per rendered rate, after the primary label filter. It can add secondary content even when the incoming `$label` is empty. Return `''` to omit the secondary label and its `aria-describedby` link from the shipping input.
+
+This filter changes presentation only. It does not change the calculated shipping charge, selected rate, or primary label. Use [`bricks/woocommerce/shipping_options/primary_label`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-shipping_options-primary_label/) to customize the primary label separately.
+
+## Example: Add a collection instruction
+
+Add this callback to a child theme's `functions.php` or a custom plugin. It adds an instruction to local pickup while retaining any existing price or **Free** label.
+
+```php
+add_filter( 'bricks/woocommerce/shipping_options/secondary_label', function( $label, $method, $element ) {
+    if ( $method->get_method_id() !== 'local_pickup' ) {
+        return $label;
+    }
+
+    $instruction = '<small>' . esc_html__( 'Collect during store opening hours.', 'your-textdomain' ) . '</small>';
+
+    return $label !== '' ? $label . ' ' . $instruction : $instruction;
+}, 10, 3 );
+```
+
+When a plugin provides a customized full label, that label remains in the primary position and the collection instruction appears as the secondary label.
+
+---
+
 # Filter: bricks/wpml/exclude_controls_from_translation
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-wpml-exclude_controls_from_translation/
@@ -2682,94 +2772,4 @@ add_filter( 'bricks/wpml/exclude_controls_from_translation', function( $excluded
 
     return $excluded_keys;
 }, 10, 4 );
-```
-
----
-
-# Filter: bricks/wpml/translatable_control_types
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-wpml-translatable_control_types/
-
-*Add Bricks control types, including selected code fields, to WPML translation jobs.*
-
-The `bricks/wpml/translatable_control_types` filter controls which Bricks control types WPML includes in its translation jobs.
-
-Bricks includes `text`, `textarea`, `editor`, `repeater`, and `link` controls by default. The `code` type is excluded because automatic or manual translation can change executable PHP, JavaScript, HTML, or CSS. Add it only for fields whose complete value needs to differ between languages.
-
-The filter applies to element controls and Page Settings. Page Settings use a synthetic element with the name `page-settings`, which lets a callback target page-level custom code without exposing every code control on the site.
-
-## Parameters
-
-- `$types` (array): Control types currently exposed to WPML.
-- `$element` (array): The current Bricks element. For Page Settings, its `name` is `page-settings` and its `id` is `pageSettings`.
-- `$control` (array|null): The current control definition.
-- `$key` (string): The current control key or repeater field key.
-
-## Translate the PHP and HTML field of Code elements
-
-This example exposes only the `code` field of the Code element. Its CSS and JavaScript fields remain excluded.
-
-```php
-add_filter( 'bricks/wpml/translatable_control_types', function( $types, $element, $control, $key ) {
-    if ( ( $element['name'] ?? '' ) === 'code' && $key === 'code' ) {
-        $types[] = 'code';
-    }
-
-    return array_unique( $types );
-}, 10, 4 );
-```
-
-## Translate a Page Settings custom-code field
-
-The following callback exposes only **Page Settings → Custom code → Header scripts**. Other page-level CSS and script fields continue to use the source-language value.
-
-```php
-add_filter( 'bricks/wpml/translatable_control_types', function( $types, $element, $control, $key ) {
-    $is_page_settings = ( $element['name'] ?? '' ) === 'page-settings';
-
-    if ( $is_page_settings && $key === 'customScriptsHeader' ) {
-        $types[] = 'code';
-    }
-
-    return array_unique( $types );
-}, 10, 4 );
-```
-
-Available page-level custom-code keys are:
-
-- `customCss`
-- `customScriptsHeader`
-- `customScriptsBodyHeader`
-- `customScriptsBodyFooter`
-
-After adding the filter, update the source page and send its translation to WPML again. The opted-in code field then appears in the WPML translation job. Review the translated value before publishing, especially when automatic translation is enabled, because a changed quote, variable, selector, or function name can break the code.
-
----
-
-# Filter: bricks_query_max_items_in_builder
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks_query_max_items_in_builder/
-
-*Filters builder query results for custom object types when Bricks applies the builder max-results limit.*
-
-Filters dynamic query results in the builder when Bricks applies the builder query max-results limit.
-
-Bricks handles built-in `post`, `term`, `user`, and supported provider object types internally. This filter runs for custom query object types that Bricks does not know how to trim itself.
-
-## Parameters
-
-- `$result` (mixed): The current query result.
-- `$query_instance` (Bricks\Query): The Bricks query instance.
-- `$builder_query_max_results` (int): The maximum number of results Bricks allows in the builder.
-
-## Example usage
-
-```php
-add_filter( 'bricks_query_max_items_in_builder', function( $result, $query_instance, $builder_query_max_results ) {
-    if ( is_array( $result ) ) {
-        return array_slice( $result, 0, $builder_query_max_results );
-    }
-
-    return $result;
-}, 10, 3 );
 ```

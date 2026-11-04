@@ -81,6 +81,27 @@ In Bricks 2.4.3, when the store sells to a single country, the Country field ren
 }
 ```
 
+## Shipping option labels
+
+> **Note**
+>
+> The customized shipping-label behavior and Bricks filters described below are available since Bricks 2.4.5.
+
+The **Shipping options** element displays the available shipping methods for each package. An ordinary rate shows the method name as its primary label and the formatted price or **Free** as its secondary label.
+
+When a plugin or custom callback changes `woocommerce_cart_shipping_method_full_label` and supplies usable label content, Bricks displays that complete label once as the primary label. Safe HTML is preserved. For example, a customized label containing **Pickup points: $19.90** appears once, without an additional **Pickup points** name or separate price. If the customization contains no text or meaningful image alternative text, Bricks keeps the method name as the primary label.
+
+Select **Shipping options** in the Structure panel to style its labels:
+
+- **Label** controls style the primary label, including a customized full label.
+- **Secondary label** controls style the separate price or other secondary content, when present.
+
+Review existing checkout layouts that styled a plugin's full label through **Secondary label**. The customized full label now uses **Label** styles.
+
+Developers can customize each label independently with [`bricks/woocommerce/shipping_options/primary_label`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-shipping_options-primary_label/) and [`bricks/woocommerce/shipping_options/secondary_label`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-shipping_options-secondary_label/). Both receive the label HTML, the calculated `WC_Shipping_Rate`, and the Shipping options element instance. These filters change the displayed labels without changing the calculated shipping charge or selected rate.
+
+The secondary filter receives an empty string when a customized full label supplies the primary label. Return separate secondary content if needed, or an empty string to omit it. Bricks only adds the input's `aria-describedby` link when a secondary label is rendered.
+
 ## Payment section for free orders
 
 In the **Checkout** state, payment methods are hidden when the cart does not require payment, such as after a coupon reduces the total to zero. They reappear when a shipping or coupon change makes payment necessary again.

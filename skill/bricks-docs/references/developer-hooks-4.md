@@ -1,3 +1,93 @@
+# Filter: bricks/related_posts/query_vars
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-related_posts-query_vars/
+
+*Since Bricks 1.3.5 you may manipulate the related posts element query vars before the query is performed like so:*
+
+Since Bricks 1.3.5 you may manipulate the **related posts** element query vars before the query is performed like so:
+
+```php
+add_filter( 'bricks/related_posts/query_vars', function( $query_vars, $settings, $element_id ) {
+    $query_vars['post_type'] = [ 'post', 'project' ];
+
+    return $query_vars;
+}, 10, 3 );
+```
+
+The filter callback receives two arguments:
+
+- `$query_vars` is an associative array used to feed the [WP_Query](https://developer.wordpress.org/reference/classes/wp_query/) class
+- `$settings` is an associative array containing the element settings set in the builder
+- `$element_id` is a string containing the element ID
+
+---
+
+# Filter: bricks/query/run
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-run/
+
+*The Bricks Query Loop supports 3 types of queries by default (Posts, Terms and Users). But it can be extended to support any other query. To return a custom.*
+
+The Bricks [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/) supports 3 types of queries by default (Posts, Terms and Users). But it can be extended to support any other query. To return a custom query result, Bricks can be extended using the WP filter `bricks/query/run` like so:
+
+```php
+add_filter( 'bricks/query/run', function( $results, $query_obj ) {
+    if ( $query_obj->object_type !== 'my_query_type' ) {
+	return $results;
+    }
+
+    // Perform the query
+    // Assign the results to $results (array)
+
+    return $results;
+}, 10, 2 );
+```
+
+The filter callback receives two arguments:
+
+- `$results` is the results array (empty by default). The loop will iterate through this array.
+- `$query_obj` is an instance of the `\Bricks\Query` class object
+
+Note: This hook should be used to add different types of query results. If you want to alter the posts, terms, or users query, use the following hooks:
+
+- **Posts**: [`bricks/posts/query_vars`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-query_vars/)
+- **Terms**: [bricks/terms/query_vars](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-terms-query_vars/)
+- **Users**: [bricks/users/query_vars](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-users-query_vars/)
+
+Related hooks:
+
+- To add a query type to the Query control use [`bricks/setup/control_options`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/)
+- To manage the object on every loop iteration use [`bricks/query/loop_object`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object/)
+
+---
+
+# Filter: bricks/render_query_loop_trail
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-render_query_loop_trail/
+
+*Control whether Bricks renders the query loop trail node that frontend JavaScript uses to read query settings.*
+
+The `bricks/render_query_loop_trail` (@since 1.11.1) filter controls the output of the query loop trail node in Bricks. This node is automatically added to each query loop and records the loop's settings, which are then accessed by frontend JavaScript to manage various query-related tasks. Once these settings are read by Bricks, the node is removed from the DOM.
+
+For some third-party plugins, this node may not be needed—especially if they use custom AJAX endpoints to update query results independently of Bricks. Using this filter, you can control whether or not the query loop trail node is rendered.
+
+```php
+// Return true = render the query loop trail node
+// Return false = skip the query loop trail node
+add_filter( 'bricks/render_query_loop_trail', function( $render, $element, $query ) {
+  // Do not render query loop trail node if my-custom-param parameter exists
+  if ( isset( $_GET['my-custom-param'] ) ) {
+    $render = false;
+  }
+
+  return $render;
+}, 10, 3 );
+```
+
+In this example, if the `my-custom-param` parameter is detected in the URL, the query loop trail node will not be rendered. This can be useful for third-party plugins with custom AJAX endpoints that handle query configurations independently.
+
+---
+
 # Filter: bricks/screen_conditions/scores
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-screen_conditions-scores/
@@ -101,6 +191,41 @@ The filter callback receives 2 arguments:
 - `$element` - the Bricks element [object](https://academy.bricksbuilder.io/developer/elements/create-your-own-elements/)
 
 **NOTE**: This filter doesn't work in builder & already possible with *[bricks/element/render_attributes](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-render_attributes/)*
+
+---
+
+# Filter: bricks/setup/control_options
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/
+
+*Bricks offers a WordPress filter to add or remove control options. The control options are used throughout Bricks and allow you to manage the options of the:*
+
+Bricks offers a WordPress filter to add or remove control options. The control options are used throughout Bricks and allow you to manage the options of the:
+
+- Template Types (e.g. Header, Footer, Single, Section...)
+- Background position, repeat, attachment or size
+- Button sizes
+- Button or Heading styles
+- Border styles
+- Font weight and style
+- CSS position
+- Query types (e.g. Posts, Terms, Users, ..)
+- Query order by, compare, operator and value type
+- Image Sizes
+- Taxonomies
+- User roles
+
+To manage any of these options or add new ones, use the WP hook `bricks/setup/control_options` like so:
+
+```php
+add_filter( 'bricks/setup/control_options', function( $control_options ) {
+    $control_options['templateTypes']['my_template_type'] = esc_html__( 'My Template Type', 'my-plugin' );
+
+    return $control_options;
+} );
+```
+
+Note: the above example adds a new template type. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
 
 ---
 
@@ -231,41 +356,6 @@ add_filter( 'bricks/use_duplicate_content', function( $use, $post_id, $settings 
   return $use && ! in_array( $post_type, $exclude_post_types, true );
 }, 10, 3 );
 ```
-
----
-
-# Filter: bricks/setup/control_options
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/
-
-*Bricks offers a WordPress filter to add or remove control options. The control options are used throughout Bricks and allow you to manage the options of the:*
-
-Bricks offers a WordPress filter to add or remove control options. The control options are used throughout Bricks and allow you to manage the options of the:
-
-- Template Types (e.g. Header, Footer, Single, Section...)
-- Background position, repeat, attachment or size
-- Button sizes
-- Button or Heading styles
-- Border styles
-- Font weight and style
-- CSS position
-- Query types (e.g. Posts, Terms, Users, ..)
-- Query order by, compare, operator and value type
-- Image Sizes
-- Taxonomies
-- User roles
-
-To manage any of these options or add new ones, use the WP hook `bricks/setup/control_options` like so:
-
-```php
-add_filter( 'bricks/setup/control_options', function( $control_options ) {
-    $control_options['templateTypes']['my_template_type'] = esc_html__( 'My Template Type', 'my-plugin' );
-
-    return $control_options;
-} );
-```
-
-Note: the above example adds a new template type. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
 
 ---
 

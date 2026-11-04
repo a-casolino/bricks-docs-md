@@ -110,7 +110,7 @@ The main component header contains the following actions:
 - **Description** (info icon): Show or hide the component description.
 - **Category** (folder icon): Show or hide the component category.
 - **Block editor** (WordPress icon): Show or hide block editor settings when the component is enabled as a block.
-- **Variants** (layers icon): Open the variants panel.
+- **Variants** (drop icon): Open the Variants panel.
 - **Properties** (box icon): Open the component properties panel.
 - **Instance** (arrow icon): Exit component edit mode and return to the instance you were editing before, or to the Components library. Pressing the Escape key also exits the main component.
 
@@ -246,18 +246,68 @@ There is also a `Query loop` property type, which allows each component instance
 
 ## Component Variants {#variants}
 
-Bricks supports native component variants. When editing the main component, open the Variants panel to name the base variant and add custom variants. Each component instance can then select one of those variants.
+https://youtu.be/BIjKNV_4W_Q
 
-Use native variants for formal component states or designs. Variant-specific settings are saved on the component definition, and the selected variant is saved on the instance.
+Variants give one component more than one look. All variants share the same content, structure, and properties. Only the styles differ. Each instance then picks the variant it uses, so a page that needs a different look does not need a second component.
 
 Examples:
 
 - Primary and secondary button styles.
 - Card layouts with different spacing.
 - Light and dark versions of the same component.
-- Compact and expanded versions of a component.
+- A standard and a more prominent page hero.
 
-For more flexible changes, expose settings as component properties instead.
+Variant styles are saved on the component definition. The selected variant is saved on the instance.
+
+### Add a Variant {#add-variant}
+
+1. Edit the main component.
+2. In the control panel header, click **Variants** (drop icon). The tooltip shows how many variants the component has.
+3. The first row is the base look. Naming it is optional. Without a name, it shows as **Base**.
+4. Click **Add Variant**. Bricks adds a variant named `Variant 1` (the next one is `Variant 2`, and so on) and makes it the active variant. Rename it in place, for example to `Prominent`.
+5. Close the Variants panel.
+
+<div className="screenshot screenshot--control-panel">
+
+![Variants panel of the Page hero component in edit mode, with the Base row, a variant named Prominent, and the Add Variant button.](https://academy.bricksbuilder.io/assets/bricks-component-variants-panel.webp)
+
+</div>
+
+With more than one variant, drag a variant by its handle to change the order.
+
+### Style a Variant {#style-variant}
+
+When you close the Variants panel, a **Variant** select appears at the top of the control panel. It shows which variant you are styling. It is hidden while the Variants panel is open.
+
+With a variant selected, select any element of the component and change its style settings, such as background, spacing, or typography. Bricks saves these settings for the selected variant only, including settings on other breakpoints.
+
+Content, structure, and properties stay shared. If you edit a text or add an element while a variant is selected, the change applies to every variant.
+
+To edit the base look again, set the Variant select back to **Base**.
+
+### How Variants Inherit From the Base {#variant-inheritance}
+
+A variant stores only the settings you change while it is selected. Everything else comes from the base.
+
+When you later change the base, the change reaches every variant that does not set the same setting itself. For example, if you center the content in the base, both looks are centered, because the variant does not set the alignment. If you change the title color in the base, a variant that sets its own title color keeps it.
+
+### Choose a Variant on an Instance {#instance-variant}
+
+Select an instance on a page. If its component has variants, a **Variant** select appears above the properties. Leave it on **Base** or pick a variant. The choice applies to this instance only. Other instances of the same component keep their own variant.
+
+When a component is enabled as a block, the component block in the block editor has the same **Variant** select.
+
+![Page hero instance selected in the Builder, with the Variant select above Properties set to Prominent and the dark Prominent look on the canvas.](https://academy.bricksbuilder.io/assets/bricks-component-instance-variant-select.webp)
+
+### Delete a Variant {#delete-variant}
+
+Open the Variants panel and click the trash icon next to the variant. After you confirm, Bricks removes all styles of that variant, and instances that used it switch back to the base.
+
+### Variants, Properties, or Global Classes {#variants-or-properties}
+
+- Use a variant when instances need a different look of the whole component, with several style changes that belong together.
+- Use a property when each instance needs its own value, such as a text, an image, a link, a query, or a toggle. See [Properties](#properties).
+- Use a global class when the same style should apply to elements in different components and pages. To let each instance choose classes, use the [Global classes property](#global-classes).
 
 ## Property-Based Variation Patterns {#property-based-variations}
 

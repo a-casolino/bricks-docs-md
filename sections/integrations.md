@@ -1,7 +1,7 @@
 # Bricks Builder Documentation: Integrations
 
-<!-- content-sha256: 7a459430c9a5d40d80436d6b6ada798b093e59c3a4963da9f12e35eac82a92dd -->
-<!-- content last changed: 2026-11-03 07:58 UTC -->
+<!-- content-sha256: 47b25b6934b3bc4a8c055f91a29531da16f174f8736c219cd656a0d922999fba -->
+<!-- content last changed: 2026-11-04 07:37 UTC -->
 
 Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricksbuilder.io/), refreshed daily. Content © Bricks. 28 pages.
 
@@ -13,8 +13,8 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
 - [Integrations](#integrations)
   - [How to get your Instagram Access Token](#integrations-instagram-access-token)
   - [Map (Leaflet)](#integrations-map-leaflet)
-  - [How to use Polylang with Bricks](#integrations-polylang)
   - [Unsplash Integration](#integrations-unsplash)
+  - [How to use Polylang with Bricks](#integrations-polylang)
     - [Bricks components as blocks](#integrations-gutenberg-components-as-blocks)
     - [WooCommerce advanced modular elements](#integrations-woocommerce-advanced-modular-elements)
     - [Cart (WooCommerce)](#integrations-woocommerce-cart)
@@ -22,15 +22,15 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
     - [Create a custom mini cart with Dynamic fragment](#integrations-woocommerce-create-custom-mini-cart-dynamic-fragment)
     - [Creating dynamic WooCommerce archive pages](#integrations-woocommerce-creating-dynamic-woocommerce-archive-pages)
     - [Element: Checkout Coupon](#integrations-woocommerce-element-checkout-coupon)
-    - [Element: Checkout Login](#integrations-woocommerce-element-checkout-login)
-    - [How to Create Product Quick View with Bricks](#integrations-woocommerce-how-to-create-product-quick-view-with-bricks)
   - [WooCommerce](#integrations-woocommerce)
     - [Checkout v2 multistep checkout](#integrations-woocommerce-multistep-checkout-v2)
+    - [Element: Checkout Login](#integrations-woocommerce-element-checkout-login)
+    - [How to Create Product Quick View with Bricks](#integrations-woocommerce-how-to-create-product-quick-view-with-bricks)
     - [Product Archive (WooCommerce)](#integrations-woocommerce-product-archive-woocommerce)
-    - [Product Variation Swatches (WooCommerce)](#integrations-woocommerce-product-variation-swatches)
     - [Single Product (WooCommerce)](#integrations-woocommerce-single-product)
     - [Woo Setup Wizard](#integrations-woocommerce-woo-setup-wizard)
     - [WooCommerce Account Builder](#integrations-woocommerce-woocommerce-account-builder)
+    - [Product Variation Swatches (WooCommerce)](#integrations-woocommerce-product-variation-swatches)
     - [WooCommerce Builder](#integrations-woocommerce-woocommerce-builder)
     - [WooCommerce Notices](#integrations-woocommerce-woocommerce-notices)
     - [WooCommerce Template Hooks](#integrations-woocommerce-woocommerce-template-hooks)
@@ -505,6 +505,44 @@ Beyond that, you’ll also find controls grouped around **zoom behaviour**, **ma
 
 ---
 
+<a id="integrations-unsplash"></a>
+
+# Unsplash Integration
+
+Source: https://academy.bricksbuilder.io/integrations/unsplash/
+
+*Connect Unsplash to Bricks so you can browse, download, and optionally rename royalty-free images directly from the builder.*
+
+Finding affordable, high-quality, commercially useable photography for your website (that doesn't scream stock photography) is really hard. Bricks is putting an end to it.
+
+[Unsplash.com](https://unsplash.com?ref=bricksbuilder), the world's largest and most generous community of photographers, allows you to use their photography royalty free (commercial use included). No linking back or attribution required. Unsplash operates under a so-called "do whatever you want" [license](https://unsplash.com/license).
+
+Browse and download any Unsplash photo inside the builder by clicking the **Browse Unsplash** button below eligible image and image gallery controls after entering your Unsplash API key. The button appears only on controls that support Unsplash and have not disabled it.
+
+https://youtu.be/yLgi-L2doIM
+
+## Rename & Download
+
+Hover over any photo and click the** Download** button to download a photo from Unsplash directly into your WordPress media library. All resizing is done automatically in the background for you.
+
+File renaming is disabled by default. If you want to enter a custom filename before downloading a photo, enable the "Rename images" checkbox in the top right corner of the Unsplash popup.
+
+## How To Generate Your Unsplash API Key
+
+To receive access to Unsplash's photo library you need to generate an API key. It's 100% free and only takes two minutes.
+
+1. Create an Unsplash developer account if you don't already have one:
+[https://unsplash.com/developers](https://unsplash.com/developers)
+2. Log in and visit [https://unsplash.com/oauth/applications](https://unsplash.com/oauth/applications)
+3. Click **New Application**, check all boxes and click **Accept terms**.
+4. Fill out the application name and description and click **Create application**.
+5. Scroll down to **Keys** and copy the **Access key**.
+6. Return to your WordPress dashboard. Go to **Bricks > Settings > API Keys** and paste your Unsplash API key under **Unsplash API Key**. Click Save.
+
+If you click on **Browse Unsplash** below an eligible image or image gallery control in the builder, the latest Unsplash photos should now appear, ready for you to download.
+
+---
+
 <a id="integrations-polylang"></a>
 
 # How to use Polylang with Bricks
@@ -682,44 +720,6 @@ To learn more about Polylang and its various features, you can refer to the foll
 3. [Polylang advanced](https://polylang.pro/doc-category/polylang-advanced/): This section provides more advanced Polylang guides.
 
 These resources can provide additional insights and answers to more specific or complex issues you might encounter when using Polylang.
-
----
-
-<a id="integrations-unsplash"></a>
-
-# Unsplash Integration
-
-Source: https://academy.bricksbuilder.io/integrations/unsplash/
-
-*Connect Unsplash to Bricks so you can browse, download, and optionally rename royalty-free images directly from the builder.*
-
-Finding affordable, high-quality, commercially useable photography for your website (that doesn't scream stock photography) is really hard. Bricks is putting an end to it.
-
-[Unsplash.com](https://unsplash.com?ref=bricksbuilder), the world's largest and most generous community of photographers, allows you to use their photography royalty free (commercial use included). No linking back or attribution required. Unsplash operates under a so-called "do whatever you want" [license](https://unsplash.com/license).
-
-Browse and download any Unsplash photo inside the builder by clicking the **Browse Unsplash** button below eligible image and image gallery controls after entering your Unsplash API key. The button appears only on controls that support Unsplash and have not disabled it.
-
-https://youtu.be/yLgi-L2doIM
-
-## Rename & Download
-
-Hover over any photo and click the** Download** button to download a photo from Unsplash directly into your WordPress media library. All resizing is done automatically in the background for you.
-
-File renaming is disabled by default. If you want to enter a custom filename before downloading a photo, enable the "Rename images" checkbox in the top right corner of the Unsplash popup.
-
-## How To Generate Your Unsplash API Key
-
-To receive access to Unsplash's photo library you need to generate an API key. It's 100% free and only takes two minutes.
-
-1. Create an Unsplash developer account if you don't already have one:
-[https://unsplash.com/developers](https://unsplash.com/developers)
-2. Log in and visit [https://unsplash.com/oauth/applications](https://unsplash.com/oauth/applications)
-3. Click **New Application**, check all boxes and click **Accept terms**.
-4. Fill out the application name and description and click **Create application**.
-5. Scroll down to **Keys** and copy the **Access key**.
-6. Return to your WordPress dashboard. Go to **Bricks > Settings > API Keys** and paste your Unsplash API key under **Unsplash API Key**. Click Save.
-
-If you click on **Browse Unsplash** below an eligible image or image gallery control in the builder, the latest Unsplash photos should now appear, ready for you to download.
 
 ---
 
@@ -1760,115 +1760,6 @@ You can set the form to be toggle-able, hiding it by default and revealing it on
 
 ---
 
-<a id="integrations-woocommerce-element-checkout-login"></a>
-
-# Element: Checkout Login
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-login/
-
-*Use the Bricks Checkout Login element inside WooCommerce checkout templates to render and style the returning-customer login prompt.*
-
-The Checkout Login element allows for a convenient login option directly on the checkout page, enabling returning customers to sign in before completing their purchase.
-
-This feature becomes available once you've enabled **`Enable log-in during checkout`** under **`WooCommerce > Settings > Accounts & Privacy`**.
-
-In previous versions, the placement of the checkout login form was fixed, and styling options were limited, requiring custom CSS for adjustments. Now, you can control both placement and appearance.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-enable-login-during-checkout.png)
-
-To use this element, activate it under **`Bricks > Settings > WooCommerce`** by toggling on **`Enable Bricks WooCommerce "Checkout login" element`**.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-login-setting.png)
-
-> **Note**
->
-> When the Bricks Checkout Login element is enabled, the native WooCommerce checkout login form is removed. Add this element where you want the returning-customer login prompt to appear. The WooCommerce **`Enable log-in during checkout`** setting must stay enabled; on the frontend, the element does not render for users who are already logged in.
-
-> **Note**
->
-> **Note:** This element is specifically intended for the Checkout page. Place it within the **Checkout template** or directly on the Checkout page, depending on your design needs.
-
-**Key Controls**
-
-**Location:**
-
-- By default, the **Checkout Login** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment.
-- Custom location settings only apply on the frontend. To ensure the login form appears in the desired location, add this element at the beginning of your Checkout template.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-login-element-controls.png)
-
-![](https://academy.bricksbuilder.io/assets/element-location-example.png)
-
-You can set the form to be toggle-able, hiding it by default and revealing it only when the toggle is clicked, for a cleaner layout.
-
----
-
-<a id="integrations-woocommerce-how-to-create-product-quick-view-with-bricks"></a>
-
-# How to Create Product Quick View with Bricks
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/how-to-create-product-quick-view-with-bricks/
-
-*Create a WooCommerce product quick view in Bricks so shoppers can preview products without leaving the current listing page.*
-
-## Step 1: Design a Popup Template for Quick View
-
-Begin by designing the popup template that will be used for the Quick View functionality. Incorporate essential elements such as the Product Gallery, Product Rating, Product Price, and Add to Cart button.
-
-Additionally, consider including a WooCommerce Notice element within the popup to display any notifications or confirmations directly to the user after an add-to-cart action.
-
-It's crucial to implement the appropriate template hooks, similar to those used in a standard single product page. If you're unfamiliar with template hooks, we recommend reviewing [this article](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/#single-product-template-hooks) for further guidance.
-
-Below is an example of a WooCommerce Quick View Popup design:
-
-![](https://academy.bricksbuilder.io/assets/woo-quick-view-design-example.png)
-
-## Step 2: Configure Popup settings
-
-To proceed, ensure that you have enabled the **"WooCommerce Quick View"** (@since 1.10.2) and **"Fetch content via AJAX"** options in **Settings > Template Settings > Popup**.
-
-Enabling the **AJAX loader** will enhance the user experience by providing a smoother interaction with the Quick View Popup.
-
-> **Note**
->
-> Do not set any template condition for the popup template as we will embed it in the Products loop.
-
-![](https://academy.bricksbuilder.io/assets/woo-quick-view-popup-control.png)
-
-## Step 3: Create a Product Query Loop
-
-Proceed by creating a Product query loop on a new page or within your Shop page template. Insert the necessary elements according to your specific requirements.
-
-Include the appropriate [template hooks](https://academy.bricksbuilder.io/integrations/woocommerce/product-archive-woocommerce/) within the loop to ensure that any WooCommerce third-party plugins can effectively apply their logic within your Product query loop.
-
-![](https://academy.bricksbuilder.io/assets/woo-quick-view-query-loop-example.png)
-
-## Step 4: Insert Popup template and Configure Interaction to Trigger Quick View Popup
-
-Within the product query loop, insert a Template element and select the popup template you created in Step 1.
-
-For a cleaner HTML structure, you may choose to enable the "Render without wrapper" option.
-
-![](https://academy.bricksbuilder.io/assets/woo-quick-view-template-element-location.png)
-
-![](https://academy.bricksbuilder.io/assets/woo-quick-view-popup-template-element.png)
-
-Instead of using the Add to Cart element within the loop, utilize a Button element.
-
-To ensure this button triggers the Quick View popup, configure the interaction as shown in the following screenshot:
-
-![](https://academy.bricksbuilder.io/assets/woo-quick-view-button-interaction.png)
-
-## Summary
-
-By following these steps, you've successfully implemented a Quick View Popup feature using Bricks.
-
-This enhancement not only improves the user experience by allowing visitors to quickly access product details without navigating away from the current page, but it also provides a seamless integration with WooCommerce.
-
-Remember, fine-tuning the design and interaction settings can further optimize the effectiveness of the Quick View feature, ensuring it meets your specific needs and enhances your overall site performance.
-
----
-
 <a id="integrations-woocommerce"></a>
 
 # WooCommerce
@@ -2045,6 +1936,115 @@ After generating the multistep layout:
 
 ---
 
+<a id="integrations-woocommerce-element-checkout-login"></a>
+
+# Element: Checkout Login
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-login/
+
+*Use the Bricks Checkout Login element inside WooCommerce checkout templates to render and style the returning-customer login prompt.*
+
+The Checkout Login element allows for a convenient login option directly on the checkout page, enabling returning customers to sign in before completing their purchase.
+
+This feature becomes available once you've enabled **`Enable log-in during checkout`** under **`WooCommerce > Settings > Accounts & Privacy`**.
+
+In previous versions, the placement of the checkout login form was fixed, and styling options were limited, requiring custom CSS for adjustments. Now, you can control both placement and appearance.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-enable-login-during-checkout.png)
+
+To use this element, activate it under **`Bricks > Settings > WooCommerce`** by toggling on **`Enable Bricks WooCommerce "Checkout login" element`**.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-login-setting.png)
+
+> **Note**
+>
+> When the Bricks Checkout Login element is enabled, the native WooCommerce checkout login form is removed. Add this element where you want the returning-customer login prompt to appear. The WooCommerce **`Enable log-in during checkout`** setting must stay enabled; on the frontend, the element does not render for users who are already logged in.
+
+> **Note**
+>
+> **Note:** This element is specifically intended for the Checkout page. Place it within the **Checkout template** or directly on the Checkout page, depending on your design needs.
+
+**Key Controls**
+
+**Location:**
+
+- By default, the **Checkout Login** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment.
+- Custom location settings only apply on the frontend. To ensure the login form appears in the desired location, add this element at the beginning of your Checkout template.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-login-element-controls.png)
+
+![](https://academy.bricksbuilder.io/assets/element-location-example.png)
+
+You can set the form to be toggle-able, hiding it by default and revealing it only when the toggle is clicked, for a cleaner layout.
+
+---
+
+<a id="integrations-woocommerce-how-to-create-product-quick-view-with-bricks"></a>
+
+# How to Create Product Quick View with Bricks
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/how-to-create-product-quick-view-with-bricks/
+
+*Create a WooCommerce product quick view in Bricks so shoppers can preview products without leaving the current listing page.*
+
+## Step 1: Design a Popup Template for Quick View
+
+Begin by designing the popup template that will be used for the Quick View functionality. Incorporate essential elements such as the Product Gallery, Product Rating, Product Price, and Add to Cart button.
+
+Additionally, consider including a WooCommerce Notice element within the popup to display any notifications or confirmations directly to the user after an add-to-cart action.
+
+It's crucial to implement the appropriate template hooks, similar to those used in a standard single product page. If you're unfamiliar with template hooks, we recommend reviewing [this article](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/#single-product-template-hooks) for further guidance.
+
+Below is an example of a WooCommerce Quick View Popup design:
+
+![](https://academy.bricksbuilder.io/assets/woo-quick-view-design-example.png)
+
+## Step 2: Configure Popup settings
+
+To proceed, ensure that you have enabled the **"WooCommerce Quick View"** (@since 1.10.2) and **"Fetch content via AJAX"** options in **Settings > Template Settings > Popup**.
+
+Enabling the **AJAX loader** will enhance the user experience by providing a smoother interaction with the Quick View Popup.
+
+> **Note**
+>
+> Do not set any template condition for the popup template as we will embed it in the Products loop.
+
+![](https://academy.bricksbuilder.io/assets/woo-quick-view-popup-control.png)
+
+## Step 3: Create a Product Query Loop
+
+Proceed by creating a Product query loop on a new page or within your Shop page template. Insert the necessary elements according to your specific requirements.
+
+Include the appropriate [template hooks](https://academy.bricksbuilder.io/integrations/woocommerce/product-archive-woocommerce/) within the loop to ensure that any WooCommerce third-party plugins can effectively apply their logic within your Product query loop.
+
+![](https://academy.bricksbuilder.io/assets/woo-quick-view-query-loop-example.png)
+
+## Step 4: Insert Popup template and Configure Interaction to Trigger Quick View Popup
+
+Within the product query loop, insert a Template element and select the popup template you created in Step 1.
+
+For a cleaner HTML structure, you may choose to enable the "Render without wrapper" option.
+
+![](https://academy.bricksbuilder.io/assets/woo-quick-view-template-element-location.png)
+
+![](https://academy.bricksbuilder.io/assets/woo-quick-view-popup-template-element.png)
+
+Instead of using the Add to Cart element within the loop, utilize a Button element.
+
+To ensure this button triggers the Quick View popup, configure the interaction as shown in the following screenshot:
+
+![](https://academy.bricksbuilder.io/assets/woo-quick-view-button-interaction.png)
+
+## Summary
+
+By following these steps, you've successfully implemented a Quick View Popup feature using Bricks.
+
+This enhancement not only improves the user experience by allowing visitors to quickly access product details without navigating away from the current page, but it also provides a seamless integration with WooCommerce.
+
+Remember, fine-tuning the design and interaction settings can further optimize the effectiveness of the Quick View feature, ensuring it meets your specific needs and enhances your overall site performance.
+
+---
+
 <a id="integrations-woocommerce-product-archive-woocommerce"></a>
 
 # Product Archive (WooCommerce)
@@ -2126,124 +2126,6 @@ Adds a dropdown to the layout where the visitor could change the order of the pr
 ### Products total results
 
 Use this element to output the number of results returned by the current products query.
-
----
-
-<a id="integrations-woocommerce-product-variation-swatches"></a>
-
-# Product Variation Swatches (WooCommerce)
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/product-variation-swatches/
-
-*Integrate WooCommerce product variation swatches with Bricks and understand how they behave inside builder templates.*
-
-Bricks 2.0 introduces **Product variation swatches**, giving you more control over how product attribute options (i.e. color, size, pattern) appear on the frontend.
-
-Instead of dropdowns, you can now display your product variations as **color swatches, image buttons, or custom labels**, creating a more visual and intuitive shopping experience.
-
-This feature integrates directly into the **Add to cart** element, letting you style variation swatches exactly how you want, without the need for extra plugins.
-
-![](https://academy.bricksbuilder.io/assets/bricks-woo-variation-swatches-before-1024x637.png)
-
-<figcaption>
-
-Before Product Variation Swatches
-
-</figcaption>
-
-![](https://academy.bricksbuilder.io/assets/bricks-woo-variation-swatches-after-1024x637.png)
-
-<figcaption>
-
-After Product Variation Swatches
-
-</figcaption>
-
-## Enable product variation swatches
-
-To get started, go to **Bricks > Settings > WooCommerce > Enable product variation swatches**.
-
-![](https://academy.bricksbuilder.io/assets/bricks-woo-variation-swatches-enable.png)
-
-Once enabled, you’ll be able to customize variation swatches directly from your product attribute settings.
-
-## Assign a swatch type to product attributes
-
-Go to **Products > Attributes**, and click "Edit" on an existing attribute (or create a new one).
-
-![](https://academy.bricksbuilder.io/assets/bricks-woo-variation-swatches-edit-attribute.png)
-
-You’ll see a new **Swatch type** setting with the following options:
-
-- **None (default)**: Standard WooCommerce behavior (dropdowns)
-- **Color**: Displays swatches using color values
-- **Label**: Displays custom text labels for each term
-- **Image**: Displays swatches using images from your media library
-
-![](https://academy.bricksbuilder.io/assets/bricks-woo-variation-swatches-attribute-settings.png)
-
-**Example:** Use the "Color" swatch type to show red and blue color boxes, or choose "Label" for size options like S, M, L.
-
-### Set a fallback value (optional)
-
-While editing the attribute, you can also set a **Fallback value**. This fallback will be used if a specific term doesn't have its own swatch value.
-
-For **Image** swatches, Bricks checks images in this order:
-
-1. The image assigned to the individual term.
-2. The matching product variation image, if **Use product variation image** is enabled for the attribute.
-3. The attribute fallback image.
-
-## Assign swatch values to individual terms
-
-Next, click **Configure terms** for the attribute you just edited.
-
-![](https://academy.bricksbuilder.io/assets/bricks-woo-variation-swatches-configure-terms.png)
-
-Then, click **Edit** on a specific term (like “Red” or “Large”).
-
-![](https://academy.bricksbuilder.io/assets/bricks-woo-variation-swatches-edit-term.png)
-
-For each term, you’ll see a new input that matches the swatch type:
-
-- **Color** → Choose a color
-- **Image** → Select or upload an image
-- **Label** → Add custom text
-
-![](https://academy.bricksbuilder.io/assets/bricks-woo-variation-swatches-term-settings.png)
-
-These values are what will be shown on the frontend in the Add to cart element.
-
-## Style swatches in the Add to cart element
-
-Variation swatches are rendered inside the **Add to cart** element, as long as your product uses attributes with a swatch type.
-
-To style them:
-
-1. Select the **Add to cart** element (e.g in your single product template)
-2. Open the new **Variation swatches** group in the element settings
-
-![](https://academy.bricksbuilder.io/assets/bricks-woo-variation-swatches-add-to-cart.png)
-
-From there, you can adjust the size, spacing, borders, active states, tooltips, and more.
-
-## Unavailable variation options
-
-Bricks follows the availability state of the hidden WooCommerce variation dropdown. When WooCommerce disables an option for the current attribute combination, Bricks adds the `disabled` class and `aria-disabled="true"` to the matching swatch.
-
-You can style unavailable swatches with custom CSS:
-
-```css
-.bricks-variation-swatches li.disabled,
-.bricks-variation-swatches li[aria-disabled="true"] {
-  opacity: 0.45;
-  text-decoration: line-through;
-}
-```
-
-There is no separate Bricks setting that forces every out-of-stock option to be hidden or disabled. If a swatch does not receive the disabled state, check the product's stock settings and the exact variation combination in WooCommerce first.
-
-That's it. With variation swatches, you can now turn standard variation dropdowns into polished, interactive product selectors, designed your way, directly in the Bricks builder.
 
 ---
 
@@ -2617,6 +2499,124 @@ The process of creating those account endpoint templates is the same for all oth
 | WooCommerce - Account - Addresses | `edit-address/` | Account - Addresses |
 | WooCommerce - Account - Edit address | `edit-address/billing/`<br />`edit-address/shipping/` | Account - Edit address |
 | WooCommerce - Account - Edit account | `edit-account/` | Account - Edit account |
+
+---
+
+<a id="integrations-woocommerce-product-variation-swatches"></a>
+
+# Product Variation Swatches (WooCommerce)
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/product-variation-swatches/
+
+*Integrate WooCommerce product variation swatches with Bricks and understand how they behave inside builder templates.*
+
+Bricks 2.0 introduces **Product variation swatches**, giving you more control over how product attribute options (i.e. color, size, pattern) appear on the frontend.
+
+Instead of dropdowns, you can now display your product variations as **color swatches, image buttons, or custom labels**, creating a more visual and intuitive shopping experience.
+
+This feature integrates directly into the **Add to cart** element, letting you style variation swatches exactly how you want, without the need for extra plugins.
+
+![](https://academy.bricksbuilder.io/assets/bricks-woo-variation-swatches-before-1024x637.png)
+
+<figcaption>
+
+Before Product Variation Swatches
+
+</figcaption>
+
+![](https://academy.bricksbuilder.io/assets/bricks-woo-variation-swatches-after-1024x637.png)
+
+<figcaption>
+
+After Product Variation Swatches
+
+</figcaption>
+
+## Enable product variation swatches
+
+To get started, go to **Bricks > Settings > WooCommerce > Enable product variation swatches**.
+
+![](https://academy.bricksbuilder.io/assets/bricks-woo-variation-swatches-enable.png)
+
+Once enabled, you’ll be able to customize variation swatches directly from your product attribute settings.
+
+## Assign a swatch type to product attributes
+
+Go to **Products > Attributes**, and click "Edit" on an existing attribute (or create a new one).
+
+![](https://academy.bricksbuilder.io/assets/bricks-woo-variation-swatches-edit-attribute.png)
+
+You’ll see a new **Swatch type** setting with the following options:
+
+- **None (default)**: Standard WooCommerce behavior (dropdowns)
+- **Color**: Displays swatches using color values
+- **Label**: Displays custom text labels for each term
+- **Image**: Displays swatches using images from your media library
+
+![](https://academy.bricksbuilder.io/assets/bricks-woo-variation-swatches-attribute-settings.png)
+
+**Example:** Use the "Color" swatch type to show red and blue color boxes, or choose "Label" for size options like S, M, L.
+
+### Set a fallback value (optional)
+
+While editing the attribute, you can also set a **Fallback value**. This fallback will be used if a specific term doesn't have its own swatch value.
+
+For **Image** swatches, Bricks checks images in this order:
+
+1. The image assigned to the individual term.
+2. The matching product variation image, if **Use product variation image** is enabled for the attribute.
+3. The attribute fallback image.
+
+## Assign swatch values to individual terms
+
+Next, click **Configure terms** for the attribute you just edited.
+
+![](https://academy.bricksbuilder.io/assets/bricks-woo-variation-swatches-configure-terms.png)
+
+Then, click **Edit** on a specific term (like “Red” or “Large”).
+
+![](https://academy.bricksbuilder.io/assets/bricks-woo-variation-swatches-edit-term.png)
+
+For each term, you’ll see a new input that matches the swatch type:
+
+- **Color** → Choose a color
+- **Image** → Select or upload an image
+- **Label** → Add custom text
+
+![](https://academy.bricksbuilder.io/assets/bricks-woo-variation-swatches-term-settings.png)
+
+These values are what will be shown on the frontend in the Add to cart element.
+
+## Style swatches in the Add to cart element
+
+Variation swatches are rendered inside the **Add to cart** element, as long as your product uses attributes with a swatch type.
+
+To style them:
+
+1. Select the **Add to cart** element (e.g in your single product template)
+2. Open the new **Variation swatches** group in the element settings
+
+![](https://academy.bricksbuilder.io/assets/bricks-woo-variation-swatches-add-to-cart.png)
+
+From there, you can adjust the size, spacing, borders, active states, tooltips, and more.
+
+## Unavailable variation options
+
+Bricks follows the availability state of the hidden WooCommerce variation dropdown. When WooCommerce disables an option for the current attribute combination, Bricks adds the `disabled` class and `aria-disabled="true"` to the matching swatch.
+
+You can style unavailable swatches with custom CSS:
+
+```css
+.bricks-variation-swatches li.disabled,
+.bricks-variation-swatches li[aria-disabled="true"] {
+  opacity: 0.45;
+  text-decoration: line-through;
+}
+```
+
+There is no separate Bricks setting that forces every out-of-stock option to be hidden or disabled. If a swatch does not receive the disabled state, check the product's stock settings and the exact variation combination in WooCommerce first.
+
+That's it. With variation swatches, you can now turn standard variation dropdowns into polished, interactive product selectors, designed your way, directly in the Bricks builder.
 
 ---
 

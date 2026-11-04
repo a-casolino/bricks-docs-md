@@ -1,7 +1,7 @@
 # Bricks Builder Documentation: Getting Started
 
-<!-- content-sha256: 89805d938dfec60255e4a4be87e73bb7e7baf2856f49552434cee2baba64f5b3 -->
-<!-- content last changed: 2026-11-03 07:58 UTC -->
+<!-- content-sha256: 3027c2e442345b69a16d8db4165dd9245e659baa1a9df5cc19f245de391af2e2 -->
+<!-- content last changed: 2026-11-04 07:37 UTC -->
 
 Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricksbuilder.io/), refreshed daily. Content © Bricks. 13 pages.
 
@@ -10,16 +10,16 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
   - [Blog post template](#getting-started-blog-post-template)
   - [Start your first page](#getting-started-building-your-first-page)
   - [Building a header template](#getting-started-header-template)
-  - [Installation and setup](#getting-started-installation-setup)
-- [Getting Started](#getting-started)
   - [Global classes](#getting-started-global-classes)
+- [Getting Started](#getting-started)
+  - [Installation and setup](#getting-started-installation-setup)
   - [Interface tour](#getting-started-interface-tour)
   - [Next steps](#getting-started-next-steps)
   - [Query loops and dynamic data](#getting-started-query-loops-dynamic-data)
   - [Responsive basics](#getting-started-responsive-basics)
   - [Settings and defaults](#getting-started-settings-defaults)
-  - [An intro to templates](#getting-started-templates-intro)
   - [Theme styles](#getting-started-theme-styles)
+  - [An intro to templates](#getting-started-templates-intro)
 
 ---
 
@@ -477,129 +477,6 @@ Then return to this template in the builder.
 
 ---
 
-<a id="getting-started-installation-setup"></a>
-
-# Installation and setup
-
-Source: https://academy.bricksbuilder.io/getting-started/installation-setup/
-
-*Install Bricks, activate the theme, configure the basic WordPress setup, and prepare your site for the rest of the Academy walkthrough.*
-
-https://youtu.be/sUgx3lg6Jko
-
-Let's get Bricks installed on your WordPress site.
-
-Before you install, confirm your host meets [Bricks requirements](https://academy.bricksbuilder.io/builder/setup/requirements/) (PHP, database, memory, upload size, and a modern browser). Most hosting does; use that article if you need to raise limits or troubleshoot.
-
-## Install the Bricks theme
-
-Installing Bricks works exactly like any other WordPress theme. Use one place for everything account-related: [my.bricksbuilder.io](https://my.bricksbuilder.io/) (download the theme ZIP and find your license key there).
-
-### Download Bricks
-
-Log into [my.bricksbuilder.io](https://my.bricksbuilder.io/) and download the latest version as a ZIP file.
-
-![](https://academy.bricksbuilder.io/assets/download-bricks.png)
-
-### Upload to WordPress
-
-> **Theme, not plugin**
->
-> Install Bricks as a **theme** (**Appearance > Themes > Upload**), not under **Plugins**. Uploading the ZIP as a plugin will not work.
-
-1. In your WordPress dashboard, go to **Appearance > Themes**
-2. Click **Add New**
-![](https://academy.bricksbuilder.io/assets/wordpress-add-theme.png)
-3. Click **Upload Theme**
-![](https://academy.bricksbuilder.io/assets/wordpress-upload-theme.png)
-4. Select the `bricks.zip` file from your computer
-5. Click **Install Now**
-6. After the upload completes, click **Activate** (or go to **Appearance > Themes** and activate **Bricks**)
-
-**If the upload fails**, it is usually because your WordPress site does not allow large enough uploads. See [Requirements](https://academy.bricksbuilder.io/builder/setup/requirements/) (max file upload size) or, as a last resort, unzip the file on your computer and upload the `bricks` folder via FTP to `/wp-content/themes/`.
-
-## Activate your license
-
-Once Bricks is installed, you'll see a new **Bricks** menu item in your WordPress dashboard, along with a notification prompting you to activate your license.
-
-Click **Bricks > License** (or the notification link). This opens the license activation screen.
-![](https://academy.bricksbuilder.io/assets/bricks-license-tab.png)
-
-### Steps to activate
-
-1. Copy your license key from [my.bricksbuilder.io](https://my.bricksbuilder.io/)
-2. Paste it into the license field
-3. Click **Activate License**
-
-You should see a confirmation that your license is **active**.
-
-For blueprint sites, cloned sites, or code-managed setups, you can also define the license key in `wp-config.php` with the `BRICKS_LICENSE_KEY` constant. See [Define the license key in wp-config.php](https://academy.bricksbuilder.io/builder/license/license-and-updates/#constant) for the full workflow and database-key behavior.
-
-That's it, Bricks is ready to use!
-
-For license limits, staging URLs, managing activations, automatic updates, and updating safely, see [License, updates, and your account](https://academy.bricksbuilder.io/builder/license/license-and-updates/).
-
-## What you've accomplished
-
-You now have Bricks installed and licensed.
-
----
-
-<a id="getting-started"></a>
-
-# Getting Started
-
-Source: https://academy.bricksbuilder.io/getting-started/
-
-*Learn Bricks step by step, from installation and interface basics to templates, dynamic data, global classes, and responsive design.*
-
-https://youtu.be/USxUMA1J9No
-
-Welcome to Bricks! This getting started series walks through the core workflow, from your first install to building pages, templates, and responsive layouts with real WordPress content.
-
-## What is Bricks?
-
-Bricks is a visual site builder for WordPress that gives you complete design freedom without compromising on code quality.
-
-Unlike traditional page builders that generate bloated code, Bricks outputs clean HTML and CSS. You design visually, Bricks writes efficient code. No wrapper divs, no inline styles, no mystery markup.
-
-**What makes Bricks different:**
-
-- **Full design control** - Every element, every style, every layout option is customizable
-- **Clean code output** - Fast-loading sites with lean, semantic HTML and efficient CSS
-- **Built for growth** - Start simple, access deeper capabilities as your skills develop
-- **True visual editing** - What you see in the builder is what you get on the front end
-
-## Who is Bricks for?
-
-Bricks meets you where you are:
-
-- **Starting out?** You can build beautiful, functional sites without knowing any code
-- **Growing your skills?** Bricks reveals how web standards work as you build, helping you level up naturally
-- **Already technical?** You'll appreciate the direct control, the clean output, and the ability to extend everything with your own code when needed
-
-You don't need to be a developer. But if you're on that path, Bricks grows with you instead of getting in your way.
-
-## What you'll learn in this series
-
-In this getting started series, we'll build a simple site together: a homepage with a latest posts section, a header template, and a blog post template.
-
-Along the way, you'll learn how to:
-
-- Install and configure Bricks
-- Navigate the builder interface
-- Build pages and templates
-- Apply consistent styling with theme styles and global classes
-- Create responsive layouts
-- Connect designs to WordPress content with dynamic data
-- Display repeating content with query loops
-
-These fundamentals prepare you for more advanced features you can explore as your projects demand them.
-
-If you prefer to follow along in video format, watch the full [Getting Started YouTube playlist](https://www.youtube.com/playlist?list=PLZK4kdL0xoUjeStTycyJrASfUeXHEUDoE).
-
----
-
 <a id="getting-started-global-classes"></a>
 
 # Global classes
@@ -883,6 +760,129 @@ You can now:
 - Understand the difference between ID-specific and class-based styling
 
 Global classes are how you build sites that scale. They transform your workflow from repetitive styling to efficient system-building.
+
+---
+
+<a id="getting-started"></a>
+
+# Getting Started
+
+Source: https://academy.bricksbuilder.io/getting-started/
+
+*Learn Bricks step by step, from installation and interface basics to templates, dynamic data, global classes, and responsive design.*
+
+https://youtu.be/USxUMA1J9No
+
+Welcome to Bricks! This getting started series walks through the core workflow, from your first install to building pages, templates, and responsive layouts with real WordPress content.
+
+## What is Bricks?
+
+Bricks is a visual site builder for WordPress that gives you complete design freedom without compromising on code quality.
+
+Unlike traditional page builders that generate bloated code, Bricks outputs clean HTML and CSS. You design visually, Bricks writes efficient code. No wrapper divs, no inline styles, no mystery markup.
+
+**What makes Bricks different:**
+
+- **Full design control** - Every element, every style, every layout option is customizable
+- **Clean code output** - Fast-loading sites with lean, semantic HTML and efficient CSS
+- **Built for growth** - Start simple, access deeper capabilities as your skills develop
+- **True visual editing** - What you see in the builder is what you get on the front end
+
+## Who is Bricks for?
+
+Bricks meets you where you are:
+
+- **Starting out?** You can build beautiful, functional sites without knowing any code
+- **Growing your skills?** Bricks reveals how web standards work as you build, helping you level up naturally
+- **Already technical?** You'll appreciate the direct control, the clean output, and the ability to extend everything with your own code when needed
+
+You don't need to be a developer. But if you're on that path, Bricks grows with you instead of getting in your way.
+
+## What you'll learn in this series
+
+In this getting started series, we'll build a simple site together: a homepage with a latest posts section, a header template, and a blog post template.
+
+Along the way, you'll learn how to:
+
+- Install and configure Bricks
+- Navigate the builder interface
+- Build pages and templates
+- Apply consistent styling with theme styles and global classes
+- Create responsive layouts
+- Connect designs to WordPress content with dynamic data
+- Display repeating content with query loops
+
+These fundamentals prepare you for more advanced features you can explore as your projects demand them.
+
+If you prefer to follow along in video format, watch the full [Getting Started YouTube playlist](https://www.youtube.com/playlist?list=PLZK4kdL0xoUjeStTycyJrASfUeXHEUDoE).
+
+---
+
+<a id="getting-started-installation-setup"></a>
+
+# Installation and setup
+
+Source: https://academy.bricksbuilder.io/getting-started/installation-setup/
+
+*Install Bricks, activate the theme, configure the basic WordPress setup, and prepare your site for the rest of the Academy walkthrough.*
+
+https://youtu.be/sUgx3lg6Jko
+
+Let's get Bricks installed on your WordPress site.
+
+Before you install, confirm your host meets [Bricks requirements](https://academy.bricksbuilder.io/builder/setup/requirements/) (PHP, database, memory, upload size, and a modern browser). Most hosting does; use that article if you need to raise limits or troubleshoot.
+
+## Install the Bricks theme
+
+Installing Bricks works exactly like any other WordPress theme. Use one place for everything account-related: [my.bricksbuilder.io](https://my.bricksbuilder.io/) (download the theme ZIP and find your license key there).
+
+### Download Bricks
+
+Log into [my.bricksbuilder.io](https://my.bricksbuilder.io/) and download the latest version as a ZIP file.
+
+![](https://academy.bricksbuilder.io/assets/download-bricks.png)
+
+### Upload to WordPress
+
+> **Theme, not plugin**
+>
+> Install Bricks as a **theme** (**Appearance > Themes > Upload**), not under **Plugins**. Uploading the ZIP as a plugin will not work.
+
+1. In your WordPress dashboard, go to **Appearance > Themes**
+2. Click **Add New**
+![](https://academy.bricksbuilder.io/assets/wordpress-add-theme.png)
+3. Click **Upload Theme**
+![](https://academy.bricksbuilder.io/assets/wordpress-upload-theme.png)
+4. Select the `bricks.zip` file from your computer
+5. Click **Install Now**
+6. After the upload completes, click **Activate** (or go to **Appearance > Themes** and activate **Bricks**)
+
+**If the upload fails**, it is usually because your WordPress site does not allow large enough uploads. See [Requirements](https://academy.bricksbuilder.io/builder/setup/requirements/) (max file upload size) or, as a last resort, unzip the file on your computer and upload the `bricks` folder via FTP to `/wp-content/themes/`.
+
+## Activate your license
+
+Once Bricks is installed, you'll see a new **Bricks** menu item in your WordPress dashboard, along with a notification prompting you to activate your license.
+
+Click **Bricks > License** (or the notification link). This opens the license activation screen.
+![](https://academy.bricksbuilder.io/assets/bricks-license-tab.png)
+
+### Steps to activate
+
+1. Copy your license key from [my.bricksbuilder.io](https://my.bricksbuilder.io/)
+2. Paste it into the license field
+3. Click **Activate License**
+
+You should see a confirmation that your license is **active**.
+
+For blueprint sites, cloned sites, or code-managed setups, you can also define the license key in `wp-config.php` with the `BRICKS_LICENSE_KEY` constant. See [Define the license key in wp-config.php](https://academy.bricksbuilder.io/builder/license/license-and-updates/#constant) for the full workflow and database-key behavior.
+
+That's it, Bricks is ready to use!
+
+For license limits, staging URLs, managing activations, automatic updates, and updating safely, see [License, updates, and your account](https://academy.bricksbuilder.io/builder/license/license-and-updates/).
+
+## What you've accomplished
+
+You now have Bricks installed and licensed.
 
 ---
 
@@ -1642,6 +1642,79 @@ When you start needing something specific, like builder access for editors, perf
 
 ---
 
+<a id="getting-started-theme-styles"></a>
+
+# Theme styles
+
+Source: https://academy.bricksbuilder.io/getting-started/theme-styles/
+
+*Set up Bricks theme styles for colors, typography, spacing, and other global defaults before you continue building pages and templates.*
+
+https://youtu.be/QnKjMKMHwEM
+
+We just built a hero section, but it needs better spacing. Instead of adding padding manually to every section (slow and inconsistent), let's set a global rule using Theme Styles.
+
+Theme Styles are your site-wide design system. They control the default look of every element. Under the hood, Bricks writes the CSS for you. Instead of hand-coding `section { padding: 80px 16px; }`, you set it visually once and it applies everywhere.
+
+## Create a theme style
+
+1. Click the **Styles** icon in the toolbar (or press `Cmd/Ctrl + .`)
+2. Click the **Select: Theme Styles** dropdown and enter a name for the theme style
+3. Click the "Create" icon
+
+![](https://academy.bricksbuilder.io/assets/style-manager-theme-styles-tab.png)
+
+This opens the **Style Manager**. This is the central place in Bricks for managing your design system. You will notice it has several tabs: Theme Styles, Classes, Variables, Colors, Typography, Spacing, Framework, and Settings. We will focus on Theme Styles for now and come back to the others as you need them.
+
+## Set global section spacing
+
+We want every section to have consistent padding and spacing.
+
+1. In the Theme Styles panel, go to **Element > Section**
+2. Set **Padding**:
+   - Top: `80`
+   - Bottom: `80`
+   - Left: `16`
+   - Right: `16`
+3. Set **Row gap** to `32`
+
+![](https://academy.bricksbuilder.io/assets/theme-styles-section-padding.png)
+
+**Watch the canvas**: Your hero section immediately updates with the new padding! You didn't touch the section itself; you just changed the global rule.
+
+Now, every new section you add will automatically have this perfect spacing.
+
+## Apply to entire website
+
+Right now, this style is only visible in the builder. Let's make it live for the whole site.
+
+1. In Theme Styles, go to **Conditions**
+2. Click **Add Condition**
+3. Select **Entire Website**
+4. Click **Save** in the toolbar
+
+![](https://academy.bricksbuilder.io/assets/theme-styles-conditions.png)
+
+## Why this is powerful
+
+**Scalability**: If you decide later that sections need `100px` padding, you change it *once* in Theme Styles, and your entire site updates.
+
+**Consistency**: You never have to remember "was it 60px or 80px?" Bricks handles it for you.
+
+Think of it this way:
+
+- **Theme Styles** define sensible **defaults** for your whole site.
+- **Global classes** (later in the series) give you reusable patterns you can apply on demand.
+- **One-off element styles** are for rare exceptions.
+
+Most of your design decisions should live in Theme Styles and classes. That is how you keep sites predictable and easy to change.
+
+## Next: templates
+
+Now that our global styles are set, let's look at another powerful global feature: Templates. We'll use them to build a header that appears on every page.
+
+---
+
 <a id="getting-started-templates-intro"></a>
 
 # An intro to templates
@@ -1764,76 +1837,3 @@ You now understand:
 - The template library sources
 
 In the next article, we'll put this into practice by building a header template.
-
----
-
-<a id="getting-started-theme-styles"></a>
-
-# Theme styles
-
-Source: https://academy.bricksbuilder.io/getting-started/theme-styles/
-
-*Set up Bricks theme styles for colors, typography, spacing, and other global defaults before you continue building pages and templates.*
-
-https://youtu.be/QnKjMKMHwEM
-
-We just built a hero section, but it needs better spacing. Instead of adding padding manually to every section (slow and inconsistent), let's set a global rule using Theme Styles.
-
-Theme Styles are your site-wide design system. They control the default look of every element. Under the hood, Bricks writes the CSS for you. Instead of hand-coding `section { padding: 80px 16px; }`, you set it visually once and it applies everywhere.
-
-## Create a theme style
-
-1. Click the **Styles** icon in the toolbar (or press `Cmd/Ctrl + .`)
-2. Click the **Select: Theme Styles** dropdown and enter a name for the theme style
-3. Click the "Create" icon
-
-![](https://academy.bricksbuilder.io/assets/style-manager-theme-styles-tab.png)
-
-This opens the **Style Manager**. This is the central place in Bricks for managing your design system. You will notice it has several tabs: Theme Styles, Classes, Variables, Colors, Typography, Spacing, Framework, and Settings. We will focus on Theme Styles for now and come back to the others as you need them.
-
-## Set global section spacing
-
-We want every section to have consistent padding and spacing.
-
-1. In the Theme Styles panel, go to **Element > Section**
-2. Set **Padding**:
-   - Top: `80`
-   - Bottom: `80`
-   - Left: `16`
-   - Right: `16`
-3. Set **Row gap** to `32`
-
-![](https://academy.bricksbuilder.io/assets/theme-styles-section-padding.png)
-
-**Watch the canvas**: Your hero section immediately updates with the new padding! You didn't touch the section itself; you just changed the global rule.
-
-Now, every new section you add will automatically have this perfect spacing.
-
-## Apply to entire website
-
-Right now, this style is only visible in the builder. Let's make it live for the whole site.
-
-1. In Theme Styles, go to **Conditions**
-2. Click **Add Condition**
-3. Select **Entire Website**
-4. Click **Save** in the toolbar
-
-![](https://academy.bricksbuilder.io/assets/theme-styles-conditions.png)
-
-## Why this is powerful
-
-**Scalability**: If you decide later that sections need `100px` padding, you change it *once* in Theme Styles, and your entire site updates.
-
-**Consistency**: You never have to remember "was it 60px or 80px?" Bricks handles it for you.
-
-Think of it this way:
-
-- **Theme Styles** define sensible **defaults** for your whole site.
-- **Global classes** (later in the series) give you reusable patterns you can apply on demand.
-- **One-off element styles** are for rare exceptions.
-
-Most of your design decisions should live in Theme Styles and classes. That is how you keep sites predictable and easy to change.
-
-## Next: templates
-
-Now that our global styles are set, let's look at another powerful global feature: Templates. We'll use them to build a header that appears on every page.

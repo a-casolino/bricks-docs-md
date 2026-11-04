@@ -418,6 +418,139 @@ You can then use interaction conditions elsewhere to check that key and adjust p
 
 ---
 
+# Search Criteria
+
+Source: https://academy.bricksbuilder.io/builder/features/search-criteria/
+
+*Use Search Criteria in Bricks to control which WordPress fields and meta values are searched for native search and query-filter search inputs.*
+
+Bricks 2.2 introduces a powerful new way to control **how search results are generated**, whether the search is triggered by:
+
+- the **native WordPress search** (via the Search element), or
+- the **Filter – Search** element - Query Filters feature.
+
+With **Search Criteria**, you can define exactly where Bricks should search: post fields, assigned post terms, term fields, user fields, and custom meta fields. This gives you far more control than the default WordPress `"s"` search and allows fully customized search behaviour across your site.
+
+> **Note**
+>
+> Search Criteria does not build or maintain a separate search index. It searches the selected WordPress database fields at query time, caches the matched IDs briefly, and then passes those IDs into the target query.
+
+## Override Native WordPress Search ("s" parameter)
+
+The native WordPress search is usually triggered through the **Search element**, and the results land on the **Search Result template**.
+
+By default, WordPress only searches the following post fields:
+
+- post_title
+- post_content
+- post_excerpt
+
+If you want to override or extend this behaviour for native search results, configure Search Criteria **inside your Search Result template**.
+
+## Search Criteria in the Search Result Template
+
+![](https://academy.bricksbuilder.io/assets/bricks-search-criteria-search-results-template.png)
+
+Inside the builder, open your **Search Result** template → Template Settings → **Search Criteria** section.
+
+**Custom search criteria**: This reveals all available search settings for controlling how the native `s` search behaves.
+
+**Use weight score (optional):** When enabled, Bricks will calculate a ranking score based on your defined weight values and order the results accordingly. More about [weight scoring](#weight-score).
+
+#### Search Controls
+
+Search post fields - Enable to define which standard WordPress post fields should be searched. Available fields are Title, Content, and Excerpt.
+
+Search post meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
+
+Search post terms - Search assigned terms of selected taxonomies by term name, slug, and description.
+
+Search Result templates only provide post-search criteria, because native WordPress search returns posts. Term and user search criteria are available in the **Filter – Search** element when that filter targets a term or user query.
+
+> **Note**
+>
+> Make sure the **main Query Loop inside the Search Result template** has **"Is main query"** enabled. Otherwise the native search override will not apply.
+
+Once configured, perform a search on the frontend and your results will follow the criteria defined in the Search Result template. If **Custom search criteria** is enabled but no post fields, meta fields, or taxonomies are enabled, the search has no custom source to search and will return no matches.
+
+## Search Criteria in the "Filter – Search" Element
+
+When [Query Filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/) are enabled in Bricks, you can create advanced filtering systems for any Query Loop on any page.
+
+Before Bricks 2.2, the **Filter – Search** element always used the default WordPress `"s"` logic. Now, you can define custom search criteria per filter element. Inside the Filter – Search element settings, you will now see a **Search Criteria** section.
+
+If the Filter – Search element uses the native WordPress search URL parameter `s`, Bricks expects the search criteria to come from the Search Result template instead of the individual filter element. This keeps the frontend search box, URL parameter, and Search Result template aligned.
+
+> **Note**
+>
+> Meta field search: ACF, Meta Box, and JetEngine Post Object, Relationship, and User fields usually store IDs in post meta. **Search Criteria searches the raw meta value** and does not automatically resolve those IDs to related post titles, post content, or user display names. To search those labels, store them in a separate searchable text meta field and include that meta key in Search Criteria.
+
+#### Post Query
+
+Search post fields - Enable to define whether to search in Title, Content, and Excerpt
+
+Search post meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
+
+Search post terms - Search assigned terms of selected taxonomies by term name, slug, and description. Useful for product categories, tags, brands, or other taxonomy-based relationships.
+
+#### Term Query
+
+Search term fields - Enable to define whether to search in Name, Slug, and Description.
+
+Search term meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
+
+#### User Query
+
+Search user fields - Enable to define whether to search in Username, Nicename, Email, URL, and Display name.
+
+Search user meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
+
+## How matches are applied
+
+For post queries, Bricks searches the selected sources and sets the matching post IDs on the query. For term and user queries, Bricks sets the matching term or user IDs on the query. If there are no matches, Bricks passes an impossible ID/slug so the target query returns no results.
+
+Search Criteria uses partial `LIKE` matching. For post terms, Bricks searches the assigned term name, slug, and description for each selected taxonomy. For custom meta fields, it searches the raw stored `meta_value`.
+
+Every enabled field, meta key, or taxonomy adds work to the database query. Use the smallest set of searchable fields that matches the frontend experience you need.
+
+## What is "Use weight score"? {#weight-score}
+
+Weight score lets you control the order of your search results. The higher the weight score for a specific search field, the higher the result will appear if that field matches the search term.
+
+> **Note**
+>
+> Important Notes:
+> - You must enable **Use weight score** for ranking to take effect.
+> - If a **Sort** filter is active, it will override the weight-score ordering.
+
+#### Example: How weight scoring works
+
+Search Criteria setup:
+
+Search post fields:
+- Title → **weight 1**
+- Content → **weight 1**
+
+Search post meta fields:
+- my_field → **weight 3**
+
+Search term: **car**
+
+Matched posts:
+
+| Post ID | Found in | Weight |
+| --- | --- | --- |
+| 1001 | Title | 1 |
+| 1002 | Title + Content | 1 + 1 = 2 |
+| 1003 | my_field | 3 |
+
+**Final result order:**
+**1003**, **1002**, **1001**
+
+Weight scores are integer values with a minimum of 1. Matching scores are added together, so an item that matches multiple low-weight fields can outrank an item that matches one field. Bricks preserves the weighted order by ordering the query by the matched ID list. If a Sort filter is active, that sort order takes precedence.
+
+---
+
 # Remote Components
 
 Source: https://academy.bricksbuilder.io/builder/features/remote-components/
@@ -615,147 +748,6 @@ For local component creation, properties, variants, slots, and instance behavior
 
 ---
 
-# Remote Templates
-
-Source: https://academy.bricksbuilder.io/builder/features/remote-templates/
-
-*Connect Bricks sites, browse shared template libraries, and transfer templates with their component dependencies.*
-
-Remote Templates let you browse and insert templates from another Bricks installation without exporting and importing files manually.
-
-The workflow has two sides:
-
-- The **source site** exposes selected templates through its remote library.
-- The **destination site** adds that site under **Remote libraries** and accesses its templates from the Builder Browser.
-
-## 1. Expose Templates on the Source Site
-
-On the site that contains the templates:
-
-1. Go to **Bricks > Settings > Templates & components**.
-2. Under **My templates**, enable **My templates access**.
-3. Use **Exclude templates** to hide any templates that should not be shared.
-4. Configure the shared **Remote access** controls.
-5. Save the settings.
-
-![Bricks Templates and components settings with My templates access enabled and Exclude templates visible](https://academy.bricksbuilder.io/assets/bricks-settings-remote-templates-access.webp)
-
-The **Remote access** settings apply to remote templates and remote components:
-
-- **Whitelist URLs** restricts access to the listed destination sites. Enter one URL per line.
-- **Password protection** requires destination sites to provide the same password.
-
-If both fields are empty, any Bricks site that knows the source URL can request the templates exposed by **My templates access**.
-
-The source site's WordPress permalink structure must not be set to **Plain**.
-
-![](https://academy.bricksbuilder.io/assets/permalink-structure-not-plain-type-for-remote-templates-01.png)
-
-## 2. Add a Remote Site on the Destination Site
-
-On the site where you want to use the templates:
-
-1. Go to **Bricks > Settings > Templates & components**.
-2. Under **Remote libraries**, click **Add**.
-3. Enter the source site's full **URL**.
-4. Optionally enter a **Name**. Bricks shows this instead of the URL in source dropdowns.
-5. Enter the source site's **Remote access** password, if it uses one.
-6. Save the settings.
-
-You can add multiple remote sites. The same entry can provide templates, components, or both.
-
-![Remote libraries settings with Name, URL, and Password fields](https://academy.bricksbuilder.io/assets/bricks-settings-remote-libraries.webp)
-
-## 3. Browse Remote Templates
-
-Open the builder, click the folder icon, and select **Templates** in the [Builder Browser](https://academy.bricksbuilder.io/builder/features/builder-browser/).
-
-Choose the remote site under **Source**. You can search the library, filter its templates, switch between grid and list view, and use **Reload** to request the source again.
-
-The current user needs **Access remote templates** permission to see configured remote sites.
-
-![Builder Browser Templates view with HappyFiles selected as the remote source](https://academy.bricksbuilder.io/assets/bricks-browser-remote-templates.webp)
-
-## Insert a Remote Template
-
-Click **Insert** to add the template to the current canvas. The **Replace content** control decides whether Bricks replaces the current canvas or adds the template to it.
-
-Use **Import images** to download eligible template and component images to the destination Media Library. Leave it disabled to use placeholder images where the normal template import flow supports them.
-
-When the remote template includes related design-system data, Bricks may open additional reviews for theme styles, color palettes, variables, global classes, or Style Manager settings.
-
-Remote code signatures are not trusted. Bricks removes source signatures, and users without code-execution permission do not receive executable Code, SVG, or custom-query settings from the remote template.
-
-### Templates That Use Components
-
-In Bricks 2.4 and later, inserting a remote template also requests the components used by that template. The dependency package includes nested components and their referenced global classes, variable categories and variables, and color palettes.
-
-Bricks remaps the template to the imported local component and design-system IDs before inserting it. Save pending component, class, variable, and color changes before starting the insert.
-
-If a component from this source was imported before and changed remotely, Bricks asks whether to replace the local component before inserting the template. Replacing it updates the existing local component definition and its instances.
-
-If the template depends on a component excluded from remote access on the source site, Bricks blocks the dependency package instead of inserting an incomplete component graph.
-
-## Import to Templates
-
-Click **Import to templates** on a non-local template to save it into **My Templates** instead of inserting it directly onto the current canvas.
-
-For a configured Bricks remote site, Bricks first localizes supported component and design-system dependencies, then passes the template through the regular template import flow. The current user needs **Import/export templates** permission.
-
-## Compatibility With Older Remote Sites
-
-Bricks 2.4 introduces a versioned remote-library package for templates with component dependencies.
-
-When a configured source does not support that package protocol, Bricks falls back to the legacy Remote Templates response. The template can still use the older insertion workflow, but the legacy response does not provide the dependency-complete component package. Update the source site before sharing templates that use components.
-
-## Permissions
-
-Remote template operations use separate builder permissions:
-
-| Task                                                                 | Required permissions                                                                                                     |
-| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| See configured remote sites                                          | **Access remote templates**                                                                                              |
-| Insert a remote template without component dependencies              | **Access remote templates** and **Insert templates**                                                                     |
-| Save a remote template under My Templates                            | **Access remote templates** and **Import/export templates**                                                              |
-| Insert a remote template with component dependencies                 | The insert permissions above, plus **Access remote components**, **Import/export components**, and **Insert components** |
-| Import a remote template with component dependencies to My Templates | The template import permissions above, plus **Access remote components** and **Import/export components**                |
-
-See [Builder Access & Capabilities](https://academy.bricksbuilder.io/builder/interface/builder-access/) for assigning these permissions.
-
-## Fetching and Caching
-
-Bricks keeps fetched template data outside the WordPress database. Remote template data can be cached in the builder browser for up to seven days per source. Use **Reload** when you need the source again before that cache expires.
-
-Remote-library capability checks and component catalogs use shorter server-side caches. In the Component Manager, **Refresh** bypasses those short caches and requests the source again.
-
-## Troubleshooting
-
-### A Remote Site Does Not Appear
-
-- Confirm the remote library row is saved under **Templates & components**.
-- Confirm the current user has **Access remote templates** permission.
-
-### A Remote Site Appears but Does Not Load
-
-Check the source site:
-
-- **My templates access** is enabled.
-- Permalinks are not set to **Plain**.
-- The destination site's URL is included under **Whitelist URLs**, when used.
-- The password saved on the destination matches **Remote access > Password protection**.
-- The expected templates are not selected under **Exclude templates**.
-
-### A Template With Components Cannot Be Inserted
-
-- Save pending component, class, variable, and color changes on the destination.
-- Confirm the user has the required component permissions.
-- Confirm every component dependency is available and not excluded on the source.
-- Update the source to Bricks 2.4 or later if it only supports the legacy template response.
-
-For the template library controls and local template actions, see [Template Library](https://academy.bricksbuilder.io/builder/features/template-library/).
-
----
-
 # Save Form Submissions
 
 Source: https://academy.bricksbuilder.io/builder/features/save-form-submissions/
@@ -921,136 +913,144 @@ For file fields, the Form Submissions table can link to files saved in the Media
 
 ---
 
-# Search Criteria
+# Remote Templates
 
-Source: https://academy.bricksbuilder.io/builder/features/search-criteria/
+Source: https://academy.bricksbuilder.io/builder/features/remote-templates/
 
-*Use Search Criteria in Bricks to control which WordPress fields and meta values are searched for native search and query-filter search inputs.*
+*Connect Bricks sites, browse shared template libraries, and transfer templates with their component dependencies.*
 
-Bricks 2.2 introduces a powerful new way to control **how search results are generated**, whether the search is triggered by:
+Remote Templates let you browse and insert templates from another Bricks installation without exporting and importing files manually.
 
-- the **native WordPress search** (via the Search element), or
-- the **Filter – Search** element - Query Filters feature.
+The workflow has two sides:
 
-With **Search Criteria**, you can define exactly where Bricks should search: post fields, assigned post terms, term fields, user fields, and custom meta fields. This gives you far more control than the default WordPress `"s"` search and allows fully customized search behaviour across your site.
+- The **source site** exposes selected templates through its remote library.
+- The **destination site** adds that site under **Remote libraries** and accesses its templates from the Builder Browser.
 
-> **Note**
->
-> Search Criteria does not build or maintain a separate search index. It searches the selected WordPress database fields at query time, caches the matched IDs briefly, and then passes those IDs into the target query.
+## 1. Expose Templates on the Source Site
 
-## Override Native WordPress Search ("s" parameter)
+On the site that contains the templates:
 
-The native WordPress search is usually triggered through the **Search element**, and the results land on the **Search Result template**.
+1. Go to **Bricks > Settings > Templates & components**.
+2. Under **My templates**, enable **My templates access**.
+3. Use **Exclude templates** to hide any templates that should not be shared.
+4. Configure the shared **Remote access** controls.
+5. Save the settings.
 
-By default, WordPress only searches the following post fields:
+![Bricks Templates and components settings with My templates access enabled and Exclude templates visible](https://academy.bricksbuilder.io/assets/bricks-settings-remote-templates-access.webp)
 
-- post_title
-- post_content
-- post_excerpt
+The **Remote access** settings apply to remote templates and remote components:
 
-If you want to override or extend this behaviour for native search results, configure Search Criteria **inside your Search Result template**.
+- **Whitelist URLs** restricts access to the listed destination sites. Enter one URL per line.
+- **Password protection** requires destination sites to provide the same password.
 
-## Search Criteria in the Search Result Template
+If both fields are empty, any Bricks site that knows the source URL can request the templates exposed by **My templates access**.
 
-![](https://academy.bricksbuilder.io/assets/bricks-search-criteria-search-results-template.png)
+The source site's WordPress permalink structure must not be set to **Plain**.
 
-Inside the builder, open your **Search Result** template → Template Settings → **Search Criteria** section.
+![](https://academy.bricksbuilder.io/assets/permalink-structure-not-plain-type-for-remote-templates-01.png)
 
-**Custom search criteria**: This reveals all available search settings for controlling how the native `s` search behaves.
+## 2. Add a Remote Site on the Destination Site
 
-**Use weight score (optional):** When enabled, Bricks will calculate a ranking score based on your defined weight values and order the results accordingly. More about [weight scoring](#weight-score).
+On the site where you want to use the templates:
 
-#### Search Controls
+1. Go to **Bricks > Settings > Templates & components**.
+2. Under **Remote libraries**, click **Add**.
+3. Enter the source site's full **URL**.
+4. Optionally enter a **Name**. Bricks shows this instead of the URL in source dropdowns.
+5. Enter the source site's **Remote access** password, if it uses one.
+6. Save the settings.
 
-Search post fields - Enable to define which standard WordPress post fields should be searched. Available fields are Title, Content, and Excerpt.
+You can add multiple remote sites. The same entry can provide templates, components, or both.
 
-Search post meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
+![Remote libraries settings with Name, URL, and Password fields](https://academy.bricksbuilder.io/assets/bricks-settings-remote-libraries.webp)
 
-Search post terms - Search assigned terms of selected taxonomies by term name, slug, and description.
+## 3. Browse Remote Templates
 
-Search Result templates only provide post-search criteria, because native WordPress search returns posts. Term and user search criteria are available in the **Filter – Search** element when that filter targets a term or user query.
+Open the builder, click the folder icon, and select **Templates** in the [Builder Browser](https://academy.bricksbuilder.io/builder/features/builder-browser/).
 
-> **Note**
->
-> Make sure the **main Query Loop inside the Search Result template** has **"Is main query"** enabled. Otherwise the native search override will not apply.
+Choose the remote site under **Source**. You can search the library, filter its templates, switch between grid and list view, and use **Reload** to request the source again.
 
-Once configured, perform a search on the frontend and your results will follow the criteria defined in the Search Result template. If **Custom search criteria** is enabled but no post fields, meta fields, or taxonomies are enabled, the search has no custom source to search and will return no matches.
+The current user needs **Access remote templates** permission to see configured remote sites.
 
-## Search Criteria in the "Filter – Search" Element
+![Builder Browser Templates view with HappyFiles selected as the remote source](https://academy.bricksbuilder.io/assets/bricks-browser-remote-templates.webp)
 
-When [Query Filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/) are enabled in Bricks, you can create advanced filtering systems for any Query Loop on any page.
+## Insert a Remote Template
 
-Before Bricks 2.2, the **Filter – Search** element always used the default WordPress `"s"` logic. Now, you can define custom search criteria per filter element. Inside the Filter – Search element settings, you will now see a **Search Criteria** section.
+Click **Insert** to add the template to the current canvas. The **Replace content** control decides whether Bricks replaces the current canvas or adds the template to it.
 
-If the Filter – Search element uses the native WordPress search URL parameter `s`, Bricks expects the search criteria to come from the Search Result template instead of the individual filter element. This keeps the frontend search box, URL parameter, and Search Result template aligned.
+Use **Import images** to download eligible template and component images to the destination Media Library. Leave it disabled to use placeholder images where the normal template import flow supports them.
 
-> **Note**
->
-> Meta field search: ACF, Meta Box, and JetEngine Post Object, Relationship, and User fields usually store IDs in post meta. **Search Criteria searches the raw meta value** and does not automatically resolve those IDs to related post titles, post content, or user display names. To search those labels, store them in a separate searchable text meta field and include that meta key in Search Criteria.
+When the remote template includes related design-system data, Bricks may open additional reviews for theme styles, color palettes, variables, global classes, or Style Manager settings.
 
-#### Post Query
+Remote code signatures are not trusted. Bricks removes source signatures, and users without code-execution permission do not receive executable Code, SVG, or custom-query settings from the remote template.
 
-Search post fields - Enable to define whether to search in Title, Content, and Excerpt
+### Templates That Use Components
 
-Search post meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
+In Bricks 2.4 and later, inserting a remote template also requests the components used by that template. The dependency package includes nested components and their referenced global classes, variable categories and variables, and color palettes.
 
-Search post terms - Search assigned terms of selected taxonomies by term name, slug, and description. Useful for product categories, tags, brands, or other taxonomy-based relationships.
+Bricks remaps the template to the imported local component and design-system IDs before inserting it. Save pending component, class, variable, and color changes before starting the insert.
 
-#### Term Query
+If a component from this source was imported before and changed remotely, Bricks asks whether to replace the local component before inserting the template. Replacing it updates the existing local component definition and its instances.
 
-Search term fields - Enable to define whether to search in Name, Slug, and Description.
+If the template depends on a component excluded from remote access on the source site, Bricks blocks the dependency package instead of inserting an incomplete component graph.
 
-Search term meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
+## Import to Templates
 
-#### User Query
+Click **Import to templates** on a non-local template to save it into **My Templates** instead of inserting it directly onto the current canvas.
 
-Search user fields - Enable to define whether to search in Username, Nicename, Email, URL, and Display name.
+For a configured Bricks remote site, Bricks first localizes supported component and design-system dependencies, then passes the template through the regular template import flow. The current user needs **Import/export templates** permission.
 
-Search user meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
+## Compatibility With Older Remote Sites
 
-## How matches are applied
+Bricks 2.4 introduces a versioned remote-library package for templates with component dependencies.
 
-For post queries, Bricks searches the selected sources and sets the matching post IDs on the query. For term and user queries, Bricks sets the matching term or user IDs on the query. If there are no matches, Bricks passes an impossible ID/slug so the target query returns no results.
+When a configured source does not support that package protocol, Bricks falls back to the legacy Remote Templates response. The template can still use the older insertion workflow, but the legacy response does not provide the dependency-complete component package. Update the source site before sharing templates that use components.
 
-Search Criteria uses partial `LIKE` matching. For post terms, Bricks searches the assigned term name, slug, and description for each selected taxonomy. For custom meta fields, it searches the raw stored `meta_value`.
+## Permissions
 
-Every enabled field, meta key, or taxonomy adds work to the database query. Use the smallest set of searchable fields that matches the frontend experience you need.
+Remote template operations use separate builder permissions:
 
-## What is "Use weight score"? {#weight-score}
+| Task                                                                 | Required permissions                                                                                                     |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| See configured remote sites                                          | **Access remote templates**                                                                                              |
+| Insert a remote template without component dependencies              | **Access remote templates** and **Insert templates**                                                                     |
+| Save a remote template under My Templates                            | **Access remote templates** and **Import/export templates**                                                              |
+| Insert a remote template with component dependencies                 | The insert permissions above, plus **Access remote components**, **Import/export components**, and **Insert components** |
+| Import a remote template with component dependencies to My Templates | The template import permissions above, plus **Access remote components** and **Import/export components**                |
 
-Weight score lets you control the order of your search results. The higher the weight score for a specific search field, the higher the result will appear if that field matches the search term.
+See [Builder Access & Capabilities](https://academy.bricksbuilder.io/builder/interface/builder-access/) for assigning these permissions.
 
-> **Note**
->
-> Important Notes:
-> - You must enable **Use weight score** for ranking to take effect.
-> - If a **Sort** filter is active, it will override the weight-score ordering.
+## Fetching and Caching
 
-#### Example: How weight scoring works
+Bricks keeps fetched template data outside the WordPress database. Remote template data can be cached in the builder browser for up to seven days per source. Use **Reload** when you need the source again before that cache expires.
 
-Search Criteria setup:
+Remote-library capability checks and component catalogs use shorter server-side caches. In the Component Manager, **Refresh** bypasses those short caches and requests the source again.
 
-Search post fields:
-- Title → **weight 1**
-- Content → **weight 1**
+## Troubleshooting
 
-Search post meta fields:
-- my_field → **weight 3**
+### A Remote Site Does Not Appear
 
-Search term: **car**
+- Confirm the remote library row is saved under **Templates & components**.
+- Confirm the current user has **Access remote templates** permission.
 
-Matched posts:
+### A Remote Site Appears but Does Not Load
 
-| Post ID | Found in | Weight |
-| --- | --- | --- |
-| 1001 | Title | 1 |
-| 1002 | Title + Content | 1 + 1 = 2 |
-| 1003 | my_field | 3 |
+Check the source site:
 
-**Final result order:**
-**1003**, **1002**, **1001**
+- **My templates access** is enabled.
+- Permalinks are not set to **Plain**.
+- The destination site's URL is included under **Whitelist URLs**, when used.
+- The password saved on the destination matches **Remote access > Password protection**.
+- The expected templates are not selected under **Exclude templates**.
 
-Weight scores are integer values with a minimum of 1. Matching scores are added together, so an item that matches multiple low-weight fields can outrank an item that matches one field. Bricks preserves the weighted order by ordering the query by the matched ID list. If a Sort filter is active, that sort order takes precedence.
+### A Template With Components Cannot Be Inserted
+
+- Save pending component, class, variable, and color changes on the destination.
+- Confirm the user has the required component permissions.
+- Confirm every component dependency is available and not excluded on the source.
+- Update the source to Bricks 2.4 or later if it only supports the legacy template response.
+
+For the template library controls and local template actions, see [Template Library](https://academy.bricksbuilder.io/builder/features/template-library/).
 
 ---
 
@@ -1835,106 +1835,3 @@ The email settings can also be adjusted programmatically:
 - `bricks/user_activation_email/content`
 
 These filters are useful for multilingual sites or projects that need different email text per user or context.
-
----
-
-# Visual Grid Builder
-
-Source: https://academy.bricksbuilder.io/builder/features/visual-grid-builder/
-
-*Design CSS Grid layouts in Bricks with the Visual Grid Builder instead of hand-writing grid-template values.*
-
-https://youtu.be/V-YTXvwg6Fc
-
-The new **Visual Grid Builder **allows you to visually design and manage your grid layouts. The feature is available for any element with the `display` control set to `grid`, and allows you to:
-
-- **Adjust grid size**: Modify the number of columns and rows to fit your design needs.
-- **Resize and move elements**: Easily adjust the size and position of elements within your grid through simple drag and drop.
-- **Query loop support**: Tweak any query loop item inside your grid.
-- **Breakpoint support**: Create different grid layouts for various breakpoints to ensure responsiveness.
-- **Rename elements**: Organize your layout by renaming elements for better identification.
-- **Edit elements**: Hover over any grid item and click the pencil icon to continue editing it in the element panel.
-- **Reset options**: Reset the entire grid or individual elements on the current breakpoint.
-- **History**: Use history buttons to go back and forth between changes.
-- **Fill grid**: Auto-fill any empty grid cells with one click using Block elements.
-- **ID & class level**: Visually design your grid on the element ID or class-level.
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-21.17.50@2x-1.png)
-
-<figcaption>
-
-Visual Grid Builder modal
-
-</figcaption>
-
-## How it works {#how-it-works}
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-21.39.14@2x.png)
-
-### Accessing the Visual Grid Builder {#access}
-
-Begin by setting the `display` property of your grid layout element to `grid`. Once activated, the Visual Grid Builder icon appears next to the `grid` value.
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-21.43.02@2x.png)
-
-> **Note**
->
-> *NOTE: The visual grid builder (icon) is not available when bulk-editing elements.*
-
-### Styling elements
-
-The Visual Grid Builder allows you to style both individual elements and elements that are part of a query loop. The approach to styling depends on whether you are working at the class or ID level. Here’s an overview of how this works:
-
-**Static elements:**
-
-- **ID level**: When you resize or move a static element, the changes are reflected in the `Grid Item` controls, specifically updating the `Grid Column` and `Grid Row` properties. This approach is straightforward and directly modifies the element's grid positioning.
-- **Class level**: If you have defined the grid at the class level, any resizing or movement of the element will save the changes as custom CSS. These custom styles are applied to the `Custom CSS` control of the main element.
-
-**Query loop element:**
-
-- **ID or class level**: When working with elements that are part of a query loop, changes to size or position are saved as custom CSS in the `Custom CSS` control of the main element, regardless of whether you are styling at the ID or class level.
-
-**Important**: It is crucial not to alter the auto-generated CSS styles, as they are essential for maintaining the layout's integrity. These styles are clearly marked with code comments, making them easy to identify and preserve. After moving or resizing an element, the CSS will automatically update to reflect the new values. If you choose to reset an element, the auto-generated custom CSS will be cleared, reverting the element to its original state.
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-22.04.21@2x.png)
-
-## Controls {#controls}
-
-**Grid actions:**
-
-1. **Reset (Grid)**: Resets all grid styles for the currently selected breakpoint.
-2. **Breakpoints**: Toggle between different breakpoints without leaving the editor.
-3. **History**: Undo or redo actions.
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-22.06.50@2x.png)
-
-**Grid controls: **
-
-1. **Columns and rows**: Adjust the number of columns and rows within the grid.
-2. **Gap**: Modify the gap between grid elements using any valid CSS value, including variables.
-3. **Use min/max**: Toggle to set column or row size to `minmax(0, 1fr)` for better flexibility.
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-22.11.56@2x.png)
-
-When you open the Visual Grid Builder, it will automatically detect and adjust the column and row controls to match your existing grid configuration.
-
-**Grid panel controls: **
-
-1. **Individual Columns and rows**: Precisely control the size of columns and rows.
-2. **Elements**: Edit the elements within the grid.
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-22.20.35@2x.png)
-
-Sizes aure automatically calculated from your main element settings. For instance, `repeat(3, 2fr)` is converted to `2fr 2fr 2fr`. You can also customize sizes using values like `1fr`, `300px`, or `minmax(0, 1fr)` or any other valid value, to adjust the design to your needs.
-
-**Single element controls: **
-
-1. **Resize**: Click and drag the borders to resize elements.
-2. **Move**: Click and drag within the element to reposition it.
-3. **Rename**: Click on the element label to rename it.
-4. **Reset**: Reset all styling for the element on the current breakpoint.
-5. **Edit**: Close the Visual Grid Builder and select the element in the structure panel for further editing.
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-22.31.58@2x.png)
-
-You can also view the index of each element, and if an element is part of a query loop, its specific index within the loop will be displayed, starting at 0.

@@ -1,3 +1,93 @@
+# Filter: bricks/wpml/translatable_control_types
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-wpml-translatable_control_types/
+
+*Add Bricks control types, including selected code fields, to WPML translation jobs.*
+
+The `bricks/wpml/translatable_control_types` filter controls which Bricks control types WPML includes in its translation jobs.
+
+Bricks includes `text`, `textarea`, `editor`, `repeater`, and `link` controls by default. The `code` type is excluded because automatic or manual translation can change executable PHP, JavaScript, HTML, or CSS. Add it only for fields whose complete value needs to differ between languages.
+
+The filter applies to element controls and Page Settings. Page Settings use a synthetic element with the name `page-settings`, which lets a callback target page-level custom code without exposing every code control on the site.
+
+## Parameters
+
+- `$types` (array): Control types currently exposed to WPML.
+- `$element` (array): The current Bricks element. For Page Settings, its `name` is `page-settings` and its `id` is `pageSettings`.
+- `$control` (array|null): The current control definition.
+- `$key` (string): The current control key or repeater field key.
+
+## Translate the PHP and HTML field of Code elements
+
+This example exposes only the `code` field of the Code element. Its CSS and JavaScript fields remain excluded.
+
+```php
+add_filter( 'bricks/wpml/translatable_control_types', function( $types, $element, $control, $key ) {
+    if ( ( $element['name'] ?? '' ) === 'code' && $key === 'code' ) {
+        $types[] = 'code';
+    }
+
+    return array_unique( $types );
+}, 10, 4 );
+```
+
+## Translate a Page Settings custom-code field
+
+The following callback exposes only **Page Settings → Custom code → Header scripts**. Other page-level CSS and script fields continue to use the source-language value.
+
+```php
+add_filter( 'bricks/wpml/translatable_control_types', function( $types, $element, $control, $key ) {
+    $is_page_settings = ( $element['name'] ?? '' ) === 'page-settings';
+
+    if ( $is_page_settings && $key === 'customScriptsHeader' ) {
+        $types[] = 'code';
+    }
+
+    return array_unique( $types );
+}, 10, 4 );
+```
+
+Available page-level custom-code keys are:
+
+- `customCss`
+- `customScriptsHeader`
+- `customScriptsBodyHeader`
+- `customScriptsBodyFooter`
+
+After adding the filter, update the source page and send its translation to WPML again. The opted-in code field then appears in the WPML translation job. Review the translated value before publishing, especially when automatic translation is enabled, because a changed quote, variable, selector, or function name can break the code.
+
+---
+
+# Filter: bricks_query_max_items_in_builder
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks_query_max_items_in_builder/
+
+*Filters builder query results for custom object types when Bricks applies the builder max-results limit.*
+
+Filters dynamic query results in the builder when Bricks applies the builder query max-results limit.
+
+Bricks handles built-in `post`, `term`, `user`, and supported provider object types internally. This filter runs for custom query object types that Bricks does not know how to trim itself.
+
+## Parameters
+
+- `$result` (mixed): The current query result.
+- `$query_instance` (Bricks\Query): The Bricks query instance.
+- `$builder_query_max_results` (int): The maximum number of results Bricks allows in the builder.
+
+## Example usage
+
+```php
+add_filter( 'bricks_query_max_items_in_builder', function( $result, $query_instance, $builder_query_max_results ) {
+    if ( is_array( $result ) ) {
+        return array_slice( $result, 0, $builder_query_max_results );
+    }
+
+    return $result;
+}, 10, 3 );
+```
+
+---
+
 # Filter: bricks/active_templates
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-active_templates/
@@ -153,6 +243,33 @@ add_filter( 'bricks/allowed_html_tags', function( $allowed_html_tags ) {
 
 ---
 
+# Filter: bricks//assets/load_webfonts
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-load_webfonts/
+
+*Bricks 1.4 introduces the possibility to \"Disable Google Fonts\". Either via the Bricks settings under \"Performance\" or programmatically using the filter as.*
+
+Bricks 1.4 introduces the possibility to "Disable Google Fonts". Either via the Bricks settings under "Performance" or programmatically using the filter as explained below:
+
+![](https://academy.bricksbuilder.io/assets/bricks-1.4-disable-google-fonts-setting-1024x944.png)
+
+<figcaption>
+
+Bricks > Settings > Performance: Disable Google Fonts
+
+</figcaption>
+
+With the filter `bricks/assets/load_webfonts` you'll be able to prevent Google Fonts to load in the frontend by returning `false`:
+
+```php
+// Prevent Google Fonts loading
+add_filter( 'bricks/assets/load_webfonts', '__return_false' );
+```
+
+If you use this filter to remove the embed of Google Fonts but you still like to use Google Fonts, just head to the [Google Fonts website](https://fonts.google.com/) and download the fonts you need. Then, add them manually to your website, using the [Custom Fonts](https://academy.bricksbuilder.io/builder/styling/custom-fonts/) screen.
+
+---
+
 # Filter: bricks/assets/generate_css_from_element
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-generate_css_from_element/
@@ -181,30 +298,29 @@ add_filter( 'bricks/assets/generate_css_from_element', function( $element_names,
 
 ---
 
-# Filter: bricks//assets/load_webfonts
+# Filter: bricks/auth/custom_lost_password_redirect
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-load_webfonts/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_lost_password_redirect/
 
-*Bricks 1.4 introduces the possibility to \"Disable Google Fonts\". Either via the Bricks settings under \"Performance\" or programmatically using the filter as.*
+*This filter enables the modification of the redirect page ID for the lost password page.*
 
-Bricks 1.4 introduces the possibility to "Disable Google Fonts". Either via the Bricks settings under "Performance" or programmatically using the filter as explained below:
+This filter enables the modification of the redirect page ID for the lost password page.
 
-![](https://academy.bricksbuilder.io/assets/bricks-1.4-disable-google-fonts-setting-1024x944.png)
-
-<figcaption>
-
-Bricks > Settings > Performance: Disable Google Fonts
-
-</figcaption>
-
-With the filter `bricks/assets/load_webfonts` you'll be able to prevent Google Fonts to load in the frontend by returning `false`:
+## Example Usage:
 
 ```php
-// Prevent Google Fonts loading
-add_filter( 'bricks/assets/load_webfonts', '__return_false' );
+add_filter( 'bricks/auth/custom_lost_password_redirect', function( $selected_lost_password_page_id ) {
+    return /* New lost password page ID */;
+});
 ```
 
-If you use this filter to remove the embed of Google Fonts but you still like to use Google Fonts, just head to the [Google Fonts website](https://fonts.google.com/) and download the fonts you need. Then, add them manually to your website, using the [Custom Fonts](https://academy.bricksbuilder.io/builder/styling/custom-fonts/) screen.
+**Parameters:**
+
+- `$selected_lost_password_page_id` (int|false): The ID of the custom lost password page if set, otherwise `false`.
+
+**Return:**
+
+- (int|false): The new custom lost password page ID or `false` to indicate no custom page is set.
 
 ---
 
@@ -231,32 +347,6 @@ add_filter( 'bricks/auth/custom_login_redirect', function( $selected_login_page_
 **Return:**
 
 - (int|false): The custom page ID for login redirection, or `false` if no custom page is designated.
-
----
-
-# Filter: bricks/auth/custom_lost_password_redirect
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_lost_password_redirect/
-
-*This filter enables the modification of the redirect page ID for the lost password page.*
-
-This filter enables the modification of the redirect page ID for the lost password page.
-
-## Example Usage:
-
-```php
-add_filter( 'bricks/auth/custom_lost_password_redirect', function( $selected_lost_password_page_id ) {
-    return /* New lost password page ID */;
-});
-```
-
-**Parameters:**
-
-- `$selected_lost_password_page_id` (int|false): The ID of the custom lost password page if set, otherwise `false`.
-
-**Return:**
-
-- (int|false): The new custom lost password page ID or `false` to indicate no custom page is set.
 
 ---
 
@@ -293,32 +383,6 @@ In this example, the redirection URL changes based on the current URL path, allo
 **Return:**
 
 - (string|null): The URL to redirect to, or null to follow default logic.
-
----
-
-# Filter: bricks/auth/custom_registration_redirect
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_registration_redirect/
-
-*This filter allows for the customization of the redirect page ID for the registration page.*
-
-This filter allows for the customization of the redirect page ID for the registration page.
-
-## Example Usage:
-
-```php
-add_filter( 'bricks/auth/custom_registration_redirect', function( $selected_registration_page_id ) {
-    return /* New registration page ID */;
-});
-```
-
-**Parameters:**
-
-- `$selected_registration_page_id` (int|false): The ID of the custom registration page if set; otherwise, `false`.
-
-**Return:**
-
-- (int|false): The custom page ID for registration redirection, or `false` if no custom page is set.
 
 ---
 
@@ -364,6 +428,32 @@ add_filter( 'bricks/body/attributes', function( $attributes ) {
   return $attributes;
 } );
 ```
+
+---
+
+# Filter: bricks/auth/custom_registration_redirect
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_registration_redirect/
+
+*This filter allows for the customization of the redirect page ID for the registration page.*
+
+This filter allows for the customization of the redirect page ID for the registration page.
+
+## Example Usage:
+
+```php
+add_filter( 'bricks/auth/custom_registration_redirect', function( $selected_registration_page_id ) {
+    return /* New registration page ID */;
+});
+```
+
+**Parameters:**
+
+- `$selected_registration_page_id` (int|false): The ID of the custom registration page if set; otherwise, `false`.
+
+**Return:**
+
+- (int|false): The custom page ID for registration redirection, or `false` if no custom page is set.
 
 ---
 
@@ -1093,29 +1183,6 @@ Since Bricks 1.5, the `$settings` and `$name` arguments are deprecated. You may 
 
 ---
 
-# Filter: bricks/elements/{element_name}/control_groups
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-elements-element_name-control_groups/
-
-*Since Bricks 1.4 it is possible to add custom control groups to a specific element like so:*
-
-Since Bricks 1.4 it is possible to add custom control groups to a specific element like so:
-
-```php
-add_filter( 'bricks/elements/heading/control_groups', function( $control_groups ) {
-    $control_groups['custom_controls'] = [
-        'tab'      => 'content', // or 'style'
-        'title'    => esc_html__( 'Custom controls', 'my_plugin' ),
-    ];
-
-    return $control_groups;
-} );
-```
-
-Note: the above example adds a new control group with the title "**Custom controls**" to the **heading** element, using the filter `bricks/elements/**heading**/control_groups`. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
-
----
-
 # Filter: bricks/element/settings
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-settings/
@@ -1171,6 +1238,29 @@ add_filter('bricks/element/settings', function( $settings, $element ) {
   return $settings;
 }, 10, 2);
 ```
+
+---
+
+# Filter: bricks/elements/{element_name}/control_groups
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-elements-element_name-control_groups/
+
+*Since Bricks 1.4 it is possible to add custom control groups to a specific element like so:*
+
+Since Bricks 1.4 it is possible to add custom control groups to a specific element like so:
+
+```php
+add_filter( 'bricks/elements/heading/control_groups', function( $control_groups ) {
+    $control_groups['custom_controls'] = [
+        'tab'      => 'content', // or 'style'
+        'title'    => esc_html__( 'Custom controls', 'my_plugin' ),
+    ];
+
+    return $control_groups;
+} );
+```
+
+Note: the above example adds a new control group with the title "**Custom controls**" to the **heading** element, using the filter `bricks/elements/**heading**/control_groups`. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
 
 ---
 
@@ -1456,32 +1546,6 @@ In this example, a callback function is defined within the add_filter function c
 
 ---
 
-# Filter: bricks/get_element_data/maybe_from_post_id
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-get_element_data-maybe_from_post_id/
-
-*Provide an alternate post ID for Bricks element-data lookups when custom elements reference content stored in another post or template.*
-
-The `bricks/get_element_data/maybe_from_post_id` filter, available `@since 1.11`, allows you to specify an additional post ID from which to retrieve element data. This can be useful when dealing with custom elements that reference templates, posts, or external data sources, where the target element is not found within the standard element set. (Especially when dealing with Code element + Signed signature)
-
-### When to Use
-
-This filter is useful when working with custom elements that reference data from other templates or posts. For example, if you have a custom element that stores additional Bricks content in another post or template, and there is a code element with a signed signature located there, Bricks may not render the code element on the frontend because it doesn't know where to retrieve the signature. This filter allows you to specify the correct post or template to ensure that all elements are properly rendered.
-
-```php
-add_filter( 'bricks/get_element_data/maybe_from_post_id', function( $id, $element_data ) {
-  // Check if the element is my custom element and has custom_template_id set on the control
-  if ( isset( $element_data['name'] ) && $element_data['name'] === 'my-custom-element' && ! empty( $element_data['settings']['custom_template_id'] ) ) {
-    $id = $element_data['settings']['custom_template_id'];
-  }
-
-  return $id;
-}, 10, 2 );
-
-```
-
----
-
 # Filter: bricks/frontend/render_element
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-frontend-render_element/
@@ -1519,6 +1583,51 @@ add_filter( 'bricks/frontend/render_element', function( $html, $element ) {
 
 ---
 
+# Filter: bricks/get_element_data/maybe_from_post_id
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-get_element_data-maybe_from_post_id/
+
+*Provide an alternate post ID for Bricks element-data lookups when custom elements reference content stored in another post or template.*
+
+The `bricks/get_element_data/maybe_from_post_id` filter, available `@since 1.11`, allows you to specify an additional post ID from which to retrieve element data. This can be useful when dealing with custom elements that reference templates, posts, or external data sources, where the target element is not found within the standard element set. (Especially when dealing with Code element + Signed signature)
+
+### When to Use
+
+This filter is useful when working with custom elements that reference data from other templates or posts. For example, if you have a custom element that stores additional Bricks content in another post or template, and there is a code element with a signed signature located there, Bricks may not render the code element on the frontend because it doesn't know where to retrieve the signature. This filter allows you to specify the correct post or template to ensure that all elements are properly rendered.
+
+```php
+add_filter( 'bricks/get_element_data/maybe_from_post_id', function( $id, $element_data ) {
+  // Check if the element is my custom element and has custom_template_id set on the control
+  if ( isset( $element_data['name'] ) && $element_data['name'] === 'my-custom-element' && ! empty( $element_data['settings']['custom_template_id'] ) ) {
+    $id = $element_data['settings']['custom_template_id'];
+  }
+
+  return $id;
+}, 10, 2 );
+
+```
+
+---
+
+# Filter: bricks/builder/i18n
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-i18n/
+
+*Place and customize the following filter to add translatable string to the builder.*
+
+Place and customize the following filter to add translatable string to the builder.
+
+```php
+add_filter( 'bricks/builder/i18n', function( $i18n ) {
+  // Example: Provide translatable string for element category 'custom'
+  $i18n['custom'] = esc_html__( 'Custom', 'bricks' );
+
+  return $i18n;
+} );
+```
+
+---
+
 # Filter: bricks/header/attributes
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/
@@ -1548,44 +1657,6 @@ add_filter( 'bricks/header/attributes', function( $attributes ) {
 
 ---
 
-# Filter: bricks/builder/i18n
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-i18n/
-
-*Place and customize the following filter to add translatable string to the builder.*
-
-Place and customize the following filter to add translatable string to the builder.
-
-```php
-add_filter( 'bricks/builder/i18n', function( $i18n ) {
-  // Example: Provide translatable string for element category 'custom'
-  $i18n['custom'] = esc_html__( 'Custom', 'bricks' );
-
-  return $i18n;
-} );
-```
-
----
-
-# Filter: bricks/is_layout_element
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-is_layout_element/
-
-*Allows to define your custom elements as a layout element, so they are recognised like the section, container, block, div elements and use the same controls.*
-
-Allows to define your custom elements as a layout element, so they are recognised like the section, container, block, div elements and use the same controls like query loop, flex controls, shape divider, etc.
-
-```php
-add_filter( 'bricks/is_layout_element', function( $layout_element_names ) {
-    // Mark your custom element "custom_box" as a layout element
-    $layout_element_names[] = 'custom_box';
-
-    return $layout_element_names;
-} );
-```
-
----
-
 # Filter: bricks/link_css_selectors
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-link_css_selectors/
@@ -1609,6 +1680,25 @@ add_filter( 'bricks/link_css_selectors', function( $link_css_selectors ) {
 > **Note**
 >
 > If the theme styles link styles do not apply to your custom selectors, force the regeneration of the theme styles by changing and saving the link color, the padding, or the text decoration, for example. Your new selectors will then be available.
+
+---
+
+# Filter: bricks/is_layout_element
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-is_layout_element/
+
+*Allows to define your custom elements as a layout element, so they are recognised like the section, container, block, div elements and use the same controls.*
+
+Allows to define your custom elements as a layout element, so they are recognised like the section, container, block, div elements and use the same controls like query loop, flex controls, shape divider, etc.
+
+```php
+add_filter( 'bricks/is_layout_element', function( $layout_element_names ) {
+    // Mark your custom element "custom_box" as a layout element
+    $layout_element_names[] = 'custom_box';
+
+    return $layout_element_names;
+} );
+```
 
 ---
 
@@ -1854,6 +1944,49 @@ Each element in Bricks has a unique ID. You may find the element ID when editing
 
 ---
 
+# Filter: bricks/query/force_run
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-force_run/
+
+*Bricks has enhanced query performance in 1.9.1. Now, each unique query is executed only once per page load, and subsequently, the query results are reused on.*
+
+Bricks has enhanced query performance in 1.9.1. Now, each unique query is executed only once per page load, and subsequently, the query results are reused on the same page. Consequently, certain queries-related PHP filters will no longer be triggered multiple times.
+
+The following filters may be impacted:
+
+- `bricks/posts/merge_query`
+- `bricks/posts/query_vars`
+- `bricks/terms/query_vars`
+- `bricks/users/query_vars`
+- `bricks/query/run`
+- `bricks/query/result`
+- `bricks/query/result_count`
+- `bricks/query/result_max_num_pages`
+
+Nevertheless, developers can utilize this filter to disable this setting for certain queries under specific circumstances.
+
+```php
+// Return boolean (default: false)
+add_filter( 'bricks/query/force_run', function( $force_run, $query ) {
+  // Get element ID
+  $element_id  = $query::get_query_element_id();
+  // Get element settings
+  $settings = $query->settings;
+
+  if ( isset( $settings['usingFacetWP'] ) ) {
+    $force_run = true;
+  }
+
+  return $force_run;
+}, 10, 2 );
+```
+
+Since 1.9.2, you can define `$query_vars['bricks_force_run'] = true` to achieve the same result as well. This will be handy if you are using the Bricks Query Editor or PHP filters like `bricks/posts/query_vars`  etc.
+
+![](https://academy.bricksbuilder.io/assets/bricks-query-force-run-query-vars.png)
+
+---
+
 # Filter: bricks/posts/query_vars
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-query_vars/
@@ -2080,49 +2213,6 @@ add_filter( 'bricks/posts/query_vars', function( $query_vars, $settings, $elemen
   return $query_vars;
 }, 10, 4 );
 ```
-
----
-
-# Filter: bricks/query/force_run
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-force_run/
-
-*Bricks has enhanced query performance in 1.9.1. Now, each unique query is executed only once per page load, and subsequently, the query results are reused on.*
-
-Bricks has enhanced query performance in 1.9.1. Now, each unique query is executed only once per page load, and subsequently, the query results are reused on the same page. Consequently, certain queries-related PHP filters will no longer be triggered multiple times.
-
-The following filters may be impacted:
-
-- `bricks/posts/merge_query`
-- `bricks/posts/query_vars`
-- `bricks/terms/query_vars`
-- `bricks/users/query_vars`
-- `bricks/query/run`
-- `bricks/query/result`
-- `bricks/query/result_count`
-- `bricks/query/result_max_num_pages`
-
-Nevertheless, developers can utilize this filter to disable this setting for certain queries under specific circumstances.
-
-```php
-// Return boolean (default: false)
-add_filter( 'bricks/query/force_run', function( $force_run, $query ) {
-  // Get element ID
-  $element_id  = $query::get_query_element_id();
-  // Get element settings
-  $settings = $query->settings;
-
-  if ( isset( $settings['usingFacetWP'] ) ) {
-    $force_run = true;
-  }
-
-  return $force_run;
-}, 10, 2 );
-```
-
-Since 1.9.2, you can define `$query_vars['bricks_force_run'] = true` to achieve the same result as well. This will be handy if you are using the Bricks Query Editor or PHP filters like `bricks/posts/query_vars`  etc.
-
-![](https://academy.bricksbuilder.io/assets/bricks-query-force-run-query-vars.png)
 
 ---
 
@@ -2375,45 +2465,6 @@ add_filter( 'bricks/query/result_max_num_pages', function( $max_num_pages, $quer
 
 ---
 
-# Filter: bricks/query/run
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-run/
-
-*The Bricks Query Loop supports 3 types of queries by default (Posts, Terms and Users). But it can be extended to support any other query. To return a custom.*
-
-The Bricks [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/) supports 3 types of queries by default (Posts, Terms and Users). But it can be extended to support any other query. To return a custom query result, Bricks can be extended using the WP filter `bricks/query/run` like so:
-
-```php
-add_filter( 'bricks/query/run', function( $results, $query_obj ) {
-    if ( $query_obj->object_type !== 'my_query_type' ) {
-	return $results;
-    }
-
-    // Perform the query
-    // Assign the results to $results (array)
-
-    return $results;
-}, 10, 2 );
-```
-
-The filter callback receives two arguments:
-
-- `$results` is the results array (empty by default). The loop will iterate through this array.
-- `$query_obj` is an instance of the `\Bricks\Query` class object
-
-Note: This hook should be used to add different types of query results. If you want to alter the posts, terms, or users query, use the following hooks:
-
-- **Posts**: [`bricks/posts/query_vars`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-query_vars/)
-- **Terms**: [bricks/terms/query_vars](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-terms-query_vars/)
-- **Users**: [bricks/users/query_vars](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-users-query_vars/)
-
-Related hooks:
-
-- To add a query type to the Query control use [`bricks/setup/control_options`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/)
-- To manage the object on every loop iteration use [`bricks/query/loop_object`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object/)
-
----
-
 # Filter: bricks/registered_post_types_args
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-registered_post_types_args/
@@ -2434,54 +2485,3 @@ add_filter( 'bricks/registered_post_types_args', function( $args ) {
   return $args;
 } );
 ```
-
----
-
-# Filter: bricks/related_posts/query_vars
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-related_posts-query_vars/
-
-*Since Bricks 1.3.5 you may manipulate the related posts element query vars before the query is performed like so:*
-
-Since Bricks 1.3.5 you may manipulate the **related posts** element query vars before the query is performed like so:
-
-```php
-add_filter( 'bricks/related_posts/query_vars', function( $query_vars, $settings, $element_id ) {
-    $query_vars['post_type'] = [ 'post', 'project' ];
-
-    return $query_vars;
-}, 10, 3 );
-```
-
-The filter callback receives two arguments:
-
-- `$query_vars` is an associative array used to feed the [WP_Query](https://developer.wordpress.org/reference/classes/wp_query/) class
-- `$settings` is an associative array containing the element settings set in the builder
-- `$element_id` is a string containing the element ID
-
----
-
-# Filter: bricks/render_query_loop_trail
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-render_query_loop_trail/
-
-*Control whether Bricks renders the query loop trail node that frontend JavaScript uses to read query settings.*
-
-The `bricks/render_query_loop_trail` (@since 1.11.1) filter controls the output of the query loop trail node in Bricks. This node is automatically added to each query loop and records the loop's settings, which are then accessed by frontend JavaScript to manage various query-related tasks. Once these settings are read by Bricks, the node is removed from the DOM.
-
-For some third-party plugins, this node may not be needed—especially if they use custom AJAX endpoints to update query results independently of Bricks. Using this filter, you can control whether or not the query loop trail node is rendered.
-
-```php
-// Return true = render the query loop trail node
-// Return false = skip the query loop trail node
-add_filter( 'bricks/render_query_loop_trail', function( $render, $element, $query ) {
-  // Do not render query loop trail node if my-custom-param parameter exists
-  if ( isset( $_GET['my-custom-param'] ) ) {
-    $render = false;
-  }
-
-  return $render;
-}, 10, 3 );
-```
-
-In this example, if the `my-custom-param` parameter is detected in the URL, the query loop trail node will not be rendered. This can be useful for third-party plugins with custom AJAX endpoints that handle query configurations independently.

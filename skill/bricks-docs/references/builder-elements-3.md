@@ -36,99 +36,6 @@ The Pie Chart element displays a circular progress chart with customizable perce
 
 ---
 
-# Progress bar
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/progress-bar/
-
-*The Progress Bar element displays animated progress bars with customizable labels, percentages, and styling.*
-
-The Progress Bar element displays animated progress bars with customizable labels, percentages, and styling.
-
-## Settings
-
-- **Bars** (repeater) - Add multiple progress bars. Each bar has:
-  - **Label** (text) - Text label for the progress bar.
-  - **Percentage** (number) - Progress percentage (0-100). Supports dynamic data.
-  - **Bar color** (color) - Color of the progress fill.
-
-- **Height** (number with units) - Height of the progress bars. Default: 8px.
-
-- **Spacing** (number with units) - Gap between progress bars. Default: 20px.
-
-- **Show percentage** (checkbox) - Display percentage values next to labels. Default: checked.
-
-- **Bar color** (color) - Default color for all progress bars.
-
-- **Bar background color** (color) - Background color of the progress bar tracks.
-
-- **Bar border** (border) - Border styling for the progress bars.
-
-- **Label typography** (typography) - Font settings for the labels.
-
-- **Percentage typography** (typography) - Font settings for the percentage values. Only shown when "Show percentage" is enabled.
-
-> **Developer reference**
->
-> See the [Progress Bar Schema](https://academy.bricksbuilder.io/developer/schema/elements/progress-bar/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Rating
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/rating/
-
-*The Rating element displays a numeric score as a row of icons (default: stars). It supports fractional values (e.g. 3.5 on a 5-point scale) by filling whole.*
-
-The **Rating** element displays a numeric score as a row of icons (default: stars). It supports **fractional** values (e.g. `3.5` on a 5-point scale) by filling whole icons, one partial icon with a width mask, and empty icons for the remainder.
-
-This is separate from [Product rating](https://academy.bricksbuilder.io/builder/elements/product/product-rating/) (WooCommerce). Use **Rating** for static or dynamic review scores anywhere on the site.
-
-## Settings
-
-- **Rating** (number) — Current score. Min `0`, step `0.1`. Supports dynamic data. Default: `3.5`.
-
-- **Max. rating** (number) — Scale maximum (e.g. `5`). Min `1`. Supports dynamic data.
-
-- **Gap** (number with units) — Space between icons (`gap` on the root).
-
-### Icon
-
-- **Icon** (icon) — Optional custom icon; default is the built-in star SVG.
-
-- **Icon color: Full** (color) — Filled / active portion.
-
-- **Icon color: Empty** (color) — Empty / inactive portion.
-
-- **Icon size** (number with units).
-
-### Schema
-
-Optional **schema.org** **Review** + **Rating** JSON-LD.
-
-- **Generate review schema** (checkbox).
-
-When enabled, the following are required:
-
-- **Required: Reviewed item type** (text) — e.g. `Product`, `Service`.
-
-- **Required: Reviewed item name** (text).
-
-Optional:
-
-- **Optional: Review author** (text).
-
-- **Additional item reviewed properties** (repeater) — `Property name`, `Property value`, `Value type` (`Text`, `Number`, `Nested object`).
-
-- **Additional review properties** (repeater) — Same shape; adds fields on the **Review** object (e.g. `reviewBody`, `datePublished`).
-
-The structured data maps your **Rating** and **Max. rating** into a `Rating` node with `bestRating` `5` (normalized from your scale).
-
-> **Developer reference**
->
-> See the [Rating Schema](https://academy.bricksbuilder.io/developer/schema/elements/rating/) for the full JSON schema of this element's settings and controls.
-
----
-
 # Pricing tables
 
 Source: https://academy.bricksbuilder.io/builder/elements/general/pricing-tables/
@@ -309,6 +216,99 @@ The Pricing Tables element creates responsive pricing table layouts with customi
 
 ---
 
+# Progress bar
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/progress-bar/
+
+*The Progress Bar element displays animated progress bars with customizable labels, percentages, and styling.*
+
+The Progress Bar element displays animated progress bars with customizable labels, percentages, and styling.
+
+## Settings
+
+- **Bars** (repeater) - Add multiple progress bars. Each bar has:
+  - **Label** (text) - Text label for the progress bar.
+  - **Percentage** (number) - Progress percentage (0-100). Supports dynamic data.
+  - **Bar color** (color) - Color of the progress fill.
+
+- **Height** (number with units) - Height of the progress bars. Default: 8px.
+
+- **Spacing** (number with units) - Gap between progress bars. Default: 20px.
+
+- **Show percentage** (checkbox) - Display percentage values next to labels. Default: checked.
+
+- **Bar color** (color) - Default color for all progress bars.
+
+- **Bar background color** (color) - Background color of the progress bar tracks.
+
+- **Bar border** (border) - Border styling for the progress bars.
+
+- **Label typography** (typography) - Font settings for the labels.
+
+- **Percentage typography** (typography) - Font settings for the percentage values. Only shown when "Show percentage" is enabled.
+
+> **Developer reference**
+>
+> See the [Progress Bar Schema](https://academy.bricksbuilder.io/developer/schema/elements/progress-bar/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Rating
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/rating/
+
+*The Rating element displays a numeric score as a row of icons (default: stars). It supports fractional values (e.g. 3.5 on a 5-point scale) by filling whole.*
+
+The **Rating** element displays a numeric score as a row of icons (default: stars). It supports **fractional** values (e.g. `3.5` on a 5-point scale) by filling whole icons, one partial icon with a width mask, and empty icons for the remainder.
+
+This is separate from [Product rating](https://academy.bricksbuilder.io/builder/elements/product/product-rating/) (WooCommerce). Use **Rating** for static or dynamic review scores anywhere on the site.
+
+## Settings
+
+- **Rating** (number) — Current score. Min `0`, step `0.1`. Supports dynamic data. Default: `3.5`.
+
+- **Max. rating** (number) — Scale maximum (e.g. `5`). Min `1`. Supports dynamic data.
+
+- **Gap** (number with units) — Space between icons (`gap` on the root).
+
+### Icon
+
+- **Icon** (icon) — Optional custom icon; default is the built-in star SVG.
+
+- **Icon color: Full** (color) — Filled / active portion.
+
+- **Icon color: Empty** (color) — Empty / inactive portion.
+
+- **Icon size** (number with units).
+
+### Schema
+
+Optional **schema.org** **Review** + **Rating** JSON-LD.
+
+- **Generate review schema** (checkbox).
+
+When enabled, the following are required:
+
+- **Required: Reviewed item type** (text) — e.g. `Product`, `Service`.
+
+- **Required: Reviewed item name** (text).
+
+Optional:
+
+- **Optional: Review author** (text).
+
+- **Additional item reviewed properties** (repeater) — `Property name`, `Property value`, `Value type` (`Text`, `Number`, `Nested object`).
+
+- **Additional review properties** (repeater) — Same shape; adds fields on the **Review** object (e.g. `reviewBody`, `datePublished`).
+
+The structured data maps your **Rating** and **Max. rating** into a `Rating` node with `bestRating` `5` (normalized from your scale).
+
+> **Developer reference**
+>
+> See the [Rating Schema](https://academy.bricksbuilder.io/developer/schema/elements/rating/) for the full JSON schema of this element's settings and controls.
+
+---
+
 # Slot
 
 Source: https://academy.bricksbuilder.io/builder/elements/general/slot/
@@ -450,6 +450,26 @@ The Tabs element creates tabbed content with horizontal or vertical layouts and 
 
 ---
 
+# Template
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/template/
+
+*The Template element allows including reusable Bricks templates (sections, content, or popups) within a page.*
+
+The Template element allows including reusable Bricks templates (sections, content, or popups) within a page.
+
+## Settings
+
+- **Template** (select) - Select a published Bricks template to include. Options include section, content, and popup templates.
+
+- **Render without wrapper** (checkbox) - Render the template content directly without the outer div wrapper. Note: Style settings won't apply when this is enabled.
+
+> **Developer reference**
+>
+> See the [Template Schema](https://academy.bricksbuilder.io/developer/schema/elements/template/) for the full JSON schema of this element's settings and controls.
+
+---
+
 # Team members
 
 Source: https://academy.bricksbuilder.io/builder/elements/general/team-members/
@@ -509,26 +529,6 @@ The Team Members element displays a responsive grid of team member profiles with
 > **Developer reference**
 >
 > See the [Team Members Schema](https://academy.bricksbuilder.io/developer/schema/elements/team-members/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Template
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/template/
-
-*The Template element allows including reusable Bricks templates (sections, content, or popups) within a page.*
-
-The Template element allows including reusable Bricks templates (sections, content, or popups) within a page.
-
-## Settings
-
-- **Template** (select) - Select a published Bricks template to include. Options include section, content, and popup templates.
-
-- **Render without wrapper** (checkbox) - Render the template content directly without the outer div wrapper. Note: Style settings won't apply when this is enabled.
-
-> **Developer reference**
->
-> See the [Template Schema](https://academy.bricksbuilder.io/developer/schema/elements/template/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -652,42 +652,6 @@ The Testimonials element displays testimonials in a swipeable carousel with imag
 
 ---
 
-# Toggle - Mode
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/toggle-mode/
-
-*The Toggle - Mode element (toggle-mode) lets visitors switch between light and dark color modes on the front end. It relies on dark variants defined in the.*
-
-The **Toggle - Mode** element (`toggle-mode`) lets visitors switch between **light** and **dark** color modes on the front end. It relies on **dark variants** defined in the Bricks **color manager**; if no dark colors exist, the builder toolbar sun/moon control does not appear, and the same idea applies to how the front end behaves.
-
-The element renders a **button** containing two icon areas (`.toggle.light` and `.toggle.dark`); CSS shows the correct icon for the active mode.
-
-## Settings
-
-An **info** control explains that in the **builder**, you switch light/dark using the toolbar icon when dark colors are configured.
-
-### Mode: Light
-
-- **Icon** (icon) — Optional; default is the built-in light-mode graphic.
-- **Color** (color) — Icon color/fill for the light icon.
-- **Size** (number with units) — Icon size for the light icon.
-
-### Mode: Dark
-
-- **Icon Dark** (icon) — Optional; default is the built-in dark-mode graphic.
-- **Color** (color) — Icon color/fill for the dark icon.
-- **Size** (number with units) — Icon size for the dark icon.
-
-### Accessibility
-
-- **aria-label** (text) — Defaults to “Toggle mode” if empty.
-
-> **Developer reference**
->
-> See the [Toggle Mode Schema](https://academy.bricksbuilder.io/developer/schema/elements/toggle-mode/) for the full JSON schema of this element's settings and controls.
-
----
-
 # Toggle
 
 Source: https://academy.bricksbuilder.io/builder/elements/general/toggle/
@@ -728,6 +692,42 @@ If you add an **Icon**, the bar animation is hidden and the icon is used instead
 > **Developer reference**
 >
 > See the [Toggle Schema](https://academy.bricksbuilder.io/developer/schema/elements/toggle/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Toggle - Mode
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/toggle-mode/
+
+*The Toggle - Mode element (toggle-mode) lets visitors switch between light and dark color modes on the front end. It relies on dark variants defined in the.*
+
+The **Toggle - Mode** element (`toggle-mode`) lets visitors switch between **light** and **dark** color modes on the front end. It relies on **dark variants** defined in the Bricks **color manager**; if no dark colors exist, the builder toolbar sun/moon control does not appear, and the same idea applies to how the front end behaves.
+
+The element renders a **button** containing two icon areas (`.toggle.light` and `.toggle.dark`); CSS shows the correct icon for the active mode.
+
+## Settings
+
+An **info** control explains that in the **builder**, you switch light/dark using the toolbar icon when dark colors are configured.
+
+### Mode: Light
+
+- **Icon** (icon) — Optional; default is the built-in light-mode graphic.
+- **Color** (color) — Icon color/fill for the light icon.
+- **Size** (number with units) — Icon size for the light icon.
+
+### Mode: Dark
+
+- **Icon Dark** (icon) — Optional; default is the built-in dark-mode graphic.
+- **Color** (color) — Icon color/fill for the dark icon.
+- **Size** (number with units) — Icon size for the dark icon.
+
+### Accessibility
+
+- **aria-label** (text) — Defaults to “Toggle mode” if empty.
+
+> **Developer reference**
+>
+> See the [Toggle Mode Schema](https://academy.bricksbuilder.io/developer/schema/elements/toggle-mode/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -1851,38 +1851,6 @@ Single Product templates (or product preview context).
 
 ---
 
-# Related products
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-related/
-
-*Displays related products based on the current product context.*
-
-Displays related products based on the current product context.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- **Heading** (text)
-- **Heading typography** (typography)
-- **Max. products** (number)
-- **Columns** (number)
-- **Order by** (select)
-- **Order** (select)
-- **Gap** (number)
-- **Align** (text-align)
-- **Image height** (number)
-- **Padding** (spacing)
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
-
----
-
 # Product reviews
 
 Source: https://academy.bricksbuilder.io/builder/elements/product/product-reviews/
@@ -1921,6 +1889,38 @@ Source: https://academy.bricksbuilder.io/builder/elements/product/product-short-
 *Displays the WooCommerce product short description (excerpt) on single product pages.*
 
 Displays the WooCommerce product short description (excerpt) on single product pages.
+
+---
+
+# Related products
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-related/
+
+*Displays related products based on the current product context.*
+
+Displays related products based on the current product context.
+
+## Where this element works
+
+Single Product templates (or product preview context).
+
+## Key settings
+
+- **Heading** (text)
+- **Heading typography** (typography)
+- **Max. products** (number)
+- **Columns** (number)
+- **Order by** (select)
+- **Order** (select)
+- **Gap** (number)
+- **Align** (text-align)
+- **Image height** (number)
+- **Padding** (spacing)
+
+## Usage tips
+
+- Use this element inside a Single Product template to guarantee a valid product context.
+- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
 
 ---
 

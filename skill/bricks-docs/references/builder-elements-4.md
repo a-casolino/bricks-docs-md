@@ -24,6 +24,58 @@ Displays taxonomy terms for the current post.
 
 ---
 
+# Pagination
+
+Source: https://academy.bricksbuilder.io/builder/elements/wordpress/pagination/
+
+*The Pagination element displays page navigation for query results with customizable styling.*
+
+The Pagination element displays page navigation for query results with customizable styling.
+
+## Settings
+
+- **Query** (query-list) - Select which query this pagination controls.
+
+- **Alignment** (justify-content) - Horizontal alignment of pagination links.
+
+- **Height** (number with units) - Height of pagination buttons.
+
+- **Width** (number with units) - Width of pagination buttons.
+
+- **Spacing** (number with units) - Gap between pagination buttons. Default: 20px.
+
+- **Background** (color) - Background color of pagination buttons.
+
+- **Border** (border) - Border styling for pagination buttons.
+
+- **Typography** (typography) - Font settings for pagination buttons.
+
+### Current
+
+- **Background** (color) - Background color of the current page button.
+
+- **Border** (border) - Border styling for the current page button.
+
+- **Typography** (typography) - Font settings for the current page button.
+
+### Icons
+
+- **Previous Icon** (icon) - Icon for the previous page button.
+
+- **Next Icon** (icon) - Icon for the next page button.
+
+### Miscellaneous
+
+- **End Size** (number) - Number of page numbers shown at the start and end. Default: 1.
+
+- **Mid Size** (number) - Number of page numbers shown on each side of current page. Default: 2.
+
+> **Developer reference**
+>
+> See the [Pagination Schema](https://academy.bricksbuilder.io/developer/schema/elements/pagination/) for the full JSON schema of this element's settings and controls.
+
+---
+
 # Nav menu
 
 Source: https://academy.bricksbuilder.io/builder/elements/wordpress/nav-menu/
@@ -275,58 +327,6 @@ The Nav Menu element displays WordPress navigation menus with customizable styli
 > **Developer reference**
 >
 > See the [Nav Menu Schema](https://academy.bricksbuilder.io/developer/schema/elements/nav-menu/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Pagination
-
-Source: https://academy.bricksbuilder.io/builder/elements/wordpress/pagination/
-
-*The Pagination element displays page navigation for query results with customizable styling.*
-
-The Pagination element displays page navigation for query results with customizable styling.
-
-## Settings
-
-- **Query** (query-list) - Select which query this pagination controls.
-
-- **Alignment** (justify-content) - Horizontal alignment of pagination links.
-
-- **Height** (number with units) - Height of pagination buttons.
-
-- **Width** (number with units) - Width of pagination buttons.
-
-- **Spacing** (number with units) - Gap between pagination buttons. Default: 20px.
-
-- **Background** (color) - Background color of pagination buttons.
-
-- **Border** (border) - Border styling for pagination buttons.
-
-- **Typography** (typography) - Font settings for pagination buttons.
-
-### Current
-
-- **Background** (color) - Background color of the current page button.
-
-- **Border** (border) - Border styling for the current page button.
-
-- **Typography** (typography) - Font settings for the current page button.
-
-### Icons
-
-- **Previous Icon** (icon) - Icon for the previous page button.
-
-- **Next Icon** (icon) - Icon for the next page button.
-
-### Miscellaneous
-
-- **End Size** (number) - Number of page numbers shown at the start and end. Default: 1.
-
-- **Mid Size** (number) - Number of page numbers shown on each side of current page. Default: 2.
-
-> **Developer reference**
->
-> See the [Pagination Schema](https://academy.bricksbuilder.io/developer/schema/elements/pagination/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -1044,38 +1044,6 @@ See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.
 
 ---
 
-# Account - Payment methods
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-payment-methods/
-
-*Displays saved payment methods inside My Account.*
-
-Displays saved payment methods inside My Account.
-
-## Where this element works
-
-My Account templates and My Account endpoint views.
-
-## Key settings
-
-- **Head** (separator)
-- **Body** (separator)
-- **Delete button** (separator)
-- **Make default button** (separator)
-- **Add payment method** (separator)
-- **Background color** (color)
-- **Border** (border)
-- **Box shadow** (box-shadow)
-- **Typography** (typography)
-- **Padding** (spacing)
-
-## Usage tips
-
-- Use these elements in My Account templates or endpoint-specific templates.
-- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
-
----
-
 # Account - Page
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page/
@@ -1181,6 +1149,38 @@ Displays WooCommerce breadcrumb navigation.
 - **Gap** (number with units) - Gap between breadcrumb items.
 
 - **Margin** (spacing) - Margin around separators.
+
+---
+
+# Account - Payment methods
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-payment-methods/
+
+*Displays saved payment methods inside My Account.*
+
+Displays saved payment methods inside My Account.
+
+## Where this element works
+
+My Account templates and My Account endpoint views.
+
+## Key settings
+
+- **Head** (separator)
+- **Body** (separator)
+- **Delete button** (separator)
+- **Make default button** (separator)
+- **Add payment method** (separator)
+- **Background color** (color)
+- **Border** (border)
+- **Box shadow** (box-shadow)
+- **Typography** (typography)
+- **Padding** (spacing)
+
+## Usage tips
+
+- Use these elements in My Account templates or endpoint-specific templates.
+- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
 
 ---
 
@@ -1360,38 +1360,6 @@ See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.
 
 ---
 
-# Checkout coupon
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-coupon/
-
-*Displays the coupon prompt and form on the Checkout page.*
-
-Displays the coupon prompt and form on the Checkout page.
-
-## Where this element works
-
-Checkout templates (and order-received context for thank-you flows).
-
-## Key settings
-
-- **Location** (select)
-- **Toggleable form** (checkbox)
-- **Text** (text)
-- **Justify content** (justify-content)
-- **Gap** (number)
-- **Button** (separator)
-- **Disable text** (checkbox)
-- **Icon** (icon)
-- **Icon typography** (typography)
-- **Disable coupon message** (checkbox)
-
-## Usage tips
-
-- Use checkout elements only in Checkout templates so forms and order data render correctly.
-- Test logged-in and guest checkout flows after styling changes to ensure all states remain usable.
-
----
-
 # Checkout customer details
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-customer-details/
@@ -1424,13 +1392,13 @@ Checkout templates (and order-received context for thank-you flows).
 
 ---
 
-# Checkout order payment
+# Checkout coupon
 
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-order-payment/
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-coupon/
 
-*Displays available payment methods and payment actions on Checkout.*
+*Displays the coupon prompt and form on the Checkout page.*
 
-Displays available payment methods and payment actions on Checkout.
+Displays the coupon prompt and form on the Checkout page.
 
 ## Where this element works
 
@@ -1438,16 +1406,16 @@ Checkout templates (and order-received context for thank-you flows).
 
 ## Key settings
 
-- **Preview order ID** (number)
-- **Margin** (spacing)
-- **Padding** (spacing)
-- **Background** (color)
-- **Border** (border)
-- **Label typography** (typography)
-- **Description** (separator)
-- **Typography** (typography)
-- **Privacy** (separator)
+- **Location** (select)
+- **Toggleable form** (checkbox)
+- **Text** (text)
+- **Justify content** (justify-content)
+- **Gap** (number)
 - **Button** (separator)
+- **Disable text** (checkbox)
+- **Icon** (icon)
+- **Icon typography** (typography)
+- **Disable coupon message** (checkbox)
 
 ## Usage tips
 
@@ -1480,6 +1448,38 @@ Checkout templates (and order-received context for thank-you flows).
 - **Icon** (icon)
 - **Icon typography** (typography)
 - **Disable login message** (checkbox)
+
+## Usage tips
+
+- Use checkout elements only in Checkout templates so forms and order data render correctly.
+- Test logged-in and guest checkout flows after styling changes to ensure all states remain usable.
+
+---
+
+# Checkout order payment
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-order-payment/
+
+*Displays available payment methods and payment actions on Checkout.*
+
+Displays available payment methods and payment actions on Checkout.
+
+## Where this element works
+
+Checkout templates (and order-received context for thank-you flows).
+
+## Key settings
+
+- **Preview order ID** (number)
+- **Margin** (spacing)
+- **Padding** (spacing)
+- **Background** (color)
+- **Border** (border)
+- **Label typography** (typography)
+- **Description** (separator)
+- **Typography** (typography)
+- **Privacy** (separator)
+- **Button** (separator)
 
 ## Usage tips
 
@@ -1539,38 +1539,6 @@ Checkout templates (and order-received context for thank-you flows).
 - **Background** (color)
 - **Border** (border)
 - **Typography** (typography)
-
-## Usage tips
-
-- Use checkout elements only in Checkout templates so forms and order data render correctly.
-- Test logged-in and guest checkout flows after styling changes to ensure all states remain usable.
-
----
-
-# Checkout thank you
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-thankyou/
-
-*Displays the order received / thank you content after checkout.*
-
-Displays the order received / thank you content after checkout.
-
-## Where this element works
-
-Checkout templates (and order-received context for thank-you flows).
-
-## Key settings
-
-- **Preview order ID** (number)
-- **Hide message** (checkbox)
-- **Margin** (spacing)
-- **Padding** (spacing)
-- **Background** (color)
-- **Border** (border)
-- **Typography** (typography)
-- **Label typography** (typography)
-- **Action buttons** (separator)
-- **Gap** (number)
 
 ## Usage tips
 
@@ -1665,6 +1633,27 @@ In Bricks 2.4.3, when the store sells to a single country, the Country field ren
   transform-origin: left top;
 }
 ```
+
+## Shipping option labels
+
+> **Note**
+>
+> The customized shipping-label behavior and Bricks filters described below are available since Bricks 2.4.5.
+
+The **Shipping options** element displays the available shipping methods for each package. An ordinary rate shows the method name as its primary label and the formatted price or **Free** as its secondary label.
+
+When a plugin or custom callback changes `woocommerce_cart_shipping_method_full_label` and supplies usable label content, Bricks displays that complete label once as the primary label. Safe HTML is preserved. For example, a customized label containing **Pickup points: $19.90** appears once, without an additional **Pickup points** name or separate price. If the customization contains no text or meaningful image alternative text, Bricks keeps the method name as the primary label.
+
+Select **Shipping options** in the Structure panel to style its labels:
+
+- **Label** controls style the primary label, including a customized full label.
+- **Secondary label** controls style the separate price or other secondary content, when present.
+
+Review existing checkout layouts that styled a plugin's full label through **Secondary label**. The customized full label now uses **Label** styles.
+
+Developers can customize each label independently with [`bricks/woocommerce/shipping_options/primary_label`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-shipping_options-primary_label/) and [`bricks/woocommerce/shipping_options/secondary_label`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-shipping_options-secondary_label/). Both receive the label HTML, the calculated `WC_Shipping_Rate`, and the Shipping options element instance. These filters change the displayed labels without changing the calculated shipping charge or selected rate.
+
+The secondary filter receives an empty string when a customized full label supplies the primary label. Return separate secondary content if needed, or an empty string to omit it. Bricks only adds the input's `aria-describedby` link when a secondary label is rendered.
 
 ## Payment section for free orders
 
@@ -1770,6 +1759,38 @@ See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.
 - Use [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) or the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) to create the recommended Checkout v2 structure.
 - Design every checkout state that customers can reach, especially Pay, Thank you, Order receipt, and Login required.
 - Use the classic [Checkout template workflow](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/) if you prefer separate checkout templates.
+
+---
+
+# Checkout thank you
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-thankyou/
+
+*Displays the order received / thank you content after checkout.*
+
+Displays the order received / thank you content after checkout.
+
+## Where this element works
+
+Checkout templates (and order-received context for thank-you flows).
+
+## Key settings
+
+- **Preview order ID** (number)
+- **Hide message** (checkbox)
+- **Margin** (spacing)
+- **Padding** (spacing)
+- **Background** (color)
+- **Border** (border)
+- **Typography** (typography)
+- **Label typography** (typography)
+- **Action buttons** (separator)
+- **Gap** (number)
+
+## Usage tips
+
+- Use checkout elements only in Checkout templates so forms and order data render correctly.
+- Test logged-in and guest checkout flows after styling changes to ensure all states remain usable.
 
 ---
 
@@ -1924,29 +1945,6 @@ Displays a mini cart icon with cart count and dropdown cart details.
 
 ---
 
-# Notice
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/notice/
-
-*Displays WooCommerce system notices (success, info, and error messages).*
-
-Displays WooCommerce system notices (success, info, and error messages).
-
-## Where this element works
-
-Shop/archive templates and WooCommerce pages where the related data exists.
-
-## Key settings
-
-- **Preview notice type** (select)
-
-## Usage tips
-
-- Keep notice styles highly readable so customers can quickly understand errors and confirmation messages.
-- Check all notice types (success, info, error) in real cart and checkout scenarios.
-
----
-
 # Products archive description
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-archive-description/
@@ -1984,6 +1982,29 @@ Displays product filters for WooCommerce product listings.
 - **Padding** (spacing) - Title padding.
 - **Typography** (typography) - Title typography.
 - **Background color** (color) - Title background color.
+
+---
+
+# Notice
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/notice/
+
+*Displays WooCommerce system notices (success, info, and error messages).*
+
+Displays WooCommerce system notices (success, info, and error messages).
+
+## Where this element works
+
+Shop/archive templates and WooCommerce pages where the related data exists.
+
+## Key settings
+
+- **Preview notice type** (select)
+
+## Usage tips
+
+- Keep notice styles highly readable so customers can quickly understand errors and confirmation messages.
+- Check all notice types (success, info, error) in real cart and checkout scenarios.
 
 ---
 
