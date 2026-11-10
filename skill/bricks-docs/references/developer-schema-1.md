@@ -514,6 +514,14 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/button/
 
 ---
 
+# Checkbox Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/checkbox/
+
+*Value schema for checkbox control type*
+
+---
+
 # Code Control Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/controls/code/
@@ -522,11 +530,11 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/code/
 
 ---
 
-# Checkbox Control Schema
+# Color Control Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/controls/checkbox/
+Source: https://academy.bricksbuilder.io/developer/schema/controls/color/
 
-*Value schema for checkbox control type*
+*Value schema for color control type*
 
 ---
 
@@ -543,14 +551,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/datepicker/
 Source: https://academy.bricksbuilder.io/developer/schema/controls/dimensions/
 
 *Unknown control type: dimensions*
-
----
-
-# Color Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/color/
-
-*Value schema for color control type*
 
 ---
 
@@ -623,6 +623,20 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/icon/
 
 ---
 
+# Image Gallery Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/image-gallery/
+
+*Value schema for image-gallery control type*
+
+## Properties
+
+| Property | Type | Description |
+|---|---|---|
+| `images` | array | — |
+
+---
+
 # Image Control Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/controls/image/
@@ -642,33 +656,11 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/image/
 
 ---
 
-# Image Gallery Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/image-gallery/
-
-*Value schema for image-gallery control type*
-
-## Properties
-
-| Property | Type | Description |
-|---|---|---|
-| `images` | array | — |
-
----
-
 # Justify Content Control Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/controls/justify-content/
 
 *Value schema for justify-content control type*
-
----
-
-# Number Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/number/
-
-*Value schema for number control type*
 
 ---
 
@@ -691,6 +683,14 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/link/
 | `ariaLabel` | string | — |
 | `lightboxId` | string | — |
 | `lightboxType` | string | — |
+
+---
+
+# Number Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/number/
+
+*Value schema for number control type*
 
 ---
 
@@ -780,22 +780,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/select/
 
 ---
 
-# Svg Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/svg/
-
-*Value schema for svg control type*
-
-## Properties
-
-| Property | Type | Description |
-|---|---|---|
-| `id` | string \| integer | — |
-| `url` | string | — |
-| `library` | string | — |
-
----
-
 # Spacing Control Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/controls/spacing/
@@ -810,6 +794,22 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/spacing/
 | `right` | string | Right spacing value with unit |
 | `bottom` | string | Bottom spacing value with unit |
 | `left` | string | Left spacing value with unit |
+
+---
+
+# Svg Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/svg/
+
+*Value schema for svg control type*
+
+## Properties
+
+| Property | Type | Description |
+|---|---|---|
+| `id` | string \| integer | — |
+| `url` | string | — |
+| `library` | string | — |
 
 ---
 
@@ -843,14 +843,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/text/
 
 ---
 
-# Textarea Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/textarea/
-
-*Value schema for textarea control type*
-
----
-
 # Transform Control Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/controls/transform/
@@ -873,6 +865,14 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/transform/
 | `skewX` | string | — |
 | `skewY` | string | — |
 | `perspective` | string | — |
+
+---
+
+# Textarea Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/textarea/
+
+*Value schema for textarea control type*
 
 ---
 
@@ -1033,6 +1033,24 @@ Source: https://academy.bricksbuilder.io/developer/schema/global/components/
 
 ---
 
+# Global Variables Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/global/global-variables/
+
+*Documentation for Global Variables Schema in Bricks Academy.*
+
+## Item properties
+
+| Property | Type | Description |
+|---|---|---|
+| `id` | string | — |
+| `name` | string | — |
+| `value` | string | — |
+| `category` | string | — |
+| `type` | string | — |
+
+---
+
 # Global Classes Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/global/global-classes/
@@ -1054,139 +1072,11 @@ Source: https://academy.bricksbuilder.io/developer/schema/global/global-classes/
 
 ---
 
-# Global Variables Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/global/global-variables/
-
-*Documentation for Global Variables Schema in Bricks Academy.*
-
-## Item properties
-
-| Property | Type | Description |
-|---|---|---|
-| `id` | string | — |
-| `name` | string | — |
-| `value` | string | — |
-| `category` | string | — |
-| `type` | string | — |
-
----
-
 # Pseudo-Classes Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/global/pseudo-classes/
 
 *CSS pseudo-classes available in the builder for responsive/state variants. Stored as a WordPress option, user-configurable via Bricks settings.*
-
----
-
-# Accordion (Nestable) Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/accordion-nested/
-
-*Schema for Bricks Accordion (Nestable) element*
-
-| Property | Value |
-|---|---|
-| `name` | accordion-nested |
-| `category` | general |
-| `tag` | div |
-| `nestable` | true |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `expandItem` | text | Expand item indexes | — |
-| `independentToggle` | checkbox | Independent toggle | — |
-| `transition` | number | Transition | — |
-| `faqSchema` | checkbox | FAQ schema | — |
-| `titleHeight` | number | Min. height | `min-height` on `.accordion-title-wrapper` |
-| `titleMargin` | spacing | Margin | `margin` on `.accordion-title-wrapper` |
-| `titlePadding` | spacing | Padding | `padding` on `.accordion-title-wrapper` |
-| `titleBackgroundColor` | color | Background color | `background-color` on `.accordion-title-wrapper` |
-| `titleBorder` | border | Border | `border` on `.accordion-title-wrapper` |
-| `titleTypography` | typography | Typography | `font` on `.accordion-title-wrapper`, `font` on `.accordion-title-wrapper .brxe-heading` |
-| `titleActiveBackgroundColor` | color | Background color | `background-color` on `.brx-open .accordion-title-wrapper` |
-| `titleActiveBorder` | border | Border | `border` on `.brx-open .accordion-title-wrapper` |
-| `titleActiveTypography` | typography | Typography | `font` on `.brx-open .accordion-title-wrapper`, `font` on `.brx-open .accordion-title-wrapper .brxe-heading` |
-| `contentMargin` | spacing | Margin | `margin` on `.accordion-content-wrapper` |
-| `contentPadding` | spacing | Padding | `padding` on `.accordion-content-wrapper` |
-| `contentBackgroundColor` | color | Background color | `background-color` on `.accordion-content-wrapper` |
-| `contentBorder` | border | Border | `border` on `.accordion-content-wrapper` |
-| `contentTypography` | typography | Typography | `font` on `.accordion-content-wrapper` |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
 
 ---
 
@@ -2175,50 +2065,164 @@ Each `contextualSpacingCustomTarget` entry contains a `selector` and the spacing
 
 ---
 
-# Accordion Schema
+# Page Settings Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/accordion/
+Source: https://academy.bricksbuilder.io/developer/schema/settings/page/
 
-*Schema for Bricks Accordion element*
+*Schema for Bricks page settings controls*
+
+## Controls
+
+| Key | Type | Label |
+|---|---|---|
+| `bodyClasses` | text | CSS classes |
+| `customCss` | code | Custom CSS |
+| `customScriptsBodyFooter` | code | Body (footer) scripts |
+| `customScriptsBodyHeader` | code | Body (header) scripts |
+| `customScriptsHeader` | code | Header scripts |
+| `disableLazyLoad` | checkbox | Disable lazy load |
+| `documentTitle` | text | Document title |
+| `footerDisabled` | checkbox | Disable footer |
+| `headerDisabled` | checkbox | Disable header |
+| `metaDescription` | textarea | Meta description |
+| `metaKeywords` | text | Meta keywords |
+| `metaRobots` | select | Meta robots |
+| `onePageNavigation` | checkbox | Show navigation |
+| `onePageNavigationItemBorder` | border | Border |
+| `onePageNavigationItemBorderActive` | border | Border |
+| `onePageNavigationItemBoxShadow` | box-shadow | Box shadow |
+| `onePageNavigationItemBoxShadowActive` | box-shadow | Box shadow |
+| `onePageNavigationItemColor` | color | Color |
+| `onePageNavigationItemColorActive` | color | Color |
+| `onePageNavigationItemHeight` | number | Height |
+| `onePageNavigationItemHeightActive` | number | Height |
+| `onePageNavigationItemSpacing` | number | Spacing |
+| `onePageNavigationItemWidth` | number | Width |
+| `onePageNavigationItemWidthActive` | number | Width |
+| `popupDisabled` | checkbox | Disable popups |
+| `postName` | text | Permalink |
+| `postTitle` | text | Title |
+| `scrollMargin` | number | Margin |
+| `scrollPadding` | number | Padding |
+| `scrollSnapAlign` | select | Align |
+| `scrollSnapSelector` | text | Snapping elements selector |
+| `scrollSnapStop` | select | Stop |
+| `scrollSnapType` | select | Type |
+| `sharingDescription` | text | Description |
+| `sharingImage` | image | Image |
+| `sharingTitle` | text | Title |
+
+---
+
+# Template Settings Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/settings/template/
+
+*Schema for Bricks template settings controls*
+
+## Controls
+
+| Key | Type | Label |
+|---|---|---|
+| `headerPosition` | select | Header location |
+| `headerSticky` | checkbox | Sticky header |
+| `headerStickyOnScroll` | checkbox | Sticky on scroll |
+| `headerStickyScrollingBackground` | background | Scrolling background |
+| `headerStickyScrollingBoxShadow` | box-shadow | Scrolling box shadow |
+| `headerStickyScrollingColor` | color | Scrolling text color |
+| `headerStickyScrollingColorHover` | color | Scrolling text color |
+| `headerStickySlideUpAfter` | number | Slide up after |
+| `headerStickyTransition` | text | Transition |
+| `headerWidth` | number | Header width |
+| `passwordProtectionBypassLoggedIn` | checkbox | Disable for logged-in users |
+| `passwordProtectionEndDate` | datepicker | End date |
+| `passwordProtectionPassword` | text | Password |
+| `passwordProtectionSchedule` | checkbox | Schedule |
+| `passwordProtectionSource` | select | Password source |
+| `passwordProtectionStartDate` | datepicker | Start date |
+| `popupAjax` | checkbox | Fetch content via AJAX |
+| `popupAjaxLoaderAnimation` | select | Animation |
+| `popupAjaxLoaderColor` | color | Color |
+| `popupAjaxLoaderScale` | number | Scale |
+| `popupAjaxLoaderSelector` | text | CSS selector |
+| `popupAlignItems` | align-items | Align cross axis |
+| `popupBackdropTransition` | text | Transition |
+| `popupBackground` | background | Background |
+| `popupBodyScroll` | checkbox | Scroll |
+| `popupBreakpointMode` | select | popupBreakpointMode |
+| `popupCloseOn` | select | Close on |
+| `popupContentBackground` | background | Background |
+| `popupContentBorder` | border | Border |
+| `popupContentBoxShadow` | box-shadow | Box shadow |
+| `popupContentHeight` | number | Height |
+| `popupContentMaxHeight` | number | Max. height |
+| `popupContentMaxWidth` | number | Max. width |
+| `popupContentMinHeight` | number | Min. height |
+| `popupContentMinWidth` | number | Min. width |
+| `popupContentPadding` | spacing | Padding |
+| `popupContentWidth` | number | Width |
+| `popupDisableAutoFocus` | checkbox | Disable auto focus |
+| `popupDisableAutoFocusOnClose` | checkbox | Disable auto focus on close |
+| `popupDisableBackdrop` | checkbox | Disable backdrop |
+| `popupInfoBoxWidth` | number | Width |
+| `popupIsInfoBox` | checkbox | Info Box |
+| `popupIsWoo` | checkbox | WooCommerce  |
+| `popupJustifyConent` | justify-content | Align main axis |
+| `popupLimitLocalStorage` | number | Across sessions |
+| `popupLimitSessionStorage` | number | Per session |
+| `popupLimitTimeStorage` | number | Show again after .. hours |
+| `popupLimitWindow` | number | Per page load |
+| `popupPadding` | spacing | Padding |
+| `popupScrollToTop` | checkbox | Scroll to top |
+| `popupShowAt` | select | popupShowAt |
+| `popupShowOn` | select | popupShowOn |
+| `popupZindex` | number | Z-index |
+| `templateConditions` | repeater | Archive type |
+| `templatePreviewAuthor` | select | Author |
+| `templatePreviewPostId` | select | Single |
+| `templatePreviewPostType` | select | Post type |
+| `templatePreviewSearchTerm` | text | Search term |
+| `templatePreviewTerm` | select | Term |
+| `templatePreviewType` | select | Content type |
+| `template_interactions` | repeater | Interactions |
+
+---
+
+# Accordion (Nestable) Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/elements/accordion-nested/
+
+*Schema for Bricks Accordion (Nestable) element*
 
 | Property | Value |
 |---|---|
-| `name` | accordion |
+| `name` | accordion-nested |
 | `category` | general |
 | `tag` | div |
-| `nestable` | false |
+| `nestable` | true |
 
 ## Controls
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `accordions` | repeater | Title | — |
 | `expandItem` | text | Expand item indexes | — |
 | `independentToggle` | checkbox | Independent toggle | — |
 | `transition` | number | Transition | — |
 | `faqSchema` | checkbox | FAQ schema | — |
-| `titleTag` | select | HTML tag | — |
-| `icon` | icon | Icon | — |
-| `iconTypography` | typography | Icon typography | `font` on `.accordion-title\{pseudo\} .icon` |
-| `iconExpanded` | icon | Icon expanded | — |
-| `iconExpandedTypography` | typography | Icon expanded typography | `font` on `.accordion-title\{pseudo\} .icon.expanded` |
-| `iconPosition` | select | Icon position | — |
-| `iconRotate` | number | Icon rotate in ° | `transform:rotate` on `.brx-open .title + .icon` |
+| `titleHeight` | number | Min. height | `min-height` on `.accordion-title-wrapper` |
 | `titleMargin` | spacing | Margin | `margin` on `.accordion-title-wrapper` |
 | `titlePadding` | spacing | Padding | `padding` on `.accordion-title-wrapper` |
-| `titleTypography` | typography | Title typography | `font` on `.accordion-title\{pseudo\} .title` |
-| `subtitleTypography` | typography | Subtitle typography | `font` on `.accordion-subtitle` |
 | `titleBackgroundColor` | color | Background color | `background-color` on `.accordion-title-wrapper` |
 | `titleBorder` | border | Border | `border` on `.accordion-title-wrapper` |
-| `titleActiveBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.accordion-title-wrapper` |
-| `titleActiveTypography` | typography | Active typography | `font` on `.brx-open .title` |
-| `titleActiveBackgroundColor` | color | Active background | `background-color` on `.brx-open .accordion-title-wrapper` |
-| `titleActiveBorder` | border | Active border | `border` on `.brx-open .accordion-title-wrapper` |
+| `titleTypography` | typography | Typography | `font` on `.accordion-title-wrapper`, `font` on `.accordion-title-wrapper .brxe-heading` |
+| `titleActiveBackgroundColor` | color | Background color | `background-color` on `.brx-open .accordion-title-wrapper` |
+| `titleActiveBorder` | border | Border | `border` on `.brx-open .accordion-title-wrapper` |
+| `titleActiveTypography` | typography | Typography | `font` on `.brx-open .accordion-title-wrapper`, `font` on `.brx-open .accordion-title-wrapper .brxe-heading` |
 | `contentMargin` | spacing | Margin | `margin` on `.accordion-content-wrapper` |
 | `contentPadding` | spacing | Padding | `padding` on `.accordion-content-wrapper` |
-| `contentTypography` | typography | Content typography | `font` on `.accordion-content-wrapper` |
 | `contentBackgroundColor` | color | Background color | `background-color` on `.accordion-content-wrapper` |
 | `contentBorder` | border | Border | `border` on `.accordion-content-wrapper` |
+| `contentTypography` | typography | Typography | `font` on `.accordion-content-wrapper` |
 
 ## Inherited CSS controls
 

@@ -95,62 +95,6 @@ class Prefix_Element_Audio extends \Bricks\Element {
 
 ---
 
-# Border Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/border-control/
-
-*Reference for the Bricks Border control, including its options, CSS mapping, and usage in custom elements.*
-
-The border control lets you set the following border properties:
-
-- Border width (top/right/bottom/left)
-- Background style (top/right/bottom/left)
-- Background color (none/solid/double/dotted/dashed)
-- Border radius (top/right/bottom/left)
-
-The example below illustrates how to apply a border via the `css` parameter and how to set border defaults.
-
-```php
-class Builder_Element_Prefix_Test extends \Bricks\Element {
-  public function set_controls() {
-    $this->controls['titleBorder'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Title border', 'bricks' ),
-      'type' => 'border',
-      'css' => [
-        [
-          'property' => 'border',
-          'selector' => '.prefix-test-title',
-        ],
-      ],
-      'inline' => true,
-      'small' => true,
-      'default' => [
-        'width' => [
-          'top' => 1,
-          'right' => 0,
-          'bottom' => 0,
-          'left' => 0,
-        ],
-        'style' => 'solid',
-        'color' => [
-          'hex' => '#ffff00',
-        ],
-        'radius' => [
-          'top' => 1,
-          'right' => 1,
-          'bottom' => 1,
-          'left' => 1,
-        ],
-      ],
-
-    ];
-  }
-}
-```
-
----
-
 # Background Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/background-control/
@@ -234,34 +178,56 @@ class Prefix_Element_Background extends \Bricks\Element {
 
 ---
 
-# Checkbox Control
+# Border Control
 
-Source: https://academy.bricksbuilder.io/developer/controls/checkbox-control/
+Source: https://academy.bricksbuilder.io/developer/controls/border-control/
 
-*Reference for the Bricks Checkbox control, including its options, CSS mapping, and usage in custom elements.*
+*Reference for the Bricks Border control, including its options, CSS mapping, and usage in custom elements.*
 
-The checkbox control is a simple on/off switch. If enabled it outputs a boolean value of `true`. Disabled it returns `false`. You can use it to conditionally show/hide other content settings as we illustrate in the following code example:
+The border control lets you set the following border properties:
+
+- Border width (top/right/bottom/left)
+- Background style (top/right/bottom/left)
+- Background color (none/solid/double/dotted/dashed)
+- Border radius (top/right/bottom/left)
+
+The example below illustrates how to apply a border via the `css` parameter and how to set border defaults.
 
 ```php
-class Prefix_Element_Checkbox extends \Bricks\Element {
-  // Set builder controls
+class Builder_Element_Prefix_Test extends \Bricks\Element {
   public function set_controls() {
-    $this->controls['exampleCheckbox'] = [
+    $this->controls['titleBorder'] = [
       'tab' => 'content',
-      'label' => esc_html__( 'Show site title', 'bricks' ),
-      'type' => 'checkbox',
+      'label' => esc_html__( 'Title border', 'bricks' ),
+      'type' => 'border',
+      'css' => [
+        [
+          'property' => 'border',
+          'selector' => '.prefix-test-title',
+        ],
+      ],
       'inline' => true,
       'small' => true,
-      'default' => true, // Default: false
-    ];
-  }
+      'default' => [
+        'width' => [
+          'top' => 1,
+          'right' => 0,
+          'bottom' => 0,
+          'left' => 0,
+        ],
+        'style' => 'solid',
+        'color' => [
+          'hex' => '#ffff00',
+        ],
+        'radius' => [
+          'top' => 1,
+          'right' => 1,
+          'bottom' => 1,
+          'left' => 1,
+        ],
+      ],
 
-  // Render element HTML
-  public function render() {
-    // Show site title if setting checkbox 'exampleCheckbox' is checked
-    if ( isset( $this->settings['exampleCheckbox'] ) ) {
-      echo get_bloginfo( 'name' );
-    }
+    ];
   }
 }
 ```
@@ -325,6 +291,40 @@ class Prefix_Element_Box_Shadow extends \Bricks\Element {
 ### Resources
 
 [https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow)
+
+---
+
+# Checkbox Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/checkbox-control/
+
+*Reference for the Bricks Checkbox control, including its options, CSS mapping, and usage in custom elements.*
+
+The checkbox control is a simple on/off switch. If enabled it outputs a boolean value of `true`. Disabled it returns `false`. You can use it to conditionally show/hide other content settings as we illustrate in the following code example:
+
+```php
+class Prefix_Element_Checkbox extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleCheckbox'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Show site title', 'bricks' ),
+      'type' => 'checkbox',
+      'inline' => true,
+      'small' => true,
+      'default' => true, // Default: false
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    // Show site title if setting checkbox 'exampleCheckbox' is checked
+    if ( isset( $this->settings['exampleCheckbox'] ) ) {
+      echo get_bloginfo( 'name' );
+    }
+  }
+}
+```
 
 ---
 
@@ -570,6 +570,54 @@ class Prefix_Element_Countdown extends \Bricks\Element {
 
 ---
 
+# Dimensions Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/dimensions-control/
+
+*Reference for the Bricks Dimensions control, including its options, CSS mapping, and usage in custom elements.*
+
+The dimensions control is perfect for adding multi-directional CSS properties such as margin and padding (top/right/bottom/left). You can set the directions to anything you want via the `directions` property.
+
+```php
+class Prefix_Element_Dimensions extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleDimensions'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Title padding', 'bricks' ),
+      'type' => 'dimensions',
+      'css' => [
+        [
+          'property' => 'padding',
+          'selector' => '.prefix-element-dimensions-title',
+        ]
+      ],
+      'default' => [
+        'top' => '30px',
+        'right' => 0,
+        'bottom' => '10em',
+        'left' => 0,
+      ],
+      // 'unitless' => false, // false by default
+      // Custom directions
+      // 'directions' => [
+        // 'offsetX' => esc_html__( 'Offset X', 'bricks' ),
+        // 'offsetY' => esc_html__( 'Offset Y', 'bricks' ),
+        // 'spread'  => esc_html__( 'Spread', 'bricks' ),
+        // 'blur'    => esc_html__( 'Offset Y', 'bricks' ),
+      // ],
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    echo '<h5 class="prefix-element-dimensions-title">' . get_bloginfo( 'name' ) . '</h5>';
+  }
+}
+```
+
+---
+
 # Direction Control (Flexbox)
 
 Source: https://academy.bricksbuilder.io/developer/controls/direction-control/
@@ -626,54 +674,6 @@ class Prefix_Element_Editor extends \Bricks\Element {
     if ( isset( $this->settings['exampleEditor'] ) ) {
       echo '<div class="text-editor">' . $this->settings['exampleEditor'] . '</div>';
     }
-  }
-}
-```
-
----
-
-# Dimensions Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/dimensions-control/
-
-*Reference for the Bricks Dimensions control, including its options, CSS mapping, and usage in custom elements.*
-
-The dimensions control is perfect for adding multi-directional CSS properties such as margin and padding (top/right/bottom/left). You can set the directions to anything you want via the `directions` property.
-
-```php
-class Prefix_Element_Dimensions extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleDimensions'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Title padding', 'bricks' ),
-      'type' => 'dimensions',
-      'css' => [
-        [
-          'property' => 'padding',
-          'selector' => '.prefix-element-dimensions-title',
-        ]
-      ],
-      'default' => [
-        'top' => '30px',
-        'right' => 0,
-        'bottom' => '10em',
-        'left' => 0,
-      ],
-      // 'unitless' => false, // false by default
-      // Custom directions
-      // 'directions' => [
-        // 'offsetX' => esc_html__( 'Offset X', 'bricks' ),
-        // 'offsetY' => esc_html__( 'Offset Y', 'bricks' ),
-        // 'spread'  => esc_html__( 'Spread', 'bricks' ),
-        // 'blur'    => esc_html__( 'Offset Y', 'bricks' ),
-      // ],
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    echo '<h5 class="prefix-element-dimensions-title">' . get_bloginfo( 'name' ) . '</h5>';
   }
 }
 ```
@@ -1006,6 +1006,50 @@ class Prefix_Element_Image extends \Bricks\Element {
 
 ---
 
+# Info Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/info-control/
+
+*Reference for the Bricks Info control, including its options, CSS mapping, and usage in custom elements.*
+
+The info control does not affect the HTML or CSS on the frontend. It serves as a builder-only helper controls to provide additional information.
+
+Example below: the **Alert** element displays an info control when the *Type* is set to *Custom*.
+
+```php
+class Prefix_Element_Info extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['type'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Type', 'bricks' ),
+      'type' => 'select',
+      'options' => [
+        'info' => esc_html__( 'Info', 'bricks' ),
+        'success' => esc_html__( 'Success', 'bricks' ),
+        'warning' => esc_html__( 'Warning', 'bricks' ),
+        'danger' => esc_html__( 'Danger', 'bricks' ),
+        'muted' => esc_html__( 'Muted', 'bricks' ),
+        'custom' => esc_html__( 'Custom', 'bricks' ),
+      ],
+      'inline' => true,
+      'clearable' => false,
+      'pasteStyles' => false,
+      'default' => 'info',
+    ];
+
+    $this->controls['typeInfo'] = [
+      'tab' => 'content',
+      'content' => esc_html__( 'Customize alert in STYLE tab.', 'bricks' ),
+      'type' => 'info',
+      'required' => ['type', '=', 'custom'], // Show info control if 'type' = 'custom'
+    ];
+  }
+}
+```
+
+---
+
 # Controls
 
 Source: https://academy.bricksbuilder.io/developer/controls/
@@ -1056,50 +1100,6 @@ public function set_controls() {
       // 'space-evenly',
     // ],
   ];
-}
-```
-
----
-
-# Info Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/info-control/
-
-*Reference for the Bricks Info control, including its options, CSS mapping, and usage in custom elements.*
-
-The info control does not affect the HTML or CSS on the frontend. It serves as a builder-only helper controls to provide additional information.
-
-Example below: the **Alert** element displays an info control when the *Type* is set to *Custom*.
-
-```php
-class Prefix_Element_Info extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['type'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Type', 'bricks' ),
-      'type' => 'select',
-      'options' => [
-        'info' => esc_html__( 'Info', 'bricks' ),
-        'success' => esc_html__( 'Success', 'bricks' ),
-        'warning' => esc_html__( 'Warning', 'bricks' ),
-        'danger' => esc_html__( 'Danger', 'bricks' ),
-        'muted' => esc_html__( 'Muted', 'bricks' ),
-        'custom' => esc_html__( 'Custom', 'bricks' ),
-      ],
-      'inline' => true,
-      'clearable' => false,
-      'pasteStyles' => false,
-      'default' => 'info',
-    ];
-
-    $this->controls['typeInfo'] = [
-      'tab' => 'content',
-      'content' => esc_html__( 'Customize alert in STYLE tab.', 'bricks' ),
-      'type' => 'info',
-      'required' => ['type', '=', 'custom'], // Show info control if 'type' = 'custom'
-    ];
-  }
 }
 ```
 
@@ -1385,6 +1385,48 @@ class Prefix_Element_Posts extends \Bricks\Element {
 
 ---
 
+# SVG Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/svg-control/
+
+*Reference for the Bricks SVG control, including its options, CSS mapping, and usage in custom elements.*
+
+The SVG control lets you select an SVG (Scalable Vector Graphic) file from the media library. The selected SVG returns an array with the following keys:
+
+- `id` (media library item ID)
+- `filename`
+- `url`
+
+We recommend rendering the SVG inline as shown in the code example below. This way you can easily customize it via CSS.
+
+```php
+class Prefix_Element_Svg extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleSvg'] = [
+      'tab' => 'content',
+      'type' => 'svg',
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    if ( isset( $this->settings['exampleSvg']['url'] ) ) {
+      echo file_get_contents( esc_url( $this->settings['exampleSvg']['url'] ) );
+    } else {
+      esc_html_e( 'No SVG selected.', 'bricks' );
+    }
+  }
+}
+```
+
+### Resources
+
+- [https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg)
+- [https://css-tricks.com/using-svg/](https://css-tricks.com/using-svg/)
+
+---
+
 # Slider Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/slider-control/
@@ -1439,45 +1481,29 @@ class Prefix_Element_Slider extends \Bricks\Element {
 
 ---
 
-# SVG Control
+# Text Align Control
 
-Source: https://academy.bricksbuilder.io/developer/controls/svg-control/
+Source: https://academy.bricksbuilder.io/developer/controls/text-align-control/
 
-*Reference for the Bricks SVG control, including its options, CSS mapping, and usage in custom elements.*
+*Reference for the Bricks Text Align control, including its options, CSS mapping, and usage in custom elements.*
 
-The SVG control lets you select an SVG (Scalable Vector Graphic) file from the media library. The selected SVG returns an array with the following keys:
-
-- `id` (media library item ID)
-- `filename`
-- `url`
-
-We recommend rendering the SVG inline as shown in the code example below. This way you can easily customize it via CSS.
+Use the **text-align** control to allow users to set the text-align CSS property like so:
 
 ```php
-class Prefix_Element_Svg extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleSvg'] = [
-      'tab' => 'content',
-      'type' => 'svg',
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    if ( isset( $this->settings['exampleSvg']['url'] ) ) {
-      echo file_get_contents( esc_url( $this->settings['exampleSvg']['url'] ) );
-    } else {
-      esc_html_e( 'No SVG selected.', 'bricks' );
-    }
-  }
+public function set_controls() {
+  $this->controls['textAlign'] = [ // Setting key
+    'tab' => 'content',
+    'label' => esc_html__( 'Text align', 'bricks' ),
+    'type' => 'text-align',
+    'css' => [
+      [
+        'property' => 'text-align',
+        'selector' => '.text-wrapper',
+      ],
+    ],
+  ];
 }
 ```
-
-### Resources
-
-- [https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg)
-- [https://css-tricks.com/using-svg/](https://css-tricks.com/using-svg/)
 
 ---
 
@@ -1526,23 +1552,23 @@ class Prefix_Element_Text extends \Bricks\Element {
 
 ---
 
-# Text Align Control
+# Text Decoration Control
 
-Source: https://academy.bricksbuilder.io/developer/controls/text-align-control/
+Source: https://academy.bricksbuilder.io/developer/controls/text-decoration-control/
 
-*Reference for the Bricks Text Align control, including its options, CSS mapping, and usage in custom elements.*
+*Reference for the Bricks Text Decoration control, including its options, CSS mapping, and usage in custom elements.*
 
-Use the **text-align** control to allow users to set the text-align CSS property like so:
+Use the **text-decoration** control to allow users to set the text-decoration CSS property like so:
 
 ```php
 public function set_controls() {
-  $this->controls['textAlign'] = [ // Setting key
+  $this->controls['textDecoration'] = [ // Setting key
     'tab' => 'content',
-    'label' => esc_html__( 'Text align', 'bricks' ),
-    'type' => 'text-align',
+    'label' => esc_html__( 'Text decoration', 'bricks' ),
+    'type' => 'text-decoration',
     'css' => [
       [
-        'property' => 'text-align',
+        'property' => 'text-decoration',
         'selector' => '.text-wrapper',
       ],
     ],
@@ -1588,32 +1614,6 @@ class Prefix_Element_Textarea extends \Bricks\Element {
 ### Resources
 
 [https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow](https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow)
-
----
-
-# Text Decoration Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/text-decoration-control/
-
-*Reference for the Bricks Text Decoration control, including its options, CSS mapping, and usage in custom elements.*
-
-Use the **text-decoration** control to allow users to set the text-decoration CSS property like so:
-
-```php
-public function set_controls() {
-  $this->controls['textDecoration'] = [ // Setting key
-    'tab' => 'content',
-    'label' => esc_html__( 'Text decoration', 'bricks' ),
-    'type' => 'text-decoration',
-    'css' => [
-      [
-        'property' => 'text-decoration',
-        'selector' => '.text-wrapper',
-      ],
-    ],
-  ];
-}
-```
 
 ---
 

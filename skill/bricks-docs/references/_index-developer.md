@@ -3,51 +3,51 @@
 Each line: page title, the file in this folder that contains it, and a summary. Inside the file every page starts with `# <title>`.
 
 - Developer → `developer.md`: Extend Bricks with developer guides, custom elements, controls, hooks, functions, dynamic data tags, and schema references.
+- Create Your Own Dynamic Data Tag → `developer-dynamic-data.md`: Create custom dynamic data tags in Bricks so your own values can be inserted into text, media, links, and other supported contexts.
 - Align Items Control (Flexbox) → `developer-controls.md`: Reference for the Bricks Align Items Control (Flexbox) control, including its options, CSS mapping, and usage in custom elements.
 - Apply Control → `developer-controls.md`: Reference for the Bricks Apply control, including its options, CSS mapping, and usage in custom elements.
 - Audio Control → `developer-controls.md`: Reference for the Bricks Audio control, including its options, CSS mapping, and usage in custom elements.
-- Border Control → `developer-controls.md`: Reference for the Bricks Border control, including its options, CSS mapping, and usage in custom elements.
 - Background Control → `developer-controls.md`: Reference for the Bricks Background control, including its options, CSS mapping, and usage in custom elements.
-- Checkbox Control → `developer-controls.md`: Reference for the Bricks Checkbox control, including its options, CSS mapping, and usage in custom elements.
+- Border Control → `developer-controls.md`: Reference for the Bricks Border control, including its options, CSS mapping, and usage in custom elements.
 - Box Shadow Control → `developer-controls.md`: Reference for the Bricks Box Shadow control, including its options, CSS mapping, and usage in custom elements.
+- Checkbox Control → `developer-controls.md`: Reference for the Bricks Checkbox control, including its options, CSS mapping, and usage in custom elements.
 - Code Control → `developer-controls.md`: Reference for the Bricks Code control, including its options, CSS mapping, and usage in custom elements.
 - Color Control → `developer-controls.md`: Reference for the Bricks Color control, including its options, CSS mapping, and usage in custom elements.
 - Datepicker Control → `developer-controls.md`: Reference for the Bricks Datepicker control, including its options, CSS mapping, and usage in custom elements.
+- Dimensions Control → `developer-controls.md`: Reference for the Bricks Dimensions control, including its options, CSS mapping, and usage in custom elements.
 - Direction Control (Flexbox) → `developer-controls.md`: Reference for the Bricks Direction Control (Flexbox) control, including its options, CSS mapping, and usage in custom elements.
 - Editor Control → `developer-controls.md`: Reference for the Bricks Editor control, including its options, CSS mapping, and usage in custom elements.
-- Dimensions Control → `developer-controls.md`: Reference for the Bricks Dimensions control, including its options, CSS mapping, and usage in custom elements.
 - Element Controls → `developer-controls.md`: Reference for the Bricks Element Controls control, including its options, CSS mapping, and usage in custom elements.
 - Filters Control → `developer-controls.md`: Reference for the Bricks Filters control, including its options, CSS mapping, and usage in custom elements.
 - Gradient Control → `developer-controls.md`: Reference for the Bricks Gradient control, including its options, CSS mapping, and usage in custom elements.
 - Icon Control → `developer-controls.md`: Reference for the Bricks Icon control, including its options, CSS mapping, and usage in custom elements.
 - Image Control → `developer-controls.md`: Reference for the Bricks Image control, including its options, CSS mapping, and usage in custom elements.
 - Image Gallery Control → `developer-controls.md`: Reference for the Bricks Image Gallery control, including its options, CSS mapping, and usage in custom elements.
+- Info Control → `developer-controls.md`: Reference for the Bricks Info control, including its options, CSS mapping, and usage in custom elements.
 - Controls → `developer-controls.md`: Reference the Bricks controls used in custom elements and builder extensions, from layout and typography controls to media, code, query, and repeater controls.
 - Justify Content Control (Flexbox) → `developer-controls.md`: Reference for the Bricks Justify Content Control (Flexbox) control, including its options, CSS mapping, and usage in custom elements.
-- Info Control → `developer-controls.md`: Reference for the Bricks Info control, including its options, CSS mapping, and usage in custom elements.
 - Link Control → `developer-controls.md`: Reference for the Bricks Link control, including its options, CSS mapping, and usage in custom elements.
 - Number Control → `developer-controls.md`: Reference for the Bricks Number control, including its options, CSS mapping, and usage in custom elements.
 - Query Control → `developer-controls.md`: Reference for the Bricks Query control, including its options, CSS mapping, and usage in custom elements.
 - Repeater Control → `developer-controls.md`: Reference for the Bricks Repeater control, including its options, CSS mapping, and usage in custom elements.
 - Select Control → `developer-controls.md`: Reference for the Bricks Select control, including its options, CSS mapping, and usage in custom elements.
-- Slider Control → `developer-controls.md`: Reference for the Bricks Slider control, including its options, CSS mapping, and usage in custom elements.
 - SVG Control → `developer-controls.md`: Reference for the Bricks SVG control, including its options, CSS mapping, and usage in custom elements.
-- Text Control → `developer-controls.md`: Reference for the Bricks Text control, including its options, CSS mapping, and usage in custom elements.
+- Slider Control → `developer-controls.md`: Reference for the Bricks Slider control, including its options, CSS mapping, and usage in custom elements.
 - Text Align Control → `developer-controls.md`: Reference for the Bricks Text Align control, including its options, CSS mapping, and usage in custom elements.
-- Text Shadow Control → `developer-controls.md`: Reference for the Bricks Text Shadow control, including its options, CSS mapping, and usage in custom elements.
+- Text Control → `developer-controls.md`: Reference for the Bricks Text control, including its options, CSS mapping, and usage in custom elements.
 - Text Decoration Control → `developer-controls.md`: Reference for the Bricks Text Decoration control, including its options, CSS mapping, and usage in custom elements.
+- Text Shadow Control → `developer-controls.md`: Reference for the Bricks Text Shadow control, including its options, CSS mapping, and usage in custom elements.
 - Text Transform Control → `developer-controls.md`: Reference for the Bricks Text Transform control, including its options, CSS mapping, and usage in custom elements.
 - Textarea Control → `developer-controls.md`: Reference for the Bricks Textarea control, including its options, CSS mapping, and usage in custom elements.
-- Create Your Own Dynamic Data Tag → `developer-dynamic-data.md`: Create custom dynamic data tags in Bricks so your own values can be inserted into text, media, links, and other supported contexts.
 - Typography Control → `developer-controls.md`: Reference for the Bricks Typography control, including its options, CSS mapping, and usage in custom elements.
 - Create Your Own Elements → `developer-elements.md`: Create custom Bricks elements by extending the element API, registering controls, and rendering frontend output.
 - Nestable Elements (API) → `developer-elements.md`: Understand the Bricks API for nestable elements, including how parents, children, and allowed structures are defined.
 - Function: bricks_render_dynamic_data → `developer-functions.md`: Use the bricks_render_dynamic_data() helper to resolve dynamic tags inside a content string in your own custom code.
 - Hooks → `developer-hooks-1.md`: Browse documented Bricks hooks, including action hooks and filter hooks for builder behavior, rendering, queries, authentication, and integrations.
 - Asset Loading Optimization → `developer-guides.md`: Optimize asset loading in Bricks extensions so scripts and styles are only loaded where they are actually needed.
+- Bricks CSS: Compatibility guidelines → `developer-guides.md`: Follow Bricks CSS compatibility guidelines so custom CSS keeps working across builder output, theme updates, and integrations.
 - Best Practices → `developer-guides.md`: Follow Bricks development best practices for permalinks, image handling, child-theme usage, and safer long-term customization.
 - Bricks CLI → `developer-guides.md`: Use Bricks CLI commands through WP-CLI to run builder-related maintenance tasks from the command line.
-- Bricks CSS: Compatibility guidelines → `developer-guides.md`: Follow Bricks CSS compatibility guidelines so custom CSS keeps working across builder output, theme updates, and integrations.
 - Child Theme → `developer-guides.md`: Set up a Bricks child theme for custom PHP, assets, templates, and safer update-friendly development.
 - Converter → `developer-guides.md`: Use the Bricks converter workflow to transform source markup or data into Bricks-compatible structures more safely.
 - Custom JavaScript events in Bricks → `developer-guides.md`: Work with Bricks custom JavaScript events so scripts can respond to builder and frontend interactions more reliably.
@@ -56,11 +56,11 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Action: bricks/query/before_loop → `developer-hooks-1.md`: If you are creating a custom query loop or a custom plugin, you might want to perform some additional tasks like setting/resetting specific data before the loop.
 - Action: bricks_after_footer → `developer-hooks-1.md`: Runs after Bricks renders the footer and before the site wrapper closes.
 - Action: bricks_after_site_wrapper → `developer-hooks-1.md`: Runs in footer.php after the footer render action and before wp_footer(). Bricks uses it to close the builder wrapper.
-- Action: bricks_after_header → `developer-hooks-1.md`: Runs after Bricks renders the header template.
-- Action: bricks/archive_product/before → `developer-hooks-1.md`: Runs before the Bricks content is rendered on a WooCommerce product archive page when a Bricks template is used. This action is specific to WooCommerce archives.
 - Action: bricks/archive_product/after → `developer-hooks-1.md`: Runs after the Bricks content is rendered on a WooCommerce product archive page when a Bricks template is used. This action is specific to WooCommerce archives.
+- Action: bricks_after_header → `developer-hooks-1.md`: Runs after Bricks renders the header template.
 - Action: bricks_before_footer → `developer-hooks-1.md`: Runs before Bricks renders the footer template.
 - Action: bricks_before_header → `developer-hooks-1.md`: Runs before Bricks renders the header template.
+- Action: bricks/archive_product/before → `developer-hooks-1.md`: Runs before the Bricks content is rendered on a WooCommerce product archive page when a Bricks template is used. This action is specific to WooCommerce archives.
 - Action: bricks_before_site_wrapper → `developer-hooks-1.md`: Runs in header.php before the header render action. Bricks uses it to open the builder wrapper.
 - Action: bricks_body → `developer-hooks-1.md`: Runs after the document head closes. Bricks uses it to print the opening body tag and body-start output.
 - Action: bricks/builder/switch_locale → `developer-hooks-1.md`: Runs when Bricks switches the builder locale.
@@ -68,18 +68,18 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Action: bricks/dynamic_data/after_do_action → `developer-hooks-1.md`: Runs after the dynamic data {doaction:myhook} tag is processed. This allows you to execute code after a specific doaction tag has been rendered.
 - Action: bricks/dynamic_data/before_do_action → `developer-hooks-1.md`: Runs before the dynamic data {doaction:myhook} tag is processed. This allows you to execute code before a specific doaction tag is rendered.
 - Action: bricks/dynamic_data/tag_value_parsed → `developer-hooks-1.md`: Runs after Bricks parses a dynamic data tag value.
-- Action: bricks_execute_filter_index_job → `developer-hooks-1.md`: Runs before a query filter index job is executed.
 - Action: bricks/dynamic_data/tags_registered → `developer-hooks-1.md`: Runs after all core dynamic data tags have been registered. This is the recommended hook for registering custom dynamic data providers or adding logic that.
+- Action: bricks_execute_filter_index_job → `developer-hooks-1.md`: Runs before a query filter index job is executed.
 - Action: bricks/filter_element/before_set_data_source_from_custom_field → `developer-hooks-1.md`: Runs before setting the data source for a filter element that uses a custom field. This hook allows you to modify the filter element instance before the custom.
 - Action: bricks/form/custom_action → `developer-hooks-1.md`: Runs when a form with a "Custom" action is submitted. This allows you to execute custom PHP logic to handle the form submission.
 - Action: bricks/frontend/after_render_data → `developer-hooks-1.md`: Runs after the Bricks\Frontend::renderdata method has finished generating the HTML for a set of elements. This action is undocumented in the official docs but.
 - Action: bricks/frontend/before_render_data → `developer-hooks-1.md`: Runs before the Bricks\Frontend::renderdata method starts generating the HTML for a set of elements. This action is undocumented in the official docs but useful.
-- Action: bricks/get_templates/query_after → `developer-hooks-1.md`: Runs after Bricks queries templates.
-- Action: bricks/load_elements/after → `developer-hooks-1.md`: Runs after Bricks loads element classes.
 - Action: bricks_indexer → `developer-hooks-1.md`: Triggers the Bricks query filter indexer job runner.
+- Action: bricks/load_elements/after → `developer-hooks-1.md`: Runs after Bricks loads element classes.
+- Action: bricks/get_templates/query_after → `developer-hooks-1.md`: Runs after Bricks queries templates.
 - Action: bricks/load_elements/before → `developer-hooks-1.md`: Runs before Bricks loads element classes.
-- Action: bricks_meta_tags → `developer-hooks-1.md`: Runs in the document head before wp_head().
 - Action: bricks/query/query_api_response → `developer-hooks-1.md`: Runs after a Query API request is performed. This action allows you to inspect or process the response from the API query.
+- Action: bricks_meta_tags → `developer-hooks-1.md`: Runs in the document head before wp_head().
 - Action: bricks/query_filters/index_post/before → `developer-hooks-1.md`: Runs before a post is indexed for Query Filters. This action is triggered during the indexing process for a specific post.
 - Action: bricks/query_filters/index_user/before → `developer-hooks-1.md`: Runs before a user is indexed for Query Filters. This action is triggered during the indexing process for a specific user.
 - Action: bricks/render_popup_content/start → `developer-hooks-1.md`: Runs at the start of the AJAX popup content rendering process (loadpopupcontent endpoint). This action allows you to execute custom logic before the popup.
@@ -89,12 +89,12 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Action Hooks → `developer-hooks-1.md`: Documented Bricks action hooks for running custom code at specific points in the builder and frontend lifecycle.
 - Action: render_footer → `developer-hooks-1.md`: Runs at the footer render position. Bricks attaches its default footer renderer to this action.
 - Action: render_header → `developer-hooks-1.md`: Runs at the header render position. Bricks attaches its default header renderer to this action.
-- Filter: bricks/acf/google_map/address_parts → `developer-hooks-1.md`: Filters the parts of the address displayed when rendering an ACF Google Map field. You can use this to reorder or remove specific components of the address.
 - Filter: bricks/acf/filter_field_groups → `developer-hooks-1.md`: Filters the ACF field groups available in the Bricks dynamic data picker. This allows you to exclude specific field groups from appearing in the builder's.
+- Filter: bricks/acf/google_map/address_parts → `developer-hooks-1.md`: Filters the parts of the address displayed when rendering an ACF Google Map field. You can use this to reorder or remove specific components of the address.
 - Filter: bricks/acf/google_map/show_as_address → `developer-hooks-1.md`: Determines whether the ACF Google Map field dynamic data should be rendered as a formatted address or as latitude/longitude coordinates.
 - Filter: bricks/acf/google_map/text_output → `developer-hooks-1.md`: Filters the final HTML output of the ACF Google Map field dynamic data. This runs after the address parts or coordinates have been formatted.
-- Filter: bricks/acf/taxonomy/show_as_link → `developer-hooks-1.md`: Determines whether the ACF Taxonomy field dynamic data output should be rendered as links to the term archives.
 - Filter: bricks/active_templates → `developer-hooks-1.md`: Filters the array of active templates (header, footer, content, popup) that Bricks has determined should be rendered for the current page.
+- Filter: bricks/acf/taxonomy/show_as_link → `developer-hooks-1.md`: Determines whether the ACF Taxonomy field dynamic data output should be rendered as links to the term archives.
 - Filter: bricks/ajax/get_pages_args → `developer-hooks-1.md`: Filters the query arguments used when searching for pages or posts within the Bricks builder (e.g., in link controls or populate content settings).
 - Filter: bricks/allowed_html_tags → `developer-hooks-1.md`: Filters the list of allowed HTML tags that can be used when selecting a "Custom" HTML tag in element settings. This ensures that custom tags are sanitized.
 - Filter: bricks/api/get_templates_data → `developer-hooks-1.md`: Filters the data returned by the Bricks REST API endpoint /get-templates-data/. This endpoint is used to retrieve templates, authors, bundles, tags, and other.
@@ -107,11 +107,11 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Filter: bricks/builder/first_element_category → `developer-hooks-1.md`: Filters the default expanded element category in the Bricks builder panel. This allows you to prioritize specific element categories based on the post type or.
 - Filter: bricks/builder/post_title → `developer-hooks-1.md`: Filters the post title displayed in the Bricks builder interface (e.g., in search results, dropdowns, and lists).
 - Filter: bricks/builder/state_group_definitions → `developer-hooks-1.md`: Filters builder state group definitions used for WooCommerce modular element preview states.
-- Filter: bricks/builder/term_name → `developer-hooks-1.md`: Filters the term name displayed in the Bricks builder interface (e.g., in taxonomy pickers).
-- Filter: bricks/code/echo_everywhere → `developer-hooks-1.md`: Determines whether the {echo:} dynamic data tag should be parsed recursively if it appears within the output of another dynamic data tag. By default, this is.
-- Filter: bricks/cmb2/checkbox_value → `developer-hooks-1.md`: Filters the output value of a CMB2 checkbox field when rendered via Bricks dynamic data. By default, Bricks converts 'on' to "Yes" and other values to "No".
 - Filter: bricks/builder/supported_post_types → `developer-hooks-1.md`: Filters the list of post types that are enabled for editing with Bricks. This checks whether the builder should load for the current post type.
+- Filter: bricks/builder/term_name → `developer-hooks-1.md`: Filters the term name displayed in the Bricks builder interface (e.g., in taxonomy pickers).
+- Filter: bricks/cmb2/checkbox_value → `developer-hooks-1.md`: Filters the output value of a CMB2 checkbox field when rendered via Bricks dynamic data. By default, Bricks converts 'on' to "Yes" and other values to "No".
 - Filter: bricks/combined_search/post_ids → `developer-hooks-1.md`: Filters the list of post IDs returned by the combined search logic (used in AJAX search filters). This allows you to include or exclude posts from the search.
+- Filter: bricks/code/echo_everywhere → `developer-hooks-1.md`: Determines whether the {echo:} dynamic data tag should be parsed recursively if it appears within the output of another dynamic data tag. By default, this is.
 - Filter: bricks/combined_search/term_ids → `developer-hooks-1.md`: Filters the list of term IDs returned by the combined search logic (used in AJAX search filters targeting terms). This allows you to include or exclude terms.
 - Filter: bricks/combined_search/user_ids → `developer-hooks-1.md`: Filters the list of user IDs returned by the combined search logic (used in AJAX search filters targeting users). This allows you to include or exclude users.
 - Filter: bricks/comments/author_tag → `developer-hooks-1.md`: Filters the HTML tag used to wrap the comment author's name in the comments list.
@@ -120,30 +120,30 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Filter: bricks/conditions/result → `developer-hooks-1.md`: Filters the boolean result of a condition check. This filter is used to implement the logic for custom conditions or to override existing condition logic.
 - Filter: bricks/content_analysis/full_post_content_id → `developer-hooks-1.md`: Filters the post ID Bricks treats as the full-content target during content analysis.
 - Filter: bricks/custom_fonts/mime_types → `developer-hooks-1.md`: Filters the list of allowed MIME types for custom font uploads in the Bricks Custom Fonts manager.
-- Filter: bricks/database/bricks_get_all_templates_by_type_args → `developer-hooks-1.md`: Filters the query arguments used to retrieve all Bricks templates. This is primarily used by multilingual plugins (like WPML and Polylang) to ensure only.
 - Filter: bricks/database/content_type → `developer-hooks-1.md`: Filters the content type determined by Bricks for the current page request. This affects which template conditions are checked (e.g., whether to look for a.
 - Filter: bricks/database/get_all_templates_cache_key → `developer-hooks-1.md`: Filters the cache key used to store and retrieve the list of all Bricks templates. This allows plugins to create unique cache entries based on context (e.g.,.
 - Filter: bricks/dynamic_data/allowed_keys → `developer-hooks-1.md`: Filter which argument keys Bricks accepts inside dynamic data tags, so you can support custom modifiers and parsing behavior.
+- Filter: bricks/database/bricks_get_all_templates_by_type_args → `developer-hooks-1.md`: Filters the query arguments used to retrieve all Bricks templates. This is primarily used by multilingual plugins (like WPML and Polylang) to ensure only.
 - Filter: bricks/dynamic_data/author_value → `developer-hooks-1.md`: Filters the value returned by {author...} dynamic data tags (e.g., {authorname}, {authoremail}).
 - Filter: bricks/dynamic_data/do_action_context → `developer-hooks-1.md`: Filters the action context used by the dynamic data do_action tag.
-- Filter: bricks/dynamic_data/meta_value/{meta_key} → `developer-hooks-1.md`: Filter the value returned for a specific custom-field key when Bricks resolves dynamic data from post meta.
 - Filter: bricks/dynamic_data/format_value → `developer-hooks-1.md`: Filters the final processed value of any dynamic data tag before it is rendered. This is a powerful filter that runs for every dynamic tag, allowing you to.
+- Filter: bricks/dynamic_data/meta_value/{meta_key} → `developer-hooks-1.md`: Filter the value returned for a specific custom-field key when Bricks resolves dynamic data from post meta.
 - Filter: bricks/dynamic_data/register_hook → `developer-hooks-1.md`: Filters the WordPress action hook used to register Bricks dynamic data providers and tags.
-- Filter: bricks/dynamic_data/text_separator → `developer-hooks-1.md`: Filters the separator used when joining array values in a dynamic data tag (text context). The default separator is a comma and a space (, ).
-- Filter: bricks/dynamic_data/render_content → `developer-hooks-1.md`: Filter the content string that Bricks parses for dynamic data tags before those tags are resolved into output values.
 - Filter: bricks/dynamic_data/register_providers → `developer-hooks-1.md`: Filters the dynamic data providers registered by Bricks.
+- Filter: bricks/dynamic_data/render_content → `developer-hooks-1.md`: Filter the content string that Bricks parses for dynamic data tags before those tags are resolved into output values.
 - Filter: bricks/dynamic_data/render_tag → `developer-hooks-1.md`: Filters the logic to resolve a single dynamic data tag to its value. This filter is called for each individual tag found in the content.
+- Filter: bricks/dynamic_data/text_separator → `developer-hooks-1.md`: Filters the separator used when joining array values in a dynamic data tag (text context). The default separator is a comma and a space (, ).
 - Filter: bricks/dynamic_data/user_value → `developer-hooks-1.md`: Filters the value returned by {wpuser...} dynamic data tags (e.g., {wpuseremail}, {wpuserrole}).
 - Filter: bricks/dynamic_tags_list → `developer-hooks-1.md`: Filters the list of dynamic data tags available in the builder's dynamic data picker. This allows you to register your custom dynamic tags so they appear in the.
 - Filter: bricks/element/builder_setup_query → `developer-hooks-1.md`: Filters the query arguments used to set up the preview context in the builder (e.g., when "Populate Content" is active).
-- Filter: bricks/element/form/honeypot/result → `developer-hooks-1.md`: Filters the result returned when a honeypot field is triggered (spam detection). This allows you to customize the error message shown to potential bots (or.
 - Filter: bricks/element/form/datepicker_options → `developer-hooks-1.md`: Filters the Flatpickr options for the datepicker field in the Form element. This allows you to customize the behavior of the date picker (e.g., disable specific.
+- Filter: bricks/element/form/honeypot/result → `developer-hooks-1.md`: Filters the result returned when a honeypot field is triggered (spam detection). This allows you to customize the error message shown to potential bots (or.
 - Filter: bricks/element/maybe_set_aria_current_page → `developer-hooks-1.md`: Filters the boolean value that determines whether to add the aria-current="page" attribute to a link element. This is used to indicate that a link points to the.
 - Filter: bricks/elements/{element_name}/scripts → `developer-hooks-1.md`: Filters the script handles registered for a specific element. Replace {element_name} with the element name.
 - Filter: bricks/elements/nav_menu/menus → `developer-hooks-1.md`: Filters the nav menus shown in the Nav Menu element while in the builder.
+- Filter: bricks/elements/nav_menu/name → `developer-hooks-1.md`: Filters a nav menu label shown in the Nav Menu element.
 - Filter: bricks/export_template_args → `developer-hooks-1.md`: Filters the URL arguments used for the "Export Template" link in the Bricks templates list table.
 - Filter: bricks/filter-element/datepicker_options → `developer-hooks-1.md`: Filters the Flatpickr options used by the Filter: Datepicker element. This allows you to customize the behavior of the date picker within query filters.
-- Filter: bricks/elements/nav_menu/name → `developer-hooks-1.md`: Filters a nav menu label shown in the Nav Menu element.
 - Filter: bricks/filter/taxonomy_args → `developer-hooks-1.md`: Filters the arguments passed to getterms() when generating options for taxonomy-based filter elements (e.g., Checkbox, Radio, Select filters).
 - Filter: bricks/filter_element/controls → `developer-hooks-1.md`: Filters the controls available for filter elements (e.g., Checkbox, Radio, Select, Range). This allows you to add, remove, or modify settings for these elements.
 - Filter: bricks/filter_element/count_source_{filter_source} → `developer-hooks-1.md`: Filters indexed count data for a specific custom filter source.
@@ -151,8 +151,8 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Filter: bricks/filter_element/data_source_{filter_source} → `developer-hooks-1.md`: Filters the data source (options) for a specific filter source. The {$filtersource} portion of the hook name should be replaced with the actual source name.
 - Filter: bricks/filter_element/data_source_wcField → `developer-hooks-1.md`: Filters the data source (options) specifically for WooCommerce field filters. This allows you to customize the options displayed for WooCommerce filters like.
 - Filter: bricks/filter_element/datepicker_date_format → `developer-hooks-1.md`: Filters the PHP date format string used by the Filter: Datepicker element. This determines how dates are parsed and formatted for comparison with the database.
-- Filter: bricks/filter_element/filtered_source → `developer-hooks-1.md`: Filters the data retrieved from the index representing the available filter options and their counts based on the current query results.
 - Filter: bricks/filter_element/datepicker_db_date_format → `developer-hooks-1.md`: Filters the database date format used by a Datepicker filter element.
+- Filter: bricks/filter_element/filtered_source → `developer-hooks-1.md`: Filters the data retrieved from the index representing the available filter options and their counts based on the current query results.
 - Filter: bricks/fix_filter_element_db → `developer-hooks-1.md`: Allows plugins to intercept and handle the database update process for filter elements on a per-post basis. If the filter returns true, Bricks will skip its.
 - Filter: bricks/form/file_directory → `developer-hooks-1.md`: Filter the directory Bricks uses when uploaded form files are saved into a custom file-storage location.
 - Filter: bricks/form/recaptcha_score_threshold → `developer-hooks-1.md`: Filters the minimum score required for Google reCAPTCHA v3 validation in Bricks forms. Scores range from 0.0 (likely a bot) to 1.0 (likely a human).
@@ -168,14 +168,14 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Filter: bricks/get_remote_templates_data → `developer-hooks-2.md`: Filters the data retrieved from a remote template source (e.g., the Bricks Community Templates or a custom remote library). This allows you to modify, add, or.
 - Filter: bricks/get_template_authors → `developer-hooks-2.md`: Filters the list of authors displayed in the Bricks template manager. This allows you to customize which authors are selectable when filtering templates.
 - Filter: bricks/get_template_bundles → `developer-hooks-2.md`: Filters the list of template bundles displayed in the Bricks template manager. Template bundles are a custom taxonomy used to categorize templates.
-- Filter: bricks/get_templates/query_vars → `developer-hooks-2.md`: Filters the query arguments used by Templates::gettemplatesquery() to retrieve Bricks templates. This allows you to customize which templates are fetched, for.
 - Filter: bricks/get_template_tags → `developer-hooks-2.md`: Filters the list of template tags displayed in the Bricks template manager. Template tags are a custom taxonomy used to organize templates.
+- Filter: bricks/get_templates → `developer-hooks-2.md`: Filters the list of templates returned by the Templates::gettemplates() method. This allows you to modify the templates array before it is returned to the.
+- Filter: bricks/get_templates/query_vars → `developer-hooks-2.md`: Filters the query arguments used by Templates::gettemplatesquery() to retrieve Bricks templates. This allows you to customize which templates are fetched, for.
 - Filter: bricks/get_templates_query/cache_key → `developer-hooks-2.md`: Filters the cache key used by Templates::gettemplatesquery() to store and retrieve template queries. Use this to create unique cache entries when modifying the.
 - Filter: bricks/get_terms_options/enable_limit → `developer-hooks-2.md`: Enables a limit on the number of taxonomies queried when fetching terms for builder controls. This is useful for sites with a very large number of taxonomies to.
-- Filter: bricks/get_templates → `developer-hooks-2.md`: Filters the list of templates returned by the Templates::gettemplates() method. This allows you to modify the templates array before it is returned to the.
 - Filter: bricks/get_terms_options/excluded_taxonomies → `developer-hooks-2.md`: Filters the list of taxonomies excluded from term selection controls in the builder. This allows you to hide specific taxonomies (e.g., internal taxonomies).
-- Filter: bricks/get_the_title → `developer-hooks-2.md`: Filters the page title returned by Helpers::getthetitle(). This function determines the appropriate title based on the context (single post, archive, search.
 - Filter: bricks/handle_no_results_children_elements → `developer-hooks-2.md`: Determines whether Bricks should run logic to handle children elements displayed when a query loop returns no results (e.g., ensuring scripts/styles are.
+- Filter: bricks/get_the_title → `developer-hooks-2.md`: Filters the page title returned by Helpers::getthetitle(). This function determines the appropriate title based on the context (single post, archive, search.
 - Filter: bricks/helpers/get_posts_args → `developer-hooks-2.md`: The bricks/helpers/getpostsargs filter allows you to modify the query arguments used when Bricks retrieves posts in the builder via AJAX.
 - Filter: bricks/media_browser/health/file_status → `developer-hooks-2.md`: Report the file status of offloaded attachments to Bricks Media Health without treating a missing local copy as a broken file.
 - Filter: bricks/metabox/checkbox_value → `developer-hooks-2.md`: Filters the output value of a Meta Box checkbox field when rendered via Bricks dynamic data. By default, Bricks converts truthy values to "Yes" and falsy values.
@@ -185,12 +185,12 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Filter: bricks/paginate_links_args → `developer-hooks-2.md`: Filters the arguments passed to the WordPress paginatelinks() function when generating pagination output. This allows you to customize the pagination structure,.
 - Filter: bricks/pagination/current_page → `developer-hooks-2.md`: The bricks/pagination/currentpage filter allows you to modify the current page number used in the pagination logic of Bricks Builder. In this example, we'll.
 - Filter: bricks/pagination/custom_logic → `developer-hooks-2.md`: Enable custom pagination logic in Bricks when your query type needs custom current-page and total-page handling.
-- Filter: bricks/pagination/total_pages → `developer-hooks-2.md`: The bricks/pagination/totalpages filter allows you to modify the total number of pages used in the pagination logic of Bricks Builder. In this example, we'll.
 - Filter: bricks/polylang/builder_ajax_params → `developer-hooks-2.md`: Filters the Polylang AJAX parameters injected into builder media requests.
+- Filter: bricks/pagination/total_pages → `developer-hooks-2.md`: The bricks/pagination/totalpages filter allows you to modify the total number of pages used in the pagination logic of Bricks Builder. In this example, we'll.
 - Filter: bricks/polylang/exclude_controls_from_translation → `developer-hooks-2.md`: Filters Bricks control keys excluded from Polylang translation.
+- Filter: bricks/popup/attributes → `developer-hooks-2.md`: Filters the HTML attributes of the popup container. This allows you to add custom classes, data attributes, or other attributes to the popup element.
 - Filter: bricks/query/archive_query_arguments → `developer-hooks-2.md`: Filters the list of WPQuery arguments that are preserved from the main WordPress query when "Is main query" is enabled in a query loop. This ensures that.
 - Filter: bricks/query/archive_query_supported_object_types → `developer-hooks-2.md`: Filters the list of Bricks query object types that support the "Is main query" setting (archive loop). By default, only 'post' queries are supported.
-- Filter: bricks/popup/attributes → `developer-hooks-2.md`: Filters the HTML attributes of the popup container. This allows you to add custom classes, data attributes, or other attributes to the popup element.
 - Filter: bricks/query/cache_key → `developer-hooks-2.md`: Filters the cache key used for a Bricks query loop.
 - Filter: bricks/query/fake_result → `developer-hooks-2.md`: Filters the results of a "fake" query execution. Fake queries are auxiliary queries run by Bricks (e.g., to count total results for filters without pagination).
 - Filter: bricks/query/force_is_looping → `developer-hooks-2.md`: Forces Bricks\Query::islooping() to return true. This is useful in AJAX contexts (like popups) where you need to simulate being inside a query loop to correctly.
@@ -209,8 +209,8 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Filter: bricks/query_filters/datepicker_custom_field_meta_query → `developer-hooks-2.md`: Filters the metaquery generated for a datepicker filter targeting a custom field. This allows you to customize how date comparisons are handled (e.g., date.
 - Filter: bricks/query_filters/element_data → `developer-hooks-2.md`: Filters the data for a filter element before it is saved to the internal index table (bricksfilterelements). This allows plugins to attach extra metadata (like.
 - Filter: bricks/query_filters/filter_query_vars → `developer-hooks-2.md`: Filters the query variables generated by an active filter element before they are applied to the query loop. This allows you to customize how specific filters.
-- Filter: bricks/query_filters/index_post/meta_exists → `developer-hooks-2.md`: Determines if a custom field (meta key) exists for a specific post during the indexing process. This is used when a third-party provider (like ACF or Meta Box).
 - Filter: bricks/query_filters/index_args → `developer-hooks-2.md`: Filters the query arguments used by the Query Filters indexer to find objects (posts, terms, users) that need to be indexed.
+- Filter: bricks/query_filters/index_post/meta_exists → `developer-hooks-2.md`: Determines if a custom field (meta key) exists for a specific post during the indexing process. This is used when a third-party provider (like ACF or Meta Box).
 - Filter: bricks/query_filters/get_filter_object_ids → `developer-hooks-2.md`: Filters the object IDs used to build query filter counts.
 - Filter: bricks/query_filters/index_post/{source} → `developer-hooks-2.md`: Filters index rows generated for a post when the filter source is unknown or provided by an integration.
 - Filter: bricks/query_filters/index_post/wcField → `developer-hooks-2.md`: A specialized hook for indexing WooCommerce product fields (like price, stock status, rating) when a product is saved. This allows the Query Filters index to.
@@ -222,24 +222,24 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Filter: bricks/query_filters_indexer/post/wcField → `developer-hooks-2.md`: A specialized hook for the Query Filters Indexer to generate index rows for WooCommerce product fields (like price, stock status, rating) when processing a.
 - Filter: bricks/query_filters_indexer/validate_job_settings → `developer-hooks-2.md`: Validates the settings of a filter job before the Query Filters Indexer processes it. This is used for unknown or custom filter sources to ensure they have the.
 - Filter: bricks/remote_get → `developer-hooks-2.md`: Filters the arguments passed to wpremoteget() when Bricks performs a remote GET request (e.g., fetching templates, community library).
-- Filter: bricks/render_footer → `developer-hooks-2.md`: Filters the rendered HTML of the Bricks footer template. This allows you to wrap the footer in custom markup or modify its output before it is echoed to the.
 - Filter: bricks/remote_post → `developer-hooks-2.md`: Filters the arguments passed to wpremotepost() when Bricks performs a remote POST request (e.g., verifying license, submitting form data to webhook).
+- Filter: bricks/render_footer → `developer-hooks-2.md`: Filters the rendered HTML of the Bricks footer template. This allows you to wrap the footer in custom markup or modify its output before it is echoed to the.
 - Filter: bricks/render_header → `developer-hooks-2.md`: Filters the rendered HTML of the Bricks header template. This allows you to wrap the header in custom markup or modify its output before it is echoed to the.
 - Filter: bricks/render_with_bricks → `developer-hooks-2.md`: Determines whether a specific post or page should be rendered using Bricks. If this filter returns false, Bricks will yield control to the default WordPress.
 - Filter: bricks/resolve_attachment_id → `developer-hooks-2.md`: Filters an attachment ID before Bricks uses it for frontend output.
 - Filter: bricks/rtl_languages → `developer-hooks-2.md`: Filters the list of language codes that Bricks considers right-to-left (RTL). This affects the layout direction of the builder interface when a specific locale.
-- Filter: bricks/support_masonry_element → `developer-hooks-2.md`: Filters the list of element names that support the Masonry layout option. By default, this includes section, container, block, and div.
 - Filter: bricks/security_check_before_save/new_elements → `developer-hooks-2.md`: Filters the array of new elements before they are saved to the database, specifically during the security check process (e.g., when validating {echo:} tags)..
+- Filter: bricks/support_masonry_element → `developer-hooks-2.md`: Filters the list of element names that support the Masonry layout option. By default, this includes section, container, block, and div.
 - Filter: bricks/svg/allowed_attributes → `developer-hooks-2.md`: Filters the list of allowed SVG attributes during sanitization. This is used by the Bricks SVG sanitizer to ensure that uploaded or rendered SVGs do not contain.
-- Filter: bricks/svg/bypass_sanitization → `developer-hooks-2.md`: Determines whether to bypass the SVG sanitization process when uploading SVG files. This can be useful if you need to upload SVGs with complex features (like.
 - Filter: bricks/svg/allowed_tags → `developer-hooks-2.md`: Filters the list of allowed SVG tags during sanitization. This is used by the Bricks SVG sanitizer to ensure that uploaded or rendered SVGs do not contain.
+- Filter: bricks/svg/bypass_sanitization → `developer-hooks-2.md`: Determines whether to bypass the SVG sanitization process when uploading SVG files. This can be useful if you need to upload SVGs with complex features (like.
 - Filter: bricks/template_preview/supported_content_types → `developer-hooks-2.md`: Filters the list of content types available for selection in the "Populate Content" (Template Preview) setting. This allows you to add custom preview contexts.
 - Filter: bricks/theme_style_name → `developer-hooks-2.md`: Filters the name of the Theme Style used when generating the CSS file name. This allows you to sanitize or modify the name before it is used in the file system.
 - Filter: bricks/theme_styles/control_groups → `developer-hooks-2.md`: Filters the control groups available in the Theme Styles settings panel. This allows you to add new sections or tabs to organize custom Theme Style controls.
 - Filter: bricks/theme_styles/controls → `developer-hooks-2.md`: Filters the individual controls available within the Theme Styles settings. This allows you to add custom fields to existing Theme Style groups or to your own.
-- Filter: bricks/user_activation_email/content → `developer-hooks-2.md`: Filters the content for Bricks user activation emails.
-- Filter: bricks/user_activation_email/from_name → `developer-hooks-2.md`: Filters the sender name for Bricks user activation emails.
 - Filter: bricks/theme_styles → `developer-hooks-2.md`: Filters the array of Theme Styles loaded from the database. This allows you to modify, add, or remove Theme Styles programmatically.
+- Filter: bricks/user_activation_email/from_name → `developer-hooks-2.md`: Filters the sender name for Bricks user activation emails.
+- Filter: bricks/user_activation_email/content → `developer-hooks-2.md`: Filters the content for Bricks user activation emails.
 - Filter: bricks/user_activation_email/subject → `developer-hooks-2.md`: Filters the subject for Bricks user activation emails.
 - Filter: bricks/webhook/timeout → `developer-hooks-2.md`: Allows you to modify the timeout duration (in seconds) for webhook requests triggered by the Form element.
 - Filter: bricks/woo_setup_wizard/register_presets → `developer-hooks-2.md`: Filters Woo setup wizard presets.
@@ -248,9 +248,9 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Filter: bricks/woocommerce/dynamic_fragments/fragments → `developer-hooks-2.md`: Filters WooCommerce dynamic fragments before the AJAX response is sent.
 - Filter: bricks/woocommerce/dynamic_fragments/html → `developer-hooks-2.md`: Filters rendered HTML for a WooCommerce dynamic fragment.
 - Filter: bricks/woocommerce/dynamic_fragments/targets → `developer-hooks-2.md`: Filters WooCommerce dynamic fragment targets before rendering.
-- Filter: bricks/woocommerce/predefined_elements/generated_payload → `developer-hooks-2.md`: Filters a generated WooCommerce predefined element payload.
 - Filter: bricks/woocommerce/predefined_elements/local_presets → `developer-hooks-2.md`: Filters local WooCommerce predefined element presets.
 - Filter: bricks/woocommerce/predefined_elements/remote_payload → `developer-hooks-2.md`: Filters the remote WooCommerce predefined elements payload.
+- Filter: bricks/woocommerce/predefined_elements/generated_payload → `developer-hooks-2.md`: Filters a generated WooCommerce predefined element payload.
 - Filter: bricks/woocommerce/predefined_elements/remote_url → `developer-hooks-2.md`: Filters the remote URL for WooCommerce predefined element presets.
 - Filter: bricks/woocommerce/products_filters/options → `developer-hooks-2.md`: Allows you to modify the options available in the WooCommerce Products Filter element.
 - Filter: bricks/woocommerce/products_orderby_options → `developer-hooks-2.md`: Filters WooCommerce product order-by options used by Bricks.
@@ -261,22 +261,22 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Filter: bricks_query_max_items_in_builder → `developer-hooks-3.md`: Filters builder query results for custom object types when Bricks applies the builder max-results limit.
 - Filter: bricks/active_templates → `developer-hooks-3.md`: Filter the active Bricks templates applied to the current request so you can add, remove, or swap templates programmatically.
 - Filter: bricks/allowed_html_tags → `developer-hooks-3.md`: Starting at version 1.10.2 Bricks restricts the allowed HTML tags to the WordPress core logic for wpksesallowedhtml( 'post' ).
-- Filter: bricks//assets/load_webfonts → `developer-hooks-3.md`: Bricks 1.4 introduces the possibility to "Disable Google Fonts". Either via the Bricks settings under "Performance" or programmatically using the filter as.
 - Filter: bricks/assets/generate_css_from_element → `developer-hooks-3.md`: Add custom element names to Bricks CSS generation so looped child styles are included for supported custom elements.
-- Filter: bricks/auth/custom_lost_password_redirect → `developer-hooks-3.md`: This filter enables the modification of the redirect page ID for the lost password page.
+- Filter: bricks//assets/load_webfonts → `developer-hooks-3.md`: Bricks 1.4 introduces the possibility to "Disable Google Fonts". Either via the Bricks settings under "Performance" or programmatically using the filter as.
 - Filter: bricks/auth/custom_login_redirect → `developer-hooks-3.md`: This filter allows customization of the redirect page ID for the login page.
+- Filter: bricks/auth/custom_lost_password_redirect → `developer-hooks-3.md`: This filter enables the modification of the redirect page ID for the lost password page.
 - Filter: bricks/auth/custom_redirect_url → `developer-hooks-3.md`: This filter is distinct from other authentication-related filters in that it provides a broad scope for customizing redirections during authentication.
+- Filter: bricks/auth/custom_registration_redirect → `developer-hooks-3.md`: This filter allows for the customization of the redirect page ID for the registration page.
 - Filter: bricks/auth/custom_reset_password_redirect → `developer-hooks-3.md`: This filter provides a way to change the redirect page ID for the reset password page.
 - Filter: bricks/body/attributes → `developer-hooks-3.md`: Filter the HTML attributes Bricks adds to the body tag on the frontend.
-- Filter: bricks/auth/custom_registration_redirect → `developer-hooks-3.md`: This filter allows for the customization of the redirect page ID for the registration page.
 - Filter: bricks/builder/codemirror_config → `developer-hooks-3.md`: Use this filter to customize the configuration of CodeMirror 5, the code editor used within the builder. CodeMirror 5 is used in areas such as the Custom CSS.
 - Filter: bricks/builder/elements → `developer-hooks-3.md`: Determine which elements to use in Bricks by out-commenting the ones you don't want to use. There is a full example and list of all elements in the Bricks child.
 - Filter: bricks/builder/image_size_options → `developer-hooks-3.md`: The bricks/builder/imagesizes hook gives developers the ability to customize image size options in the builder.
 - Filter: bricks/builder/map_styles → `developer-hooks-3.md`: Filter the custom map styles available to the Bricks Map element in the builder.
 - Filter: bricks/code/allow_execution → `developer-hooks-3.md`: An alternative to the Disable code execution setting under Bricks > Settings > Builder Access. You can use this PHP filter to disable/enable code execution.
 - Filter: bricks/code/disable_execution → `developer-hooks-3.md`: This PHP filter allows you to disable code execution within the Bricks builder programmatically.
-- Filter: bricks/code/disallow_keywords → `developer-hooks-3.md`: This filter introduces another level of security when using the Code element to run code.
 - Filter: bricks/code/echo_function_names → `developer-hooks-3.md`: Starting at Bricks 1.9.7, you must explicitly allow any function names you want to call via Bricks' dynamic data echo tag using the new.
+- Filter: bricks/code/disallow_keywords → `developer-hooks-3.md`: This filter introduces another level of security when using the Code element to run code.
 - Filter: bricks/comments/timestamp → `developer-hooks-3.md`: When using the Bricks Post Comments element, the comment default timestamp text will show the time difference since it was published in a human-readable format.
 - Filter: bricks/content/attributes → `developer-hooks-3.md`: Programmatically add HTML attributes to the main tag.
 - Filter: bricks/content/html_after_begin → `developer-hooks-3.md`: Available since version 1.6, this filter allows you to customize or insert HTML strings after main tag, before rendering bricks data.
@@ -298,11 +298,11 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Filter: bricks/form/action/{form_action} → `developer-hooks-3.md`: The bricks/form/action/{formaction} filter is triggered when a custom action (one that is not reserved by Bricks) is selected in a form. It allows developers to.
 - Filter: bricks/form/create_post/meta_value → `developer-hooks-3.md`: This filter is used within the Create post form action in Bricks.
 - Filter: bricks/form/update_post/meta_value → `developer-hooks-3.md`: This filter is part of the Update post form action in Bricks.
-- Filter: bricks/frontend/render_data → `developer-hooks-3.md`: The filter allows you to modify the rendered content for different areas like header, content, and footer before it's displayed on the frontend.
 - Filter: bricks/frontend/render_element → `developer-hooks-3.md`: The bricks/frontend/renderelement filter allows you to modify the HTML output of any element in Bricks on the frontend. This powerful hook can be used for a.
 - Filter: bricks/get_element_data/maybe_from_post_id → `developer-hooks-3.md`: Provide an alternate post ID for Bricks element-data lookups when custom elements reference content stored in another post or template.
-- Filter: bricks/builder/i18n → `developer-hooks-3.md`: Place and customize the following filter to add translatable string to the builder.
+- Filter: bricks/frontend/render_data → `developer-hooks-3.md`: The filter allows you to modify the rendered content for different areas like header, content, and footer before it's displayed on the frontend.
 - Filter: bricks/header/attributes → `developer-hooks-3.md`: Programmatically add HTML attributes to the header tag.
+- Filter: bricks/builder/i18n → `developer-hooks-3.md`: Place and customize the following filter to add translatable string to the builder.
 - Filter: bricks/link_css_selectors → `developer-hooks-3.md`: Use this filter in your child theme to overwrite/extend the CSS selectors the "Theme Styles > Link" settings are applied to like this (since Bricks 1.10 also.
 - Filter: bricks/is_layout_element → `developer-hooks-3.md`: Allows to define your custom elements as a layout element, so they are recognised like the section, container, block, div elements and use the same controls.
 - Filter: bricks/maintenance/should_apply → `developer-hooks-3.md`: Override whether Bricks maintenance mode or coming-soon mode should be applied for the current request.
@@ -321,12 +321,12 @@ Each line: page title, the file in this folder that contains it, and a summary. 
 - Filter: bricks/query/result → `developer-hooks-3.md`: Modify fetched Bricks query results, including sorting posts or slicing an array returned by an ACF loop.
 - Filter: bricks/query/result_count → `developer-hooks-3.md`: Filter the result count Bricks reports for a query object before pagination or related UI uses that total.
 - Filter: bricks/query/result_max_num_pages → `developer-hooks-3.md`: Filter the maximum number of pages Bricks reports for a query object, including the value used by Pagination.
-- Filter: bricks/registered_post_types_args → `developer-hooks-3.md`: Available since version 1.6, this filter allows you to customise the post type args that are used to query the post type as shown in the Bricks settings & the.
-- Filter: bricks/related_posts/query_vars → `developer-hooks-4.md`: Since Bricks 1.3.5 you may manipulate the related posts element query vars before the query is performed like so:
 - Filter: bricks/query/run → `developer-hooks-4.md`: The Bricks Query Loop supports 3 types of queries by default (Posts, Terms and Users). But it can be extended to support any other query. To return a custom.
+- Filter: bricks/registered_post_types_args → `developer-hooks-4.md`: Available since version 1.6, this filter allows you to customise the post type args that are used to query the post type as shown in the Bricks settings & the.
+- Filter: bricks/related_posts/query_vars → `developer-hooks-4.md`: Since Bricks 1.3.5 you may manipulate the related posts element query vars before the query is performed like so:
 - Filter: bricks/render_query_loop_trail → `developer-hooks-4.md`: Control whether Bricks renders the query loop trail node that frontend JavaScript uses to read query settings.
-- Filter: bricks/screen_conditions/scores → `developer-hooks-4.md`: Bricks selects the template & theme style for a specific page according to the conditions you've defined.
 - Filter: bricks/search_form/home_url → `developer-hooks-4.md`: The bricks/searchform/homeurl filter allows developers to customize the action URL of the search form within the Bricks theme. This filter provides the.
+- Filter: bricks/screen_conditions/scores → `developer-hooks-4.md`: Bricks selects the template & theme style for a specific page according to the conditions you've defined.
 - Filter: bricks/element/set_root_attributes → `developer-hooks-4.md`: Bricks 1.4 with its improved & slimmer DOM structure now requires to add the element ID, root classes, and other element root HTML attributes directly inside.
 - Filter: bricks/setup/control_options → `developer-hooks-4.md`: Bricks offers a WordPress filter to add or remove control options. The control options are used throughout Bricks and allow you to manage the options of the:
 - Filter: bricks/terms/query_vars → `developer-hooks-4.md`: Bricks terms query variables can be manipulated before the query runs like so:

@@ -76,6 +76,282 @@ You can view available variable Adobe fonts by selecting "Variable Fonts" under 
 
 ---
 
+# Cascade layer
+
+Source: https://academy.bricksbuilder.io/builder/styling/cascade-layer/
+
+*Use CSS cascade layers in Bricks to control style order more predictably across theme styles, classes, and custom code.*
+
+The specificity of default Bricks styles has always been a balancing act. While we aim to keep these styles as non-intrusive as possible, providing a blank canvas for users to build upon, achieving this solely through selector specificity has its limitations. In some cases, it’s been challenging for users to override specific selectors, even when desired.
+
+Bricks 1.12 introduces a promising solution to this longstanding issue through [CSS cascade layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer), which as of December 2024 reach an impressive 96% browser support and "Widely available" Baseline.
+
+Since Bricks 2.0, this feature has been **enabled by default**. You can disable it from **Bricks Settings > Performance > Cascade layer**, though it is not recommended.
+
+This feature leverages cascade layers to define how Bricks' default styles interact with other styles on the page.
+
+## How it works
+
+This feature introduces a Bricks layer stack:
+
+- **`bricks.reset`** (a lower-priority layer): This sublayer is empty, providing a safety net for advanced users. Bricks itself does not apply any styles in this layer.
+- **`bricks`**: This layer contains Bricks' default styles and element CSS, making them easier to override using un-layered styles or styles in higher-priority user-defined layers.
+- **Additional Bricks layers**: Some frontend assets use more specific layers such as `bricks.gutenberg`, `bricks.icons`, or `bricks.libs` so related reset, editor, icon, or library styles can keep their intended order.
+
+Here’s an example to illustrate the problem and the solution:
+
+### The problem: Selector specificity
+
+In the default Bricks styles, a common pattern might look like this:
+
+```php
+[class*="brxe-"] {
+    max-width: 100%;
+}
+```
+
+If you tried to override this with a general element selector, such as:
+
+```php
+div {
+    max-width: 400px;
+}
+```
+
+…the override wouldn't work because the attribute selector `[class*="brxe-"]` has a higher specificity then the `div`.
+
+One potential workaround could be wrapping Bricks' attribute selectors in `:where()` to reduce specificity:
+
+```php
+:where([class*="brxe-"]) {
+    max-width: 100%;
+}
+```
+
+However, this approach would require wrapping every selector, which is not only complex but also impractical at scale.
+
+### The solution: Cascade layers
+
+With cascade layers, we can simply define the default styles within a layer named `bricks`.
+
+Styles outside this layer (un-layered) or in a higher-priority layer automatically precede the default Bricks styles.
+
+Here's how the layers are structured:
+
+```php
+@layer bricks.reset;
+
+@layer bricks {
+    [class*="brxe-"] {
+        max-width: 100%;
+    }
+    /* Other default Bricks styles */
+}
+```
+
+Now, when you add your own styles outside the `bricks` layer, like this:
+
+```php
+div {
+    max-width: 400px;
+}
+```
+
+…they will precede the default Bricks styles because un-layered styles and higher-priority layers take precedence, regardless of the selector.
+
+### The role of `bricks.reset` {#bricks-reset}
+
+The `bricks.reset` sublayer ensures flexibility when overriding default Bricks styles.
+
+Normally, styles in the `bricks` layer are easy to override, but if a default style uses `!important`, the cascade order flips, making it harder to override with un-layered styles or higher-priority layers. You can learn more about this behaviour [here](https://css-tricks.com/css-cascade-layers/#aa-establishing-a-layer-order).
+
+The `bricks.reset` layer, being lower priority, provides a fallback for safely defining custom styles in these rare cases. While we aim to avoid using `!important` in our default styles unless absolutely required, this sublayer is there as a safeguard.
+
+## Why this matters
+
+By moving default Bricks styles into a dedicated cascade layer, we ensure:
+
+1. **Easier overrides**: Un-layered or higher-priority layered styles can override the default Bricks styles without battling selector specificity.
+2. **Simplified maintenance**: Instead of manually tweaking every selector's specificity, cascade layers offer a clean, scalable solution.
+
+## Resources
+
+- **Kevin Powell's YouTube video on cascade layers**: [A look at CSS Cascade Layers](https://www.youtube.com/watch?v=NDNRGW-_1EE)
+- **In-depth guide on CSS cascade layers**: [CSS-Tricks: Cascade Layers Guide](https://css-tricks.com/css-cascade-layers/)
+
+---
+
+# Contextual Spacing
+
+Source: https://academy.bricksbuilder.io/builder/styling/contextual-spacing/
+
+*Apply contextual spacing in Bricks to create more consistent rhythm between elements without manually tweaking every margin.*
+
+https://youtu.be/X8Brq1epsfk
+
+Bricks 2.0 introduces **Contextual spacing** to give you full control over vertical spacing (margin) between elements like headings, paragraphs, and lists within embedded content.
+
+Contextual spacing automatically applies to elements within:
+
+- Rich text element
+- Post content element (source: WordPress)
+- WooCommerce embedded content (excluding Checkout)
+
+Out-of-the-box, Bricks tries to apply various top margins (`margin-block-start`) to elements like headings and paragraphs depending on their context.
+
+If you want to override these defaults, you had to manually remove browser spacing, undo Bricks' built-in styles, and then define your own margins.
+
+Contextual spacing simplifies this process. You can now reset those margins and visually define custom spacing rules under **[Theme Styles](https://academy.bricksbuilder.io/builder/styling/theme-styles/) →** Contextual Spacing.
+
+Whether you are styling embedded content, working with dynamic layouts, or creating utility-based wrappers, this feature gives you consistent and flexible control over spacing.
+
+## How to use contextual spacing
+
+You can enable Contextual spacing inside the builder under **Style Manager → Theme Styles → Contextual Spacing**. The Style Manager preview updates while you change the values.
+
+![Contextual spacing settings in a theme style: Heading var(--space-xl), Paragraph and Fallback spacing var(--space-s), and an additional target for list items with a top margin of 0, next to the live preview of a blog post.](https://academy.bricksbuilder.io/assets/contextual-spacing-theme-style-settings.webp)
+
+**Remove default margins**: Lets you select the HTML tags from which you want to remove the default margins (i.e. Heading, Paragraph, Lists, etc.). This creates a clean starting point for spacing that fits your layout needs, without interference from inherited or default styles.
+
+**Remove default padding**: Lets you remove default padding from selected tags such as `ul`, `ol`, `blockquote`, and `button`.
+
+> **Note**
+>
+> The remove-default selectors are output exactly as selected. Broad tag selections such as `p`, `ul`, or `h1,h2,h3,h4,h5,h6` reset every matching element in the generated Theme Style CSS, not only the embedded-content selectors used by the spacing rules. Use more specific custom selectors if the reset should be narrower.
+
+> **Note**
+>
+> **Contextual spacing:** Only applies margins when an element is preceded by another. This prevents extra spacing at the very top while maintaining consistent spacing between elements.
+
+## Settings overview
+
+| Setting | Description |
+| --- | --- |
+| **Remove default margins** | Resets margins on the selected or manually entered HTML tags. |
+| **Remove default padding** | Resets padding on the selected or manually entered HTML tags. |
+| **Heading** | Applies top margin to `h1` through `h6` elements when they are preceded by another element. |
+| **Paragraph** | Applies top margin to `p` elements when they are preceded by another element. |
+| **Fallback spacing** | Applied to any element that does not match a heading, paragraph, or target elements, or when those targets have no spacing value defined. |
+| **Additional target elements** | Define spacing rules for elements like `ul`, `blockquote`, or any custom selector. Lets you block margin (top, bottom) and inline padding (left, right). |
+| **Apply spacing inside** | Extend contextual spacing to other parts of your layout by targeting wrapper selectors such as `.contextual-spacing`. |
+
+### Use spacing variables
+
+The Heading, Paragraph, Fallback spacing and target fields accept variables. Pick them with the variable picker next to each field, for example `var(--space-xl)` for headings and `var(--space-s)` for paragraphs. If the variables come from a fluid spacing scale ([Style Manager → Spacing](https://academy.bricksbuilder.io/builder/features/style-manager/#spacing)), the spacing between text blocks grows and shrinks with the screen like the rest of your layout.
+
+## Additional target elements
+
+Use the **Additional target elements** repeater to extend Contextual spacing to more than headings and paragraphs.
+
+You can choose from predefined elements:
+
+- Unordered list (ul)
+- Ordered list (ol)
+- List item (li)
+- Figure (figure)
+- Blockquote (blockquote)
+
+Or enter your own custom selectors like `.my-class`, `code`, or `div`.
+
+For each, you can set:
+
+- Top and bottom margin (`margin-block`)
+- Start and end padding (`padding-inline`)
+
+This gives you spacing consistency across all types of content.
+
+> **Note**
+>
+> Fallback spacing applies to every element that follows another element inside the content, including list items. If the items of a list drift apart after you set a fallback, add a target for **List item (li)** and set **Margin: Top** to `0`.
+
+## Apply to more content areas
+
+> **Note**
+>
+> By default, Contextual spacing only targets Rich Text, Post Content, and WooCommerce content. But you can easily extend it by defining **Apply spacing inside** selectors to apply Contextual spacing to any wrapper of your choice, such as `.contextual-spacing, .brxe-shortcode`.
+
+Add these utility classes to wrappers (i.e. Container, Div, Block elements) that hold a mix of content elements, and Bricks will apply your Contextual spacing settings to them.
+
+![Apply spacing inside set to .contextual-spacing in the theme style, with the preview of a block of separate Heading and Basic Text elements that now follows the contextual spacing.](https://academy.bricksbuilder.io/assets/contextual-spacing-apply-spacing-inside.webp)
+
+Inside a selector from **Apply spacing inside**, the rules work slightly differently than inside Rich Text and Post Content:
+
+- **Heading** spacing applies to `h1` through `h6` elements that are not the first child.
+- **Paragraph** spacing applies to `p` elements that are not the first child. A **Basic Text** element renders a `div` by default, so it takes the fallback spacing instead.
+- **Fallback spacing** applies to direct children of the wrapper that follow another child.
+- **Additional target elements** apply to matching elements anywhere inside the wrapper when they follow another element.
+
+> **Caution**
+>
+> Margins add to the wrapper's gap. If the wrapper has a row gap, clear it, or the space between elements becomes gap plus margin. Clear the gap before you add the class: once a class is added, the panel edits the class, not the element, so the element's own gap would stay.
+
+### Why not apply spacing to all headings and paragraphs by default?
+
+In most Bricks layouts, especially when using **Heading** and **Basic text** elements in combination with other elements, spacing is typically handled using the **gap** property between containers.
+
+Because of that, applying a single spacing rule to all headings and paragraphs wouldn't make sense in every context.
+
+Contextual spacing gives you the flexibility to apply spacing only where it's needed, using selectors and utility classes.
+
+## Example use case 1: Embedded post content
+
+You’re building a single post template using a **Post Content** element (source: WordPress).
+Before enabling Contextual spacing, the post displays the default spacing added by Bricks.
+
+When **Remove default margins** is enabled, Bricks removes both its own default spacing and the browser's default margins. You can then define your own spacing values using the Contextual spacing controls.
+
+When you enable **Remove default margins**, then set spacing values. For example:
+
+- **Heading**: `2rem`
+- **Paragraph**: `1.25rem`
+- **Fallback**: `1rem`
+
+Bricks then applies spacing only between elements where needed. The first element inside the post has no margin above it, but elements that follow each other are spaced consistently.
+
+![](https://academy.bricksbuilder.io/assets/bricks-contextual-spacing-enable-scaled.png)
+
+![](https://academy.bricksbuilder.io/assets/bricks-contextual-spacing-example-values-scaled.png)
+
+**Result:** Clean layout, no spacing at the top, full control over vertical rhythm.
+
+![](https://academy.bricksbuilder.io/assets/bricks-contextual-spacing-use-case-1-1-1024x791.png)
+
+![](https://academy.bricksbuilder.io/assets/bricks-contextual-spacing-use-case-1-2-1024x1017.png)
+
+![](https://academy.bricksbuilder.io/assets/bricks-contextual-spacing-use-case-1-3-1024x1012.png)
+
+![](https://academy.bricksbuilder.io/assets/bricks-contextual-spacing-use-case-1-4-926x1024.png)
+
+## Example use case 2: Mixed content layout
+
+You've created a custom template that includes a container with the following elements:
+
+- A **Heading** element
+- A **Basic text** element (with a `p` tag)
+- An **Image** element (with a `figure` tag)
+- A **Post Content** element (source: WordPress)
+
+Because these use different systems for spacing, the result may feel inconsistent.
+
+To unify the layout:
+
+1. Under Theme Styles > Contextual Spacing > Enable **Remove default margins**
+2. Set spacing values. For example:
+  - Heading: `2rem`
+  - Paragraph: `1.25rem`
+  - Fallback: `1rem`
+3. Clear the container's row gap, so it does not add to the margins
+4. Add a global class like `.contextual-spacing` to the container
+5. Enter `.contextual-spacing` under **Apply spacing inside**
+
+![](https://academy.bricksbuilder.io/assets/bricks-contextual-spacing-utility-class-scaled.png)
+
+![](https://academy.bricksbuilder.io/assets/bricks-contextual-spacing-apply-to-utility-class-scaled.png)
+
+**Result**: All elements within that wrapper now follow your contextual spacing rules.
+
+---
+
 # Build a Design System in Bricks
 
 Source: https://academy.bricksbuilder.io/builder/styling/build-a-design-system/
@@ -240,111 +516,6 @@ Open the Color Manager and change `brand` to a new color. Bricks regenerates the
 - [Theme Styles](https://academy.bricksbuilder.io/builder/styling/theme-styles/)
 - [Global Class Manager](https://academy.bricksbuilder.io/builder/styling/global-class-manager/)
 - [Components](https://academy.bricksbuilder.io/builder/features/components/)
-
----
-
-# Cascade layer
-
-Source: https://academy.bricksbuilder.io/builder/styling/cascade-layer/
-
-*Use CSS cascade layers in Bricks to control style order more predictably across theme styles, classes, and custom code.*
-
-The specificity of default Bricks styles has always been a balancing act. While we aim to keep these styles as non-intrusive as possible, providing a blank canvas for users to build upon, achieving this solely through selector specificity has its limitations. In some cases, it’s been challenging for users to override specific selectors, even when desired.
-
-Bricks 1.12 introduces a promising solution to this longstanding issue through [CSS cascade layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer), which as of December 2024 reach an impressive 96% browser support and "Widely available" Baseline.
-
-Since Bricks 2.0, this feature has been **enabled by default**. You can disable it from **Bricks Settings > Performance > Cascade layer**, though it is not recommended.
-
-This feature leverages cascade layers to define how Bricks' default styles interact with other styles on the page.
-
-## How it works
-
-This feature introduces a Bricks layer stack:
-
-- **`bricks.reset`** (a lower-priority layer): This sublayer is empty, providing a safety net for advanced users. Bricks itself does not apply any styles in this layer.
-- **`bricks`**: This layer contains Bricks' default styles and element CSS, making them easier to override using un-layered styles or styles in higher-priority user-defined layers.
-- **Additional Bricks layers**: Some frontend assets use more specific layers such as `bricks.gutenberg`, `bricks.icons`, or `bricks.libs` so related reset, editor, icon, or library styles can keep their intended order.
-
-Here’s an example to illustrate the problem and the solution:
-
-### The problem: Selector specificity
-
-In the default Bricks styles, a common pattern might look like this:
-
-```php
-[class*="brxe-"] {
-    max-width: 100%;
-}
-```
-
-If you tried to override this with a general element selector, such as:
-
-```php
-div {
-    max-width: 400px;
-}
-```
-
-…the override wouldn't work because the attribute selector `[class*="brxe-"]` has a higher specificity then the `div`.
-
-One potential workaround could be wrapping Bricks' attribute selectors in `:where()` to reduce specificity:
-
-```php
-:where([class*="brxe-"]) {
-    max-width: 100%;
-}
-```
-
-However, this approach would require wrapping every selector, which is not only complex but also impractical at scale.
-
-### The solution: Cascade layers
-
-With cascade layers, we can simply define the default styles within a layer named `bricks`.
-
-Styles outside this layer (un-layered) or in a higher-priority layer automatically precede the default Bricks styles.
-
-Here's how the layers are structured:
-
-```php
-@layer bricks.reset;
-
-@layer bricks {
-    [class*="brxe-"] {
-        max-width: 100%;
-    }
-    /* Other default Bricks styles */
-}
-```
-
-Now, when you add your own styles outside the `bricks` layer, like this:
-
-```php
-div {
-    max-width: 400px;
-}
-```
-
-…they will precede the default Bricks styles because un-layered styles and higher-priority layers take precedence, regardless of the selector.
-
-### The role of `bricks.reset` {#bricks-reset}
-
-The `bricks.reset` sublayer ensures flexibility when overriding default Bricks styles.
-
-Normally, styles in the `bricks` layer are easy to override, but if a default style uses `!important`, the cascade order flips, making it harder to override with un-layered styles or higher-priority layers. You can learn more about this behaviour [here](https://css-tricks.com/css-cascade-layers/#aa-establishing-a-layer-order).
-
-The `bricks.reset` layer, being lower priority, provides a fallback for safely defining custom styles in these rare cases. While we aim to avoid using `!important` in our default styles unless absolutely required, this sublayer is there as a safeguard.
-
-## Why this matters
-
-By moving default Bricks styles into a dedicated cascade layer, we ensure:
-
-1. **Easier overrides**: Un-layered or higher-priority layered styles can override the default Bricks styles without battling selector specificity.
-2. **Simplified maintenance**: Instead of manually tweaking every selector's specificity, cascade layers offer a clean, scalable solution.
-
-## Resources
-
-- **Kevin Powell's YouTube video on cascade layers**: [A look at CSS Cascade Layers](https://www.youtube.com/watch?v=NDNRGW-_1EE)
-- **In-depth guide on CSS cascade layers**: [CSS-Tricks: Cascade Layers Guide](https://css-tricks.com/css-cascade-layers/)
 
 ---
 
@@ -602,177 +773,6 @@ Bricks > Settings > Performance: Disable Google Fonts
 - [fontsquirrel.com](https://www.fontsquirrel.com)
 - [reedesignresources.net/category/free-fonts](https://freedesignresources.net/category/free-fonts)
 - [awwwards.com/awwwards/collections/free-fonts](https://www.awwwards.com/awwwards/collections/free-fonts)
-
----
-
-# Contextual Spacing
-
-Source: https://academy.bricksbuilder.io/builder/styling/contextual-spacing/
-
-*Apply contextual spacing in Bricks to create more consistent rhythm between elements without manually tweaking every margin.*
-
-https://youtu.be/X8Brq1epsfk
-
-Bricks 2.0 introduces **Contextual spacing** to give you full control over vertical spacing (margin) between elements like headings, paragraphs, and lists within embedded content.
-
-Contextual spacing automatically applies to elements within:
-
-- Rich text element
-- Post content element (source: WordPress)
-- WooCommerce embedded content (excluding Checkout)
-
-Out-of-the-box, Bricks tries to apply various top margins (`margin-block-start`) to elements like headings and paragraphs depending on their context.
-
-If you want to override these defaults, you had to manually remove browser spacing, undo Bricks' built-in styles, and then define your own margins.
-
-Contextual spacing simplifies this process. You can now reset those margins and visually define custom spacing rules under **[Theme Styles](https://academy.bricksbuilder.io/builder/styling/theme-styles/) →** Contextual Spacing.
-
-Whether you are styling embedded content, working with dynamic layouts, or creating utility-based wrappers, this feature gives you consistent and flexible control over spacing.
-
-## How to use contextual spacing
-
-You can enable Contextual spacing inside the builder under **Style Manager → Theme Styles → Contextual Spacing**. The Style Manager preview updates while you change the values.
-
-![Contextual spacing settings in a theme style: Heading var(--space-xl), Paragraph and Fallback spacing var(--space-s), and an additional target for list items with a top margin of 0, next to the live preview of a blog post.](https://academy.bricksbuilder.io/assets/contextual-spacing-theme-style-settings.webp)
-
-**Remove default margins**: Lets you select the HTML tags from which you want to remove the default margins (i.e. Heading, Paragraph, Lists, etc.). This creates a clean starting point for spacing that fits your layout needs, without interference from inherited or default styles.
-
-**Remove default padding**: Lets you remove default padding from selected tags such as `ul`, `ol`, `blockquote`, and `button`.
-
-> **Note**
->
-> The remove-default selectors are output exactly as selected. Broad tag selections such as `p`, `ul`, or `h1,h2,h3,h4,h5,h6` reset every matching element in the generated Theme Style CSS, not only the embedded-content selectors used by the spacing rules. Use more specific custom selectors if the reset should be narrower.
-
-> **Note**
->
-> **Contextual spacing:** Only applies margins when an element is preceded by another. This prevents extra spacing at the very top while maintaining consistent spacing between elements.
-
-## Settings overview
-
-| Setting | Description |
-| --- | --- |
-| **Remove default margins** | Resets margins on the selected or manually entered HTML tags. |
-| **Remove default padding** | Resets padding on the selected or manually entered HTML tags. |
-| **Heading** | Applies top margin to `h1` through `h6` elements when they are preceded by another element. |
-| **Paragraph** | Applies top margin to `p` elements when they are preceded by another element. |
-| **Fallback spacing** | Applied to any element that does not match a heading, paragraph, or target elements, or when those targets have no spacing value defined. |
-| **Additional target elements** | Define spacing rules for elements like `ul`, `blockquote`, or any custom selector. Lets you block margin (top, bottom) and inline padding (left, right). |
-| **Apply spacing inside** | Extend contextual spacing to other parts of your layout by targeting wrapper selectors such as `.contextual-spacing`. |
-
-### Use spacing variables
-
-The Heading, Paragraph, Fallback spacing and target fields accept variables. Pick them with the variable picker next to each field, for example `var(--space-xl)` for headings and `var(--space-s)` for paragraphs. If the variables come from a fluid spacing scale ([Style Manager → Spacing](https://academy.bricksbuilder.io/builder/features/style-manager/#spacing)), the spacing between text blocks grows and shrinks with the screen like the rest of your layout.
-
-## Additional target elements
-
-Use the **Additional target elements** repeater to extend Contextual spacing to more than headings and paragraphs.
-
-You can choose from predefined elements:
-
-- Unordered list (ul)
-- Ordered list (ol)
-- List item (li)
-- Figure (figure)
-- Blockquote (blockquote)
-
-Or enter your own custom selectors like `.my-class`, `code`, or `div`.
-
-For each, you can set:
-
-- Top and bottom margin (`margin-block`)
-- Start and end padding (`padding-inline`)
-
-This gives you spacing consistency across all types of content.
-
-> **Note**
->
-> Fallback spacing applies to every element that follows another element inside the content, including list items. If the items of a list drift apart after you set a fallback, add a target for **List item (li)** and set **Margin: Top** to `0`.
-
-## Apply to more content areas
-
-> **Note**
->
-> By default, Contextual spacing only targets Rich Text, Post Content, and WooCommerce content. But you can easily extend it by defining **Apply spacing inside** selectors to apply Contextual spacing to any wrapper of your choice, such as `.contextual-spacing, .brxe-shortcode`.
-
-Add these utility classes to wrappers (i.e. Container, Div, Block elements) that hold a mix of content elements, and Bricks will apply your Contextual spacing settings to them.
-
-![Apply spacing inside set to .contextual-spacing in the theme style, with the preview of a block of separate Heading and Basic Text elements that now follows the contextual spacing.](https://academy.bricksbuilder.io/assets/contextual-spacing-apply-spacing-inside.webp)
-
-Inside a selector from **Apply spacing inside**, the rules work slightly differently than inside Rich Text and Post Content:
-
-- **Heading** spacing applies to `h1` through `h6` elements that are not the first child.
-- **Paragraph** spacing applies to `p` elements that are not the first child. A **Basic Text** element renders a `div` by default, so it takes the fallback spacing instead.
-- **Fallback spacing** applies to direct children of the wrapper that follow another child.
-- **Additional target elements** apply to matching elements anywhere inside the wrapper when they follow another element.
-
-> **Caution**
->
-> Margins add to the wrapper's gap. If the wrapper has a row gap, clear it, or the space between elements becomes gap plus margin. Clear the gap before you add the class: once a class is added, the panel edits the class, not the element, so the element's own gap would stay.
-
-### Why not apply spacing to all headings and paragraphs by default?
-
-In most Bricks layouts, especially when using **Heading** and **Basic text** elements in combination with other elements, spacing is typically handled using the **gap** property between containers.
-
-Because of that, applying a single spacing rule to all headings and paragraphs wouldn't make sense in every context.
-
-Contextual spacing gives you the flexibility to apply spacing only where it's needed, using selectors and utility classes.
-
-## Example use case 1: Embedded post content
-
-You’re building a single post template using a **Post Content** element (source: WordPress).
-Before enabling Contextual spacing, the post displays the default spacing added by Bricks.
-
-When **Remove default margins** is enabled, Bricks removes both its own default spacing and the browser's default margins. You can then define your own spacing values using the Contextual spacing controls.
-
-When you enable **Remove default margins**, then set spacing values. For example:
-
-- **Heading**: `2rem`
-- **Paragraph**: `1.25rem`
-- **Fallback**: `1rem`
-
-Bricks then applies spacing only between elements where needed. The first element inside the post has no margin above it, but elements that follow each other are spaced consistently.
-
-![](https://academy.bricksbuilder.io/assets/bricks-contextual-spacing-enable-scaled.png)
-
-![](https://academy.bricksbuilder.io/assets/bricks-contextual-spacing-example-values-scaled.png)
-
-**Result:** Clean layout, no spacing at the top, full control over vertical rhythm.
-
-![](https://academy.bricksbuilder.io/assets/bricks-contextual-spacing-use-case-1-1-1024x791.png)
-
-![](https://academy.bricksbuilder.io/assets/bricks-contextual-spacing-use-case-1-2-1024x1017.png)
-
-![](https://academy.bricksbuilder.io/assets/bricks-contextual-spacing-use-case-1-3-1024x1012.png)
-
-![](https://academy.bricksbuilder.io/assets/bricks-contextual-spacing-use-case-1-4-926x1024.png)
-
-## Example use case 2: Mixed content layout
-
-You've created a custom template that includes a container with the following elements:
-
-- A **Heading** element
-- A **Basic text** element (with a `p` tag)
-- An **Image** element (with a `figure` tag)
-- A **Post Content** element (source: WordPress)
-
-Because these use different systems for spacing, the result may feel inconsistent.
-
-To unify the layout:
-
-1. Under Theme Styles > Contextual Spacing > Enable **Remove default margins**
-2. Set spacing values. For example:
-  - Heading: `2rem`
-  - Paragraph: `1.25rem`
-  - Fallback: `1rem`
-3. Clear the container's row gap, so it does not add to the margins
-4. Add a global class like `.contextual-spacing` to the container
-5. Enter `.contextual-spacing` under **Apply spacing inside**
-
-![](https://academy.bricksbuilder.io/assets/bricks-contextual-spacing-utility-class-scaled.png)
-
-![](https://academy.bricksbuilder.io/assets/bricks-contextual-spacing-apply-to-utility-class-scaled.png)
-
-**Result**: All elements within that wrapper now follow your contextual spacing rules.
 
 ---
 

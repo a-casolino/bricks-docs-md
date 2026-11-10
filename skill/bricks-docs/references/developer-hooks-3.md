@@ -243,33 +243,6 @@ add_filter( 'bricks/allowed_html_tags', function( $allowed_html_tags ) {
 
 ---
 
-# Filter: bricks//assets/load_webfonts
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-load_webfonts/
-
-*Bricks 1.4 introduces the possibility to \"Disable Google Fonts\". Either via the Bricks settings under \"Performance\" or programmatically using the filter as.*
-
-Bricks 1.4 introduces the possibility to "Disable Google Fonts". Either via the Bricks settings under "Performance" or programmatically using the filter as explained below:
-
-![](https://academy.bricksbuilder.io/assets/bricks-1.4-disable-google-fonts-setting-1024x944.png)
-
-<figcaption>
-
-Bricks > Settings > Performance: Disable Google Fonts
-
-</figcaption>
-
-With the filter `bricks/assets/load_webfonts` you'll be able to prevent Google Fonts to load in the frontend by returning `false`:
-
-```php
-// Prevent Google Fonts loading
-add_filter( 'bricks/assets/load_webfonts', '__return_false' );
-```
-
-If you use this filter to remove the embed of Google Fonts but you still like to use Google Fonts, just head to the [Google Fonts website](https://fonts.google.com/) and download the fonts you need. Then, add them manually to your website, using the [Custom Fonts](https://academy.bricksbuilder.io/builder/styling/custom-fonts/) screen.
-
----
-
 # Filter: bricks/assets/generate_css_from_element
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-generate_css_from_element/
@@ -298,29 +271,30 @@ add_filter( 'bricks/assets/generate_css_from_element', function( $element_names,
 
 ---
 
-# Filter: bricks/auth/custom_lost_password_redirect
+# Filter: bricks//assets/load_webfonts
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_lost_password_redirect/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-load_webfonts/
 
-*This filter enables the modification of the redirect page ID for the lost password page.*
+*Bricks 1.4 introduces the possibility to \"Disable Google Fonts\". Either via the Bricks settings under \"Performance\" or programmatically using the filter as.*
 
-This filter enables the modification of the redirect page ID for the lost password page.
+Bricks 1.4 introduces the possibility to "Disable Google Fonts". Either via the Bricks settings under "Performance" or programmatically using the filter as explained below:
 
-## Example Usage:
+![](https://academy.bricksbuilder.io/assets/bricks-1.4-disable-google-fonts-setting-1024x944.png)
+
+<figcaption>
+
+Bricks > Settings > Performance: Disable Google Fonts
+
+</figcaption>
+
+With the filter `bricks/assets/load_webfonts` you'll be able to prevent Google Fonts to load in the frontend by returning `false`:
 
 ```php
-add_filter( 'bricks/auth/custom_lost_password_redirect', function( $selected_lost_password_page_id ) {
-    return /* New lost password page ID */;
-});
+// Prevent Google Fonts loading
+add_filter( 'bricks/assets/load_webfonts', '__return_false' );
 ```
 
-**Parameters:**
-
-- `$selected_lost_password_page_id` (int|false): The ID of the custom lost password page if set, otherwise `false`.
-
-**Return:**
-
-- (int|false): The new custom lost password page ID or `false` to indicate no custom page is set.
+If you use this filter to remove the embed of Google Fonts but you still like to use Google Fonts, just head to the [Google Fonts website](https://fonts.google.com/) and download the fonts you need. Then, add them manually to your website, using the [Custom Fonts](https://academy.bricksbuilder.io/builder/styling/custom-fonts/) screen.
 
 ---
 
@@ -347,6 +321,32 @@ add_filter( 'bricks/auth/custom_login_redirect', function( $selected_login_page_
 **Return:**
 
 - (int|false): The custom page ID for login redirection, or `false` if no custom page is designated.
+
+---
+
+# Filter: bricks/auth/custom_lost_password_redirect
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_lost_password_redirect/
+
+*This filter enables the modification of the redirect page ID for the lost password page.*
+
+This filter enables the modification of the redirect page ID for the lost password page.
+
+## Example Usage:
+
+```php
+add_filter( 'bricks/auth/custom_lost_password_redirect', function( $selected_lost_password_page_id ) {
+    return /* New lost password page ID */;
+});
+```
+
+**Parameters:**
+
+- `$selected_lost_password_page_id` (int|false): The ID of the custom lost password page if set, otherwise `false`.
+
+**Return:**
+
+- (int|false): The new custom lost password page ID or `false` to indicate no custom page is set.
 
 ---
 
@@ -383,6 +383,32 @@ In this example, the redirection URL changes based on the current URL path, allo
 **Return:**
 
 - (string|null): The URL to redirect to, or null to follow default logic.
+
+---
+
+# Filter: bricks/auth/custom_registration_redirect
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_registration_redirect/
+
+*This filter allows for the customization of the redirect page ID for the registration page.*
+
+This filter allows for the customization of the redirect page ID for the registration page.
+
+## Example Usage:
+
+```php
+add_filter( 'bricks/auth/custom_registration_redirect', function( $selected_registration_page_id ) {
+    return /* New registration page ID */;
+});
+```
+
+**Parameters:**
+
+- `$selected_registration_page_id` (int|false): The ID of the custom registration page if set; otherwise, `false`.
+
+**Return:**
+
+- (int|false): The custom page ID for registration redirection, or `false` if no custom page is set.
 
 ---
 
@@ -428,32 +454,6 @@ add_filter( 'bricks/body/attributes', function( $attributes ) {
   return $attributes;
 } );
 ```
-
----
-
-# Filter: bricks/auth/custom_registration_redirect
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_registration_redirect/
-
-*This filter allows for the customization of the redirect page ID for the registration page.*
-
-This filter allows for the customization of the redirect page ID for the registration page.
-
-## Example Usage:
-
-```php
-add_filter( 'bricks/auth/custom_registration_redirect', function( $selected_registration_page_id ) {
-    return /* New registration page ID */;
-});
-```
-
-**Parameters:**
-
-- `$selected_registration_page_id` (int|false): The ID of the custom registration page if set; otherwise, `false`.
-
-**Return:**
-
-- (int|false): The custom page ID for registration redirection, or `false` if no custom page is set.
 
 ---
 
@@ -615,26 +615,6 @@ Use this filter to enforce stricter security by disabling code execution, regard
 
 ---
 
-# Filter: bricks/code/disallow_keywords
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-disallow_keywords/
-
-*This filter introduces another level of security when using the Code element to run code.*
-
-This filter introduces another level of security when using the Code element to run code.
-
-With the filter `bricks/code/disallow_keywords` you'll be able to prevent the code execution if specific keywords are found in the code, thus reducing the risk of using this element. To add keywords to this check, use the following example:
-
-```php
-add_filter( 'bricks/code/disallow_keywords', function( $keywords ) {
-  $</meta>keywords[] = 'wpdb';
-
-  return $</meta>keywords;
-} );
-```
-
----
-
 # Filter: bricks/code/echo_function_names
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-echo_function_names/
@@ -723,6 +703,26 @@ The [`WP_DEVELOPMENT_MODE`](https://make.wordpress.org/core/2023/07/14/configuri
 ```php
 add_filter( 'bricks/code/echo_function_names', function($function_name) {
   return current_user_can( 'edit_posts' );
+} );
+```
+
+---
+
+# Filter: bricks/code/disallow_keywords
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-disallow_keywords/
+
+*This filter introduces another level of security when using the Code element to run code.*
+
+This filter introduces another level of security when using the Code element to run code.
+
+With the filter `bricks/code/disallow_keywords` you'll be able to prevent the code execution if specific keywords are found in the code, thus reducing the risk of using this element. To add keywords to this check, use the following example:
+
+```php
+add_filter( 'bricks/code/disallow_keywords', function( $keywords ) {
+  $</meta>keywords[] = 'wpdb';
+
+  return $</meta>keywords;
 } );
 ```
 
@@ -1492,60 +1492,6 @@ In this example, the filter modifies the value of a specific meta key ('specific
 
 ---
 
-# Filter: bricks/frontend/render_data
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-frontend-render_data/
-
-*The filter allows you to modify the rendered content for different areas like header, content, and footer before it's displayed on the frontend.*
-
-The filter allows you to modify the rendered content for different areas like header, content, and footer before it's displayed on the frontend.
-
-```php
-add_filter( 'bricks/frontend/render_data', function( $content, $post, $area ) {
-  // Do something
-
-  return $content;
-}, 10, 3 );
-```
-
-The filter callback receives three parameters:
-
-- `$content`: The HTML content that's about to be returned. It's a string type.
-- `$post`: The post object for which the content is being generated. It's an instance of the WP_Post class.
-- `$area`: A string defining the area of the page currently being rendered (e.g., 'header', 'content', 'footer'). Available since version 1.5.4.
-
-## Example: Add a unique ID to each heading
-
-The following example demonstrates how to add a unique ID attribute to each heading in the generated content.
-
-```php
-add_filter('bricks/frontend/render_data', function($content, $post, $area) {
-  // Iterate over each heading tag
-  $content = preg_replace_callback(
-    '/(<h[1-6](.*?))>(.*?)(<\/h[1-6]>)/i',
-    function($matches) {
-      // Add 'id' attribute if it doesn't exist
-      if (strpos($matches[2], 'id=') === false) {
-        // Use heading's content as the ID
-        $matches[0] = $matches[1] . ' id="' . sanitize_title($matches[3])
-        . '">' . $matches[3] . $matches[4];
-      }
-
-      // Return the (potentially) modified heading tag
-      return $matches[0];
-    },
-    $content // Content to modify
-  );
-
-  // Return modified content
-  return $content;
-}, 10, 3);
-```
-
-In this example, a callback function is defined within the add_filter function call targeting the `bricks/frontend/render_data` filter. This callback function modifies every heading tag present in the content to include a unique ID attribute. This can be useful for navigation purposes, such as creating a table of contents.
-
----
-
 # Filter: bricks/frontend/render_element
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-frontend-render_element/
@@ -1609,22 +1555,57 @@ add_filter( 'bricks/get_element_data/maybe_from_post_id', function( $id, $elemen
 
 ---
 
-# Filter: bricks/builder/i18n
+# Filter: bricks/frontend/render_data
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-i18n/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-frontend-render_data/
 
-*Place and customize the following filter to add translatable string to the builder.*
+*The filter allows you to modify the rendered content for different areas like header, content, and footer before it's displayed on the frontend.*
 
-Place and customize the following filter to add translatable string to the builder.
+The filter allows you to modify the rendered content for different areas like header, content, and footer before it's displayed on the frontend.
 
 ```php
-add_filter( 'bricks/builder/i18n', function( $i18n ) {
-  // Example: Provide translatable string for element category 'custom'
-  $i18n['custom'] = esc_html__( 'Custom', 'bricks' );
+add_filter( 'bricks/frontend/render_data', function( $content, $post, $area ) {
+  // Do something
 
-  return $i18n;
-} );
+  return $content;
+}, 10, 3 );
 ```
+
+The filter callback receives three parameters:
+
+- `$content`: The HTML content that's about to be returned. It's a string type.
+- `$post`: The post object for which the content is being generated. It's an instance of the WP_Post class.
+- `$area`: A string defining the area of the page currently being rendered (e.g., 'header', 'content', 'footer'). Available since version 1.5.4.
+
+## Example: Add a unique ID to each heading
+
+The following example demonstrates how to add a unique ID attribute to each heading in the generated content.
+
+```php
+add_filter('bricks/frontend/render_data', function($content, $post, $area) {
+  // Iterate over each heading tag
+  $content = preg_replace_callback(
+    '/(<h[1-6](.*?))>(.*?)(<\/h[1-6]>)/i',
+    function($matches) {
+      // Add 'id' attribute if it doesn't exist
+      if (strpos($matches[2], 'id=') === false) {
+        // Use heading's content as the ID
+        $matches[0] = $matches[1] . ' id="' . sanitize_title($matches[3])
+        . '">' . $matches[3] . $matches[4];
+      }
+
+      // Return the (potentially) modified heading tag
+      return $matches[0];
+    },
+    $content // Content to modify
+  );
+
+  // Return modified content
+  return $content;
+}, 10, 3);
+```
+
+In this example, a callback function is defined within the add_filter function call targeting the `bricks/frontend/render_data` filter. This callback function modifies every heading tag present in the content to include a unique ID attribute. This can be useful for navigation purposes, such as creating a table of contents.
 
 ---
 
@@ -1654,6 +1635,25 @@ add_filter( 'bricks/header/attributes', function( $attributes ) {
 
 - [/developer/hooks/filters/filter-bricks-content-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-attributes/)
 - [/developer/hooks/filters/filter-bricks-footer-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-footer-attributes/)
+
+---
+
+# Filter: bricks/builder/i18n
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-i18n/
+
+*Place and customize the following filter to add translatable string to the builder.*
+
+Place and customize the following filter to add translatable string to the builder.
+
+```php
+add_filter( 'bricks/builder/i18n', function( $i18n ) {
+  // Example: Provide translatable string for element category 'custom'
+  $i18n['custom'] = esc_html__( 'Custom', 'bricks' );
+
+  return $i18n;
+} );
+```
 
 ---
 
@@ -2461,27 +2461,4 @@ add_filter( 'bricks/query/result_max_num_pages', function( $max_num_pages, $quer
   $max_num_pages = 3;
   return $max_num_pages;
 }, 10, 2 );
-```
-
----
-
-# Filter: bricks/registered_post_types_args
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-registered_post_types_args/
-
-*Available since version 1.6, this filter allows you to customise the post type args that are used to query the post type as shown in the Bricks settings & the.*
-
-Available since version 1.6, this filter allows you to customise the post type args that are used to query the post type as shown in the Bricks settings & the builder (e.g. Query control post types, etc.)
-
-```php
-add_filter( 'bricks/registered_post_types_args', function( $args ) {
-  // Default: Return only public post types
-  // $args['public'] = true;
-
-  // Custom: Return all registered post types
-  unset( $args['public'] );
-
-  // Available arguments: https://developer.wordpress.org/reference/functions/get_post_types/#comment-2184
-  return $args;
-} );
 ```

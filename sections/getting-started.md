@@ -1,18 +1,18 @@
 # Bricks Builder Documentation: Getting Started
 
-<!-- content-sha256: 3027c2e442345b69a16d8db4165dd9245e659baa1a9df5cc19f245de391af2e2 -->
-<!-- content last changed: 2026-11-04 07:37 UTC -->
+<!-- content-sha256: a20401d06ca10596413a7dda6ce0efbf333e56e7641af6870ab99ee3dec4f128 -->
+<!-- content last changed: 2026-11-10 08:22 UTC -->
 
 Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricksbuilder.io/), refreshed daily. Content © Bricks. 13 pages.
 
 ## Table of contents
 
-  - [Blog post template](#getting-started-blog-post-template)
   - [Start your first page](#getting-started-building-your-first-page)
+  - [Blog post template](#getting-started-blog-post-template)
   - [Building a header template](#getting-started-header-template)
-  - [Global classes](#getting-started-global-classes)
-- [Getting Started](#getting-started)
   - [Installation and setup](#getting-started-installation-setup)
+- [Getting Started](#getting-started)
+  - [Global classes](#getting-started-global-classes)
   - [Interface tour](#getting-started-interface-tour)
   - [Next steps](#getting-started-next-steps)
   - [Query loops and dynamic data](#getting-started-query-loops-dynamic-data)
@@ -20,174 +20,6 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
   - [Settings and defaults](#getting-started-settings-defaults)
   - [Theme styles](#getting-started-theme-styles)
   - [An intro to templates](#getting-started-templates-intro)
-
----
-
-<a id="getting-started-blog-post-template"></a>
-
-# Blog post template
-
-Source: https://academy.bricksbuilder.io/getting-started/blog-post-template/
-
-*Create a Bricks blog post template that pulls in post content, metadata, and featured media with dynamic data.*
-
-https://youtu.be/d0i85-tgjAQ
-
-## Before you begin: sample posts
-
-You need **at least one published blog post** to preview this template (more is better). If you already created **3 test posts with featured images** for [Query loops and dynamic data](https://academy.bricksbuilder.io/getting-started/query-loops-dynamic-data/), you are set.
-
-Otherwise:
-
-1. Go to **Posts > Add New**
-2. Add a title, body content in the block editor, and a **featured image**
-3. Click **Publish**
-
-Your homepage shows a grid of posts. When you click one, you see the default WordPress template (pretty basic). Let's create a proper blog post template.
-
-## What is a single template?
-
-Remember in the intro to templates article when we talked about different template types? **Single** templates control the layout of individual blog posts or pages.
-
-For blog posts, we separate design from content:
-- **Design** (layout, styles) = Bricks template
-- **Content** (post text, images) = WordPress block editor
-
-This way, if you need a new design later, you just change the template without recopying all your content.
-
-## Create the template
-
-1. Go to **Bricks > Templates** in WordPress dashboard
-2. Click **Add New**
-3. Title it: "Blog Post"
-4. Click **Edit with Bricks**
-
-### Set template type and conditions
-
-Before building, let's configure where this applies:
-
-1. Click **Settings** (gear icon) in toolbar
-2. Go to **Template Settings**
-3. Set **Template Type** to `Single`
-4. Under **Template Conditions**, click **Add Condition**
-5. Select **Post type: Posts**
-6. Add at least one element to the template, e.g. the post title element
-
-This template now applies to all blog posts.
-
-### Test it's working
-
-Save the template, then open one of your test blog posts on the front end. You'll see that the page contains only the element you added. Perfect! That means our template is applied, but still incomplete.
-
-## Build the template with a wireframe
-
-Instead of building from scratch (which you certainly can do), let's use a wireframe template. This is also a great way to learn.
-
-1. Click **Templates** (folder icon) in toolbar
-2. Set **Source** to **Wireframes**
-3. Filter by **Template Type**: select `Single`
-4. Find "Article 01" (or similar)
-5. Click **Insert**
-
-When prompted to import global classes, theme styles, and color palette, click "Yes" to all.
-
-> **What you are importing**
->
-> Saying **yes** here can add **reusable design assets** to your site, not just layout: **global classes**, **theme styles**, and **color palette** entries. That is normal for wireframes, but it means your site may gain styles and colors you did not build by hand yet. If you prefer to keep the site minimal, build the template yourself instead of inserting the wireframe, or skip importing these assets and style the template manually later.
-
-These assets are what make the wireframe look polished out of the box. We'll explain global classes and theme styles in upcoming articles.
-
-> **Post Content is required for the post body**
->
-> If the template does not include a **Post Content** element, the text you write in the WordPress editor will **not** appear on the front end. After you insert the wireframe, confirm a **Post Content** element exists in the structure (see [The Post Content element](#the-post-content-element) below).
-
-The wireframe inserts with a complete blog post layout!
-
-## Examine the template
-
-One of the best ways to learn is by looking at how someone else built something. With wireframe templates, feel free to move things around, break it, try to put it back together. If you're having trouble, just delete and re-insert!
-
-Let's examine what we have.
-
-### Look at the Structure Panel
-
-You'll see sections with various elements: headings, text, images, and more.
-
-### Notice the curly braces
-
-See text like `{post_title}`, `{featured_image}`, `{post_date}`?
-
-These are **dynamic data tags** - the same ones we used in the query loop!
-
-But now they're in a different **context**.
-
-## Understanding context
-
-Context matters in dynamic data.
-
-**In the query loop** (homepage): As you loop through posts, the context changes for each card. First card = post #1, second card = post #2, etc.
-
-**In the single template**: The context is the post you're currently viewing. `{post_title}` shows the title of whatever post the visitor is on.
-
-This is what makes templates + dynamic data so powerful. One template, infinite posts, each showing its own content.
-
-### Key elements in the template
-
-Look for these important elements:
-
-**Heading with `{post_title}`** - Displays the post's title
-
-**Image element with featured image** - Shows the post's featured image (using `{featured_image}` dynamic data)
-
-**Post Content element** - This special element displays the actual post content you write in the WordPress block editor
-
-**Meta data** - Author, date, categories (using tags like `{author_name}`, `{post_date}`, `{post_terms_category}`)
-
-## The Post Content element
-
-This element is special. It renders whatever you write in the WordPress block editor (the default WordPress editor when you create a post).
-
-**Why keep content in WordPress editor?**
-
-- **Content portability** - If you switch themes, content stays intact
-- **Client-friendly** - Non-technical users already know this editor
-- **Plugin compatibility** - SEO plugins, table of contents, etc. expect content there
-- **Separation of concerns** - Design in Bricks, content in WordPress
-
-Bricks handles the layout. WordPress handles the written content. Keep them separate: you still create and edit your posts in the normal WordPress editor, Bricks just controls how that content is presented.
-
-## View on the front end
-
-Open one of your test posts on the front end. Your template is now applied, and dynamic data shows that post's specific content!
-
-Click another post. Same template, different content. Magic!
-
-## Customize your template
-
-Want to make changes?
-
-1. Go to **Bricks > Templates**
-2. Find "Blog Post"
-3. Click **Edit with Bricks**
-4. Modify colors, spacing, fonts
-5. Save
-
-All posts update automatically. One template, all posts. Change once, update everywhere.
-
-> **Try it**
->
-> Edit your blog post template. Change heading colors, adjust spacing, or rearrange elements. Save and view different posts on the front end. They all use your updated design. Add a new test post in WordPress — it automatically uses your template. This is the efficiency of templates!
-
-## What you've learned
-
-You can now:
-- Create single post templates
-- Set template types and conditions
-- Use wireframe templates to learn and speed up building
-- Understand dynamic data context
-- Use the Post Content element
-- Separate design (Bricks) from content (WordPress)
-- Customize templates that apply to all posts
 
 ---
 
@@ -408,6 +240,174 @@ Let's do that in the next article.
 
 ---
 
+<a id="getting-started-blog-post-template"></a>
+
+# Blog post template
+
+Source: https://academy.bricksbuilder.io/getting-started/blog-post-template/
+
+*Create a Bricks blog post template that pulls in post content, metadata, and featured media with dynamic data.*
+
+https://youtu.be/d0i85-tgjAQ
+
+## Before you begin: sample posts
+
+You need **at least one published blog post** to preview this template (more is better). If you already created **3 test posts with featured images** for [Query loops and dynamic data](https://academy.bricksbuilder.io/getting-started/query-loops-dynamic-data/), you are set.
+
+Otherwise:
+
+1. Go to **Posts > Add New**
+2. Add a title, body content in the block editor, and a **featured image**
+3. Click **Publish**
+
+Your homepage shows a grid of posts. When you click one, you see the default WordPress template (pretty basic). Let's create a proper blog post template.
+
+## What is a single template?
+
+Remember in the intro to templates article when we talked about different template types? **Single** templates control the layout of individual blog posts or pages.
+
+For blog posts, we separate design from content:
+- **Design** (layout, styles) = Bricks template
+- **Content** (post text, images) = WordPress block editor
+
+This way, if you need a new design later, you just change the template without recopying all your content.
+
+## Create the template
+
+1. Go to **Bricks > Templates** in WordPress dashboard
+2. Click **Add New**
+3. Title it: "Blog Post"
+4. Click **Edit with Bricks**
+
+### Set template type and conditions
+
+Before building, let's configure where this applies:
+
+1. Click **Settings** (gear icon) in toolbar
+2. Go to **Template Settings**
+3. Set **Template Type** to `Single`
+4. Under **Template Conditions**, click **Add Condition**
+5. Select **Post type: Posts**
+6. Add at least one element to the template, e.g. the post title element
+
+This template now applies to all blog posts.
+
+### Test it's working
+
+Save the template, then open one of your test blog posts on the front end. You'll see that the page contains only the element you added. Perfect! That means our template is applied, but still incomplete.
+
+## Build the template with a wireframe
+
+Instead of building from scratch (which you certainly can do), let's use a wireframe template. This is also a great way to learn.
+
+1. Click **Templates** (folder icon) in toolbar
+2. Set **Source** to **Wireframes**
+3. Filter by **Template Type**: select `Single`
+4. Find "Article 01" (or similar)
+5. Click **Insert**
+
+When prompted to import global classes, theme styles, and color palette, click "Yes" to all.
+
+> **What you are importing**
+>
+> Saying **yes** here can add **reusable design assets** to your site, not just layout: **global classes**, **theme styles**, and **color palette** entries. That is normal for wireframes, but it means your site may gain styles and colors you did not build by hand yet. If you prefer to keep the site minimal, build the template yourself instead of inserting the wireframe, or skip importing these assets and style the template manually later.
+
+These assets are what make the wireframe look polished out of the box. We'll explain global classes and theme styles in upcoming articles.
+
+> **Post Content is required for the post body**
+>
+> If the template does not include a **Post Content** element, the text you write in the WordPress editor will **not** appear on the front end. After you insert the wireframe, confirm a **Post Content** element exists in the structure (see [The Post Content element](#the-post-content-element) below).
+
+The wireframe inserts with a complete blog post layout!
+
+## Examine the template
+
+One of the best ways to learn is by looking at how someone else built something. With wireframe templates, feel free to move things around, break it, try to put it back together. If you're having trouble, just delete and re-insert!
+
+Let's examine what we have.
+
+### Look at the Structure Panel
+
+You'll see sections with various elements: headings, text, images, and more.
+
+### Notice the curly braces
+
+See text like `{post_title}`, `{featured_image}`, `{post_date}`?
+
+These are **dynamic data tags** - the same ones we used in the query loop!
+
+But now they're in a different **context**.
+
+## Understanding context
+
+Context matters in dynamic data.
+
+**In the query loop** (homepage): As you loop through posts, the context changes for each card. First card = post #1, second card = post #2, etc.
+
+**In the single template**: The context is the post you're currently viewing. `{post_title}` shows the title of whatever post the visitor is on.
+
+This is what makes templates + dynamic data so powerful. One template, infinite posts, each showing its own content.
+
+### Key elements in the template
+
+Look for these important elements:
+
+**Heading with `{post_title}`** - Displays the post's title
+
+**Image element with featured image** - Shows the post's featured image (using `{featured_image}` dynamic data)
+
+**Post Content element** - This special element displays the actual post content you write in the WordPress block editor
+
+**Meta data** - Author, date, categories (using tags like `{author_name}`, `{post_date}`, `{post_terms_category}`)
+
+## The Post Content element
+
+This element is special. It renders whatever you write in the WordPress block editor (the default WordPress editor when you create a post).
+
+**Why keep content in WordPress editor?**
+
+- **Content portability** - If you switch themes, content stays intact
+- **Client-friendly** - Non-technical users already know this editor
+- **Plugin compatibility** - SEO plugins, table of contents, etc. expect content there
+- **Separation of concerns** - Design in Bricks, content in WordPress
+
+Bricks handles the layout. WordPress handles the written content. Keep them separate: you still create and edit your posts in the normal WordPress editor, Bricks just controls how that content is presented.
+
+## View on the front end
+
+Open one of your test posts on the front end. Your template is now applied, and dynamic data shows that post's specific content!
+
+Click another post. Same template, different content. Magic!
+
+## Customize your template
+
+Want to make changes?
+
+1. Go to **Bricks > Templates**
+2. Find "Blog Post"
+3. Click **Edit with Bricks**
+4. Modify colors, spacing, fonts
+5. Save
+
+All posts update automatically. One template, all posts. Change once, update everywhere.
+
+> **Try it**
+>
+> Edit your blog post template. Change heading colors, adjust spacing, or rearrange elements. Save and view different posts on the front end. They all use your updated design. Add a new test post in WordPress — it automatically uses your template. This is the efficiency of templates!
+
+## What you've learned
+
+You can now:
+- Create single post templates
+- Set template types and conditions
+- Use wireframe templates to learn and speed up building
+- Understand dynamic data context
+- Use the Post Content element
+- Separate design (Bricks) from content (WordPress)
+- Customize templates that apply to all posts
+
+---
+
 <a id="getting-started-header-template"></a>
 
 # Building a header template
@@ -474,6 +474,129 @@ Then return to this template in the builder.
 3. You should see your new header sitting perfectly atop your hero section!
 
 ![](https://academy.bricksbuilder.io/assets/header-template.png)
+
+---
+
+<a id="getting-started-installation-setup"></a>
+
+# Installation and setup
+
+Source: https://academy.bricksbuilder.io/getting-started/installation-setup/
+
+*Install Bricks, activate the theme, configure the basic WordPress setup, and prepare your site for the rest of the Academy walkthrough.*
+
+https://youtu.be/sUgx3lg6Jko
+
+Let's get Bricks installed on your WordPress site.
+
+Before you install, confirm your host meets [Bricks requirements](https://academy.bricksbuilder.io/builder/setup/requirements/) (PHP, database, memory, upload size, and a modern browser). Most hosting does; use that article if you need to raise limits or troubleshoot.
+
+## Install the Bricks theme
+
+Installing Bricks works exactly like any other WordPress theme. Use one place for everything account-related: [my.bricksbuilder.io](https://my.bricksbuilder.io/) (download the theme ZIP and find your license key there).
+
+### Download Bricks
+
+Log into [my.bricksbuilder.io](https://my.bricksbuilder.io/) and download the latest version as a ZIP file.
+
+![](https://academy.bricksbuilder.io/assets/download-bricks.png)
+
+### Upload to WordPress
+
+> **Theme, not plugin**
+>
+> Install Bricks as a **theme** (**Appearance > Themes > Upload**), not under **Plugins**. Uploading the ZIP as a plugin will not work.
+
+1. In your WordPress dashboard, go to **Appearance > Themes**
+2. Click **Add New**
+![](https://academy.bricksbuilder.io/assets/wordpress-add-theme.png)
+3. Click **Upload Theme**
+![](https://academy.bricksbuilder.io/assets/wordpress-upload-theme.png)
+4. Select the `bricks.zip` file from your computer
+5. Click **Install Now**
+6. After the upload completes, click **Activate** (or go to **Appearance > Themes** and activate **Bricks**)
+
+**If the upload fails**, it is usually because your WordPress site does not allow large enough uploads. See [Requirements](https://academy.bricksbuilder.io/builder/setup/requirements/) (max file upload size) or, as a last resort, unzip the file on your computer and upload the `bricks` folder via FTP to `/wp-content/themes/`.
+
+## Activate your license
+
+Once Bricks is installed, you'll see a new **Bricks** menu item in your WordPress dashboard, along with a notification prompting you to activate your license.
+
+Click **Bricks > License** (or the notification link). This opens the license activation screen.
+![](https://academy.bricksbuilder.io/assets/bricks-license-tab.png)
+
+### Steps to activate
+
+1. Copy your license key from [my.bricksbuilder.io](https://my.bricksbuilder.io/)
+2. Paste it into the license field
+3. Click **Activate License**
+
+You should see a confirmation that your license is **active**.
+
+For blueprint sites, cloned sites, or code-managed setups, you can also define the license key in `wp-config.php` with the `BRICKS_LICENSE_KEY` constant. See [Define the license key in wp-config.php](https://academy.bricksbuilder.io/builder/license/license-and-updates/#constant) for the full workflow and database-key behavior.
+
+That's it, Bricks is ready to use!
+
+For license limits, staging URLs, managing activations, automatic updates, and updating safely, see [License, updates, and your account](https://academy.bricksbuilder.io/builder/license/license-and-updates/).
+
+## What you've accomplished
+
+You now have Bricks installed and licensed.
+
+---
+
+<a id="getting-started"></a>
+
+# Getting Started
+
+Source: https://academy.bricksbuilder.io/getting-started/
+
+*Learn Bricks step by step, from installation and interface basics to templates, dynamic data, global classes, and responsive design.*
+
+https://youtu.be/USxUMA1J9No
+
+Welcome to Bricks! This getting started series walks through the core workflow, from your first install to building pages, templates, and responsive layouts with real WordPress content.
+
+## What is Bricks?
+
+Bricks is a visual site builder for WordPress that gives you complete design freedom without compromising on code quality.
+
+Unlike traditional page builders that generate bloated code, Bricks outputs clean HTML and CSS. You design visually, Bricks writes efficient code. No wrapper divs, no inline styles, no mystery markup.
+
+**What makes Bricks different:**
+
+- **Full design control** - Every element, every style, every layout option is customizable
+- **Clean code output** - Fast-loading sites with lean, semantic HTML and efficient CSS
+- **Built for growth** - Start simple, access deeper capabilities as your skills develop
+- **True visual editing** - What you see in the builder is what you get on the front end
+
+## Who is Bricks for?
+
+Bricks meets you where you are:
+
+- **Starting out?** You can build beautiful, functional sites without knowing any code
+- **Growing your skills?** Bricks reveals how web standards work as you build, helping you level up naturally
+- **Already technical?** You'll appreciate the direct control, the clean output, and the ability to extend everything with your own code when needed
+
+You don't need to be a developer. But if you're on that path, Bricks grows with you instead of getting in your way.
+
+## What you'll learn in this series
+
+In this getting started series, we'll build a simple site together: a homepage with a latest posts section, a header template, and a blog post template.
+
+Along the way, you'll learn how to:
+
+- Install and configure Bricks
+- Navigate the builder interface
+- Build pages and templates
+- Apply consistent styling with theme styles and global classes
+- Create responsive layouts
+- Connect designs to WordPress content with dynamic data
+- Display repeating content with query loops
+
+These fundamentals prepare you for more advanced features you can explore as your projects demand them.
+
+If you prefer to follow along in video format, watch the full [Getting Started YouTube playlist](https://www.youtube.com/playlist?list=PLZK4kdL0xoUjeStTycyJrASfUeXHEUDoE).
 
 ---
 
@@ -760,129 +883,6 @@ You can now:
 - Understand the difference between ID-specific and class-based styling
 
 Global classes are how you build sites that scale. They transform your workflow from repetitive styling to efficient system-building.
-
----
-
-<a id="getting-started"></a>
-
-# Getting Started
-
-Source: https://academy.bricksbuilder.io/getting-started/
-
-*Learn Bricks step by step, from installation and interface basics to templates, dynamic data, global classes, and responsive design.*
-
-https://youtu.be/USxUMA1J9No
-
-Welcome to Bricks! This getting started series walks through the core workflow, from your first install to building pages, templates, and responsive layouts with real WordPress content.
-
-## What is Bricks?
-
-Bricks is a visual site builder for WordPress that gives you complete design freedom without compromising on code quality.
-
-Unlike traditional page builders that generate bloated code, Bricks outputs clean HTML and CSS. You design visually, Bricks writes efficient code. No wrapper divs, no inline styles, no mystery markup.
-
-**What makes Bricks different:**
-
-- **Full design control** - Every element, every style, every layout option is customizable
-- **Clean code output** - Fast-loading sites with lean, semantic HTML and efficient CSS
-- **Built for growth** - Start simple, access deeper capabilities as your skills develop
-- **True visual editing** - What you see in the builder is what you get on the front end
-
-## Who is Bricks for?
-
-Bricks meets you where you are:
-
-- **Starting out?** You can build beautiful, functional sites without knowing any code
-- **Growing your skills?** Bricks reveals how web standards work as you build, helping you level up naturally
-- **Already technical?** You'll appreciate the direct control, the clean output, and the ability to extend everything with your own code when needed
-
-You don't need to be a developer. But if you're on that path, Bricks grows with you instead of getting in your way.
-
-## What you'll learn in this series
-
-In this getting started series, we'll build a simple site together: a homepage with a latest posts section, a header template, and a blog post template.
-
-Along the way, you'll learn how to:
-
-- Install and configure Bricks
-- Navigate the builder interface
-- Build pages and templates
-- Apply consistent styling with theme styles and global classes
-- Create responsive layouts
-- Connect designs to WordPress content with dynamic data
-- Display repeating content with query loops
-
-These fundamentals prepare you for more advanced features you can explore as your projects demand them.
-
-If you prefer to follow along in video format, watch the full [Getting Started YouTube playlist](https://www.youtube.com/playlist?list=PLZK4kdL0xoUjeStTycyJrASfUeXHEUDoE).
-
----
-
-<a id="getting-started-installation-setup"></a>
-
-# Installation and setup
-
-Source: https://academy.bricksbuilder.io/getting-started/installation-setup/
-
-*Install Bricks, activate the theme, configure the basic WordPress setup, and prepare your site for the rest of the Academy walkthrough.*
-
-https://youtu.be/sUgx3lg6Jko
-
-Let's get Bricks installed on your WordPress site.
-
-Before you install, confirm your host meets [Bricks requirements](https://academy.bricksbuilder.io/builder/setup/requirements/) (PHP, database, memory, upload size, and a modern browser). Most hosting does; use that article if you need to raise limits or troubleshoot.
-
-## Install the Bricks theme
-
-Installing Bricks works exactly like any other WordPress theme. Use one place for everything account-related: [my.bricksbuilder.io](https://my.bricksbuilder.io/) (download the theme ZIP and find your license key there).
-
-### Download Bricks
-
-Log into [my.bricksbuilder.io](https://my.bricksbuilder.io/) and download the latest version as a ZIP file.
-
-![](https://academy.bricksbuilder.io/assets/download-bricks.png)
-
-### Upload to WordPress
-
-> **Theme, not plugin**
->
-> Install Bricks as a **theme** (**Appearance > Themes > Upload**), not under **Plugins**. Uploading the ZIP as a plugin will not work.
-
-1. In your WordPress dashboard, go to **Appearance > Themes**
-2. Click **Add New**
-![](https://academy.bricksbuilder.io/assets/wordpress-add-theme.png)
-3. Click **Upload Theme**
-![](https://academy.bricksbuilder.io/assets/wordpress-upload-theme.png)
-4. Select the `bricks.zip` file from your computer
-5. Click **Install Now**
-6. After the upload completes, click **Activate** (or go to **Appearance > Themes** and activate **Bricks**)
-
-**If the upload fails**, it is usually because your WordPress site does not allow large enough uploads. See [Requirements](https://academy.bricksbuilder.io/builder/setup/requirements/) (max file upload size) or, as a last resort, unzip the file on your computer and upload the `bricks` folder via FTP to `/wp-content/themes/`.
-
-## Activate your license
-
-Once Bricks is installed, you'll see a new **Bricks** menu item in your WordPress dashboard, along with a notification prompting you to activate your license.
-
-Click **Bricks > License** (or the notification link). This opens the license activation screen.
-![](https://academy.bricksbuilder.io/assets/bricks-license-tab.png)
-
-### Steps to activate
-
-1. Copy your license key from [my.bricksbuilder.io](https://my.bricksbuilder.io/)
-2. Paste it into the license field
-3. Click **Activate License**
-
-You should see a confirmation that your license is **active**.
-
-For blueprint sites, cloned sites, or code-managed setups, you can also define the license key in `wp-config.php` with the `BRICKS_LICENSE_KEY` constant. See [Define the license key in wp-config.php](https://academy.bricksbuilder.io/builder/license/license-and-updates/#constant) for the full workflow and database-key behavior.
-
-That's it, Bricks is ready to use!
-
-For license limits, staging URLs, managing activations, automatic updates, and updating safely, see [License, updates, and your account](https://academy.bricksbuilder.io/builder/license/license-and-updates/).
-
-## What you've accomplished
-
-You now have Bricks installed and licensed.
 
 ---
 

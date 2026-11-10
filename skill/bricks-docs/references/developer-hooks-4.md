@@ -1,27 +1,3 @@
-# Filter: bricks/related_posts/query_vars
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-related_posts-query_vars/
-
-*Since Bricks 1.3.5 you may manipulate the related posts element query vars before the query is performed like so:*
-
-Since Bricks 1.3.5 you may manipulate the **related posts** element query vars before the query is performed like so:
-
-```php
-add_filter( 'bricks/related_posts/query_vars', function( $query_vars, $settings, $element_id ) {
-    $query_vars['post_type'] = [ 'post', 'project' ];
-
-    return $query_vars;
-}, 10, 3 );
-```
-
-The filter callback receives two arguments:
-
-- `$query_vars` is an associative array used to feed the [WP_Query](https://developer.wordpress.org/reference/classes/wp_query/) class
-- `$settings` is an associative array containing the element settings set in the builder
-- `$element_id` is a string containing the element ID
-
----
-
 # Filter: bricks/query/run
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-run/
@@ -61,6 +37,53 @@ Related hooks:
 
 ---
 
+# Filter: bricks/registered_post_types_args
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-registered_post_types_args/
+
+*Available since version 1.6, this filter allows you to customise the post type args that are used to query the post type as shown in the Bricks settings & the.*
+
+Available since version 1.6, this filter allows you to customise the post type args that are used to query the post type as shown in the Bricks settings & the builder (e.g. Query control post types, etc.)
+
+```php
+add_filter( 'bricks/registered_post_types_args', function( $args ) {
+  // Default: Return only public post types
+  // $args['public'] = true;
+
+  // Custom: Return all registered post types
+  unset( $args['public'] );
+
+  // Available arguments: https://developer.wordpress.org/reference/functions/get_post_types/#comment-2184
+  return $args;
+} );
+```
+
+---
+
+# Filter: bricks/related_posts/query_vars
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-related_posts-query_vars/
+
+*Since Bricks 1.3.5 you may manipulate the related posts element query vars before the query is performed like so:*
+
+Since Bricks 1.3.5 you may manipulate the **related posts** element query vars before the query is performed like so:
+
+```php
+add_filter( 'bricks/related_posts/query_vars', function( $query_vars, $settings, $element_id ) {
+    $query_vars['post_type'] = [ 'post', 'project' ];
+
+    return $query_vars;
+}, 10, 3 );
+```
+
+The filter callback receives two arguments:
+
+- `$query_vars` is an associative array used to feed the [WP_Query](https://developer.wordpress.org/reference/classes/wp_query/) class
+- `$settings` is an associative array containing the element settings set in the builder
+- `$element_id` is a string containing the element ID
+
+---
+
 # Filter: bricks/render_query_loop_trail
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-render_query_loop_trail/
@@ -85,6 +108,35 @@ add_filter( 'bricks/render_query_loop_trail', function( $render, $element, $quer
 ```
 
 In this example, if the `my-custom-param` parameter is detected in the URL, the query loop trail node will not be rendered. This can be useful for third-party plugins with custom AJAX endpoints that handle query configurations independently.
+
+---
+
+# Filter: bricks/search_form/home_url
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-search_form-home_url/
+
+*The bricks/searchform/homeurl filter allows developers to customize the action URL of the search form within the Bricks theme. This filter provides the.*
+
+The `bricks/search_form/home_url` filter allows developers to customize the action URL of the search form within the Bricks theme. This filter provides the flexibility to redirect search queries to a different URL than the default WordPress home URL.
+
+By using this filter, developers can integrate custom search solutions or direct the search form submissions to a specific page, enhancing the search functionality tailored to specific needs.
+
+### Example Usage:
+
+```php
+<code>add_filter( 'bricks/search_form/home_url', function( $home_url ) {</code><code>    // Custom logic to determine the action URL</code><code>    $custom_action_url = 'https://example.com/custom-search-page/'; </code>
+<code>    return $custom_action_url;</code><code>});</code>
+```
+
+In this simple example, the search form action URL is changed to a custom page. This is particularly useful for websites with specialized search requirements or for integrating with external search platforms.
+
+### Parameters:
+
+- `$home_url` (string): The default URL to which the search form points, typically the home URL.
+
+### Return:
+
+- (string): The modified URL for the search form action.
 
 ---
 
@@ -134,35 +186,6 @@ add_filter( 'bricks/screen_conditions/scores', function( $scores, $condition, $p
   return $scores;
 }, 10, 4 );
 ```
-
----
-
-# Filter: bricks/search_form/home_url
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-search_form-home_url/
-
-*The bricks/searchform/homeurl filter allows developers to customize the action URL of the search form within the Bricks theme. This filter provides the.*
-
-The `bricks/search_form/home_url` filter allows developers to customize the action URL of the search form within the Bricks theme. This filter provides the flexibility to redirect search queries to a different URL than the default WordPress home URL.
-
-By using this filter, developers can integrate custom search solutions or direct the search form submissions to a specific page, enhancing the search functionality tailored to specific needs.
-
-### Example Usage:
-
-```php
-<code>add_filter( 'bricks/search_form/home_url', function( $home_url ) {</code><code>    // Custom logic to determine the action URL</code><code>    $custom_action_url = 'https://example.com/custom-search-page/'; </code>
-<code>    return $custom_action_url;</code><code>});</code>
-```
-
-In this simple example, the search form action URL is changed to a custom page. This is particularly useful for websites with specialized search requirements or for integrating with external search platforms.
-
-### Parameters:
-
-- `$home_url` (string): The default URL to which the search form points, typically the home URL.
-
-### Return:
-
-- (string): The modified URL for the search form action.
 
 ---
 
