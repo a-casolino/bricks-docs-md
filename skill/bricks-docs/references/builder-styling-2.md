@@ -669,6 +669,20 @@ For an in-depth look at the CSS properties behind this feature, such as `scroll-
 
 ---
 
+# Shape Dividers
+
+Source: https://academy.bricksbuilder.io/builder/styling/shape-dividers/
+
+*Add and style shape dividers in Bricks to separate sections with SVG-based visual transitions.*
+
+Give your design an edge by adding an unlimited number of shape dividers such as tilts, drops, grids, clouds, strokes, triangles, waves, etc. to layout elements: Section, Container, Block, and Div.
+
+Shape dividers are available in the element style panel under **Shape Dividers**. You can add multiple dividers, choose a bundled shape or custom SVG, and control fill color, front/back placement, flipping, overflow, size, rotation, alignment, and offsets.
+
+https://youtu.be/rXhgQ5fsKDc
+
+---
+
 # Theme Styles
 
 Source: https://academy.bricksbuilder.io/builder/styling/theme-styles/
@@ -905,17 +919,3 @@ Theme Style groups depend on registered elements and integrations. If an element
 ### Custom CSS in the Stylesheet group is not responsive
 
 The Stylesheet group is plain CSS. Add your own media queries if the CSS needs breakpoint-specific behavior.
-
----
-
-# Shape Dividers
-
-Source: https://academy.bricksbuilder.io/builder/styling/shape-dividers/
-
-*Add and style shape dividers in Bricks to separate sections with SVG-based visual transitions.*
-
-Give your design an edge by adding an unlimited number of shape dividers such as tilts, drops, grids, clouds, strokes, triangles, waves, etc. to layout elements: Section, Container, Block, and Div.
-
-Shape dividers are available in the element style panel under **Shape Dividers**. You can add multiple dividers, choose a bundled shape or custom SVG, and control fill color, front/back placement, flipping, overflow, size, rotation, alignment, and offsets.
-
-https://youtu.be/rXhgQ5fsKDc

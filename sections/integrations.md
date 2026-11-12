@@ -1,15 +1,15 @@
 # Bricks Builder Documentation: Integrations
 
-<!-- content-sha256: 991179bb3be148b0c47067ab0b06e1115fa07a36eb0d8d6cbe0cde8dab0514c2 -->
-<!-- content last changed: 2026-11-10 08:22 UTC -->
+<!-- content-sha256: 742aca614e87b73d1cfaecd287854f527cb244948d96b706033e5de6dbf0410f -->
+<!-- content last changed: 2026-11-12 08:19 UTC -->
 
 Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricksbuilder.io/), refreshed daily. Content © Bricks. 28 pages.
 
 ## Table of contents
 
+  - [Gutenberg](#integrations-gutenberg)
   - [How to set up your Google Maps API key](#integrations-how-to-set-up-your-google-maps-api-key)
   - [How to use WPML with Bricks](#integrations-how-to-use-wpml-with-bricks)
-  - [Gutenberg](#integrations-gutenberg)
 - [Integrations](#integrations)
   - [How to get your Instagram Access Token](#integrations-instagram-access-token)
   - [Map (Leaflet)](#integrations-map-leaflet)
@@ -17,24 +17,74 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
   - [Unsplash Integration](#integrations-unsplash)
     - [Bricks components as blocks](#integrations-gutenberg-components-as-blocks)
     - [WooCommerce advanced modular elements](#integrations-woocommerce-advanced-modular-elements)
-    - [Checkout (WooCommerce)](#integrations-woocommerce-checkout)
     - [Cart (WooCommerce)](#integrations-woocommerce-cart)
     - [Create a custom mini cart with Dynamic fragment](#integrations-woocommerce-create-custom-mini-cart-dynamic-fragment)
+    - [Checkout (WooCommerce)](#integrations-woocommerce-checkout)
     - [Creating dynamic WooCommerce archive pages](#integrations-woocommerce-creating-dynamic-woocommerce-archive-pages)
     - [Element: Checkout Coupon](#integrations-woocommerce-element-checkout-coupon)
     - [Element: Checkout Login](#integrations-woocommerce-element-checkout-login)
-    - [How to Create Product Quick View with Bricks](#integrations-woocommerce-how-to-create-product-quick-view-with-bricks)
   - [WooCommerce](#integrations-woocommerce)
+    - [How to Create Product Quick View with Bricks](#integrations-woocommerce-how-to-create-product-quick-view-with-bricks)
     - [Checkout v2 multistep checkout](#integrations-woocommerce-multistep-checkout-v2)
     - [Product Archive (WooCommerce)](#integrations-woocommerce-product-archive-woocommerce)
     - [Product Variation Swatches (WooCommerce)](#integrations-woocommerce-product-variation-swatches)
     - [Single Product (WooCommerce)](#integrations-woocommerce-single-product)
     - [Woo Setup Wizard](#integrations-woocommerce-woo-setup-wizard)
-    - [WooCommerce Account Builder](#integrations-woocommerce-woocommerce-account-builder)
     - [WooCommerce Builder](#integrations-woocommerce-woocommerce-builder)
     - [WooCommerce Notices](#integrations-woocommerce-woocommerce-notices)
+    - [WooCommerce Account Builder](#integrations-woocommerce-woocommerce-account-builder)
     - [WooCommerce Template Hooks](#integrations-woocommerce-woocommerce-template-hooks)
     - [WooCommerce v2 query loops and dynamic tags](#integrations-woocommerce-woocommerce-v2-query-loops-dynamic-tags)
+
+---
+
+<a id="integrations-gutenberg"></a>
+
+# Gutenberg
+
+Source: https://academy.bricksbuilder.io/integrations/gutenberg/
+
+*Understand how Bricks integrates with Gutenberg, including what each editor is responsible for and where the workflows can overlap.*
+
+If you've created your pages with Gutenberg you can continue editing them with Bricks without having to start all over again. Bricks will convert your Gutenberg blocks into Bricks elements.
+
+You can also save and convert your Bricks generated data to Gutenberg data to continue editing a page with Gutenberg.
+
+This way you'll not suffer any lock-in effect when start using Bricks or if you should ever decide to move away from Bricks.
+
+> **Note**
+>
+> The block conversion works only with standard WordPress Gutenberg blocks, NOT custom-third party blocks
+
+## How to load Gutenberg data into Bricks
+
+Bricks allows you to convert your existing Gutenberg data into Bricks data. So you can continue editing any page created with Gutenberg in Bricks.
+
+This only works for pages without any existing Bricks data. To delete the Bricks data of any page, first enable **Enable "Delete Bricks data" button** under **Bricks > Settings > General > Miscellaneous**. Then click the "Delete Bricks data" button in the WordPress top menu when editing a page in WordPress.
+
+To enable this functionality go to **Bricks > Settings > General > Block editor** and make sure **Load Block editor data into Bricks** is selected.
+
+## How to save Bricks data for Gutenberg
+
+By default, your WordPress-generated data won’t change when editing with Bricks. If you want to save your Bricks generated data as Block editor data as well go to **Bricks > Settings > General > Block editor** and select **Save Bricks data as Block editor data**.
+
+From now on whenever you edit and save in Bricks, your content will be saved as WordPress content, too. So your WordPress and Bricks data are in sync.
+
+## Render content with Bricks or WordPress {#render-with-wordpress}
+
+You decide which pages you want to create with Gutenberg, the Classic Editor, or Bricks. The post status next to the page title tells you which content is used for rendering on the frontend:
+
+![](https://academy.bricksbuilder.io/assets/wp-admin-pages-post-status-1024x576.png)
+
+To change the data being used to render a page edit the page in WordPress and hover over the **Render with WordPress/Bricks** button in the top menu, and select the source you want to use:
+
+![](https://academy.bricksbuilder.io/assets/wp-admin-edit-page-render-with-wordpress-bricks-1024x576.png)
+
+<figcaption>
+
+Render with Bricks / Render with WordPress
+
+</figcaption>
 
 ---
 
@@ -292,56 +342,6 @@ Consult the following official WPML documentation for further guidance:
 If you found this post insightful and you're considering giving WPML a try, we encourage you to use [our affiliate link](https://wpml.org/?aid=482001&affiliate_key=S35UDkP4zjiP).
 
 *Note: The link we've provided is an affiliate link. This means we may earn a small commission if you decide to make a purchase through it. This comes at no extra cost to you, and it assists us in further innovating and refining our offerings.*
-
----
-
-<a id="integrations-gutenberg"></a>
-
-# Gutenberg
-
-Source: https://academy.bricksbuilder.io/integrations/gutenberg/
-
-*Understand how Bricks integrates with Gutenberg, including what each editor is responsible for and where the workflows can overlap.*
-
-If you've created your pages with Gutenberg you can continue editing them with Bricks without having to start all over again. Bricks will convert your Gutenberg blocks into Bricks elements.
-
-You can also save and convert your Bricks generated data to Gutenberg data to continue editing a page with Gutenberg.
-
-This way you'll not suffer any lock-in effect when start using Bricks or if you should ever decide to move away from Bricks.
-
-> **Note**
->
-> The block conversion works only with standard WordPress Gutenberg blocks, NOT custom-third party blocks
-
-## How to load Gutenberg data into Bricks
-
-Bricks allows you to convert your existing Gutenberg data into Bricks data. So you can continue editing any page created with Gutenberg in Bricks.
-
-This only works for pages without any existing Bricks data. To delete the Bricks data of any page, first enable **Enable "Delete Bricks data" button** under **Bricks > Settings > General > Miscellaneous**. Then click the "Delete Bricks data" button in the WordPress top menu when editing a page in WordPress.
-
-To enable this functionality go to **Bricks > Settings > General > Block editor** and make sure **Load Block editor data into Bricks** is selected.
-
-## How to save Bricks data for Gutenberg
-
-By default, your WordPress-generated data won’t change when editing with Bricks. If you want to save your Bricks generated data as Block editor data as well go to **Bricks > Settings > General > Block editor** and select **Save Bricks data as Block editor data**.
-
-From now on whenever you edit and save in Bricks, your content will be saved as WordPress content, too. So your WordPress and Bricks data are in sync.
-
-## Render content with Bricks or WordPress {#render-with-wordpress}
-
-You decide which pages you want to create with Gutenberg, the Classic Editor, or Bricks. The post status next to the page title tells you which content is used for rendering on the frontend:
-
-![](https://academy.bricksbuilder.io/assets/wp-admin-pages-post-status-1024x576.png)
-
-To change the data being used to render a page edit the page in WordPress and hover over the **Render with WordPress/Bricks** button in the top menu, and select the source you want to use:
-
-![](https://academy.bricksbuilder.io/assets/wp-admin-edit-page-render-with-wordpress-bricks-1024x576.png)
-
-<figcaption>
-
-Render with Bricks / Render with WordPress
-
-</figcaption>
 
 ---
 
@@ -1019,182 +1019,6 @@ Classic templates and v2 page states can coexist on the same site, but each WooC
 
 ---
 
-<a id="integrations-woocommerce-checkout"></a>
-
-# Checkout (WooCommerce)
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/checkout/
-
-*Build and customize the WooCommerce checkout in Bricks, including the classic template workflow and the Checkout v2 advanced modular workflow.*
-
-## Overview
-
-The Checkout page is a special WooCommerce page, created by default during WooCommerce installation and assigned under **WooCommerce > Settings > Advanced**.
-
-Starting in Bricks 2.4, you can choose between two Checkout building workflows:
-
-- **Checkout v2 workflow**: Build the assigned Checkout page directly with [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) and the [Checkout v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/).
-- **Checkout v1 workflow**: Keep the classic WooCommerce checkout shortcode on the assigned Checkout page and customize the output with separate Bricks Checkout, Thank You, Pay, and Order Receipt templates.
-
-Use Checkout v2 for new builds or redesigns where you want to edit checkout, payment, thank-you, receipt, and login-required states in one place. Use Checkout v1 for existing sites that already rely on the classic shortcode/template setup.
-
-The [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) can check or create either workflow.
-
-## Checkout v2 workflow
-
-With advanced modular elements enabled, Checkout v2 keeps the checkout, pay, thank-you, order receipt, and login-required screens as editable states on the assigned Checkout page.
-
-Use the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) and choose:
-
-- **Advanced (v2)** for a complete one-page checkout structure.
-- **Advanced multistep (v2)** for a ready-made [multistep checkout structure](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/).
-
-Checkout v2 can generate complete checkout blocks or smaller sections such as billing fields, shipping fields, payment options, order summary, and place order. Generated checkout fields are editable Bricks elements, so you can move, style, and reorder them after generation.
-
-For existing Checkout v2 layouts, check that the payment section wrapper has the `brx-woo-payment-section` class. Add it manually if it is missing so the payment heading and methods hide together for free orders. Keep terms and Place order controls outside that wrapper. See [Checkout v2 payment section for free orders](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/#payment-section-for-free-orders) for the steps.
-
-Use Checkout v2 field sync after installing or reconfiguring plugins that change WooCommerce checkout fields. Field sync can find missing, invalid, and duplicate generated fields, generate missing fields, remove invalid or duplicate fields, and update labels or placeholders from WooCommerce.
-
-Checkout v2 also adds query loops and dynamic tags for applied coupons, fees, taxes, order items, order totals, order downloads, and customer notes. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/) for the complete reference.
-
-The **Login required** state is used when WooCommerce requires a customer to log in before viewing order-related checkout screens. Bricks 2.4 also improves logged-out Thank you, Order receipt, and Order pay handling for non-guest orders.
-
-## Checkout v1 workflow
-
-The classic Checkout workflow renders the WooCommerce `[woocommerce_checkout]` shortcode on the assigned Checkout page, then uses Bricks WooCommerce template types to customize the checkout-related screens.
-
-> **Note**
->
-> Remove the Gutenberg Checkout block if it is located within your Checkout Page. Instead, replace it with `[woocommerce_checkout]` or use a Shortcode element if you edit the Checkout page with Bricks.
-
-![](https://academy.bricksbuilder.io/assets/remove-gutenberg-checkout-block.png)
-
-For the Checkout v1 workflow, place the `[woocommerce_checkout]` shortcode directly on the Checkout page, or edit the Checkout page with Bricks and use a Shortcode element with `[woocommerce_checkout]` as its content. Bricks offers four template types to customize the checkout workflow:
-
-- WooCommerce - Checkout
-- WooCommerce - Thank you
-- WooCommerce - Pay
-- WooCommerce - Order receipt
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-checkout-templates.png)
-
-> **Note**
->
-> The "WooCommerce - Checkout", "WooCommerce - Pay", "WooCommerce - Thank you", and "WooCommerce - Order receipt" template types are only visible if you have the WooCommerce plugin installed and active. These templates are used inside the WooCommerce checkout shortcode logic and **they do not support template conditions (they are automatically rendered on the correct page)**.
-
-## Checkout template {#checkout-template}
-
-The default checkout page consists of a two-columns layout: one column with the billing and shipping details form and another one with the order summary + a button to proceed with the order.
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-checkout-screen.png)
-
-<figcaption>
-
-Bricks default WooCommerce default checkout screen
-
-</figcaption>
-
-Use the **WooCommerce - Checkout** template type to change the appearance of this first checkout screen.
-
-When editing this template with Bricks you’ll see two new elements (specific to this template type):
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-checkout-elements.png)
-
-### Checkout customer details
-
-The checkout customer details element renders the billing and shipping details form.
-
-You'll be able to remove/hide some of the non-required fields (e.g. Company name) and style the form fields.
-
-### Checkout order review
-
-The checkout order review element renders the order summary, the available payment methods, and the button to place the order. Using this element, you'll be able to style its different parts.
-
-### Remove the checkout coupon form {#remove-coupon-form}
-
-If you have enabled the use of coupons in the WooCommerce general settings you'll notice a blue coupon form on the top of the checkout form page. If you want to remove this form from the checkout page you may hide it using custom CSS or adding the following code to your child theme:
-
-```php
-remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
-```
-
-### Checkout Coupon & Checkout Login elements {#checkout-coupon-login}
-
-Starting at version 1.11.1 you have greater control over the location and design of the checkout coupon & login by enabling and using the following two checkout elements:
-
-- [Checkout Coupon element](https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/)
-- [Checkout Login element](https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-login/)
-
-## Thank you template {#thank-you-template}
-
-After placing an order, and depending on the payment workflow, you'll get to the "Thank you" screen.
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-checkout-thank-you.png)
-
-<figcaption>
-
-The Bricks default **Thank You** screen
-
-</figcaption>
-
-To style this screen, you'd create a Bricks template of type **WooCommerce - Thank you**. And insert the **Checkout Thank You** element to customize the thank you message, and modify the styles of the different components of the order details.
-
-### Failed-order messages
-
-The classic Checkout Thank You element supports WooCommerce's `woocommerce_thankyou_order_failed_text` filter. Checkout v2 uses `{woo_order_failed_text}` for the failed-order message in newly generated Thank you blocks.
-
-To use the filtered message in an existing Checkout v2 layout:
-
-1. Open the assigned Checkout page in Bricks and select its **Thank you** state.
-2. Find the message element inside the **Order failed** block.
-3. Replace its text with `{woo_order_failed_text}` and save.
-
-Keep the block's conditions, payment retry link, styling, and hooks. See [Failed-order text](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#failed-order-text) for filter and preview behavior.
-
-## Pay template {#pay-template}
-
-For the situation where the visitor gets a link to pay for an unpaid order, there's a special checkout screen that contains the order summary, the available payment gateways, and the button to pay for the order.
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-form-pay-default-471x1024.png)
-
-<figcaption>
-
-Default pay form screen with the representation of the Bricks elements
-
-</figcaption>
-
-If you would like to customize this screen you'd need to add a **WooCommerce - Pay** template type where you'll have access to two new elements: the **Checkout order table** and the **Checkout order payment** both with style controls to customize the look and feel.
-
-## Order receipt {#order-receipt-template}
-
-For the situation where the visitor gets a link to the unpaid order receipt, the checkout workflow triggers the `checkout/order-receipt.php` template, which by default will look like this:
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-order-receipt-default.png)
-
-If you would like to customize this template you could add the Bricks **WooCommerce - Order receipt **template type and inside the builder, you'll have access to the order-specific Dynamic Data tags such as:
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-order-dynamic-data-tags.png)
-
-`{woo_order_id}` - Returns the order id
-
-`{woo_order_number}` - Returns the order number
-
-`{woo_order_date}` - Returns the order date
-
-`{woo_order_total}` - Returns the order total
-
-`{woo_order_payment_title}` - Returns the order payment method name
-
-`{woo_order_email}` - Returns the email address registered with the order
-
-> **Note**
->
-> **NOTE:** These Dynamic Data tags will also work inside the **WooCommerce - Thank you** template type.
-
-Bricks 2.4 adds additional order tags and order-aware query loops for v2 layouts, including order items, totals, downloads, actions, and customer notes. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#order-tags).
-
----
-
 <a id="integrations-woocommerce-cart"></a>
 
 # Cart (WooCommerce)
@@ -1573,6 +1397,182 @@ To test the mini cart:
 
 ---
 
+<a id="integrations-woocommerce-checkout"></a>
+
+# Checkout (WooCommerce)
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/checkout/
+
+*Build and customize the WooCommerce checkout in Bricks, including the classic template workflow and the Checkout v2 advanced modular workflow.*
+
+## Overview
+
+The Checkout page is a special WooCommerce page, created by default during WooCommerce installation and assigned under **WooCommerce > Settings > Advanced**.
+
+Starting in Bricks 2.4, you can choose between two Checkout building workflows:
+
+- **Checkout v2 workflow**: Build the assigned Checkout page directly with [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) and the [Checkout v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/).
+- **Checkout v1 workflow**: Keep the classic WooCommerce checkout shortcode on the assigned Checkout page and customize the output with separate Bricks Checkout, Thank You, Pay, and Order Receipt templates.
+
+Use Checkout v2 for new builds or redesigns where you want to edit checkout, payment, thank-you, receipt, and login-required states in one place. Use Checkout v1 for existing sites that already rely on the classic shortcode/template setup.
+
+The [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) can check or create either workflow.
+
+## Checkout v2 workflow
+
+With advanced modular elements enabled, Checkout v2 keeps the checkout, pay, thank-you, order receipt, and login-required screens as editable states on the assigned Checkout page.
+
+Use the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) and choose:
+
+- **Advanced (v2)** for a complete one-page checkout structure.
+- **Advanced multistep (v2)** for a ready-made [multistep checkout structure](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/).
+
+Checkout v2 can generate complete checkout blocks or smaller sections such as billing fields, shipping fields, payment options, order summary, and place order. Generated checkout fields are editable Bricks elements, so you can move, style, and reorder them after generation.
+
+For existing Checkout v2 layouts, check that the payment section wrapper has the `brx-woo-payment-section` class. Add it manually if it is missing so the payment heading and methods hide together for free orders. Keep terms and Place order controls outside that wrapper. See [Checkout v2 payment section for free orders](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/#payment-section-for-free-orders) for the steps.
+
+Use Checkout v2 field sync after installing or reconfiguring plugins that change WooCommerce checkout fields. Field sync can find missing, invalid, and duplicate generated fields, generate missing fields, remove invalid or duplicate fields, and update labels or placeholders from WooCommerce.
+
+Checkout v2 also adds query loops and dynamic tags for applied coupons, fees, taxes, order items, order totals, order downloads, and customer notes. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/) for the complete reference.
+
+The **Login required** state is used when WooCommerce requires a customer to log in before viewing order-related checkout screens. Bricks 2.4 also improves logged-out Thank you, Order receipt, and Order pay handling for non-guest orders.
+
+## Checkout v1 workflow
+
+The classic Checkout workflow renders the WooCommerce `[woocommerce_checkout]` shortcode on the assigned Checkout page, then uses Bricks WooCommerce template types to customize the checkout-related screens.
+
+> **Note**
+>
+> Remove the Gutenberg Checkout block if it is located within your Checkout Page. Instead, replace it with `[woocommerce_checkout]` or use a Shortcode element if you edit the Checkout page with Bricks.
+
+![](https://academy.bricksbuilder.io/assets/remove-gutenberg-checkout-block.png)
+
+For the Checkout v1 workflow, place the `[woocommerce_checkout]` shortcode directly on the Checkout page, or edit the Checkout page with Bricks and use a Shortcode element with `[woocommerce_checkout]` as its content. Bricks offers four template types to customize the checkout workflow:
+
+- WooCommerce - Checkout
+- WooCommerce - Thank you
+- WooCommerce - Pay
+- WooCommerce - Order receipt
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-checkout-templates.png)
+
+> **Note**
+>
+> The "WooCommerce - Checkout", "WooCommerce - Pay", "WooCommerce - Thank you", and "WooCommerce - Order receipt" template types are only visible if you have the WooCommerce plugin installed and active. These templates are used inside the WooCommerce checkout shortcode logic and **they do not support template conditions (they are automatically rendered on the correct page)**.
+
+## Checkout template {#checkout-template}
+
+The default checkout page consists of a two-columns layout: one column with the billing and shipping details form and another one with the order summary + a button to proceed with the order.
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-checkout-screen.png)
+
+<figcaption>
+
+Bricks default WooCommerce default checkout screen
+
+</figcaption>
+
+Use the **WooCommerce - Checkout** template type to change the appearance of this first checkout screen.
+
+When editing this template with Bricks you’ll see two new elements (specific to this template type):
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-checkout-elements.png)
+
+### Checkout customer details
+
+The checkout customer details element renders the billing and shipping details form.
+
+You'll be able to remove/hide some of the non-required fields (e.g. Company name) and style the form fields.
+
+### Checkout order review
+
+The checkout order review element renders the order summary, the available payment methods, and the button to place the order. Using this element, you'll be able to style its different parts.
+
+### Remove the checkout coupon form {#remove-coupon-form}
+
+If you have enabled the use of coupons in the WooCommerce general settings you'll notice a blue coupon form on the top of the checkout form page. If you want to remove this form from the checkout page you may hide it using custom CSS or adding the following code to your child theme:
+
+```php
+remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
+```
+
+### Checkout Coupon & Checkout Login elements {#checkout-coupon-login}
+
+Starting at version 1.11.1 you have greater control over the location and design of the checkout coupon & login by enabling and using the following two checkout elements:
+
+- [Checkout Coupon element](https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/)
+- [Checkout Login element](https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-login/)
+
+## Thank you template {#thank-you-template}
+
+After placing an order, and depending on the payment workflow, you'll get to the "Thank you" screen.
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-checkout-thank-you.png)
+
+<figcaption>
+
+The Bricks default **Thank You** screen
+
+</figcaption>
+
+To style this screen, you'd create a Bricks template of type **WooCommerce - Thank you**. And insert the **Checkout Thank You** element to customize the thank you message, and modify the styles of the different components of the order details.
+
+### Failed-order messages
+
+The classic Checkout Thank You element supports WooCommerce's `woocommerce_thankyou_order_failed_text` filter. Checkout v2 uses `{woo_order_failed_text}` for the failed-order message in newly generated Thank you blocks.
+
+To use the filtered message in an existing Checkout v2 layout:
+
+1. Open the assigned Checkout page in Bricks and select its **Thank you** state.
+2. Find the message element inside the **Order failed** block.
+3. Replace its text with `{woo_order_failed_text}` and save.
+
+Keep the block's conditions, payment retry link, styling, and hooks. See [Failed-order text](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#failed-order-text) for filter and preview behavior.
+
+## Pay template {#pay-template}
+
+For the situation where the visitor gets a link to pay for an unpaid order, there's a special checkout screen that contains the order summary, the available payment gateways, and the button to pay for the order.
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-form-pay-default-471x1024.png)
+
+<figcaption>
+
+Default pay form screen with the representation of the Bricks elements
+
+</figcaption>
+
+If you would like to customize this screen you'd need to add a **WooCommerce - Pay** template type where you'll have access to two new elements: the **Checkout order table** and the **Checkout order payment** both with style controls to customize the look and feel.
+
+## Order receipt {#order-receipt-template}
+
+For the situation where the visitor gets a link to the unpaid order receipt, the checkout workflow triggers the `checkout/order-receipt.php` template, which by default will look like this:
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-order-receipt-default.png)
+
+If you would like to customize this template you could add the Bricks **WooCommerce - Order receipt **template type and inside the builder, you'll have access to the order-specific Dynamic Data tags such as:
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-order-dynamic-data-tags.png)
+
+`{woo_order_id}` - Returns the order id
+
+`{woo_order_number}` - Returns the order number
+
+`{woo_order_date}` - Returns the order date
+
+`{woo_order_total}` - Returns the order total
+
+`{woo_order_payment_title}` - Returns the order payment method name
+
+`{woo_order_email}` - Returns the email address registered with the order
+
+> **Note**
+>
+> **NOTE:** These Dynamic Data tags will also work inside the **WooCommerce - Thank you** template type.
+
+Bricks 2.4 adds additional order tags and order-aware query loops for v2 layouts, including order items, totals, downloads, actions, and customer notes. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#order-tags).
+
+---
+
 <a id="integrations-woocommerce-creating-dynamic-woocommerce-archive-pages"></a>
 
 # Creating dynamic WooCommerce archive pages
@@ -1803,6 +1803,35 @@ You can set the form to be toggle-able, hiding it by default and revealing it on
 
 ---
 
+<a id="integrations-woocommerce"></a>
+
+# WooCommerce
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/
+
+*Build WooCommerce shop, product, cart, checkout, account, and notice experiences with Bricks templates, elements, and integration guides.*
+
+Bricks includes dedicated WooCommerce elements and template workflows so you can build the full storefront experience visually while still working with WooCommerce data and hooks.
+
+## WooCommerce guides
+
+- [WooCommerce Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/) for the main workflow
+- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) for the Bricks 2.4 Cart, Checkout, and My Account v2 workflow
+- [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) for guided WooCommerce setup checks and presets
+- [Checkout v2 multistep checkout](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/) for the multistep checkout workflow
+- [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/) for the v2 data reference
+- [Product Archive](https://academy.bricksbuilder.io/integrations/woocommerce/product-archive-woocommerce/) for shop and archive layouts
+- [Single Product](https://academy.bricksbuilder.io/integrations/woocommerce/single-product/) for product detail pages
+- [Product Quick View](https://academy.bricksbuilder.io/integrations/woocommerce/how-to-create-product-quick-view-with-bricks/) for quick-view popup workflows
+- [Product Variation Swatches](https://academy.bricksbuilder.io/integrations/woocommerce/product-variation-swatches/) for color, image, and label swatches
+- [Cart](https://academy.bricksbuilder.io/integrations/woocommerce/cart/) for cart layouts
+- [Checkout](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/) for checkout flows
+- [WooCommerce Account Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/) for account templates
+- [WooCommerce Template Hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/) for hook-aware template work
+- [WooCommerce Notices](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-notices/) for notice styling and output
+
+---
+
 <a id="integrations-woocommerce-how-to-create-product-quick-view-with-bricks"></a>
 
 # How to Create Product Quick View with Bricks
@@ -1866,35 +1895,6 @@ By following these steps, you've successfully implemented a Quick View Popup fea
 This enhancement not only improves the user experience by allowing visitors to quickly access product details without navigating away from the current page, but it also provides a seamless integration with WooCommerce.
 
 Remember, fine-tuning the design and interaction settings can further optimize the effectiveness of the Quick View feature, ensuring it meets your specific needs and enhances your overall site performance.
-
----
-
-<a id="integrations-woocommerce"></a>
-
-# WooCommerce
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/
-
-*Build WooCommerce shop, product, cart, checkout, account, and notice experiences with Bricks templates, elements, and integration guides.*
-
-Bricks includes dedicated WooCommerce elements and template workflows so you can build the full storefront experience visually while still working with WooCommerce data and hooks.
-
-## WooCommerce guides
-
-- [WooCommerce Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/) for the main workflow
-- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) for the Bricks 2.4 Cart, Checkout, and My Account v2 workflow
-- [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) for guided WooCommerce setup checks and presets
-- [Checkout v2 multistep checkout](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/) for the multistep checkout workflow
-- [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/) for the v2 data reference
-- [Product Archive](https://academy.bricksbuilder.io/integrations/woocommerce/product-archive-woocommerce/) for shop and archive layouts
-- [Single Product](https://academy.bricksbuilder.io/integrations/woocommerce/single-product/) for product detail pages
-- [Product Quick View](https://academy.bricksbuilder.io/integrations/woocommerce/how-to-create-product-quick-view-with-bricks/) for quick-view popup workflows
-- [Product Variation Swatches](https://academy.bricksbuilder.io/integrations/woocommerce/product-variation-swatches/) for color, image, and label swatches
-- [Cart](https://academy.bricksbuilder.io/integrations/woocommerce/cart/) for cart layouts
-- [Checkout](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/) for checkout flows
-- [WooCommerce Account Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/) for account templates
-- [WooCommerce Template Hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/) for hook-aware template work
-- [WooCommerce Notices](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-notices/) for notice styling and output
 
 ---
 
@@ -2473,153 +2473,6 @@ Open the generated page or template in Bricks and review the result.
 
 ---
 
-<a id="integrations-woocommerce-woocommerce-account-builder"></a>
-
-# WooCommerce Account Builder
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/
-
-*Customize WooCommerce account-area screens in Bricks with the classic Account builder templates or the Account Page v2 advanced modular workflow.*
-
-Bricks 1.9 introduces the My Account builder, which lets you customize the account area of your WooCommerce site.
-
-This includes the My Account page (logged-in), the account login/register/lost & reset password pages (shown when not logged-in), and all My Account endpoints (e.g., Orders, Downloads, etc.).
-
-> **Note**
->
-> Starting in Bricks 2.4, you can also build the My Account page directly with [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) and the [Account Page v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page-v2/). The classic account template workflow below is still supported.
-
-> **Note**
->
-> **IMPORTANT:** In order to ensure that all your customizations to the WooCommerce My Account templates are properly applied, it is imperative that you complete the "[My Account Page (logged in)](#my-account-page)" step.
-
-## Account Page v2 workflow
-
-With advanced modular elements enabled, Account Page v2 keeps the account wrapper, navigation, login state, password states, and account endpoint states together on the assigned My Account page.
-
-Use the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) and choose **Advanced (v2)** to replace the assigned My Account page content with the Account Page v2 element and generated state structure.
-
-Account Page v2 includes states for:
-
-- Dashboard
-- Orders
-- View order
-- Downloads
-- Addresses
-- Edit address
-- Edit account
-- Payment methods
-- Add payment method
-- Login
-- Lost password
-- Lost password confirmation
-- Reset password
-- Order withdrawal (WooCommerce 11.1 or later, with Order Withdrawal enabled)
-
-Each state can generate a complete starter block through **Insert a structure**. Address and account forms use editable Bricks form field elements, so you can style and reorder them after generation.
-
-The Account edit-address state has its own field sync because WooCommerce account address editing and checkout use different field contexts. Use it after plugins or WooCommerce settings change address fields.
-
-Account Page v2 also adds query loops and dynamic tags for account orders, order actions, account downloads, account addresses, order data, downloads, and customer notes. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#account-tags).
-
-### Endpoints added by plugins
-
-Account Page v2 provides editable states for the built-in WooCommerce account routes listed above. An endpoint registered by another plugin does not appear automatically as an additional editable state in the builder.
-
-WooCommerce account endpoints are routes on the assigned My Account page, not separate WordPress pages. A plugin that registers an endpoint and its output callback correctly can still render its content through WooCommerce on that page, but Bricks does not provide a dedicated Account Page v2 state for designing that endpoint.
-
-If a plugin endpoint is blank on the frontend, temporarily test the My Account page with WooCommerce's default account output or without the Account Page v2 element. If it remains blank, check the plugin's endpoint registration. If it works only without Account Page v2, include the plugin name and endpoint slug when contacting Bricks support.
-
-## My Account Page (logged in) {#my-account-page}
-
-To design your My Account page (navigation + content wrapper), **please edit your "My Account" page directly**. You'll find a dedicated "Account Page" element that you can add and adjust its settings to your liking.
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-my-account-page-1.png)
-
-<figcaption>
-
-Custom My Account page using the "Account - Page" element
-
-</figcaption>
-
-> **Note**
->
-> **IMPORTANT:** If you have the *"Enable Bricks WooCommerce "Notice" element"* Bricks setting enabled, please make sure that you have added the "Notice" element to your account page or to all account templates individually. So the notifications when submitting the account forms (e.g., address, reset password, etc.) are displayed.
-
-Starting in Bricks 2.4, the classic **Account - Page** element supports WooCommerce's native Order Withdrawal flow for guests and logged-in customers when the WooCommerce feature is enabled; use the [Account Page v2 Order withdrawal state](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page-v2/#order-withdrawal) to customize its layout.
-
-## Account - Login / Register {#my-account-login-register}
-
-The login form is displayed when a not-logged-in visitor views the My Account page. And the registration form, if you have the *"Allow customers to create an account on the "My account" page"* WooCommerce setting enabled.
-
-You can design your account login/registration layout by creating a new template type "WooCommerce - Account - Login".
-
-When editing this template, you'll find dedicated elements for the **"Account - Login form"** & **"Account - Register form"** as shown in the screenshot below:
-
-You should also check the **Account creation** settings located at *WooCommerce > Settings > Accounts & Privacy* section to control what form to be displayed via **Account - Register form** element.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-account-creation-settings.png)
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-account-login-register.png)
-
-<figcaption>
-
-Custom account login/register template
-
-</figcaption>
-
-> **Note**
->
-> **IMPORTANT:** Ensure you have inserted a Basic Text element with `{do_action:woocommerce_before_customer_login_form}` before your Login and Register form. And another Basic Text element with `{do_action:woocommerce_after_customer_login_form}` after the forms.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-do-action-account-login.png)
-
-<figcaption>
-
-Example do_action location. Before and after the login/register forms.
-
-</figcaption>
-
-## Account - Lost / reset password {#my-account-lost-reset-password}
-
-The WooCommerce account builder in Bricks also provides the following dedicated templates and elements for the lost & reset password pages:
-
-| **Account page** | **Template type** | **Elements** |
-| --- | --- | --- |
-| Lost password | WooCommerce - Account - Lost password | Account - Lost password |
-| Lost password confirmation | WooCommerce - Account - Lost password (Confirmation) | Displayed after submitting the lost password form. No special elements.<br /><br />Example:<br />*A password reset email has been sent to the email address on file for your account, but may take several minutes to show up in your inbox. Please wait at least 10 minutes before attempting another reset.* |
-| Reset password | WooCommerce - Account - Reset password | Account - Reset password |
-
-## Templates for specific account endpoints {#my-account-endpoints}
-
-Designing the account content area for individual account endpoints (Orders, Downloads, etc.) is possible by creating templates of the corresponding template type.
-
-In the example below, we created a "WooCommerce - Account - Orders" template, to which we then added the "Account - Orders" that we styled a bit.
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-account-orders-1024x384.png)
-
-> **Note**
->
-> When editing the template for an account endpoint (Orders, Downloads, etc.), the drag & drop area is located inside the account content area. Offering a better preview in the builder than just rendering an empty canvas without the account navigation.
-
-The process of creating those account endpoint templates is the same for all other WooCommerce account template types.
-
-## Account template types & elements
-
-| **Template type** | **Endpoint** | **Element** |
-| --- | --- | --- |
-| WooCommerce - Account - Dashboard | `/` | - |
-| WooCommerce - Account - Orders | `orders/` | Account - Orders |
-| WooCommerce - Account - View order | `view-order/{order_id}/` | Account - View order |
-| WooCommerce - Account - Downloads | `downloads/` | Account - Downloads |
-| WooCommerce - Account - Payment methods | `payment-methods/` | Account - Payment methods |
-| WooCommerce - Account - Add payment method | `add-payment-method/` | Account - Add payment method |
-| WooCommerce - Account - Addresses | `edit-address/` | Account - Addresses |
-| WooCommerce - Account - Edit address | `edit-address/billing/`<br />`edit-address/shipping/` | Account - Edit address |
-| WooCommerce - Account - Edit account | `edit-account/` | Account - Edit account |
-
----
-
 <a id="integrations-woocommerce-woocommerce-builder"></a>
 
 # WooCommerce Builder
@@ -2948,6 +2801,153 @@ In addition to the Bricks templates mentioned above, several pages within your W
 **Only one Notice element is needed per page.**
 
 If you happen to add multiple WC notice elements, only the first one will output the actual notices, following the native WooCommerce behavior. WooCommerce clears notices after the 1st output. Check WooCommerce `wc_print_notices()` for more information.
+
+---
+
+<a id="integrations-woocommerce-woocommerce-account-builder"></a>
+
+# WooCommerce Account Builder
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/
+
+*Customize WooCommerce account-area screens in Bricks with the classic Account builder templates or the Account Page v2 advanced modular workflow.*
+
+Bricks 1.9 introduces the My Account builder, which lets you customize the account area of your WooCommerce site.
+
+This includes the My Account page (logged-in), the account login/register/lost & reset password pages (shown when not logged-in), and all My Account endpoints (e.g., Orders, Downloads, etc.).
+
+> **Note**
+>
+> Starting in Bricks 2.4, you can also build the My Account page directly with [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) and the [Account Page v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page-v2/). The classic account template workflow below is still supported.
+
+> **Note**
+>
+> **IMPORTANT:** In order to ensure that all your customizations to the WooCommerce My Account templates are properly applied, it is imperative that you complete the "[My Account Page (logged in)](#my-account-page)" step.
+
+## Account Page v2 workflow
+
+With advanced modular elements enabled, Account Page v2 keeps the account wrapper, navigation, login state, password states, and account endpoint states together on the assigned My Account page.
+
+Use the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) and choose **Advanced (v2)** to replace the assigned My Account page content with the Account Page v2 element and generated state structure.
+
+Account Page v2 includes states for:
+
+- Dashboard
+- Orders
+- View order
+- Downloads
+- Addresses
+- Edit address
+- Edit account
+- Payment methods
+- Add payment method
+- Login
+- Lost password
+- Lost password confirmation
+- Reset password
+- Order withdrawal (WooCommerce 11.1 or later, with Order Withdrawal enabled)
+
+Each state can generate a complete starter block through **Insert a structure**. Address and account forms use editable Bricks form field elements, so you can style and reorder them after generation.
+
+The Account edit-address state has its own field sync because WooCommerce account address editing and checkout use different field contexts. Use it after plugins or WooCommerce settings change address fields.
+
+Account Page v2 also adds query loops and dynamic tags for account orders, order actions, account downloads, account addresses, order data, downloads, and customer notes. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#account-tags).
+
+### Endpoints added by plugins
+
+Account Page v2 provides editable states for the built-in WooCommerce account routes listed above. An endpoint registered by another plugin does not appear automatically as an additional editable state in the builder.
+
+WooCommerce account endpoints are routes on the assigned My Account page, not separate WordPress pages. A plugin that registers an endpoint and its output callback correctly can still render its content through WooCommerce on that page, but Bricks does not provide a dedicated Account Page v2 state for designing that endpoint.
+
+If a plugin endpoint is blank on the frontend, temporarily test the My Account page with WooCommerce's default account output or without the Account Page v2 element. If it remains blank, check the plugin's endpoint registration. If it works only without Account Page v2, include the plugin name and endpoint slug when contacting Bricks support.
+
+## My Account Page (logged in) {#my-account-page}
+
+To design your My Account page (navigation + content wrapper), **please edit your "My Account" page directly**. You'll find a dedicated "Account Page" element that you can add and adjust its settings to your liking.
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-my-account-page-1.png)
+
+<figcaption>
+
+Custom My Account page using the "Account - Page" element
+
+</figcaption>
+
+> **Note**
+>
+> **IMPORTANT:** If you have the *"Enable Bricks WooCommerce "Notice" element"* Bricks setting enabled, please make sure that you have added the "Notice" element to your account page or to all account templates individually. So the notifications when submitting the account forms (e.g., address, reset password, etc.) are displayed.
+
+Starting in Bricks 2.4, the classic **Account - Page** element supports WooCommerce's native Order Withdrawal flow for guests and logged-in customers when the WooCommerce feature is enabled; use the [Account Page v2 Order withdrawal state](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page-v2/#order-withdrawal) to customize its layout.
+
+## Account - Login / Register {#my-account-login-register}
+
+The login form is displayed when a not-logged-in visitor views the My Account page. And the registration form, if you have the *"Allow customers to create an account on the "My account" page"* WooCommerce setting enabled.
+
+You can design your account login/registration layout by creating a new template type "WooCommerce - Account - Login".
+
+When editing this template, you'll find dedicated elements for the **"Account - Login form"** & **"Account - Register form"** as shown in the screenshot below:
+
+You should also check the **Account creation** settings located at *WooCommerce > Settings > Accounts & Privacy* section to control what form to be displayed via **Account - Register form** element.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-account-creation-settings.png)
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-account-login-register.png)
+
+<figcaption>
+
+Custom account login/register template
+
+</figcaption>
+
+> **Note**
+>
+> **IMPORTANT:** Ensure you have inserted a Basic Text element with `{do_action:woocommerce_before_customer_login_form}` before your Login and Register form. And another Basic Text element with `{do_action:woocommerce_after_customer_login_form}` after the forms.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-do-action-account-login.png)
+
+<figcaption>
+
+Example do_action location. Before and after the login/register forms.
+
+</figcaption>
+
+## Account - Lost / reset password {#my-account-lost-reset-password}
+
+The WooCommerce account builder in Bricks also provides the following dedicated templates and elements for the lost & reset password pages:
+
+| **Account page** | **Template type** | **Elements** |
+| --- | --- | --- |
+| Lost password | WooCommerce - Account - Lost password | Account - Lost password |
+| Lost password confirmation | WooCommerce - Account - Lost password (Confirmation) | Displayed after submitting the lost password form. No special elements.<br /><br />Example:<br />*A password reset email has been sent to the email address on file for your account, but may take several minutes to show up in your inbox. Please wait at least 10 minutes before attempting another reset.* |
+| Reset password | WooCommerce - Account - Reset password | Account - Reset password |
+
+## Templates for specific account endpoints {#my-account-endpoints}
+
+Designing the account content area for individual account endpoints (Orders, Downloads, etc.) is possible by creating templates of the corresponding template type.
+
+In the example below, we created a "WooCommerce - Account - Orders" template, to which we then added the "Account - Orders" that we styled a bit.
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-account-orders-1024x384.png)
+
+> **Note**
+>
+> When editing the template for an account endpoint (Orders, Downloads, etc.), the drag & drop area is located inside the account content area. Offering a better preview in the builder than just rendering an empty canvas without the account navigation.
+
+The process of creating those account endpoint templates is the same for all other WooCommerce account template types.
+
+## Account template types & elements
+
+| **Template type** | **Endpoint** | **Element** |
+| --- | --- | --- |
+| WooCommerce - Account - Dashboard | `/` | - |
+| WooCommerce - Account - Orders | `orders/` | Account - Orders |
+| WooCommerce - Account - View order | `view-order/{order_id}/` | Account - View order |
+| WooCommerce - Account - Downloads | `downloads/` | Account - Downloads |
+| WooCommerce - Account - Payment methods | `payment-methods/` | Account - Payment methods |
+| WooCommerce - Account - Add payment method | `add-payment-method/` | Account - Add payment method |
+| WooCommerce - Account - Addresses | `edit-address/` | Account - Addresses |
+| WooCommerce - Account - Edit address | `edit-address/billing/`<br />`edit-address/shipping/` | Account - Edit address |
+| WooCommerce - Account - Edit account | `edit-account/` | Account - Edit account |
 
 ---
 

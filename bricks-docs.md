@@ -1,45 +1,33 @@
 # Bricks Builder Documentation
 
-<!-- content-sha256: e3d9f15acc288c54ca1891e943642e5c3f6e67df373a2ae1882e99a751991cfa -->
-<!-- content last changed: 2026-11-10 08:22 UTC -->
+<!-- content-sha256: f0f2098f160e53e9dbde769dedb166a39d02ba50553b53584078157f1ca863d9 -->
+<!-- content last changed: 2026-11-12 08:19 UTC -->
 
 Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricksbuilder.io/), refreshed daily. Content © Bricks. 830 pages.
 
 ## Table of contents
 
 - [Bricks Academy](#home)
-  - [Start your first page](#getting-started-building-your-first-page)
   - [Blog post template](#getting-started-blog-post-template)
-  - [Building a header template](#getting-started-header-template)
-  - [Installation and setup](#getting-started-installation-setup)
-- [Getting Started](#getting-started)
   - [Global classes](#getting-started-global-classes)
+  - [Building a header template](#getting-started-header-template)
+  - [Start your first page](#getting-started-building-your-first-page)
+- [Getting Started](#getting-started)
+  - [Installation and setup](#getting-started-installation-setup)
   - [Interface tour](#getting-started-interface-tour)
-  - [Next steps](#getting-started-next-steps)
   - [Query loops and dynamic data](#getting-started-query-loops-dynamic-data)
+  - [Next steps](#getting-started-next-steps)
   - [Responsive basics](#getting-started-responsive-basics)
   - [Settings and defaults](#getting-started-settings-defaults)
-  - [Theme styles](#getting-started-theme-styles)
   - [An intro to templates](#getting-started-templates-intro)
+  - [Theme styles](#getting-started-theme-styles)
 - [Builder](#builder)
-    - [Dynamic Data](#builder-dynamic-content-dynamic-data)
     - [Global Queries & Query Manager](#builder-dynamic-content-global-queries-query-manager)
     - [Query Data from APIs](#builder-dynamic-content-query-data-from-apis)
+    - [Dynamic Data](#builder-dynamic-content-dynamic-data)
     - [Query Sort, Filter & Live Search](#builder-dynamic-content-query-filters)
-    - [Builder Access & Capabilities](#builder-interface-builder-access)
     - [Query Loop](#builder-dynamic-content-query-loop)
-    - [Builder Interface Customiser and Profiles](#builder-interface-builder-interface-customiser-profiles)
   - [Elements](#builder-elements)
-    - [Builder Mode (Custom)](#builder-interface-builder-mode)
-    - [Context Menu](#builder-interface-context-menu)
-    - [Start Editing With Bricks](#builder-interface-editing-with-bricks)
-    - [Keyboard Shortcuts](#builder-interface-keyboard-shortcuts)
-    - [Adding & Editing Elements](#builder-interface-editing-elements)
-    - [Command Palette](#builder-interface-command-palette)
-    - [Page Settings](#builder-interface-page-settings)
-    - [Responsive Editing](#builder-interface-responsive-editing)
-    - [Revisions](#builder-interface-revisions)
-    - [Save & Publish](#builder-interface-save-publish)
     - [Accessibility](#builder-features-accessibility)
     - [How to add a custom animation in interaction](#builder-features-add-custom-animation-to-interaction)
     - [AI Abilities and Skills](#builder-features-ai-abilities-and-skills)
@@ -50,13 +38,13 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
     - [Code signatures](#builder-features-code-signatures)
     - [Color Manager](#builder-features-color-manager)
     - [Components](#builder-features-components)
-    - [Creating Your First Template](#builder-features-create-template)
     - [Custom Attributes](#builder-features-custom-attributes)
-    - [Create & Update Posts on the Frontend](#builder-features-create-update-posts-on-the-frontend)
-    - [Custom Code](#builder-features-custom-code)
+    - [Creating Your First Template](#builder-features-create-template)
     - [Custom Authentication Pages](#builder-features-custom-authentication-pages)
+    - [Custom Code](#builder-features-custom-code)
     - [Element Conditions](#builder-features-element-conditions)
     - [Global Elements](#builder-features-global-elements)
+    - [Create & Update Posts on the Frontend](#builder-features-create-update-posts-on-the-frontend)
     - [Global Import / Export](#builder-features-global-import-export)
     - [HTML & CSS to Bricks](#builder-features-html-css-to-bricks)
     - [Icon Manager](#builder-features-icon-manager)
@@ -71,26 +59,37 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
     - [Remote Components](#builder-features-remote-components)
     - [Remote Templates](#builder-features-remote-templates)
     - [Save Form Submissions](#builder-features-save-form-submissions)
-    - [Create Your Own Sidebars](#builder-features-sidebars)
     - [Search Criteria](#builder-features-search-criteria)
+    - [Create Your Own Sidebars](#builder-features-sidebars)
     - [SVG Uploads](#builder-features-svg-uploads)
-    - [Style Manager](#builder-features-style-manager)
     - [Template Library](#builder-features-template-library)
+    - [Style Manager](#builder-features-style-manager)
     - [Template Settings](#builder-features-template-settings)
     - [User activation](#builder-features-user-activation)
     - [Visual Grid Builder](#builder-features-visual-grid-builder)
-    - [License, updates, and your account](#builder-license-license-and-updates)
+    - [Builder Access & Capabilities](#builder-interface-builder-access)
+    - [Builder Interface Customiser and Profiles](#builder-interface-builder-interface-customiser-profiles)
     - [Wireframe Templates](#builder-features-wireframe-templates)
+    - [Command Palette](#builder-interface-command-palette)
+    - [Builder Mode (Custom)](#builder-interface-builder-mode)
+    - [Context Menu](#builder-interface-context-menu)
+    - [Adding & Editing Elements](#builder-interface-editing-elements)
+    - [Start Editing With Bricks](#builder-interface-editing-with-bricks)
+    - [Keyboard Shortcuts](#builder-interface-keyboard-shortcuts)
+    - [Page Settings](#builder-interface-page-settings)
+    - [Responsive Editing](#builder-interface-responsive-editing)
+    - [Revisions](#builder-interface-revisions)
+    - [Save & Publish](#builder-interface-save-publish)
+    - [License, updates, and your account](#builder-license-license-and-updates)
     - [Restrict License Key Usage](#builder-license-restrict-license-key-usage)
-    - [Requirements](#builder-setup-requirements)
     - [Known issues](#builder-setup-known-issues)
+    - [Requirements](#builder-setup-requirements)
     - [Bricks Settings](#builder-setup-settings)
     - [Troubleshooting a Bricks Website](#builder-setup-troubleshooting)
-  - [Templates](#builder-templates)
     - [Integration: Adobe Fonts](#builder-styling-adobe-fonts)
+    - [Build a Design System in Bricks](#builder-styling-build-a-design-system)
     - [Cascade layer](#builder-styling-cascade-layer)
     - [Contextual Spacing](#builder-styling-contextual-spacing)
-    - [Build a Design System in Bricks](#builder-styling-build-a-design-system)
     - [CSS Grid Layout](#builder-styling-css-grid-layout)
     - [Custom Fonts](#builder-styling-custom-fonts)
     - [Fluid Spacing](#builder-styling-fluid-spacing)
@@ -106,53 +105,45 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
     - [Masonry Layout](#builder-styling-masonry-layout)
     - [Styling Element States & Parts](#builder-styling-pseudo-classes)
     - [Scroll Snap](#builder-styling-scroll-snap)
-    - [Theme Styles](#builder-styling-theme-styles)
     - [Shape Dividers](#builder-styling-shape-dividers)
+    - [Theme Styles](#builder-styling-theme-styles)
+  - [Templates](#builder-templates)
       - [Button](#builder-elements-basic-button)
       - [Heading](#builder-elements-basic-heading)
-      - [Image](#builder-elements-basic-image)
       - [Icon](#builder-elements-basic-icon)
+      - [Image](#builder-elements-basic-image)
       - [Text basic](#builder-elements-basic-text-basic)
       - [Text Link](#builder-elements-basic-text-link)
       - [Rich text](#builder-elements-basic-text)
       - [Video](#builder-elements-basic-video)
       - [Filter active filters](#builder-elements-filter-filter-active-filters)
       - [Filter checkbox](#builder-elements-filter-filter-checkbox)
-      - [Filter datepicker](#builder-elements-filter-filter-datepicker)
       - [Filter radio](#builder-elements-filter-filter-radio)
-      - [Filter search](#builder-elements-filter-filter-search)
       - [Filter range](#builder-elements-filter-filter-range)
+      - [Filter search](#builder-elements-filter-filter-search)
+      - [Filter datepicker](#builder-elements-filter-filter-datepicker)
       - [Filter select](#builder-elements-filter-filter-select)
       - [Filter submit](#builder-elements-filter-filter-submit)
-      - [Audio](#builder-elements-media-audio)
-      - [Carousel](#builder-elements-media-carousel)
-      - [File](#builder-elements-media-file)
-      - [Image gallery](#builder-elements-media-image-gallery)
-      - [Instagram feed](#builder-elements-media-instagram-feed)
-      - [Logo](#builder-elements-media-logo)
-      - [Slider (nestable)](#builder-elements-media-slider-nested)
-      - [Slider](#builder-elements-media-slider)
-      - [SVG](#builder-elements-media-svg)
       - [Block](#builder-elements-layout-block)
       - [Container](#builder-elements-layout-container)
       - [Div](#builder-elements-layout-div)
       - [Divider](#builder-elements-layout-divider)
-      - [Accordion](#builder-elements-general-accordion)
-      - [Accordion (nestable)](#builder-elements-general-accordion-nested)
       - [List](#builder-elements-layout-list)
-      - [Alert](#builder-elements-general-alert)
+      - [Accordion (nestable)](#builder-elements-general-accordion-nested)
       - [Section](#builder-elements-layout-section)
+      - [Accordion](#builder-elements-general-accordion)
+      - [Alert](#builder-elements-general-alert)
       - [Animated typing](#builder-elements-general-animated-typing)
       - [Back to Top](#builder-elements-general-back-to-top)
-      - [Code](#builder-elements-general-code)
       - [Breadcrumbs](#builder-elements-general-breadcrumbs)
-      - [Counter](#builder-elements-general-counter)
+      - [Code](#builder-elements-general-code)
       - [Countdown](#builder-elements-general-countdown)
+      - [Counter](#builder-elements-general-counter)
       - [Dropdown](#builder-elements-general-dropdown)
       - [Facebook page](#builder-elements-general-facebook-page)
       - [Form](#builder-elements-general-form)
-      - [Icon box](#builder-elements-general-icon-box)
       - [HTML](#builder-elements-general-html)
+      - [Icon box](#builder-elements-general-icon-box)
       - [Icon list](#builder-elements-general-icon-list)
       - [Map Connector](#builder-elements-general-map-connector)
       - [Map (Leaflet)](#builder-elements-general-map-leaflet)
@@ -164,65 +155,74 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Progress bar](#builder-elements-general-progress-bar)
       - [Rating](#builder-elements-general-rating)
       - [Slot](#builder-elements-general-slot)
-      - [Tabs (nestable)](#builder-elements-general-tabs-nested)
       - [Tabs](#builder-elements-general-tabs)
       - [Team members](#builder-elements-general-team-members)
-      - [Template](#builder-elements-general-template)
+      - [Tabs (nestable)](#builder-elements-general-tabs-nested)
       - [Testimonials](#builder-elements-general-testimonials)
-      - [Toggle](#builder-elements-general-toggle)
       - [Toggle - Mode](#builder-elements-general-toggle-mode)
+      - [Toggle](#builder-elements-general-toggle)
+      - [Template](#builder-elements-general-template)
       - [Add to cart](#builder-elements-product-product-add-to-cart)
       - [Product additional information](#builder-elements-product-product-additional-information)
       - [Product content](#builder-elements-product-product-content)
       - [Product gallery](#builder-elements-product-product-gallery)
       - [Product meta](#builder-elements-product-product-meta)
-      - [Product rating](#builder-elements-product-product-rating)
       - [Product price](#builder-elements-product-product-price)
+      - [Product rating](#builder-elements-product-product-rating)
       - [Related products](#builder-elements-product-product-related)
       - [Product reviews](#builder-elements-product-product-reviews)
-      - [Product stock](#builder-elements-product-product-stock)
       - [Product short description](#builder-elements-product-product-short-description)
+      - [Product stock](#builder-elements-product-product-stock)
       - [Product tabs](#builder-elements-product-product-tabs)
       - [Product title](#builder-elements-product-product-title)
       - [Product up/cross-sells](#builder-elements-product-product-upsells)
+      - [Audio](#builder-elements-media-audio)
       - [Query results summary](#builder-elements-query-query-results-summary)
+      - [File](#builder-elements-media-file)
+      - [Carousel](#builder-elements-media-carousel)
+      - [Image gallery](#builder-elements-media-image-gallery)
+      - [Instagram feed](#builder-elements-media-instagram-feed)
+      - [Logo](#builder-elements-media-logo)
+      - [Slider (nestable)](#builder-elements-media-slider-nested)
+      - [Slider](#builder-elements-media-slider)
+      - [SVG](#builder-elements-media-svg)
       - [Author](#builder-elements-single-author)
       - [Comments](#builder-elements-single-comments)
       - [Excerpt](#builder-elements-single-excerpt)
       - [Meta data](#builder-elements-single-meta-data)
       - [Post content](#builder-elements-single-post-content)
-      - [Post navigation](#builder-elements-single-post-navigation)
       - [Post reading progress bar](#builder-elements-single-post-reading-progress-bar)
+      - [Post navigation](#builder-elements-single-post-navigation)
       - [Post reading time](#builder-elements-single-post-reading-time)
       - [Post title](#builder-elements-single-post-title)
       - [Post table of contents](#builder-elements-single-post-toc)
       - [Related posts](#builder-elements-single-related-posts)
       - [Social sharing](#builder-elements-single-social-sharing)
       - [Taxonomy](#builder-elements-single-taxonomy)
-      - [Nav menu](#builder-elements-wordpress-nav-menu)
       - [Pagination](#builder-elements-wordpress-pagination)
+      - [Nav menu](#builder-elements-wordpress-nav-menu)
       - [Posts](#builder-elements-wordpress-posts)
       - [Search](#builder-elements-wordpress-search)
       - [Shortcode](#builder-elements-wordpress-shortcode)
       - [Sidebar](#builder-elements-wordpress-sidebar)
-      - [WordPress](#builder-elements-wordpress-wordpress)
       - [Account - Add payment method](#builder-elements-woocommerce-account-add-payment-method)
       - [Account - Addresses](#builder-elements-woocommerce-account-addresses)
-      - [Account - Downloads](#builder-elements-woocommerce-account-downloads)
+      - [WordPress](#builder-elements-wordpress-wordpress)
       - [Account - Edit account](#builder-elements-woocommerce-account-form-edit-account)
       - [Account - Edit address](#builder-elements-woocommerce-account-form-edit-address)
       - [Account - Login form](#builder-elements-woocommerce-account-form-login)
+      - [Account - Downloads](#builder-elements-woocommerce-account-downloads)
+      - [Account - Lost password](#builder-elements-woocommerce-account-form-lost-password)
       - [Account - Register form](#builder-elements-woocommerce-account-form-register)
       - [Account - Reset password](#builder-elements-woocommerce-account-form-reset-password)
       - [Account - Orders](#builder-elements-woocommerce-account-orders)
-      - [Account - Lost password](#builder-elements-woocommerce-account-form-lost-password)
+      - [Account - Page](#builder-elements-woocommerce-account-page)
+      - [Account - View order](#builder-elements-woocommerce-account-view-order)
       - [Account - Page v2](#builder-elements-woocommerce-account-page-v2)
       - [Account - Payment methods](#builder-elements-woocommerce-account-payment-methods)
-      - [Account - Page](#builder-elements-woocommerce-account-page)
-      - [WooCommerce Breadcrumbs](#builder-elements-woocommerce-breadcrumbs)
-      - [Account - View order](#builder-elements-woocommerce-account-view-order)
-      - [Cart coupon](#builder-elements-woocommerce-cart-coupon)
       - [Cart totals](#builder-elements-woocommerce-cart-collaterals)
+      - [WooCommerce Breadcrumbs](#builder-elements-woocommerce-breadcrumbs)
+      - [Cart coupon](#builder-elements-woocommerce-cart-coupon)
       - [Cart items](#builder-elements-woocommerce-cart-items)
       - [Cart v2](#builder-elements-woocommerce-cart-v2)
       - [Checkout coupon](#builder-elements-woocommerce-checkout-coupon)
@@ -231,8 +231,8 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Checkout order payment](#builder-elements-woocommerce-checkout-order-payment)
       - [Checkout order review](#builder-elements-woocommerce-checkout-order-review)
       - [Checkout order table](#builder-elements-woocommerce-checkout-order-table)
-      - [Checkout v2](#builder-elements-woocommerce-checkout-v2)
       - [Checkout thank you](#builder-elements-woocommerce-checkout-thankyou)
+      - [Checkout v2](#builder-elements-woocommerce-checkout-v2)
       - [Dynamic fragment](#builder-elements-woocommerce-dynamic-fragment)
       - [Mini cart](#builder-elements-woocommerce-mini-cart)
       - [Notice](#builder-elements-woocommerce-notice)
@@ -244,7 +244,6 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Products](#builder-elements-woocommerce-products)
       - [WooCommerce Template Hook](#builder-elements-woocommerce-template-hook)
 - [Developer](#developer)
-    - [Create Your Own Dynamic Data Tag](#developer-dynamic-data-create-your-own-dynamic-data-tag)
     - [Align Items Control (Flexbox)](#developer-controls-align-items-control)
     - [Apply Control](#developer-controls-apply-control)
     - [Audio Control](#developer-controls-audio-control)
@@ -265,15 +264,15 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
     - [Image Control](#developer-controls-image-control)
     - [Image Gallery Control](#developer-controls-image-gallery-control)
     - [Info Control](#developer-controls-info-control)
-  - [Controls](#developer-controls)
     - [Justify Content Control (Flexbox)](#developer-controls-justify-content-control)
+  - [Controls](#developer-controls)
     - [Link Control](#developer-controls-link-control)
     - [Number Control](#developer-controls-number-control)
     - [Query Control](#developer-controls-query-control)
     - [Repeater Control](#developer-controls-repeater-control)
     - [Select Control](#developer-controls-select-control)
-    - [SVG Control](#developer-controls-svg-control)
     - [Slider Control](#developer-controls-slider-control)
+    - [SVG Control](#developer-controls-svg-control)
     - [Text Align Control](#developer-controls-text-align-control)
     - [Text Control](#developer-controls-text-control)
     - [Text Decoration Control](#developer-controls-text-decoration-control)
@@ -286,41 +285,42 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
     - [Function: bricks_render_dynamic_data](#developer-functions-function-bricks-render-dynamic-data)
   - [Hooks](#developer-hooks)
     - [Asset Loading Optimization](#developer-guides-asset-loading)
-    - [Bricks CSS: Compatibility guidelines](#developer-guides-bricks-css-compatibility-guidelines)
     - [Best Practices](#developer-guides-best-practices)
+    - [Bricks CSS: Compatibility guidelines](#developer-guides-bricks-css-compatibility-guidelines)
     - [Bricks CLI](#developer-guides-bricks-cli)
     - [Child Theme](#developer-guides-child-theme)
     - [Converter](#developer-guides-converter)
     - [Custom JavaScript events in Bricks](#developer-guides-custom-javascript-events-in-bricks)
+    - [Create Your Own Dynamic Data Tag](#developer-dynamic-data-create-your-own-dynamic-data-tag)
       - [Action: bricks/generate_css_file](#developer-hooks-actions-action-bricks-generate-css-file)
       - [Action: bricks/query/after_loop](#developer-hooks-actions-action-bricks-query-after-loop)
       - [Action: bricks/query/before_loop](#developer-hooks-actions-action-bricks-query-before-loop)
       - [Action: bricks_after_footer](#developer-hooks-actions-bricks-after-footer)
-      - [Action: bricks_after_site_wrapper](#developer-hooks-actions-bricks-after-site-wrapper)
-      - [Action: bricks/archive_product/after](#developer-hooks-actions-bricks-archive-product-after)
       - [Action: bricks_after_header](#developer-hooks-actions-bricks-after-header)
+      - [Action: bricks_after_site_wrapper](#developer-hooks-actions-bricks-after-site-wrapper)
+      - [Action: bricks/archive_product/before](#developer-hooks-actions-bricks-archive-product-before)
+      - [Action: bricks/archive_product/after](#developer-hooks-actions-bricks-archive-product-after)
       - [Action: bricks_before_footer](#developer-hooks-actions-bricks-before-footer)
       - [Action: bricks_before_header](#developer-hooks-actions-bricks-before-header)
-      - [Action: bricks/archive_product/before](#developer-hooks-actions-bricks-archive-product-before)
       - [Action: bricks_before_site_wrapper](#developer-hooks-actions-bricks-before-site-wrapper)
       - [Action: bricks_body](#developer-hooks-actions-bricks-body)
       - [Action: bricks/builder/switch_locale](#developer-hooks-actions-bricks-builder-switch-locale)
       - [Action: bricks/database/get_all_templates_by_type/after_query](#developer-hooks-actions-bricks-database-get-all-templates-by-type-after-query)
       - [Action: bricks/dynamic_data/after_do_action](#developer-hooks-actions-bricks-dynamic-data-after-do-action)
-      - [Action: bricks/dynamic_data/before_do_action](#developer-hooks-actions-bricks-dynamic-data-before-do-action)
       - [Action: bricks/dynamic_data/tag_value_parsed](#developer-hooks-actions-bricks-dynamic-data-tag-value-parsed)
       - [Action: bricks/dynamic_data/tags_registered](#developer-hooks-actions-bricks-dynamic-data-tags-registered)
       - [Action: bricks_execute_filter_index_job](#developer-hooks-actions-bricks-execute-filter-index-job)
+      - [Action: bricks/dynamic_data/before_do_action](#developer-hooks-actions-bricks-dynamic-data-before-do-action)
       - [Action: bricks/filter_element/before_set_data_source_from_custom_field](#developer-hooks-actions-bricks-filter-element-before-set-data-source-from-custom-field)
-      - [Action: bricks/form/custom_action](#developer-hooks-actions-bricks-form-custom-action)
       - [Action: bricks/frontend/after_render_data](#developer-hooks-actions-bricks-frontend-after-render-data)
+      - [Action: bricks/form/custom_action](#developer-hooks-actions-bricks-form-custom-action)
       - [Action: bricks/frontend/before_render_data](#developer-hooks-actions-bricks-frontend-before-render-data)
+      - [Action: bricks/get_templates/query_after](#developer-hooks-actions-bricks-get-templates-query-after)
       - [Action: bricks_indexer](#developer-hooks-actions-bricks-indexer)
       - [Action: bricks/load_elements/after](#developer-hooks-actions-bricks-load-elements-after)
-      - [Action: bricks/get_templates/query_after](#developer-hooks-actions-bricks-get-templates-query-after)
       - [Action: bricks/load_elements/before](#developer-hooks-actions-bricks-load-elements-before)
-      - [Action: bricks/query/query_api_response](#developer-hooks-actions-bricks-query-query-api-response)
       - [Action: bricks_meta_tags](#developer-hooks-actions-bricks-meta-tags)
+      - [Action: bricks/query/query_api_response](#developer-hooks-actions-bricks-query-query-api-response)
       - [Action: bricks/query_filters/index_post/before](#developer-hooks-actions-bricks-query-filters-index-post-before)
       - [Action: bricks/query_filters/index_user/before](#developer-hooks-actions-bricks-query-filters-index-user-before)
       - [Action: bricks/render_popup_content/start](#developer-hooks-actions-bricks-render-popup-content-start)
@@ -333,26 +333,26 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Filter: bricks/acf/filter_field_groups](#developer-hooks-filters-bricks-acf-filter-field-groups)
       - [Filter: bricks/acf/google_map/address_parts](#developer-hooks-filters-bricks-acf-google-map-address-parts)
       - [Filter: bricks/acf/google_map/show_as_address](#developer-hooks-filters-bricks-acf-google-map-show-as-address)
-      - [Filter: bricks/acf/google_map/text_output](#developer-hooks-filters-bricks-acf-google-map-text-output)
-      - [Filter: bricks/active_templates](#developer-hooks-filters-bricks-active-templates)
       - [Filter: bricks/acf/taxonomy/show_as_link](#developer-hooks-filters-bricks-acf-taxonomy-show-as-link)
+      - [Filter: bricks/active_templates](#developer-hooks-filters-bricks-active-templates)
+      - [Filter: bricks/acf/google_map/text_output](#developer-hooks-filters-bricks-acf-google-map-text-output)
       - [Filter: bricks/ajax/get_pages_args](#developer-hooks-filters-bricks-ajax-get-pages-args)
       - [Filter: bricks/allowed_html_tags](#developer-hooks-filters-bricks-allowed-html-tags)
       - [Filter: bricks/api/get_templates_data](#developer-hooks-filters-bricks-api-get-templates-data)
-      - [Filter: bricks/breadcrumbs/home_label](#developer-hooks-filters-bricks-breadcrumbs-home-label)
       - [Filter: bricks/breadcrumbs/items](#developer-hooks-filters-bricks-breadcrumbs-items)
+      - [Filter: bricks/breadcrumbs/home_label](#developer-hooks-filters-bricks-breadcrumbs-home-label)
       - [Filter: bricks/breadcrumbs/separator](#developer-hooks-filters-bricks-breadcrumbs-separator)
+      - [Filter: bricks/builder/dynamic_wrapper](#developer-hooks-filters-bricks-builder-dynamic-wrapper)
       - [Filter: bricks/builder/current_page_type](#developer-hooks-filters-bricks-builder-current-page-type)
       - [Filter: bricks/builder/data_post_id](#developer-hooks-filters-bricks-builder-data-post-id)
-      - [Filter: bricks/builder/dynamic_wrapper](#developer-hooks-filters-bricks-builder-dynamic-wrapper)
       - [Filter: bricks/builder/first_element_category](#developer-hooks-filters-bricks-builder-first-element-category)
       - [Filter: bricks/builder/post_title](#developer-hooks-filters-bricks-builder-post-title)
       - [Filter: bricks/builder/state_group_definitions](#developer-hooks-filters-bricks-builder-state-group-definitions)
       - [Filter: bricks/builder/supported_post_types](#developer-hooks-filters-bricks-builder-supported-post-types)
       - [Filter: bricks/builder/term_name](#developer-hooks-filters-bricks-builder-term-name)
       - [Filter: bricks/cmb2/checkbox_value](#developer-hooks-filters-bricks-cmb2-checkbox-value)
-      - [Filter: bricks/combined_search/post_ids](#developer-hooks-filters-bricks-combined-search-post-ids)
       - [Filter: bricks/code/echo_everywhere](#developer-hooks-filters-bricks-code-echo-everywhere)
+      - [Filter: bricks/combined_search/post_ids](#developer-hooks-filters-bricks-combined-search-post-ids)
       - [Filter: bricks/combined_search/term_ids](#developer-hooks-filters-bricks-combined-search-term-ids)
       - [Filter: bricks/combined_search/user_ids](#developer-hooks-filters-bricks-combined-search-user-ids)
       - [Filter: bricks/comments/author_tag](#developer-hooks-filters-bricks-comments-author-tag)
@@ -361,10 +361,10 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Filter: bricks/conditions/result](#developer-hooks-filters-bricks-conditions-result)
       - [Filter: bricks/content_analysis/full_post_content_id](#developer-hooks-filters-bricks-content-analysis-full-post-content-id)
       - [Filter: bricks/custom_fonts/mime_types](#developer-hooks-filters-bricks-custom-fonts-mime-types)
-      - [Filter: bricks/database/content_type](#developer-hooks-filters-bricks-database-content-type)
-      - [Filter: bricks/database/get_all_templates_cache_key](#developer-hooks-filters-bricks-database-get-all-templates-cache-key)
-      - [Filter: bricks/dynamic_data/allowed_keys](#developer-hooks-filters-bricks-dynamic-data-allowed-keys)
       - [Filter: bricks/database/bricks_get_all_templates_by_type_args](#developer-hooks-filters-bricks-database-bricks-get-all-templates-by-type-args)
+      - [Filter: bricks/database/content_type](#developer-hooks-filters-bricks-database-content-type)
+      - [Filter: bricks/dynamic_data/allowed_keys](#developer-hooks-filters-bricks-dynamic-data-allowed-keys)
+      - [Filter: bricks/database/get_all_templates_cache_key](#developer-hooks-filters-bricks-database-get-all-templates-cache-key)
       - [Filter: bricks/dynamic_data/author_value](#developer-hooks-filters-bricks-dynamic-data-author-value)
       - [Filter: bricks/dynamic_data/do_action_context](#developer-hooks-filters-bricks-dynamic-data-do-action-context)
       - [Filter: bricks/dynamic_data/format_value](#developer-hooks-filters-bricks-dynamic-data-format-value)
@@ -379,20 +379,20 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Filter: bricks/element/builder_setup_query](#developer-hooks-filters-bricks-element-builder-setup-query)
       - [Filter: bricks/element/form/datepicker_options](#developer-hooks-filters-bricks-element-form-datepicker-options)
       - [Filter: bricks/element/form/honeypot/result](#developer-hooks-filters-bricks-element-form-honeypot-result)
-      - [Filter: bricks/element/maybe_set_aria_current_page](#developer-hooks-filters-bricks-element-maybe-set-aria-current-page)
-      - [Filter: bricks/elements/{element_name}/scripts](#developer-hooks-filters-bricks-elements-element-name-scripts)
       - [Filter: bricks/elements/nav_menu/menus](#developer-hooks-filters-bricks-elements-nav-menu-menus)
+      - [Filter: bricks/elements/{element_name}/scripts](#developer-hooks-filters-bricks-elements-element-name-scripts)
       - [Filter: bricks/elements/nav_menu/name](#developer-hooks-filters-bricks-elements-nav-menu-name)
       - [Filter: bricks/export_template_args](#developer-hooks-filters-bricks-export-template-args)
-      - [Filter: bricks/filter-element/datepicker_options](#developer-hooks-filters-bricks-filter-element-datepicker-options)
+      - [Filter: bricks/element/maybe_set_aria_current_page](#developer-hooks-filters-bricks-element-maybe-set-aria-current-page)
       - [Filter: bricks/filter/taxonomy_args](#developer-hooks-filters-bricks-filter-taxonomy-args)
+      - [Filter: bricks/filter-element/datepicker_options](#developer-hooks-filters-bricks-filter-element-datepicker-options)
       - [Filter: bricks/filter_element/controls](#developer-hooks-filters-bricks-filter-element-controls)
       - [Filter: bricks/filter_element/count_source_{filter_source}](#developer-hooks-filters-bricks-filter-element-count-source-filter-source)
       - [Filter: bricks/filter_element/count_source_wcField](#developer-hooks-filters-bricks-filter-element-count-source-wcfield)
       - [Filter: bricks/filter_element/data_source_{filter_source}](#developer-hooks-filters-bricks-filter-element-data-source-filter-source)
       - [Filter: bricks/filter_element/data_source_wcField](#developer-hooks-filters-bricks-filter-element-data-source-wcfield)
-      - [Filter: bricks/filter_element/datepicker_date_format](#developer-hooks-filters-bricks-filter-element-datepicker-date-format)
       - [Filter: bricks/filter_element/datepicker_db_date_format](#developer-hooks-filters-bricks-filter-element-datepicker-db-date-format)
+      - [Filter: bricks/filter_element/datepicker_date_format](#developer-hooks-filters-bricks-filter-element-datepicker-date-format)
       - [Filter: bricks/filter_element/filtered_source](#developer-hooks-filters-bricks-filter-element-filtered-source)
       - [Filter: bricks/fix_filter_element_db](#developer-hooks-filters-bricks-fix-filter-element-db)
       - [Filter: bricks/form/file_directory](#developer-hooks-filters-bricks-form-file-directory)
@@ -410,13 +410,13 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Filter: bricks/get_template_authors](#developer-hooks-filters-bricks-get-template-authors)
       - [Filter: bricks/get_template_bundles](#developer-hooks-filters-bricks-get-template-bundles)
       - [Filter: bricks/get_template_tags](#developer-hooks-filters-bricks-get-template-tags)
-      - [Filter: bricks/get_templates](#developer-hooks-filters-bricks-get-templates)
       - [Filter: bricks/get_templates/query_vars](#developer-hooks-filters-bricks-get-templates-query-vars)
+      - [Filter: bricks/get_templates](#developer-hooks-filters-bricks-get-templates)
       - [Filter: bricks/get_templates_query/cache_key](#developer-hooks-filters-bricks-get-templates-query-cache-key)
       - [Filter: bricks/get_terms_options/enable_limit](#developer-hooks-filters-bricks-get-terms-options-enable-limit)
       - [Filter: bricks/get_terms_options/excluded_taxonomies](#developer-hooks-filters-bricks-get-terms-options-excluded-taxonomies)
-      - [Filter: bricks/handle_no_results_children_elements](#developer-hooks-filters-bricks-handle-no-results-children-elements)
       - [Filter: bricks/get_the_title](#developer-hooks-filters-bricks-get-the-title)
+      - [Filter: bricks/handle_no_results_children_elements](#developer-hooks-filters-bricks-handle-no-results-children-elements)
       - [Filter: bricks/helpers/get_posts_args](#developer-hooks-filters-bricks-helpers-get-posts-args)
       - [Filter: bricks/media_browser/health/file_status](#developer-hooks-filters-bricks-media-browser-health-file-status)
       - [Filter: bricks/metabox/checkbox_value](#developer-hooks-filters-bricks-metabox-checkbox-value)
@@ -426,8 +426,8 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Filter: bricks/paginate_links_args](#developer-hooks-filters-bricks-paginate-links-args)
       - [Filter: bricks/pagination/current_page](#developer-hooks-filters-bricks-pagination-current-page)
       - [Filter: bricks/pagination/custom_logic](#developer-hooks-filters-bricks-pagination-custom-logic)
-      - [Filter: bricks/polylang/builder_ajax_params](#developer-hooks-filters-bricks-polylang-builder-ajax-params)
       - [Filter: bricks/pagination/total_pages](#developer-hooks-filters-bricks-pagination-total-pages)
+      - [Filter: bricks/polylang/builder_ajax_params](#developer-hooks-filters-bricks-polylang-builder-ajax-params)
       - [Filter: bricks/polylang/exclude_controls_from_translation](#developer-hooks-filters-bricks-polylang-exclude-controls-from-translation)
       - [Filter: bricks/popup/attributes](#developer-hooks-filters-bricks-popup-attributes)
       - [Filter: bricks/query/archive_query_arguments](#developer-hooks-filters-bricks-query-archive-query-arguments)
@@ -440,19 +440,19 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Filter: bricks/query/result_end](#developer-hooks-filters-bricks-query-result-end)
       - [Filter: bricks/query/result_start](#developer-hooks-filters-bricks-query-result-start)
       - [Filter: bricks/query/run_fake](#developer-hooks-filters-bricks-query-run-fake)
-      - [Filter: bricks/query/supress_render_content](#developer-hooks-filters-bricks-query-supress-render-content)
       - [Filter: bricks/query_api/body](#developer-hooks-filters-bricks-query-api-body)
+      - [Filter: bricks/query/supress_render_content](#developer-hooks-filters-bricks-query-supress-render-content)
       - [Filter: bricks/query_api/headers](#developer-hooks-filters-bricks-query-api-headers)
       - [Filter: bricks/query_api/request_args](#developer-hooks-filters-bricks-query-api-request-args)
-      - [Filter: bricks/query_api/total_pages](#developer-hooks-filters-bricks-query-api-total-pages)
       - [Filter: bricks/query_filters/custom_field_index_rows](#developer-hooks-filters-bricks-query-filters-custom-field-index-rows)
+      - [Filter: bricks/query_api/total_pages](#developer-hooks-filters-bricks-query-api-total-pages)
       - [Filter: bricks/query_filters/custom_field_meta_query](#developer-hooks-filters-bricks-query-filters-custom-field-meta-query)
       - [Filter: bricks/query_filters/datepicker_custom_field_meta_query](#developer-hooks-filters-bricks-query-filters-datepicker-custom-field-meta-query)
       - [Filter: bricks/query_filters/element_data](#developer-hooks-filters-bricks-query-filters-element-data)
       - [Filter: bricks/query_filters/filter_query_vars](#developer-hooks-filters-bricks-query-filters-filter-query-vars)
+      - [Filter: bricks/query_filters/get_filter_object_ids](#developer-hooks-filters-bricks-query-filters-get-filter-object-ids)
       - [Filter: bricks/query_filters/index_args](#developer-hooks-filters-bricks-query-filters-index-args)
       - [Filter: bricks/query_filters/index_post/meta_exists](#developer-hooks-filters-bricks-query-filters-index-post-meta-exists)
-      - [Filter: bricks/query_filters/get_filter_object_ids](#developer-hooks-filters-bricks-query-filters-get-filter-object-ids)
       - [Filter: bricks/query_filters/index_post/{source}](#developer-hooks-filters-bricks-query-filters-index-post-source)
       - [Filter: bricks/query_filters/index_post/wcField](#developer-hooks-filters-bricks-query-filters-index-post-wcfield)
       - [Filter: bricks/query_filters/index_user/meta_exists](#developer-hooks-filters-bricks-query-filters-index-user-meta-exists)
@@ -470,8 +470,8 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Filter: bricks/resolve_attachment_id](#developer-hooks-filters-bricks-resolve-attachment-id)
       - [Filter: bricks/rtl_languages](#developer-hooks-filters-bricks-rtl-languages)
       - [Filter: bricks/security_check_before_save/new_elements](#developer-hooks-filters-bricks-security-check-before-save-new-elements)
-      - [Filter: bricks/support_masonry_element](#developer-hooks-filters-bricks-support-masonry-element)
       - [Filter: bricks/svg/allowed_attributes](#developer-hooks-filters-bricks-svg-allowed-attributes)
+      - [Filter: bricks/support_masonry_element](#developer-hooks-filters-bricks-support-masonry-element)
       - [Filter: bricks/svg/allowed_tags](#developer-hooks-filters-bricks-svg-allowed-tags)
       - [Filter: bricks/svg/bypass_sanitization](#developer-hooks-filters-bricks-svg-bypass-sanitization)
       - [Filter: bricks/template_preview/supported_content_types](#developer-hooks-filters-bricks-template-preview-supported-content-types)
@@ -479,8 +479,8 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Filter: bricks/theme_styles/control_groups](#developer-hooks-filters-bricks-theme-styles-control-groups)
       - [Filter: bricks/theme_styles/controls](#developer-hooks-filters-bricks-theme-styles-controls)
       - [Filter: bricks/theme_styles](#developer-hooks-filters-bricks-theme-styles)
-      - [Filter: bricks/user_activation_email/from_name](#developer-hooks-filters-bricks-user-activation-email-from-name)
       - [Filter: bricks/user_activation_email/content](#developer-hooks-filters-bricks-user-activation-email-content)
+      - [Filter: bricks/user_activation_email/from_name](#developer-hooks-filters-bricks-user-activation-email-from-name)
       - [Filter: bricks/user_activation_email/subject](#developer-hooks-filters-bricks-user-activation-email-subject)
       - [Filter: bricks/webhook/timeout](#developer-hooks-filters-bricks-webhook-timeout)
       - [Filter: bricks/woo_setup_wizard/register_presets](#developer-hooks-filters-bricks-woo-setup-wizard-register-presets)
@@ -489,9 +489,9 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Filter: bricks/woocommerce/dynamic_fragments/fragments](#developer-hooks-filters-bricks-woocommerce-dynamic-fragments-fragments)
       - [Filter: bricks/woocommerce/dynamic_fragments/html](#developer-hooks-filters-bricks-woocommerce-dynamic-fragments-html)
       - [Filter: bricks/woocommerce/dynamic_fragments/targets](#developer-hooks-filters-bricks-woocommerce-dynamic-fragments-targets)
+      - [Filter: bricks/woocommerce/predefined_elements/generated_payload](#developer-hooks-filters-bricks-woocommerce-predefined-elements-generated-payload)
       - [Filter: bricks/woocommerce/predefined_elements/local_presets](#developer-hooks-filters-bricks-woocommerce-predefined-elements-local-presets)
       - [Filter: bricks/woocommerce/predefined_elements/remote_payload](#developer-hooks-filters-bricks-woocommerce-predefined-elements-remote-payload)
-      - [Filter: bricks/woocommerce/predefined_elements/generated_payload](#developer-hooks-filters-bricks-woocommerce-predefined-elements-generated-payload)
       - [Filter: bricks/woocommerce/predefined_elements/remote_url](#developer-hooks-filters-bricks-woocommerce-predefined-elements-remote-url)
       - [Filter: bricks/woocommerce/products_filters/options](#developer-hooks-filters-bricks-woocommerce-products-filters-options)
       - [Filter: bricks/woocommerce/products_orderby_options](#developer-hooks-filters-bricks-woocommerce-products-orderby-options)
@@ -501,8 +501,8 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Filter: bricks/wpml/translatable_control_types](#developer-hooks-filters-bricks-wpml-translatable-control-types)
       - [Filter: bricks_query_max_items_in_builder](#developer-hooks-filters-bricks-query-max-items-in-builder)
       - [Filter: bricks/active_templates](#developer-hooks-filters-filter-bricks-active-templates)
-      - [Filter: bricks/allowed_html_tags](#developer-hooks-filters-filter-bricks-allowed-html-tags)
       - [Filter: bricks/assets/generate_css_from_element](#developer-hooks-filters-filter-bricks-assets-generate-css-from-element)
+      - [Filter: bricks/allowed_html_tags](#developer-hooks-filters-filter-bricks-allowed-html-tags)
       - [Filter: bricks//assets/load_webfonts](#developer-hooks-filters-filter-bricks-assets-load-webfonts)
       - [Filter: bricks/auth/custom_login_redirect](#developer-hooks-filters-filter-bricks-auth-custom-login-redirect)
       - [Filter: bricks/auth/custom_lost_password_redirect](#developer-hooks-filters-filter-bricks-auth-custom-lost-password-redirect)
@@ -513,16 +513,16 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Filter: bricks/builder/codemirror_config](#developer-hooks-filters-filter-bricks-builder-codemirror-config)
       - [Filter: bricks/builder/elements](#developer-hooks-filters-filter-bricks-builder-elements)
       - [Filter: bricks/builder/image_size_options](#developer-hooks-filters-filter-bricks-builder-image-size-options)
-      - [Filter: bricks/builder/map_styles](#developer-hooks-filters-filter-bricks-builder-mapstyles)
       - [Filter: bricks/code/allow_execution](#developer-hooks-filters-filter-bricks-code-allow-execution)
+      - [Filter: bricks/builder/map_styles](#developer-hooks-filters-filter-bricks-builder-mapstyles)
       - [Filter: bricks/code/disable_execution](#developer-hooks-filters-filter-bricks-code-disable-execution)
-      - [Filter: bricks/code/echo_function_names](#developer-hooks-filters-filter-bricks-code-echo-function-names)
       - [Filter: bricks/code/disallow_keywords](#developer-hooks-filters-filter-bricks-code-disallow-keywords)
+      - [Filter: bricks/code/echo_function_names](#developer-hooks-filters-filter-bricks-code-echo-function-names)
       - [Filter: bricks/comments/timestamp](#developer-hooks-filters-filter-bricks-comments-timestamp)
       - [Filter: bricks/content/attributes](#developer-hooks-filters-filter-bricks-content-attributes)
       - [Filter: bricks/content/html_after_begin](#developer-hooks-filters-filter-bricks-content-html-after-begin)
-      - [Filter: bricks/content/html_before_end](#developer-hooks-filters-filter-bricks-content-html-before-end)
       - [Filter: bricks/content/tag](#developer-hooks-filters-filter-bricks-content-tag)
+      - [Filter: bricks/content/html_before_end](#developer-hooks-filters-filter-bricks-content-html-before-end)
       - [Filter: bricks/default_page_title](#developer-hooks-filters-filter-bricks-default-page-title)
       - [Filter: bricks/dynamic_data/exclude_tags](#developer-hooks-filters-filter-bricks-dynamic-data-exclude-tags)
       - [Filter: bricks/dynamic_data/post_terms_links](#developer-hooks-filters-filter-bricks-dynamic-data-post-terms-links)
@@ -539,36 +539,36 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Filter: bricks/form/action/{form_action}](#developer-hooks-filters-filter-bricks-form-action-form-action)
       - [Filter: bricks/form/create_post/meta_value](#developer-hooks-filters-filter-bricks-form-create-post-meta-value)
       - [Filter: bricks/form/update_post/meta_value](#developer-hooks-filters-filter-bricks-form-update-post-meta-value)
+      - [Filter: bricks/frontend/render_data](#developer-hooks-filters-filter-bricks-frontend-render-data)
       - [Filter: bricks/frontend/render_element](#developer-hooks-filters-filter-bricks-frontend-render-element)
       - [Filter: bricks/get_element_data/maybe_from_post_id](#developer-hooks-filters-filter-bricks-get-element-data-maybe-from-post-id)
-      - [Filter: bricks/frontend/render_data](#developer-hooks-filters-filter-bricks-frontend-render-data)
       - [Filter: bricks/header/attributes](#developer-hooks-filters-filter-bricks-header-attributes)
       - [Filter: bricks/builder/i18n](#developer-hooks-filters-filter-bricks-i18n)
-      - [Filter: bricks/link_css_selectors](#developer-hooks-filters-filter-bricks-link-css-selectors)
       - [Filter: bricks/is_layout_element](#developer-hooks-filters-filter-bricks-is-layout-element)
+      - [Filter: bricks/link_css_selectors](#developer-hooks-filters-filter-bricks-link-css-selectors)
       - [Filter: bricks/maintenance/should_apply](#developer-hooks-filters-filter-bricks-maintenance-should-apply)
       - [Filter: bricks/nav_menu/menu](#developer-hooks-filters-filter-bricks-nav-menu-menu)
       - [Filter: bricks/password_protection/cookie_expires](#developer-hooks-filters-filter-bricks-password-protection-cookie-expires)
-      - [Filter: bricks/password_protection/is_active](#developer-hooks-filters-filter-bricks-password-protection-is-active)
       - [Filter: bricks/placeholder_image](#developer-hooks-filters-filter-bricks-placeholder-image)
       - [Filter: bricks/posts/merge_query](#developer-hooks-filters-filter-bricks-posts-merge-query)
-      - [Filter: bricks/query/force_run](#developer-hooks-filters-filter-bricks-query-force-run)
       - [Filter: bricks/posts/query_vars](#developer-hooks-filters-filter-bricks-posts-query-vars)
+      - [Filter: bricks/query/force_run](#developer-hooks-filters-filter-bricks-query-force-run)
+      - [Filter: bricks/password_protection/is_active](#developer-hooks-filters-filter-bricks-password-protection-is-active)
       - [Filter: bricks/query/init_loop_index](#developer-hooks-filters-filter-bricks-query-init-loop-index)
       - [Filter: bricks/query/loop_object](#developer-hooks-filters-filter-bricks-query-loop-object)
       - [Filter: bricks/query/loop_object_id](#developer-hooks-filters-filter-bricks-query-loop-object-id)
       - [Filter: bricks/query/loop_object_type](#developer-hooks-filters-filter-bricks-query-loop-object-type)
       - [Filter: bricks/query/no_results_content](#developer-hooks-filters-filter-bricks-query-no-results-content)
       - [Filter: bricks/query/result](#developer-hooks-filters-filter-bricks-query-result)
-      - [Filter: bricks/query/result_count](#developer-hooks-filters-filter-bricks-query-result-count)
       - [Filter: bricks/query/result_max_num_pages](#developer-hooks-filters-filter-bricks-query-result-max-num-pages)
+      - [Filter: bricks/query/result_count](#developer-hooks-filters-filter-bricks-query-result-count)
       - [Filter: bricks/query/run](#developer-hooks-filters-filter-bricks-query-run)
       - [Filter: bricks/registered_post_types_args](#developer-hooks-filters-filter-bricks-registered-post-types-args)
       - [Filter: bricks/related_posts/query_vars](#developer-hooks-filters-filter-bricks-related-posts-query-vars)
       - [Filter: bricks/render_query_loop_trail](#developer-hooks-filters-filter-bricks-render-query-loop-trail)
-      - [Filter: bricks/search_form/home_url](#developer-hooks-filters-filter-bricks-search-form-home-url)
       - [Filter: bricks/screen_conditions/scores](#developer-hooks-filters-filter-bricks-screen-conditions-scores)
       - [Filter: bricks/element/set_root_attributes](#developer-hooks-filters-filter-bricks-set-root-attributes)
+      - [Filter: bricks/search_form/home_url](#developer-hooks-filters-filter-bricks-search-form-home-url)
       - [Filter: bricks/setup/control_options](#developer-hooks-filters-filter-bricks-setup-control-options)
       - [Filter: bricks/terms/query_vars](#developer-hooks-filters-filter-bricks-terms-query-vars)
       - [Filter: bricks/use_duplicate_content](#developer-hooks-filters-filter-bricks-use-duplicate-content)
@@ -589,15 +589,15 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Code Control Schema](#developer-schema-controls-code)
       - [Color Control Schema](#developer-schema-controls-color)
       - [Datepicker Control Schema](#developer-schema-controls-datepicker)
-      - [Dimensions Control Schema](#developer-schema-controls-dimensions)
       - [Direction Control Schema](#developer-schema-controls-direction)
+      - [Dimensions Control Schema](#developer-schema-controls-dimensions)
       - [Editor Control Schema](#developer-schema-controls-editor)
       - [File Control Schema](#developer-schema-controls-file)
       - [Filters Control Schema](#developer-schema-controls-filters)
       - [Icon Control Schema](#developer-schema-controls-icon)
       - [Image Gallery Control Schema](#developer-schema-controls-image-gallery)
-      - [Image Control Schema](#developer-schema-controls-image)
       - [Justify Content Control Schema](#developer-schema-controls-justify-content)
+      - [Image Control Schema](#developer-schema-controls-image)
       - [Link Control Schema](#developer-schema-controls-link)
       - [Number Control Schema](#developer-schema-controls-number)
       - [Query List Control Schema](#developer-schema-controls-query-list)
@@ -610,24 +610,24 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Text Align Control Schema](#developer-schema-controls-text-align)
       - [Text Shadow Control Schema](#developer-schema-controls-text-shadow)
       - [Text Control Schema](#developer-schema-controls-text)
-      - [Transform Control Schema](#developer-schema-controls-transform)
       - [Textarea Control Schema](#developer-schema-controls-textarea)
       - [Typography Control Schema](#developer-schema-controls-typography)
+      - [Transform Control Schema](#developer-schema-controls-transform)
       - [Video Control Schema](#developer-schema-controls-video)
       - [Content Area Schema](#developer-schema-general-content-area)
       - [Breakpoints Schema](#developer-schema-global-breakpoints)
       - [Color Palettes Schema](#developer-schema-global-color-palettes)
       - [Components Schema](#developer-schema-global-components)
-      - [Global Variables Schema](#developer-schema-global-global-variables)
       - [Global Classes Schema](#developer-schema-global-global-classes)
+      - [Global Variables Schema](#developer-schema-global-global-variables)
       - [Pseudo-Classes Schema](#developer-schema-global-pseudo-classes)
       - [Theme Styles Schema](#developer-schema-global-theme-styles)
       - [Page Settings Schema](#developer-schema-settings-page)
       - [Template Settings Schema](#developer-schema-settings-template)
       - [Accordion (Nestable) Schema](#developer-schema-elements-accordion-nested)
       - [Accordion Schema](#developer-schema-elements-accordion)
-      - [Alert Schema](#developer-schema-elements-alert)
       - [Anim. Typing Schema](#developer-schema-elements-animated-typing)
+      - [Alert Schema](#developer-schema-elements-alert)
       - [Audio Schema](#developer-schema-elements-audio)
       - [Back To Top Schema](#developer-schema-elements-back-to-top)
       - [Block Schema](#developer-schema-elements-block)
@@ -636,9 +636,9 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Carousel Schema](#developer-schema-elements-carousel)
       - [Code Schema](#developer-schema-elements-code)
       - [Container Schema](#developer-schema-elements-container)
-      - [Countdown Schema](#developer-schema-elements-countdown)
       - [Counter Schema](#developer-schema-elements-counter)
       - [Div Schema](#developer-schema-elements-div)
+      - [Countdown Schema](#developer-schema-elements-countdown)
       - [Divider Schema](#developer-schema-elements-divider)
       - [Dropdown Schema](#developer-schema-elements-dropdown)
       - [Facebook Page Schema](#developer-schema-elements-facebook-page)
@@ -652,23 +652,23 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Filter - Select Schema](#developer-schema-elements-filter-select)
       - [Filter - Submit / Reset Schema](#developer-schema-elements-filter-submit)
       - [Form - Checkbox Schema](#developer-schema-elements-form-checkbox)
-      - [Form Schema](#developer-schema-elements-form)
       - [Heading Schema](#developer-schema-elements-heading)
       - [HTML Schema](#developer-schema-elements-html)
+      - [Form Schema](#developer-schema-elements-form)
       - [Icon Box Schema](#developer-schema-elements-icon-box)
-      - [Icon Schema](#developer-schema-elements-icon)
       - [Image Gallery Schema](#developer-schema-elements-image-gallery)
       - [Image Schema](#developer-schema-elements-image)
-      - [List Schema](#developer-schema-elements-list)
       - [Instagram Feed Schema](#developer-schema-elements-instagram-feed)
+      - [Icon Schema](#developer-schema-elements-icon)
+      - [List Schema](#developer-schema-elements-list)
       - [Logo Schema](#developer-schema-elements-logo)
-      - [Map Connector Schema](#developer-schema-elements-map-connector)
       - [Map (Leaflet) Schema](#developer-schema-elements-map-leaflet)
       - [Map (Google) Schema](#developer-schema-elements-map)
+      - [Map Connector Schema](#developer-schema-elements-map-connector)
+      - [Nav Menu Schema](#developer-schema-elements-nav-menu)
       - [Nav (Nestable) Schema](#developer-schema-elements-nav-nested)
       - [Offcanvas Schema](#developer-schema-elements-offcanvas)
       - [Pagination Schema](#developer-schema-elements-pagination)
-      - [Nav Menu Schema](#developer-schema-elements-nav-menu)
       - [Pie Chart Schema](#developer-schema-elements-pie-chart)
       - [Author Schema](#developer-schema-elements-post-author)
       - [Comments Schema](#developer-schema-elements-post-comments)
@@ -678,8 +678,8 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Post Navigation Schema](#developer-schema-elements-post-navigation)
       - [Reading Progress Bar Schema](#developer-schema-elements-post-reading-progress-bar)
       - [Reading Time Schema](#developer-schema-elements-post-reading-time)
-      - [Taxonomy Schema](#developer-schema-elements-post-taxonomy)
       - [Social Sharing Schema](#developer-schema-elements-post-sharing)
+      - [Taxonomy Schema](#developer-schema-elements-post-taxonomy)
       - [Post Title Schema](#developer-schema-elements-post-title)
       - [Table Of Contents Schema](#developer-schema-elements-post-toc)
       - [Posts Schema](#developer-schema-elements-posts)
@@ -701,36 +701,36 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Progress Bar Schema](#developer-schema-elements-progress-bar)
       - [Query Results Summary Schema](#developer-schema-elements-query-results-summary)
       - [Rating Schema](#developer-schema-elements-rating)
-      - [Related Posts Schema](#developer-schema-elements-related-posts)
       - [Search Schema](#developer-schema-elements-search)
       - [Section Schema](#developer-schema-elements-section)
       - [Shortcode Schema](#developer-schema-elements-shortcode)
+      - [Related Posts Schema](#developer-schema-elements-related-posts)
       - [Sidebar Schema](#developer-schema-elements-sidebar)
       - [Slidercarousel Elementbricks Schema](#developer-schema-elements-slider)
-      - [Slidercarousel Elementbricks (Nestable) Schema](#developer-schema-elements-slider-nested)
       - [Slot Schema](#developer-schema-elements-slot)
+      - [Slidercarousel Elementbricks (Nestable) Schema](#developer-schema-elements-slider-nested)
+      - [Icon List Schema](#developer-schema-elements-social-icons)
       - [SVG Schema](#developer-schema-elements-svg)
+      - [Tabs (Nestable) Schema](#developer-schema-elements-tabs-nested)
       - [Tabs Schema](#developer-schema-elements-tabs)
       - [Team Members Schema](#developer-schema-elements-team-members)
-      - [Tabs (Nestable) Schema](#developer-schema-elements-tabs-nested)
-      - [Icon List Schema](#developer-schema-elements-social-icons)
       - [Template Schema](#developer-schema-elements-template)
       - [Testimonials Schema](#developer-schema-elements-testimonials)
-      - [Basic Text Schema](#developer-schema-elements-text-basic)
       - [Rich Text Schema](#developer-schema-elements-text)
+      - [Basic Text Schema](#developer-schema-elements-text-basic)
       - [Text Link Schema](#developer-schema-elements-text-link)
       - [Toggle - Mode Schema](#developer-schema-elements-toggle-mode)
       - [Toggle Schema](#developer-schema-elements-toggle)
       - [Video Schema](#developer-schema-elements-video)
       - [Account - Add Payment Method Schema](#developer-schema-elements-woocommerce-account-add-payment-method)
-      - [Account - Addresses Schema](#developer-schema-elements-woocommerce-account-addresses)
       - [Account - Downloads Schema](#developer-schema-elements-woocommerce-account-downloads)
+      - [Account - Addresses Schema](#developer-schema-elements-woocommerce-account-addresses)
       - [Account Edit Account Form Schema](#developer-schema-elements-woocommerce-account-edit-account-form)
       - [Account Edit Address Form Schema](#developer-schema-elements-woocommerce-account-edit-address-form)
       - [Account - Edit Account Schema](#developer-schema-elements-woocommerce-account-form-edit-account)
       - [Account - Edit Address Schema](#developer-schema-elements-woocommerce-account-form-edit-address)
-      - [Account - Lost Password Schema](#developer-schema-elements-woocommerce-account-form-lost-password)
       - [Account - Login Form Schema](#developer-schema-elements-woocommerce-account-form-login)
+      - [Account - Lost Password Schema](#developer-schema-elements-woocommerce-account-form-lost-password)
       - [Account - Register Form Schema](#developer-schema-elements-woocommerce-account-form-register)
       - [Account - Reset Password Schema](#developer-schema-elements-woocommerce-account-form-reset-password)
       - [WooCommerce Login Form Schema](#developer-schema-elements-woocommerce-account-login-form)
@@ -739,39 +739,39 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Account - Orders Pagination Schema](#developer-schema-elements-woocommerce-account-orders-pagination)
       - [Account - Orders Schema](#developer-schema-elements-woocommerce-account-orders)
       - [Account - Page V2 Schema](#developer-schema-elements-woocommerce-account-page-v2)
+      - [Account - Page Schema](#developer-schema-elements-woocommerce-account-page)
       - [Account - Payment Methods Schema](#developer-schema-elements-woocommerce-account-payment-methods)
       - [Account Register Form Schema](#developer-schema-elements-woocommerce-account-register-form)
       - [Account Reset Password Form Schema](#developer-schema-elements-woocommerce-account-reset-password-form)
-      - [Account - Page Schema](#developer-schema-elements-woocommerce-account-page)
       - [Add Payment Method (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-account-v2-state-add-payment-method)
       - [Addresses (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-account-v2-state-addresses)
       - [Dashboard (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-account-v2-state-dashboard)
       - [Downloads (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-account-v2-state-downloads)
       - [Edit Account (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-account-v2-state-edit-account)
       - [Edit Address (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-account-v2-state-edit-address)
-      - [Lost Password Confirmation (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-account-v2-state-lost-password-confirmation)
       - [Login (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-account-v2-state-login)
+      - [Lost Password Confirmation (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-account-v2-state-lost-password-confirmation)
       - [Lost Password (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-account-v2-state-lost-password)
-      - [Orders (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-account-v2-state-orders)
       - [Order Withdrawal (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-account-v2-state-order-withdrawal)
+      - [Orders (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-account-v2-state-orders)
       - [Payment Methods (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-account-v2-state-payment-methods)
       - [Reset Password (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-account-v2-state-reset-password)
       - [View Order (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-account-v2-state-view-order)
-      - [Breadcrumbs (WooCommerce) Schema](#developer-schema-elements-woocommerce-breadcrumbs)
-      - [Cart Coupon Schema](#developer-schema-elements-woocommerce-cart-coupon)
       - [Account - View Order Schema](#developer-schema-elements-woocommerce-account-view-order)
+      - [Breadcrumbs (WooCommerce) Schema](#developer-schema-elements-woocommerce-breadcrumbs)
       - [Cart Totals Schema](#developer-schema-elements-woocommerce-cart-collaterals)
+      - [Cart Coupon Schema](#developer-schema-elements-woocommerce-cart-coupon)
+      - [Cart Form Schema](#developer-schema-elements-woocommerce-cart-form)
       - [Cart Item Data Schema](#developer-schema-elements-woocommerce-cart-item-data)
       - [Cart Items Schema](#developer-schema-elements-woocommerce-cart-items)
-      - [Cart Form Schema](#developer-schema-elements-woocommerce-cart-form)
       - [Cart Quantity Schema](#developer-schema-elements-woocommerce-cart-quantity)
       - [Filled Cart (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-cart-v2-state-cart)
       - [Empty Cart (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-cart-v2-state-empty)
       - [Cart (V2) Schema](#developer-schema-elements-woocommerce-cart-v2)
       - [Checkout Account Fields Schema](#developer-schema-elements-woocommerce-checkout-account-fields)
       - [Checkout Billing Address Schema](#developer-schema-elements-woocommerce-checkout-billing-address)
-      - [Checkout Coupon Schema](#developer-schema-elements-woocommerce-checkout-coupon)
       - [Checkout Customer Details Schema](#developer-schema-elements-woocommerce-checkout-customer-details)
+      - [Checkout Coupon Schema](#developer-schema-elements-woocommerce-checkout-coupon)
       - [Checkout Login Schema](#developer-schema-elements-woocommerce-checkout-login)
       - [Checkout Order Payment Schema](#developer-schema-elements-woocommerce-checkout-order-payment)
       - [Checkout Order Review Schema](#developer-schema-elements-woocommerce-checkout-order-review)
@@ -786,9 +786,9 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Checkout (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-checkout-v2-state-checkout)
       - [Login Required (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-checkout-v2-state-login)
       - [Pay (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-checkout-v2-state-pay)
-      - [Checkout (V2) Schema](#developer-schema-elements-woocommerce-checkout-v2)
-      - [Thank You (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-checkout-v2-state-thankyou)
       - [Order Receipt (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-checkout-v2-state-receipt)
+      - [Thank You (StateWooCommerce Template Statebricks) Schema](#developer-schema-elements-woocommerce-checkout-v2-state-thankyou)
+      - [Checkout (V2) Schema](#developer-schema-elements-woocommerce-checkout-v2)
       - [Dynamic Fragment Schema](#developer-schema-elements-woocommerce-dynamic-fragment)
       - [WooCommerce Form Field Schema](#developer-schema-elements-woocommerce-form-field)
       - [WooCommerce Form Submit Schema](#developer-schema-elements-woocommerce-form-submit)
@@ -803,15 +803,15 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Products Pagination Schema](#developer-schema-elements-woocommerce-products-pagination)
       - [Products Total Results Schema](#developer-schema-elements-woocommerce-products-total-results)
       - [Products Schema](#developer-schema-elements-woocommerce-products)
-      - [Shipping Options Schema](#developer-schema-elements-woocommerce-shipping-options)
       - [WooCommerce Template Hook Schema](#developer-schema-elements-woocommerce-template-hook)
+      - [Shipping Options Schema](#developer-schema-elements-woocommerce-shipping-options)
       - [WordPress Schema](#developer-schema-elements-wordpress)
         - [Element Schema](#developer-schema-elements-common-element)
         - [Element Interactions Schema](#developer-schema-elements-common-interactions)
         - [Element Conditions Schema](#developer-schema-elements-common-conditions)
+  - [Gutenberg](#integrations-gutenberg)
   - [How to set up your Google Maps API key](#integrations-how-to-set-up-your-google-maps-api-key)
   - [How to use WPML with Bricks](#integrations-how-to-use-wpml-with-bricks)
-  - [Gutenberg](#integrations-gutenberg)
 - [Integrations](#integrations)
   - [How to get your Instagram Access Token](#integrations-instagram-access-token)
   - [Map (Leaflet)](#integrations-map-leaflet)
@@ -819,22 +819,22 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
   - [Unsplash Integration](#integrations-unsplash)
     - [Bricks components as blocks](#integrations-gutenberg-components-as-blocks)
     - [WooCommerce advanced modular elements](#integrations-woocommerce-advanced-modular-elements)
-    - [Checkout (WooCommerce)](#integrations-woocommerce-checkout)
     - [Cart (WooCommerce)](#integrations-woocommerce-cart)
     - [Create a custom mini cart with Dynamic fragment](#integrations-woocommerce-create-custom-mini-cart-dynamic-fragment)
+    - [Checkout (WooCommerce)](#integrations-woocommerce-checkout)
     - [Creating dynamic WooCommerce archive pages](#integrations-woocommerce-creating-dynamic-woocommerce-archive-pages)
     - [Element: Checkout Coupon](#integrations-woocommerce-element-checkout-coupon)
     - [Element: Checkout Login](#integrations-woocommerce-element-checkout-login)
-    - [How to Create Product Quick View with Bricks](#integrations-woocommerce-how-to-create-product-quick-view-with-bricks)
   - [WooCommerce](#integrations-woocommerce)
+    - [How to Create Product Quick View with Bricks](#integrations-woocommerce-how-to-create-product-quick-view-with-bricks)
     - [Checkout v2 multistep checkout](#integrations-woocommerce-multistep-checkout-v2)
     - [Product Archive (WooCommerce)](#integrations-woocommerce-product-archive-woocommerce)
     - [Product Variation Swatches (WooCommerce)](#integrations-woocommerce-product-variation-swatches)
     - [Single Product (WooCommerce)](#integrations-woocommerce-single-product)
     - [Woo Setup Wizard](#integrations-woocommerce-woo-setup-wizard)
-    - [WooCommerce Account Builder](#integrations-woocommerce-woocommerce-account-builder)
     - [WooCommerce Builder](#integrations-woocommerce-woocommerce-builder)
     - [WooCommerce Notices](#integrations-woocommerce-woocommerce-notices)
+    - [WooCommerce Account Builder](#integrations-woocommerce-woocommerce-account-builder)
     - [WooCommerce Template Hooks](#integrations-woocommerce-woocommerce-template-hooks)
     - [WooCommerce v2 query loops and dynamic tags](#integrations-woocommerce-woocommerce-v2-query-loops-dynamic-tags)
 
@@ -847,223 +847,6 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
 Source: https://academy.bricksbuilder.io/
 
 *Official documentation for Bricks, the visual site builder for WordPress. Guides, references, and tutorials from first install to custom code.*
-
----
-
-<a id="getting-started-building-your-first-page"></a>
-
-# Start your first page
-
-Source: https://academy.bricksbuilder.io/getting-started/building-your-first-page/
-
-*Start building your first Bricks page by setting up the homepage, creating the hero section, and learning the core layout workflow.*
-
-https://youtu.be/d2mWTDfW6mE
-
-Time to build. We will start your homepage by creating the hero section. This is where you'll learn the core workflow and understand how layout elements work. We will add more sections (like a latest posts grid) later in the series.
-
-## Open your Home page
-
-In the previous article you already created a **Home** page and opened it in the builder.
-
-If the builder is not open anymore:
-
-1. In your WordPress dashboard, go to **Pages > All Pages**
-2. Find the page titled **Home**
-3. Hover it and click **Edit with Bricks**
-
-The builder opens with your Home page ready to work on. If you do not have a Home page yet, quickly create one now and open it with Bricks.
-
-## Set this page as your homepage
-
-Before we build, tell WordPress to use **Home** as the static front page:
-
-1. In the WordPress dashboard, go to **Settings > Reading**
-2. Under **Your homepage displays**, select **A static page**
-3. Set **Homepage** to your **Home** page
-4. Optionally set **Posts page** to a page named **Blog** (or leave default for now)
-5. Click **Save Changes**
-
-## How most web pages are structured
-
-Before we touch anything, notice how most websites are laid out when you scroll:
-
-- A **header** at the very top (logo and navigation, usually global)
-- A **hero** section that introduces the page
-- One or more **content sections** (features, testimonials, blog posts, contact)
-- A **footer** at the bottom
-
-Visually, the page is a vertical stack of horizontal bands. In Bricks, we build those bands with the **Section** element.
-
-Under the hood, each section is just a semantic HTML box. Inside that box we place more boxes, and inside those we place content.
-
-## Layout elements in Bricks
-
-To build those bands and columns, Bricks gives you four layout elements. You will use them to hold all other elements.
-
-**Section** → **Container** → **Block / Div** → **Elements**
-
-- **Section**: The root band. Spans the full width of the screen. Used to separate major parts of your page (header, hero, features, footer).
-- **Container**: Sits inside the section. Keeps your content centered and bounded (width 1100px by default).
-- **Block**: A layout box that uses flexbox and takes up 100 percent width by default. Great for columns and cards inside a section or container.
-- **Div**: A plain, unstyled `div` that grows with its content. Use it as a lightweight wrapper when you want full control.
-- **Elements**: The actual content (headings, images, buttons) that live inside those layout boxes.
-
-### When to use each layout element
-
-You can think of these layout elements as different kinds of wrappers for your content.
-
-- **Section**: Use when you want a new horizontal band on the page. A typical page is one section for hero, one for features, one for testimonials, one for contact, and so on.
-- **Container**: Use when you want the content of a section to have a fixed maximum width and be centered. Most sections have exactly one container.
-- **Block**: Use when you want to divide a container into columns or repeated boxes. For example, in a hero section, one Block for text and another for the image. In a features section, one Block per feature card.
-- **Div**: Use when you just need a simple box inside other layout elements. For example, to group a heading and an icon, or to wrap part of a card without affecting the overall layout.
-
-Where you apply styles matters:
-
-- Background colors and borders on the **Section** affect the full width band.
-- Styles on the **Container** affect the centered content area.
-- Styles on a **Block** or **Div** affect just that column or card.
-
-If you inspect your page in the browser later and hover over these elements in the dev tools, you will see colored overlays showing content, padding, and margin for each box. That is the box model in action.
-
-These layout elements are just wrappers. Where you place them determines width, positioning, and which parts of your design share the same background or border.
-
-We will keep coming back to them as you build more pages and templates.
-
-## Build the hero section
-
-For this first hero we will create a very common pattern:
-
-- Text and button on the left  
-- Image on the right  
-- Both aligned nicely in the middle of the screen
-
-### 1. Add a section
-
-1. In the Settings Panel (left), click **Section** (under Layout)
-2. A **Section** with a **Container** inside is automatically added to your canvas
-
-![](https://academy.bricksbuilder.io/assets/add-section-element.png)
-
-### 2. Add your hero content
-
-We will first add all the content, then turn it into two columns.
-
-1. Select the **Container** from the structure panel or by clicking on the canvas
-
-![](https://academy.bricksbuilder.io/assets/container-element-selected.png)
-2. Add a **Heading** element
-3. Add a **Rich Text** element below the heading
-4. Add a **Button** element below the text
-5. Add an **Image** element below the button
-
-Right now everything is in one column (stacked). We will group elements into columns next.
-
-![](https://academy.bricksbuilder.io/assets/bulk-selected-elements-inside-container.png)
-
-### 3. Group content into columns with Blocks
-
-Blocks are perfect for columns. Instead of adding them empty and dragging elements in, we will wrap existing elements in Blocks.
-
-**Left column (text + button):**
-
-1. Open the **Structure Panel** on the right
-2. In the Container, click the **Heading**
-3. Hold **Shift** and click the **Button**  
-   → This selects the Heading, Rich Text, and Button together  
-   (Optionally, hold `Cmd/Ctrl` and click items one by one to select them)
-4. Right-click on the selection and choose **Wrap → Block**
-
-Bricks wraps those three elements in a new Block. This Block will be your left column.
-
-**Right column (image):**
-
-1. In the Structure Panel, select the **Image**
-2. Right-click it and choose **Wrap → Block**
-
-You now have a Container with **two Blocks** inside: one for text/button, one for the image. Next we will tell Bricks to lay those Blocks out as columns.
-
-![](https://academy.bricksbuilder.io/assets/hero-section-two-columns-structure-panel.png)
-
-### 4. Layout the columns
-
-Now let's make them sit side-by-side using Flexbox.
-
-1. Select the **Container**
-2. Go to **Content > Layout**
-3. Set **Direction** to `Row` (horizontal)
-4. Set **Align cross axis** to `Center` (vertically centers content)
-5. Set **Column gap** to `24` (adds space between first column and second column)
-6. Set a background color from the "Styles" tab > "Background" 
-
-![](https://academy.bricksbuilder.io/assets/hero-section-styles.png)
-
-### A quick note on flexbox
-
-In CSS, the `display` property controls how elements are laid out. By default, many elements are `block` (stacked vertically) or `inline` (flow with text).
-
-**Flexbox** is a layout mode that makes it easy to arrange children of a container in a row or a column. In Bricks, Section, Container, and Block all use flexbox by default.
-
-When you set **Direction** to `Row`, you tell the container to line up its children horizontally. If you changed it to `Column`, they would stack vertically.
-
-A simple way to think about the main controls:
-
-- **Direction**: chooses the main axis (row = side by side, column = stacked).
-- **Gap**: spaces out the children along that main axis (the white space between our text Block and Image).
-- **Align items**: lines up the children along the cross axis (here: vertically) so both columns share the same vertical center.
-
-Flexbox is perfect for one dimensional layouts like our two column hero. If you want to go deeper into flexbox itself, you can read the [Flexbox basics guide on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox). We will stay focused on using it visually in Bricks.
-
-### 5. Style the content
-
-**Left column Block:**
-1. Select the **Block**
-2. Set **Row gap** to `8` (adds space between heading, text, and button)
-
-**Heading:**
-1. Change text to: "Welcome to Bricks"
-2. Set **Tag** to `H1`
-
-**Image:**
-1. Select the Image element
-2. Choose a photo from the media library
-
-## See the HTML Bricks generates
-
-You might have heard that Bricks outputs clean, semantic, non-bloated markup. Let's take a quick look at what that actually means.
-
-1. Click **Preview** in the toolbar to open your Home page on the front end  
-2. In your browser, right-click somewhere in your hero section and choose **Inspect** (or use the browser's developer tools shortcut)  
-3. Look for the `<main>` element and expand it
-
-You should see something very close to:
-
-- A `<section>` for the hero
-- A `<div>` (Container) inside it
-- Inside that, your content boxes and elements (heading, text, button, image)
-
-There are no mysterious extra wrapper divs, no huge chains of nested containers you did not create.
-
-Even if you're not familiar with HTML yet, the important idea is:
-
-- What you add in the builder is what you get in the markup  
-- Bricks keeps the structure lean so you have full control over layout and performance
-
-## The spacing problem
-
-Your section looks good, but it's hugging the top and bottom of the screen. We need padding.
-
-You *could* select the Section and add `80px` padding manually. But then you'd have to do that for every single section on your site. That's tedious and hard to maintain.
-
-**The solution?** Theme Styles.
-
-Instead of styling each section individually, we'll set a global rule: "All sections should have 80px padding."
-
-Let's do that in the next article.
-
-> **Help improve this lesson**
->
-> Bricks Academy is new. If a step in this lesson felt confusing, incomplete, or out of date, use the feedback box in the right sidebar and tell us what to improve.
 
 ---
 
@@ -1232,198 +1015,6 @@ You can now:
 - Use the Post Content element
 - Separate design (Bricks) from content (WordPress)
 - Customize templates that apply to all posts
-
----
-
-<a id="getting-started-header-template"></a>
-
-# Building a header template
-
-Source: https://academy.bricksbuilder.io/getting-started/header-template/
-
-*Build a reusable Bricks header template with site branding, navigation, and the template settings needed to apply it across your site.*
-
-https://youtu.be/CL-viLFWjDg
-
-Let's build a global header with a logo and menu.
-
-## Create the template
-
-1. Go to **Bricks > Templates**
-2. Add New: "Header"
-3. Edit with Bricks
-
-## Settings
-
-1. **Settings (gear) > Template Settings**
-2. **Type**: Header
-3. **Conditions**: Entire Website
-
-## Build the structure
-
-1. Add a **Section**
-2. Inside the **Container**:
-   - Add a **Logo** element (or Image/Text)
-   - Add a **Nav Menu** element (we'll use the standard WordPress menu)
-
-## Style the layout
-
-**Container:**
-1. **Direction**: `Row` (horizontal)
-2. **Justify content**: `Space between` (pushes logo and menu apart)
-3. **Align items**: `Center` (vertically aligned)
-
-**Section:**
-1. **Background color**: Pick a light gray or your brand color
-2. **Padding**: `12` top/bottom (this intentionally overrides our global 80px for this specific section)
-
-Your header is part of the site chrome, not page content. It usually needs tighter spacing than regular sections, so it is a good place to make a deliberate exception to your global section padding.
-
-## Create a WordPress menu (if you do not have one yet)
-
-The Nav Menu element uses a normal WordPress menu. If **Appearance > Menus** is empty or you have never built a menu:
-
-1. From the WordPress dashboard, go to **Appearance > Menus**
-2. Enter a **Menu name** (for example `Main`) and click **Create Menu**
-3. Add a few items from the left (**Pages**, **Custom links**, and so on), then click **Save Menu**
-
-Then return to this template in the builder.
-
-## Configure the menu
-
-1. Select the **Nav Menu** element
-2. Under **Menu**, choose the WordPress menu you created (for example **Main**)
-
-## Save and verify
-
-1. Save the template
-2. Go to your **Pages** panel (top bar) -> **Home**
-3. You should see your new header sitting perfectly atop your hero section!
-
-![](https://academy.bricksbuilder.io/assets/header-template.png)
-
----
-
-<a id="getting-started-installation-setup"></a>
-
-# Installation and setup
-
-Source: https://academy.bricksbuilder.io/getting-started/installation-setup/
-
-*Install Bricks, activate the theme, configure the basic WordPress setup, and prepare your site for the rest of the Academy walkthrough.*
-
-https://youtu.be/sUgx3lg6Jko
-
-Let's get Bricks installed on your WordPress site.
-
-Before you install, confirm your host meets [Bricks requirements](https://academy.bricksbuilder.io/builder/setup/requirements/) (PHP, database, memory, upload size, and a modern browser). Most hosting does; use that article if you need to raise limits or troubleshoot.
-
-## Install the Bricks theme
-
-Installing Bricks works exactly like any other WordPress theme. Use one place for everything account-related: [my.bricksbuilder.io](https://my.bricksbuilder.io/) (download the theme ZIP and find your license key there).
-
-### Download Bricks
-
-Log into [my.bricksbuilder.io](https://my.bricksbuilder.io/) and download the latest version as a ZIP file.
-
-![](https://academy.bricksbuilder.io/assets/download-bricks.png)
-
-### Upload to WordPress
-
-> **Theme, not plugin**
->
-> Install Bricks as a **theme** (**Appearance > Themes > Upload**), not under **Plugins**. Uploading the ZIP as a plugin will not work.
-
-1. In your WordPress dashboard, go to **Appearance > Themes**
-2. Click **Add New**
-![](https://academy.bricksbuilder.io/assets/wordpress-add-theme.png)
-3. Click **Upload Theme**
-![](https://academy.bricksbuilder.io/assets/wordpress-upload-theme.png)
-4. Select the `bricks.zip` file from your computer
-5. Click **Install Now**
-6. After the upload completes, click **Activate** (or go to **Appearance > Themes** and activate **Bricks**)
-
-**If the upload fails**, it is usually because your WordPress site does not allow large enough uploads. See [Requirements](https://academy.bricksbuilder.io/builder/setup/requirements/) (max file upload size) or, as a last resort, unzip the file on your computer and upload the `bricks` folder via FTP to `/wp-content/themes/`.
-
-## Activate your license
-
-Once Bricks is installed, you'll see a new **Bricks** menu item in your WordPress dashboard, along with a notification prompting you to activate your license.
-
-Click **Bricks > License** (or the notification link). This opens the license activation screen.
-![](https://academy.bricksbuilder.io/assets/bricks-license-tab.png)
-
-### Steps to activate
-
-1. Copy your license key from [my.bricksbuilder.io](https://my.bricksbuilder.io/)
-2. Paste it into the license field
-3. Click **Activate License**
-
-You should see a confirmation that your license is **active**.
-
-For blueprint sites, cloned sites, or code-managed setups, you can also define the license key in `wp-config.php` with the `BRICKS_LICENSE_KEY` constant. See [Define the license key in wp-config.php](https://academy.bricksbuilder.io/builder/license/license-and-updates/#constant) for the full workflow and database-key behavior.
-
-That's it, Bricks is ready to use!
-
-For license limits, staging URLs, managing activations, automatic updates, and updating safely, see [License, updates, and your account](https://academy.bricksbuilder.io/builder/license/license-and-updates/).
-
-## What you've accomplished
-
-You now have Bricks installed and licensed.
-
----
-
-<a id="getting-started"></a>
-
-# Getting Started
-
-Source: https://academy.bricksbuilder.io/getting-started/
-
-*Learn Bricks step by step, from installation and interface basics to templates, dynamic data, global classes, and responsive design.*
-
-https://youtu.be/USxUMA1J9No
-
-Welcome to Bricks! This getting started series walks through the core workflow, from your first install to building pages, templates, and responsive layouts with real WordPress content.
-
-## What is Bricks?
-
-Bricks is a visual site builder for WordPress that gives you complete design freedom without compromising on code quality.
-
-Unlike traditional page builders that generate bloated code, Bricks outputs clean HTML and CSS. You design visually, Bricks writes efficient code. No wrapper divs, no inline styles, no mystery markup.
-
-**What makes Bricks different:**
-
-- **Full design control** - Every element, every style, every layout option is customizable
-- **Clean code output** - Fast-loading sites with lean, semantic HTML and efficient CSS
-- **Built for growth** - Start simple, access deeper capabilities as your skills develop
-- **True visual editing** - What you see in the builder is what you get on the front end
-
-## Who is Bricks for?
-
-Bricks meets you where you are:
-
-- **Starting out?** You can build beautiful, functional sites without knowing any code
-- **Growing your skills?** Bricks reveals how web standards work as you build, helping you level up naturally
-- **Already technical?** You'll appreciate the direct control, the clean output, and the ability to extend everything with your own code when needed
-
-You don't need to be a developer. But if you're on that path, Bricks grows with you instead of getting in your way.
-
-## What you'll learn in this series
-
-In this getting started series, we'll build a simple site together: a homepage with a latest posts section, a header template, and a blog post template.
-
-Along the way, you'll learn how to:
-
-- Install and configure Bricks
-- Navigate the builder interface
-- Build pages and templates
-- Apply consistent styling with theme styles and global classes
-- Create responsive layouts
-- Connect designs to WordPress content with dynamic data
-- Display repeating content with query loops
-
-These fundamentals prepare you for more advanced features you can explore as your projects demand them.
-
-If you prefer to follow along in video format, watch the full [Getting Started YouTube playlist](https://www.youtube.com/playlist?list=PLZK4kdL0xoUjeStTycyJrASfUeXHEUDoE).
 
 ---
 
@@ -1713,6 +1304,415 @@ Global classes are how you build sites that scale. They transform your workflow 
 
 ---
 
+<a id="getting-started-header-template"></a>
+
+# Building a header template
+
+Source: https://academy.bricksbuilder.io/getting-started/header-template/
+
+*Build a reusable Bricks header template with site branding, navigation, and the template settings needed to apply it across your site.*
+
+https://youtu.be/CL-viLFWjDg
+
+Let's build a global header with a logo and menu.
+
+## Create the template
+
+1. Go to **Bricks > Templates**
+2. Add New: "Header"
+3. Edit with Bricks
+
+## Settings
+
+1. **Settings (gear) > Template Settings**
+2. **Type**: Header
+3. **Conditions**: Entire Website
+
+## Build the structure
+
+1. Add a **Section**
+2. Inside the **Container**:
+   - Add a **Logo** element (or Image/Text)
+   - Add a **Nav Menu** element (we'll use the standard WordPress menu)
+
+## Style the layout
+
+**Container:**
+1. **Direction**: `Row` (horizontal)
+2. **Justify content**: `Space between` (pushes logo and menu apart)
+3. **Align items**: `Center` (vertically aligned)
+
+**Section:**
+1. **Background color**: Pick a light gray or your brand color
+2. **Padding**: `12` top/bottom (this intentionally overrides our global 80px for this specific section)
+
+Your header is part of the site chrome, not page content. It usually needs tighter spacing than regular sections, so it is a good place to make a deliberate exception to your global section padding.
+
+## Create a WordPress menu (if you do not have one yet)
+
+The Nav Menu element uses a normal WordPress menu. If **Appearance > Menus** is empty or you have never built a menu:
+
+1. From the WordPress dashboard, go to **Appearance > Menus**
+2. Enter a **Menu name** (for example `Main`) and click **Create Menu**
+3. Add a few items from the left (**Pages**, **Custom links**, and so on), then click **Save Menu**
+
+Then return to this template in the builder.
+
+## Configure the menu
+
+1. Select the **Nav Menu** element
+2. Under **Menu**, choose the WordPress menu you created (for example **Main**)
+
+## Save and verify
+
+1. Save the template
+2. Go to your **Pages** panel (top bar) -> **Home**
+3. You should see your new header sitting perfectly atop your hero section!
+
+![](https://academy.bricksbuilder.io/assets/header-template.png)
+
+---
+
+<a id="getting-started-building-your-first-page"></a>
+
+# Start your first page
+
+Source: https://academy.bricksbuilder.io/getting-started/building-your-first-page/
+
+*Start building your first Bricks page by setting up the homepage, creating the hero section, and learning the core layout workflow.*
+
+https://youtu.be/d2mWTDfW6mE
+
+Time to build. We will start your homepage by creating the hero section. This is where you'll learn the core workflow and understand how layout elements work. We will add more sections (like a latest posts grid) later in the series.
+
+## Open your Home page
+
+In the previous article you already created a **Home** page and opened it in the builder.
+
+If the builder is not open anymore:
+
+1. In your WordPress dashboard, go to **Pages > All Pages**
+2. Find the page titled **Home**
+3. Hover it and click **Edit with Bricks**
+
+The builder opens with your Home page ready to work on. If you do not have a Home page yet, quickly create one now and open it with Bricks.
+
+## Set this page as your homepage
+
+Before we build, tell WordPress to use **Home** as the static front page:
+
+1. In the WordPress dashboard, go to **Settings > Reading**
+2. Under **Your homepage displays**, select **A static page**
+3. Set **Homepage** to your **Home** page
+4. Optionally set **Posts page** to a page named **Blog** (or leave default for now)
+5. Click **Save Changes**
+
+## How most web pages are structured
+
+Before we touch anything, notice how most websites are laid out when you scroll:
+
+- A **header** at the very top (logo and navigation, usually global)
+- A **hero** section that introduces the page
+- One or more **content sections** (features, testimonials, blog posts, contact)
+- A **footer** at the bottom
+
+Visually, the page is a vertical stack of horizontal bands. In Bricks, we build those bands with the **Section** element.
+
+Under the hood, each section is just a semantic HTML box. Inside that box we place more boxes, and inside those we place content.
+
+## Layout elements in Bricks
+
+To build those bands and columns, Bricks gives you four layout elements. You will use them to hold all other elements.
+
+**Section** → **Container** → **Block / Div** → **Elements**
+
+- **Section**: The root band. Spans the full width of the screen. Used to separate major parts of your page (header, hero, features, footer).
+- **Container**: Sits inside the section. Keeps your content centered and bounded (width 1100px by default).
+- **Block**: A layout box that uses flexbox and takes up 100 percent width by default. Great for columns and cards inside a section or container.
+- **Div**: A plain, unstyled `div` that grows with its content. Use it as a lightweight wrapper when you want full control.
+- **Elements**: The actual content (headings, images, buttons) that live inside those layout boxes.
+
+### When to use each layout element
+
+You can think of these layout elements as different kinds of wrappers for your content.
+
+- **Section**: Use when you want a new horizontal band on the page. A typical page is one section for hero, one for features, one for testimonials, one for contact, and so on.
+- **Container**: Use when you want the content of a section to have a fixed maximum width and be centered. Most sections have exactly one container.
+- **Block**: Use when you want to divide a container into columns or repeated boxes. For example, in a hero section, one Block for text and another for the image. In a features section, one Block per feature card.
+- **Div**: Use when you just need a simple box inside other layout elements. For example, to group a heading and an icon, or to wrap part of a card without affecting the overall layout.
+
+Where you apply styles matters:
+
+- Background colors and borders on the **Section** affect the full width band.
+- Styles on the **Container** affect the centered content area.
+- Styles on a **Block** or **Div** affect just that column or card.
+
+If you inspect your page in the browser later and hover over these elements in the dev tools, you will see colored overlays showing content, padding, and margin for each box. That is the box model in action.
+
+These layout elements are just wrappers. Where you place them determines width, positioning, and which parts of your design share the same background or border.
+
+We will keep coming back to them as you build more pages and templates.
+
+## Build the hero section
+
+For this first hero we will create a very common pattern:
+
+- Text and button on the left  
+- Image on the right  
+- Both aligned nicely in the middle of the screen
+
+### 1. Add a section
+
+1. In the Settings Panel (left), click **Section** (under Layout)
+2. A **Section** with a **Container** inside is automatically added to your canvas
+
+![](https://academy.bricksbuilder.io/assets/add-section-element.png)
+
+### 2. Add your hero content
+
+We will first add all the content, then turn it into two columns.
+
+1. Select the **Container** from the structure panel or by clicking on the canvas
+
+![](https://academy.bricksbuilder.io/assets/container-element-selected.png)
+2. Add a **Heading** element
+3. Add a **Rich Text** element below the heading
+4. Add a **Button** element below the text
+5. Add an **Image** element below the button
+
+Right now everything is in one column (stacked). We will group elements into columns next.
+
+![](https://academy.bricksbuilder.io/assets/bulk-selected-elements-inside-container.png)
+
+### 3. Group content into columns with Blocks
+
+Blocks are perfect for columns. Instead of adding them empty and dragging elements in, we will wrap existing elements in Blocks.
+
+**Left column (text + button):**
+
+1. Open the **Structure Panel** on the right
+2. In the Container, click the **Heading**
+3. Hold **Shift** and click the **Button**  
+   → This selects the Heading, Rich Text, and Button together  
+   (Optionally, hold `Cmd/Ctrl` and click items one by one to select them)
+4. Right-click on the selection and choose **Wrap → Block**
+
+Bricks wraps those three elements in a new Block. This Block will be your left column.
+
+**Right column (image):**
+
+1. In the Structure Panel, select the **Image**
+2. Right-click it and choose **Wrap → Block**
+
+You now have a Container with **two Blocks** inside: one for text/button, one for the image. Next we will tell Bricks to lay those Blocks out as columns.
+
+![](https://academy.bricksbuilder.io/assets/hero-section-two-columns-structure-panel.png)
+
+### 4. Layout the columns
+
+Now let's make them sit side-by-side using Flexbox.
+
+1. Select the **Container**
+2. Go to **Content > Layout**
+3. Set **Direction** to `Row` (horizontal)
+4. Set **Align cross axis** to `Center` (vertically centers content)
+5. Set **Column gap** to `24` (adds space between first column and second column)
+6. Set a background color from the "Styles" tab > "Background" 
+
+![](https://academy.bricksbuilder.io/assets/hero-section-styles.png)
+
+### A quick note on flexbox
+
+In CSS, the `display` property controls how elements are laid out. By default, many elements are `block` (stacked vertically) or `inline` (flow with text).
+
+**Flexbox** is a layout mode that makes it easy to arrange children of a container in a row or a column. In Bricks, Section, Container, and Block all use flexbox by default.
+
+When you set **Direction** to `Row`, you tell the container to line up its children horizontally. If you changed it to `Column`, they would stack vertically.
+
+A simple way to think about the main controls:
+
+- **Direction**: chooses the main axis (row = side by side, column = stacked).
+- **Gap**: spaces out the children along that main axis (the white space between our text Block and Image).
+- **Align items**: lines up the children along the cross axis (here: vertically) so both columns share the same vertical center.
+
+Flexbox is perfect for one dimensional layouts like our two column hero. If you want to go deeper into flexbox itself, you can read the [Flexbox basics guide on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox). We will stay focused on using it visually in Bricks.
+
+### 5. Style the content
+
+**Left column Block:**
+1. Select the **Block**
+2. Set **Row gap** to `8` (adds space between heading, text, and button)
+
+**Heading:**
+1. Change text to: "Welcome to Bricks"
+2. Set **Tag** to `H1`
+
+**Image:**
+1. Select the Image element
+2. Choose a photo from the media library
+
+## See the HTML Bricks generates
+
+You might have heard that Bricks outputs clean, semantic, non-bloated markup. Let's take a quick look at what that actually means.
+
+1. Click **Preview** in the toolbar to open your Home page on the front end  
+2. In your browser, right-click somewhere in your hero section and choose **Inspect** (or use the browser's developer tools shortcut)  
+3. Look for the `<main>` element and expand it
+
+You should see something very close to:
+
+- A `<section>` for the hero
+- A `<div>` (Container) inside it
+- Inside that, your content boxes and elements (heading, text, button, image)
+
+There are no mysterious extra wrapper divs, no huge chains of nested containers you did not create.
+
+Even if you're not familiar with HTML yet, the important idea is:
+
+- What you add in the builder is what you get in the markup  
+- Bricks keeps the structure lean so you have full control over layout and performance
+
+## The spacing problem
+
+Your section looks good, but it's hugging the top and bottom of the screen. We need padding.
+
+You *could* select the Section and add `80px` padding manually. But then you'd have to do that for every single section on your site. That's tedious and hard to maintain.
+
+**The solution?** Theme Styles.
+
+Instead of styling each section individually, we'll set a global rule: "All sections should have 80px padding."
+
+Let's do that in the next article.
+
+> **Help improve this lesson**
+>
+> Bricks Academy is new. If a step in this lesson felt confusing, incomplete, or out of date, use the feedback box in the right sidebar and tell us what to improve.
+
+---
+
+<a id="getting-started"></a>
+
+# Getting Started
+
+Source: https://academy.bricksbuilder.io/getting-started/
+
+*Learn Bricks step by step, from installation and interface basics to templates, dynamic data, global classes, and responsive design.*
+
+https://youtu.be/USxUMA1J9No
+
+Welcome to Bricks! This getting started series walks through the core workflow, from your first install to building pages, templates, and responsive layouts with real WordPress content.
+
+## What is Bricks?
+
+Bricks is a visual site builder for WordPress that gives you complete design freedom without compromising on code quality.
+
+Unlike traditional page builders that generate bloated code, Bricks outputs clean HTML and CSS. You design visually, Bricks writes efficient code. No wrapper divs, no inline styles, no mystery markup.
+
+**What makes Bricks different:**
+
+- **Full design control** - Every element, every style, every layout option is customizable
+- **Clean code output** - Fast-loading sites with lean, semantic HTML and efficient CSS
+- **Built for growth** - Start simple, access deeper capabilities as your skills develop
+- **True visual editing** - What you see in the builder is what you get on the front end
+
+## Who is Bricks for?
+
+Bricks meets you where you are:
+
+- **Starting out?** You can build beautiful, functional sites without knowing any code
+- **Growing your skills?** Bricks reveals how web standards work as you build, helping you level up naturally
+- **Already technical?** You'll appreciate the direct control, the clean output, and the ability to extend everything with your own code when needed
+
+You don't need to be a developer. But if you're on that path, Bricks grows with you instead of getting in your way.
+
+## What you'll learn in this series
+
+In this getting started series, we'll build a simple site together: a homepage with a latest posts section, a header template, and a blog post template.
+
+Along the way, you'll learn how to:
+
+- Install and configure Bricks
+- Navigate the builder interface
+- Build pages and templates
+- Apply consistent styling with theme styles and global classes
+- Create responsive layouts
+- Connect designs to WordPress content with dynamic data
+- Display repeating content with query loops
+
+These fundamentals prepare you for more advanced features you can explore as your projects demand them.
+
+If you prefer to follow along in video format, watch the full [Getting Started YouTube playlist](https://www.youtube.com/playlist?list=PLZK4kdL0xoUjeStTycyJrASfUeXHEUDoE).
+
+---
+
+<a id="getting-started-installation-setup"></a>
+
+# Installation and setup
+
+Source: https://academy.bricksbuilder.io/getting-started/installation-setup/
+
+*Install Bricks, activate the theme, configure the basic WordPress setup, and prepare your site for the rest of the Academy walkthrough.*
+
+https://youtu.be/sUgx3lg6Jko
+
+Let's get Bricks installed on your WordPress site.
+
+Before you install, confirm your host meets [Bricks requirements](https://academy.bricksbuilder.io/builder/setup/requirements/) (PHP, database, memory, upload size, and a modern browser). Most hosting does; use that article if you need to raise limits or troubleshoot.
+
+## Install the Bricks theme
+
+Installing Bricks works exactly like any other WordPress theme. Use one place for everything account-related: [my.bricksbuilder.io](https://my.bricksbuilder.io/) (download the theme ZIP and find your license key there).
+
+### Download Bricks
+
+Log into [my.bricksbuilder.io](https://my.bricksbuilder.io/) and download the latest version as a ZIP file.
+
+![](https://academy.bricksbuilder.io/assets/download-bricks.png)
+
+### Upload to WordPress
+
+> **Theme, not plugin**
+>
+> Install Bricks as a **theme** (**Appearance > Themes > Upload**), not under **Plugins**. Uploading the ZIP as a plugin will not work.
+
+1. In your WordPress dashboard, go to **Appearance > Themes**
+2. Click **Add New**
+![](https://academy.bricksbuilder.io/assets/wordpress-add-theme.png)
+3. Click **Upload Theme**
+![](https://academy.bricksbuilder.io/assets/wordpress-upload-theme.png)
+4. Select the `bricks.zip` file from your computer
+5. Click **Install Now**
+6. After the upload completes, click **Activate** (or go to **Appearance > Themes** and activate **Bricks**)
+
+**If the upload fails**, it is usually because your WordPress site does not allow large enough uploads. See [Requirements](https://academy.bricksbuilder.io/builder/setup/requirements/) (max file upload size) or, as a last resort, unzip the file on your computer and upload the `bricks` folder via FTP to `/wp-content/themes/`.
+
+## Activate your license
+
+Once Bricks is installed, you'll see a new **Bricks** menu item in your WordPress dashboard, along with a notification prompting you to activate your license.
+
+Click **Bricks > License** (or the notification link). This opens the license activation screen.
+![](https://academy.bricksbuilder.io/assets/bricks-license-tab.png)
+
+### Steps to activate
+
+1. Copy your license key from [my.bricksbuilder.io](https://my.bricksbuilder.io/)
+2. Paste it into the license field
+3. Click **Activate License**
+
+You should see a confirmation that your license is **active**.
+
+For blueprint sites, cloned sites, or code-managed setups, you can also define the license key in `wp-config.php` with the `BRICKS_LICENSE_KEY` constant. See [Define the license key in wp-config.php](https://academy.bricksbuilder.io/builder/license/license-and-updates/#constant) for the full workflow and database-key behavior.
+
+That's it, Bricks is ready to use!
+
+For license limits, staging URLs, managing activations, automatic updates, and updating safely, see [License, updates, and your account](https://academy.bricksbuilder.io/builder/license/license-and-updates/).
+
+## What you've accomplished
+
+You now have Bricks installed and licensed.
+
+---
+
 <a id="getting-started-interface-tour"></a>
 
 # Interface tour
@@ -1824,6 +1824,132 @@ You now know:
 > **Help improve this lesson**
 >
 > Bricks Academy is new. If anything in this lesson felt unclear or missing, use the feedback box in the right sidebar and leave us a quick note.
+
+---
+
+<a id="getting-started-query-loops-dynamic-data"></a>
+
+# Query loops and dynamic data
+
+Source: https://academy.bricksbuilder.io/getting-started/query-loops-dynamic-data/
+
+*Use query loops and dynamic data in Bricks to render posts, fields, and other WordPress content inside reusable layouts.*
+
+https://youtu.be/3WCyZaPtmpA
+
+We're back on the homepage. Let's add a "Latest Posts" section below the hero.
+
+## Before you begin: sample posts
+
+This section needs **at least three published blog posts** so the query loop has something to show. If you skip this, the grid can look empty or broken even when you did everything right in Bricks.
+
+**Create 3 test posts first:**
+
+1. In the WordPress dashboard, go to **Posts > Add New**
+2. Give each post a **title** and a short **excerpt** (use the excerpt field if your screen shows it, or add a couple of lines in the content and let WordPress generate one)
+3. Set a **featured image** for each post (**Featured image** in the sidebar)
+4. Click **Publish** and repeat until you have at least **3 published posts**
+
+You can use the same steps later in the [Blog post template](https://academy.bricksbuilder.io/getting-started/blog-post-template/) article; the posts you create here are what that template will display.
+
+Before we start clicking, we need two core ideas: **query loops** and **dynamic data**.
+
+## What is a query loop?
+
+In WordPress, a "query" is just a question like:
+
+- "Give me the 3 latest posts"
+- "Give me all posts in this category"
+
+A **query loop** takes the answer to that question (the list of posts) and repeats a design once for each item.
+
+You design a single **card** (image, title, excerpt, button). The loop runs through the posts and outputs one card per post. Change the query rules, and the same design shows different posts.
+
+## What is dynamic data?
+
+Until now, when you added a Heading or Text element, you typed the content manually. That is **static** text.
+
+With **dynamic data**, you connect an element to a WordPress field instead:
+
+- Heading pulls the **post title**
+- Image pulls the **featured image**
+- Text pulls the **post excerpt**
+
+In a loop, each card shows the field values for the current post in the list.
+
+You will see this as options like `{post_title}` or `{featured_image}` in Bricks. They are just visual placeholders for real WordPress fields.
+
+## Prepare content
+
+You should already have at least **3 published posts**, each with a **featured image** (see **Before you begin** above). Quick check: **Posts > All Posts** — you should see three or more posts with **Published** status.
+
+## Build the section
+
+1. Add a new **Section**
+2. Inside the Container, add a **Heading** ("Latest Posts")
+3. Add a **Block** element below the heading
+
+## Configure the Grid
+
+We want a 3-column grid for our posts.
+
+Earlier in the series you used flexbox for a simple row layout (text on the left, image on the right). **CSS Grid** is the other famous layout system. It is ideal for two dimensional layouts where you care about rows and columns at the same time, like a grid of cards.
+
+When you set a Block to use Grid, you tell the browser to place its children on a grid.
+
+- The **Grid template columns** control describes how many columns you want and how wide they should be.  
+  - `1fr 1fr 1fr` means “three equal columns”, each taking one fraction of the available width.
+- The **Gap** control sets the space between both columns and rows, so your cards are evenly spaced in all directions.
+
+As you add more cards, Grid automatically flows them into these columns, then wraps onto new rows as needed. You do not have to manually position each card.
+
+1. Select the **Block**
+2. **Display**: `Grid`
+3. **Grid template columns**: `1fr 1fr 1fr` (three equal columns)
+4. **Gap**: `24`
+
+## Create the card (Loop item)
+
+Inside the Grid Block, add another **Block** (this will be our repeating card).
+
+Inside this Card Block, add:
+1. **Image** (Featured Image)
+2. **Heading** (Post Title, H3)
+3. **Basic Text** (Post Excerpt)
+4. **Text Link** ("Read more")
+
+## Enable Query Loop
+
+1. Select the **Card Block** (the inner one)
+2. Toggle **Use query loop**
+3. **Query settings**:
+   - Post type: Posts
+   - Posts per page: 3
+
+You should now see 3 post cards!
+
+## Connect dynamic data
+
+1. **Image**: Select dynamic data -> `Featured Image`
+
+![](https://academy.bricksbuilder.io/assets/dynamic-data-featured-image.png)
+
+2. **Heading**: Select dynamic data -> `Post Title`. Link to -> `Post URL`
+
+![](https://academy.bricksbuilder.io/assets/dynamic-data-post-title.png)
+
+3. **Excerpt**: Select dynamic data -> `Post Excerpt`
+4. **Read more**: Link to -> `Post URL`
+
+![](https://academy.bricksbuilder.io/assets/query-loop.png)
+
+## Responsive check
+
+1. Switch to **Mobile Landscape**
+2. Select the **Grid Block**
+3. Change **Grid template columns** to `1fr` (stacks cards vertically)
+
+Done! You have a dynamic post grid.
 
 ---
 
@@ -2156,132 +2282,6 @@ Now go make something great.
 
 ---
 
-<a id="getting-started-query-loops-dynamic-data"></a>
-
-# Query loops and dynamic data
-
-Source: https://academy.bricksbuilder.io/getting-started/query-loops-dynamic-data/
-
-*Use query loops and dynamic data in Bricks to render posts, fields, and other WordPress content inside reusable layouts.*
-
-https://youtu.be/3WCyZaPtmpA
-
-We're back on the homepage. Let's add a "Latest Posts" section below the hero.
-
-## Before you begin: sample posts
-
-This section needs **at least three published blog posts** so the query loop has something to show. If you skip this, the grid can look empty or broken even when you did everything right in Bricks.
-
-**Create 3 test posts first:**
-
-1. In the WordPress dashboard, go to **Posts > Add New**
-2. Give each post a **title** and a short **excerpt** (use the excerpt field if your screen shows it, or add a couple of lines in the content and let WordPress generate one)
-3. Set a **featured image** for each post (**Featured image** in the sidebar)
-4. Click **Publish** and repeat until you have at least **3 published posts**
-
-You can use the same steps later in the [Blog post template](https://academy.bricksbuilder.io/getting-started/blog-post-template/) article; the posts you create here are what that template will display.
-
-Before we start clicking, we need two core ideas: **query loops** and **dynamic data**.
-
-## What is a query loop?
-
-In WordPress, a "query" is just a question like:
-
-- "Give me the 3 latest posts"
-- "Give me all posts in this category"
-
-A **query loop** takes the answer to that question (the list of posts) and repeats a design once for each item.
-
-You design a single **card** (image, title, excerpt, button). The loop runs through the posts and outputs one card per post. Change the query rules, and the same design shows different posts.
-
-## What is dynamic data?
-
-Until now, when you added a Heading or Text element, you typed the content manually. That is **static** text.
-
-With **dynamic data**, you connect an element to a WordPress field instead:
-
-- Heading pulls the **post title**
-- Image pulls the **featured image**
-- Text pulls the **post excerpt**
-
-In a loop, each card shows the field values for the current post in the list.
-
-You will see this as options like `{post_title}` or `{featured_image}` in Bricks. They are just visual placeholders for real WordPress fields.
-
-## Prepare content
-
-You should already have at least **3 published posts**, each with a **featured image** (see **Before you begin** above). Quick check: **Posts > All Posts** — you should see three or more posts with **Published** status.
-
-## Build the section
-
-1. Add a new **Section**
-2. Inside the Container, add a **Heading** ("Latest Posts")
-3. Add a **Block** element below the heading
-
-## Configure the Grid
-
-We want a 3-column grid for our posts.
-
-Earlier in the series you used flexbox for a simple row layout (text on the left, image on the right). **CSS Grid** is the other famous layout system. It is ideal for two dimensional layouts where you care about rows and columns at the same time, like a grid of cards.
-
-When you set a Block to use Grid, you tell the browser to place its children on a grid.
-
-- The **Grid template columns** control describes how many columns you want and how wide they should be.  
-  - `1fr 1fr 1fr` means “three equal columns”, each taking one fraction of the available width.
-- The **Gap** control sets the space between both columns and rows, so your cards are evenly spaced in all directions.
-
-As you add more cards, Grid automatically flows them into these columns, then wraps onto new rows as needed. You do not have to manually position each card.
-
-1. Select the **Block**
-2. **Display**: `Grid`
-3. **Grid template columns**: `1fr 1fr 1fr` (three equal columns)
-4. **Gap**: `24`
-
-## Create the card (Loop item)
-
-Inside the Grid Block, add another **Block** (this will be our repeating card).
-
-Inside this Card Block, add:
-1. **Image** (Featured Image)
-2. **Heading** (Post Title, H3)
-3. **Basic Text** (Post Excerpt)
-4. **Text Link** ("Read more")
-
-## Enable Query Loop
-
-1. Select the **Card Block** (the inner one)
-2. Toggle **Use query loop**
-3. **Query settings**:
-   - Post type: Posts
-   - Posts per page: 3
-
-You should now see 3 post cards!
-
-## Connect dynamic data
-
-1. **Image**: Select dynamic data -> `Featured Image`
-
-![](https://academy.bricksbuilder.io/assets/dynamic-data-featured-image.png)
-
-2. **Heading**: Select dynamic data -> `Post Title`. Link to -> `Post URL`
-
-![](https://academy.bricksbuilder.io/assets/dynamic-data-post-title.png)
-
-3. **Excerpt**: Select dynamic data -> `Post Excerpt`
-4. **Read more**: Link to -> `Post URL`
-
-![](https://academy.bricksbuilder.io/assets/query-loop.png)
-
-## Responsive check
-
-1. Switch to **Mobile Landscape**
-2. Select the **Grid Block**
-3. Change **Grid template columns** to `1fr` (stacks cards vertically)
-
-Done! You have a dynamic post grid.
-
----
-
 <a id="getting-started-responsive-basics"></a>
 
 # Responsive basics
@@ -2469,79 +2469,6 @@ When you start needing something specific, like builder access for editors, perf
 
 ---
 
-<a id="getting-started-theme-styles"></a>
-
-# Theme styles
-
-Source: https://academy.bricksbuilder.io/getting-started/theme-styles/
-
-*Set up Bricks theme styles for colors, typography, spacing, and other global defaults before you continue building pages and templates.*
-
-https://youtu.be/QnKjMKMHwEM
-
-We just built a hero section, but it needs better spacing. Instead of adding padding manually to every section (slow and inconsistent), let's set a global rule using Theme Styles.
-
-Theme Styles are your site-wide design system. They control the default look of every element. Under the hood, Bricks writes the CSS for you. Instead of hand-coding `section { padding: 80px 16px; }`, you set it visually once and it applies everywhere.
-
-## Create a theme style
-
-1. Click the **Styles** icon in the toolbar (or press `Cmd/Ctrl + .`)
-2. Click the **Select: Theme Styles** dropdown and enter a name for the theme style
-3. Click the "Create" icon
-
-![](https://academy.bricksbuilder.io/assets/style-manager-theme-styles-tab.png)
-
-This opens the **Style Manager**. This is the central place in Bricks for managing your design system. You will notice it has several tabs: Theme Styles, Classes, Variables, Colors, Typography, Spacing, Framework, and Settings. We will focus on Theme Styles for now and come back to the others as you need them.
-
-## Set global section spacing
-
-We want every section to have consistent padding and spacing.
-
-1. In the Theme Styles panel, go to **Element > Section**
-2. Set **Padding**:
-   - Top: `80`
-   - Bottom: `80`
-   - Left: `16`
-   - Right: `16`
-3. Set **Row gap** to `32`
-
-![](https://academy.bricksbuilder.io/assets/theme-styles-section-padding.png)
-
-**Watch the canvas**: Your hero section immediately updates with the new padding! You didn't touch the section itself; you just changed the global rule.
-
-Now, every new section you add will automatically have this perfect spacing.
-
-## Apply to entire website
-
-Right now, this style is only visible in the builder. Let's make it live for the whole site.
-
-1. In Theme Styles, go to **Conditions**
-2. Click **Add Condition**
-3. Select **Entire Website**
-4. Click **Save** in the toolbar
-
-![](https://academy.bricksbuilder.io/assets/theme-styles-conditions.png)
-
-## Why this is powerful
-
-**Scalability**: If you decide later that sections need `100px` padding, you change it *once* in Theme Styles, and your entire site updates.
-
-**Consistency**: You never have to remember "was it 60px or 80px?" Bricks handles it for you.
-
-Think of it this way:
-
-- **Theme Styles** define sensible **defaults** for your whole site.
-- **Global classes** (later in the series) give you reusable patterns you can apply on demand.
-- **One-off element styles** are for rare exceptions.
-
-Most of your design decisions should live in Theme Styles and classes. That is how you keep sites predictable and easy to change.
-
-## Next: templates
-
-Now that our global styles are set, let's look at another powerful global feature: Templates. We'll use them to build a header that appears on every page.
-
----
-
 <a id="getting-started-templates-intro"></a>
 
 # An intro to templates
@@ -2667,6 +2594,79 @@ In the next article, we'll put this into practice by building a header template.
 
 ---
 
+<a id="getting-started-theme-styles"></a>
+
+# Theme styles
+
+Source: https://academy.bricksbuilder.io/getting-started/theme-styles/
+
+*Set up Bricks theme styles for colors, typography, spacing, and other global defaults before you continue building pages and templates.*
+
+https://youtu.be/QnKjMKMHwEM
+
+We just built a hero section, but it needs better spacing. Instead of adding padding manually to every section (slow and inconsistent), let's set a global rule using Theme Styles.
+
+Theme Styles are your site-wide design system. They control the default look of every element. Under the hood, Bricks writes the CSS for you. Instead of hand-coding `section { padding: 80px 16px; }`, you set it visually once and it applies everywhere.
+
+## Create a theme style
+
+1. Click the **Styles** icon in the toolbar (or press `Cmd/Ctrl + .`)
+2. Click the **Select: Theme Styles** dropdown and enter a name for the theme style
+3. Click the "Create" icon
+
+![](https://academy.bricksbuilder.io/assets/style-manager-theme-styles-tab.png)
+
+This opens the **Style Manager**. This is the central place in Bricks for managing your design system. You will notice it has several tabs: Theme Styles, Classes, Variables, Colors, Typography, Spacing, Framework, and Settings. We will focus on Theme Styles for now and come back to the others as you need them.
+
+## Set global section spacing
+
+We want every section to have consistent padding and spacing.
+
+1. In the Theme Styles panel, go to **Element > Section**
+2. Set **Padding**:
+   - Top: `80`
+   - Bottom: `80`
+   - Left: `16`
+   - Right: `16`
+3. Set **Row gap** to `32`
+
+![](https://academy.bricksbuilder.io/assets/theme-styles-section-padding.png)
+
+**Watch the canvas**: Your hero section immediately updates with the new padding! You didn't touch the section itself; you just changed the global rule.
+
+Now, every new section you add will automatically have this perfect spacing.
+
+## Apply to entire website
+
+Right now, this style is only visible in the builder. Let's make it live for the whole site.
+
+1. In Theme Styles, go to **Conditions**
+2. Click **Add Condition**
+3. Select **Entire Website**
+4. Click **Save** in the toolbar
+
+![](https://academy.bricksbuilder.io/assets/theme-styles-conditions.png)
+
+## Why this is powerful
+
+**Scalability**: If you decide later that sections need `100px` padding, you change it *once* in Theme Styles, and your entire site updates.
+
+**Consistency**: You never have to remember "was it 60px or 80px?" Bricks handles it for you.
+
+Think of it this way:
+
+- **Theme Styles** define sensible **defaults** for your whole site.
+- **Global classes** (later in the series) give you reusable patterns you can apply on demand.
+- **One-off element styles** are for rare exceptions.
+
+Most of your design decisions should live in Theme Styles and classes. That is how you keep sites predictable and easy to change.
+
+## Next: templates
+
+Now that our global styles are set, let's look at another powerful global feature: Templates. We'll use them to build a header that appears on every page.
+
+---
+
 <a id="builder"></a>
 
 # Builder
@@ -2686,504 +2686,6 @@ The Builder section covers the main Bricks workflow: configuring the builder, wo
 - [Dynamic Content](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/) for query loops, dynamic data, query filters, and external data sources
 - [Features](https://academy.bricksbuilder.io/builder/features/) for components, popups, custom code, search criteria, maintenance mode, and more
 - [Templates](https://academy.bricksbuilder.io/builder/templates/) for the template workflow, settings, library, and remote templates
-
----
-
-<a id="builder-dynamic-content-dynamic-data"></a>
-
-# Dynamic Data
-
-Source: https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/
-
-*Use Bricks dynamic data to render WordPress fields, custom-field values, and other live content inside text, media, links, and supported element settings.*
-
-Use dynamic data to render all sorts of data from your WordPress database with Bricks.
-
-For example: Featured image, post title, post date, author name, categories, tags, site title, all of your custom fields, etc.
-
-You'll most likely use dynamic data when creating templates in Bricks. Such as your blog post template, and custom post type templates (e.g. single property listing).
-
-## How to insert dynamic data
-
-The dynamic data picker for text shows up when typing a "\{" onto the canvas. You can also click the "bolt" icon in the settings panel to reveal it:
-
-https://youtu.be/DcWIQo2eYdI
-
-Dynamic data for non-text settings such as images, videos, etc. is available from the "Select dynamic data" dropdown menu in the panel settings.
-
-Below you can see an Advanced Custom Fields gallery (named "Gallery") rendered inside the Bricks image gallery element:
-
-![](https://academy.bricksbuilder.io/assets/builder-dynamic-data-panel-1024x576.png)
-
-All dynamic data tags are available in all elements that support dynamic data. This means that you may insert a gallery field (like an ACF gallery field type) inside a text element and it will be rendered as a set of `img` tags (using the filter `:image`), like so:
-
-![](https://academy.bricksbuilder.io/assets/dynamic-data-gallery-text-element.png)
-
-![](https://academy.bricksbuilder.io/assets/dynamic-data-gallery-output-text-element.png)
-
-## Custom Fields Integrations {#integrations}
-
-You can render much more than just standard dynamic WordPress data. Bricks supports the most popular custom fields plugins such as:
-
-- [Advanced Custom Fields](#acf)
-- [Meta box](#metabox)
-- [Crocoblock (JetEngine)](#jetengine)
-- Pods
-- CMB2
-- Toolset
-
-This allows you to design templates for even the most complex custom post type layouts and data requirements.
-
-### Advanced Custom Fields {#acf}
-
-Bricks integrates with all the ACF and ACF Pro fields, including Flexible Content and Nested Groups.
-
-The fields will be listed in the Dynamic Data dropdown inside of the Bricks builder so you can use them while building your pages and templates with Bricks.
-
-The Relationship (including the [bidirectional](https://www.advancedcustomfields.com/resources/bidirectional-relationships/) implementation) and the Repeater field types are also available inside the Query Loop builder, so you could loop through the output of these fields while rendering the sub-fields as dynamic data.
-
-The ACF field type "[True / False](https://www.advancedcustomfields.com/resources/true-false/)" is great for conditional checks inside the element conditions. By default, the localized "True / False" label is returned. When using it in your element conditions, make sure to apply the `:value` filter. To check for false, you can compare against `== 0`. Or `== 1` to check for true.
-
-![](https://academy.bricksbuilder.io/assets/bricks-acf-field-type-true-false.png)
-
-<figcaption>
-
-Check if ACF True / False field is false
-
-</figcaption>
-
-The following dynamic data can be used together with [Element conditions](https://academy.bricksbuilder.io/builder/features/element-conditions/) effectively.
-
-`{acf_get_row_layout}` - Returns the ACF Flexible layout name
-
-### Meta Box {#metabox}
-
-Bricks is compatible with the Meta Box Post Types, Taxonomies, Custom Fields, and Relationships. Regarding the Custom Fields, Bricks will list the fields inside the builder in the Dynamic Data dropdown. According to the custom field contents, these tags will be rendered properly in the front end.
-
-The Group field (when cloneable) and the Relationships will also be available inside the Query Loop builder. You can iterate through these values and render the sub-fields as dynamic data.
-
-It is also possible to build nested non-clone-able Group fields in Bricks Query Loop.
-
-### Crocoblock JetEngine {#jetengine}
-
-Bricks is compatible with Crocoblock JetEngine Post Types, Meta Boxes (Custom fields), Taxonomies, Relations, and Options pages.
-
-[Custom Content Types](https://crocoblock.com/knowledge-base/jetengine/how-to-showcase-cct-meta-fields-using-dynamic-tags-in-bricks/) (CCT) has been supported since April 2024 by the JetEngine plugin, not Bricks itself. For any CCT questions, please get in touch with the JetEngine support directly.
-
-Bricks integration with the JetEngine plugin makes the custom fields available as dynamic data inside the Bricks builder.
-
-This includes fields from JetEngine meta boxes where **Source** is set to **WooCommerce Product Data** or **WooCommerce Product Variation**.
-
-Bricks uses a separate tag prefix for each source:
-
-- WooCommerce Product Data: `{je_woo_product_<field-name>}`
-- WooCommerce Product Variation: `{je_woo_product_variation_<field-name>}`
-- Post fields assigned to the Product post type: `{je_product_<field-name>}`
-
-For example, a Product Data field named `delivery_note` uses `{je_woo_product_delivery_note}`. A regular Product post field with the same name uses `{je_product_delivery_note}`. The separate prefixes prevent the two fields from registering the same dynamic data tag.
-
-Bricks also integrates with the JetEngine Relations and Repeaters to feed the Bricks builder query loop.
-
-## Standard WordPress data {#wordpress}
-
-By default, you may use the following dynamic data tags.
-
-### Post fields {#post-fields}
-
-The following fields are related to the posts or custom post types.
-
-`{post_title}` - Returns the post title
-
-`{post_id}` - Returns the post ID
-
-`{post_url}` - Returns the post link
-
-`{post_slug}` - Returns the post slug
-
-`{post_type}` - Returns the post type (@since 1.12)
-
-`{post_date}` - Returns post published date
-
-`{post_modified}` - Returns post modified date
-
-`{post_time}` - Returns post publish time
-
-`{post_comments_count}` - Returns number of comments
-
-`{post_content}` - Returns post content (Gutenberg editor)
-
-`{post_excerpt}` - Returns the post excerpt
-
-`{read_more}` - Renders an anchor tag (link) to the post with the label "Read more"
-
-`{featured_image}` - Renders an image tag with the featured image
-
-These fields support the following **dynamic data filters**:
-
-`{post_title:link}` - Renders the post title as a link to the post
-
-`{post_title:link:3}` - Same as before but the title is limited to 3 words
-
-`{post_title:link:newTab}` - Open post title in new tab
-
-`{post_date:human_time_diff}` - outputs the date difference in a human readable format such as "1 hour", "5 mins", "2 days"
-
-`{post_excerpt:55}` - Limit post excerpt to 55 words. Using the ":" followed by a number limits the output to that number of words
-
-`{post_excerpt:format:10}` - Keep the HTML format and limit post excerpt to 10 words.
-
-`{featured_image:medium_large}` - Renders an image tag with the featured image of size medium_large (defaults to thumbnail size)
-
-`{featured_image:large:link}` - Renders an image tag (within text context) of the featured image, size "large2, wrapped by an anchor tag to the post
-
-### Taxonomies {#taxonomies}
-
-The following dynamic data tags render a list of the taxonomy terms assigned to a post. A link to the term archive wraps each term:
-
-`{post_terms_category}`
-
-`{post_terms_post_tag}`
-
-`{post_terms_my_taxonomy_slug}` - Replace the "my_taxonomy_slug" part with the slug of the actual taxonomy you want to use
-
-`{post_terms_category:plain}` - Remove the links via :plain filter
-
-If you already use a link around your element, you can disable the terms' links output using the [`bricks/dynamic_data/post_terms_links`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-post_terms_links/) filter.
-
-### Terms {#terms}
-
-The following dynamic data tags render data related to taxonomy terms.
-
-`{term_id}` - Renders the term ID
-
-`{term_name}` - Renders the term name
-
-`{term_slug}` - Renders the term slug
-
-`{term_count}` - Renders the term count
-
-`{term_taxonomy_slug}` - Renders the term's taxonomy slug. (@since 1.11)
-
-`{term_parent}` - Renders the current term's parent term name. Returns an empty value if the current term has no parent. (@since 2.4)
-
-`{term_children}` - Renders the current term's direct child term names, separated by a comma. Only direct children are returned, not grandchildren, and empty child terms are included. (@since 2.4)
-
-`{term_url}` - Renders the term archive link
-
-`{term_description}` - Renders the term description
-
-`{term_meta:my_term_meta_key}` - Renders the "my_term_meta_key" meta value
-
-`{term_parent:value}` or `{term_children:value}` - Renders term IDs
-
-`{term_parent:slug}` or `{term_children:slug}` - Renders term slugs
-
-`{term_parent:link}` or `{term_children:link}` - Renders linked term names
-
-You can use `{term_children:value}` in element conditions to check if the current term has child terms. For example, check if `{term_children:value}` is not empty to show an element only for parent terms.
-
-### Author Fields {#author}
-
-`{author_id}` - Returns the post author ID
-
-`{author_name}` - Returns the post author name
-
-`{author_bio}` - Returns the post author biographical info
-
-`{author_email}` - Returns the post author email
-
-`{author_website}` - Returns the post author website
-
-`{author_archive_url}` - Returns the post author url
-
-`{author_avatar}` - Returns the post author avatar as an image tag (text) or an image url (link)
-
-`{author_meta:meta_key}` - Returns the specified author meta value. Set the author meta key as the filter. Example. author_meta:first_name returns the author's first name. See [here](https://developer.wordpress.org/reference/functions/get_the_author_meta/#description) for available author meta keys.
-
-These fields support dynamic data filters like the following:
-
-`{author_bio:20}` - Post author biographical info limited to 20 words
-
-`{author_name:link}` - Post author name rendered as a link to the author profile page
-
-`{author_email:link}` - Post author email rendered as a link
-
-`{author_website:link}` - Post author website rendered as a link
-
-`{author_avatar:200}` - Post author avatar image tag limited to the width/height of 200px
-
-### Query fields {#query}
-
-`{query_loop_index}` - Returns the index of the current loop item, starting at 0. Use the `@start-at` argument to start the index from any other number. Example: `{query_loop_index @start-at:1}` to start the index at 1 instead of 0. The `@pad` argument pads the value to the width you define. Using `{query_loop_index @pad:3}` results in an index output of `001` and `010` instead of `1` and `10`. Using `{query_loop_index @pad:2}` outputs `01` and `10`.
-
-`{query_results_count}` – Use inside or outside a query loop to return the query results count. When used outside a loop you have to pass the query loop ID as a filter to this tag like this: `{query_results_count:quer34}`. "quer34" in this example is the Bricks ID, which you can copy to your clipboard from the right-click context menu.
-
-### Site & Archive fields {#site-archive}
-
-`{site_title}` - Returns site title as defined in the WordPress settings > General > Site Title
-
-`{site_tagline}` - Returns site tagline as defined in the WordPress settings > General > Tagline
-
-`{site_url}` - Returns site URL as defined in the WordPress settings > General > Site address (URL)
-
-`{site_login}` - Returns site login URL. Redirect after login URL can be set by specifying the post ID as the filter like this: `{site_login:3}`
-
-`{site_logout}` - Returns site logout URL. Redirect after logout URL can be set by specifying the post ID as the filter like this: `{site_logout:3}`
-
-`{archive_title}` - Returns archive title
-
-`{archive_title:context}` - Add context to the archive title
-
-`{archive_description}` - Returns archive description (author, post type or term)
-
-You can get dynamic data from the URL parameters like so:
-
-`{url_parameter:my_key}` - Returns the value of the `my_key` parameter in the url (https://mydomain.pt/?my_key=value)
-
-### User profile fields {#user-profile}
-
-`{wp_user_id}` - Returns current user context ID
-
-`{wp_user_login}` - Returns current user context username
-
-`{wp_user_email}` - Returns current user context email address
-
-`{wp_user_url}` - Returns current user context website
-
-`{wp_user_author_url}` - Returns current user context author URL
-
-`{wp_user_role}` - Returns current user context primary role. Use `:value` to return the role slug. (@since 1.12)
-
-`{wp_user_registered_date}` - Returns current user context registered date (@since 1.12)
-
-`{wp_user_nicename}` - Returns current user context nicename
-
-`{wp_user_description}` - Returns current user context biographical info
-
-`{wp_user_first_name}` - Returns current user context first name
-
-`{wp_user_last_name}` - Returns current user context last name
-
-`{wp_user_display_name}` - Returns current user context display name
-
-`{wp_user_picture}` - Returns current user context avatar image tag or url
-
-`{wp_user_meta:my_user_meta_key}` - Returns current user context "my_user_meta_key" meta value
-
-### Native WordPress custom fields
-
-To render your own custom field entries, you have to prefix them with `cf_`.
-
-If your custom field name is `phone_number`, you'd use `{cf_phone_number}` to render this custom field on the front end.
-
-Your `phone_number` custom field entry should also be available in the dynamic data picker dropdown under "Custom fields".
-
-## Date Dynamic Tags {#date}
-
-### Current Date fields {#current-date}
-
-You can render the current date through dynamic data.
-
-`{current_date}` - Returns the current date (UTC) with the format defined at WordPress > Settings > General > Date Format
-
-`{current_wp_date}` - Returns the current date (WordPress timezone) with the format defined at WordPress > Settings > General > Date Format
-
-You may specify a different date format using the PHP date format, for example:
-
-`{current_date:Y}`
-
-`{current_date:Ymd}`
-
-`{current_date:Y-m-d}`
-
-`{current_date:Y.m.d}`
-
-`{current_date:Y/m/d}`
-
-`{current_date:Y m d}`
-
-`{current_date:g:i A}`
-
-`{current_date:timestamp}`
-
-### Format Date {#format-date}
-
-Bricks 2.2 introduces a new dynamic tag `{format_date}` that allows you to convert a date string from one format to another — directly within the builder, without writing any PHP.
-
-`{format_date @date:'your-date-value' @from:'input-format' @to:'output-format'}`
-
-Parameters
-
-- `@date`: The original date string to convert. This can be a raw date or another dynamic tag
-- `@from`: The input format (e.g., `Y-m-d`, `Y/m/d`, `Y-m-d\TH:i:s.v\Z`, etc. [https://www.php.net/manual/en/datetime.format.php](https://www.php.net/manual/en/datetime.format.php) )
-- `@to`: The desired output format (e.g., `d M Y`, `timestamp`, `Y-m-d (l)`)
-
-##### Example 1: Simple Date format conversion
-
-`{format_date @date:'2025-01-10' @from:'Y-m-d' @to:'d M Y'}`
-
-**Output:** `10 Jan 2025`
-
-##### Example 2: Format from API Response
-
-Assume this dynamic tag returns an ISO-formatted datetime string:
-
-`{query_api @key:'registered'}` → 2025-04-30T09:41:02.053Z
-
-`{format_date @date:'{query_api @key:'registered'}' @from:'Y-m-d\TH:i:s.v\Z' @to:'Y m d (l)'}`
-
-**Output:** `2025 04 30 (Wednesday)`
-
----
-
-`{query_api @key:'publishDate'}` → 2025-09-22T11:22:33.0123456Z
-
-`{format_date @date:'{query_api @key:'publishDate'}' @from:'Y-m-d\TH:i:s.u\Z' @to:'Y-m-d H:i'}`
-
-**Output:** `2025-09-22 11:22`
-
-##### Example 3: Convert to Timestamp
-
-This is useful especially when you want to use in condition to compare 2 different dates.
-
-Assume a custom field (by your custom plugin) dynamic tag returns a date:
-
-`{cf_my_date}` → 2025/03/25
-
-You can convert it to a UNIX timestamp for comparison:
-
-`{format_date @date:'{cf_my_date}' @from:'Y/m/d' @to:'timestamp'}`
-
-**Output:** `174277440`
-
-### Advanced: echo {#advanced}
-
-> **Note**
->
-> Starting at Bricks 1.9.7, you have to explicitly allow any function names that you want to call via Bricks’ dynamic data `echo` tag using the new `bricks/code/echo_function_names` filter. Which you can add to your Bricks child theme or the code snippet plugin of your choice. You can find more information in this article: [/developer/hooks/filters/filter-bricks-code-echo_function_names/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-echo_function_names/)
-
-Bricks 1.4 introduces the `echo` tag to render the output of any PHP function:
-
-`{echo:my_custom_function}` - Echoes the value of the PHP function `my_custom_function()`
-
-It accepts arguments, with or without single quotes, like so:
-
-`{echo:get_the_date('Y-m-d', '55')}` - Echoes the date of the post 55 formatted to `Y-m-d`
-
-### Argument Formatting Rule
-
-When passing arguments to functions inside `{echo:}` tags, all arguments must be enclosed in single quotes, regardless of whether they are static values or dynamic tags. (`@since 1.9.3`)
-
-`{echo:my_function('static value')}`
-
-`{echo:my_function('{post_title}')}`
-
-> **Note**
->
-> Please note that the `echo` tag does not support double quotes, and the custom PHP function should `return` the value (do not `echo` the value inside of the custom function).
-
-https://www.youtube.com/watch?v=ajAXEZoyk0E
-
-### Advanced: do_action {#do_action}
-
-The `do_action` tag enables developers and other plugins to integrate with your template designs seamlessly. With this tag, you can place action hooks such as `{do_action:my_custom_hook}` anywhere.
-
-For example, you can insert the `{do_action:woocommerce_after_single_product}` in your WooCommerce single product template, allowing other plugins to hook into it. This enhances the flexibility of your template design.
-
-> **Note**
->
-> It is important to note that the `do_action` tag does not support passing arguments to the action. If the `add_action()` function expects additional arguments, an error in PHP will occur. The `do_action` only runs on the front end of the website, not inside the builder.
-
-### WooCommerce {#user-profile}
-
-When the WooCommerce plugin is installed and active, you'll get access to an extra set of Dynamic Data tags related to the products and orders. Please refer to the [WooCommerce builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/#dynamic-data) article for more details.
-
-Bricks 2.4 also adds WooCommerce v2 dynamic tags for cart totals, checkout steps, WooCommerce URLs, account addresses, orders, downloads, and customer notes. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/) for the complete context-aware reference.
-
-## Filters {#filters}
-
-You can change the output of certain dynamic data tags by using the following filters:
-
-- `:*numeric value*` - When used on a text field, it trims the content to the number of words specified (e.g. `{post_excerpt:10}`). When used with an avatar field like `author_avatar` it specifies the width/height of the avatar image
-- `:context` *or* `:prefix` - Add context to the archive title
-- `:image `- Outputs the field as an image tag, *e.g.* ``
-- `:link` - Output the field as an anchor tag, *e.g.* [`*value*`](https://...)
-- `:newTab` - Sets the link to open in a new tab
-- `:tel` - The URL of the anchor will be formatted as a telephone number,
-*e.g.* [`+123456789`](tel:+123456789)
-- `:*text value *`- Depending on the context, it could mean the following:
-  - User or term custom field meta key
-  - The URL parameter key
-  - Post terms separator
-  - Date format
-  - Image size slug (e.g., thumbnail or full)
-  - The echo tag function name
-- `:value` - Outputs the value instead of the label. Useful for comparing choices field types like MetaBox checkbox list, etc. inside element conditions, or with ACF choice fields (set the return type to "Both (Array)") such as Select, Checkbox, Radio Button, and Button Group. ACF field types that supporting this filter: True/False, User, Taxonomy, Image, Gallery, Post Object, Relationship (`@since 1.12`) MetaBox field types that supporting this filter: File Input, File, File Upload, File Advanced, Video, Image, Image Advanced, Image Upload, Single Image, Image Select Taxonomy, Taxonomy Advanced, Post, User (`@since 1.12`)
-- `:raw` - Skip parsing dynamic data tag
-- `:url` - Return URL from post ID. Useful to return URL for `file` field, etc.
-- `:format` - Keep HTML format or show empty Star rating for [WooCommerce dynamic data](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/#dynamic-data)
-- `:plain` - Removes HTML tags using `wp_strip_all_tags`, which can be helpful when you need to extract plain text from a dynamic tag result. For example, you may want to remove links from a post term dynamic tag.
-- `:array_value|{KEY}` - Returns the value of a specific array key within a dynamic tag result. It can be particularly useful for custom fields such as ACF Google Map and ACF Link types. The filter can also be applied to an echo dynamic tag. In cases where the value is a nested array, Bricks will flatten it as a JSON string to allow for seamless output without any errors. It's important to note that this filter should only be used when you are certain that the dynamic tag result is an array. Another important point to keep in mind is that if the specified array key does not exist, this filter will return an empty string. [Examples](#array_value-filter-examples)
-- `:timestamp` - Convert the date or time related dynamic data to timestamp value.
-- `:slug` and `:term_id` - Used in `{post_terms_xxxx}` dynamic tags, to output slug or term ID, instead of the term name. It can also be helpful in combination with `:plain` filter, like `{post_terms_xxxx:slug:plain}`, when using it inside conditions, taxonomy query, ... to compare the correct values (`@since 2.0`).
-
-##### Examples of :array_value filter {#array_value-filter-examples}
-
-`{acf_place_map:array_value|lat}` - Echoes the `$value['lat']` of the ACF google map type field
-
-`{acf_place_map:array_value|post_code}` - Echoes the `$value['post_code']` of the ACF google map type field
-
-`{acf_ext_link:array_value|title}` - Echoes the `$value['title']` of the ACF link type field
-
-`{je_football-team_logo:array_value|id}` - Echoes the `$value['id']` of the JetEngine media field (Value format set as Array with media ID and URL)
-
-`{mb_testimonials_user_image:array_value|name}` - Echoes the `$value['name']` of the Metabox single image field
-
-`{echo:custom_function:array_value|hello}` - Echoes the `$value['hello']` of PHP `custom_function()` function
-
-## Key-value pair arguments {#arguments}
-
-This feature allows for greater flexibility and customization in displaying dynamic content. The general syntax for using key-value pair arguments is: `{dynamic_data_tag @key:value}`.
-
-- Wrap text with spaces in single quotes.
-- The value can include other dynamic data tags (e.g., `{acf_text_field @fallback:'No content was found for {post_title}'}`).
-
-### Available arguments:
-
-<span id="fallback"></span>
-
-`@fallback` – Provides fallback text if the dynamic data tag doesn't return any data. This argument can be used with any dynamic data tag (`@since 1.10`).
-
-- **Example:** `{acf_text_field @fallback:'This is the fallback text!'}`. If `acf_text_field` is empty, "This is the fallback text!" will be displayed.
-- **Example**: `{acf_page_builder_cta_modul_options_css_id @fallback:'{acf_get_row_layout}-{query_loop_index}'}`. If `acf_page_builder_cta_modul_options_css_id` is empty, use current ACF flexible layout concatenate with current loop index as return string. Good use case when using this on dynamic CSS ID.
-
-<span id="fallback-image"></span>
-
-`**@fallback-image**` – Used for image dynamic data tags. It accepts either an attachment ID or a URL.
-
-- **Examples:** `{acf_image @fallback-image:554}` or `{acf_image @fallback-image:'https://example.com/placeholder.png'}`. If `acf_image` is not available, the specified image (by attachment ID or URL) will be displayed.
-
-<span id="sanitize"></span>
-
-`@sanitize` - Available `@since 1.11.1` it allows you to control the sanitization method applied to all dynamic tags within a "text" context. By default, all dynamic tags are sanitized using `wp_kses_post`, which helps secure output by stripping unwanted HTML and scripts.
-
-This argument is particularly useful if you have a shortcode outputting JavaScript—such as a form shortcode from plugins—stored within a custom field. In earlier versions, this JavaScript would be sanitized, preventing the form from functioning when the field is output via `{acf_custom_field}`.
-
-**Examples:**
-
-- `{acf_my_wysiwyg @sanitize:false}` – Disables sanitization, allowing scripts to be output if stored in the custom field. **Use carefully, ensuring that the content is safe for output without sanitization.**
-- `{acf_my_wysiwyg @sanitize:sanitize_email}` – Applies `sanitize_email` to the `my_wysiwyg` field. If the value doesn’t pass as a valid email, it returns empty.
-- `{acf_my_wysiwyg @sanitize:sanitize_email @fallback:'abc@gmail.com'}` – Applies `sanitize_email` to the `my_wysiwyg` field. If the result is empty, it falls back to `'abc@gmail.com'`.
-
-> **Note**
->
-> **Note:** The `@sanitize` argument only accepts methods listed in the [WordPress Sanitizing API](https://developer.wordpress.org/apis/security/sanitizing/) , `**false**` or `wp_kses`. If using `@sanitize:false`, be cautious, as this will output the field content without sanitization.
-
-## Bricks hooks related to Dynamic Data {#hooks}
-
-[`bricks/dynamic_data/exclude_tags`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-exclude_tags/) - exclude a list of tags from the Bricks dynamic data logic
-
-[`bricks/dynamic_data/replace_nonexistent_tags`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-replace_nonexistent_tags/) - Disable the default Bricks behavior of replacing the non-existent dynamic data tags with an empty string
 
 ---
 
@@ -3911,6 +3413,504 @@ This is expected. API query loops do not support Query Filters or live search.
 
 ---
 
+<a id="builder-dynamic-content-dynamic-data"></a>
+
+# Dynamic Data
+
+Source: https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/
+
+*Use Bricks dynamic data to render WordPress fields, custom-field values, and other live content inside text, media, links, and supported element settings.*
+
+Use dynamic data to render all sorts of data from your WordPress database with Bricks.
+
+For example: Featured image, post title, post date, author name, categories, tags, site title, all of your custom fields, etc.
+
+You'll most likely use dynamic data when creating templates in Bricks. Such as your blog post template, and custom post type templates (e.g. single property listing).
+
+## How to insert dynamic data
+
+The dynamic data picker for text shows up when typing a "\{" onto the canvas. You can also click the "bolt" icon in the settings panel to reveal it:
+
+https://youtu.be/DcWIQo2eYdI
+
+Dynamic data for non-text settings such as images, videos, etc. is available from the "Select dynamic data" dropdown menu in the panel settings.
+
+Below you can see an Advanced Custom Fields gallery (named "Gallery") rendered inside the Bricks image gallery element:
+
+![](https://academy.bricksbuilder.io/assets/builder-dynamic-data-panel-1024x576.png)
+
+All dynamic data tags are available in all elements that support dynamic data. This means that you may insert a gallery field (like an ACF gallery field type) inside a text element and it will be rendered as a set of `img` tags (using the filter `:image`), like so:
+
+![](https://academy.bricksbuilder.io/assets/dynamic-data-gallery-text-element.png)
+
+![](https://academy.bricksbuilder.io/assets/dynamic-data-gallery-output-text-element.png)
+
+## Custom Fields Integrations {#integrations}
+
+You can render much more than just standard dynamic WordPress data. Bricks supports the most popular custom fields plugins such as:
+
+- [Advanced Custom Fields](#acf)
+- [Meta box](#metabox)
+- [Crocoblock (JetEngine)](#jetengine)
+- Pods
+- CMB2
+- Toolset
+
+This allows you to design templates for even the most complex custom post type layouts and data requirements.
+
+### Advanced Custom Fields {#acf}
+
+Bricks integrates with all the ACF and ACF Pro fields, including Flexible Content and Nested Groups.
+
+The fields will be listed in the Dynamic Data dropdown inside of the Bricks builder so you can use them while building your pages and templates with Bricks.
+
+The Relationship (including the [bidirectional](https://www.advancedcustomfields.com/resources/bidirectional-relationships/) implementation) and the Repeater field types are also available inside the Query Loop builder, so you could loop through the output of these fields while rendering the sub-fields as dynamic data.
+
+The ACF field type "[True / False](https://www.advancedcustomfields.com/resources/true-false/)" is great for conditional checks inside the element conditions. By default, the localized "True / False" label is returned. When using it in your element conditions, make sure to apply the `:value` filter. To check for false, you can compare against `== 0`. Or `== 1` to check for true.
+
+![](https://academy.bricksbuilder.io/assets/bricks-acf-field-type-true-false.png)
+
+<figcaption>
+
+Check if ACF True / False field is false
+
+</figcaption>
+
+The following dynamic data can be used together with [Element conditions](https://academy.bricksbuilder.io/builder/features/element-conditions/) effectively.
+
+`{acf_get_row_layout}` - Returns the ACF Flexible layout name
+
+### Meta Box {#metabox}
+
+Bricks is compatible with the Meta Box Post Types, Taxonomies, Custom Fields, and Relationships. Regarding the Custom Fields, Bricks will list the fields inside the builder in the Dynamic Data dropdown. According to the custom field contents, these tags will be rendered properly in the front end.
+
+The Group field (when cloneable) and the Relationships will also be available inside the Query Loop builder. You can iterate through these values and render the sub-fields as dynamic data.
+
+It is also possible to build nested non-clone-able Group fields in Bricks Query Loop.
+
+### Crocoblock JetEngine {#jetengine}
+
+Bricks is compatible with Crocoblock JetEngine Post Types, Meta Boxes (Custom fields), Taxonomies, Relations, and Options pages.
+
+[Custom Content Types](https://crocoblock.com/knowledge-base/jetengine/how-to-showcase-cct-meta-fields-using-dynamic-tags-in-bricks/) (CCT) has been supported since April 2024 by the JetEngine plugin, not Bricks itself. For any CCT questions, please get in touch with the JetEngine support directly.
+
+Bricks integration with the JetEngine plugin makes the custom fields available as dynamic data inside the Bricks builder.
+
+This includes fields from JetEngine meta boxes where **Source** is set to **WooCommerce Product Data** or **WooCommerce Product Variation**.
+
+Bricks uses a separate tag prefix for each source:
+
+- WooCommerce Product Data: `{je_woo_product_<field-name>}`
+- WooCommerce Product Variation: `{je_woo_product_variation_<field-name>}`
+- Post fields assigned to the Product post type: `{je_product_<field-name>}`
+
+For example, a Product Data field named `delivery_note` uses `{je_woo_product_delivery_note}`. A regular Product post field with the same name uses `{je_product_delivery_note}`. The separate prefixes prevent the two fields from registering the same dynamic data tag.
+
+Bricks also integrates with the JetEngine Relations and Repeaters to feed the Bricks builder query loop.
+
+## Standard WordPress data {#wordpress}
+
+By default, you may use the following dynamic data tags.
+
+### Post fields {#post-fields}
+
+The following fields are related to the posts or custom post types.
+
+`{post_title}` - Returns the post title
+
+`{post_id}` - Returns the post ID
+
+`{post_url}` - Returns the post link
+
+`{post_slug}` - Returns the post slug
+
+`{post_type}` - Returns the post type (@since 1.12)
+
+`{post_date}` - Returns post published date
+
+`{post_modified}` - Returns post modified date
+
+`{post_time}` - Returns post publish time
+
+`{post_comments_count}` - Returns number of comments
+
+`{post_content}` - Returns post content (Gutenberg editor)
+
+`{post_excerpt}` - Returns the post excerpt
+
+`{read_more}` - Renders an anchor tag (link) to the post with the label "Read more"
+
+`{featured_image}` - Renders an image tag with the featured image
+
+These fields support the following **dynamic data filters**:
+
+`{post_title:link}` - Renders the post title as a link to the post
+
+`{post_title:link:3}` - Same as before but the title is limited to 3 words
+
+`{post_title:link:newTab}` - Open post title in new tab
+
+`{post_date:human_time_diff}` - outputs the date difference in a human readable format such as "1 hour", "5 mins", "2 days"
+
+`{post_excerpt:55}` - Limit post excerpt to 55 words. Using the ":" followed by a number limits the output to that number of words
+
+`{post_excerpt:format:10}` - Keep the HTML format and limit post excerpt to 10 words.
+
+`{featured_image:medium_large}` - Renders an image tag with the featured image of size medium_large (defaults to thumbnail size)
+
+`{featured_image:large:link}` - Renders an image tag (within text context) of the featured image, size "large2, wrapped by an anchor tag to the post
+
+### Taxonomies {#taxonomies}
+
+The following dynamic data tags render a list of the taxonomy terms assigned to a post. A link to the term archive wraps each term:
+
+`{post_terms_category}`
+
+`{post_terms_post_tag}`
+
+`{post_terms_my_taxonomy_slug}` - Replace the "my_taxonomy_slug" part with the slug of the actual taxonomy you want to use
+
+`{post_terms_category:plain}` - Remove the links via :plain filter
+
+If you already use a link around your element, you can disable the terms' links output using the [`bricks/dynamic_data/post_terms_links`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-post_terms_links/) filter.
+
+### Terms {#terms}
+
+The following dynamic data tags render data related to taxonomy terms.
+
+`{term_id}` - Renders the term ID
+
+`{term_name}` - Renders the term name
+
+`{term_slug}` - Renders the term slug
+
+`{term_count}` - Renders the term count
+
+`{term_taxonomy_slug}` - Renders the term's taxonomy slug. (@since 1.11)
+
+`{term_parent}` - Renders the current term's parent term name. Returns an empty value if the current term has no parent. (@since 2.4)
+
+`{term_children}` - Renders the current term's direct child term names, separated by a comma. Only direct children are returned, not grandchildren, and empty child terms are included. (@since 2.4)
+
+`{term_url}` - Renders the term archive link
+
+`{term_description}` - Renders the term description
+
+`{term_meta:my_term_meta_key}` - Renders the "my_term_meta_key" meta value
+
+`{term_parent:value}` or `{term_children:value}` - Renders term IDs
+
+`{term_parent:slug}` or `{term_children:slug}` - Renders term slugs
+
+`{term_parent:link}` or `{term_children:link}` - Renders linked term names
+
+You can use `{term_children:value}` in element conditions to check if the current term has child terms. For example, check if `{term_children:value}` is not empty to show an element only for parent terms.
+
+### Author Fields {#author}
+
+`{author_id}` - Returns the post author ID
+
+`{author_name}` - Returns the post author name
+
+`{author_bio}` - Returns the post author biographical info
+
+`{author_email}` - Returns the post author email
+
+`{author_website}` - Returns the post author website
+
+`{author_archive_url}` - Returns the post author url
+
+`{author_avatar}` - Returns the post author avatar as an image tag (text) or an image url (link)
+
+`{author_meta:meta_key}` - Returns the specified author meta value. Set the author meta key as the filter. Example. author_meta:first_name returns the author's first name. See [here](https://developer.wordpress.org/reference/functions/get_the_author_meta/#description) for available author meta keys.
+
+These fields support dynamic data filters like the following:
+
+`{author_bio:20}` - Post author biographical info limited to 20 words
+
+`{author_name:link}` - Post author name rendered as a link to the author profile page
+
+`{author_email:link}` - Post author email rendered as a link
+
+`{author_website:link}` - Post author website rendered as a link
+
+`{author_avatar:200}` - Post author avatar image tag limited to the width/height of 200px
+
+### Query fields {#query}
+
+`{query_loop_index}` - Returns the index of the current loop item, starting at 0. Use the `@start-at` argument to start the index from any other number. Example: `{query_loop_index @start-at:1}` to start the index at 1 instead of 0. The `@pad` argument pads the value to the width you define. Using `{query_loop_index @pad:3}` results in an index output of `001` and `010` instead of `1` and `10`. Using `{query_loop_index @pad:2}` outputs `01` and `10`.
+
+`{query_results_count}` – Use inside or outside a query loop to return the query results count. When used outside a loop you have to pass the query loop ID as a filter to this tag like this: `{query_results_count:quer34}`. "quer34" in this example is the Bricks ID, which you can copy to your clipboard from the right-click context menu.
+
+### Site & Archive fields {#site-archive}
+
+`{site_title}` - Returns site title as defined in the WordPress settings > General > Site Title
+
+`{site_tagline}` - Returns site tagline as defined in the WordPress settings > General > Tagline
+
+`{site_url}` - Returns site URL as defined in the WordPress settings > General > Site address (URL)
+
+`{site_login}` - Returns site login URL. Redirect after login URL can be set by specifying the post ID as the filter like this: `{site_login:3}`
+
+`{site_logout}` - Returns site logout URL. Redirect after logout URL can be set by specifying the post ID as the filter like this: `{site_logout:3}`
+
+`{archive_title}` - Returns archive title
+
+`{archive_title:context}` - Add context to the archive title
+
+`{archive_description}` - Returns archive description (author, post type or term)
+
+You can get dynamic data from the URL parameters like so:
+
+`{url_parameter:my_key}` - Returns the value of the `my_key` parameter in the url (https://mydomain.pt/?my_key=value)
+
+### User profile fields {#user-profile}
+
+`{wp_user_id}` - Returns current user context ID
+
+`{wp_user_login}` - Returns current user context username
+
+`{wp_user_email}` - Returns current user context email address
+
+`{wp_user_url}` - Returns current user context website
+
+`{wp_user_author_url}` - Returns current user context author URL
+
+`{wp_user_role}` - Returns current user context primary role. Use `:value` to return the role slug. (@since 1.12)
+
+`{wp_user_registered_date}` - Returns current user context registered date (@since 1.12)
+
+`{wp_user_nicename}` - Returns current user context nicename
+
+`{wp_user_description}` - Returns current user context biographical info
+
+`{wp_user_first_name}` - Returns current user context first name
+
+`{wp_user_last_name}` - Returns current user context last name
+
+`{wp_user_display_name}` - Returns current user context display name
+
+`{wp_user_picture}` - Returns current user context avatar image tag or url
+
+`{wp_user_meta:my_user_meta_key}` - Returns current user context "my_user_meta_key" meta value
+
+### Native WordPress custom fields
+
+To render your own custom field entries, you have to prefix them with `cf_`.
+
+If your custom field name is `phone_number`, you'd use `{cf_phone_number}` to render this custom field on the front end.
+
+Your `phone_number` custom field entry should also be available in the dynamic data picker dropdown under "Custom fields".
+
+## Date Dynamic Tags {#date}
+
+### Current Date fields {#current-date}
+
+You can render the current date through dynamic data.
+
+`{current_date}` - Returns the current date (UTC) with the format defined at WordPress > Settings > General > Date Format
+
+`{current_wp_date}` - Returns the current date (WordPress timezone) with the format defined at WordPress > Settings > General > Date Format
+
+You may specify a different date format using the PHP date format, for example:
+
+`{current_date:Y}`
+
+`{current_date:Ymd}`
+
+`{current_date:Y-m-d}`
+
+`{current_date:Y.m.d}`
+
+`{current_date:Y/m/d}`
+
+`{current_date:Y m d}`
+
+`{current_date:g:i A}`
+
+`{current_date:timestamp}`
+
+### Format Date {#format-date}
+
+Bricks 2.2 introduces a new dynamic tag `{format_date}` that allows you to convert a date string from one format to another — directly within the builder, without writing any PHP.
+
+`{format_date @date:'your-date-value' @from:'input-format' @to:'output-format'}`
+
+Parameters
+
+- `@date`: The original date string to convert. This can be a raw date or another dynamic tag
+- `@from`: The input format (e.g., `Y-m-d`, `Y/m/d`, `Y-m-d\TH:i:s.v\Z`, etc. [https://www.php.net/manual/en/datetime.format.php](https://www.php.net/manual/en/datetime.format.php) )
+- `@to`: The desired output format (e.g., `d M Y`, `timestamp`, `Y-m-d (l)`)
+
+##### Example 1: Simple Date format conversion
+
+`{format_date @date:'2025-01-10' @from:'Y-m-d' @to:'d M Y'}`
+
+**Output:** `10 Jan 2025`
+
+##### Example 2: Format from API Response
+
+Assume this dynamic tag returns an ISO-formatted datetime string:
+
+`{query_api @key:'registered'}` → 2025-04-30T09:41:02.053Z
+
+`{format_date @date:'{query_api @key:'registered'}' @from:'Y-m-d\TH:i:s.v\Z' @to:'Y m d (l)'}`
+
+**Output:** `2025 04 30 (Wednesday)`
+
+---
+
+`{query_api @key:'publishDate'}` → 2025-09-22T11:22:33.0123456Z
+
+`{format_date @date:'{query_api @key:'publishDate'}' @from:'Y-m-d\TH:i:s.u\Z' @to:'Y-m-d H:i'}`
+
+**Output:** `2025-09-22 11:22`
+
+##### Example 3: Convert to Timestamp
+
+This is useful especially when you want to use in condition to compare 2 different dates.
+
+Assume a custom field (by your custom plugin) dynamic tag returns a date:
+
+`{cf_my_date}` → 2025/03/25
+
+You can convert it to a UNIX timestamp for comparison:
+
+`{format_date @date:'{cf_my_date}' @from:'Y/m/d' @to:'timestamp'}`
+
+**Output:** `174277440`
+
+### Advanced: echo {#advanced}
+
+> **Note**
+>
+> Starting at Bricks 1.9.7, you have to explicitly allow any function names that you want to call via Bricks’ dynamic data `echo` tag using the new `bricks/code/echo_function_names` filter. Which you can add to your Bricks child theme or the code snippet plugin of your choice. You can find more information in this article: [/developer/hooks/filters/filter-bricks-code-echo_function_names/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-echo_function_names/)
+
+Bricks 1.4 introduces the `echo` tag to render the output of any PHP function:
+
+`{echo:my_custom_function}` - Echoes the value of the PHP function `my_custom_function()`
+
+It accepts arguments, with or without single quotes, like so:
+
+`{echo:get_the_date('Y-m-d', '55')}` - Echoes the date of the post 55 formatted to `Y-m-d`
+
+### Argument Formatting Rule
+
+When passing arguments to functions inside `{echo:}` tags, all arguments must be enclosed in single quotes, regardless of whether they are static values or dynamic tags. (`@since 1.9.3`)
+
+`{echo:my_function('static value')}`
+
+`{echo:my_function('{post_title}')}`
+
+> **Note**
+>
+> Please note that the `echo` tag does not support double quotes, and the custom PHP function should `return` the value (do not `echo` the value inside of the custom function).
+
+https://www.youtube.com/watch?v=ajAXEZoyk0E
+
+### Advanced: do_action {#do_action}
+
+The `do_action` tag enables developers and other plugins to integrate with your template designs seamlessly. With this tag, you can place action hooks such as `{do_action:my_custom_hook}` anywhere.
+
+For example, you can insert the `{do_action:woocommerce_after_single_product}` in your WooCommerce single product template, allowing other plugins to hook into it. This enhances the flexibility of your template design.
+
+> **Note**
+>
+> It is important to note that the `do_action` tag does not support passing arguments to the action. If the `add_action()` function expects additional arguments, an error in PHP will occur. The `do_action` only runs on the front end of the website, not inside the builder.
+
+### WooCommerce {#user-profile}
+
+When the WooCommerce plugin is installed and active, you'll get access to an extra set of Dynamic Data tags related to the products and orders. Please refer to the [WooCommerce builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/#dynamic-data) article for more details.
+
+Bricks 2.4 also adds WooCommerce v2 dynamic tags for cart totals, checkout steps, WooCommerce URLs, account addresses, orders, downloads, and customer notes. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/) for the complete context-aware reference.
+
+## Filters {#filters}
+
+You can change the output of certain dynamic data tags by using the following filters:
+
+- `:*numeric value*` - When used on a text field, it trims the content to the number of words specified (e.g. `{post_excerpt:10}`). When used with an avatar field like `author_avatar` it specifies the width/height of the avatar image
+- `:context` *or* `:prefix` - Add context to the archive title
+- `:image `- Outputs the field as an image tag, *e.g.* ``
+- `:link` - Output the field as an anchor tag, *e.g.* [`*value*`](https://...)
+- `:newTab` - Sets the link to open in a new tab
+- `:tel` - The URL of the anchor will be formatted as a telephone number,
+*e.g.* [`+123456789`](tel:+123456789)
+- `:*text value *`- Depending on the context, it could mean the following:
+  - User or term custom field meta key
+  - The URL parameter key
+  - Post terms separator
+  - Date format
+  - Image size slug (e.g., thumbnail or full)
+  - The echo tag function name
+- `:value` - Outputs the value instead of the label. Useful for comparing choices field types like MetaBox checkbox list, etc. inside element conditions, or with ACF choice fields (set the return type to "Both (Array)") such as Select, Checkbox, Radio Button, and Button Group. ACF field types that supporting this filter: True/False, User, Taxonomy, Image, Gallery, Post Object, Relationship (`@since 1.12`) MetaBox field types that supporting this filter: File Input, File, File Upload, File Advanced, Video, Image, Image Advanced, Image Upload, Single Image, Image Select Taxonomy, Taxonomy Advanced, Post, User (`@since 1.12`)
+- `:raw` - Skip parsing dynamic data tag
+- `:url` - Return URL from post ID. Useful to return URL for `file` field, etc.
+- `:format` - Keep HTML format or show empty Star rating for [WooCommerce dynamic data](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/#dynamic-data)
+- `:plain` - Removes HTML tags using `wp_strip_all_tags`, which can be helpful when you need to extract plain text from a dynamic tag result. For example, you may want to remove links from a post term dynamic tag.
+- `:array_value|{KEY}` - Returns the value of a specific array key within a dynamic tag result. It can be particularly useful for custom fields such as ACF Google Map and ACF Link types. The filter can also be applied to an echo dynamic tag. In cases where the value is a nested array, Bricks will flatten it as a JSON string to allow for seamless output without any errors. It's important to note that this filter should only be used when you are certain that the dynamic tag result is an array. Another important point to keep in mind is that if the specified array key does not exist, this filter will return an empty string. [Examples](#array_value-filter-examples)
+- `:timestamp` - Convert the date or time related dynamic data to timestamp value.
+- `:slug` and `:term_id` - Used in `{post_terms_xxxx}` dynamic tags, to output slug or term ID, instead of the term name. It can also be helpful in combination with `:plain` filter, like `{post_terms_xxxx:slug:plain}`, when using it inside conditions, taxonomy query, ... to compare the correct values (`@since 2.0`).
+
+##### Examples of :array_value filter {#array_value-filter-examples}
+
+`{acf_place_map:array_value|lat}` - Echoes the `$value['lat']` of the ACF google map type field
+
+`{acf_place_map:array_value|post_code}` - Echoes the `$value['post_code']` of the ACF google map type field
+
+`{acf_ext_link:array_value|title}` - Echoes the `$value['title']` of the ACF link type field
+
+`{je_football-team_logo:array_value|id}` - Echoes the `$value['id']` of the JetEngine media field (Value format set as Array with media ID and URL)
+
+`{mb_testimonials_user_image:array_value|name}` - Echoes the `$value['name']` of the Metabox single image field
+
+`{echo:custom_function:array_value|hello}` - Echoes the `$value['hello']` of PHP `custom_function()` function
+
+## Key-value pair arguments {#arguments}
+
+This feature allows for greater flexibility and customization in displaying dynamic content. The general syntax for using key-value pair arguments is: `{dynamic_data_tag @key:value}`.
+
+- Wrap text with spaces in single quotes.
+- The value can include other dynamic data tags (e.g., `{acf_text_field @fallback:'No content was found for {post_title}'}`).
+
+### Available arguments:
+
+<span id="fallback"></span>
+
+`@fallback` – Provides fallback text if the dynamic data tag doesn't return any data. This argument can be used with any dynamic data tag (`@since 1.10`).
+
+- **Example:** `{acf_text_field @fallback:'This is the fallback text!'}`. If `acf_text_field` is empty, "This is the fallback text!" will be displayed.
+- **Example**: `{acf_page_builder_cta_modul_options_css_id @fallback:'{acf_get_row_layout}-{query_loop_index}'}`. If `acf_page_builder_cta_modul_options_css_id` is empty, use current ACF flexible layout concatenate with current loop index as return string. Good use case when using this on dynamic CSS ID.
+
+<span id="fallback-image"></span>
+
+`**@fallback-image**` – Used for image dynamic data tags. It accepts either an attachment ID or a URL.
+
+- **Examples:** `{acf_image @fallback-image:554}` or `{acf_image @fallback-image:'https://example.com/placeholder.png'}`. If `acf_image` is not available, the specified image (by attachment ID or URL) will be displayed.
+
+<span id="sanitize"></span>
+
+`@sanitize` - Available `@since 1.11.1` it allows you to control the sanitization method applied to all dynamic tags within a "text" context. By default, all dynamic tags are sanitized using `wp_kses_post`, which helps secure output by stripping unwanted HTML and scripts.
+
+This argument is particularly useful if you have a shortcode outputting JavaScript—such as a form shortcode from plugins—stored within a custom field. In earlier versions, this JavaScript would be sanitized, preventing the form from functioning when the field is output via `{acf_custom_field}`.
+
+**Examples:**
+
+- `{acf_my_wysiwyg @sanitize:false}` – Disables sanitization, allowing scripts to be output if stored in the custom field. **Use carefully, ensuring that the content is safe for output without sanitization.**
+- `{acf_my_wysiwyg @sanitize:sanitize_email}` – Applies `sanitize_email` to the `my_wysiwyg` field. If the value doesn’t pass as a valid email, it returns empty.
+- `{acf_my_wysiwyg @sanitize:sanitize_email @fallback:'abc@gmail.com'}` – Applies `sanitize_email` to the `my_wysiwyg` field. If the result is empty, it falls back to `'abc@gmail.com'`.
+
+> **Note**
+>
+> **Note:** The `@sanitize` argument only accepts methods listed in the [WordPress Sanitizing API](https://developer.wordpress.org/apis/security/sanitizing/) , `**false**` or `wp_kses`. If using `@sanitize:false`, be cautious, as this will output the field content without sanitization.
+
+## Bricks hooks related to Dynamic Data {#hooks}
+
+[`bricks/dynamic_data/exclude_tags`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-exclude_tags/) - exclude a list of tags from the Bricks dynamic data logic
+
+[`bricks/dynamic_data/replace_nonexistent_tags`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-replace_nonexistent_tags/) - Disable the default Bricks behavior of replacing the non-existent dynamic data tags with an empty string
+
+---
+
 <a id="builder-dynamic-content-query-filters"></a>
 
 # Query Sort, Filter & Live Search
@@ -4457,171 +4457,6 @@ Avoid combining Bricks Query Filters with plugins or custom code that force-reru
 ### Browser back/forward feels wrong
 
 Test whether filters are updating URL state as expected. Bricks restores selected filter state on browser navigation, but custom scripts that rewrite URLs can interfere.
-
----
-
-<a id="builder-interface-builder-access"></a>
-
-# Builder Access & Capabilities
-
-Source: https://academy.bricksbuilder.io/builder/interface/builder-access/
-
-*Control who can access Bricks and which builder capabilities are available for different WordPress roles.*
-
-Bricks gives you full control over who can access the builder, and what actions they're allowed to perform. You can either assign a **predefined capability**, or create your own **custom capability** that allows only the specific permissions you enable for it.
-
-This gives you complete freedom and control to tailor the builder experience to any roles (i.e. content editor, designer, client, etc.) depending on what they should be able to do.
-
-![](https://academy.bricksbuilder.io/assets/bricks-settings-builder-access.png)
-
-## Access levels
-
-There are two ways to manage builder access:
-
-1. Use one of the predefined capabilities: **Full access**, **Edit content**, or **No access**
-2. Create your own custom builder capability with detailed permission control
-
-### Predefined capabilities
-
-- **Full access**: Grants access to all features and permissions in the Bricks builder.
-- **Edit content**: Limits the user to content editing only. Layout, styling, and structural controls are disabled. More specifically, this includes the following permissions:
-  - Access revisions
-  - Set component properties (instance)
-  - Access content (HTML) settings
-  - Edit all elements
-  - Edit all Bricks-enabled post types
-- **No access**: Blocks access to the Bricks builder entirely.
-
-## Creating a custom capability {#custom}
-
-If you need precise control over the actions a user or role should be able to perform, you can create your very own custom builder capability, following the steps outlines below.
-
-1. Go to **Bricks > Settings > Builder access**
-2. Under **Builder capabilities**, click **Add new capability**
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-access-add-custom-capability.png)
-
-Inside the capability popup, you can:
-
-- Give the capability a name & a description
-- Enable exactly the permissions you want to grant
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-access-permissions.png)
-
-Once created, you can assign this capability to specific users or user roles.
-
-## Assigning capabilities
-
-You can assign any builder capability, whether predefined or custom:
-
-- To a **user role**, under **Bricks > Settings > Builder access > Builder access**
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-access-custom-capabilities.png)
-
-- To a **specific user**, by editing their WordPress user profile
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-edit-user-profile.png)
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-access-user-settings.png)
-
-This gives you flexibility to apply permissions globally or individually.
-
-## Available permissions
-
-When editing a capability, the following permissions are available and grouped by category:
-
-### Post types {#post-types}
-
-Choose which post types can be edited using Bricks.
-
-### General {#general}
-
-- Access breakpoints manager
-- Access page settings
-- Access template settings
-- Access revisions
-- Delete revisions
-- Access font manager
-- Access icon manager
-- Access query manager
-- Customize builder interface
-- Manage builder interface profiles
-- Manage global elements (only if legacy Global Elements exist)
-
-### Templates {#templates}
-
-- Create templates
-- Edit templates
-- Delete templates
-- Insert templates
-- Access remote templates
-- Import/export templates
-
-### Global styles & settings {#styles-setting}
-
-- Access theme styles
-- Access color manager
-- Access variable manager
-- Access class manager
-- Create global classes
-- Edit global classes
-- Assign/unassign global classes
-- Delete global classes
-- Lock/unlock global classes
-- Copy/paste global class styles
-- Access pseudos & selectors
-
-### Components {#components}
-
-- Access remote components
-- Insert components
-- Edit properties (instance)
-- Edit components
-- Create components
-- Delete components
-- Import/export components
-
-Remote workflows combine these permissions instead of using one broad access flag:
-
-| Workflow | Required permissions |
-| --- | --- |
-| Browse a configured remote component library | **Access remote components** |
-| Import a remote component | **Access remote components** and **Import/export components** |
-| Insert an imported component | **Insert components** |
-| Insert a remote template without components | **Access remote templates** and **Insert templates** |
-| Insert a remote template with component dependencies | **Access remote templates**, **Insert templates**, **Access remote components**, **Import/export components**, and **Insert components** |
-| Save a remote template to My Templates | **Access remote templates** and **Import/export templates** |
-| Save a remote template with component dependencies to My Templates | The template import permissions above, plus **Access remote components** and **Import/export components** |
-
-See [Remote Templates](https://academy.bricksbuilder.io/builder/features/remote-templates/) for the corresponding template setup.
-
-### Element editing & styling {#element-edit-style}
-
-- Access content (HTML) settings
-- Access style (CSS) settings
-- Access query loop builder
-- Access element hide
-- Access element conditions
-- Access element interactions
-- Duplicate elements
-- Delete elements
-- Move elements
-- Copy/paste elements
-- Copy/paste element styles
-- Copy/paste element conditions
-- Copy/paste element interactions
-- Copy/paste element attributes
-- Pin/unpin elements
-
-### Edit elements {#edit-elements}
-
-Controls general editing of existing elements.
-
-_Note: Requires access to content and/or style settings._
-
-### Add elements {#add-elements}
-
-Define which elements can be inserted.
 
 ---
 
@@ -5391,183 +5226,6 @@ Make sure the element with the dynamic tag is inside the loop element, and make 
 
 ---
 
-<a id="builder-interface-builder-interface-customiser-profiles"></a>
-
-# Builder Interface Customiser and Profiles
-
-Source: https://academy.bricksbuilder.io/builder/interface/builder-interface-customiser-profiles/
-
-*Customize the Bricks builder workspace, save reusable interface profiles, and assign layouts to roles or users.*
-
-The Builder Interface Customiser lets you adjust the Bricks builder workspace to match the way you work.
-
-You can add, hide and move toolbar items, dock the Control panel and Structure, place Pinned controls in the bottom dock, and save layouts as profiles for different users or roles.
-
-This changes the builder workspace only. It does not change frontend output, templates, elements, or page data.
-
-https://www.youtube.com/watch?v=iIUmLZQp_CY
-
-## Requirements
-
-Builder interface customization is available in Bricks 2.4.
-
-The Builder interface entry appears when the current user can customize the builder interface or manage builder interface profiles. Administrators with full builder access can use both by default.
-
-Use [Builder access](https://academy.bricksbuilder.io/builder/interface/builder-access/) to grant these permissions to other roles:
-
-- **Customize builder interface**: Lets the user save and reset their own builder interface preferences.
-- **Manage builder interface profiles**: Lets the user create, load, rename, overwrite, delete, import, and export builder interface profiles.
-
-Site admins can disable the customiser globally under `Bricks -> Settings -> Builder -> Builder interface` by enabling **Disable builder interface customiser**.
-
-## Open the Builder interface
-
-Open the builder, then use either of these entry points:
-
-- Open the builder settings panel and click **Builder interface**.
-- Open the [Command Palette](https://academy.bricksbuilder.io/builder/interface/command-palette/) and choose **Builder interface** from the Builder scope.
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-popup.webp)
-
-## Workspace layout
-
-The Builder interface popup controls the main workspace areas.
-
-### Control panel and Structure
-
-Use the **Control panel** and **Structure** settings to dock each panel to the **Left**, **Right**, or **Bottom**.
-
-When the Control panel and Structure are assigned to the same side dock, Bricks displays them next to each other instead of stacking both panels in the same area.
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-control-structure-panels.webp)
-
-### Pinned controls
-
-Pinned controls can stay inside the control panel or move to the bottom dock.
-
-When **Pinned controls** is set to **Bottom**, the popup shows a **Pinned controls layout** section. Use it to set the number of columns and optional column widths. Bricks supports up to six pinned-control columns.
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-pinned-controls.webp)
-
-### Bottom dock
-
-The bottom dock can contain:
-
-- Control panel
-- Structure
-- Pinned controls
-
-Items in the bottom dock appear as tabs. You can reorder those tabs while editing the builder interface.
-
-When more than one item is assigned to the bottom dock, the popup shows a **Bottom dock layout** section. Use it to set the number of bottom dock columns and optional CSS widths for each column. The maximum number of columns matches the number of items currently assigned to the bottom dock.
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-bottom-dock.webp)
-
-## Toolbar layout
-
-The toolbar can be placed on the **Top**, **Right**, **Bottom**, or **Left** edge of the builder.
-
-Each toolbar edge has three groups:
-
-- **Start**
-- **Center**
-- **End**
-
-Drag toolbar items between these groups to change their order and placement. Bricks keeps the breakpoint controls together as one locked cluster.
-
-### Toolbar items
-
-The **Toolbar items** section contains optional items you can drag into the toolbar. This includes repeatable toolbar dividers and custom **Insert element** shortcuts.
-
-An Insert element shortcut can insert a selected element or component directly from the toolbar.
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-toolbar-items.webp)
-
-### Hidden items
-
-Drag optional toolbar items into **Hidden items** to remove them from the visible toolbar. Use the restore button on a hidden item to bring it back.
-
-Required toolbar items cannot be hidden. In Bricks 2.4, **Elements**, **Structure**, **Preview**, and **Save** are required.
-
-## Save or reset your layout
-
-Click **Save** to store the current builder interface for your user account.
-
-Click **Reset** to remove your saved builder interface preferences and return to the resolved default layout. The reset keeps pinned control groups where possible, so frequently used pinned groups are not lost just because the workspace layout was reset.
-
-If the popup shows an unsaved-changes message, save before closing the popup if you want to keep the layout.
-
-## Profiles
-
-Builder interface profiles save a complete builder interface layout that can be reused.
-
-In the **Profiles** section, you can:
-
-- **Load** an existing profile into the current popup.
-- **Save as** a new profile from the current layout.
-- **Overwrite** the selected profile.
-- **Rename** the selected profile.
-- **Delete** the selected profile.
-
-Profiles are useful when different people need different builder workspaces. For example, a designer might use a wide control panel and visible Structure panel, while a content editor might use fewer toolbar items and a simplified bottom dock.
-
-> **Note**
->
-> Bricks applies profiles after personal builder interface preferences. If a setting exists in both places, the assigned profile wins. Use profile assignments when you want a role or user to consistently receive a specific builder workspace.
-
-Saving a profile does not assign it automatically. Assign profiles under Builder access after creating them.
-
-## Assign profiles to roles or users
-
-After creating profiles, assign them under `Bricks -> Settings -> Builder access -> Builder interface profile`.
-
-Each WordPress role can use:
-
-- **Default**
-- Any saved builder interface profile
-
-You can override the role assignment for a specific person by editing that user's WordPress profile and selecting a **Builder interface profile**.
-
-![](https://academy.bricksbuilder.io/assets/builder-interface-profiles-user-roles.webp)
-
-If a user has multiple roles with different profile assignments, Bricks uses the first matching role assignment from the user's role list.
-
-Deleting a profile removes any role and user assignments that pointed to that profile.
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-profiles.webp)
-
-## Import and export
-
-Open the import/export icon in the Builder interface popup to move layouts between sites or browsers.
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-import-export.webp)
-
-You can export or import:
-
-- Current builder interface settings
-- The selected profile
-- All profiles
-
-Importing builder interface settings overrides the current builder interface settings. Importing profiles does not import role or user assignments.
-
-When imported profiles conflict with existing profile IDs, Bricks lets you overwrite, import as a copy, or skip each profile. Conflicting profiles are skipped by default until you choose another option.
-
-## Reset another user's preferences
-
-Admins can reset another user's saved builder interface preferences from that user's WordPress profile.
-
-In the user's WordPress profile, find **Builder interface** and click **Reset builder interface**. This removes that user's custom builder interface preferences and restores the default or assigned profile layout on the next builder load.
-
-## Troubleshooting
-
-- **The Builder interface entry is missing:** Check that the user has **Customize builder interface** or **Manage builder interface profiles**, and that **Disable builder interface customiser** is not enabled.
-- **A user's saved layout does not appear after reload:** Check whether a builder interface profile is assigned to the user's role or user account. Assigned profiles override personal preferences.
-- **A toolbar item will not hide:** Required toolbar items cannot be hidden.
-- **A profile is missing after deletion:** Deleting a profile also removes role and user assignments for that profile.
-- **Profile assignments did not move during import:** Importing profiles does not import role or user assignments. Assign the profiles again under **Builder access**.
-
----
-
 <a id="builder-elements"></a>
 
 # Elements
@@ -5737,1225 +5395,6 @@ These are the elements that Bricks comes with:
 - [Product Tabs](https://academy.bricksbuilder.io/builder/elements/product/product-tabs/)
 - [Product Reviews](https://academy.bricksbuilder.io/builder/elements/product/product-reviews/)
 - [Product Up/Cross-sells](https://academy.bricksbuilder.io/builder/elements/product/product-upsells/)
-
----
-
-<a id="builder-interface-builder-mode"></a>
-
-# Builder Mode (Custom)
-
-Source: https://academy.bricksbuilder.io/builder/interface/builder-mode/
-
-*Customize the Bricks builder color scheme with custom builder-mode CSS variables.*
-
-Starting with Bricks 1.3.7 you can customize the builder mode (color scheme) to your liking by tweaking a few CSS variables.
-
-You first have to set the "Builder Mode" under Bricks → Settings → Builder to "Custom" and save your settings.
-
-The following new setting called "Builder Mode (Custom)" should now appear:
-
-![Builder Mode: Custom](https://academy.bricksbuilder.io/assets/bricks-setting-builder-mode-custom-1024x721.png)
-
-Below you can find a starter CSS snippet with commonly customized builder CSS variables. Bricks 2.x defines additional variables for classes, components, status colors, muted colors, and the canvas scrollbar, so use this as a starting point and override any extra variables your custom mode needs.
-
-```php
-[data-builder-mode=custom] {
-  --builder-bg: #f6f4f2;
-  --builder-bg-2: #efebe6;
-  --builder-bg-3: #e7e1da;
-  --builder-bg-4: #dbd2c8;
-  --builder-bg-accent: #EED8FD;
-
-  --builder-color: #2e271e;
-  --builder-color-description: #76634c;
-  --builder-color-accent: #7209B7;
-  --builder-color-accent-inverse: #fff;
-
-  --builder-color-knob: #c8baaa;
-  --builder-border-color: #d8cec2;
-  --builder-placeholder-opacity: .33;
-
-  --builder-color-class: #2b6cb0;
-  --builder-bg-class: #d8e8f6;
-  --builder-color-component: #6b46c1;
-  --builder-bg-component: #eadcf8;
-  --builder-color-info: #006c9c;
-  --builder-bg-info: #d9f1ff;
-  --builder-color-danger: #b42318;
-  --builder-bg-danger: #ffe4e2;
-  --builder-color-success: #027a48;
-  --builder-bg-success: #dcfae6;
-  --builder-color-muted: #7a6f63;
-  --builder-bg-muted: #e2ddd6;
-
-  --builder-canvas-scrollbar-thumb: #c8baaa;
-  --builder-canvas-scrollbar-thumb_hover: #76634c;
-  --builder-canvas-scrollbar-track: #efebe6;
-
-  --bricks-tooltip-bg:   #16130f;
-  --bricks-tooltip-text: #f6f4f2;
-}
-```
-
-If you copy the CSS above, paste it into your "Builder Mode (Custom)" setting, and save your settings, your builder should look like this:
-
-![](https://academy.bricksbuilder.io/assets/bricks-screenshot-builder-mode-custom-1024x576.png)
-
-<figcaption>
-
-Bricks builder with a custom color scheme (mode)
-
-</figcaption>
-
-### Resources
-
-- Color palettes: [https://coolors.co/palettes/trending](https://coolors.co/palettes/trending)
-- Color palettes: [https://colorhunt.co](https://colorhunt.co)
-- Generate color shades & tints: [https://www.colorhexa.com](https://www.colorhexa.com)
-
-Note: In custom builder mode, Code element's background color changes to a light color scheme.
-
----
-
-<a id="builder-interface-context-menu"></a>
-
-# Context Menu
-
-Source: https://academy.bricksbuilder.io/builder/interface/context-menu/
-
-*Use the Bricks context menu for quick element actions such as edit, clone, delete, structure moves, and style copy and paste.*
-
-The Bricks context menu gives you quick access to actions for the selected element. It is especially useful for copying, pasting, duplicating, deleting, hiding, wrapping, converting, and saving reusable layout pieces.
-
-To open it, right-click an element on the canvas or in the Structure panel.
-
-https://youtu.be/7HpRF6jRSlc
-
-## How the context menu selects an element
-
-Right-clicking an element makes that element active and opens the Element panel.
-
-The Bricks context menu is hidden in Preview mode. It also does not open from the Elements library panel, because that panel is for inserting new elements, not editing existing ones.
-
-## Action availability
-
-The context menu is dynamic. It changes based on:
-
-- The current user's builder permissions.
-- Whether one element or multiple elements are selected.
-- Whether the selected element is nestable.
-- Whether the selected element is cloneable or deletable.
-- Whether the selected element is a Component instance or Component root.
-- Whether the selected element is a legacy Global Element.
-- Whether the clipboard currently contains Bricks data that can be pasted.
-
-If an action is missing, it is usually because the current selection, permissions, or clipboard state does not support it.
-
-## Main actions
-
-| Action | What it does | Important limits |
-| --- | --- | --- |
-| Copy | Copies the selected element or selected elements. | Requires copy/paste element permission. |
-| Paste | Pastes copied Bricks elements when the clipboard contains element data. | Requires copy/paste element permission. |
-| Duplicate | Clones the active element. | Hidden for active Component roots and unavailable for elements marked as not cloneable. |
-| Delete | Deletes the active element. In bulk mode, deletes the selected elements. | Hidden for active Component roots and unavailable for elements marked as not deletable. |
-| Hide element | Toggles hide settings for builder, frontend, or both. | Requires access to element hide. |
-| Insert | Inserts a Container, Block, or Div inside the selected layout element. Hold Cmd/Ctrl to switch to **Insert after**. | Available for nestable elements. |
-| Wrap | Wraps the selected element or selected sibling elements in the configured wrapper type (Block by default). Use the adjacent icons to choose another type. Section is offered only for top-level elements. | In bulk mode, selected elements must share the same parent. |
-| Unwrap | Removes a selected nestable wrapper and moves its children up to the wrapper's parent. | Requires a nestable element with children. |
-| Convert | Converts Section, Container, Block, and Div layout elements to another layout type where allowed. | Only applies to layout elements. |
-| Save as Component | Opens the Components workflow for the selected element. | Hidden in bulk mode, while editing Components, or for Component/legacy Global Element selections. Shown but disabled for Template and Filter elements. |
-| Save as Template | Saves a nestable element as a Template. | Not available in bulk mode or while editing Components. |
-| Edit Component | Opens a Component instance for editing. | Requires Component permissions. |
-| Unlink Component | Converts a Component instance into regular local elements after confirmation. | Requires Component permissions. |
-| Unlink Global Element | Unlinks a legacy Global Element when one exists. | Requires legacy Global Element access. |
-
-## Copy sub-actions
-
-The Copy row can show extra icons for more specific data:
-
-| Copy icon/action | Copied data |
-| --- | --- |
-| CSS ID | The element's rendered CSS ID, including `#`. |
-| Bricks ID | The internal Bricks element ID. |
-| Query ID | The query ID for a selected query loop element. In Component loop contexts, this can include the instance ID. |
-| Styles | Element ID styles, or active global class styles if a class is active. |
-| Conditions | Element conditions. |
-| Interactions | Element interactions. |
-| Classes | Assigned global classes. |
-| Attributes | Custom attributes. |
-
-These actions are permission-gated. For example, copying attributes requires copy/paste element attributes permission, while copying conditions requires copy/paste element conditions permission.
-
-## Paste sub-actions
-
-The Paste row changes based on the clipboard data. Bricks shows only paste actions that match the current clipboard source.
-
-| Paste action | Behavior |
-| --- | --- |
-| Styles | Pastes copied element styles or global class styles to the selected target. |
-| Conditions | Appends copied conditions to the existing element conditions and generates new condition IDs. |
-| Interactions | Appends copied interactions to the existing element interactions and generates new interaction IDs. |
-| Attributes | Replaces the target element's copied custom attributes and generates new attribute IDs. |
-| Classes | Merges copied global classes into the target element's existing classes without duplicates. |
-
-Pasting styles can target one selected element or multiple selected elements. When multiple elements are selected, Bricks applies the paste operation to the selected elements.
-
-## Bulk editing behavior
-
-The context menu supports bulk editing, but not every action is available for multiple selected elements.
-
-Bulk editing works best for:
-
-- Copying selected elements.
-- Deleting selected elements.
-- Hiding selected elements.
-- Wrapping selected sibling elements with the same parent.
-- Pasting shared styles.
-- Applying copied classes, conditions, interactions, or attributes where supported.
-
-Bulk editing has important limits:
-
-- Save as Component and Save as Template are not shown in bulk mode.
-- Some copy sub-actions are disabled in bulk mode.
-- Wrap requires all selected elements to share the same parent.
-- Unwrap only works when the selected nestable elements contain children and the selected set does not include those children.
-
-## Insert, wrap, unwrap, and convert
-
-The context menu can create or reshape layout structure without dragging from the Elements panel.
-
-### Insert
-
-Insert adds a Container, Block, or Div inside the selected layout element, as its last child. The default insert type can be controlled by builder settings. Hold Cmd (macOS) or Ctrl (Windows) while the menu is open and the action changes to **Insert after**, which adds the new element after the selection instead.
-
-### Wrap
-
-Wrap places the selected element, or selected sibling elements, inside a new wrapper. Clicking **Wrap** uses the wrapper type selected in builder settings (Block by default). Use the icons next to it to choose another wrapper type. Section is only offered when the selected elements sit at the top level of the page.
-
-Use wrap when you already built content but need an additional layout layer.
-
-### Unwrap
-
-Unwrap removes a selected nestable wrapper and moves its children to the wrapper's parent. It preserves child order as much as the current hierarchy allows.
-
-Use unwrap carefully. It changes structure, not only styling.
-
-### Convert
-
-Convert changes one layout wrapper type into another, such as Container to Block or Div to Container. It is available for Section, Container, Block, and Div when the selected structure can be converted.
-
-Section conversion is restricted to root-level contexts because sections are top-level layout wrappers.
-
-## Components, templates, and legacy Global Elements
-
-Use **Save as Component** when the selected element should become reusable and editable through the Components system.
-
-Use **Save as Template** when the selected nestable element should become a reusable template that can be inserted later.
-
-Legacy [Global Elements](https://academy.bricksbuilder.io/builder/features/global-elements/) can still be unlinked from the context menu when they exist. For new reusable content, use [Components](https://academy.bricksbuilder.io/builder/features/components/) or Templates.
-
-## Permission notes
-
-Context menu actions follow the same Builder Access permission model as the rest of the builder. A user might be able to open the context menu but not see specific actions.
-
-Common permission-gated actions include:
-
-- Copy/paste elements
-- Copy/paste styles
-- Copy/paste conditions
-- Copy/paste interactions
-- Copy/paste attributes
-- Hide element
-- Duplicate elements
-- Delete elements
-- Create Components
-- Edit Components
-- Create Templates
-- Manage legacy Global Elements
-
-Review [Builder Access](https://academy.bricksbuilder.io/builder/interface/builder-access/) when a user reports that a context-menu action is missing.
-
-## Troubleshooting
-
-- **The Bricks context menu does not open:** Make sure you are not in Preview mode and that you are right-clicking an existing canvas or Structure element.
-- **Paste action is missing:** Copy the matching Bricks data first. The paste menu only shows actions that match the clipboard data.
-- **Copy/paste behaves differently in Safari:** Safari can be stricter about clipboard access, so perform copy and paste from direct user gestures.
-- **Save as Component is missing or disabled:** Check permissions and make sure you are not bulk editing, editing an active Component, selecting a Component or legacy Global Element, or selecting a Template or Filter element.
-- **Wrap is missing or disabled:** Confirm the selected elements share the same parent and can be wrapped in the current hierarchy.
-
----
-
-<a id="builder-interface-editing-with-bricks"></a>
-
-# Start Editing With Bricks
-
-Source: https://academy.bricksbuilder.io/builder/interface/editing-with-bricks/
-
-*Start editing with Bricks by understanding the builder layout, canvas behavior, and the basic flow for working on a page.*
-
-This article explains how to open the Bricks builder, what each main area of the interface does, and how editing with Bricks relates to rendering the page on the frontend.
-
-## Before you open the builder
-
-Bricks shows builder entry points when the current post can be edited with Bricks:
-
-- The current user has permission to use the builder.
-- The post type is enabled for Bricks.
-- The post can be edited by the current user.
-
-Bricks checks the license when the builder opens. If the license is not valid, Bricks redirects to the [license screen](https://academy.bricksbuilder.io/builder/license/license-and-updates/) instead of loading the builder.
-
-Go to **Bricks -> Settings** and select the post types you want to edit with Bricks:
-
-![](https://academy.bricksbuilder.io/assets/bricks-settings-post-types.png)
-
-> **Note**
->
-> While you can enable Bricks for blog posts, most sites work better when posts are written in the WordPress editor and displayed through a Bricks template. Use Bricks for the layout, and use WordPress for the editorial content.
-
-## Open the builder
-
-You can open the builder from several places in WordPress.
-
-### Posts list
-
-Hover over a supported post, page, or custom post type in the WordPress dashboard and click **Edit with Bricks**:
-
-![](https://academy.bricksbuilder.io/assets/docs-edit-with-bricks-button.png)
-
-### Post edit screen
-
-When editing an existing post or creating a new one, click **Edit with Bricks** in the Bricks editor area:
-
-![](https://academy.bricksbuilder.io/assets/bricks-post-edit-screen-1024x576.png)
-
-### Frontend admin bar
-
-When you are logged in and viewing the page on the frontend, use the WordPress admin bar. The Bricks menu can open the current page, the active header template, the active content template, the active footer template, or the Templates screen when those links apply to the current page.
-
-If the **Edit with Bricks** link is missing, check the current user's builder permissions and make sure the post type is enabled under **Bricks -> Settings**.
-
-## Edit with Bricks vs render with Bricks
-
-Editing with Bricks opens the visual builder. Rendering with Bricks controls which content source the frontend uses.
-
-A post can have WordPress editor content, Bricks data, or both. The **Render with Bricks** / **Render with WordPress** option in the admin bar switches the editor mode for the current post. If a post is set to render with WordPress, its Bricks data remains stored, but the frontend uses the WordPress content instead.
-
-Bricks templates are different. Templates are Bricks documents by definition, so the editor mode toggle does not apply to them.
-
-Use the render mode deliberately:
-
-- Choose **Render with Bricks** when the page itself is built in Bricks.
-- Choose **Render with WordPress** when the page should use normal WordPress content, usually with a Bricks template controlling the surrounding layout.
-- Do not use the render toggle as a content backup system. It only chooses the frontend render source.
-
-If a page is rendered with Bricks, the post list shows a **- Bricks** status after the title:
-
-![](https://academy.bricksbuilder.io/assets/bricks-post-screen-post-status.png)
-
-<figcaption>
-
-Post status "Bricks" shows you that a page is rendered with Bricks
-
-</figcaption>
-
-## Delete Bricks data
-
-The admin bar and post edit screen can show a **Delete Bricks data** button when this option is enabled in **Bricks -> Settings**.
-
-This removes Bricks-generated data from the current post, including page content, page settings, header/footer data, editor mode, and template type metadata. Treat it as destructive. Use it only when you want the post to stop using its stored Bricks layout data.
-
-## Builder anatomy
-
-The builder is made of four main working areas.
-
-### Toolbar
-
-The toolbar runs across the top of the builder. It gives you access to global builder actions and mode switches, including:
-
-- Style Manager
-- Pages panel
-- Templates
-- Settings
-- Command Palette
-- Elements and Components
-- Breakpoints
-- Preview width, height, and scale
-- Reload canvas
-- Undo and redo
-- Preview and save actions
-
-Which buttons you see depends on your permissions and global builder settings. For example, template actions require template permissions, and the breakpoints manager requires breakpoint access.
-
-### Panel
-
-The left panel changes depending on what you are doing. It can show the element library, the selected element controls, page/template settings, revisions, pages, or other manager views.
-
-The panel can be resized and minimized. When an element is selected, the panel shows the element label, element actions, class/selector controls, and the relevant Content and Style controls.
-
-### Canvas
-
-The canvas is the live visual preview of the current page. It renders the Bricks layout in an iframe, so selecting and editing elements feels close to editing the frontend output.
-
-The canvas can be reloaded from the toolbar. Reloading is useful after changing settings that need a fresh render, or when external scripts, query data, or dynamic content affect the preview.
-
-### Structure panel
-
-The Structure panel shows the element tree. It is the safest place to understand nesting, select hard-to-click elements, move elements, and work with deeply nested layouts.
-
-Use the Structure panel whenever the canvas view is visually crowded, an element is hidden, or you need to confirm parent-child relationships.
-
-## First successful edit workflow
-
-Use this workflow when creating or editing a normal page:
-
-1. Enable the page post type under **Bricks -> Settings**.
-2. Create or open the page in WordPress.
-3. Click **Edit with Bricks**.
-4. Open the Elements panel and add a layout element, such as a Section or Container.
-5. Add content elements inside the layout.
-6. Select an element on the canvas or in the Structure panel.
-7. Edit its Content controls for markup and data.
-8. Edit its Style controls for design.
-9. Switch breakpoints and adjust responsive styles where needed.
-10. Save the builder.
-11. Preview the page and confirm it is rendered with Bricks.
-
-## Common builder states
-
-### Preview mode
-
-Preview mode hides the normal editing controls so you can inspect the layout. While previewing, builder editing actions such as the custom context menu are disabled.
-
-### Unsaved changes
-
-The builder tracks history and unsaved changes. Use save before leaving the builder, switching important context, or testing frontend-only behavior.
-
-### Unsupported post type
-
-If a post type is not enabled for Bricks, Bricks redirects you back to WordPress admin instead of opening the builder. Enable the post type under **Bricks -> Settings** or use a Bricks template for that content type.
-
-### Missing permissions
-
-Users can have full access, content-editing access, or custom permission sets. Missing permissions can hide toolbar buttons, element categories, manager popups, settings panels, and editing controls. Review [Builder Access](https://academy.bricksbuilder.io/builder/interface/builder-access/) if a user can open the builder but cannot see or edit a specific area.
-
-### Login or license redirects
-
-If the builder detects that the current browser session is no longer logged in, it redirects to the login page. If the license is not valid, Bricks redirects to the [license screen](https://academy.bricksbuilder.io/builder/license/license-and-updates/).
-
-## Troubleshooting checklist
-
-- **No Edit with Bricks button:** Check post type support, user permissions, and whether the current user can edit the post.
-- **The page opens in WordPress instead of Bricks:** Confirm the page has Bricks data or switch the admin bar render mode to **Render with Bricks**.
-- **Builder opens but controls are missing:** Check builder permissions and whether the selected element is disabled.
-- **Canvas looks stale:** Reload the canvas from the toolbar.
-- **Page looks different on the frontend:** Save the builder, confirm render mode, and test outside preview mode.
-
----
-
-<a id="builder-interface-keyboard-shortcuts"></a>
-
-# Keyboard Shortcuts
-
-Source: https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/
-
-*Speed up Bricks workflows with keyboard shortcuts for editing, navigating, saving, and other builder actions.*
-
-Quickly perform the most common in-builder actions through short & simple keyboard shortcuts:
-
-| **Key Combination** | **Description** |
-| --- | --- |
-| `CMD / CTRL` | Insert element outside active nestable/parent element |
-| `CMD / CTRL + S` | Save changes |
-| `CMD / CTRL + Shift + S` | Force save all data |
-| `CMD / CTRL + K` | Open command palette |
-| `CMD / CTRL + .` | Toggle Style Manager |
-| `CMD / CTRL + Shift + .` | Toggle Builder Browser |
-| `CMD / CTRL + P` | Toggle preview mode |
-| `CMD / CTRL + B` | Switch between responsive editing modes |
-| `CMD / CTRL + C` | Copy selected element(s), when not editing text or an input and permission allows |
-| `CMD / CTRL + V` | Paste copied element(s), when not editing text or an input and permission allows |
-| `CMD / CTRL + Z` | Undo your last change |
-| `CMD / CTRL + ALT + NUMBER` | Quick Access Bar: Go to tab/control group |
-| `1-8` | Switch Style Manager tabs while the Style Manager is open |
-| `CMD / CTRL + Shift + Arrow down` | Edit next element (same level) |
-| `CMD / CTRL + Shift + Arrow up` | Edit previous element (same level) |
-| `CMD / CTRL + Shift + Arrow right` | Edit first child element |
-| `CMD / CTRL + Shift + Arrow left` | Edit parent element (container) |
-| `CMD / CTRL + Shift + Z` | Redo your last change |
-| `CMD / CTRL + Shift + D` | Duplicate selected element |
-| `CMD / CTRL + Shift + F` | Focus on element setting search input (in panel) |
-| `CMD / CTRL + Shift + L` | Open Builder Browser on the Templates view |
-| `CMD / CTRL + Shift + P` | Wrap in the configured wrapper element |
-| `CMD / CTRL + Shift + H` | Show history panel |
-| `CMD / CTRL + Shift + V` | View on frontend |
-| `CMD / CTRL + Shift + C` | Show components panel |
-| `CMD / CTRL + Shift + X` | Show structure panel |
-| `CMD / CTRL + Shift + E` | Show elements panel (and focus on search) |
-| `CMD / CTRL + Delete` | Delete active element (and its children) |
-| `CMD / CTRL + ENTER` | Toggle element classes UI |
-| `Shift (modifier)` | Hold down "Shift" to:<br />- Adjust element spacing (margin, padding) or container sizing (height, width) on the canvas in steps of 5 (custom units) or 10 (default unit = px)<br />- Directly edit new element |
-| `ESC` | Cancel/close popup (templates, documentation, etc.) |
-| `ALT/OPTION + T` | Focus on toolbar (logo). TAB through toolbar possible |
-
----
-
-<a id="builder-interface-editing-elements"></a>
-
-# Adding & Editing Elements
-
-Source: https://academy.bricksbuilder.io/builder/interface/editing-elements/
-
-*Add elements to the canvas, edit their settings, and understand the main element editing workflow in Bricks.*
-
-Elements are the building blocks of a Bricks layout. This article explains how elements are added, selected, nested, styled, reset, copied, and edited in single-element and bulk-edit workflows.
-
-## Element mental model
-
-A Bricks layout is an element tree. Every element has:
-
-- A type, such as Section, Heading, Image, Button, or Form.
-- A unique Bricks ID.
-- Optional children if the element can contain other elements.
-- A parent, unless it is a root element.
-- Settings, which store content, styles, classes, conditions, interactions, custom attributes, and other element-level data.
-
-Root elements sit at the top of the page content. Nested elements sit inside another element. The canvas shows the visual result; the Structure panel shows the actual hierarchy.
-
-## Add an element
-
-Open the Elements panel, then drag an element onto the canvas or into the Structure panel.
-
-Where the element lands depends on the current drop target:
-
-- Drop onto a nestable element to place the new element inside it.
-- Drop between siblings to place the new element at that position.
-- Drop at root level to create a top-level element.
-
-You can also add layout elements from the [Context Menu](https://academy.bricksbuilder.io/builder/interface/context-menu/) when an existing nestable element is selected.
-
-## Layout elements
-
-The current layout elements are **Section**, **Container**, **Block**, and **Div**.
-
-Use them as structural wrappers:
-
-- **Section**: Common top-level page section.
-- **Container**: Common content-width wrapper.
-- **Block**: Generic block-level wrapper.
-- **Div**: Generic wrapper with fewer layout assumptions.
-
-Not every element can contain children. Elements that can contain children are nestable. Non-nestable elements, such as many content elements, can be moved, styled, copied, or deleted, but they cannot be used as parents.
-
-## Select and edit an element
-
-Click an element on the canvas or in the Structure panel to select it. The panel switches to the selected element and shows its controls.
-
-> **Note**
->
-> You can edit text directly on the canvas by clicking on it and typing. Select text portions with your mouse to reveal the text formatting toolbar with styling options such as bold, italic, and links.
-
-The panel header shows the selected element label. You can rename the label to make the Structure panel easier to scan. The label is for builder organization and does not change the HTML tag or frontend text by itself.
-
-The panel can also show quick actions for hide settings, conditions, interactions, Components, and legacy Global Elements depending on the selected element and your permissions.
-
-## Content controls
-
-Content controls affect the element's markup, data, and behavior. Examples include an Image element's image source, a Button element's link, a Heading element's text, or a Form element's fields and actions.
-
-The screenshot below shows Content controls for the Image element:
-
-![Panel: Content (Tab)](https://academy.bricksbuilder.io/assets/bricks-academy-panel-content-tab-1024x576.png)
-
-<figcaption>
-
-Element Image: Content Tab
-
-</figcaption>
-
-Content controls are not only for visible text. They can also control semantic tags, attributes, query settings, form behavior, media sources, links, and dynamic data.
-
-## Style controls
-
-Style controls affect the CSS Bricks generates for the selected element, active class, active selector, active pseudo state, and active breakpoint.
-
-Style controls are commonly grouped into:
-
-- Layout
-- Typography
-- Background
-- Border / Box Shadow
-- Gradient / Overlay
-- Shape Dividers
-- Transform
-- CSS
-
-![Panel: Style (Tab)](https://academy.bricksbuilder.io/assets/bricks-academy-panel-style-tab-1024x576.png)
-
-<figcaption>
-
-Element Image: Style Tab
-
-</figcaption>
-
-Before changing styles, check which selector is active at the top of the panel:
-
-- If the element ID is active, styles apply only to that element.
-- If a global class is active, styles apply to that class everywhere it is used.
-- If a pseudo selector is active, styles apply to that selector state.
-- If a breakpoint is active, responsive style values are stored for that breakpoint.
-
-This is the most important styling habit in Bricks: select the target first, then change the control.
-
-## Classes, selectors, and responsive edits
-
-The selector area above the Content/Style tabs controls whether you are styling the element ID, a global class, or a selector/pseudo state.
-
-Use global classes for reusable styling. Use the element ID for one-off styling. Use selectors and pseudo classes when styling states or child selectors.
-
-Responsive edits are controlled by the active breakpoint in the toolbar. A control indicator can show when a control has a value at the active breakpoint or another breakpoint, depending on your builder settings.
-
-## Bulk editing
-
-You can select multiple elements with Cmd/Ctrl or Shift selection. Bulk editing is useful for shared style changes, class assignment, moving, hiding, deleting, and some context-menu actions.
-
-Bulk editing has limits:
-
-- Bricks calculates the settings shared by the selected elements.
-- If selected elements have different values, the shared control can appear empty.
-- Editing a shared setting applies that change to the selected elements.
-- If different element types are selected, Bricks shows only the Style tab.
-- Some actions are disabled in bulk mode, such as saving as a Component or Template.
-- Bulk wrapping only works when selected elements share the same parent.
-
-Use bulk editing for broad, predictable operations. For content-heavy edits, edit one element type at a time.
-
-## Hide, conditions, and interactions
-
-Element-level hide settings, conditions, and interactions are opened from the element panel header when available.
-
-- **Hide element** can hide an element in the builder, on the frontend, or both.
-- **Conditions** control whether the element should render for the current request.
-- **Interactions** attach frontend behavior to triggers and actions.
-
-These panels are permission-gated. If you cannot see them, check [Builder Access](https://academy.bricksbuilder.io/builder/interface/builder-access/).
-
-## Components and locked editing states
-
-When you select a Component instance, Bricks shows instance controls and exposed properties instead of treating every nested element as local page content. To edit the Component definition, enter Component editing mode.
-
-Some elements may also be disabled through the Element Manager or unavailable because their element type no longer exists. In those cases, Bricks shows a notice instead of normal controls.
-
-Legacy Global Elements can still appear on existing sites. Bricks marks them as deprecated and recommends Components for new reusable content.
-
-## How To Reset Controls
-
-Controls that have a stored value show a small indicator next to the control label or group label. Hover the indicator to reveal the reset action.
-
-You can reset:
-
-- A single control.
-- A control group, such as Typography.
-- Element ID styles.
-- Active class styles, if you are styling a class and it is not locked.
-
-Resetting style controls removes the stored style values for the current target. It does not remove content such as text, links, form fields, or image selections.
-
-When styling a global class, resetting styles affects that class, not only the selected element.
-
-## Copy & Paste Styles
-
-To copy and paste element styles, right-click an element on the canvas or in the Structure panel to reveal the context menu. Use **Copy Styles**, then select the target element and use **Paste Styles**.
-
-Style paste respects the copied style data and the current target:
-
-- Pasting element styles applies copied style settings to the target element.
-- Pasting global class styles applies copied class style settings when a class is the active target.
-- Shape dividers, custom CSS, and other complex style controls are handled as style data when supported.
-
-For more copy and paste actions, including classes, conditions, interactions, and attributes, use the [Context Menu](https://academy.bricksbuilder.io/builder/interface/context-menu/).
-
-## Practical editing checklist
-
-Before making a change, confirm:
-
-- The correct element is selected.
-- The correct selector is active: element ID, class, or pseudo selector.
-- The correct breakpoint is active.
-- You are editing Content for markup/data changes or Style for CSS changes.
-- You are not accidentally editing a Component definition when you meant to edit an instance.
-- You have saved before testing frontend behavior.
-
----
-
-<a id="builder-interface-command-palette"></a>
-
-# Command Palette
-
-Source: https://academy.bricksbuilder.io/builder/interface/command-palette/
-
-*Use the Bricks Command Palette to run common actions, navigate faster, and insert element structures with keyboard-driven workflows.*
-
-Bricks 2.0 introduces the **Command Palette**, a powerful new feature that gives you instant keyboard-driven access to core functionality inside the builder.
-
-https://youtu.be/gOVNlRvsYc8
-
-## How to launch it
-
-Click the command `⌘` icon in the builder toolbar or use the `CMD/CTRL + K` keyboard shortcut to open the Command Palette, which appears as an overlay, allowing you to type and filter commands across four scopes.
-
-## Scope: Builder {#builder}
-
-Navigate to key parts of the builder from a growing list of targets such as classes, variables, templates, theme styles, settings, etc.
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-builder.png)
-
-## Scope: Post Types {#post-types}
-
-This scope lets you browse the registered post types your builder capability can access, create new posts when your user can edit posts, or duplicate existing posts.
-
-Besides "All" and "Template (Bricks)", a post type gets its own tab only when Bricks is enabled for it under **Bricks > Settings > General > Post types** and your role can access it in the builder. "All" searches every public post type.
-
-To create a post, select the post type tab, type the title, and click "Create". Bricks adds the post as a draft. Click a result to open it in the builder. `CMD/CTRL` + click opens it in a new browser tab. Posts of a type that is not enabled for Bricks open in the WordPress editor in a new tab.
-
-The scope auto-selects the post type that you are currently editing. So if you are editing a Bricks template the "Template (Bricks)" post type will be selected. If you edit a "Page", then "Page" is selected and so on.
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-post-types.png)
-
-## Scope: Elements {#elements}
-
-The "Elements" scope will dramatically speed up your workflow by allowing you to insert multiple elements with specific structure in a single action.
-
-By mastering the Emmet-like syntax, you can create complex layouts in seconds rather than minutes, making your design process significantly more efficient.
-
-With practice, this feature becomes second nature and an essential part of your Bricks Builder toolkit, especially for quickly creating common page structures and element combinations that you use frequently, which you can also save for instant access to use whenever needed.
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-elements.png)
-
-### Insert single element
-
-To insert a single element simply type its name, such as "Section", then `ARROW`-navigate to it in the elements list, and insert it by pressing `ENTER` or just click on the element name.
-
-### Insert element structure
-
-Each element starts with an **@** symbol.
-
-The element name that the command bar requires is displayed in square brackets in the results list:
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-element-name.png)
-
-<figcaption>
-
-Text link element command: `@text-link`
-
-</figcaption>
-
-### Supported operators
-
-Use the following operators to define nested structure, siblings, a multiplier, or to move back up one nesting level.
-
-| Symbol | Meaning |
-| --- | --- |
-| `@` | Bricks element name (e.g. `@heading`) |
-| `>` | Nest inside |
-| `+` | Insert element as sibling |
-| `*` | How often to insert the element |
-| `^` | Move one level up before inserting the next element |
-
-### Element structure example
-
-`@section * 2 > @heading + @text + @button`
-This creates the following structure *(two times because of the multiplier: `* 2`)*:
-
-- `Section`
- └ `Container`
-   ├ `Heading`
-   ├ `Text`
-   └ `Button`
-
-Bricks adds the Container inside every Section automatically, so you don't type `@container` after `@section`.
-
-### Quick element insertion
-
-> **Note**
->
-> After selecting an element from the search results, its name is added to your query with the `@` prefix, allowing you to quickly build complex queries:
-
-1. Type `@` to activate insertion mode
-2. Select an element (e.g., "section")
-3. Type `>` for a child element
-4. Continue building your structure
-5. Insert your element structure
-  - Click the "Insert" button that appears next to your query
-  - Press `CMD/CTRL + ENTER`
-
-If no element is selected, Bricks adds the structure at the end of the page or template.
-
-### Save element structures
-
-Instead of typing out your favorite structures by hand every time, you can save them by clicking the "Save" button next to the command bar. Your structures are stored in this browser's `localStorage`, so they are local to that browser/profile and are not synced between users or devices.
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-saved-element-structures.png)
-
-<figcaption>
-
-List of saved element structures
-
-</figcaption>
-
-To insert a saved structure, open the "Select element structure" dropdown in the Elements scope and pick it. To delete a structure, mouseover the structure item in the list, and click the "Delete" icon.
-
-## Scope: Components {#components}
-
-This scope lists the components on your site. Select a component to insert an instance of it, the same way you insert a single element. The scope is available when your role can insert components.
-
-## Keyboard shortcuts
-
-| **Keyboard shortcut** | **Action** |
-| --- | --- |
-| `CMD/CTRL + K` | Open/close the command palette |
-| `ESC` | Close the command palette |
-| `TAB > ENTER` (to enter selected scope) | Navigate between search and scopes |
-| `#` (as the first character in the search input) | Enter scope “Builder” |
-| `/` (as the first character in the search input) | Enter scope “Post Types” |
-| `+` or `@` (as the first character in the search input) | Enter scope “Elements” |
-| `*` (as the first character in the search input) | Enter scope “Components” |
-| `CMD/CTRL + ENTER` | Insert the element structure typed in scope “Elements” |
-| `/0-9` (forward slash followed by number) | Navigate to a specific post type |
-| `ARROW UP/DOWN` + ENTER | Navigate to a search result and open it |
-
-## Notes
-
-Bricks remembers your last selected scope, even after builder reload (stored in your localStorage).
-
-The "Pages" panel remains available from the builder toolbar. The Command Palette is an additional fast way to browse, create, duplicate, and open posts.
-
-The docs entry is also accessible from the "Builder" scope.
-
----
-
-<a id="builder-interface-page-settings"></a>
-
-# Page Settings
-
-Source: https://academy.bricksbuilder.io/builder/interface/page-settings/
-
-*Use Bricks page settings to control per-page markup, styling, SEO metadata, social sharing output, and custom code.*
-
-Page Settings control output for the page, post, or content template you are currently editing. They are different from global Bricks settings and different from an individual element's controls.
-
-Use Page Settings when a setting should apply to the whole current page, such as body classes, header/footer visibility, page-level scroll snap, SEO metadata, social sharing data, or page-specific code.
-
-## Open Page Settings
-
-Open the builder and click the **Settings** icon in the toolbar. Choose **Page Settings**.
-
-Page Settings are available only when the current user has permission to access them. Some groups can also be hidden by global settings.
-
-Use the **Reset** icon in the panel header to clear all page settings with a single click.
-
-## How Page Settings are applied
-
-Page Settings are stored with the current Bricks document. On the frontend, Bricks reads those settings while rendering the page.
-
-Some settings change markup, such as body classes or disabling the header. Some generate CSS, such as scroll snap and Custom CSS. Some print metadata or scripts into the document head or body. Some settings are visible in the builder immediately, while others should be checked on the frontend.
-
-![](https://academy.bricksbuilder.io/assets/bricks-page-settings.png)
-
-## General settings
-
-The General group contains page-wide output options.
-
-| Setting | What it does |
-| --- | --- |
-| CSS classes (body) | Adds space-separated classes to the page `<body>` tag. Dynamic data can be used when appropriate. |
-| Disable header | Prevents the active Bricks header from rendering on this page. Not shown for header or footer templates. |
-| Disable footer | Prevents the active Bricks footer from rendering on this page. Not shown for header or footer templates. |
-| Disable lazy load | Disables Bricks lazy loading for the current page. |
-| Disable popups | Prevents Bricks popups from rendering on the current page. |
-| Page layout | Overrides the page layout inherited from Theme Styles. |
-| Page background | Overrides the page background inherited from Theme Styles. |
-| Content margin | Overrides the content margin inherited from Theme Styles when available. |
-
-Use these settings for page-specific exceptions. If you need the same behavior on many pages, use global settings, Theme Styles, or templates instead.
-
-## Scroll snap
-
-The Scroll snap group configures page-level CSS scroll snapping.
-
-| Setting | What it does |
-| --- | --- |
-| Type | Sets the page scroll-snap type on the `html` element. |
-| Snapping elements selector | Defines which elements should snap. Defaults to Bricks sections when left empty. |
-| Align | Sets the snap alignment of snapping elements. |
-| Margin | Sets scroll margin for snapping elements. |
-| Padding | Sets scroll padding on the `html` element. |
-| Stop | Sets scroll-snap-stop behavior. |
-
-Scroll snap is primarily a frontend behavior. Test it on the frontend, not only in the builder canvas. Layout height, overflow, sticky headers, and browser behavior can affect the result.
-
-If you use a custom selector, make sure the selector matches the elements that should become snap points. If the selector matches nothing, the page can have scroll snap enabled without visible snapping.
-
-## One Page Navigation {#one-page-nav}
-
-If enabled, Bricks adds a vertical dot menu to the right edge of the page in a fixed position, with each dot linking to the page's root element.
-
-![](https://academy.bricksbuilder.io/assets/bricks-one-page-navigation-1024x534.png)
-
-One Page Navigation is shown only where it applies, such as normal pages and content templates. It is not shown for header or footer templates.
-
-The navigation uses the IDs Bricks renders for root elements. Add custom CSS IDs when you need stable, readable anchors or when root elements are generated dynamically.
-
-> **Note**
->
-> If a root element is inside a query loop, use dynamic data in the CSS ID, such as a post ID or slug, so every repeated root element has a unique anchor.
-
-![](https://academy.bricksbuilder.io/assets/one-page-navigation-loop-unique-css-id.png)
-
-The One Page Navigation controls style the dot menu and its active state:
-
-- Spacing
-- Item width and height
-- Item color
-- Border
-- Box shadow
-- Active item width and height
-- Active item color
-- Active border
-- Active box shadow
-
-The active dot changes based on the root element currently in the scroll range.
-
-## SEO
-
-The SEO group controls page-level metadata. This group is hidden when Bricks SEO output is disabled globally.
-
-| Setting | What it does |
-| --- | --- |
-| Permalink | Updates the post slug. Use lowercase words separated by dashes. |
-| Title | Updates the WordPress post title after applying the change. |
-| Document title | Sets the frontend SEO title without changing the WordPress post title. |
-| Meta description | Prints a page-level meta description. |
-| Meta keywords | Prints page-level meta keywords. |
-| Meta robots | Prints robots directives such as `noindex` or `nofollow`. |
-
-Use **Save new title/permalink** after changing the post title or permalink in the SEO group. Other page settings are saved through the normal builder save flow.
-
-If you use a dedicated SEO plugin, decide which tool owns the metadata. Avoid setting competing metadata in multiple places.
-
-## Social media
-
-The Social media group controls Open Graph style sharing data for the current URL. This group is hidden when Bricks Open Graph output is disabled globally.
-
-| Setting | Default when empty |
-| --- | --- |
-| Title | The post/page title. |
-| Description | The post/page excerpt. |
-| Image | The featured image. |
-
-Use this group when a page needs a social title, description, or image that differs from its normal SEO data.
-
-## Custom Code
-
-The Custom Code group adds page-specific CSS and scripts.
-
-| Setting | Output location |
-| --- | --- |
-| Custom CSS | Inline CSS in the document `<head>`. Supports breakpoint-specific values. |
-| Header scripts | Before the closing `</head>` tag. |
-| Body (header) scripts | Immediately after the opening `<body>` tag. |
-| Body (footer) scripts | Before the closing `</body>` tag. |
-
-Script fields are shown only to users who are allowed to add unfiltered HTML. Users without that capability see an informational notice instead.
-
-Use page-level code sparingly. Prefer element settings, classes, Theme Styles, global settings, or properly enqueued code when the behavior should be reused across the site.
-
-## Common mistakes
-
-- **Changing SEO title but not applying it:** Use **Save new title/permalink** for title and slug changes.
-- **Expecting header/footer disable to affect templates globally:** These settings affect only the current page render.
-- **Using duplicate IDs for One Page Navigation:** Give repeated root elements unique IDs, especially inside query loops.
-- **Testing scroll snap only in the builder:** Always test on the frontend.
-- **Adding scripts without the right capability:** Script fields require permission to add unfiltered HTML.
-- **Using page code for reusable behavior:** Page Custom Code is local to the current page. Use global settings or enqueue code for site-wide behavior.
-
----
-
-<a id="builder-interface-responsive-editing"></a>
-
-# Responsive Editing
-
-Source: https://academy.bricksbuilder.io/builder/interface/responsive-editing/
-
-*Edit Bricks designs responsively across breakpoints and adjust layout, spacing, and element settings for smaller screens.*
-
-What looks great on a large desktop screen usually needs some refinement for smaller devices. This typically involves applying smaller font sizes, margins, paddings, column width/stacking, or hiding certain elements on smaller devices.
-
-Bricks provides the following four breakpoints out-of-the-box:
-
-| **Breakpoint** | **@media query** |
-| --- | --- |
-| Desktop | Base breakpoint |
-| Tablet portrait | &lt; 992px |
-| Mobile landscape | &lt; 768px |
-| Mobile portrait | &lt; 478px |
-
-Styles set on the base breakpoint are inherited by all other breakpoints.
-
-Once you've finished styling a page on the base breakpoint (desktop), make sure to view & adjust the styling on the other breakpoints too.
-
-## Background video on larger breakpoints only
-
-The Background control includes **Start play at** for background videos. Select the smallest breakpoint where the video should run. Below that width, Bricks stops before assigning the video source, so the desktop video is not downloaded by the native background-video script.
-
-To show an image on smaller screens:
-
-1. Set the background video on the element.
-2. Set **Start play at** to the smallest breakpoint that should play it.
-3. Set a background image for the smaller breakpoint.
-
-To view & edit the styles for a specific breakpoint simply click on its breakpoint icon located in the center of the builder toolbar. Or via the [keyboard shortcut](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/) "CMD/CTRL + B".
-
-![](https://academy.bricksbuilder.io/assets/bricks-1.5.1-in-builder-breakpoint-mobile-landscape-1024x576.jpg)
-
-<figcaption>
-
-Editing in the "Mobile landscape" breakpoint
-
-</figcaption>
-
-Next to the breakpoint icons are inputs for width ("W"), height ("H"), and scale (%).
-
-## Custom Breakpoints {#custom-breakpoints}
-
-To start using custom breakpoints, you first have to enable them in your WordPress dashboard under `Bricks > Settings > General > Custom breakpoints`:
-
-![](https://academy.bricksbuilder.io/assets/bricks-enable-custom-breakpoints.jpg)
-
-Once enabled, you can access the **breakpoint manager** in the builder by clicking the three-dotted icon in the builder toolbar (next to the first breakpoint icon):
-
-![](https://academy.bricksbuilder.io/assets/bricks-1.5.1-breakpoint-manager-default-breakpoints.jpg)
-
-<figcaption>
-
-Breakpoint Manager (open via the three-dotted icon in the builder toolbar)
-
-</figcaption>
-
-### Editing a breakpoint
-
-Clicking the pencil icon brings up the editing options of the selected breakpoint:
-
-![](https://academy.bricksbuilder.io/assets/bricks-edit-default-breakpoint.jpg)
-
-<figcaption>
-
-Editing the default "Tablet portrait" breakpoint
-
-</figcaption>
-
-You can edit the following breakpoint properties:
-
-| **Property** | **Description** |
-| --- | --- |
-| Label | Used when hovering over the breakpoint icon in the builder toolbar |
-| Width (px) | @media query min-width/max-width value (depending on the base breakpoint) |
-| Width (Builder) | Width is used when switching to the breakpoint in the builder |
-| Icon | Used as the breakpoint icon in the builder toolbar |
-| Base breakpoint | Set breakpoint as base breakpoint |
-| *Key* | *Not customizable (used to store & identify breakpoint settings)* |
-
-The most common action is to customize the widths of the default (mobile) breakpoints. The following screenshot shows you the "Tablet portrait" with a custom width of 1023px:
-
-![](https://academy.bricksbuilder.io/assets/bricks-edit-breakpoint-width.jpg)
-
-That means any styles set on the "Tablet portrait" breakpoint will apply to devices with a width of less than 1024px.
-
-### Creating new breakpoints
-
-You can create as many additional custom breakpoints as you want. Although, it is recommended to customize the widths of the default mobile breakpoints to your liking before utilizing more breakpoints.
-
-You should rarely need more than one or two additional breakpoints on top of the default ones.
-
-Clicking the "+" (plus) icon in the breakpoint manager's header launches the breakpoint creator form.
-
-The following screenshot shows how we created a  new breakpoint named "Large" with a width of 1400px:
-
-![](https://academy.bricksbuilder.io/assets/bricks-create-new-breakpoint.jpg)
-
-<figcaption>
-
-Creating a new breakpoint
-
-</figcaption>
-
-Once you click "Create" your newly created breakpoint should appear in the breakpoint manager (alongside a "CUSTOM" label) & in the builder toolbar like this:
-
-![](https://academy.bricksbuilder.io/assets/bricks-custom-breakpoint-large-created.jpg)
-
-<figcaption>
-
-Breakpoint manager with new custom breakpoint
-
-</figcaption>
-
-As we've set the width of this new breakpoint to 1400px, it shows as the first breakpoint, as it is now the largest of our breakpoints. The Desktop (base breakpoint) has a default width of 1279px.
-
-### Pausing a custom breakpoint
-
-You can pause any of your custom breakpoints by toggling the checkbox at the right-hand side of the breakpoint manager:
-
-![](https://academy.bricksbuilder.io/assets/bricks-pause-custom-breakpoint.jpg)
-
-<figcaption>
-
-Pausing custom breakpoint "Large"
-
-</figcaption>
-
-Pausing a custom breakpoint allows you to skip generating the styles for it on the frontend, while still retaining the styles you've set throughout your site without having to delete them one by one. Which, on a full-built-out site, can go into thousands of settings.
-
-### Resetting a default breakpoint
-
-To restore the default values of a default breakpoint, click on the "reset" icon (next to the pencil) icon.
-
-### Resetting all breakpoints
-
-Clicking the "gear" icon in the breakpoint manager header opens up the "Reset: Breakpoints" action. Clicking this button removes all your breakpoint edits (default & custom breakpoints) from the database.
-
-> **Note**
->
-> **Breakpoint-specific settings performed on an element or the Theme Styles are not deleted. Please choose desktop or mobile-first at the very beginning.**
-
-![](https://academy.bricksbuilder.io/assets/bricks-reset-all-breakpoints.jpg)
-
-### Understanding the base breakpoint
-
-The base breakpoint doesn't have a @media query. So all styles set on the base breakpoint apply to all screen widths.
-
-That is why, by default, any styles set on the "Desktop" breakpoint are visible on any other breakpoint. Unless you specify a style on a specific breakpoint. Then the breakpoint-specific rule precedes the base breakpoint style.
-
-When editing a breakpoint, you can set it as the "Base breakpoint". Then all styles set on this new base breakpoint are inherited up & down the breakpoint chain.
-
-In the following screenshot, you can see that the "Tablet portrait" breakpoint has been set as the base breakpoint.
-
-The yellow dot, lines, and arrows next to the breakpoint icons should help to visualize the style inheritance:
-
-![](https://academy.bricksbuilder.io/assets/bricks-custom-base-breakpoint.jpg)
-
-<figcaption>
-
-Changed base breakpoint to "Tablet portrait"
-
-</figcaption>
-
-### Mobile-first design {#mobile-first}
-
-Styling in Bricks, by default, happens from the largest breakpoint down to "Tablet portrait" > "Mobile landscape" and "Mobile portrait".
-
-Utilise a so-called `**mobile-first**` design approach by setting the smallest breakpoint as the base breakpoint.
-
-The following screenshot shows the "Mobile portrait" (our smallest breakpoint) set as the base breakpoint. We now use the mobile-first approach. Also indicated by the "MOBILE FIRST" label in the breakpoint manager header:
-
-![](https://academy.bricksbuilder.io/assets/bricks-mobile-first.jpg)
-
-<figcaption>
-
-Mobile-first design in Bricks
-
-</figcaption>
-
-You'll also notice that the order of the breakpoints is reversed and now starts at the smallest breakpoint. You can now start to design your pages starting at the smallest breakpoint.
-
-### Regenerating (Bricks) CSS files
-
-Whenever you customize the width of a default breakpoint, Bricks automatically updates any Bricks CSS files (like frontend.min.css, etc.) that contain media queries for this breakpoint.
-
-If you experience that your breakpoint widths on the front end are not correctly applied, please regenerate your Bricks CSS files by clicking the "Regenerate CSS files" button under `Bricks > Settings > General > Custom breakpoints`.
-
-## Responsive control indicator {#responsive-control-indicator}
-
-In Bricks 1.11.1, we introduced the responsive control indicator which helps you see which controls can have different values at different breakpoints. We provide multiple options for when to show this indicator to suit different preferences. You can adjust these under `Bricks > Settings > Builder > Control panel > Responsive control indicator`:
-
-- **Show if any value exists (Default)**: Displays if a control has any value set across breakpoints.
-- **Show if non-base breakpoint value exists**: Shows only if a control’s value differs from the base breakpoint.
-- **Show on all responsive controls**: Displays on all responsive controls, regardless of values.
-- **Disable**.
-
-![](https://academy.bricksbuilder.io/assets/bricks-responsive-control-indicator.png)
-
----
-
-<a id="builder-interface-revisions"></a>
-
-# Revisions
-
-Source: https://academy.bricksbuilder.io/builder/interface/revisions/
-
-*Review, restore, and manage Bricks revisions so you can safely recover earlier builder states.*
-
-When you save builder data changes, Bricks creates a revision/snapshot of the relevant Bricks data and page settings (template, page, etc.) using the official WordPress Revisions API.
-
-Bricks also stores autosaves separately. Autosaves are backup copies from the autosave process, while regular revisions are created when Bricks element data or page settings are included in a manual save. After a regular revision is created, Bricks clears the related autosave.
-
-You can browse, preview, and apply your revisions inside the builder by clicking the **Revisions** (clock) icon in the builder toolbar, then going to the "Revisions" tab.
-
-Select any revision in this list to preview it. The canvas should automatically update showing you the selected revision.
-
-Click **Apply** to continue editing the selected revision. Click **Discard** to continue editing your current version.
-
-If your builder capability includes **Delete revisions**, you can delete individual revisions or delete all revisions from the Revisions panel.
-
-![](https://academy.bricksbuilder.io/assets/builder-revisions-1024x576.png)
-
-## Manage the number of Bricks revisions {#bricks_max_revisions_to_keep}
-
-In order to limit the number of Bricks revisions, you may define the constant `BRICKS_MAX_REVISIONS_TO_KEEP` like so (insert this code in the Bricks child theme):
-
-```php
-if ( ! defined( 'BRICKS_MAX_REVISIONS_TO_KEEP' ) ) {
-    define( 'BRICKS_MAX_REVISIONS_TO_KEEP', 10 );
-}
-```
-
-By default, Bricks sets the maximum to 100 revisions per post for the Bricks templates and enabled post types.
-
-You may set the following values:
-
-- true: unlimited revisions
-- false or 0: do not store any Bricks' revisions
-- value above 0: store up to this number of revisions per post. Old revisions are automatically deleted.
-
----
-
-<a id="builder-interface-save-publish"></a>
-
-# Save & Publish
-
-Source: https://academy.bricksbuilder.io/builder/interface/save-publish/
-
-*Understand how saving and publishing work in Bricks, including drafts, updates, and when frontend changes go live.*
-
-Bricks, by default, automatically creates an autosave every 60 seconds when the current builder area has unsaved element changes.
-
-Autosave creates a backup copy of the elements on the canvas. It does not save global data such as components, classes, or variables. Autosaves can be restored under **Manage > History / Revisions** from the builder toolbar.
-
-To adjust or disable the autosave interval go to **Bricks > Settings > Builder** in your WordPress admin area. The default interval is 60 seconds, and the minimum interval is 15 seconds.
-
-Bricks detects unsaved changes and will show you a prompt to help prevent data loss in case you reload the builder by accident.
-
-To manually save your changes click the **Save** (disk) icon at the very right of the builder toolbar. Or use the [keyboard shortcut](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/) CMD/CTRL + S.
-
-**Bricks creates a revision/snapshot** when changed Bricks data or page settings are saved using the standard WordPress Revisions API ([learn more about revisions](https://academy.bricksbuilder.io/builder/interface/revisions/)).
-
-Designing a stunning website or writing compelling content is hard. That's why Bricks celebrates every saved change by displaying a random save message to keep your spirit up :)
-
-You can, of course, customize those save messages via the [bricks/builder/save_messages](https://academy.bricksbuilder.io/developer/hooks/filters/filter-save-messages/) filter.
-
-## Publishing A Page
-
-When an unpublished page (draft) is saved the status does not change by itself. So once your page is ready to be published click the **Publish** (power) icon in the builder toolbar.
 
 ---
 
@@ -9195,6 +7634,80 @@ These details explain how Bricks stores and renders component instances:
 
 ---
 
+<a id="builder-features-custom-attributes"></a>
+
+# Custom Attributes
+
+Source: https://academy.bricksbuilder.io/builder/features/custom-attributes/
+
+*Add custom HTML attributes in Bricks for integrations, JavaScript hooks, accessibility, and advanced frontend behavior.*
+
+Bricks 1.3 introduces the possibility to add your own custom HTML attributes to any element.
+
+You can add custom attributes under "Style > Attributes". Set a "Name" and a "Value" and your attribute(s) will be added to the elements' most relevant node. By default, your attributes are added to the element root node. Besides manually entered values you can populate custom attribute values with dynamic data, too.
+
+In there you'll be able to insert multiple attributes (name and value). Dynamic Data is rendered for attribute values on the frontend.
+
+![](https://academy.bricksbuilder.io/assets/feature-custom-attributes.png)
+
+<figcaption>
+
+Container: Custom Attributes
+
+</figcaption>
+
+Let's say you want to add an ARIA **role** and **label** to a container that contains multiple images that should be [considered as a single image](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Role_Img). You'd add the following two attributes when editing your container:
+
+- Attribute #1 name: **role**
+- Attribute #1 value: **img**
+- Attribute #2 name: **aria-label**
+- Attribute #2 value: **Description of the overall image**
+
+This results in the following container HTML:
+
+```html
+<div id="brxe-sfglik" class="brxe-sfglik brxe-container" role="img" aria-label="Description of the overall image">
+... Container elements ...
+</div>
+```
+
+Custom attributes take precedence over default attributes. So if you set a custom **alt** attribute when editing your image, this custom attribute will be used instead of the default image **alt** attribute.
+
+Elements where custom attributes are added to the following specific HTML tags:
+
+| **Bricks Element** | **HTML tag** |
+| --- | --- |
+| Nav Menu | `<nav>` |
+| Heading | `<h1>` or any other heading tag |
+| Text | `<div>` |
+| Button | `<button>` or `<a>` depending if there is a link |
+| Image | `<img>` |
+| Video | `<div>` |
+| Form | `<form>` |
+
+### How To Add Tooltips {#tooltips}
+
+Bricks comes with built-in (CSS-only) tooltips that you can set via custom attributes.
+
+Make sure to set the attribute "Name" to `data-balloon` and the value to whatever you want your tooltip text to be. You also have to set a second HTML attribute named `data-balloon-pos` and then set the value to whatever you want your tooltip to be positioned like:
+
+- top | top-right | top-left
+- right
+- bottom | bottom-right | bottom-left
+- left
+
+For a full list of all available tooltip HTML attributes please visit the official website of the Balloon.css library Bricks uses for its tooltips: [https://kazzkiq.github.io/balloon.css/](https://kazzkiq.github.io/balloon.css/)
+
+> **Note**
+>
+> If you are planning to add tooltips on the Icon element, please wrap the Icon element in a Div element and set the attribute on the Div element. Otherwise, balloon library CSS will overwrite the Icon element's CSS and cause it invisible in the frontend.
+
+#### Resources:
+
+- HTML attribute reference: [https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes)
+
+---
+
 <a id="builder-features-create-template"></a>
 
 # Creating Your First Template
@@ -9349,253 +7862,133 @@ Use conditions to control frontend assignment.
 
 ---
 
-<a id="builder-features-custom-attributes"></a>
+<a id="builder-features-custom-authentication-pages"></a>
 
-# Custom Attributes
+# Custom Authentication Pages
 
-Source: https://academy.bricksbuilder.io/builder/features/custom-attributes/
+Source: https://academy.bricksbuilder.io/builder/features/custom-authentication-pages/
 
-*Add custom HTML attributes in Bricks for integrations, JavaScript hooks, accessibility, and advanced frontend behavior.*
+*Build custom login, registration, lost-password, and reset-password flows in Bricks instead of relying on default WordPress screens.*
 
-Bricks 1.3 introduces the possibility to add your own custom HTML attributes to any element.
+Since Bricks 1.9.2, you can assign custom Bricks-built pages for WordPress authentication flows. This lets you replace the default WordPress screens for login, registration, lost password, and reset password with pages that match your site design.
 
-You can add custom attributes under "Style > Attributes". Set a "Name" and a "Value" and your attribute(s) will be added to the elements' most relevant node. By default, your attributes are added to the element root node. Besides manually entered values you can populate custom attribute values with dynamic data, too.
+![Bricks custom authentication settings screen showing options to assign custom pages for login, registration, lost password, and reset password. The "WordPress authentication page access" dropdown is set to "Error page", and the "Disable custom authentication page bypass" toggle is enabled.](https://academy.bricksbuilder.io/assets/bricks-custom-authentication-settings.png)
 
-In there you'll be able to insert multiple attributes (name and value). Dynamic Data is rendered for attribute values on the frontend.
+> **Note**
+>
+> Custom authentication pages change where visitors are sent, but the form actions still use WordPress authentication functions such as login, registration, password reset email generation, and password reset validation.
 
-![](https://academy.bricksbuilder.io/assets/feature-custom-attributes.png)
+## How to set custom authentication pages
 
-<figcaption>
+1. Navigate to the WordPress dashboard
+2. Navigate to **Bricks** > **Settings** > **General**
+3. Scroll down to **Custom authentication pages**
 
-Container: Custom Attributes
+Here, you can choose a custom page for the following processes:
 
-</figcaption>
+- Login
+- Registration
+- Lost Password
+- Reset Password
 
-Let's say you want to add an ARIA **role** and **label** to a container that contains multiple images that should be [considered as a single image](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Role_Img). You'd add the following two attributes when editing your container:
+If WooCommerce handles the current authentication page, Bricks leaves that page to WooCommerce and skips its custom authentication redirect handling.
 
-- Attribute #1 name: **role**
-- Attribute #1 value: **img**
-- Attribute #2 name: **aria-label**
-- Attribute #2 value: **Description of the overall image**
+## Setting up your custom pages
 
-This results in the following container HTML:
+Each custom page should contain a [Form element](https://academy.bricksbuilder.io/builder/elements/general/form/#actions) with the matching authentication action selected under the Form element's **Actions** control group.
 
-```html
-<div id="brxe-sfglik" class="brxe-sfglik brxe-container" role="img" aria-label="Description of the overall image">
-... Container elements ...
-</div>
+| Page | Required form action | Typical fields |
+| --- | --- | --- |
+| Login | User login | Login, password, optional remember me |
+| Registration | User registration | Email, optional username, optional password, optional first/last name |
+| Lost password | Lost password | Email or username |
+| Reset password | Reset password | New password |
+
+### Login page
+
+Add a form with the **User login** action. Map the login field, password field, and optional remember-me field in the **User Login** control group.
+
+If your custom login URL receives a `redirect_to` query parameter, Bricks adds it as a hidden field and redirects there after successful login when your form does not already use an explicit Redirect action.
+
+For better privacy and security, set a generic login error message. Otherwise, the default WordPress login error can reveal why the login failed.
+
+### Registration page
+
+Add a form with the **User registration** action. Map at least the email field. Username and password can be auto-generated if they are not mapped or submitted.
+
+The **Role** setting cannot be set to Administrator or Super Admin. If either is selected by data manipulation, Bricks falls back to the site's default role.
+
+If [User activation](https://academy.bricksbuilder.io/builder/features/user-activation/) is enabled, the Form element's **Auto log in user** setting is hidden and registration does not auto-login immediately. Activation controls the post-registration login flow instead.
+
+### Lost password page
+
+Add a form with the **Lost password** action and map the **Email or username** field.
+
+For privacy, Bricks returns a success response even when the submitted account does not exist. If the account exists, WordPress sends the password reset email.
+
+### Reset password page
+
+Add a form with the **Reset password** action and map the new password field.
+
+When a user clicks a WordPress reset link, Bricks redirects the reset URL to your custom reset password page and preserves the reset query parameters. The Form element then renders hidden `key` and `login` fields from the URL so WordPress can validate the reset key on submission.
+
+## WordPress authentication page access {#wp-auth}
+
+As of Bricks 1.11, you have control over what happens when someone visits a default WordPress authentication URL (such as `wp-login.php`), provided custom authentication pages are set.
+
+To manage this:
+
+1. Navigate to **Bricks** > **Settings** > **General** > **Custom authentication pages**.
+2. Under **WordPress authentication page access**, select one of the following options:
+- **Redirect to custom authentication page (default)**: The user will be redirected to the corresponding custom authentication page you have set.
+- **Error page**: Bricks returns the site's 404 error page for matching default auth URLs.
+- **Home URL**: Redirects visitors to the homepage.
+- **Redirect to specific page**: Allows you to choose a specific page on your site to redirect visitors to.
+
+This setting only changes behavior for a default auth URL when the corresponding custom page has been set. For example, the login behavior applies when a custom login page is selected.
+
+If **Redirect to specific page** is selected and no valid published page is selected, Bricks falls back to the home URL.
+
+Bricks preserves query parameters when redirecting from the default auth URL to a custom auth page. This is important for reset-password keys and login redirects.
+
+### Logout behavior
+
+For logged-in users, Bricks lets WordPress process logout first. If WordPress would send the user back to the default login page after logout and you have a valid custom login page, Bricks redirects to the custom login page with `?logged_out=true`.
+
+## Bypassing custom login (since 1.9.4):
+
+By default, when visiting any authentication page on your site, you can access the default WordPress login page by adding `brx_use_wp_login` as a URL parameter, for example:
+
+```text
+https://example.com/wp-login.php?brx_use_wp_login=1
 ```
 
-Custom attributes take precedence over default attributes. So if you set a custom **alt** attribute when editing your image, this custom attribute will be used instead of the default image **alt** attribute.
+This feature allows site owners to bypass the custom login page if needed.
 
-Elements where custom attributes are added to the following specific HTML tags:
+Adding this parameter sets a bypass cookie for 5 minutes. During that window, Bricks lets the default WordPress authentication page load instead of redirecting to the custom page.
 
-| **Bricks Element** | **HTML tag** |
-| --- | --- |
-| Nav Menu | `<nav>` |
-| Heading | `<h1>` or any other heading tag |
-| Text | `<div>` |
-| Button | `<button>` or `<a>` depending if there is a link |
-| Image | `<img>` |
-| Video | `<div>` |
-| Form | `<form>` |
+In Bricks settings, you can disable this feature:
 
-### How To Add Tooltips {#tooltips}
+1. Navigate to **Bricks > Settings > General > Custom authentication pages**.
+2. Enable **Disable custom authentication page bypass**.
 
-Bricks comes with built-in (CSS-only) tooltips that you can set via custom attributes.
-
-Make sure to set the attribute "Name" to `data-balloon` and the value to whatever you want your tooltip text to be. You also have to set a second HTML attribute named `data-balloon-pos` and then set the value to whatever you want your tooltip to be positioned like:
-
-- top | top-right | top-left
-- right
-- bottom | bottom-right | bottom-left
-- left
-
-For a full list of all available tooltip HTML attributes please visit the official website of the Balloon.css library Bricks uses for its tooltips: [https://kazzkiq.github.io/balloon.css/](https://kazzkiq.github.io/balloon.css/)
+When disabled, the `brx_use_wp_login` URL parameter no longer sets the bypass cookie.
 
 > **Note**
 >
-> If you are planning to add tooltips on the Icon element, please wrap the Icon element in a Div element and set the attribute on the Div element. Otherwise, balloon library CSS will overwrite the Icon element's CSS and cause it invisible in the frontend.
+> Before disabling the bypass and blocking default auth URLs, make sure your custom login page works and that you know its URL. Otherwise you can lock yourself out of the normal login screen.
 
-#### Resources:
+## Developer filters
 
-- HTML attribute reference: [https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes)
+Bricks exposes filters for custom redirect logic:
 
----
+- `bricks/auth/custom_redirect_url`: Override the redirect URL based on the current auth URL path.
+- `bricks/auth/custom_login_redirect`: Change the selected custom login page.
+- `bricks/auth/custom_registration_redirect`: Change the selected custom registration page.
+- `bricks/auth/custom_lost_password_redirect`: Change the selected custom lost password page.
+- `bricks/auth/custom_reset_password_redirect`: Change the selected custom reset password page.
 
-<a id="builder-features-create-update-posts-on-the-frontend"></a>
-
-# Create & Update Posts on the Frontend
-
-Source: https://academy.bricksbuilder.io/builder/features/create-update-posts-on-the-frontend/
-
-*Build frontend forms in Bricks that create or update WordPress posts without sending users into wp-admin.*
-
-Bricks 2.1 introduced the **Create post** and **Update post** form actions. They let a frontend Form element create a new WordPress post or update an existing one without sending the user to wp-admin.
-
-Use these actions for workflows such as property listings, classifieds, member-submitted posts, profile pages, or client portals. The examples below use a custom post type named `property`, but the same rules apply to any public post type that exists on your site.
-
-> **Note**
->
-> **IMPORTANT:** By default, Bricks checks permissions twice: when rendering the form and again when processing the submission.
->
-> - **Create post** requires the current user to have the selected post type's `edit_posts` capability.
-> - **Update post** requires the current user to have `edit_post` for the target post.
->
-> Do not enable **Disable capability checks** unless the form is protected another way. When disabled, non-logged-in or unauthorized visitors can create or edit content through that form.
-
-https://www.youtube.com/watch?v=c9JcrLEVbnM
-
-## Before you start
-
-Decide these things before building the form:
-
-- Which post type the form creates or updates.
-- Which users are allowed to submit the form.
-- Whether new posts should be saved as draft, pending review, published, or another available post status.
-- Which core post fields, custom fields, and taxonomies the form may change.
-- Whether uploads should be saved to the Media Library. Featured images, attachment posts, and many ACF/Meta Box media fields need attachment IDs.
-
-## How to create or update posts via form submission
-
-The create and update workflows use the same pattern: add fields, choose the form action, then map the fields to the WordPress data that should change.
-
-### Step 1: Add form fields for post data
-
-Create form fields for all the post data that you want to save when creating or updating a post through the Form element:
-
-| Post data | Recommended field type |
-| --- | --- |
-| Post title | Text |
-| Post content | Rich text |
-| Post excerpt | Textarea |
-| Featured image | Image |
-| Post meta | The most suitable field type for the custom field |
-| Taxonomy terms | Checkbox, radio, or select |
-
-#### Post meta
-
-Make sure to select the most suitable field type for every piece of post meta data you want to modify. Bricks stores mapped meta through ACF, Meta Box, or `update_post_meta()` depending on the meta key and the integrations available on the site.
-
-For checkbox, radio, and select fields, Bricks can automatically load choices from ACF or Meta Box when:
-
-- The field is mapped to a matching meta key.
-- The form field has no manual options.
-- ACF or Meta Box can resolve that field for the post or post type.
-
-If you add manual options to the form field, Bricks uses your manual options instead.
-
-#### Taxonomy
-
-Use checkbox, radio, or select fields for taxonomies such as categories, tags, or custom taxonomies. You can leave the form field options empty. When the field is mapped in the **Taxonomies** repeater, Bricks automatically populates the field with terms from the selected taxonomy.
-
-If you manually add options, use term IDs as the submitted values. On submission, Bricks stores taxonomy terms by ID. If the mapped taxonomy field is empty, Bricks clears the terms for that mapped taxonomy.
-
-### Step 2: Select the form action
-
-Edit the Form element and select **Create post** or **Update post** in the **Actions** control group.
-
-![](https://academy.bricksbuilder.io/assets/bricks-form-action-create-update-post.png)
-
-The order of actions matters. If an action returns an error, Bricks stops processing the remaining actions. The **Redirect** action is always moved to the end of the action list so other selected actions can run first.
-
-### Step 3: Configure the action
-
-When creating a new post, select the post type that you want to create a new post for under the "Create post" control group:
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-09-16-at-14.07.14@2x.png)
-
-<figcaption>
-
-Create new post for post type "Property" on form submission
-
-</figcaption>
-
-When updating an existing post, select the specific post that you want to update under the "Update post" control group:
-
-![](https://academy.bricksbuilder.io/assets/bricks-form-update-post-control-group.png)
-
-Leave **Post to update** empty to update the current post. If the form is inside a query loop, Bricks uses the submitted loop object ID so each repeated form can update its own loop item.
-
-Both actions include a **Post status** setting. For **Create post**, leaving it empty lets WordPress use its default insert behavior. For **Update post**, leaving it empty keeps the current post status.
-
-When **Create post** runs for a logged-in user, that user becomes the post author. If you disable capability checks and allow anonymous submissions, Bricks falls back to the site's first super admin user when assigning the author.
-
-## Step 4: Field mapping
-
-The last, and most important step is to map/connect your form fields with the post data that should be modified when the form is submitted. The mapping controls are also located within the "Create post" and "Update post" control groups.
-
-### Mapping simple post data
-
-For simple post data such as the Post title, Post content, Post excerpt, and Featured image you just have to select the corresponding form field from the select dropdown:
-
-![](https://academy.bricksbuilder.io/assets/bricks-form-create-post-field-mapping-simple-post-data.png)
-
-For featured images and attachment posts, use fields that save uploads to the Media Library so Bricks can work with the uploaded attachment ID.
-
-Bricks verifies that the mapped featured image value is an image attachment ID before calling WordPress' featured image logic. If the mapped field has no value, Bricks removes the featured image.
-
-### Mapping post meta
-
-When updating post meta via a form field, add an item under **Post meta** and provide:
-
-- **Meta key**: The custom field key to update. Bricks sanitizes this key before saving.
-- **Meta value**: The form field whose submitted value should be saved.
-- **Sanitization method**: How Bricks should sanitize the submitted value before saving it.
-
-![](https://academy.bricksbuilder.io/assets/bricks-form-create-post-field-mapping-post-meta.png)
-
-Available sanitization methods include text, integer, float, email, URL, and post-safe HTML. Values that are not handled by ACF or Meta Box fall back to WordPress post meta.
-
-#### ACF and Meta Box handling
-
-When possible, Bricks updates ACF fields through `update_field()` and Meta Box fields through `rwmb_set_meta()` instead of writing raw post meta only. This matters for field types that expect a specific value shape.
-
-For media fields, file upload fields should save files to the Media Library. Bricks processes those uploads before the create/update action so mapped fields can receive attachment IDs.
-
-For ACF group fields, Bricks can resolve nested meta keys and update the parent group value so nested data remains structured correctly.
-
-### Taxonomies
-
-Mapping a form field to a taxonomy is straightforward. Under **Taxonomies**, select the taxonomy to update and the corresponding form field.
-
-There is no need to manually enter taxonomy terms unless you want to limit the choices. Bricks will automatically populate the form field with the selected taxonomy's terms when the mapped form field has no manual options.
-
-## Security and validation details
-
-Bricks still runs the normal form submission checks before the create/update action:
-
-- The AJAX submission must include a valid Bricks form nonce.
-- Submitted field IDs must match fields that exist in the form settings. Unexpected or duplicate field IDs are rejected.
-- Required field validation, max-length validation, honeypot checks, and enabled captcha checks run before actions.
-- The action repeats capability checks server-side unless you disabled them.
-
-The form is not rendered for unauthorized users when capability checks are enabled. If you set a custom error message in the Create post or Update post control group, Bricks displays that message instead.
-
-## Common setups
-
-### Let users submit posts for review
-
-Use **Create post**, keep capability checks enabled for trusted logged-in users, and set **Post status** to **Pending** or **Draft**. Map only the fields users should control.
-
-### Let authors edit their own posts
-
-Use **Update post**, leave **Post to update** empty on a single post template, and keep capability checks enabled. WordPress will allow the update only if the current user can edit that post.
-
-### Update items inside a query loop
-
-Place the update form inside the query loop and leave **Post to update** empty. Bricks submits the loop object ID and updates the matching loop item.
-
-### Create attachment posts from uploads
-
-Set **Post type** to **Attachment** and use a file upload field that saves to the Media Library. Bricks uses the first uploaded attachment it finds and can update its title, content, excerpt, status, meta, and terms through the mapped fields.
-
-## Filters
-
-Bricks supports many ACF and Meta Box field types out of the box, but every custom setup is different. You can adjust mapped meta values before they are saved with these filters:
-
-- [`bricks/form/create_post/meta_value`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-create_post-meta_value/)
-- [`bricks/form/update_post/meta_value`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-update_post-meta_value/)
+Use these filters when a multilingual, membership, or custom routing setup needs more control than the global page selectors provide.
 
 ---
 
@@ -9780,136 +8173,6 @@ You can use abbreviations to generate your HTML structures much faster via a fam
 ```
 
 [https://docs.emmet.io/cheat-sheet/](https://docs.emmet.io/cheat-sheet/)
-
----
-
-<a id="builder-features-custom-authentication-pages"></a>
-
-# Custom Authentication Pages
-
-Source: https://academy.bricksbuilder.io/builder/features/custom-authentication-pages/
-
-*Build custom login, registration, lost-password, and reset-password flows in Bricks instead of relying on default WordPress screens.*
-
-Since Bricks 1.9.2, you can assign custom Bricks-built pages for WordPress authentication flows. This lets you replace the default WordPress screens for login, registration, lost password, and reset password with pages that match your site design.
-
-![Bricks custom authentication settings screen showing options to assign custom pages for login, registration, lost password, and reset password. The "WordPress authentication page access" dropdown is set to "Error page", and the "Disable custom authentication page bypass" toggle is enabled.](https://academy.bricksbuilder.io/assets/bricks-custom-authentication-settings.png)
-
-> **Note**
->
-> Custom authentication pages change where visitors are sent, but the form actions still use WordPress authentication functions such as login, registration, password reset email generation, and password reset validation.
-
-## How to set custom authentication pages
-
-1. Navigate to the WordPress dashboard
-2. Navigate to **Bricks** > **Settings** > **General**
-3. Scroll down to **Custom authentication pages**
-
-Here, you can choose a custom page for the following processes:
-
-- Login
-- Registration
-- Lost Password
-- Reset Password
-
-If WooCommerce handles the current authentication page, Bricks leaves that page to WooCommerce and skips its custom authentication redirect handling.
-
-## Setting up your custom pages
-
-Each custom page should contain a [Form element](https://academy.bricksbuilder.io/builder/elements/general/form/#actions) with the matching authentication action selected under the Form element's **Actions** control group.
-
-| Page | Required form action | Typical fields |
-| --- | --- | --- |
-| Login | User login | Login, password, optional remember me |
-| Registration | User registration | Email, optional username, optional password, optional first/last name |
-| Lost password | Lost password | Email or username |
-| Reset password | Reset password | New password |
-
-### Login page
-
-Add a form with the **User login** action. Map the login field, password field, and optional remember-me field in the **User Login** control group.
-
-If your custom login URL receives a `redirect_to` query parameter, Bricks adds it as a hidden field and redirects there after successful login when your form does not already use an explicit Redirect action.
-
-For better privacy and security, set a generic login error message. Otherwise, the default WordPress login error can reveal why the login failed.
-
-### Registration page
-
-Add a form with the **User registration** action. Map at least the email field. Username and password can be auto-generated if they are not mapped or submitted.
-
-The **Role** setting cannot be set to Administrator or Super Admin. If either is selected by data manipulation, Bricks falls back to the site's default role.
-
-If [User activation](https://academy.bricksbuilder.io/builder/features/user-activation/) is enabled, the Form element's **Auto log in user** setting is hidden and registration does not auto-login immediately. Activation controls the post-registration login flow instead.
-
-### Lost password page
-
-Add a form with the **Lost password** action and map the **Email or username** field.
-
-For privacy, Bricks returns a success response even when the submitted account does not exist. If the account exists, WordPress sends the password reset email.
-
-### Reset password page
-
-Add a form with the **Reset password** action and map the new password field.
-
-When a user clicks a WordPress reset link, Bricks redirects the reset URL to your custom reset password page and preserves the reset query parameters. The Form element then renders hidden `key` and `login` fields from the URL so WordPress can validate the reset key on submission.
-
-## WordPress authentication page access {#wp-auth}
-
-As of Bricks 1.11, you have control over what happens when someone visits a default WordPress authentication URL (such as `wp-login.php`), provided custom authentication pages are set.
-
-To manage this:
-
-1. Navigate to **Bricks** > **Settings** > **General** > **Custom authentication pages**.
-2. Under **WordPress authentication page access**, select one of the following options:
-- **Redirect to custom authentication page (default)**: The user will be redirected to the corresponding custom authentication page you have set.
-- **Error page**: Bricks returns the site's 404 error page for matching default auth URLs.
-- **Home URL**: Redirects visitors to the homepage.
-- **Redirect to specific page**: Allows you to choose a specific page on your site to redirect visitors to.
-
-This setting only changes behavior for a default auth URL when the corresponding custom page has been set. For example, the login behavior applies when a custom login page is selected.
-
-If **Redirect to specific page** is selected and no valid published page is selected, Bricks falls back to the home URL.
-
-Bricks preserves query parameters when redirecting from the default auth URL to a custom auth page. This is important for reset-password keys and login redirects.
-
-### Logout behavior
-
-For logged-in users, Bricks lets WordPress process logout first. If WordPress would send the user back to the default login page after logout and you have a valid custom login page, Bricks redirects to the custom login page with `?logged_out=true`.
-
-## Bypassing custom login (since 1.9.4):
-
-By default, when visiting any authentication page on your site, you can access the default WordPress login page by adding `brx_use_wp_login` as a URL parameter, for example:
-
-```text
-https://example.com/wp-login.php?brx_use_wp_login=1
-```
-
-This feature allows site owners to bypass the custom login page if needed.
-
-Adding this parameter sets a bypass cookie for 5 minutes. During that window, Bricks lets the default WordPress authentication page load instead of redirecting to the custom page.
-
-In Bricks settings, you can disable this feature:
-
-1. Navigate to **Bricks > Settings > General > Custom authentication pages**.
-2. Enable **Disable custom authentication page bypass**.
-
-When disabled, the `brx_use_wp_login` URL parameter no longer sets the bypass cookie.
-
-> **Note**
->
-> Before disabling the bypass and blocking default auth URLs, make sure your custom login page works and that you know its URL. Otherwise you can lock yourself out of the normal login screen.
-
-## Developer filters
-
-Bricks exposes filters for custom redirect logic:
-
-- `bricks/auth/custom_redirect_url`: Override the redirect URL based on the current auth URL path.
-- `bricks/auth/custom_login_redirect`: Change the selected custom login page.
-- `bricks/auth/custom_registration_redirect`: Change the selected custom registration page.
-- `bricks/auth/custom_lost_password_redirect`: Change the selected custom lost password page.
-- `bricks/auth/custom_reset_password_redirect`: Change the selected custom reset password page.
-
-Use these filters when a multilingual, membership, or custom routing setup needs more control than the global page selectors provide.
 
 ---
 
@@ -10274,6 +8537,182 @@ After conversion, delete the remaining global elements from the builder's elemen
 ## When to use templates instead
 
 If you need to reuse a larger section or layout pattern without linked shared editing, save it as a template and insert it where needed. For linked reusable structures, use Components.
+
+---
+
+<a id="builder-features-create-update-posts-on-the-frontend"></a>
+
+# Create & Update Posts on the Frontend
+
+Source: https://academy.bricksbuilder.io/builder/features/create-update-posts-on-the-frontend/
+
+*Build frontend forms in Bricks that create or update WordPress posts without sending users into wp-admin.*
+
+Bricks 2.1 introduced the **Create post** and **Update post** form actions. They let a frontend Form element create a new WordPress post or update an existing one without sending the user to wp-admin.
+
+Use these actions for workflows such as property listings, classifieds, member-submitted posts, profile pages, or client portals. The examples below use a custom post type named `property`, but the same rules apply to any public post type that exists on your site.
+
+> **Note**
+>
+> **IMPORTANT:** By default, Bricks checks permissions twice: when rendering the form and again when processing the submission.
+>
+> - **Create post** requires the current user to have the selected post type's `edit_posts` capability.
+> - **Update post** requires the current user to have `edit_post` for the target post.
+>
+> Do not enable **Disable capability checks** unless the form is protected another way. When disabled, non-logged-in or unauthorized visitors can create or edit content through that form.
+
+https://www.youtube.com/watch?v=c9JcrLEVbnM
+
+## Before you start
+
+Decide these things before building the form:
+
+- Which post type the form creates or updates.
+- Which users are allowed to submit the form.
+- Whether new posts should be saved as draft, pending review, published, or another available post status.
+- Which core post fields, custom fields, and taxonomies the form may change.
+- Whether uploads should be saved to the Media Library. Featured images, attachment posts, and many ACF/Meta Box media fields need attachment IDs.
+
+## How to create or update posts via form submission
+
+The create and update workflows use the same pattern: add fields, choose the form action, then map the fields to the WordPress data that should change.
+
+### Step 1: Add form fields for post data
+
+Create form fields for all the post data that you want to save when creating or updating a post through the Form element:
+
+| Post data | Recommended field type |
+| --- | --- |
+| Post title | Text |
+| Post content | Rich text |
+| Post excerpt | Textarea |
+| Featured image | Image |
+| Post meta | The most suitable field type for the custom field |
+| Taxonomy terms | Checkbox, radio, or select |
+
+#### Post meta
+
+Make sure to select the most suitable field type for every piece of post meta data you want to modify. Bricks stores mapped meta through ACF, Meta Box, or `update_post_meta()` depending on the meta key and the integrations available on the site.
+
+For checkbox, radio, and select fields, Bricks can automatically load choices from ACF or Meta Box when:
+
+- The field is mapped to a matching meta key.
+- The form field has no manual options.
+- ACF or Meta Box can resolve that field for the post or post type.
+
+If you add manual options to the form field, Bricks uses your manual options instead.
+
+#### Taxonomy
+
+Use checkbox, radio, or select fields for taxonomies such as categories, tags, or custom taxonomies. You can leave the form field options empty. When the field is mapped in the **Taxonomies** repeater, Bricks automatically populates the field with terms from the selected taxonomy.
+
+If you manually add options, use term IDs as the submitted values. On submission, Bricks stores taxonomy terms by ID. If the mapped taxonomy field is empty, Bricks clears the terms for that mapped taxonomy.
+
+### Step 2: Select the form action
+
+Edit the Form element and select **Create post** or **Update post** in the **Actions** control group.
+
+![](https://academy.bricksbuilder.io/assets/bricks-form-action-create-update-post.png)
+
+The order of actions matters. If an action returns an error, Bricks stops processing the remaining actions. The **Redirect** action is always moved to the end of the action list so other selected actions can run first.
+
+### Step 3: Configure the action
+
+When creating a new post, select the post type that you want to create a new post for under the "Create post" control group:
+
+![](https://academy.bricksbuilder.io/assets/CleanShot-2025-09-16-at-14.07.14@2x.png)
+
+<figcaption>
+
+Create new post for post type "Property" on form submission
+
+</figcaption>
+
+When updating an existing post, select the specific post that you want to update under the "Update post" control group:
+
+![](https://academy.bricksbuilder.io/assets/bricks-form-update-post-control-group.png)
+
+Leave **Post to update** empty to update the current post. If the form is inside a query loop, Bricks uses the submitted loop object ID so each repeated form can update its own loop item.
+
+Both actions include a **Post status** setting. For **Create post**, leaving it empty lets WordPress use its default insert behavior. For **Update post**, leaving it empty keeps the current post status.
+
+When **Create post** runs for a logged-in user, that user becomes the post author. If you disable capability checks and allow anonymous submissions, Bricks falls back to the site's first super admin user when assigning the author.
+
+## Step 4: Field mapping
+
+The last, and most important step is to map/connect your form fields with the post data that should be modified when the form is submitted. The mapping controls are also located within the "Create post" and "Update post" control groups.
+
+### Mapping simple post data
+
+For simple post data such as the Post title, Post content, Post excerpt, and Featured image you just have to select the corresponding form field from the select dropdown:
+
+![](https://academy.bricksbuilder.io/assets/bricks-form-create-post-field-mapping-simple-post-data.png)
+
+For featured images and attachment posts, use fields that save uploads to the Media Library so Bricks can work with the uploaded attachment ID.
+
+Bricks verifies that the mapped featured image value is an image attachment ID before calling WordPress' featured image logic. If the mapped field has no value, Bricks removes the featured image.
+
+### Mapping post meta
+
+When updating post meta via a form field, add an item under **Post meta** and provide:
+
+- **Meta key**: The custom field key to update. Bricks sanitizes this key before saving.
+- **Meta value**: The form field whose submitted value should be saved.
+- **Sanitization method**: How Bricks should sanitize the submitted value before saving it.
+
+![](https://academy.bricksbuilder.io/assets/bricks-form-create-post-field-mapping-post-meta.png)
+
+Available sanitization methods include text, integer, float, email, URL, and post-safe HTML. Values that are not handled by ACF or Meta Box fall back to WordPress post meta.
+
+#### ACF and Meta Box handling
+
+When possible, Bricks updates ACF fields through `update_field()` and Meta Box fields through `rwmb_set_meta()` instead of writing raw post meta only. This matters for field types that expect a specific value shape.
+
+For media fields, file upload fields should save files to the Media Library. Bricks processes those uploads before the create/update action so mapped fields can receive attachment IDs.
+
+For ACF group fields, Bricks can resolve nested meta keys and update the parent group value so nested data remains structured correctly.
+
+### Taxonomies
+
+Mapping a form field to a taxonomy is straightforward. Under **Taxonomies**, select the taxonomy to update and the corresponding form field.
+
+There is no need to manually enter taxonomy terms unless you want to limit the choices. Bricks will automatically populate the form field with the selected taxonomy's terms when the mapped form field has no manual options.
+
+## Security and validation details
+
+Bricks still runs the normal form submission checks before the create/update action:
+
+- The AJAX submission must include a valid Bricks form nonce.
+- Submitted field IDs must match fields that exist in the form settings. Unexpected or duplicate field IDs are rejected.
+- Required field validation, max-length validation, honeypot checks, and enabled captcha checks run before actions.
+- The action repeats capability checks server-side unless you disabled them.
+
+The form is not rendered for unauthorized users when capability checks are enabled. If you set a custom error message in the Create post or Update post control group, Bricks displays that message instead.
+
+## Common setups
+
+### Let users submit posts for review
+
+Use **Create post**, keep capability checks enabled for trusted logged-in users, and set **Post status** to **Pending** or **Draft**. Map only the fields users should control.
+
+### Let authors edit their own posts
+
+Use **Update post**, leave **Post to update** empty on a single post template, and keep capability checks enabled. WordPress will allow the update only if the current user can edit that post.
+
+### Update items inside a query loop
+
+Place the update form inside the query loop and leave **Post to update** empty. Bricks submits the loop object ID and updates the matching loop item.
+
+### Create attachment posts from uploads
+
+Set **Post type** to **Attachment** and use a file upload field that saves to the Media Library. Bricks uses the first uploaded attachment it finds and can update its title, content, excerpt, status, meta, and terms through the mapped fields.
+
+## Filters
+
+Bricks supports many ACF and Meta Box field types out of the box, but every custom setup is different. You can adjust mapped meta values before they are saved with these filters:
+
+- [`bricks/form/create_post/meta_value`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-create_post-meta_value/)
+- [`bricks/form/update_post/meta_value`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-update_post-meta_value/)
 
 ---
 
@@ -13039,24 +11478,6 @@ For file fields, the Form Submissions table can link to files saved in the Media
 
 ---
 
-<a id="builder-features-sidebars"></a>
-
-# Create Your Own Sidebars
-
-Source: https://academy.bricksbuilder.io/builder/features/sidebars/
-
-*Create and register sidebars for Bricks so widget areas can be placed and styled inside templates and layouts.*
-
-Bricks provides you with its own, built-in sidebar generator. Located in your WordPress dashboard under **Bricks > Sidebars** it lets you to create unlimited sidebars (widgetized areas).
-
-All you need to do is give your sidebar a name and description (optional), and click Create new sidebar.
-
-Once your custom sidebar is created go to **Appearance > Widgets** and drag and drop the widgets of your choice into your newly created sidebar.
-
-You can now add this newly created sidebar inside the builder by dragging the **Sidebar** element onto the canvas.
-
----
-
 <a id="builder-features-search-criteria"></a>
 
 # Search Criteria
@@ -13192,6 +11613,24 @@ Weight scores are integer values with a minimum of 1. Matching scores are added 
 
 ---
 
+<a id="builder-features-sidebars"></a>
+
+# Create Your Own Sidebars
+
+Source: https://academy.bricksbuilder.io/builder/features/sidebars/
+
+*Create and register sidebars for Bricks so widget areas can be placed and styled inside templates and layouts.*
+
+Bricks provides you with its own, built-in sidebar generator. Located in your WordPress dashboard under **Bricks > Sidebars** it lets you to create unlimited sidebars (widgetized areas).
+
+All you need to do is give your sidebar a name and description (optional), and click Create new sidebar.
+
+Once your custom sidebar is created go to **Appearance > Widgets** and drag and drop the widgets of your choice into your newly created sidebar.
+
+You can now add this newly created sidebar inside the builder by dragging the **Sidebar** element onto the canvas.
+
+---
+
 <a id="builder-features-svg-uploads"></a>
 
 # SVG Uploads
@@ -13291,6 +11730,112 @@ Before enabling SVG uploads:
 - Keep sanitization enabled unless you have another trusted sanitizer in place.
 - Review any custom allowed tags or attributes.
 - Do not treat media-upload SVG sanitization as protection for SVG element source code; SVG element source code uses the code execution and code signature security model.
+
+---
+
+<a id="builder-features-template-library"></a>
+
+# Template Library
+
+Source: https://academy.bricksbuilder.io/builder/features/template-library/
+
+*Browse, import, and manage templates from the Bricks Template Library.*
+
+In Bricks 2.4, templates are managed inside the Builder Browser. Open it by clicking the folder icon in the builder toolbar.
+
+You can also press `CMD / CTRL + SHIFT + L` to open the Browser on the Templates view if your user has template access.
+
+All of your own templates are located under the **My Templates** source. You can also browse built-in remote sources such as Wireframes and Design sets, plus any Remote Templates sources configured for your site.
+
+![](https://academy.bricksbuilder.io/assets/docs-template-library-1024x576.png)
+
+<figcaption>
+
+Template Library: My Templates and remote sources
+
+</figcaption>
+
+https://www.youtube.com/watch?v=gbWPw9ebxjQ
+
+## Template Sources {#interface}
+
+In the Templates view, the **Source** dropdown can include:
+
+- **My Templates**: Templates from the current site.
+- **Wireframes**: Structural Bricks templates based on classes and variables.
+- **Design sets**: Pre-designed Bricks template sets.
+- **Remote sites**: Templates from configured remote Bricks installations.
+
+[Remote Templates](https://academy.bricksbuilder.io/builder/features/remote-templates/) allow you to browse templates from any other Bricks installation that you have access to.
+
+## Import Images & Replace Content {#import-images}
+
+The Templates view includes two import controls:
+
+- **Import images**: When enabled, template images are downloaded into your Media Library. Leave it disabled to insert the template with placeholder images.
+- **Replace content**: When enabled, Bricks replaces the current canvas with the inserted template. Leave it disabled to insert the template into the existing content.
+
+## Template Filters {#filters}
+
+The Templates view can show these filters:
+
+- **Template Bundle**: Select a template bundle to show only templates that belong to the selected bundle. A template bundle can be a collection of templates of the same website (e.g. home page, contact, about us page, etc.)
+- **Template Tag**: Select a template tag to show only templates that have the selected tag assigned to them.
+- **Template Type**: Select a template type to show only templates of the selected template type.
+- **Search Templates**: Enter any keyword to search for a specific template.
+
+## Template Actions
+
+The Templates view includes action icons for creating, saving, importing, reloading remote sources, generating local template screenshots when available, and switching between grid and list view.
+
+Individual templates can show actions such as insert, edit, export, delete, preview, and **Import to templates**, depending on the source and your builder permissions.
+
+**Import to templates** saves a non-local template under **My Templates**. For a configured Bricks remote site, Bricks 2.4 also localizes component dependencies and their referenced design-system data before continuing through the normal template import flow.
+
+### Create Template {#create-template}
+
+Click the **Create template** icon to create a new template. Enter a title and select a template type. The template bundle is optional. Click **Create template** to create it.
+
+You can also create a new Bricks template from the WordPress dashboard by going to **Bricks → Templates** and click **Add New**. Then give your template a title, select a template type from the meta box on the right side of the editing screen and click **Publish**. Template tags and bundles are optional.
+
+### Save As Template {#save-as-template}
+
+Click the **Save as template** icon to save your current builder content as a template. Enter a title and select a template type. Selecting a template bundle is optional.
+
+To save a specific section as a template hover over a section in the builder. The Edit (pen) icon should appear in the bottom right corner. Hover over it, and click the "disk" icon (Save Section As Template). Give your template section a name and select template type "Section". Then click **SAVE NEW TEMPLATE**.
+
+### Import Template {#import-template}
+
+Click the **Import template** icon to import existing template files. You can import a single template as JSON or multiple templates in ZIP format.
+
+Click "Select file(s) to import" and select the JSON/ZIP file from your computer or drag and drop those files into the marked drop zone.
+
+To import templates from the WordPress dashboard go to
+**Bricks > Templates** and click **Import Templates**.
+
+Select your template file (JSON/ZIP) from your computer and click **Import template(s)**. Or drag and drop those files into the drop zone.
+
+When imported templates include related data, Bricks may ask you to review imported theme styles, color palettes, global variables, global classes, or Style Manager settings before inserting the template.
+
+Remote templates that use components can also transfer those components, including nested component dependencies. See [Remote Templates](https://academy.bricksbuilder.io/builder/features/remote-templates/) for the access, permission, conflict, and compatibility rules.
+
+### Sync Templates
+
+The sync icon is available for non-My Templates sources. It refreshes the selected remote source.
+
+## Export Template(s) {#export-templates}
+
+To export a template, hover over the template title and click **Export Template**. This will generate and download a JSON file with your template data onto your computer.
+
+To export multiple templates at once as a ZIP file, go to **Bricks → Templates** in your WordPress dashboard, and select the templates you want to export.
+
+Now select **Export** from the **Bulk Actions** dropdown, and click **Apply**:
+
+![](https://academy.bricksbuilder.io/assets/file-XTTkSk9tej.jpg)
+
+A ZIP file of your selected templates will be generated and downloaded onto your computer.
+
+This ZIP file contains all templates as individual JSON files. Either unzip it to import individual templates or import the entire ZIP file to bulk import all templates at once.
 
 ---
 
@@ -13486,112 +12031,6 @@ You can also open and close the Style Manager popup using:
 
 `CMD + .` (macOS)
 `CTRL + .` (Windows/Linux)
-
----
-
-<a id="builder-features-template-library"></a>
-
-# Template Library
-
-Source: https://academy.bricksbuilder.io/builder/features/template-library/
-
-*Browse, import, and manage templates from the Bricks Template Library.*
-
-In Bricks 2.4, templates are managed inside the Builder Browser. Open it by clicking the folder icon in the builder toolbar.
-
-You can also press `CMD / CTRL + SHIFT + L` to open the Browser on the Templates view if your user has template access.
-
-All of your own templates are located under the **My Templates** source. You can also browse built-in remote sources such as Wireframes and Design sets, plus any Remote Templates sources configured for your site.
-
-![](https://academy.bricksbuilder.io/assets/docs-template-library-1024x576.png)
-
-<figcaption>
-
-Template Library: My Templates and remote sources
-
-</figcaption>
-
-https://www.youtube.com/watch?v=gbWPw9ebxjQ
-
-## Template Sources {#interface}
-
-In the Templates view, the **Source** dropdown can include:
-
-- **My Templates**: Templates from the current site.
-- **Wireframes**: Structural Bricks templates based on classes and variables.
-- **Design sets**: Pre-designed Bricks template sets.
-- **Remote sites**: Templates from configured remote Bricks installations.
-
-[Remote Templates](https://academy.bricksbuilder.io/builder/features/remote-templates/) allow you to browse templates from any other Bricks installation that you have access to.
-
-## Import Images & Replace Content {#import-images}
-
-The Templates view includes two import controls:
-
-- **Import images**: When enabled, template images are downloaded into your Media Library. Leave it disabled to insert the template with placeholder images.
-- **Replace content**: When enabled, Bricks replaces the current canvas with the inserted template. Leave it disabled to insert the template into the existing content.
-
-## Template Filters {#filters}
-
-The Templates view can show these filters:
-
-- **Template Bundle**: Select a template bundle to show only templates that belong to the selected bundle. A template bundle can be a collection of templates of the same website (e.g. home page, contact, about us page, etc.)
-- **Template Tag**: Select a template tag to show only templates that have the selected tag assigned to them.
-- **Template Type**: Select a template type to show only templates of the selected template type.
-- **Search Templates**: Enter any keyword to search for a specific template.
-
-## Template Actions
-
-The Templates view includes action icons for creating, saving, importing, reloading remote sources, generating local template screenshots when available, and switching between grid and list view.
-
-Individual templates can show actions such as insert, edit, export, delete, preview, and **Import to templates**, depending on the source and your builder permissions.
-
-**Import to templates** saves a non-local template under **My Templates**. For a configured Bricks remote site, Bricks 2.4 also localizes component dependencies and their referenced design-system data before continuing through the normal template import flow.
-
-### Create Template {#create-template}
-
-Click the **Create template** icon to create a new template. Enter a title and select a template type. The template bundle is optional. Click **Create template** to create it.
-
-You can also create a new Bricks template from the WordPress dashboard by going to **Bricks → Templates** and click **Add New**. Then give your template a title, select a template type from the meta box on the right side of the editing screen and click **Publish**. Template tags and bundles are optional.
-
-### Save As Template {#save-as-template}
-
-Click the **Save as template** icon to save your current builder content as a template. Enter a title and select a template type. Selecting a template bundle is optional.
-
-To save a specific section as a template hover over a section in the builder. The Edit (pen) icon should appear in the bottom right corner. Hover over it, and click the "disk" icon (Save Section As Template). Give your template section a name and select template type "Section". Then click **SAVE NEW TEMPLATE**.
-
-### Import Template {#import-template}
-
-Click the **Import template** icon to import existing template files. You can import a single template as JSON or multiple templates in ZIP format.
-
-Click "Select file(s) to import" and select the JSON/ZIP file from your computer or drag and drop those files into the marked drop zone.
-
-To import templates from the WordPress dashboard go to
-**Bricks > Templates** and click **Import Templates**.
-
-Select your template file (JSON/ZIP) from your computer and click **Import template(s)**. Or drag and drop those files into the drop zone.
-
-When imported templates include related data, Bricks may ask you to review imported theme styles, color palettes, global variables, global classes, or Style Manager settings before inserting the template.
-
-Remote templates that use components can also transfer those components, including nested component dependencies. See [Remote Templates](https://academy.bricksbuilder.io/builder/features/remote-templates/) for the access, permission, conflict, and compatibility rules.
-
-### Sync Templates
-
-The sync icon is available for non-My Templates sources. It refreshes the selected remote source.
-
-## Export Template(s) {#export-templates}
-
-To export a template, hover over the template title and click **Export Template**. This will generate and download a JSON file with your template data onto your computer.
-
-To export multiple templates at once as a ZIP file, go to **Bricks → Templates** in your WordPress dashboard, and select the templates you want to export.
-
-Now select **Export** from the **Bulk Actions** dropdown, and click **Apply**:
-
-![](https://academy.bricksbuilder.io/assets/file-XTTkSk9tej.jpg)
-
-A ZIP file of your selected templates will be generated and downloaded onto your computer.
-
-This ZIP file contains all templates as individual JSON files. Either unzip it to import individual templates or import the entire ZIP file to bulk import all templates at once.
 
 ---
 
@@ -14075,117 +12514,345 @@ You can also view the index of each element, and if an element is part of a quer
 
 ---
 
-<a id="builder-license-license-and-updates"></a>
+<a id="builder-interface-builder-access"></a>
 
-# License, updates, and your account
+# Builder Access & Capabilities
 
-Source: https://academy.bricksbuilder.io/builder/license/license-and-updates/
+Source: https://academy.bricksbuilder.io/builder/interface/builder-access/
 
-*Update Bricks safely, manage your license and sites, and understand staging and local URLs.*
+*Control who can access Bricks and which builder capabilities are available for different WordPress roles.*
 
-For first-time installation and activation, follow [Installation and setup](https://academy.bricksbuilder.io/getting-started/installation-setup/).
+Bricks gives you full control over who can access the builder, and what actions they're allowed to perform. You can either assign a **predefined capability**, or create your own **custom capability** that allows only the specific permissions you enable for it.
 
-This article covers **automatic updates**, **staging and safe updates**, **which URLs count toward your license**, and **managing activations** in your Bricks account.
+This gives you complete freedom and control to tailor the builder experience to any roles (i.e. content editor, designer, client, etc.) depending on what they should be able to do.
 
-Your Bricks account and downloads live at [my.bricksbuilder.io](https://my.bricksbuilder.io/) (same destination the theme uses for remote services).
+![](https://academy.bricksbuilder.io/assets/bricks-settings-builder-access.png)
 
-## Define the license key in wp-config.php {#constant}
+## Access levels
 
-Starting with Bricks 2.4, you can define your Bricks license key as a PHP constant in `wp-config.php`:
+There are two ways to manage builder access:
 
-```php
-define( 'BRICKS_LICENSE_KEY', 'your-license-key' );
-```
+1. Use one of the predefined capabilities: **Full access**, **Edit content**, or **No access**
+2. Create your own custom builder capability with detailed permission control
 
-Add the constant above the line that says `/* That's all, stop editing! Happy publishing. */`.
+### Predefined capabilities
 
-Use this when you manage WordPress sites from a blueprint, clone sites for development, or prefer to keep the raw license key out of the WordPress options table.
+- **Full access**: Grants access to all features and permissions in the Bricks builder.
+- **Edit content**: Limits the user to content editing only. Layout, styling, and structural controls are disabled. More specifically, this includes the following permissions:
+  - Access revisions
+  - Set component properties (instance)
+  - Access content (HTML) settings
+  - Edit all elements
+  - Edit all Bricks-enabled post types
+- **No access**: Blocks access to the Bricks builder entirely.
 
-When `BRICKS_LICENSE_KEY` is defined, Bricks uses it as the active license key. The license screen at **Bricks > License** shows that the key is defined by the constant and provides a **Re-validate license** button.
+## Creating a custom capability {#custom}
 
-If a license key is also saved in the database, Bricks keeps using `BRICKS_LICENSE_KEY` while the constant is active. The license screen shows a notice and a **Remove saved database key** button. This removes the local `bricks_license_key` option only. It does not remotely deactivate the license.
+If you need precise control over the actions a user or role should be able to perform, you can create your very own custom builder capability, following the steps outlines below.
 
-To use a different key, update the constant value and re-validate the license. To return to a database-stored key, remove the constant and activate the license from **Bricks > License**.
+1. Go to **Bricks > Settings > Builder access**
+2. Under **Builder capabilities**, click **Add new capability**
 
-## How to update Bricks {#how-to-update}
+![](https://academy.bricksbuilder.io/assets/bricks-builder-access-add-custom-capability.png)
 
-If you have activated your Bricks license key on your site, you'll automatically receive update notifications in your WordPress dashboard. You can then perform the update to the latest version of Bricks with one click from your WordPress dashboard.
+Inside the capability popup, you can:
 
-![](https://academy.bricksbuilder.io/assets/bricks-wp-dashboard-how-to-update.png)
+- Give the capability a name & a description
+- Enable exactly the permissions you want to grant
 
-You can also always manually download the latest version from your Bricks account at [https://my.bricksbuilder.io/](https://my.bricksbuilder.io/) as a ZIP file.
+![](https://academy.bricksbuilder.io/assets/bricks-builder-access-permissions.png)
 
-### Test on staging & read the changelog
+Once created, you can assign this capability to specific users or user roles.
 
-We recommend to perform updating a mission-critical software like Bricks first on a staging server. Especially if your website is live, receives a lot of traffic, you are running marketing campaigns, offers, etc. Once you confirmed that everything is working as expected you can update your live site.
+## Assigning capabilities
 
-Every noticeable host offers, mostly free of charge, an easy one-click staging solution. Please reach out to your host if you are not sure how this works.
+You can assign any builder capability, whether predefined or custom:
 
-Every update is accompanied by an in-depth release changelog. Please take the time to go over it at [https://bricksbuilder.io/changelog/](https://bricksbuilder.io/changelog/) before you perform the update.
+- To a **user role**, under **Bricks > Settings > Builder access > Builder access**
 
-This way you know exactly what changed, if any adjustments or steps need to be performed on your end, which new features are available, and so on.
+![](https://academy.bricksbuilder.io/assets/bricks-builder-access-custom-capabilities.png)
 
-### Local, staging & intranet installations don't count against your license limit {#local}
+- To a **specific user**, by editing their WordPress user profile
 
-These rules are enforced by the Bricks account/licensing service. During license activation, validation, and update checks, the Bricks theme sends the current site/license data, including the site URL/domain and Bricks version, to the licensing service. The service then decides whether a URL counts toward your license limit.
+![](https://academy.bricksbuilder.io/assets/bricks-builder-edit-user-profile.png)
 
-Bricks classifies sites matching the following URL patterns as local, staging, or intranet installations for licensing purposes. These installations do not count against your license activation limit. This classification does not necessarily describe how a site is used.
+![](https://academy.bricksbuilder.io/assets/bricks-builder-access-user-settings.png)
 
-**Local URLs:**
+This gives you flexibility to apply permissions globally or individually.
 
-- `192.168.x.x`
-- `127.0.0.1`
-- `localhost` (includes)
-- `.local` (top-level domain)
-- `.test` (top-level domain)
-- `.wip` (top-level domain)
+## Available permissions
 
-<span id="staging"></span>
+When editing a capability, the following permissions are available and grouped by category:
 
-**Staging URLs:**
+### Post types {#post-types}
 
-- Staging subdomains (dev, staging, test)
-  - `dev.yoursite.com`
-  - `staging.yoursite.com`
-  - `test.yoursite.com`
-- BlogVault: `.wpstage.net`
-- Cloudways: `.cloudwaysapps.com` & `.cloudwayssites.com`
-- DreamHost / DreamPress: `.stage.site` & `.dream.press`
-- Flywheel: `.mysites.io` & `.flywheelsites.com`
-- GoDaddy: `.myftpupload.com`
-- Hostinger: `.hostingersite.com`
-- InstaWP: `.instawp.site` & `.instawp.xyz` & `instawp.com` & `.instawp.co` & `.instawp.link`
-- Kinsta: `.kinsta.cloud`
-- Lando Pantheon: `.lndo.site`
-- Nexcess: `.nxcli.net` & `.nxcli.io`
-- Pantheon: `.pantheonsite.io`
-- Plesk: `.plesk.page`
-- Raidboxes: `.myrdbx.io`
-- Rocket.net: `.onrocket.site` & `.wpdns.site`
-- Runcloud: `.temp-site.link`
-- SiteGround: `.sg-host.com`
-- SpinupWP: `.spinupwp.site`
-- TasteWP: `.tastewp.com`
-- WP Engine: `.wpenginepowered.com` & `.wpengine.com`
-- WP Stagecoach: `.wpstagecoach.com` & `.wpsc.site`
-- wp-space.de: `.wpspace.partners`
-- xCloud: `1wp.site`, `.wp1.site`, `wp1.sh`, `wp1.host`
-- ZipWP: `.zipwp.link`
+Choose which post types can be edited using Bricks.
 
-<span id="intranet"></span>
+### General {#general}
 
-**Intranet (top-level domains):**
+- Access breakpoints manager
+- Access page settings
+- Access template settings
+- Access revisions
+- Delete revisions
+- Access font manager
+- Access icon manager
+- Access query manager
+- Customize builder interface
+- Manage builder interface profiles
+- Manage global elements (only if legacy Global Elements exist)
 
-- `.intranet`
-- `.internal`
-- `.private`
-- `.corp`
-- `.home`
-- `.lan`
+### Templates {#templates}
 
-**With a Bricks Starter license (1 active site limit), you can build your site locally with Bricks & use your Starter license on your live site simultaneously.**
+- Create templates
+- Edit templates
+- Delete templates
+- Insert templates
+- Access remote templates
+- Import/export templates
 
-You can deactivate the license key from your site from your WP dashboard under `Bricks > License`, and activate it on another site or remove the site from your Bricks account under the "Sites" tab. We monitor any potential misusage (attempts to avoid purchasing a sufficient plan) and reserve the right to limit further license activations.
+### Global styles & settings {#styles-setting}
+
+- Access theme styles
+- Access color manager
+- Access variable manager
+- Access class manager
+- Create global classes
+- Edit global classes
+- Assign/unassign global classes
+- Delete global classes
+- Lock/unlock global classes
+- Copy/paste global class styles
+- Access pseudos & selectors
+
+### Components {#components}
+
+- Access remote components
+- Insert components
+- Edit properties (instance)
+- Edit components
+- Create components
+- Delete components
+- Import/export components
+
+Remote workflows combine these permissions instead of using one broad access flag:
+
+| Workflow | Required permissions |
+| --- | --- |
+| Browse a configured remote component library | **Access remote components** |
+| Import a remote component | **Access remote components** and **Import/export components** |
+| Insert an imported component | **Insert components** |
+| Insert a remote template without components | **Access remote templates** and **Insert templates** |
+| Insert a remote template with component dependencies | **Access remote templates**, **Insert templates**, **Access remote components**, **Import/export components**, and **Insert components** |
+| Save a remote template to My Templates | **Access remote templates** and **Import/export templates** |
+| Save a remote template with component dependencies to My Templates | The template import permissions above, plus **Access remote components** and **Import/export components** |
+
+See [Remote Templates](https://academy.bricksbuilder.io/builder/features/remote-templates/) for the corresponding template setup.
+
+### Element editing & styling {#element-edit-style}
+
+- Access content (HTML) settings
+- Access style (CSS) settings
+- Access query loop builder
+- Access element hide
+- Access element conditions
+- Access element interactions
+- Duplicate elements
+- Delete elements
+- Move elements
+- Copy/paste elements
+- Copy/paste element styles
+- Copy/paste element conditions
+- Copy/paste element interactions
+- Copy/paste element attributes
+- Pin/unpin elements
+
+### Edit elements {#edit-elements}
+
+Controls general editing of existing elements.
+
+_Note: Requires access to content and/or style settings._
+
+### Add elements {#add-elements}
+
+Define which elements can be inserted.
+
+---
+
+<a id="builder-interface-builder-interface-customiser-profiles"></a>
+
+# Builder Interface Customiser and Profiles
+
+Source: https://academy.bricksbuilder.io/builder/interface/builder-interface-customiser-profiles/
+
+*Customize the Bricks builder workspace, save reusable interface profiles, and assign layouts to roles or users.*
+
+The Builder Interface Customiser lets you adjust the Bricks builder workspace to match the way you work.
+
+You can add, hide and move toolbar items, dock the Control panel and Structure, place Pinned controls in the bottom dock, and save layouts as profiles for different users or roles.
+
+This changes the builder workspace only. It does not change frontend output, templates, elements, or page data.
+
+https://www.youtube.com/watch?v=iIUmLZQp_CY
+
+## Requirements
+
+Builder interface customization is available in Bricks 2.4.
+
+The Builder interface entry appears when the current user can customize the builder interface or manage builder interface profiles. Administrators with full builder access can use both by default.
+
+Use [Builder access](https://academy.bricksbuilder.io/builder/interface/builder-access/) to grant these permissions to other roles:
+
+- **Customize builder interface**: Lets the user save and reset their own builder interface preferences.
+- **Manage builder interface profiles**: Lets the user create, load, rename, overwrite, delete, import, and export builder interface profiles.
+
+Site admins can disable the customiser globally under `Bricks -> Settings -> Builder -> Builder interface` by enabling **Disable builder interface customiser**.
+
+## Open the Builder interface
+
+Open the builder, then use either of these entry points:
+
+- Open the builder settings panel and click **Builder interface**.
+- Open the [Command Palette](https://academy.bricksbuilder.io/builder/interface/command-palette/) and choose **Builder interface** from the Builder scope.
+
+![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-popup.webp)
+
+## Workspace layout
+
+The Builder interface popup controls the main workspace areas.
+
+### Control panel and Structure
+
+Use the **Control panel** and **Structure** settings to dock each panel to the **Left**, **Right**, or **Bottom**.
+
+When the Control panel and Structure are assigned to the same side dock, Bricks displays them next to each other instead of stacking both panels in the same area.
+
+![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-control-structure-panels.webp)
+
+### Pinned controls
+
+Pinned controls can stay inside the control panel or move to the bottom dock.
+
+When **Pinned controls** is set to **Bottom**, the popup shows a **Pinned controls layout** section. Use it to set the number of columns and optional column widths. Bricks supports up to six pinned-control columns.
+
+![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-pinned-controls.webp)
+
+### Bottom dock
+
+The bottom dock can contain:
+
+- Control panel
+- Structure
+- Pinned controls
+
+Items in the bottom dock appear as tabs. You can reorder those tabs while editing the builder interface.
+
+When more than one item is assigned to the bottom dock, the popup shows a **Bottom dock layout** section. Use it to set the number of bottom dock columns and optional CSS widths for each column. The maximum number of columns matches the number of items currently assigned to the bottom dock.
+
+![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-bottom-dock.webp)
+
+## Toolbar layout
+
+The toolbar can be placed on the **Top**, **Right**, **Bottom**, or **Left** edge of the builder.
+
+Each toolbar edge has three groups:
+
+- **Start**
+- **Center**
+- **End**
+
+Drag toolbar items between these groups to change their order and placement. Bricks keeps the breakpoint controls together as one locked cluster.
+
+### Toolbar items
+
+The **Toolbar items** section contains optional items you can drag into the toolbar. This includes repeatable toolbar dividers and custom **Insert element** shortcuts.
+
+An Insert element shortcut can insert a selected element or component directly from the toolbar.
+
+![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-toolbar-items.webp)
+
+### Hidden items
+
+Drag optional toolbar items into **Hidden items** to remove them from the visible toolbar. Use the restore button on a hidden item to bring it back.
+
+Required toolbar items cannot be hidden. In Bricks 2.4, **Elements**, **Structure**, **Preview**, and **Save** are required.
+
+## Save or reset your layout
+
+Click **Save** to store the current builder interface for your user account.
+
+Click **Reset** to remove your saved builder interface preferences and return to the resolved default layout. The reset keeps pinned control groups where possible, so frequently used pinned groups are not lost just because the workspace layout was reset.
+
+If the popup shows an unsaved-changes message, save before closing the popup if you want to keep the layout.
+
+## Profiles
+
+Builder interface profiles save a complete builder interface layout that can be reused.
+
+In the **Profiles** section, you can:
+
+- **Load** an existing profile into the current popup.
+- **Save as** a new profile from the current layout.
+- **Overwrite** the selected profile.
+- **Rename** the selected profile.
+- **Delete** the selected profile.
+
+Profiles are useful when different people need different builder workspaces. For example, a designer might use a wide control panel and visible Structure panel, while a content editor might use fewer toolbar items and a simplified bottom dock.
+
+> **Note**
+>
+> Bricks applies profiles after personal builder interface preferences. If a setting exists in both places, the assigned profile wins. Use profile assignments when you want a role or user to consistently receive a specific builder workspace.
+
+Saving a profile does not assign it automatically. Assign profiles under Builder access after creating them.
+
+## Assign profiles to roles or users
+
+After creating profiles, assign them under `Bricks -> Settings -> Builder access -> Builder interface profile`.
+
+Each WordPress role can use:
+
+- **Default**
+- Any saved builder interface profile
+
+You can override the role assignment for a specific person by editing that user's WordPress profile and selecting a **Builder interface profile**.
+
+![](https://academy.bricksbuilder.io/assets/builder-interface-profiles-user-roles.webp)
+
+If a user has multiple roles with different profile assignments, Bricks uses the first matching role assignment from the user's role list.
+
+Deleting a profile removes any role and user assignments that pointed to that profile.
+
+![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-profiles.webp)
+
+## Import and export
+
+Open the import/export icon in the Builder interface popup to move layouts between sites or browsers.
+
+![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-import-export.webp)
+
+You can export or import:
+
+- Current builder interface settings
+- The selected profile
+- All profiles
+
+Importing builder interface settings overrides the current builder interface settings. Importing profiles does not import role or user assignments.
+
+When imported profiles conflict with existing profile IDs, Bricks lets you overwrite, import as a copy, or skip each profile. Conflicting profiles are skipped by default until you choose another option.
+
+## Reset another user's preferences
+
+Admins can reset another user's saved builder interface preferences from that user's WordPress profile.
+
+In the user's WordPress profile, find **Builder interface** and click **Reset builder interface**. This removes that user's custom builder interface preferences and restores the default or assigned profile layout on the next builder load.
+
+## Troubleshooting
+
+- **The Builder interface entry is missing:** Check that the user has **Customize builder interface** or **Manage builder interface profiles**, and that **Disable builder interface customiser** is not enabled.
+- **A user's saved layout does not appear after reload:** Check whether a builder interface profile is assigned to the user's role or user account. Assigned profiles override personal preferences.
+- **A toolbar item will not hide:** Required toolbar items cannot be hidden.
+- **A profile is missing after deletion:** Deleting a profile also removes role and user assignments for that profile.
+- **Profile assignments did not move during import:** Importing profiles does not import role or user assignments. Assign the profiles again under **Builder access**.
 
 ---
 
@@ -14556,6 +13223,1339 @@ Happy wireframing!
 
 ---
 
+<a id="builder-interface-command-palette"></a>
+
+# Command Palette
+
+Source: https://academy.bricksbuilder.io/builder/interface/command-palette/
+
+*Use the Bricks Command Palette to run common actions, navigate faster, and insert element structures with keyboard-driven workflows.*
+
+Bricks 2.0 introduces the **Command Palette**, a powerful new feature that gives you instant keyboard-driven access to core functionality inside the builder.
+
+https://youtu.be/gOVNlRvsYc8
+
+## How to launch it
+
+Click the command `⌘` icon in the builder toolbar or use the `CMD/CTRL + K` keyboard shortcut to open the Command Palette, which appears as an overlay, allowing you to type and filter commands across four scopes.
+
+## Scope: Builder {#builder}
+
+Navigate to key parts of the builder from a growing list of targets such as classes, variables, templates, theme styles, settings, etc.
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-builder.png)
+
+## Scope: Post Types {#post-types}
+
+This scope lets you browse the registered post types your builder capability can access, create new posts when your user can edit posts, or duplicate existing posts.
+
+Besides "All" and "Template (Bricks)", a post type gets its own tab only when Bricks is enabled for it under **Bricks > Settings > General > Post types** and your role can access it in the builder. "All" searches every public post type.
+
+To create a post, select the post type tab, type the title, and click "Create". Bricks adds the post as a draft. Click a result to open it in the builder. `CMD/CTRL` + click opens it in a new browser tab. Posts of a type that is not enabled for Bricks open in the WordPress editor in a new tab.
+
+The scope auto-selects the post type that you are currently editing. So if you are editing a Bricks template the "Template (Bricks)" post type will be selected. If you edit a "Page", then "Page" is selected and so on.
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-post-types.png)
+
+## Scope: Elements {#elements}
+
+The "Elements" scope will dramatically speed up your workflow by allowing you to insert multiple elements with specific structure in a single action.
+
+By mastering the Emmet-like syntax, you can create complex layouts in seconds rather than minutes, making your design process significantly more efficient.
+
+With practice, this feature becomes second nature and an essential part of your Bricks Builder toolkit, especially for quickly creating common page structures and element combinations that you use frequently, which you can also save for instant access to use whenever needed.
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-elements.png)
+
+### Insert single element
+
+To insert a single element simply type its name, such as "Section", then `ARROW`-navigate to it in the elements list, and insert it by pressing `ENTER` or just click on the element name.
+
+### Insert element structure
+
+Each element starts with an **@** symbol.
+
+The element name that the command bar requires is displayed in square brackets in the results list:
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-element-name.png)
+
+<figcaption>
+
+Text link element command: `@text-link`
+
+</figcaption>
+
+### Supported operators
+
+Use the following operators to define nested structure, siblings, a multiplier, or to move back up one nesting level.
+
+| Symbol | Meaning |
+| --- | --- |
+| `@` | Bricks element name (e.g. `@heading`) |
+| `>` | Nest inside |
+| `+` | Insert element as sibling |
+| `*` | How often to insert the element |
+| `^` | Move one level up before inserting the next element |
+
+### Element structure example
+
+`@section * 2 > @heading + @text + @button`
+This creates the following structure *(two times because of the multiplier: `* 2`)*:
+
+- `Section`
+ └ `Container`
+   ├ `Heading`
+   ├ `Text`
+   └ `Button`
+
+Bricks adds the Container inside every Section automatically, so you don't type `@container` after `@section`.
+
+### Quick element insertion
+
+> **Note**
+>
+> After selecting an element from the search results, its name is added to your query with the `@` prefix, allowing you to quickly build complex queries:
+
+1. Type `@` to activate insertion mode
+2. Select an element (e.g., "section")
+3. Type `>` for a child element
+4. Continue building your structure
+5. Insert your element structure
+  - Click the "Insert" button that appears next to your query
+  - Press `CMD/CTRL + ENTER`
+
+If no element is selected, Bricks adds the structure at the end of the page or template.
+
+### Save element structures
+
+Instead of typing out your favorite structures by hand every time, you can save them by clicking the "Save" button next to the command bar. Your structures are stored in this browser's `localStorage`, so they are local to that browser/profile and are not synced between users or devices.
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-saved-element-structures.png)
+
+<figcaption>
+
+List of saved element structures
+
+</figcaption>
+
+To insert a saved structure, open the "Select element structure" dropdown in the Elements scope and pick it. To delete a structure, mouseover the structure item in the list, and click the "Delete" icon.
+
+## Scope: Components {#components}
+
+This scope lists the components on your site. Select a component to insert an instance of it, the same way you insert a single element. The scope is available when your role can insert components.
+
+## Keyboard shortcuts
+
+| **Keyboard shortcut** | **Action** |
+| --- | --- |
+| `CMD/CTRL + K` | Open/close the command palette |
+| `ESC` | Close the command palette |
+| `TAB > ENTER` (to enter selected scope) | Navigate between search and scopes |
+| `#` (as the first character in the search input) | Enter scope “Builder” |
+| `/` (as the first character in the search input) | Enter scope “Post Types” |
+| `+` or `@` (as the first character in the search input) | Enter scope “Elements” |
+| `*` (as the first character in the search input) | Enter scope “Components” |
+| `CMD/CTRL + ENTER` | Insert the element structure typed in scope “Elements” |
+| `/0-9` (forward slash followed by number) | Navigate to a specific post type |
+| `ARROW UP/DOWN` + ENTER | Navigate to a search result and open it |
+
+## Notes
+
+Bricks remembers your last selected scope, even after builder reload (stored in your localStorage).
+
+The "Pages" panel remains available from the builder toolbar. The Command Palette is an additional fast way to browse, create, duplicate, and open posts.
+
+The docs entry is also accessible from the "Builder" scope.
+
+---
+
+<a id="builder-interface-builder-mode"></a>
+
+# Builder Mode (Custom)
+
+Source: https://academy.bricksbuilder.io/builder/interface/builder-mode/
+
+*Customize the Bricks builder color scheme with custom builder-mode CSS variables.*
+
+Starting with Bricks 1.3.7 you can customize the builder mode (color scheme) to your liking by tweaking a few CSS variables.
+
+You first have to set the "Builder Mode" under Bricks → Settings → Builder to "Custom" and save your settings.
+
+The following new setting called "Builder Mode (Custom)" should now appear:
+
+![Builder Mode: Custom](https://academy.bricksbuilder.io/assets/bricks-setting-builder-mode-custom-1024x721.png)
+
+Below you can find a starter CSS snippet with commonly customized builder CSS variables. Bricks 2.x defines additional variables for classes, components, status colors, muted colors, and the canvas scrollbar, so use this as a starting point and override any extra variables your custom mode needs.
+
+```php
+[data-builder-mode=custom] {
+  --builder-bg: #f6f4f2;
+  --builder-bg-2: #efebe6;
+  --builder-bg-3: #e7e1da;
+  --builder-bg-4: #dbd2c8;
+  --builder-bg-accent: #EED8FD;
+
+  --builder-color: #2e271e;
+  --builder-color-description: #76634c;
+  --builder-color-accent: #7209B7;
+  --builder-color-accent-inverse: #fff;
+
+  --builder-color-knob: #c8baaa;
+  --builder-border-color: #d8cec2;
+  --builder-placeholder-opacity: .33;
+
+  --builder-color-class: #2b6cb0;
+  --builder-bg-class: #d8e8f6;
+  --builder-color-component: #6b46c1;
+  --builder-bg-component: #eadcf8;
+  --builder-color-info: #006c9c;
+  --builder-bg-info: #d9f1ff;
+  --builder-color-danger: #b42318;
+  --builder-bg-danger: #ffe4e2;
+  --builder-color-success: #027a48;
+  --builder-bg-success: #dcfae6;
+  --builder-color-muted: #7a6f63;
+  --builder-bg-muted: #e2ddd6;
+
+  --builder-canvas-scrollbar-thumb: #c8baaa;
+  --builder-canvas-scrollbar-thumb_hover: #76634c;
+  --builder-canvas-scrollbar-track: #efebe6;
+
+  --bricks-tooltip-bg:   #16130f;
+  --bricks-tooltip-text: #f6f4f2;
+}
+```
+
+If you copy the CSS above, paste it into your "Builder Mode (Custom)" setting, and save your settings, your builder should look like this:
+
+![](https://academy.bricksbuilder.io/assets/bricks-screenshot-builder-mode-custom-1024x576.png)
+
+<figcaption>
+
+Bricks builder with a custom color scheme (mode)
+
+</figcaption>
+
+### Resources
+
+- Color palettes: [https://coolors.co/palettes/trending](https://coolors.co/palettes/trending)
+- Color palettes: [https://colorhunt.co](https://colorhunt.co)
+- Generate color shades & tints: [https://www.colorhexa.com](https://www.colorhexa.com)
+
+Note: In custom builder mode, Code element's background color changes to a light color scheme.
+
+---
+
+<a id="builder-interface-context-menu"></a>
+
+# Context Menu
+
+Source: https://academy.bricksbuilder.io/builder/interface/context-menu/
+
+*Use the Bricks context menu for quick element actions such as edit, clone, delete, structure moves, and style copy and paste.*
+
+The Bricks context menu gives you quick access to actions for the selected element. It is especially useful for copying, pasting, duplicating, deleting, hiding, wrapping, converting, and saving reusable layout pieces.
+
+To open it, right-click an element on the canvas or in the Structure panel.
+
+https://youtu.be/7HpRF6jRSlc
+
+## How the context menu selects an element
+
+Right-clicking an element makes that element active and opens the Element panel.
+
+The Bricks context menu is hidden in Preview mode. It also does not open from the Elements library panel, because that panel is for inserting new elements, not editing existing ones.
+
+## Action availability
+
+The context menu is dynamic. It changes based on:
+
+- The current user's builder permissions.
+- Whether one element or multiple elements are selected.
+- Whether the selected element is nestable.
+- Whether the selected element is cloneable or deletable.
+- Whether the selected element is a Component instance or Component root.
+- Whether the selected element is a legacy Global Element.
+- Whether the clipboard currently contains Bricks data that can be pasted.
+
+If an action is missing, it is usually because the current selection, permissions, or clipboard state does not support it.
+
+## Main actions
+
+| Action | What it does | Important limits |
+| --- | --- | --- |
+| Copy | Copies the selected element or selected elements. | Requires copy/paste element permission. |
+| Paste | Pastes copied Bricks elements when the clipboard contains element data. | Requires copy/paste element permission. |
+| Duplicate | Clones the active element. | Hidden for active Component roots and unavailable for elements marked as not cloneable. |
+| Delete | Deletes the active element. In bulk mode, deletes the selected elements. | Hidden for active Component roots and unavailable for elements marked as not deletable. |
+| Hide element | Toggles hide settings for builder, frontend, or both. | Requires access to element hide. |
+| Insert | Inserts a Container, Block, or Div inside the selected layout element. Hold Cmd/Ctrl to switch to **Insert after**. | Available for nestable elements. |
+| Wrap | Wraps the selected element or selected sibling elements in the configured wrapper type (Block by default). Use the adjacent icons to choose another type. Section is offered only for top-level elements. | In bulk mode, selected elements must share the same parent. |
+| Unwrap | Removes a selected nestable wrapper and moves its children up to the wrapper's parent. | Requires a nestable element with children. |
+| Convert | Converts Section, Container, Block, and Div layout elements to another layout type where allowed. | Only applies to layout elements. |
+| Save as Component | Opens the Components workflow for the selected element. | Hidden in bulk mode, while editing Components, or for Component/legacy Global Element selections. Shown but disabled for Template and Filter elements. |
+| Save as Template | Saves a nestable element as a Template. | Not available in bulk mode or while editing Components. |
+| Edit Component | Opens a Component instance for editing. | Requires Component permissions. |
+| Unlink Component | Converts a Component instance into regular local elements after confirmation. | Requires Component permissions. |
+| Unlink Global Element | Unlinks a legacy Global Element when one exists. | Requires legacy Global Element access. |
+
+## Copy sub-actions
+
+The Copy row can show extra icons for more specific data:
+
+| Copy icon/action | Copied data |
+| --- | --- |
+| CSS ID | The element's rendered CSS ID, including `#`. |
+| Bricks ID | The internal Bricks element ID. |
+| Query ID | The query ID for a selected query loop element. In Component loop contexts, this can include the instance ID. |
+| Styles | Element ID styles, or active global class styles if a class is active. |
+| Conditions | Element conditions. |
+| Interactions | Element interactions. |
+| Classes | Assigned global classes. |
+| Attributes | Custom attributes. |
+
+These actions are permission-gated. For example, copying attributes requires copy/paste element attributes permission, while copying conditions requires copy/paste element conditions permission.
+
+## Paste sub-actions
+
+The Paste row changes based on the clipboard data. Bricks shows only paste actions that match the current clipboard source.
+
+| Paste action | Behavior |
+| --- | --- |
+| Styles | Pastes copied element styles or global class styles to the selected target. |
+| Conditions | Appends copied conditions to the existing element conditions and generates new condition IDs. |
+| Interactions | Appends copied interactions to the existing element interactions and generates new interaction IDs. |
+| Attributes | Replaces the target element's copied custom attributes and generates new attribute IDs. |
+| Classes | Merges copied global classes into the target element's existing classes without duplicates. |
+
+Pasting styles can target one selected element or multiple selected elements. When multiple elements are selected, Bricks applies the paste operation to the selected elements.
+
+## Bulk editing behavior
+
+The context menu supports bulk editing, but not every action is available for multiple selected elements.
+
+Bulk editing works best for:
+
+- Copying selected elements.
+- Deleting selected elements.
+- Hiding selected elements.
+- Wrapping selected sibling elements with the same parent.
+- Pasting shared styles.
+- Applying copied classes, conditions, interactions, or attributes where supported.
+
+Bulk editing has important limits:
+
+- Save as Component and Save as Template are not shown in bulk mode.
+- Some copy sub-actions are disabled in bulk mode.
+- Wrap requires all selected elements to share the same parent.
+- Unwrap only works when the selected nestable elements contain children and the selected set does not include those children.
+
+## Insert, wrap, unwrap, and convert
+
+The context menu can create or reshape layout structure without dragging from the Elements panel.
+
+### Insert
+
+Insert adds a Container, Block, or Div inside the selected layout element, as its last child. The default insert type can be controlled by builder settings. Hold Cmd (macOS) or Ctrl (Windows) while the menu is open and the action changes to **Insert after**, which adds the new element after the selection instead.
+
+### Wrap
+
+Wrap places the selected element, or selected sibling elements, inside a new wrapper. Clicking **Wrap** uses the wrapper type selected in builder settings (Block by default). Use the icons next to it to choose another wrapper type. Section is only offered when the selected elements sit at the top level of the page.
+
+Use wrap when you already built content but need an additional layout layer.
+
+### Unwrap
+
+Unwrap removes a selected nestable wrapper and moves its children to the wrapper's parent. It preserves child order as much as the current hierarchy allows.
+
+Use unwrap carefully. It changes structure, not only styling.
+
+### Convert
+
+Convert changes one layout wrapper type into another, such as Container to Block or Div to Container. It is available for Section, Container, Block, and Div when the selected structure can be converted.
+
+Section conversion is restricted to root-level contexts because sections are top-level layout wrappers.
+
+## Components, templates, and legacy Global Elements
+
+Use **Save as Component** when the selected element should become reusable and editable through the Components system.
+
+Use **Save as Template** when the selected nestable element should become a reusable template that can be inserted later.
+
+Legacy [Global Elements](https://academy.bricksbuilder.io/builder/features/global-elements/) can still be unlinked from the context menu when they exist. For new reusable content, use [Components](https://academy.bricksbuilder.io/builder/features/components/) or Templates.
+
+## Permission notes
+
+Context menu actions follow the same Builder Access permission model as the rest of the builder. A user might be able to open the context menu but not see specific actions.
+
+Common permission-gated actions include:
+
+- Copy/paste elements
+- Copy/paste styles
+- Copy/paste conditions
+- Copy/paste interactions
+- Copy/paste attributes
+- Hide element
+- Duplicate elements
+- Delete elements
+- Create Components
+- Edit Components
+- Create Templates
+- Manage legacy Global Elements
+
+Review [Builder Access](https://academy.bricksbuilder.io/builder/interface/builder-access/) when a user reports that a context-menu action is missing.
+
+## Troubleshooting
+
+- **The Bricks context menu does not open:** Make sure you are not in Preview mode and that you are right-clicking an existing canvas or Structure element.
+- **Paste action is missing:** Copy the matching Bricks data first. The paste menu only shows actions that match the clipboard data.
+- **Copy/paste behaves differently in Safari:** Safari can be stricter about clipboard access, so perform copy and paste from direct user gestures.
+- **Save as Component is missing or disabled:** Check permissions and make sure you are not bulk editing, editing an active Component, selecting a Component or legacy Global Element, or selecting a Template or Filter element.
+- **Wrap is missing or disabled:** Confirm the selected elements share the same parent and can be wrapped in the current hierarchy.
+
+---
+
+<a id="builder-interface-editing-elements"></a>
+
+# Adding & Editing Elements
+
+Source: https://academy.bricksbuilder.io/builder/interface/editing-elements/
+
+*Add elements to the canvas, edit their settings, and understand the main element editing workflow in Bricks.*
+
+Elements are the building blocks of a Bricks layout. This article explains how elements are added, selected, nested, styled, reset, copied, and edited in single-element and bulk-edit workflows.
+
+## Element mental model
+
+A Bricks layout is an element tree. Every element has:
+
+- A type, such as Section, Heading, Image, Button, or Form.
+- A unique Bricks ID.
+- Optional children if the element can contain other elements.
+- A parent, unless it is a root element.
+- Settings, which store content, styles, classes, conditions, interactions, custom attributes, and other element-level data.
+
+Root elements sit at the top of the page content. Nested elements sit inside another element. The canvas shows the visual result; the Structure panel shows the actual hierarchy.
+
+## Add an element
+
+Open the Elements panel, then drag an element onto the canvas or into the Structure panel.
+
+Where the element lands depends on the current drop target:
+
+- Drop onto a nestable element to place the new element inside it.
+- Drop between siblings to place the new element at that position.
+- Drop at root level to create a top-level element.
+
+You can also add layout elements from the [Context Menu](https://academy.bricksbuilder.io/builder/interface/context-menu/) when an existing nestable element is selected.
+
+## Layout elements
+
+The current layout elements are **Section**, **Container**, **Block**, and **Div**.
+
+Use them as structural wrappers:
+
+- **Section**: Common top-level page section.
+- **Container**: Common content-width wrapper.
+- **Block**: Generic block-level wrapper.
+- **Div**: Generic wrapper with fewer layout assumptions.
+
+Not every element can contain children. Elements that can contain children are nestable. Non-nestable elements, such as many content elements, can be moved, styled, copied, or deleted, but they cannot be used as parents.
+
+## Select and edit an element
+
+Click an element on the canvas or in the Structure panel to select it. The panel switches to the selected element and shows its controls.
+
+> **Note**
+>
+> You can edit text directly on the canvas by clicking on it and typing. Select text portions with your mouse to reveal the text formatting toolbar with styling options such as bold, italic, and links.
+
+The panel header shows the selected element label. You can rename the label to make the Structure panel easier to scan. The label is for builder organization and does not change the HTML tag or frontend text by itself.
+
+The panel can also show quick actions for hide settings, conditions, interactions, Components, and legacy Global Elements depending on the selected element and your permissions.
+
+## Content controls
+
+Content controls affect the element's markup, data, and behavior. Examples include an Image element's image source, a Button element's link, a Heading element's text, or a Form element's fields and actions.
+
+The screenshot below shows Content controls for the Image element:
+
+![Panel: Content (Tab)](https://academy.bricksbuilder.io/assets/bricks-academy-panel-content-tab-1024x576.png)
+
+<figcaption>
+
+Element Image: Content Tab
+
+</figcaption>
+
+Content controls are not only for visible text. They can also control semantic tags, attributes, query settings, form behavior, media sources, links, and dynamic data.
+
+## Style controls
+
+Style controls affect the CSS Bricks generates for the selected element, active class, active selector, active pseudo state, and active breakpoint.
+
+Style controls are commonly grouped into:
+
+- Layout
+- Typography
+- Background
+- Border / Box Shadow
+- Gradient / Overlay
+- Shape Dividers
+- Transform
+- CSS
+
+![Panel: Style (Tab)](https://academy.bricksbuilder.io/assets/bricks-academy-panel-style-tab-1024x576.png)
+
+<figcaption>
+
+Element Image: Style Tab
+
+</figcaption>
+
+Before changing styles, check which selector is active at the top of the panel:
+
+- If the element ID is active, styles apply only to that element.
+- If a global class is active, styles apply to that class everywhere it is used.
+- If a pseudo selector is active, styles apply to that selector state.
+- If a breakpoint is active, responsive style values are stored for that breakpoint.
+
+This is the most important styling habit in Bricks: select the target first, then change the control.
+
+## Classes, selectors, and responsive edits
+
+The selector area above the Content/Style tabs controls whether you are styling the element ID, a global class, or a selector/pseudo state.
+
+Use global classes for reusable styling. Use the element ID for one-off styling. Use selectors and pseudo classes when styling states or child selectors.
+
+Responsive edits are controlled by the active breakpoint in the toolbar. A control indicator can show when a control has a value at the active breakpoint or another breakpoint, depending on your builder settings.
+
+## Bulk editing
+
+You can select multiple elements with Cmd/Ctrl or Shift selection. Bulk editing is useful for shared style changes, class assignment, moving, hiding, deleting, and some context-menu actions.
+
+Bulk editing has limits:
+
+- Bricks calculates the settings shared by the selected elements.
+- If selected elements have different values, the shared control can appear empty.
+- Editing a shared setting applies that change to the selected elements.
+- If different element types are selected, Bricks shows only the Style tab.
+- Some actions are disabled in bulk mode, such as saving as a Component or Template.
+- Bulk wrapping only works when selected elements share the same parent.
+
+Use bulk editing for broad, predictable operations. For content-heavy edits, edit one element type at a time.
+
+## Hide, conditions, and interactions
+
+Element-level hide settings, conditions, and interactions are opened from the element panel header when available.
+
+- **Hide element** can hide an element in the builder, on the frontend, or both.
+- **Conditions** control whether the element should render for the current request.
+- **Interactions** attach frontend behavior to triggers and actions.
+
+These panels are permission-gated. If you cannot see them, check [Builder Access](https://academy.bricksbuilder.io/builder/interface/builder-access/).
+
+## Components and locked editing states
+
+When you select a Component instance, Bricks shows instance controls and exposed properties instead of treating every nested element as local page content. To edit the Component definition, enter Component editing mode.
+
+Some elements may also be disabled through the Element Manager or unavailable because their element type no longer exists. In those cases, Bricks shows a notice instead of normal controls.
+
+Legacy Global Elements can still appear on existing sites. Bricks marks them as deprecated and recommends Components for new reusable content.
+
+## How To Reset Controls
+
+Controls that have a stored value show a small indicator next to the control label or group label. Hover the indicator to reveal the reset action.
+
+You can reset:
+
+- A single control.
+- A control group, such as Typography.
+- Element ID styles.
+- Active class styles, if you are styling a class and it is not locked.
+
+Resetting style controls removes the stored style values for the current target. It does not remove content such as text, links, form fields, or image selections.
+
+When styling a global class, resetting styles affects that class, not only the selected element.
+
+## Copy & Paste Styles
+
+To copy and paste element styles, right-click an element on the canvas or in the Structure panel to reveal the context menu. Use **Copy Styles**, then select the target element and use **Paste Styles**.
+
+Style paste respects the copied style data and the current target:
+
+- Pasting element styles applies copied style settings to the target element.
+- Pasting global class styles applies copied class style settings when a class is the active target.
+- Shape dividers, custom CSS, and other complex style controls are handled as style data when supported.
+
+For more copy and paste actions, including classes, conditions, interactions, and attributes, use the [Context Menu](https://academy.bricksbuilder.io/builder/interface/context-menu/).
+
+## Practical editing checklist
+
+Before making a change, confirm:
+
+- The correct element is selected.
+- The correct selector is active: element ID, class, or pseudo selector.
+- The correct breakpoint is active.
+- You are editing Content for markup/data changes or Style for CSS changes.
+- You are not accidentally editing a Component definition when you meant to edit an instance.
+- You have saved before testing frontend behavior.
+
+---
+
+<a id="builder-interface-editing-with-bricks"></a>
+
+# Start Editing With Bricks
+
+Source: https://academy.bricksbuilder.io/builder/interface/editing-with-bricks/
+
+*Start editing with Bricks by understanding the builder layout, canvas behavior, and the basic flow for working on a page.*
+
+This article explains how to open the Bricks builder, what each main area of the interface does, and how editing with Bricks relates to rendering the page on the frontend.
+
+## Before you open the builder
+
+Bricks shows builder entry points when the current post can be edited with Bricks:
+
+- The current user has permission to use the builder.
+- The post type is enabled for Bricks.
+- The post can be edited by the current user.
+
+Bricks checks the license when the builder opens. If the license is not valid, Bricks redirects to the [license screen](https://academy.bricksbuilder.io/builder/license/license-and-updates/) instead of loading the builder.
+
+Go to **Bricks -> Settings** and select the post types you want to edit with Bricks:
+
+![](https://academy.bricksbuilder.io/assets/bricks-settings-post-types.png)
+
+> **Note**
+>
+> While you can enable Bricks for blog posts, most sites work better when posts are written in the WordPress editor and displayed through a Bricks template. Use Bricks for the layout, and use WordPress for the editorial content.
+
+## Open the builder
+
+You can open the builder from several places in WordPress.
+
+### Posts list
+
+Hover over a supported post, page, or custom post type in the WordPress dashboard and click **Edit with Bricks**:
+
+![](https://academy.bricksbuilder.io/assets/docs-edit-with-bricks-button.png)
+
+### Post edit screen
+
+When editing an existing post or creating a new one, click **Edit with Bricks** in the Bricks editor area:
+
+![](https://academy.bricksbuilder.io/assets/bricks-post-edit-screen-1024x576.png)
+
+### Frontend admin bar
+
+When you are logged in and viewing the page on the frontend, use the WordPress admin bar. The Bricks menu can open the current page, the active header template, the active content template, the active footer template, or the Templates screen when those links apply to the current page.
+
+If the **Edit with Bricks** link is missing, check the current user's builder permissions and make sure the post type is enabled under **Bricks -> Settings**.
+
+## Edit with Bricks vs render with Bricks
+
+Editing with Bricks opens the visual builder. Rendering with Bricks controls which content source the frontend uses.
+
+A post can have WordPress editor content, Bricks data, or both. The **Render with Bricks** / **Render with WordPress** option in the admin bar switches the editor mode for the current post. If a post is set to render with WordPress, its Bricks data remains stored, but the frontend uses the WordPress content instead.
+
+Bricks templates are different. Templates are Bricks documents by definition, so the editor mode toggle does not apply to them.
+
+Use the render mode deliberately:
+
+- Choose **Render with Bricks** when the page itself is built in Bricks.
+- Choose **Render with WordPress** when the page should use normal WordPress content, usually with a Bricks template controlling the surrounding layout.
+- Do not use the render toggle as a content backup system. It only chooses the frontend render source.
+
+If a page is rendered with Bricks, the post list shows a **- Bricks** status after the title:
+
+![](https://academy.bricksbuilder.io/assets/bricks-post-screen-post-status.png)
+
+<figcaption>
+
+Post status "Bricks" shows you that a page is rendered with Bricks
+
+</figcaption>
+
+## Delete Bricks data
+
+The admin bar and post edit screen can show a **Delete Bricks data** button when this option is enabled in **Bricks -> Settings**.
+
+This removes Bricks-generated data from the current post, including page content, page settings, header/footer data, editor mode, and template type metadata. Treat it as destructive. Use it only when you want the post to stop using its stored Bricks layout data.
+
+## Builder anatomy
+
+The builder is made of four main working areas.
+
+### Toolbar
+
+The toolbar runs across the top of the builder. It gives you access to global builder actions and mode switches, including:
+
+- Style Manager
+- Pages panel
+- Templates
+- Settings
+- Command Palette
+- Elements and Components
+- Breakpoints
+- Preview width, height, and scale
+- Reload canvas
+- Undo and redo
+- Preview and save actions
+
+Which buttons you see depends on your permissions and global builder settings. For example, template actions require template permissions, and the breakpoints manager requires breakpoint access.
+
+### Panel
+
+The left panel changes depending on what you are doing. It can show the element library, the selected element controls, page/template settings, revisions, pages, or other manager views.
+
+The panel can be resized and minimized. When an element is selected, the panel shows the element label, element actions, class/selector controls, and the relevant Content and Style controls.
+
+### Canvas
+
+The canvas is the live visual preview of the current page. It renders the Bricks layout in an iframe, so selecting and editing elements feels close to editing the frontend output.
+
+The canvas can be reloaded from the toolbar. Reloading is useful after changing settings that need a fresh render, or when external scripts, query data, or dynamic content affect the preview.
+
+### Structure panel
+
+The Structure panel shows the element tree. It is the safest place to understand nesting, select hard-to-click elements, move elements, and work with deeply nested layouts.
+
+Use the Structure panel whenever the canvas view is visually crowded, an element is hidden, or you need to confirm parent-child relationships.
+
+## First successful edit workflow
+
+Use this workflow when creating or editing a normal page:
+
+1. Enable the page post type under **Bricks -> Settings**.
+2. Create or open the page in WordPress.
+3. Click **Edit with Bricks**.
+4. Open the Elements panel and add a layout element, such as a Section or Container.
+5. Add content elements inside the layout.
+6. Select an element on the canvas or in the Structure panel.
+7. Edit its Content controls for markup and data.
+8. Edit its Style controls for design.
+9. Switch breakpoints and adjust responsive styles where needed.
+10. Save the builder.
+11. Preview the page and confirm it is rendered with Bricks.
+
+## Common builder states
+
+### Preview mode
+
+Preview mode hides the normal editing controls so you can inspect the layout. While previewing, builder editing actions such as the custom context menu are disabled.
+
+### Unsaved changes
+
+The builder tracks history and unsaved changes. Use save before leaving the builder, switching important context, or testing frontend-only behavior.
+
+### Unsupported post type
+
+If a post type is not enabled for Bricks, Bricks redirects you back to WordPress admin instead of opening the builder. Enable the post type under **Bricks -> Settings** or use a Bricks template for that content type.
+
+### Missing permissions
+
+Users can have full access, content-editing access, or custom permission sets. Missing permissions can hide toolbar buttons, element categories, manager popups, settings panels, and editing controls. Review [Builder Access](https://academy.bricksbuilder.io/builder/interface/builder-access/) if a user can open the builder but cannot see or edit a specific area.
+
+### Login or license redirects
+
+If the builder detects that the current browser session is no longer logged in, it redirects to the login page. If the license is not valid, Bricks redirects to the [license screen](https://academy.bricksbuilder.io/builder/license/license-and-updates/).
+
+## Troubleshooting checklist
+
+- **No Edit with Bricks button:** Check post type support, user permissions, and whether the current user can edit the post.
+- **The page opens in WordPress instead of Bricks:** Confirm the page has Bricks data or switch the admin bar render mode to **Render with Bricks**.
+- **Builder opens but controls are missing:** Check builder permissions and whether the selected element is disabled.
+- **Canvas looks stale:** Reload the canvas from the toolbar.
+- **Page looks different on the frontend:** Save the builder, confirm render mode, and test outside preview mode.
+
+---
+
+<a id="builder-interface-keyboard-shortcuts"></a>
+
+# Keyboard Shortcuts
+
+Source: https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/
+
+*Speed up Bricks workflows with keyboard shortcuts for editing, navigating, saving, and other builder actions.*
+
+Quickly perform the most common in-builder actions through short & simple keyboard shortcuts:
+
+| **Key Combination** | **Description** |
+| --- | --- |
+| `CMD / CTRL` | Insert element outside active nestable/parent element |
+| `CMD / CTRL + S` | Save changes |
+| `CMD / CTRL + Shift + S` | Force save all data |
+| `CMD / CTRL + K` | Open command palette |
+| `CMD / CTRL + .` | Toggle Style Manager |
+| `CMD / CTRL + Shift + .` | Toggle Builder Browser |
+| `CMD / CTRL + P` | Toggle preview mode |
+| `CMD / CTRL + B` | Switch between responsive editing modes |
+| `CMD / CTRL + C` | Copy selected element(s), when not editing text or an input and permission allows |
+| `CMD / CTRL + V` | Paste copied element(s), when not editing text or an input and permission allows |
+| `CMD / CTRL + Z` | Undo your last change |
+| `CMD / CTRL + ALT + NUMBER` | Quick Access Bar: Go to tab/control group |
+| `1-8` | Switch Style Manager tabs while the Style Manager is open |
+| `CMD / CTRL + Shift + Arrow down` | Edit next element (same level) |
+| `CMD / CTRL + Shift + Arrow up` | Edit previous element (same level) |
+| `CMD / CTRL + Shift + Arrow right` | Edit first child element |
+| `CMD / CTRL + Shift + Arrow left` | Edit parent element (container) |
+| `CMD / CTRL + Shift + Z` | Redo your last change |
+| `CMD / CTRL + Shift + D` | Duplicate selected element |
+| `CMD / CTRL + Shift + F` | Focus on element setting search input (in panel) |
+| `CMD / CTRL + Shift + L` | Open Builder Browser on the Templates view |
+| `CMD / CTRL + Shift + P` | Wrap in the configured wrapper element |
+| `CMD / CTRL + Shift + H` | Show history panel |
+| `CMD / CTRL + Shift + V` | View on frontend |
+| `CMD / CTRL + Shift + C` | Show components panel |
+| `CMD / CTRL + Shift + X` | Show structure panel |
+| `CMD / CTRL + Shift + E` | Show elements panel (and focus on search) |
+| `CMD / CTRL + Delete` | Delete active element (and its children) |
+| `CMD / CTRL + ENTER` | Toggle element classes UI |
+| `Shift (modifier)` | Hold down "Shift" to:<br />- Adjust element spacing (margin, padding) or container sizing (height, width) on the canvas in steps of 5 (custom units) or 10 (default unit = px)<br />- Directly edit new element |
+| `ESC` | Cancel/close popup (templates, documentation, etc.) |
+| `ALT/OPTION + T` | Focus on toolbar (logo). TAB through toolbar possible |
+
+---
+
+<a id="builder-interface-page-settings"></a>
+
+# Page Settings
+
+Source: https://academy.bricksbuilder.io/builder/interface/page-settings/
+
+*Use Bricks page settings to control per-page markup, styling, SEO metadata, social sharing output, and custom code.*
+
+Page Settings control output for the page, post, or content template you are currently editing. They are different from global Bricks settings and different from an individual element's controls.
+
+Use Page Settings when a setting should apply to the whole current page, such as body classes, header/footer visibility, page-level scroll snap, SEO metadata, social sharing data, or page-specific code.
+
+## Open Page Settings
+
+Open the builder and click the **Settings** icon in the toolbar. Choose **Page Settings**.
+
+Page Settings are available only when the current user has permission to access them. Some groups can also be hidden by global settings.
+
+Use the **Reset** icon in the panel header to clear all page settings with a single click.
+
+## How Page Settings are applied
+
+Page Settings are stored with the current Bricks document. On the frontend, Bricks reads those settings while rendering the page.
+
+Some settings change markup, such as body classes or disabling the header. Some generate CSS, such as scroll snap and Custom CSS. Some print metadata or scripts into the document head or body. Some settings are visible in the builder immediately, while others should be checked on the frontend.
+
+![](https://academy.bricksbuilder.io/assets/bricks-page-settings.png)
+
+## General settings
+
+The General group contains page-wide output options.
+
+| Setting | What it does |
+| --- | --- |
+| CSS classes (body) | Adds space-separated classes to the page `<body>` tag. Dynamic data can be used when appropriate. |
+| Disable header | Prevents the active Bricks header from rendering on this page. Not shown for header or footer templates. |
+| Disable footer | Prevents the active Bricks footer from rendering on this page. Not shown for header or footer templates. |
+| Disable lazy load | Disables Bricks lazy loading for the current page. |
+| Disable popups | Prevents Bricks popups from rendering on the current page. |
+| Page layout | Overrides the page layout inherited from Theme Styles. |
+| Page background | Overrides the page background inherited from Theme Styles. |
+| Content margin | Overrides the content margin inherited from Theme Styles when available. |
+
+Use these settings for page-specific exceptions. If you need the same behavior on many pages, use global settings, Theme Styles, or templates instead.
+
+## Scroll snap
+
+The Scroll snap group configures page-level CSS scroll snapping.
+
+| Setting | What it does |
+| --- | --- |
+| Type | Sets the page scroll-snap type on the `html` element. |
+| Snapping elements selector | Defines which elements should snap. Defaults to Bricks sections when left empty. |
+| Align | Sets the snap alignment of snapping elements. |
+| Margin | Sets scroll margin for snapping elements. |
+| Padding | Sets scroll padding on the `html` element. |
+| Stop | Sets scroll-snap-stop behavior. |
+
+Scroll snap is primarily a frontend behavior. Test it on the frontend, not only in the builder canvas. Layout height, overflow, sticky headers, and browser behavior can affect the result.
+
+If you use a custom selector, make sure the selector matches the elements that should become snap points. If the selector matches nothing, the page can have scroll snap enabled without visible snapping.
+
+## One Page Navigation {#one-page-nav}
+
+If enabled, Bricks adds a vertical dot menu to the right edge of the page in a fixed position, with each dot linking to the page's root element.
+
+![](https://academy.bricksbuilder.io/assets/bricks-one-page-navigation-1024x534.png)
+
+One Page Navigation is shown only where it applies, such as normal pages and content templates. It is not shown for header or footer templates.
+
+The navigation uses the IDs Bricks renders for root elements. Add custom CSS IDs when you need stable, readable anchors or when root elements are generated dynamically.
+
+> **Note**
+>
+> If a root element is inside a query loop, use dynamic data in the CSS ID, such as a post ID or slug, so every repeated root element has a unique anchor.
+
+![](https://academy.bricksbuilder.io/assets/one-page-navigation-loop-unique-css-id.png)
+
+The One Page Navigation controls style the dot menu and its active state:
+
+- Spacing
+- Item width and height
+- Item color
+- Border
+- Box shadow
+- Active item width and height
+- Active item color
+- Active border
+- Active box shadow
+
+The active dot changes based on the root element currently in the scroll range.
+
+## SEO
+
+The SEO group controls page-level metadata. This group is hidden when Bricks SEO output is disabled globally.
+
+| Setting | What it does |
+| --- | --- |
+| Permalink | Updates the post slug. Use lowercase words separated by dashes. |
+| Title | Updates the WordPress post title after applying the change. |
+| Document title | Sets the frontend SEO title without changing the WordPress post title. |
+| Meta description | Prints a page-level meta description. |
+| Meta keywords | Prints page-level meta keywords. |
+| Meta robots | Prints robots directives such as `noindex` or `nofollow`. |
+
+Use **Save new title/permalink** after changing the post title or permalink in the SEO group. Other page settings are saved through the normal builder save flow.
+
+If you use a dedicated SEO plugin, decide which tool owns the metadata. Avoid setting competing metadata in multiple places.
+
+## Social media
+
+The Social media group controls Open Graph style sharing data for the current URL. This group is hidden when Bricks Open Graph output is disabled globally.
+
+| Setting | Default when empty |
+| --- | --- |
+| Title | The post/page title. |
+| Description | The post/page excerpt. |
+| Image | The featured image. |
+
+Use this group when a page needs a social title, description, or image that differs from its normal SEO data.
+
+## Custom Code
+
+The Custom Code group adds page-specific CSS and scripts.
+
+| Setting | Output location |
+| --- | --- |
+| Custom CSS | Inline CSS in the document `<head>`. Supports breakpoint-specific values. |
+| Header scripts | Before the closing `</head>` tag. |
+| Body (header) scripts | Immediately after the opening `<body>` tag. |
+| Body (footer) scripts | Before the closing `</body>` tag. |
+
+Script fields are shown only to users who are allowed to add unfiltered HTML. Users without that capability see an informational notice instead.
+
+Use page-level code sparingly. Prefer element settings, classes, Theme Styles, global settings, or properly enqueued code when the behavior should be reused across the site.
+
+## Common mistakes
+
+- **Changing SEO title but not applying it:** Use **Save new title/permalink** for title and slug changes.
+- **Expecting header/footer disable to affect templates globally:** These settings affect only the current page render.
+- **Using duplicate IDs for One Page Navigation:** Give repeated root elements unique IDs, especially inside query loops.
+- **Testing scroll snap only in the builder:** Always test on the frontend.
+- **Adding scripts without the right capability:** Script fields require permission to add unfiltered HTML.
+- **Using page code for reusable behavior:** Page Custom Code is local to the current page. Use global settings or enqueue code for site-wide behavior.
+
+---
+
+<a id="builder-interface-responsive-editing"></a>
+
+# Responsive Editing
+
+Source: https://academy.bricksbuilder.io/builder/interface/responsive-editing/
+
+*Edit Bricks designs responsively across breakpoints and adjust layout, spacing, and element settings for smaller screens.*
+
+What looks great on a large desktop screen usually needs some refinement for smaller devices. This typically involves applying smaller font sizes, margins, paddings, column width/stacking, or hiding certain elements on smaller devices.
+
+Bricks provides the following four breakpoints out-of-the-box:
+
+| **Breakpoint** | **@media query** |
+| --- | --- |
+| Desktop | Base breakpoint |
+| Tablet portrait | &lt; 992px |
+| Mobile landscape | &lt; 768px |
+| Mobile portrait | &lt; 478px |
+
+Styles set on the base breakpoint are inherited by all other breakpoints.
+
+Once you've finished styling a page on the base breakpoint (desktop), make sure to view & adjust the styling on the other breakpoints too.
+
+## Background video on larger breakpoints only
+
+The Background control includes **Start play at** for background videos. Select the smallest breakpoint where the video should run. Below that width, Bricks stops before assigning the video source, so the desktop video is not downloaded by the native background-video script.
+
+To show an image on smaller screens:
+
+1. Set the background video on the element.
+2. Set **Start play at** to the smallest breakpoint that should play it.
+3. Set a background image for the smaller breakpoint.
+
+To view & edit the styles for a specific breakpoint simply click on its breakpoint icon located in the center of the builder toolbar. Or via the [keyboard shortcut](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/) "CMD/CTRL + B".
+
+![](https://academy.bricksbuilder.io/assets/bricks-1.5.1-in-builder-breakpoint-mobile-landscape-1024x576.jpg)
+
+<figcaption>
+
+Editing in the "Mobile landscape" breakpoint
+
+</figcaption>
+
+Next to the breakpoint icons are inputs for width ("W"), height ("H"), and scale (%).
+
+## Custom Breakpoints {#custom-breakpoints}
+
+To start using custom breakpoints, you first have to enable them in your WordPress dashboard under `Bricks > Settings > General > Custom breakpoints`:
+
+![](https://academy.bricksbuilder.io/assets/bricks-enable-custom-breakpoints.jpg)
+
+Once enabled, you can access the **breakpoint manager** in the builder by clicking the three-dotted icon in the builder toolbar (next to the first breakpoint icon):
+
+![](https://academy.bricksbuilder.io/assets/bricks-1.5.1-breakpoint-manager-default-breakpoints.jpg)
+
+<figcaption>
+
+Breakpoint Manager (open via the three-dotted icon in the builder toolbar)
+
+</figcaption>
+
+### Editing a breakpoint
+
+Clicking the pencil icon brings up the editing options of the selected breakpoint:
+
+![](https://academy.bricksbuilder.io/assets/bricks-edit-default-breakpoint.jpg)
+
+<figcaption>
+
+Editing the default "Tablet portrait" breakpoint
+
+</figcaption>
+
+You can edit the following breakpoint properties:
+
+| **Property** | **Description** |
+| --- | --- |
+| Label | Used when hovering over the breakpoint icon in the builder toolbar |
+| Width (px) | @media query min-width/max-width value (depending on the base breakpoint) |
+| Width (Builder) | Width is used when switching to the breakpoint in the builder |
+| Icon | Used as the breakpoint icon in the builder toolbar |
+| Base breakpoint | Set breakpoint as base breakpoint |
+| *Key* | *Not customizable (used to store & identify breakpoint settings)* |
+
+The most common action is to customize the widths of the default (mobile) breakpoints. The following screenshot shows you the "Tablet portrait" with a custom width of 1023px:
+
+![](https://academy.bricksbuilder.io/assets/bricks-edit-breakpoint-width.jpg)
+
+That means any styles set on the "Tablet portrait" breakpoint will apply to devices with a width of less than 1024px.
+
+### Creating new breakpoints
+
+You can create as many additional custom breakpoints as you want. Although, it is recommended to customize the widths of the default mobile breakpoints to your liking before utilizing more breakpoints.
+
+You should rarely need more than one or two additional breakpoints on top of the default ones.
+
+Clicking the "+" (plus) icon in the breakpoint manager's header launches the breakpoint creator form.
+
+The following screenshot shows how we created a  new breakpoint named "Large" with a width of 1400px:
+
+![](https://academy.bricksbuilder.io/assets/bricks-create-new-breakpoint.jpg)
+
+<figcaption>
+
+Creating a new breakpoint
+
+</figcaption>
+
+Once you click "Create" your newly created breakpoint should appear in the breakpoint manager (alongside a "CUSTOM" label) & in the builder toolbar like this:
+
+![](https://academy.bricksbuilder.io/assets/bricks-custom-breakpoint-large-created.jpg)
+
+<figcaption>
+
+Breakpoint manager with new custom breakpoint
+
+</figcaption>
+
+As we've set the width of this new breakpoint to 1400px, it shows as the first breakpoint, as it is now the largest of our breakpoints. The Desktop (base breakpoint) has a default width of 1279px.
+
+### Pausing a custom breakpoint
+
+You can pause any of your custom breakpoints by toggling the checkbox at the right-hand side of the breakpoint manager:
+
+![](https://academy.bricksbuilder.io/assets/bricks-pause-custom-breakpoint.jpg)
+
+<figcaption>
+
+Pausing custom breakpoint "Large"
+
+</figcaption>
+
+Pausing a custom breakpoint allows you to skip generating the styles for it on the frontend, while still retaining the styles you've set throughout your site without having to delete them one by one. Which, on a full-built-out site, can go into thousands of settings.
+
+### Resetting a default breakpoint
+
+To restore the default values of a default breakpoint, click on the "reset" icon (next to the pencil) icon.
+
+### Resetting all breakpoints
+
+Clicking the "gear" icon in the breakpoint manager header opens up the "Reset: Breakpoints" action. Clicking this button removes all your breakpoint edits (default & custom breakpoints) from the database.
+
+> **Note**
+>
+> **Breakpoint-specific settings performed on an element or the Theme Styles are not deleted. Please choose desktop or mobile-first at the very beginning.**
+
+![](https://academy.bricksbuilder.io/assets/bricks-reset-all-breakpoints.jpg)
+
+### Understanding the base breakpoint
+
+The base breakpoint doesn't have a @media query. So all styles set on the base breakpoint apply to all screen widths.
+
+That is why, by default, any styles set on the "Desktop" breakpoint are visible on any other breakpoint. Unless you specify a style on a specific breakpoint. Then the breakpoint-specific rule precedes the base breakpoint style.
+
+When editing a breakpoint, you can set it as the "Base breakpoint". Then all styles set on this new base breakpoint are inherited up & down the breakpoint chain.
+
+In the following screenshot, you can see that the "Tablet portrait" breakpoint has been set as the base breakpoint.
+
+The yellow dot, lines, and arrows next to the breakpoint icons should help to visualize the style inheritance:
+
+![](https://academy.bricksbuilder.io/assets/bricks-custom-base-breakpoint.jpg)
+
+<figcaption>
+
+Changed base breakpoint to "Tablet portrait"
+
+</figcaption>
+
+### Mobile-first design {#mobile-first}
+
+Styling in Bricks, by default, happens from the largest breakpoint down to "Tablet portrait" > "Mobile landscape" and "Mobile portrait".
+
+Utilise a so-called `**mobile-first**` design approach by setting the smallest breakpoint as the base breakpoint.
+
+The following screenshot shows the "Mobile portrait" (our smallest breakpoint) set as the base breakpoint. We now use the mobile-first approach. Also indicated by the "MOBILE FIRST" label in the breakpoint manager header:
+
+![](https://academy.bricksbuilder.io/assets/bricks-mobile-first.jpg)
+
+<figcaption>
+
+Mobile-first design in Bricks
+
+</figcaption>
+
+You'll also notice that the order of the breakpoints is reversed and now starts at the smallest breakpoint. You can now start to design your pages starting at the smallest breakpoint.
+
+### Regenerating (Bricks) CSS files
+
+Whenever you customize the width of a default breakpoint, Bricks automatically updates any Bricks CSS files (like frontend.min.css, etc.) that contain media queries for this breakpoint.
+
+If you experience that your breakpoint widths on the front end are not correctly applied, please regenerate your Bricks CSS files by clicking the "Regenerate CSS files" button under `Bricks > Settings > General > Custom breakpoints`.
+
+## Responsive control indicator {#responsive-control-indicator}
+
+In Bricks 1.11.1, we introduced the responsive control indicator which helps you see which controls can have different values at different breakpoints. We provide multiple options for when to show this indicator to suit different preferences. You can adjust these under `Bricks > Settings > Builder > Control panel > Responsive control indicator`:
+
+- **Show if any value exists (Default)**: Displays if a control has any value set across breakpoints.
+- **Show if non-base breakpoint value exists**: Shows only if a control’s value differs from the base breakpoint.
+- **Show on all responsive controls**: Displays on all responsive controls, regardless of values.
+- **Disable**.
+
+![](https://academy.bricksbuilder.io/assets/bricks-responsive-control-indicator.png)
+
+---
+
+<a id="builder-interface-revisions"></a>
+
+# Revisions
+
+Source: https://academy.bricksbuilder.io/builder/interface/revisions/
+
+*Review, restore, and manage Bricks revisions so you can safely recover earlier builder states.*
+
+When you save builder data changes, Bricks creates a revision/snapshot of the relevant Bricks data and page settings (template, page, etc.) using the official WordPress Revisions API.
+
+Bricks also stores autosaves separately. Autosaves are backup copies from the autosave process, while regular revisions are created when Bricks element data or page settings are included in a manual save. After a regular revision is created, Bricks clears the related autosave.
+
+You can browse, preview, and apply your revisions inside the builder by clicking the **Revisions** (clock) icon in the builder toolbar, then going to the "Revisions" tab.
+
+Select any revision in this list to preview it. The canvas should automatically update showing you the selected revision.
+
+Click **Apply** to continue editing the selected revision. Click **Discard** to continue editing your current version.
+
+If your builder capability includes **Delete revisions**, you can delete individual revisions or delete all revisions from the Revisions panel.
+
+![](https://academy.bricksbuilder.io/assets/builder-revisions-1024x576.png)
+
+## Manage the number of Bricks revisions {#bricks_max_revisions_to_keep}
+
+In order to limit the number of Bricks revisions, you may define the constant `BRICKS_MAX_REVISIONS_TO_KEEP` like so (insert this code in the Bricks child theme):
+
+```php
+if ( ! defined( 'BRICKS_MAX_REVISIONS_TO_KEEP' ) ) {
+    define( 'BRICKS_MAX_REVISIONS_TO_KEEP', 10 );
+}
+```
+
+By default, Bricks sets the maximum to 100 revisions per post for the Bricks templates and enabled post types.
+
+You may set the following values:
+
+- true: unlimited revisions
+- false or 0: do not store any Bricks' revisions
+- value above 0: store up to this number of revisions per post. Old revisions are automatically deleted.
+
+---
+
+<a id="builder-interface-save-publish"></a>
+
+# Save & Publish
+
+Source: https://academy.bricksbuilder.io/builder/interface/save-publish/
+
+*Understand how saving and publishing work in Bricks, including drafts, updates, and when frontend changes go live.*
+
+Bricks, by default, automatically creates an autosave every 60 seconds when the current builder area has unsaved element changes.
+
+Autosave creates a backup copy of the elements on the canvas. It does not save global data such as components, classes, or variables. Autosaves can be restored under **Manage > History / Revisions** from the builder toolbar.
+
+To adjust or disable the autosave interval go to **Bricks > Settings > Builder** in your WordPress admin area. The default interval is 60 seconds, and the minimum interval is 15 seconds.
+
+Bricks detects unsaved changes and will show you a prompt to help prevent data loss in case you reload the builder by accident.
+
+To manually save your changes click the **Save** (disk) icon at the very right of the builder toolbar. Or use the [keyboard shortcut](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/) CMD/CTRL + S.
+
+**Bricks creates a revision/snapshot** when changed Bricks data or page settings are saved using the standard WordPress Revisions API ([learn more about revisions](https://academy.bricksbuilder.io/builder/interface/revisions/)).
+
+Designing a stunning website or writing compelling content is hard. That's why Bricks celebrates every saved change by displaying a random save message to keep your spirit up :)
+
+You can, of course, customize those save messages via the [bricks/builder/save_messages](https://academy.bricksbuilder.io/developer/hooks/filters/filter-save-messages/) filter.
+
+## Publishing A Page
+
+When an unpublished page (draft) is saved the status does not change by itself. So once your page is ready to be published click the **Publish** (power) icon in the builder toolbar.
+
+---
+
+<a id="builder-license-license-and-updates"></a>
+
+# License, updates, and your account
+
+Source: https://academy.bricksbuilder.io/builder/license/license-and-updates/
+
+*Update Bricks safely, manage your license and sites, and understand staging and local URLs.*
+
+For first-time installation and activation, follow [Installation and setup](https://academy.bricksbuilder.io/getting-started/installation-setup/).
+
+This article covers **automatic updates**, **staging and safe updates**, **which URLs count toward your license**, and **managing activations** in your Bricks account.
+
+Your Bricks account and downloads live at [my.bricksbuilder.io](https://my.bricksbuilder.io/) (same destination the theme uses for remote services).
+
+## Define the license key in wp-config.php {#constant}
+
+Starting with Bricks 2.4, you can define your Bricks license key as a PHP constant in `wp-config.php`:
+
+```php
+define( 'BRICKS_LICENSE_KEY', 'your-license-key' );
+```
+
+Add the constant above the line that says `/* That's all, stop editing! Happy publishing. */`.
+
+Use this when you manage WordPress sites from a blueprint, clone sites for development, or prefer to keep the raw license key out of the WordPress options table.
+
+When `BRICKS_LICENSE_KEY` is defined, Bricks uses it as the active license key. The license screen at **Bricks > License** shows that the key is defined by the constant and provides a **Re-validate license** button.
+
+If a license key is also saved in the database, Bricks keeps using `BRICKS_LICENSE_KEY` while the constant is active. The license screen shows a notice and a **Remove saved database key** button. This removes the local `bricks_license_key` option only. It does not remotely deactivate the license.
+
+To use a different key, update the constant value and re-validate the license. To return to a database-stored key, remove the constant and activate the license from **Bricks > License**.
+
+## How to update Bricks {#how-to-update}
+
+If you have activated your Bricks license key on your site, you'll automatically receive update notifications in your WordPress dashboard. You can then perform the update to the latest version of Bricks with one click from your WordPress dashboard.
+
+![](https://academy.bricksbuilder.io/assets/bricks-wp-dashboard-how-to-update.png)
+
+You can also always manually download the latest version from your Bricks account at [https://my.bricksbuilder.io/](https://my.bricksbuilder.io/) as a ZIP file.
+
+### Test on staging & read the changelog
+
+We recommend to perform updating a mission-critical software like Bricks first on a staging server. Especially if your website is live, receives a lot of traffic, you are running marketing campaigns, offers, etc. Once you confirmed that everything is working as expected you can update your live site.
+
+Every noticeable host offers, mostly free of charge, an easy one-click staging solution. Please reach out to your host if you are not sure how this works.
+
+Every update is accompanied by an in-depth release changelog. Please take the time to go over it at [https://bricksbuilder.io/changelog/](https://bricksbuilder.io/changelog/) before you perform the update.
+
+This way you know exactly what changed, if any adjustments or steps need to be performed on your end, which new features are available, and so on.
+
+### Local, staging & intranet installations don't count against your license limit {#local}
+
+These rules are enforced by the Bricks account/licensing service. During license activation, validation, and update checks, the Bricks theme sends the current site/license data, including the site URL/domain and Bricks version, to the licensing service. The service then decides whether a URL counts toward your license limit.
+
+Bricks classifies sites matching the following URL patterns as local, staging, or intranet installations for licensing purposes. These installations do not count against your license activation limit. This classification does not necessarily describe how a site is used.
+
+**Local URLs:**
+
+- `192.168.x.x`
+- `127.0.0.1`
+- `localhost` (includes)
+- `.local` (top-level domain)
+- `.test` (top-level domain)
+- `.wip` (top-level domain)
+
+<span id="staging"></span>
+
+**Staging URLs:**
+
+- Staging subdomains (dev, staging, test)
+  - `dev.yoursite.com`
+  - `staging.yoursite.com`
+  - `test.yoursite.com`
+- BlogVault: `.wpstage.net`
+- Cloudways: `.cloudwaysapps.com` & `.cloudwayssites.com`
+- DreamHost / DreamPress: `.stage.site` & `.dream.press`
+- Flywheel: `.mysites.io` & `.flywheelsites.com`
+- GoDaddy: `.myftpupload.com`
+- Hostinger: `.hostingersite.com`
+- InstaWP: `.instawp.site` & `.instawp.xyz` & `instawp.com` & `.instawp.co` & `.instawp.link`
+- Kinsta: `.kinsta.cloud`
+- Lando Pantheon: `.lndo.site`
+- Nexcess: `.nxcli.net` & `.nxcli.io`
+- Pantheon: `.pantheonsite.io`
+- Plesk: `.plesk.page`
+- Raidboxes: `.myrdbx.io`
+- Rocket.net: `.onrocket.site` & `.wpdns.site`
+- Runcloud: `.temp-site.link`
+- SiteGround: `.sg-host.com`
+- SpinupWP: `.spinupwp.site`
+- TasteWP: `.tastewp.com`
+- WP Engine: `.wpenginepowered.com` & `.wpengine.com`
+- WP Stagecoach: `.wpstagecoach.com` & `.wpsc.site`
+- wp-space.de: `.wpspace.partners`
+- xCloud: `1wp.site`, `.wp1.site`, `wp1.sh`, `wp1.host`
+- ZipWP: `.zipwp.link`
+
+<span id="intranet"></span>
+
+**Intranet (top-level domains):**
+
+- `.intranet`
+- `.internal`
+- `.private`
+- `.corp`
+- `.home`
+- `.lan`
+
+**With a Bricks Starter license (1 active site limit), you can build your site locally with Bricks & use your Starter license on your live site simultaneously.**
+
+You can deactivate the license key from your site from your WP dashboard under `Bricks > License`, and activate it on another site or remove the site from your Bricks account under the "Sites" tab. We monitor any potential misusage (attempts to avoid purchasing a sufficient plan) and reserve the right to limit further license activations.
+
+---
+
 <a id="builder-license-restrict-license-key-usage"></a>
 
 # Restrict License Key Usage
@@ -14583,97 +14583,6 @@ To make sure you are adding the correct URL to the list, navigate the the WordPr
 ![](https://academy.bricksbuilder.io/assets/bricks-account-whitelist-site-address.png)
 
 If you don't have access to the backend of the site, use the home page URL of the site, but without any trailing slash at the end.
-
----
-
-<a id="builder-setup-requirements"></a>
-
-# Requirements
-
-Source: https://academy.bricksbuilder.io/builder/setup/requirements/
-
-*PHP, memory, upload size, browser, and troubleshooting for Bricks.*
-
-This article covers the recommended server limits and browser compatibility for Bricks, plus how to fix common limits. The [Installation and setup](https://academy.bricksbuilder.io/getting-started/installation-setup/) guide links here when you need the full checklist or troubleshooting.
-
-To provide you with a cutting-edge site builder for WordPress Bricks uses the most modern technology stack (VueJS 3, etc.) while keeping sufficient backward compatibility.
-
-Below are the baseline server limits and compatibility recommendations for running Bricks smoothly:
-
-- PHP 5.4+
-- WordPress memory limit: min. 64 MB (recommended: 512 MB)
-- Max file upload size: min. 64 MB
-- Modern browser: Use a current version of Chrome, Firefox, Safari, or Microsoft Edge when editing your website with Bricks. Older browsers (e.g. Internet Explorer) lack support for some of the more advanced builder features.
-
-> **Note**
->
-> *Bricks is a self-hosted solution that you download & install on your own WordPress website!*
-
-## How To Increase WP Memory Limit {#wp-memory-limit}
-
-You can define **WP_MEMORY_LIMIT** by adding the following code to your **wp-config.php** file, above the line that says "That's all, stop editing!":
-
-```php
-define( 'WP_MEMORY_LIMIT', '512M' );
-/* That's all, stop editing! Happy publishing. */
-```
-
-Some web hosts set the PHP memory limit to as low as 8 MB. In that case, you might consider upgrading to a more powerful hosting plan. If your host does not allow you to config this setting by yourself, please get in touch with them.
-
-## How To Increase Max File Upload Size {#max-file-upload-size}
-
-If you encounter problems uploading larger files to your site (or when downloading high-resolution images from Bricks' Unsplash integration) there are a few ways to increase the maximum upload file size.
-
-A maximum upload size should be 64 MB or more. Log into your hosting account and change the following two **PHP server settings** to:
-
-- post_max_size: 64M
-- upload_max_filesize: 64M
-
-If you have access to your **php.ini** file, located in the root directory of your WordPress installation, open it, and modify the following settings:
-
-```php
-upload_max_filesize = 64M
-post_max_size = 64M
-```
-
-You can also add the following code to your **.htaccess** file, but make sure to backup your existing .htaccess file beforehand:
-
-```php
-php_value upload_max_filesize 64M
-php_value post_max_size 64M
-```
-
-If all above fails, you can try adding the following code to your wp-config.php:
-
-```php
-@ini_set( 'upload_max_size' , '64M' );
-@ini_set( 'post_max_size', '64M');
-```
-
-To confirm that your maximum upload file size has been updated successfully, go to **Media > Add New**. On the bottom of this page, you should see your maximum upload file size.
-
-## How To Increase Maximum Execution Time {#max-execution-time}
-
-When you start seeing a message like "Maximum execution time of 30 seconds exceeded" you have to increase the execution time of your website by using one of the following three solutions:
-
-**#1: Add the following code to your wp-config.php file (above the "That's all, stop editing!" line):**
-
-```php
-set_time_limit(180);
-/* That's all, stop editing! Happy publishing. */
-```
-
-**#2: Backup your .htaccess file and add the following code to it:**
-
-```php
-php_value max_execution_time 180
-```
-
-**#3: Add the following code to your php.ini file:**
-
-```php
-max_execution_time = 180
-```
 
 ---
 
@@ -14962,6 +14871,97 @@ You can also scan your entire site for orphaned elements from **Bricks Settings 
 If no issues are found, you’ll see the message “No orphaned elements found”. If orphaned elements are detected, you’ll have the option to click **“Clean up all orphaned elements”**, which will remove them across all affected posts.
 
 We recommend taking a backup before running the cleanup, just in case. Once confirmed, Bricks will proceed to delete the orphaned elements from each listed post.
+
+---
+
+<a id="builder-setup-requirements"></a>
+
+# Requirements
+
+Source: https://academy.bricksbuilder.io/builder/setup/requirements/
+
+*PHP, memory, upload size, browser, and troubleshooting for Bricks.*
+
+This article covers the recommended server limits and browser compatibility for Bricks, plus how to fix common limits. The [Installation and setup](https://academy.bricksbuilder.io/getting-started/installation-setup/) guide links here when you need the full checklist or troubleshooting.
+
+To provide you with a cutting-edge site builder for WordPress Bricks uses the most modern technology stack (VueJS 3, etc.) while keeping sufficient backward compatibility.
+
+Below are the baseline server limits and compatibility recommendations for running Bricks smoothly:
+
+- PHP 5.4+
+- WordPress memory limit: min. 64 MB (recommended: 512 MB)
+- Max file upload size: min. 64 MB
+- Modern browser: Use a current version of Chrome, Firefox, Safari, or Microsoft Edge when editing your website with Bricks. Older browsers (e.g. Internet Explorer) lack support for some of the more advanced builder features.
+
+> **Note**
+>
+> *Bricks is a self-hosted solution that you download & install on your own WordPress website!*
+
+## How To Increase WP Memory Limit {#wp-memory-limit}
+
+You can define **WP_MEMORY_LIMIT** by adding the following code to your **wp-config.php** file, above the line that says "That's all, stop editing!":
+
+```php
+define( 'WP_MEMORY_LIMIT', '512M' );
+/* That's all, stop editing! Happy publishing. */
+```
+
+Some web hosts set the PHP memory limit to as low as 8 MB. In that case, you might consider upgrading to a more powerful hosting plan. If your host does not allow you to config this setting by yourself, please get in touch with them.
+
+## How To Increase Max File Upload Size {#max-file-upload-size}
+
+If you encounter problems uploading larger files to your site (or when downloading high-resolution images from Bricks' Unsplash integration) there are a few ways to increase the maximum upload file size.
+
+A maximum upload size should be 64 MB or more. Log into your hosting account and change the following two **PHP server settings** to:
+
+- post_max_size: 64M
+- upload_max_filesize: 64M
+
+If you have access to your **php.ini** file, located in the root directory of your WordPress installation, open it, and modify the following settings:
+
+```php
+upload_max_filesize = 64M
+post_max_size = 64M
+```
+
+You can also add the following code to your **.htaccess** file, but make sure to backup your existing .htaccess file beforehand:
+
+```php
+php_value upload_max_filesize 64M
+php_value post_max_size 64M
+```
+
+If all above fails, you can try adding the following code to your wp-config.php:
+
+```php
+@ini_set( 'upload_max_size' , '64M' );
+@ini_set( 'post_max_size', '64M');
+```
+
+To confirm that your maximum upload file size has been updated successfully, go to **Media > Add New**. On the bottom of this page, you should see your maximum upload file size.
+
+## How To Increase Maximum Execution Time {#max-execution-time}
+
+When you start seeing a message like "Maximum execution time of 30 seconds exceeded" you have to increase the execution time of your website by using one of the following three solutions:
+
+**#1: Add the following code to your wp-config.php file (above the "That's all, stop editing!" line):**
+
+```php
+set_time_limit(180);
+/* That's all, stop editing! Happy publishing. */
+```
+
+**#2: Backup your .htaccess file and add the following code to it:**
+
+```php
+php_value max_execution_time 180
+```
+
+**#3: Add the following code to your php.ini file:**
+
+```php
+max_execution_time = 180
+```
 
 ---
 
@@ -15911,27 +15911,6 @@ Remove passwords, cookies, nonces, license keys, API keys, personal data, and da
 
 ---
 
-<a id="builder-templates"></a>
-
-# Templates
-
-Source: https://academy.bricksbuilder.io/builder/templates/
-
-*Learn how Bricks templates work, including template types, conditions, settings, the template library, remote templates, and wireframes.*
-
-Templates are central to how Bricks handles repeated layouts across headers, footers, archives, single posts, popups, and other site areas.
-
-## Template workflow
-
-- [An Intro to Templates](https://academy.bricksbuilder.io/builder/features/an-intro-to-templates/) for the core concepts
-- [Create Template](https://academy.bricksbuilder.io/builder/features/create-template/) for creating new templates and choosing types
-- [Template Settings](https://academy.bricksbuilder.io/builder/features/template-settings/) for conditions and configuration
-- [Template Library](https://academy.bricksbuilder.io/builder/features/template-library/) for importing and reusing templates
-- [Remote Templates](https://academy.bricksbuilder.io/builder/features/remote-templates/) for external template sources
-- [Wireframe Templates](https://academy.bricksbuilder.io/builder/features/wireframe-templates/) for structure-first starting points
-
----
-
 <a id="builder-styling-adobe-fonts"></a>
 
 # Integration: Adobe Fonts
@@ -16009,6 +15988,175 @@ You can view available variable Adobe fonts by selecting "Variable Fonts" under 
 > **Note**
 >
 > NOTE: This new `font-variation-settings` is also available for [custom fonts](https://academy.bricksbuilder.io/builder/styling/custom-fonts/). For Google Fonts, Bricks can collect multiple variation axes from the selected font and your typography settings; the available axes depend on the font and the Google Fonts API.
+
+---
+
+<a id="builder-styling-build-a-design-system"></a>
+
+# Build a Design System in Bricks
+
+Source: https://academy.bricksbuilder.io/builder/styling/build-a-design-system/
+
+*Build a design system in Bricks from an unstyled page: color palette and shades, fluid type and spacing scales, variables, a theme style, classes, and components.*
+
+A design system is a set of decisions you make once and reuse everywhere: your colors, font sizes, spacing, the default look of plain elements, and the patterns and blocks that repeat. In Bricks, those decisions live in the Style Manager, in a theme style, in global classes, and in components. Once they are in place, a new page needs no new styles, and changing one value updates every page that uses it.
+
+This article builds a design system for a small coffee roaster's website, starting from a page with content and no styling. It follows the same steps as the video.
+
+https://youtu.be/lo2L313Cpko
+
+## The four layers
+
+Each layer builds on the one below it:
+
+| Layer | In Bricks | Example |
+| --- | --- | --- |
+| Values | Colors and variables in the [Style Manager](https://academy.bricksbuilder.io/builder/features/style-manager/) | `var(--brand)`, `var(--heading-xl)`, `var(--space-m)` |
+| Rules | A [theme style](https://academy.bricksbuilder.io/builder/styling/theme-styles/) | Body text, headings, buttons, section padding |
+| Classes | [Global classes](https://academy.bricksbuilder.io/builder/styling/global-css-classes/) | `.eyebrow` for the small label above a heading |
+| Components | [Components](https://academy.bricksbuilder.io/builder/features/components/) | A product card |
+
+A component uses classes, and classes use variables. When a value changes, everything above it follows.
+
+## Starting point
+
+The example starts with a header template, a footer template, and a home page with its content in place. Nothing is styled yet: default fonts, default colors, no spacing.
+
+You could style this page element by element. A second page would then mean doing it all again and keeping both pages in sync by hand. The steps below put every decision in one place first.
+
+{/* screenshot: The unstyled home page in the Builder: header and footer templates, hero, product cards and panels with Bricks default styles. */}
+
+## 1. Colors
+
+Open the Style Manager and select **Colors**. See [Color Manager](https://academy.bricksbuilder.io/builder/features/color-manager/) for every setting.
+
+1. Create a palette for the site.
+2. Add the brand color and name it `brand`, not `orange`. If the brand color changes later, the name is still correct.
+3. Enable **Light shades** and **Dark shades**. Bricks generates ten steps of each from the base color and names them after it: `brand-d-1` is one step darker than `brand`, `brand-l-9` is a soft tint for backgrounds.
+4. Add the neutrals: `ink` for text, `ink-muted` for quieter text, and `paper` for the page background.
+5. Add the colors that only serve one purpose. The example uses six pastels for the product cards (`blush`, `butter`, `lilac`, `mint`, `sky`, `clay`).
+6. For the pastels, enable the `background-color` utility class. Bricks then creates a global class for each color, such as `bg-butter`.
+
+Only enable utility classes for colors you will apply as classes. Each one adds a global class per shade.
+
+{/* screenshot: Color Manager with the brand color expanded, light and dark shades enabled and the generated shade strips visible. */}
+
+## 2. Typography and spacing scales
+
+Open **Typography** in the Style Manager and create a scale for headings:
+
+1. Give the scale the prefix `heading-`.
+2. Set a base size and a ratio for the minimum (mobile) and another pair for the maximum (desktop). The example uses 20 px at 1.25 for mobile and 24 px at 1.5 for desktop.
+3. Generate the variables.
+
+Bricks turns every step into a `clamp()` value, from `--heading-2xs` to `--heading-2xl`. A heading grows with the screen instead of jumping at breakpoints. See [Fluid Typography](https://academy.bricksbuilder.io/builder/styling/fluid-typography/) for how the values are calculated.
+
+Create a second scale with the prefix `text-` for body sizes.
+
+Spacing works the same way. Open **Spacing** and create a scale with the prefix `space-`, from `--space-2xs` to `--space-2xl`.
+
+{/* screenshot: Typography scale "Headings" with prefix heading-, minimum and maximum values and the generated preview rows. */}
+
+## 3. Variables and categories
+
+A few values are not part of a scale. Add them in **Variables** and give each group its own category:
+
+| Category | Variable | Value |
+| --- | --- | --- |
+| Layout | `container` | `1240px` |
+| Shape | `radius-s` | `10px` (buttons) |
+| Shape | `radius-m` | `24px` (cards) |
+
+The scales already sit in their own categories, so the variable picker stays readable as the list grows. See [Global Variables Manager](https://academy.bricksbuilder.io/builder/styling/global-variables-manager/).
+
+Name variables by role or step, like `radius-s` and `radius-m`. A name like `radius-24` is wrong the moment you change the value.
+
+Values do nothing until something uses them. The page still looks the same after this step.
+
+## 4. Theme style
+
+The theme style sets the defaults for every element, so plain headings, text and buttons never need their own settings.
+
+Create a theme style. A new theme style applies to the entire website by default. Then set:
+
+| Group | Setting | Value |
+| --- | --- | --- |
+| Typography | Body | Figtree, `var(--text-m)`, `var(--ink)` |
+| Typography | Headings | Fraunces, `var(--brand)` |
+| Typography | H1 / H2 / H3 | `var(--heading-2xl)` / `var(--heading-l)` / `var(--heading-m)` |
+| Elements > Button | Background, text color, border radius | `var(--brand)`, `var(--brand-d-8)`, `var(--radius-s)` |
+| Elements > Section | Padding | `var(--space-2xl)` top and bottom, `var(--space-m)` left and right |
+| Elements > Container | Width | `var(--container)` |
+| Elements > Container and Block | Row gap | `var(--space-s)` |
+
+The row gap on Container and Block gives stacked headings and text even space without a single margin.
+
+Save, and the whole page changes, including the header and footer templates. Switch to the mobile breakpoint: headings and section padding shrink with the screen, without any breakpoint-specific setting.
+
+{/* screenshot: Theme style Typography group with Body and Headings set, live preview of the styled home page on the right. */}
+
+## 5. Classes
+
+A theme style styles headings, text and buttons. It does not know the small label above a heading or the quieter line under a title. Those are patterns, and patterns need [global classes](https://academy.bricksbuilder.io/builder/styling/global-css-classes/).
+
+1. Select the label above the hero heading and add a class named `eyebrow`.
+2. Style it once: `var(--text-s)`, uppercase, a little letter spacing, and `var(--brand-d-4)`.
+3. Add the same class to the other labels.
+4. Add `text-l` for intro paragraphs and `text-muted` for quieter text.
+
+Name classes by purpose, in lowercase with hyphens. `text-muted` still makes sense when the color changes; `grey-text` does not.
+
+In the [Global Class Manager](https://academy.bricksbuilder.io/builder/styling/global-class-manager/), put the three classes into a category called **Typography**. Layout classes such as `card-grid` (below) go into a second category, **Layout**.
+
+## 6. Components
+
+The coffee card repeats eight times on the home page. That makes it a component.
+
+1. Style one card first: `var(--space-m)` as padding and `var(--radius-m)` as border radius. In the variable picker, open the **Shape** category to find the radius quickly.
+2. Give the origin the `eyebrow` class, the tasting notes `text-muted`, and the name a darker brand shade.
+3. Right-click the card in the Structure panel, choose **Save as component**, and name it `Coffee card`.
+4. Add a property for everything that changes from card to card (image, origin, name, notes, price) and connect each one to its element. See [Property types](https://academy.bricksbuilder.io/builder/features/components/#property-types).
+
+A component has no color property type, but it has a [global classes property](https://academy.bricksbuilder.io/builder/features/components/#global-classes). Create one named `Color`, add an option for each pastel, assign each option its `bg-*` class, and connect the property to the card's root element. Each instance now only asks for its content and a color.
+
+Give the row of cards a class too:
+
+```css
+/* card-grid: as many columns as fit, four on a desktop */
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+gap: var(--space-m);
+```
+
+The numbered section headings and the café panel become components the same way: `Section head`, and `Feature panel` with a `Style` option (global classes property) for a soft or a bold background.
+
+{/* screenshot: Coffee card component with its properties in the panel, the Color property dropdown open with the pastel options. */}
+
+## 7. Build a new page
+
+On a new page, the header and footer are already there because they are templates.
+
+1. Add a heading and an intro. They pick up the theme style without a single setting.
+2. Insert a `Section head`, then a Block with the `card-grid` class and `Coffee card` instances. Fill in the content and pick a color.
+3. Add a `Feature panel` with its own image and text.
+
+The page has no new styles. Everything on it comes from the system.
+
+{/* screenshot: The finished shop page on the frontend, built only from components, classes and the theme style. */}
+
+## Change the brand color
+
+Open the Color Manager and change `brand` to a new color. Bricks regenerates the shades from it, and headings, buttons, labels and panels follow on every page, in the header and in the footer.
+
+## Related
+
+- [Style Manager](https://academy.bricksbuilder.io/builder/features/style-manager/)
+- [Color Manager](https://academy.bricksbuilder.io/builder/features/color-manager/)
+- [Fluid Typography](https://academy.bricksbuilder.io/builder/styling/fluid-typography/)
+- [Global Variables Manager](https://academy.bricksbuilder.io/builder/styling/global-variables-manager/)
+- [Theme Styles](https://academy.bricksbuilder.io/builder/styling/theme-styles/)
+- [Global Class Manager](https://academy.bricksbuilder.io/builder/styling/global-class-manager/)
+- [Components](https://academy.bricksbuilder.io/builder/features/components/)
 
 ---
 
@@ -16289,175 +16437,6 @@ To unify the layout:
 ![](https://academy.bricksbuilder.io/assets/bricks-contextual-spacing-apply-to-utility-class-scaled.png)
 
 **Result**: All elements within that wrapper now follow your contextual spacing rules.
-
----
-
-<a id="builder-styling-build-a-design-system"></a>
-
-# Build a Design System in Bricks
-
-Source: https://academy.bricksbuilder.io/builder/styling/build-a-design-system/
-
-*Build a design system in Bricks from an unstyled page: color palette and shades, fluid type and spacing scales, variables, a theme style, classes, and components.*
-
-A design system is a set of decisions you make once and reuse everywhere: your colors, font sizes, spacing, the default look of plain elements, and the patterns and blocks that repeat. In Bricks, those decisions live in the Style Manager, in a theme style, in global classes, and in components. Once they are in place, a new page needs no new styles, and changing one value updates every page that uses it.
-
-This article builds a design system for a small coffee roaster's website, starting from a page with content and no styling. It follows the same steps as the video.
-
-https://youtu.be/lo2L313Cpko
-
-## The four layers
-
-Each layer builds on the one below it:
-
-| Layer | In Bricks | Example |
-| --- | --- | --- |
-| Values | Colors and variables in the [Style Manager](https://academy.bricksbuilder.io/builder/features/style-manager/) | `var(--brand)`, `var(--heading-xl)`, `var(--space-m)` |
-| Rules | A [theme style](https://academy.bricksbuilder.io/builder/styling/theme-styles/) | Body text, headings, buttons, section padding |
-| Classes | [Global classes](https://academy.bricksbuilder.io/builder/styling/global-css-classes/) | `.eyebrow` for the small label above a heading |
-| Components | [Components](https://academy.bricksbuilder.io/builder/features/components/) | A product card |
-
-A component uses classes, and classes use variables. When a value changes, everything above it follows.
-
-## Starting point
-
-The example starts with a header template, a footer template, and a home page with its content in place. Nothing is styled yet: default fonts, default colors, no spacing.
-
-You could style this page element by element. A second page would then mean doing it all again and keeping both pages in sync by hand. The steps below put every decision in one place first.
-
-{/* screenshot: The unstyled home page in the Builder: header and footer templates, hero, product cards and panels with Bricks default styles. */}
-
-## 1. Colors
-
-Open the Style Manager and select **Colors**. See [Color Manager](https://academy.bricksbuilder.io/builder/features/color-manager/) for every setting.
-
-1. Create a palette for the site.
-2. Add the brand color and name it `brand`, not `orange`. If the brand color changes later, the name is still correct.
-3. Enable **Light shades** and **Dark shades**. Bricks generates ten steps of each from the base color and names them after it: `brand-d-1` is one step darker than `brand`, `brand-l-9` is a soft tint for backgrounds.
-4. Add the neutrals: `ink` for text, `ink-muted` for quieter text, and `paper` for the page background.
-5. Add the colors that only serve one purpose. The example uses six pastels for the product cards (`blush`, `butter`, `lilac`, `mint`, `sky`, `clay`).
-6. For the pastels, enable the `background-color` utility class. Bricks then creates a global class for each color, such as `bg-butter`.
-
-Only enable utility classes for colors you will apply as classes. Each one adds a global class per shade.
-
-{/* screenshot: Color Manager with the brand color expanded, light and dark shades enabled and the generated shade strips visible. */}
-
-## 2. Typography and spacing scales
-
-Open **Typography** in the Style Manager and create a scale for headings:
-
-1. Give the scale the prefix `heading-`.
-2. Set a base size and a ratio for the minimum (mobile) and another pair for the maximum (desktop). The example uses 20 px at 1.25 for mobile and 24 px at 1.5 for desktop.
-3. Generate the variables.
-
-Bricks turns every step into a `clamp()` value, from `--heading-2xs` to `--heading-2xl`. A heading grows with the screen instead of jumping at breakpoints. See [Fluid Typography](https://academy.bricksbuilder.io/builder/styling/fluid-typography/) for how the values are calculated.
-
-Create a second scale with the prefix `text-` for body sizes.
-
-Spacing works the same way. Open **Spacing** and create a scale with the prefix `space-`, from `--space-2xs` to `--space-2xl`.
-
-{/* screenshot: Typography scale "Headings" with prefix heading-, minimum and maximum values and the generated preview rows. */}
-
-## 3. Variables and categories
-
-A few values are not part of a scale. Add them in **Variables** and give each group its own category:
-
-| Category | Variable | Value |
-| --- | --- | --- |
-| Layout | `container` | `1240px` |
-| Shape | `radius-s` | `10px` (buttons) |
-| Shape | `radius-m` | `24px` (cards) |
-
-The scales already sit in their own categories, so the variable picker stays readable as the list grows. See [Global Variables Manager](https://academy.bricksbuilder.io/builder/styling/global-variables-manager/).
-
-Name variables by role or step, like `radius-s` and `radius-m`. A name like `radius-24` is wrong the moment you change the value.
-
-Values do nothing until something uses them. The page still looks the same after this step.
-
-## 4. Theme style
-
-The theme style sets the defaults for every element, so plain headings, text and buttons never need their own settings.
-
-Create a theme style. A new theme style applies to the entire website by default. Then set:
-
-| Group | Setting | Value |
-| --- | --- | --- |
-| Typography | Body | Figtree, `var(--text-m)`, `var(--ink)` |
-| Typography | Headings | Fraunces, `var(--brand)` |
-| Typography | H1 / H2 / H3 | `var(--heading-2xl)` / `var(--heading-l)` / `var(--heading-m)` |
-| Elements > Button | Background, text color, border radius | `var(--brand)`, `var(--brand-d-8)`, `var(--radius-s)` |
-| Elements > Section | Padding | `var(--space-2xl)` top and bottom, `var(--space-m)` left and right |
-| Elements > Container | Width | `var(--container)` |
-| Elements > Container and Block | Row gap | `var(--space-s)` |
-
-The row gap on Container and Block gives stacked headings and text even space without a single margin.
-
-Save, and the whole page changes, including the header and footer templates. Switch to the mobile breakpoint: headings and section padding shrink with the screen, without any breakpoint-specific setting.
-
-{/* screenshot: Theme style Typography group with Body and Headings set, live preview of the styled home page on the right. */}
-
-## 5. Classes
-
-A theme style styles headings, text and buttons. It does not know the small label above a heading or the quieter line under a title. Those are patterns, and patterns need [global classes](https://academy.bricksbuilder.io/builder/styling/global-css-classes/).
-
-1. Select the label above the hero heading and add a class named `eyebrow`.
-2. Style it once: `var(--text-s)`, uppercase, a little letter spacing, and `var(--brand-d-4)`.
-3. Add the same class to the other labels.
-4. Add `text-l` for intro paragraphs and `text-muted` for quieter text.
-
-Name classes by purpose, in lowercase with hyphens. `text-muted` still makes sense when the color changes; `grey-text` does not.
-
-In the [Global Class Manager](https://academy.bricksbuilder.io/builder/styling/global-class-manager/), put the three classes into a category called **Typography**. Layout classes such as `card-grid` (below) go into a second category, **Layout**.
-
-## 6. Components
-
-The coffee card repeats eight times on the home page. That makes it a component.
-
-1. Style one card first: `var(--space-m)` as padding and `var(--radius-m)` as border radius. In the variable picker, open the **Shape** category to find the radius quickly.
-2. Give the origin the `eyebrow` class, the tasting notes `text-muted`, and the name a darker brand shade.
-3. Right-click the card in the Structure panel, choose **Save as component**, and name it `Coffee card`.
-4. Add a property for everything that changes from card to card (image, origin, name, notes, price) and connect each one to its element. See [Property types](https://academy.bricksbuilder.io/builder/features/components/#property-types).
-
-A component has no color property type, but it has a [global classes property](https://academy.bricksbuilder.io/builder/features/components/#global-classes). Create one named `Color`, add an option for each pastel, assign each option its `bg-*` class, and connect the property to the card's root element. Each instance now only asks for its content and a color.
-
-Give the row of cards a class too:
-
-```css
-/* card-grid: as many columns as fit, four on a desktop */
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
-gap: var(--space-m);
-```
-
-The numbered section headings and the café panel become components the same way: `Section head`, and `Feature panel` with a `Style` option (global classes property) for a soft or a bold background.
-
-{/* screenshot: Coffee card component with its properties in the panel, the Color property dropdown open with the pastel options. */}
-
-## 7. Build a new page
-
-On a new page, the header and footer are already there because they are templates.
-
-1. Add a heading and an intro. They pick up the theme style without a single setting.
-2. Insert a `Section head`, then a Block with the `card-grid` class and `Coffee card` instances. Fill in the content and pick a color.
-3. Add a `Feature panel` with its own image and text.
-
-The page has no new styles. Everything on it comes from the system.
-
-{/* screenshot: The finished shop page on the frontend, built only from components, classes and the theme style. */}
-
-## Change the brand color
-
-Open the Color Manager and change `brand` to a new color. Bricks regenerates the shades from it, and headings, buttons, labels and panels follow on every page, in the header and in the footer.
-
-## Related
-
-- [Style Manager](https://academy.bricksbuilder.io/builder/features/style-manager/)
-- [Color Manager](https://academy.bricksbuilder.io/builder/features/color-manager/)
-- [Fluid Typography](https://academy.bricksbuilder.io/builder/styling/fluid-typography/)
-- [Global Variables Manager](https://academy.bricksbuilder.io/builder/styling/global-variables-manager/)
-- [Theme Styles](https://academy.bricksbuilder.io/builder/styling/theme-styles/)
-- [Global Class Manager](https://academy.bricksbuilder.io/builder/styling/global-class-manager/)
-- [Components](https://academy.bricksbuilder.io/builder/features/components/)
 
 ---
 
@@ -18349,6 +18328,22 @@ For an in-depth look at the CSS properties behind this feature, such as `scroll-
 
 ---
 
+<a id="builder-styling-shape-dividers"></a>
+
+# Shape Dividers
+
+Source: https://academy.bricksbuilder.io/builder/styling/shape-dividers/
+
+*Add and style shape dividers in Bricks to separate sections with SVG-based visual transitions.*
+
+Give your design an edge by adding an unlimited number of shape dividers such as tilts, drops, grids, clouds, strokes, triangles, waves, etc. to layout elements: Section, Container, Block, and Div.
+
+Shape dividers are available in the element style panel under **Shape Dividers**. You can add multiple dividers, choose a bundled shape or custom SVG, and control fill color, front/back placement, flipping, overflow, size, rotation, alignment, and offsets.
+
+https://youtu.be/rXhgQ5fsKDc
+
+---
+
 <a id="builder-styling-theme-styles"></a>
 
 # Theme Styles
@@ -18590,19 +18585,24 @@ The Stylesheet group is plain CSS. Add your own media queries if the CSS needs b
 
 ---
 
-<a id="builder-styling-shape-dividers"></a>
+<a id="builder-templates"></a>
 
-# Shape Dividers
+# Templates
 
-Source: https://academy.bricksbuilder.io/builder/styling/shape-dividers/
+Source: https://academy.bricksbuilder.io/builder/templates/
 
-*Add and style shape dividers in Bricks to separate sections with SVG-based visual transitions.*
+*Learn how Bricks templates work, including template types, conditions, settings, the template library, remote templates, and wireframes.*
 
-Give your design an edge by adding an unlimited number of shape dividers such as tilts, drops, grids, clouds, strokes, triangles, waves, etc. to layout elements: Section, Container, Block, and Div.
+Templates are central to how Bricks handles repeated layouts across headers, footers, archives, single posts, popups, and other site areas.
 
-Shape dividers are available in the element style panel under **Shape Dividers**. You can add multiple dividers, choose a bundled shape or custom SVG, and control fill color, front/back placement, flipping, overflow, size, rotation, alignment, and offsets.
+## Template workflow
 
-https://youtu.be/rXhgQ5fsKDc
+- [An Intro to Templates](https://academy.bricksbuilder.io/builder/features/an-intro-to-templates/) for the core concepts
+- [Create Template](https://academy.bricksbuilder.io/builder/features/create-template/) for creating new templates and choosing types
+- [Template Settings](https://academy.bricksbuilder.io/builder/features/template-settings/) for conditions and configuration
+- [Template Library](https://academy.bricksbuilder.io/builder/features/template-library/) for importing and reusing templates
+- [Remote Templates](https://academy.bricksbuilder.io/builder/features/remote-templates/) for external template sources
+- [Wireframe Templates](https://academy.bricksbuilder.io/builder/features/wireframe-templates/) for structure-first starting points
 
 ---
 
@@ -18693,6 +18693,42 @@ The Heading element displays text in heading tags (h1-h6) with optional separato
 > **Developer reference**
 >
 > See the [Heading Schema](https://academy.bricksbuilder.io/developer/schema/elements/heading/) for the full JSON schema of this element's settings and controls.
+
+---
+
+<a id="builder-elements-basic-icon"></a>
+
+# Icon
+
+Source: https://academy.bricksbuilder.io/builder/elements/basic/icon/
+
+*The Icon element displays an icon from various icon libraries or custom SVG icons.*
+
+The Icon element displays an icon from various icon libraries or custom SVG icons.
+
+## Settings
+
+- **Icon** (icon) - Select an icon from the available icon libraries (Themify, Font Awesome, Ionicons, etc.). Default: `ti-star` from Themify library.
+
+- **Color** (color) - The icon color. Applies to both icon font and SVG fill.
+
+- **Size** (number with units) - The icon size using font-size property.
+
+- **Link** (link) - Make the icon clickable by adding a link.
+
+### Accordion integration
+
+The following settings are only available when the icon is placed inside an Accordion (Nestable) element title wrapper:
+
+- **Is Accordion (Nestable) Icon** (checkbox) - Enable accordion-specific behavior for the icon.
+
+- **Show** (select) - Control icon visibility based on accordion state. Options: `collapsed`, `expanded`. Default: Always visible. When set to a specific state, duplicate the icon element and set different states to show different icons.
+
+- **Transform (Expanded)** (transform) - CSS transform properties to apply when the accordion item is expanded. By default, icons rotate 90° when expanded.
+
+> **Developer reference**
+>
+> See the [Icon Schema](https://academy.bricksbuilder.io/developer/schema/elements/icon/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -18865,42 +18901,6 @@ Apply a mask to the image for creative shapes and effects:
 > **Developer reference**
 >
 > See the [Image Schema](https://academy.bricksbuilder.io/developer/schema/elements/image/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-basic-icon"></a>
-
-# Icon
-
-Source: https://academy.bricksbuilder.io/builder/elements/basic/icon/
-
-*The Icon element displays an icon from various icon libraries or custom SVG icons.*
-
-The Icon element displays an icon from various icon libraries or custom SVG icons.
-
-## Settings
-
-- **Icon** (icon) - Select an icon from the available icon libraries (Themify, Font Awesome, Ionicons, etc.). Default: `ti-star` from Themify library.
-
-- **Color** (color) - The icon color. Applies to both icon font and SVG fill.
-
-- **Size** (number with units) - The icon size using font-size property.
-
-- **Link** (link) - Make the icon clickable by adding a link.
-
-### Accordion integration
-
-The following settings are only available when the icon is placed inside an Accordion (Nestable) element title wrapper:
-
-- **Is Accordion (Nestable) Icon** (checkbox) - Enable accordion-specific behavior for the icon.
-
-- **Show** (select) - Control icon visibility based on accordion state. Options: `collapsed`, `expanded`. Default: Always visible. When set to a specific state, duplicate the icon element and set different states to show different icons.
-
-- **Transform (Expanded)** (transform) - CSS transform properties to apply when the accordion item is expanded. By default, icons rotate 90° when expanded.
-
-> **Developer reference**
->
-> See the [Icon Schema](https://academy.bricksbuilder.io/developer/schema/elements/icon/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -19252,48 +19252,6 @@ Creates a checkbox filter interface for AJAX-powered content filtering. Users ca
 
 ---
 
-<a id="builder-elements-filter-filter-datepicker"></a>
-
-# Filter datepicker
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-datepicker/
-
-*Provides a date picker interface for filtering content by date ranges. Supports single dates or date ranges with time selection. Can filter by post dates, user.*
-
-Provides a date picker interface for filtering content by date ranges. Supports single dates or date ranges with time selection. Can filter by post dates, user registration dates, or custom date fields.
-
-**Tip:** Ideal for filtering content by publication date, event dates, or any time-based data. Enable "Date range" for before/after date filtering, and "Enable time" for precise time-based queries.
-
-## Settings
-
-- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
-- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
-- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
-- **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
-- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
-- **Field** (select) - Specific date field to filter by (post date, modified date, user registered date).
-- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
-- **Meta key** (text) - Custom field key containing date values.
-- **Enable time** (checkbox) - Add time selection capability to the date picker.
-- **Date range** (checkbox) - Enable selection of date ranges instead of single dates.
-- **Date format** (text) - Date format matching the database storage format. Default: Y-m-d H:i:s. ACF uses Ymd format.
-- **Min/max date** (checkbox) - Use minimum and maximum dates from the index table for date picker limits.
-- **Compare** (select) - Comparison operator for date filtering. Options: == (is), < (before), > (after).
-- **Input** - Settings for the date input field.
-  - **Placeholder** (text) - Placeholder text for the input field. Default: Date.
-  - **Placeholder typography** (typography) - Typography for placeholder text.
-  - **Language** (text) - Language code for date picker localization (de, es, fr, etc.).
-- **Active filter** - Settings for active filter display.
-  - **Prefix** (text) - Text to display before filter value.
-  - **Suffix** (text) - Text to display after filter value.
-  - **Title** (text) - Custom title attribute for filter links.
-
-> **Developer reference**
->
-> See the [Filter - Datepicker Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-datepicker/) for the full JSON schema of this element's settings and controls.
-
----
-
 <a id="builder-elements-filter-filter-radio"></a>
 
 # Filter radio
@@ -19349,6 +19307,58 @@ Creates a radio button filter interface for single-selection filtering. Users ca
 
 ---
 
+<a id="builder-elements-filter-filter-range"></a>
+
+# Filter range
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-range/
+
+*Creates a range slider or input interface for filtering content by numeric ranges. Perfect for price filtering, numeric custom fields, or any data that has.*
+
+Creates a range slider or input interface for filtering content by numeric ranges. Perfect for price filtering, numeric custom fields, or any data that has minimum and maximum values. Supports both slider and input field display modes.
+
+**Tip:** Essential for e-commerce price filtering or any scenario where users need to filter by numeric ranges.
+
+## Settings
+
+- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
+- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
+- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
+- **Source** (select) - Data source for filter options. Currently limited to Custom field.
+- **Field type** (select) - Type of field when using custom field source. Options: Post, Term, User.
+- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
+- **Meta key** (text) - Custom field key containing numeric values for range filtering.
+- **Disable auto min/max value** (checkbox) - Manually set min/max values instead of auto-detecting from query results.
+- **Mode** (select) - Display mode for the range filter. Options: Slider (visual slider), Input (text inputs).
+- **Step** (number) - Increment step for range values. Default: 1.
+- **Decimal places** (number) - Number of decimal places to display. Default: 0.
+- **Thousand separator** (checkbox) - Add thousand separators to displayed values.
+- **Separator** (text) - Thousand separator character. Default: ,.
+- **Label** - Settings for range value labels.
+  - **Min** (text) - Label for minimum value.
+  - **Max** (text) - Label for maximum value.
+  - **Direction** (direction) - Layout direction for min/max labels (row/column).
+  - **Gap** (number) - Spacing between min/max labels.
+- **Input** - Settings for input field mode.
+  - **Placeholder** (text) - Placeholder text for input fields.
+  - **Typography** (typography) - Typography for input field text.
+- **Slider** - Settings for slider mode.
+  - **Track color** (color) - Color of the slider track.
+  - **Range color** (color) - Color of the selected range on the slider.
+  - **Handle color** (color) - Color of the slider handles.
+  - **Handle size** (number) - Size of the slider handles.
+  - **Track height** (number) - Height of the slider track.
+- **Active filter** - Settings for active filter display.
+  - **Prefix** (text) - Text to display before filter value.
+  - **Suffix** (text) - Text to display after filter value.
+  - **Title** (text) - Custom title attribute for filter links.
+
+> **Developer reference**
+>
+> See the [Filter - Range Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-range/) for the full JSON schema of this element's settings and controls.
+
+---
+
 <a id="builder-elements-filter-filter-search"></a>
 
 # Filter search
@@ -19400,47 +19410,37 @@ For an AJAX search that should close an Offcanvas after submission, enable **Tri
 
 ---
 
-<a id="builder-elements-filter-filter-range"></a>
+<a id="builder-elements-filter-filter-datepicker"></a>
 
-# Filter range
+# Filter datepicker
 
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-range/
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-datepicker/
 
-*Creates a range slider or input interface for filtering content by numeric ranges. Perfect for price filtering, numeric custom fields, or any data that has.*
+*Provides a date picker interface for filtering content by date ranges. Supports single dates or date ranges with time selection. Can filter by post dates, user.*
 
-Creates a range slider or input interface for filtering content by numeric ranges. Perfect for price filtering, numeric custom fields, or any data that has minimum and maximum values. Supports both slider and input field display modes.
+Provides a date picker interface for filtering content by date ranges. Supports single dates or date ranges with time selection. Can filter by post dates, user registration dates, or custom date fields.
 
-**Tip:** Essential for e-commerce price filtering or any scenario where users need to filter by numeric ranges.
+**Tip:** Ideal for filtering content by publication date, event dates, or any time-based data. Enable "Date range" for before/after date filtering, and "Enable time" for precise time-based queries.
 
 ## Settings
 
 - **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
 - **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
 - **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
-- **Source** (select) - Data source for filter options. Currently limited to Custom field.
-- **Field type** (select) - Type of field when using custom field source. Options: Post, Term, User.
+- **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
+- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
+- **Field** (select) - Specific date field to filter by (post date, modified date, user registered date).
 - **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
-- **Meta key** (text) - Custom field key containing numeric values for range filtering.
-- **Disable auto min/max value** (checkbox) - Manually set min/max values instead of auto-detecting from query results.
-- **Mode** (select) - Display mode for the range filter. Options: Slider (visual slider), Input (text inputs).
-- **Step** (number) - Increment step for range values. Default: 1.
-- **Decimal places** (number) - Number of decimal places to display. Default: 0.
-- **Thousand separator** (checkbox) - Add thousand separators to displayed values.
-- **Separator** (text) - Thousand separator character. Default: ,.
-- **Label** - Settings for range value labels.
-  - **Min** (text) - Label for minimum value.
-  - **Max** (text) - Label for maximum value.
-  - **Direction** (direction) - Layout direction for min/max labels (row/column).
-  - **Gap** (number) - Spacing between min/max labels.
-- **Input** - Settings for input field mode.
-  - **Placeholder** (text) - Placeholder text for input fields.
-  - **Typography** (typography) - Typography for input field text.
-- **Slider** - Settings for slider mode.
-  - **Track color** (color) - Color of the slider track.
-  - **Range color** (color) - Color of the selected range on the slider.
-  - **Handle color** (color) - Color of the slider handles.
-  - **Handle size** (number) - Size of the slider handles.
-  - **Track height** (number) - Height of the slider track.
+- **Meta key** (text) - Custom field key containing date values.
+- **Enable time** (checkbox) - Add time selection capability to the date picker.
+- **Date range** (checkbox) - Enable selection of date ranges instead of single dates.
+- **Date format** (text) - Date format matching the database storage format. Default: Y-m-d H:i:s. ACF uses Ymd format.
+- **Min/max date** (checkbox) - Use minimum and maximum dates from the index table for date picker limits.
+- **Compare** (select) - Comparison operator for date filtering. Options: == (is), < (before), > (after).
+- **Input** - Settings for the date input field.
+  - **Placeholder** (text) - Placeholder text for the input field. Default: Date.
+  - **Placeholder typography** (typography) - Typography for placeholder text.
+  - **Language** (text) - Language code for date picker localization (de, es, fr, etc.).
 - **Active filter** - Settings for active filter display.
   - **Prefix** (text) - Text to display before filter value.
   - **Suffix** (text) - Text to display after filter value.
@@ -19448,7 +19448,7 @@ Creates a range slider or input interface for filtering content by numeric range
 
 > **Developer reference**
 >
-> See the [Filter - Range Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-range/) for the full JSON schema of this element's settings and controls.
+> See the [Filter - Datepicker Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-datepicker/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -19543,891 +19543,6 @@ This setting is separate from the exclusion list on the Active Filters element, 
 > **Developer reference**
 >
 > See the [Filter - Submit / Reset Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-submit/) for the schema snapshot and Bricks 2.4 settings reference.
-
----
-
-<a id="builder-elements-media-audio"></a>
-
-# Audio
-
-Source: https://academy.bricksbuilder.io/builder/elements/media/audio/
-
-*The Audio element embeds audio files with a customizable player interface.*
-
-The Audio element embeds audio files with a customizable player interface.
-
-## Settings
-
-- **Source** (select) - The audio source type. Options: `file` (media library), `external` (external URL), `dynamic` (dynamic data). Default: `file`.
-
-- **File** (audio) - Select an audio file from the media library. Available when source is "file".
-
-- **External URL** (text) - Enter an external audio file URL. Available when source is "external".
-
-- **Dynamic Data** (text with dynamic data) - Select audio from dynamic data source. Available when source is "dynamic".
-
-- **Custom title** (text) - Override the audio title. Not available for external sources.
-
-- **Show artist** (checkbox) - Display the artist name from audio metadata. Not available for external sources or when custom title is set.
-
-- **Show title** (checkbox) - Display the audio title from metadata. Not available for external sources or when custom title is set.
-
-- **Autoplay** (checkbox) - Automatically play the audio on page load. Note: Autoplay is blocked in most modern browsers.
-
-- **Loop** (checkbox) - Loop the audio playback.
-
-- **Tag** (select) - HTML tag for the audio title. Options: `p`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`. Default: `p`.
-
-- **Preload** (select) - Audio preload behavior. Options: `none`, `metadata`, `auto`. Default: `none`.
-
-- **Theme** (select) - Audio player color theme. Options: `light`, `dark`. Default: `light`.
-
-> **Developer reference**
->
-> See the [Audio Schema](https://academy.bricksbuilder.io/developer/schema/elements/audio/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-media-carousel"></a>
-
-# Carousel
-
-Source: https://academy.bricksbuilder.io/builder/elements/media/carousel/
-
-*The Carousel element displays images or posts in a swipeable carousel with customizable navigation and effects, using the Swiper library.*
-
-The Carousel element displays images or posts in a swipeable carousel with customizable navigation and effects, using the Swiper library.
-
-## Settings
-
-- **Type** (select) - Content type. Options: `media`, `posts`. Default: `media`.
-
-- **Images** (image-gallery) - Select images for the carousel. Only shown for media type.
-
-- **Query** (query) - Configure which posts to display. Only shown for posts type.
-
-### Settings
-
-- **Adaptive height** (checkbox) - Adjust height to content.
-
-- **Height** (number with units) - Fixed carousel height. Default: 300px. Not available when adaptive height is enabled.
-
-- **Spacing** (number) - Spacing between slides in pixels. Default: 0.
-
-- **Initial slide** (number) - Starting slide index. Default: 0.
-
-- **Items to show** (number) - Number of slides visible at once. Default: 2. Supports breakpoints.
-
-- **Items to scroll** (number) - Number of slides to advance per swipe. Default: 1. Supports breakpoints.
-
-- **Effect** (select) - Transition effect. Options: `slide`, `fade`, `cube`, `coverflow`, `flip`. Default: `slide`.
-
-- **Align items** (align-items) - Vertical alignment of slides. Only shown when adaptive height is enabled.
-
-- **Loop** (checkbox) - Enable infinite loop. Default: true.
-
-- **Center mode** (checkbox) - Center the active slide.
-
-- **Disable lazy load** (checkbox) - Load all images immediately.
-
-- **Autoplay** (checkbox) - Enable automatic sliding.
-
-- **Pause on hover** (checkbox) - Pause autoplay on hover.
-
-- **Stop on last slide** (checkbox) - Stop autoplay on last slide.
-
-- **Autoplay delay in ms** (number) - Delay between slides in milliseconds. Default: 3000.
-
-- **Animation speed in ms** (number) - Transition speed in milliseconds. Default: 300.
-
-### Image
-
-- **Hide image** (checkbox) - Hide images in post carousels.
-
-- **Image size** (select) - Size of images.
-
-- **Link to lightbox** (checkbox) - Open images in lightbox. Only for media type.
-
-- **Image size** (select) - Size of images in lightbox.
-
-- **Image click action** (select) - Action when clicking images. Options: `zoom`, `zoom-or-close`, `toggle-controls`, `next`, `close`. Default: `zoom`.
-
-- **Animation** (select) - Lightbox animation type. Default: `zoom`.
-
-- **Caption** (checkbox) - Show image captions in lightbox.
-
-- **Thumbnail navigation** (checkbox) - Show thumbnail navigation in lightbox.
-
-- **Thumbnail size** (number with units) - Size of thumbnails. Default: 60px.
-
-- **Padding** (dimensions) - Lightbox padding in pixels.
-
-### Fields
-
-- **Fields** (repeater) - Configure which post fields to display. Each field has:
-  - **Dynamic data** (text) - Dynamic data tag (e.g., `{post_title:link}`, `{post_excerpt:20}`).
-  - **HTML tag** (select) - HTML tag for the field. Options: `div`, `p`, `h1`-`h6`. Default: `div`.
-  - **Width** (number with units) - Field width.
-  - **Margin** (spacing) - Field margin.
-  - **Padding** (spacing) - Field padding.
-  - **Background color** (color) - Field background color.
-  - **Border** (border) - Field border styling.
-  - **Typography** (typography) - Field text styling.
-  - **Overlay** (checkbox) - Show field as overlay.
-
-### Content
-
-- **Alignment** (select) - Content alignment. Options: `top left`, `top center`, `top right`, `middle left`, `middle center`, `middle right`, `bottom left`, `bottom center`, `bottom right`.
-
-- **Min. height** (number with units) - Minimum content height.
-
-- **Margin** (spacing) - Content wrapper margin.
-
-- **Padding** (spacing) - Content wrapper padding.
-
-- **Background color** (color) - Content wrapper background color.
-
-### Overlay
-
-- **Show on hover** (checkbox) - Show overlay only on hover.
-
-- **Fade in animation** (select) - Overlay animation. Options: `fade-in-up`, `fade-in-right`, `fade-in-down`, `fade-in-left`, `zoom-in`, `zoom-out`.
-
-- **Alignment** (select) - Overlay alignment. Options: `top left`, `top center`, `top right`, `middle left`, `middle center`, `middle right`, `bottom left`, `bottom center`, `bottom right`.
-
-- **Margin** (spacing) - Overlay margin.
-
-- **Padding** (spacing) - Overlay padding.
-
-- **Background color** (color) - Overlay background color.
-
-- **Inner background color** (color) - Inner overlay background color.
-
-## Arrows
-
-- **Show arrows** (checkbox) - Display navigation arrows. Default: true.
-
-- **Height** (number with units) - Arrow button height. Default: 50px.
-
-- **Width** (number with units) - Arrow button width. Default: 50px.
-
-- **Background** (color) - Arrow button background color.
-
-- **Border** (border) - Arrow button border styling.
-
-- **Typography** (typography) - Arrow button text styling.
-
-### Prev arrow
-
-- **Prev arrow** (icon) - Previous arrow icon. Default: `ion-ios-arrow-back`.
-
-- **Top** (number with units) - Previous arrow top position. Default: 50%.
-
-- **Right** (number with units) - Previous arrow right position.
-
-- **Bottom** (number with units) - Previous arrow bottom position.
-
-- **Left** (number with units) - Previous arrow left position. Default: 50px.
-
-### Next arrow
-
-- **Next arrow** (icon) - Next arrow icon. Default: `ion-ios-arrow-forward`.
-
-- **Top** (number with units) - Next arrow top position.
-
-- **Right** (number with units) - Next arrow right position.
-
-- **Bottom** (number with units) - Next arrow bottom position.
-
-- **Left** (number with units) - Next arrow left position.
-
-## Dots
-
-- **Show dots** (checkbox) - Display pagination dots.
-
-- **Dynamic dots** (checkbox) - Enable dynamic bullet pagination.
-
-- **Vertical** (checkbox) - Display dots vertically.
-
-- **Height** (number with units) - Dot height.
-
-- **Width** (number with units) - Dot width.
-
-- **Top** (number with units) - Dots container top position.
-
-- **Right** (number with units) - Dots container right position.
-
-- **Bottom** (number with units) - Dots container bottom position.
-
-- **Left** (number with units) - Dots container left position.
-
-- **Border** (border) - Dot border styling.
-
-- **Color** (color) - Inactive dot color.
-
-- **Active color** (color) - Active dot color.
-
-- **Margin** (spacing) - Margin around individual dots. Default: 0px top, 5px right, 0px bottom, 0px left.
-
-> **Developer reference**
->
-> See the [Carousel Schema](https://academy.bricksbuilder.io/developer/schema/elements/carousel/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-media-file"></a>
-
-# File
-
-Source: https://academy.bricksbuilder.io/builder/elements/media/file/
-
-*Add downloadable files and links in Bricks from the Media Library, external URLs, or dynamic data, with optional inline PDF previews.*
-
-The File element displays a document as a linked file name, a download button, or both. PDF files can also appear in a browser-native inline preview.
-
-The element is available in Bricks 2.4. Find it under **Elements > Media > File**.
-
-![File element selected in the Bricks builder with the Source control and the File name, Download button, and PDF preview groups visible.](https://academy.bricksbuilder.io/assets/bricks-file-element-controls.webp)
-
-## Choose the file source
-
-Use the **Source** control to choose where the file comes from:
-
-- **File**: Select a file from the WordPress Media Library. This is the default source.
-- **External URL**: Enter the direct URL of a file hosted on this site or another site.
-- **Dynamic data**: Select a file or media value from [dynamic data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/). In a template, each post can supply its own document through a custom field.
-
-If a dynamic field returns more than one media item, the File element uses the first item.
-
-## File name
-
-The file name is shown as a link by default. It opens the file instead of forcing a download.
-
-The **File name** group contains these controls:
-
-- **Hide file name**: Removes the linked file name.
-- **Custom file name**: Replaces the name from the Media Library or file URL. This control supports dynamic data.
-- **Open in new tab**: Opens the file-name link in a new browser tab. It also applies to the fallback link inside a PDF preview.
-
-When no custom name is set, Bricks uses the Media Library filename or extracts the filename from the URL.
-
-## Download button
-
-The download button is shown by default. Use the **Download button** group to change its label, size, style, outline, and circle settings, or enable **Hide download button**.
-
-The filename link and download button have different purposes: the filename link opens the file, while the button uses the browser's download behavior. A browser or external file host can still open the file instead of downloading it.
-
-## PDF preview
-
-Bricks displays the preview when it recognizes the source as a PDF. A Media Library file is identified by its `application/pdf` MIME type. External and dynamic URLs are identified by a `.pdf` extension in the URL path.
-
-An external URL without `.pdf` in its path is not treated as a PDF, even if the server returns PDF content.
-
-The preview fills the element width and is 600px high by default. Its controls are in the **PDF preview** group:
-
-- **Hide PDF preview**: Removes the inline preview. The file name and download button remain available unless you hide them separately.
-- **Preview title**: Sets the accessible label for the embedded PDF. When left empty, Bricks generates a label from the file name.
-- **Height**: Sets the preview height. Use [responsive editing](https://academy.bricksbuilder.io/builder/interface/responsive-editing/) to adjust it at different breakpoints.
-- **Display**: Keep the preview inline at every viewport width, or use **Inline on desktop, hidden on mobile**.
-- **Hide at breakpoint**: Chooses the viewport width at which the preview is hidden. This appears when **Inline on desktop, hidden on mobile** is selected. If you do not choose a breakpoint, Bricks uses the Mobile landscape breakpoint, with 767px as the fallback width.
-- **Load PDF on click**: Delays loading the PDF until the visitor activates the preview placeholder.
-- **Preview image**: Sets the image shown before a click. This appears when **Load PDF on click** is enabled.
-
-With **Load PDF on click** enabled, Bricks uses the custom preview image first. If none is set, it uses a preview generated for the Media Library attachment when WordPress has one. Otherwise, the placeholder shows a PDF icon and the file name.
-
-![File element showing the generated PDF preview image before the PDF loads.](https://academy.bricksbuilder.io/assets/bricks-file-element-load-pdf-before.webp)
-
-![File element after loading the PDF in the browser-native inline viewer.](https://academy.bricksbuilder.io/assets/bricks-file-element-load-pdf-after.webp)
-
-> **Keep a file link available**
->
-> If the PDF preview is hidden at a breakpoint, its internal fallback link is hidden with it. Keep the file name or download button visible so visitors can still reach the document at that breakpoint.
-
-## Example: A PDF from a custom field
-
-Suppose each property post has a PDF brochure stored in a file field:
-
-1. Add the File element to the property template.
-2. Set **Source** to **Dynamic data**.
-3. Select the brochure file field.
-4. Enter a **Custom file name**, such as `{post_title} brochure`.
-5. Enable **Load PDF on click** if you do not want the browser to request the PDF when the page first loads.
-6. Add a **Preview image**, or let Bricks use the attachment preview when one is available.
-7. Keep the file name or download button visible as the non-preview way to reach the brochure.
-
-Open two property posts on the frontend. Each one displays the PDF stored on that post while keeping the same template layout.
-
-## Browser behavior and document access
-
-The File element uses the browser's built-in PDF support. The PDF toolbar, rendering, and print or download options can differ between browsers and devices.
-
-Hiding a download button or browser controls does not secure the PDF. The visitor's browser still receives the file URL and file contents. Protect restricted documents at the server or application level before using them in the File element.
-
-Non-PDF files do not receive an inline preview. They use the linked file name and download button.
-
----
-
-<a id="builder-elements-media-image-gallery"></a>
-
-# Image gallery
-
-Source: https://academy.bricksbuilder.io/builder/elements/media/image-gallery/
-
-*The Image Gallery element displays a collection of images in various layouts with optional lightbox functionality.*
-
-The Image Gallery element displays a collection of images in various layouts with optional lightbox functionality.
-
-## Settings
-
-- **Images** (image-gallery) - Select and upload images for the gallery.
-
-- **Layout** (select) - Gallery layout type. Options: `grid`, `masonry`, `metro`. Default: `grid`.
-
-- **Columns** (number) - Number of columns in the grid. Minimum: 2. Default: 3. Not available for metro layout.
-
-- **Spacing** (number with units) - Gap between images. Default: 0.
-
-- **Image height** (number with units) - Fixed height for images. Not available for masonry or metro layouts.
-
-- **Image ratio** (text) - Aspect ratio for images (e.g., 4/3, 16/9, 1/1). Not available for masonry or metro layouts.
-
-- **Image caption** (checkbox) - Display image captions.
-
-- **Link to** (select) - Link behavior for images. Options: `lightbox`, `attachment page`, `media file`, `custom URL`.
-
-- **Custom links** (repeater) - Define custom URLs for each image. Only shown when "Link to" is set to "custom URL".
-
-### Lightbox
-
-- **Image size** (select) - Size of images in lightbox. Default: Full.
-
-- **Image click action** (select) - Action when clicking images. Options: `zoom`, `zoom or close`, `toggle controls`, `next`, `close`. Default: `zoom`.
-
-- **Animation** (select) - Lightbox transition animation.
-
-- **Caption** (checkbox) - Show image captions in lightbox.
-
-- **Thumbnail navigation** (checkbox) - Enable thumbnail navigation.
-
-- **Thumbnail size** (number with units) - Size of thumbnails. Default: 60px.
-
-- **Padding (px)** (dimensions) - Padding around the lightbox.
-
-- **Lightbox: ID** (text) - Group images with the same ID together in the same lightbox.
-
-- **Fetch priority** (select) - Image loading priority. Options: `high`, `low`, `auto`.
-
-> **Developer reference**
->
-> See the [Image Gallery Schema](https://academy.bricksbuilder.io/developer/schema/elements/image-gallery/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-media-instagram-feed"></a>
-
-# Instagram feed
-
-Source: https://academy.bricksbuilder.io/builder/elements/media/instagram-feed/
-
-*The Instagram feed element loads media from the Instagram Graph API using an access token saved in Bricks → Settings → API keys (instagramAccessToken). Without.*
-
-The **Instagram feed** element loads media from the **Instagram Graph API** using an **access token** saved in **Bricks → Settings → API keys** (`instagramAccessToken`). Without a token, the element shows a placeholder asking you to connect the account.
-
-Responses are **cached** in a transient to limit API calls; cache length is configurable.
-
-## Requirements
-
-Add a valid **Instagram access token** under **Bricks → Settings → API keys**. The element’s info message links there when the global token is missing.
-
-## Layout
-
-- **Columns** (number) — CSS grid columns for the list (`ul`). Placeholder: `3`. Valid range on the front end: `1–6`.
-
-- **Posts** (number) — How many posts to request (min `1`, max `100`). Placeholder: `9`.
-
-## Image
-
-- **Object fit** (select) — Applied to `img`.
-
-- **Aspect ratio** (text).
-
-- **Height**, **Width** (number with units).
-
-- **Gap** (number with units) — Gap on the `ul` grid.
-
-- **Border** (border) — Image border.
-
-- **Link** (checkbox) — Wrap each image in a link to the Instagram permalink.
-
-## Carousel
-
-Optional styling for the **carousel** badge on **CAROUSEL_ALBUM** items:
-
-- **Icon** (icon), **Icon color** (color), **Icon size** (number with units), **Icon position** (dimensions).
-
-## Video
-
-Optional styling for the **video** play overlay on **VIDEO** items:
-
-- **Icon** (icon), **Icon color** (color), **Icon size** (number with units), **Icon position** (dimensions).
-
-## Caption
-
-- **Enable** (checkbox) — Show the post caption below the image.
-
-When enabled: **Background color**, **Border**, **Typography** on `.caption`.
-
-## Follow
-
-Optional “Follow us” row linking to `instagram.com/{username}`:
-
-- **Text** (text) — Default mentions `@yourhandle`; replace with your copy or dynamic data.
-
-- **Position** (select) — `top` or `bottom`.
-
-- **Icon** (icon) — Default Instagram logo.
-
-- **Typography** — `.follow` text.
-
-## Cache
-
-- **Duration** (select) — `30 minutes`, `1 hour`, `1 day`, or `1 week` (stored as seconds: `1800`, `3600`, `86400`, `604800`). Default placeholder: 1 hour.
-
-> **Developer reference**
->
-> See the [Instagram feed Schema](https://academy.bricksbuilder.io/developer/schema/elements/instagram-feed/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-media-logo"></a>
-
-# Logo
-
-Source: https://academy.bricksbuilder.io/builder/elements/media/logo/
-
-*The Logo element displays your site logo with support for regular, inverse, and dark-mode logo variants, custom dimensions, and fallback text.*
-
-The Logo element displays your site logo and can switch between logo variants for dark mode and sticky headers.
-
-## Settings
-
-- **Logo** (image) - Select the main logo image from the media library. Minimum dimension should be twice the logo height/width for proper retina display. For SVG logos, set height and width in px values.
-
-- **Logo inverse** (image) - Alternative logo image for sticky scrolling headers. Only available when the main logo is set.
-
-- **Logo dark mode** (image) - Alternative logo image used when dark mode is active. Only available when the main logo is set.
-
-- **Height** (number with units) - Logo height. Maximum: 400. Default: `auto`. Only available when logo is set.
-
-- **Width** (number with units) - Logo width. Maximum: 999. Default: `auto`. Only available when logo is set.
-
-- **Text** (text) - Fallback text displayed if logo image isn't set or available. Default: Site name from WordPress settings.
-
-- **Loading** (select) - Image loading behavior. Options: `eager`, `lazy`. Default: `eager`.
-
-- **Link to** (link) - Configure where the logo links. Default: Site home page.
-
-## Logo variants
-
-Logo variants are available starting in Bricks 2.4. Add them in the Logo element settings under **Logo variants**.
-
-When [dark mode](https://academy.bricksbuilder.io/builder/features/color-manager/#using-dark-mode) is active and **Logo dark mode** is configured, Bricks swaps the main logo image for the dark-mode logo. If no dark-mode logo is configured, the main logo stays visible.
-
-If the Logo element is inside a sticky header and **Logo inverse** is configured, the inverse logo is used while the header is scrolling. This takes priority over the dark-mode logo during the sticky scrolling state.
-
-> **Developer reference**
->
-> See the [Logo Schema](https://academy.bricksbuilder.io/developer/schema/elements/logo/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-media-slider-nested"></a>
-
-# Slider (nestable)
-
-Source: https://academy.bricksbuilder.io/builder/elements/media/slider-nested/
-
-*The Nestable Slider element allows creating sliders with drag-and-drop nesting in the builder, using the Splide library.*
-
-The Nestable Slider element allows creating sliders with drag-and-drop nesting in the builder, using the Splide library.
-
-## Settings
-
-- **Children** (nestable) - Drag and drop elements to create slider slides.
-
-### Options
-
-- **Options type** (select) - Use default settings or provide custom JSON options. Options: `default`, `custom`.
-
-- **Custom options** (code) - JSON configuration for Splide slider. Only shown when options type is custom. Provide your own options in JSON format (learn more).
-
-- **Type** (select) - Slider behavior. Options: `loop`, `slide`, `fade`. Default: `loop`.
-
-- **Direction** (select) - Slide direction. Options: `left to right`, `right to left`, `vertical`. Supports breakpoints.
-
-- **Keyboard** (select) - Keyboard navigation. Options: `off`, `focused`, `global`. Default: `global`. Supports breakpoints.
-
-- **Auto height** (checkbox) - Adjust height to content. May cause layout shift. Using "Auto height" might lead to CLS (Cumulative Layout Shift).
-
-- **Height** (number with units) - Fixed slider height. Default: 50vh. Not available when auto height is enabled. Supports breakpoints.
-
-- **Spacing** (number with units) - Gap between slides. Default: 0. Supports breakpoints.
-
-- **Start index** (number) - Initial slide index. Default: 0.
-
-- **Items to show** (number) - Number of slides visible at once. Default: 1. Supports breakpoints. Not available for fade type.
-
-- **Items to scroll** (number) - Number of slides to scroll at once. Default: 1. Supports breakpoints. Not available for fade type.
-
-- **Speed in ms** (number) - Transition speed. Default: 400. Supports breakpoints.
-
-- **Focus** (number) - Determines which slide should be active if the carousel has multiple slides in a page. Number/"center". Supports breakpoints.
-
-#### Autoplay
-
-- **Autoplay** (checkbox) - Enable automatic slide progression.
-
-- **Pause on hover** (checkbox) - Pause autoplay when hovering over slider.
-
-- **Pause on focus** (checkbox) - Pause autoplay when slider is focused.
-
-- **Interval in ms** (number) - Time between slides. Default: 3000.
-
-#### Rewind
-
-Available when type is not "loop":
-
-- **Rewind** (checkbox) - Enable rewind functionality.
-
-- **Rewind by drag** (checkbox) - Allow rewinding by dragging.
-
-- **Speed in ms** (number) - Rewind transition speed.
-
-### Slide
-
-- **Padding** (spacing) - Padding inside slides.
-
-- **Align horizontal** (align-items) - Horizontal alignment of slide content. Options: `flex-start`, `center`, `flex-end`.
-
-- **Align vertical** (justify-content) - Vertical alignment of slide content. Options: `flex-start`, `center`, `flex-end`, `space-between`, `space-around`.
-
-- **Background** (background) - Background styling for slides.
-
-- **Border** (border) - Border styling for slides.
-
-### Arrows
-
-- **Show** (checkbox) - Display navigation arrows.
-
-- **Height** (number with units) - Arrow button height. Default: 50px.
-
-- **Width** (number with units) - Arrow button width. Default: 50px.
-
-- **Background** (color) - Arrow button background color.
-
-- **Border** (border) - Arrow button border styling.
-
-- **Color** (color) - Arrow icon color.
-
-- **Size** (number with units) - Arrow icon size.
-
-- **Text shadow** (text-shadow) - Text shadow for arrow icons.
-
-#### Disabled
-
-- **Background** (color) - Background color for disabled arrows.
-
-- **Border** (border) - Border styling for disabled arrows.
-
-- **Color** (color) - Icon color for disabled arrows.
-
-- **Opacity** (number) - Opacity for disabled arrows (0-1).
-
-#### Prev arrow
-
-- **Prev arrow** (icon) - Custom icon for previous arrow.
-
-- **Top** (number with units) - Top position. Default: 50%.
-
-- **Right** (number with units) - Right position.
-
-- **Bottom** (number with units) - Bottom position.
-
-- **Left** (number with units) - Left position.
-
-- **Transform** (transform) - CSS transform for previous arrow.
-
-#### Next arrow
-
-- **Next arrow** (icon) - Custom icon for next arrow.
-
-- **Top** (number with units) - Top position. Default: 50%.
-
-- **Right** (number with units) - Right position.
-
-- **Bottom** (number with units) - Bottom position.
-
-- **Left** (number with units) - Left position.
-
-- **Transform** (transform) - CSS transform for next arrow.
-
-### Pagination
-
-- **Show** (checkbox) - Display pagination dots. Default: enabled.
-
-- **Margin** (spacing) - Margin around pagination dots. Default: 5px on all sides.
-
-- **Height** (number with units) - Dot height. Default: 10px.
-
-- **Width** (number with units) - Dot width. Default: 10px.
-
-- **Color** (color) - Dot color and background color.
-
-- **Border** (border) - Border styling for dots.
-
-#### Active
-
-- **Height** (number with units) - Height for active dot.
-
-- **Width** (number with units) - Width for active dot.
-
-- **Color** (color) - Color for active dot.
-
-- **Border** (border) - Border styling for active dot.
-
-> **Developer reference**
->
-> See the [Slider (Nestable) Schema](https://academy.bricksbuilder.io/developer/schema/elements/slider-nested/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-media-slider"></a>
-
-# Slider
-
-Source: https://academy.bricksbuilder.io/builder/elements/media/slider/
-
-*The Slider element creates a full-width image slider with customizable slides containing titles, content, and buttons, using the Swiper library.*
-
-The Slider element creates a full-width image slider with customizable slides containing titles, content, and buttons, using the Swiper library.
-
-## Security scanner reports
-
-Bricks 2.4 patches the legacy Swiper build used by the classic Slider element. The bundled asset is a Bricks-patched vendored Swiper 8 legacy build with the CVE-2026-27212 / GHSA-hmx5-qpq5-p643 mitigation backported.
-
-Bricks keeps the Swiper 8 runtime behavior so existing sliders continue to behave as before, including loop configurations that depend on Swiper 8 duplicate slides. The public `bricks-swiper` script version is `bricks-cve-2026-27212-p1`, and the bundled file no longer reports stock `Swiper 8.4.4` in its header.
-
-Some security scanners may still fingerprint the underlying minified Swiper 8 code and flag it. Use this VEX or exception note: `Bricks-patched vendored Swiper 8 legacy build with CVE-2026-27212 backport.`
-
-## Settings
-
-- **Slides** (repeater) - Add slider slides. Each slide has:
-  - **Title** (text) - Slide title.
-  - **Title Tag** (select) - HTML tag for title. Options: `h1`-`h6`. Default: `h3`.
-  - **Content** (rich text) - Slide content.
-  - **Button text** (text) - Call-to-action button text.
-  - **Button style** (select) - Button style. Default: `light`.
-  - **Button size** (select) - Button size.
-  - **Button width** (number with units) - Button width.
-  - **Button link** (link) - Button destination.
-  - **Button background** (color) - Button background color.
-  - **Button border** (border) - Button border styling.
-  - **Button box shadow** (box-shadow) - Button shadow.
-  - **Button typography** (typography) - Button text styling.
-  - **Background** (background) - Slide background (color, image, gradient).
-  - **Overlay** (color) - Overlay color over the background.
-
-- **Slides to show** (number) - Number of slides visible at once. Default: 1.
-
-- **Slides to scroll** (number) - Number of slides to advance per transition. Default: 1.
-
-- **Spacing** (number) - Spacing between slides in pixels. Default: 0.
-
-- **Height** (number with units) - Slider height. Default: 300px.
-
-- **Effect** (select) - Transition effect. Options: `slide`, `fade`, `cube`, `coverflow`, `flip`. Default: `slide`.
-
-- **Loop** (select) - Enable infinite loop. Options: `enable`, `disable`. Default: `enable`.
-
-- **Center mode** (checkbox) - Center the active slide.
-
-- **Disable lazy load** (checkbox) - Load all images immediately.
-
-- **Autoplay** (checkbox) - Enable automatic sliding.
-
-- **Pause on hover** (checkbox) - Pause autoplay on hover.
-
-- **Stop on last slide** (checkbox) - Stop autoplay on the last slide.
-
-- **Autoplay delay in ms** (number) - Delay between slides in milliseconds. Default: 3000.
-
-- **Animation speed in ms** (number) - Transition speed in milliseconds. Default: 300.
-
-### Title
-
-- **Title margin** (spacing) - Margin around slide titles.
-
-- **Title typography** (typography) - Font settings for slide titles.
-
-### Content
-
-- **Content width** (number with units) - Maximum width of slide content.
-
-- **Content background** (color) - Background color for slide content.
-
-- **Content typography** (typography) - Font settings for slide content.
-
-- **Content margin** (spacing) - Margin around slide content.
-
-- **Content padding** (spacing) - Padding inside slide content. Default: 30px top, 60px right, 30px bottom, 60px left.
-
-- **Content align horizontal** (justify-content) - Horizontal alignment of content within slides.
-
-- **Content align vertical** (align-items) - Vertical alignment of content within slides.
-
-- **Content text align** (text-align) - Text alignment within slide content.
-
-### Button
-
-- **Button style** (select) - Global button style. Default: `light`.
-
-- **Button size** (select) - Global button size.
-
-- **Button width** (number with units) - Global button width.
-
-- **Background** (color) - Global button background color.
-
-- **Border** (border) - Global button border styling.
-
-- **Box shadow** (box-shadow) - Global button shadow.
-
-- **Typography** (typography) - Global button text styling.
-
-### Background
-
-- **Top** (number with units) - Background image top position.
-
-- **Right** (number with units) - Background image right position.
-
-- **Bottom** (number with units) - Background image bottom position.
-
-- **Left** (number with units) - Background image left position.
-
-## Arrows
-
-- **Show arrows** (checkbox) - Display navigation arrows. Default: true.
-
-- **Height** (number with units) - Arrow button height. Default: 50px.
-
-- **Width** (number with units) - Arrow button width. Default: 50px.
-
-- **Background** (color) - Arrow button background color.
-
-- **Border** (border) - Arrow button border styling.
-
-- **Typography** (typography) - Arrow button text styling.
-
-### Prev arrow
-
-- **Prev arrow** (icon) - Previous arrow icon. Default: `ion-ios-arrow-back`.
-
-- **Top** (number with units) - Previous arrow top position. Default: 50%.
-
-- **Right** (number with units) - Previous arrow right position.
-
-- **Bottom** (number with units) - Previous arrow bottom position.
-
-- **Left** (number with units) - Previous arrow left position. Default: 50px.
-
-- **Transform** (transform) - Previous arrow transformations.
-
-### Next arrow
-
-- **Next arrow** (icon) - Next arrow icon. Default: `ion-ios-arrow-forward`.
-
-- **Top** (number with units) - Next arrow top position.
-
-- **Right** (number with units) - Next arrow right position.
-
-- **Bottom** (number with units) - Next arrow bottom position.
-
-- **Left** (number with units) - Next arrow left position.
-
-- **Transform** (transform) - Next arrow transformations.
-
-## Dots
-
-- **Show dots** (checkbox) - Display pagination dots.
-
-- **Dynamic dots** (checkbox) - Enable dynamic bullet pagination.
-
-- **Vertical** (checkbox) - Display dots vertically.
-
-- **Height** (number with units) - Dot height.
-
-- **Width** (number with units) - Dot width.
-
-- **Top** (number with units) - Dots container top position.
-
-- **Right** (number with units) - Dots container right position.
-
-- **Bottom** (number with units) - Dots container bottom position.
-
-- **Left** (number with units) - Dots container left position.
-
-- **Border** (border) - Dot border styling.
-
-- **Color** (color) - Inactive dot color.
-
-- **Active color** (color) - Active dot color.
-
-- **Margin** (spacing) - Margin around individual dots.
-
-> **Developer reference**
->
-> See the [Slider Schema](https://academy.bricksbuilder.io/developer/schema/elements/slider/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-media-svg"></a>
-
-# SVG
-
-Source: https://academy.bricksbuilder.io/builder/elements/media/svg/
-
-*The SVG element displays SVG graphics from files, dynamic data, custom code, or icon sets.*
-
-The SVG element displays SVG graphics from files, dynamic data, custom code, or icon sets.
-
-## Settings
-
-- **Source** (select) - SVG source type. Options: `file` (default), `dynamicData`, `code`, `iconSet`.
-
-- **File** (svg upload) - Upload an SVG file from your computer. Available when source is "file".
-
-- **Icon set** (icon) - Select an SVG from custom icon libraries. Available when source is "iconSet".
-
-- **Dynamic data** (text with dynamic data) - Load SVG from dynamic data. Supported field types: File, Image, SVG code, URL. Available when source is "dynamicData".
-
-- **Code** (code editor) - Paste SVG code directly. Only available to users with code execution permissions. Ensure SVG code is safe and doesn't contain malicious code. Consider using an SVG cleaner like svgomg.net. Available when source is "code".
-
-### Styling
-
-- **Height** (number with units) - SVG height.
-
-- **Width** (number with units) - SVG width.
-
-- **Stroke width** (number) - Width of SVG stroke lines. Minimum: 1.
-
-- **Stroke color** (color) - Color of SVG stroke elements (excludes elements with `stroke="none"`).
-
-- **Fill** (color) - Fill color for SVG shapes (excludes elements with `fill="none"`).
-
-- **Link** (link) - Make the SVG clickable by adding a link.
-
-> **Developer reference**
->
-> See the [SVG Schema](https://academy.bricksbuilder.io/developer/schema/elements/svg/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -20865,148 +19980,6 @@ The Divider element creates horizontal or vertical separator lines with optional
 
 ---
 
-<a id="builder-elements-general-accordion"></a>
-
-# Accordion
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/accordion/
-
-*The Accordion element creates collapsible content sections with titles and expandable content.*
-
-The Accordion element creates collapsible content sections with titles and expandable content.
-
-## Settings
-
-- **Accordion** (repeater) - Add accordion items. Each item has:
-  - **Title** (text) - The clickable title of the accordion item.
-  - **ID** (text) - Anchor ID for linking to the item (no spaces, no pound sign).
-  - **Subtitle** (text) - Optional subtitle below the title.
-  - **Content** (rich text) - The expandable content of the item.
-
-- **Expand item indexes** (text) - Comma-separated indexes of items to expand on page load (starting at 0).
-
-- **Independent toggle** (checkbox) - Allow multiple items to be open simultaneously. Enable to open & close an item without toggling other items.
-
-- **Transition (ms)** (number) - Animation duration for expanding/collapsing in milliseconds. Default: 200.
-
-- **FAQ schema** (checkbox) - Generate FAQPage structured data (JSON-LD) for search engines.
-
-### Title
-
-- **HTML tag** (select) - HTML tag for titles. Options: `div`, `h1`-`h6`. Default: `h3`.
-
-- **Icon** (icon) - Icon for collapsed state. Default: right arrow (ion-ios-arrow-forward).
-
-- **Icon typography** (typography) - Font settings for the collapsed icon.
-
-- **Icon expanded** (icon) - Icon for expanded state. Default: down arrow (ion-ios-arrow-down).
-
-- **Icon expanded typography** (typography) - Font settings for the expanded icon.
-
-- **Icon position** (select) - Position of the icon relative to text. Default: Right.
-
-- **Icon rotate in °** (number) - Rotation angle for the icon in degrees. Icon rotation for expanded accordion.
-
-- **Margin** (spacing) - Margin around title wrappers.
-
-- **Padding** (spacing) - Padding inside title wrappers.
-
-- **Title typography** (typography) - Typography settings for title text.
-
-- **Subtitle typography** (typography) - Typography settings for subtitle text.
-
-- **Background color** (color) - Background color for title wrappers.
-
-- **Border** (border) - Border styling for title wrappers.
-
-- **Box shadow** (box-shadow) - Box shadow for title wrappers.
-
-- **Active typography** (typography) - Typography settings for active/expanded title text.
-
-- **Active background** (color) - Background color for active/expanded title wrappers.
-
-- **Active border** (border) - Border styling for active/expanded title wrappers.
-
-### Content
-
-- **Margin** (spacing) - Margin around content wrappers.
-
-- **Padding** (spacing) - Padding inside content wrappers.
-
-- **Content typography** (typography) - Typography settings for content text.
-
-- **Background color** (color) - Background color for content wrappers.
-
-- **Border** (border) - Border styling for content wrappers.
-
-> **Developer reference**
->
-> See the [Accordion Schema](https://academy.bricksbuilder.io/developer/schema/elements/accordion/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-general-accordion-nested"></a>
-
-# Accordion (nestable)
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/accordion-nested/
-
-*The Nestable Accordion element allows creating hierarchical collapsible content with drag-and-drop nesting in the builder.*
-
-The Nestable Accordion element allows creating hierarchical collapsible content with drag-and-drop nesting in the builder.
-
-## Settings
-
-- **Children** (nestable) - Drag and drop elements to create accordion items. Each item can contain nested content. Set "ID" on items to open via anchor link (no spaces, no pound sign).
-
-- **Expand item indexes** (text) - Comma-separated indexes of items to expand on page load (starting at 0).
-
-- **Independent toggle** (checkbox) - Allow multiple items to be open simultaneously. Enable to open & close an item without toggling other items.
-
-- **Transition (ms)** (number) - Animation duration for expanding/collapsing in milliseconds. Default: 200.
-
-- **FAQ schema** (checkbox) - Generate FAQPage structured data (JSON-LD) for search engines.
-
-### Title
-
-- **Min. height** (number with units) - Minimum height for title areas. Default: 50px.
-
-- **Margin** (spacing) - Margin around title wrappers.
-
-- **Padding** (spacing) - Padding inside title wrappers.
-
-- **Background color** (color) - Background color for title wrappers.
-
-- **Border** (border) - Border styling for title wrappers.
-
-- **Typography** (typography) - Typography settings for title text and headings.
-
-#### Active Title
-
-- **Background color** (color) - Background color for active/expanded title wrappers.
-
-- **Border** (border) - Border styling for active/expanded title wrappers.
-
-- **Typography** (typography) - Typography settings for active/expanded title text and headings.
-
-### Content
-
-- **Margin** (spacing) - Margin around content wrappers.
-
-- **Padding** (spacing) - Padding inside content wrappers. Default: 15px top/bottom, 0px left/right.
-
-- **Background color** (color) - Background color for content wrappers.
-
-- **Border** (border) - Border styling for content wrappers.
-
-- **Typography** (typography) - Typography settings for content text.
-
-> **Developer reference**
->
-> See the [Accordion (Nestable) Schema](https://academy.bricksbuilder.io/developer/schema/elements/accordion-nested/) for the full JSON schema of this element's settings and controls.
-
----
-
 <a id="builder-elements-layout-list"></a>
 
 # List
@@ -21126,27 +20099,65 @@ The List element creates customizable lists with icons, titles, meta information
 
 ---
 
-<a id="builder-elements-general-alert"></a>
+<a id="builder-elements-general-accordion-nested"></a>
 
-# Alert
+# Accordion (nestable)
 
-Source: https://academy.bricksbuilder.io/builder/elements/general/alert/
+Source: https://academy.bricksbuilder.io/builder/elements/general/accordion-nested/
 
-*The Alert element displays informational messages with different types and optional dismiss functionality.*
+*The Nestable Accordion element allows creating hierarchical collapsible content with drag-and-drop nesting in the builder.*
 
-The Alert element displays informational messages with different types and optional dismiss functionality.
+The Nestable Accordion element allows creating hierarchical collapsible content with drag-and-drop nesting in the builder.
 
 ## Settings
 
-- **Content** (rich text) - The alert message content. Supports dynamic data and rich text.
+- **Children** (nestable) - Drag and drop elements to create accordion items. Each item can contain nested content. Set "ID" on items to open via anchor link (no spaces, no pound sign).
 
-- **Type** (select) - The alert style type. Options: `info`, `success`, `warning`, `danger`, `muted`. Default: `info`.
+- **Expand item indexes** (text) - Comma-separated indexes of items to expand on page load (starting at 0).
 
-- **Dismissable** (checkbox) - Adds a close button to allow users to dismiss the alert.
+- **Independent toggle** (checkbox) - Allow multiple items to be open simultaneously. Enable to open & close an item without toggling other items.
+
+- **Transition (ms)** (number) - Animation duration for expanding/collapsing in milliseconds. Default: 200.
+
+- **FAQ schema** (checkbox) - Generate FAQPage structured data (JSON-LD) for search engines.
+
+### Title
+
+- **Min. height** (number with units) - Minimum height for title areas. Default: 50px.
+
+- **Margin** (spacing) - Margin around title wrappers.
+
+- **Padding** (spacing) - Padding inside title wrappers.
+
+- **Background color** (color) - Background color for title wrappers.
+
+- **Border** (border) - Border styling for title wrappers.
+
+- **Typography** (typography) - Typography settings for title text and headings.
+
+#### Active Title
+
+- **Background color** (color) - Background color for active/expanded title wrappers.
+
+- **Border** (border) - Border styling for active/expanded title wrappers.
+
+- **Typography** (typography) - Typography settings for active/expanded title text and headings.
+
+### Content
+
+- **Margin** (spacing) - Margin around content wrappers.
+
+- **Padding** (spacing) - Padding inside content wrappers. Default: 15px top/bottom, 0px left/right.
+
+- **Background color** (color) - Background color for content wrappers.
+
+- **Border** (border) - Border styling for content wrappers.
+
+- **Typography** (typography) - Typography settings for content text.
 
 > **Developer reference**
 >
-> See the [Alert Schema](https://academy.bricksbuilder.io/developer/schema/elements/alert/) for the full JSON schema of this element's settings and controls.
+> See the [Accordion (Nestable) Schema](https://academy.bricksbuilder.io/developer/schema/elements/accordion-nested/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -21269,6 +20280,110 @@ You can change the section `width`, `min-width`, `max-width`, `margin`, and `pad
 
 ---
 
+<a id="builder-elements-general-accordion"></a>
+
+# Accordion
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/accordion/
+
+*The Accordion element creates collapsible content sections with titles and expandable content.*
+
+The Accordion element creates collapsible content sections with titles and expandable content.
+
+## Settings
+
+- **Accordion** (repeater) - Add accordion items. Each item has:
+  - **Title** (text) - The clickable title of the accordion item.
+  - **ID** (text) - Anchor ID for linking to the item (no spaces, no pound sign).
+  - **Subtitle** (text) - Optional subtitle below the title.
+  - **Content** (rich text) - The expandable content of the item.
+
+- **Expand item indexes** (text) - Comma-separated indexes of items to expand on page load (starting at 0).
+
+- **Independent toggle** (checkbox) - Allow multiple items to be open simultaneously. Enable to open & close an item without toggling other items.
+
+- **Transition (ms)** (number) - Animation duration for expanding/collapsing in milliseconds. Default: 200.
+
+- **FAQ schema** (checkbox) - Generate FAQPage structured data (JSON-LD) for search engines.
+
+### Title
+
+- **HTML tag** (select) - HTML tag for titles. Options: `div`, `h1`-`h6`. Default: `h3`.
+
+- **Icon** (icon) - Icon for collapsed state. Default: right arrow (ion-ios-arrow-forward).
+
+- **Icon typography** (typography) - Font settings for the collapsed icon.
+
+- **Icon expanded** (icon) - Icon for expanded state. Default: down arrow (ion-ios-arrow-down).
+
+- **Icon expanded typography** (typography) - Font settings for the expanded icon.
+
+- **Icon position** (select) - Position of the icon relative to text. Default: Right.
+
+- **Icon rotate in °** (number) - Rotation angle for the icon in degrees. Icon rotation for expanded accordion.
+
+- **Margin** (spacing) - Margin around title wrappers.
+
+- **Padding** (spacing) - Padding inside title wrappers.
+
+- **Title typography** (typography) - Typography settings for title text.
+
+- **Subtitle typography** (typography) - Typography settings for subtitle text.
+
+- **Background color** (color) - Background color for title wrappers.
+
+- **Border** (border) - Border styling for title wrappers.
+
+- **Box shadow** (box-shadow) - Box shadow for title wrappers.
+
+- **Active typography** (typography) - Typography settings for active/expanded title text.
+
+- **Active background** (color) - Background color for active/expanded title wrappers.
+
+- **Active border** (border) - Border styling for active/expanded title wrappers.
+
+### Content
+
+- **Margin** (spacing) - Margin around content wrappers.
+
+- **Padding** (spacing) - Padding inside content wrappers.
+
+- **Content typography** (typography) - Typography settings for content text.
+
+- **Background color** (color) - Background color for content wrappers.
+
+- **Border** (border) - Border styling for content wrappers.
+
+> **Developer reference**
+>
+> See the [Accordion Schema](https://academy.bricksbuilder.io/developer/schema/elements/accordion/) for the full JSON schema of this element's settings and controls.
+
+---
+
+<a id="builder-elements-general-alert"></a>
+
+# Alert
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/alert/
+
+*The Alert element displays informational messages with different types and optional dismiss functionality.*
+
+The Alert element displays informational messages with different types and optional dismiss functionality.
+
+## Settings
+
+- **Content** (rich text) - The alert message content. Supports dynamic data and rich text.
+
+- **Type** (select) - The alert style type. Options: `info`, `success`, `warning`, `danger`, `muted`. Default: `info`.
+
+- **Dismissable** (checkbox) - Adds a close button to allow users to dismiss the alert.
+
+> **Developer reference**
+>
+> See the [Alert Schema](https://academy.bricksbuilder.io/developer/schema/elements/alert/) for the full JSON schema of this element's settings and controls.
+
+---
+
 <a id="builder-elements-general-animated-typing"></a>
 
 # Animated typing
@@ -21344,52 +20459,6 @@ Bricks surfaces **z-index**, **gap** (space between nested children), and **CSS 
 > **Developer reference**
 >
 > See the [Back to Top Schema](https://academy.bricksbuilder.io/developer/schema/elements/back-to-top/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-general-code"></a>
-
-# Code
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/code/
-
-*The Code element allows you to add and execute PHP, HTML, CSS, or JavaScript code with syntax highlighting and optional code execution.*
-
-The Code element allows you to add and execute PHP, HTML, CSS, or JavaScript code with syntax highlighting and optional code execution.
-
-## Settings
-
-### Code Execution
-
-Available only for users with code execution permissions:
-
-- **Execute code** (checkbox) - Run the code on your site instead of displaying it. Only add code you consider safe.
-
-- **Parse dynamic data** (checkbox) - Parse dynamic data tags within the code. Only available when execute code is enabled.
-
-- **Suppress PHP errors** (checkbox) - Hide PHP errors from displaying. Add "brx_code_errors" as a URL parameter to show errors if needed. Only available when execute code is enabled.
-
-- **Render without wrapper** (checkbox) - Render on the frontend without the div wrapper. Style tab settings won't apply when this is enabled. Only available when execute code is enabled.
-
-### Code Editors
-
-Available when code execution is disabled or not allowed:
-
-- **PHP & HTML** (code editor) - PHP and HTML code editor with syntax highlighting. Supports dynamic data and variables. Default example includes HTML heading and PHP date output.
-
-- **CSS** (code editor) - CSS code editor with syntax highlighting. CSS is automatically wrapped in style tags. Supports dynamic data and variables.
-
-- **JavaScript** (code editor) - JavaScript code editor with syntax highlighting. JavaScript is automatically wrapped in script tags. Supports dynamic data.
-
-### Syntax Highlighting
-
-Available when code execution is disabled:
-
-- **Theme** (select) - Code syntax highlighting theme. Options: `github` (light), `tomorrow` (light), `tomorrow-night` (dark), `tranquil-heart` (dark). Default: None. Can also be set globally via theme styles.
-
-> **Developer reference**
->
-> See the [Code Schema](https://academy.bricksbuilder.io/developer/schema/elements/code/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -21531,47 +20600,49 @@ Use these settings to style the last item in the breadcrumb trail, which represe
 
 ---
 
-<a id="builder-elements-general-counter"></a>
+<a id="builder-elements-general-code"></a>
 
-# Counter
+# Code
 
-Source: https://academy.bricksbuilder.io/builder/elements/general/counter/
+Source: https://academy.bricksbuilder.io/builder/elements/general/code/
 
-*The Counter element animates a number from a starting value to an ending value with customizable prefix, suffix, and formatting.*
+*The Code element allows you to add and execute PHP, HTML, CSS, or JavaScript code with syntax highlighting and optional code execution.*
 
-The Counter element animates a number from a starting value to an ending value with customizable prefix, suffix, and formatting.
+The Code element allows you to add and execute PHP, HTML, CSS, or JavaScript code with syntax highlighting and optional code execution.
 
 ## Settings
 
-- **Count from** (text) - The starting number for the animation. Default: 0.
+### Code Execution
 
-- **Count to** (text) - The ending number for the animation. Default: 1000.
+Available only for users with code execution permissions:
 
-- **Animation in ms** (number) - Duration of the counting animation in milliseconds. Default: 1000.
+- **Execute code** (checkbox) - Run the code on your site instead of displaying it. Only add code you consider safe.
 
-- **Typography** (typography) - Font settings for the counter number.
+- **Parse dynamic data** (checkbox) - Parse dynamic data tags within the code. Only available when execute code is enabled.
 
-### Prefix
+- **Suppress PHP errors** (checkbox) - Hide PHP errors from displaying. Add "brx_code_errors" as a URL parameter to show errors if needed. Only available when execute code is enabled.
 
-- **Prefix** (text) - Text displayed before the counter number.
+- **Render without wrapper** (checkbox) - Render on the frontend without the div wrapper. Style tab settings won't apply when this is enabled. Only available when execute code is enabled.
 
-- **Typography** (typography) - Font settings for the prefix text.
+### Code Editors
 
-### Suffix
+Available when code execution is disabled or not allowed:
 
-- **Suffix** (text) - Text displayed after the counter number.
+- **PHP & HTML** (code editor) - PHP and HTML code editor with syntax highlighting. Supports dynamic data and variables. Default example includes HTML heading and PHP date output.
 
-- **Typography** (typography) - Font settings for the suffix text.
+- **CSS** (code editor) - CSS code editor with syntax highlighting. CSS is automatically wrapped in style tags. Supports dynamic data and variables.
 
-### Separator
+- **JavaScript** (code editor) - JavaScript code editor with syntax highlighting. JavaScript is automatically wrapped in script tags. Supports dynamic data.
 
-- **Thousand separator** (checkbox) - Add thousand separators to the number.
+### Syntax Highlighting
 
-- **Separator** (text) - Character used as the thousand separator. Default: ",". Only shown when "Thousand separator" is enabled.
+Available when code execution is disabled:
+
+- **Theme** (select) - Code syntax highlighting theme. Options: `github` (light), `tomorrow` (light), `tomorrow-night` (dark), `tranquil-heart` (dark). Default: None. Can also be set globally via theme styles.
 
 > **Developer reference**
 >
-> See the [Counter Schema](https://academy.bricksbuilder.io/developer/schema/elements/counter/) for the full JSON schema of this element's settings and controls.
+> See the [Code Schema](https://academy.bricksbuilder.io/developer/schema/elements/code/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -21625,6 +20696,50 @@ For a WooCommerce sale countdown, use the sale end date as the target. The Count
 > **Developer reference**
 >
 > See the [Countdown Schema](https://academy.bricksbuilder.io/developer/schema/elements/countdown/) for the full JSON schema of this element's settings and controls.
+
+---
+
+<a id="builder-elements-general-counter"></a>
+
+# Counter
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/counter/
+
+*The Counter element animates a number from a starting value to an ending value with customizable prefix, suffix, and formatting.*
+
+The Counter element animates a number from a starting value to an ending value with customizable prefix, suffix, and formatting.
+
+## Settings
+
+- **Count from** (text) - The starting number for the animation. Default: 0.
+
+- **Count to** (text) - The ending number for the animation. Default: 1000.
+
+- **Animation in ms** (number) - Duration of the counting animation in milliseconds. Default: 1000.
+
+- **Typography** (typography) - Font settings for the counter number.
+
+### Prefix
+
+- **Prefix** (text) - Text displayed before the counter number.
+
+- **Typography** (typography) - Font settings for the prefix text.
+
+### Suffix
+
+- **Suffix** (text) - Text displayed after the counter number.
+
+- **Typography** (typography) - Font settings for the suffix text.
+
+### Separator
+
+- **Thousand separator** (checkbox) - Add thousand separators to the number.
+
+- **Separator** (text) - Character used as the thousand separator. Default: ",". Only shown when "Thousand separator" is enabled.
+
+> **Developer reference**
+>
+> See the [Counter Schema](https://academy.bricksbuilder.io/developer/schema/elements/counter/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -22608,6 +21723,30 @@ Two-column form layout
 
 ---
 
+<a id="builder-elements-general-html"></a>
+
+# HTML
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/html/
+
+*The HTML element outputs raw HTML from a single code field. In the theme it is marked deprecated (deprecated flag): prefer the Code element, blocks, or native.*
+
+The **HTML** element outputs **raw HTML** from a single code field. In the theme it is marked **deprecated** (`deprecated` flag): prefer the [Code](https://academy.bricksbuilder.io/builder/elements/general/code/) element, blocks, or native elements for new layouts so you keep validation, security, and editor consistency.
+
+It exists for **backward compatibility** and for the **Gutenberg** block mapping (`core/html`) when converting content.
+
+## Settings
+
+- **Raw HTML** (code) — HTML source, editor mode `text/html`. Default includes a sample heading and paragraph.
+
+If the field is empty, the element shows a “No HTML markup defined” placeholder on the front end.
+
+> **Developer reference**
+>
+> See the [HTML Schema](https://academy.bricksbuilder.io/developer/schema/elements/html/) for the full JSON schema of this element's settings and controls.
+
+---
+
 <a id="builder-elements-general-icon-box"></a>
 
 # Icon box
@@ -22673,30 +21812,6 @@ The Icon Box element combines an icon with content in a flexible layout.
 > **Developer reference**
 >
 > See the [Icon Box Schema](https://academy.bricksbuilder.io/developer/schema/elements/icon-box/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-general-html"></a>
-
-# HTML
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/html/
-
-*The HTML element outputs raw HTML from a single code field. In the theme it is marked deprecated (deprecated flag): prefer the Code element, blocks, or native.*
-
-The **HTML** element outputs **raw HTML** from a single code field. In the theme it is marked **deprecated** (`deprecated` flag): prefer the [Code](https://academy.bricksbuilder.io/builder/elements/general/code/) element, blocks, or native elements for new layouts so you keep validation, security, and editor consistency.
-
-It exists for **backward compatibility** and for the **Gutenberg** block mapping (`core/html`) when converting content.
-
-## Settings
-
-- **Raw HTML** (code) — HTML source, editor mode `text/html`. Default includes a sample heading and paragraph.
-
-If the field is empty, the element shows a “No HTML markup defined” placeholder on the front end.
-
-> **Developer reference**
->
-> See the [HTML Schema](https://academy.bricksbuilder.io/developer/schema/elements/html/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -23752,64 +22867,6 @@ The element shows a single **info** control explaining that it acts as a placeho
 
 ---
 
-<a id="builder-elements-general-tabs-nested"></a>
-
-# Tabs (nestable)
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/tabs-nested/
-
-*The Nestable Tabs element allows creating tabbed content with drag-and-drop nesting in the builder.*
-
-The Nestable Tabs element allows creating tabbed content with drag-and-drop nesting in the builder.
-
-## Settings
-
-- **Direction** (direction) - Layout direction of the tabs. Controls the `flex-direction` CSS property. Set "ID" on tab menu "Div" to open a tab via anchor link (no spaces, no pound sign).
-
-- **Open tab on** (select) - Trigger for opening tabs. Options: `click`, `hover`. Default: `click`.
-
-- **Open tab index** (text) - Index of the tab to expand on page load, starting at 0. Default: 0.
-
-### Title
-
-- **Width** (number with units) - Width of tab titles. Default: `auto`.
-
-- **Margin** (spacing) - Margin around tab titles.
-
-- **Padding** (spacing) - Padding inside tab titles. Default: `20px` (top, right, bottom, left).
-
-- **Background** (color) - Background color of tab titles.
-
-- **Border** (border) - Border styling for tab titles.
-
-- **Typography** (typography) - Font styling for tab titles.
-
-#### Active
-
-- **Background color** (color) - Background color of active tab titles. Default: `#dddedf`.
-
-- **Border** (border) - Border styling for active tab titles.
-
-- **Typography** (typography) - Font styling for active tab titles.
-
-### Content
-
-- **Margin** (spacing) - Margin around tab content.
-
-- **Padding** (spacing) - Padding inside tab content. Default: `20px` (top, right, bottom, left).
-
-- **Text color** (color) - Text color of tab content.
-
-- **Background color** (color) - Background color of tab content.
-
-- **Border** (border) - Border styling for tab content. Default: `1px solid` (all sides).
-
-> **Developer reference**
->
-> See the [Tabs (Nestable) Schema](https://academy.bricksbuilder.io/developer/schema/elements/tabs-nested/) for the full JSON schema of this element's settings and controls.
-
----
-
 <a id="builder-elements-general-tabs"></a>
 
 # Tabs
@@ -23939,25 +22996,61 @@ The Team Members element displays a responsive grid of team member profiles with
 
 ---
 
-<a id="builder-elements-general-template"></a>
+<a id="builder-elements-general-tabs-nested"></a>
 
-# Template
+# Tabs (nestable)
 
-Source: https://academy.bricksbuilder.io/builder/elements/general/template/
+Source: https://academy.bricksbuilder.io/builder/elements/general/tabs-nested/
 
-*The Template element allows including reusable Bricks templates (sections, content, or popups) within a page.*
+*The Nestable Tabs element allows creating tabbed content with drag-and-drop nesting in the builder.*
 
-The Template element allows including reusable Bricks templates (sections, content, or popups) within a page.
+The Nestable Tabs element allows creating tabbed content with drag-and-drop nesting in the builder.
 
 ## Settings
 
-- **Template** (select) - Select a published Bricks template to include. Options include section, content, and popup templates.
+- **Direction** (direction) - Layout direction of the tabs. Controls the `flex-direction` CSS property. Set "ID" on tab menu "Div" to open a tab via anchor link (no spaces, no pound sign).
 
-- **Render without wrapper** (checkbox) - Render the template content directly without the outer div wrapper. Note: Style settings won't apply when this is enabled.
+- **Open tab on** (select) - Trigger for opening tabs. Options: `click`, `hover`. Default: `click`.
+
+- **Open tab index** (text) - Index of the tab to expand on page load, starting at 0. Default: 0.
+
+### Title
+
+- **Width** (number with units) - Width of tab titles. Default: `auto`.
+
+- **Margin** (spacing) - Margin around tab titles.
+
+- **Padding** (spacing) - Padding inside tab titles. Default: `20px` (top, right, bottom, left).
+
+- **Background** (color) - Background color of tab titles.
+
+- **Border** (border) - Border styling for tab titles.
+
+- **Typography** (typography) - Font styling for tab titles.
+
+#### Active
+
+- **Background color** (color) - Background color of active tab titles. Default: `#dddedf`.
+
+- **Border** (border) - Border styling for active tab titles.
+
+- **Typography** (typography) - Font styling for active tab titles.
+
+### Content
+
+- **Margin** (spacing) - Margin around tab content.
+
+- **Padding** (spacing) - Padding inside tab content. Default: `20px` (top, right, bottom, left).
+
+- **Text color** (color) - Text color of tab content.
+
+- **Background color** (color) - Background color of tab content.
+
+- **Border** (border) - Border styling for tab content. Default: `1px solid` (all sides).
 
 > **Developer reference**
 >
-> See the [Template Schema](https://academy.bricksbuilder.io/developer/schema/elements/template/) for the full JSON schema of this element's settings and controls.
+> See the [Tabs (Nestable) Schema](https://academy.bricksbuilder.io/developer/schema/elements/tabs-nested/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -24083,6 +23176,44 @@ The Testimonials element displays testimonials in a swipeable carousel with imag
 
 ---
 
+<a id="builder-elements-general-toggle-mode"></a>
+
+# Toggle - Mode
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/toggle-mode/
+
+*The Toggle - Mode element (toggle-mode) lets visitors switch between light and dark color modes on the front end. It relies on dark variants defined in the.*
+
+The **Toggle - Mode** element (`toggle-mode`) lets visitors switch between **light** and **dark** color modes on the front end. It relies on **dark variants** defined in the Bricks **color manager**; if no dark colors exist, the builder toolbar sun/moon control does not appear, and the same idea applies to how the front end behaves.
+
+The element renders a **button** containing two icon areas (`.toggle.light` and `.toggle.dark`); CSS shows the correct icon for the active mode.
+
+## Settings
+
+An **info** control explains that in the **builder**, you switch light/dark using the toolbar icon when dark colors are configured.
+
+### Mode: Light
+
+- **Icon** (icon) — Optional; default is the built-in light-mode graphic.
+- **Color** (color) — Icon color/fill for the light icon.
+- **Size** (number with units) — Icon size for the light icon.
+
+### Mode: Dark
+
+- **Icon Dark** (icon) — Optional; default is the built-in dark-mode graphic.
+- **Color** (color) — Icon color/fill for the dark icon.
+- **Size** (number with units) — Icon size for the dark icon.
+
+### Accessibility
+
+- **aria-label** (text) — Defaults to “Toggle mode” if empty.
+
+> **Developer reference**
+>
+> See the [Toggle Mode Schema](https://academy.bricksbuilder.io/developer/schema/elements/toggle-mode/) for the full JSON schema of this element's settings and controls.
+
+---
+
 <a id="builder-elements-general-toggle"></a>
 
 # Toggle
@@ -24128,41 +23259,25 @@ If you add an **Icon**, the bar animation is hidden and the icon is used instead
 
 ---
 
-<a id="builder-elements-general-toggle-mode"></a>
+<a id="builder-elements-general-template"></a>
 
-# Toggle - Mode
+# Template
 
-Source: https://academy.bricksbuilder.io/builder/elements/general/toggle-mode/
+Source: https://academy.bricksbuilder.io/builder/elements/general/template/
 
-*The Toggle - Mode element (toggle-mode) lets visitors switch between light and dark color modes on the front end. It relies on dark variants defined in the.*
+*The Template element allows including reusable Bricks templates (sections, content, or popups) within a page.*
 
-The **Toggle - Mode** element (`toggle-mode`) lets visitors switch between **light** and **dark** color modes on the front end. It relies on **dark variants** defined in the Bricks **color manager**; if no dark colors exist, the builder toolbar sun/moon control does not appear, and the same idea applies to how the front end behaves.
-
-The element renders a **button** containing two icon areas (`.toggle.light` and `.toggle.dark`); CSS shows the correct icon for the active mode.
+The Template element allows including reusable Bricks templates (sections, content, or popups) within a page.
 
 ## Settings
 
-An **info** control explains that in the **builder**, you switch light/dark using the toolbar icon when dark colors are configured.
+- **Template** (select) - Select a published Bricks template to include. Options include section, content, and popup templates.
 
-### Mode: Light
-
-- **Icon** (icon) — Optional; default is the built-in light-mode graphic.
-- **Color** (color) — Icon color/fill for the light icon.
-- **Size** (number with units) — Icon size for the light icon.
-
-### Mode: Dark
-
-- **Icon Dark** (icon) — Optional; default is the built-in dark-mode graphic.
-- **Color** (color) — Icon color/fill for the dark icon.
-- **Size** (number with units) — Icon size for the dark icon.
-
-### Accessibility
-
-- **aria-label** (text) — Defaults to “Toggle mode” if empty.
+- **Render without wrapper** (checkbox) - Render the template content directly without the outer div wrapper. Note: Style settings won't apply when this is enabled.
 
 > **Developer reference**
 >
-> See the [Toggle Mode Schema](https://academy.bricksbuilder.io/developer/schema/elements/toggle-mode/) for the full JSON schema of this element's settings and controls.
+> See the [Template Schema](https://academy.bricksbuilder.io/developer/schema/elements/template/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -24317,6 +23432,24 @@ Single Product templates (or product preview context).
 
 ---
 
+<a id="builder-elements-product-product-price"></a>
+
+# Product price
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-price/
+
+*Displays the WooCommerce product price, including regular price, sale price, and price range for variable products.*
+
+Displays the WooCommerce product price, including regular price, sale price, and price range for variable products.
+
+## Settings
+
+- **Hide regular price** (checkbox) - Hide the regular price when a sale price is active.
+- **Regular price typography** (typography) - Typography settings for the regular price text.
+- **Sale price typography** (typography) - Typography settings for the sale price text.
+
+---
+
 <a id="builder-elements-product-product-rating"></a>
 
 # Product rating
@@ -24345,24 +23478,6 @@ Single Product templates (or product preview context).
 
 - Use this element inside a Single Product template to guarantee a valid product context.
 - Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
-
----
-
-<a id="builder-elements-product-product-price"></a>
-
-# Product price
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-price/
-
-*Displays the WooCommerce product price, including regular price, sale price, and price range for variable products.*
-
-Displays the WooCommerce product price, including regular price, sale price, and price range for variable products.
-
-## Settings
-
-- **Hide regular price** (checkbox) - Hide the regular price when a sale price is active.
-- **Regular price typography** (typography) - Typography settings for the regular price text.
-- **Sale price typography** (typography) - Typography settings for the sale price text.
 
 ---
 
@@ -24433,6 +23548,18 @@ Single Product templates (or product preview context).
 
 ---
 
+<a id="builder-elements-product-product-short-description"></a>
+
+# Product short description
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-short-description/
+
+*Displays the WooCommerce product short description (excerpt) on single product pages.*
+
+Displays the WooCommerce product short description (excerpt) on single product pages.
+
+---
+
 <a id="builder-elements-product-product-stock"></a>
 
 # Product stock
@@ -24459,18 +23586,6 @@ Displays the WooCommerce product stock status and quantity information.
 - **Custom text** (text) - Custom text to display when product is out of stock.
 - **Typography** (typography) - Typography settings for out of stock text.
 - **Background color** (color) - Background color for out of stock status.
-
----
-
-<a id="builder-elements-product-product-short-description"></a>
-
-# Product short description
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-short-description/
-
-*Displays the WooCommerce product short description (excerpt) on single product pages.*
-
-Displays the WooCommerce product short description (excerpt) on single product pages.
 
 ---
 
@@ -24559,6 +23674,48 @@ Single Product templates (or product preview context).
 
 ---
 
+<a id="builder-elements-media-audio"></a>
+
+# Audio
+
+Source: https://academy.bricksbuilder.io/builder/elements/media/audio/
+
+*The Audio element embeds audio files with a customizable player interface.*
+
+The Audio element embeds audio files with a customizable player interface.
+
+## Settings
+
+- **Source** (select) - The audio source type. Options: `file` (media library), `external` (external URL), `dynamic` (dynamic data). Default: `file`.
+
+- **File** (audio) - Select an audio file from the media library. Available when source is "file".
+
+- **External URL** (text) - Enter an external audio file URL. Available when source is "external".
+
+- **Dynamic Data** (text with dynamic data) - Select audio from dynamic data source. Available when source is "dynamic".
+
+- **Custom title** (text) - Override the audio title. Not available for external sources.
+
+- **Show artist** (checkbox) - Display the artist name from audio metadata. Not available for external sources or when custom title is set.
+
+- **Show title** (checkbox) - Display the audio title from metadata. Not available for external sources or when custom title is set.
+
+- **Autoplay** (checkbox) - Automatically play the audio on page load. Note: Autoplay is blocked in most modern browsers.
+
+- **Loop** (checkbox) - Loop the audio playback.
+
+- **Tag** (select) - HTML tag for the audio title. Options: `p`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`. Default: `p`.
+
+- **Preload** (select) - Audio preload behavior. Options: `none`, `metadata`, `auto`. Default: `none`.
+
+- **Theme** (select) - Audio player color theme. Options: `light`, `dark`. Default: `light`.
+
+> **Developer reference**
+>
+> See the [Audio Schema](https://academy.bricksbuilder.io/developer/schema/elements/audio/) for the full JSON schema of this element's settings and controls.
+
+---
+
 <a id="builder-elements-query-query-results-summary"></a>
 
 # Query results summary
@@ -24625,6 +23782,849 @@ Default text: No posts found
 > **Developer reference**
 >
 > See the [Query Results Summary Schema](https://academy.bricksbuilder.io/developer/schema/elements/query-results-summary/) for the full JSON schema of this element's settings and controls.
+
+---
+
+<a id="builder-elements-media-file"></a>
+
+# File
+
+Source: https://academy.bricksbuilder.io/builder/elements/media/file/
+
+*Add downloadable files and links in Bricks from the Media Library, external URLs, or dynamic data, with optional inline PDF previews.*
+
+The File element displays a document as a linked file name, a download button, or both. PDF files can also appear in a browser-native inline preview.
+
+The element is available in Bricks 2.4. Find it under **Elements > Media > File**.
+
+![File element selected in the Bricks builder with the Source control and the File name, Download button, and PDF preview groups visible.](https://academy.bricksbuilder.io/assets/bricks-file-element-controls.webp)
+
+## Choose the file source
+
+Use the **Source** control to choose where the file comes from:
+
+- **File**: Select a file from the WordPress Media Library. This is the default source.
+- **External URL**: Enter the direct URL of a file hosted on this site or another site.
+- **Dynamic data**: Select a file or media value from [dynamic data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/). In a template, each post can supply its own document through a custom field.
+
+If a dynamic field returns more than one media item, the File element uses the first item.
+
+## File name
+
+The file name is shown as a link by default. It opens the file instead of forcing a download.
+
+The **File name** group contains these controls:
+
+- **Hide file name**: Removes the linked file name.
+- **Custom file name**: Replaces the name from the Media Library or file URL. This control supports dynamic data.
+- **Open in new tab**: Opens the file-name link in a new browser tab. It also applies to the fallback link inside a PDF preview.
+
+When no custom name is set, Bricks uses the Media Library filename or extracts the filename from the URL.
+
+## Download button
+
+The download button is shown by default. Use the **Download button** group to change its label, size, style, outline, and circle settings, or enable **Hide download button**.
+
+The filename link and download button have different purposes: the filename link opens the file, while the button uses the browser's download behavior. A browser or external file host can still open the file instead of downloading it.
+
+## PDF preview
+
+Bricks displays the preview when it recognizes the source as a PDF. A Media Library file is identified by its `application/pdf` MIME type. External and dynamic URLs are identified by a `.pdf` extension in the URL path.
+
+An external URL without `.pdf` in its path is not treated as a PDF, even if the server returns PDF content.
+
+The preview fills the element width and is 600px high by default. Its controls are in the **PDF preview** group:
+
+- **Hide PDF preview**: Removes the inline preview. The file name and download button remain available unless you hide them separately.
+- **Preview title**: Sets the accessible label for the embedded PDF. When left empty, Bricks generates a label from the file name.
+- **Height**: Sets the preview height. Use [responsive editing](https://academy.bricksbuilder.io/builder/interface/responsive-editing/) to adjust it at different breakpoints.
+- **Display**: Keep the preview inline at every viewport width, or use **Inline on desktop, hidden on mobile**.
+- **Hide at breakpoint**: Chooses the viewport width at which the preview is hidden. This appears when **Inline on desktop, hidden on mobile** is selected. If you do not choose a breakpoint, Bricks uses the Mobile landscape breakpoint, with 767px as the fallback width.
+- **Load PDF on click**: Delays loading the PDF until the visitor activates the preview placeholder.
+- **Preview image**: Sets the image shown before a click. This appears when **Load PDF on click** is enabled.
+
+With **Load PDF on click** enabled, Bricks uses the custom preview image first. If none is set, it uses a preview generated for the Media Library attachment when WordPress has one. Otherwise, the placeholder shows a PDF icon and the file name.
+
+![File element showing the generated PDF preview image before the PDF loads.](https://academy.bricksbuilder.io/assets/bricks-file-element-load-pdf-before.webp)
+
+![File element after loading the PDF in the browser-native inline viewer.](https://academy.bricksbuilder.io/assets/bricks-file-element-load-pdf-after.webp)
+
+> **Keep a file link available**
+>
+> If the PDF preview is hidden at a breakpoint, its internal fallback link is hidden with it. Keep the file name or download button visible so visitors can still reach the document at that breakpoint.
+
+## Example: A PDF from a custom field
+
+Suppose each property post has a PDF brochure stored in a file field:
+
+1. Add the File element to the property template.
+2. Set **Source** to **Dynamic data**.
+3. Select the brochure file field.
+4. Enter a **Custom file name**, such as `{post_title} brochure`.
+5. Enable **Load PDF on click** if you do not want the browser to request the PDF when the page first loads.
+6. Add a **Preview image**, or let Bricks use the attachment preview when one is available.
+7. Keep the file name or download button visible as the non-preview way to reach the brochure.
+
+Open two property posts on the frontend. Each one displays the PDF stored on that post while keeping the same template layout.
+
+## Browser behavior and document access
+
+The File element uses the browser's built-in PDF support. The PDF toolbar, rendering, and print or download options can differ between browsers and devices.
+
+Hiding a download button or browser controls does not secure the PDF. The visitor's browser still receives the file URL and file contents. Protect restricted documents at the server or application level before using them in the File element.
+
+Non-PDF files do not receive an inline preview. They use the linked file name and download button.
+
+---
+
+<a id="builder-elements-media-carousel"></a>
+
+# Carousel
+
+Source: https://academy.bricksbuilder.io/builder/elements/media/carousel/
+
+*The Carousel element displays images or posts in a swipeable carousel with customizable navigation and effects, using the Swiper library.*
+
+The Carousel element displays images or posts in a swipeable carousel with customizable navigation and effects, using the Swiper library.
+
+## Settings
+
+- **Type** (select) - Content type. Options: `media`, `posts`. Default: `media`.
+
+- **Images** (image-gallery) - Select images for the carousel. Only shown for media type.
+
+- **Query** (query) - Configure which posts to display. Only shown for posts type.
+
+### Settings
+
+- **Adaptive height** (checkbox) - Adjust height to content.
+
+- **Height** (number with units) - Fixed carousel height. Default: 300px. Not available when adaptive height is enabled.
+
+- **Spacing** (number) - Spacing between slides in pixels. Default: 0.
+
+- **Initial slide** (number) - Starting slide index. Default: 0.
+
+- **Items to show** (number) - Number of slides visible at once. Default: 2. Supports breakpoints.
+
+- **Items to scroll** (number) - Number of slides to advance per swipe. Default: 1. Supports breakpoints.
+
+- **Effect** (select) - Transition effect. Options: `slide`, `fade`, `cube`, `coverflow`, `flip`. Default: `slide`.
+
+- **Align items** (align-items) - Vertical alignment of slides. Only shown when adaptive height is enabled.
+
+- **Loop** (checkbox) - Enable infinite loop. Default: true.
+
+- **Center mode** (checkbox) - Center the active slide.
+
+- **Disable lazy load** (checkbox) - Load all images immediately.
+
+- **Autoplay** (checkbox) - Enable automatic sliding.
+
+- **Pause on hover** (checkbox) - Pause autoplay on hover.
+
+- **Stop on last slide** (checkbox) - Stop autoplay on last slide.
+
+- **Autoplay delay in ms** (number) - Delay between slides in milliseconds. Default: 3000.
+
+- **Animation speed in ms** (number) - Transition speed in milliseconds. Default: 300.
+
+### Image
+
+- **Hide image** (checkbox) - Hide images in post carousels.
+
+- **Image size** (select) - Size of images.
+
+- **Link to lightbox** (checkbox) - Open images in lightbox. Only for media type.
+
+- **Image size** (select) - Size of images in lightbox.
+
+- **Image click action** (select) - Action when clicking images. Options: `zoom`, `zoom-or-close`, `toggle-controls`, `next`, `close`. Default: `zoom`.
+
+- **Animation** (select) - Lightbox animation type. Default: `zoom`.
+
+- **Caption** (checkbox) - Show image captions in lightbox.
+
+- **Thumbnail navigation** (checkbox) - Show thumbnail navigation in lightbox.
+
+- **Thumbnail size** (number with units) - Size of thumbnails. Default: 60px.
+
+- **Padding** (dimensions) - Lightbox padding in pixels.
+
+### Fields
+
+- **Fields** (repeater) - Configure which post fields to display. Each field has:
+  - **Dynamic data** (text) - Dynamic data tag (e.g., `{post_title:link}`, `{post_excerpt:20}`).
+  - **HTML tag** (select) - HTML tag for the field. Options: `div`, `p`, `h1`-`h6`. Default: `div`.
+  - **Width** (number with units) - Field width.
+  - **Margin** (spacing) - Field margin.
+  - **Padding** (spacing) - Field padding.
+  - **Background color** (color) - Field background color.
+  - **Border** (border) - Field border styling.
+  - **Typography** (typography) - Field text styling.
+  - **Overlay** (checkbox) - Show field as overlay.
+
+### Content
+
+- **Alignment** (select) - Content alignment. Options: `top left`, `top center`, `top right`, `middle left`, `middle center`, `middle right`, `bottom left`, `bottom center`, `bottom right`.
+
+- **Min. height** (number with units) - Minimum content height.
+
+- **Margin** (spacing) - Content wrapper margin.
+
+- **Padding** (spacing) - Content wrapper padding.
+
+- **Background color** (color) - Content wrapper background color.
+
+### Overlay
+
+- **Show on hover** (checkbox) - Show overlay only on hover.
+
+- **Fade in animation** (select) - Overlay animation. Options: `fade-in-up`, `fade-in-right`, `fade-in-down`, `fade-in-left`, `zoom-in`, `zoom-out`.
+
+- **Alignment** (select) - Overlay alignment. Options: `top left`, `top center`, `top right`, `middle left`, `middle center`, `middle right`, `bottom left`, `bottom center`, `bottom right`.
+
+- **Margin** (spacing) - Overlay margin.
+
+- **Padding** (spacing) - Overlay padding.
+
+- **Background color** (color) - Overlay background color.
+
+- **Inner background color** (color) - Inner overlay background color.
+
+## Arrows
+
+- **Show arrows** (checkbox) - Display navigation arrows. Default: true.
+
+- **Height** (number with units) - Arrow button height. Default: 50px.
+
+- **Width** (number with units) - Arrow button width. Default: 50px.
+
+- **Background** (color) - Arrow button background color.
+
+- **Border** (border) - Arrow button border styling.
+
+- **Typography** (typography) - Arrow button text styling.
+
+### Prev arrow
+
+- **Prev arrow** (icon) - Previous arrow icon. Default: `ion-ios-arrow-back`.
+
+- **Top** (number with units) - Previous arrow top position. Default: 50%.
+
+- **Right** (number with units) - Previous arrow right position.
+
+- **Bottom** (number with units) - Previous arrow bottom position.
+
+- **Left** (number with units) - Previous arrow left position. Default: 50px.
+
+### Next arrow
+
+- **Next arrow** (icon) - Next arrow icon. Default: `ion-ios-arrow-forward`.
+
+- **Top** (number with units) - Next arrow top position.
+
+- **Right** (number with units) - Next arrow right position.
+
+- **Bottom** (number with units) - Next arrow bottom position.
+
+- **Left** (number with units) - Next arrow left position.
+
+## Dots
+
+- **Show dots** (checkbox) - Display pagination dots.
+
+- **Dynamic dots** (checkbox) - Enable dynamic bullet pagination.
+
+- **Vertical** (checkbox) - Display dots vertically.
+
+- **Height** (number with units) - Dot height.
+
+- **Width** (number with units) - Dot width.
+
+- **Top** (number with units) - Dots container top position.
+
+- **Right** (number with units) - Dots container right position.
+
+- **Bottom** (number with units) - Dots container bottom position.
+
+- **Left** (number with units) - Dots container left position.
+
+- **Border** (border) - Dot border styling.
+
+- **Color** (color) - Inactive dot color.
+
+- **Active color** (color) - Active dot color.
+
+- **Margin** (spacing) - Margin around individual dots. Default: 0px top, 5px right, 0px bottom, 0px left.
+
+> **Developer reference**
+>
+> See the [Carousel Schema](https://academy.bricksbuilder.io/developer/schema/elements/carousel/) for the full JSON schema of this element's settings and controls.
+
+---
+
+<a id="builder-elements-media-image-gallery"></a>
+
+# Image gallery
+
+Source: https://academy.bricksbuilder.io/builder/elements/media/image-gallery/
+
+*The Image Gallery element displays a collection of images in various layouts with optional lightbox functionality.*
+
+The Image Gallery element displays a collection of images in various layouts with optional lightbox functionality.
+
+## Settings
+
+- **Images** (image-gallery) - Select and upload images for the gallery.
+
+- **Layout** (select) - Gallery layout type. Options: `grid`, `masonry`, `metro`. Default: `grid`.
+
+- **Columns** (number) - Number of columns in the grid. Minimum: 2. Default: 3. Not available for metro layout.
+
+- **Spacing** (number with units) - Gap between images. Default: 0.
+
+- **Image height** (number with units) - Fixed height for images. Not available for masonry or metro layouts.
+
+- **Image ratio** (text) - Aspect ratio for images (e.g., 4/3, 16/9, 1/1). Not available for masonry or metro layouts.
+
+- **Image caption** (checkbox) - Display image captions.
+
+- **Link to** (select) - Link behavior for images. Options: `lightbox`, `attachment page`, `media file`, `custom URL`.
+
+- **Custom links** (repeater) - Define custom URLs for each image. Only shown when "Link to" is set to "custom URL".
+
+### Lightbox
+
+- **Image size** (select) - Size of images in lightbox. Default: Full.
+
+- **Image click action** (select) - Action when clicking images. Options: `zoom`, `zoom or close`, `toggle controls`, `next`, `close`. Default: `zoom`.
+
+- **Animation** (select) - Lightbox transition animation.
+
+- **Caption** (checkbox) - Show image captions in lightbox.
+
+- **Thumbnail navigation** (checkbox) - Enable thumbnail navigation.
+
+- **Thumbnail size** (number with units) - Size of thumbnails. Default: 60px.
+
+- **Padding (px)** (dimensions) - Padding around the lightbox.
+
+- **Lightbox: ID** (text) - Group images with the same ID together in the same lightbox.
+
+- **Fetch priority** (select) - Image loading priority. Options: `high`, `low`, `auto`.
+
+> **Developer reference**
+>
+> See the [Image Gallery Schema](https://academy.bricksbuilder.io/developer/schema/elements/image-gallery/) for the full JSON schema of this element's settings and controls.
+
+---
+
+<a id="builder-elements-media-instagram-feed"></a>
+
+# Instagram feed
+
+Source: https://academy.bricksbuilder.io/builder/elements/media/instagram-feed/
+
+*The Instagram feed element loads media from the Instagram Graph API using an access token saved in Bricks → Settings → API keys (instagramAccessToken). Without.*
+
+The **Instagram feed** element loads media from the **Instagram Graph API** using an **access token** saved in **Bricks → Settings → API keys** (`instagramAccessToken`). Without a token, the element shows a placeholder asking you to connect the account.
+
+Responses are **cached** in a transient to limit API calls; cache length is configurable.
+
+## Requirements
+
+Add a valid **Instagram access token** under **Bricks → Settings → API keys**. The element’s info message links there when the global token is missing.
+
+## Layout
+
+- **Columns** (number) — CSS grid columns for the list (`ul`). Placeholder: `3`. Valid range on the front end: `1–6`.
+
+- **Posts** (number) — How many posts to request (min `1`, max `100`). Placeholder: `9`.
+
+## Image
+
+- **Object fit** (select) — Applied to `img`.
+
+- **Aspect ratio** (text).
+
+- **Height**, **Width** (number with units).
+
+- **Gap** (number with units) — Gap on the `ul` grid.
+
+- **Border** (border) — Image border.
+
+- **Link** (checkbox) — Wrap each image in a link to the Instagram permalink.
+
+## Carousel
+
+Optional styling for the **carousel** badge on **CAROUSEL_ALBUM** items:
+
+- **Icon** (icon), **Icon color** (color), **Icon size** (number with units), **Icon position** (dimensions).
+
+## Video
+
+Optional styling for the **video** play overlay on **VIDEO** items:
+
+- **Icon** (icon), **Icon color** (color), **Icon size** (number with units), **Icon position** (dimensions).
+
+## Caption
+
+- **Enable** (checkbox) — Show the post caption below the image.
+
+When enabled: **Background color**, **Border**, **Typography** on `.caption`.
+
+## Follow
+
+Optional “Follow us” row linking to `instagram.com/{username}`:
+
+- **Text** (text) — Default mentions `@yourhandle`; replace with your copy or dynamic data.
+
+- **Position** (select) — `top` or `bottom`.
+
+- **Icon** (icon) — Default Instagram logo.
+
+- **Typography** — `.follow` text.
+
+## Cache
+
+- **Duration** (select) — `30 minutes`, `1 hour`, `1 day`, or `1 week` (stored as seconds: `1800`, `3600`, `86400`, `604800`). Default placeholder: 1 hour.
+
+> **Developer reference**
+>
+> See the [Instagram feed Schema](https://academy.bricksbuilder.io/developer/schema/elements/instagram-feed/) for the full JSON schema of this element's settings and controls.
+
+---
+
+<a id="builder-elements-media-logo"></a>
+
+# Logo
+
+Source: https://academy.bricksbuilder.io/builder/elements/media/logo/
+
+*The Logo element displays your site logo with support for regular, inverse, and dark-mode logo variants, custom dimensions, and fallback text.*
+
+The Logo element displays your site logo and can switch between logo variants for dark mode and sticky headers.
+
+## Settings
+
+- **Logo** (image) - Select the main logo image from the media library. Minimum dimension should be twice the logo height/width for proper retina display. For SVG logos, set height and width in px values.
+
+- **Logo inverse** (image) - Alternative logo image for sticky scrolling headers. Only available when the main logo is set.
+
+- **Logo dark mode** (image) - Alternative logo image used when dark mode is active. Only available when the main logo is set.
+
+- **Height** (number with units) - Logo height. Maximum: 400. Default: `auto`. Only available when logo is set.
+
+- **Width** (number with units) - Logo width. Maximum: 999. Default: `auto`. Only available when logo is set.
+
+- **Text** (text) - Fallback text displayed if logo image isn't set or available. Default: Site name from WordPress settings.
+
+- **Loading** (select) - Image loading behavior. Options: `eager`, `lazy`. Default: `eager`.
+
+- **Link to** (link) - Configure where the logo links. Default: Site home page.
+
+## Logo variants
+
+Logo variants are available starting in Bricks 2.4. Add them in the Logo element settings under **Logo variants**.
+
+When [dark mode](https://academy.bricksbuilder.io/builder/features/color-manager/#using-dark-mode) is active and **Logo dark mode** is configured, Bricks swaps the main logo image for the dark-mode logo. If no dark-mode logo is configured, the main logo stays visible.
+
+If the Logo element is inside a sticky header and **Logo inverse** is configured, the inverse logo is used while the header is scrolling. This takes priority over the dark-mode logo during the sticky scrolling state.
+
+> **Developer reference**
+>
+> See the [Logo Schema](https://academy.bricksbuilder.io/developer/schema/elements/logo/) for the full JSON schema of this element's settings and controls.
+
+---
+
+<a id="builder-elements-media-slider-nested"></a>
+
+# Slider (nestable)
+
+Source: https://academy.bricksbuilder.io/builder/elements/media/slider-nested/
+
+*The Nestable Slider element allows creating sliders with drag-and-drop nesting in the builder, using the Splide library.*
+
+The Nestable Slider element allows creating sliders with drag-and-drop nesting in the builder, using the Splide library.
+
+## Settings
+
+- **Children** (nestable) - Drag and drop elements to create slider slides.
+
+### Options
+
+- **Options type** (select) - Use default settings or provide custom JSON options. Options: `default`, `custom`.
+
+- **Custom options** (code) - JSON configuration for Splide slider. Only shown when options type is custom. Provide your own options in JSON format (learn more).
+
+- **Type** (select) - Slider behavior. Options: `loop`, `slide`, `fade`. Default: `loop`.
+
+- **Direction** (select) - Slide direction. Options: `left to right`, `right to left`, `vertical`. Supports breakpoints.
+
+- **Keyboard** (select) - Keyboard navigation. Options: `off`, `focused`, `global`. Default: `global`. Supports breakpoints.
+
+- **Auto height** (checkbox) - Adjust height to content. May cause layout shift. Using "Auto height" might lead to CLS (Cumulative Layout Shift).
+
+- **Height** (number with units) - Fixed slider height. Default: 50vh. Not available when auto height is enabled. Supports breakpoints.
+
+- **Spacing** (number with units) - Gap between slides. Default: 0. Supports breakpoints.
+
+- **Start index** (number) - Initial slide index. Default: 0.
+
+- **Items to show** (number) - Number of slides visible at once. Default: 1. Supports breakpoints. Not available for fade type.
+
+- **Items to scroll** (number) - Number of slides to scroll at once. Default: 1. Supports breakpoints. Not available for fade type.
+
+- **Speed in ms** (number) - Transition speed. Default: 400. Supports breakpoints.
+
+- **Focus** (number) - Determines which slide should be active if the carousel has multiple slides in a page. Number/"center". Supports breakpoints.
+
+#### Autoplay
+
+- **Autoplay** (checkbox) - Enable automatic slide progression.
+
+- **Pause on hover** (checkbox) - Pause autoplay when hovering over slider.
+
+- **Pause on focus** (checkbox) - Pause autoplay when slider is focused.
+
+- **Interval in ms** (number) - Time between slides. Default: 3000.
+
+#### Rewind
+
+Available when type is not "loop":
+
+- **Rewind** (checkbox) - Enable rewind functionality.
+
+- **Rewind by drag** (checkbox) - Allow rewinding by dragging.
+
+- **Speed in ms** (number) - Rewind transition speed.
+
+### Slide
+
+- **Padding** (spacing) - Padding inside slides.
+
+- **Align horizontal** (align-items) - Horizontal alignment of slide content. Options: `flex-start`, `center`, `flex-end`.
+
+- **Align vertical** (justify-content) - Vertical alignment of slide content. Options: `flex-start`, `center`, `flex-end`, `space-between`, `space-around`.
+
+- **Background** (background) - Background styling for slides.
+
+- **Border** (border) - Border styling for slides.
+
+### Arrows
+
+- **Show** (checkbox) - Display navigation arrows.
+
+- **Height** (number with units) - Arrow button height. Default: 50px.
+
+- **Width** (number with units) - Arrow button width. Default: 50px.
+
+- **Background** (color) - Arrow button background color.
+
+- **Border** (border) - Arrow button border styling.
+
+- **Color** (color) - Arrow icon color.
+
+- **Size** (number with units) - Arrow icon size.
+
+- **Text shadow** (text-shadow) - Text shadow for arrow icons.
+
+#### Disabled
+
+- **Background** (color) - Background color for disabled arrows.
+
+- **Border** (border) - Border styling for disabled arrows.
+
+- **Color** (color) - Icon color for disabled arrows.
+
+- **Opacity** (number) - Opacity for disabled arrows (0-1).
+
+#### Prev arrow
+
+- **Prev arrow** (icon) - Custom icon for previous arrow.
+
+- **Top** (number with units) - Top position. Default: 50%.
+
+- **Right** (number with units) - Right position.
+
+- **Bottom** (number with units) - Bottom position.
+
+- **Left** (number with units) - Left position.
+
+- **Transform** (transform) - CSS transform for previous arrow.
+
+#### Next arrow
+
+- **Next arrow** (icon) - Custom icon for next arrow.
+
+- **Top** (number with units) - Top position. Default: 50%.
+
+- **Right** (number with units) - Right position.
+
+- **Bottom** (number with units) - Bottom position.
+
+- **Left** (number with units) - Left position.
+
+- **Transform** (transform) - CSS transform for next arrow.
+
+### Pagination
+
+- **Show** (checkbox) - Display pagination dots. Default: enabled.
+
+- **Margin** (spacing) - Margin around pagination dots. Default: 5px on all sides.
+
+- **Height** (number with units) - Dot height. Default: 10px.
+
+- **Width** (number with units) - Dot width. Default: 10px.
+
+- **Color** (color) - Dot color and background color.
+
+- **Border** (border) - Border styling for dots.
+
+#### Active
+
+- **Height** (number with units) - Height for active dot.
+
+- **Width** (number with units) - Width for active dot.
+
+- **Color** (color) - Color for active dot.
+
+- **Border** (border) - Border styling for active dot.
+
+> **Developer reference**
+>
+> See the [Slider (Nestable) Schema](https://academy.bricksbuilder.io/developer/schema/elements/slider-nested/) for the full JSON schema of this element's settings and controls.
+
+---
+
+<a id="builder-elements-media-slider"></a>
+
+# Slider
+
+Source: https://academy.bricksbuilder.io/builder/elements/media/slider/
+
+*The Slider element creates a full-width image slider with customizable slides containing titles, content, and buttons, using the Swiper library.*
+
+The Slider element creates a full-width image slider with customizable slides containing titles, content, and buttons, using the Swiper library.
+
+## Security scanner reports
+
+Bricks 2.4 patches the legacy Swiper build used by the classic Slider element. The bundled asset is a Bricks-patched vendored Swiper 8 legacy build with the CVE-2026-27212 / GHSA-hmx5-qpq5-p643 mitigation backported.
+
+Bricks keeps the Swiper 8 runtime behavior so existing sliders continue to behave as before, including loop configurations that depend on Swiper 8 duplicate slides. The public `bricks-swiper` script version is `bricks-cve-2026-27212-p1`, and the bundled file no longer reports stock `Swiper 8.4.4` in its header.
+
+Some security scanners may still fingerprint the underlying minified Swiper 8 code and flag it. Use this VEX or exception note: `Bricks-patched vendored Swiper 8 legacy build with CVE-2026-27212 backport.`
+
+## Settings
+
+- **Slides** (repeater) - Add slider slides. Each slide has:
+  - **Title** (text) - Slide title.
+  - **Title Tag** (select) - HTML tag for title. Options: `h1`-`h6`. Default: `h3`.
+  - **Content** (rich text) - Slide content.
+  - **Button text** (text) - Call-to-action button text.
+  - **Button style** (select) - Button style. Default: `light`.
+  - **Button size** (select) - Button size.
+  - **Button width** (number with units) - Button width.
+  - **Button link** (link) - Button destination.
+  - **Button background** (color) - Button background color.
+  - **Button border** (border) - Button border styling.
+  - **Button box shadow** (box-shadow) - Button shadow.
+  - **Button typography** (typography) - Button text styling.
+  - **Background** (background) - Slide background (color, image, gradient).
+  - **Overlay** (color) - Overlay color over the background.
+
+- **Slides to show** (number) - Number of slides visible at once. Default: 1.
+
+- **Slides to scroll** (number) - Number of slides to advance per transition. Default: 1.
+
+- **Spacing** (number) - Spacing between slides in pixels. Default: 0.
+
+- **Height** (number with units) - Slider height. Default: 300px.
+
+- **Effect** (select) - Transition effect. Options: `slide`, `fade`, `cube`, `coverflow`, `flip`. Default: `slide`.
+
+- **Loop** (select) - Enable infinite loop. Options: `enable`, `disable`. Default: `enable`.
+
+- **Center mode** (checkbox) - Center the active slide.
+
+- **Disable lazy load** (checkbox) - Load all images immediately.
+
+- **Autoplay** (checkbox) - Enable automatic sliding.
+
+- **Pause on hover** (checkbox) - Pause autoplay on hover.
+
+- **Stop on last slide** (checkbox) - Stop autoplay on the last slide.
+
+- **Autoplay delay in ms** (number) - Delay between slides in milliseconds. Default: 3000.
+
+- **Animation speed in ms** (number) - Transition speed in milliseconds. Default: 300.
+
+### Title
+
+- **Title margin** (spacing) - Margin around slide titles.
+
+- **Title typography** (typography) - Font settings for slide titles.
+
+### Content
+
+- **Content width** (number with units) - Maximum width of slide content.
+
+- **Content background** (color) - Background color for slide content.
+
+- **Content typography** (typography) - Font settings for slide content.
+
+- **Content margin** (spacing) - Margin around slide content.
+
+- **Content padding** (spacing) - Padding inside slide content. Default: 30px top, 60px right, 30px bottom, 60px left.
+
+- **Content align horizontal** (justify-content) - Horizontal alignment of content within slides.
+
+- **Content align vertical** (align-items) - Vertical alignment of content within slides.
+
+- **Content text align** (text-align) - Text alignment within slide content.
+
+### Button
+
+- **Button style** (select) - Global button style. Default: `light`.
+
+- **Button size** (select) - Global button size.
+
+- **Button width** (number with units) - Global button width.
+
+- **Background** (color) - Global button background color.
+
+- **Border** (border) - Global button border styling.
+
+- **Box shadow** (box-shadow) - Global button shadow.
+
+- **Typography** (typography) - Global button text styling.
+
+### Background
+
+- **Top** (number with units) - Background image top position.
+
+- **Right** (number with units) - Background image right position.
+
+- **Bottom** (number with units) - Background image bottom position.
+
+- **Left** (number with units) - Background image left position.
+
+## Arrows
+
+- **Show arrows** (checkbox) - Display navigation arrows. Default: true.
+
+- **Height** (number with units) - Arrow button height. Default: 50px.
+
+- **Width** (number with units) - Arrow button width. Default: 50px.
+
+- **Background** (color) - Arrow button background color.
+
+- **Border** (border) - Arrow button border styling.
+
+- **Typography** (typography) - Arrow button text styling.
+
+### Prev arrow
+
+- **Prev arrow** (icon) - Previous arrow icon. Default: `ion-ios-arrow-back`.
+
+- **Top** (number with units) - Previous arrow top position. Default: 50%.
+
+- **Right** (number with units) - Previous arrow right position.
+
+- **Bottom** (number with units) - Previous arrow bottom position.
+
+- **Left** (number with units) - Previous arrow left position. Default: 50px.
+
+- **Transform** (transform) - Previous arrow transformations.
+
+### Next arrow
+
+- **Next arrow** (icon) - Next arrow icon. Default: `ion-ios-arrow-forward`.
+
+- **Top** (number with units) - Next arrow top position.
+
+- **Right** (number with units) - Next arrow right position.
+
+- **Bottom** (number with units) - Next arrow bottom position.
+
+- **Left** (number with units) - Next arrow left position.
+
+- **Transform** (transform) - Next arrow transformations.
+
+## Dots
+
+- **Show dots** (checkbox) - Display pagination dots.
+
+- **Dynamic dots** (checkbox) - Enable dynamic bullet pagination.
+
+- **Vertical** (checkbox) - Display dots vertically.
+
+- **Height** (number with units) - Dot height.
+
+- **Width** (number with units) - Dot width.
+
+- **Top** (number with units) - Dots container top position.
+
+- **Right** (number with units) - Dots container right position.
+
+- **Bottom** (number with units) - Dots container bottom position.
+
+- **Left** (number with units) - Dots container left position.
+
+- **Border** (border) - Dot border styling.
+
+- **Color** (color) - Inactive dot color.
+
+- **Active color** (color) - Active dot color.
+
+- **Margin** (spacing) - Margin around individual dots.
+
+> **Developer reference**
+>
+> See the [Slider Schema](https://academy.bricksbuilder.io/developer/schema/elements/slider/) for the full JSON schema of this element's settings and controls.
+
+---
+
+<a id="builder-elements-media-svg"></a>
+
+# SVG
+
+Source: https://academy.bricksbuilder.io/builder/elements/media/svg/
+
+*The SVG element displays SVG graphics from files, dynamic data, custom code, or icon sets.*
+
+The SVG element displays SVG graphics from files, dynamic data, custom code, or icon sets.
+
+## Settings
+
+- **Source** (select) - SVG source type. Options: `file` (default), `dynamicData`, `code`, `iconSet`.
+
+- **File** (svg upload) - Upload an SVG file from your computer. Available when source is "file".
+
+- **Icon set** (icon) - Select an SVG from custom icon libraries. Available when source is "iconSet".
+
+- **Dynamic data** (text with dynamic data) - Load SVG from dynamic data. Supported field types: File, Image, SVG code, URL. Available when source is "dynamicData".
+
+- **Code** (code editor) - Paste SVG code directly. Only available to users with code execution permissions. Ensure SVG code is safe and doesn't contain malicious code. Consider using an SVG cleaner like svgomg.net. Available when source is "code".
+
+### Styling
+
+- **Height** (number with units) - SVG height.
+
+- **Width** (number with units) - SVG width.
+
+- **Stroke width** (number) - Width of SVG stroke lines. Minimum: 1.
+
+- **Stroke color** (color) - Color of SVG stroke elements (excludes elements with `stroke="none"`).
+
+- **Fill** (color) - Fill color for SVG shapes (excludes elements with `fill="none"`).
+
+- **Link** (link) - Make the SVG clickable by adding a link.
+
+> **Developer reference**
+>
+> See the [SVG Schema](https://academy.bricksbuilder.io/developer/schema/elements/svg/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -24900,6 +24900,31 @@ Bricks Page Template using a Post Content element to fetch page bricks data
 
 ---
 
+<a id="builder-elements-single-post-reading-progress-bar"></a>
+
+# Post reading progress bar
+
+Source: https://academy.bricksbuilder.io/builder/elements/single/post-reading-progress-bar/
+
+*Shows a progress bar indicating how much of the post has been read.*
+
+Shows a progress bar indicating how much of the post has been read.
+
+## Settings
+
+- **Content** (select) - Choose the content to track reading progress for. Options: post_content, post_excerpt, custom_content. Default: post_content.
+- **Position** (select) - Position of the progress bar. Options: top, bottom. Default: top.
+- **Height** (number) - Height of the progress bar in pixels. Default: 4.
+- **Background color** (color) - Background color of the progress bar.
+- **Progress color** (color) - Color of the progress indicator.
+- **Show percentage** (checkbox) - Display the reading percentage as text.
+
+> **Developer reference**
+>
+> See the [Reading Progress Bar Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-reading-progress-bar/) for the full JSON schema of this element's settings and controls.
+
+---
+
 <a id="builder-elements-single-post-navigation"></a>
 
 # Post navigation
@@ -24950,31 +24975,6 @@ You can change the labels and arrows to match the wording used by your design. T
 > **Developer reference**
 >
 > See the [Post Navigation Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-navigation/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-single-post-reading-progress-bar"></a>
-
-# Post reading progress bar
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/post-reading-progress-bar/
-
-*Shows a progress bar indicating how much of the post has been read.*
-
-Shows a progress bar indicating how much of the post has been read.
-
-## Settings
-
-- **Content** (select) - Choose the content to track reading progress for. Options: post_content, post_excerpt, custom_content. Default: post_content.
-- **Position** (select) - Position of the progress bar. Options: top, bottom. Default: top.
-- **Height** (number) - Height of the progress bar in pixels. Default: 4.
-- **Background color** (color) - Background color of the progress bar.
-- **Progress color** (color) - Color of the progress indicator.
-- **Show percentage** (checkbox) - Display the reading percentage as text.
-
-> **Developer reference**
->
-> See the [Reading Progress Bar Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-reading-progress-bar/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -25183,6 +25183,60 @@ Displays taxonomy terms for the current post.
 > **Developer reference**
 >
 > See the [Taxonomy Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-taxonomy/) for the full JSON schema of this element's settings and controls.
+
+---
+
+<a id="builder-elements-wordpress-pagination"></a>
+
+# Pagination
+
+Source: https://academy.bricksbuilder.io/builder/elements/wordpress/pagination/
+
+*The Pagination element displays page navigation for query results with customizable styling.*
+
+The Pagination element displays page navigation for query results with customizable styling.
+
+## Settings
+
+- **Query** (query-list) - Select which query this pagination controls.
+
+- **Alignment** (justify-content) - Horizontal alignment of pagination links.
+
+- **Height** (number with units) - Height of pagination buttons.
+
+- **Width** (number with units) - Width of pagination buttons.
+
+- **Spacing** (number with units) - Gap between pagination buttons. Default: 20px.
+
+- **Background** (color) - Background color of pagination buttons.
+
+- **Border** (border) - Border styling for pagination buttons.
+
+- **Typography** (typography) - Font settings for pagination buttons.
+
+### Current
+
+- **Background** (color) - Background color of the current page button.
+
+- **Border** (border) - Border styling for the current page button.
+
+- **Typography** (typography) - Font settings for the current page button.
+
+### Icons
+
+- **Previous Icon** (icon) - Icon for the previous page button.
+
+- **Next Icon** (icon) - Icon for the next page button.
+
+### Miscellaneous
+
+- **End Size** (number) - Number of page numbers shown at the start and end. Default: 1.
+
+- **Mid Size** (number) - Number of page numbers shown on each side of current page. Default: 2.
+
+> **Developer reference**
+>
+> See the [Pagination Schema](https://academy.bricksbuilder.io/developer/schema/elements/pagination/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -25442,60 +25496,6 @@ The Nav Menu element displays WordPress navigation menus with customizable styli
 
 ---
 
-<a id="builder-elements-wordpress-pagination"></a>
-
-# Pagination
-
-Source: https://academy.bricksbuilder.io/builder/elements/wordpress/pagination/
-
-*The Pagination element displays page navigation for query results with customizable styling.*
-
-The Pagination element displays page navigation for query results with customizable styling.
-
-## Settings
-
-- **Query** (query-list) - Select which query this pagination controls.
-
-- **Alignment** (justify-content) - Horizontal alignment of pagination links.
-
-- **Height** (number with units) - Height of pagination buttons.
-
-- **Width** (number with units) - Width of pagination buttons.
-
-- **Spacing** (number with units) - Gap between pagination buttons. Default: 20px.
-
-- **Background** (color) - Background color of pagination buttons.
-
-- **Border** (border) - Border styling for pagination buttons.
-
-- **Typography** (typography) - Font settings for pagination buttons.
-
-### Current
-
-- **Background** (color) - Background color of the current page button.
-
-- **Border** (border) - Border styling for the current page button.
-
-- **Typography** (typography) - Font settings for the current page button.
-
-### Icons
-
-- **Previous Icon** (icon) - Icon for the previous page button.
-
-- **Next Icon** (icon) - Icon for the next page button.
-
-### Miscellaneous
-
-- **End Size** (number) - Number of page numbers shown at the start and end. Default: 1.
-
-- **Mid Size** (number) - Number of page numbers shown on each side of current page. Default: 2.
-
-> **Developer reference**
->
-> See the [Pagination Schema](https://academy.bricksbuilder.io/developer/schema/elements/pagination/) for the full JSON schema of this element's settings and controls.
-
----
-
 <a id="builder-elements-wordpress-posts"></a>
 
 # Posts
@@ -25695,72 +25695,6 @@ Displays a WordPress sidebar with its widgets.
 
 ---
 
-<a id="builder-elements-wordpress-wordpress"></a>
-
-# WordPress
-
-Source: https://academy.bricksbuilder.io/builder/elements/wordpress/wordpress/
-
-*The WordPress element displays various WordPress widgets with customizable styling.*
-
-The WordPress element displays various WordPress widgets with customizable styling.
-
-## Settings
-
-- **Widget** (select) - Type of WordPress widget to display. Options: `archives`, `calendar`, `categories`, `pages`, `recent comments`, `recent posts`, `tag cloud`, `taxonomy`. Default: `posts`.
-
-- **Icon** (icon) - Optional icon for the widget. Available for most widget types.
-
-- **Icon typography** (typography) - Font settings for the icon.
-
-### Widget-specific settings
-
-- **Show count** (checkbox) - Display item counts. Available for archives, categories, tag cloud, taxonomy.
-
-- **Sort by** (select) - Sort order for pages. Options: `page title`, `page date`, `page modified`, `page order`, `page ID`. Available for pages.
-
-- **Include** (select) - Specific pages to include. Available for pages.
-
-- **Exclude** (select) - Specific pages to exclude. Available for pages.
-
-- **Number of comments** (number) - How many recent comments to show. Available for recent comments.
-
-- **Number of posts** (number) - How many recent posts to show. Available for recent posts.
-
-- **Direction** (direction) - Layout direction for posts. Available for recent posts.
-
-- **Show date** (checkbox) - Display post dates. Available for recent posts.
-
-- **Show featured image** (checkbox) - Display post thumbnails. Available for recent posts.
-
-- **Featured image sizes** (select) - Size of featured images. Available for recent posts.
-
-- **Featured image width** (text) - Custom width for images. Available for recent posts.
-
-- **Featured image height** (text) - Custom height for images. Available for recent posts.
-
-- **Post title typography** (typography) - Font settings for post titles. Available for recent posts.
-
-- **Post meta typography** (typography) - Font settings for post meta. Available for recent posts.
-
-- **Taxonomy** (select) - Which taxonomy to display. Available for tag cloud and taxonomy.
-
-### Title
-
-- **Title** (text) - Custom title for the widget.
-
-- **HTML tag** (select) - HTML tag for the title. Options: `p`, `h1`-`h6`. Default: `h3`.
-
-- **Border** (border) - Border styling for the title.
-
-- **Typography** (typography) - Font settings for the title.
-
-> **Developer reference**
->
-> See the [WordPress Schema](https://academy.bricksbuilder.io/developer/schema/elements/wordpress/) for the full JSON schema of this element's settings and controls.
-
----
-
 <a id="builder-elements-woocommerce-account-add-payment-method"></a>
 
 # Account - Add payment method
@@ -25829,37 +25763,69 @@ My Account templates and My Account endpoint views.
 
 ---
 
-<a id="builder-elements-woocommerce-account-downloads"></a>
+<a id="builder-elements-wordpress-wordpress"></a>
 
-# Account - Downloads
+# WordPress
 
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-downloads/
+Source: https://academy.bricksbuilder.io/builder/elements/wordpress/wordpress/
 
-*Displays customer downloadable products inside My Account.*
+*The WordPress element displays various WordPress widgets with customizable styling.*
 
-Displays customer downloadable products inside My Account.
+The WordPress element displays various WordPress widgets with customizable styling.
 
-## Where this element works
+## Settings
 
-My Account templates and My Account endpoint views.
+- **Widget** (select) - Type of WordPress widget to display. Options: `archives`, `calendar`, `categories`, `pages`, `recent comments`, `recent posts`, `tag cloud`, `taxonomy`. Default: `posts`.
 
-## Key settings
+- **Icon** (icon) - Optional icon for the widget. Available for most widget types.
 
-- **Table** (separator)
-- **Head** (separator)
-- **Body** (separator)
-- **Links** (separator)
-- **Button** (separator)
-- **Background color** (color)
-- **Border** (border)
-- **Box shadow** (box-shadow)
-- **Typography** (typography)
-- **Padding** (spacing)
+- **Icon typography** (typography) - Font settings for the icon.
 
-## Usage tips
+### Widget-specific settings
 
-- Use these elements in My Account templates or endpoint-specific templates.
-- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
+- **Show count** (checkbox) - Display item counts. Available for archives, categories, tag cloud, taxonomy.
+
+- **Sort by** (select) - Sort order for pages. Options: `page title`, `page date`, `page modified`, `page order`, `page ID`. Available for pages.
+
+- **Include** (select) - Specific pages to include. Available for pages.
+
+- **Exclude** (select) - Specific pages to exclude. Available for pages.
+
+- **Number of comments** (number) - How many recent comments to show. Available for recent comments.
+
+- **Number of posts** (number) - How many recent posts to show. Available for recent posts.
+
+- **Direction** (direction) - Layout direction for posts. Available for recent posts.
+
+- **Show date** (checkbox) - Display post dates. Available for recent posts.
+
+- **Show featured image** (checkbox) - Display post thumbnails. Available for recent posts.
+
+- **Featured image sizes** (select) - Size of featured images. Available for recent posts.
+
+- **Featured image width** (text) - Custom width for images. Available for recent posts.
+
+- **Featured image height** (text) - Custom height for images. Available for recent posts.
+
+- **Post title typography** (typography) - Font settings for post titles. Available for recent posts.
+
+- **Post meta typography** (typography) - Font settings for post meta. Available for recent posts.
+
+- **Taxonomy** (select) - Which taxonomy to display. Available for tag cloud and taxonomy.
+
+### Title
+
+- **Title** (text) - Custom title for the widget.
+
+- **HTML tag** (select) - HTML tag for the title. Options: `p`, `h1`-`h6`. Default: `h3`.
+
+- **Border** (border) - Border styling for the title.
+
+- **Typography** (typography) - Font settings for the title.
+
+> **Developer reference**
+>
+> See the [WordPress Schema](https://academy.bricksbuilder.io/developer/schema/elements/wordpress/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -25939,6 +25905,74 @@ Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-fo
 *Displays the WooCommerce My Account login form.*
 
 Displays the WooCommerce My Account login form.
+
+## Where this element works
+
+My Account templates and My Account endpoint views.
+
+## Key settings
+
+- **Disable** (checkbox)
+- **Typography** (typography)
+- **Align items** (align-items)
+- **Width** (number)
+- **Gap** (number)
+- **Label typography** (typography)
+- **Field** (separator)
+- **Margin** (spacing)
+- **Padding** (spacing)
+- **Background color** (color)
+
+## Usage tips
+
+- Use these elements in My Account templates or endpoint-specific templates.
+- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
+
+---
+
+<a id="builder-elements-woocommerce-account-downloads"></a>
+
+# Account - Downloads
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-downloads/
+
+*Displays customer downloadable products inside My Account.*
+
+Displays customer downloadable products inside My Account.
+
+## Where this element works
+
+My Account templates and My Account endpoint views.
+
+## Key settings
+
+- **Table** (separator)
+- **Head** (separator)
+- **Body** (separator)
+- **Links** (separator)
+- **Button** (separator)
+- **Background color** (color)
+- **Border** (border)
+- **Box shadow** (box-shadow)
+- **Typography** (typography)
+- **Padding** (spacing)
+
+## Usage tips
+
+- Use these elements in My Account templates or endpoint-specific templates.
+- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
+
+---
+
+<a id="builder-elements-woocommerce-account-form-lost-password"></a>
+
+# Account - Lost password
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-lost-password/
+
+*Displays the Lost password request form used in My Account flows.*
+
+Displays the Lost password request form used in My Account flows.
 
 ## Where this element works
 
@@ -26066,15 +26100,15 @@ My Account templates and My Account endpoint views.
 
 ---
 
-<a id="builder-elements-woocommerce-account-form-lost-password"></a>
+<a id="builder-elements-woocommerce-account-page"></a>
 
-# Account - Lost password
+# Account - Page
 
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-lost-password/
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page/
 
-*Displays the Lost password request form used in My Account flows.*
+*Displays the full My Account layout including navigation and endpoint content.*
 
-Displays the Lost password request form used in My Account flows.
+Displays the full My Account layout including navigation and endpoint content.
 
 ## Where this element works
 
@@ -26082,16 +26116,50 @@ My Account templates and My Account endpoint views.
 
 ## Key settings
 
-- **Disable** (checkbox)
-- **Typography** (typography)
-- **Align items** (align-items)
-- **Width** (number)
+- **Direction** (direction)
 - **Gap** (number)
-- **Label typography** (typography)
-- **Field** (separator)
-- **Margin** (spacing)
+- **Disable navigation** (checkbox)
+- **Align items** (align-items)
+- **Justify content** (justify-content)
+- **Background** (color)
+- **Border** (border)
+- **Box shadow** (box-shadow)
+- **Item** (separator)
+- **Padding** (spacing)
+
+## Usage tips
+
+- Use these elements in My Account templates or endpoint-specific templates.
+- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
+
+---
+
+<a id="builder-elements-woocommerce-account-view-order"></a>
+
+# Account - View order
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-view-order/
+
+*Displays order details for a selected order in My Account.*
+
+Displays order details for a selected order in My Account.
+
+## Where this element works
+
+My Account templates and My Account endpoint views.
+
+## Key settings
+
+- **Preview order ID** (number)
+- **Hide** (checkbox)
+- **Typography** (typography)
+- **Mark** (separator)
 - **Padding** (spacing)
 - **Background color** (color)
+- **Title** (separator)
+- **Meta** (separator)
+- **Description** (separator)
+- **Table** (separator)
 
 ## Usage tips
 
@@ -26276,37 +26344,37 @@ My Account templates and My Account endpoint views.
 
 ---
 
-<a id="builder-elements-woocommerce-account-page"></a>
+<a id="builder-elements-woocommerce-cart-collaterals"></a>
 
-# Account - Page
+# Cart totals
 
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page/
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-collaterals/
 
-*Displays the full My Account layout including navigation and endpoint content.*
+*Displays cart totals and related collateral content from the Cart page.*
 
-Displays the full My Account layout including navigation and endpoint content.
+Displays cart totals and related collateral content from the Cart page.
 
 ## Where this element works
 
-My Account templates and My Account endpoint views.
+Cart page templates.
 
 ## Key settings
 
-- **Direction** (direction)
-- **Gap** (number)
-- **Disable navigation** (checkbox)
-- **Align items** (align-items)
-- **Justify content** (justify-content)
-- **Background** (color)
-- **Border** (border)
-- **Box shadow** (box-shadow)
-- **Item** (separator)
+- **Disable cross sells** (checkbox)
+- **Hide title** (checkbox)
+- **Title** (typography)
+- **Subtotal** (typography)
+- **Total** (typography)
+- **Table** (separator)
+- **Margin** (spacing)
 - **Padding** (spacing)
+- **Border** (border)
+- **Button** (separator)
 
 ## Usage tips
 
-- Use these elements in My Account templates or endpoint-specific templates.
-- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
+- Place cart elements in a dedicated Cart template to avoid empty output on non-cart pages.
+- Keep spacing and table styling consistent across cart rows, totals, and coupon sections for better usability.
 
 ---
 
@@ -26356,40 +26424,6 @@ Displays WooCommerce breadcrumb navigation.
 
 ---
 
-<a id="builder-elements-woocommerce-account-view-order"></a>
-
-# Account - View order
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-view-order/
-
-*Displays order details for a selected order in My Account.*
-
-Displays order details for a selected order in My Account.
-
-## Where this element works
-
-My Account templates and My Account endpoint views.
-
-## Key settings
-
-- **Preview order ID** (number)
-- **Hide** (checkbox)
-- **Typography** (typography)
-- **Mark** (separator)
-- **Padding** (spacing)
-- **Background color** (color)
-- **Title** (separator)
-- **Meta** (separator)
-- **Description** (separator)
-- **Table** (separator)
-
-## Usage tips
-
-- Use these elements in My Account templates or endpoint-specific templates.
-- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
-
----
-
 <a id="builder-elements-woocommerce-cart-coupon"></a>
 
 # Cart coupon
@@ -26416,40 +26450,6 @@ Cart page templates.
 - **Border** (border)
 - **Placeholder typography** (typography)
 - **Button** (text)
-
-## Usage tips
-
-- Place cart elements in a dedicated Cart template to avoid empty output on non-cart pages.
-- Keep spacing and table styling consistent across cart rows, totals, and coupon sections for better usability.
-
----
-
-<a id="builder-elements-woocommerce-cart-collaterals"></a>
-
-# Cart totals
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-collaterals/
-
-*Displays cart totals and related collateral content from the Cart page.*
-
-Displays cart totals and related collateral content from the Cart page.
-
-## Where this element works
-
-Cart page templates.
-
-## Key settings
-
-- **Disable cross sells** (checkbox)
-- **Hide title** (checkbox)
-- **Title** (typography)
-- **Subtotal** (typography)
-- **Total** (typography)
-- **Table** (separator)
-- **Margin** (spacing)
-- **Padding** (spacing)
-- **Border** (border)
-- **Button** (separator)
 
 ## Usage tips
 
@@ -26773,6 +26773,40 @@ Checkout templates (and order-received context for thank-you flows).
 
 ---
 
+<a id="builder-elements-woocommerce-checkout-thankyou"></a>
+
+# Checkout thank you
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-thankyou/
+
+*Displays the order received / thank you content after checkout.*
+
+Displays the order received / thank you content after checkout.
+
+## Where this element works
+
+Checkout templates (and order-received context for thank-you flows).
+
+## Key settings
+
+- **Preview order ID** (number)
+- **Hide message** (checkbox)
+- **Margin** (spacing)
+- **Padding** (spacing)
+- **Background** (color)
+- **Border** (border)
+- **Typography** (typography)
+- **Label typography** (typography)
+- **Action buttons** (separator)
+- **Gap** (number)
+
+## Usage tips
+
+- Use checkout elements only in Checkout templates so forms and order data render correctly.
+- Test logged-in and guest checkout flows after styling changes to ensure all states remain usable.
+
+---
+
 <a id="builder-elements-woocommerce-checkout-v2"></a>
 
 # Checkout v2
@@ -26987,40 +27021,6 @@ See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.
 - Use [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) or the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) to create the recommended Checkout v2 structure.
 - Design every checkout state that customers can reach, especially Pay, Thank you, Order receipt, and Login required.
 - Use the classic [Checkout template workflow](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/) if you prefer separate checkout templates.
-
----
-
-<a id="builder-elements-woocommerce-checkout-thankyou"></a>
-
-# Checkout thank you
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-thankyou/
-
-*Displays the order received / thank you content after checkout.*
-
-Displays the order received / thank you content after checkout.
-
-## Where this element works
-
-Checkout templates (and order-received context for thank-you flows).
-
-## Key settings
-
-- **Preview order ID** (number)
-- **Hide message** (checkbox)
-- **Margin** (spacing)
-- **Padding** (spacing)
-- **Background** (color)
-- **Border** (border)
-- **Typography** (typography)
-- **Label typography** (typography)
-- **Action buttons** (separator)
-- **Gap** (number)
-
-## Usage tips
-
-- Use checkout elements only in Checkout templates so forms and order data render correctly.
-- Test logged-in and guest checkout flows after styling changes to ensure all states remain usable.
 
 ---
 
@@ -27371,184 +27371,6 @@ The Developer section covers the extension points and data structures behind Bri
 - [Functions](https://academy.bricksbuilder.io/developer/functions/function-bricks_render_dynamic_data/) for documented helper functions
 - [Dynamic Data](https://academy.bricksbuilder.io/developer/dynamic-data/create-your-own-dynamic-data-tag/) for custom data tags
 - [Schema](https://academy.bricksbuilder.io/developer/schema/) for the underlying Bricks data model
-
----
-
-<a id="developer-dynamic-data-create-your-own-dynamic-data-tag"></a>
-
-# Create Your Own Dynamic Data Tag
-
-Source: https://academy.bricksbuilder.io/developer/dynamic-data/create-your-own-dynamic-data-tag/
-
-*Create custom dynamic data tags in Bricks so your own values can be inserted into text, media, links, and other supported contexts.*
-
-This article is intended for developers who wish to create a custom dynamic data tag within the builder.
-
-The desired outcome should resemble the following example:
-
-![](https://academy.bricksbuilder.io/assets/bricks-custom-dynamic-tag.png)
-
-<figcaption>
-
-A custom dynamic tag labeled "My Dynamic Data"
-
-</figcaption>
-
-## Step 1: Register a tag through filter: bricks/dynamic_tags_list
-
-Use the `bricks/dynamic_tags_list` filter to render your custom dynamic data tag in the builder.
-
-```php
-add_filter( 'bricks/dynamic_tags_list', 'add_my_tag_to_builder' );
-function add_my_tag_to_builder( $tags ) {
-  // Ensure your tag is unique (best to prefix it)
-  $tags[] = [
-    'name'  => '{my_dd_tag}',
-    'label' => 'My Dynamic Data',
-    'group' => 'My Dynamic Data Group',
-  ];
-
-  return $tags;
-}
-```
-
-## Step 2: Hook on several filters
-
-#### 1) bricks/dynamic_data/render_tag
-
-This will be used when `\Bricks\Integrations\Dynamic_Data\Providers::render_tag()` is called to parse a specific tag.
-
-```php
-add_filter( 'bricks/dynamic_data/render_tag', 'get_my_tag_value', 20, 3 );
-function get_my_tag_value( $tag, $post, $context = 'text' ) {
-  if( ! is_string( $tag ) ) {
-    return $tag;
-  }
-  // $tag is the tag name without the outer curly braces
-  $clean_tag = str_replace( [ '{', '}' ], '', $tag );
-
-  // Only look for dynamic tag my_dd_tag
-  if ( $clean_tag !== 'my_dd_tag' ) {
-    return $tag;
-  }
-
-  // Do your custom logic here, you should define run_my_dd_tag_logic() function
-  $value = run_my_dd_tag_logic();
-
-  return $value;
-}
-
-function run_my_dd_tag_logic() {
-  // Do your custom logic here
-  $my_value = 'My dynamic data value:';
-
-  return $my_value;
-}
-```
-
-If you intend to accept an argument such as "`my_dd_tag:arg1`", you may need to adjust the logic accordingly. Here is a basic example using PHP logic. For more complex scenarios, you can adapt the logic as needed:
-
-```php
-add_filter( 'bricks/dynamic_data/render_tag', 'get_my_tag_value', 20, 3 );
-function get_my_tag_value( $tag, $post, $context = 'text' ) {
-  if( ! is_string( $tag ) ) {
-    return $tag;
-  }
-
-  // $tag is the tag name without the outer curly braces
-  $clean_tag = str_replace( [ '{', '}' ], '', $tag );
-
-  // Only look for dynamic tag starts with my_dd_tag:
-  if ( strpos( $clean_tag, 'my_dd_tag:' ) !== 0 ) {
-    return $tag;
-  }
-
-  // Get argument
-  $argument = str_replace( 'my_dd_tag:', '', $clean_tag );
-
-  // Do your custom logic here, you should define run_my_dd_tag_logic() function
-  $value = run_my_dd_tag_logic( $argument );
-
-  return $value;
-}
-
-function run_my_dd_tag_logic($argument) {
-  // Do your custom logic here
-  $my_value = 'My dynamic data value: ' . $argument ;
-
-  return $my_value;
-}
-```
-
-#### 2) bricks/dynamic_data/render_content and bricks/frontend/render_data
-
-These will be used when `\Bricks\Integrations\Dynamic_Data\Providers::render_content()` is invoked to parse strings that may contain various dynamic tags within the content. One of the functions that perform this action is `bricks_render_dynamic_data()`.
-
-> **Note**
->
-> It is crucial to exercise extra caution while working on this aspect, as any mishandling may disrupt the dynamic tag functionality across the entire website.
-
-```php
-add_filter( 'bricks/dynamic_data/render_content', 'render_my_tag', 20, 3 );
-add_filter( 'bricks/frontend/render_data', 'render_my_tag', 20, 2 );
-function render_my_tag( $content, $post, $context = 'text' ) {
-
-  // $content might consists of HTML and other dynamic tags
-  // Only look for dynamic tag {my_dd_tag}
-  if ( strpos( $content, '{my_dd_tag}' ) === false ) {
-    return $content;
-  }
-
-  // Do your custom logic here, you should define run_my_dd_tag_logic() function
-  $my_value = run_my_dd_tag_logic();
-
-  // Replace the tag with the value you want to display
-  $content = str_replace( '{my_dd_tag}', $my_value, $content );
-
-  return $content;
-}
-
-```
-
-If your dynamic tag accepts an argument, consider the following example:
-
-```php
-add_filter( 'bricks/dynamic_data/render_content', 'render_my_tag', 20, 3 );
-add_filter( 'bricks/frontend/render_data', 'render_my_tag', 20, 2 );
-function render_my_tag( $content, $post, $context = 'text' ) {
-
-  // $content is the content of the element, including other dynamic tags, HTML, etc.
-  // Only look for content starts with {my_dd_tag:
-  if ( strpos( $content, '{my_dd_tag:' ) === false ) {
-    return $content;
-  }
-
-  // Regex to match my_dd_tag: tag
-  preg_match_all( '/{(my_dd_tag:[^}]+)}/', $content, $matches );
-
-  // Nothing grouped in the regex, return the original content
-  if ( empty( $matches[0] ) ) {
-    return $content;
-  }
-
-  foreach ( $matches[1] as $key => $match ) {
-    $tag = $matches[0][ $key ];
-
-    // Get the dynamic data value, $match is the tag name without the curly brackets
-    // Can reuse the get_my_tag_value function created earlier
-    $value   = get_my_tag_value( $match, $post, $context );
-
-    // Replace the tag with the transformed value
-    $content = str_replace( $tag, $value, $content );
-  }
-
-  return $content;
-}
-```
-
-> **Note**
->
-> Note: If your dynamic tag is used in an image context, return an array whose first item is an attachment ID or image URL. Use an attachment ID when Bricks needs image size and srcset metadata. Please refer to the example in our forum threads: [Dynamic data not rendered correctly on image element](https://forum.bricksbuilder.io/t/dynamic-data-not-rendered-correctly-on-image-element/22641/2?u=itchycode)
 
 ---
 
@@ -28644,26 +28466,6 @@ class Prefix_Element_Info extends \Bricks\Element {
 
 ---
 
-<a id="developer-controls"></a>
-
-# Controls
-
-Source: https://academy.bricksbuilder.io/developer/controls/
-
-*Reference the Bricks controls used in custom elements and builder extensions, from layout and typography controls to media, code, query, and repeater controls.*
-
-Bricks controls define how users edit custom element settings inside the builder. This section helps you understand the available control types, the data they store, and when to use each one.
-
-## Common control groups
-
-- [Element Controls](https://academy.bricksbuilder.io/developer/controls/element-controls/) for the overall structure of element settings
-- [Content Controls](https://academy.bricksbuilder.io/developer/controls/text-control/) for text, textarea, editor, select, and checkbox inputs
-- [Styling Controls](https://academy.bricksbuilder.io/developer/controls/color-control/) for visual styling fields such as color, typography, border, and shadow
-- [Media Controls](https://academy.bricksbuilder.io/developer/controls/image-control/) for images, galleries, icons, SVG, and audio
-- [Advanced Controls](https://academy.bricksbuilder.io/developer/controls/query-control/) for query, repeater, code, filters, and apply workflows
-
----
-
 <a id="developer-controls-justify-content-control"></a>
 
 # Justify Content Control (Flexbox)
@@ -28700,6 +28502,26 @@ public function set_controls() {
   ];
 }
 ```
+
+---
+
+<a id="developer-controls"></a>
+
+# Controls
+
+Source: https://academy.bricksbuilder.io/developer/controls/
+
+*Reference the Bricks controls used in custom elements and builder extensions, from layout and typography controls to media, code, query, and repeater controls.*
+
+Bricks controls define how users edit custom element settings inside the builder. This section helps you understand the available control types, the data they store, and when to use each one.
+
+## Common control groups
+
+- [Element Controls](https://academy.bricksbuilder.io/developer/controls/element-controls/) for the overall structure of element settings
+- [Content Controls](https://academy.bricksbuilder.io/developer/controls/text-control/) for text, textarea, editor, select, and checkbox inputs
+- [Styling Controls](https://academy.bricksbuilder.io/developer/controls/color-control/) for visual styling fields such as color, typography, border, and shadow
+- [Media Controls](https://academy.bricksbuilder.io/developer/controls/image-control/) for images, galleries, icons, SVG, and audio
+- [Advanced Controls](https://academy.bricksbuilder.io/developer/controls/query-control/) for query, repeater, code, filters, and apply workflows
 
 ---
 
@@ -28993,50 +28815,6 @@ class Prefix_Element_Posts extends \Bricks\Element {
 
 ---
 
-<a id="developer-controls-svg-control"></a>
-
-# SVG Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/svg-control/
-
-*Reference for the Bricks SVG control, including its options, CSS mapping, and usage in custom elements.*
-
-The SVG control lets you select an SVG (Scalable Vector Graphic) file from the media library. The selected SVG returns an array with the following keys:
-
-- `id` (media library item ID)
-- `filename`
-- `url`
-
-We recommend rendering the SVG inline as shown in the code example below. This way you can easily customize it via CSS.
-
-```php
-class Prefix_Element_Svg extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleSvg'] = [
-      'tab' => 'content',
-      'type' => 'svg',
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    if ( isset( $this->settings['exampleSvg']['url'] ) ) {
-      echo file_get_contents( esc_url( $this->settings['exampleSvg']['url'] ) );
-    } else {
-      esc_html_e( 'No SVG selected.', 'bricks' );
-    }
-  }
-}
-```
-
-### Resources
-
-- [https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg)
-- [https://css-tricks.com/using-svg/](https://css-tricks.com/using-svg/)
-
----
-
 <a id="developer-controls-slider-control"></a>
 
 # Slider Control
@@ -29090,6 +28868,50 @@ class Prefix_Element_Slider extends \Bricks\Element {
 ### Resources
 
 - [https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range)
+
+---
+
+<a id="developer-controls-svg-control"></a>
+
+# SVG Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/svg-control/
+
+*Reference for the Bricks SVG control, including its options, CSS mapping, and usage in custom elements.*
+
+The SVG control lets you select an SVG (Scalable Vector Graphic) file from the media library. The selected SVG returns an array with the following keys:
+
+- `id` (media library item ID)
+- `filename`
+- `url`
+
+We recommend rendering the SVG inline as shown in the code example below. This way you can easily customize it via CSS.
+
+```php
+class Prefix_Element_Svg extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleSvg'] = [
+      'tab' => 'content',
+      'type' => 'svg',
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    if ( isset( $this->settings['exampleSvg']['url'] ) ) {
+      echo file_get_contents( esc_url( $this->settings['exampleSvg']['url'] ) );
+    } else {
+      esc_html_e( 'No SVG selected.', 'bricks' );
+    }
+  }
+}
+```
+
+### Resources
+
+- [https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg)
+- [https://css-tricks.com/using-svg/](https://css-tricks.com/using-svg/)
 
 ---
 
@@ -29869,6 +29691,23 @@ add_action( 'wp_enqueue_scripts', function() {
 
 ---
 
+<a id="developer-guides-best-practices"></a>
+
+# Best Practices
+
+Source: https://academy.bricksbuilder.io/developer/guides/best-practices/
+
+*Follow Bricks development best practices for permalinks, image handling, child-theme usage, and safer long-term customization.*
+
+Please keep the points below in mind when working with Bricks:
+
+| **Permalink Settings** | We recommend **Post name** permalinks for cleaner URLs. Go to **Settings > Permalinks**, select **Post name**, and click **Save Changes**. Bricks builds builder URLs from the page permalink, so other WordPress permalink structures can work as long as WordPress resolves them correctly. |
+| --- | --- |
+| **Min. Image Dimensions** | Upload images with a minimum width of 600 pixels. Ideally 1600 pixels in width or more.<br /><br />If you already have images in your media library and start working with Bricks make sure to [Regenerate Thumbnails](https://wordpress.org/plugins/regenerate-thumbnails/) so all Bricks-specific image sizes are generated properly. |
+| **Never Edit Theme Code Directly** | **Do not edit any of the Bricks theme core files directly!**<br /><br />As all your changes will be lost/overwritten when updating the theme. Use the [Bricks child theme](https://academy.bricksbuilder.io/developer/guides/child-theme/) or a code snippet plugin to extend Bricks with your custom code. |
+
+---
+
 <a id="developer-guides-bricks-css-compatibility-guidelines"></a>
 
 # Bricks CSS: Compatibility guidelines
@@ -29911,23 +29750,6 @@ We aim to strike the right balance: adopting modern standards when they’re sta
 No. This only applies to the CSS generated by Bricks.
 
 You can continue writing your own CSS however you like, including fallbacks or feature checks for legacy devices. Bricks just won't include those fallbacks automatically in its own output.
-
----
-
-<a id="developer-guides-best-practices"></a>
-
-# Best Practices
-
-Source: https://academy.bricksbuilder.io/developer/guides/best-practices/
-
-*Follow Bricks development best practices for permalinks, image handling, child-theme usage, and safer long-term customization.*
-
-Please keep the points below in mind when working with Bricks:
-
-| **Permalink Settings** | We recommend **Post name** permalinks for cleaner URLs. Go to **Settings > Permalinks**, select **Post name**, and click **Save Changes**. Bricks builds builder URLs from the page permalink, so other WordPress permalink structures can work as long as WordPress resolves them correctly. |
-| --- | --- |
-| **Min. Image Dimensions** | Upload images with a minimum width of 600 pixels. Ideally 1600 pixels in width or more.<br /><br />If you already have images in your media library and start working with Bricks make sure to [Regenerate Thumbnails](https://wordpress.org/plugins/regenerate-thumbnails/) so all Bricks-specific image sizes are generated properly. |
-| **Never Edit Theme Code Directly** | **Do not edit any of the Bricks theme core files directly!**<br /><br />As all your changes will be lost/overwritten when updating the theme. Use the [Bricks child theme](https://academy.bricksbuilder.io/developer/guides/child-theme/) or a code snippet plugin to extend Bricks with your custom code. |
 
 ---
 
@@ -30334,6 +30156,184 @@ document.addEventListener('bricks/megamenu/repositioned', (event) => {
 
 ---
 
+<a id="developer-dynamic-data-create-your-own-dynamic-data-tag"></a>
+
+# Create Your Own Dynamic Data Tag
+
+Source: https://academy.bricksbuilder.io/developer/dynamic-data/create-your-own-dynamic-data-tag/
+
+*Create custom dynamic data tags in Bricks so your own values can be inserted into text, media, links, and other supported contexts.*
+
+This article is intended for developers who wish to create a custom dynamic data tag within the builder.
+
+The desired outcome should resemble the following example:
+
+![](https://academy.bricksbuilder.io/assets/bricks-custom-dynamic-tag.png)
+
+<figcaption>
+
+A custom dynamic tag labeled "My Dynamic Data"
+
+</figcaption>
+
+## Step 1: Register a tag through filter: bricks/dynamic_tags_list
+
+Use the `bricks/dynamic_tags_list` filter to render your custom dynamic data tag in the builder.
+
+```php
+add_filter( 'bricks/dynamic_tags_list', 'add_my_tag_to_builder' );
+function add_my_tag_to_builder( $tags ) {
+  // Ensure your tag is unique (best to prefix it)
+  $tags[] = [
+    'name'  => '{my_dd_tag}',
+    'label' => 'My Dynamic Data',
+    'group' => 'My Dynamic Data Group',
+  ];
+
+  return $tags;
+}
+```
+
+## Step 2: Hook on several filters
+
+#### 1) bricks/dynamic_data/render_tag
+
+This will be used when `\Bricks\Integrations\Dynamic_Data\Providers::render_tag()` is called to parse a specific tag.
+
+```php
+add_filter( 'bricks/dynamic_data/render_tag', 'get_my_tag_value', 20, 3 );
+function get_my_tag_value( $tag, $post, $context = 'text' ) {
+  if( ! is_string( $tag ) ) {
+    return $tag;
+  }
+  // $tag is the tag name without the outer curly braces
+  $clean_tag = str_replace( [ '{', '}' ], '', $tag );
+
+  // Only look for dynamic tag my_dd_tag
+  if ( $clean_tag !== 'my_dd_tag' ) {
+    return $tag;
+  }
+
+  // Do your custom logic here, you should define run_my_dd_tag_logic() function
+  $value = run_my_dd_tag_logic();
+
+  return $value;
+}
+
+function run_my_dd_tag_logic() {
+  // Do your custom logic here
+  $my_value = 'My dynamic data value:';
+
+  return $my_value;
+}
+```
+
+If you intend to accept an argument such as "`my_dd_tag:arg1`", you may need to adjust the logic accordingly. Here is a basic example using PHP logic. For more complex scenarios, you can adapt the logic as needed:
+
+```php
+add_filter( 'bricks/dynamic_data/render_tag', 'get_my_tag_value', 20, 3 );
+function get_my_tag_value( $tag, $post, $context = 'text' ) {
+  if( ! is_string( $tag ) ) {
+    return $tag;
+  }
+
+  // $tag is the tag name without the outer curly braces
+  $clean_tag = str_replace( [ '{', '}' ], '', $tag );
+
+  // Only look for dynamic tag starts with my_dd_tag:
+  if ( strpos( $clean_tag, 'my_dd_tag:' ) !== 0 ) {
+    return $tag;
+  }
+
+  // Get argument
+  $argument = str_replace( 'my_dd_tag:', '', $clean_tag );
+
+  // Do your custom logic here, you should define run_my_dd_tag_logic() function
+  $value = run_my_dd_tag_logic( $argument );
+
+  return $value;
+}
+
+function run_my_dd_tag_logic($argument) {
+  // Do your custom logic here
+  $my_value = 'My dynamic data value: ' . $argument ;
+
+  return $my_value;
+}
+```
+
+#### 2) bricks/dynamic_data/render_content and bricks/frontend/render_data
+
+These will be used when `\Bricks\Integrations\Dynamic_Data\Providers::render_content()` is invoked to parse strings that may contain various dynamic tags within the content. One of the functions that perform this action is `bricks_render_dynamic_data()`.
+
+> **Note**
+>
+> It is crucial to exercise extra caution while working on this aspect, as any mishandling may disrupt the dynamic tag functionality across the entire website.
+
+```php
+add_filter( 'bricks/dynamic_data/render_content', 'render_my_tag', 20, 3 );
+add_filter( 'bricks/frontend/render_data', 'render_my_tag', 20, 2 );
+function render_my_tag( $content, $post, $context = 'text' ) {
+
+  // $content might consists of HTML and other dynamic tags
+  // Only look for dynamic tag {my_dd_tag}
+  if ( strpos( $content, '{my_dd_tag}' ) === false ) {
+    return $content;
+  }
+
+  // Do your custom logic here, you should define run_my_dd_tag_logic() function
+  $my_value = run_my_dd_tag_logic();
+
+  // Replace the tag with the value you want to display
+  $content = str_replace( '{my_dd_tag}', $my_value, $content );
+
+  return $content;
+}
+
+```
+
+If your dynamic tag accepts an argument, consider the following example:
+
+```php
+add_filter( 'bricks/dynamic_data/render_content', 'render_my_tag', 20, 3 );
+add_filter( 'bricks/frontend/render_data', 'render_my_tag', 20, 2 );
+function render_my_tag( $content, $post, $context = 'text' ) {
+
+  // $content is the content of the element, including other dynamic tags, HTML, etc.
+  // Only look for content starts with {my_dd_tag:
+  if ( strpos( $content, '{my_dd_tag:' ) === false ) {
+    return $content;
+  }
+
+  // Regex to match my_dd_tag: tag
+  preg_match_all( '/{(my_dd_tag:[^}]+)}/', $content, $matches );
+
+  // Nothing grouped in the regex, return the original content
+  if ( empty( $matches[0] ) ) {
+    return $content;
+  }
+
+  foreach ( $matches[1] as $key => $match ) {
+    $tag = $matches[0][ $key ];
+
+    // Get the dynamic data value, $match is the tag name without the curly brackets
+    // Can reuse the get_my_tag_value function created earlier
+    $value   = get_my_tag_value( $match, $post, $context );
+
+    // Replace the tag with the transformed value
+    $content = str_replace( $tag, $value, $content );
+  }
+
+  return $content;
+}
+```
+
+> **Note**
+>
+> Note: If your dynamic tag is used in an image context, return an array whose first item is an attachment ID or image URL. Use an attachment ID when Bricks needs image size and srcset metadata. Please refer to the example in our forum threads: [Dynamic data not rendered correctly on image element](https://forum.bricksbuilder.io/t/dynamic-data-not-rendered-correctly-on-image-element/22641/2?u=itchycode)
+
+---
+
 <a id="developer-hooks-actions-action-bricks-generate-css-file"></a>
 
 # Action: bricks/generate_css_file
@@ -30429,6 +30429,26 @@ add_action( 'bricks_after_footer', function() {
 
 ---
 
+<a id="developer-hooks-actions-bricks-after-header"></a>
+
+# Action: bricks_after_header
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-after_header/
+
+*Runs after Bricks renders the header template.*
+
+Runs after Bricks renders the header template. Use it for output or setup that should happen directly after the site header.
+
+## Example usage
+
+```php
+add_action( 'bricks_after_header', function() {
+    echo '<div class="after-header-banner">Announcement</div>';
+} );
+```
+
+---
+
 <a id="developer-hooks-actions-bricks-after-site-wrapper"></a>
 
 # Action: bricks_after_site_wrapper
@@ -30446,6 +30466,32 @@ In the builder, Bricks uses this hook to close the `.brx-body` wrapper. On the f
 ```php
 add_action( 'bricks_after_site_wrapper', function() {
     echo '</div><!-- .before-site-wrapper -->';
+} );
+```
+
+---
+
+<a id="developer-hooks-actions-bricks-archive-product-before"></a>
+
+# Action: bricks/archive_product/before
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-archive_product-before/
+
+*Runs before the Bricks content is rendered on a WooCommerce product archive page when a Bricks template is used. This action is specific to WooCommerce archives.*
+
+Runs before the Bricks content is rendered on a WooCommerce product archive page when a Bricks template is used. This action is specific to WooCommerce archives rendered by Bricks.
+
+## Parameters
+
+- `$bricks_data` (_array_): The Bricks data for the template being rendered.
+- `$post_id` (_int_): The ID of the post/archive being rendered.
+
+## Example usage
+
+```php
+add_action( 'bricks/archive_product/before', function( $bricks_data, $post_id ) {
+    // Output custom content before the product archive
+    echo '<div class="custom-archive-header">Welcome to our shop</div>';
 } );
 ```
 
@@ -30472,26 +30518,6 @@ Runs after the Bricks content is rendered on a WooCommerce product archive page 
 add_action( 'bricks/archive_product/after', function( $bricks_data, $post_id ) {
     // Output custom content after the product archive
     echo '<div class="custom-archive-footer">End of product list</div>';
-} );
-```
-
----
-
-<a id="developer-hooks-actions-bricks-after-header"></a>
-
-# Action: bricks_after_header
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-after_header/
-
-*Runs after Bricks renders the header template.*
-
-Runs after Bricks renders the header template. Use it for output or setup that should happen directly after the site header.
-
-## Example usage
-
-```php
-add_action( 'bricks_after_header', function() {
-    echo '<div class="after-header-banner">Announcement</div>';
 } );
 ```
 
@@ -30532,32 +30558,6 @@ Runs before Bricks renders the header template. Use it to output markup or run l
 ```php
 add_action( 'bricks_before_header', function() {
     echo '<div class="top-strip">Free shipping this week</div>';
-} );
-```
-
----
-
-<a id="developer-hooks-actions-bricks-archive-product-before"></a>
-
-# Action: bricks/archive_product/before
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-archive_product-before/
-
-*Runs before the Bricks content is rendered on a WooCommerce product archive page when a Bricks template is used. This action is specific to WooCommerce archives.*
-
-Runs before the Bricks content is rendered on a WooCommerce product archive page when a Bricks template is used. This action is specific to WooCommerce archives rendered by Bricks.
-
-## Parameters
-
-- `$bricks_data` (_array_): The Bricks data for the template being rendered.
-- `$post_id` (_int_): The ID of the post/archive being rendered.
-
-## Example usage
-
-```php
-add_action( 'bricks/archive_product/before', function( $bricks_data, $post_id ) {
-    // Output custom content before the product archive
-    echo '<div class="custom-archive-header">Welcome to our shop</div>';
 } );
 ```
 
@@ -30689,36 +30689,6 @@ add_action( 'bricks/dynamic_data/after_do_action', function( $action, $filters, 
 
 ---
 
-<a id="developer-hooks-actions-bricks-dynamic-data-before-do-action"></a>
-
-# Action: bricks/dynamic_data/before_do_action
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-dynamic_data-before_do_action/
-
-*Runs before the dynamic data {doaction:myhook} tag is processed. This allows you to execute code before a specific doaction tag is rendered.*
-
-Runs before the dynamic data `{do_action:my_hook}` tag is processed. This allows you to execute code before a specific `do_action` tag is rendered.
-
-## Parameters
-
-- `$action` (_string_): The action name specified in the tag (e.g. `my_hook` in `{do_action:my_hook}`).
-- `$filters` (_array_): Array of filters applied to the tag.
-- `$context` (_string_): The context in which the tag is being rendered (e.g., 'text').
-- `$post` (_WP_Post|null_): The current post object, or null.
-
-## Example usage
-
-```php
-add_action( 'bricks/dynamic_data/before_do_action', function( $action, $filters, $context, $post ) {
-    if ( $action === 'my_custom_hook' ) {
-        // Code to run before 'my_custom_hook' is processed via dynamic data
-        error_log( 'Starting processing my_custom_hook' );
-    }
-}, 10, 4 );
-```
-
----
-
 <a id="developer-hooks-actions-bricks-dynamic-data-tag-value-parsed"></a>
 
 # Action: bricks/dynamic_data/tag_value_parsed
@@ -30798,6 +30768,36 @@ add_action( 'bricks_execute_filter_index_job', function( $job ) {
 
 ---
 
+<a id="developer-hooks-actions-bricks-dynamic-data-before-do-action"></a>
+
+# Action: bricks/dynamic_data/before_do_action
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-dynamic_data-before_do_action/
+
+*Runs before the dynamic data {doaction:myhook} tag is processed. This allows you to execute code before a specific doaction tag is rendered.*
+
+Runs before the dynamic data `{do_action:my_hook}` tag is processed. This allows you to execute code before a specific `do_action` tag is rendered.
+
+## Parameters
+
+- `$action` (_string_): The action name specified in the tag (e.g. `my_hook` in `{do_action:my_hook}`).
+- `$filters` (_array_): Array of filters applied to the tag.
+- `$context` (_string_): The context in which the tag is being rendered (e.g., 'text').
+- `$post` (_WP_Post|null_): The current post object, or null.
+
+## Example usage
+
+```php
+add_action( 'bricks/dynamic_data/before_do_action', function( $action, $filters, $context, $post ) {
+    if ( $action === 'my_custom_hook' ) {
+        // Code to run before 'my_custom_hook' is processed via dynamic data
+        error_log( 'Starting processing my_custom_hook' );
+    }
+}, 10, 4 );
+```
+
+---
+
 <a id="developer-hooks-actions-bricks-filter-element-before-set-data-source-from-custom-field"></a>
 
 # Action: bricks/filter_element/before_set_data_source_from_custom_field
@@ -30821,6 +30821,35 @@ add_action( 'bricks/filter_element/before_set_data_source_from_custom_field', fu
     
     // Example: modify settings before processing
     // $filter_element->settings['customFieldKey'] = 'modified_key';
+} );
+```
+
+---
+
+<a id="developer-hooks-actions-bricks-frontend-after-render-data"></a>
+
+# Action: bricks/frontend/after_render_data
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-frontend-after_render_data/
+
+*Runs after the Bricks\\Frontend::renderdata method has finished generating the HTML for a set of elements. This action is undocumented in the official docs but.*
+
+Runs after the `Bricks\Frontend::render_data` method has finished generating the HTML for a set of elements. This action is undocumented in the official docs but useful for re-adding plugin actions/filters that were removed in `bricks/frontend/before_render_data` or performing cleanup.
+
+## Parameters
+
+- `$elements` (_array_): The array of elements that were rendered.
+- `$area` (_string_): The area being rendered (e.g., 'content', 'header', 'footer').
+
+## Example usage
+
+```php
+add_action( 'bricks/frontend/after_render_data', function( $elements, $area ) {
+    // Restore actions/filters removed in before_render_data
+    // add_filter( 'the_content', 'my_plugin_content_filter' );
+
+    // Example: Log render completion
+    // error_log( "Finished rendering area: $area" );
 } );
 ```
 
@@ -30868,35 +30897,6 @@ add_action( 'bricks/form/custom_action', function( $form ) {
 
 ---
 
-<a id="developer-hooks-actions-bricks-frontend-after-render-data"></a>
-
-# Action: bricks/frontend/after_render_data
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-frontend-after_render_data/
-
-*Runs after the Bricks\\Frontend::renderdata method has finished generating the HTML for a set of elements. This action is undocumented in the official docs but.*
-
-Runs after the `Bricks\Frontend::render_data` method has finished generating the HTML for a set of elements. This action is undocumented in the official docs but useful for re-adding plugin actions/filters that were removed in `bricks/frontend/before_render_data` or performing cleanup.
-
-## Parameters
-
-- `$elements` (_array_): The array of elements that were rendered.
-- `$area` (_string_): The area being rendered (e.g., 'content', 'header', 'footer').
-
-## Example usage
-
-```php
-add_action( 'bricks/frontend/after_render_data', function( $elements, $area ) {
-    // Restore actions/filters removed in before_render_data
-    // add_filter( 'the_content', 'my_plugin_content_filter' );
-
-    // Example: Log render completion
-    // error_log( "Finished rendering area: $area" );
-} );
-```
-
----
-
 <a id="developer-hooks-actions-bricks-frontend-before-render-data"></a>
 
 # Action: bricks/frontend/before_render_data
@@ -30922,6 +30922,33 @@ add_action( 'bricks/frontend/before_render_data', function( $elements, $area ) {
     // Example: Log render start
     // error_log( "Starting rendering area: $area" );
 } );
+```
+
+---
+
+<a id="developer-hooks-actions-bricks-get-templates-query-after"></a>
+
+# Action: bricks/get_templates/query_after
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-get_templates-query_after/
+
+*Runs after Bricks queries templates.*
+
+Runs after Bricks performs the uncached `WP_Query` inside `Templates::get_templates_query()`. Use it to restore integration context after the internal template query has run.
+
+This action does not run when Bricks returns the template query from object cache.
+
+## Parameters
+
+- `$query` (WP_Query): The template query object.
+- `$merged_args` (array): The query arguments after Bricks merges custom and default values.
+
+## Example usage
+
+```php
+add_action( 'bricks/get_templates/query_after', function( $query, $merged_args ) {
+    // Restore custom query context after template lookup.
+}, 10, 2 );
 ```
 
 ---
@@ -30968,33 +30995,6 @@ add_action( 'bricks/load_elements/after', function() {
 
 ---
 
-<a id="developer-hooks-actions-bricks-get-templates-query-after"></a>
-
-# Action: bricks/get_templates/query_after
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-get_templates-query_after/
-
-*Runs after Bricks queries templates.*
-
-Runs after Bricks performs the uncached `WP_Query` inside `Templates::get_templates_query()`. Use it to restore integration context after the internal template query has run.
-
-This action does not run when Bricks returns the template query from object cache.
-
-## Parameters
-
-- `$query` (WP_Query): The template query object.
-- `$merged_args` (array): The query arguments after Bricks merges custom and default values.
-
-## Example usage
-
-```php
-add_action( 'bricks/get_templates/query_after', function( $query, $merged_args ) {
-    // Restore custom query context after template lookup.
-}, 10, 2 );
-```
-
----
-
 <a id="developer-hooks-actions-bricks-load-elements-before"></a>
 
 # Action: bricks/load_elements/before
@@ -31010,6 +31010,26 @@ Runs before Bricks loads element classes. Use it to prepare integration state be
 ```php
 add_action( 'bricks/load_elements/before', function() {
     // Prepare state before Bricks loads element classes.
+} );
+```
+
+---
+
+<a id="developer-hooks-actions-bricks-meta-tags"></a>
+
+# Action: bricks_meta_tags
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-meta_tags/
+
+*Runs in the document head before wp_head().*
+
+Runs in the document head before `wp_head()`. Use it to output meta tags that should be controlled through the Bricks header template flow.
+
+## Example usage
+
+```php
+add_action( 'bricks_meta_tags', function() {
+    echo '<meta name="theme-color" content="#111111">';
 } );
 ```
 
@@ -31043,26 +31063,6 @@ add_action( 'bricks/query/query_api_response', function( $response, $element_id 
     // $data = $response;
     // Do something with $data
 }, 10, 2 );
-```
-
----
-
-<a id="developer-hooks-actions-bricks-meta-tags"></a>
-
-# Action: bricks_meta_tags
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-meta_tags/
-
-*Runs in the document head before wp_head().*
-
-Runs in the document head before `wp_head()`. Use it to output meta tags that should be controlled through the Bricks header template flow.
-
-## Example usage
-
-```php
-add_action( 'bricks_meta_tags', function() {
-    echo '<meta name="theme-color" content="#111111">';
-} );
 ```
 
 ---
@@ -31377,28 +31377,28 @@ add_filter( 'bricks/acf/google_map/show_as_address', function( $show_as_address,
 
 ---
 
-<a id="developer-hooks-filters-bricks-acf-google-map-text-output"></a>
+<a id="developer-hooks-filters-bricks-acf-taxonomy-show-as-link"></a>
 
-# Filter: bricks/acf/google_map/text_output
+# Filter: bricks/acf/taxonomy/show_as_link
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-acf-google_map-text_output/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-acf-taxonomy-show_as_link/
 
-*Filters the final HTML output of the ACF Google Map field dynamic data. This runs after the address parts or coordinates have been formatted.*
+*Determines whether the ACF Taxonomy field dynamic data output should be rendered as links to the term archives.*
 
-Filters the final HTML output of the ACF Google Map field dynamic data. This runs after the address parts or coordinates have been formatted.
+Determines whether the ACF Taxonomy field dynamic data output should be rendered as links to the term archives.
 
 ## Parameters
 
-- `$output` (*string*): The rendered HTML output string.
-- `$value` (*array*): The raw value of the ACF Google Map field.
+- `$show_as_link` (*bool*): Whether to render as links. Defaults to `true`.
+- `$value` (*mixed*): The raw value of the ACF Taxonomy field.
 - `$field` (*array*): The ACF field settings.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/acf/google_map/text_output', function( $output, $value, $field ) {
-    // Example: Strip HTML tags to get plain text
-    return wp_strip_all_tags( $output );
+add_filter( 'bricks/acf/taxonomy/show_as_link', function( $show_as_link, $value, $field ) {
+    // Disable links for taxonomy terms
+    return false;
 }, 10, 3 );
 ```
 
@@ -31435,28 +31435,28 @@ add_filter( 'bricks/active_templates', function( $active_templates, $post_id, $c
 
 ---
 
-<a id="developer-hooks-filters-bricks-acf-taxonomy-show-as-link"></a>
+<a id="developer-hooks-filters-bricks-acf-google-map-text-output"></a>
 
-# Filter: bricks/acf/taxonomy/show_as_link
+# Filter: bricks/acf/google_map/text_output
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-acf-taxonomy-show_as_link/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-acf-google_map-text_output/
 
-*Determines whether the ACF Taxonomy field dynamic data output should be rendered as links to the term archives.*
+*Filters the final HTML output of the ACF Google Map field dynamic data. This runs after the address parts or coordinates have been formatted.*
 
-Determines whether the ACF Taxonomy field dynamic data output should be rendered as links to the term archives.
+Filters the final HTML output of the ACF Google Map field dynamic data. This runs after the address parts or coordinates have been formatted.
 
 ## Parameters
 
-- `$show_as_link` (*bool*): Whether to render as links. Defaults to `true`.
-- `$value` (*mixed*): The raw value of the ACF Taxonomy field.
+- `$output` (*string*): The rendered HTML output string.
+- `$value` (*array*): The raw value of the ACF Google Map field.
 - `$field` (*array*): The ACF field settings.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/acf/taxonomy/show_as_link', function( $show_as_link, $value, $field ) {
-    // Disable links for taxonomy terms
-    return false;
+add_filter( 'bricks/acf/google_map/text_output', function( $output, $value, $field ) {
+    // Example: Strip HTML tags to get plain text
+    return wp_strip_all_tags( $output );
 }, 10, 3 );
 ```
 
@@ -31558,30 +31558,6 @@ add_filter( 'bricks/api/get_templates_data', function( $templates_data ) {
 
 ---
 
-<a id="developer-hooks-filters-bricks-breadcrumbs-home-label"></a>
-
-# Filter: bricks/breadcrumbs/home_label
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-breadcrumbs-home_label/
-
-*Filters the label text used for the \"Home\" link in the Breadcrumbs element.*
-
-Filters the label text used for the "Home" link in the Breadcrumbs element.
-
-## Parameters
-
-- `$home_label` (*string*): The home label text (may include HTML if an icon is used).
-
-## Example usage
-
-```php
-add_filter( 'bricks/breadcrumbs/home_label', function( $home_label ) {
-    return 'Start';
-} );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-breadcrumbs-items"></a>
 
 # Filter: bricks/breadcrumbs/items
@@ -31610,6 +31586,30 @@ add_filter( 'bricks/breadcrumbs/items', function( $breadcrumb_items ) {
 
 ---
 
+<a id="developer-hooks-filters-bricks-breadcrumbs-home-label"></a>
+
+# Filter: bricks/breadcrumbs/home_label
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-breadcrumbs-home_label/
+
+*Filters the label text used for the \"Home\" link in the Breadcrumbs element.*
+
+Filters the label text used for the "Home" link in the Breadcrumbs element.
+
+## Parameters
+
+- `$home_label` (*string*): The home label text (may include HTML if an icon is used).
+
+## Example usage
+
+```php
+add_filter( 'bricks/breadcrumbs/home_label', function( $home_label ) {
+    return 'Start';
+} );
+```
+
+---
+
 <a id="developer-hooks-filters-bricks-breadcrumbs-separator"></a>
 
 # Filter: bricks/breadcrumbs/separator
@@ -31630,6 +31630,40 @@ Filters the separator HTML displayed between items in the Breadcrumbs element.
 add_filter( 'bricks/breadcrumbs/separator', function( $separator ) {
     // Change separator to a custom character
     return '<span class="bricks-breadcrumbs-separator"> &raquo; </span>';
+} );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-builder-dynamic-wrapper"></a>
+
+# Filter: bricks/builder/dynamic_wrapper
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-builder-dynamic_wrapper/
+
+*Filters the dynamic wrappers available in the Bricks builder. Dynamic wrappers are used to inject content before or after specific hooks in the builder canvas.*
+
+Filters the dynamic wrappers available in the Bricks builder. Dynamic wrappers are used to inject content before or after specific hooks in the builder canvas (e.g., WooCommerce hooks).
+
+## Parameters
+
+- `$dynamic_wrapper` (*array*): Array of dynamic wrappers.
+
+## Example usage
+
+```php
+add_filter( 'bricks/builder/dynamic_wrapper', function( $dynamic_wrapper ) {
+    // Add a custom dynamic wrapper
+    $dynamic_wrapper[] = [
+        'name' => 'my_custom_wrapper',
+        'title' => esc_html__( 'My Custom Wrapper', 'my-plugin' ),
+        'hooks' => [
+            'before' => 'my_custom_action_before',
+            'after'  => 'my_custom_action_after',
+        ],
+    ];
+
+    return $dynamic_wrapper;
 } );
 ```
 
@@ -31688,40 +31722,6 @@ add_filter( 'bricks/builder/data_post_id', function( $post_id ) {
     }
 
     return $post_id;
-} );
-```
-
----
-
-<a id="developer-hooks-filters-bricks-builder-dynamic-wrapper"></a>
-
-# Filter: bricks/builder/dynamic_wrapper
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-builder-dynamic_wrapper/
-
-*Filters the dynamic wrappers available in the Bricks builder. Dynamic wrappers are used to inject content before or after specific hooks in the builder canvas.*
-
-Filters the dynamic wrappers available in the Bricks builder. Dynamic wrappers are used to inject content before or after specific hooks in the builder canvas (e.g., WooCommerce hooks).
-
-## Parameters
-
-- `$dynamic_wrapper` (*array*): Array of dynamic wrappers.
-
-## Example usage
-
-```php
-add_filter( 'bricks/builder/dynamic_wrapper', function( $dynamic_wrapper ) {
-    // Add a custom dynamic wrapper
-    $dynamic_wrapper[] = [
-        'name' => 'my_custom_wrapper',
-        'title' => esc_html__( 'My Custom Wrapper', 'my-plugin' ),
-        'hooks' => [
-            'before' => 'my_custom_action_before',
-            'after'  => 'my_custom_action_after',
-        ],
-    ];
-
-    return $dynamic_wrapper;
 } );
 ```
 
@@ -31900,6 +31900,32 @@ add_filter( 'bricks/cmb2/checkbox_value', function( $value, $original_value, $fi
 
 ---
 
+<a id="developer-hooks-filters-bricks-code-echo-everywhere"></a>
+
+# Filter: bricks/code/echo_everywhere
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-code-echo_everywhere/
+
+*Determines whether the {echo:} dynamic data tag should be parsed recursively if it appears within the output of another dynamic data tag. By default, this is.*
+
+Determines whether the `{echo:}` dynamic data tag should be parsed recursively if it appears within the output of another dynamic data tag. By default, this is disabled for security and performance reasons.
+
+## Parameters
+
+- `$echo_everywhere` (*bool*): Whether to allow recursive parsing of `{echo:}` tags. Default is `false`.
+
+## Example usage
+
+```php
+add_filter( 'bricks/code/echo_everywhere', function( $echo_everywhere ) {
+    // Enable recursive parsing of {echo:} tags
+    // WARNING: Use with caution as this may lead to infinite loops or security vulnerabilities
+    return true;
+} );
+```
+
+---
+
 <a id="developer-hooks-filters-bricks-combined-search-post-ids"></a>
 
 # Filter: bricks/combined_search/post_ids
@@ -31931,32 +31957,6 @@ add_filter( 'bricks/combined_search/post_ids', function( $post_ids, $search_fiel
 
     return $post_ids;
 }, 10, 6 );
-```
-
----
-
-<a id="developer-hooks-filters-bricks-code-echo-everywhere"></a>
-
-# Filter: bricks/code/echo_everywhere
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-code-echo_everywhere/
-
-*Determines whether the {echo:} dynamic data tag should be parsed recursively if it appears within the output of another dynamic data tag. By default, this is.*
-
-Determines whether the `{echo:}` dynamic data tag should be parsed recursively if it appears within the output of another dynamic data tag. By default, this is disabled for security and performance reasons.
-
-## Parameters
-
-- `$echo_everywhere` (*bool*): Whether to allow recursive parsing of `{echo:}` tags. Default is `false`.
-
-## Example usage
-
-```php
-add_filter( 'bricks/code/echo_everywhere', function( $echo_everywhere ) {
-    // Enable recursive parsing of {echo:} tags
-    // WARNING: Use with caution as this may lead to infinite loops or security vulnerabilities
-    return true;
-} );
 ```
 
 ---
@@ -32218,6 +32218,33 @@ add_filter( 'bricks/custom_fonts/mime_types', function( $mime_types ) {
 
 ---
 
+<a id="developer-hooks-filters-bricks-database-bricks-get-all-templates-by-type-args"></a>
+
+# Filter: bricks/database/bricks_get_all_templates_by_type_args
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-database-bricks_get_all_templates_by_type_args/
+
+*Filters the query arguments used to retrieve all Bricks templates. This is primarily used by multilingual plugins (like WPML and Polylang) to ensure only.*
+
+Filters the query arguments used to retrieve all Bricks templates. This is primarily used by multilingual plugins (like WPML and Polylang) to ensure only templates in the current language are fetched.
+
+## Parameters
+
+- `$args` (*array*): Array of arguments passed to `get_posts()`.
+
+## Example usage
+
+```php
+add_filter( 'bricks/database/bricks_get_all_templates_by_type_args', function( $args ) {
+    // Example: Include private templates
+    $args['post_status'] = [ 'publish', 'private' ];
+
+    return $args;
+} );
+```
+
+---
+
 <a id="developer-hooks-filters-bricks-database-content-type"></a>
 
 # Filter: bricks/database/content_type
@@ -32244,35 +32271,6 @@ add_filter( 'bricks/database/content_type', function( $content_type, $post_id ) 
 
     return $content_type;
 }, 10, 2 );
-```
-
----
-
-<a id="developer-hooks-filters-bricks-database-get-all-templates-cache-key"></a>
-
-# Filter: bricks/database/get_all_templates_cache_key
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-database-get_all_templates_cache_key/
-
-*Filters the cache key used to store and retrieve the list of all Bricks templates. This allows plugins to create unique cache entries based on context (e.g.,.*
-
-Filters the cache key used to store and retrieve the list of all Bricks templates. This allows plugins to create unique cache entries based on context (e.g., current language).
-
-## Parameters
-
-- `$cache_key` (*string*): The default cache key (e.g., `all_templates_{timestamp}`).
-
-## Example usage
-
-```php
-add_filter( 'bricks/database/get_all_templates_cache_key', function( $cache_key ) {
-    // Example: Append current language code to cache key
-    if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
-        $cache_key .= '_' . ICL_LANGUAGE_CODE;
-    }
-
-    return $cache_key;
-} );
 ```
 
 ---
@@ -32304,28 +32302,30 @@ add_filter( 'bricks/dynamic_data/allowed_keys', function( $allowed_keys ) {
 
 ---
 
-<a id="developer-hooks-filters-bricks-database-bricks-get-all-templates-by-type-args"></a>
+<a id="developer-hooks-filters-bricks-database-get-all-templates-cache-key"></a>
 
-# Filter: bricks/database/bricks_get_all_templates_by_type_args
+# Filter: bricks/database/get_all_templates_cache_key
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-database-bricks_get_all_templates_by_type_args/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-database-get_all_templates_cache_key/
 
-*Filters the query arguments used to retrieve all Bricks templates. This is primarily used by multilingual plugins (like WPML and Polylang) to ensure only.*
+*Filters the cache key used to store and retrieve the list of all Bricks templates. This allows plugins to create unique cache entries based on context (e.g.,.*
 
-Filters the query arguments used to retrieve all Bricks templates. This is primarily used by multilingual plugins (like WPML and Polylang) to ensure only templates in the current language are fetched.
+Filters the cache key used to store and retrieve the list of all Bricks templates. This allows plugins to create unique cache entries based on context (e.g., current language).
 
 ## Parameters
 
-- `$args` (*array*): Array of arguments passed to `get_posts()`.
+- `$cache_key` (*string*): The default cache key (e.g., `all_templates_{timestamp}`).
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/database/bricks_get_all_templates_by_type_args', function( $args ) {
-    // Example: Include private templates
-    $args['post_status'] = [ 'publish', 'private' ];
+add_filter( 'bricks/database/get_all_templates_cache_key', function( $cache_key ) {
+    // Example: Append current language code to cache key
+    if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
+        $cache_key .= '_' . ICL_LANGUAGE_CODE;
+    }
 
-    return $args;
+    return $cache_key;
 } );
 ```
 
@@ -32759,32 +32759,26 @@ add_filter( 'bricks/element/form/honeypot/result', function( $result, $field_id,
 
 ---
 
-<a id="developer-hooks-filters-bricks-element-maybe-set-aria-current-page"></a>
+<a id="developer-hooks-filters-bricks-elements-nav-menu-menus"></a>
 
-# Filter: bricks/element/maybe_set_aria_current_page
+# Filter: bricks/elements/nav_menu/menus
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-element-maybe_set_aria_current_page/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-elements-nav_menu-menus/
 
-*Filters the boolean value that determines whether to add the aria-current=\"page\" attribute to a link element. This is used to indicate that a link points to the.*
+*Filters the nav menus shown in the Nav Menu element while in the builder.*
 
-Filters the boolean value that determines whether to add the `aria-current="page"` attribute to a link element. This is used to indicate that a link points to the currently active page.
+Filters the nav menus shown in the Nav Menu element while in the builder. Return an array of menu objects to override the menus Bricks loads from WordPress.
 
 ## Parameters
 
-- `$set_aria_current` (*bool*): Whether the link matches the current page.
-- `$url` (*string*): The URL of the link being checked.
+- `$menus` (array|null): Menus to use in the builder. Return null to let Bricks fall back to wp_get_nav_menus().
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/element/maybe_set_aria_current_page', function( $set_aria_current, $url ) {
-    // Example: Consider a link active if it matches a specific query parameter
-    if ( isset( $_GET['section'] ) && strpos( $url, 'section=' . $_GET['section'] ) !== false ) {
-        return true;
-    }
-
-    return $set_aria_current;
-}, 10, 2 );
+add_filter( 'bricks/elements/nav_menu/menus', function( $menus ) {
+    return wp_get_nav_menus();
+} );
 ```
 
 ---
@@ -32812,30 +32806,6 @@ add_filter( 'bricks/elements/slider/scripts', function( $scripts ) {
     $scripts[] = 'my-custom-slider-script';
 
     return $scripts;
-} );
-```
-
----
-
-<a id="developer-hooks-filters-bricks-elements-nav-menu-menus"></a>
-
-# Filter: bricks/elements/nav_menu/menus
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-elements-nav_menu-menus/
-
-*Filters the nav menus shown in the Nav Menu element while in the builder.*
-
-Filters the nav menus shown in the Nav Menu element while in the builder. Return an array of menu objects to override the menus Bricks loads from WordPress.
-
-## Parameters
-
-- `$menus` (array|null): Menus to use in the builder. Return null to let Bricks fall back to wp_get_nav_menus().
-
-## Example usage
-
-```php
-add_filter( 'bricks/elements/nav_menu/menus', function( $menus ) {
-    return wp_get_nav_menus();
 } );
 ```
 
@@ -32894,32 +32864,31 @@ add_filter( 'bricks/export_template_args', function( $args, $post_id ) {
 
 ---
 
-<a id="developer-hooks-filters-bricks-filter-element-datepicker-options"></a>
+<a id="developer-hooks-filters-bricks-element-maybe-set-aria-current-page"></a>
 
-# Filter: bricks/filter-element/datepicker_options
+# Filter: bricks/element/maybe_set_aria_current_page
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter-element-datepicker_options/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-element-maybe_set_aria_current_page/
 
-*Filters the Flatpickr options used by the Filter: Datepicker element. This allows you to customize the behavior of the date picker within query filters.*
+*Filters the boolean value that determines whether to add the aria-current=\"page\" attribute to a link element. This is used to indicate that a link points to the.*
 
-Filters the Flatpickr options used by the Filter: Datepicker element. This allows you to customize the behavior of the date picker within query filters.
+Filters the boolean value that determines whether to add the `aria-current="page"` attribute to a link element. This is used to indicate that a link points to the currently active page.
 
 ## Parameters
 
-- `$datepicker_options` (*array*): Array of Flatpickr options.
-- `$element` (*object*): The Filter: Datepicker element instance.
+- `$set_aria_current` (*bool*): Whether the link matches the current page.
+- `$url` (*string*): The URL of the link being checked.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/filter-element/datepicker_options', function( $datepicker_options, $element ) {
-    // Example: Change the date format
-    $datepicker_options['dateFormat'] = 'Y-m-d';
+add_filter( 'bricks/element/maybe_set_aria_current_page', function( $set_aria_current, $url ) {
+    // Example: Consider a link active if it matches a specific query parameter
+    if ( isset( $_GET['section'] ) && strpos( $url, 'section=' . $_GET['section'] ) !== false ) {
+        return true;
+    }
 
-    // Example: Disable specific dates
-    $datepicker_options['disable'] = [ '2023-12-25', '2024-01-01' ];
-
-    return $datepicker_options;
+    return $set_aria_current;
 }, 10, 2 );
 ```
 
@@ -32948,6 +32917,37 @@ add_filter( 'bricks/filter/taxonomy_args', function( $args, $element ) {
     $args['exclude'] = [ 1, 2, 3 ];
 
     return $args;
+}, 10, 2 );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-filter-element-datepicker-options"></a>
+
+# Filter: bricks/filter-element/datepicker_options
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter-element-datepicker_options/
+
+*Filters the Flatpickr options used by the Filter: Datepicker element. This allows you to customize the behavior of the date picker within query filters.*
+
+Filters the Flatpickr options used by the Filter: Datepicker element. This allows you to customize the behavior of the date picker within query filters.
+
+## Parameters
+
+- `$datepicker_options` (*array*): Array of Flatpickr options.
+- `$element` (*object*): The Filter: Datepicker element instance.
+
+## Example usage
+
+```php
+add_filter( 'bricks/filter-element/datepicker_options', function( $datepicker_options, $element ) {
+    // Example: Change the date format
+    $datepicker_options['dateFormat'] = 'Y-m-d';
+
+    // Example: Disable specific dates
+    $datepicker_options['disable'] = [ '2023-12-25', '2024-01-01' ];
+
+    return $datepicker_options;
 }, 10, 2 );
 ```
 
@@ -33116,6 +33116,36 @@ add_filter( 'bricks/filter_element/data_source_wcField', function( $data_source,
 
 ---
 
+<a id="developer-hooks-filters-bricks-filter-element-datepicker-db-date-format"></a>
+
+# Filter: bricks/filter_element/datepicker_db_date_format
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter_element-datepicker_db_date_format/
+
+*Filters the database date format used by a Datepicker filter element.*
+
+Filters the database date format used by a Datepicker filter element. This is intended for custom field providers that store dates in a different format.
+
+## Parameters
+
+- `$db_format` (string): The database date format Bricks will use.
+- `$provider` (string): The active custom field provider.
+- `$element` (object): The Datepicker filter element instance.
+
+## Example usage
+
+```php
+add_filter( 'bricks/filter_element/datepicker_db_date_format', function( $db_format, $provider, $element ) {
+    if ( $provider === 'my_provider' ) {
+        return 'Ymd';
+    }
+
+    return $db_format;
+}, 10, 3 );
+```
+
+---
+
 <a id="developer-hooks-filters-bricks-filter-element-datepicker-date-format"></a>
 
 # Filter: bricks/filter_element/datepicker_date_format
@@ -33142,36 +33172,6 @@ add_filter( 'bricks/filter_element/datepicker_date_format', function( $date_form
     }
 
     return $date_format;
-}, 10, 3 );
-```
-
----
-
-<a id="developer-hooks-filters-bricks-filter-element-datepicker-db-date-format"></a>
-
-# Filter: bricks/filter_element/datepicker_db_date_format
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter_element-datepicker_db_date_format/
-
-*Filters the database date format used by a Datepicker filter element.*
-
-Filters the database date format used by a Datepicker filter element. This is intended for custom field providers that store dates in a different format.
-
-## Parameters
-
-- `$db_format` (string): The database date format Bricks will use.
-- `$provider` (string): The active custom field provider.
-- `$element` (object): The Datepicker filter element instance.
-
-## Example usage
-
-```php
-add_filter( 'bricks/filter_element/datepicker_db_date_format', function( $db_format, $provider, $element ) {
-    if ( $provider === 'my_provider' ) {
-        return 'Ymd';
-    }
-
-    return $db_format;
 }, 10, 3 );
 ```
 
@@ -33710,36 +33710,6 @@ add_filter( 'bricks/get_template_tags', function( $tags ) {
 
 ---
 
-<a id="developer-hooks-filters-bricks-get-templates"></a>
-
-# Filter: bricks/get_templates
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_templates/
-
-*Filters the list of templates returned by the Templates::gettemplates() method. This allows you to modify the templates array before it is returned to the.*
-
-Filters the list of templates returned by the `Templates::get_templates()` method. This allows you to modify the templates array before it is returned to the builder or other parts of the application.
-
-## Parameters
-
-- `$templates` (*array*): Array of template data.
-- `$custom_args` (*array*): The arguments used to query the templates.
-
-## Example usage
-
-```php
-add_filter( 'bricks/get_templates', function( $templates, $custom_args ) {
-    // Example: Add a custom property to all templates
-    foreach ( $templates as $key => $template ) {
-        $templates[ $key ]['my_custom_property'] = 'value';
-    }
-
-    return $templates;
-}, 10, 2 );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-get-templates-query-vars"></a>
 
 # Filter: bricks/get_templates/query_vars
@@ -33766,6 +33736,36 @@ add_filter( 'bricks/get_templates/query_vars', function( $query_vars ) {
 
     return $query_vars;
 } );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-get-templates"></a>
+
+# Filter: bricks/get_templates
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_templates/
+
+*Filters the list of templates returned by the Templates::gettemplates() method. This allows you to modify the templates array before it is returned to the.*
+
+Filters the list of templates returned by the `Templates::get_templates()` method. This allows you to modify the templates array before it is returned to the builder or other parts of the application.
+
+## Parameters
+
+- `$templates` (*array*): Array of template data.
+- `$custom_args` (*array*): The arguments used to query the templates.
+
+## Example usage
+
+```php
+add_filter( 'bricks/get_templates', function( $templates, $custom_args ) {
+    // Example: Add a custom property to all templates
+    foreach ( $templates as $key => $template ) {
+        $templates[ $key ]['my_custom_property'] = 'value';
+    }
+
+    return $templates;
+}, 10, 2 );
 ```
 
 ---
@@ -33850,31 +33850,6 @@ add_filter( 'bricks/get_terms_options/excluded_taxonomies', function( $excluded_
 
 ---
 
-<a id="developer-hooks-filters-bricks-handle-no-results-children-elements"></a>
-
-# Filter: bricks/handle_no_results_children_elements
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-handle_no_results_children_elements/
-
-*Determines whether Bricks should run logic to handle children elements displayed when a query loop returns no results (e.g., ensuring scripts/styles are.*
-
-Determines whether Bricks should run logic to handle children elements displayed when a query loop returns no results (e.g., ensuring scripts/styles are enqueued for "No results" content).
-
-## Parameters
-
-- `$run` (*bool*): Whether to handle "No results" children logic. Defaults to `true` if Query Filters are enabled.
-
-## Example usage
-
-```php
-add_filter( 'bricks/handle_no_results_children_elements', function( $run ) {
-    // Example: Always enable this logic, even if native Query Filters are disabled
-    return true;
-} );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-get-the-title"></a>
 
 # Filter: bricks/get_the_title
@@ -33901,6 +33876,31 @@ add_filter( 'bricks/get_the_title', function( $title, $post_id ) {
 
     return $title;
 }, 10, 2 );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-handle-no-results-children-elements"></a>
+
+# Filter: bricks/handle_no_results_children_elements
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-handle_no_results_children_elements/
+
+*Determines whether Bricks should run logic to handle children elements displayed when a query loop returns no results (e.g., ensuring scripts/styles are.*
+
+Determines whether Bricks should run logic to handle children elements displayed when a query loop returns no results (e.g., ensuring scripts/styles are enqueued for "No results" content).
+
+## Parameters
+
+- `$run` (*bool*): Whether to handle "No results" children logic. Defaults to `true` if Query Filters are enabled.
+
+## Example usage
+
+```php
+add_filter( 'bricks/handle_no_results_children_elements', function( $run ) {
+    // Example: Always enable this logic, even if native Query Filters are disabled
+    return true;
+} );
 ```
 
 ---
@@ -34291,33 +34291,6 @@ add_filter( 'bricks/pagination/custom_logic', function( $custom_logic, $query_se
 
 ---
 
-<a id="developer-hooks-filters-bricks-polylang-builder-ajax-params"></a>
-
-# Filter: bricks/polylang/builder_ajax_params
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-polylang-builder_ajax_params/
-
-*Filters the Polylang AJAX parameters injected into builder media requests.*
-
-Filters the Polylang AJAX parameters injected into builder media requests. Use it to add or adjust language-aware parameters for the media library in the builder.
-
-## Parameters
-
-- `$params` (array): Parameters added to media AJAX requests.
-- `$post_id` (int): The current builder post ID.
-
-## Example usage
-
-```php
-add_filter( 'bricks/polylang/builder_ajax_params', function( $params, $post_id ) {
-    $params['lang'] = pll_current_language();
-
-    return $params;
-}, 10, 2 );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-pagination-total-pages"></a>
 
 # Filter: bricks/pagination/total_pages
@@ -34356,6 +34329,33 @@ add_filter( 'bricks/pagination/total_pages', function( $total_page, $query_setti
 
   return ceil( count( $my_custom_loop_results ) / $post_per_page );
 }, 10, 3);
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-polylang-builder-ajax-params"></a>
+
+# Filter: bricks/polylang/builder_ajax_params
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-polylang-builder_ajax_params/
+
+*Filters the Polylang AJAX parameters injected into builder media requests.*
+
+Filters the Polylang AJAX parameters injected into builder media requests. Use it to add or adjust language-aware parameters for the media library in the builder.
+
+## Parameters
+
+- `$params` (array): Parameters added to media AJAX requests.
+- `$post_id` (int): The current builder post ID.
+
+## Example usage
+
+```php
+add_filter( 'bricks/polylang/builder_ajax_params', function( $params, $post_id ) {
+    $params['lang'] = pll_current_language();
+
+    return $params;
+}, 10, 2 );
 ```
 
 ---
@@ -34738,6 +34738,34 @@ add_filter( 'bricks/query/run_fake', function( $results, $query ) {
 
 ---
 
+<a id="developer-hooks-filters-bricks-query-api-body"></a>
+
+# Filter: bricks/query_api/body
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-body/
+
+*Filters the body used by a Query API element request.*
+
+Filters the body data used by a Query API element request before Bricks adds it to the HTTP request.
+
+Bricks only builds a body for request methods that support one in the Query API implementation, currently `POST`.
+
+## Parameters
+
+- `$body_data` (string|array|null): The request body data Bricks has built.
+- `$element_id` (string): The Query API element ID.
+- `$query_api` (object): The Query API integration instance.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_api/body', function( $body_data, $element_id, $query_api ) {
+    return $body_data;
+}, 10, 3 );
+```
+
+---
+
 <a id="developer-hooks-filters-bricks-query-supress-render-content"></a>
 
 # Filter: bricks/query/supress_render_content
@@ -34764,34 +34792,6 @@ add_filter( 'bricks/query/supress_render_content', function( $suppress, $query )
 
     return $suppress;
 }, 10, 2 );
-```
-
----
-
-<a id="developer-hooks-filters-bricks-query-api-body"></a>
-
-# Filter: bricks/query_api/body
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-body/
-
-*Filters the body used by a Query API element request.*
-
-Filters the body data used by a Query API element request before Bricks adds it to the HTTP request.
-
-Bricks only builds a body for request methods that support one in the Query API implementation, currently `POST`.
-
-## Parameters
-
-- `$body_data` (string|array|null): The request body data Bricks has built.
-- `$element_id` (string): The Query API element ID.
-- `$query_api` (object): The Query API integration instance.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_api/body', function( $body_data, $element_id, $query_api ) {
-    return $body_data;
-}, 10, 3 );
 ```
 
 ---
@@ -34852,38 +34852,6 @@ add_filter( 'bricks/query_api/request_args', function( $args, $element_id, $quer
 
 ---
 
-<a id="developer-hooks-filters-bricks-query-api-total-pages"></a>
-
-# Filter: bricks/query_api/total_pages
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-total_pages/
-
-*Filters the total number of pages calculated for an external API query loop. This is useful when the API response structure for pagination doesn't match Bricks'.*
-
-Filters the total number of pages calculated for an external API query loop. This is useful when the API response structure for pagination doesn't match Bricks' standard extraction logic.
-
-## Parameters
-
-- `$total_pages` (*int*): The calculated total number of pages.
-- `$element_id` (*string*): The ID of the query element.
-- `$query_api` (*object*): The `Bricks\Integrations\Query\Query_API` instance.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_api/total_pages', function( $total_pages, $element_id, $query_api ) {
-    // Example: Set total pages for a specific API query
-    if ( $element_id === 'my_api_loop' ) {
-        // Assume you stored the total in a custom property or need a fixed value
-        return 10;
-    }
-
-    return $total_pages;
-}, 10, 3 );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-query-filters-custom-field-index-rows"></a>
 
 # Filter: bricks/query_filters/custom_field_index_rows
@@ -34919,6 +34887,38 @@ add_filter( 'bricks/query_filters/custom_field_index_rows', function( $rows, $ob
 
     return $rows;
 }, 10, 5 );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-query-api-total-pages"></a>
+
+# Filter: bricks/query_api/total_pages
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-total_pages/
+
+*Filters the total number of pages calculated for an external API query loop. This is useful when the API response structure for pagination doesn't match Bricks'.*
+
+Filters the total number of pages calculated for an external API query loop. This is useful when the API response structure for pagination doesn't match Bricks' standard extraction logic.
+
+## Parameters
+
+- `$total_pages` (*int*): The calculated total number of pages.
+- `$element_id` (*string*): The ID of the query element.
+- `$query_api` (*object*): The `Bricks\Integrations\Query\Query_API` instance.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_api/total_pages', function( $total_pages, $element_id, $query_api ) {
+    // Example: Set total pages for a specific API query
+    if ( $element_id === 'my_api_loop' ) {
+        // Assume you stored the total in a custom property or need a fixed value
+        return 10;
+    }
+
+    return $total_pages;
+}, 10, 3 );
 ```
 
 ---
@@ -35057,6 +35057,33 @@ add_filter( 'bricks/query_filters/filter_query_vars', function( $query_vars, $fi
 
 ---
 
+<a id="developer-hooks-filters-bricks-query-filters-get-filter-object-ids"></a>
+
+# Filter: bricks/query_filters/get_filter_object_ids
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-get_filter_object_ids/
+
+*Filters the object IDs used to build query filter counts.*
+
+Filters the object IDs used to build query filter counts. Use it when an integration needs to supply or alter the base object IDs for a query/filter source.
+
+## Parameters
+
+- `$all_object_ids` (array): The object IDs Bricks has collected.
+- `$query_id` (string): The query element ID.
+- `$query_type` (string): The query type being processed.
+- `$source` (string): The filter source.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_filters/get_filter_object_ids', function( $all_object_ids, $query_id, $query_type, $source ) {
+    return $all_object_ids;
+}, 10, 4 );
+```
+
+---
+
 <a id="developer-hooks-filters-bricks-query-filters-index-args"></a>
 
 # Filter: bricks/query_filters/index_args
@@ -35117,33 +35144,6 @@ add_filter( 'bricks/query_filters/index_post/meta_exists', function( $exists, $p
     }
 
     return $exists;
-}, 10, 4 );
-```
-
----
-
-<a id="developer-hooks-filters-bricks-query-filters-get-filter-object-ids"></a>
-
-# Filter: bricks/query_filters/get_filter_object_ids
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-get_filter_object_ids/
-
-*Filters the object IDs used to build query filter counts.*
-
-Filters the object IDs used to build query filter counts. Use it when an integration needs to supply or alter the base object IDs for a query/filter source.
-
-## Parameters
-
-- `$all_object_ids` (array): The object IDs Bricks has collected.
-- `$query_id` (string): The query element ID.
-- `$query_type` (string): The query type being processed.
-- `$source` (string): The filter source.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_filters/get_filter_object_ids', function( $all_object_ids, $query_id, $query_type, $source ) {
-    return $all_object_ids;
 }, 10, 4 );
 ```
 
@@ -35692,33 +35692,6 @@ add_filter( 'bricks/security_check_before_save/new_elements', function( $new_ele
 
 ---
 
-<a id="developer-hooks-filters-bricks-support-masonry-element"></a>
-
-# Filter: bricks/support_masonry_element
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-support_masonry_element/
-
-*Filters the list of element names that support the Masonry layout option. By default, this includes section, container, block, and div.*
-
-Filters the list of element names that support the Masonry layout option. By default, this includes `section`, `container`, `block`, and `div`.
-
-## Parameters
-
-- `$element_names` (*array*): Array of element names (slugs) that support Masonry.
-
-## Example usage
-
-```php
-add_filter( 'bricks/support_masonry_element', function( $element_names ) {
-    // Enable Masonry support for a custom element
-    $element_names[] = 'my-custom-grid';
-
-    return $element_names;
-} );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-svg-allowed-attributes"></a>
 
 # Filter: bricks/svg/allowed_attributes
@@ -35741,6 +35714,33 @@ add_filter( 'bricks/svg/allowed_attributes', function( $attributes ) {
     $attributes[] = 'data-custom';
 
     return $attributes;
+} );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-support-masonry-element"></a>
+
+# Filter: bricks/support_masonry_element
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-support_masonry_element/
+
+*Filters the list of element names that support the Masonry layout option. By default, this includes section, container, block, and div.*
+
+Filters the list of element names that support the Masonry layout option. By default, this includes `section`, `container`, `block`, and `div`.
+
+## Parameters
+
+- `$element_names` (*array*): Array of element names (slugs) that support Masonry.
+
+## Example usage
+
+```php
+add_filter( 'bricks/support_masonry_element', function( $element_names ) {
+    // Enable Masonry support for a custom element
+    $element_names[] = 'my-custom-grid';
+
+    return $element_names;
 } );
 ```
 
@@ -35948,31 +35948,6 @@ add_filter( 'bricks/theme_styles', function( $styles ) {
 
 ---
 
-<a id="developer-hooks-filters-bricks-user-activation-email-from-name"></a>
-
-# Filter: bricks/user_activation_email/from_name
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-user_activation_email-from_name/
-
-*Filters the sender name for Bricks user activation emails.*
-
-Filters the sender name for Bricks user activation emails.
-
-## Parameters
-
-- `$from_name` (string): The email sender name.
-- `$user_id` (int): The user ID receiving the activation email.
-
-## Example usage
-
-```php
-add_filter( 'bricks/user_activation_email/from_name', function( $from_name, $user_id ) {
-    return get_bloginfo( 'name' );
-}, 10, 2 );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-user-activation-email-content"></a>
 
 # Filter: bricks/user_activation_email/content
@@ -35993,6 +35968,31 @@ Filters the content for Bricks user activation emails.
 ```php
 add_filter( 'bricks/user_activation_email/content', function( $content, $user_id ) {
     return $content;
+}, 10, 2 );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-user-activation-email-from-name"></a>
+
+# Filter: bricks/user_activation_email/from_name
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-user_activation_email-from_name/
+
+*Filters the sender name for Bricks user activation emails.*
+
+Filters the sender name for Bricks user activation emails.
+
+## Parameters
+
+- `$from_name` (string): The email sender name.
+- `$user_id` (int): The user ID receiving the activation email.
+
+## Example usage
+
+```php
+add_filter( 'bricks/user_activation_email/from_name', function( $from_name, $user_id ) {
+    return get_bloginfo( 'name' );
 }, 10, 2 );
 ```
 
@@ -36200,6 +36200,32 @@ add_filter( 'bricks/woocommerce/dynamic_fragments/targets', function( $targets )
 
 ---
 
+<a id="developer-hooks-filters-bricks-woocommerce-predefined-elements-generated-payload"></a>
+
+# Filter: bricks/woocommerce/predefined_elements/generated_payload
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-generated_payload/
+
+*Filters a generated WooCommerce predefined element payload.*
+
+Filters a generated WooCommerce predefined element payload before Bricks returns it.
+
+## Parameters
+
+- `$response` (array): The generated payload response.
+- `$preset` (string): The preset ID being generated.
+- `$context` (array): Generation context for the preset.
+
+## Example usage
+
+```php
+add_filter( 'bricks/woocommerce/predefined_elements/generated_payload', function( $response, $preset, $context ) {
+    return $response;
+}, 10, 3 );
+```
+
+---
+
 <a id="developer-hooks-filters-bricks-woocommerce-predefined-elements-local-presets"></a>
 
 # Filter: bricks/woocommerce/predefined_elements/local_presets
@@ -36244,32 +36270,6 @@ Filters the remote WooCommerce predefined elements payload after Bricks decodes 
 add_filter( 'bricks/woocommerce/predefined_elements/remote_payload', function( $remote_payload ) {
     return $remote_payload;
 } );
-```
-
----
-
-<a id="developer-hooks-filters-bricks-woocommerce-predefined-elements-generated-payload"></a>
-
-# Filter: bricks/woocommerce/predefined_elements/generated_payload
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-generated_payload/
-
-*Filters a generated WooCommerce predefined element payload.*
-
-Filters a generated WooCommerce predefined element payload before Bricks returns it.
-
-## Parameters
-
-- `$response` (array): The generated payload response.
-- `$preset` (string): The preset ID being generated.
-- `$context` (array): Generation context for the preset.
-
-## Example usage
-
-```php
-add_filter( 'bricks/woocommerce/predefined_elements/generated_payload', function( $response, $preset, $context ) {
-    return $response;
-}, 10, 3 );
 ```
 
 ---
@@ -36696,6 +36696,36 @@ function disable_template_in_builder( $active_templates, $post_id, $content_type
 
 ---
 
+<a id="developer-hooks-filters-filter-bricks-assets-generate-css-from-element"></a>
+
+# Filter: bricks/assets/generate_css_from_element
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-generate_css_from_element/
+
+*Add custom element names to Bricks CSS generation so looped child styles are included for supported custom elements.*
+
+This filter allows you to include your custom query loop supported element to generate the children styles in Bricks. (@since 1.9.2)
+
+## Parameters
+
+- `$element_names` (array): Additional loop-capable element names. Defaults to an empty array.
+- `$current_element` (array): The element currently being processed for CSS generation.
+- `$css_type` (string): The CSS generation area, such as `header`, `footer`, or `content`.
+
+```php
+add_filter( 'bricks/assets/generate_css_from_element', function( $element_names, $current_element, $css_type ) {
+  // $css_type is a string (e.g. header, footer, content, etc.)
+  // Add your custom element name so the looping children styles are generated.
+  if ( ! in_array( 'my-custom-element-name', $element_names ) ) {
+    $element_names[] = 'my-custom-element-name';
+  }
+
+  return $element_names;
+}, 10, 3 );
+```
+
+---
+
 <a id="developer-hooks-filters-filter-bricks-allowed-html-tags"></a>
 
 # Filter: bricks/allowed_html_tags
@@ -36730,36 +36760,6 @@ add_filter( 'bricks/allowed_html_tags', function( $allowed_html_tags ) {
 > **Note**
 >
 > **Only allow HTML tags that are considered safe, as anyone with builder access can use them!**
-
----
-
-<a id="developer-hooks-filters-filter-bricks-assets-generate-css-from-element"></a>
-
-# Filter: bricks/assets/generate_css_from_element
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-generate_css_from_element/
-
-*Add custom element names to Bricks CSS generation so looped child styles are included for supported custom elements.*
-
-This filter allows you to include your custom query loop supported element to generate the children styles in Bricks. (@since 1.9.2)
-
-## Parameters
-
-- `$element_names` (array): Additional loop-capable element names. Defaults to an empty array.
-- `$current_element` (array): The element currently being processed for CSS generation.
-- `$css_type` (string): The CSS generation area, such as `header`, `footer`, or `content`.
-
-```php
-add_filter( 'bricks/assets/generate_css_from_element', function( $element_names, $current_element, $css_type ) {
-  // $css_type is a string (e.g. header, footer, content, etc.)
-  // Add your custom element name so the looping children styles are generated.
-  if ( ! in_array( 'my-custom-element-name', $element_names ) ) {
-    $element_names[] = 'my-custom-element-name';
-  }
-
-  return $element_names;
-}, 10, 3 );
-```
 
 ---
 
@@ -37059,6 +37059,27 @@ add_filter( 'bricks/builder/image_size_options', function( $image_sizes ) {
 
 ---
 
+<a id="developer-hooks-filters-filter-bricks-code-allow-execution"></a>
+
+# Filter: bricks/code/allow_execution
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-allow_execution/
+
+*An alternative to the Disable code execution setting under Bricks > Settings > Builder Access. You can use this PHP filter to disable/enable code execution.*
+
+An alternative to the **Disable code execution** setting under `Bricks > Settings > Builder Access`. You can use this PHP filter to disable/enable code execution programmatically.
+
+![](https://academy.bricksbuilder.io/assets/disallow-code-execution-hook.png)
+
+```php
+add_filter( 'bricks/code/allow_execution', function( $allow ) {
+  // Only allows to return false to disable code execution programmatically
+  return false;
+} );
+```
+
+---
+
 <a id="developer-hooks-filters-filter-bricks-builder-mapstyles"></a>
 
 # Filter: bricks/builder/map_styles
@@ -37089,27 +37110,6 @@ add_filter( 'bricks/builder/map_styles', function( $map_styles ) {
 
 ---
 
-<a id="developer-hooks-filters-filter-bricks-code-allow-execution"></a>
-
-# Filter: bricks/code/allow_execution
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-allow_execution/
-
-*An alternative to the Disable code execution setting under Bricks > Settings > Builder Access. You can use this PHP filter to disable/enable code execution.*
-
-An alternative to the **Disable code execution** setting under `Bricks > Settings > Builder Access`. You can use this PHP filter to disable/enable code execution programmatically.
-
-![](https://academy.bricksbuilder.io/assets/disallow-code-execution-hook.png)
-
-```php
-add_filter( 'bricks/code/allow_execution', function( $allow ) {
-  // Only allows to return false to disable code execution programmatically
-  return false;
-} );
-```
-
----
-
 <a id="developer-hooks-filters-filter-bricks-code-disable-execution"></a>
 
 # Filter: bricks/code/disable_execution
@@ -37130,6 +37130,28 @@ add_filter( 'bricks/code/disable_execution', function( $disable ) {
 ```
 
 Use this filter to enforce stricter security by disabling code execution, regardless of other configurations on your site.
+
+---
+
+<a id="developer-hooks-filters-filter-bricks-code-disallow-keywords"></a>
+
+# Filter: bricks/code/disallow_keywords
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-disallow_keywords/
+
+*This filter introduces another level of security when using the Code element to run code.*
+
+This filter introduces another level of security when using the Code element to run code.
+
+With the filter `bricks/code/disallow_keywords` you'll be able to prevent the code execution if specific keywords are found in the code, thus reducing the risk of using this element. To add keywords to this check, use the following example:
+
+```php
+add_filter( 'bricks/code/disallow_keywords', function( $keywords ) {
+  $</meta>keywords[] = 'wpdb';
+
+  return $</meta>keywords;
+} );
+```
 
 ---
 
@@ -37228,28 +37250,6 @@ add_filter( 'bricks/code/echo_function_names', function($function_name) {
 
 ---
 
-<a id="developer-hooks-filters-filter-bricks-code-disallow-keywords"></a>
-
-# Filter: bricks/code/disallow_keywords
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-disallow_keywords/
-
-*This filter introduces another level of security when using the Code element to run code.*
-
-This filter introduces another level of security when using the Code element to run code.
-
-With the filter `bricks/code/disallow_keywords` you'll be able to prevent the code execution if specific keywords are found in the code, thus reducing the risk of using this element. To add keywords to this check, use the following example:
-
-```php
-add_filter( 'bricks/code/disallow_keywords', function( $keywords ) {
-  $</meta>keywords[] = 'wpdb';
-
-  return $</meta>keywords;
-} );
-```
-
----
-
 <a id="developer-hooks-filters-filter-bricks-comments-timestamp"></a>
 
 # Filter: bricks/comments/timestamp
@@ -37323,32 +37323,6 @@ add_filter( 'bricks/content/html_after_begin', function( $html_after_begin, $bri
 
 ---
 
-<a id="developer-hooks-filters-filter-bricks-content-html-before-end"></a>
-
-# Filter: bricks/content/html_before_end
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-html_before_end/
-
-*Available since version 1.6, this filter allows you to customize or insert HTML strings before closing main tag.*
-
-Available since version 1.6, this filter allows you to customize or insert HTML strings before closing `main` tag.
-
-```php
-add_filter( 'bricks/content/html_before_end', function( $html_after_begin, $bricks_data, $attributes, $tag ) {
-
-    if ( $tag !== 'main' ) {
-      return $html_after_begin;
-    }
-
-    // Insert custom popup HTML
-    $my_popup_html = '<div class="my_popup">This is my popup</div>';
-
-    return $html_after_begin . $my_popup_html;
-}, 10, 4 );
-```
-
----
-
 <a id="developer-hooks-filters-filter-bricks-content-tag"></a>
 
 # Filter: bricks/content/tag
@@ -37377,6 +37351,32 @@ add_filter( 'bricks/content/tag', function( $tag ) {
 **Return:**
 
 - (string): The HTML tag you want to render instead of the default.
+
+---
+
+<a id="developer-hooks-filters-filter-bricks-content-html-before-end"></a>
+
+# Filter: bricks/content/html_before_end
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-html_before_end/
+
+*Available since version 1.6, this filter allows you to customize or insert HTML strings before closing main tag.*
+
+Available since version 1.6, this filter allows you to customize or insert HTML strings before closing `main` tag.
+
+```php
+add_filter( 'bricks/content/html_before_end', function( $html_after_begin, $bricks_data, $attributes, $tag ) {
+
+    if ( $tag !== 'main' ) {
+      return $html_after_begin;
+    }
+
+    // Insert custom popup HTML
+    $my_popup_html = '<div class="my_popup">This is my popup</div>';
+
+    return $html_after_begin . $my_popup_html;
+}, 10, 4 );
+```
 
 ---
 
@@ -38056,6 +38056,62 @@ In this example, the filter modifies the value of a specific meta key ('specific
 
 ---
 
+<a id="developer-hooks-filters-filter-bricks-frontend-render-data"></a>
+
+# Filter: bricks/frontend/render_data
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-frontend-render_data/
+
+*The filter allows you to modify the rendered content for different areas like header, content, and footer before it's displayed on the frontend.*
+
+The filter allows you to modify the rendered content for different areas like header, content, and footer before it's displayed on the frontend.
+
+```php
+add_filter( 'bricks/frontend/render_data', function( $content, $post, $area ) {
+  // Do something
+
+  return $content;
+}, 10, 3 );
+```
+
+The filter callback receives three parameters:
+
+- `$content`: The HTML content that's about to be returned. It's a string type.
+- `$post`: The post object for which the content is being generated. It's an instance of the WP_Post class.
+- `$area`: A string defining the area of the page currently being rendered (e.g., 'header', 'content', 'footer'). Available since version 1.5.4.
+
+## Example: Add a unique ID to each heading
+
+The following example demonstrates how to add a unique ID attribute to each heading in the generated content.
+
+```php
+add_filter('bricks/frontend/render_data', function($content, $post, $area) {
+  // Iterate over each heading tag
+  $content = preg_replace_callback(
+    '/(<h[1-6](.*?))>(.*?)(<\/h[1-6]>)/i',
+    function($matches) {
+      // Add 'id' attribute if it doesn't exist
+      if (strpos($matches[2], 'id=') === false) {
+        // Use heading's content as the ID
+        $matches[0] = $matches[1] . ' id="' . sanitize_title($matches[3])
+        . '">' . $matches[3] . $matches[4];
+      }
+
+      // Return the (potentially) modified heading tag
+      return $matches[0];
+    },
+    $content // Content to modify
+  );
+
+  // Return modified content
+  return $content;
+}, 10, 3);
+```
+
+In this example, a callback function is defined within the add_filter function call targeting the `bricks/frontend/render_data` filter. This callback function modifies every heading tag present in the content to include a unique ID attribute. This can be useful for navigation purposes, such as creating a table of contents.
+
+---
+
 <a id="developer-hooks-filters-filter-bricks-frontend-render-element"></a>
 
 # Filter: bricks/frontend/render_element
@@ -38123,62 +38179,6 @@ add_filter( 'bricks/get_element_data/maybe_from_post_id', function( $id, $elemen
 
 ---
 
-<a id="developer-hooks-filters-filter-bricks-frontend-render-data"></a>
-
-# Filter: bricks/frontend/render_data
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-frontend-render_data/
-
-*The filter allows you to modify the rendered content for different areas like header, content, and footer before it's displayed on the frontend.*
-
-The filter allows you to modify the rendered content for different areas like header, content, and footer before it's displayed on the frontend.
-
-```php
-add_filter( 'bricks/frontend/render_data', function( $content, $post, $area ) {
-  // Do something
-
-  return $content;
-}, 10, 3 );
-```
-
-The filter callback receives three parameters:
-
-- `$content`: The HTML content that's about to be returned. It's a string type.
-- `$post`: The post object for which the content is being generated. It's an instance of the WP_Post class.
-- `$area`: A string defining the area of the page currently being rendered (e.g., 'header', 'content', 'footer'). Available since version 1.5.4.
-
-## Example: Add a unique ID to each heading
-
-The following example demonstrates how to add a unique ID attribute to each heading in the generated content.
-
-```php
-add_filter('bricks/frontend/render_data', function($content, $post, $area) {
-  // Iterate over each heading tag
-  $content = preg_replace_callback(
-    '/(<h[1-6](.*?))>(.*?)(<\/h[1-6]>)/i',
-    function($matches) {
-      // Add 'id' attribute if it doesn't exist
-      if (strpos($matches[2], 'id=') === false) {
-        // Use heading's content as the ID
-        $matches[0] = $matches[1] . ' id="' . sanitize_title($matches[3])
-        . '">' . $matches[3] . $matches[4];
-      }
-
-      // Return the (potentially) modified heading tag
-      return $matches[0];
-    },
-    $content // Content to modify
-  );
-
-  // Return modified content
-  return $content;
-}, 10, 3);
-```
-
-In this example, a callback function is defined within the add_filter function call targeting the `bricks/frontend/render_data` filter. This callback function modifies every heading tag present in the content to include a unique ID attribute. This can be useful for navigation purposes, such as creating a table of contents.
-
----
-
 <a id="developer-hooks-filters-filter-bricks-header-attributes"></a>
 
 # Filter: bricks/header/attributes
@@ -38231,6 +38231,27 @@ add_filter( 'bricks/builder/i18n', function( $i18n ) {
 
 ---
 
+<a id="developer-hooks-filters-filter-bricks-is-layout-element"></a>
+
+# Filter: bricks/is_layout_element
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-is_layout_element/
+
+*Allows to define your custom elements as a layout element, so they are recognised like the section, container, block, div elements and use the same controls.*
+
+Allows to define your custom elements as a layout element, so they are recognised like the section, container, block, div elements and use the same controls like query loop, flex controls, shape divider, etc.
+
+```php
+add_filter( 'bricks/is_layout_element', function( $layout_element_names ) {
+    // Mark your custom element "custom_box" as a layout element
+    $layout_element_names[] = 'custom_box';
+
+    return $layout_element_names;
+} );
+```
+
+---
+
 <a id="developer-hooks-filters-filter-bricks-link-css-selectors"></a>
 
 # Filter: bricks/link_css_selectors
@@ -38256,27 +38277,6 @@ add_filter( 'bricks/link_css_selectors', function( $link_css_selectors ) {
 > **Note**
 >
 > If the theme styles link styles do not apply to your custom selectors, force the regeneration of the theme styles by changing and saving the link color, the padding, or the text decoration, for example. Your new selectors will then be available.
-
----
-
-<a id="developer-hooks-filters-filter-bricks-is-layout-element"></a>
-
-# Filter: bricks/is_layout_element
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-is_layout_element/
-
-*Allows to define your custom elements as a layout element, so they are recognised like the section, container, block, div elements and use the same controls.*
-
-Allows to define your custom elements as a layout element, so they are recognised like the section, container, block, div elements and use the same controls like query loop, flex controls, shape divider, etc.
-
-```php
-add_filter( 'bricks/is_layout_element', function( $layout_element_names ) {
-    // Mark your custom element "custom_box" as a layout element
-    $layout_element_names[] = 'custom_box';
-
-    return $layout_element_names;
-} );
-```
 
 ---
 
@@ -38419,44 +38419,6 @@ In this example, the password cookie will expire after 1 hour, requiring users t
 
 ---
 
-<a id="developer-hooks-filters-filter-bricks-password-protection-is-active"></a>
-
-# Filter: bricks/password_protection/is_active
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-is_active/
-
-*Use this filter to add custom rules that determine whether a password protection template should be active. By default, the template’s visibility is controlled.*
-
-Use this filter to add custom rules that determine whether a [password protection template](https://academy.bricksbuilder.io/builder/features/password-protection/) should be active. By default, the template’s visibility is controlled by settings such as logged-in status, valid password cookies, and scheduling through the password protection template settings in the builder. This filter allows you to extend those checks, adding more dynamic criteria once the default settings have been applied.
-
-## Example Usage:
-
-```php
-add_filter( 'bricks/password_protection/is_active', function( $is_active, $template_id, $settings ) {
-    // Bypass password protection for users with the 'manage_options' capability
-    if ( current_user_can( 'manage_options' ) ) {
-        return false;
-    }
-
-    // Maintain default logic for other cases
-    return $is_active;
-}, 10, 3 );
-```
-
-In this example, any user with the `manage_options` capability (typically administrators) will bypass the password protection, while other users will follow the default settings.
-
-**Parameters:**
-
-- `$is_active` (bool): The initial status of whether the password protection is active.
-- `$template_id` (int): The ID of the password protection template.
-- `$settings` (array): The template settings.
-
-**Return:**
-
-- (bool): `true` to keep the template active, `false` to disable it.
-
----
-
 <a id="developer-hooks-filters-filter-bricks-placeholder-image"></a>
 
 # Filter: bricks/placeholder_image
@@ -38531,51 +38493,6 @@ This is triggered for all the Bricks elements containing one internal WP_Query q
 Each element in Bricks has a unique ID. You may find the element ID when editing the element and looking into the Global CSS classes input. By default, it shows the element HTML ID (e.g. `#bricks-element-wghgco`). For the purpose of this filter, we only need the last portion of the string, the six-character long element ID (e.g. `wghgco`).
 
 ![](https://academy.bricksbuilder.io/assets/Screenshot-2021-12-29-at-09.19.37.png)
-
----
-
-<a id="developer-hooks-filters-filter-bricks-query-force-run"></a>
-
-# Filter: bricks/query/force_run
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-force_run/
-
-*Bricks has enhanced query performance in 1.9.1. Now, each unique query is executed only once per page load, and subsequently, the query results are reused on.*
-
-Bricks has enhanced query performance in 1.9.1. Now, each unique query is executed only once per page load, and subsequently, the query results are reused on the same page. Consequently, certain queries-related PHP filters will no longer be triggered multiple times.
-
-The following filters may be impacted:
-
-- `bricks/posts/merge_query`
-- `bricks/posts/query_vars`
-- `bricks/terms/query_vars`
-- `bricks/users/query_vars`
-- `bricks/query/run`
-- `bricks/query/result`
-- `bricks/query/result_count`
-- `bricks/query/result_max_num_pages`
-
-Nevertheless, developers can utilize this filter to disable this setting for certain queries under specific circumstances.
-
-```php
-// Return boolean (default: false)
-add_filter( 'bricks/query/force_run', function( $force_run, $query ) {
-  // Get element ID
-  $element_id  = $query::get_query_element_id();
-  // Get element settings
-  $settings = $query->settings;
-
-  if ( isset( $settings['usingFacetWP'] ) ) {
-    $force_run = true;
-  }
-
-  return $force_run;
-}, 10, 2 );
-```
-
-Since 1.9.2, you can define `$query_vars['bricks_force_run'] = true` to achieve the same result as well. This will be handy if you are using the Bricks Query Editor or PHP filters like `bricks/posts/query_vars`  etc.
-
-![](https://academy.bricksbuilder.io/assets/bricks-query-force-run-query-vars.png)
 
 ---
 
@@ -38810,6 +38727,89 @@ add_filter( 'bricks/posts/query_vars', function( $query_vars, $settings, $elemen
 
 ---
 
+<a id="developer-hooks-filters-filter-bricks-query-force-run"></a>
+
+# Filter: bricks/query/force_run
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-force_run/
+
+*Bricks has enhanced query performance in 1.9.1. Now, each unique query is executed only once per page load, and subsequently, the query results are reused on.*
+
+Bricks has enhanced query performance in 1.9.1. Now, each unique query is executed only once per page load, and subsequently, the query results are reused on the same page. Consequently, certain queries-related PHP filters will no longer be triggered multiple times.
+
+The following filters may be impacted:
+
+- `bricks/posts/merge_query`
+- `bricks/posts/query_vars`
+- `bricks/terms/query_vars`
+- `bricks/users/query_vars`
+- `bricks/query/run`
+- `bricks/query/result`
+- `bricks/query/result_count`
+- `bricks/query/result_max_num_pages`
+
+Nevertheless, developers can utilize this filter to disable this setting for certain queries under specific circumstances.
+
+```php
+// Return boolean (default: false)
+add_filter( 'bricks/query/force_run', function( $force_run, $query ) {
+  // Get element ID
+  $element_id  = $query::get_query_element_id();
+  // Get element settings
+  $settings = $query->settings;
+
+  if ( isset( $settings['usingFacetWP'] ) ) {
+    $force_run = true;
+  }
+
+  return $force_run;
+}, 10, 2 );
+```
+
+Since 1.9.2, you can define `$query_vars['bricks_force_run'] = true` to achieve the same result as well. This will be handy if you are using the Bricks Query Editor or PHP filters like `bricks/posts/query_vars`  etc.
+
+![](https://academy.bricksbuilder.io/assets/bricks-query-force-run-query-vars.png)
+
+---
+
+<a id="developer-hooks-filters-filter-bricks-password-protection-is-active"></a>
+
+# Filter: bricks/password_protection/is_active
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-is_active/
+
+*Use this filter to add custom rules that determine whether a password protection template should be active. By default, the template’s visibility is controlled.*
+
+Use this filter to add custom rules that determine whether a [password protection template](https://academy.bricksbuilder.io/builder/features/password-protection/) should be active. By default, the template’s visibility is controlled by settings such as logged-in status, valid password cookies, and scheduling through the password protection template settings in the builder. This filter allows you to extend those checks, adding more dynamic criteria once the default settings have been applied.
+
+## Example Usage:
+
+```php
+add_filter( 'bricks/password_protection/is_active', function( $is_active, $template_id, $settings ) {
+    // Bypass password protection for users with the 'manage_options' capability
+    if ( current_user_can( 'manage_options' ) ) {
+        return false;
+    }
+
+    // Maintain default logic for other cases
+    return $is_active;
+}, 10, 3 );
+```
+
+In this example, any user with the `manage_options` capability (typically administrators) will bypass the password protection, while other users will follow the default settings.
+
+**Parameters:**
+
+- `$is_active` (bool): The initial status of whether the password protection is active.
+- `$template_id` (int): The ID of the password protection template.
+- `$settings` (array): The template settings.
+
+**Return:**
+
+- (bool): `true` to keep the template active, `false` to disable it.
+
+---
+
 <a id="developer-hooks-filters-filter-bricks-query-init-loop-index"></a>
 
 # Filter: bricks/query/init_loop_index
@@ -39023,32 +39023,6 @@ For native query limits and offsets, use the [Query Loop controls](https://acade
 
 ---
 
-<a id="developer-hooks-filters-filter-bricks-query-result-count"></a>
-
-# Filter: bricks/query/result_count
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_count/
-
-*Filter the result count Bricks reports for a query object before pagination or related UI uses that total.*
-
-This filter allows you to modify the query result count (@since 1.8).
-
-```php
-add_filter( 'bricks/query/result_count', function( $result_count, $query_obj ) {
-  // Return: Element ID is not "lbsijo", nor is it a post query
-  if( $query_obj->element_id !== 'lbsijo' || $query_obj->object_type !== 'post' ) {
-    return $result_count;
-  }
-
-  // Perform your logic here
-  // Use $query_obj->query_result to access the query result
-  $new_count = 123;
-  return $new_count;
-}, 10, 2 );
-```
-
----
-
 <a id="developer-hooks-filters-filter-bricks-query-result-max-num-pages"></a>
 
 # Filter: bricks/query/result_max_num_pages
@@ -39070,6 +39044,32 @@ add_filter( 'bricks/query/result_max_num_pages', function( $max_num_pages, $quer
   // Use $query_obj->query_result to access the query result
   $max_num_pages = 3;
   return $max_num_pages;
+}, 10, 2 );
+```
+
+---
+
+<a id="developer-hooks-filters-filter-bricks-query-result-count"></a>
+
+# Filter: bricks/query/result_count
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_count/
+
+*Filter the result count Bricks reports for a query object before pagination or related UI uses that total.*
+
+This filter allows you to modify the query result count (@since 1.8).
+
+```php
+add_filter( 'bricks/query/result_count', function( $result_count, $query_obj ) {
+  // Return: Element ID is not "lbsijo", nor is it a post query
+  if( $query_obj->element_id !== 'lbsijo' || $query_obj->object_type !== 'post' ) {
+    return $result_count;
+  }
+
+  // Perform your logic here
+  // Use $query_obj->query_result to access the query result
+  $new_count = 123;
+  return $new_count;
 }, 10, 2 );
 ```
 
@@ -39196,37 +39196,6 @@ In this example, if the `my-custom-param` parameter is detected in the URL, the 
 
 ---
 
-<a id="developer-hooks-filters-filter-bricks-search-form-home-url"></a>
-
-# Filter: bricks/search_form/home_url
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-search_form-home_url/
-
-*The bricks/searchform/homeurl filter allows developers to customize the action URL of the search form within the Bricks theme. This filter provides the.*
-
-The `bricks/search_form/home_url` filter allows developers to customize the action URL of the search form within the Bricks theme. This filter provides the flexibility to redirect search queries to a different URL than the default WordPress home URL.
-
-By using this filter, developers can integrate custom search solutions or direct the search form submissions to a specific page, enhancing the search functionality tailored to specific needs.
-
-### Example Usage:
-
-```php
-<code>add_filter( 'bricks/search_form/home_url', function( $home_url ) {</code><code>    // Custom logic to determine the action URL</code><code>    $custom_action_url = 'https://example.com/custom-search-page/'; </code>
-<code>    return $custom_action_url;</code><code>});</code>
-```
-
-In this simple example, the search form action URL is changed to a custom page. This is particularly useful for websites with specialized search requirements or for integrating with external search platforms.
-
-### Parameters:
-
-- `$home_url` (string): The default URL to which the search form points, typically the home URL.
-
-### Return:
-
-- (string): The modified URL for the search form action.
-
----
-
 <a id="developer-hooks-filters-filter-bricks-screen-conditions-scores"></a>
 
 # Filter: bricks/screen_conditions/scores
@@ -39305,6 +39274,37 @@ The filter callback receives 2 arguments:
 - `$element` - the Bricks element [object](https://academy.bricksbuilder.io/developer/elements/create-your-own-elements/)
 
 **NOTE**: This filter doesn't work in builder & already possible with *[bricks/element/render_attributes](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-render_attributes/)*
+
+---
+
+<a id="developer-hooks-filters-filter-bricks-search-form-home-url"></a>
+
+# Filter: bricks/search_form/home_url
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-search_form-home_url/
+
+*The bricks/searchform/homeurl filter allows developers to customize the action URL of the search form within the Bricks theme. This filter provides the.*
+
+The `bricks/search_form/home_url` filter allows developers to customize the action URL of the search form within the Bricks theme. This filter provides the flexibility to redirect search queries to a different URL than the default WordPress home URL.
+
+By using this filter, developers can integrate custom search solutions or direct the search form submissions to a specific page, enhancing the search functionality tailored to specific needs.
+
+### Example Usage:
+
+```php
+<code>add_filter( 'bricks/search_form/home_url', function( $home_url ) {</code><code>    // Custom logic to determine the action URL</code><code>    $custom_action_url = 'https://example.com/custom-search-page/'; </code>
+<code>    return $custom_action_url;</code><code>});</code>
+```
+
+In this simple example, the search form action URL is changed to a custom page. This is particularly useful for websites with specialized search requirements or for integrating with external search platforms.
+
+### Parameters:
+
+- `$home_url` (string): The default URL to which the search form points, typically the home URL.
+
+### Return:
+
+- (string): The modified URL for the search form action.
 
 ---
 
@@ -40237,16 +40237,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/datepicker/
 
 ---
 
-<a id="developer-schema-controls-dimensions"></a>
-
-# Dimensions Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/dimensions/
-
-*Unknown control type: dimensions*
-
----
-
 <a id="developer-schema-controls-direction"></a>
 
 # Direction Control Schema
@@ -40254,6 +40244,16 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/dimensions/
 Source: https://academy.bricksbuilder.io/developer/schema/controls/direction/
 
 *Value schema for direction control type*
+
+---
+
+<a id="developer-schema-controls-dimensions"></a>
+
+# Dimensions Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/dimensions/
+
+*Unknown control type: dimensions*
 
 ---
 
@@ -40342,6 +40342,16 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/image-gallery
 
 ---
 
+<a id="developer-schema-controls-justify-content"></a>
+
+# Justify Content Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/justify-content/
+
+*Value schema for justify-content control type*
+
+---
+
 <a id="developer-schema-controls-image"></a>
 
 # Image Control Schema
@@ -40360,16 +40370,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/image/
 | `size` | string | — |
 | `full` | string | — |
 | `useDynamicData` | string | — |
-
----
-
-<a id="developer-schema-controls-justify-content"></a>
-
-# Justify Content Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/justify-content/
-
-*Value schema for justify-content control type*
 
 ---
 
@@ -40576,33 +40576,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/text/
 
 ---
 
-<a id="developer-schema-controls-transform"></a>
-
-# Transform Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/transform/
-
-*Value schema for transform control type*
-
-## Properties
-
-| Property | Type | Description |
-|---|---|---|
-| `translateX` | string | — |
-| `translateY` | string | — |
-| `translateZ` | string | — |
-| `scaleX` | string | — |
-| `scaleY` | string | — |
-| `scaleZ` | string | — |
-| `rotateX` | string | — |
-| `rotateY` | string | — |
-| `rotateZ` | string | — |
-| `skewX` | string | — |
-| `skewY` | string | — |
-| `perspective` | string | — |
-
----
-
 <a id="developer-schema-controls-textarea"></a>
 
 # Textarea Control Schema
@@ -40635,6 +40608,33 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/typography/
 | `text-transform` | string | One of: `none`, `uppercase`, `lowercase`, `capitalize` |
 | `text-decoration` | string | — |
 | `color` | any | Color value in various formats |
+
+---
+
+<a id="developer-schema-controls-transform"></a>
+
+# Transform Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/transform/
+
+*Value schema for transform control type*
+
+## Properties
+
+| Property | Type | Description |
+|---|---|---|
+| `translateX` | string | — |
+| `translateY` | string | — |
+| `translateZ` | string | — |
+| `scaleX` | string | — |
+| `scaleY` | string | — |
+| `scaleZ` | string | — |
+| `rotateX` | string | — |
+| `rotateY` | string | — |
+| `rotateZ` | string | — |
+| `skewX` | string | — |
+| `skewY` | string | — |
+| `perspective` | string | — |
 
 ---
 
@@ -40782,26 +40782,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/global/components/
 
 ---
 
-<a id="developer-schema-global-global-variables"></a>
-
-# Global Variables Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/global/global-variables/
-
-*Documentation for Global Variables Schema in Bricks Academy.*
-
-## Item properties
-
-| Property | Type | Description |
-|---|---|---|
-| `id` | string | — |
-| `name` | string | — |
-| `value` | string | — |
-| `category` | string | — |
-| `type` | string | — |
-
----
-
 <a id="developer-schema-global-global-classes"></a>
 
 # Global Classes Schema
@@ -40822,6 +40802,26 @@ Source: https://academy.bricksbuilder.io/developer/schema/global/global-classes/
 | `modified` | integer \| string | — |
 | `user_id` | integer \| string | — |
 | `deletedAt` | integer \| string | — |
+
+---
+
+<a id="developer-schema-global-global-variables"></a>
+
+# Global Variables Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/global/global-variables/
+
+*Documentation for Global Variables Schema in Bricks Academy.*
+
+## Item properties
+
+| Property | Type | Description |
+|---|---|---|
+| `id` | string | — |
+| `name` | string | — |
+| `value` | string | — |
+| `category` | string | — |
+| `type` | string | — |
 
 ---
 
@@ -42182,17 +42182,17 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-alert"></a>
+<a id="developer-schema-elements-animated-typing"></a>
 
-# Alert Schema
+# Anim. Typing Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/alert/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/animated-typing/
 
-*Schema for Bricks Alert element*
+*Schema for Bricks Anim. Typing element*
 
 | Property | Value |
 |---|---|
-| `name` | alert |
+| `name` | animated-typing |
 | `category` | general |
 | `tag` | div |
 | `nestable` | false |
@@ -42201,9 +42201,17 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/alert/
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `content` | editor | content | — |
-| `type` | select | Type | — |
-| `dismissable` | checkbox | Dismissable | — |
+| `tag` | select | Tag | — |
+| `prefix` | text | Prefix | — |
+| `suffix` | text | Suffix | — |
+| `strings` | repeater | Strings | — |
+| `typeSpeed` | number | Type speed in ms | — |
+| `backSpeed` | number | Back speed in ms | — |
+| `startDelay` | number | Start delay in ms | — |
+| `backDelay` | number | Back delay in ms | — |
+| `cursorChar` | text | Cursor character | — |
+| `loop` | checkbox | Loop | — |
+| `shuffle` | checkbox | Shuffle | — |
 
 ## Inherited CSS controls
 
@@ -42279,17 +42287,17 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-animated-typing"></a>
+<a id="developer-schema-elements-alert"></a>
 
-# Anim. Typing Schema
+# Alert Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/animated-typing/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/alert/
 
-*Schema for Bricks Anim. Typing element*
+*Schema for Bricks Alert element*
 
 | Property | Value |
 |---|---|
-| `name` | animated-typing |
+| `name` | alert |
 | `category` | general |
 | `tag` | div |
 | `nestable` | false |
@@ -42298,17 +42306,9 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/animated-typi
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `tag` | select | Tag | — |
-| `prefix` | text | Prefix | — |
-| `suffix` | text | Suffix | — |
-| `strings` | repeater | Strings | — |
-| `typeSpeed` | number | Type speed in ms | — |
-| `backSpeed` | number | Back speed in ms | — |
-| `startDelay` | number | Start delay in ms | — |
-| `backDelay` | number | Back delay in ms | — |
-| `cursorChar` | text | Cursor character | — |
-| `loop` | checkbox | Loop | — |
-| `shuffle` | checkbox | Shuffle | — |
+| `content` | editor | content | — |
+| `type` | select | Type | — |
+| `dismissable` | checkbox | Dismissable | — |
 
 ## Inherited CSS controls
 
@@ -43253,113 +43253,6 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-countdown"></a>
-
-# Countdown Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/countdown/
-
-*Schema for Bricks Countdown element*
-
-| Property | Value |
-|---|---|
-| `name` | countdown |
-| `category` | general |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `date` | datepicker | Date | — |
-| `timezone` | select | Time zone | — |
-| `action` | select | Date Reached | — |
-| `actionText` | text | Date Reached | — |
-| `fields` | repeater | Prefix | — |
-| `flexDirectionFields` | direction | Direction | `flex-direction` |
-| `justifyContent` | justify-content | Align main axis | `justify-content` |
-| `alignItems` | align-items | Align cross axis | `align-items` |
-| `flexDirection` | direction | Direction | `flex-direction` on `.field` |
-| `gutter` | spacing | Margin | `margin` on `.field` |
-| `typography` | typography | Typography | `font` |
-| `typographyPrefix` | typography | Typography | `font` on `.prefix` |
-| `typographySuffix` | typography | Typography | `font` on `.suffix` |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
 <a id="developer-schema-elements-counter"></a>
 
 # Counter Schema
@@ -43545,6 +43438,113 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
 | `_flexDirection` | direction | Direction | `flex-direction` |
 | `_gap` | number | Gap | `gap` |
+| `_useMasonry` | checkbox | %s layout | — |
+| `_masonryColumn` | number | Columns | `--columns` |
+| `_masonryGutter` | number | Spacing | `--gutter` |
+| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
+| `_masonryTransitionDuration` | number | Transition | — |
+| `_masonryTransitionMode` | select | Reveal animation | — |
+| `_typography` | typography | _typography | `font` |
+| `_background` | background | _background | `background` |
+| `_shapeDividers` | repeater | Custom shape | — |
+| `_gradient` | gradient | _gradient | `background-image` |
+| `_border` | border | Border | `border` |
+| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `_transform` | transform | Transform | `transform` |
+| `_transformOrigin` | text | Transform origin | `transform-origin` |
+| `_motionElementParallax` | checkbox | Element parallax | — |
+| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
+| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
+| `_motionBackgroundParallax` | checkbox | Background parallax | — |
+| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
+| `_motionStartVisiblePercent` | number | Parallax start point | — |
+| `_cssCustom` | code | Custom CSS | — |
+| `_cssClasses` | text | CSS classes | — |
+| `_cssId` | text | CSS ID | — |
+| `_cssFilters` | filters | CSS Filters | `filter` |
+| `_cssTransition` | text | Transition | `transition` |
+| `_attributes` | repeater | Name | — |
+| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+
+---
+
+<a id="developer-schema-elements-countdown"></a>
+
+# Countdown Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/elements/countdown/
+
+*Schema for Bricks Countdown element*
+
+| Property | Value |
+|---|---|
+| `name` | countdown |
+| `category` | general |
+| `tag` | div |
+| `nestable` | false |
+
+## Controls
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `date` | datepicker | Date | — |
+| `timezone` | select | Time zone | — |
+| `action` | select | Date Reached | — |
+| `actionText` | text | Date Reached | — |
+| `fields` | repeater | Prefix | — |
+| `flexDirectionFields` | direction | Direction | `flex-direction` |
+| `justifyContent` | justify-content | Align main axis | `justify-content` |
+| `alignItems` | align-items | Align cross axis | `align-items` |
+| `flexDirection` | direction | Direction | `flex-direction` on `.field` |
+| `gutter` | spacing | Margin | `margin` on `.field` |
+| `typography` | typography | Typography | `font` |
+| `typographyPrefix` | typography | Typography | `font` on `.prefix` |
+| `typographySuffix` | typography | Typography | `font` on `.suffix` |
+
+## Inherited CSS controls
+
+Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `_content` | text | Content | `content` |
+| `_margin` | spacing | Margin | `margin` |
+| `_padding` | spacing | Padding | `padding` |
+| `_width` | number | Width | `width` |
+| `_widthMin` | number | Min. width | `min-width` |
+| `_widthMax` | number | Max. width | `max-width` |
+| `_height` | number | Height | `height` |
+| `_heightMin` | number | Min. height | `min-height` |
+| `_heightMax` | number | Max. height | `max-height` |
+| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
+| `_position` | select | Position | `position` |
+| `_top` | number | _top | `top` |
+| `_right` | number | Right | `right` |
+| `_bottom` | number | Bottom | `bottom` |
+| `_left` | number | Left | `left` |
+| `_zIndex` | number | Z-index | `z-index` |
+| `_order` | number | _order | `order` |
+| `_display` | select | Display | `display`, `align-items` |
+| `_visibility` | select | Visibility | `visibility` |
+| `_overflow` | text | Overflow | `overflow` |
+| `_opacity` | number | Opacity | `opacity` |
+| `_cursor` | select | Cursor | `cursor` |
+| `_isolation` | select | Isolation | `isolation` |
+| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
+| `_pointerEvents` | text | Pointer events | `pointer-events` |
+| `_perspective` | number | Perspective | `perspective` |
+| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
+| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
+| `_flexDirection` | direction | Direction | `flex-direction` |
+| `_alignSelf` | align-items | Align self | `align-self` |
+| `_justifyContent` | justify-content | Align main axis | `justify-content` |
+| `_alignItems` | align-items | Align cross axis | `align-items` |
+| `_gap` | number | Gap | `gap` |
+| `_flexGrow` | number | Flex grow | `flex-grow` |
+| `_flexShrink` | number | Flex shrink | `flex-shrink` |
+| `_flexBasis` | text | Flex basis | `flex-basis` |
 | `_useMasonry` | checkbox | %s layout | — |
 | `_masonryColumn` | number | Columns | `--columns` |
 | `_masonryGutter` | number | Spacing | `--gutter` |
@@ -45251,6 +45251,208 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
+<a id="developer-schema-elements-heading"></a>
+
+# Heading Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/elements/heading/
+
+*Schema for Bricks Heading element*
+
+| Property | Value |
+|---|---|
+| `name` | heading |
+| `category` | basic |
+| `tag` | h3 |
+| `nestable` | false |
+
+## Controls
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `text` | text | text | — |
+| `tag` | select | HTML tag | — |
+| `customTag` | text | Custom tag | — |
+| `type` | select | Type | — |
+| `style` | select | Style | — |
+| `link` | link | Link to | — |
+| `separator` | select | Separator | — |
+| `separatorWidth` | number | Width | `width` on `.separator`, `flex-grow` on `.separator`, `width` |
+| `separatorHeight` | number | Height | `border-top-width` on `.separator`, `height` on `.separator` |
+| `separatorSpacing` | number | Spacing | `gap` on `&.has-separator` |
+| `separatorStyle` | select | Style | `border-top-style` on `.separator` |
+| `separatorAlignItems` | align-items | Align | `align-items` on `&.has-separator` |
+| `separatorColor` | color | Color | `border-top-color` on `.separator` |
+
+## Inherited CSS controls
+
+Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `_content` | text | Content | `content` |
+| `_margin` | spacing | Margin | `margin` |
+| `_padding` | spacing | Padding | `padding` |
+| `_width` | number | Width | `width` |
+| `_widthMin` | number | Min. width | `min-width` |
+| `_widthMax` | number | Max. width | `max-width` |
+| `_height` | number | Height | `height` |
+| `_heightMin` | number | Min. height | `min-height` |
+| `_heightMax` | number | Max. height | `max-height` |
+| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
+| `_position` | select | Position | `position` |
+| `_top` | number | _top | `top` |
+| `_right` | number | Right | `right` |
+| `_bottom` | number | Bottom | `bottom` |
+| `_left` | number | Left | `left` |
+| `_zIndex` | number | Z-index | `z-index` |
+| `_order` | number | _order | `order` |
+| `_display` | select | Display | `display`, `align-items` |
+| `_visibility` | select | Visibility | `visibility` |
+| `_overflow` | text | Overflow | `overflow` |
+| `_opacity` | number | Opacity | `opacity` |
+| `_cursor` | select | Cursor | `cursor` |
+| `_isolation` | select | Isolation | `isolation` |
+| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
+| `_pointerEvents` | text | Pointer events | `pointer-events` |
+| `_perspective` | number | Perspective | `perspective` |
+| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
+| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
+| `_flexDirection` | direction | Direction | `flex-direction` |
+| `_alignSelf` | align-items | Align self | `align-self` |
+| `_justifyContent` | justify-content | Align main axis | `justify-content` |
+| `_alignItems` | align-items | Align cross axis | `align-items` |
+| `_gap` | number | Gap | `gap` |
+| `_flexGrow` | number | Flex grow | `flex-grow` |
+| `_flexShrink` | number | Flex shrink | `flex-shrink` |
+| `_flexBasis` | text | Flex basis | `flex-basis` |
+| `_useMasonry` | checkbox | %s layout | — |
+| `_masonryColumn` | number | Columns | `--columns` |
+| `_masonryGutter` | number | Spacing | `--gutter` |
+| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
+| `_masonryTransitionDuration` | number | Transition | — |
+| `_masonryTransitionMode` | select | Reveal animation | — |
+| `_typography` | typography | _typography | `font` |
+| `_background` | background | _background | `background` |
+| `_shapeDividers` | repeater | Custom shape | — |
+| `_gradient` | gradient | _gradient | `background-image` |
+| `_border` | border | Border | `border` |
+| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `_transform` | transform | Transform | `transform` |
+| `_transformOrigin` | text | Transform origin | `transform-origin` |
+| `_motionElementParallax` | checkbox | Element parallax | — |
+| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
+| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
+| `_motionBackgroundParallax` | checkbox | Background parallax | — |
+| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
+| `_motionStartVisiblePercent` | number | Parallax start point | — |
+| `_cssCustom` | code | Custom CSS | — |
+| `_cssClasses` | text | CSS classes | — |
+| `_cssId` | text | CSS ID | — |
+| `_cssFilters` | filters | CSS Filters | `filter` |
+| `_cssTransition` | text | Transition | `transition` |
+| `_attributes` | repeater | Name | — |
+| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+
+---
+
+<a id="developer-schema-elements-html"></a>
+
+# HTML Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/elements/html/
+
+*Schema for Bricks HTML element*
+
+| Property | Value |
+|---|---|
+| `name` | html |
+| `category` | general |
+| `tag` | div |
+| `nestable` | false |
+
+## Controls
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `html` | code | Raw HTML | — |
+
+## Inherited CSS controls
+
+Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `_content` | text | Content | `content` |
+| `_margin` | spacing | Margin | `margin` |
+| `_padding` | spacing | Padding | `padding` |
+| `_width` | number | Width | `width` |
+| `_widthMin` | number | Min. width | `min-width` |
+| `_widthMax` | number | Max. width | `max-width` |
+| `_height` | number | Height | `height` |
+| `_heightMin` | number | Min. height | `min-height` |
+| `_heightMax` | number | Max. height | `max-height` |
+| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
+| `_position` | select | Position | `position` |
+| `_top` | number | _top | `top` |
+| `_right` | number | Right | `right` |
+| `_bottom` | number | Bottom | `bottom` |
+| `_left` | number | Left | `left` |
+| `_zIndex` | number | Z-index | `z-index` |
+| `_order` | number | _order | `order` |
+| `_display` | select | Display | `display`, `align-items` |
+| `_visibility` | select | Visibility | `visibility` |
+| `_overflow` | text | Overflow | `overflow` |
+| `_opacity` | number | Opacity | `opacity` |
+| `_cursor` | select | Cursor | `cursor` |
+| `_isolation` | select | Isolation | `isolation` |
+| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
+| `_pointerEvents` | text | Pointer events | `pointer-events` |
+| `_perspective` | number | Perspective | `perspective` |
+| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
+| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
+| `_flexDirection` | direction | Direction | `flex-direction` |
+| `_alignSelf` | align-items | Align self | `align-self` |
+| `_justifyContent` | justify-content | Align main axis | `justify-content` |
+| `_alignItems` | align-items | Align cross axis | `align-items` |
+| `_gap` | number | Gap | `gap` |
+| `_flexGrow` | number | Flex grow | `flex-grow` |
+| `_flexShrink` | number | Flex shrink | `flex-shrink` |
+| `_flexBasis` | text | Flex basis | `flex-basis` |
+| `_useMasonry` | checkbox | %s layout | — |
+| `_masonryColumn` | number | Columns | `--columns` |
+| `_masonryGutter` | number | Spacing | `--gutter` |
+| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
+| `_masonryTransitionDuration` | number | Transition | — |
+| `_masonryTransitionMode` | select | Reveal animation | — |
+| `_typography` | typography | _typography | `font` |
+| `_background` | background | _background | `background` |
+| `_shapeDividers` | repeater | Custom shape | — |
+| `_gradient` | gradient | _gradient | `background-image` |
+| `_border` | border | Border | `border` |
+| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `_transform` | transform | Transform | `transform` |
+| `_transformOrigin` | text | Transform origin | `transform-origin` |
+| `_motionElementParallax` | checkbox | Element parallax | — |
+| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
+| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
+| `_motionBackgroundParallax` | checkbox | Background parallax | — |
+| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
+| `_motionStartVisiblePercent` | number | Parallax start point | — |
+| `_cssCustom` | code | Custom CSS | — |
+| `_cssClasses` | text | CSS classes | — |
+| `_cssId` | text | CSS ID | — |
+| `_cssFilters` | filters | CSS Filters | `filter` |
+| `_cssTransition` | text | Transition | `transition` |
+| `_attributes` | repeater | Name | — |
+| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+
+---
+
 <a id="developer-schema-elements-form"></a>
 
 # Form Schema
@@ -45475,208 +45677,6 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-heading"></a>
-
-# Heading Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/heading/
-
-*Schema for Bricks Heading element*
-
-| Property | Value |
-|---|---|
-| `name` | heading |
-| `category` | basic |
-| `tag` | h3 |
-| `nestable` | false |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `text` | text | text | — |
-| `tag` | select | HTML tag | — |
-| `customTag` | text | Custom tag | — |
-| `type` | select | Type | — |
-| `style` | select | Style | — |
-| `link` | link | Link to | — |
-| `separator` | select | Separator | — |
-| `separatorWidth` | number | Width | `width` on `.separator`, `flex-grow` on `.separator`, `width` |
-| `separatorHeight` | number | Height | `border-top-width` on `.separator`, `height` on `.separator` |
-| `separatorSpacing` | number | Spacing | `gap` on `&.has-separator` |
-| `separatorStyle` | select | Style | `border-top-style` on `.separator` |
-| `separatorAlignItems` | align-items | Align | `align-items` on `&.has-separator` |
-| `separatorColor` | color | Color | `border-top-color` on `.separator` |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
-<a id="developer-schema-elements-html"></a>
-
-# HTML Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/html/
-
-*Schema for Bricks HTML element*
-
-| Property | Value |
-|---|---|
-| `name` | html |
-| `category` | general |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `html` | code | Raw HTML | — |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
 <a id="developer-schema-elements-icon-box"></a>
 
 # Icon Box Schema
@@ -45719,108 +45719,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/icon-box/
 | `contentBackgroundColor` | color | Background | `background-color` on `.content` |
 | `contentBorder` | border | Border | `border` on `.content` |
 | `contentBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.content` |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
-<a id="developer-schema-elements-icon"></a>
-
-# Icon Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/icon/
-
-*Schema for Bricks Icon element*
-
-| Property | Value |
-|---|---|
-| `name` | icon |
-| `category` | basic |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `icon` | icon | Icon | — |
-| `iconColor` | color | Color | `color`, `fill` |
-| `iconSize` | number | Size | `font-size` |
-| `link` | link | Link | — |
-| `isAccordionIcon` | checkbox | isAccordionIcon | — |
-| `accordionTitleIconState` | select | Show | — |
-| `accordionTitleIconTransform` | transform | Transform | `--brx-icon-transform` |
-| `accordionTitleIconTransition` | text | Transition | `transition` |
 
 ## Inherited CSS controls
 
@@ -46147,6 +46045,228 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
+<a id="developer-schema-elements-instagram-feed"></a>
+
+# Instagram Feed Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/elements/instagram-feed/
+
+*Schema for Bricks Instagram feed element*
+
+| Property | Value |
+|---|---|
+| `name` | instagram-feed |
+| `category` | media |
+| `tag` | div |
+| `nestable` | false |
+
+## Controls
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `columns` | number | Columns | `grid-template-columns` on `ul` |
+| `numberOfPosts` | number | Posts | — |
+| `imageObjectFit` | select | Object fit | `object-fit` on `img` |
+| `imageAspectRatio` | text | Aspect ratio | `aspect-ratio` on `img` |
+| `imageHeight` | number | Height | `height` on `img` |
+| `imageWidth` | number | Width | `width` on `img` |
+| `imageGap` | number | Gap | `gap` on `ul` |
+| `imageBorder` | border | Border | `border` on `img` |
+| `imageLink` | checkbox | Link | — |
+| `carouselIcon` | icon | Icon | — |
+| `carouselIconColor` | color | Icon color | `color` on `.brx-icon.carousel` |
+| `carouselIconSize` | number | Icon size | `height` on `.brx-icon.carousel svg`, `width` on `.brx-icon.carousel svg`, `font-size` on `.brx-icon.carousel` |
+| `carouselIconPosition` | dimensions | Icon position | — |
+| `videoIcon` | icon | Icon | — |
+| `videoIconColor` | color | Icon color | `color` on `.brx-icon.video` |
+| `videoIconSize` | number | Icon size | `height` on `.brx-icon.video svg`, `width` on `.brx-icon.video svg`, `font-size` on `.brx-icon.video` |
+| `videoIconPosition` | dimensions | Icon position | — |
+| `caption` | checkbox | Enable | — |
+| `captionBackground` | color | Background color | `background-color` on `.caption` |
+| `captionBorder` | border | Border | `border` on `.caption` |
+| `captionTypography` | typography | Typography | `font` on `.caption` |
+| `followText` | text | Text | — |
+| `followPosition` | select | Position | — |
+| `followIcon` | icon | Icon | `—` on `.follow-icon` |
+| `followTypography` | typography | Typography | `font` on `.follow` |
+| `cacheDuration` | select | Duration | — |
+
+## Inherited CSS controls
+
+Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `_content` | text | Content | `content` |
+| `_margin` | spacing | Margin | `margin` |
+| `_padding` | spacing | Padding | `padding` |
+| `_width` | number | Width | `width` |
+| `_widthMin` | number | Min. width | `min-width` |
+| `_widthMax` | number | Max. width | `max-width` |
+| `_height` | number | Height | `height` |
+| `_heightMin` | number | Min. height | `min-height` |
+| `_heightMax` | number | Max. height | `max-height` |
+| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
+| `_position` | select | Position | `position` |
+| `_top` | number | _top | `top` |
+| `_right` | number | Right | `right` |
+| `_bottom` | number | Bottom | `bottom` |
+| `_left` | number | Left | `left` |
+| `_zIndex` | number | Z-index | `z-index` |
+| `_order` | number | _order | `order` |
+| `_display` | select | Display | `display`, `align-items` |
+| `_visibility` | select | Visibility | `visibility` |
+| `_overflow` | text | Overflow | `overflow` |
+| `_opacity` | number | Opacity | `opacity` |
+| `_cursor` | select | Cursor | `cursor` |
+| `_isolation` | select | Isolation | `isolation` |
+| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
+| `_pointerEvents` | text | Pointer events | `pointer-events` |
+| `_perspective` | number | Perspective | `perspective` |
+| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
+| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
+| `_flexDirection` | direction | Direction | `flex-direction` |
+| `_alignSelf` | align-items | Align self | `align-self` |
+| `_justifyContent` | justify-content | Align main axis | `justify-content` |
+| `_alignItems` | align-items | Align cross axis | `align-items` |
+| `_gap` | number | Gap | `gap` |
+| `_flexGrow` | number | Flex grow | `flex-grow` |
+| `_flexShrink` | number | Flex shrink | `flex-shrink` |
+| `_flexBasis` | text | Flex basis | `flex-basis` |
+| `_useMasonry` | checkbox | %s layout | — |
+| `_masonryColumn` | number | Columns | `--columns` |
+| `_masonryGutter` | number | Spacing | `--gutter` |
+| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
+| `_masonryTransitionDuration` | number | Transition | — |
+| `_masonryTransitionMode` | select | Reveal animation | — |
+| `_typography` | typography | _typography | `font` |
+| `_background` | background | _background | `background` |
+| `_shapeDividers` | repeater | Custom shape | — |
+| `_gradient` | gradient | _gradient | `background-image` |
+| `_border` | border | Border | `border` |
+| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `_transform` | transform | Transform | `transform` |
+| `_transformOrigin` | text | Transform origin | `transform-origin` |
+| `_motionElementParallax` | checkbox | Element parallax | — |
+| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
+| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
+| `_motionBackgroundParallax` | checkbox | Background parallax | — |
+| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
+| `_motionStartVisiblePercent` | number | Parallax start point | — |
+| `_cssCustom` | code | Custom CSS | — |
+| `_cssClasses` | text | CSS classes | — |
+| `_cssId` | text | CSS ID | — |
+| `_cssFilters` | filters | CSS Filters | `filter` |
+| `_cssTransition` | text | Transition | `transition` |
+| `_attributes` | repeater | Name | — |
+| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+
+---
+
+<a id="developer-schema-elements-icon"></a>
+
+# Icon Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/elements/icon/
+
+*Schema for Bricks Icon element*
+
+| Property | Value |
+|---|---|
+| `name` | icon |
+| `category` | basic |
+| `tag` | div |
+| `nestable` | false |
+
+## Controls
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `icon` | icon | Icon | — |
+| `iconColor` | color | Color | `color`, `fill` |
+| `iconSize` | number | Size | `font-size` |
+| `link` | link | Link | — |
+| `isAccordionIcon` | checkbox | isAccordionIcon | — |
+| `accordionTitleIconState` | select | Show | — |
+| `accordionTitleIconTransform` | transform | Transform | `--brx-icon-transform` |
+| `accordionTitleIconTransition` | text | Transition | `transition` |
+
+## Inherited CSS controls
+
+Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `_content` | text | Content | `content` |
+| `_margin` | spacing | Margin | `margin` |
+| `_padding` | spacing | Padding | `padding` |
+| `_width` | number | Width | `width` |
+| `_widthMin` | number | Min. width | `min-width` |
+| `_widthMax` | number | Max. width | `max-width` |
+| `_height` | number | Height | `height` |
+| `_heightMin` | number | Min. height | `min-height` |
+| `_heightMax` | number | Max. height | `max-height` |
+| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
+| `_position` | select | Position | `position` |
+| `_top` | number | _top | `top` |
+| `_right` | number | Right | `right` |
+| `_bottom` | number | Bottom | `bottom` |
+| `_left` | number | Left | `left` |
+| `_zIndex` | number | Z-index | `z-index` |
+| `_order` | number | _order | `order` |
+| `_display` | select | Display | `display`, `align-items` |
+| `_visibility` | select | Visibility | `visibility` |
+| `_overflow` | text | Overflow | `overflow` |
+| `_opacity` | number | Opacity | `opacity` |
+| `_cursor` | select | Cursor | `cursor` |
+| `_isolation` | select | Isolation | `isolation` |
+| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
+| `_pointerEvents` | text | Pointer events | `pointer-events` |
+| `_perspective` | number | Perspective | `perspective` |
+| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
+| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
+| `_flexDirection` | direction | Direction | `flex-direction` |
+| `_alignSelf` | align-items | Align self | `align-self` |
+| `_justifyContent` | justify-content | Align main axis | `justify-content` |
+| `_alignItems` | align-items | Align cross axis | `align-items` |
+| `_gap` | number | Gap | `gap` |
+| `_flexGrow` | number | Flex grow | `flex-grow` |
+| `_flexShrink` | number | Flex shrink | `flex-shrink` |
+| `_flexBasis` | text | Flex basis | `flex-basis` |
+| `_useMasonry` | checkbox | %s layout | — |
+| `_masonryColumn` | number | Columns | `--columns` |
+| `_masonryGutter` | number | Spacing | `--gutter` |
+| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
+| `_masonryTransitionDuration` | number | Transition | — |
+| `_masonryTransitionMode` | select | Reveal animation | — |
+| `_typography` | typography | _typography | `font` |
+| `_background` | background | _background | `background` |
+| `_shapeDividers` | repeater | Custom shape | — |
+| `_gradient` | gradient | _gradient | `background-image` |
+| `_border` | border | Border | `border` |
+| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `_transform` | transform | Transform | `transform` |
+| `_transformOrigin` | text | Transform origin | `transform-origin` |
+| `_motionElementParallax` | checkbox | Element parallax | — |
+| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
+| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
+| `_motionBackgroundParallax` | checkbox | Background parallax | — |
+| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
+| `_motionStartVisiblePercent` | number | Parallax start point | — |
+| `_cssCustom` | code | Custom CSS | — |
+| `_cssClasses` | text | CSS classes | — |
+| `_cssId` | text | CSS ID | — |
+| `_cssFilters` | filters | CSS Filters | `filter` |
+| `_cssTransition` | text | Transition | `transition` |
+| `_attributes` | repeater | Name | — |
+| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+
+---
+
 <a id="developer-schema-elements-list"></a>
 
 # List Schema
@@ -46279,126 +46399,6 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-instagram-feed"></a>
-
-# Instagram Feed Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/instagram-feed/
-
-*Schema for Bricks Instagram feed element*
-
-| Property | Value |
-|---|---|
-| `name` | instagram-feed |
-| `category` | media |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `columns` | number | Columns | `grid-template-columns` on `ul` |
-| `numberOfPosts` | number | Posts | — |
-| `imageObjectFit` | select | Object fit | `object-fit` on `img` |
-| `imageAspectRatio` | text | Aspect ratio | `aspect-ratio` on `img` |
-| `imageHeight` | number | Height | `height` on `img` |
-| `imageWidth` | number | Width | `width` on `img` |
-| `imageGap` | number | Gap | `gap` on `ul` |
-| `imageBorder` | border | Border | `border` on `img` |
-| `imageLink` | checkbox | Link | — |
-| `carouselIcon` | icon | Icon | — |
-| `carouselIconColor` | color | Icon color | `color` on `.brx-icon.carousel` |
-| `carouselIconSize` | number | Icon size | `height` on `.brx-icon.carousel svg`, `width` on `.brx-icon.carousel svg`, `font-size` on `.brx-icon.carousel` |
-| `carouselIconPosition` | dimensions | Icon position | — |
-| `videoIcon` | icon | Icon | — |
-| `videoIconColor` | color | Icon color | `color` on `.brx-icon.video` |
-| `videoIconSize` | number | Icon size | `height` on `.brx-icon.video svg`, `width` on `.brx-icon.video svg`, `font-size` on `.brx-icon.video` |
-| `videoIconPosition` | dimensions | Icon position | — |
-| `caption` | checkbox | Enable | — |
-| `captionBackground` | color | Background color | `background-color` on `.caption` |
-| `captionBorder` | border | Border | `border` on `.caption` |
-| `captionTypography` | typography | Typography | `font` on `.caption` |
-| `followText` | text | Text | — |
-| `followPosition` | select | Position | — |
-| `followIcon` | icon | Icon | `—` on `.follow-icon` |
-| `followTypography` | typography | Typography | `font` on `.follow` |
-| `cacheDuration` | select | Duration | — |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
 <a id="developer-schema-elements-logo"></a>
 
 # Logo Schema
@@ -46426,104 +46426,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/logo/
 | `logoText` | text | Text | — |
 | `logoLoading` | select | Loading | — |
 | `logoUrl` | link | Link to | — |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
-<a id="developer-schema-elements-map-connector"></a>
-
-# Map Connector Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/map-connector/
-
-*Schema for Bricks Map Connector element*
-
-| Property | Value |
-|---|---|
-| `name` | map-connector |
-| `category` | general |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `latitude` | text | Latitude | — |
-| `longitude` | text | Longitude | — |
-| `address` | text | Address | — |
-| `infoBoxTemplateId` | select | Info Box | — |
 
 ## Inherited CSS controls
 
@@ -46765,6 +46667,294 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/map/
 | `zoomControl` | checkbox | Zoom Control | — |
 | `minZoom` | number | Zoom level | — |
 | `maxZoom` | number | Zoom level | — |
+
+## Inherited CSS controls
+
+Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `_content` | text | Content | `content` |
+| `_margin` | spacing | Margin | `margin` |
+| `_padding` | spacing | Padding | `padding` |
+| `_width` | number | Width | `width` |
+| `_widthMin` | number | Min. width | `min-width` |
+| `_widthMax` | number | Max. width | `max-width` |
+| `_height` | number | Height | `height` |
+| `_heightMin` | number | Min. height | `min-height` |
+| `_heightMax` | number | Max. height | `max-height` |
+| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
+| `_position` | select | Position | `position` |
+| `_top` | number | _top | `top` |
+| `_right` | number | Right | `right` |
+| `_bottom` | number | Bottom | `bottom` |
+| `_left` | number | Left | `left` |
+| `_zIndex` | number | Z-index | `z-index` |
+| `_order` | number | _order | `order` |
+| `_display` | select | Display | `display`, `align-items` |
+| `_visibility` | select | Visibility | `visibility` |
+| `_overflow` | text | Overflow | `overflow` |
+| `_opacity` | number | Opacity | `opacity` |
+| `_cursor` | select | Cursor | `cursor` |
+| `_isolation` | select | Isolation | `isolation` |
+| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
+| `_pointerEvents` | text | Pointer events | `pointer-events` |
+| `_perspective` | number | Perspective | `perspective` |
+| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
+| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
+| `_flexDirection` | direction | Direction | `flex-direction` |
+| `_alignSelf` | align-items | Align self | `align-self` |
+| `_justifyContent` | justify-content | Align main axis | `justify-content` |
+| `_alignItems` | align-items | Align cross axis | `align-items` |
+| `_gap` | number | Gap | `gap` |
+| `_flexGrow` | number | Flex grow | `flex-grow` |
+| `_flexShrink` | number | Flex shrink | `flex-shrink` |
+| `_flexBasis` | text | Flex basis | `flex-basis` |
+| `_useMasonry` | checkbox | %s layout | — |
+| `_masonryColumn` | number | Columns | `--columns` |
+| `_masonryGutter` | number | Spacing | `--gutter` |
+| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
+| `_masonryTransitionDuration` | number | Transition | — |
+| `_masonryTransitionMode` | select | Reveal animation | — |
+| `_typography` | typography | _typography | `font` |
+| `_background` | background | _background | `background` |
+| `_shapeDividers` | repeater | Custom shape | — |
+| `_gradient` | gradient | _gradient | `background-image` |
+| `_border` | border | Border | `border` |
+| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `_transform` | transform | Transform | `transform` |
+| `_transformOrigin` | text | Transform origin | `transform-origin` |
+| `_motionElementParallax` | checkbox | Element parallax | — |
+| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
+| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
+| `_motionBackgroundParallax` | checkbox | Background parallax | — |
+| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
+| `_motionStartVisiblePercent` | number | Parallax start point | — |
+| `_cssCustom` | code | Custom CSS | — |
+| `_cssClasses` | text | CSS classes | — |
+| `_cssId` | text | CSS ID | — |
+| `_cssFilters` | filters | CSS Filters | `filter` |
+| `_cssTransition` | text | Transition | `transition` |
+| `_attributes` | repeater | Name | — |
+| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+
+---
+
+<a id="developer-schema-elements-map-connector"></a>
+
+# Map Connector Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/elements/map-connector/
+
+*Schema for Bricks Map Connector element*
+
+| Property | Value |
+|---|---|
+| `name` | map-connector |
+| `category` | general |
+| `tag` | div |
+| `nestable` | false |
+
+## Controls
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `latitude` | text | Latitude | — |
+| `longitude` | text | Longitude | — |
+| `address` | text | Address | — |
+| `infoBoxTemplateId` | select | Info Box | — |
+
+## Inherited CSS controls
+
+Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `_content` | text | Content | `content` |
+| `_margin` | spacing | Margin | `margin` |
+| `_padding` | spacing | Padding | `padding` |
+| `_width` | number | Width | `width` |
+| `_widthMin` | number | Min. width | `min-width` |
+| `_widthMax` | number | Max. width | `max-width` |
+| `_height` | number | Height | `height` |
+| `_heightMin` | number | Min. height | `min-height` |
+| `_heightMax` | number | Max. height | `max-height` |
+| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
+| `_position` | select | Position | `position` |
+| `_top` | number | _top | `top` |
+| `_right` | number | Right | `right` |
+| `_bottom` | number | Bottom | `bottom` |
+| `_left` | number | Left | `left` |
+| `_zIndex` | number | Z-index | `z-index` |
+| `_order` | number | _order | `order` |
+| `_display` | select | Display | `display`, `align-items` |
+| `_visibility` | select | Visibility | `visibility` |
+| `_overflow` | text | Overflow | `overflow` |
+| `_opacity` | number | Opacity | `opacity` |
+| `_cursor` | select | Cursor | `cursor` |
+| `_isolation` | select | Isolation | `isolation` |
+| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
+| `_pointerEvents` | text | Pointer events | `pointer-events` |
+| `_perspective` | number | Perspective | `perspective` |
+| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
+| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
+| `_flexDirection` | direction | Direction | `flex-direction` |
+| `_alignSelf` | align-items | Align self | `align-self` |
+| `_justifyContent` | justify-content | Align main axis | `justify-content` |
+| `_alignItems` | align-items | Align cross axis | `align-items` |
+| `_gap` | number | Gap | `gap` |
+| `_flexGrow` | number | Flex grow | `flex-grow` |
+| `_flexShrink` | number | Flex shrink | `flex-shrink` |
+| `_flexBasis` | text | Flex basis | `flex-basis` |
+| `_useMasonry` | checkbox | %s layout | — |
+| `_masonryColumn` | number | Columns | `--columns` |
+| `_masonryGutter` | number | Spacing | `--gutter` |
+| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
+| `_masonryTransitionDuration` | number | Transition | — |
+| `_masonryTransitionMode` | select | Reveal animation | — |
+| `_typography` | typography | _typography | `font` |
+| `_background` | background | _background | `background` |
+| `_shapeDividers` | repeater | Custom shape | — |
+| `_gradient` | gradient | _gradient | `background-image` |
+| `_border` | border | Border | `border` |
+| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `_transform` | transform | Transform | `transform` |
+| `_transformOrigin` | text | Transform origin | `transform-origin` |
+| `_motionElementParallax` | checkbox | Element parallax | — |
+| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
+| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
+| `_motionBackgroundParallax` | checkbox | Background parallax | — |
+| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
+| `_motionStartVisiblePercent` | number | Parallax start point | — |
+| `_cssCustom` | code | Custom CSS | — |
+| `_cssClasses` | text | CSS classes | — |
+| `_cssId` | text | CSS ID | — |
+| `_cssFilters` | filters | CSS Filters | `filter` |
+| `_cssTransition` | text | Transition | `transition` |
+| `_attributes` | repeater | Name | — |
+| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+
+---
+
+<a id="developer-schema-elements-nav-menu"></a>
+
+# Nav Menu Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/elements/nav-menu/
+
+*Schema for Bricks Nav Menu element*
+
+| Property | Value |
+|---|---|
+| `name` | nav-menu |
+| `category` | wordpress |
+| `tag` | div |
+| `nestable` | false |
+
+## Controls
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `menu` | select | Menu | — |
+| `ariaLabel` | text | ARIA label | — |
+| `menuAlignment` | direction | Alignment | `flex-direction` on `.bricks-nav-menu` |
+| `menuJustifyContent` | justify-content | Justify content | `justify-content` on `.bricks-nav-menu > li > a`, `justify-content` on `.bricks-nav-menu > li > .brx-submenu-toggle` |
+| `menuGap` | number | Gap | `gap` on `.bricks-nav-menu` |
+| `menuMargin` | spacing | Margin | `margin` on `.bricks-nav-menu > li` |
+| `menuPadding` | spacing | Padding | `padding` on `.bricks-nav-menu > li > a`, `padding` on `.bricks-nav-menu > li > .brx-submenu-toggle > *` |
+| `menuBackground` | background | Background | `background` on `.bricks-nav-menu > li\{pseudo\} > a`, `background` on `.bricks-nav-menu > li\{pseudo\} > .brx-submenu-toggle` |
+| `menuBorder` | border | Border | `border` on `.bricks-nav-menu > li\{pseudo\} > a`, `border` on `.bricks-nav-menu > li\{pseudo\} > .brx-submenu-toggle` |
+| `menuTypography` | typography | Typography | `font` on `.bricks-nav-menu > li\{pseudo\} > a`, `font` on `.bricks-nav-menu > li\{pseudo\} > .brx-submenu-toggle > *` |
+| `menuActiveBackground` | background | Active background | `background` on `.bricks-nav-menu > .current-menu-item > a`, `background` on `.bricks-nav-menu > .current-menu-item > .brx-submenu-toggle`, `background` on `.bricks-nav-menu > .current-menu-parent > a`, `background` on `.bricks-nav-menu > .current-menu-parent > .brx-submenu-toggle`, `background` on `.bricks-nav-menu > .current-menu-ancestor > a`, `background` on `.bricks-nav-menu > .current-menu-ancestor > .brx-submenu-toggle` |
+| `menuActiveBorder` | border | Active border | `border` on `.bricks-nav-menu .current-menu-item > a`, `border` on `.bricks-nav-menu .current-menu-item > .brx-submenu-toggle`, `border` on `.bricks-nav-menu > .current-menu-parent > a`, `border` on `.bricks-nav-menu > .current-menu-parent > .brx-submenu-toggle`, `border` on `.bricks-nav-menu > .current-menu-ancestor > a`, `border` on `.bricks-nav-menu > .current-menu-ancestor > .brx-submenu-toggle` |
+| `menuActiveTypography` | typography | Active typography | `font` on `.bricks-nav-menu .current-menu-item > a`, `font` on `.bricks-nav-menu .current-menu-item > .brx-submenu-toggle > *`, `font` on `.bricks-nav-menu > .current-menu-parent > a`, `font` on `.bricks-nav-menu > .current-menu-parent > .brx-submenu-toggle > *`, `font` on `.bricks-nav-menu > .current-menu-ancestor > a`, `font` on `.bricks-nav-menu > .current-menu-ancestor > .brx-submenu-toggle > *` |
+| `menuIcon` | icon | Icon | `—` on `.bricks-nav-menu > li.menu-item > .brx-submenu-toggle svg` |
+| `menuIconTransform` | transform | Icon transform | `transform` on `.bricks-nav-menu button[aria-expanded="false"] > *` |
+| `menuIconTransformOpen` | transform | Icon transform | `transform` on `.bricks-nav-menu button[aria-expanded="true"] > *` |
+| `menuIconTypography` | typography | Icon typography | `font` on `.bricks-nav-menu > li.menu-item-has-children > .brx-submenu-toggle\{pseudo\} button[aria-expanded]` |
+| `menuIconPosition` | select | Icon position | — |
+| `menuIconMargin` | spacing | Icon margin | `margin` on `.bricks-nav-menu .brx-submenu-toggle button` |
+| `menuIconPadding` | spacing | Icon padding | `padding` on `.bricks-nav-menu .brx-submenu-toggle button` |
+| `submenuStatic` | checkbox | Position | — |
+| `subMenuBackgroundList` | background | Background | `background` on `.bricks-nav-menu .sub-menu` |
+| `subMenuBorder` | border | Border | `border` on `.bricks-nav-menu .sub-menu` |
+| `subMenuBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.bricks-nav-menu .sub-menu` |
+| `subMenuTransform` | transform | Transform | `transform` on `.bricks-nav-menu > li > .sub-menu`, `transform` on `.bricks-nav-menu > li > .brx-megamenu` |
+| `subMenuTransformOpen` | transform | Transform | `transform` on `.bricks-nav-menu > li.open > .sub-menu`, `transform` on `.bricks-nav-menu > li.open > .brx-megamenu` |
+| `caretSize` | number | Size | `border-width` |
+| `caretColor` | color | Color | `border-bottom-color` |
+| `caretTransform` | transform | Transform | `transform` |
+| `caretPosition` | dimensions | Position | — |
+| `subMenuJustifyContent` | justify-content | Justify content | `justify-content` on `.bricks-nav-menu .sub-menu a`, `justify-content` on `.bricks-nav-menu .sub-menu button` |
+| `subMenuPadding` | spacing | Padding | `padding` on `.bricks-nav-menu .sub-menu a`, `padding` on `.bricks-nav-menu .sub-menu button` |
+| `subMenuBackground` | background | Background | `background` on `.bricks-nav-menu .sub-menu .menu-item` |
+| `subMenuItemBorder` | border | Border | `border` on `.bricks-nav-menu .sub-menu > li` |
+| `subMenuTypography` | typography | Typography | `font` on `.bricks-nav-menu .sub-menu > li\{pseudo\} > a`, `font` on `.bricks-nav-menu .sub-menu > li\{pseudo\} > .brx-submenu-toggle > *` |
+| `subMenuActiveBackground` | background | Active background | `background` on `.bricks-nav-menu .sub-menu > .current-menu-item > a`, `background` on `.bricks-nav-menu .sub-menu > .current-menu-item > .brx-submenu-toggle`, `background` on `.bricks-nav-menu .sub-menu > .current-menu-ancestor > a`, `background` on `.bricks-nav-menu .sub-menu > .current-menu-ancestor > .brx-submenu-toggle` |
+| `subMenuActiveBorder` | border | Active border | `border` on `.bricks-nav-menu .sub-menu > .current-menu-item > a`, `border` on `.bricks-nav-menu .sub-menu > .current-menu-item > .brx-submenu-toggle`, `border` on `.bricks-nav-menu .sub-menu > .current-menu-ancestor > a`, `border` on `.bricks-nav-menu .sub-menu > .current-menu-ancestor > .brx-submenu-toggle` |
+| `subMenuActiveTypography` | typography | Active typography | `font` on `.bricks-nav-menu .sub-menu > .current-menu-item > a`, `font` on `.bricks-nav-menu .sub-menu > .current-menu-item > .brx-submenu-toggle > *`, `font` on `.bricks-nav-menu .sub-menu > .current-menu-ancestor > a`, `font` on `.bricks-nav-menu .sub-menu > .current-menu-ancestor > .brx-submenu-toggle > *` |
+| `subMenuIcon` | icon | Icon | `—` on `.bricks-nav-menu .sub-menu .brx-submenu-toggle\{pseudo\} svg` |
+| `subMenuIconSize` | number | Icon size | `height` on `.bricks-nav-menu .sub-menu .brx-submenu-toggle svg`, `width` on `.bricks-nav-menu .sub-menu .brx-submenu-toggle svg`, `font-size` on `.bricks-nav-menu .sub-menu .brx-submenu-toggle i` |
+| `subMenuIconTransform` | transform | Icon transform | `transform` on `.bricks-nav-menu .sub-menu button > *` |
+| `subMenuIconTransformOpen` | transform | Icon transform | `transform` on `.bricks-nav-menu .sub-menu button[aria-expanded="true"] > *` |
+| `subMenuIconTypography` | typography | Icon typography | `font` on `.bricks-nav-menu .sub-menu .brx-submenu-toggle > a\{pseudo\} + button` |
+| `subMenuIconPosition` | select | Icon position | — |
+| `subMenuIconMargin` | spacing | Icon margin | `margin` on `.bricks-nav-menu .sub-menu .brx-submenu-toggle button` |
+| `subMenuIconPadding` | spacing | Icon padding | `padding` on `.bricks-nav-menu .sub-menu .brx-submenu-toggle button` |
+| `mobileMenu` | select | mobileMenu | — |
+| `mobileMenuAriaLabel` | text | ARIA label | — |
+| `mobileMenuCustomBreakpoint` | number | Custom breakpoint | — |
+| `mobileMenuPosition` | select | Position | — |
+| `mobileMenuTop` | number | mobileMenuTop | `top` on `.bricks-mobile-menu-wrapper` |
+| `mobileMenuWidth` | number | Width | `width` on `.bricks-mobile-menu-wrapper` |
+| `mobileMenuHeight` | number | Height | `height` on `.bricks-mobile-menu-wrapper` |
+| `mobileMenuFadeIn` | checkbox | Fade in | — |
+| `mobileMenuAlignment` | justify-content | Vertical | `justify-content` on `.bricks-mobile-menu-wrapper` |
+| `mobileMenuAlignItems` | align-items | Horizontal | `align-items` on `.bricks-mobile-menu-wrapper`, `justify-content` on `.bricks-mobile-menu-wrapper .brx-submenu-toggle`, `width` on `.bricks-mobile-menu-wrapper a` |
+| `mobileMenuTextAlign` | text-align | Text align | `text-align` on `.bricks-mobile-menu-wrapper` |
+| `mobileMenuBackground` | background | Background | `background` on `.bricks-mobile-menu-wrapper:before` |
+| `mobileMenuBackgroundFilters` | filters | Background filters | `filter` on `.bricks-mobile-menu-wrapper:before` |
+| `mobileMenuBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.bricks-mobile-menu-wrapper:before` |
+| `mobileMenuOverlay` | background | Overlay | `background` on `.bricks-mobile-menu-overlay` |
+| `mobileMenuPadding` | spacing | Padding | `padding` on `.bricks-mobile-menu > li > a`, `padding` on `.bricks-mobile-menu > li > .brx-submenu-toggle > *` |
+| `mobileMenuItemBackground` | color | Background | `background-color` on `.bricks-mobile-menu > li > a`, `background-color` on `.bricks-mobile-menu > li > .brx-submenu-toggle` |
+| `mobileMenuItemBackgroundActive` | color | Background | `background-color` on `.bricks-mobile-menu > li > a[aria-current="page"]`, `background-color` on `.bricks-mobile-menu > .current-menu-item > .brx-submenu-toggle` |
+| `mobileMenuBorder` | border | Border | `border` on `.bricks-mobile-menu > li > a`, `background-color` on `.bricks-mobile-menu > li > .brx-submenu-toggle` |
+| `mobileMenuActiveBorder` | border | Border | `border` on `.bricks-mobile-menu > .current-menu-item > a`, `border` on `.bricks-mobile-menu > .current-menu-item > .brx-submenu-toggle`, `border` on `.bricks-mobile-menu > .current-menu-ancestor > .brx-submenu-toggle` |
+| `mobileMenuTypography` | typography | Typography | `font` on `.bricks-mobile-menu > li > a`, `font` on `.bricks-mobile-menu > li > .brx-submenu-toggle > *` |
+| `mobileMenuActiveTypography` | typography | Typography | `font` on `.bricks-mobile-menu [aria-current="page"]`, `font` on `.bricks-mobile-menu [aria-current="page"] + button`, `font` on `.bricks-mobile-menu > .current-menu-item > a`, `font` on `.bricks-mobile-menu > .current-menu-parent > a`, `font` on `.bricks-mobile-menu > .current-menu-item > .brx-submenu-toggle > *`, `font` on `.bricks-mobile-menu > .current-menu-parent > .brx-submenu-toggle > *` |
+| `mobileMenuIcon` | icon | Icon | `—` on `.bricks-mobile-menu-wrapper .brx-submenu-toggle svg` |
+| `mobileMenuCloseIcon` | icon | Close icon | `—` on `.bricks-mobile-menu-wrapper .brx-submenu-toggle svg.close` |
+| `mobileMenuIconTypography` | typography | Icon typography | `font` on `.bricks-mobile-menu > .menu-item-has-children .brx-submenu-toggle button` |
+| `mobileMenuIconPosition` | select | Icon position | — |
+| `mobileMenuIconMargin` | spacing | Icon margin | `margin` on `.bricks-mobile-menu .menu-item-has-children .brx-submenu-toggle button` |
+| `mobileSubMenuPadding` | spacing | Padding | `padding` on `.bricks-mobile-menu .sub-menu > .menu-item > a`, `padding` on `.bricks-mobile-menu .sub-menu > .menu-item > .brx-submenu-toggle > *` |
+| `mobileSubMenuItemBackground` | color | Background | `background-color` on `.bricks-mobile-menu .sub-menu > .menu-item > a`, `background-color` on `.bricks-mobile-menu .sub-menu > .menu-item > .brx-submenu-toggle` |
+| `mobileSubMenuItemBackgroundActive` | color | Background | `background-color` on `.bricks-mobile-menu .sub-menu > .menu-item > a[aria-current="page"]`, `background-color` on `.bricks-mobile-menu .sub-menu .current-menu-item > .brx-submenu-toggle` |
+| `mobileSubMenuBorder` | border | Border | `border` on `.bricks-mobile-menu .sub-menu > .menu-item` |
+| `mobileSubMenuBorderActive` | border | Border | `border` on `.bricks-mobile-menu .sub-menu > .current-menu-item > a`, `border` on `.bricks-mobile-menu .sub-menu > .current-menu-item > .brx-submenu-toggle`, `border` on `.bricks-mobile-menu .sub-menu > .current-menu-ancestor > .brx-submenu-toggle` |
+| `mobileSubMenuTypography` | typography | Typography | `font` on `.bricks-mobile-menu .sub-menu > li > a`, `font` on `.bricks-mobile-menu .sub-menu > li > .brx-submenu-toggle > *` |
+| `mobileSubMenuActiveTypography` | typography | Active typography | `font` on `.bricks-mobile-menu .sub-menu > .current-menu-item > a`, `font` on `.bricks-mobile-menu .sub-menu > .current-menu-item > .brx-submenu-toggle > *` |
+| `mobileMenuToggleAriaLabel` | text | aria-label | — |
+| `mobileMenuToggleWidth` | number | Toggle width | `width` on `.bricks-mobile-menu-toggle`, `width` on `.bricks-mobile-menu-toggle .bar-top`, `width` on `.bricks-mobile-menu-toggle .bar-center`, `width` on `.bricks-mobile-menu-toggle .bar-bottom` |
+| `mobileMenuToggleColor` | color | Color | `color` on `.bricks-mobile-menu-toggle` |
+| `mobileMenuToggleHide` | checkbox | Hide close | `display` on `&.show-mobile-menu .bricks-mobile-menu-toggle` |
+| `mobileMenuToggleColorClose` | color | Color close | `color` on `&.show-mobile-menu .bricks-mobile-menu-toggle` |
+| `mobileMenuToggleClosePosition` | dimensions | Close position | `—` on `&.show-mobile-menu .bricks-mobile-menu-toggle` |
+| `megaMenu` | checkbox | Enable | — |
+| `megaMenuSelector` | text | CSS selector | — |
+| `megaMenuToggleOn` | select | Toggle on | — |
+| `megaMenuTransition` | text | Transition | `transition` on `.brx-megamenu` |
+| `megaMenuTransform` | transform | Transform | `transform` on `.bricks-nav-menu > .brx-has-megamenu > .brx-megamenu` |
+| `megaMenuTransformOpen` | transform | Transform | `transform` on `.bricks-nav-menu > .brx-has-megamenu.open > .brx-megamenu`, `transform` on `.bricks-nav-menu > .brx-has-megamenu.open > .brx-megamenu` |
+| `multiLevel` | checkbox | Enable | — |
+| `multiLevelBackText` | text | Back | — |
+| `multiLevelBackTypography` | typography | Back | `font` on `.brx-multilevel-back` |
+| `multiLevelBackground` | color | Back | `background-color` on `.brx-multilevel-back` |
 
 ## Inherited CSS controls
 
@@ -47127,196 +47317,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/pagination/
 | `endSize` | number | End Size | — |
 | `midSize` | number | Mid Size | — |
 | `ajax` | checkbox | Enable AJAX | — |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
-<a id="developer-schema-elements-nav-menu"></a>
-
-# Nav Menu Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/nav-menu/
-
-*Schema for Bricks Nav Menu element*
-
-| Property | Value |
-|---|---|
-| `name` | nav-menu |
-| `category` | wordpress |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `menu` | select | Menu | — |
-| `ariaLabel` | text | ARIA label | — |
-| `menuAlignment` | direction | Alignment | `flex-direction` on `.bricks-nav-menu` |
-| `menuJustifyContent` | justify-content | Justify content | `justify-content` on `.bricks-nav-menu > li > a`, `justify-content` on `.bricks-nav-menu > li > .brx-submenu-toggle` |
-| `menuGap` | number | Gap | `gap` on `.bricks-nav-menu` |
-| `menuMargin` | spacing | Margin | `margin` on `.bricks-nav-menu > li` |
-| `menuPadding` | spacing | Padding | `padding` on `.bricks-nav-menu > li > a`, `padding` on `.bricks-nav-menu > li > .brx-submenu-toggle > *` |
-| `menuBackground` | background | Background | `background` on `.bricks-nav-menu > li\{pseudo\} > a`, `background` on `.bricks-nav-menu > li\{pseudo\} > .brx-submenu-toggle` |
-| `menuBorder` | border | Border | `border` on `.bricks-nav-menu > li\{pseudo\} > a`, `border` on `.bricks-nav-menu > li\{pseudo\} > .brx-submenu-toggle` |
-| `menuTypography` | typography | Typography | `font` on `.bricks-nav-menu > li\{pseudo\} > a`, `font` on `.bricks-nav-menu > li\{pseudo\} > .brx-submenu-toggle > *` |
-| `menuActiveBackground` | background | Active background | `background` on `.bricks-nav-menu > .current-menu-item > a`, `background` on `.bricks-nav-menu > .current-menu-item > .brx-submenu-toggle`, `background` on `.bricks-nav-menu > .current-menu-parent > a`, `background` on `.bricks-nav-menu > .current-menu-parent > .brx-submenu-toggle`, `background` on `.bricks-nav-menu > .current-menu-ancestor > a`, `background` on `.bricks-nav-menu > .current-menu-ancestor > .brx-submenu-toggle` |
-| `menuActiveBorder` | border | Active border | `border` on `.bricks-nav-menu .current-menu-item > a`, `border` on `.bricks-nav-menu .current-menu-item > .brx-submenu-toggle`, `border` on `.bricks-nav-menu > .current-menu-parent > a`, `border` on `.bricks-nav-menu > .current-menu-parent > .brx-submenu-toggle`, `border` on `.bricks-nav-menu > .current-menu-ancestor > a`, `border` on `.bricks-nav-menu > .current-menu-ancestor > .brx-submenu-toggle` |
-| `menuActiveTypography` | typography | Active typography | `font` on `.bricks-nav-menu .current-menu-item > a`, `font` on `.bricks-nav-menu .current-menu-item > .brx-submenu-toggle > *`, `font` on `.bricks-nav-menu > .current-menu-parent > a`, `font` on `.bricks-nav-menu > .current-menu-parent > .brx-submenu-toggle > *`, `font` on `.bricks-nav-menu > .current-menu-ancestor > a`, `font` on `.bricks-nav-menu > .current-menu-ancestor > .brx-submenu-toggle > *` |
-| `menuIcon` | icon | Icon | `—` on `.bricks-nav-menu > li.menu-item > .brx-submenu-toggle svg` |
-| `menuIconTransform` | transform | Icon transform | `transform` on `.bricks-nav-menu button[aria-expanded="false"] > *` |
-| `menuIconTransformOpen` | transform | Icon transform | `transform` on `.bricks-nav-menu button[aria-expanded="true"] > *` |
-| `menuIconTypography` | typography | Icon typography | `font` on `.bricks-nav-menu > li.menu-item-has-children > .brx-submenu-toggle\{pseudo\} button[aria-expanded]` |
-| `menuIconPosition` | select | Icon position | — |
-| `menuIconMargin` | spacing | Icon margin | `margin` on `.bricks-nav-menu .brx-submenu-toggle button` |
-| `menuIconPadding` | spacing | Icon padding | `padding` on `.bricks-nav-menu .brx-submenu-toggle button` |
-| `submenuStatic` | checkbox | Position | — |
-| `subMenuBackgroundList` | background | Background | `background` on `.bricks-nav-menu .sub-menu` |
-| `subMenuBorder` | border | Border | `border` on `.bricks-nav-menu .sub-menu` |
-| `subMenuBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.bricks-nav-menu .sub-menu` |
-| `subMenuTransform` | transform | Transform | `transform` on `.bricks-nav-menu > li > .sub-menu`, `transform` on `.bricks-nav-menu > li > .brx-megamenu` |
-| `subMenuTransformOpen` | transform | Transform | `transform` on `.bricks-nav-menu > li.open > .sub-menu`, `transform` on `.bricks-nav-menu > li.open > .brx-megamenu` |
-| `caretSize` | number | Size | `border-width` |
-| `caretColor` | color | Color | `border-bottom-color` |
-| `caretTransform` | transform | Transform | `transform` |
-| `caretPosition` | dimensions | Position | — |
-| `subMenuJustifyContent` | justify-content | Justify content | `justify-content` on `.bricks-nav-menu .sub-menu a`, `justify-content` on `.bricks-nav-menu .sub-menu button` |
-| `subMenuPadding` | spacing | Padding | `padding` on `.bricks-nav-menu .sub-menu a`, `padding` on `.bricks-nav-menu .sub-menu button` |
-| `subMenuBackground` | background | Background | `background` on `.bricks-nav-menu .sub-menu .menu-item` |
-| `subMenuItemBorder` | border | Border | `border` on `.bricks-nav-menu .sub-menu > li` |
-| `subMenuTypography` | typography | Typography | `font` on `.bricks-nav-menu .sub-menu > li\{pseudo\} > a`, `font` on `.bricks-nav-menu .sub-menu > li\{pseudo\} > .brx-submenu-toggle > *` |
-| `subMenuActiveBackground` | background | Active background | `background` on `.bricks-nav-menu .sub-menu > .current-menu-item > a`, `background` on `.bricks-nav-menu .sub-menu > .current-menu-item > .brx-submenu-toggle`, `background` on `.bricks-nav-menu .sub-menu > .current-menu-ancestor > a`, `background` on `.bricks-nav-menu .sub-menu > .current-menu-ancestor > .brx-submenu-toggle` |
-| `subMenuActiveBorder` | border | Active border | `border` on `.bricks-nav-menu .sub-menu > .current-menu-item > a`, `border` on `.bricks-nav-menu .sub-menu > .current-menu-item > .brx-submenu-toggle`, `border` on `.bricks-nav-menu .sub-menu > .current-menu-ancestor > a`, `border` on `.bricks-nav-menu .sub-menu > .current-menu-ancestor > .brx-submenu-toggle` |
-| `subMenuActiveTypography` | typography | Active typography | `font` on `.bricks-nav-menu .sub-menu > .current-menu-item > a`, `font` on `.bricks-nav-menu .sub-menu > .current-menu-item > .brx-submenu-toggle > *`, `font` on `.bricks-nav-menu .sub-menu > .current-menu-ancestor > a`, `font` on `.bricks-nav-menu .sub-menu > .current-menu-ancestor > .brx-submenu-toggle > *` |
-| `subMenuIcon` | icon | Icon | `—` on `.bricks-nav-menu .sub-menu .brx-submenu-toggle\{pseudo\} svg` |
-| `subMenuIconSize` | number | Icon size | `height` on `.bricks-nav-menu .sub-menu .brx-submenu-toggle svg`, `width` on `.bricks-nav-menu .sub-menu .brx-submenu-toggle svg`, `font-size` on `.bricks-nav-menu .sub-menu .brx-submenu-toggle i` |
-| `subMenuIconTransform` | transform | Icon transform | `transform` on `.bricks-nav-menu .sub-menu button > *` |
-| `subMenuIconTransformOpen` | transform | Icon transform | `transform` on `.bricks-nav-menu .sub-menu button[aria-expanded="true"] > *` |
-| `subMenuIconTypography` | typography | Icon typography | `font` on `.bricks-nav-menu .sub-menu .brx-submenu-toggle > a\{pseudo\} + button` |
-| `subMenuIconPosition` | select | Icon position | — |
-| `subMenuIconMargin` | spacing | Icon margin | `margin` on `.bricks-nav-menu .sub-menu .brx-submenu-toggle button` |
-| `subMenuIconPadding` | spacing | Icon padding | `padding` on `.bricks-nav-menu .sub-menu .brx-submenu-toggle button` |
-| `mobileMenu` | select | mobileMenu | — |
-| `mobileMenuAriaLabel` | text | ARIA label | — |
-| `mobileMenuCustomBreakpoint` | number | Custom breakpoint | — |
-| `mobileMenuPosition` | select | Position | — |
-| `mobileMenuTop` | number | mobileMenuTop | `top` on `.bricks-mobile-menu-wrapper` |
-| `mobileMenuWidth` | number | Width | `width` on `.bricks-mobile-menu-wrapper` |
-| `mobileMenuHeight` | number | Height | `height` on `.bricks-mobile-menu-wrapper` |
-| `mobileMenuFadeIn` | checkbox | Fade in | — |
-| `mobileMenuAlignment` | justify-content | Vertical | `justify-content` on `.bricks-mobile-menu-wrapper` |
-| `mobileMenuAlignItems` | align-items | Horizontal | `align-items` on `.bricks-mobile-menu-wrapper`, `justify-content` on `.bricks-mobile-menu-wrapper .brx-submenu-toggle`, `width` on `.bricks-mobile-menu-wrapper a` |
-| `mobileMenuTextAlign` | text-align | Text align | `text-align` on `.bricks-mobile-menu-wrapper` |
-| `mobileMenuBackground` | background | Background | `background` on `.bricks-mobile-menu-wrapper:before` |
-| `mobileMenuBackgroundFilters` | filters | Background filters | `filter` on `.bricks-mobile-menu-wrapper:before` |
-| `mobileMenuBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.bricks-mobile-menu-wrapper:before` |
-| `mobileMenuOverlay` | background | Overlay | `background` on `.bricks-mobile-menu-overlay` |
-| `mobileMenuPadding` | spacing | Padding | `padding` on `.bricks-mobile-menu > li > a`, `padding` on `.bricks-mobile-menu > li > .brx-submenu-toggle > *` |
-| `mobileMenuItemBackground` | color | Background | `background-color` on `.bricks-mobile-menu > li > a`, `background-color` on `.bricks-mobile-menu > li > .brx-submenu-toggle` |
-| `mobileMenuItemBackgroundActive` | color | Background | `background-color` on `.bricks-mobile-menu > li > a[aria-current="page"]`, `background-color` on `.bricks-mobile-menu > .current-menu-item > .brx-submenu-toggle` |
-| `mobileMenuBorder` | border | Border | `border` on `.bricks-mobile-menu > li > a`, `background-color` on `.bricks-mobile-menu > li > .brx-submenu-toggle` |
-| `mobileMenuActiveBorder` | border | Border | `border` on `.bricks-mobile-menu > .current-menu-item > a`, `border` on `.bricks-mobile-menu > .current-menu-item > .brx-submenu-toggle`, `border` on `.bricks-mobile-menu > .current-menu-ancestor > .brx-submenu-toggle` |
-| `mobileMenuTypography` | typography | Typography | `font` on `.bricks-mobile-menu > li > a`, `font` on `.bricks-mobile-menu > li > .brx-submenu-toggle > *` |
-| `mobileMenuActiveTypography` | typography | Typography | `font` on `.bricks-mobile-menu [aria-current="page"]`, `font` on `.bricks-mobile-menu [aria-current="page"] + button`, `font` on `.bricks-mobile-menu > .current-menu-item > a`, `font` on `.bricks-mobile-menu > .current-menu-parent > a`, `font` on `.bricks-mobile-menu > .current-menu-item > .brx-submenu-toggle > *`, `font` on `.bricks-mobile-menu > .current-menu-parent > .brx-submenu-toggle > *` |
-| `mobileMenuIcon` | icon | Icon | `—` on `.bricks-mobile-menu-wrapper .brx-submenu-toggle svg` |
-| `mobileMenuCloseIcon` | icon | Close icon | `—` on `.bricks-mobile-menu-wrapper .brx-submenu-toggle svg.close` |
-| `mobileMenuIconTypography` | typography | Icon typography | `font` on `.bricks-mobile-menu > .menu-item-has-children .brx-submenu-toggle button` |
-| `mobileMenuIconPosition` | select | Icon position | — |
-| `mobileMenuIconMargin` | spacing | Icon margin | `margin` on `.bricks-mobile-menu .menu-item-has-children .brx-submenu-toggle button` |
-| `mobileSubMenuPadding` | spacing | Padding | `padding` on `.bricks-mobile-menu .sub-menu > .menu-item > a`, `padding` on `.bricks-mobile-menu .sub-menu > .menu-item > .brx-submenu-toggle > *` |
-| `mobileSubMenuItemBackground` | color | Background | `background-color` on `.bricks-mobile-menu .sub-menu > .menu-item > a`, `background-color` on `.bricks-mobile-menu .sub-menu > .menu-item > .brx-submenu-toggle` |
-| `mobileSubMenuItemBackgroundActive` | color | Background | `background-color` on `.bricks-mobile-menu .sub-menu > .menu-item > a[aria-current="page"]`, `background-color` on `.bricks-mobile-menu .sub-menu .current-menu-item > .brx-submenu-toggle` |
-| `mobileSubMenuBorder` | border | Border | `border` on `.bricks-mobile-menu .sub-menu > .menu-item` |
-| `mobileSubMenuBorderActive` | border | Border | `border` on `.bricks-mobile-menu .sub-menu > .current-menu-item > a`, `border` on `.bricks-mobile-menu .sub-menu > .current-menu-item > .brx-submenu-toggle`, `border` on `.bricks-mobile-menu .sub-menu > .current-menu-ancestor > .brx-submenu-toggle` |
-| `mobileSubMenuTypography` | typography | Typography | `font` on `.bricks-mobile-menu .sub-menu > li > a`, `font` on `.bricks-mobile-menu .sub-menu > li > .brx-submenu-toggle > *` |
-| `mobileSubMenuActiveTypography` | typography | Active typography | `font` on `.bricks-mobile-menu .sub-menu > .current-menu-item > a`, `font` on `.bricks-mobile-menu .sub-menu > .current-menu-item > .brx-submenu-toggle > *` |
-| `mobileMenuToggleAriaLabel` | text | aria-label | — |
-| `mobileMenuToggleWidth` | number | Toggle width | `width` on `.bricks-mobile-menu-toggle`, `width` on `.bricks-mobile-menu-toggle .bar-top`, `width` on `.bricks-mobile-menu-toggle .bar-center`, `width` on `.bricks-mobile-menu-toggle .bar-bottom` |
-| `mobileMenuToggleColor` | color | Color | `color` on `.bricks-mobile-menu-toggle` |
-| `mobileMenuToggleHide` | checkbox | Hide close | `display` on `&.show-mobile-menu .bricks-mobile-menu-toggle` |
-| `mobileMenuToggleColorClose` | color | Color close | `color` on `&.show-mobile-menu .bricks-mobile-menu-toggle` |
-| `mobileMenuToggleClosePosition` | dimensions | Close position | `—` on `&.show-mobile-menu .bricks-mobile-menu-toggle` |
-| `megaMenu` | checkbox | Enable | — |
-| `megaMenuSelector` | text | CSS selector | — |
-| `megaMenuToggleOn` | select | Toggle on | — |
-| `megaMenuTransition` | text | Transition | `transition` on `.brx-megamenu` |
-| `megaMenuTransform` | transform | Transform | `transform` on `.bricks-nav-menu > .brx-has-megamenu > .brx-megamenu` |
-| `megaMenuTransformOpen` | transform | Transform | `transform` on `.bricks-nav-menu > .brx-has-megamenu.open > .brx-megamenu`, `transform` on `.bricks-nav-menu > .brx-has-megamenu.open > .brx-megamenu` |
-| `multiLevel` | checkbox | Enable | — |
-| `multiLevelBackText` | text | Back | — |
-| `multiLevelBackTypography` | typography | Back | `font` on `.brx-multilevel-back` |
-| `multiLevelBackground` | color | Back | `background-color` on `.brx-multilevel-back` |
 
 ## Inherited CSS controls
 
@@ -48338,17 +48338,17 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-post-taxonomy"></a>
+<a id="developer-schema-elements-post-sharing"></a>
 
-# Taxonomy Schema
+# Social Sharing Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/post-taxonomy/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/post-sharing/
 
-*Schema for Bricks Taxonomy element*
+*Schema for Bricks Social Sharing element*
 
 | Property | Value |
 |---|---|
-| `name` | post-taxonomy |
+| `name` | post-sharing |
 | `category` | single |
 | `tag` | div |
 | `nestable` | false |
@@ -48357,15 +48357,11 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/post-taxonomy
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `taxonomy` | select | Taxonomy | — |
-| `linkDisable` | checkbox | Disable link | — |
-| `separator` | text | Separator | — |
-| `orderby` | select | Order by | — |
-| `order` | select | order | — |
-| `size` | select | Size | — |
-| `style` | select | Style | — |
-| `gap` | number | Spacing | `gap` |
-| `icon` | icon | Icon | — |
+| `items` | repeater | Share via | `background-color` on `a` |
+| `brandColors` | checkbox | Use brand colors | — |
+| `direction` | direction | Direction | `flex-direction` |
+| `newTab` | checkbox | Open in new tab | — |
+| `linkRel` | text | Rel attribute | — |
 
 ## Inherited CSS controls
 
@@ -48441,17 +48437,17 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-post-sharing"></a>
+<a id="developer-schema-elements-post-taxonomy"></a>
 
-# Social Sharing Schema
+# Taxonomy Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/post-sharing/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/post-taxonomy/
 
-*Schema for Bricks Social Sharing element*
+*Schema for Bricks Taxonomy element*
 
 | Property | Value |
 |---|---|
-| `name` | post-sharing |
+| `name` | post-taxonomy |
 | `category` | single |
 | `tag` | div |
 | `nestable` | false |
@@ -48460,11 +48456,15 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/post-sharing/
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `items` | repeater | Share via | `background-color` on `a` |
-| `brandColors` | checkbox | Use brand colors | — |
-| `direction` | direction | Direction | `flex-direction` |
-| `newTab` | checkbox | Open in new tab | — |
-| `linkRel` | text | Rel attribute | — |
+| `taxonomy` | select | Taxonomy | — |
+| `linkDisable` | checkbox | Disable link | — |
+| `separator` | text | Separator | — |
+| `orderby` | select | Order by | — |
+| `order` | select | order | — |
+| `size` | select | Size | — |
+| `style` | select | Style | — |
+| `gap` | number | Spacing | `gap` |
+| `icon` | icon | Icon | — |
 
 ## Inherited CSS controls
 
@@ -50825,124 +50825,6 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-related-posts"></a>
-
-# Related Posts Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/related-posts/
-
-*Schema for Bricks Related posts element*
-
-| Property | Value |
-|---|---|
-| `name` | related-posts |
-| `category` | single |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `title` | text | Title | — |
-| `titleTag` | select | HTML tag | — |
-| `titleMargin` | spacing | Margin | `margin` on `.related-posts-title` |
-| `titleTypography` | typography | Typography | `font` on `.related-posts-title` |
-| `post_type` | select | Post type | — |
-| `count` | number | Max. related posts | — |
-| `order` | select | order | — |
-| `orderby` | select | Order by | — |
-| `taxonomies` | select | Common taxonomies | — |
-| `gap` | number | Gap | `gap` on `ul` |
-| `columns` | number | Posts per row | `grid-template-columns` on `ul`, `grid-auto-flow` on `ul` |
-| `content` | repeater | Dynamic data | `margin` |
-| `noImage` | checkbox | Disable | — |
-| `imageSize` | select | Image size | — |
-| `imagePosition` | select | Position | — |
-| `imageHeight` | number | Height | `height` on `img` |
-| `imageWidth` | number | Width | `width` on `img` |
-| `imageMargin` | spacing | Margin | `margin` on `figure` |
-| `contentWidth` | number | Width | `width` on `.post-content` |
-| `contentPadding` | spacing | Padding | `padding` on `.post-content` |
-| `contentBackground` | color | Background color | `background-color` on `.post-content` |
-| `overlay` | checkbox | Overlay content | — |
-| `overlayAlignItems` | align-items | Horizontal alignment | `align-items` on `.post-content` |
-| `overlayJustifyContent` | justify-content | Vertical alignment | `justify-content` on `.post-content` |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
 <a id="developer-schema-elements-search"></a>
 
 # Search Schema
@@ -51285,6 +51167,124 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
+<a id="developer-schema-elements-related-posts"></a>
+
+# Related Posts Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/elements/related-posts/
+
+*Schema for Bricks Related posts element*
+
+| Property | Value |
+|---|---|
+| `name` | related-posts |
+| `category` | single |
+| `tag` | div |
+| `nestable` | false |
+
+## Controls
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `title` | text | Title | — |
+| `titleTag` | select | HTML tag | — |
+| `titleMargin` | spacing | Margin | `margin` on `.related-posts-title` |
+| `titleTypography` | typography | Typography | `font` on `.related-posts-title` |
+| `post_type` | select | Post type | — |
+| `count` | number | Max. related posts | — |
+| `order` | select | order | — |
+| `orderby` | select | Order by | — |
+| `taxonomies` | select | Common taxonomies | — |
+| `gap` | number | Gap | `gap` on `ul` |
+| `columns` | number | Posts per row | `grid-template-columns` on `ul`, `grid-auto-flow` on `ul` |
+| `content` | repeater | Dynamic data | `margin` |
+| `noImage` | checkbox | Disable | — |
+| `imageSize` | select | Image size | — |
+| `imagePosition` | select | Position | — |
+| `imageHeight` | number | Height | `height` on `img` |
+| `imageWidth` | number | Width | `width` on `img` |
+| `imageMargin` | spacing | Margin | `margin` on `figure` |
+| `contentWidth` | number | Width | `width` on `.post-content` |
+| `contentPadding` | spacing | Padding | `padding` on `.post-content` |
+| `contentBackground` | color | Background color | `background-color` on `.post-content` |
+| `overlay` | checkbox | Overlay content | — |
+| `overlayAlignItems` | align-items | Horizontal alignment | `align-items` on `.post-content` |
+| `overlayJustifyContent` | justify-content | Vertical alignment | `justify-content` on `.post-content` |
+
+## Inherited CSS controls
+
+Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `_content` | text | Content | `content` |
+| `_margin` | spacing | Margin | `margin` |
+| `_padding` | spacing | Padding | `padding` |
+| `_width` | number | Width | `width` |
+| `_widthMin` | number | Min. width | `min-width` |
+| `_widthMax` | number | Max. width | `max-width` |
+| `_height` | number | Height | `height` |
+| `_heightMin` | number | Min. height | `min-height` |
+| `_heightMax` | number | Max. height | `max-height` |
+| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
+| `_position` | select | Position | `position` |
+| `_top` | number | _top | `top` |
+| `_right` | number | Right | `right` |
+| `_bottom` | number | Bottom | `bottom` |
+| `_left` | number | Left | `left` |
+| `_zIndex` | number | Z-index | `z-index` |
+| `_order` | number | _order | `order` |
+| `_display` | select | Display | `display`, `align-items` |
+| `_visibility` | select | Visibility | `visibility` |
+| `_overflow` | text | Overflow | `overflow` |
+| `_opacity` | number | Opacity | `opacity` |
+| `_cursor` | select | Cursor | `cursor` |
+| `_isolation` | select | Isolation | `isolation` |
+| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
+| `_pointerEvents` | text | Pointer events | `pointer-events` |
+| `_perspective` | number | Perspective | `perspective` |
+| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
+| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
+| `_flexDirection` | direction | Direction | `flex-direction` |
+| `_alignSelf` | align-items | Align self | `align-self` |
+| `_justifyContent` | justify-content | Align main axis | `justify-content` |
+| `_alignItems` | align-items | Align cross axis | `align-items` |
+| `_gap` | number | Gap | `gap` |
+| `_flexGrow` | number | Flex grow | `flex-grow` |
+| `_flexShrink` | number | Flex shrink | `flex-shrink` |
+| `_flexBasis` | text | Flex basis | `flex-basis` |
+| `_useMasonry` | checkbox | %s layout | — |
+| `_masonryColumn` | number | Columns | `--columns` |
+| `_masonryGutter` | number | Spacing | `--gutter` |
+| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
+| `_masonryTransitionDuration` | number | Transition | — |
+| `_masonryTransitionMode` | select | Reveal animation | — |
+| `_typography` | typography | _typography | `font` |
+| `_background` | background | _background | `background` |
+| `_shapeDividers` | repeater | Custom shape | — |
+| `_gradient` | gradient | _gradient | `background-image` |
+| `_border` | border | Border | `border` |
+| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `_transform` | transform | Transform | `transform` |
+| `_transformOrigin` | text | Transform origin | `transform-origin` |
+| `_motionElementParallax` | checkbox | Element parallax | — |
+| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
+| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
+| `_motionBackgroundParallax` | checkbox | Background parallax | — |
+| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
+| `_motionStartVisiblePercent` | number | Parallax start point | — |
+| `_cssCustom` | code | Custom CSS | — |
+| `_cssClasses` | text | CSS classes | — |
+| `_cssId` | text | CSS ID | — |
+| `_cssFilters` | filters | CSS Filters | `filter` |
+| `_cssTransition` | text | Transition | `transition` |
+| `_attributes` | repeater | Name | — |
+| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+
+---
+
 <a id="developer-schema-elements-sidebar"></a>
 
 # Sidebar Schema
@@ -51426,6 +51426,95 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/slider/
 | `backgroundPositionRight` | number | Right | `right` on `.image` |
 | `backgroundPositionBottom` | number | Bottom | `bottom` on `.image` |
 | `backgroundPositionLeft` | number | Left | `left` on `.image` |
+
+## Inherited CSS controls
+
+Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `_content` | text | Content | `content` |
+| `_margin` | spacing | Margin | `margin` |
+| `_padding` | spacing | Padding | `padding` |
+| `_width` | number | Width | `width` |
+| `_widthMin` | number | Min. width | `min-width` |
+| `_widthMax` | number | Max. width | `max-width` |
+| `_height` | number | Height | `height` |
+| `_heightMin` | number | Min. height | `min-height` |
+| `_heightMax` | number | Max. height | `max-height` |
+| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
+| `_position` | select | Position | `position` |
+| `_top` | number | _top | `top` |
+| `_right` | number | Right | `right` |
+| `_bottom` | number | Bottom | `bottom` |
+| `_left` | number | Left | `left` |
+| `_zIndex` | number | Z-index | `z-index` |
+| `_order` | number | _order | `order` |
+| `_display` | select | Display | `display`, `align-items` |
+| `_visibility` | select | Visibility | `visibility` |
+| `_overflow` | text | Overflow | `overflow` |
+| `_opacity` | number | Opacity | `opacity` |
+| `_cursor` | select | Cursor | `cursor` |
+| `_isolation` | select | Isolation | `isolation` |
+| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
+| `_pointerEvents` | text | Pointer events | `pointer-events` |
+| `_perspective` | number | Perspective | `perspective` |
+| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
+| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
+| `_flexDirection` | direction | Direction | `flex-direction` |
+| `_alignSelf` | align-items | Align self | `align-self` |
+| `_justifyContent` | justify-content | Align main axis | `justify-content` |
+| `_alignItems` | align-items | Align cross axis | `align-items` |
+| `_gap` | number | Gap | `gap` |
+| `_flexGrow` | number | Flex grow | `flex-grow` |
+| `_flexShrink` | number | Flex shrink | `flex-shrink` |
+| `_flexBasis` | text | Flex basis | `flex-basis` |
+| `_useMasonry` | checkbox | %s layout | — |
+| `_masonryColumn` | number | Columns | `--columns` |
+| `_masonryGutter` | number | Spacing | `--gutter` |
+| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
+| `_masonryTransitionDuration` | number | Transition | — |
+| `_masonryTransitionMode` | select | Reveal animation | — |
+| `_typography` | typography | _typography | `font` |
+| `_background` | background | _background | `background` |
+| `_shapeDividers` | repeater | Custom shape | — |
+| `_gradient` | gradient | _gradient | `background-image` |
+| `_border` | border | Border | `border` |
+| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `_transform` | transform | Transform | `transform` |
+| `_transformOrigin` | text | Transform origin | `transform-origin` |
+| `_motionElementParallax` | checkbox | Element parallax | — |
+| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
+| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
+| `_motionBackgroundParallax` | checkbox | Background parallax | — |
+| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
+| `_motionStartVisiblePercent` | number | Parallax start point | — |
+| `_cssCustom` | code | Custom CSS | — |
+| `_cssClasses` | text | CSS classes | — |
+| `_cssId` | text | CSS ID | — |
+| `_cssFilters` | filters | CSS Filters | `filter` |
+| `_cssTransition` | text | Transition | `transition` |
+| `_attributes` | repeater | Name | — |
+| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+
+---
+
+<a id="developer-schema-elements-slot"></a>
+
+# Slot Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/elements/slot/
+
+*Schema for Bricks Slot element*
+
+| Property | Value |
+|---|---|
+| `name` | slot |
+| `category` | general |
+| `tag` | div |
+| `nestable` | true |
 
 ## Inherited CSS controls
 
@@ -51658,20 +51747,33 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-slot"></a>
+<a id="developer-schema-elements-social-icons"></a>
 
-# Slot Schema
+# Icon List Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/slot/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/social-icons/
 
-*Schema for Bricks Slot element*
+*Schema for Bricks Icon List element*
 
 | Property | Value |
 |---|---|
-| `name` | slot |
+| `name` | social-icons |
 | `category` | general |
 | `tag` | div |
-| `nestable` | true |
+| `nestable` | false |
+
+## Controls
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `icons` | repeater | Icons | `color` on `.icon` |
+| `iconColor` | color | Icon | `color` on `.icon` |
+| `iconSize` | number | Icon | `font-size` on `.icon`, `height` on `svg`, `width` on `svg` |
+| `direction` | direction | Direction | `flex-direction` |
+| `alignIcons` | align-items | Align items | `align-items` |
+| `justifyIcons` | justify-content | Justify content | `justify-content` |
+| `gap` | number | Spacing | `gap` |
+| `gapItem` | number | Spacing | `gap` |
 
 ## Inherited CSS controls
 
@@ -51777,6 +51879,117 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/svg/
 | `stroke` | color | Stroke color | `stroke` on `:not([stroke="none"])` |
 | `fill` | color | Fill | `fill` on `:not([fill="none"])` |
 | `link` | link | Link | — |
+
+## Inherited CSS controls
+
+Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `_content` | text | Content | `content` |
+| `_margin` | spacing | Margin | `margin` |
+| `_padding` | spacing | Padding | `padding` |
+| `_width` | number | Width | `width` |
+| `_widthMin` | number | Min. width | `min-width` |
+| `_widthMax` | number | Max. width | `max-width` |
+| `_height` | number | Height | `height` |
+| `_heightMin` | number | Min. height | `min-height` |
+| `_heightMax` | number | Max. height | `max-height` |
+| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
+| `_position` | select | Position | `position` |
+| `_top` | number | _top | `top` |
+| `_right` | number | Right | `right` |
+| `_bottom` | number | Bottom | `bottom` |
+| `_left` | number | Left | `left` |
+| `_zIndex` | number | Z-index | `z-index` |
+| `_order` | number | _order | `order` |
+| `_display` | select | Display | `display`, `align-items` |
+| `_visibility` | select | Visibility | `visibility` |
+| `_overflow` | text | Overflow | `overflow` |
+| `_opacity` | number | Opacity | `opacity` |
+| `_cursor` | select | Cursor | `cursor` |
+| `_isolation` | select | Isolation | `isolation` |
+| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
+| `_pointerEvents` | text | Pointer events | `pointer-events` |
+| `_perspective` | number | Perspective | `perspective` |
+| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
+| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
+| `_flexDirection` | direction | Direction | `flex-direction` |
+| `_alignSelf` | align-items | Align self | `align-self` |
+| `_justifyContent` | justify-content | Align main axis | `justify-content` |
+| `_alignItems` | align-items | Align cross axis | `align-items` |
+| `_gap` | number | Gap | `gap` |
+| `_flexGrow` | number | Flex grow | `flex-grow` |
+| `_flexShrink` | number | Flex shrink | `flex-shrink` |
+| `_flexBasis` | text | Flex basis | `flex-basis` |
+| `_useMasonry` | checkbox | %s layout | — |
+| `_masonryColumn` | number | Columns | `--columns` |
+| `_masonryGutter` | number | Spacing | `--gutter` |
+| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
+| `_masonryTransitionDuration` | number | Transition | — |
+| `_masonryTransitionMode` | select | Reveal animation | — |
+| `_typography` | typography | _typography | `font` |
+| `_background` | background | _background | `background` |
+| `_shapeDividers` | repeater | Custom shape | — |
+| `_gradient` | gradient | _gradient | `background-image` |
+| `_border` | border | Border | `border` |
+| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `_transform` | transform | Transform | `transform` |
+| `_transformOrigin` | text | Transform origin | `transform-origin` |
+| `_motionElementParallax` | checkbox | Element parallax | — |
+| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
+| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
+| `_motionBackgroundParallax` | checkbox | Background parallax | — |
+| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
+| `_motionStartVisiblePercent` | number | Parallax start point | — |
+| `_cssCustom` | code | Custom CSS | — |
+| `_cssClasses` | text | CSS classes | — |
+| `_cssId` | text | CSS ID | — |
+| `_cssFilters` | filters | CSS Filters | `filter` |
+| `_cssTransition` | text | Transition | `transition` |
+| `_attributes` | repeater | Name | — |
+| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+
+---
+
+<a id="developer-schema-elements-tabs-nested"></a>
+
+# Tabs (Nestable) Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/elements/tabs-nested/
+
+*Schema for Bricks Tabs (Nestable) element*
+
+| Property | Value |
+|---|---|
+| `name` | tabs-nested |
+| `category` | general |
+| `tag` | div |
+| `nestable` | true |
+
+## Controls
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `direction` | direction | Direction | `flex-direction` |
+| `openTabOn` | select | Open tab on | — |
+| `openTab` | text | Open tab index | — |
+| `titleWidth` | number | Width | `width` on `> .tab-menu .tab-title` |
+| `titleMargin` | spacing | Margin | `margin` on `> .tab-menu .tab-title` |
+| `titlePadding` | spacing | Padding | `padding` on `> .tab-menu .tab-title` |
+| `titleBackgroundColor` | color | Background | `background-color` on `> .tab-menu .tab-title` |
+| `titleBorder` | border | Border | `border` on `> .tab-menu .tab-title` |
+| `titleTypography` | typography | Typography | `font` on `> .tab-menu .tab-title` |
+| `titleActiveBackgroundColor` | color | Background color | `background-color` on `> .tab-menu .tab-title.brx-open` |
+| `titleActiveBorder` | border | Border | `border` on `> .tab-menu .tab-title.brx-open` |
+| `titleActiveTypography` | typography | Typography | `font` on `> .tab-menu .tab-title.brx-open` |
+| `contentMargin` | spacing | Margin | `margin` on `> .tab-content` |
+| `contentPadding` | spacing | Padding | `padding` on `> .tab-content` |
+| `contentColor` | color | Text color | `color` on `> .tab-content` |
+| `contentBackgroundColor` | color | Background color | `background-color` on `> .tab-content` |
+| `contentBorder` | border | Border | `border` on `> .tab-content` |
 
 ## Inherited CSS controls
 
@@ -52075,219 +52288,6 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-tabs-nested"></a>
-
-# Tabs (Nestable) Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/tabs-nested/
-
-*Schema for Bricks Tabs (Nestable) element*
-
-| Property | Value |
-|---|---|
-| `name` | tabs-nested |
-| `category` | general |
-| `tag` | div |
-| `nestable` | true |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `direction` | direction | Direction | `flex-direction` |
-| `openTabOn` | select | Open tab on | — |
-| `openTab` | text | Open tab index | — |
-| `titleWidth` | number | Width | `width` on `> .tab-menu .tab-title` |
-| `titleMargin` | spacing | Margin | `margin` on `> .tab-menu .tab-title` |
-| `titlePadding` | spacing | Padding | `padding` on `> .tab-menu .tab-title` |
-| `titleBackgroundColor` | color | Background | `background-color` on `> .tab-menu .tab-title` |
-| `titleBorder` | border | Border | `border` on `> .tab-menu .tab-title` |
-| `titleTypography` | typography | Typography | `font` on `> .tab-menu .tab-title` |
-| `titleActiveBackgroundColor` | color | Background color | `background-color` on `> .tab-menu .tab-title.brx-open` |
-| `titleActiveBorder` | border | Border | `border` on `> .tab-menu .tab-title.brx-open` |
-| `titleActiveTypography` | typography | Typography | `font` on `> .tab-menu .tab-title.brx-open` |
-| `contentMargin` | spacing | Margin | `margin` on `> .tab-content` |
-| `contentPadding` | spacing | Padding | `padding` on `> .tab-content` |
-| `contentColor` | color | Text color | `color` on `> .tab-content` |
-| `contentBackgroundColor` | color | Background color | `background-color` on `> .tab-content` |
-| `contentBorder` | border | Border | `border` on `> .tab-content` |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
-<a id="developer-schema-elements-social-icons"></a>
-
-# Icon List Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/social-icons/
-
-*Schema for Bricks Icon List element*
-
-| Property | Value |
-|---|---|
-| `name` | social-icons |
-| `category` | general |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `icons` | repeater | Icons | `color` on `.icon` |
-| `iconColor` | color | Icon | `color` on `.icon` |
-| `iconSize` | number | Icon | `font-size` on `.icon`, `height` on `svg`, `width` on `svg` |
-| `direction` | direction | Direction | `flex-direction` |
-| `alignIcons` | align-items | Align items | `align-items` |
-| `justifyIcons` | justify-content | Justify content | `justify-content` |
-| `gap` | number | Spacing | `gap` |
-| `gapItem` | number | Spacing | `gap` |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
 <a id="developer-schema-elements-template"></a>
 
 # Template Schema
@@ -52490,17 +52490,17 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-text-basic"></a>
+<a id="developer-schema-elements-text"></a>
 
-# Basic Text Schema
+# Rich Text Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/text-basic/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/text/
 
-*Schema for Bricks Basic Text element*
+*Schema for Bricks Rich text element*
 
 | Property | Value |
 |---|---|
-| `name` | text-basic |
+| `name` | text |
 | `category` | basic |
 | `tag` | div |
 | `nestable` | false |
@@ -52509,10 +52509,9 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/text-basic/
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `text` | textarea | text | — |
-| `tag` | select | HTML tag | — |
-| `customTag` | text | Custom tag | — |
-| `link` | link | Link to | — |
+| `text` | editor | text | — |
+| `type` | select | Type | — |
+| `style` | select | Style | — |
 | `wordsLimit` | number | Words limit | — |
 | `readMore` | text | Read more | — |
 
@@ -52590,17 +52589,17 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-text"></a>
+<a id="developer-schema-elements-text-basic"></a>
 
-# Rich Text Schema
+# Basic Text Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/text/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/text-basic/
 
-*Schema for Bricks Rich text element*
+*Schema for Bricks Basic Text element*
 
 | Property | Value |
 |---|---|
-| `name` | text |
+| `name` | text-basic |
 | `category` | basic |
 | `tag` | div |
 | `nestable` | false |
@@ -52609,9 +52608,10 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/text/
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `text` | editor | text | — |
-| `type` | select | Type | — |
-| `style` | select | Style | — |
+| `text` | textarea | text | — |
+| `tag` | select | HTML tag | — |
+| `customTag` | text | Custom tag | — |
+| `link` | link | Link to | — |
 | `wordsLimit` | number | Words limit | — |
 | `readMore` | text | Read more | — |
 
@@ -53285,17 +53285,17 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-woocommerce-account-addresses"></a>
+<a id="developer-schema-elements-woocommerce-account-downloads"></a>
 
-# Account - Addresses Schema
+# Account - Downloads Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-addresses/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-downloads/
 
-*Schema for Bricks Account - Addresses element*
+*Schema for Bricks Account - Downloads element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-account-addresses |
+| `name` | woocommerce-account-downloads |
 | `category` | woocommerce_account |
 | `tag` | div |
 | `nestable` | false |
@@ -53304,32 +53304,29 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-a
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `addressesDirection` | direction | Direction | `flex-direction` on `.woocommerce-Addresses` |
-| `addressesGap` | number | Gap | `gap` on `.woocommerce-Addresses` |
-| `wrapperMargin` | spacing | Margin | `margin` on `.woocommerce-Address` |
-| `wrapperPadding` | spacing | Padding | `padding` on `.woocommerce-Address` |
-| `wrapperBackgroundColor` | color | Background color | `background-color` on `.woocommerce-Address` |
-| `wrapperBorder` | border | Border | `border` on `.woocommerce-Address` |
-| `wrapperBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-Address` |
-| `wrapperTypography` | typography | Typography | `font` on `.woocommerce-Address` |
-| `titleMargin` | spacing | Margin | `margin` on `.woocommerce-Address-title h2` |
-| `titlePadding` | spacing | Padding | `padding` on `.woocommerce-Address-title h2` |
-| `titleBackgroundColor` | color | Background color | `background-color` on `.woocommerce-Address-title h2` |
-| `titleBorder` | border | Border | `border` on `.woocommerce-Address-title h2` |
-| `titleBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-Address-title h2` |
-| `titleTypography` | typography | Typography | `font` on `.woocommerce-Address-title h2` |
-| `editLinkMargin` | spacing | Margin | `margin` on `.edit` |
-| `editLinkPadding` | spacing | Padding | `padding` on `.edit` |
-| `editLinkBackgroundColor` | color | Background color | `background-color` on `.edit` |
-| `editLinkBorder` | border | Border | `border` on `.edit` |
-| `editLinkBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.edit` |
-| `editLinkTypography` | typography | Typography | `font` on `.edit` |
-| `addressMargin` | spacing | Margin | `margin` on `address` |
-| `addressPadding` | spacing | Padding | `padding` on `address` |
-| `addressBackgroundColor` | color | Background color | `background-color` on `address` |
-| `addressBorder` | border | Border | `border` on `address` |
-| `addressBoxShadow` | box-shadow | Box shadow | `box-shadow` on `address` |
-| `addressTypography` | typography | Typography | `font` on `address` |
+| `tableBackgroundColor` | color | Background color | `background-color` on `.woocommerce-table--order-downloads` |
+| `tableBorder` | border | Border | `border` on `.woocommerce-table--order-downloads` |
+| `tableBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-table--order-downloads` |
+| `tableTypography` | typography | Typography | `font` on `.woocommerce-table--order-downloads` |
+| `theadPadding` | spacing | Padding | `padding` on `thead th, tbody td::before` |
+| `theadBackgroundColor` | color | Background color | `background-color` on `thead th, tbody td::before` |
+| `theadBorder` | border | Border | `border` on `thead th, tbody td::before` |
+| `theadTypography` | typography | Typography | `font` on `thead th, tbody td::before` |
+| `tbodyPadding` | spacing | Padding | `padding` on `tbody td` |
+| `tbodyBackgroundColor` | color | Background color | `background-color` on `tbody td` |
+| `tbodyBorder` | border | Border | `border` on `tbody td` |
+| `tbodyTypography` | typography | Typography | `font` on `tbody td` |
+| `tbodyLinksMargin` | spacing | Margin | `margin` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
+| `tbodyLinksPadding` | spacing | Padding | `padding` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
+| `tbodyLinksBackgroundColor` | color | Background color | `background-color` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
+| `tbodyLinksBorder` | border | Border | `border` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
+| `tbodyLinksBoxShadow` | box-shadow | Box shadow | `box-shadow` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
+| `tbodyLinksTypography` | typography | Typography | `font` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
+| `buttonPadding` | spacing | Padding | `padding` on `.woocommerce-MyAccount-downloads-file.button` |
+| `buttonBackgroundColor` | color | Background color | `background-color` on `.woocommerce-MyAccount-downloads-file.button` |
+| `buttonBorder` | border | Border | `border` on `.woocommerce-MyAccount-downloads-file.button` |
+| `buttonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-downloads-file.button` |
+| `buttonTypography` | typography | Typography | `font` on `.woocommerce-MyAccount-downloads-file.button` |
 
 ## Inherited CSS controls
 
@@ -53405,17 +53402,17 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-woocommerce-account-downloads"></a>
+<a id="developer-schema-elements-woocommerce-account-addresses"></a>
 
-# Account - Downloads Schema
+# Account - Addresses Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-downloads/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-addresses/
 
-*Schema for Bricks Account - Downloads element*
+*Schema for Bricks Account - Addresses element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-account-downloads |
+| `name` | woocommerce-account-addresses |
 | `category` | woocommerce_account |
 | `tag` | div |
 | `nestable` | false |
@@ -53424,29 +53421,32 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-a
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `tableBackgroundColor` | color | Background color | `background-color` on `.woocommerce-table--order-downloads` |
-| `tableBorder` | border | Border | `border` on `.woocommerce-table--order-downloads` |
-| `tableBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-table--order-downloads` |
-| `tableTypography` | typography | Typography | `font` on `.woocommerce-table--order-downloads` |
-| `theadPadding` | spacing | Padding | `padding` on `thead th, tbody td::before` |
-| `theadBackgroundColor` | color | Background color | `background-color` on `thead th, tbody td::before` |
-| `theadBorder` | border | Border | `border` on `thead th, tbody td::before` |
-| `theadTypography` | typography | Typography | `font` on `thead th, tbody td::before` |
-| `tbodyPadding` | spacing | Padding | `padding` on `tbody td` |
-| `tbodyBackgroundColor` | color | Background color | `background-color` on `tbody td` |
-| `tbodyBorder` | border | Border | `border` on `tbody td` |
-| `tbodyTypography` | typography | Typography | `font` on `tbody td` |
-| `tbodyLinksMargin` | spacing | Margin | `margin` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
-| `tbodyLinksPadding` | spacing | Padding | `padding` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
-| `tbodyLinksBackgroundColor` | color | Background color | `background-color` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
-| `tbodyLinksBorder` | border | Border | `border` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
-| `tbodyLinksBoxShadow` | box-shadow | Box shadow | `box-shadow` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
-| `tbodyLinksTypography` | typography | Typography | `font` on `tbody td a:not(.woocommerce-MyAccount-downloads-file.button)` |
-| `buttonPadding` | spacing | Padding | `padding` on `.woocommerce-MyAccount-downloads-file.button` |
-| `buttonBackgroundColor` | color | Background color | `background-color` on `.woocommerce-MyAccount-downloads-file.button` |
-| `buttonBorder` | border | Border | `border` on `.woocommerce-MyAccount-downloads-file.button` |
-| `buttonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-downloads-file.button` |
-| `buttonTypography` | typography | Typography | `font` on `.woocommerce-MyAccount-downloads-file.button` |
+| `addressesDirection` | direction | Direction | `flex-direction` on `.woocommerce-Addresses` |
+| `addressesGap` | number | Gap | `gap` on `.woocommerce-Addresses` |
+| `wrapperMargin` | spacing | Margin | `margin` on `.woocommerce-Address` |
+| `wrapperPadding` | spacing | Padding | `padding` on `.woocommerce-Address` |
+| `wrapperBackgroundColor` | color | Background color | `background-color` on `.woocommerce-Address` |
+| `wrapperBorder` | border | Border | `border` on `.woocommerce-Address` |
+| `wrapperBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-Address` |
+| `wrapperTypography` | typography | Typography | `font` on `.woocommerce-Address` |
+| `titleMargin` | spacing | Margin | `margin` on `.woocommerce-Address-title h2` |
+| `titlePadding` | spacing | Padding | `padding` on `.woocommerce-Address-title h2` |
+| `titleBackgroundColor` | color | Background color | `background-color` on `.woocommerce-Address-title h2` |
+| `titleBorder` | border | Border | `border` on `.woocommerce-Address-title h2` |
+| `titleBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-Address-title h2` |
+| `titleTypography` | typography | Typography | `font` on `.woocommerce-Address-title h2` |
+| `editLinkMargin` | spacing | Margin | `margin` on `.edit` |
+| `editLinkPadding` | spacing | Padding | `padding` on `.edit` |
+| `editLinkBackgroundColor` | color | Background color | `background-color` on `.edit` |
+| `editLinkBorder` | border | Border | `border` on `.edit` |
+| `editLinkBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.edit` |
+| `editLinkTypography` | typography | Typography | `font` on `.edit` |
+| `addressMargin` | spacing | Margin | `margin` on `address` |
+| `addressPadding` | spacing | Padding | `padding` on `address` |
+| `addressBackgroundColor` | color | Background color | `background-color` on `address` |
+| `addressBorder` | border | Border | `border` on `address` |
+| `addressBoxShadow` | box-shadow | Box shadow | `box-shadow` on `address` |
+| `addressTypography` | typography | Typography | `font` on `address` |
 
 ## Inherited CSS controls
 
@@ -53931,17 +53931,17 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-woocommerce-account-form-lost-password"></a>
+<a id="developer-schema-elements-woocommerce-account-form-login"></a>
 
-# Account - Lost Password Schema
+# Account - Login Form Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-form-lost-password/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-form-login/
 
-*Schema for Bricks Account - Lost password element*
+*Schema for Bricks Account - Login form element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-account-form-lost-password |
+| `name` | woocommerce-account-form-login |
 | `category` | woocommerce_account |
 | `tag` | div |
 | `nestable` | false |
@@ -53950,8 +53950,10 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-a
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `messageDisable` | checkbox | Disable | `display` on `form > p:first-child` |
-| `messageTypography` | typography | Typography | `font` on `form > p:first-child` |
+| `rememberMeDisable` | checkbox | Disable | — |
+| `rememberMeTypography` | typography | Typography | `font` on `.woocommerce-form-login__rememberme` |
+| `lostPasswordDisable` | checkbox | Disable | — |
+| `lostPasswordTypography` | typography | Typography | `font` on `.woocommerce-LostPassword a` |
 | `fieldsAlignItems` | align-items | Align items | `align-items` |
 | `fieldsWidth` | number | Width | `width` on `.password-input, .woocommerce-Input` |
 | `fieldsGap` | number | Gap | `gap` |
@@ -54044,17 +54046,17 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-woocommerce-account-form-login"></a>
+<a id="developer-schema-elements-woocommerce-account-form-lost-password"></a>
 
-# Account - Login Form Schema
+# Account - Lost Password Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-form-login/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-form-lost-password/
 
-*Schema for Bricks Account - Login form element*
+*Schema for Bricks Account - Lost password element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-account-form-login |
+| `name` | woocommerce-account-form-lost-password |
 | `category` | woocommerce_account |
 | `tag` | div |
 | `nestable` | false |
@@ -54063,10 +54065,8 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-a
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `rememberMeDisable` | checkbox | Disable | — |
-| `rememberMeTypography` | typography | Typography | `font` on `.woocommerce-form-login__rememberme` |
-| `lostPasswordDisable` | checkbox | Disable | — |
-| `lostPasswordTypography` | typography | Typography | `font` on `.woocommerce-LostPassword a` |
+| `messageDisable` | checkbox | Disable | `display` on `form > p:first-child` |
+| `messageTypography` | typography | Typography | `font` on `form > p:first-child` |
 | `fieldsAlignItems` | align-items | Align items | `align-items` |
 | `fieldsWidth` | number | Width | `width` on `.password-input, .woocommerce-Input` |
 | `fieldsGap` | number | Gap | `gap` |
@@ -55013,6 +55013,124 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
+<a id="developer-schema-elements-woocommerce-account-page"></a>
+
+# Account - Page Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-page/
+
+*Schema for Bricks Account - Page element*
+
+| Property | Value |
+|---|---|
+| `name` | woocommerce-account-page |
+| `category` | woocommerce_account |
+| `tag` | div |
+| `nestable` | false |
+
+## Controls
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `direction` | direction | Direction | `flex-direction` on `.woocommerce:not(#brx-content)` |
+| `gap` | number | Gap | `gap` on `.woocommerce:not(#brx-content)` |
+| `disableNav` | checkbox | Disable navigation | — |
+| `navDirection` | direction | Direction | `flex-direction` on `.woocommerce-MyAccount-navigation ul` |
+| `navAlignItems` | align-items | Align items | `align-items` on `.woocommerce-MyAccount-navigation ul` |
+| `navJustifyContent` | justify-content | Justify content | `justify-content` on `.woocommerce-MyAccount-navigation ul` |
+| `navGap` | number | Gap | `gap` on `.woocommerce-MyAccount-navigation ul` |
+| `navBackground` | color | Background | `background-color` on `.woocommerce-MyAccount-navigation` |
+| `navBorder` | border | Border | `border` on `.woocommerce-MyAccount-navigation` |
+| `navBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-navigation` |
+| `navItemPadding` | spacing | Padding | `padding` on `.woocommerce-MyAccount-navigation a` |
+| `navItemBackground` | color | Background | `background-color` on `.woocommerce-MyAccount-navigation a` |
+| `navItemBorder` | border | Border | `border` on `.woocommerce-MyAccount-navigation a` |
+| `navItemBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-navigation a` |
+| `navItemTypogaphy` | typography | Typography | `font` on `.woocommerce-MyAccount-navigation a` |
+| `navItemBackgroundActive` | color | Background | `background-color` on `.woocommerce-MyAccount-navigation .is-active a` |
+| `navItemBorderActive` | border | Border | `border` on `.woocommerce-MyAccount-navigation .is-active a` |
+| `navItemBoxShadowActive` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-navigation .is-active a` |
+| `navItemTypogaphyActive` | typography | Typography | `font` on `.woocommerce-MyAccount-navigation .is-active a` |
+| `contentPadding` | spacing | Padding | `padding` on `.woocommerce-MyAccount-content` |
+| `contentBackground` | color | Background | `background-color` on `.woocommerce-MyAccount-content` |
+| `contentBorder` | border | Border | `border` on `.woocommerce-MyAccount-content` |
+| `contentBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-content` |
+| `contentTypogaphy` | typography | Typography | `font` on `.woocommerce-MyAccount-content` |
+
+## Inherited CSS controls
+
+Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `_content` | text | Content | `content` |
+| `_margin` | spacing | Margin | `margin` |
+| `_padding` | spacing | Padding | `padding` |
+| `_width` | number | Width | `width` |
+| `_widthMin` | number | Min. width | `min-width` |
+| `_widthMax` | number | Max. width | `max-width` |
+| `_height` | number | Height | `height` |
+| `_heightMin` | number | Min. height | `min-height` |
+| `_heightMax` | number | Max. height | `max-height` |
+| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
+| `_position` | select | Position | `position` |
+| `_top` | number | _top | `top` |
+| `_right` | number | Right | `right` |
+| `_bottom` | number | Bottom | `bottom` |
+| `_left` | number | Left | `left` |
+| `_zIndex` | number | Z-index | `z-index` |
+| `_order` | number | _order | `order` |
+| `_display` | select | Display | `display`, `align-items` |
+| `_visibility` | select | Visibility | `visibility` |
+| `_overflow` | text | Overflow | `overflow` |
+| `_opacity` | number | Opacity | `opacity` |
+| `_cursor` | select | Cursor | `cursor` |
+| `_isolation` | select | Isolation | `isolation` |
+| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
+| `_pointerEvents` | text | Pointer events | `pointer-events` |
+| `_perspective` | number | Perspective | `perspective` |
+| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
+| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
+| `_flexDirection` | direction | Direction | `flex-direction` |
+| `_alignSelf` | align-items | Align self | `align-self` |
+| `_justifyContent` | justify-content | Align main axis | `justify-content` |
+| `_alignItems` | align-items | Align cross axis | `align-items` |
+| `_gap` | number | Gap | `gap` |
+| `_flexGrow` | number | Flex grow | `flex-grow` |
+| `_flexShrink` | number | Flex shrink | `flex-shrink` |
+| `_flexBasis` | text | Flex basis | `flex-basis` |
+| `_useMasonry` | checkbox | %s layout | — |
+| `_masonryColumn` | number | Columns | `--columns` |
+| `_masonryGutter` | number | Spacing | `--gutter` |
+| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
+| `_masonryTransitionDuration` | number | Transition | — |
+| `_masonryTransitionMode` | select | Reveal animation | — |
+| `_typography` | typography | _typography | `font` |
+| `_background` | background | _background | `background` |
+| `_shapeDividers` | repeater | Custom shape | — |
+| `_gradient` | gradient | _gradient | `background-image` |
+| `_border` | border | Border | `border` |
+| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `_transform` | transform | Transform | `transform` |
+| `_transformOrigin` | text | Transform origin | `transform-origin` |
+| `_motionElementParallax` | checkbox | Element parallax | — |
+| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
+| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
+| `_motionBackgroundParallax` | checkbox | Background parallax | — |
+| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
+| `_motionStartVisiblePercent` | number | Parallax start point | — |
+| `_cssCustom` | code | Custom CSS | — |
+| `_cssClasses` | text | CSS classes | — |
+| `_cssId` | text | CSS ID | — |
+| `_cssFilters` | filters | CSS Filters | `filter` |
+| `_cssTransition` | text | Transition | `transition` |
+| `_attributes` | repeater | Name | — |
+| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+
+---
+
 <a id="developer-schema-elements-woocommerce-account-payment-methods"></a>
 
 # Account - Payment Methods Schema
@@ -55238,124 +55356,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-a
 | `category` | woocommerce_account |
 | `tag` | form |
 | `nestable` | true |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
-<a id="developer-schema-elements-woocommerce-account-page"></a>
-
-# Account - Page Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-page/
-
-*Schema for Bricks Account - Page element*
-
-| Property | Value |
-|---|---|
-| `name` | woocommerce-account-page |
-| `category` | woocommerce_account |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `direction` | direction | Direction | `flex-direction` on `.woocommerce:not(#brx-content)` |
-| `gap` | number | Gap | `gap` on `.woocommerce:not(#brx-content)` |
-| `disableNav` | checkbox | Disable navigation | — |
-| `navDirection` | direction | Direction | `flex-direction` on `.woocommerce-MyAccount-navigation ul` |
-| `navAlignItems` | align-items | Align items | `align-items` on `.woocommerce-MyAccount-navigation ul` |
-| `navJustifyContent` | justify-content | Justify content | `justify-content` on `.woocommerce-MyAccount-navigation ul` |
-| `navGap` | number | Gap | `gap` on `.woocommerce-MyAccount-navigation ul` |
-| `navBackground` | color | Background | `background-color` on `.woocommerce-MyAccount-navigation` |
-| `navBorder` | border | Border | `border` on `.woocommerce-MyAccount-navigation` |
-| `navBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-navigation` |
-| `navItemPadding` | spacing | Padding | `padding` on `.woocommerce-MyAccount-navigation a` |
-| `navItemBackground` | color | Background | `background-color` on `.woocommerce-MyAccount-navigation a` |
-| `navItemBorder` | border | Border | `border` on `.woocommerce-MyAccount-navigation a` |
-| `navItemBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-navigation a` |
-| `navItemTypogaphy` | typography | Typography | `font` on `.woocommerce-MyAccount-navigation a` |
-| `navItemBackgroundActive` | color | Background | `background-color` on `.woocommerce-MyAccount-navigation .is-active a` |
-| `navItemBorderActive` | border | Border | `border` on `.woocommerce-MyAccount-navigation .is-active a` |
-| `navItemBoxShadowActive` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-navigation .is-active a` |
-| `navItemTypogaphyActive` | typography | Typography | `font` on `.woocommerce-MyAccount-navigation .is-active a` |
-| `contentPadding` | spacing | Padding | `padding` on `.woocommerce-MyAccount-content` |
-| `contentBackground` | color | Background | `background-color` on `.woocommerce-MyAccount-content` |
-| `contentBorder` | border | Border | `border` on `.woocommerce-MyAccount-content` |
-| `contentBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.woocommerce-MyAccount-content` |
-| `contentTypogaphy` | typography | Typography | `font` on `.woocommerce-MyAccount-content` |
 
 ## Inherited CSS controls
 
@@ -56014,17 +56014,17 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-woocommerce-account-v2-state-lost-password-confirmation"></a>
+<a id="developer-schema-elements-woocommerce-account-v2-state-login"></a>
 
-# Lost Password Confirmation (StateWooCommerce Template Statebricks) Schema
+# Login (StateWooCommerce Template Statebricks) Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-lost-password-confirmation/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-login/
 
-*Schema for Bricks Lost password confirmation (StateWooCommerce template statebricks) element*
+*Schema for Bricks Login (StateWooCommerce template statebricks) element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-account-v2-state-lost-password-confirmation |
+| `name` | woocommerce-account-v2-state-login |
 | `category` | woocommerce_account |
 | `tag` | div |
 | `nestable` | true |
@@ -56035,6 +56035,7 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-a
 |---|---|---|---|
 | `generatePredefinedElements` | select | generatePredefinedElements | — |
 | `generatePredefinedElementsApply` | button | Generate | — |
+| `floatingLabelStyle` | checkbox | Floating label | — |
 
 ## Inherited CSS controls
 
@@ -56110,17 +56111,17 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-woocommerce-account-v2-state-login"></a>
+<a id="developer-schema-elements-woocommerce-account-v2-state-lost-password-confirmation"></a>
 
-# Login (StateWooCommerce Template Statebricks) Schema
+# Lost Password Confirmation (StateWooCommerce Template Statebricks) Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-login/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-lost-password-confirmation/
 
-*Schema for Bricks Login (StateWooCommerce template statebricks) element*
+*Schema for Bricks Lost password confirmation (StateWooCommerce template statebricks) element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-account-v2-state-login |
+| `name` | woocommerce-account-v2-state-lost-password-confirmation |
 | `category` | woocommerce_account |
 | `tag` | div |
 | `nestable` | true |
@@ -56131,7 +56132,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-a
 |---|---|---|---|
 | `generatePredefinedElements` | select | generatePredefinedElements | — |
 | `generatePredefinedElementsApply` | button | Generate | — |
-| `floatingLabelStyle` | checkbox | Floating label | — |
 
 ## Inherited CSS controls
 
@@ -56304,17 +56304,17 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-woocommerce-account-v2-state-orders"></a>
+<a id="developer-schema-elements-woocommerce-account-v2-state-order-withdrawal"></a>
 
-# Orders (StateWooCommerce Template Statebricks) Schema
+# Order Withdrawal (StateWooCommerce Template Statebricks) Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-orders/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-order-withdrawal/
 
-*Schema for Bricks Orders (StateWooCommerce template statebricks) element*
+*Schema for Bricks Order withdrawal (StateWooCommerce template statebricks) element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-account-v2-state-orders |
+| `name` | woocommerce-account-v2-state-order-withdrawal |
 | `category` | woocommerce_account |
 | `tag` | div |
 | `nestable` | true |
@@ -56325,6 +56325,7 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-a
 |---|---|---|---|
 | `generatePredefinedElements` | select | generatePredefinedElements | — |
 | `generatePredefinedElementsApply` | button | Generate | — |
+| `floatingLabelStyle` | checkbox | Floating label | — |
 
 ## Inherited CSS controls
 
@@ -56400,17 +56401,17 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-woocommerce-account-v2-state-order-withdrawal"></a>
+<a id="developer-schema-elements-woocommerce-account-v2-state-orders"></a>
 
-# Order Withdrawal (StateWooCommerce Template Statebricks) Schema
+# Orders (StateWooCommerce Template Statebricks) Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-order-withdrawal/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-account-v2-state-orders/
 
-*Schema for Bricks Order withdrawal (StateWooCommerce template statebricks) element*
+*Schema for Bricks Orders (StateWooCommerce template statebricks) element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-account-v2-state-order-withdrawal |
+| `name` | woocommerce-account-v2-state-orders |
 | `category` | woocommerce_account |
 | `tag` | div |
 | `nestable` | true |
@@ -56421,7 +56422,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-a
 |---|---|---|---|
 | `generatePredefinedElements` | select | generatePredefinedElements | — |
 | `generatePredefinedElementsApply` | button | Generate | — |
-| `floatingLabelStyle` | checkbox | Floating label | — |
 
 ## Inherited CSS controls
 
@@ -56787,223 +56787,6 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-woocommerce-breadcrumbs"></a>
-
-# Breadcrumbs (WooCommerce) Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-breadcrumbs/
-
-*Schema for Bricks Breadcrumbs (WooCommerce) element*
-
-| Property | Value |
-|---|---|
-| `name` | woocommerce-breadcrumbs |
-| `category` | woocommerce |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `beforeLabel` | text | Before | — |
-| `homeURL` | text | Home | — |
-| `homeLabel` | text | Home | — |
-| `homeIcon` | icon | Home | `—` on `svg.home` |
-| `homeIconGap` | number | Home | `gap` on `.navigation > a:has(.home)` |
-| `homeIconSize` | number | Home | `font-size` on `i.home`, `width` on `svg.home`, `height` on `svg.home` |
-| `hideHomeLabel` | checkbox | Hide label | — |
-| `prefix` | text | Prefix | — |
-| `suffix` | text | Suffix | — |
-| `separatorType` | select | Type | — |
-| `separatorText` | text | Separator | — |
-| `separatorIcon` | icon | Icon | `—` on `svg.separator` |
-| `separatorIconTypography` | typography | Icon typography | `font` on `.separator` |
-| `separatorGap` | number | Gap | `gap` on `.navigation` |
-| `separatorMargin` | spacing | Margin | `margin` on `.separator` |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
-<a id="developer-schema-elements-woocommerce-cart-coupon"></a>
-
-# Cart Coupon Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-cart-coupon/
-
-*Schema for Bricks Cart coupon element*
-
-| Property | Value |
-|---|---|
-| `name` | woocommerce-cart-coupon |
-| `category` | woocommerce_cart |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `ajaxUpdate` | checkbox | Update cart via AJAX | — |
-| `direction` | direction | Direction | `flex-direction` on `.coupon` |
-| `inputPlaceholder` | text | Placeholder | — |
-| `inputWidth` | number | Width | `width` on `.coupon input` |
-| `inputBackground` | color | Background color | `background-color` on `.coupon input` |
-| `inputBorder` | border | Border | `border` on `.coupon input` |
-| `inputPlaceholderTypography` | typography | Placeholder typography | `font` on `.coupon input::placeholder` |
-| `buttonSeperator` | text | Button | — |
-| `buttonText` | text | Text | — |
-| `buttonWidth` | number | Width | `width` on `.coupon button` |
-| `buttonMargin` | spacing | Margin | `margin` on `.coupon button` |
-| `buttonBackground` | color | Background color | `background-color` on `.coupon button` |
-| `buttonBorder` | border | Border | `border` on `.coupon button` |
-| `buttonTypography` | typography | Typography | `font` on `.coupon button` |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
 <a id="developer-schema-elements-woocommerce-account-view-order"></a>
 
 # Account - View Order Schema
@@ -57201,6 +56984,115 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
+<a id="developer-schema-elements-woocommerce-breadcrumbs"></a>
+
+# Breadcrumbs (WooCommerce) Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-breadcrumbs/
+
+*Schema for Bricks Breadcrumbs (WooCommerce) element*
+
+| Property | Value |
+|---|---|
+| `name` | woocommerce-breadcrumbs |
+| `category` | woocommerce |
+| `tag` | div |
+| `nestable` | false |
+
+## Controls
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `beforeLabel` | text | Before | — |
+| `homeURL` | text | Home | — |
+| `homeLabel` | text | Home | — |
+| `homeIcon` | icon | Home | `—` on `svg.home` |
+| `homeIconGap` | number | Home | `gap` on `.navigation > a:has(.home)` |
+| `homeIconSize` | number | Home | `font-size` on `i.home`, `width` on `svg.home`, `height` on `svg.home` |
+| `hideHomeLabel` | checkbox | Hide label | — |
+| `prefix` | text | Prefix | — |
+| `suffix` | text | Suffix | — |
+| `separatorType` | select | Type | — |
+| `separatorText` | text | Separator | — |
+| `separatorIcon` | icon | Icon | `—` on `svg.separator` |
+| `separatorIconTypography` | typography | Icon typography | `font` on `.separator` |
+| `separatorGap` | number | Gap | `gap` on `.navigation` |
+| `separatorMargin` | spacing | Margin | `margin` on `.separator` |
+
+## Inherited CSS controls
+
+Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `_content` | text | Content | `content` |
+| `_margin` | spacing | Margin | `margin` |
+| `_padding` | spacing | Padding | `padding` |
+| `_width` | number | Width | `width` |
+| `_widthMin` | number | Min. width | `min-width` |
+| `_widthMax` | number | Max. width | `max-width` |
+| `_height` | number | Height | `height` |
+| `_heightMin` | number | Min. height | `min-height` |
+| `_heightMax` | number | Max. height | `max-height` |
+| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
+| `_position` | select | Position | `position` |
+| `_top` | number | _top | `top` |
+| `_right` | number | Right | `right` |
+| `_bottom` | number | Bottom | `bottom` |
+| `_left` | number | Left | `left` |
+| `_zIndex` | number | Z-index | `z-index` |
+| `_order` | number | _order | `order` |
+| `_display` | select | Display | `display`, `align-items` |
+| `_visibility` | select | Visibility | `visibility` |
+| `_overflow` | text | Overflow | `overflow` |
+| `_opacity` | number | Opacity | `opacity` |
+| `_cursor` | select | Cursor | `cursor` |
+| `_isolation` | select | Isolation | `isolation` |
+| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
+| `_pointerEvents` | text | Pointer events | `pointer-events` |
+| `_perspective` | number | Perspective | `perspective` |
+| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
+| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
+| `_flexDirection` | direction | Direction | `flex-direction` |
+| `_alignSelf` | align-items | Align self | `align-self` |
+| `_justifyContent` | justify-content | Align main axis | `justify-content` |
+| `_alignItems` | align-items | Align cross axis | `align-items` |
+| `_gap` | number | Gap | `gap` |
+| `_flexGrow` | number | Flex grow | `flex-grow` |
+| `_flexShrink` | number | Flex shrink | `flex-shrink` |
+| `_flexBasis` | text | Flex basis | `flex-basis` |
+| `_useMasonry` | checkbox | %s layout | — |
+| `_masonryColumn` | number | Columns | `--columns` |
+| `_masonryGutter` | number | Spacing | `--gutter` |
+| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
+| `_masonryTransitionDuration` | number | Transition | — |
+| `_masonryTransitionMode` | select | Reveal animation | — |
+| `_typography` | typography | _typography | `font` |
+| `_background` | background | _background | `background` |
+| `_shapeDividers` | repeater | Custom shape | — |
+| `_gradient` | gradient | _gradient | `background-image` |
+| `_border` | border | Border | `border` |
+| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `_transform` | transform | Transform | `transform` |
+| `_transformOrigin` | text | Transform origin | `transform-origin` |
+| `_motionElementParallax` | checkbox | Element parallax | — |
+| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
+| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
+| `_motionBackgroundParallax` | checkbox | Background parallax | — |
+| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
+| `_motionStartVisiblePercent` | number | Parallax start point | — |
+| `_cssCustom` | code | Custom CSS | — |
+| `_cssClasses` | text | CSS classes | — |
+| `_cssId` | text | CSS ID | — |
+| `_cssFilters` | filters | CSS Filters | `filter` |
+| `_cssTransition` | text | Transition | `transition` |
+| `_attributes` | repeater | Name | — |
+| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+
+---
+
 <a id="developer-schema-elements-woocommerce-cart-collaterals"></a>
 
 # Cart Totals Schema
@@ -57233,6 +57125,203 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-c
 | `buttonBackground` | color | Background | `background-color` on `.wc-proceed-to-checkout .button` |
 | `buttonBorder` | border | Border | `border` on `.wc-proceed-to-checkout .button` |
 | `buttonTypography` | typography | Typography | `font` on `.wc-proceed-to-checkout .button` |
+
+## Inherited CSS controls
+
+Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `_content` | text | Content | `content` |
+| `_margin` | spacing | Margin | `margin` |
+| `_padding` | spacing | Padding | `padding` |
+| `_width` | number | Width | `width` |
+| `_widthMin` | number | Min. width | `min-width` |
+| `_widthMax` | number | Max. width | `max-width` |
+| `_height` | number | Height | `height` |
+| `_heightMin` | number | Min. height | `min-height` |
+| `_heightMax` | number | Max. height | `max-height` |
+| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
+| `_position` | select | Position | `position` |
+| `_top` | number | _top | `top` |
+| `_right` | number | Right | `right` |
+| `_bottom` | number | Bottom | `bottom` |
+| `_left` | number | Left | `left` |
+| `_zIndex` | number | Z-index | `z-index` |
+| `_order` | number | _order | `order` |
+| `_display` | select | Display | `display`, `align-items` |
+| `_visibility` | select | Visibility | `visibility` |
+| `_overflow` | text | Overflow | `overflow` |
+| `_opacity` | number | Opacity | `opacity` |
+| `_cursor` | select | Cursor | `cursor` |
+| `_isolation` | select | Isolation | `isolation` |
+| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
+| `_pointerEvents` | text | Pointer events | `pointer-events` |
+| `_perspective` | number | Perspective | `perspective` |
+| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
+| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
+| `_flexDirection` | direction | Direction | `flex-direction` |
+| `_alignSelf` | align-items | Align self | `align-self` |
+| `_justifyContent` | justify-content | Align main axis | `justify-content` |
+| `_alignItems` | align-items | Align cross axis | `align-items` |
+| `_gap` | number | Gap | `gap` |
+| `_flexGrow` | number | Flex grow | `flex-grow` |
+| `_flexShrink` | number | Flex shrink | `flex-shrink` |
+| `_flexBasis` | text | Flex basis | `flex-basis` |
+| `_useMasonry` | checkbox | %s layout | — |
+| `_masonryColumn` | number | Columns | `--columns` |
+| `_masonryGutter` | number | Spacing | `--gutter` |
+| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
+| `_masonryTransitionDuration` | number | Transition | — |
+| `_masonryTransitionMode` | select | Reveal animation | — |
+| `_typography` | typography | _typography | `font` |
+| `_background` | background | _background | `background` |
+| `_shapeDividers` | repeater | Custom shape | — |
+| `_gradient` | gradient | _gradient | `background-image` |
+| `_border` | border | Border | `border` |
+| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `_transform` | transform | Transform | `transform` |
+| `_transformOrigin` | text | Transform origin | `transform-origin` |
+| `_motionElementParallax` | checkbox | Element parallax | — |
+| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
+| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
+| `_motionBackgroundParallax` | checkbox | Background parallax | — |
+| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
+| `_motionStartVisiblePercent` | number | Parallax start point | — |
+| `_cssCustom` | code | Custom CSS | — |
+| `_cssClasses` | text | CSS classes | — |
+| `_cssId` | text | CSS ID | — |
+| `_cssFilters` | filters | CSS Filters | `filter` |
+| `_cssTransition` | text | Transition | `transition` |
+| `_attributes` | repeater | Name | — |
+| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+
+---
+
+<a id="developer-schema-elements-woocommerce-cart-coupon"></a>
+
+# Cart Coupon Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-cart-coupon/
+
+*Schema for Bricks Cart coupon element*
+
+| Property | Value |
+|---|---|
+| `name` | woocommerce-cart-coupon |
+| `category` | woocommerce_cart |
+| `tag` | div |
+| `nestable` | false |
+
+## Controls
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `ajaxUpdate` | checkbox | Update cart via AJAX | — |
+| `direction` | direction | Direction | `flex-direction` on `.coupon` |
+| `inputPlaceholder` | text | Placeholder | — |
+| `inputWidth` | number | Width | `width` on `.coupon input` |
+| `inputBackground` | color | Background color | `background-color` on `.coupon input` |
+| `inputBorder` | border | Border | `border` on `.coupon input` |
+| `inputPlaceholderTypography` | typography | Placeholder typography | `font` on `.coupon input::placeholder` |
+| `buttonSeperator` | text | Button | — |
+| `buttonText` | text | Text | — |
+| `buttonWidth` | number | Width | `width` on `.coupon button` |
+| `buttonMargin` | spacing | Margin | `margin` on `.coupon button` |
+| `buttonBackground` | color | Background color | `background-color` on `.coupon button` |
+| `buttonBorder` | border | Border | `border` on `.coupon button` |
+| `buttonTypography` | typography | Typography | `font` on `.coupon button` |
+
+## Inherited CSS controls
+
+Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `_content` | text | Content | `content` |
+| `_margin` | spacing | Margin | `margin` |
+| `_padding` | spacing | Padding | `padding` |
+| `_width` | number | Width | `width` |
+| `_widthMin` | number | Min. width | `min-width` |
+| `_widthMax` | number | Max. width | `max-width` |
+| `_height` | number | Height | `height` |
+| `_heightMin` | number | Min. height | `min-height` |
+| `_heightMax` | number | Max. height | `max-height` |
+| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
+| `_position` | select | Position | `position` |
+| `_top` | number | _top | `top` |
+| `_right` | number | Right | `right` |
+| `_bottom` | number | Bottom | `bottom` |
+| `_left` | number | Left | `left` |
+| `_zIndex` | number | Z-index | `z-index` |
+| `_order` | number | _order | `order` |
+| `_display` | select | Display | `display`, `align-items` |
+| `_visibility` | select | Visibility | `visibility` |
+| `_overflow` | text | Overflow | `overflow` |
+| `_opacity` | number | Opacity | `opacity` |
+| `_cursor` | select | Cursor | `cursor` |
+| `_isolation` | select | Isolation | `isolation` |
+| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
+| `_pointerEvents` | text | Pointer events | `pointer-events` |
+| `_perspective` | number | Perspective | `perspective` |
+| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
+| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
+| `_flexDirection` | direction | Direction | `flex-direction` |
+| `_alignSelf` | align-items | Align self | `align-self` |
+| `_justifyContent` | justify-content | Align main axis | `justify-content` |
+| `_alignItems` | align-items | Align cross axis | `align-items` |
+| `_gap` | number | Gap | `gap` |
+| `_flexGrow` | number | Flex grow | `flex-grow` |
+| `_flexShrink` | number | Flex shrink | `flex-shrink` |
+| `_flexBasis` | text | Flex basis | `flex-basis` |
+| `_useMasonry` | checkbox | %s layout | — |
+| `_masonryColumn` | number | Columns | `--columns` |
+| `_masonryGutter` | number | Spacing | `--gutter` |
+| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
+| `_masonryTransitionDuration` | number | Transition | — |
+| `_masonryTransitionMode` | select | Reveal animation | — |
+| `_typography` | typography | _typography | `font` |
+| `_background` | background | _background | `background` |
+| `_shapeDividers` | repeater | Custom shape | — |
+| `_gradient` | gradient | _gradient | `background-image` |
+| `_border` | border | Border | `border` |
+| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `_transform` | transform | Transform | `transform` |
+| `_transformOrigin` | text | Transform origin | `transform-origin` |
+| `_motionElementParallax` | checkbox | Element parallax | — |
+| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
+| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
+| `_motionBackgroundParallax` | checkbox | Background parallax | — |
+| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
+| `_motionStartVisiblePercent` | number | Parallax start point | — |
+| `_cssCustom` | code | Custom CSS | — |
+| `_cssClasses` | text | CSS classes | — |
+| `_cssId` | text | CSS ID | — |
+| `_cssFilters` | filters | CSS Filters | `filter` |
+| `_cssTransition` | text | Transition | `transition` |
+| `_attributes` | repeater | Name | — |
+| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
+| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+
+---
+
+<a id="developer-schema-elements-woocommerce-cart-form"></a>
+
+# Cart Form Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-cart-form/
+
+*Schema for Bricks Cart form element*
+
+| Property | Value |
+|---|---|
+| `name` | woocommerce-cart-form |
+| `category` | woocommerce_cart |
+| `tag` | form |
+| `nestable` | true |
 
 ## Inherited CSS controls
 
@@ -57445,95 +57534,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-c
 | `priceTypography` | typography | Price typography | `font` on `tbody .product-price` |
 | `quantityTypography` | typography | Quantity typography | `font` on `tbody .product-quantity` |
 | `subtotalTypography` | typography | Subtotal typography | `font` on `tbody .product-subtotal` |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
-<a id="developer-schema-elements-woocommerce-cart-form"></a>
-
-# Cart Form Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-cart-form/
-
-*Schema for Bricks Cart form element*
-
-| Property | Value |
-|---|---|
-| `name` | woocommerce-cart-form |
-| `category` | woocommerce_cart |
-| `tag` | form |
-| `nestable` | true |
 
 ## Inherited CSS controls
 
@@ -58190,17 +58190,17 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-woocommerce-checkout-coupon"></a>
+<a id="developer-schema-elements-woocommerce-checkout-customer-details"></a>
 
-# Checkout Coupon Schema
+# Checkout Customer Details Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-coupon/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-customer-details/
 
-*Schema for Bricks Checkout coupon element*
+*Schema for Bricks Checkout customer details element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-checkout-coupon |
+| `name` | woocommerce-checkout-customer-details |
 | `category` | woocommerce_checkout |
 | `tag` | div |
 | `nestable` | false |
@@ -58209,54 +58209,16 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-c
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `location` | select | Location | — |
-| `toggleableForm` | checkbox | Toggleable form | — |
-| `toggleText` | text | Text | — |
-| `toggleDivJustifyContent` | justify-content | Justify content | `justify-content` on `.coupon-toggle` |
-| `toggleDivGap` | number | Gap | `gap` on `.coupon-toggle` |
-| `toggleButtonNoText` | checkbox | Disable text | — |
-| `toggleButtonText` | text | Text | — |
-| `toggleIcon` | icon | Icon | — |
-| `toggleIconTypography` | typography | Icon typography | `font` on `.coupon-toggle .showcoupon i` |
-| `disableCouponMessage` | checkbox | Disable coupon message | — |
-| `couponMessage` | text | Coupon message | — |
-| `fieldsWrapperFlexDirection` | direction | Flex direction | `flex-direction` on `.coupon-form` |
-| `applyButtonText` | text | Button text | — |
-| `toggleDivMargin` | spacing | Margin | `margin` on `.coupon-toggle` |
-| `toggleDivPadding` | spacing | Padding | `padding` on `.coupon-toggle` |
-| `toggleDivBackgroundColor` | color | Background color | `background-color` on `.coupon-toggle` |
-| `toggleDivBorder` | border | Border | `border` on `.coupon-toggle` |
-| `toggleDivBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.coupon-toggle` |
-| `toggleDivTypography` | typography | Typography | `font` on `.coupon-toggle` |
-| `toggleButtonMargin` | spacing | Margin | `margin` on `.coupon-toggle .showcoupon` |
-| `toggleButtonPadding` | spacing | Padding | `padding` on `.coupon-toggle .showcoupon` |
-| `toggleButtonBackgroundColor` | color | Background color | `background-color` on `.coupon-toggle .showcoupon` |
-| `toggleButtonBorder` | border | Border | `border` on `.coupon-toggle .showcoupon` |
-| `toggleButtonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.coupon-toggle .showcoupon` |
-| `toggleButtonTypography` | typography | Typography | `font` on `.coupon-toggle .showcoupon` |
-| `formWrapperMargin` | spacing | Margin | `margin` on `.coupon-div` |
-| `formWrapperPadding` | spacing | Padding | `padding` on `.coupon-div` |
-| `formWrapperBackgroundColor` | color | Background color | `background-color` on `.coupon-div` |
-| `formWrapperBorder` | border | Border | `border` on `.coupon-div` |
-| `formWrapperBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.coupon-div` |
-| `formWrapperTypography` | typography | Typography | `font` on `.coupon-div` |
-| `fieldsAlignItems` | align-items | Align items | `align-items` |
-| `fieldsWidth` | number | Width | `width` on `.password-input, .woocommerce-Input` |
-| `fieldsGap` | number | Gap | `gap` |
-| `placeholderTypography` | typography | Placeholder typography | `font` on `::placeholder`, `font` on `select` |
-| `fieldsInputMargin` | spacing | Margin | `margin` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
-| `fieldsInputPadding` | spacing | Padding | `padding` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
-| `fieldsInputBackgroundColor` | color | Background color | `background-color` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
-| `fieldsInputBorder` | border | Border | `border` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
-| `fieldsInputBoxShadow` | box-shadow | Box shadow | `box-shadow` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
-| `fieldsInputTypography` | typography | Typography | `font` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
-| `submitButtonWidth` | number | Width | `width` on `button[type=submit]` |
-| `submitButtonMargin` | spacing | Margin | `margin` on `button[type=submit]` |
-| `submitButtonPadding` | spacing | Padding | `padding` on `button[type=submit]` |
-| `submitButtonBackgroundColor` | color | Background color | `background-color` on `button[type=submit]` |
-| `submitButtonBorder` | border | Border | `border` on `button[type=submit]` |
-| `submitButtonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `button[type=submit]` |
-| `submitButtonTypography` | typography | Typography | `font` on `button[type=submit]` |
+| `removeBillingFields` | select | Remove billing fields | — |
+| `removeShippingFields` | select | Remove shipping fields | — |
+| `hideTitle` | checkbox | Hide | `display` on `.woocommerce-billing-fields h3` |
+| `titleTypography` | typography | Typography | `font` on `.woocommerce-billing-fields h3` |
+| `hideLabels` | checkbox | Hide | `display` on `.woocommerce-billing-fields__field-wrapper label, .woocommerce-shipping-fields__field-wrapper label` |
+| `labelTypography` | typography | Typography | `font` on `.woocommerce-billing-fields__field-wrapper label, .woocommerce-shipping-fields__field-wrapper label` |
+| `labelMargin` | spacing | Margin | `margin` on `.woocommerce-billing-fields__field-wrapper label, .woocommerce-shipping-fields__field-wrapper label` |
+| `fieldTypography` | typography | Typography | `font` on `input:not([type=submit])`, `font` on `select`, `font` on `.select2-selection__rendered`, `font` on `textarea` |
+| `placeholderTypography` | typography | Placeholder typography | `font` on `::placeholder` |
+| `hideAdditionalInformation` | checkbox | Hide additional information | `display` on `.woocommerce-additional-fields` |
 
 ## Inherited CSS controls
 
@@ -58332,17 +58294,17 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-woocommerce-checkout-customer-details"></a>
+<a id="developer-schema-elements-woocommerce-checkout-coupon"></a>
 
-# Checkout Customer Details Schema
+# Checkout Coupon Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-customer-details/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-coupon/
 
-*Schema for Bricks Checkout customer details element*
+*Schema for Bricks Checkout coupon element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-checkout-customer-details |
+| `name` | woocommerce-checkout-coupon |
 | `category` | woocommerce_checkout |
 | `tag` | div |
 | `nestable` | false |
@@ -58351,16 +58313,54 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-c
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `removeBillingFields` | select | Remove billing fields | — |
-| `removeShippingFields` | select | Remove shipping fields | — |
-| `hideTitle` | checkbox | Hide | `display` on `.woocommerce-billing-fields h3` |
-| `titleTypography` | typography | Typography | `font` on `.woocommerce-billing-fields h3` |
-| `hideLabels` | checkbox | Hide | `display` on `.woocommerce-billing-fields__field-wrapper label, .woocommerce-shipping-fields__field-wrapper label` |
-| `labelTypography` | typography | Typography | `font` on `.woocommerce-billing-fields__field-wrapper label, .woocommerce-shipping-fields__field-wrapper label` |
-| `labelMargin` | spacing | Margin | `margin` on `.woocommerce-billing-fields__field-wrapper label, .woocommerce-shipping-fields__field-wrapper label` |
-| `fieldTypography` | typography | Typography | `font` on `input:not([type=submit])`, `font` on `select`, `font` on `.select2-selection__rendered`, `font` on `textarea` |
-| `placeholderTypography` | typography | Placeholder typography | `font` on `::placeholder` |
-| `hideAdditionalInformation` | checkbox | Hide additional information | `display` on `.woocommerce-additional-fields` |
+| `location` | select | Location | — |
+| `toggleableForm` | checkbox | Toggleable form | — |
+| `toggleText` | text | Text | — |
+| `toggleDivJustifyContent` | justify-content | Justify content | `justify-content` on `.coupon-toggle` |
+| `toggleDivGap` | number | Gap | `gap` on `.coupon-toggle` |
+| `toggleButtonNoText` | checkbox | Disable text | — |
+| `toggleButtonText` | text | Text | — |
+| `toggleIcon` | icon | Icon | — |
+| `toggleIconTypography` | typography | Icon typography | `font` on `.coupon-toggle .showcoupon i` |
+| `disableCouponMessage` | checkbox | Disable coupon message | — |
+| `couponMessage` | text | Coupon message | — |
+| `fieldsWrapperFlexDirection` | direction | Flex direction | `flex-direction` on `.coupon-form` |
+| `applyButtonText` | text | Button text | — |
+| `toggleDivMargin` | spacing | Margin | `margin` on `.coupon-toggle` |
+| `toggleDivPadding` | spacing | Padding | `padding` on `.coupon-toggle` |
+| `toggleDivBackgroundColor` | color | Background color | `background-color` on `.coupon-toggle` |
+| `toggleDivBorder` | border | Border | `border` on `.coupon-toggle` |
+| `toggleDivBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.coupon-toggle` |
+| `toggleDivTypography` | typography | Typography | `font` on `.coupon-toggle` |
+| `toggleButtonMargin` | spacing | Margin | `margin` on `.coupon-toggle .showcoupon` |
+| `toggleButtonPadding` | spacing | Padding | `padding` on `.coupon-toggle .showcoupon` |
+| `toggleButtonBackgroundColor` | color | Background color | `background-color` on `.coupon-toggle .showcoupon` |
+| `toggleButtonBorder` | border | Border | `border` on `.coupon-toggle .showcoupon` |
+| `toggleButtonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.coupon-toggle .showcoupon` |
+| `toggleButtonTypography` | typography | Typography | `font` on `.coupon-toggle .showcoupon` |
+| `formWrapperMargin` | spacing | Margin | `margin` on `.coupon-div` |
+| `formWrapperPadding` | spacing | Padding | `padding` on `.coupon-div` |
+| `formWrapperBackgroundColor` | color | Background color | `background-color` on `.coupon-div` |
+| `formWrapperBorder` | border | Border | `border` on `.coupon-div` |
+| `formWrapperBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.coupon-div` |
+| `formWrapperTypography` | typography | Typography | `font` on `.coupon-div` |
+| `fieldsAlignItems` | align-items | Align items | `align-items` |
+| `fieldsWidth` | number | Width | `width` on `.password-input, .woocommerce-Input` |
+| `fieldsGap` | number | Gap | `gap` |
+| `placeholderTypography` | typography | Placeholder typography | `font` on `::placeholder`, `font` on `select` |
+| `fieldsInputMargin` | spacing | Margin | `margin` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
+| `fieldsInputPadding` | spacing | Padding | `padding` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
+| `fieldsInputBackgroundColor` | color | Background color | `background-color` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
+| `fieldsInputBorder` | border | Border | `border` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
+| `fieldsInputBoxShadow` | box-shadow | Box shadow | `box-shadow` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
+| `fieldsInputTypography` | typography | Typography | `font` on `input, .woocommerce-Input, .select2-selection.select2-selection--single` |
+| `submitButtonWidth` | number | Width | `width` on `button[type=submit]` |
+| `submitButtonMargin` | spacing | Margin | `margin` on `button[type=submit]` |
+| `submitButtonPadding` | spacing | Padding | `padding` on `button[type=submit]` |
+| `submitButtonBackgroundColor` | color | Background color | `background-color` on `button[type=submit]` |
+| `submitButtonBorder` | border | Border | `border` on `button[type=submit]` |
+| `submitButtonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `button[type=submit]` |
+| `submitButtonTypography` | typography | Typography | `font` on `button[type=submit]` |
 
 ## Inherited CSS controls
 
@@ -59974,17 +59974,17 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-woocommerce-checkout-v2"></a>
+<a id="developer-schema-elements-woocommerce-checkout-v2-state-receipt"></a>
 
-# Checkout (V2) Schema
+# Order Receipt (StateWooCommerce Template Statebricks) Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-v2/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-v2-state-receipt/
 
-*Schema for Bricks Checkout (v2) element*
+*Schema for Bricks Order receipt (StateWooCommerce template statebricks) element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-checkout-v2 |
+| `name` | woocommerce-checkout-v2-state-receipt |
 | `category` | woocommerce_checkout |
 | `tag` | div |
 | `nestable` | true |
@@ -59993,7 +59993,9 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-c
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `previewMode` | radio | previewMode | — |
+| `previewOrderId` | number | Preview order ID | — |
+| `generatePredefinedElements` | select | generatePredefinedElements | — |
+| `generatePredefinedElementsApply` | button | Generate | — |
 
 ## Inherited CSS controls
 
@@ -60166,17 +60168,17 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-woocommerce-checkout-v2-state-receipt"></a>
+<a id="developer-schema-elements-woocommerce-checkout-v2"></a>
 
-# Order Receipt (StateWooCommerce Template Statebricks) Schema
+# Checkout (V2) Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-v2-state-receipt/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-checkout-v2/
 
-*Schema for Bricks Order receipt (StateWooCommerce template statebricks) element*
+*Schema for Bricks Checkout (v2) element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-checkout-v2-state-receipt |
+| `name` | woocommerce-checkout-v2 |
 | `category` | woocommerce_checkout |
 | `tag` | div |
 | `nestable` | true |
@@ -60185,9 +60187,7 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-c
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `previewOrderId` | number | Preview order ID | — |
-| `generatePredefinedElements` | select | generatePredefinedElements | — |
-| `generatePredefinedElementsApply` | button | Generate | — |
+| `previewMode` | radio | previewMode | — |
 
 ## Inherited CSS controls
 
@@ -61699,18 +61699,18 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-woocommerce-shipping-options"></a>
+<a id="developer-schema-elements-woocommerce-template-hook"></a>
 
-# Shipping Options Schema
+# WooCommerce Template Hook Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-shipping-options/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-template-hook/
 
-*Schema for Bricks Shipping options element*
+*Schema for Bricks WooCommerce Template Hook element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-shipping-options |
-| `category` | woocommerce_checkout |
+| `name` | woocommerce-template-hook |
+| `category` | woocommerce |
 | `tag` | div |
 | `nestable` | false |
 
@@ -61718,37 +61718,10 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-s
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `showPackageTitle` | checkbox | Show package title | — |
-| `emptyMessage` | text | Empty message | — |
-| `controlFlexDirection` | direction | Direction | `flex-direction` on `.brx-shipping-options__control` |
-| `controlJustifyContent` | justify-content | Justify content | `justify-content` on `.brx-shipping-options__control` |
-| `controlAlignItems` | align-items | Align items | `align-items` on `.brx-shipping-options__control` |
-| `controlGap` | number | Gap | `gap` on `.brx-shipping-options__control` |
-| `packageTitleTypography` | typography | Title typography | `font` on `.brx-shipping-options__package-title` |
-| `packageTitleColor` | color | Title color | `color` on `.brx-shipping-options__package-title` |
-| `optionGap` | number | Gap | `gap` on `.brx-shipping-options__label-group` |
-| `optionHoverBackgroundColor` | color | Hover background color | `background-color` on `.brx-shipping-options__option:hover` |
-| `optionCheckedBackgroundColor` | color | Background color | `background-color` |
-| `optionCheckedBorder` | border | Border | `border` |
-| `optionCheckedBoxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `labelTypography` | typography | Typography | `font` on `.brx-shipping-options__label` |
-| `labelColor` | color | Color | `color` on `.brx-shipping-options__label` |
-| `labelCheckedTypography` | typography | Typography | `font` |
-| `labelCheckedColor` | color | Color | `color` |
-| `secondaryTypography` | typography | Typography | `font` on `.brx-shipping-options__secondary-label` |
-| `secondaryColor` | color | Color | `color` on `.brx-shipping-options__secondary-label` |
-| `secondaryCheckedTypography` | typography | Typography | `font` |
-| `secondaryCheckedColor` | color | Color | `color` |
-| `packageMargin` | spacing | Margin | `margin` on `.brx-shipping-options__package` |
-| `packagePadding` | spacing | Padding | `padding` on `.brx-shipping-options__package` |
-| `packageBackgroundColor` | color | Background color | `background-color` on `.brx-shipping-options__package` |
-| `packageBorder` | border | Border | `border` on `.brx-shipping-options__package` |
-| `packageBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.brx-shipping-options__package` |
-| `optionMargin` | spacing | Margin | `margin` on `.brx-shipping-options__option` |
-| `optionPadding` | spacing | Padding | `padding` on `.brx-shipping-options__option` |
-| `optionBackgroundColor` | color | Background color | `background-color` on `.brx-shipping-options__option` |
-| `optionBorder` | border | Border | `border` on `.brx-shipping-options__option` |
-| `optionBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.brx-shipping-options__option` |
+| `template` | select | Template | — |
+| `singleProductHook` | select | Hook | — |
+| `shopHook` | select | Hook | — |
+| `showTips` | checkbox | Show tips | — |
 
 ## Inherited CSS controls
 
@@ -61824,18 +61797,18 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-<a id="developer-schema-elements-woocommerce-template-hook"></a>
+<a id="developer-schema-elements-woocommerce-shipping-options"></a>
 
-# WooCommerce Template Hook Schema
+# Shipping Options Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-template-hook/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-shipping-options/
 
-*Schema for Bricks WooCommerce Template Hook element*
+*Schema for Bricks Shipping options element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-template-hook |
-| `category` | woocommerce |
+| `name` | woocommerce-shipping-options |
+| `category` | woocommerce_checkout |
 | `tag` | div |
 | `nestable` | false |
 
@@ -61843,10 +61816,37 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-t
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `template` | select | Template | — |
-| `singleProductHook` | select | Hook | — |
-| `shopHook` | select | Hook | — |
-| `showTips` | checkbox | Show tips | — |
+| `showPackageTitle` | checkbox | Show package title | — |
+| `emptyMessage` | text | Empty message | — |
+| `controlFlexDirection` | direction | Direction | `flex-direction` on `.brx-shipping-options__control` |
+| `controlJustifyContent` | justify-content | Justify content | `justify-content` on `.brx-shipping-options__control` |
+| `controlAlignItems` | align-items | Align items | `align-items` on `.brx-shipping-options__control` |
+| `controlGap` | number | Gap | `gap` on `.brx-shipping-options__control` |
+| `packageTitleTypography` | typography | Title typography | `font` on `.brx-shipping-options__package-title` |
+| `packageTitleColor` | color | Title color | `color` on `.brx-shipping-options__package-title` |
+| `optionGap` | number | Gap | `gap` on `.brx-shipping-options__label-group` |
+| `optionHoverBackgroundColor` | color | Hover background color | `background-color` on `.brx-shipping-options__option:hover` |
+| `optionCheckedBackgroundColor` | color | Background color | `background-color` |
+| `optionCheckedBorder` | border | Border | `border` |
+| `optionCheckedBoxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `labelTypography` | typography | Typography | `font` on `.brx-shipping-options__label` |
+| `labelColor` | color | Color | `color` on `.brx-shipping-options__label` |
+| `labelCheckedTypography` | typography | Typography | `font` |
+| `labelCheckedColor` | color | Color | `color` |
+| `secondaryTypography` | typography | Typography | `font` on `.brx-shipping-options__secondary-label` |
+| `secondaryColor` | color | Color | `color` on `.brx-shipping-options__secondary-label` |
+| `secondaryCheckedTypography` | typography | Typography | `font` |
+| `secondaryCheckedColor` | color | Color | `color` |
+| `packageMargin` | spacing | Margin | `margin` on `.brx-shipping-options__package` |
+| `packagePadding` | spacing | Padding | `padding` on `.brx-shipping-options__package` |
+| `packageBackgroundColor` | color | Background color | `background-color` on `.brx-shipping-options__package` |
+| `packageBorder` | border | Border | `border` on `.brx-shipping-options__package` |
+| `packageBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.brx-shipping-options__package` |
+| `optionMargin` | spacing | Margin | `margin` on `.brx-shipping-options__option` |
+| `optionPadding` | spacing | Padding | `padding` on `.brx-shipping-options__option` |
+| `optionBackgroundColor` | color | Background color | `background-color` on `.brx-shipping-options__option` |
+| `optionBorder` | border | Border | `border` on `.brx-shipping-options__option` |
+| `optionBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.brx-shipping-options__option` |
 
 ## Inherited CSS controls
 
@@ -62508,6 +62508,56 @@ Third-party plugins can introduce additional condition keys beyond those listed 
 
 ---
 
+<a id="integrations-gutenberg"></a>
+
+# Gutenberg
+
+Source: https://academy.bricksbuilder.io/integrations/gutenberg/
+
+*Understand how Bricks integrates with Gutenberg, including what each editor is responsible for and where the workflows can overlap.*
+
+If you've created your pages with Gutenberg you can continue editing them with Bricks without having to start all over again. Bricks will convert your Gutenberg blocks into Bricks elements.
+
+You can also save and convert your Bricks generated data to Gutenberg data to continue editing a page with Gutenberg.
+
+This way you'll not suffer any lock-in effect when start using Bricks or if you should ever decide to move away from Bricks.
+
+> **Note**
+>
+> The block conversion works only with standard WordPress Gutenberg blocks, NOT custom-third party blocks
+
+## How to load Gutenberg data into Bricks
+
+Bricks allows you to convert your existing Gutenberg data into Bricks data. So you can continue editing any page created with Gutenberg in Bricks.
+
+This only works for pages without any existing Bricks data. To delete the Bricks data of any page, first enable **Enable "Delete Bricks data" button** under **Bricks > Settings > General > Miscellaneous**. Then click the "Delete Bricks data" button in the WordPress top menu when editing a page in WordPress.
+
+To enable this functionality go to **Bricks > Settings > General > Block editor** and make sure **Load Block editor data into Bricks** is selected.
+
+## How to save Bricks data for Gutenberg
+
+By default, your WordPress-generated data won’t change when editing with Bricks. If you want to save your Bricks generated data as Block editor data as well go to **Bricks > Settings > General > Block editor** and select **Save Bricks data as Block editor data**.
+
+From now on whenever you edit and save in Bricks, your content will be saved as WordPress content, too. So your WordPress and Bricks data are in sync.
+
+## Render content with Bricks or WordPress {#render-with-wordpress}
+
+You decide which pages you want to create with Gutenberg, the Classic Editor, or Bricks. The post status next to the page title tells you which content is used for rendering on the frontend:
+
+![](https://academy.bricksbuilder.io/assets/wp-admin-pages-post-status-1024x576.png)
+
+To change the data being used to render a page edit the page in WordPress and hover over the **Render with WordPress/Bricks** button in the top menu, and select the source you want to use:
+
+![](https://academy.bricksbuilder.io/assets/wp-admin-edit-page-render-with-wordpress-bricks-1024x576.png)
+
+<figcaption>
+
+Render with Bricks / Render with WordPress
+
+</figcaption>
+
+---
+
 <a id="integrations-how-to-set-up-your-google-maps-api-key"></a>
 
 # How to set up your Google Maps API key
@@ -62762,56 +62812,6 @@ Consult the following official WPML documentation for further guidance:
 If you found this post insightful and you're considering giving WPML a try, we encourage you to use [our affiliate link](https://wpml.org/?aid=482001&affiliate_key=S35UDkP4zjiP).
 
 *Note: The link we've provided is an affiliate link. This means we may earn a small commission if you decide to make a purchase through it. This comes at no extra cost to you, and it assists us in further innovating and refining our offerings.*
-
----
-
-<a id="integrations-gutenberg"></a>
-
-# Gutenberg
-
-Source: https://academy.bricksbuilder.io/integrations/gutenberg/
-
-*Understand how Bricks integrates with Gutenberg, including what each editor is responsible for and where the workflows can overlap.*
-
-If you've created your pages with Gutenberg you can continue editing them with Bricks without having to start all over again. Bricks will convert your Gutenberg blocks into Bricks elements.
-
-You can also save and convert your Bricks generated data to Gutenberg data to continue editing a page with Gutenberg.
-
-This way you'll not suffer any lock-in effect when start using Bricks or if you should ever decide to move away from Bricks.
-
-> **Note**
->
-> The block conversion works only with standard WordPress Gutenberg blocks, NOT custom-third party blocks
-
-## How to load Gutenberg data into Bricks
-
-Bricks allows you to convert your existing Gutenberg data into Bricks data. So you can continue editing any page created with Gutenberg in Bricks.
-
-This only works for pages without any existing Bricks data. To delete the Bricks data of any page, first enable **Enable "Delete Bricks data" button** under **Bricks > Settings > General > Miscellaneous**. Then click the "Delete Bricks data" button in the WordPress top menu when editing a page in WordPress.
-
-To enable this functionality go to **Bricks > Settings > General > Block editor** and make sure **Load Block editor data into Bricks** is selected.
-
-## How to save Bricks data for Gutenberg
-
-By default, your WordPress-generated data won’t change when editing with Bricks. If you want to save your Bricks generated data as Block editor data as well go to **Bricks > Settings > General > Block editor** and select **Save Bricks data as Block editor data**.
-
-From now on whenever you edit and save in Bricks, your content will be saved as WordPress content, too. So your WordPress and Bricks data are in sync.
-
-## Render content with Bricks or WordPress {#render-with-wordpress}
-
-You decide which pages you want to create with Gutenberg, the Classic Editor, or Bricks. The post status next to the page title tells you which content is used for rendering on the frontend:
-
-![](https://academy.bricksbuilder.io/assets/wp-admin-pages-post-status-1024x576.png)
-
-To change the data being used to render a page edit the page in WordPress and hover over the **Render with WordPress/Bricks** button in the top menu, and select the source you want to use:
-
-![](https://academy.bricksbuilder.io/assets/wp-admin-edit-page-render-with-wordpress-bricks-1024x576.png)
-
-<figcaption>
-
-Render with Bricks / Render with WordPress
-
-</figcaption>
 
 ---
 
@@ -63489,182 +63489,6 @@ Classic templates and v2 page states can coexist on the same site, but each WooC
 
 ---
 
-<a id="integrations-woocommerce-checkout"></a>
-
-# Checkout (WooCommerce)
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/checkout/
-
-*Build and customize the WooCommerce checkout in Bricks, including the classic template workflow and the Checkout v2 advanced modular workflow.*
-
-## Overview
-
-The Checkout page is a special WooCommerce page, created by default during WooCommerce installation and assigned under **WooCommerce > Settings > Advanced**.
-
-Starting in Bricks 2.4, you can choose between two Checkout building workflows:
-
-- **Checkout v2 workflow**: Build the assigned Checkout page directly with [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) and the [Checkout v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/).
-- **Checkout v1 workflow**: Keep the classic WooCommerce checkout shortcode on the assigned Checkout page and customize the output with separate Bricks Checkout, Thank You, Pay, and Order Receipt templates.
-
-Use Checkout v2 for new builds or redesigns where you want to edit checkout, payment, thank-you, receipt, and login-required states in one place. Use Checkout v1 for existing sites that already rely on the classic shortcode/template setup.
-
-The [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) can check or create either workflow.
-
-## Checkout v2 workflow
-
-With advanced modular elements enabled, Checkout v2 keeps the checkout, pay, thank-you, order receipt, and login-required screens as editable states on the assigned Checkout page.
-
-Use the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) and choose:
-
-- **Advanced (v2)** for a complete one-page checkout structure.
-- **Advanced multistep (v2)** for a ready-made [multistep checkout structure](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/).
-
-Checkout v2 can generate complete checkout blocks or smaller sections such as billing fields, shipping fields, payment options, order summary, and place order. Generated checkout fields are editable Bricks elements, so you can move, style, and reorder them after generation.
-
-For existing Checkout v2 layouts, check that the payment section wrapper has the `brx-woo-payment-section` class. Add it manually if it is missing so the payment heading and methods hide together for free orders. Keep terms and Place order controls outside that wrapper. See [Checkout v2 payment section for free orders](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/#payment-section-for-free-orders) for the steps.
-
-Use Checkout v2 field sync after installing or reconfiguring plugins that change WooCommerce checkout fields. Field sync can find missing, invalid, and duplicate generated fields, generate missing fields, remove invalid or duplicate fields, and update labels or placeholders from WooCommerce.
-
-Checkout v2 also adds query loops and dynamic tags for applied coupons, fees, taxes, order items, order totals, order downloads, and customer notes. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/) for the complete reference.
-
-The **Login required** state is used when WooCommerce requires a customer to log in before viewing order-related checkout screens. Bricks 2.4 also improves logged-out Thank you, Order receipt, and Order pay handling for non-guest orders.
-
-## Checkout v1 workflow
-
-The classic Checkout workflow renders the WooCommerce `[woocommerce_checkout]` shortcode on the assigned Checkout page, then uses Bricks WooCommerce template types to customize the checkout-related screens.
-
-> **Note**
->
-> Remove the Gutenberg Checkout block if it is located within your Checkout Page. Instead, replace it with `[woocommerce_checkout]` or use a Shortcode element if you edit the Checkout page with Bricks.
-
-![](https://academy.bricksbuilder.io/assets/remove-gutenberg-checkout-block.png)
-
-For the Checkout v1 workflow, place the `[woocommerce_checkout]` shortcode directly on the Checkout page, or edit the Checkout page with Bricks and use a Shortcode element with `[woocommerce_checkout]` as its content. Bricks offers four template types to customize the checkout workflow:
-
-- WooCommerce - Checkout
-- WooCommerce - Thank you
-- WooCommerce - Pay
-- WooCommerce - Order receipt
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-checkout-templates.png)
-
-> **Note**
->
-> The "WooCommerce - Checkout", "WooCommerce - Pay", "WooCommerce - Thank you", and "WooCommerce - Order receipt" template types are only visible if you have the WooCommerce plugin installed and active. These templates are used inside the WooCommerce checkout shortcode logic and **they do not support template conditions (they are automatically rendered on the correct page)**.
-
-## Checkout template {#checkout-template}
-
-The default checkout page consists of a two-columns layout: one column with the billing and shipping details form and another one with the order summary + a button to proceed with the order.
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-checkout-screen.png)
-
-<figcaption>
-
-Bricks default WooCommerce default checkout screen
-
-</figcaption>
-
-Use the **WooCommerce - Checkout** template type to change the appearance of this first checkout screen.
-
-When editing this template with Bricks you’ll see two new elements (specific to this template type):
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-checkout-elements.png)
-
-### Checkout customer details
-
-The checkout customer details element renders the billing and shipping details form.
-
-You'll be able to remove/hide some of the non-required fields (e.g. Company name) and style the form fields.
-
-### Checkout order review
-
-The checkout order review element renders the order summary, the available payment methods, and the button to place the order. Using this element, you'll be able to style its different parts.
-
-### Remove the checkout coupon form {#remove-coupon-form}
-
-If you have enabled the use of coupons in the WooCommerce general settings you'll notice a blue coupon form on the top of the checkout form page. If you want to remove this form from the checkout page you may hide it using custom CSS or adding the following code to your child theme:
-
-```php
-remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
-```
-
-### Checkout Coupon & Checkout Login elements {#checkout-coupon-login}
-
-Starting at version 1.11.1 you have greater control over the location and design of the checkout coupon & login by enabling and using the following two checkout elements:
-
-- [Checkout Coupon element](https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/)
-- [Checkout Login element](https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-login/)
-
-## Thank you template {#thank-you-template}
-
-After placing an order, and depending on the payment workflow, you'll get to the "Thank you" screen.
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-checkout-thank-you.png)
-
-<figcaption>
-
-The Bricks default **Thank You** screen
-
-</figcaption>
-
-To style this screen, you'd create a Bricks template of type **WooCommerce - Thank you**. And insert the **Checkout Thank You** element to customize the thank you message, and modify the styles of the different components of the order details.
-
-### Failed-order messages
-
-The classic Checkout Thank You element supports WooCommerce's `woocommerce_thankyou_order_failed_text` filter. Checkout v2 uses `{woo_order_failed_text}` for the failed-order message in newly generated Thank you blocks.
-
-To use the filtered message in an existing Checkout v2 layout:
-
-1. Open the assigned Checkout page in Bricks and select its **Thank you** state.
-2. Find the message element inside the **Order failed** block.
-3. Replace its text with `{woo_order_failed_text}` and save.
-
-Keep the block's conditions, payment retry link, styling, and hooks. See [Failed-order text](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#failed-order-text) for filter and preview behavior.
-
-## Pay template {#pay-template}
-
-For the situation where the visitor gets a link to pay for an unpaid order, there's a special checkout screen that contains the order summary, the available payment gateways, and the button to pay for the order.
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-form-pay-default-471x1024.png)
-
-<figcaption>
-
-Default pay form screen with the representation of the Bricks elements
-
-</figcaption>
-
-If you would like to customize this screen you'd need to add a **WooCommerce - Pay** template type where you'll have access to two new elements: the **Checkout order table** and the **Checkout order payment** both with style controls to customize the look and feel.
-
-## Order receipt {#order-receipt-template}
-
-For the situation where the visitor gets a link to the unpaid order receipt, the checkout workflow triggers the `checkout/order-receipt.php` template, which by default will look like this:
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-order-receipt-default.png)
-
-If you would like to customize this template you could add the Bricks **WooCommerce - Order receipt **template type and inside the builder, you'll have access to the order-specific Dynamic Data tags such as:
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-order-dynamic-data-tags.png)
-
-`{woo_order_id}` - Returns the order id
-
-`{woo_order_number}` - Returns the order number
-
-`{woo_order_date}` - Returns the order date
-
-`{woo_order_total}` - Returns the order total
-
-`{woo_order_payment_title}` - Returns the order payment method name
-
-`{woo_order_email}` - Returns the email address registered with the order
-
-> **Note**
->
-> **NOTE:** These Dynamic Data tags will also work inside the **WooCommerce - Thank you** template type.
-
-Bricks 2.4 adds additional order tags and order-aware query loops for v2 layouts, including order items, totals, downloads, actions, and customer notes. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#order-tags).
-
----
-
 <a id="integrations-woocommerce-cart"></a>
 
 # Cart (WooCommerce)
@@ -64043,6 +63867,182 @@ To test the mini cart:
 
 ---
 
+<a id="integrations-woocommerce-checkout"></a>
+
+# Checkout (WooCommerce)
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/checkout/
+
+*Build and customize the WooCommerce checkout in Bricks, including the classic template workflow and the Checkout v2 advanced modular workflow.*
+
+## Overview
+
+The Checkout page is a special WooCommerce page, created by default during WooCommerce installation and assigned under **WooCommerce > Settings > Advanced**.
+
+Starting in Bricks 2.4, you can choose between two Checkout building workflows:
+
+- **Checkout v2 workflow**: Build the assigned Checkout page directly with [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) and the [Checkout v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/).
+- **Checkout v1 workflow**: Keep the classic WooCommerce checkout shortcode on the assigned Checkout page and customize the output with separate Bricks Checkout, Thank You, Pay, and Order Receipt templates.
+
+Use Checkout v2 for new builds or redesigns where you want to edit checkout, payment, thank-you, receipt, and login-required states in one place. Use Checkout v1 for existing sites that already rely on the classic shortcode/template setup.
+
+The [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) can check or create either workflow.
+
+## Checkout v2 workflow
+
+With advanced modular elements enabled, Checkout v2 keeps the checkout, pay, thank-you, order receipt, and login-required screens as editable states on the assigned Checkout page.
+
+Use the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) and choose:
+
+- **Advanced (v2)** for a complete one-page checkout structure.
+- **Advanced multistep (v2)** for a ready-made [multistep checkout structure](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/).
+
+Checkout v2 can generate complete checkout blocks or smaller sections such as billing fields, shipping fields, payment options, order summary, and place order. Generated checkout fields are editable Bricks elements, so you can move, style, and reorder them after generation.
+
+For existing Checkout v2 layouts, check that the payment section wrapper has the `brx-woo-payment-section` class. Add it manually if it is missing so the payment heading and methods hide together for free orders. Keep terms and Place order controls outside that wrapper. See [Checkout v2 payment section for free orders](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/#payment-section-for-free-orders) for the steps.
+
+Use Checkout v2 field sync after installing or reconfiguring plugins that change WooCommerce checkout fields. Field sync can find missing, invalid, and duplicate generated fields, generate missing fields, remove invalid or duplicate fields, and update labels or placeholders from WooCommerce.
+
+Checkout v2 also adds query loops and dynamic tags for applied coupons, fees, taxes, order items, order totals, order downloads, and customer notes. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/) for the complete reference.
+
+The **Login required** state is used when WooCommerce requires a customer to log in before viewing order-related checkout screens. Bricks 2.4 also improves logged-out Thank you, Order receipt, and Order pay handling for non-guest orders.
+
+## Checkout v1 workflow
+
+The classic Checkout workflow renders the WooCommerce `[woocommerce_checkout]` shortcode on the assigned Checkout page, then uses Bricks WooCommerce template types to customize the checkout-related screens.
+
+> **Note**
+>
+> Remove the Gutenberg Checkout block if it is located within your Checkout Page. Instead, replace it with `[woocommerce_checkout]` or use a Shortcode element if you edit the Checkout page with Bricks.
+
+![](https://academy.bricksbuilder.io/assets/remove-gutenberg-checkout-block.png)
+
+For the Checkout v1 workflow, place the `[woocommerce_checkout]` shortcode directly on the Checkout page, or edit the Checkout page with Bricks and use a Shortcode element with `[woocommerce_checkout]` as its content. Bricks offers four template types to customize the checkout workflow:
+
+- WooCommerce - Checkout
+- WooCommerce - Thank you
+- WooCommerce - Pay
+- WooCommerce - Order receipt
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-checkout-templates.png)
+
+> **Note**
+>
+> The "WooCommerce - Checkout", "WooCommerce - Pay", "WooCommerce - Thank you", and "WooCommerce - Order receipt" template types are only visible if you have the WooCommerce plugin installed and active. These templates are used inside the WooCommerce checkout shortcode logic and **they do not support template conditions (they are automatically rendered on the correct page)**.
+
+## Checkout template {#checkout-template}
+
+The default checkout page consists of a two-columns layout: one column with the billing and shipping details form and another one with the order summary + a button to proceed with the order.
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-checkout-screen.png)
+
+<figcaption>
+
+Bricks default WooCommerce default checkout screen
+
+</figcaption>
+
+Use the **WooCommerce - Checkout** template type to change the appearance of this first checkout screen.
+
+When editing this template with Bricks you’ll see two new elements (specific to this template type):
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-checkout-elements.png)
+
+### Checkout customer details
+
+The checkout customer details element renders the billing and shipping details form.
+
+You'll be able to remove/hide some of the non-required fields (e.g. Company name) and style the form fields.
+
+### Checkout order review
+
+The checkout order review element renders the order summary, the available payment methods, and the button to place the order. Using this element, you'll be able to style its different parts.
+
+### Remove the checkout coupon form {#remove-coupon-form}
+
+If you have enabled the use of coupons in the WooCommerce general settings you'll notice a blue coupon form on the top of the checkout form page. If you want to remove this form from the checkout page you may hide it using custom CSS or adding the following code to your child theme:
+
+```php
+remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
+```
+
+### Checkout Coupon & Checkout Login elements {#checkout-coupon-login}
+
+Starting at version 1.11.1 you have greater control over the location and design of the checkout coupon & login by enabling and using the following two checkout elements:
+
+- [Checkout Coupon element](https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/)
+- [Checkout Login element](https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-login/)
+
+## Thank you template {#thank-you-template}
+
+After placing an order, and depending on the payment workflow, you'll get to the "Thank you" screen.
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-checkout-thank-you.png)
+
+<figcaption>
+
+The Bricks default **Thank You** screen
+
+</figcaption>
+
+To style this screen, you'd create a Bricks template of type **WooCommerce - Thank you**. And insert the **Checkout Thank You** element to customize the thank you message, and modify the styles of the different components of the order details.
+
+### Failed-order messages
+
+The classic Checkout Thank You element supports WooCommerce's `woocommerce_thankyou_order_failed_text` filter. Checkout v2 uses `{woo_order_failed_text}` for the failed-order message in newly generated Thank you blocks.
+
+To use the filtered message in an existing Checkout v2 layout:
+
+1. Open the assigned Checkout page in Bricks and select its **Thank you** state.
+2. Find the message element inside the **Order failed** block.
+3. Replace its text with `{woo_order_failed_text}` and save.
+
+Keep the block's conditions, payment retry link, styling, and hooks. See [Failed-order text](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#failed-order-text) for filter and preview behavior.
+
+## Pay template {#pay-template}
+
+For the situation where the visitor gets a link to pay for an unpaid order, there's a special checkout screen that contains the order summary, the available payment gateways, and the button to pay for the order.
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-form-pay-default-471x1024.png)
+
+<figcaption>
+
+Default pay form screen with the representation of the Bricks elements
+
+</figcaption>
+
+If you would like to customize this screen you'd need to add a **WooCommerce - Pay** template type where you'll have access to two new elements: the **Checkout order table** and the **Checkout order payment** both with style controls to customize the look and feel.
+
+## Order receipt {#order-receipt-template}
+
+For the situation where the visitor gets a link to the unpaid order receipt, the checkout workflow triggers the `checkout/order-receipt.php` template, which by default will look like this:
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-order-receipt-default.png)
+
+If you would like to customize this template you could add the Bricks **WooCommerce - Order receipt **template type and inside the builder, you'll have access to the order-specific Dynamic Data tags such as:
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-order-dynamic-data-tags.png)
+
+`{woo_order_id}` - Returns the order id
+
+`{woo_order_number}` - Returns the order number
+
+`{woo_order_date}` - Returns the order date
+
+`{woo_order_total}` - Returns the order total
+
+`{woo_order_payment_title}` - Returns the order payment method name
+
+`{woo_order_email}` - Returns the email address registered with the order
+
+> **Note**
+>
+> **NOTE:** These Dynamic Data tags will also work inside the **WooCommerce - Thank you** template type.
+
+Bricks 2.4 adds additional order tags and order-aware query loops for v2 layouts, including order items, totals, downloads, actions, and customer notes. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#order-tags).
+
+---
+
 <a id="integrations-woocommerce-creating-dynamic-woocommerce-archive-pages"></a>
 
 # Creating dynamic WooCommerce archive pages
@@ -64273,6 +64273,35 @@ You can set the form to be toggle-able, hiding it by default and revealing it on
 
 ---
 
+<a id="integrations-woocommerce"></a>
+
+# WooCommerce
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/
+
+*Build WooCommerce shop, product, cart, checkout, account, and notice experiences with Bricks templates, elements, and integration guides.*
+
+Bricks includes dedicated WooCommerce elements and template workflows so you can build the full storefront experience visually while still working with WooCommerce data and hooks.
+
+## WooCommerce guides
+
+- [WooCommerce Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/) for the main workflow
+- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) for the Bricks 2.4 Cart, Checkout, and My Account v2 workflow
+- [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) for guided WooCommerce setup checks and presets
+- [Checkout v2 multistep checkout](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/) for the multistep checkout workflow
+- [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/) for the v2 data reference
+- [Product Archive](https://academy.bricksbuilder.io/integrations/woocommerce/product-archive-woocommerce/) for shop and archive layouts
+- [Single Product](https://academy.bricksbuilder.io/integrations/woocommerce/single-product/) for product detail pages
+- [Product Quick View](https://academy.bricksbuilder.io/integrations/woocommerce/how-to-create-product-quick-view-with-bricks/) for quick-view popup workflows
+- [Product Variation Swatches](https://academy.bricksbuilder.io/integrations/woocommerce/product-variation-swatches/) for color, image, and label swatches
+- [Cart](https://academy.bricksbuilder.io/integrations/woocommerce/cart/) for cart layouts
+- [Checkout](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/) for checkout flows
+- [WooCommerce Account Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/) for account templates
+- [WooCommerce Template Hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/) for hook-aware template work
+- [WooCommerce Notices](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-notices/) for notice styling and output
+
+---
+
 <a id="integrations-woocommerce-how-to-create-product-quick-view-with-bricks"></a>
 
 # How to Create Product Quick View with Bricks
@@ -64336,35 +64365,6 @@ By following these steps, you've successfully implemented a Quick View Popup fea
 This enhancement not only improves the user experience by allowing visitors to quickly access product details without navigating away from the current page, but it also provides a seamless integration with WooCommerce.
 
 Remember, fine-tuning the design and interaction settings can further optimize the effectiveness of the Quick View feature, ensuring it meets your specific needs and enhances your overall site performance.
-
----
-
-<a id="integrations-woocommerce"></a>
-
-# WooCommerce
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/
-
-*Build WooCommerce shop, product, cart, checkout, account, and notice experiences with Bricks templates, elements, and integration guides.*
-
-Bricks includes dedicated WooCommerce elements and template workflows so you can build the full storefront experience visually while still working with WooCommerce data and hooks.
-
-## WooCommerce guides
-
-- [WooCommerce Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/) for the main workflow
-- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) for the Bricks 2.4 Cart, Checkout, and My Account v2 workflow
-- [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) for guided WooCommerce setup checks and presets
-- [Checkout v2 multistep checkout](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/) for the multistep checkout workflow
-- [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/) for the v2 data reference
-- [Product Archive](https://academy.bricksbuilder.io/integrations/woocommerce/product-archive-woocommerce/) for shop and archive layouts
-- [Single Product](https://academy.bricksbuilder.io/integrations/woocommerce/single-product/) for product detail pages
-- [Product Quick View](https://academy.bricksbuilder.io/integrations/woocommerce/how-to-create-product-quick-view-with-bricks/) for quick-view popup workflows
-- [Product Variation Swatches](https://academy.bricksbuilder.io/integrations/woocommerce/product-variation-swatches/) for color, image, and label swatches
-- [Cart](https://academy.bricksbuilder.io/integrations/woocommerce/cart/) for cart layouts
-- [Checkout](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/) for checkout flows
-- [WooCommerce Account Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/) for account templates
-- [WooCommerce Template Hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/) for hook-aware template work
-- [WooCommerce Notices](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-notices/) for notice styling and output
 
 ---
 
@@ -64943,153 +64943,6 @@ Open the generated page or template in Bricks and review the result.
 
 ---
 
-<a id="integrations-woocommerce-woocommerce-account-builder"></a>
-
-# WooCommerce Account Builder
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/
-
-*Customize WooCommerce account-area screens in Bricks with the classic Account builder templates or the Account Page v2 advanced modular workflow.*
-
-Bricks 1.9 introduces the My Account builder, which lets you customize the account area of your WooCommerce site.
-
-This includes the My Account page (logged-in), the account login/register/lost & reset password pages (shown when not logged-in), and all My Account endpoints (e.g., Orders, Downloads, etc.).
-
-> **Note**
->
-> Starting in Bricks 2.4, you can also build the My Account page directly with [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) and the [Account Page v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page-v2/). The classic account template workflow below is still supported.
-
-> **Note**
->
-> **IMPORTANT:** In order to ensure that all your customizations to the WooCommerce My Account templates are properly applied, it is imperative that you complete the "[My Account Page (logged in)](#my-account-page)" step.
-
-## Account Page v2 workflow
-
-With advanced modular elements enabled, Account Page v2 keeps the account wrapper, navigation, login state, password states, and account endpoint states together on the assigned My Account page.
-
-Use the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) and choose **Advanced (v2)** to replace the assigned My Account page content with the Account Page v2 element and generated state structure.
-
-Account Page v2 includes states for:
-
-- Dashboard
-- Orders
-- View order
-- Downloads
-- Addresses
-- Edit address
-- Edit account
-- Payment methods
-- Add payment method
-- Login
-- Lost password
-- Lost password confirmation
-- Reset password
-- Order withdrawal (WooCommerce 11.1 or later, with Order Withdrawal enabled)
-
-Each state can generate a complete starter block through **Insert a structure**. Address and account forms use editable Bricks form field elements, so you can style and reorder them after generation.
-
-The Account edit-address state has its own field sync because WooCommerce account address editing and checkout use different field contexts. Use it after plugins or WooCommerce settings change address fields.
-
-Account Page v2 also adds query loops and dynamic tags for account orders, order actions, account downloads, account addresses, order data, downloads, and customer notes. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#account-tags).
-
-### Endpoints added by plugins
-
-Account Page v2 provides editable states for the built-in WooCommerce account routes listed above. An endpoint registered by another plugin does not appear automatically as an additional editable state in the builder.
-
-WooCommerce account endpoints are routes on the assigned My Account page, not separate WordPress pages. A plugin that registers an endpoint and its output callback correctly can still render its content through WooCommerce on that page, but Bricks does not provide a dedicated Account Page v2 state for designing that endpoint.
-
-If a plugin endpoint is blank on the frontend, temporarily test the My Account page with WooCommerce's default account output or without the Account Page v2 element. If it remains blank, check the plugin's endpoint registration. If it works only without Account Page v2, include the plugin name and endpoint slug when contacting Bricks support.
-
-## My Account Page (logged in) {#my-account-page}
-
-To design your My Account page (navigation + content wrapper), **please edit your "My Account" page directly**. You'll find a dedicated "Account Page" element that you can add and adjust its settings to your liking.
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-my-account-page-1.png)
-
-<figcaption>
-
-Custom My Account page using the "Account - Page" element
-
-</figcaption>
-
-> **Note**
->
-> **IMPORTANT:** If you have the *"Enable Bricks WooCommerce "Notice" element"* Bricks setting enabled, please make sure that you have added the "Notice" element to your account page or to all account templates individually. So the notifications when submitting the account forms (e.g., address, reset password, etc.) are displayed.
-
-Starting in Bricks 2.4, the classic **Account - Page** element supports WooCommerce's native Order Withdrawal flow for guests and logged-in customers when the WooCommerce feature is enabled; use the [Account Page v2 Order withdrawal state](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page-v2/#order-withdrawal) to customize its layout.
-
-## Account - Login / Register {#my-account-login-register}
-
-The login form is displayed when a not-logged-in visitor views the My Account page. And the registration form, if you have the *"Allow customers to create an account on the "My account" page"* WooCommerce setting enabled.
-
-You can design your account login/registration layout by creating a new template type "WooCommerce - Account - Login".
-
-When editing this template, you'll find dedicated elements for the **"Account - Login form"** & **"Account - Register form"** as shown in the screenshot below:
-
-You should also check the **Account creation** settings located at *WooCommerce > Settings > Accounts & Privacy* section to control what form to be displayed via **Account - Register form** element.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-account-creation-settings.png)
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-account-login-register.png)
-
-<figcaption>
-
-Custom account login/register template
-
-</figcaption>
-
-> **Note**
->
-> **IMPORTANT:** Ensure you have inserted a Basic Text element with `{do_action:woocommerce_before_customer_login_form}` before your Login and Register form. And another Basic Text element with `{do_action:woocommerce_after_customer_login_form}` after the forms.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-do-action-account-login.png)
-
-<figcaption>
-
-Example do_action location. Before and after the login/register forms.
-
-</figcaption>
-
-## Account - Lost / reset password {#my-account-lost-reset-password}
-
-The WooCommerce account builder in Bricks also provides the following dedicated templates and elements for the lost & reset password pages:
-
-| **Account page** | **Template type** | **Elements** |
-| --- | --- | --- |
-| Lost password | WooCommerce - Account - Lost password | Account - Lost password |
-| Lost password confirmation | WooCommerce - Account - Lost password (Confirmation) | Displayed after submitting the lost password form. No special elements.<br /><br />Example:<br />*A password reset email has been sent to the email address on file for your account, but may take several minutes to show up in your inbox. Please wait at least 10 minutes before attempting another reset.* |
-| Reset password | WooCommerce - Account - Reset password | Account - Reset password |
-
-## Templates for specific account endpoints {#my-account-endpoints}
-
-Designing the account content area for individual account endpoints (Orders, Downloads, etc.) is possible by creating templates of the corresponding template type.
-
-In the example below, we created a "WooCommerce - Account - Orders" template, to which we then added the "Account - Orders" that we styled a bit.
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-account-orders-1024x384.png)
-
-> **Note**
->
-> When editing the template for an account endpoint (Orders, Downloads, etc.), the drag & drop area is located inside the account content area. Offering a better preview in the builder than just rendering an empty canvas without the account navigation.
-
-The process of creating those account endpoint templates is the same for all other WooCommerce account template types.
-
-## Account template types & elements
-
-| **Template type** | **Endpoint** | **Element** |
-| --- | --- | --- |
-| WooCommerce - Account - Dashboard | `/` | - |
-| WooCommerce - Account - Orders | `orders/` | Account - Orders |
-| WooCommerce - Account - View order | `view-order/{order_id}/` | Account - View order |
-| WooCommerce - Account - Downloads | `downloads/` | Account - Downloads |
-| WooCommerce - Account - Payment methods | `payment-methods/` | Account - Payment methods |
-| WooCommerce - Account - Add payment method | `add-payment-method/` | Account - Add payment method |
-| WooCommerce - Account - Addresses | `edit-address/` | Account - Addresses |
-| WooCommerce - Account - Edit address | `edit-address/billing/`<br />`edit-address/shipping/` | Account - Edit address |
-| WooCommerce - Account - Edit account | `edit-account/` | Account - Edit account |
-
----
-
 <a id="integrations-woocommerce-woocommerce-builder"></a>
 
 # WooCommerce Builder
@@ -65418,6 +65271,153 @@ In addition to the Bricks templates mentioned above, several pages within your W
 **Only one Notice element is needed per page.**
 
 If you happen to add multiple WC notice elements, only the first one will output the actual notices, following the native WooCommerce behavior. WooCommerce clears notices after the 1st output. Check WooCommerce `wc_print_notices()` for more information.
+
+---
+
+<a id="integrations-woocommerce-woocommerce-account-builder"></a>
+
+# WooCommerce Account Builder
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/
+
+*Customize WooCommerce account-area screens in Bricks with the classic Account builder templates or the Account Page v2 advanced modular workflow.*
+
+Bricks 1.9 introduces the My Account builder, which lets you customize the account area of your WooCommerce site.
+
+This includes the My Account page (logged-in), the account login/register/lost & reset password pages (shown when not logged-in), and all My Account endpoints (e.g., Orders, Downloads, etc.).
+
+> **Note**
+>
+> Starting in Bricks 2.4, you can also build the My Account page directly with [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) and the [Account Page v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page-v2/). The classic account template workflow below is still supported.
+
+> **Note**
+>
+> **IMPORTANT:** In order to ensure that all your customizations to the WooCommerce My Account templates are properly applied, it is imperative that you complete the "[My Account Page (logged in)](#my-account-page)" step.
+
+## Account Page v2 workflow
+
+With advanced modular elements enabled, Account Page v2 keeps the account wrapper, navigation, login state, password states, and account endpoint states together on the assigned My Account page.
+
+Use the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) and choose **Advanced (v2)** to replace the assigned My Account page content with the Account Page v2 element and generated state structure.
+
+Account Page v2 includes states for:
+
+- Dashboard
+- Orders
+- View order
+- Downloads
+- Addresses
+- Edit address
+- Edit account
+- Payment methods
+- Add payment method
+- Login
+- Lost password
+- Lost password confirmation
+- Reset password
+- Order withdrawal (WooCommerce 11.1 or later, with Order Withdrawal enabled)
+
+Each state can generate a complete starter block through **Insert a structure**. Address and account forms use editable Bricks form field elements, so you can style and reorder them after generation.
+
+The Account edit-address state has its own field sync because WooCommerce account address editing and checkout use different field contexts. Use it after plugins or WooCommerce settings change address fields.
+
+Account Page v2 also adds query loops and dynamic tags for account orders, order actions, account downloads, account addresses, order data, downloads, and customer notes. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#account-tags).
+
+### Endpoints added by plugins
+
+Account Page v2 provides editable states for the built-in WooCommerce account routes listed above. An endpoint registered by another plugin does not appear automatically as an additional editable state in the builder.
+
+WooCommerce account endpoints are routes on the assigned My Account page, not separate WordPress pages. A plugin that registers an endpoint and its output callback correctly can still render its content through WooCommerce on that page, but Bricks does not provide a dedicated Account Page v2 state for designing that endpoint.
+
+If a plugin endpoint is blank on the frontend, temporarily test the My Account page with WooCommerce's default account output or without the Account Page v2 element. If it remains blank, check the plugin's endpoint registration. If it works only without Account Page v2, include the plugin name and endpoint slug when contacting Bricks support.
+
+## My Account Page (logged in) {#my-account-page}
+
+To design your My Account page (navigation + content wrapper), **please edit your "My Account" page directly**. You'll find a dedicated "Account Page" element that you can add and adjust its settings to your liking.
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-my-account-page-1.png)
+
+<figcaption>
+
+Custom My Account page using the "Account - Page" element
+
+</figcaption>
+
+> **Note**
+>
+> **IMPORTANT:** If you have the *"Enable Bricks WooCommerce "Notice" element"* Bricks setting enabled, please make sure that you have added the "Notice" element to your account page or to all account templates individually. So the notifications when submitting the account forms (e.g., address, reset password, etc.) are displayed.
+
+Starting in Bricks 2.4, the classic **Account - Page** element supports WooCommerce's native Order Withdrawal flow for guests and logged-in customers when the WooCommerce feature is enabled; use the [Account Page v2 Order withdrawal state](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page-v2/#order-withdrawal) to customize its layout.
+
+## Account - Login / Register {#my-account-login-register}
+
+The login form is displayed when a not-logged-in visitor views the My Account page. And the registration form, if you have the *"Allow customers to create an account on the "My account" page"* WooCommerce setting enabled.
+
+You can design your account login/registration layout by creating a new template type "WooCommerce - Account - Login".
+
+When editing this template, you'll find dedicated elements for the **"Account - Login form"** & **"Account - Register form"** as shown in the screenshot below:
+
+You should also check the **Account creation** settings located at *WooCommerce > Settings > Accounts & Privacy* section to control what form to be displayed via **Account - Register form** element.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-account-creation-settings.png)
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-account-login-register.png)
+
+<figcaption>
+
+Custom account login/register template
+
+</figcaption>
+
+> **Note**
+>
+> **IMPORTANT:** Ensure you have inserted a Basic Text element with `{do_action:woocommerce_before_customer_login_form}` before your Login and Register form. And another Basic Text element with `{do_action:woocommerce_after_customer_login_form}` after the forms.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-do-action-account-login.png)
+
+<figcaption>
+
+Example do_action location. Before and after the login/register forms.
+
+</figcaption>
+
+## Account - Lost / reset password {#my-account-lost-reset-password}
+
+The WooCommerce account builder in Bricks also provides the following dedicated templates and elements for the lost & reset password pages:
+
+| **Account page** | **Template type** | **Elements** |
+| --- | --- | --- |
+| Lost password | WooCommerce - Account - Lost password | Account - Lost password |
+| Lost password confirmation | WooCommerce - Account - Lost password (Confirmation) | Displayed after submitting the lost password form. No special elements.<br /><br />Example:<br />*A password reset email has been sent to the email address on file for your account, but may take several minutes to show up in your inbox. Please wait at least 10 minutes before attempting another reset.* |
+| Reset password | WooCommerce - Account - Reset password | Account - Reset password |
+
+## Templates for specific account endpoints {#my-account-endpoints}
+
+Designing the account content area for individual account endpoints (Orders, Downloads, etc.) is possible by creating templates of the corresponding template type.
+
+In the example below, we created a "WooCommerce - Account - Orders" template, to which we then added the "Account - Orders" that we styled a bit.
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-account-orders-1024x384.png)
+
+> **Note**
+>
+> When editing the template for an account endpoint (Orders, Downloads, etc.), the drag & drop area is located inside the account content area. Offering a better preview in the builder than just rendering an empty canvas without the account navigation.
+
+The process of creating those account endpoint templates is the same for all other WooCommerce account template types.
+
+## Account template types & elements
+
+| **Template type** | **Endpoint** | **Element** |
+| --- | --- | --- |
+| WooCommerce - Account - Dashboard | `/` | - |
+| WooCommerce - Account - Orders | `orders/` | Account - Orders |
+| WooCommerce - Account - View order | `view-order/{order_id}/` | Account - View order |
+| WooCommerce - Account - Downloads | `downloads/` | Account - Downloads |
+| WooCommerce - Account - Payment methods | `payment-methods/` | Account - Payment methods |
+| WooCommerce - Account - Add payment method | `add-payment-method/` | Account - Add payment method |
+| WooCommerce - Account - Addresses | `edit-address/` | Account - Addresses |
+| WooCommerce - Account - Edit address | `edit-address/billing/`<br />`edit-address/shipping/` | Account - Edit address |
+| WooCommerce - Account - Edit account | `edit-account/` | Account - Edit account |
 
 ---
 

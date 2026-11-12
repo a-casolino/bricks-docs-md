@@ -208,6 +208,34 @@ function disable_template_in_builder( $active_templates, $post_id, $content_type
 
 ---
 
+# Filter: bricks/assets/generate_css_from_element
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-generate_css_from_element/
+
+*Add custom element names to Bricks CSS generation so looped child styles are included for supported custom elements.*
+
+This filter allows you to include your custom query loop supported element to generate the children styles in Bricks. (@since 1.9.2)
+
+## Parameters
+
+- `$element_names` (array): Additional loop-capable element names. Defaults to an empty array.
+- `$current_element` (array): The element currently being processed for CSS generation.
+- `$css_type` (string): The CSS generation area, such as `header`, `footer`, or `content`.
+
+```php
+add_filter( 'bricks/assets/generate_css_from_element', function( $element_names, $current_element, $css_type ) {
+  // $css_type is a string (e.g. header, footer, content, etc.)
+  // Add your custom element name so the looping children styles are generated.
+  if ( ! in_array( 'my-custom-element-name', $element_names ) ) {
+    $element_names[] = 'my-custom-element-name';
+  }
+
+  return $element_names;
+}, 10, 3 );
+```
+
+---
+
 # Filter: bricks/allowed_html_tags
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-allowed_html_tags/
@@ -240,34 +268,6 @@ add_filter( 'bricks/allowed_html_tags', function( $allowed_html_tags ) {
 > **Note**
 >
 > **Only allow HTML tags that are considered safe, as anyone with builder access can use them!**
-
----
-
-# Filter: bricks/assets/generate_css_from_element
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-generate_css_from_element/
-
-*Add custom element names to Bricks CSS generation so looped child styles are included for supported custom elements.*
-
-This filter allows you to include your custom query loop supported element to generate the children styles in Bricks. (@since 1.9.2)
-
-## Parameters
-
-- `$element_names` (array): Additional loop-capable element names. Defaults to an empty array.
-- `$current_element` (array): The element currently being processed for CSS generation.
-- `$css_type` (string): The CSS generation area, such as `header`, `footer`, or `content`.
-
-```php
-add_filter( 'bricks/assets/generate_css_from_element', function( $element_names, $current_element, $css_type ) {
-  // $css_type is a string (e.g. header, footer, content, etc.)
-  // Add your custom element name so the looping children styles are generated.
-  if ( ! in_array( 'my-custom-element-name', $element_names ) ) {
-    $element_names[] = 'my-custom-element-name';
-  }
-
-  return $element_names;
-}, 10, 3 );
-```
 
 ---
 
@@ -547,6 +547,25 @@ add_filter( 'bricks/builder/image_size_options', function( $image_sizes ) {
 
 ---
 
+# Filter: bricks/code/allow_execution
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-allow_execution/
+
+*An alternative to the Disable code execution setting under Bricks > Settings > Builder Access. You can use this PHP filter to disable/enable code execution.*
+
+An alternative to the **Disable code execution** setting under `Bricks > Settings > Builder Access`. You can use this PHP filter to disable/enable code execution programmatically.
+
+![](https://academy.bricksbuilder.io/assets/disallow-code-execution-hook.png)
+
+```php
+add_filter( 'bricks/code/allow_execution', function( $allow ) {
+  // Only allows to return false to disable code execution programmatically
+  return false;
+} );
+```
+
+---
+
 # Filter: bricks/builder/map_styles
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-mapstyles/
@@ -575,25 +594,6 @@ add_filter( 'bricks/builder/map_styles', function( $map_styles ) {
 
 ---
 
-# Filter: bricks/code/allow_execution
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-allow_execution/
-
-*An alternative to the Disable code execution setting under Bricks > Settings > Builder Access. You can use this PHP filter to disable/enable code execution.*
-
-An alternative to the **Disable code execution** setting under `Bricks > Settings > Builder Access`. You can use this PHP filter to disable/enable code execution programmatically.
-
-![](https://academy.bricksbuilder.io/assets/disallow-code-execution-hook.png)
-
-```php
-add_filter( 'bricks/code/allow_execution', function( $allow ) {
-  // Only allows to return false to disable code execution programmatically
-  return false;
-} );
-```
-
----
-
 # Filter: bricks/code/disable_execution
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-disable_execution/
@@ -612,6 +612,26 @@ add_filter( 'bricks/code/disable_execution', function( $disable ) {
 ```
 
 Use this filter to enforce stricter security by disabling code execution, regardless of other configurations on your site.
+
+---
+
+# Filter: bricks/code/disallow_keywords
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-disallow_keywords/
+
+*This filter introduces another level of security when using the Code element to run code.*
+
+This filter introduces another level of security when using the Code element to run code.
+
+With the filter `bricks/code/disallow_keywords` you'll be able to prevent the code execution if specific keywords are found in the code, thus reducing the risk of using this element. To add keywords to this check, use the following example:
+
+```php
+add_filter( 'bricks/code/disallow_keywords', function( $keywords ) {
+  $</meta>keywords[] = 'wpdb';
+
+  return $</meta>keywords;
+} );
+```
 
 ---
 
@@ -708,26 +728,6 @@ add_filter( 'bricks/code/echo_function_names', function($function_name) {
 
 ---
 
-# Filter: bricks/code/disallow_keywords
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-disallow_keywords/
-
-*This filter introduces another level of security when using the Code element to run code.*
-
-This filter introduces another level of security when using the Code element to run code.
-
-With the filter `bricks/code/disallow_keywords` you'll be able to prevent the code execution if specific keywords are found in the code, thus reducing the risk of using this element. To add keywords to this check, use the following example:
-
-```php
-add_filter( 'bricks/code/disallow_keywords', function( $keywords ) {
-  $</meta>keywords[] = 'wpdb';
-
-  return $</meta>keywords;
-} );
-```
-
----
-
 # Filter: bricks/comments/timestamp
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-comments-timestamp/
@@ -795,30 +795,6 @@ add_filter( 'bricks/content/html_after_begin', function( $html_after_begin, $bri
 
 ---
 
-# Filter: bricks/content/html_before_end
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-html_before_end/
-
-*Available since version 1.6, this filter allows you to customize or insert HTML strings before closing main tag.*
-
-Available since version 1.6, this filter allows you to customize or insert HTML strings before closing `main` tag.
-
-```php
-add_filter( 'bricks/content/html_before_end', function( $html_after_begin, $bricks_data, $attributes, $tag ) {
-
-    if ( $tag !== 'main' ) {
-      return $html_after_begin;
-    }
-
-    // Insert custom popup HTML
-    $my_popup_html = '<div class="my_popup">This is my popup</div>';
-
-    return $html_after_begin . $my_popup_html;
-}, 10, 4 );
-```
-
----
-
 # Filter: bricks/content/tag
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-tag/
@@ -845,6 +821,30 @@ add_filter( 'bricks/content/tag', function( $tag ) {
 **Return:**
 
 - (string): The HTML tag you want to render instead of the default.
+
+---
+
+# Filter: bricks/content/html_before_end
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-html_before_end/
+
+*Available since version 1.6, this filter allows you to customize or insert HTML strings before closing main tag.*
+
+Available since version 1.6, this filter allows you to customize or insert HTML strings before closing `main` tag.
+
+```php
+add_filter( 'bricks/content/html_before_end', function( $html_after_begin, $bricks_data, $attributes, $tag ) {
+
+    if ( $tag !== 'main' ) {
+      return $html_after_begin;
+    }
+
+    // Insert custom popup HTML
+    $my_popup_html = '<div class="my_popup">This is my popup</div>';
+
+    return $html_after_begin . $my_popup_html;
+}, 10, 4 );
+```
 
 ---
 
@@ -1492,6 +1492,60 @@ In this example, the filter modifies the value of a specific meta key ('specific
 
 ---
 
+# Filter: bricks/frontend/render_data
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-frontend-render_data/
+
+*The filter allows you to modify the rendered content for different areas like header, content, and footer before it's displayed on the frontend.*
+
+The filter allows you to modify the rendered content for different areas like header, content, and footer before it's displayed on the frontend.
+
+```php
+add_filter( 'bricks/frontend/render_data', function( $content, $post, $area ) {
+  // Do something
+
+  return $content;
+}, 10, 3 );
+```
+
+The filter callback receives three parameters:
+
+- `$content`: The HTML content that's about to be returned. It's a string type.
+- `$post`: The post object for which the content is being generated. It's an instance of the WP_Post class.
+- `$area`: A string defining the area of the page currently being rendered (e.g., 'header', 'content', 'footer'). Available since version 1.5.4.
+
+## Example: Add a unique ID to each heading
+
+The following example demonstrates how to add a unique ID attribute to each heading in the generated content.
+
+```php
+add_filter('bricks/frontend/render_data', function($content, $post, $area) {
+  // Iterate over each heading tag
+  $content = preg_replace_callback(
+    '/(<h[1-6](.*?))>(.*?)(<\/h[1-6]>)/i',
+    function($matches) {
+      // Add 'id' attribute if it doesn't exist
+      if (strpos($matches[2], 'id=') === false) {
+        // Use heading's content as the ID
+        $matches[0] = $matches[1] . ' id="' . sanitize_title($matches[3])
+        . '">' . $matches[3] . $matches[4];
+      }
+
+      // Return the (potentially) modified heading tag
+      return $matches[0];
+    },
+    $content // Content to modify
+  );
+
+  // Return modified content
+  return $content;
+}, 10, 3);
+```
+
+In this example, a callback function is defined within the add_filter function call targeting the `bricks/frontend/render_data` filter. This callback function modifies every heading tag present in the content to include a unique ID attribute. This can be useful for navigation purposes, such as creating a table of contents.
+
+---
+
 # Filter: bricks/frontend/render_element
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-frontend-render_element/
@@ -1555,60 +1609,6 @@ add_filter( 'bricks/get_element_data/maybe_from_post_id', function( $id, $elemen
 
 ---
 
-# Filter: bricks/frontend/render_data
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-frontend-render_data/
-
-*The filter allows you to modify the rendered content for different areas like header, content, and footer before it's displayed on the frontend.*
-
-The filter allows you to modify the rendered content for different areas like header, content, and footer before it's displayed on the frontend.
-
-```php
-add_filter( 'bricks/frontend/render_data', function( $content, $post, $area ) {
-  // Do something
-
-  return $content;
-}, 10, 3 );
-```
-
-The filter callback receives three parameters:
-
-- `$content`: The HTML content that's about to be returned. It's a string type.
-- `$post`: The post object for which the content is being generated. It's an instance of the WP_Post class.
-- `$area`: A string defining the area of the page currently being rendered (e.g., 'header', 'content', 'footer'). Available since version 1.5.4.
-
-## Example: Add a unique ID to each heading
-
-The following example demonstrates how to add a unique ID attribute to each heading in the generated content.
-
-```php
-add_filter('bricks/frontend/render_data', function($content, $post, $area) {
-  // Iterate over each heading tag
-  $content = preg_replace_callback(
-    '/(<h[1-6](.*?))>(.*?)(<\/h[1-6]>)/i',
-    function($matches) {
-      // Add 'id' attribute if it doesn't exist
-      if (strpos($matches[2], 'id=') === false) {
-        // Use heading's content as the ID
-        $matches[0] = $matches[1] . ' id="' . sanitize_title($matches[3])
-        . '">' . $matches[3] . $matches[4];
-      }
-
-      // Return the (potentially) modified heading tag
-      return $matches[0];
-    },
-    $content // Content to modify
-  );
-
-  // Return modified content
-  return $content;
-}, 10, 3);
-```
-
-In this example, a callback function is defined within the add_filter function call targeting the `bricks/frontend/render_data` filter. This callback function modifies every heading tag present in the content to include a unique ID attribute. This can be useful for navigation purposes, such as creating a table of contents.
-
----
-
 # Filter: bricks/header/attributes
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/
@@ -1657,6 +1657,25 @@ add_filter( 'bricks/builder/i18n', function( $i18n ) {
 
 ---
 
+# Filter: bricks/is_layout_element
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-is_layout_element/
+
+*Allows to define your custom elements as a layout element, so they are recognised like the section, container, block, div elements and use the same controls.*
+
+Allows to define your custom elements as a layout element, so they are recognised like the section, container, block, div elements and use the same controls like query loop, flex controls, shape divider, etc.
+
+```php
+add_filter( 'bricks/is_layout_element', function( $layout_element_names ) {
+    // Mark your custom element "custom_box" as a layout element
+    $layout_element_names[] = 'custom_box';
+
+    return $layout_element_names;
+} );
+```
+
+---
+
 # Filter: bricks/link_css_selectors
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-link_css_selectors/
@@ -1680,25 +1699,6 @@ add_filter( 'bricks/link_css_selectors', function( $link_css_selectors ) {
 > **Note**
 >
 > If the theme styles link styles do not apply to your custom selectors, force the regeneration of the theme styles by changing and saving the link color, the padding, or the text decoration, for example. Your new selectors will then be available.
-
----
-
-# Filter: bricks/is_layout_element
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-is_layout_element/
-
-*Allows to define your custom elements as a layout element, so they are recognised like the section, container, block, div elements and use the same controls.*
-
-Allows to define your custom elements as a layout element, so they are recognised like the section, container, block, div elements and use the same controls like query loop, flex controls, shape divider, etc.
-
-```php
-add_filter( 'bricks/is_layout_element', function( $layout_element_names ) {
-    // Mark your custom element "custom_box" as a layout element
-    $layout_element_names[] = 'custom_box';
-
-    return $layout_element_names;
-} );
-```
 
 ---
 
@@ -1835,42 +1835,6 @@ In this example, the password cookie will expire after 1 hour, requiring users t
 
 ---
 
-# Filter: bricks/password_protection/is_active
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-is_active/
-
-*Use this filter to add custom rules that determine whether a password protection template should be active. By default, the template’s visibility is controlled.*
-
-Use this filter to add custom rules that determine whether a [password protection template](https://academy.bricksbuilder.io/builder/features/password-protection/) should be active. By default, the template’s visibility is controlled by settings such as logged-in status, valid password cookies, and scheduling through the password protection template settings in the builder. This filter allows you to extend those checks, adding more dynamic criteria once the default settings have been applied.
-
-## Example Usage:
-
-```php
-add_filter( 'bricks/password_protection/is_active', function( $is_active, $template_id, $settings ) {
-    // Bypass password protection for users with the 'manage_options' capability
-    if ( current_user_can( 'manage_options' ) ) {
-        return false;
-    }
-
-    // Maintain default logic for other cases
-    return $is_active;
-}, 10, 3 );
-```
-
-In this example, any user with the `manage_options` capability (typically administrators) will bypass the password protection, while other users will follow the default settings.
-
-**Parameters:**
-
-- `$is_active` (bool): The initial status of whether the password protection is active.
-- `$template_id` (int): The ID of the password protection template.
-- `$settings` (array): The template settings.
-
-**Return:**
-
-- (bool): `true` to keep the template active, `false` to disable it.
-
----
-
 # Filter: bricks/placeholder_image
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-placeholder_image/
@@ -1941,49 +1905,6 @@ This is triggered for all the Bricks elements containing one internal WP_Query q
 Each element in Bricks has a unique ID. You may find the element ID when editing the element and looking into the Global CSS classes input. By default, it shows the element HTML ID (e.g. `#bricks-element-wghgco`). For the purpose of this filter, we only need the last portion of the string, the six-character long element ID (e.g. `wghgco`).
 
 ![](https://academy.bricksbuilder.io/assets/Screenshot-2021-12-29-at-09.19.37.png)
-
----
-
-# Filter: bricks/query/force_run
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-force_run/
-
-*Bricks has enhanced query performance in 1.9.1. Now, each unique query is executed only once per page load, and subsequently, the query results are reused on.*
-
-Bricks has enhanced query performance in 1.9.1. Now, each unique query is executed only once per page load, and subsequently, the query results are reused on the same page. Consequently, certain queries-related PHP filters will no longer be triggered multiple times.
-
-The following filters may be impacted:
-
-- `bricks/posts/merge_query`
-- `bricks/posts/query_vars`
-- `bricks/terms/query_vars`
-- `bricks/users/query_vars`
-- `bricks/query/run`
-- `bricks/query/result`
-- `bricks/query/result_count`
-- `bricks/query/result_max_num_pages`
-
-Nevertheless, developers can utilize this filter to disable this setting for certain queries under specific circumstances.
-
-```php
-// Return boolean (default: false)
-add_filter( 'bricks/query/force_run', function( $force_run, $query ) {
-  // Get element ID
-  $element_id  = $query::get_query_element_id();
-  // Get element settings
-  $settings = $query->settings;
-
-  if ( isset( $settings['usingFacetWP'] ) ) {
-    $force_run = true;
-  }
-
-  return $force_run;
-}, 10, 2 );
-```
-
-Since 1.9.2, you can define `$query_vars['bricks_force_run'] = true` to achieve the same result as well. This will be handy if you are using the Bricks Query Editor or PHP filters like `bricks/posts/query_vars`  etc.
-
-![](https://academy.bricksbuilder.io/assets/bricks-query-force-run-query-vars.png)
 
 ---
 
@@ -2216,6 +2137,85 @@ add_filter( 'bricks/posts/query_vars', function( $query_vars, $settings, $elemen
 
 ---
 
+# Filter: bricks/query/force_run
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-force_run/
+
+*Bricks has enhanced query performance in 1.9.1. Now, each unique query is executed only once per page load, and subsequently, the query results are reused on.*
+
+Bricks has enhanced query performance in 1.9.1. Now, each unique query is executed only once per page load, and subsequently, the query results are reused on the same page. Consequently, certain queries-related PHP filters will no longer be triggered multiple times.
+
+The following filters may be impacted:
+
+- `bricks/posts/merge_query`
+- `bricks/posts/query_vars`
+- `bricks/terms/query_vars`
+- `bricks/users/query_vars`
+- `bricks/query/run`
+- `bricks/query/result`
+- `bricks/query/result_count`
+- `bricks/query/result_max_num_pages`
+
+Nevertheless, developers can utilize this filter to disable this setting for certain queries under specific circumstances.
+
+```php
+// Return boolean (default: false)
+add_filter( 'bricks/query/force_run', function( $force_run, $query ) {
+  // Get element ID
+  $element_id  = $query::get_query_element_id();
+  // Get element settings
+  $settings = $query->settings;
+
+  if ( isset( $settings['usingFacetWP'] ) ) {
+    $force_run = true;
+  }
+
+  return $force_run;
+}, 10, 2 );
+```
+
+Since 1.9.2, you can define `$query_vars['bricks_force_run'] = true` to achieve the same result as well. This will be handy if you are using the Bricks Query Editor or PHP filters like `bricks/posts/query_vars`  etc.
+
+![](https://academy.bricksbuilder.io/assets/bricks-query-force-run-query-vars.png)
+
+---
+
+# Filter: bricks/password_protection/is_active
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-is_active/
+
+*Use this filter to add custom rules that determine whether a password protection template should be active. By default, the template’s visibility is controlled.*
+
+Use this filter to add custom rules that determine whether a [password protection template](https://academy.bricksbuilder.io/builder/features/password-protection/) should be active. By default, the template’s visibility is controlled by settings such as logged-in status, valid password cookies, and scheduling through the password protection template settings in the builder. This filter allows you to extend those checks, adding more dynamic criteria once the default settings have been applied.
+
+## Example Usage:
+
+```php
+add_filter( 'bricks/password_protection/is_active', function( $is_active, $template_id, $settings ) {
+    // Bypass password protection for users with the 'manage_options' capability
+    if ( current_user_can( 'manage_options' ) ) {
+        return false;
+    }
+
+    // Maintain default logic for other cases
+    return $is_active;
+}, 10, 3 );
+```
+
+In this example, any user with the `manage_options` capability (typically administrators) will bypass the password protection, while other users will follow the default settings.
+
+**Parameters:**
+
+- `$is_active` (bool): The initial status of whether the password protection is active.
+- `$template_id` (int): The ID of the password protection template.
+- `$settings` (array): The template settings.
+
+**Return:**
+
+- (bool): `true` to keep the template active, `false` to disable it.
+
+---
+
 # Filter: bricks/query/init_loop_index
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-init_loop_index/
@@ -2417,30 +2417,6 @@ For native query limits and offsets, use the [Query Loop controls](https://acade
 
 ---
 
-# Filter: bricks/query/result_count
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_count/
-
-*Filter the result count Bricks reports for a query object before pagination or related UI uses that total.*
-
-This filter allows you to modify the query result count (@since 1.8).
-
-```php
-add_filter( 'bricks/query/result_count', function( $result_count, $query_obj ) {
-  // Return: Element ID is not "lbsijo", nor is it a post query
-  if( $query_obj->element_id !== 'lbsijo' || $query_obj->object_type !== 'post' ) {
-    return $result_count;
-  }
-
-  // Perform your logic here
-  // Use $query_obj->query_result to access the query result
-  $new_count = 123;
-  return $new_count;
-}, 10, 2 );
-```
-
----
-
 # Filter: bricks/query/result_max_num_pages
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_max_num_pages/
@@ -2460,5 +2436,29 @@ add_filter( 'bricks/query/result_max_num_pages', function( $max_num_pages, $quer
   // Use $query_obj->query_result to access the query result
   $max_num_pages = 3;
   return $max_num_pages;
+}, 10, 2 );
+```
+
+---
+
+# Filter: bricks/query/result_count
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_count/
+
+*Filter the result count Bricks reports for a query object before pagination or related UI uses that total.*
+
+This filter allows you to modify the query result count (@since 1.8).
+
+```php
+add_filter( 'bricks/query/result_count', function( $result_count, $query_obj ) {
+  // Return: Element ID is not "lbsijo", nor is it a post query
+  if( $query_obj->element_id !== 'lbsijo' || $query_obj->object_type !== 'post' ) {
+    return $result_count;
+  }
+
+  // Perform your logic here
+  // Use $query_obj->query_result to access the query result
+  $new_count = 123;
+  return $new_count;
 }, 10, 2 );
 ```

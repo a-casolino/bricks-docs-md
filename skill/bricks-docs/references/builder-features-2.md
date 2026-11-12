@@ -708,6 +708,78 @@ These details explain how Bricks stores and renders component instances:
 
 ---
 
+# Custom Attributes
+
+Source: https://academy.bricksbuilder.io/builder/features/custom-attributes/
+
+*Add custom HTML attributes in Bricks for integrations, JavaScript hooks, accessibility, and advanced frontend behavior.*
+
+Bricks 1.3 introduces the possibility to add your own custom HTML attributes to any element.
+
+You can add custom attributes under "Style > Attributes". Set a "Name" and a "Value" and your attribute(s) will be added to the elements' most relevant node. By default, your attributes are added to the element root node. Besides manually entered values you can populate custom attribute values with dynamic data, too.
+
+In there you'll be able to insert multiple attributes (name and value). Dynamic Data is rendered for attribute values on the frontend.
+
+![](https://academy.bricksbuilder.io/assets/feature-custom-attributes.png)
+
+<figcaption>
+
+Container: Custom Attributes
+
+</figcaption>
+
+Let's say you want to add an ARIA **role** and **label** to a container that contains multiple images that should be [considered as a single image](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Role_Img). You'd add the following two attributes when editing your container:
+
+- Attribute #1 name: **role**
+- Attribute #1 value: **img**
+- Attribute #2 name: **aria-label**
+- Attribute #2 value: **Description of the overall image**
+
+This results in the following container HTML:
+
+```html
+<div id="brxe-sfglik" class="brxe-sfglik brxe-container" role="img" aria-label="Description of the overall image">
+... Container elements ...
+</div>
+```
+
+Custom attributes take precedence over default attributes. So if you set a custom **alt** attribute when editing your image, this custom attribute will be used instead of the default image **alt** attribute.
+
+Elements where custom attributes are added to the following specific HTML tags:
+
+| **Bricks Element** | **HTML tag** |
+| --- | --- |
+| Nav Menu | `<nav>` |
+| Heading | `<h1>` or any other heading tag |
+| Text | `<div>` |
+| Button | `<button>` or `<a>` depending if there is a link |
+| Image | `<img>` |
+| Video | `<div>` |
+| Form | `<form>` |
+
+### How To Add Tooltips {#tooltips}
+
+Bricks comes with built-in (CSS-only) tooltips that you can set via custom attributes.
+
+Make sure to set the attribute "Name" to `data-balloon` and the value to whatever you want your tooltip text to be. You also have to set a second HTML attribute named `data-balloon-pos` and then set the value to whatever you want your tooltip to be positioned like:
+
+- top | top-right | top-left
+- right
+- bottom | bottom-right | bottom-left
+- left
+
+For a full list of all available tooltip HTML attributes please visit the official website of the Balloon.css library Bricks uses for its tooltips: [https://kazzkiq.github.io/balloon.css/](https://kazzkiq.github.io/balloon.css/)
+
+> **Note**
+>
+> If you are planning to add tooltips on the Icon element, please wrap the Icon element in a Div element and set the attribute on the Div element. Otherwise, balloon library CSS will overwrite the Icon element's CSS and cause it invisible in the frontend.
+
+#### Resources:
+
+- HTML attribute reference: [https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes)
+
+---
+
 # Creating Your First Template
 
 Source: https://academy.bricksbuilder.io/builder/features/create-template/
@@ -860,249 +932,131 @@ Use conditions to control frontend assignment.
 
 ---
 
-# Custom Attributes
+# Custom Authentication Pages
 
-Source: https://academy.bricksbuilder.io/builder/features/custom-attributes/
+Source: https://academy.bricksbuilder.io/builder/features/custom-authentication-pages/
 
-*Add custom HTML attributes in Bricks for integrations, JavaScript hooks, accessibility, and advanced frontend behavior.*
+*Build custom login, registration, lost-password, and reset-password flows in Bricks instead of relying on default WordPress screens.*
 
-Bricks 1.3 introduces the possibility to add your own custom HTML attributes to any element.
+Since Bricks 1.9.2, you can assign custom Bricks-built pages for WordPress authentication flows. This lets you replace the default WordPress screens for login, registration, lost password, and reset password with pages that match your site design.
 
-You can add custom attributes under "Style > Attributes". Set a "Name" and a "Value" and your attribute(s) will be added to the elements' most relevant node. By default, your attributes are added to the element root node. Besides manually entered values you can populate custom attribute values with dynamic data, too.
+![Bricks custom authentication settings screen showing options to assign custom pages for login, registration, lost password, and reset password. The "WordPress authentication page access" dropdown is set to "Error page", and the "Disable custom authentication page bypass" toggle is enabled.](https://academy.bricksbuilder.io/assets/bricks-custom-authentication-settings.png)
 
-In there you'll be able to insert multiple attributes (name and value). Dynamic Data is rendered for attribute values on the frontend.
+> **Note**
+>
+> Custom authentication pages change where visitors are sent, but the form actions still use WordPress authentication functions such as login, registration, password reset email generation, and password reset validation.
 
-![](https://academy.bricksbuilder.io/assets/feature-custom-attributes.png)
+## How to set custom authentication pages
 
-<figcaption>
+1. Navigate to the WordPress dashboard
+2. Navigate to **Bricks** > **Settings** > **General**
+3. Scroll down to **Custom authentication pages**
 
-Container: Custom Attributes
+Here, you can choose a custom page for the following processes:
 
-</figcaption>
+- Login
+- Registration
+- Lost Password
+- Reset Password
 
-Let's say you want to add an ARIA **role** and **label** to a container that contains multiple images that should be [considered as a single image](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Role_Img). You'd add the following two attributes when editing your container:
+If WooCommerce handles the current authentication page, Bricks leaves that page to WooCommerce and skips its custom authentication redirect handling.
 
-- Attribute #1 name: **role**
-- Attribute #1 value: **img**
-- Attribute #2 name: **aria-label**
-- Attribute #2 value: **Description of the overall image**
+## Setting up your custom pages
 
-This results in the following container HTML:
+Each custom page should contain a [Form element](https://academy.bricksbuilder.io/builder/elements/general/form/#actions) with the matching authentication action selected under the Form element's **Actions** control group.
 
-```html
-<div id="brxe-sfglik" class="brxe-sfglik brxe-container" role="img" aria-label="Description of the overall image">
-... Container elements ...
-</div>
+| Page | Required form action | Typical fields |
+| --- | --- | --- |
+| Login | User login | Login, password, optional remember me |
+| Registration | User registration | Email, optional username, optional password, optional first/last name |
+| Lost password | Lost password | Email or username |
+| Reset password | Reset password | New password |
+
+### Login page
+
+Add a form with the **User login** action. Map the login field, password field, and optional remember-me field in the **User Login** control group.
+
+If your custom login URL receives a `redirect_to` query parameter, Bricks adds it as a hidden field and redirects there after successful login when your form does not already use an explicit Redirect action.
+
+For better privacy and security, set a generic login error message. Otherwise, the default WordPress login error can reveal why the login failed.
+
+### Registration page
+
+Add a form with the **User registration** action. Map at least the email field. Username and password can be auto-generated if they are not mapped or submitted.
+
+The **Role** setting cannot be set to Administrator or Super Admin. If either is selected by data manipulation, Bricks falls back to the site's default role.
+
+If [User activation](https://academy.bricksbuilder.io/builder/features/user-activation/) is enabled, the Form element's **Auto log in user** setting is hidden and registration does not auto-login immediately. Activation controls the post-registration login flow instead.
+
+### Lost password page
+
+Add a form with the **Lost password** action and map the **Email or username** field.
+
+For privacy, Bricks returns a success response even when the submitted account does not exist. If the account exists, WordPress sends the password reset email.
+
+### Reset password page
+
+Add a form with the **Reset password** action and map the new password field.
+
+When a user clicks a WordPress reset link, Bricks redirects the reset URL to your custom reset password page and preserves the reset query parameters. The Form element then renders hidden `key` and `login` fields from the URL so WordPress can validate the reset key on submission.
+
+## WordPress authentication page access {#wp-auth}
+
+As of Bricks 1.11, you have control over what happens when someone visits a default WordPress authentication URL (such as `wp-login.php`), provided custom authentication pages are set.
+
+To manage this:
+
+1. Navigate to **Bricks** > **Settings** > **General** > **Custom authentication pages**.
+2. Under **WordPress authentication page access**, select one of the following options:
+- **Redirect to custom authentication page (default)**: The user will be redirected to the corresponding custom authentication page you have set.
+- **Error page**: Bricks returns the site's 404 error page for matching default auth URLs.
+- **Home URL**: Redirects visitors to the homepage.
+- **Redirect to specific page**: Allows you to choose a specific page on your site to redirect visitors to.
+
+This setting only changes behavior for a default auth URL when the corresponding custom page has been set. For example, the login behavior applies when a custom login page is selected.
+
+If **Redirect to specific page** is selected and no valid published page is selected, Bricks falls back to the home URL.
+
+Bricks preserves query parameters when redirecting from the default auth URL to a custom auth page. This is important for reset-password keys and login redirects.
+
+### Logout behavior
+
+For logged-in users, Bricks lets WordPress process logout first. If WordPress would send the user back to the default login page after logout and you have a valid custom login page, Bricks redirects to the custom login page with `?logged_out=true`.
+
+## Bypassing custom login (since 1.9.4):
+
+By default, when visiting any authentication page on your site, you can access the default WordPress login page by adding `brx_use_wp_login` as a URL parameter, for example:
+
+```text
+https://example.com/wp-login.php?brx_use_wp_login=1
 ```
 
-Custom attributes take precedence over default attributes. So if you set a custom **alt** attribute when editing your image, this custom attribute will be used instead of the default image **alt** attribute.
+This feature allows site owners to bypass the custom login page if needed.
 
-Elements where custom attributes are added to the following specific HTML tags:
+Adding this parameter sets a bypass cookie for 5 minutes. During that window, Bricks lets the default WordPress authentication page load instead of redirecting to the custom page.
 
-| **Bricks Element** | **HTML tag** |
-| --- | --- |
-| Nav Menu | `<nav>` |
-| Heading | `<h1>` or any other heading tag |
-| Text | `<div>` |
-| Button | `<button>` or `<a>` depending if there is a link |
-| Image | `<img>` |
-| Video | `<div>` |
-| Form | `<form>` |
+In Bricks settings, you can disable this feature:
 
-### How To Add Tooltips {#tooltips}
+1. Navigate to **Bricks > Settings > General > Custom authentication pages**.
+2. Enable **Disable custom authentication page bypass**.
 
-Bricks comes with built-in (CSS-only) tooltips that you can set via custom attributes.
-
-Make sure to set the attribute "Name" to `data-balloon` and the value to whatever you want your tooltip text to be. You also have to set a second HTML attribute named `data-balloon-pos` and then set the value to whatever you want your tooltip to be positioned like:
-
-- top | top-right | top-left
-- right
-- bottom | bottom-right | bottom-left
-- left
-
-For a full list of all available tooltip HTML attributes please visit the official website of the Balloon.css library Bricks uses for its tooltips: [https://kazzkiq.github.io/balloon.css/](https://kazzkiq.github.io/balloon.css/)
+When disabled, the `brx_use_wp_login` URL parameter no longer sets the bypass cookie.
 
 > **Note**
 >
-> If you are planning to add tooltips on the Icon element, please wrap the Icon element in a Div element and set the attribute on the Div element. Otherwise, balloon library CSS will overwrite the Icon element's CSS and cause it invisible in the frontend.
+> Before disabling the bypass and blocking default auth URLs, make sure your custom login page works and that you know its URL. Otherwise you can lock yourself out of the normal login screen.
 
-#### Resources:
+## Developer filters
 
-- HTML attribute reference: [https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes)
+Bricks exposes filters for custom redirect logic:
 
----
+- `bricks/auth/custom_redirect_url`: Override the redirect URL based on the current auth URL path.
+- `bricks/auth/custom_login_redirect`: Change the selected custom login page.
+- `bricks/auth/custom_registration_redirect`: Change the selected custom registration page.
+- `bricks/auth/custom_lost_password_redirect`: Change the selected custom lost password page.
+- `bricks/auth/custom_reset_password_redirect`: Change the selected custom reset password page.
 
-# Create & Update Posts on the Frontend
-
-Source: https://academy.bricksbuilder.io/builder/features/create-update-posts-on-the-frontend/
-
-*Build frontend forms in Bricks that create or update WordPress posts without sending users into wp-admin.*
-
-Bricks 2.1 introduced the **Create post** and **Update post** form actions. They let a frontend Form element create a new WordPress post or update an existing one without sending the user to wp-admin.
-
-Use these actions for workflows such as property listings, classifieds, member-submitted posts, profile pages, or client portals. The examples below use a custom post type named `property`, but the same rules apply to any public post type that exists on your site.
-
-> **Note**
->
-> **IMPORTANT:** By default, Bricks checks permissions twice: when rendering the form and again when processing the submission.
->
-> - **Create post** requires the current user to have the selected post type's `edit_posts` capability.
-> - **Update post** requires the current user to have `edit_post` for the target post.
->
-> Do not enable **Disable capability checks** unless the form is protected another way. When disabled, non-logged-in or unauthorized visitors can create or edit content through that form.
-
-https://www.youtube.com/watch?v=c9JcrLEVbnM
-
-## Before you start
-
-Decide these things before building the form:
-
-- Which post type the form creates or updates.
-- Which users are allowed to submit the form.
-- Whether new posts should be saved as draft, pending review, published, or another available post status.
-- Which core post fields, custom fields, and taxonomies the form may change.
-- Whether uploads should be saved to the Media Library. Featured images, attachment posts, and many ACF/Meta Box media fields need attachment IDs.
-
-## How to create or update posts via form submission
-
-The create and update workflows use the same pattern: add fields, choose the form action, then map the fields to the WordPress data that should change.
-
-### Step 1: Add form fields for post data
-
-Create form fields for all the post data that you want to save when creating or updating a post through the Form element:
-
-| Post data | Recommended field type |
-| --- | --- |
-| Post title | Text |
-| Post content | Rich text |
-| Post excerpt | Textarea |
-| Featured image | Image |
-| Post meta | The most suitable field type for the custom field |
-| Taxonomy terms | Checkbox, radio, or select |
-
-#### Post meta
-
-Make sure to select the most suitable field type for every piece of post meta data you want to modify. Bricks stores mapped meta through ACF, Meta Box, or `update_post_meta()` depending on the meta key and the integrations available on the site.
-
-For checkbox, radio, and select fields, Bricks can automatically load choices from ACF or Meta Box when:
-
-- The field is mapped to a matching meta key.
-- The form field has no manual options.
-- ACF or Meta Box can resolve that field for the post or post type.
-
-If you add manual options to the form field, Bricks uses your manual options instead.
-
-#### Taxonomy
-
-Use checkbox, radio, or select fields for taxonomies such as categories, tags, or custom taxonomies. You can leave the form field options empty. When the field is mapped in the **Taxonomies** repeater, Bricks automatically populates the field with terms from the selected taxonomy.
-
-If you manually add options, use term IDs as the submitted values. On submission, Bricks stores taxonomy terms by ID. If the mapped taxonomy field is empty, Bricks clears the terms for that mapped taxonomy.
-
-### Step 2: Select the form action
-
-Edit the Form element and select **Create post** or **Update post** in the **Actions** control group.
-
-![](https://academy.bricksbuilder.io/assets/bricks-form-action-create-update-post.png)
-
-The order of actions matters. If an action returns an error, Bricks stops processing the remaining actions. The **Redirect** action is always moved to the end of the action list so other selected actions can run first.
-
-### Step 3: Configure the action
-
-When creating a new post, select the post type that you want to create a new post for under the "Create post" control group:
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-09-16-at-14.07.14@2x.png)
-
-<figcaption>
-
-Create new post for post type "Property" on form submission
-
-</figcaption>
-
-When updating an existing post, select the specific post that you want to update under the "Update post" control group:
-
-![](https://academy.bricksbuilder.io/assets/bricks-form-update-post-control-group.png)
-
-Leave **Post to update** empty to update the current post. If the form is inside a query loop, Bricks uses the submitted loop object ID so each repeated form can update its own loop item.
-
-Both actions include a **Post status** setting. For **Create post**, leaving it empty lets WordPress use its default insert behavior. For **Update post**, leaving it empty keeps the current post status.
-
-When **Create post** runs for a logged-in user, that user becomes the post author. If you disable capability checks and allow anonymous submissions, Bricks falls back to the site's first super admin user when assigning the author.
-
-## Step 4: Field mapping
-
-The last, and most important step is to map/connect your form fields with the post data that should be modified when the form is submitted. The mapping controls are also located within the "Create post" and "Update post" control groups.
-
-### Mapping simple post data
-
-For simple post data such as the Post title, Post content, Post excerpt, and Featured image you just have to select the corresponding form field from the select dropdown:
-
-![](https://academy.bricksbuilder.io/assets/bricks-form-create-post-field-mapping-simple-post-data.png)
-
-For featured images and attachment posts, use fields that save uploads to the Media Library so Bricks can work with the uploaded attachment ID.
-
-Bricks verifies that the mapped featured image value is an image attachment ID before calling WordPress' featured image logic. If the mapped field has no value, Bricks removes the featured image.
-
-### Mapping post meta
-
-When updating post meta via a form field, add an item under **Post meta** and provide:
-
-- **Meta key**: The custom field key to update. Bricks sanitizes this key before saving.
-- **Meta value**: The form field whose submitted value should be saved.
-- **Sanitization method**: How Bricks should sanitize the submitted value before saving it.
-
-![](https://academy.bricksbuilder.io/assets/bricks-form-create-post-field-mapping-post-meta.png)
-
-Available sanitization methods include text, integer, float, email, URL, and post-safe HTML. Values that are not handled by ACF or Meta Box fall back to WordPress post meta.
-
-#### ACF and Meta Box handling
-
-When possible, Bricks updates ACF fields through `update_field()` and Meta Box fields through `rwmb_set_meta()` instead of writing raw post meta only. This matters for field types that expect a specific value shape.
-
-For media fields, file upload fields should save files to the Media Library. Bricks processes those uploads before the create/update action so mapped fields can receive attachment IDs.
-
-For ACF group fields, Bricks can resolve nested meta keys and update the parent group value so nested data remains structured correctly.
-
-### Taxonomies
-
-Mapping a form field to a taxonomy is straightforward. Under **Taxonomies**, select the taxonomy to update and the corresponding form field.
-
-There is no need to manually enter taxonomy terms unless you want to limit the choices. Bricks will automatically populate the form field with the selected taxonomy's terms when the mapped form field has no manual options.
-
-## Security and validation details
-
-Bricks still runs the normal form submission checks before the create/update action:
-
-- The AJAX submission must include a valid Bricks form nonce.
-- Submitted field IDs must match fields that exist in the form settings. Unexpected or duplicate field IDs are rejected.
-- Required field validation, max-length validation, honeypot checks, and enabled captcha checks run before actions.
-- The action repeats capability checks server-side unless you disabled them.
-
-The form is not rendered for unauthorized users when capability checks are enabled. If you set a custom error message in the Create post or Update post control group, Bricks displays that message instead.
-
-## Common setups
-
-### Let users submit posts for review
-
-Use **Create post**, keep capability checks enabled for trusted logged-in users, and set **Post status** to **Pending** or **Draft**. Map only the fields users should control.
-
-### Let authors edit their own posts
-
-Use **Update post**, leave **Post to update** empty on a single post template, and keep capability checks enabled. WordPress will allow the update only if the current user can edit that post.
-
-### Update items inside a query loop
-
-Place the update form inside the query loop and leave **Post to update** empty. Bricks submits the loop object ID and updates the matching loop item.
-
-### Create attachment posts from uploads
-
-Set **Post type** to **Attachment** and use a file upload field that saves to the Media Library. Bricks uses the first uploaded attachment it finds and can update its title, content, excerpt, status, meta, and terms through the mapped fields.
-
-## Filters
-
-Bricks supports many ACF and Meta Box field types out of the box, but every custom setup is different. You can adjust mapped meta values before they are saved with these filters:
-
-- [`bricks/form/create_post/meta_value`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-create_post-meta_value/)
-- [`bricks/form/update_post/meta_value`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-update_post-meta_value/)
+Use these filters when a multilingual, membership, or custom routing setup needs more control than the global page selectors provide.
 
 ---
 
@@ -1285,134 +1239,6 @@ You can use abbreviations to generate your HTML structures much faster via a fam
 ```
 
 [https://docs.emmet.io/cheat-sheet/](https://docs.emmet.io/cheat-sheet/)
-
----
-
-# Custom Authentication Pages
-
-Source: https://academy.bricksbuilder.io/builder/features/custom-authentication-pages/
-
-*Build custom login, registration, lost-password, and reset-password flows in Bricks instead of relying on default WordPress screens.*
-
-Since Bricks 1.9.2, you can assign custom Bricks-built pages for WordPress authentication flows. This lets you replace the default WordPress screens for login, registration, lost password, and reset password with pages that match your site design.
-
-![Bricks custom authentication settings screen showing options to assign custom pages for login, registration, lost password, and reset password. The "WordPress authentication page access" dropdown is set to "Error page", and the "Disable custom authentication page bypass" toggle is enabled.](https://academy.bricksbuilder.io/assets/bricks-custom-authentication-settings.png)
-
-> **Note**
->
-> Custom authentication pages change where visitors are sent, but the form actions still use WordPress authentication functions such as login, registration, password reset email generation, and password reset validation.
-
-## How to set custom authentication pages
-
-1. Navigate to the WordPress dashboard
-2. Navigate to **Bricks** > **Settings** > **General**
-3. Scroll down to **Custom authentication pages**
-
-Here, you can choose a custom page for the following processes:
-
-- Login
-- Registration
-- Lost Password
-- Reset Password
-
-If WooCommerce handles the current authentication page, Bricks leaves that page to WooCommerce and skips its custom authentication redirect handling.
-
-## Setting up your custom pages
-
-Each custom page should contain a [Form element](https://academy.bricksbuilder.io/builder/elements/general/form/#actions) with the matching authentication action selected under the Form element's **Actions** control group.
-
-| Page | Required form action | Typical fields |
-| --- | --- | --- |
-| Login | User login | Login, password, optional remember me |
-| Registration | User registration | Email, optional username, optional password, optional first/last name |
-| Lost password | Lost password | Email or username |
-| Reset password | Reset password | New password |
-
-### Login page
-
-Add a form with the **User login** action. Map the login field, password field, and optional remember-me field in the **User Login** control group.
-
-If your custom login URL receives a `redirect_to` query parameter, Bricks adds it as a hidden field and redirects there after successful login when your form does not already use an explicit Redirect action.
-
-For better privacy and security, set a generic login error message. Otherwise, the default WordPress login error can reveal why the login failed.
-
-### Registration page
-
-Add a form with the **User registration** action. Map at least the email field. Username and password can be auto-generated if they are not mapped or submitted.
-
-The **Role** setting cannot be set to Administrator or Super Admin. If either is selected by data manipulation, Bricks falls back to the site's default role.
-
-If [User activation](https://academy.bricksbuilder.io/builder/features/user-activation/) is enabled, the Form element's **Auto log in user** setting is hidden and registration does not auto-login immediately. Activation controls the post-registration login flow instead.
-
-### Lost password page
-
-Add a form with the **Lost password** action and map the **Email or username** field.
-
-For privacy, Bricks returns a success response even when the submitted account does not exist. If the account exists, WordPress sends the password reset email.
-
-### Reset password page
-
-Add a form with the **Reset password** action and map the new password field.
-
-When a user clicks a WordPress reset link, Bricks redirects the reset URL to your custom reset password page and preserves the reset query parameters. The Form element then renders hidden `key` and `login` fields from the URL so WordPress can validate the reset key on submission.
-
-## WordPress authentication page access {#wp-auth}
-
-As of Bricks 1.11, you have control over what happens when someone visits a default WordPress authentication URL (such as `wp-login.php`), provided custom authentication pages are set.
-
-To manage this:
-
-1. Navigate to **Bricks** > **Settings** > **General** > **Custom authentication pages**.
-2. Under **WordPress authentication page access**, select one of the following options:
-- **Redirect to custom authentication page (default)**: The user will be redirected to the corresponding custom authentication page you have set.
-- **Error page**: Bricks returns the site's 404 error page for matching default auth URLs.
-- **Home URL**: Redirects visitors to the homepage.
-- **Redirect to specific page**: Allows you to choose a specific page on your site to redirect visitors to.
-
-This setting only changes behavior for a default auth URL when the corresponding custom page has been set. For example, the login behavior applies when a custom login page is selected.
-
-If **Redirect to specific page** is selected and no valid published page is selected, Bricks falls back to the home URL.
-
-Bricks preserves query parameters when redirecting from the default auth URL to a custom auth page. This is important for reset-password keys and login redirects.
-
-### Logout behavior
-
-For logged-in users, Bricks lets WordPress process logout first. If WordPress would send the user back to the default login page after logout and you have a valid custom login page, Bricks redirects to the custom login page with `?logged_out=true`.
-
-## Bypassing custom login (since 1.9.4):
-
-By default, when visiting any authentication page on your site, you can access the default WordPress login page by adding `brx_use_wp_login` as a URL parameter, for example:
-
-```text
-https://example.com/wp-login.php?brx_use_wp_login=1
-```
-
-This feature allows site owners to bypass the custom login page if needed.
-
-Adding this parameter sets a bypass cookie for 5 minutes. During that window, Bricks lets the default WordPress authentication page load instead of redirecting to the custom page.
-
-In Bricks settings, you can disable this feature:
-
-1. Navigate to **Bricks > Settings > General > Custom authentication pages**.
-2. Enable **Disable custom authentication page bypass**.
-
-When disabled, the `brx_use_wp_login` URL parameter no longer sets the bypass cookie.
-
-> **Note**
->
-> Before disabling the bypass and blocking default auth URLs, make sure your custom login page works and that you know its URL. Otherwise you can lock yourself out of the normal login screen.
-
-## Developer filters
-
-Bricks exposes filters for custom redirect logic:
-
-- `bricks/auth/custom_redirect_url`: Override the redirect URL based on the current auth URL path.
-- `bricks/auth/custom_login_redirect`: Change the selected custom login page.
-- `bricks/auth/custom_registration_redirect`: Change the selected custom registration page.
-- `bricks/auth/custom_lost_password_redirect`: Change the selected custom lost password page.
-- `bricks/auth/custom_reset_password_redirect`: Change the selected custom reset password page.
-
-Use these filters when a multilingual, membership, or custom routing setup needs more control than the global page selectors provide.
 
 ---
 
@@ -1773,3 +1599,177 @@ After conversion, delete the remaining global elements from the builder's elemen
 ## When to use templates instead
 
 If you need to reuse a larger section or layout pattern without linked shared editing, save it as a template and insert it where needed. For linked reusable structures, use Components.
+
+---
+
+# Create & Update Posts on the Frontend
+
+Source: https://academy.bricksbuilder.io/builder/features/create-update-posts-on-the-frontend/
+
+*Build frontend forms in Bricks that create or update WordPress posts without sending users into wp-admin.*
+
+Bricks 2.1 introduced the **Create post** and **Update post** form actions. They let a frontend Form element create a new WordPress post or update an existing one without sending the user to wp-admin.
+
+Use these actions for workflows such as property listings, classifieds, member-submitted posts, profile pages, or client portals. The examples below use a custom post type named `property`, but the same rules apply to any public post type that exists on your site.
+
+> **Note**
+>
+> **IMPORTANT:** By default, Bricks checks permissions twice: when rendering the form and again when processing the submission.
+>
+> - **Create post** requires the current user to have the selected post type's `edit_posts` capability.
+> - **Update post** requires the current user to have `edit_post` for the target post.
+>
+> Do not enable **Disable capability checks** unless the form is protected another way. When disabled, non-logged-in or unauthorized visitors can create or edit content through that form.
+
+https://www.youtube.com/watch?v=c9JcrLEVbnM
+
+## Before you start
+
+Decide these things before building the form:
+
+- Which post type the form creates or updates.
+- Which users are allowed to submit the form.
+- Whether new posts should be saved as draft, pending review, published, or another available post status.
+- Which core post fields, custom fields, and taxonomies the form may change.
+- Whether uploads should be saved to the Media Library. Featured images, attachment posts, and many ACF/Meta Box media fields need attachment IDs.
+
+## How to create or update posts via form submission
+
+The create and update workflows use the same pattern: add fields, choose the form action, then map the fields to the WordPress data that should change.
+
+### Step 1: Add form fields for post data
+
+Create form fields for all the post data that you want to save when creating or updating a post through the Form element:
+
+| Post data | Recommended field type |
+| --- | --- |
+| Post title | Text |
+| Post content | Rich text |
+| Post excerpt | Textarea |
+| Featured image | Image |
+| Post meta | The most suitable field type for the custom field |
+| Taxonomy terms | Checkbox, radio, or select |
+
+#### Post meta
+
+Make sure to select the most suitable field type for every piece of post meta data you want to modify. Bricks stores mapped meta through ACF, Meta Box, or `update_post_meta()` depending on the meta key and the integrations available on the site.
+
+For checkbox, radio, and select fields, Bricks can automatically load choices from ACF or Meta Box when:
+
+- The field is mapped to a matching meta key.
+- The form field has no manual options.
+- ACF or Meta Box can resolve that field for the post or post type.
+
+If you add manual options to the form field, Bricks uses your manual options instead.
+
+#### Taxonomy
+
+Use checkbox, radio, or select fields for taxonomies such as categories, tags, or custom taxonomies. You can leave the form field options empty. When the field is mapped in the **Taxonomies** repeater, Bricks automatically populates the field with terms from the selected taxonomy.
+
+If you manually add options, use term IDs as the submitted values. On submission, Bricks stores taxonomy terms by ID. If the mapped taxonomy field is empty, Bricks clears the terms for that mapped taxonomy.
+
+### Step 2: Select the form action
+
+Edit the Form element and select **Create post** or **Update post** in the **Actions** control group.
+
+![](https://academy.bricksbuilder.io/assets/bricks-form-action-create-update-post.png)
+
+The order of actions matters. If an action returns an error, Bricks stops processing the remaining actions. The **Redirect** action is always moved to the end of the action list so other selected actions can run first.
+
+### Step 3: Configure the action
+
+When creating a new post, select the post type that you want to create a new post for under the "Create post" control group:
+
+![](https://academy.bricksbuilder.io/assets/CleanShot-2025-09-16-at-14.07.14@2x.png)
+
+<figcaption>
+
+Create new post for post type "Property" on form submission
+
+</figcaption>
+
+When updating an existing post, select the specific post that you want to update under the "Update post" control group:
+
+![](https://academy.bricksbuilder.io/assets/bricks-form-update-post-control-group.png)
+
+Leave **Post to update** empty to update the current post. If the form is inside a query loop, Bricks uses the submitted loop object ID so each repeated form can update its own loop item.
+
+Both actions include a **Post status** setting. For **Create post**, leaving it empty lets WordPress use its default insert behavior. For **Update post**, leaving it empty keeps the current post status.
+
+When **Create post** runs for a logged-in user, that user becomes the post author. If you disable capability checks and allow anonymous submissions, Bricks falls back to the site's first super admin user when assigning the author.
+
+## Step 4: Field mapping
+
+The last, and most important step is to map/connect your form fields with the post data that should be modified when the form is submitted. The mapping controls are also located within the "Create post" and "Update post" control groups.
+
+### Mapping simple post data
+
+For simple post data such as the Post title, Post content, Post excerpt, and Featured image you just have to select the corresponding form field from the select dropdown:
+
+![](https://academy.bricksbuilder.io/assets/bricks-form-create-post-field-mapping-simple-post-data.png)
+
+For featured images and attachment posts, use fields that save uploads to the Media Library so Bricks can work with the uploaded attachment ID.
+
+Bricks verifies that the mapped featured image value is an image attachment ID before calling WordPress' featured image logic. If the mapped field has no value, Bricks removes the featured image.
+
+### Mapping post meta
+
+When updating post meta via a form field, add an item under **Post meta** and provide:
+
+- **Meta key**: The custom field key to update. Bricks sanitizes this key before saving.
+- **Meta value**: The form field whose submitted value should be saved.
+- **Sanitization method**: How Bricks should sanitize the submitted value before saving it.
+
+![](https://academy.bricksbuilder.io/assets/bricks-form-create-post-field-mapping-post-meta.png)
+
+Available sanitization methods include text, integer, float, email, URL, and post-safe HTML. Values that are not handled by ACF or Meta Box fall back to WordPress post meta.
+
+#### ACF and Meta Box handling
+
+When possible, Bricks updates ACF fields through `update_field()` and Meta Box fields through `rwmb_set_meta()` instead of writing raw post meta only. This matters for field types that expect a specific value shape.
+
+For media fields, file upload fields should save files to the Media Library. Bricks processes those uploads before the create/update action so mapped fields can receive attachment IDs.
+
+For ACF group fields, Bricks can resolve nested meta keys and update the parent group value so nested data remains structured correctly.
+
+### Taxonomies
+
+Mapping a form field to a taxonomy is straightforward. Under **Taxonomies**, select the taxonomy to update and the corresponding form field.
+
+There is no need to manually enter taxonomy terms unless you want to limit the choices. Bricks will automatically populate the form field with the selected taxonomy's terms when the mapped form field has no manual options.
+
+## Security and validation details
+
+Bricks still runs the normal form submission checks before the create/update action:
+
+- The AJAX submission must include a valid Bricks form nonce.
+- Submitted field IDs must match fields that exist in the form settings. Unexpected or duplicate field IDs are rejected.
+- Required field validation, max-length validation, honeypot checks, and enabled captcha checks run before actions.
+- The action repeats capability checks server-side unless you disabled them.
+
+The form is not rendered for unauthorized users when capability checks are enabled. If you set a custom error message in the Create post or Update post control group, Bricks displays that message instead.
+
+## Common setups
+
+### Let users submit posts for review
+
+Use **Create post**, keep capability checks enabled for trusted logged-in users, and set **Post status** to **Pending** or **Draft**. Map only the fields users should control.
+
+### Let authors edit their own posts
+
+Use **Update post**, leave **Post to update** empty on a single post template, and keep capability checks enabled. WordPress will allow the update only if the current user can edit that post.
+
+### Update items inside a query loop
+
+Place the update form inside the query loop and leave **Post to update** empty. Bricks submits the loop object ID and updates the matching loop item.
+
+### Create attachment posts from uploads
+
+Set **Post type** to **Attachment** and use a file upload field that saves to the Media Library. Bricks uses the first uploaded attachment it finds and can update its title, content, excerpt, status, meta, and terms through the mapped fields.
+
+## Filters
+
+Bricks supports many ACF and Meta Box field types out of the box, but every custom setup is different. You can adjust mapped meta values before they are saved with these filters:
+
+- [`bricks/form/create_post/meta_value`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-create_post-meta_value/)
+- [`bricks/form/update_post/meta_value`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-update_post-meta_value/)

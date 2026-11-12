@@ -712,15 +712,15 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Taxonomy Schema
+# Social Sharing Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/post-taxonomy/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/post-sharing/
 
-*Schema for Bricks Taxonomy element*
+*Schema for Bricks Social Sharing element*
 
 | Property | Value |
 |---|---|
-| `name` | post-taxonomy |
+| `name` | post-sharing |
 | `category` | single |
 | `tag` | div |
 | `nestable` | false |
@@ -729,15 +729,11 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/post-taxonomy
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `taxonomy` | select | Taxonomy | — |
-| `linkDisable` | checkbox | Disable link | — |
-| `separator` | text | Separator | — |
-| `orderby` | select | Order by | — |
-| `order` | select | order | — |
-| `size` | select | Size | — |
-| `style` | select | Style | — |
-| `gap` | number | Spacing | `gap` |
-| `icon` | icon | Icon | — |
+| `items` | repeater | Share via | `background-color` on `a` |
+| `brandColors` | checkbox | Use brand colors | — |
+| `direction` | direction | Direction | `flex-direction` |
+| `newTab` | checkbox | Open in new tab | — |
+| `linkRel` | text | Rel attribute | — |
 
 ## Inherited CSS controls
 
@@ -813,15 +809,15 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Social Sharing Schema
+# Taxonomy Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/post-sharing/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/post-taxonomy/
 
-*Schema for Bricks Social Sharing element*
+*Schema for Bricks Taxonomy element*
 
 | Property | Value |
 |---|---|
-| `name` | post-sharing |
+| `name` | post-taxonomy |
 | `category` | single |
 | `tag` | div |
 | `nestable` | false |
@@ -830,11 +826,15 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/post-sharing/
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `items` | repeater | Share via | `background-color` on `a` |
-| `brandColors` | checkbox | Use brand colors | — |
-| `direction` | direction | Direction | `flex-direction` |
-| `newTab` | checkbox | Open in new tab | — |
-| `linkRel` | text | Rel attribute | — |
+| `taxonomy` | select | Taxonomy | — |
+| `linkDisable` | checkbox | Disable link | — |
+| `separator` | text | Separator | — |
+| `orderby` | select | Order by | — |
+| `order` | select | order | — |
+| `size` | select | Size | — |
+| `style` | select | Style | — |
+| `gap` | number | Spacing | `gap` |
+| `icon` | icon | Icon | — |
 
 ## Inherited CSS controls
 

@@ -336,6 +336,150 @@ In the user's WordPress profile, find **Builder interface** and click **Reset bu
 
 ---
 
+# Command Palette
+
+Source: https://academy.bricksbuilder.io/builder/interface/command-palette/
+
+*Use the Bricks Command Palette to run common actions, navigate faster, and insert element structures with keyboard-driven workflows.*
+
+Bricks 2.0 introduces the **Command Palette**, a powerful new feature that gives you instant keyboard-driven access to core functionality inside the builder.
+
+https://youtu.be/gOVNlRvsYc8
+
+## How to launch it
+
+Click the command `⌘` icon in the builder toolbar or use the `CMD/CTRL + K` keyboard shortcut to open the Command Palette, which appears as an overlay, allowing you to type and filter commands across four scopes.
+
+## Scope: Builder {#builder}
+
+Navigate to key parts of the builder from a growing list of targets such as classes, variables, templates, theme styles, settings, etc.
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-builder.png)
+
+## Scope: Post Types {#post-types}
+
+This scope lets you browse the registered post types your builder capability can access, create new posts when your user can edit posts, or duplicate existing posts.
+
+Besides "All" and "Template (Bricks)", a post type gets its own tab only when Bricks is enabled for it under **Bricks > Settings > General > Post types** and your role can access it in the builder. "All" searches every public post type.
+
+To create a post, select the post type tab, type the title, and click "Create". Bricks adds the post as a draft. Click a result to open it in the builder. `CMD/CTRL` + click opens it in a new browser tab. Posts of a type that is not enabled for Bricks open in the WordPress editor in a new tab.
+
+The scope auto-selects the post type that you are currently editing. So if you are editing a Bricks template the "Template (Bricks)" post type will be selected. If you edit a "Page", then "Page" is selected and so on.
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-post-types.png)
+
+## Scope: Elements {#elements}
+
+The "Elements" scope will dramatically speed up your workflow by allowing you to insert multiple elements with specific structure in a single action.
+
+By mastering the Emmet-like syntax, you can create complex layouts in seconds rather than minutes, making your design process significantly more efficient.
+
+With practice, this feature becomes second nature and an essential part of your Bricks Builder toolkit, especially for quickly creating common page structures and element combinations that you use frequently, which you can also save for instant access to use whenever needed.
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-elements.png)
+
+### Insert single element
+
+To insert a single element simply type its name, such as "Section", then `ARROW`-navigate to it in the elements list, and insert it by pressing `ENTER` or just click on the element name.
+
+### Insert element structure
+
+Each element starts with an **@** symbol.
+
+The element name that the command bar requires is displayed in square brackets in the results list:
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-element-name.png)
+
+<figcaption>
+
+Text link element command: `@text-link`
+
+</figcaption>
+
+### Supported operators
+
+Use the following operators to define nested structure, siblings, a multiplier, or to move back up one nesting level.
+
+| Symbol | Meaning |
+| --- | --- |
+| `@` | Bricks element name (e.g. `@heading`) |
+| `>` | Nest inside |
+| `+` | Insert element as sibling |
+| `*` | How often to insert the element |
+| `^` | Move one level up before inserting the next element |
+
+### Element structure example
+
+`@section * 2 > @heading + @text + @button`
+This creates the following structure *(two times because of the multiplier: `* 2`)*:
+
+- `Section`
+ └ `Container`
+   ├ `Heading`
+   ├ `Text`
+   └ `Button`
+
+Bricks adds the Container inside every Section automatically, so you don't type `@container` after `@section`.
+
+### Quick element insertion
+
+> **Note**
+>
+> After selecting an element from the search results, its name is added to your query with the `@` prefix, allowing you to quickly build complex queries:
+
+1. Type `@` to activate insertion mode
+2. Select an element (e.g., "section")
+3. Type `>` for a child element
+4. Continue building your structure
+5. Insert your element structure
+  - Click the "Insert" button that appears next to your query
+  - Press `CMD/CTRL + ENTER`
+
+If no element is selected, Bricks adds the structure at the end of the page or template.
+
+### Save element structures
+
+Instead of typing out your favorite structures by hand every time, you can save them by clicking the "Save" button next to the command bar. Your structures are stored in this browser's `localStorage`, so they are local to that browser/profile and are not synced between users or devices.
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-saved-element-structures.png)
+
+<figcaption>
+
+List of saved element structures
+
+</figcaption>
+
+To insert a saved structure, open the "Select element structure" dropdown in the Elements scope and pick it. To delete a structure, mouseover the structure item in the list, and click the "Delete" icon.
+
+## Scope: Components {#components}
+
+This scope lists the components on your site. Select a component to insert an instance of it, the same way you insert a single element. The scope is available when your role can insert components.
+
+## Keyboard shortcuts
+
+| **Keyboard shortcut** | **Action** |
+| --- | --- |
+| `CMD/CTRL + K` | Open/close the command palette |
+| `ESC` | Close the command palette |
+| `TAB > ENTER` (to enter selected scope) | Navigate between search and scopes |
+| `#` (as the first character in the search input) | Enter scope “Builder” |
+| `/` (as the first character in the search input) | Enter scope “Post Types” |
+| `+` or `@` (as the first character in the search input) | Enter scope “Elements” |
+| `*` (as the first character in the search input) | Enter scope “Components” |
+| `CMD/CTRL + ENTER` | Insert the element structure typed in scope “Elements” |
+| `/0-9` (forward slash followed by number) | Navigate to a specific post type |
+| `ARROW UP/DOWN` + ENTER | Navigate to a search result and open it |
+
+## Notes
+
+Bricks remembers your last selected scope, even after builder reload (stored in your localStorage).
+
+The "Pages" panel remains available from the builder toolbar. The Command Palette is an additional fast way to browse, create, duplicate, and open posts.
+
+The docs entry is also accessible from the "Builder" scope.
+
+---
+
 # Builder Mode (Custom)
 
 Source: https://academy.bricksbuilder.io/builder/interface/builder-mode/
@@ -578,6 +722,192 @@ Review [Builder Access](https://academy.bricksbuilder.io/builder/interface/build
 
 ---
 
+# Adding & Editing Elements
+
+Source: https://academy.bricksbuilder.io/builder/interface/editing-elements/
+
+*Add elements to the canvas, edit their settings, and understand the main element editing workflow in Bricks.*
+
+Elements are the building blocks of a Bricks layout. This article explains how elements are added, selected, nested, styled, reset, copied, and edited in single-element and bulk-edit workflows.
+
+## Element mental model
+
+A Bricks layout is an element tree. Every element has:
+
+- A type, such as Section, Heading, Image, Button, or Form.
+- A unique Bricks ID.
+- Optional children if the element can contain other elements.
+- A parent, unless it is a root element.
+- Settings, which store content, styles, classes, conditions, interactions, custom attributes, and other element-level data.
+
+Root elements sit at the top of the page content. Nested elements sit inside another element. The canvas shows the visual result; the Structure panel shows the actual hierarchy.
+
+## Add an element
+
+Open the Elements panel, then drag an element onto the canvas or into the Structure panel.
+
+Where the element lands depends on the current drop target:
+
+- Drop onto a nestable element to place the new element inside it.
+- Drop between siblings to place the new element at that position.
+- Drop at root level to create a top-level element.
+
+You can also add layout elements from the [Context Menu](https://academy.bricksbuilder.io/builder/interface/context-menu/) when an existing nestable element is selected.
+
+## Layout elements
+
+The current layout elements are **Section**, **Container**, **Block**, and **Div**.
+
+Use them as structural wrappers:
+
+- **Section**: Common top-level page section.
+- **Container**: Common content-width wrapper.
+- **Block**: Generic block-level wrapper.
+- **Div**: Generic wrapper with fewer layout assumptions.
+
+Not every element can contain children. Elements that can contain children are nestable. Non-nestable elements, such as many content elements, can be moved, styled, copied, or deleted, but they cannot be used as parents.
+
+## Select and edit an element
+
+Click an element on the canvas or in the Structure panel to select it. The panel switches to the selected element and shows its controls.
+
+> **Note**
+>
+> You can edit text directly on the canvas by clicking on it and typing. Select text portions with your mouse to reveal the text formatting toolbar with styling options such as bold, italic, and links.
+
+The panel header shows the selected element label. You can rename the label to make the Structure panel easier to scan. The label is for builder organization and does not change the HTML tag or frontend text by itself.
+
+The panel can also show quick actions for hide settings, conditions, interactions, Components, and legacy Global Elements depending on the selected element and your permissions.
+
+## Content controls
+
+Content controls affect the element's markup, data, and behavior. Examples include an Image element's image source, a Button element's link, a Heading element's text, or a Form element's fields and actions.
+
+The screenshot below shows Content controls for the Image element:
+
+![Panel: Content (Tab)](https://academy.bricksbuilder.io/assets/bricks-academy-panel-content-tab-1024x576.png)
+
+<figcaption>
+
+Element Image: Content Tab
+
+</figcaption>
+
+Content controls are not only for visible text. They can also control semantic tags, attributes, query settings, form behavior, media sources, links, and dynamic data.
+
+## Style controls
+
+Style controls affect the CSS Bricks generates for the selected element, active class, active selector, active pseudo state, and active breakpoint.
+
+Style controls are commonly grouped into:
+
+- Layout
+- Typography
+- Background
+- Border / Box Shadow
+- Gradient / Overlay
+- Shape Dividers
+- Transform
+- CSS
+
+![Panel: Style (Tab)](https://academy.bricksbuilder.io/assets/bricks-academy-panel-style-tab-1024x576.png)
+
+<figcaption>
+
+Element Image: Style Tab
+
+</figcaption>
+
+Before changing styles, check which selector is active at the top of the panel:
+
+- If the element ID is active, styles apply only to that element.
+- If a global class is active, styles apply to that class everywhere it is used.
+- If a pseudo selector is active, styles apply to that selector state.
+- If a breakpoint is active, responsive style values are stored for that breakpoint.
+
+This is the most important styling habit in Bricks: select the target first, then change the control.
+
+## Classes, selectors, and responsive edits
+
+The selector area above the Content/Style tabs controls whether you are styling the element ID, a global class, or a selector/pseudo state.
+
+Use global classes for reusable styling. Use the element ID for one-off styling. Use selectors and pseudo classes when styling states or child selectors.
+
+Responsive edits are controlled by the active breakpoint in the toolbar. A control indicator can show when a control has a value at the active breakpoint or another breakpoint, depending on your builder settings.
+
+## Bulk editing
+
+You can select multiple elements with Cmd/Ctrl or Shift selection. Bulk editing is useful for shared style changes, class assignment, moving, hiding, deleting, and some context-menu actions.
+
+Bulk editing has limits:
+
+- Bricks calculates the settings shared by the selected elements.
+- If selected elements have different values, the shared control can appear empty.
+- Editing a shared setting applies that change to the selected elements.
+- If different element types are selected, Bricks shows only the Style tab.
+- Some actions are disabled in bulk mode, such as saving as a Component or Template.
+- Bulk wrapping only works when selected elements share the same parent.
+
+Use bulk editing for broad, predictable operations. For content-heavy edits, edit one element type at a time.
+
+## Hide, conditions, and interactions
+
+Element-level hide settings, conditions, and interactions are opened from the element panel header when available.
+
+- **Hide element** can hide an element in the builder, on the frontend, or both.
+- **Conditions** control whether the element should render for the current request.
+- **Interactions** attach frontend behavior to triggers and actions.
+
+These panels are permission-gated. If you cannot see them, check [Builder Access](https://academy.bricksbuilder.io/builder/interface/builder-access/).
+
+## Components and locked editing states
+
+When you select a Component instance, Bricks shows instance controls and exposed properties instead of treating every nested element as local page content. To edit the Component definition, enter Component editing mode.
+
+Some elements may also be disabled through the Element Manager or unavailable because their element type no longer exists. In those cases, Bricks shows a notice instead of normal controls.
+
+Legacy Global Elements can still appear on existing sites. Bricks marks them as deprecated and recommends Components for new reusable content.
+
+## How To Reset Controls
+
+Controls that have a stored value show a small indicator next to the control label or group label. Hover the indicator to reveal the reset action.
+
+You can reset:
+
+- A single control.
+- A control group, such as Typography.
+- Element ID styles.
+- Active class styles, if you are styling a class and it is not locked.
+
+Resetting style controls removes the stored style values for the current target. It does not remove content such as text, links, form fields, or image selections.
+
+When styling a global class, resetting styles affects that class, not only the selected element.
+
+## Copy & Paste Styles
+
+To copy and paste element styles, right-click an element on the canvas or in the Structure panel to reveal the context menu. Use **Copy Styles**, then select the target element and use **Paste Styles**.
+
+Style paste respects the copied style data and the current target:
+
+- Pasting element styles applies copied style settings to the target element.
+- Pasting global class styles applies copied class style settings when a class is the active target.
+- Shape dividers, custom CSS, and other complex style controls are handled as style data when supported.
+
+For more copy and paste actions, including classes, conditions, interactions, and attributes, use the [Context Menu](https://academy.bricksbuilder.io/builder/interface/context-menu/).
+
+## Practical editing checklist
+
+Before making a change, confirm:
+
+- The correct element is selected.
+- The correct selector is active: element ID, class, or pseudo selector.
+- The correct breakpoint is active.
+- You are editing Content for markup/data changes or Style for CSS changes.
+- You are not accidentally editing a Component definition when you meant to edit an instance.
+- You have saved before testing frontend behavior.
+
+---
+
 # Start Editing With Bricks
 
 Source: https://academy.bricksbuilder.io/builder/interface/editing-with-bricks/
@@ -786,336 +1116,6 @@ Quickly perform the most common in-builder actions through short & simple keyboa
 | `Shift (modifier)` | Hold down "Shift" to:<br />- Adjust element spacing (margin, padding) or container sizing (height, width) on the canvas in steps of 5 (custom units) or 10 (default unit = px)<br />- Directly edit new element |
 | `ESC` | Cancel/close popup (templates, documentation, etc.) |
 | `ALT/OPTION + T` | Focus on toolbar (logo). TAB through toolbar possible |
-
----
-
-# Adding & Editing Elements
-
-Source: https://academy.bricksbuilder.io/builder/interface/editing-elements/
-
-*Add elements to the canvas, edit their settings, and understand the main element editing workflow in Bricks.*
-
-Elements are the building blocks of a Bricks layout. This article explains how elements are added, selected, nested, styled, reset, copied, and edited in single-element and bulk-edit workflows.
-
-## Element mental model
-
-A Bricks layout is an element tree. Every element has:
-
-- A type, such as Section, Heading, Image, Button, or Form.
-- A unique Bricks ID.
-- Optional children if the element can contain other elements.
-- A parent, unless it is a root element.
-- Settings, which store content, styles, classes, conditions, interactions, custom attributes, and other element-level data.
-
-Root elements sit at the top of the page content. Nested elements sit inside another element. The canvas shows the visual result; the Structure panel shows the actual hierarchy.
-
-## Add an element
-
-Open the Elements panel, then drag an element onto the canvas or into the Structure panel.
-
-Where the element lands depends on the current drop target:
-
-- Drop onto a nestable element to place the new element inside it.
-- Drop between siblings to place the new element at that position.
-- Drop at root level to create a top-level element.
-
-You can also add layout elements from the [Context Menu](https://academy.bricksbuilder.io/builder/interface/context-menu/) when an existing nestable element is selected.
-
-## Layout elements
-
-The current layout elements are **Section**, **Container**, **Block**, and **Div**.
-
-Use them as structural wrappers:
-
-- **Section**: Common top-level page section.
-- **Container**: Common content-width wrapper.
-- **Block**: Generic block-level wrapper.
-- **Div**: Generic wrapper with fewer layout assumptions.
-
-Not every element can contain children. Elements that can contain children are nestable. Non-nestable elements, such as many content elements, can be moved, styled, copied, or deleted, but they cannot be used as parents.
-
-## Select and edit an element
-
-Click an element on the canvas or in the Structure panel to select it. The panel switches to the selected element and shows its controls.
-
-> **Note**
->
-> You can edit text directly on the canvas by clicking on it and typing. Select text portions with your mouse to reveal the text formatting toolbar with styling options such as bold, italic, and links.
-
-The panel header shows the selected element label. You can rename the label to make the Structure panel easier to scan. The label is for builder organization and does not change the HTML tag or frontend text by itself.
-
-The panel can also show quick actions for hide settings, conditions, interactions, Components, and legacy Global Elements depending on the selected element and your permissions.
-
-## Content controls
-
-Content controls affect the element's markup, data, and behavior. Examples include an Image element's image source, a Button element's link, a Heading element's text, or a Form element's fields and actions.
-
-The screenshot below shows Content controls for the Image element:
-
-![Panel: Content (Tab)](https://academy.bricksbuilder.io/assets/bricks-academy-panel-content-tab-1024x576.png)
-
-<figcaption>
-
-Element Image: Content Tab
-
-</figcaption>
-
-Content controls are not only for visible text. They can also control semantic tags, attributes, query settings, form behavior, media sources, links, and dynamic data.
-
-## Style controls
-
-Style controls affect the CSS Bricks generates for the selected element, active class, active selector, active pseudo state, and active breakpoint.
-
-Style controls are commonly grouped into:
-
-- Layout
-- Typography
-- Background
-- Border / Box Shadow
-- Gradient / Overlay
-- Shape Dividers
-- Transform
-- CSS
-
-![Panel: Style (Tab)](https://academy.bricksbuilder.io/assets/bricks-academy-panel-style-tab-1024x576.png)
-
-<figcaption>
-
-Element Image: Style Tab
-
-</figcaption>
-
-Before changing styles, check which selector is active at the top of the panel:
-
-- If the element ID is active, styles apply only to that element.
-- If a global class is active, styles apply to that class everywhere it is used.
-- If a pseudo selector is active, styles apply to that selector state.
-- If a breakpoint is active, responsive style values are stored for that breakpoint.
-
-This is the most important styling habit in Bricks: select the target first, then change the control.
-
-## Classes, selectors, and responsive edits
-
-The selector area above the Content/Style tabs controls whether you are styling the element ID, a global class, or a selector/pseudo state.
-
-Use global classes for reusable styling. Use the element ID for one-off styling. Use selectors and pseudo classes when styling states or child selectors.
-
-Responsive edits are controlled by the active breakpoint in the toolbar. A control indicator can show when a control has a value at the active breakpoint or another breakpoint, depending on your builder settings.
-
-## Bulk editing
-
-You can select multiple elements with Cmd/Ctrl or Shift selection. Bulk editing is useful for shared style changes, class assignment, moving, hiding, deleting, and some context-menu actions.
-
-Bulk editing has limits:
-
-- Bricks calculates the settings shared by the selected elements.
-- If selected elements have different values, the shared control can appear empty.
-- Editing a shared setting applies that change to the selected elements.
-- If different element types are selected, Bricks shows only the Style tab.
-- Some actions are disabled in bulk mode, such as saving as a Component or Template.
-- Bulk wrapping only works when selected elements share the same parent.
-
-Use bulk editing for broad, predictable operations. For content-heavy edits, edit one element type at a time.
-
-## Hide, conditions, and interactions
-
-Element-level hide settings, conditions, and interactions are opened from the element panel header when available.
-
-- **Hide element** can hide an element in the builder, on the frontend, or both.
-- **Conditions** control whether the element should render for the current request.
-- **Interactions** attach frontend behavior to triggers and actions.
-
-These panels are permission-gated. If you cannot see them, check [Builder Access](https://academy.bricksbuilder.io/builder/interface/builder-access/).
-
-## Components and locked editing states
-
-When you select a Component instance, Bricks shows instance controls and exposed properties instead of treating every nested element as local page content. To edit the Component definition, enter Component editing mode.
-
-Some elements may also be disabled through the Element Manager or unavailable because their element type no longer exists. In those cases, Bricks shows a notice instead of normal controls.
-
-Legacy Global Elements can still appear on existing sites. Bricks marks them as deprecated and recommends Components for new reusable content.
-
-## How To Reset Controls
-
-Controls that have a stored value show a small indicator next to the control label or group label. Hover the indicator to reveal the reset action.
-
-You can reset:
-
-- A single control.
-- A control group, such as Typography.
-- Element ID styles.
-- Active class styles, if you are styling a class and it is not locked.
-
-Resetting style controls removes the stored style values for the current target. It does not remove content such as text, links, form fields, or image selections.
-
-When styling a global class, resetting styles affects that class, not only the selected element.
-
-## Copy & Paste Styles
-
-To copy and paste element styles, right-click an element on the canvas or in the Structure panel to reveal the context menu. Use **Copy Styles**, then select the target element and use **Paste Styles**.
-
-Style paste respects the copied style data and the current target:
-
-- Pasting element styles applies copied style settings to the target element.
-- Pasting global class styles applies copied class style settings when a class is the active target.
-- Shape dividers, custom CSS, and other complex style controls are handled as style data when supported.
-
-For more copy and paste actions, including classes, conditions, interactions, and attributes, use the [Context Menu](https://academy.bricksbuilder.io/builder/interface/context-menu/).
-
-## Practical editing checklist
-
-Before making a change, confirm:
-
-- The correct element is selected.
-- The correct selector is active: element ID, class, or pseudo selector.
-- The correct breakpoint is active.
-- You are editing Content for markup/data changes or Style for CSS changes.
-- You are not accidentally editing a Component definition when you meant to edit an instance.
-- You have saved before testing frontend behavior.
-
----
-
-# Command Palette
-
-Source: https://academy.bricksbuilder.io/builder/interface/command-palette/
-
-*Use the Bricks Command Palette to run common actions, navigate faster, and insert element structures with keyboard-driven workflows.*
-
-Bricks 2.0 introduces the **Command Palette**, a powerful new feature that gives you instant keyboard-driven access to core functionality inside the builder.
-
-https://youtu.be/gOVNlRvsYc8
-
-## How to launch it
-
-Click the command `⌘` icon in the builder toolbar or use the `CMD/CTRL + K` keyboard shortcut to open the Command Palette, which appears as an overlay, allowing you to type and filter commands across four scopes.
-
-## Scope: Builder {#builder}
-
-Navigate to key parts of the builder from a growing list of targets such as classes, variables, templates, theme styles, settings, etc.
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-builder.png)
-
-## Scope: Post Types {#post-types}
-
-This scope lets you browse the registered post types your builder capability can access, create new posts when your user can edit posts, or duplicate existing posts.
-
-Besides "All" and "Template (Bricks)", a post type gets its own tab only when Bricks is enabled for it under **Bricks > Settings > General > Post types** and your role can access it in the builder. "All" searches every public post type.
-
-To create a post, select the post type tab, type the title, and click "Create". Bricks adds the post as a draft. Click a result to open it in the builder. `CMD/CTRL` + click opens it in a new browser tab. Posts of a type that is not enabled for Bricks open in the WordPress editor in a new tab.
-
-The scope auto-selects the post type that you are currently editing. So if you are editing a Bricks template the "Template (Bricks)" post type will be selected. If you edit a "Page", then "Page" is selected and so on.
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-post-types.png)
-
-## Scope: Elements {#elements}
-
-The "Elements" scope will dramatically speed up your workflow by allowing you to insert multiple elements with specific structure in a single action.
-
-By mastering the Emmet-like syntax, you can create complex layouts in seconds rather than minutes, making your design process significantly more efficient.
-
-With practice, this feature becomes second nature and an essential part of your Bricks Builder toolkit, especially for quickly creating common page structures and element combinations that you use frequently, which you can also save for instant access to use whenever needed.
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-elements.png)
-
-### Insert single element
-
-To insert a single element simply type its name, such as "Section", then `ARROW`-navigate to it in the elements list, and insert it by pressing `ENTER` or just click on the element name.
-
-### Insert element structure
-
-Each element starts with an **@** symbol.
-
-The element name that the command bar requires is displayed in square brackets in the results list:
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-element-name.png)
-
-<figcaption>
-
-Text link element command: `@text-link`
-
-</figcaption>
-
-### Supported operators
-
-Use the following operators to define nested structure, siblings, a multiplier, or to move back up one nesting level.
-
-| Symbol | Meaning |
-| --- | --- |
-| `@` | Bricks element name (e.g. `@heading`) |
-| `>` | Nest inside |
-| `+` | Insert element as sibling |
-| `*` | How often to insert the element |
-| `^` | Move one level up before inserting the next element |
-
-### Element structure example
-
-`@section * 2 > @heading + @text + @button`
-This creates the following structure *(two times because of the multiplier: `* 2`)*:
-
-- `Section`
- └ `Container`
-   ├ `Heading`
-   ├ `Text`
-   └ `Button`
-
-Bricks adds the Container inside every Section automatically, so you don't type `@container` after `@section`.
-
-### Quick element insertion
-
-> **Note**
->
-> After selecting an element from the search results, its name is added to your query with the `@` prefix, allowing you to quickly build complex queries:
-
-1. Type `@` to activate insertion mode
-2. Select an element (e.g., "section")
-3. Type `>` for a child element
-4. Continue building your structure
-5. Insert your element structure
-  - Click the "Insert" button that appears next to your query
-  - Press `CMD/CTRL + ENTER`
-
-If no element is selected, Bricks adds the structure at the end of the page or template.
-
-### Save element structures
-
-Instead of typing out your favorite structures by hand every time, you can save them by clicking the "Save" button next to the command bar. Your structures are stored in this browser's `localStorage`, so they are local to that browser/profile and are not synced between users or devices.
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-saved-element-structures.png)
-
-<figcaption>
-
-List of saved element structures
-
-</figcaption>
-
-To insert a saved structure, open the "Select element structure" dropdown in the Elements scope and pick it. To delete a structure, mouseover the structure item in the list, and click the "Delete" icon.
-
-## Scope: Components {#components}
-
-This scope lists the components on your site. Select a component to insert an instance of it, the same way you insert a single element. The scope is available when your role can insert components.
-
-## Keyboard shortcuts
-
-| **Keyboard shortcut** | **Action** |
-| --- | --- |
-| `CMD/CTRL + K` | Open/close the command palette |
-| `ESC` | Close the command palette |
-| `TAB > ENTER` (to enter selected scope) | Navigate between search and scopes |
-| `#` (as the first character in the search input) | Enter scope “Builder” |
-| `/` (as the first character in the search input) | Enter scope “Post Types” |
-| `+` or `@` (as the first character in the search input) | Enter scope “Elements” |
-| `*` (as the first character in the search input) | Enter scope “Components” |
-| `CMD/CTRL + ENTER` | Insert the element structure typed in scope “Elements” |
-| `/0-9` (forward slash followed by number) | Navigate to a specific post type |
-| `ARROW UP/DOWN` + ENTER | Navigate to a search result and open it |
-
-## Notes
-
-Bricks remembers your last selected scope, even after builder reload (stored in your localStorage).
-
-The "Pages" panel remains available from the builder toolbar. The Command Palette is an additional fast way to browse, create, duplicate, and open posts.
-
-The docs entry is also accessible from the "Builder" scope.
 
 ---
 

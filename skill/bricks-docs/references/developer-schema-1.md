@@ -546,19 +546,19 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/datepicker/
 
 ---
 
-# Dimensions Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/dimensions/
-
-*Unknown control type: dimensions*
-
----
-
 # Direction Control Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/controls/direction/
 
 *Value schema for direction control type*
+
+---
+
+# Dimensions Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/dimensions/
+
+*Unknown control type: dimensions*
 
 ---
 
@@ -637,6 +637,14 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/image-gallery
 
 ---
 
+# Justify Content Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/justify-content/
+
+*Value schema for justify-content control type*
+
+---
+
 # Image Control Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/controls/image/
@@ -653,14 +661,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/image/
 | `size` | string | — |
 | `full` | string | — |
 | `useDynamicData` | string | — |
-
----
-
-# Justify Content Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/justify-content/
-
-*Value schema for justify-content control type*
 
 ---
 
@@ -843,31 +843,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/text/
 
 ---
 
-# Transform Control Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/controls/transform/
-
-*Value schema for transform control type*
-
-## Properties
-
-| Property | Type | Description |
-|---|---|---|
-| `translateX` | string | — |
-| `translateY` | string | — |
-| `translateZ` | string | — |
-| `scaleX` | string | — |
-| `scaleY` | string | — |
-| `scaleZ` | string | — |
-| `rotateX` | string | — |
-| `rotateY` | string | — |
-| `rotateZ` | string | — |
-| `skewX` | string | — |
-| `skewY` | string | — |
-| `perspective` | string | — |
-
----
-
 # Textarea Control Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/controls/textarea/
@@ -896,6 +871,31 @@ Source: https://academy.bricksbuilder.io/developer/schema/controls/typography/
 | `text-transform` | string | One of: `none`, `uppercase`, `lowercase`, `capitalize` |
 | `text-decoration` | string | — |
 | `color` | any | Color value in various formats |
+
+---
+
+# Transform Control Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/controls/transform/
+
+*Value schema for transform control type*
+
+## Properties
+
+| Property | Type | Description |
+|---|---|---|
+| `translateX` | string | — |
+| `translateY` | string | — |
+| `translateZ` | string | — |
+| `scaleX` | string | — |
+| `scaleY` | string | — |
+| `scaleZ` | string | — |
+| `rotateX` | string | — |
+| `rotateY` | string | — |
+| `rotateZ` | string | — |
+| `skewX` | string | — |
+| `skewY` | string | — |
+| `perspective` | string | — |
 
 ---
 
@@ -1033,24 +1033,6 @@ Source: https://academy.bricksbuilder.io/developer/schema/global/components/
 
 ---
 
-# Global Variables Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/global/global-variables/
-
-*Documentation for Global Variables Schema in Bricks Academy.*
-
-## Item properties
-
-| Property | Type | Description |
-|---|---|---|
-| `id` | string | — |
-| `name` | string | — |
-| `value` | string | — |
-| `category` | string | — |
-| `type` | string | — |
-
----
-
 # Global Classes Schema
 
 Source: https://academy.bricksbuilder.io/developer/schema/global/global-classes/
@@ -1069,6 +1051,24 @@ Source: https://academy.bricksbuilder.io/developer/schema/global/global-classes/
 | `modified` | integer \| string | — |
 | `user_id` | integer \| string | — |
 | `deletedAt` | integer \| string | — |
+
+---
+
+# Global Variables Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/global/global-variables/
+
+*Documentation for Global Variables Schema in Bricks Academy.*
+
+## Item properties
+
+| Property | Type | Description |
+|---|---|---|
+| `id` | string | — |
+| `name` | string | — |
+| `value` | string | — |
+| `category` | string | — |
+| `type` | string | — |
 
 ---
 

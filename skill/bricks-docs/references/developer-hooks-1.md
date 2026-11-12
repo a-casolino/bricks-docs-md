@@ -95,6 +95,24 @@ add_action( 'bricks_after_footer', function() {
 
 ---
 
+# Action: bricks_after_header
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-after_header/
+
+*Runs after Bricks renders the header template.*
+
+Runs after Bricks renders the header template. Use it for output or setup that should happen directly after the site header.
+
+## Example usage
+
+```php
+add_action( 'bricks_after_header', function() {
+    echo '<div class="after-header-banner">Announcement</div>';
+} );
+```
+
+---
+
 # Action: bricks_after_site_wrapper
 
 Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-after_site_wrapper/
@@ -110,6 +128,30 @@ In the builder, Bricks uses this hook to close the `.brx-body` wrapper. On the f
 ```php
 add_action( 'bricks_after_site_wrapper', function() {
     echo '</div><!-- .before-site-wrapper -->';
+} );
+```
+
+---
+
+# Action: bricks/archive_product/before
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-archive_product-before/
+
+*Runs before the Bricks content is rendered on a WooCommerce product archive page when a Bricks template is used. This action is specific to WooCommerce archives.*
+
+Runs before the Bricks content is rendered on a WooCommerce product archive page when a Bricks template is used. This action is specific to WooCommerce archives rendered by Bricks.
+
+## Parameters
+
+- `$bricks_data` (_array_): The Bricks data for the template being rendered.
+- `$post_id` (_int_): The ID of the post/archive being rendered.
+
+## Example usage
+
+```php
+add_action( 'bricks/archive_product/before', function( $bricks_data, $post_id ) {
+    // Output custom content before the product archive
+    echo '<div class="custom-archive-header">Welcome to our shop</div>';
 } );
 ```
 
@@ -134,24 +176,6 @@ Runs after the Bricks content is rendered on a WooCommerce product archive page 
 add_action( 'bricks/archive_product/after', function( $bricks_data, $post_id ) {
     // Output custom content after the product archive
     echo '<div class="custom-archive-footer">End of product list</div>';
-} );
-```
-
----
-
-# Action: bricks_after_header
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-after_header/
-
-*Runs after Bricks renders the header template.*
-
-Runs after Bricks renders the header template. Use it for output or setup that should happen directly after the site header.
-
-## Example usage
-
-```php
-add_action( 'bricks_after_header', function() {
-    echo '<div class="after-header-banner">Announcement</div>';
 } );
 ```
 
@@ -188,30 +212,6 @@ Runs before Bricks renders the header template. Use it to output markup or run l
 ```php
 add_action( 'bricks_before_header', function() {
     echo '<div class="top-strip">Free shipping this week</div>';
-} );
-```
-
----
-
-# Action: bricks/archive_product/before
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-archive_product-before/
-
-*Runs before the Bricks content is rendered on a WooCommerce product archive page when a Bricks template is used. This action is specific to WooCommerce archives.*
-
-Runs before the Bricks content is rendered on a WooCommerce product archive page when a Bricks template is used. This action is specific to WooCommerce archives rendered by Bricks.
-
-## Parameters
-
-- `$bricks_data` (_array_): The Bricks data for the template being rendered.
-- `$post_id` (_int_): The ID of the post/archive being rendered.
-
-## Example usage
-
-```php
-add_action( 'bricks/archive_product/before', function( $bricks_data, $post_id ) {
-    // Output custom content before the product archive
-    echo '<div class="custom-archive-header">Welcome to our shop</div>';
 } );
 ```
 
@@ -333,34 +333,6 @@ add_action( 'bricks/dynamic_data/after_do_action', function( $action, $filters, 
 
 ---
 
-# Action: bricks/dynamic_data/before_do_action
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-dynamic_data-before_do_action/
-
-*Runs before the dynamic data {doaction:myhook} tag is processed. This allows you to execute code before a specific doaction tag is rendered.*
-
-Runs before the dynamic data `{do_action:my_hook}` tag is processed. This allows you to execute code before a specific `do_action` tag is rendered.
-
-## Parameters
-
-- `$action` (_string_): The action name specified in the tag (e.g. `my_hook` in `{do_action:my_hook}`).
-- `$filters` (_array_): Array of filters applied to the tag.
-- `$context` (_string_): The context in which the tag is being rendered (e.g., 'text').
-- `$post` (_WP_Post|null_): The current post object, or null.
-
-## Example usage
-
-```php
-add_action( 'bricks/dynamic_data/before_do_action', function( $action, $filters, $context, $post ) {
-    if ( $action === 'my_custom_hook' ) {
-        // Code to run before 'my_custom_hook' is processed via dynamic data
-        error_log( 'Starting processing my_custom_hook' );
-    }
-}, 10, 4 );
-```
-
----
-
 # Action: bricks/dynamic_data/tag_value_parsed
 
 Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-dynamic_data-tag_value_parsed/
@@ -434,6 +406,34 @@ add_action( 'bricks_execute_filter_index_job', function( $job ) {
 
 ---
 
+# Action: bricks/dynamic_data/before_do_action
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-dynamic_data-before_do_action/
+
+*Runs before the dynamic data {doaction:myhook} tag is processed. This allows you to execute code before a specific doaction tag is rendered.*
+
+Runs before the dynamic data `{do_action:my_hook}` tag is processed. This allows you to execute code before a specific `do_action` tag is rendered.
+
+## Parameters
+
+- `$action` (_string_): The action name specified in the tag (e.g. `my_hook` in `{do_action:my_hook}`).
+- `$filters` (_array_): Array of filters applied to the tag.
+- `$context` (_string_): The context in which the tag is being rendered (e.g., 'text').
+- `$post` (_WP_Post|null_): The current post object, or null.
+
+## Example usage
+
+```php
+add_action( 'bricks/dynamic_data/before_do_action', function( $action, $filters, $context, $post ) {
+    if ( $action === 'my_custom_hook' ) {
+        // Code to run before 'my_custom_hook' is processed via dynamic data
+        error_log( 'Starting processing my_custom_hook' );
+    }
+}, 10, 4 );
+```
+
+---
+
 # Action: bricks/filter_element/before_set_data_source_from_custom_field
 
 Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-filter_element-before_set_data_source_from_custom_field/
@@ -455,6 +455,33 @@ add_action( 'bricks/filter_element/before_set_data_source_from_custom_field', fu
     
     // Example: modify settings before processing
     // $filter_element->settings['customFieldKey'] = 'modified_key';
+} );
+```
+
+---
+
+# Action: bricks/frontend/after_render_data
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-frontend-after_render_data/
+
+*Runs after the Bricks\\Frontend::renderdata method has finished generating the HTML for a set of elements. This action is undocumented in the official docs but.*
+
+Runs after the `Bricks\Frontend::render_data` method has finished generating the HTML for a set of elements. This action is undocumented in the official docs but useful for re-adding plugin actions/filters that were removed in `bricks/frontend/before_render_data` or performing cleanup.
+
+## Parameters
+
+- `$elements` (_array_): The array of elements that were rendered.
+- `$area` (_string_): The area being rendered (e.g., 'content', 'header', 'footer').
+
+## Example usage
+
+```php
+add_action( 'bricks/frontend/after_render_data', function( $elements, $area ) {
+    // Restore actions/filters removed in before_render_data
+    // add_filter( 'the_content', 'my_plugin_content_filter' );
+
+    // Example: Log render completion
+    // error_log( "Finished rendering area: $area" );
 } );
 ```
 
@@ -500,33 +527,6 @@ add_action( 'bricks/form/custom_action', function( $form ) {
 
 ---
 
-# Action: bricks/frontend/after_render_data
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-frontend-after_render_data/
-
-*Runs after the Bricks\\Frontend::renderdata method has finished generating the HTML for a set of elements. This action is undocumented in the official docs but.*
-
-Runs after the `Bricks\Frontend::render_data` method has finished generating the HTML for a set of elements. This action is undocumented in the official docs but useful for re-adding plugin actions/filters that were removed in `bricks/frontend/before_render_data` or performing cleanup.
-
-## Parameters
-
-- `$elements` (_array_): The array of elements that were rendered.
-- `$area` (_string_): The area being rendered (e.g., 'content', 'header', 'footer').
-
-## Example usage
-
-```php
-add_action( 'bricks/frontend/after_render_data', function( $elements, $area ) {
-    // Restore actions/filters removed in before_render_data
-    // add_filter( 'the_content', 'my_plugin_content_filter' );
-
-    // Example: Log render completion
-    // error_log( "Finished rendering area: $area" );
-} );
-```
-
----
-
 # Action: bricks/frontend/before_render_data
 
 Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-frontend-before_render_data/
@@ -550,6 +550,31 @@ add_action( 'bricks/frontend/before_render_data', function( $elements, $area ) {
     // Example: Log render start
     // error_log( "Starting rendering area: $area" );
 } );
+```
+
+---
+
+# Action: bricks/get_templates/query_after
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-get_templates-query_after/
+
+*Runs after Bricks queries templates.*
+
+Runs after Bricks performs the uncached `WP_Query` inside `Templates::get_templates_query()`. Use it to restore integration context after the internal template query has run.
+
+This action does not run when Bricks returns the template query from object cache.
+
+## Parameters
+
+- `$query` (WP_Query): The template query object.
+- `$merged_args` (array): The query arguments after Bricks merges custom and default values.
+
+## Example usage
+
+```php
+add_action( 'bricks/get_templates/query_after', function( $query, $merged_args ) {
+    // Restore custom query context after template lookup.
+}, 10, 2 );
 ```
 
 ---
@@ -592,31 +617,6 @@ add_action( 'bricks/load_elements/after', function() {
 
 ---
 
-# Action: bricks/get_templates/query_after
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-get_templates-query_after/
-
-*Runs after Bricks queries templates.*
-
-Runs after Bricks performs the uncached `WP_Query` inside `Templates::get_templates_query()`. Use it to restore integration context after the internal template query has run.
-
-This action does not run when Bricks returns the template query from object cache.
-
-## Parameters
-
-- `$query` (WP_Query): The template query object.
-- `$merged_args` (array): The query arguments after Bricks merges custom and default values.
-
-## Example usage
-
-```php
-add_action( 'bricks/get_templates/query_after', function( $query, $merged_args ) {
-    // Restore custom query context after template lookup.
-}, 10, 2 );
-```
-
----
-
 # Action: bricks/load_elements/before
 
 Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-load_elements-before/
@@ -630,6 +630,24 @@ Runs before Bricks loads element classes. Use it to prepare integration state be
 ```php
 add_action( 'bricks/load_elements/before', function() {
     // Prepare state before Bricks loads element classes.
+} );
+```
+
+---
+
+# Action: bricks_meta_tags
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-meta_tags/
+
+*Runs in the document head before wp_head().*
+
+Runs in the document head before `wp_head()`. Use it to output meta tags that should be controlled through the Bricks header template flow.
+
+## Example usage
+
+```php
+add_action( 'bricks_meta_tags', function() {
+    echo '<meta name="theme-color" content="#111111">';
 } );
 ```
 
@@ -661,24 +679,6 @@ add_action( 'bricks/query/query_api_response', function( $response, $element_id 
     // $data = $response;
     // Do something with $data
 }, 10, 2 );
-```
-
----
-
-# Action: bricks_meta_tags
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-meta_tags/
-
-*Runs in the document head before wp_head().*
-
-Runs in the document head before `wp_head()`. Use it to output meta tags that should be controlled through the Bricks header template flow.
-
-## Example usage
-
-```php
-add_action( 'bricks_meta_tags', function() {
-    echo '<meta name="theme-color" content="#111111">';
-} );
 ```
 
 ---
@@ -969,26 +969,26 @@ add_filter( 'bricks/acf/google_map/show_as_address', function( $show_as_address,
 
 ---
 
-# Filter: bricks/acf/google_map/text_output
+# Filter: bricks/acf/taxonomy/show_as_link
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-acf-google_map-text_output/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-acf-taxonomy-show_as_link/
 
-*Filters the final HTML output of the ACF Google Map field dynamic data. This runs after the address parts or coordinates have been formatted.*
+*Determines whether the ACF Taxonomy field dynamic data output should be rendered as links to the term archives.*
 
-Filters the final HTML output of the ACF Google Map field dynamic data. This runs after the address parts or coordinates have been formatted.
+Determines whether the ACF Taxonomy field dynamic data output should be rendered as links to the term archives.
 
 ## Parameters
 
-- `$output` (*string*): The rendered HTML output string.
-- `$value` (*array*): The raw value of the ACF Google Map field.
+- `$show_as_link` (*bool*): Whether to render as links. Defaults to `true`.
+- `$value` (*mixed*): The raw value of the ACF Taxonomy field.
 - `$field` (*array*): The ACF field settings.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/acf/google_map/text_output', function( $output, $value, $field ) {
-    // Example: Strip HTML tags to get plain text
-    return wp_strip_all_tags( $output );
+add_filter( 'bricks/acf/taxonomy/show_as_link', function( $show_as_link, $value, $field ) {
+    // Disable links for taxonomy terms
+    return false;
 }, 10, 3 );
 ```
 
@@ -1023,26 +1023,26 @@ add_filter( 'bricks/active_templates', function( $active_templates, $post_id, $c
 
 ---
 
-# Filter: bricks/acf/taxonomy/show_as_link
+# Filter: bricks/acf/google_map/text_output
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-acf-taxonomy-show_as_link/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-acf-google_map-text_output/
 
-*Determines whether the ACF Taxonomy field dynamic data output should be rendered as links to the term archives.*
+*Filters the final HTML output of the ACF Google Map field dynamic data. This runs after the address parts or coordinates have been formatted.*
 
-Determines whether the ACF Taxonomy field dynamic data output should be rendered as links to the term archives.
+Filters the final HTML output of the ACF Google Map field dynamic data. This runs after the address parts or coordinates have been formatted.
 
 ## Parameters
 
-- `$show_as_link` (*bool*): Whether to render as links. Defaults to `true`.
-- `$value` (*mixed*): The raw value of the ACF Taxonomy field.
+- `$output` (*string*): The rendered HTML output string.
+- `$value` (*array*): The raw value of the ACF Google Map field.
 - `$field` (*array*): The ACF field settings.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/acf/taxonomy/show_as_link', function( $show_as_link, $value, $field ) {
-    // Disable links for taxonomy terms
-    return false;
+add_filter( 'bricks/acf/google_map/text_output', function( $output, $value, $field ) {
+    // Example: Strip HTML tags to get plain text
+    return wp_strip_all_tags( $output );
 }, 10, 3 );
 ```
 
@@ -1138,28 +1138,6 @@ add_filter( 'bricks/api/get_templates_data', function( $templates_data ) {
 
 ---
 
-# Filter: bricks/breadcrumbs/home_label
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-breadcrumbs-home_label/
-
-*Filters the label text used for the \"Home\" link in the Breadcrumbs element.*
-
-Filters the label text used for the "Home" link in the Breadcrumbs element.
-
-## Parameters
-
-- `$home_label` (*string*): The home label text (may include HTML if an icon is used).
-
-## Example usage
-
-```php
-add_filter( 'bricks/breadcrumbs/home_label', function( $home_label ) {
-    return 'Start';
-} );
-```
-
----
-
 # Filter: bricks/breadcrumbs/items
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-breadcrumbs-items/
@@ -1186,6 +1164,28 @@ add_filter( 'bricks/breadcrumbs/items', function( $breadcrumb_items ) {
 
 ---
 
+# Filter: bricks/breadcrumbs/home_label
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-breadcrumbs-home_label/
+
+*Filters the label text used for the \"Home\" link in the Breadcrumbs element.*
+
+Filters the label text used for the "Home" link in the Breadcrumbs element.
+
+## Parameters
+
+- `$home_label` (*string*): The home label text (may include HTML if an icon is used).
+
+## Example usage
+
+```php
+add_filter( 'bricks/breadcrumbs/home_label', function( $home_label ) {
+    return 'Start';
+} );
+```
+
+---
+
 # Filter: bricks/breadcrumbs/separator
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-breadcrumbs-separator/
@@ -1204,6 +1204,38 @@ Filters the separator HTML displayed between items in the Breadcrumbs element.
 add_filter( 'bricks/breadcrumbs/separator', function( $separator ) {
     // Change separator to a custom character
     return '<span class="bricks-breadcrumbs-separator"> &raquo; </span>';
+} );
+```
+
+---
+
+# Filter: bricks/builder/dynamic_wrapper
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-builder-dynamic_wrapper/
+
+*Filters the dynamic wrappers available in the Bricks builder. Dynamic wrappers are used to inject content before or after specific hooks in the builder canvas.*
+
+Filters the dynamic wrappers available in the Bricks builder. Dynamic wrappers are used to inject content before or after specific hooks in the builder canvas (e.g., WooCommerce hooks).
+
+## Parameters
+
+- `$dynamic_wrapper` (*array*): Array of dynamic wrappers.
+
+## Example usage
+
+```php
+add_filter( 'bricks/builder/dynamic_wrapper', function( $dynamic_wrapper ) {
+    // Add a custom dynamic wrapper
+    $dynamic_wrapper[] = [
+        'name' => 'my_custom_wrapper',
+        'title' => esc_html__( 'My Custom Wrapper', 'my-plugin' ),
+        'hooks' => [
+            'before' => 'my_custom_action_before',
+            'after'  => 'my_custom_action_after',
+        ],
+    ];
+
+    return $dynamic_wrapper;
 } );
 ```
 
@@ -1258,38 +1290,6 @@ add_filter( 'bricks/builder/data_post_id', function( $post_id ) {
     }
 
     return $post_id;
-} );
-```
-
----
-
-# Filter: bricks/builder/dynamic_wrapper
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-builder-dynamic_wrapper/
-
-*Filters the dynamic wrappers available in the Bricks builder. Dynamic wrappers are used to inject content before or after specific hooks in the builder canvas.*
-
-Filters the dynamic wrappers available in the Bricks builder. Dynamic wrappers are used to inject content before or after specific hooks in the builder canvas (e.g., WooCommerce hooks).
-
-## Parameters
-
-- `$dynamic_wrapper` (*array*): Array of dynamic wrappers.
-
-## Example usage
-
-```php
-add_filter( 'bricks/builder/dynamic_wrapper', function( $dynamic_wrapper ) {
-    // Add a custom dynamic wrapper
-    $dynamic_wrapper[] = [
-        'name' => 'my_custom_wrapper',
-        'title' => esc_html__( 'My Custom Wrapper', 'my-plugin' ),
-        'hooks' => [
-            'before' => 'my_custom_action_before',
-            'after'  => 'my_custom_action_after',
-        ],
-    ];
-
-    return $dynamic_wrapper;
 } );
 ```
 
@@ -1456,6 +1456,30 @@ add_filter( 'bricks/cmb2/checkbox_value', function( $value, $original_value, $fi
 
 ---
 
+# Filter: bricks/code/echo_everywhere
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-code-echo_everywhere/
+
+*Determines whether the {echo:} dynamic data tag should be parsed recursively if it appears within the output of another dynamic data tag. By default, this is.*
+
+Determines whether the `{echo:}` dynamic data tag should be parsed recursively if it appears within the output of another dynamic data tag. By default, this is disabled for security and performance reasons.
+
+## Parameters
+
+- `$echo_everywhere` (*bool*): Whether to allow recursive parsing of `{echo:}` tags. Default is `false`.
+
+## Example usage
+
+```php
+add_filter( 'bricks/code/echo_everywhere', function( $echo_everywhere ) {
+    // Enable recursive parsing of {echo:} tags
+    // WARNING: Use with caution as this may lead to infinite loops or security vulnerabilities
+    return true;
+} );
+```
+
+---
+
 # Filter: bricks/combined_search/post_ids
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-combined_search-post_ids/
@@ -1485,30 +1509,6 @@ add_filter( 'bricks/combined_search/post_ids', function( $post_ids, $search_fiel
 
     return $post_ids;
 }, 10, 6 );
-```
-
----
-
-# Filter: bricks/code/echo_everywhere
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-code-echo_everywhere/
-
-*Determines whether the {echo:} dynamic data tag should be parsed recursively if it appears within the output of another dynamic data tag. By default, this is.*
-
-Determines whether the `{echo:}` dynamic data tag should be parsed recursively if it appears within the output of another dynamic data tag. By default, this is disabled for security and performance reasons.
-
-## Parameters
-
-- `$echo_everywhere` (*bool*): Whether to allow recursive parsing of `{echo:}` tags. Default is `false`.
-
-## Example usage
-
-```php
-add_filter( 'bricks/code/echo_everywhere', function( $echo_everywhere ) {
-    // Enable recursive parsing of {echo:} tags
-    // WARNING: Use with caution as this may lead to infinite loops or security vulnerabilities
-    return true;
-} );
 ```
 
 ---
@@ -1754,6 +1754,31 @@ add_filter( 'bricks/custom_fonts/mime_types', function( $mime_types ) {
 
 ---
 
+# Filter: bricks/database/bricks_get_all_templates_by_type_args
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-database-bricks_get_all_templates_by_type_args/
+
+*Filters the query arguments used to retrieve all Bricks templates. This is primarily used by multilingual plugins (like WPML and Polylang) to ensure only.*
+
+Filters the query arguments used to retrieve all Bricks templates. This is primarily used by multilingual plugins (like WPML and Polylang) to ensure only templates in the current language are fetched.
+
+## Parameters
+
+- `$args` (*array*): Array of arguments passed to `get_posts()`.
+
+## Example usage
+
+```php
+add_filter( 'bricks/database/bricks_get_all_templates_by_type_args', function( $args ) {
+    // Example: Include private templates
+    $args['post_status'] = [ 'publish', 'private' ];
+
+    return $args;
+} );
+```
+
+---
+
 # Filter: bricks/database/content_type
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-database-content_type/
@@ -1778,33 +1803,6 @@ add_filter( 'bricks/database/content_type', function( $content_type, $post_id ) 
 
     return $content_type;
 }, 10, 2 );
-```
-
----
-
-# Filter: bricks/database/get_all_templates_cache_key
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-database-get_all_templates_cache_key/
-
-*Filters the cache key used to store and retrieve the list of all Bricks templates. This allows plugins to create unique cache entries based on context (e.g.,.*
-
-Filters the cache key used to store and retrieve the list of all Bricks templates. This allows plugins to create unique cache entries based on context (e.g., current language).
-
-## Parameters
-
-- `$cache_key` (*string*): The default cache key (e.g., `all_templates_{timestamp}`).
-
-## Example usage
-
-```php
-add_filter( 'bricks/database/get_all_templates_cache_key', function( $cache_key ) {
-    // Example: Append current language code to cache key
-    if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
-        $cache_key .= '_' . ICL_LANGUAGE_CODE;
-    }
-
-    return $cache_key;
-} );
 ```
 
 ---
@@ -1834,26 +1832,28 @@ add_filter( 'bricks/dynamic_data/allowed_keys', function( $allowed_keys ) {
 
 ---
 
-# Filter: bricks/database/bricks_get_all_templates_by_type_args
+# Filter: bricks/database/get_all_templates_cache_key
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-database-bricks_get_all_templates_by_type_args/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-database-get_all_templates_cache_key/
 
-*Filters the query arguments used to retrieve all Bricks templates. This is primarily used by multilingual plugins (like WPML and Polylang) to ensure only.*
+*Filters the cache key used to store and retrieve the list of all Bricks templates. This allows plugins to create unique cache entries based on context (e.g.,.*
 
-Filters the query arguments used to retrieve all Bricks templates. This is primarily used by multilingual plugins (like WPML and Polylang) to ensure only templates in the current language are fetched.
+Filters the cache key used to store and retrieve the list of all Bricks templates. This allows plugins to create unique cache entries based on context (e.g., current language).
 
 ## Parameters
 
-- `$args` (*array*): Array of arguments passed to `get_posts()`.
+- `$cache_key` (*string*): The default cache key (e.g., `all_templates_{timestamp}`).
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/database/bricks_get_all_templates_by_type_args', function( $args ) {
-    // Example: Include private templates
-    $args['post_status'] = [ 'publish', 'private' ];
+add_filter( 'bricks/database/get_all_templates_cache_key', function( $cache_key ) {
+    // Example: Append current language code to cache key
+    if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
+        $cache_key .= '_' . ICL_LANGUAGE_CODE;
+    }
 
-    return $args;
+    return $cache_key;
 } );
 ```
 
@@ -2259,30 +2259,24 @@ add_filter( 'bricks/element/form/honeypot/result', function( $result, $field_id,
 
 ---
 
-# Filter: bricks/element/maybe_set_aria_current_page
+# Filter: bricks/elements/nav_menu/menus
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-element-maybe_set_aria_current_page/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-elements-nav_menu-menus/
 
-*Filters the boolean value that determines whether to add the aria-current=\"page\" attribute to a link element. This is used to indicate that a link points to the.*
+*Filters the nav menus shown in the Nav Menu element while in the builder.*
 
-Filters the boolean value that determines whether to add the `aria-current="page"` attribute to a link element. This is used to indicate that a link points to the currently active page.
+Filters the nav menus shown in the Nav Menu element while in the builder. Return an array of menu objects to override the menus Bricks loads from WordPress.
 
 ## Parameters
 
-- `$set_aria_current` (*bool*): Whether the link matches the current page.
-- `$url` (*string*): The URL of the link being checked.
+- `$menus` (array|null): Menus to use in the builder. Return null to let Bricks fall back to wp_get_nav_menus().
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/element/maybe_set_aria_current_page', function( $set_aria_current, $url ) {
-    // Example: Consider a link active if it matches a specific query parameter
-    if ( isset( $_GET['section'] ) && strpos( $url, 'section=' . $_GET['section'] ) !== false ) {
-        return true;
-    }
-
-    return $set_aria_current;
-}, 10, 2 );
+add_filter( 'bricks/elements/nav_menu/menus', function( $menus ) {
+    return wp_get_nav_menus();
+} );
 ```
 
 ---
@@ -2308,28 +2302,6 @@ add_filter( 'bricks/elements/slider/scripts', function( $scripts ) {
     $scripts[] = 'my-custom-slider-script';
 
     return $scripts;
-} );
-```
-
----
-
-# Filter: bricks/elements/nav_menu/menus
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-elements-nav_menu-menus/
-
-*Filters the nav menus shown in the Nav Menu element while in the builder.*
-
-Filters the nav menus shown in the Nav Menu element while in the builder. Return an array of menu objects to override the menus Bricks loads from WordPress.
-
-## Parameters
-
-- `$menus` (array|null): Menus to use in the builder. Return null to let Bricks fall back to wp_get_nav_menus().
-
-## Example usage
-
-```php
-add_filter( 'bricks/elements/nav_menu/menus', function( $menus ) {
-    return wp_get_nav_menus();
 } );
 ```
 
@@ -2384,30 +2356,29 @@ add_filter( 'bricks/export_template_args', function( $args, $post_id ) {
 
 ---
 
-# Filter: bricks/filter-element/datepicker_options
+# Filter: bricks/element/maybe_set_aria_current_page
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter-element-datepicker_options/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-element-maybe_set_aria_current_page/
 
-*Filters the Flatpickr options used by the Filter: Datepicker element. This allows you to customize the behavior of the date picker within query filters.*
+*Filters the boolean value that determines whether to add the aria-current=\"page\" attribute to a link element. This is used to indicate that a link points to the.*
 
-Filters the Flatpickr options used by the Filter: Datepicker element. This allows you to customize the behavior of the date picker within query filters.
+Filters the boolean value that determines whether to add the `aria-current="page"` attribute to a link element. This is used to indicate that a link points to the currently active page.
 
 ## Parameters
 
-- `$datepicker_options` (*array*): Array of Flatpickr options.
-- `$element` (*object*): The Filter: Datepicker element instance.
+- `$set_aria_current` (*bool*): Whether the link matches the current page.
+- `$url` (*string*): The URL of the link being checked.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/filter-element/datepicker_options', function( $datepicker_options, $element ) {
-    // Example: Change the date format
-    $datepicker_options['dateFormat'] = 'Y-m-d';
+add_filter( 'bricks/element/maybe_set_aria_current_page', function( $set_aria_current, $url ) {
+    // Example: Consider a link active if it matches a specific query parameter
+    if ( isset( $_GET['section'] ) && strpos( $url, 'section=' . $_GET['section'] ) !== false ) {
+        return true;
+    }
 
-    // Example: Disable specific dates
-    $datepicker_options['disable'] = [ '2023-12-25', '2024-01-01' ];
-
-    return $datepicker_options;
+    return $set_aria_current;
 }, 10, 2 );
 ```
 
@@ -2434,6 +2405,35 @@ add_filter( 'bricks/filter/taxonomy_args', function( $args, $element ) {
     $args['exclude'] = [ 1, 2, 3 ];
 
     return $args;
+}, 10, 2 );
+```
+
+---
+
+# Filter: bricks/filter-element/datepicker_options
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter-element-datepicker_options/
+
+*Filters the Flatpickr options used by the Filter: Datepicker element. This allows you to customize the behavior of the date picker within query filters.*
+
+Filters the Flatpickr options used by the Filter: Datepicker element. This allows you to customize the behavior of the date picker within query filters.
+
+## Parameters
+
+- `$datepicker_options` (*array*): Array of Flatpickr options.
+- `$element` (*object*): The Filter: Datepicker element instance.
+
+## Example usage
+
+```php
+add_filter( 'bricks/filter-element/datepicker_options', function( $datepicker_options, $element ) {
+    // Example: Change the date format
+    $datepicker_options['dateFormat'] = 'Y-m-d';
+
+    // Example: Disable specific dates
+    $datepicker_options['disable'] = [ '2023-12-25', '2024-01-01' ];
+
+    return $datepicker_options;
 }, 10, 2 );
 ```
 
@@ -2592,6 +2592,34 @@ add_filter( 'bricks/filter_element/data_source_wcField', function( $data_source,
 
 ---
 
+# Filter: bricks/filter_element/datepicker_db_date_format
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter_element-datepicker_db_date_format/
+
+*Filters the database date format used by a Datepicker filter element.*
+
+Filters the database date format used by a Datepicker filter element. This is intended for custom field providers that store dates in a different format.
+
+## Parameters
+
+- `$db_format` (string): The database date format Bricks will use.
+- `$provider` (string): The active custom field provider.
+- `$element` (object): The Datepicker filter element instance.
+
+## Example usage
+
+```php
+add_filter( 'bricks/filter_element/datepicker_db_date_format', function( $db_format, $provider, $element ) {
+    if ( $provider === 'my_provider' ) {
+        return 'Ymd';
+    }
+
+    return $db_format;
+}, 10, 3 );
+```
+
+---
+
 # Filter: bricks/filter_element/datepicker_date_format
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter_element-datepicker_date_format/
@@ -2616,34 +2644,6 @@ add_filter( 'bricks/filter_element/datepicker_date_format', function( $date_form
     }
 
     return $date_format;
-}, 10, 3 );
-```
-
----
-
-# Filter: bricks/filter_element/datepicker_db_date_format
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter_element-datepicker_db_date_format/
-
-*Filters the database date format used by a Datepicker filter element.*
-
-Filters the database date format used by a Datepicker filter element. This is intended for custom field providers that store dates in a different format.
-
-## Parameters
-
-- `$db_format` (string): The database date format Bricks will use.
-- `$provider` (string): The active custom field provider.
-- `$element` (object): The Datepicker filter element instance.
-
-## Example usage
-
-```php
-add_filter( 'bricks/filter_element/datepicker_db_date_format', function( $db_format, $provider, $element ) {
-    if ( $provider === 'my_provider' ) {
-        return 'Ymd';
-    }
-
-    return $db_format;
 }, 10, 3 );
 ```
 

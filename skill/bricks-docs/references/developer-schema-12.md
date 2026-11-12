@@ -992,16 +992,16 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# Shipping Options Schema
+# WooCommerce Template Hook Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-shipping-options/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-template-hook/
 
-*Schema for Bricks Shipping options element*
+*Schema for Bricks WooCommerce Template Hook element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-shipping-options |
-| `category` | woocommerce_checkout |
+| `name` | woocommerce-template-hook |
+| `category` | woocommerce |
 | `tag` | div |
 | `nestable` | false |
 
@@ -1009,37 +1009,10 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-s
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `showPackageTitle` | checkbox | Show package title | — |
-| `emptyMessage` | text | Empty message | — |
-| `controlFlexDirection` | direction | Direction | `flex-direction` on `.brx-shipping-options__control` |
-| `controlJustifyContent` | justify-content | Justify content | `justify-content` on `.brx-shipping-options__control` |
-| `controlAlignItems` | align-items | Align items | `align-items` on `.brx-shipping-options__control` |
-| `controlGap` | number | Gap | `gap` on `.brx-shipping-options__control` |
-| `packageTitleTypography` | typography | Title typography | `font` on `.brx-shipping-options__package-title` |
-| `packageTitleColor` | color | Title color | `color` on `.brx-shipping-options__package-title` |
-| `optionGap` | number | Gap | `gap` on `.brx-shipping-options__label-group` |
-| `optionHoverBackgroundColor` | color | Hover background color | `background-color` on `.brx-shipping-options__option:hover` |
-| `optionCheckedBackgroundColor` | color | Background color | `background-color` |
-| `optionCheckedBorder` | border | Border | `border` |
-| `optionCheckedBoxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `labelTypography` | typography | Typography | `font` on `.brx-shipping-options__label` |
-| `labelColor` | color | Color | `color` on `.brx-shipping-options__label` |
-| `labelCheckedTypography` | typography | Typography | `font` |
-| `labelCheckedColor` | color | Color | `color` |
-| `secondaryTypography` | typography | Typography | `font` on `.brx-shipping-options__secondary-label` |
-| `secondaryColor` | color | Color | `color` on `.brx-shipping-options__secondary-label` |
-| `secondaryCheckedTypography` | typography | Typography | `font` |
-| `secondaryCheckedColor` | color | Color | `color` |
-| `packageMargin` | spacing | Margin | `margin` on `.brx-shipping-options__package` |
-| `packagePadding` | spacing | Padding | `padding` on `.brx-shipping-options__package` |
-| `packageBackgroundColor` | color | Background color | `background-color` on `.brx-shipping-options__package` |
-| `packageBorder` | border | Border | `border` on `.brx-shipping-options__package` |
-| `packageBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.brx-shipping-options__package` |
-| `optionMargin` | spacing | Margin | `margin` on `.brx-shipping-options__option` |
-| `optionPadding` | spacing | Padding | `padding` on `.brx-shipping-options__option` |
-| `optionBackgroundColor` | color | Background color | `background-color` on `.brx-shipping-options__option` |
-| `optionBorder` | border | Border | `border` on `.brx-shipping-options__option` |
-| `optionBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.brx-shipping-options__option` |
+| `template` | select | Template | — |
+| `singleProductHook` | select | Hook | — |
+| `shopHook` | select | Hook | — |
+| `showTips` | checkbox | Show tips | — |
 
 ## Inherited CSS controls
 
@@ -1115,16 +1088,16 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 ---
 
-# WooCommerce Template Hook Schema
+# Shipping Options Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-template-hook/
+Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-shipping-options/
 
-*Schema for Bricks WooCommerce Template Hook element*
+*Schema for Bricks Shipping options element*
 
 | Property | Value |
 |---|---|
-| `name` | woocommerce-template-hook |
-| `category` | woocommerce |
+| `name` | woocommerce-shipping-options |
+| `category` | woocommerce_checkout |
 | `tag` | div |
 | `nestable` | false |
 
@@ -1132,10 +1105,37 @@ Source: https://academy.bricksbuilder.io/developer/schema/elements/woocommerce-t
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `template` | select | Template | — |
-| `singleProductHook` | select | Hook | — |
-| `shopHook` | select | Hook | — |
-| `showTips` | checkbox | Show tips | — |
+| `showPackageTitle` | checkbox | Show package title | — |
+| `emptyMessage` | text | Empty message | — |
+| `controlFlexDirection` | direction | Direction | `flex-direction` on `.brx-shipping-options__control` |
+| `controlJustifyContent` | justify-content | Justify content | `justify-content` on `.brx-shipping-options__control` |
+| `controlAlignItems` | align-items | Align items | `align-items` on `.brx-shipping-options__control` |
+| `controlGap` | number | Gap | `gap` on `.brx-shipping-options__control` |
+| `packageTitleTypography` | typography | Title typography | `font` on `.brx-shipping-options__package-title` |
+| `packageTitleColor` | color | Title color | `color` on `.brx-shipping-options__package-title` |
+| `optionGap` | number | Gap | `gap` on `.brx-shipping-options__label-group` |
+| `optionHoverBackgroundColor` | color | Hover background color | `background-color` on `.brx-shipping-options__option:hover` |
+| `optionCheckedBackgroundColor` | color | Background color | `background-color` |
+| `optionCheckedBorder` | border | Border | `border` |
+| `optionCheckedBoxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `labelTypography` | typography | Typography | `font` on `.brx-shipping-options__label` |
+| `labelColor` | color | Color | `color` on `.brx-shipping-options__label` |
+| `labelCheckedTypography` | typography | Typography | `font` |
+| `labelCheckedColor` | color | Color | `color` |
+| `secondaryTypography` | typography | Typography | `font` on `.brx-shipping-options__secondary-label` |
+| `secondaryColor` | color | Color | `color` on `.brx-shipping-options__secondary-label` |
+| `secondaryCheckedTypography` | typography | Typography | `font` |
+| `secondaryCheckedColor` | color | Color | `color` |
+| `packageMargin` | spacing | Margin | `margin` on `.brx-shipping-options__package` |
+| `packagePadding` | spacing | Padding | `padding` on `.brx-shipping-options__package` |
+| `packageBackgroundColor` | color | Background color | `background-color` on `.brx-shipping-options__package` |
+| `packageBorder` | border | Border | `border` on `.brx-shipping-options__package` |
+| `packageBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.brx-shipping-options__package` |
+| `optionMargin` | spacing | Margin | `margin` on `.brx-shipping-options__option` |
+| `optionPadding` | spacing | Padding | `padding` on `.brx-shipping-options__option` |
+| `optionBackgroundColor` | color | Background color | `background-color` on `.brx-shipping-options__option` |
+| `optionBorder` | border | Border | `border` on `.brx-shipping-options__option` |
+| `optionBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.brx-shipping-options__option` |
 
 ## Inherited CSS controls
 

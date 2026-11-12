@@ -1050,24 +1050,6 @@ class Prefix_Element_Info extends \Bricks\Element {
 
 ---
 
-# Controls
-
-Source: https://academy.bricksbuilder.io/developer/controls/
-
-*Reference the Bricks controls used in custom elements and builder extensions, from layout and typography controls to media, code, query, and repeater controls.*
-
-Bricks controls define how users edit custom element settings inside the builder. This section helps you understand the available control types, the data they store, and when to use each one.
-
-## Common control groups
-
-- [Element Controls](https://academy.bricksbuilder.io/developer/controls/element-controls/) for the overall structure of element settings
-- [Content Controls](https://academy.bricksbuilder.io/developer/controls/text-control/) for text, textarea, editor, select, and checkbox inputs
-- [Styling Controls](https://academy.bricksbuilder.io/developer/controls/color-control/) for visual styling fields such as color, typography, border, and shadow
-- [Media Controls](https://academy.bricksbuilder.io/developer/controls/image-control/) for images, galleries, icons, SVG, and audio
-- [Advanced Controls](https://academy.bricksbuilder.io/developer/controls/query-control/) for query, repeater, code, filters, and apply workflows
-
----
-
 # Justify Content Control (Flexbox)
 
 Source: https://academy.bricksbuilder.io/developer/controls/justify-content-control/
@@ -1102,6 +1084,24 @@ public function set_controls() {
   ];
 }
 ```
+
+---
+
+# Controls
+
+Source: https://academy.bricksbuilder.io/developer/controls/
+
+*Reference the Bricks controls used in custom elements and builder extensions, from layout and typography controls to media, code, query, and repeater controls.*
+
+Bricks controls define how users edit custom element settings inside the builder. This section helps you understand the available control types, the data they store, and when to use each one.
+
+## Common control groups
+
+- [Element Controls](https://academy.bricksbuilder.io/developer/controls/element-controls/) for the overall structure of element settings
+- [Content Controls](https://academy.bricksbuilder.io/developer/controls/text-control/) for text, textarea, editor, select, and checkbox inputs
+- [Styling Controls](https://academy.bricksbuilder.io/developer/controls/color-control/) for visual styling fields such as color, typography, border, and shadow
+- [Media Controls](https://academy.bricksbuilder.io/developer/controls/image-control/) for images, galleries, icons, SVG, and audio
+- [Advanced Controls](https://academy.bricksbuilder.io/developer/controls/query-control/) for query, repeater, code, filters, and apply workflows
 
 ---
 
@@ -1385,48 +1385,6 @@ class Prefix_Element_Posts extends \Bricks\Element {
 
 ---
 
-# SVG Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/svg-control/
-
-*Reference for the Bricks SVG control, including its options, CSS mapping, and usage in custom elements.*
-
-The SVG control lets you select an SVG (Scalable Vector Graphic) file from the media library. The selected SVG returns an array with the following keys:
-
-- `id` (media library item ID)
-- `filename`
-- `url`
-
-We recommend rendering the SVG inline as shown in the code example below. This way you can easily customize it via CSS.
-
-```php
-class Prefix_Element_Svg extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleSvg'] = [
-      'tab' => 'content',
-      'type' => 'svg',
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    if ( isset( $this->settings['exampleSvg']['url'] ) ) {
-      echo file_get_contents( esc_url( $this->settings['exampleSvg']['url'] ) );
-    } else {
-      esc_html_e( 'No SVG selected.', 'bricks' );
-    }
-  }
-}
-```
-
-### Resources
-
-- [https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg)
-- [https://css-tricks.com/using-svg/](https://css-tricks.com/using-svg/)
-
----
-
 # Slider Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/slider-control/
@@ -1478,6 +1436,48 @@ class Prefix_Element_Slider extends \Bricks\Element {
 ### Resources
 
 - [https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range)
+
+---
+
+# SVG Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/svg-control/
+
+*Reference for the Bricks SVG control, including its options, CSS mapping, and usage in custom elements.*
+
+The SVG control lets you select an SVG (Scalable Vector Graphic) file from the media library. The selected SVG returns an array with the following keys:
+
+- `id` (media library item ID)
+- `filename`
+- `url`
+
+We recommend rendering the SVG inline as shown in the code example below. This way you can easily customize it via CSS.
+
+```php
+class Prefix_Element_Svg extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleSvg'] = [
+      'tab' => 'content',
+      'type' => 'svg',
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    if ( isset( $this->settings['exampleSvg']['url'] ) ) {
+      echo file_get_contents( esc_url( $this->settings['exampleSvg']['url'] ) );
+    } else {
+      esc_html_e( 'No SVG selected.', 'bricks' );
+    }
+  }
+}
+```
+
+### Resources
+
+- [https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg)
+- [https://css-tricks.com/using-svg/](https://css-tricks.com/using-svg/)
 
 ---
 

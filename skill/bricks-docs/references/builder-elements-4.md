@@ -1,117 +1,3 @@
-# Post table of contents
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/post-toc/
-
-*Generates a table of contents based on the headings in the post content.*
-
-Generates a table of contents based on the headings in the post content.
-
-## Settings
-
-- **Content** (select) - Choose the content to generate table of contents from. Options: post_content, post_excerpt, custom_content. Default: post_content.
-- **Heading selectors** (text) - CSS selectors for headings to include. Default: "h1,h2,h3,h4,h5,h6".
-- **List style** (select) - Style for the list items. Options: none, disc, circle, square, decimal, decimal-leading-zero, lower-roman, upper-roman, lower-greek, lower-latin, upper-latin, armenian, georgian, lower-alpha, upper-alpha. Default: none.
-- **Item typography** (typography) - Typography settings for list items.
-- **Item padding** (dimensions) - Padding for list items.
-- **Item background color** (color) - Background color for list items.
-- **Item border** (border) - Border settings for list items.
-- **Active item typography** (typography) - Typography settings for active list items.
-- **Active item background color** (color) - Background color for active list items.
-- **Active item border** (border) - Border settings for active list items.
-
-> **Developer reference**
->
-> See the [Table Of Contents Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-toc/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Related posts
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/related-posts/
-
-*Displays posts related to the current post based on shared taxonomies.*
-
-Displays posts related to the current post based on shared taxonomies.
-
-## Settings
-
-### Title
-- **Title** (text) - Section title text.
-- **HTML tag** (select) - HTML tag for title. Options: h2, h3, h4, h5, h6. Default: h2.
-- **Margin** (spacing) - Title margin.
-- **Typography** (typography) - Title typography.
-
-### Query
-- **Post type** (select) - Post type to query.
-- **Max. related posts** (number) - Maximum number of related posts. Default: 3.
-- **Order** (select) - Sort order. Default: Descending.
-- **Order by** (select) - Sort criteria. Default: Random.
-- **Common taxonomies** (select) - Taxonomies posts must share. Default: category, post_tag.
-
-### Layout
-- **Gap** (number) - Spacing between posts. Default: 30px.
-- **Posts per row** (number) - Number of posts per row. Default: 3.
-
-### Fields
-- **Content** (repeater) - Dynamic data fields to display. Default includes: `{post_title:link}`, `{post_date}`, `{post_excerpt:20}`.
-  - **Dynamic data** (text) - Dynamic data expression.
-  - **HTML tag** (select) - HTML tag for field. Default: div.
-  - **Margin** (spacing) - Field margin.
-  - **Padding** (spacing) - Field padding.
-  - **Background color** (color) - Field background color.
-  - **Border** (border) - Field border.
-  - **Typography** (typography) - Field typography.
-
-### Image
-- **Disable** (checkbox) - Hide post images.
-- **Aspect ratio** (text) - Image aspect ratio.
-- **Image size** (select) - WordPress image size.
-- **Position** (select) - Image position. Options: Top, Right, Bottom, Left. Default: Top.
-- **Height** (number) - Image height.
-- **Width** (number) - Image width.
-- **Margin** (spacing) - Image margin.
-
-### Content
-- **Width** (number) - Content area width.
-- **Padding** (spacing) - Content area padding.
-- **Background color** (color) - Content area background color.
-- **Overlay content** (checkbox) - Overlay content on image.
-- **Horizontal alignment** (align-items) - Content horizontal alignment (overlay mode).
-- **Vertical alignment** (justify-content) - Content vertical alignment (overlay mode).
-
-> **Developer reference**
->
-> See the [Related Posts Schema](https://academy.bricksbuilder.io/developer/schema/elements/related-posts/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Social sharing
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/social-sharing/
-
-*Displays social media sharing buttons for the current post.*
-
-Displays social media sharing buttons for the current post.
-
-## Settings
-
-- **Share via** (repeater) - Social media services to include. Default includes: Facebook, X, LinkedIn, WhatsApp, Pinterest, Telegram, VKontakte, Bluesky, Email.
-  - **Service** (select) - Social media platform.
-  - **Excerpt** (checkbox) - Include post excerpt in share (WhatsApp only).
-  - **Icon** (icon) - Custom icon for the service.
-  - **Background** (color) - Button background color.
-  - **Color** (color) - Button text/icon color.
-- **Use brand colors** (checkbox) - Apply default brand colors to buttons. Default: true.
-- **Direction** (direction) - Layout direction for sharing buttons.
-- **Open in new tab** (checkbox) - Open sharing links in new tabs.
-- **Rel attribute** (text) - Link rel attribute. Default: "nofollow".
-
-> **Developer reference**
->
-> See the [Social Sharing Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-sharing/) for the full JSON schema of this element's settings and controls.
-
----
-
 # Taxonomy
 
 Source: https://academy.bricksbuilder.io/builder/elements/single/taxonomy/
@@ -135,6 +21,58 @@ Displays taxonomy terms for the current post.
 > **Developer reference**
 >
 > See the [Taxonomy Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-taxonomy/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Pagination
+
+Source: https://academy.bricksbuilder.io/builder/elements/wordpress/pagination/
+
+*The Pagination element displays page navigation for query results with customizable styling.*
+
+The Pagination element displays page navigation for query results with customizable styling.
+
+## Settings
+
+- **Query** (query-list) - Select which query this pagination controls.
+
+- **Alignment** (justify-content) - Horizontal alignment of pagination links.
+
+- **Height** (number with units) - Height of pagination buttons.
+
+- **Width** (number with units) - Width of pagination buttons.
+
+- **Spacing** (number with units) - Gap between pagination buttons. Default: 20px.
+
+- **Background** (color) - Background color of pagination buttons.
+
+- **Border** (border) - Border styling for pagination buttons.
+
+- **Typography** (typography) - Font settings for pagination buttons.
+
+### Current
+
+- **Background** (color) - Background color of the current page button.
+
+- **Border** (border) - Border styling for the current page button.
+
+- **Typography** (typography) - Font settings for the current page button.
+
+### Icons
+
+- **Previous Icon** (icon) - Icon for the previous page button.
+
+- **Next Icon** (icon) - Icon for the next page button.
+
+### Miscellaneous
+
+- **End Size** (number) - Number of page numbers shown at the start and end. Default: 1.
+
+- **Mid Size** (number) - Number of page numbers shown on each side of current page. Default: 2.
+
+> **Developer reference**
+>
+> See the [Pagination Schema](https://academy.bricksbuilder.io/developer/schema/elements/pagination/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -392,58 +330,6 @@ The Nav Menu element displays WordPress navigation menus with customizable styli
 
 ---
 
-# Pagination
-
-Source: https://academy.bricksbuilder.io/builder/elements/wordpress/pagination/
-
-*The Pagination element displays page navigation for query results with customizable styling.*
-
-The Pagination element displays page navigation for query results with customizable styling.
-
-## Settings
-
-- **Query** (query-list) - Select which query this pagination controls.
-
-- **Alignment** (justify-content) - Horizontal alignment of pagination links.
-
-- **Height** (number with units) - Height of pagination buttons.
-
-- **Width** (number with units) - Width of pagination buttons.
-
-- **Spacing** (number with units) - Gap between pagination buttons. Default: 20px.
-
-- **Background** (color) - Background color of pagination buttons.
-
-- **Border** (border) - Border styling for pagination buttons.
-
-- **Typography** (typography) - Font settings for pagination buttons.
-
-### Current
-
-- **Background** (color) - Background color of the current page button.
-
-- **Border** (border) - Border styling for the current page button.
-
-- **Typography** (typography) - Font settings for the current page button.
-
-### Icons
-
-- **Previous Icon** (icon) - Icon for the previous page button.
-
-- **Next Icon** (icon) - Icon for the next page button.
-
-### Miscellaneous
-
-- **End Size** (number) - Number of page numbers shown at the start and end. Default: 1.
-
-- **Mid Size** (number) - Number of page numbers shown on each side of current page. Default: 2.
-
-> **Developer reference**
->
-> See the [Pagination Schema](https://academy.bricksbuilder.io/developer/schema/elements/pagination/) for the full JSON schema of this element's settings and controls.
-
----
-
 # Posts
 
 Source: https://academy.bricksbuilder.io/builder/elements/wordpress/posts/
@@ -635,70 +521,6 @@ Displays a WordPress sidebar with its widgets.
 
 ---
 
-# WordPress
-
-Source: https://academy.bricksbuilder.io/builder/elements/wordpress/wordpress/
-
-*The WordPress element displays various WordPress widgets with customizable styling.*
-
-The WordPress element displays various WordPress widgets with customizable styling.
-
-## Settings
-
-- **Widget** (select) - Type of WordPress widget to display. Options: `archives`, `calendar`, `categories`, `pages`, `recent comments`, `recent posts`, `tag cloud`, `taxonomy`. Default: `posts`.
-
-- **Icon** (icon) - Optional icon for the widget. Available for most widget types.
-
-- **Icon typography** (typography) - Font settings for the icon.
-
-### Widget-specific settings
-
-- **Show count** (checkbox) - Display item counts. Available for archives, categories, tag cloud, taxonomy.
-
-- **Sort by** (select) - Sort order for pages. Options: `page title`, `page date`, `page modified`, `page order`, `page ID`. Available for pages.
-
-- **Include** (select) - Specific pages to include. Available for pages.
-
-- **Exclude** (select) - Specific pages to exclude. Available for pages.
-
-- **Number of comments** (number) - How many recent comments to show. Available for recent comments.
-
-- **Number of posts** (number) - How many recent posts to show. Available for recent posts.
-
-- **Direction** (direction) - Layout direction for posts. Available for recent posts.
-
-- **Show date** (checkbox) - Display post dates. Available for recent posts.
-
-- **Show featured image** (checkbox) - Display post thumbnails. Available for recent posts.
-
-- **Featured image sizes** (select) - Size of featured images. Available for recent posts.
-
-- **Featured image width** (text) - Custom width for images. Available for recent posts.
-
-- **Featured image height** (text) - Custom height for images. Available for recent posts.
-
-- **Post title typography** (typography) - Font settings for post titles. Available for recent posts.
-
-- **Post meta typography** (typography) - Font settings for post meta. Available for recent posts.
-
-- **Taxonomy** (select) - Which taxonomy to display. Available for tag cloud and taxonomy.
-
-### Title
-
-- **Title** (text) - Custom title for the widget.
-
-- **HTML tag** (select) - HTML tag for the title. Options: `p`, `h1`-`h6`. Default: `h3`.
-
-- **Border** (border) - Border styling for the title.
-
-- **Typography** (typography) - Font settings for the title.
-
-> **Developer reference**
->
-> See the [WordPress Schema](https://academy.bricksbuilder.io/developer/schema/elements/wordpress/) for the full JSON schema of this element's settings and controls.
-
----
-
 # Account - Add payment method
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-add-payment-method/
@@ -763,35 +585,67 @@ My Account templates and My Account endpoint views.
 
 ---
 
-# Account - Downloads
+# WordPress
 
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-downloads/
+Source: https://academy.bricksbuilder.io/builder/elements/wordpress/wordpress/
 
-*Displays customer downloadable products inside My Account.*
+*The WordPress element displays various WordPress widgets with customizable styling.*
 
-Displays customer downloadable products inside My Account.
+The WordPress element displays various WordPress widgets with customizable styling.
 
-## Where this element works
+## Settings
 
-My Account templates and My Account endpoint views.
+- **Widget** (select) - Type of WordPress widget to display. Options: `archives`, `calendar`, `categories`, `pages`, `recent comments`, `recent posts`, `tag cloud`, `taxonomy`. Default: `posts`.
 
-## Key settings
+- **Icon** (icon) - Optional icon for the widget. Available for most widget types.
 
-- **Table** (separator)
-- **Head** (separator)
-- **Body** (separator)
-- **Links** (separator)
-- **Button** (separator)
-- **Background color** (color)
-- **Border** (border)
-- **Box shadow** (box-shadow)
-- **Typography** (typography)
-- **Padding** (spacing)
+- **Icon typography** (typography) - Font settings for the icon.
 
-## Usage tips
+### Widget-specific settings
 
-- Use these elements in My Account templates or endpoint-specific templates.
-- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
+- **Show count** (checkbox) - Display item counts. Available for archives, categories, tag cloud, taxonomy.
+
+- **Sort by** (select) - Sort order for pages. Options: `page title`, `page date`, `page modified`, `page order`, `page ID`. Available for pages.
+
+- **Include** (select) - Specific pages to include. Available for pages.
+
+- **Exclude** (select) - Specific pages to exclude. Available for pages.
+
+- **Number of comments** (number) - How many recent comments to show. Available for recent comments.
+
+- **Number of posts** (number) - How many recent posts to show. Available for recent posts.
+
+- **Direction** (direction) - Layout direction for posts. Available for recent posts.
+
+- **Show date** (checkbox) - Display post dates. Available for recent posts.
+
+- **Show featured image** (checkbox) - Display post thumbnails. Available for recent posts.
+
+- **Featured image sizes** (select) - Size of featured images. Available for recent posts.
+
+- **Featured image width** (text) - Custom width for images. Available for recent posts.
+
+- **Featured image height** (text) - Custom height for images. Available for recent posts.
+
+- **Post title typography** (typography) - Font settings for post titles. Available for recent posts.
+
+- **Post meta typography** (typography) - Font settings for post meta. Available for recent posts.
+
+- **Taxonomy** (select) - Which taxonomy to display. Available for tag cloud and taxonomy.
+
+### Title
+
+- **Title** (text) - Custom title for the widget.
+
+- **HTML tag** (select) - HTML tag for the title. Options: `p`, `h1`-`h6`. Default: `h3`.
+
+- **Border** (border) - Border styling for the title.
+
+- **Typography** (typography) - Font settings for the title.
+
+> **Developer reference**
+>
+> See the [WordPress Schema](https://academy.bricksbuilder.io/developer/schema/elements/wordpress/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -865,6 +719,70 @@ Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-fo
 *Displays the WooCommerce My Account login form.*
 
 Displays the WooCommerce My Account login form.
+
+## Where this element works
+
+My Account templates and My Account endpoint views.
+
+## Key settings
+
+- **Disable** (checkbox)
+- **Typography** (typography)
+- **Align items** (align-items)
+- **Width** (number)
+- **Gap** (number)
+- **Label typography** (typography)
+- **Field** (separator)
+- **Margin** (spacing)
+- **Padding** (spacing)
+- **Background color** (color)
+
+## Usage tips
+
+- Use these elements in My Account templates or endpoint-specific templates.
+- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
+
+---
+
+# Account - Downloads
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-downloads/
+
+*Displays customer downloadable products inside My Account.*
+
+Displays customer downloadable products inside My Account.
+
+## Where this element works
+
+My Account templates and My Account endpoint views.
+
+## Key settings
+
+- **Table** (separator)
+- **Head** (separator)
+- **Body** (separator)
+- **Links** (separator)
+- **Button** (separator)
+- **Background color** (color)
+- **Border** (border)
+- **Box shadow** (box-shadow)
+- **Typography** (typography)
+- **Padding** (spacing)
+
+## Usage tips
+
+- Use these elements in My Account templates or endpoint-specific templates.
+- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
+
+---
+
+# Account - Lost password
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-lost-password/
+
+*Displays the Lost password request form used in My Account flows.*
+
+Displays the Lost password request form used in My Account flows.
 
 ## Where this element works
 
@@ -986,13 +904,13 @@ My Account templates and My Account endpoint views.
 
 ---
 
-# Account - Lost password
+# Account - Page
 
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-lost-password/
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page/
 
-*Displays the Lost password request form used in My Account flows.*
+*Displays the full My Account layout including navigation and endpoint content.*
 
-Displays the Lost password request form used in My Account flows.
+Displays the full My Account layout including navigation and endpoint content.
 
 ## Where this element works
 
@@ -1000,16 +918,48 @@ My Account templates and My Account endpoint views.
 
 ## Key settings
 
-- **Disable** (checkbox)
-- **Typography** (typography)
-- **Align items** (align-items)
-- **Width** (number)
+- **Direction** (direction)
 - **Gap** (number)
-- **Label typography** (typography)
-- **Field** (separator)
-- **Margin** (spacing)
+- **Disable navigation** (checkbox)
+- **Align items** (align-items)
+- **Justify content** (justify-content)
+- **Background** (color)
+- **Border** (border)
+- **Box shadow** (box-shadow)
+- **Item** (separator)
+- **Padding** (spacing)
+
+## Usage tips
+
+- Use these elements in My Account templates or endpoint-specific templates.
+- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
+
+---
+
+# Account - View order
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-view-order/
+
+*Displays order details for a selected order in My Account.*
+
+Displays order details for a selected order in My Account.
+
+## Where this element works
+
+My Account templates and My Account endpoint views.
+
+## Key settings
+
+- **Preview order ID** (number)
+- **Hide** (checkbox)
+- **Typography** (typography)
+- **Mark** (separator)
 - **Padding** (spacing)
 - **Background color** (color)
+- **Title** (separator)
+- **Meta** (separator)
+- **Description** (separator)
+- **Table** (separator)
 
 ## Usage tips
 
@@ -1190,35 +1140,35 @@ My Account templates and My Account endpoint views.
 
 ---
 
-# Account - Page
+# Cart totals
 
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page/
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-collaterals/
 
-*Displays the full My Account layout including navigation and endpoint content.*
+*Displays cart totals and related collateral content from the Cart page.*
 
-Displays the full My Account layout including navigation and endpoint content.
+Displays cart totals and related collateral content from the Cart page.
 
 ## Where this element works
 
-My Account templates and My Account endpoint views.
+Cart page templates.
 
 ## Key settings
 
-- **Direction** (direction)
-- **Gap** (number)
-- **Disable navigation** (checkbox)
-- **Align items** (align-items)
-- **Justify content** (justify-content)
-- **Background** (color)
-- **Border** (border)
-- **Box shadow** (box-shadow)
-- **Item** (separator)
+- **Disable cross sells** (checkbox)
+- **Hide title** (checkbox)
+- **Title** (typography)
+- **Subtotal** (typography)
+- **Total** (typography)
+- **Table** (separator)
+- **Margin** (spacing)
 - **Padding** (spacing)
+- **Border** (border)
+- **Button** (separator)
 
 ## Usage tips
 
-- Use these elements in My Account templates or endpoint-specific templates.
-- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
+- Place cart elements in a dedicated Cart template to avoid empty output on non-cart pages.
+- Keep spacing and table styling consistent across cart rows, totals, and coupon sections for better usability.
 
 ---
 
@@ -1266,38 +1216,6 @@ Displays WooCommerce breadcrumb navigation.
 
 ---
 
-# Account - View order
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-view-order/
-
-*Displays order details for a selected order in My Account.*
-
-Displays order details for a selected order in My Account.
-
-## Where this element works
-
-My Account templates and My Account endpoint views.
-
-## Key settings
-
-- **Preview order ID** (number)
-- **Hide** (checkbox)
-- **Typography** (typography)
-- **Mark** (separator)
-- **Padding** (spacing)
-- **Background color** (color)
-- **Title** (separator)
-- **Meta** (separator)
-- **Description** (separator)
-- **Table** (separator)
-
-## Usage tips
-
-- Use these elements in My Account templates or endpoint-specific templates.
-- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
-
----
-
 # Cart coupon
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-coupon/
@@ -1322,38 +1240,6 @@ Cart page templates.
 - **Border** (border)
 - **Placeholder typography** (typography)
 - **Button** (text)
-
-## Usage tips
-
-- Place cart elements in a dedicated Cart template to avoid empty output on non-cart pages.
-- Keep spacing and table styling consistent across cart rows, totals, and coupon sections for better usability.
-
----
-
-# Cart totals
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-collaterals/
-
-*Displays cart totals and related collateral content from the Cart page.*
-
-Displays cart totals and related collateral content from the Cart page.
-
-## Where this element works
-
-Cart page templates.
-
-## Key settings
-
-- **Disable cross sells** (checkbox)
-- **Hide title** (checkbox)
-- **Title** (typography)
-- **Subtotal** (typography)
-- **Total** (typography)
-- **Table** (separator)
-- **Margin** (spacing)
-- **Padding** (spacing)
-- **Border** (border)
-- **Button** (separator)
 
 ## Usage tips
 
@@ -1661,6 +1547,38 @@ Checkout templates (and order-received context for thank-you flows).
 
 ---
 
+# Checkout thank you
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-thankyou/
+
+*Displays the order received / thank you content after checkout.*
+
+Displays the order received / thank you content after checkout.
+
+## Where this element works
+
+Checkout templates (and order-received context for thank-you flows).
+
+## Key settings
+
+- **Preview order ID** (number)
+- **Hide message** (checkbox)
+- **Margin** (spacing)
+- **Padding** (spacing)
+- **Background** (color)
+- **Border** (border)
+- **Typography** (typography)
+- **Label typography** (typography)
+- **Action buttons** (separator)
+- **Gap** (number)
+
+## Usage tips
+
+- Use checkout elements only in Checkout templates so forms and order data render correctly.
+- Test logged-in and guest checkout flows after styling changes to ensure all states remain usable.
+
+---
+
 # Checkout v2
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/
@@ -1873,38 +1791,6 @@ See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.
 - Use [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) or the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) to create the recommended Checkout v2 structure.
 - Design every checkout state that customers can reach, especially Pay, Thank you, Order receipt, and Login required.
 - Use the classic [Checkout template workflow](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/) if you prefer separate checkout templates.
-
----
-
-# Checkout thank you
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-thankyou/
-
-*Displays the order received / thank you content after checkout.*
-
-Displays the order received / thank you content after checkout.
-
-## Where this element works
-
-Checkout templates (and order-received context for thank-you flows).
-
-## Key settings
-
-- **Preview order ID** (number)
-- **Hide message** (checkbox)
-- **Margin** (spacing)
-- **Padding** (spacing)
-- **Background** (color)
-- **Border** (border)
-- **Typography** (typography)
-- **Label typography** (typography)
-- **Action buttons** (separator)
-- **Gap** (number)
-
-## Usage tips
-
-- Use checkout elements only in Checkout templates so forms and order data render correctly.
-- Test logged-in and guest checkout flows after styling changes to ensure all states remain usable.
 
 ---
 
@@ -2161,3 +2047,55 @@ Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-t
 *Displays the total number of products found and current result range.*
 
 Displays the total number of products found and current result range.
+
+---
+
+# Products
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products/
+
+*Displays WooCommerce products in a grid layout with customizable fields and widgets.*
+
+Displays WooCommerce products in a grid layout with customizable fields and widgets.
+
+## Settings
+
+- **Columns** (number) - Number of columns. Range: 1-6. Default: 4. Supports breakpoints.
+- **Gap** (number) - Spacing between products. Default: 30px.
+
+### Query
+- Product query controls (via Woocommerce_Helpers::get_product_query_controls).
+
+### Fields
+- **Content** (repeater) - Dynamic data fields to display. Default includes WooCommerce hooks and product fields like title, image, price, add to cart.
+- **Link entire product** (checkbox) - Make entire product clickable if no field links exist.
+
+### Widgets
+- **Show Before Grid** (select) - Widgets to show before products grid. Options: Pagination, Result Count, Order by. Multiple selection.
+- **Show After Grid** (select) - Widgets to show after products grid. Options: Pagination, Result Count, Order by. Multiple selection.
+- **Sort by options** (select) - Available sorting options. Default: Default sorting. Multiple selection.
+
+---
+
+# WooCommerce Template Hook
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/template-hook/
+
+*Renders output from a selected WooCommerce template hook so you can place WooCommerce hook content in your layout.*
+
+Renders output from a selected WooCommerce template hook so you can place WooCommerce hook content in your layout.
+
+## Where this element works
+
+Any WooCommerce template where the selected hook is executed.
+
+## Key settings
+
+- **Template** (select)
+- **Hook** (select)
+- **Show tips** (checkbox)
+
+## Usage tips
+
+- Pick hooks intentionally and avoid duplicating WooCommerce default output in the same area.
+- If expected content does not appear, confirm the selected hook runs in the current template context.
