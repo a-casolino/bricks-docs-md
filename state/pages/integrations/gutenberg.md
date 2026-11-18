@@ -24,6 +24,16 @@ By default, your WordPress-generated data won’t change when editing with Brick
 
 From now on whenever you edit and save in Bricks, your content will be saved as WordPress content, too. So your WordPress and Bricks data are in sync.
 
+## Use the Bricks lightbox with Gutenberg images
+
+Since Bricks 2.5, you can keep writing content in Gutenberg and use the Bricks lightbox for images displayed through a **Post Content** element.
+
+Link the images in your Gutenberg Image or Gallery blocks to **Media file**. In Bricks, select the **Post Content** element, use the **WordPress** data source, and enable **Lightbox** in its **Content** tab. The setting is off by default.
+
+Each Gallery block forms a separate lightbox group with navigation between its images. Standalone Image blocks open individually. Images must link to their full-size Media Library file; custom links and unlinked images using WordPress's native **Expand on click** lightbox keep their existing behavior.
+
+The saved blocks stay unchanged. See [Post Content: Lightbox for Gutenberg images](https://academy.bricksbuilder.io/builder/elements/single/post-content/#lightbox-for-gutenberg-images) for setup and link requirements.
+
 ## Render content with Bricks or WordPress {#render-with-wordpress}
 
 You decide which pages you want to create with Gutenberg, the Classic Editor, or Bricks. The post status next to the page title tells you which content is used for rendering on the frontend:

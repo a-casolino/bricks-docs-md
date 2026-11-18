@@ -13,18 +13,19 @@
 |---|---|---|---|
 | `direction` | direction | Direction | `flex-direction` |
 | `openTabOn` | select | Open tab on | — |
+| `accordionLayoutAtBreakpoint` | select | Accordion layout at breakpoint | — |
 | `openTab` | text | Open tab index | — |
-| `titleWidth` | number | Width | `width` on `> .tab-menu .tab-title` |
-| `titleMargin` | spacing | Margin | `margin` on `> .tab-menu .tab-title` |
-| `titlePadding` | spacing | Padding | `padding` on `> .tab-menu .tab-title` |
-| `titleBackgroundColor` | color | Background | `background-color` on `> .tab-menu .tab-title` |
-| `titleBorder` | border | Border | `border` on `> .tab-menu .tab-title` |
-| `titleTypography` | typography | Typography | `font` on `> .tab-menu .tab-title` |
-| `titleActiveBackgroundColor` | color | Background color | `background-color` on `> .tab-menu .tab-title.brx-open` |
-| `titleActiveBorder` | border | Border | `border` on `> .tab-menu .tab-title.brx-open` |
-| `titleActiveTypography` | typography | Typography | `font` on `> .tab-menu .tab-title.brx-open` |
+| `titleWidth` | number | Width | `width` on `> .tab-menu .tab-title, > .tab-content > .tab-title` |
+| `titleMargin` | spacing | Margin | `margin` on `> .tab-menu .tab-title, > .tab-content > .tab-title` |
+| `titlePadding` | spacing | Padding | `padding` on `> .tab-menu .tab-title, > .tab-content > .tab-title` |
+| `titleBackgroundColor` | color | Background | `background-color` on `> .tab-menu .tab-title, > .tab-content > .tab-title` |
+| `titleBorder` | border | Border | `border` on `> .tab-menu .tab-title, > .tab-content > .tab-title` |
+| `titleTypography` | typography | Typography | `font` on `> .tab-menu .tab-title, > .tab-content > .tab-title` |
+| `titleActiveBackgroundColor` | color | Background color | `background-color` on `> .tab-menu .tab-title.brx-open, > .tab-content > .tab-title.brx-open` |
+| `titleActiveBorder` | border | Border | `border` on `> .tab-menu .tab-title.brx-open, > .tab-content > .tab-title.brx-open` |
+| `titleActiveTypography` | typography | Typography | `font` on `> .tab-menu .tab-title.brx-open, > .tab-content > .tab-title.brx-open` |
 | `contentMargin` | spacing | Margin | `margin` on `> .tab-content` |
-| `contentPadding` | spacing | Padding | `padding` on `> .tab-content` |
+| `contentPadding` | spacing | Padding | `padding` on `&:not([data-brx-tabs-nested-accordion]) > .tab-content`, `padding` on `&[data-brx-tabs-nested-accordion] > .tab-content > .tab-pane` |
 | `contentColor` | color | Text color | `color` on `> .tab-content` |
 | `contentBackgroundColor` | color | Background color | `background-color` on `> .tab-content` |
 | `contentBorder` | border | Border | `border` on `> .tab-content` |
@@ -53,6 +54,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

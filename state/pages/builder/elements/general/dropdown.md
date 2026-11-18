@@ -76,9 +76,15 @@ States matching `aria-current="page"` / `.aria-current`:
 
 - **Enable** (checkbox) — Full-width style mega panel (`brx-has-megamenu`); “covers entire available width” by default.
 
-- **CSS selector (Horizontal)** (text) — Optional: align width/horizontal position to another node.
+- **Width** (since Bricks 2.5) — Set the mega panel width directly, such as `900px`, `80%`, a CSS variable, or a `clamp()` value. Leave empty to use the full horizontal reference width. Percentages are measured against that reference.
+
+- **Alignment** (since Bricks 2.5) — Position a custom-width panel at the left, center, or right of the horizontal reference area. Default: Left.
+
+- **CSS selector (Horizontal)** (text) — Optional: choose the horizontal reference element. Leave empty to use the page body.
 
 - **CSS selector (Vertical)** (text) — Optional: vertical alignment reference.
+
+Width and alignment support responsive breakpoint values. See [Set a custom mega menu width](https://academy.bricksbuilder.io/builder/features/menu-builder/#mega-menu-width) for examples.
 
 ## Multilevel
 

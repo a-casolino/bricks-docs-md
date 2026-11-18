@@ -74,9 +74,12 @@ add_action( 'wp_enqueue_scripts', function() {
   wp_enqueue_script( 'bricks-photoswipe-caption' );
   wp_enqueue_style( 'bricks-photoswipe' );
 
-  // Leaflet map
-  wp_enqueue_script( 'bricks-leaflet' );
+  // Leaflet map (Bricks 2.5): runtime and Leaflet stylesheet
+  wp_enqueue_script( 'bricks-map-leaflet' );
   wp_enqueue_style( 'bricks-leaflet' );
+
+  // Only needed if the Leaflet map uses marker clustering
+  // wp_enqueue_script( 'bricks-leaflet-markercluster' );
 
   // Code prettifier
   wp_enqueue_script( 'bricks-prettify' );
@@ -86,5 +89,9 @@ add_action( 'wp_enqueue_scripts', function() {
   wp_enqueue_script( 'bricks-choices-lib' );
   wp_enqueue_script( 'bricks-choices-js' );
   wp_enqueue_style( 'bricks-choices' );
-}, 11 );
+}, 13 );
 ```
+
+The example uses hook priority `13` so it runs after the Leaflet runtime is registered at priority `12`.
+
+Starting with **Bricks 2.5**, `bricks-map-leaflet` provides the [Map (Leaflet)](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/) runtime. Its dependencies load `bricks-scripts` and the `bricks-leaflet` library. Enqueuing only the library does not load the element runtime. The element enqueues its assets automatically, including `bricks-leaflet-markercluster` when **Cluster: Markers** is enabled.

@@ -29,10 +29,13 @@
 | `detailsPadding` | spacing | Padding | `padding` on `.shop_table th`, `padding` on `.shop_table td` |
 | `detailsBackground` | color | Background | `background-color` on `.woocommerce-order-details table` |
 | `detailsBorder` | border | Border | `border` on `.woocommerce-order-details table` |
+| `detailsBorderCollapse` | select | Border collapse | `border-collapse` on `.woocommerce-order-details table`, `overflow` on `.woocommerce-order-details table`, `overflow` on `.woocommerce-order-details table`, `border-bottom-width` on `:where(.woocommerce-table--order-details) tbody td`, `border-bottom-style` on `:where(.woocommerce-table--order-details) tbody td` |
 | `detailsBackgroundFooter` | color | Background | `background-color` on `.shop_table tfoot` |
 | `detailsActionButtonGap` | number | Gap | `gap` on `th.order-actions--heading + td` |
 | `addressMargin` | spacing | Margin | `margin` on `.woocommerce-customer-details` |
 | `addressTypography` | typography | Typography | `font` on `.woocommerce-customer-details address` |
+| `detailsTitleMargin` | spacing | Margin | `margin` on `.woocommerce-order-details__title` |
+| `detailsTitleTypography` | typography | Typography | `font` on `.woocommerce-order-details__title` |
 | `detailsActionButtonMargin` | spacing | Margin | `margin` on `th.order-actions--heading + td > a` |
 | `detailsActionButtonPadding` | spacing | Padding | `padding` on `th.order-actions--heading + td > a` |
 | `detailsActionButtonBackgroundColor` | color | Background color | `background-color` on `th.order-actions--heading + td > a` |
@@ -45,6 +48,11 @@
 | `orderAgainButtonBorder` | border | Border | `border` on `.order-again .button` |
 | `orderAgainButtonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.order-again .button` |
 | `orderAgainButtonTypography` | typography | Typography | `font` on `.order-again .button` |
+| `addressPadding` | spacing | Padding | `padding` on `.woocommerce-customer-details` |
+| `addressBackgroundColor` | color | Background color | `background-color` on `.woocommerce-customer-details` |
+| `addressBorder` | border | Border | `border` on `.woocommerce-customer-details` |
+| `addressTitleMargin` | spacing | Margin | `margin` on `.woocommerce-customer-details .woocommerce-column__title` |
+| `addressTitleTypography` | typography | Typography | `font` on `.woocommerce-customer-details .woocommerce-column__title` |
 | `downloadsMargin` | spacing | Margin | `margin` on `.woocommerce-table--order-downloads` |
 | `downloadsPadding` | spacing | Padding | `padding` on `.woocommerce-table--order-downloads` |
 | `downloadsBackgroundColor` | color | Background color | `background-color` on `.woocommerce-table--order-downloads` |
@@ -102,6 +110,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

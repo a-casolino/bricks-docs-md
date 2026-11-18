@@ -90,11 +90,25 @@ Drag optional toolbar items into **Hidden items** to remove them from the visibl
 
 Required toolbar items cannot be hidden. In Bricks 2.4, **Elements**, **Structure**, **Preview**, and **Save** are required.
 
+## Keyboard shortcuts
+
+In Bricks 2.5, the **Keyboard shortcuts** section lets you include shortcut customizations with the current Builder Interface settings or profile.
+
+1. Click **Manage** in the Keyboard shortcuts section.
+2. Change the combinations you want to include, then click **Save** to return to the Builder Interface popup.
+3. Click **Save** to keep the current interface settings for your account, or use **Save as** / **Overwrite** in Profiles to save them with a reusable profile.
+
+![The Keyboard shortcuts section in Builder Interface with its Manage button.](https://academy.bricksbuilder.io/assets/keyboard-shortcuts/builder-interface-keyboard-shortcuts.webp)
+
+Shortcuts saved in an assigned profile take priority over personal shortcut preferences. The profile controls only the commands it defines; those bindings show the profile name and are read-only in the personal shortcut manager. Personal combinations for other commands remain available, unless they conflict with a managed command. Removing the profile restores the retained personal preferences.
+
+Use **Manage → Keyboard shortcuts** from the toolbar when you only want to change your personal shortcuts. See [Keyboard Shortcuts](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/) for remapping, conflicts, import/export, and the default combinations.
+
 ## Save or reset your layout
 
 Click **Save** to store the current builder interface for your user account.
 
-Click **Reset** to remove your saved builder interface preferences and return to the resolved default layout. The reset keeps pinned control groups where possible, so frequently used pinned groups are not lost just because the workspace layout was reset.
+Click **Reset** to remove your saved builder interface preferences and return to the resolved default layout. In Bricks 2.5, this also clears your personal keyboard shortcut overrides. The reset keeps pinned control groups where possible, so frequently used pinned groups are not lost just because the workspace layout was reset.
 
 If the popup shows an unsaved-changes message, save before closing the popup if you want to keep the layout.
 
@@ -157,7 +171,7 @@ When imported profiles conflict with existing profile IDs, Bricks lets you overw
 
 Admins can reset another user's saved builder interface preferences from that user's WordPress profile.
 
-In the user's WordPress profile, find **Builder interface** and click **Reset builder interface**. This removes that user's custom builder interface preferences and restores the default or assigned profile layout on the next builder load.
+In the user's WordPress profile, find **Builder interface** and click **Reset builder interface**. This removes that user's custom builder interface preferences, including personal keyboard shortcuts in Bricks 2.5, and restores the default or assigned profile settings on the next builder load.
 
 ## Troubleshooting
 

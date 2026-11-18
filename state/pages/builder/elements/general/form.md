@@ -46,6 +46,80 @@ An action's control group only appears once the action is selected under **Actio
 >
 > Form submissions only run on the frontend. Submitting a form inside the builder does nothing, so test your form on the live page.
 
+## Select fields {#select-fields}
+
+The **Select** field is a dropdown for choosing one option. It has no built-in multiple-selection setting. Use a **Checkbox** field when visitors need to choose several options without custom code.
+
+Starting with Bricks 2.5-beta, a Select field rejects submissions containing more than one value. Custom code or plugins that turn a Select field into a multi-select must explicitly allow multiple values for the intended form and field through the `bricks/form/select/allow_multiple` PHP filter. Adding a `multiple` attribute or a `name[]` suffix alone is insufficient.
+
+Bricks checks this before custom form validation and form actions. Normal single selections continue to work.
+
+## Auto-focus field (since 2.5) {#auto-focus-field}
+
+Use **Auto-focus field** to focus a field when the frontend page loads, so visitors can start typing without clicking it first.
+
+1. Select the Form element.
+2. Open **Content > Fields** and add the fields you need.
+3. In **Auto-focus field**, select the field to focus.
+4. Save the page and reload it on the frontend to check the focus.
+
+Leave the setting at **None** to keep the form from requesting initial focus. The dropdown includes **Email**, **Text**, **Textarea**, **Telephone**, **Number**, **URL**, **Select**, and **Password** fields. Honeypots and other field types are excluded.
+
+<div className="screenshot screenshot--control-panel">
+
+![Form Fields settings with Auto-focus field set to Username or email.](https://academy.bricksbuilder.io/assets/form-auto-focus-field.webp)
+
+</div>
+
+Bricks adds the native HTML `autofocus` attribute to the selected field on the frontend. It suppresses the attribute in Builder renders so the form does not take focus from the canvas or settings panel. If you delete the selected field or change it to an unsupported type or a honeypot, it no longer receives autofocus.
+
+For a [login form](#login-registration), select the username or email field. When that field has focus, pressing Enter can submit the form through the browser's normal form behavior. Test this on the frontend with your browser's saved credentials; autofill and Enter behavior can vary between browsers and field types. Autofocus does not change the form's action mapping or validation.
+
+> **Note**
+>
+> Use autofocus on only one field per page, including pages with multiple forms or repeated form instances. It can scroll the page to the field and open an on-screen keyboard on touch devices. For screen reader users, it can move focus past introductory content. See the [HTML autofocus reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/autofocus) before enabling it on a page where the form is not the main task.
+
+## Field descriptions {#field-descriptions}
+
+Since Bricks 2.5, you can add a **Description** to each form field. Use it for instructions that visitors need while filling out the form, such as an accepted file format or an explanation of how you will use their email address.
+
+### Add a description
+
+1. Select the Form element and open **Content > Fields**.
+2. Expand the field you want to describe.
+3. Enter your instructions in **Description**.
+4. Save the page and check the description on the frontend.
+
+For example, add "Include your country code, such as +44." to a Telephone field. The instructions appear below the input and remain visible while the visitor types.
+
+<div className="screenshot screenshot--control-panel">
+
+![Telephone field settings with the label Telephone number and the description Include your country code, such as +44.](https://academy.bricksbuilder.io/assets/form-field-description.webp)
+
+</div>
+
+Descriptions appear after the field control. For Checkbox and Radio fields, one description appears below the whole list of options. The setting is available for all interactive field types, including Rich text, Datepicker, Files, Image, and Gallery. Hidden fields, HTML fields, and honeypots do not support descriptions.
+
+### Style descriptions
+
+Under **Content > Fields**, below the field list, find the **Description** styling section. These settings apply to all field descriptions in that Form element.
+
+Descriptions take up the full width of their field. Bricks does not add description-specific font sizes, colors, or spacing by default, so configure these to suit your form.
+
+### Dynamic data and HTML
+
+The **Description** field supports [dynamic data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/) and HTML, such as links or emphasis. Bricks resolves dynamic data when rendering the field and sanitizes the HTML using WordPress's allowed post-content markup.
+
+If the description is empty, or has no text after dynamic data is resolved and HTML is sanitized, Bricks outputs no description or accessibility association.
+
+### Accessibility
+
+Bricks automatically connects each field to its description using `aria-describedby`, making the instructions available to assistive technology. You do not need to create an ID or add the attribute manually.
+
+For Checkbox and Radio fields, each option is connected to the shared description. Image and Gallery descriptions are connected to the media picker button. Datepicker display inputs and Rich text editors retain the association when initialized on the frontend.
+
+Keep a clear field label as well. The label names the field; the description provides extra instructions. Descriptions do not replace [validation messages](#form-validation) or enforce requirements such as file types or a password length.
+
 ## Actions {#actions}
 
 Form actions run after the form has been submitted successfully.
@@ -736,9 +810,75 @@ For more details about getting your site key and secret key, refer to the [Cloud
 
 Another spam protection layer, available since Bricks 1.12.2 is the ability to turn any form field (except "Files", "Remember me", "HTML" and "Hidden") into a honeypot field. This won't affect or interrupt actual website visitors, but it'll prevent bot form submissions if they fill out any of your honeypot fields.
 
-## Customize the date picker field {#datepicker}
+## Date and time picker fields {#datepicker}
 
-Bricks (1.5+) uses the [Flatpickr](https://flatpickr.js.org/) datetime picker javascript library, which can be extended, localized, or customized according to the [available options](https://flatpickr.js.org/options/).
+Use a **Datepicker** field to let visitors select a date, a date with a time, or a time on its own. Bricks 2.5 adds **Disable calendar** for time-only selection and **24-hour time** to control the hour display in the picker.
+
+Select the Form element, open a field under **Fields**, and set **Type** to **Datepicker**.
+
+| Selection | Field settings |
+| --- | --- |
+| Date only | Leave **Enable time** off. |
+| Date and time | Turn **Enable time** on and leave **Disable calendar** off. |
+| Time only (Bricks 2.5) | Turn both **Enable time** and **Disable calendar** on. |
+
+Existing datepicker fields keep their date selection behavior unless you enable **Disable calendar**.
+
+### Time-only selection (@since 2.5) {#timepicker}
+
+To collect an appointment time separately from its date:
+
+1. Add a **Datepicker** field and give it a label such as `Appointment time`.
+2. Turn on **Enable time**.
+3. Turn on **Disable calendar**. This setting appears after you enable time.
+4. Set **24-hour time** to **Enabled** if you want hours from `00` to `23` without an AM/PM selector.
+5. Optionally enter **Min. time** and **Max. time**, such as `09:00` and `17:00`, to limit the times visitors can select in the picker.
+
+<div className="screenshot screenshot--control-panel">
+
+![Datepicker settings with Enable time and Disable calendar on, 24-hour time enabled, and time limits of 09:00 and 17:00.](https://academy.bricksbuilder.io/assets/form-timepicker-settings.webp)
+
+</div>
+
+<figcaption>
+
+Time-only field settings with 24-hour selection and time limits of 09:00 to 17:00.
+
+</figcaption>
+
+<div className="screenshot screenshot--control-panel">
+
+![Frontend appointment field showing 14:30 with a time picker open and no calendar.](https://academy.bricksbuilder.io/assets/form-timepicker-frontend.webp)
+
+</div>
+
+On the frontend, this field opens a time picker without a calendar. To collect the appointment date, add a second **Datepicker** field and leave **Enable time** off. Each field has its own value and field ID.
+
+### 24-hour time (@since 2.5) {#24-hour-time}
+
+The **24-hour time** setting appears when **Enable time** is on. It applies to both date-and-time and time-only pickers.
+
+| Setting | Picker behavior |
+| --- | --- |
+| **Default** | Uses the WordPress time format under **Settings > General** to choose the hour display. |
+| **Enabled** | Uses 24-hour selection without an AM/PM selector. |
+| **Disabled** | Uses 12-hour selection with an AM/PM selector. |
+
+This setting changes the controls inside the picker, not the format of the value shown in the form field or submitted with the form. A time-only field uses `H:i` (24-hour hours and minutes), so selecting `2:30 PM` still fills and submits `14:30`. A date-and-time field uses the WordPress date format followed by `H:i`.
+
+These are the built-in formats. Custom code using the [datepicker options filter](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-element-form-datepicker_options/) can override them.
+
+### Saving time values to post meta
+
+When mapping a time-only field through **Create post** or **Update post**, set **Sanitization method** to **Text (sanitize_text_field)** to preserve a value such as `14:30`. Integer or float sanitization will not preserve the full time string.
+
+With **Update post**, time-only fields bypass the date conversion used for datepicker fields that include a calendar. Those calendar fields still use the existing `Ymd` conversion when saving mapped post meta. For example, a date-only selection of October 15, 2026 is saved as `20261015`.
+
+See [Create & Update Posts on the Frontend](https://academy.bricksbuilder.io/builder/features/create-update-posts-on-the-frontend/#date-and-time-meta) for a mapping example and custom-field integration details.
+
+### Customize the picker options {#datepicker-options}
+
+Bricks uses the [Flatpickr](https://flatpickr.js.org/) JavaScript library for date and time selection. Extend or customize the picker using its [available options](https://flatpickr.js.org/options/).
 
 To change the library initialization options, use the `bricks/element/form/datepicker_options` filter, like so:
 

@@ -136,7 +136,7 @@ When **Execute code** is enabled, Bricks verifies the code signature before runn
 The Code element also has optional execution settings:
 
 - **Parse dynamic data**: Parses Bricks dynamic data inside the executable PHP/HTML.
-- **Suppress PHP errors**: Hides PHP errors unless the URL includes `brx_code_errors`.
+- **Suppress PHP errors**: Hides caught error diagnostics for the element. Adding `brx_code_errors=1` overrides suppression only for an authorized user; it does not grant diagnostic access. See [Inspect PHP execution errors](https://academy.bricksbuilder.io/builder/elements/general/code/#php-errors) for permissions and frontend behavior.
 - **Render without wrapper**: Outputs the executed result without the Code element wrapper on the frontend.
 
 ## Security checklist

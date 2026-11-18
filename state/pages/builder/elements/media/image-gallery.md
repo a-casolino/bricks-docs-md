@@ -4,7 +4,7 @@ The Image Gallery element displays a collection of images in various layouts wit
 
 ## Settings
 
-- **Images** (image-gallery) - Select and upload images for the gallery.
+- **Images** (image-gallery) - Select and upload images for the gallery. Since Bricks 2.5, drop local images onto this control to append them, or hold **Shift** while dropping to replace the selection. See [Drop images onto an Image Gallery](https://academy.bricksbuilder.io/builder/features/media-browser/#drop-images-onto-an-image-gallery).
 
 - **Layout** (select) - Gallery layout type. Options: `grid`, `masonry`, `metro`. Default: `grid`.
 

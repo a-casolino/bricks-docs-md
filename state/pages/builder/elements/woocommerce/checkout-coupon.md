@@ -17,6 +17,9 @@ Checkout templates (and order-received context for thank-you flows).
 - **Disable text** (checkbox)
 - **Icon** (icon)
 - **Icon typography** (typography)
+- **Icon expanded** (icon, since 2.5) - Alternate icon while the toggleable form is open.
+- **Icon expanded typography** (typography, since 2.5) - Styling for the expanded icon.
+- **Transition (ms)** (number, since 2.5) - Opening and closing duration when **Toggleable form** is enabled. Set `0` for an immediate change.
 - **Disable coupon message** (checkbox)
 
 ## Usage tips

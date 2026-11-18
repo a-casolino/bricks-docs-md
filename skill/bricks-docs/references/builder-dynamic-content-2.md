@@ -1,761 +1,854 @@
-# Query Loop
+# Query Sort, Filter & Live Search
 
-Source: https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/
+Source: https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/
 
-*Use the Bricks Query Loop to repeat layouts from posts, terms, users, arrays, or API data while keeping every repeated item fully designable.*
+*Build sortable, filterable, and searchable query listings in Bricks with query filters, live search, URL parameters, and indexed filter data.*
 
-https://www.youtube.com/watch?v=GQicN9DWEVg
+Query Sort, Filter & Live Search lets visitors change a Bricks Query Loop without a full page reload. You can add search inputs, checkboxes, radio buttons, selects, range sliders, date pickers, geolocation searches, submit/reset buttons, active-filter displays, and AJAX pagination.
 
-The **Query Loop** builder is available for [layout elements](https://academy.bricksbuilder.io/builder/styling/layout/) such as Container, Section, Block, and Div. It is also available on the classic Accordion and Slider elements.
+https://youtu.be/mJoykCMD_e8
 
-The Map element has its own query loop controls for dynamic addresses. Nestable elements such as Accordion (Nestable), Tabs (Nestable), and Slider (Nestable) use their own child repeaters, so they do not expose the same full Query Loop control as layout elements.
+Use Query Filters for interactive listings such as:
 
-It lets you query content and render each result through the same design. Everything inside the loop can use dynamic data from the current result.
+- Blog archive filters
+- Product filters
+- Directory search
+- Team/member filters
+- Taxonomy, custom-field, and WordPress-field filters
+- Sort controls
+- Per-page controls
+- Live search boxes
 
-### Dynamic data in nested loops
+Query Filters target a specific Query Loop. The filter elements can live anywhere on the page as long as each filter points to the correct target query.
 
-Dynamic data uses the current loop result. In a nested loop, the inner result becomes the current result for elements inside that loop.
+## Enable Query Filters {#enable}
 
-For example, `{term_name}` can return the current term in an outer Terms loop. Inside a nested Posts or Media loop, the current result is a post or attachment, so the same term tag does not read the outer term.
+1. Go to **Bricks > Settings > General** and find the **Query filters** setting.
+2. Turn on **Enable query sort / filter / live search**.
+3. Save settings.
+4. Open the builder.
+5. Add elements from the **Filter** element group.
 
-Bricks does not provide parent-loop syntax for output tags. Keep values that belong to the parent result outside the inner loop when possible. Inner query controls can use dynamic data while Bricks is building that nested query, but output inside the inner loop still resolves against the inner result. Accessing the parent result from inner-loop markup requires custom PHP or a custom dynamic data tag.
+![](https://academy.bricksbuilder.io/assets/bricks-1.9.6-filter-elements.png)
 
-You can query post types, taxonomy terms, users, API responses, and arrays. Some typical use cases are:
+When the feature is enabled, Bricks also checks and maintains the custom database tables used for filter elements, filter values, and background indexing jobs.
 
-- **Posts**: Latest posts, related posts (works for any registered & public post type)
-- **Terms**: Post categories & tags, product categories, etc.
-- **Users**: List blog authors, community members, and team members
-- **API**: Render items from an external JSON API
-- **Array**: Render items from a PHP or JSON-style array
+## Mental Model {#mental-model}
 
-## Important {#important}
+Query Filters are a three-part system:
 
-Bricks Query Loop automatically generates HTML comments such as `<!--brx-loop-start-abc123-->` on the frontend. These comments are essential for features like AJAX Pagination, Query Filters, Load More, and Infinite Scroll to function correctly.
+1. **Filter elements** collect visitor input.
+2. **A target query loop** receives the filter state.
+3. **Bricks converts filter state into query vars** and refreshes the target loop.
 
-> **Note**
->
-> **Do not remove these comments**, as doing so may cause these features to stop working.
+On the initial page load, Bricks can read filter values from URL parameters or apply configured defaults. During interaction, JavaScript stores the selected filter state, updates the browser URL when needed, sends an AJAX request, receives updated loop HTML, updates dynamic filter elements, and restores focus.
 
-Some **performance optimization plugins** may remove all HTML comments by default. If you are using such a plugin, ensure that Bricks-generated comments are preserved to avoid breaking dynamic query functionality.
+On the server, Bricks sanitizes the selected values, builds query vars for the target query type, merges those vars into the original query, and renders the target query again.
 
-## How to create a query loop {#custom-loop}
+## Supported Query Types {#supported-query-types}
 
-Add a "Container" element to the canvas. Enable the **Use Query Loop** setting to turn your container into a loop (repeater) item.
+Query Filters support these Query Loop types:
 
-![](https://academy.bricksbuilder.io/assets/container-query-loop-control.png)
+- Posts
+- Terms
+- Users
 
-<figcaption>
+They do not support:
 
-Container element: new query loop control
+- API query loops
+- Array query loops
+- Deeply nested query targets
 
-</figcaption>
+To filter a map alongside a listing, target a supported results loop containing [Map Connectors](https://academy.bricksbuilder.io/builder/elements/general/map-connector/) and select that loop under the map's **Sync with query** setting. See [map queries and interactive listings](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/#map-queries).
 
-Once you've enabled the **Use Query Loop** setting, you'll see a **Query** control (loop/infinity icon).
+In nested query scenarios, filters target the outer supported query layer. Do not expect a filter outside the loop to target a deeply nested child query.
 
-Open the query control to set the query parameters for retrieving the content from your database.
+![](https://academy.bricksbuilder.io/assets/scope-limitation-posts-query.png)
 
-This container now serves as your repeater item. All elements inside this container are repeated as often as there are query results.
+<span id="important-notes"></span>
 
-## Query control {#query-control}
+## Component Limitation {#components}
 
-The **Query** control supports five built-in query types: `posts`, `terms`, `users`, `api`, and `array`.
+Filter elements should not be placed inside a Bricks component.
 
-![](https://academy.bricksbuilder.io/assets/query-control-object-type.png)
+Starting with Bricks 2.5, filters outside a component can target query loops inside it, including supported component-slot queries. Select the intended loop instance under **Target query**. Bricks uses the rendered query identity to distinguish repeated component instances. This does not enable Filter elements inside components or deeply nested query targets.
 
-- **Posts** enable a [WP_Query](https://developer.wordpress.org/reference/classes/wp_query/) type of query. This is the default query type and should be used when you want to display a loop of posts, pages, media files, or custom post types.
-- **Terms** enable the [WP_Term_Query](https://developer.wordpress.org/reference/classes/wp_term_query/). This should be used when you want to loop through the different terms of a taxonomy. Useful to list all the product categories that contain products.
-- **Users** enable the [WP_User_Query](https://developer.wordpress.org/reference/classes/WP_User_Query/). This should be used when you want to loop through a set of site users. Useful to list the blog authors or a list of team members (as long as they are inserted as site users).
-- **API** lets you render items returned by an external API. See [Query data from APIs](https://academy.bricksbuilder.io/builder/dynamic-content/query-data-from-apis/) for the full API query workflow.
-- **Array** lets you render items from PHP or JSON-style array data. See [Query Type: Array](#array) below.
+## Basic Setup {#setup}
 
-The query controls adapt according to the selected query type.
+<span id="how-to"></span>
 
-### ACF Repeater source context
+1. Create a Query Loop. Give the loop element a label, such as "Stay card", so it is easy to find in the next step.
+2. Add one or more Filter elements.
+3. On each filter element, select the loop in the **Target query** dropdown. The dropdown lists the query loops on the page by their element label.
+4. Add a Pagination element if the listing should paginate.
+5. Enable **AJAX** on Pagination if it should work together with filters.
+6. Save the page so Bricks builds the filter index.
+7. Test the initial page load, AJAX update, browser back button, and direct URL parameter load.
 
-An ACF Repeater query uses the active post or query context to retrieve its rows. If the repeater field is assigned to an ACF Options Page, Bricks retrieves the rows from that options page instead.
+![](https://academy.bricksbuilder.io/assets/bricks-1.9.6-filter-target-query-setting-594x1024.png)
 
-Selecting an ACF Repeater query does not store or provide a control for an arbitrary source post or page ID. For repeatable data shared across pages, assign the field to an ACF Options Page. To retrieve rows from a specific different post or page, use custom PHP or a custom query or dynamic-data solution that passes the required ACF source post ID. See [Dynamic Data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/) for ACF field support in Bricks.
+Filters do not need to be inside the same wrapper as the query loop. You can place filters in a sidebar, header, offcanvas, or above the listing.
 
-## Query editor (PHP) {#query-editor}
+![](https://academy.bricksbuilder.io/assets/bricks-1.9.6-filter-and-sort-woo-products.png)
 
-Bricks 1.9.1 introduces a new `Query editor` control that lets you write your own queries in PHP for maximum flexibility and querying capabilities.
+## Apply On Input Or Submit {#apply-mode}
 
-The query editor appears after enabling the "Query editor (PHP)" control.
+<span id="filter-on-input-or-submit"></span>
 
-> **Note**
->
-> Note: You must enable code execution in [Bricks settings](https://academy.bricksbuilder.io/builder/setup/settings/) to access this feature.
+Filter elements can apply immediately or wait for a submit button.
 
-![](https://academy.bricksbuilder.io/assets/bricks-1.9.1-query-editor-php.png)
+- **Input**: The query refreshes as soon as the visitor changes the filter.
+- **Submit**: The filter value is stored, but the query refresh waits until the visitor clicks a Filter - Submit element that targets the same query.
 
-<figcaption>
+![](https://academy.bricksbuilder.io/assets/bricks-1.9.6-filter-apply-on-submit.png)
 
-Custom query using dynamic data (ACF) for the post type, returning all posts for September 2023.
+Use **Input** for lightweight listings and search. Use **Submit** when the page has many filters, expensive queries, or a mobile/offcanvas filter UI.
 
-</figcaption>
+The Geolocation filter uses **Immediately** and **On submit** labels and has its own Search/Enter behavior. See [Geolocation apply modes](#geolocation-apply-mode).
 
-You have to **return a PHP array** containing the [WordPress query arguments](https://developer.wordpress.org/reference/classes/wp_query/#parameters) you'd like to use for your query.
+## Global Filters and Filter Manager {#global-filters}
 
-As shown in the screenshot above, the query editor supports dynamic data.
+Starting with **Bricks 2.5**, select a **Global filter** to share settings across multiple elements of the same filter type. For example, link a desktop Checkbox filter and a mobile Offcanvas Checkbox filter to one global filter and target the same product query. Their selections synchronize, and Bricks applies the shared filter once.
 
-Bricks signs Query editor code. If the signature is missing or invalid, Bricks will not run the code. Keep the returned array focused on query arguments. Do not echo output or run unrelated database writes inside a Query editor.
+See [Global Filters & Filter Manager](https://academy.bricksbuilder.io/builder/dynamic-content/global-filters-filter-manager/) for setup steps, shared and local settings, and import/export behavior.
 
-## Posts query {#posts-query}
+Create a global filter from a configured element using the save icon beside **Global filter**, or open **Browser > Filter manager** to create and organize definitions. Set **Target query** on every linked element, then save the builder.
 
-![](https://academy.bricksbuilder.io/assets/post-query-1-6-3.png)
+- Controls marked with a globe icon are shared. Editing them changes every linked element, including elements on other pages.
+- Target query, styling, placeholders, icons, and show-more presentation remain local.
+- **Apply on** is shared, so linked desktop and mobile copies use the same Input or Submit behavior.
+- Linked elements targeting different queries share settings but keep independent selections and results.
+- A Checkbox global filter works with Checkbox elements, not Radio or Select elements. Matching settings or URL parameters alone do not link filters.
 
-**Post type**: Select one or multiple post types (default: posts)
+Clear **Global filter** to unlink an element. Bricks copies the current shared settings into it. Save affected elements before deleting their global filter or changing its type. Existing unlinked filters remain independent.
 
-**Order by**: Order the results by post ID, author, title, published or modified date, comment count, relevance, menu order, or random (default: published date). (Support multiple values `@since 1.11.1`)
+Creating or editing global filters requires **Access filter manager**. Users without this permission can select existing compatible global filters. The manager supports categories and JSON import/export; [Global Import / Export](https://academy.bricksbuilder.io/builder/features/global-import-export/) also transfers global filter definitions. Cross-site transfers of elements that still link to definitions are blocked. Unlink and save on the source site first.
 
-**Order**: Ascending or Descending (default). (Support multiple values `@since 1.11.1`)
+## Filter Elements {#elements}
 
-**Posts Per Page**: The number of posts to show per page (default: WordPress settings > Reading > Blog pages show at most)
+### Filter - Search {#filter-search-element}
 
-**Offset**: The number of posts to skip.
+The Search filter sends a text value to the target query.
 
-**Ignore Sticky Posts**: Turn this on if do not want to move sticky posts to the start of the set.
+For post queries, the default search uses the `s` query var. For term and user queries, it uses the query type's search parameter. You can also configure custom search criteria for posts, terms, and users.
 
-**Disable Query Merge**: Turn this on if do not want the query to be auto-merged by Bricks in archive pages, search pages, etc. Usually, you will turn this on for the Query loops in the footer, header, or non-main query. This is the GUI for the [bricks/posts/merge_query](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-merge_query/) filter.
+Important controls:
 
-**Child Of**: Set the parent ID to return all its children only. (`post_parent` in WP_Query)
+- **Target query**: The query loop to refresh.
+- **URL parameter**: The frontend parameter name. Use `s` when the filter should integrate with native WordPress search.
+- **Debounce**: Delay before running the search after typing.
+- **Min. characters**: Minimum input length before the search runs.
+- **Search Criteria**: Custom fields, post fields, term fields, user fields, taxonomies, and weighting options where supported.
+- **Clear icon**: Lets visitors clear the search value.
+- **Enter action** (Bricks 2.4): Run an AJAX search (default) or redirect to a URL with the current query's filter parameters. A target query is required.
+- **Trigger Filter Submit interactions** (Bricks 2.4): Optionally run submit start/end interactions for an Enter-key AJAX search. Ordinary typing and redirects do not run these interactions.
 
-**Include/Exclude**: Include or exclude one or multiple posts from the query. These controls support [dynamic data](#include-exclude-dynamic-data) (`@since 1.12`).
+Pressing Enter submits immediately, including with **Apply on: Submit**, without waiting for the typing debounce or minimum character threshold. See [Filter Search](https://academy.bricksbuilder.io/builder/elements/filter/filter-search/#search-with-enter) for redirect and interaction setup.
 
-**Include authors / Exclude authors**: Include or exclude posts by author. Select users manually, or use supported dynamic data tags to pass author IDs (`@since 2.4`).
+![](https://academy.bricksbuilder.io/assets/example-filter-search-clear-icon.png)
 
-**Exclude Current Post**: If enabled it will exclude the current post from the loop (useful to build a "related posts" section)
+When the URL parameter is `s` on the main search query, Bricks can use the active Search template's search criteria instead of only the individual filter element settings.
 
-**Terms Include/Exclude**: Include or Exclude posts that have one or multiple terms.
+### Filter - Checkbox {#filter-checkbox-element}
 
-**Taxonomy Query**: Add one or multiple taxonomy queries to filter the posts.
+Use Checkbox filters when visitors can select multiple values.
 
-**Tax Query Relation**: Define if the taxonomy queries should be inclusive (OR) or exclusive (AND).
+Supported sources:
 
-**Meta Query**: Add one or multiple meta queries to filter the posts based on the custom fields.
+- Taxonomy
+- WordPress field
+- Custom field
 
-#### ACF date fields in a meta query
+Checkbox filters support hierarchical taxonomy display, include/exclude term options, top-level terms only, count display, child-term auto toggle, and button-style display.
 
-A meta query compares the value stored in the WordPress database. It does not compare the formatted value shown by an ACF field or a rendered dynamic data tag.
+From Bricks 2.5, hierarchical Checkbox filters can show expand/collapse buttons for child branches. See [Collapsible Taxonomy Branches](https://academy.bricksbuilder.io/builder/elements/filter/filter-checkbox/#collapsible-hierarchy) for setup and Show more/less behavior.
 
-For an ACF Date Picker field, use the field name as the meta key, without braces or an `acf_` prefix. ACF stores this field as `Ymd`, regardless of its return or display format. To return upcoming posts, for example, use:
+For multiple selected taxonomy or custom-field values, Bricks can combine values with OR or AND logic depending on the filter settings.
 
-- **Meta key:** `event_date`
-- **Meta value:** `{current_wp_date:Ymd}`
-- **Compare:** `>=`
-- **Type:** `NUMERIC`
+![](https://academy.bricksbuilder.io/assets/filter-checkbox-1.11.png)
 
-Use `{current_date:Ymd}` instead when the comparison should use UTC rather than the WordPress site timezone.
+### Filter - Radio {#filter-radio-element}
 
-ACF Date Time Picker values are stored as `Y-m-d H:i:s`. Use a value such as `{current_wp_date:Y-m-d H:i:s}` with **Type** set to `DATETIME`.
+Use Radio filters when visitors should choose one value.
 
-Fields inside an ACF Group normally use the stored `parent_child` meta key. You can keep any return or display format needed on the frontend because it does not change the raw value used by the query.
+Radio filters can act as:
 
-**Relation**: Define if the meta queries should be inclusive (OR) or exclusive (AND).
+- A filter
+- A sort control
+- A per-page control
 
-**No Found Rows**: Improve performance when the loop does not need pagination, result counts, or max page counts.
+They support taxonomy, WordPress-field, and custom-field sources, plus button-style display.
 
-**Disable update_post_meta_cache** and **Disable update_post_term_cache**: Performance options for post queries that do not need post meta or term cache data.
+### Filter - Select {#filter-select-element}
 
-**Random seed TTL**: Duration in minutes for which the random seed exists. Set to prevent duplicate post results (only needed & available when using a random order query loop).  Set "0" to turn this feature off.
+Use Select filters for compact dropdown filtering, sorting, or per-page controls.
 
-If you set the TTL to 10 minutes, the query result remains the same for the next 10 minutes. This ensures that no duplicate posts are displayed on different pages or when the infinite scroll is active. (`@since 1.7.1`)
+Select filters can be single-value or multi-value when Choices.js and multiple selection are enabled. Multi-value filtering uses the same source rules as checkbox filters.
 
-**Is main query (Archive, Search)**: When creating an archive or search template, choose one of the loops as the main query. This will prevent a 404 error from occurring when visitors navigate to different pages. Turn on to designate the main query. Remember to set the correct query on your pagination element as well.
+### Filter - Range {#filter-range-element}
 
-However, do not turn on this option for multiple queries on the same page, as only the first one will be set as the archive main query. `(@since 1.8)`
+Use Range filters for numeric custom fields such as price, area, rating, or score.
 
-Watch this example to build a custom post type archive with a main query loop and pagination:
+Range filters use custom-field source data and build a numeric BETWEEN query. Bricks can use indexed min/max values to set the slider range automatically.
 
-https://youtu.be/PeemZuvI3Fc
+Set decimal places when the values contain decimals. Without the right decimal setting, values can compare incorrectly.
 
-### Enhanced Ordering Options {#enhanced-ordering-options}
+![](https://academy.bricksbuilder.io/assets/filter-range-slider-control-section.png)
 
-Starting with version 1.11.1, the **Order By** and **Order** settings in Bricks Query Loop have been improved to support multiple ordering criteria. This allows you to define complex ordering rules directly within Bricks, eliminating the need for a custom PHP filter that was previously required.
+### Filter - Datepicker {#filter-datepicker-element}
 
-![](https://academy.bricksbuilder.io/assets/enhanced-query-loop-order-by-example-1.png)
+Use [Filter - Datepicker](https://academy.bricksbuilder.io/builder/elements/filter/filter-datepicker/) for single dates or date ranges, with optional time selection. In range mode, both endpoints must be selected before the filter applies.
 
-This update is particularly useful in scenarios where you want to order query results by more than one criterion. For example, you can now order by **name** in descending order and then by **ID** in descending order. Bricks will process these criteria sequentially, applying each in the order specified to deliver the desired result.
+Starting with **Bricks 2.5**, a Datepicker using **Custom field** can use separate start and end fields on posts, terms, or users. This supports native **WordPress** metadata and compatible **ACF**, **Meta Box**, and **JetEngine** date fields. Set **Field type** to match the query. Enter native keys, or select each provider field using the picker in **Meta key** and **End date meta key**.
 
-**Example Scenarios:**
+**Meta key** supplies the start date. Results must start on or after the selected start date and end on or before the selected end date. Items that only partly overlap the selection, have invalid or missing dates, or end before they start are excluded. Leave the end key empty to compare both boundaries against one field.
 
-- **Multi-Criteria Ordering**: Suppose you have a directory listing and want to display results by popularity first (custom field) and then by date added. With this update, you can set the query to order first by the popularity meta field in descending order and then by date added in ascending order, ensuring that the most popular and newest items appear at the top.
-- **Custom Order Clauses with Meta Queries**: Bricks now supports more complex ordering directly aligned with meta query conditions. For instance, if you're working with a meta query to order posts by **performance date** and **time**, you can define this directly in the order clause. Code example in [this article](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-query_vars/#orderby-with-multiple-fields).
+With separate fields, **Min/max date** uses both dates from valid intervals to set the calendar limits. It does not disable individual days without events. See [separate start and end fields](https://academy.bricksbuilder.io/builder/elements/filter/filter-datepicker/#separate-date-fields) for setup, supported storage, and an ACF Terms-loop example.
 
-![](https://academy.bricksbuilder.io/assets/enhanced-query-loop-order-by-example-2.png)
+### Filter - Geolocation {#filter-geolocation-element}
 
-### Best Practice for Pagination & Order By {#best-practice-for-pagination-and-order-by}
+Starting with **Bricks 2.5**, use Geolocation to find Posts, Terms, or Users within a radius of an address, device location, or connected map center. A map is optional. Distance is straight-line distance along the earth's surface, not driving distance.
 
-When using multiple ordering criteria, include **ID** as a secondary ordering criterion to avoid duplicate results across paginated pages. For example, if you're displaying 5 posts per page and have 15 posts with the same **price**, ordering by **price** alone may cause posts to appear on multiple pages. Set the query to order by **price** in ascending or descending order, followed by **ID** in ascending or descending order.
+1. Add **Filter - Geolocation** and set **Target query** to the results loop.
+2. Under **Data source**, set **Object type** to match the query. For WordPress metadata, select **Separate fields** and enter the latitude and longitude meta keys, or **Combined field** and enter the key storing `latitude,longitude`.
+3. For an ACF Google Map or Meta Box Map field, enable **Custom fields integration** in the Query filters settings, choose the provider, and select the field using the **Location field** dynamic picker.
+4. Enable **Search by address**, **Search by device location**, or both. Both are off by default.
+5. Set **Default radius** and **Distance unit**. The defaults are 5 and kilometres. Enable **Radius dropdown** to offer selectable presets, initially 5, 10, 25, and 50.
+6. Save and let the filter index finish. Stored locations need valid coordinates; Bricks does not geocode saved address text during indexing.
 
-### Example 1: Latest Posts
+**Sort results by distance** is on by default and orders nearby results nearest first. A Select or Radio Sort filter takes precedence: choose **Distance** for nearest-first or farthest-first ordering, or another source for a different order within the same radius. See [Distance sorting](#distance-sorting). Existing query restrictions and pagination still apply. Activating another independent Geolocation filter for the same query replaces the previous location constraint.
 
-In this example, we'll list the latest four posts (each item shows the featured image, post title, and excerpt) using the Query Loop Builder.
+Enable **Use default location** to start with a radius search before the visitor chooses a location. Enter latitude, longitude, and an optional label. See [Geolocation defaults](https://academy.bricksbuilder.io/builder/elements/filter/filter-geolocation/#default-location).
 
-![Custom Query Loop Builder - latest posts](https://academy.bricksbuilder.io/assets/container-loop-latest-posts-1024x399.png)
+Device location is requested only when the visitor activates its button. It needs browser permission and normally HTTPS, but no Google API key. Address search requires the configured Google key to permit Maps JavaScript API and Geocoding API. **Address autocomplete** additionally needs Places API (New). Manual Search remains available when suggestions fail. See [Google API setup](https://academy.bricksbuilder.io/integrations/how-to-set-up-your-google-maps-api-key/#geolocation).
 
-<figcaption>
+#### Geolocation apply modes {#geolocation-apply-mode}
 
-Display the latest posts using a custom query loop
+- **Immediately** (default) applies resolved locations, radius changes, and enabled map-drag searches.
+- **On submit** stages those changes. The address Search button or Enter resolves and applies this location alongside already applied filters. A Filter - Submit targeting the same query applies all pending filters. Device-only setups in this mode need a Filter Submit.
 
-</figcaption>
+Enter used to select an autocomplete suggestion only selects it. Press Enter again to search. In Immediately mode, selecting the suggestion can already apply it.
 
-We start by adding a container to the canvas. This container holds our loop and serves as the blueprint for each query item.
+Pending locations do not replace the visible results, distance values, active-filter item, or map radius until matching results arrive. A failed lookup or request preserves the previous applied search. Under **Status**, customize messages or enable **Hide status messages** to hide them visually while retaining screen reader announcements. Keep them visible in On submit mode so visitors know when a location is pending.
 
-Next, we enable the "**Use Query Loop**" setting to turn our simple container into a query loop.
+#### Geolocation maps and state {#geolocation-maps}
 
-We add an image element inside our container and set it to "Featured Image" using the Dynamic Data dropdown.
+To show the search area on a Google or Leaflet map, place [Map Connectors](https://academy.bricksbuilder.io/builder/elements/general/map-connector/) inside the results loop and set the map's **Sync with query** to that loop. Use saved coordinates matching the filter's data source. A map's internal query and static markers are not supported filter targets.
 
-Add another container with a Heading and Text element in the same container.
+One matching filter and map connect automatically. If several use the same query, select **Map (Optional)** on the filter. Each filter connects to at most one map, and each map to at most one filter. The applied origin and radius remain visible even when no results match.
 
-For the Heading element, we add the `{post_title}` tag.
+Enable **Search on map drag** to use the map center after the visitor stops panning. **Visitor controlled** displays a **Search as I move the map** checkbox; **Automatic** searches after every qualifying drag. Map dragging must be enabled. Zooming alone does not search, and On submit mode still waits for submission. See the [Google Map](https://academy.bricksbuilder.io/builder/elements/general/map/#geolocation-filtering) and [Leaflet](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/#geolocation-filtering) setup guides.
 
-For the Text element, we add `{post_excerpt}` tag.
+![A 25 km location search with its active-filter label, a result distance, and a Leaflet map showing the search origin and radius.](https://academy.bricksbuilder.io/assets/academy-filter-geolocation-leaflet.webp)
 
-You could use the Post Title element or the Post Excerpt element instead if you like.
+Active Filters shows the location and radius as one removable item. **Save location in URL** is off by default. Enable it to store coordinates in the URL and browser history for reloads and shareable searches. Use **URL parameter** to customize its name.
 
-By default, the query control shows the latest posts. But because we want to restrict the number of posts shown, we need to edit the Query setting and set the Posts Per Page control to 4 to restrict the output to four rows.
+Place `{filter_geo_distance}` inside each result to show its distance from the applied origin. See [distance dynamic data](#filter-geo-distance).
 
-## Media query {#media-query}
+### Filter - Active Filters {#filter-active-filters-element}
 
-Bricks 1.5 introduces the possibility to query for media files (the attachment post type). You'll now find the `Media` (attachment) post type in the Posts query type.
+The Active Filters element displays selected filters and lets visitors remove them.
 
-After selecting `Media` in the post type control, you'll get a new control to define the mime type. By default, Bricks automatically queries for images, but you may define other mime types (separated by a comma, e.g., *image/jpeg,image/png,image/gif*).
+Options include:
 
-To query for the images attached to a post, you may use the **Child of** control to specify the post ID. To do it dynamically, you may use dynamic data to fetch the current post id: `{post_id}`.
+- Excluding specific filter IDs from the active filter list
+- Prefix, suffix, and title labels configured on individual filters
+- Styling active-filter labels and remove buttons
 
-![](https://academy.bricksbuilder.io/assets/bricks-media-query-loop-settings.png)
+### Filter - Submit / Reset {#filter-submit-reset-element}
 
-### Example 2: Media gallery
+Use Submit when filters should wait before refreshing the query. Use Reset to clear active filters for the target query.
 
-The media query opens the possibility of building a custom media gallery using the Query Loop builder. To start, you need to add a Container element, insert a Block element inside it, and finally, an image element inside of the Block.
+Submit can redirect to another URL while preserving current filter values. This is useful for a homepage live-search input that sends visitors to a search results page.
 
-In the container, you'll set the flex-wrap to `wrap` and the direction to horizontal (row). In the Block, you must activate the Query Loop and set the Media post type and the number of images you'll want to get (posts per page). In the Block layout, you must set the width and the height (e.g. 300px).
+Since Bricks 2.4, **Exclude filter IDs** lets a Reset button preserve selected filters. Enter their Bricks element IDs, separated by commas. From Bricks 2.5, you can also enter a global filter ID. A linked element ID resolves to its global filter, preserving that shared selection for the target query. For example, exclude a Search filter to keep the search term while clearing category and price refinements. This is separate from the Active Filters element's display exclusions.
 
-In the Image, you'll set the dynamic data as `{post_id}` - note that the query returns the attachment posts (media files), so the image ID is the post ID. To complete the layout, set the image object-fit to `cover` and the height to 300px.
+With **Hide if no active filter** enabled, Reset hides when no non-excluded filters are active. An excluded search term can remain active while the reset button is hidden. Bricks adds the `brx-no-active-filter` class to this button. See [Filter Submit / Reset](https://academy.bricksbuilder.io/builder/elements/filter/filter-submit/#preserve-a-search-while-resetting-refinements).
 
-![](https://academy.bricksbuilder.io/assets/bricks-media-query-loop-1024x618.jpg)
+![](https://academy.bricksbuilder.io/assets/filter-submit-controls-1.11.png)
 
-<figcaption>
+Since Bricks 2.4, the Submit element also emits dedicated submit start/end events for AJAX submissions. Use the [Filter Submit interaction triggers](https://academy.bricksbuilder.io/builder/features/interactions/#filter-submit-triggers) when another element should react only to a deliberate submit action, for example closing an Offcanvas after mobile filter results finish loading.
 
-The final result of a media gallery using the Query Loop builder
+### Pagination {#pagination-element}
 
-</figcaption>
+Pagination participates in the filter system when AJAX is enabled and it targets the same query. Bricks treats pagination as filter state during AJAX requests so selected filters and the current page stay together.
 
-## WooCommerce Products Query {#woocommerce}
+![](https://academy.bricksbuilder.io/assets/pagination-filter-enable-ajax.png)
 
-Since 1.10, Bricks introduced new settings for WooCommerce products query. Once selected Products post type, you will be able to see the WooCommerce section. (Only available if WooCommerce is activated)
+If several Pagination elements target the same query, Bricks updates the current page state across those pagination instances.
 
-### Example 1: WooCommerce Featured Products {#example-woocommerce-featured-products}
+From Bricks 2.5, Pagination elements targeting different queries on one page keep independent page numbers. Custom queries use query-specific URL parameters, while the main WordPress archive keeps its normal pagination route. See [Pagination](https://academy.bricksbuilder.io/builder/elements/wordpress/pagination/#multiple-queries).
 
-To show latest 10 featured products on your homepage, just set a query loop with below settings.
+## Include Child Terms in Taxonomy Counts {#taxonomy-child-counts}
 
-![](https://academy.bricksbuilder.io/assets/woo-featured-products-query-settings.png)
+Starting with **Bricks 2.5**, taxonomy Checkbox, Radio, and Select filters have a **Count: Include children** setting. Enable it when a parent term's count should include posts assigned to its child terms and deeper descendants. It is off by default, so existing filters continue counting direct assignments only.
 
-### Example 2: WooCommerce Related Products {#example-woocommerce-related-products}
+1. Select the filter element and set its **Target query**.
+2. Use the **Filter** action where an Action control is available.
+3. Set **Source** to **Taxonomy** and choose the taxonomy.
+4. Enable **Count: Include children** and save the builder.
+5. Let indexing finish before checking the counts. If an existing filter still shows stale counts, use **Regenerate filter index** under **Bricks > Settings > Query filters**.
 
-To show 4 related products on your single product template.
+For example, if Clothing has two directly assigned products and its child term Shirts has three more, Clothing shows a count of five with this setting enabled. A product assigned to both Clothing and Shirts counts once for Clothing. Counts respect the target query's restrictions and other active filters.
 
-![](https://academy.bricksbuilder.io/assets/woo-related-products-query-settings.png)
+This setting does not require **Hierarchical** display or **Auto toggle child terms**. It changes the count data, not which checkboxes are selected. It also affects whether parent options have results for **Hide empty**, so a parent with no direct assignments can remain available when its descendants have matching posts.
 
-### Example 3: WooCommerce Upsells Products {#example-woocommerce-upsells-products}
+For a [global filter](https://academy.bricksbuilder.io/builder/dynamic-content/global-filters-filter-manager/#link-and-edit), **Count: Include children** is shared by every linked element. Bricks updates affected index data when terms are renamed, moved, or deleted.
 
-To show 3 upsells product in  a single product template.
+![Count: Include children enabled for a product category filter, with Clothing showing 14 matching products in the builder preview.](https://academy.bricksbuilder.io/assets/taxonomy-filter-include-child-counts.webp)
 
-![](https://academy.bricksbuilder.io/assets/woo-upsell-products-query.png)
+## Default Filter Values {#default-values}
 
-### WooCommerce v2 query loops {#woocommerce-v2}
+Starting with **Bricks 2.5**, filters can start with a selection before the first query runs. The initial results, option counts, controls, and Active Filters display use that selection, including when **Apply on** is set to **Submit**. Later visitor changes follow the configured apply mode.
 
-Bricks 2.4 adds WooCommerce query loops for advanced modular Cart, Checkout, and My Account layouts.
+1. Select a filter and set **Target query**.
+2. Open **Default value** and enter a value in the format below. For a linked global filter, edit the shared default in Filter manager or through a control marked with the globe icon.
+3. Save the builder and open the frontend without filter parameters in the URL.
 
-These loops cover cart coupons, fees, taxes, order items, order totals, order downloads, customer notes, account orders, account order actions, account downloads, and account addresses.
+| Filter or action | Setting and format | Example |
+| --- | --- | --- |
+| Radio or single Select | **Default value**: one exact option value | `cotton` |
+| Checkbox or multiple Select | **Default value**: comma-separated option values | `cotton, wool` |
+| Search | **Default value**: initial search text | `design` |
+| Range | **Minimum** and **Maximum**: numeric endpoints | `20` and `100` |
+| Single Datepicker | **Default value**: `YYYY-MM-DD` | `2026-11-03` |
+| Datepicker with Date range enabled | **Start date** and **End date**: both in `YYYY-MM-DD` format | `2026-11-01` and `2026-11-30` |
+| Select or Radio: Sort | **Default value**: a configured sort option's value | `title_ASC` or `distance_ASC` |
+| Select or Radio: Results per page | **Default value**: one configured page size | `20` |
+| Geolocation | **Use default location**, **Latitude**, **Longitude**, and optional **Location label** | See [default location setup](https://academy.bricksbuilder.io/builder/elements/filter/filter-geolocation/#default-location). |
 
-Advanced v2 query loops require **Bricks > Settings > WooCommerce > Enable advanced modular elements**. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#query-loops) for the complete list and matching dynamic tags.
+Use stored option values, such as taxonomy slugs or raw custom-field values, rather than their display labels. A multiple Select needs Choices.js and multiple selection enabled. Wrap a value containing a comma in double quotes, for example `"Smith, Jones", other`. Single-choice and Search values are treated as literal text.
 
-## Terms query {#terms-query}
+A Distance sort default such as `distance_ASC` requires a valid location from a Geolocation filter targeting the same query. To start with Distance sorting, configure a [default location](https://academy.bricksbuilder.io/builder/elements/filter/filter-geolocation/#default-location) too. Without a valid location, Bricks clears the Distance selection and uses the query's normal ordering.
 
-![](https://academy.bricksbuilder.io/assets/bricks-query-control-terms-341x1024.png)
+<div className="screenshot screenshot--control-panel">
 
-**Taxonomies**: Select one or multiple taxonomies to query (default: none).
+![A Checkbox filter's Default value set to cotton, wool, with guidance on exact option values and Reset behavior.](https://academy.bricksbuilder.io/assets/query-filter-default-values.webp)
 
-**Order by**: Order the results by term ID, term name, term parent, count, or include list.
+</div>
 
-**Order**: Ascending (default) or Descending.
+Leave one numeric Range endpoint empty to use the original range boundary. Numeric defaults are limited to the target query's original available range. Date ranges require both endpoints, with the start no later than the end. Date defaults use `YYYY-MM-DD` even when the display or stored field format differs.
 
-**Number**: The number of terms to show per page. WordPress default is all, but Bricks defaults to the number defined in the WordPress settings > Reading > Blog pages show at most. Use 0 to display all the results.
+Default fields support [dynamic data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/) resolved in the original page, product, or archive context. For example, a taxonomy filter on a single product template can use `{post_terms_pa_material:plain:slug}` to preselect that product's material. If the product has several materials, use a Checkbox or multiple Select; a Radio or single Select needs one value. On a taxonomy archive, `{term_slug}` can supply the current term for a slug-based filter.
 
-**Offset**: The number of terms to skip.
+Defaults narrow the query's original restrictions. They do not switch archives or remove the archive's taxonomy condition. A valid default can remain selected even when no results match. Invalid or unavailable defaults are ignored, with a warning in the builder preview. Changing only defaults does not rebuild the filter index.
 
-**Parent**: Parent term ID to retrieve direct-child terms. Set this to 0 to fetch only the terms that have children. Ex.: Given this structure, entering 55 would get only the T-shirts.
+Developers can supply or disable defaults with the [`bricks/query_filters/default_value`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-default_value/) PHP filter.
 
-**Child of**: Term ID to retrieve child terms of. Ex.: Given [this](https://academy.bricksbuilder.io/assets/sample-terms-structure.png) structure, entering 55 would get T-shirts and Tees.
+### URLs, Reset, and later updates {#default-state}
 
-**Childless**: (bool) True to limit results to terms with no children. This parameter has no effect on non-hierarchical taxonomies. Default false.
+When the URL contains a recognized parameter for a rendered filter, those parameters describe the complete selection for all URL-enabled queries on the page. Omitted filters stay clear, including defaults on other queries. An explicitly empty filter parameter also suppresses defaults. Tracking parameters and parameters for filters outside the rendered page do not suppress them.
 
-**Disable Query Merge**: Turn this on if do not want the query to be auto-merged by Bricks. (@since 1.7.1)
+For example, if category A is the default, a shared URL containing only category B loads B. A shared URL containing only a Search selection leaves the category filter clear.
 
-**Terms Include/Exclude**: Include or Exclude terms from the query
+Applied defaults appear in the address bar without a redirect, extra AJAX request, or new history entry. Geolocation coordinates appear only with **Save location in URL** enabled. Queries with **Disable URL Params Filter** enabled still apply defaults, without saving them in the URL.
 
-**Show empty**: Whether to show terms not assigned to any posts.
+**Reset** clears selections and their URL parameters, while respecting **Exclude filter IDs**. It does not restore configured defaults. Sort and per-page controls return to the original query settings, and numeric ranges return to the original population's bounds. A fresh visit or reload of a URL without filter parameters applies defaults again.
 
-**Meta Query**: Add one or multiple meta queries to filter the posts based on the custom fields.
+AJAX updates, pagination, Load more, and browser Back/Forward preserve the current selection without reapplying defaults.
 
-**Relation**: Define if the meta queries should be inclusive (OR) or exclusive (AND).
+## Distance Sorting {#distance-sorting}
 
-**No Results**: Text to be shown when there are no matching results.
+Starting with **Bricks 2.5**, Select and Radio filters can offer **Distance** alongside other sort options for native Posts, Terms, and Users queries.
 
-<span id="current-post-term"></span>
+1. Configure a [Geolocation filter](https://academy.bricksbuilder.io/builder/elements/filter/filter-geolocation/) with indexed coordinates and set its **Target query** to the listing.
+2. Add a Select or Radio filter targeting the same query, then set **Action** to **Sort**.
+3. Under **Sort options**, add a row with **Source** set to **Distance**, **Order** set to **Ascending**, and **Label** set to "Nearest first".
+4. Add a second Distance row with **Order** set to **Descending** and **Label** set to "Farthest first". Add other sort options as needed.
+5. Apply a location through address search, device location, map movement, or a configured default location, then switch between the sort options.
 
-**Current post term**: Enable to get the terms assigned to the current post only. `(@since 1.8.4)` Only use in single post context. Only visible if "Type" is set to "Term". This is the same logic as the example in [bricks/terms/query_vars](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-terms-query_vars/#get-terms-assigned-to-a-post)
+<div className="screenshot screenshot--control-panel">
 
-![](https://academy.bricksbuilder.io/assets/term-query-current-post-term.png)
+![A Select filter set to Sort, with Nearest first using the Distance source and Ascending order, plus Farthest first and Name: A–Z options.](https://academy.bricksbuilder.io/assets/query-filter-distance-sort-options.webp)
 
-### Example 3: Product categories {#example-2}
+</div>
 
-In this example, we'll build a dynamic list of product categories (product category image + a link to the category archive).
+Distance sorting retains the active radius. A 25 km search sorted farthest first still excludes locations beyond 25 km. Choosing another sort source changes the order within that radius. An explicit Distance sort works even if **Sort results by distance** is off on the Geolocation filter.
 
-The example is based on the WooCommerce plugin and the sample products. We'll need one container to hold the container loop. Inside the container loop, we've added a Basic Text element that contains the Dynamic Data `{term_name}` tag.
+Equal distances use the query's original order to break ties. Sorting does not enable coordinate storage in the URL; that remains controlled by **Save location in URL** on the Geolocation filter.
 
-![](https://academy.bricksbuilder.io/assets/bricks-query-loop-terms-1024x499.png)
+### When Distance is available
 
-<figcaption>
+On the frontend, Distance options stay visible but disabled until a Geolocation filter targeting the same query has a valid location. This applies to native Select dropdowns, enhanced Choices.js dropdowns, and Radio controls. Configured default locations enable Distance too, and a valid location keeps it available even when no results match.
 
-Display the product categories with a link
+Visitors obtain a location through the Geolocation filter. Choosing a sort option never requests device location. Duplicate controls for the same shared filter stay synchronized.
 
-</figcaption>
+If a default value or shared URL selects Distance without a valid location, Bricks clears that selection. The query uses its normal ordering, and the unavailable Distance selection does not appear in Active Filters or contribute to the active-filter count. Bricks keeps the configured options and labels so the options can be enabled when a location becomes available.
 
-After setting the Query to loop through "terms" and selecting the Taxonomy "Product Categories", you'll get in the canvas as many containers as the existing categories. Inside the loop, you'll be able to use several dynamic data tags to fetch the term's data, such as the term ID, the term name, the term archive URL, the term description, and any term meta.
+### Applying and clearing a location
 
-In this example, we set the loop container background image as the product category thumbnail, using the Dynamic Data dropdown and selecting the Product Category Image tag:
+With immediate filtering, availability follows the applied location. To submit a location and Distance choice together, set the Geolocation filter's **Apply on** to **On submit** and the Select or Radio filter's **Apply on** to **Submit**. Once the pending location is resolved, Distance becomes available before submission. Use a Filter - Submit targeting the same query to apply both.
 
-![](https://academy.bricksbuilder.io/assets/bricks-query-terms-bg-image.png)
+Clearing the location also clears a selected Distance sort and restores normal query ordering. In Submit mode, clearing the pending location disables Distance and clears the pending sort choice. The displayed results and URL history update together after the request succeeds. Failed or cancelled requests preserve the last applied results; pagination retains their Distance ordering even if a location clear is still pending.
 
-<figcaption>
+## URL Parameters {#url-parameters}
 
-Set the container background image
+Query Filters can be loaded from URL parameters.
 
-</figcaption>
+Bricks supports two parameter styles:
 
-We also set the loop container as a link to the product category archive page (using the Term Archive URL dynamic data tag). You'll need to set the HTML tag to "a (link)" and the link type to Dynamic Data, which will enable the Dynamic Data dropdown:
+- `brx_FILTERID=value`
+- A custom nice name configured on the filter, such as `category=shirts`
 
-![](https://academy.bricksbuilder.io/assets/bricks-query-terms-link-1.png)
+For a linked global filter, `FILTERID` is the global filter ID. If that definition targets multiple URL-enabled queries on the same page, Bricks adds each query ID: `brx_glob01_querya=shirts` or `category_querya=shirts`. Duplicate controls for one query and reuse on different pages keep the unscoped names. Existing unscoped links remain supported; an explicit query-scoped value takes precedence for that query.
 
-## Users query {#users-query}
+When the page loads, Bricks reads URL parameters, finds matching filter elements, sanitizes the values by filter type, sets each filter's current value, and merges the resulting query vars into the target query.
 
-![](https://academy.bricksbuilder.io/assets/bricks-query-control-users.png)
+Use custom nice names when the URL should be human-readable. Use the default `brx_` format when you want a low-friction internal parameter.
 
-**Roles**: Select one or multiple user roles to query (default: any)
+On the target Query Loop, enable **Disable URL Params Filter** when the loop should ignore URL parameters even if matching filters exist.
 
-**Order by**: Order the results by user ID, name, username, nicename, login, email, registered date, post count, or include list.
+Configured [default values](#default-values) apply when there are no recognized filter parameters. A filtered URL restores its complete selection, so omitted defaults remain clear.
 
-**Order**: Ascending (default) or Descending.
+## Browser History {#browser-history}
 
-**Number**: The number of users to show per page. WordPress defaults to all, but Bricks defaults to the number defined in the WordPress settings > Reading > Blog pages show at most. Use -1 to display all the results.
+When URL parameters are enabled, Bricks tracks filter changes in the browser history. Visitors can use the browser back and forward buttons to move between previous filter states.
 
-**Offset**: The number of users to skip.
+Bricks listens for browser navigation, restores the selected filter values for the target query, and refreshes the listing through the same AJAX filter flow. Test this when the page also has custom scripts that update the URL.
 
-**Current post author:** Enable to query the current post author (@since 1.9.1)
+## Interactions {#interactions}
 
-**Disable Query Merge**: Turn this on if do not want the query to be auto-merged by Bricks. (@since 1.7.1)
+Bricks adds interaction triggers for filter state and filter submission:
 
-**Meta Query**: Add one or multiple meta queries to filter the posts based on the custom fields.
+- **Filter: Empty**
+- **Filter: Not empty**
+- **Filter Submit (Start)**
+- **Filter Submit (End)**
 
-**Relation**: Define if the meta queries should be inclusive (OR) or exclusive (AND).
+Use **Filter: Empty** and **Filter: Not empty** to show or hide helper UI based on whether a filter element has options or values available.
 
-**No Results**: Text to be shown when there are no matching results.
+For example, add a wrapper around an "Active Filters" heading and a Filter - Active Filters element. Then add interactions to that wrapper:
 
-### Example 4: The blog authors {#example-3}
+- **Filter: Empty**: Hide element
+- **Filter: Not empty**: Show element
 
-In this example, we want to build a section to list all the blog authors.
+The trigger checks the selected filter element. When the Active Filters element has nothing to show, the wrapper can stay hidden. When at least one filter is active, the heading and active-filter list appear.
 
-The blog authors are website users with the role of author. As in the other examples, we've used a container to loop through the users. In that container, we've set a query of user type, setting roles to "Author" to pull only the website's authors.
+![](https://academy.bricksbuilder.io/assets/filter-empty-trigger-with-active-filters-example.png)
 
-We've added an Image and a Basic Text element inside the query loop container.
+Use **Filter Submit (Start)** and **Filter Submit (End)** to run an action only when a Filter - Submit element starts or finishes an AJAX filter submission for the selected query.
 
-The image we've set to display an ACF Dynamic Data field containing the profile image.
+See [Interactions](https://academy.bricksbuilder.io/builder/features/interactions/#trigger-filter-empty-or-not-empty) for filter option triggers and [Filter Submit triggers](https://academy.bricksbuilder.io/builder/features/interactions/#filter-submit-triggers) for submit-specific triggers.
 
-In the Basic Text, we've used the Dynamic Data `{wp_user_display_name}` tag.
+## How Filter Values Become Query Vars {#query-vars}
 
-![](https://academy.bricksbuilder.io/assets/bricks-query-loop-users-1024x467.png)
+Filter values are converted according to their action and source.
 
-<figcaption>
+| Filter action | Result |
+| --- | --- |
+| Filter - taxonomy | Adds a taxonomy query |
+| Filter - custom field | Adds a meta query or provider-specific query vars |
+| Filter - WordPress field | Adds the relevant post, term, or user query var |
+| Search | Adds search vars or a custom search result ID list |
+| Sort | Adds orderby/order vars |
+| Per page | Sets `posts_per_page` or `number` |
+| Pagination | Sets `paged` |
 
-Display the blog authors
+Bricks merges filter vars late so active filters can narrow or override the original query. Page-level route context, such as the current taxonomy archive, can also be preserved and merged unless disabled.
 
-</figcaption>
+### Taxonomy Queries With OR Relations {#taxonomy-or-queries}
 
-## The Pagination element {#pagination}
+From **Bricks 2.5**, Query Filters preserve an original taxonomy query's **OR** relation when applying additional taxonomy filters. A loop configured to match category A **or** category B keeps that group, and an active filter narrows it: `(A OR B) AND selected filter`.
 
-The perfect companion to the custom query loop builder. You'll find the Pagination element under the **WordPress** group of the elements panel.
+For example, a product loop might include products with a category or a brand. Selecting Adidas in a brand filter then shows only Adidas products within that original set. Products do not remain visible merely because they match the original category condition.
 
-![](https://academy.bricksbuilder.io/assets/bricks-pagination-element.png)
+This grouping applies on the initial page load, including filter URL parameters, and during AJAX updates. Option counts, Hide empty states, range bounds, and WooCommerce filter counts use the same query restrictions. The loop's **Tax Query Relation** controls its original taxonomy conditions; it is separate from the logic used to combine several selections within a Checkbox filter.
 
-Having pagination as a separate element offers you the most flexibility to build any layout.
+## Custom Fields And Indexing {#custom-fields}
 
-After adding the Pagination element to the canvas, you'll need to link this pagination element to one of the elements that run a query. To do so, please select the element in the **Related Query** control by editing the Pagination element:
+<span id="custom-fields-integration"></span>
 
-![](https://academy.bricksbuilder.io/assets/bricks-pagination-related-query.png)
+Bricks Query Filters work best with simple values that can be indexed and compared.
 
-Tip: to make it easier to recognize elements, give descriptive element names to the containers that have a query enabled.
+By default, simple custom fields are indexed as plain values. Complex provider-specific fields may need **Custom fields integration** to be indexed correctly. Fields stored as serialized arrays or complex objects are not reliable as default filter sources.
 
-## Load more (button) {#load-more}
+Supported indexed filter element types:
 
-Besides the infinite scroll, which automatically loads more results as you scroll down the page, you can also give any element (typically the Button) a "Load more" functionality by adding a "Load more" click [interaction](https://academy.bricksbuilder.io/builder/features/interactions/) to it like this:
+- Checkbox
+- Datepicker
+- Radio
+- Range
+- Select
 
-![](https://academy.bricksbuilder.io/assets/bricks-query-loop-load-more-button-scaled.jpg)
+Search, Submit, Active Filters, and Pagination are dynamic filter controls but are not indexed in the same way.
 
-## Query IDs, Filters, and Live Search {#query-ids}
+Enable **Custom fields integration** under **Bricks > Settings > General > Query filters** when filters should use field settings from supported providers.
 
-Each query loop is identified by the element ID of the loop element. On the frontend this is usually the six-character Bricks ID without the `#brxe-` prefix. If the loop element ID is `#brxe-abc123`, the target query ID is usually `abc123`.
+![](https://academy.bricksbuilder.io/assets/query-filters-custom-fields-integration.png)
 
-Use that ID when you connect:
+When the filter source is **Custom Field**, Bricks shows a **Provider** control if supported providers are active. Choose the provider, then use the dynamic data picker in the **Meta key** control to select the field. Bricks uses the dynamic tag to read the field settings. It does not parse the tag as frontend dynamic data.
 
-- Query Filter elements
-- A Pagination element
-- AJAX pagination, Load More, or Infinite Scroll behavior
-- Filter-aware dynamic tags such as `{query_results_count_filter:abc123}`
+For a Datepicker with **Date range** enabled, the same picker is available in **End date meta key**. Select a compatible date field from the same provider and object type. Both fields must be available on the queried post type or taxonomy. See [supported date fields](https://academy.bricksbuilder.io/builder/elements/filter/filter-datepicker/#supported-date-fields).
 
-Query Filters and Live Search support post, term, and user query loops. They do not target API or array query loops.
+![](https://academy.bricksbuilder.io/assets/query-filters-custom-fields-integration-builder-provider-control.png)
 
-For Live Search:
+Built-in integrations are available for Advanced Custom Fields, Meta Box, and, starting with Bricks 2.5, JetEngine. They help Bricks index provider-specific field values, generate filter options from field choices, handle date formats, and build the correct custom-field query for fields that do not behave like plain WordPress meta.
 
-1. Add a Filter - Search element.
-2. Assign it to the target query.
-3. Enable **Live Search** on the target query loop.
-4. Set the **Live Search Wrapper Selector** to the element that should show or hide the live-search results.
+ACF support includes fields such as relationship, post object, user, true/false, choice, date picker, and date time picker fields. Meta Box support includes multiple-choice fields and post, taxonomy, user, and date fields. Bricks 2.5 adds Meta Box relationship fields.
 
-The wrapper selector is usually the parent element around the loop output.
+Meta Box custom table fields are not supported by this integration. This limitation does not apply to relationships, which Bricks reads from Meta Box's separate relationship storage.
 
-## Query loop in Accordions & Sliders {#query-accordions-or-sliders}
+### Meta Box Relationship Filters {#metabox-relationship-filters}
 
-The classic Accordion and Slider elements also allow to pull data dynamically through the Query Loop to feed the element parts.
+Since Bricks 2.5, you can filter a Posts, Terms, or Users query by connected objects in a Meta Box relationship. For example, visitors can filter a list of books by their related writers.
 
-You'll find a Query Loop control in the Accordion element to configure a query. The query creates as many accordion items as there are results.
+Use a Filter - Select, Filter - Radio, or Filter - Checkbox element. Range and Datepicker filters do not support relationship matching. Meta Box and its MB Relationships extension must be active, with the relationship already configured.
 
-You'll be able to configure the accordion title, subtitle, and content of the "master" accordion item, and this will be used as a template for the dynamic accordion items:
+1. Enable **Custom fields integration** under **Bricks > Settings > Query filters**.
+2. Add a supported filter element and set its **Target Query** to your listing's query loop.
+3. Set **Source** to **Custom field**.
+4. Set **Field type** to match the objects in the listing: **Post**, **Term**, or **User**. This is the type being filtered, not the type of the connected objects shown as filter options.
+5. Set **Provider** to **Meta Box**.
+6. Use the dynamic data picker in **Meta key** to select the appropriate **MB Relationship** field.
+7. Save the page and let indexing finish. If an existing relationship filter has missing or stale options after upgrading, use **Regenerate filter index** under **Bricks > Settings > Query filters**.
 
-![](https://academy.bricksbuilder.io/assets/bricks-query-loop-accordion.png)
+Relationship field IDs end in `_to` or `_from`. The suffix identifies the side whose connected objects become filter options. If books are the relationship's **from** side and writers are its **to** side, choose the field ending in `_to` to filter books by writers. For a writer listing filtered by books, choose the field ending in `_from`.
 
-<figcaption>
+Filter options use connected object IDs as values and show post titles, term names, or user display names as labels. For Checkbox filters and Select filters with multiple selections, **Multiple options** controls how selections combine:
 
-Use the query loop in the accordion element
+- **OR** (default): Match objects connected to any selected option.
+- **AND**: Match objects connected to every selected option.
 
-</figcaption>
+Bricks matches these selections through the filter index rather than a standard meta query. **Compare** and **Compare type** do not change relationship matching. The matching IDs narrow the target query's existing include restrictions; if no objects match, the listing returns no results.
 
-The same happens in the Slider element. If the Query Loop is enabled, you'll have access to a Query control and a slide item, which will behave as the template for all the slides.
+Saving relationship fields in the editor or adding and deleting connections through the Meta Box relationship API refreshes the affected filter index entries on both sides, including removed connections.
 
-![](https://academy.bricksbuilder.io/assets/bricks-query-control-slider.png)
+### JetEngine Fields {#jetengine-filters}
 
-<figcaption>
+Starting with **Bricks 2.5**, JetEngine fields can supply options for Checkbox, Radio, and Select filters, numeric values for Range filters, and dates for Datepicker filters. JetEngine must be active, and **Custom fields integration** must be enabled under **Bricks > Settings > Query filters**.
 
-Use the query loop in the slider element.
+1. Add a filter element and set its **Target query** to a Posts, Terms, or Users query loop.
+2. Select the **Filter** action if the element has an Action control, then set **Source** to **Custom field**.
+3. Set **Field type** to match the objects in the listing: **Post**, **Term**, or **User**.
+4. Set **Provider** to **JetEngine**.
+5. Open the dynamic data picker in **Meta key** and select the field. The picker excludes unsupported JetEngine fields.
+6. Save the builder and let indexing finish. For missing or stale options after upgrading, use **Regenerate filter index** under **Bricks > Settings > Query filters**.
 
-</figcaption>
+Select the field's tag without adding `:value`, `:label`, or other output modifiers. The integration reads the field settings and stored values directly.
 
-## Include/Exclude Controls: Dynamic Data Tag Support {#include-exclude-dynamic-data}
+<div className="screenshot screenshot--control-panel">
 
-Starting with Bricks 1.12, the **Include** and **Exclude** post query controls support dynamic data tags.
+![A Select filter with Source set to Custom field, Field type set to Post, Provider set to JetEngine, and the Books and Writers relationship visible in the Meta key picker.](https://academy.bricksbuilder.io/assets/jetengine-query-filter-provider-picker.webp)
 
-Starting with Bricks 2.4, the **Include authors** and **Exclude authors** controls accept selected users and dynamic tags that return user IDs.
+</div>
 
-These controls let the query read IDs from dynamic values instead of only using IDs selected manually in the builder.
+| JetEngine field | Filter behavior |
+| --- | --- |
+| Text, Textarea, WYSIWYG, Colorpicker | Uses the stored value as the option value and label. |
+| Select, Radio, Checkbox | Matches stored choice keys and displays the configured labels. Multiple selections are supported for fields that store lists of choices. |
+| Switcher | Matches the stored `true` or `false` value and displays True or False. |
+| Number | Supports numeric comparisons and [Range filters](https://academy.bricksbuilder.io/builder/elements/filter/filter-range/). Set **Decimal places** on the Range filter when values contain decimals. |
+| Posts | Matches referenced post IDs and displays post titles. Single and multiple references are supported. |
+| Date, Time, Datetime | Supports Datepicker filters, including date ranges and supported timestamp storage. See [JetEngine Date Fields](#jetengine-dates). |
+| Media, Gallery | Supports fields whose JetEngine value format is **Media ID**. Options use attachment IDs. |
+| Relationships | Matches connected object IDs and displays post titles, term names, or user display names. See [JetEngine Relationships](#jetengine-relationships). |
 
-- **Include**: Adds post IDs to the `post__in` parameter.
-- **Exclude**: Adds post IDs to the `post__not_in` parameter.
-- **Include authors**: Adds user IDs to the `author__in` parameter.
-- **Exclude authors**: Adds user IDs to the `author__not_in` parameter.
+For example, if a Select field stores `fr` with the label "France", the filter shows France and matches `fr`. The [`:label` dynamic data modifier](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/#label-modifier) controls labels in rendered tags. Query Filters handles its option labels separately.
 
-![](https://academy.bricksbuilder.io/assets/include-exclude-authors.png)
+This integration supports ordinary WordPress post, term, and user metadata. Repeater fields and their subfields, relationship meta fields, options-page fields, Custom Content Types (CCTs), and fields stored in JetEngine custom meta tables are excluded. Media and Gallery fields using URL or ID-and-URL array formats are also excluded. A field can work as dynamic data without being a supported query-filter source.
 
-The author controls are available for **Posts** queries when **Query editor (PHP)** is turned off. Use them to show posts from selected authors, hide posts from selected authors, or match the loop to the current user or current post author.
+#### JetEngine Date Fields {#jetengine-dates}
 
-![](https://academy.bricksbuilder.io/assets/query-loop-include-supports-dynamic-values.png)
+For a Filter - Datepicker element, select a JetEngine Date, Time, or Datetime field in **Meta key**. Bricks reads the field settings to handle date strings and timestamp storage. **Datepicker format** controls what visitors see, not the saved field format.
 
-Use dynamic data in these controls when IDs are stored in a custom field or come from the current page context. The query can still use other settings, such as **meta queries** or **taxonomy queries**.
+To use separate start and end fields, enable **Date range** and select a Date or Datetime field in **End date meta key**. Both fields must belong to the same object type and compatible locations. Each field can use its own supported string or timestamp storage. Time-only fields cannot be used in a two-field date range.
 
-#### Supported Field Types
+For Datetime fields, leave **Enable time** off to select whole calendar days. With **Compare** set to `==`, a selected day includes all times on that day, including when JetEngine stores timestamps. A date range includes the whole final day. Enable **Enable time** when visitors need to select hours and minutes, including for Time fields.
 
-- **WordPress:** `{wp_user_id}` and `{author_id}` for author include/exclude controls
-- **ACF:** Relationship, Post Object, Gallery, User
-- **Meta Box:** Relationship, Post, Image Advanced, Image, Image Upload, Single Image, User
-- **JetEngine:** Relationship, Post, Gallery, Media (`@since 2.2`)
+#### JetEngine Relationships {#jetengine-relationships}
 
-> **Note**
->
-> Important: When using dynamic data in the Include field, ensure the selected Post Type matches the field values. For example, if you are using a Gallery field, set the Post Type to Media to ensure the dynamic value aligns correctly.
+Use a **Filter - Checkbox**, **Filter - Radio**, or **Filter - Select** element and select the **JE Relation** entry in the Meta key picker. Range and Datepicker filters do not support relationship matching. Both ends of the relationship must be WordPress posts, terms, or users.
 
-For author include/exclude controls, the dynamic tag must return one or more user IDs. Bricks supports native user-related tags such as `{wp_user_id}` and `{author_id}`, plus ACF and Meta Box fields with the **User** field type.
+Set **Field type** to the objects being filtered. Bricks reads connections from that side of the relationship and shows the connected objects as options. For example, if Books are parents and Writers are children, a Books listing shows writers as filter options. A Writers listing using the same relationship shows books.
 
-When both include and exclude author rules are present, Bricks removes excluded author IDs from the include list before running the query. If no author remains after that comparison, the query returns no posts.
+If both sides use the same post type, taxonomy, or users, Bricks treats each listed object as a parent and uses its children as options. There is no separate direction control for reversing that case.
 
-### Example 1: Retrieve ACF Relationship Posts by Post Type and Order by Post IDs {#filter-acf-relationship-by-post-type}
+![Lena Ortiz selected in a JetEngine relationship filter, showing only her books Designing with Grids and A Guide to Typography.](https://academy.bricksbuilder.io/assets/jetengine-relationship-filter-books-by-writer.webp)
 
-For an ACF Relationship field that connects to multiple post types, you can limit the returned posts to the "Book" post type and keep the same order defined in the relationship field.
+For Checkbox filters and Select filters with multiple selection, **Multiple options** controls how selected connections combine:
 
-![](https://academy.bricksbuilder.io/assets/query-loop-include-supports-dynamic-values-example-1.png)
+- **OR** (default): Match objects connected to any selected option.
+- **AND**: Match objects connected to every selected option.
 
-### Example 2: Use Meta Box Image Advanced Field for a Slider Query Loop {#query-loop-for-metabox-image-field}
+Relationship matching uses the filter index. **Compare** and **Compare type** do not change it. Matches narrow the target query's existing restrictions. If no objects match, the listing returns no results.
 
-Previously, retrieving images saved in the **Meta Box Image Advanced** field required using a PHP filter to pass the image IDs into the `post__in` parameter. Now, you can achieve this directly within the Query Loop UI.
+Metadata changes and relationship updates or deletions through JetEngine refresh the affected index entries, including when the last value or connection is removed. JetEngine fields also work with [Global Filters](https://academy.bricksbuilder.io/builder/dynamic-content/global-filters-filter-manager/): choose the provider and field in Filter manager or on a linked element. Linked copies use the global filter's shared index.
 
-Simply choose your dynamic field, set the **Post Type** to **Media** and, if needed, add an additional **Mime Type** filter to ensure only the correct image types are included.
+## Filter Index {#filter-index}
 
-> **Note**
->
-> Note: Inside the loop, use dynamic tags like `{post_id}` for the image source and `{post_title}` to retrieve the image title. Avoid using `{featured_image}`, as this is not applicable in this context.
+Bricks stores filter data in custom tables so filter options and counts can be generated efficiently.
 
-![](https://academy.bricksbuilder.io/assets/query-loop-include-supports-dynamic-values-example-2.png)
+The index system tracks:
 
-### Example 3: Query ACF Gallery with Random Order {#query-acf-gallery-with-random-order}
+- Filter elements and their settings
+- Whether each filter element is active and indexable
+- Indexed values for posts, terms, and users
+- Background indexing jobs and progress
 
-To display images from an **ACF Gallery** field in a random order, set the Post Type to **Media**. (Add an additional Mime Type filter if necessary to ensure only specific file types are included.) Select **Random (rand)** to randomize the order of the images in the gallery.
+The index is built when you save a page with indexable filters, and it updates when relevant Bricks data, posts, terms, users, and metadata change. Until the page is saved and indexed, Checkbox, Radio, and Select options in the builder can show a count of 0 and Range filters can show a default range. Check the counts on the frontend after saving. Large sites can require background jobs to finish before every filter option is accurate.
 
-> **Note**
->
-> Note: Inside the loop, use dynamic tags like `{post_id}` for the image source and `{post_title}` to retrieve the image title. Avoid using `{featured_image}`, as this is not applicable in this context.
+From Bricks 2.5, indexable global filters own one shared index. Linked elements use that index instead of generating separate copies. Counts still reflect the target query. Source and behavior changes can queue index work; renaming a global filter or changing its category does not rebuild the index.
 
-![](https://academy.bricksbuilder.io/assets/query-loop-include-supports-dynamic-values-example-3.png)
+You can manage indexing under **Bricks > Settings > General > Query filters**.
 
-![](https://academy.bricksbuilder.io/assets/query-loop-include-supports-dynamic-values-example-3-result.png)
+![](https://academy.bricksbuilder.io/assets/query-filters-regenerate-continue-index-job.png)
 
-## Query Type: API {#api-query}
+Available actions:
 
-The **API** query loop type lets you render array items returned by an external JSON API. Configure the API request in the API settings popup, including the URL, method, authorization, headers, URL parameters, request body, response path, cache duration, and pagination.
+- **Regenerate filter index**: Rebuilds index records for all indexable filter elements.
+- **Continue index job**: Runs pending index jobs immediately instead of waiting for cron.
+- **Fix corrupted database**: Rebuilds stored filter-element metadata when filter elements are missing, stale, or moved.
 
-Use `{query_api @key:'fieldName'}` inside the loop to render a field from the current API result.
+Starting with **Bricks 2.5**, a reindex request preserves existing queued work instead of restarting it. A new rebuild clears the filter value index and queues background jobs, so filter options and counts can remain incomplete until those jobs finish.
 
-For full setup details, see [Query data from APIs](https://academy.bricksbuilder.io/builder/dynamic-content/query-data-from-apis/).
+### Reindex from PHP or on a Schedule {#programmatic-reindex}
 
-Important limitations:
-
-- API query loops do not support Query Filters.
-- API query loops do not support Live Search.
-- API query loops use their own API settings popup instead of the standard post, term, or user query controls.
-
-## Query Type: Array {#array}
-
-The **Array** query loop type lets you loop through any PHP or JSON array. (`@since 2.2`)
-
-This is useful for:
-
-- Rendering API response arrays. ([API query](https://academy.bricksbuilder.io/builder/dynamic-content/query-data-from-apis/) loop)
-- Combining data from multiple sources (e.g. posts + custom arrays).
-- Displaying values returned by custom functions in loop format.
-
-![](https://academy.bricksbuilder.io/assets/query-array-control.png)
-
-Once configured, the loop behaves like any other Bricks query: you can style each item using the builder, use dynamic tags to access values, and enable pagination features.
-
-*Supported features: AJAX/non-AJAX pagination, Load More, Infinite Scroll*
-
-#### Use Case 1: Looping Nested Arrays from API Responses
-
-If your API response contains nested arrays (e.g. `cars: ['BMW', 'Mazda']`), use a **nested array loop** and set the correct path in the Array Editor.
-
-![](https://academy.bricksbuilder.io/assets/query-array-nested-loop-with-dynamic-tag.png)
-
-#### Use Case 2: Looping Custom PHP Arrays
-
-If you have a custom PHP function that returns an array, you can use it in the loop using a dynamic tag like `{echo:my_custom_array()}`.
+From Bricks 2.5, integrations can request a full rebuild after an import or from a custom WP-Cron event:
 
 ```php
-// Ensure that my_custom_array is whitelisted via the bricks/code/echo_function_names hook
-function my_custom_array() {
-  return [
-    ['name' => 'John', 'age' => 30],
-    ['name' => 'Jane', 'age' => 25],
-  ];
+do_action( 'bricks/query_filters/reindex' );
+```
+
+Call the action after Bricks has loaded and the import has saved its content. Query Filters must be enabled. Bricks does not add a daily full-rebuild schedule automatically.
+
+See [Programmatic query filter reindexing](https://academy.bricksbuilder.io/developer/hooks/actions/bricks-query_filters-reindex/) for a daily schedule, the result-returning PHP method, and background-processing behavior. To process existing jobs without requesting a new rebuild, use [`bricks_indexer`](https://academy.bricksbuilder.io/developer/hooks/actions/bricks-indexer/).
+
+### Indexing Troubleshooting {#indexing-troubleshooting}
+
+> **Note**
+>
+> If index jobs remain pending without progress, check the Query Filter indexer entry in [Known Issues](https://academy.bricksbuilder.io/builder/setup/known-issues/#query-filter-indexer-no-progress).
+
+If your site is protected by HTTP Authentication, background indexing can fail because Bricks cannot reach its own background endpoint. Add authentication headers to Bricks remote requests for the indexing action.
+
+```php
+add_filter( 'bricks/remote_post', function( $args, $url ) {
+  if ( strpos( $url, 'action=bricks_background_index_job' ) === false && strpos( $url, 'action=bricks_system_info_wp_remote_post_test' ) === false ) {
+    return $args;
+  }
+
+  $username = 'USERNAME';
+  $password = 'PASSWORD';
+
+  $args['headers']['Authorization'] = 'Basic ' . base64_encode( $username . ':' . $password );
+
+  return $args;
+}, 10, 2 );
+```
+
+## Live Search {#live-search}
+
+Live Search shows query results only after a search interaction.
+
+Setup:
+
+1. Add a Filter - Search element.
+2. Create a post, term, or user Query Loop.
+3. Set the Search filter's **Target query** to the loop.
+4. Enable **Live Search** in the target query settings.
+5. Set **Live Search Wrapper Selector** to the wrapper that should show/hide the result area.
+
+![](https://academy.bricksbuilder.io/assets/bricks-1.9.6-query-control-is-live-search.png)
+
+The wrapper selector is usually the parent around the result loop. Bricks uses it to hide empty live-search results, show the loader during AJAX requests, and hide the result box when the visitor clicks outside the search/results area.
+
+Live Search still prepares the query on page load so required scripts, styles, templates, and popup content are available. On the frontend, Bricks suppresses the initial output until the visitor searches.
+
+## Dynamic Data Tags {#dynamic-data}
+
+Query Filters include dynamic tags that update with AJAX.
+
+### `search_term_filter`
+
+Use this to display the current search term for a target query:
+
+```text
+{search_term_filter:abc123}
+```
+
+Bricks wraps the value in an AJAX-updatable span tied to the target query.
+
+### `filter_geo_distance` {#filter-geo-distance}
+
+From Bricks 2.5, use this tag inside a Posts, Terms, or Users loop with an applied Geolocation filter:
+
+```text
+{filter_geo_distance}
+{filter_geo_distance @to:'mi' @decimals:'2'}
+{filter_geo_distance @fallback:'Select a location'}
+```
+
+It shows the current item's distance from the applied origin, using the filter's distance unit and label format with one decimal place by default. It also works in AJAX-rendered map Info Boxes for those results.
+
+Use `@to:'km'` or `@to:'mi'` to convert the displayed distance, and `@decimals:'0'` through `@decimals:'6'` to set precision. `@output:'value'` returns only the rounded number; `@output:'unit'` returns only the unit label. These arguments do not change the search radius.
+
+Without a fallback, the tag returns nothing before a location search is applied or outside a supported filtered loop. API, Array, and provider-specific loops do not support Geolocation filtering or this tag.
+
+### `query_results_count_filter`
+
+Use this to display the current result count for a target query:
+
+```text
+{query_results_count_filter:abc123}
+```
+
+### `search_term`
+
+<span id="search_term"></span>
+
+Use this on a static search results page:
+
+```text
+{search_term}
+{search_term:abc123}
+```
+
+For the value from a Filter - Search element, use `search_term_filter` instead.
+
+### `active_filters_count`
+
+<span id="active_filters_count"></span>
+
+Use this to display the number of active filters for a target query:
+
+```text
+{active_filters_count:abc123}
+{active_filters_count:abc123 @exclude:'filter1,filter2'}
+```
+
+From Bricks 2.5, exclusions accept global filter IDs as well as element IDs. A linked element ID excludes its shared filter for that target query. The first argument, `abc123`, remains the query loop ID.
+
+You can style the generated span:
+
+```css
+span[data-brx-af-count] {
+  /* Your styles here */
 }
 ```
 
-#### Use Case 3: Render ACF Checkbox Choices as a List
+![](https://academy.bricksbuilder.io/assets/active-filters-count-example.png)
 
-An ACF Checkbox field returns its selected choices as an array. Use that array as the query source to render each choice as a separate list item without custom PHP.
+## Search Criteria {#search-criteria}
 
-The pattern is not limited to ACF Checkbox fields. Enter any dynamic-data tag that returns a flat array in the **Array Editor**. Bricks creates one loop item for each array value, and `{query_array}` outputs the current value inside the loop.
+The Search filter can use default search behavior or custom criteria.
 
-When you insert `{acf_FIELD_NAME}` directly into a text field, Bricks joins all selected choices into one string with a comma and space between each choice. There is no builder setting for this separator. Changing it requires the [`bricks/dynamic_data/text_separator`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-dynamic_data-text_separator/) PHP hook.
+For posts, custom criteria can search:
 
-The Array query approach keeps every selected choice as a separate loop item. This gives you semantic list markup and lets you style or add content to each choice independently without changing the separator in PHP.
+- Post fields
+- Post meta keys
+- Assigned terms and taxonomies
 
-Use **Div** elements for both levels of the list. A Block uses `display: flex` by default, which overrides the browser's normal `ul`, `ol`, or `li` display behavior and can remove list markers. A Div has no default layout styles, so the semantic list elements retain their normal display behavior.
+For terms, custom criteria can search:
 
-1. Add a **Div** for the list container. Set its **HTML tag** to `ul`, or use `ol` when the order of the choices matters. Leave **Use Query Loop** disabled on this parent element.
-2. Add another **Div** inside the list container and set its **HTML tag** to `li`.
-3. Enable **Use Query Loop** on the `li` element. Open its **Query** control, set **Type** to **Array**, and enter `{acf_FIELD_NAME}` in the **Array Editor**. Replace `FIELD_NAME` with the Checkbox field name.
-4. Add a **Basic Text** element inside the `li` and set its content to `{query_array}`.
+- Term fields
+- Term meta keys
 
-The parent `ul` or `ol` renders once. The child `li` is the loop element, so Bricks repeats it for every selected checkbox choice. If the field contains "Breakfast included", "Parking", and "Wi-Fi", the visible result is:
+For users, custom criteria can search:
 
-- Breakfast included
-- Parking
-- Wi-Fi
+- User fields
+- User meta keys
 
-The ACF field's **Return Format** determines what the loop receives:
+Weighted search returns IDs in weighted relevance order. An active sort filter can change that order. A Distance sort without a valid location preserves the normal order, including weighted relevance.
 
-- **Label** outputs the choice labels.
-- **Value** outputs the stored choice values.
-- **Both (Array)** outputs labels by default in Bricks. Use `{acf_FIELD_NAME:value}` in the **Array Editor** when you need the stored values instead. The `:value` modifier is not needed when the field already uses the **Value** return format.
+Every added field or taxonomy can make the query more expensive. Keep the search surface focused.
 
-Use the **Style** tab on the parent list element for list-wide spacing and indentation. Style the looping `li` element to apply the same typography, spacing, background, or border to every repeated item.
+## Custom Option Labels {#label}
 
-For nested or associative arrays, use the `{query_array @key:'keyName'}` syntax described below.
+Custom labels are available for Checkbox, Radio, and Select filters.
 
-![Bricks Structure and Array query settings for rendering ACF Checkbox selections as an ordered list.](https://academy.bricksbuilder.io/assets/acf-checkbox-array-query-use-case.webp)
+Use them when the stored value is not visitor-friendly. For example, map `_stock_status` values to "In stock" and "Out of stock".
 
-### Dynamic Data Tag: `{query_array}`
+![](https://academy.bricksbuilder.io/assets/bricks-1.9.6-custom-label-mapping.png)
 
-`{query_array}` - Output the current array value (array items are a simple list of strings).
+## Results Per Page {#results-per-page-action}
 
-`{query_array @key:'age'}` - Output a specific key from the array item.
+Filter - Select and Filter - Radio elements can use the **Results per page** action for post, term, and user queries.
 
-#### Example 1: Flat List
+![](https://academy.bricksbuilder.io/assets/results-per-page-action.png)
 
-```php
-[
-  'Apple',
-  'Banana',
-  'Cherry',
-  'Donut'
-]
+By default, Bricks offers these values:
+
+```text
+10, 20, 50, 100
 ```
 
-Use `{query_array}` inside the loop to display each fruit name.
+Change the values in **Options: Results per page**. Enter a comma-separated list of allowed page sizes.
 
-#### Example 2: Associative Array
+![](https://academy.bricksbuilder.io/assets/results-per-page-action-example.png)
 
-```php
-[
-  ['name' => 'John', 'age' => 30],
-  ['name' => 'Alan', 'age' => 25],
-  ['name' => 'Pony', 'age' => 66]
-]
-```
+The active value changes the target query page size for the filtered request. It does not rewrite the original query loop setting. If you show an Active Filters element and do not want the per-page filter listed there, exclude the filter element ID in the Active Filters settings. From Bricks 2.5, a global filter ID or any linked element's ID excludes that shared filter for the target query.
 
-Use `{query_array @key:'name'}` and `{query_array @key:'age'}`
+## WooCommerce Filter Source {#woocommerce}
 
-#### Example 3: Nested Arrays
+When WooCommerce is active, Bricks adds **WooCommerce** as a source for supported filter elements.
 
-```json
-[
-  {
-    "name": "John",
-    "age": 30,
-    "cars": ["Ford", "BMW", "Fiat"]
-  },
-  {
-    "name": "Elbert",
-    "age": 66,
-    "cars": ["Mazda", "Benz"]
-  }
-]
-```
+![](https://academy.bricksbuilder.io/assets/woocommerce-filter-source.png)
 
-To loop through each `cars` array inside the main loop:
+WooCommerce sorting options are also available for supported select and radio filters.
 
-1. Nest another **Array Loop** inside the parent loop.
-2. In the nested loop's **Array Editor**, set: `{query_array @key:'cars'}`
-3. Use `{query_array}` inside the nested loop to output each car.
+![](https://academy.bricksbuilder.io/assets/woocommerce-sort-source.png)
 
-## Results Filter {#results-filter}
+Supported WooCommerce sources depend on the filter element:
 
-The **Results Filter** feature allows you to filter loop results using conditions **after the array is fetched but before rendering begins**. It is similar to the [bricks/query/result](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result/) PHP filter. (`@since 2.2`)
+| WooCommerce option | Filter - Radio | Filter - Select | Filter - Checkbox | Filter - Range |
+| --- | --- | --- | --- | --- |
+| On sale | Yes | Yes | Yes | No |
+| In stock | Yes | Yes | Yes | No |
+| Featured products | Yes | Yes | Yes | No |
+| Product type | Yes | Yes | Yes | No |
+| Rating | Yes | Yes | No | No |
+| Price | No | No | No | Yes |
+| Sort by price | Yes | Yes | No | No |
+| Sort by rating | Yes | Yes | No | No |
 
-**Supported Loop Types:** Array, ACF Repeater
+![](https://academy.bricksbuilder.io/assets/frontend-example-woo-filters.png)
 
-Use this feature to:
+Use WooCommerce filters on product query loops. Common setups combine product category or attribute filters with stock state, price range, rating, and price sorting.
 
-- Remove unnecessary or invalid results based on your requirement
-- Prevent rendering of unwanted loop items
+## Practical Patterns {#patterns}
 
-![](https://academy.bricksbuilder.io/assets/results-filter-control.png)
+### Archive filter sidebar
 
-#### Example: Filter by Age
+Use a Query Loop as the archive main query, add taxonomy filters in a sidebar, and enable AJAX pagination. Keep query merge enabled so the loop still respects the current archive route.
 
-For this array:
+### Product filters
 
-```php
-[
-  ['name' => 'John', 'age' => 30],
-  ['name' => 'Alan', 'age' => 25],
-  ['name' => 'Pony', 'age' => 66]
-]
+Use taxonomy filters for product categories and attributes, a range filter for price, a checkbox/select for stock state, and a sort select. Regenerate the filter index after adding new product filters.
 
-```
+### Search page with native `s`
 
-You only want to display people whose **age is less than 50**. You can configure a result filter like this:
+Set the Filter - Search URL parameter to `s`, target the main search query, and configure search criteria on the Search template when the filter is part of the main search experience.
 
-| Field | Operator | Value |
-| --- | --- | --- |
-| `{query_array @key:'age'}` | `<` | `50` |
+### Homepage live search
 
-This filter excludes the last item (`Pony`, age 66) from rendering, so only `John` and `Alan` appear in the loop output.
-
-> **Note**
->
-> You can add multiple filter rules if needed. Each rule is evaluated with `AND` logic. Use the `bricks/query/result` hook for more complex filtering.
-
-## No Results {#no-results}
-
-Each Query Loop can show fallback content when no results match the query.
-
-You can use:
-
-- **No Results** text for a short message
-- A no-results template where that option is available
-
-Bricks may still process loop child elements internally when there are no results so required scripts, styles, and popup assets can be prepared for the page. That does not mean fake loop content is shown to visitors.
-
-## Performance Guidance {#performance}
-
-Use the smallest query that gives you the result you need.
-
-Good defaults:
-
-- Set a realistic **Posts Per Page**, **Number**, or **Items per page** value.
-- Avoid `-1` on large datasets.
-- Disable query merge on secondary loops.
-- Use **No Found Rows** when you do not need pagination or total counts.
-- Disable post meta or term cache updates only when the loop does not use that data.
-- Add a stable secondary sort when paginating.
-- Keep nested loops small.
+Use a Filter - Search element with Submit redirect, or use Live Search with a wrapper selector if results should appear inline.
 
 ## Troubleshooting {#troubleshooting}
 
-### The loop shows the wrong posts on an archive
+### Filters do not affect the listing
 
-Check whether the loop should merge with the current archive query. For the main archive listing, enable **Is main query (Archive, Search)** and do not disable query merge. For unrelated loops, enable **Disable Query Merge**.
+Check that every filter has the correct **Target query**. Then verify that the target loop is a post, term, or user query.
 
-### Pagination shows a 404 on an archive
+### Filter options are empty or outdated
 
-Make sure only one loop is marked as the main archive/search query, and make sure the Pagination element targets that loop.
+Regenerate the filter index. If the filter element was duplicated, imported, translated, or moved between templates, also fix the filter element DB.
 
-### Filters do not change the loop
+### URL parameters load but filters do not appear active
 
-Check the target query ID on every filter element. Then verify that the target query type is post, term, or user.
+Check the filter's URL parameter/nice name, and make sure the filter element still exists and targets the same query ID.
 
-### AJAX pagination or Infinite Scroll stopped working
+### Search works on input but not on a direct URL
 
-Check whether an optimization plugin is removing Bricks query loop HTML comments such as `<!--brx-loop-start-abc123-->`. Those comments are required markers.
+If you expect native search behavior, use `s` as the URL parameter and test the Search template settings. Also check whether **Disable URL Params Filter** is enabled on the query.
 
-### Dynamic data shows the page instead of the loop item
+### AJAX updates the loop but not the filters
 
-Make sure the element with the dynamic tag is inside the loop element, and make sure the tag supports the query type.
+Only dynamic update elements are refreshed after AJAX. Make sure the filter element type is supported and not hidden by element conditions that fail outside the normal page load.
 
-## Query loop hooks {#hooks}
+### Filters conflict with another filtering plugin
 
-- [bricks/query/run](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-run/) (filter)
-- [bricks/terms/query_vars](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-terms-query_vars/) (filter)
-- [bricks/users/query_vars](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-users-query_vars/) (filter)
-- [bricks/posts/merge_query](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-merge_query/) (filter)
-- [bricks/posts/query_vars](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-query_vars/) (filter)
-- [bricks/query/loop_object](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object/) (filter)
-- [bricks/query/loop_object_id](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object_id/) (filter)
-- [bricks/query/loop_object_type](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object_type/) (filter)
-- [bricks/query/no_results_content](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-no_results_content/) (filter)
-- [bricks/query/before_loop](https://academy.bricksbuilder.io/developer/hooks/actions/action-bricks-query-before_loop/) (action)
-- [bricks/query/after_loop](https://academy.bricksbuilder.io/developer/hooks/actions/action-bricks-query-after_loop/) (action)
-- [bricks/query/result](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result/) (filter)
-- [bricks/query/result_count](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_count/) (filter)
-- [bricks/query/result_max_num_pages](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_max_num_pages/) (filter)
-- [bricks/query/init_loop_index](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-init_loop_index/) (filter)
+Avoid combining Bricks Query Filters with plugins or custom code that force-reruns or heavily rewrites the same query. Conflicts are especially likely when another plugin overrides query execution for AJAX filtering.
+
+### Browser back/forward feels wrong
+
+Test whether filters are updating URL state as expected. Bricks restores selected filter state on browser navigation, but custom scripts that rewrite URLs can interfere.

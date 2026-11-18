@@ -90,7 +90,11 @@ These properties apply depending on the chosen action:
 - `animationEnd`
 - `ajaxStart`
 - `ajaxEnd`
+- `filterSubmitStart`
+- `filterSubmitEnd`
 - `formSubmit`
+- `copySuccess`
+- `copyFail`
 - `formSuccess`
 - `formError`
 
@@ -107,11 +111,15 @@ These properties apply depending on the chosen action:
 - `wooAddedToCart`
 - `wooAddingToCart`
 - `wooRemovedFromCart`
+- `wooCartContentsChanged`
 - `wooUpdateCart`
 - `wooCouponApplied`
+- `wooCouponError`
 - `wooCouponRemoved`
+- `wooDynamicFragmentsRefreshed`
+- `wooCheckoutStepChanged`
 
-Popup templates have two additional triggers (`showPopup`, `hidePopup`) available via the `templateInteractionItem` variant in template settings.
+Popup templates add `showPopup`, `hidePopup` via the `templateInteractionItem` variant in template settings.
 
 ## Actions
 
@@ -120,21 +128,26 @@ Popup templates have two additional triggers (`showPopup`, `hidePopup`) availabl
 | `show` | Show element |
 | `hide` | Hide element |
 | `click` | Click element |
-| `setAttribute` | Set an HTML attribute |
-| `removeAttribute` | Remove an HTML attribute |
-| `toggleAttribute` | Toggle an HTML attribute |
-| `toggleOffCanvas` | Toggle an offcanvas panel |
-| `loadMore` | Load more items (query loop) |
-| `loadMoreGallery` | loadMoreGallery |
-| `startAnimation` | Start a CSS animation |
-| `scrollTo` | Scroll to an element |
-| `javascript` | Execute a custom JavaScript function |
-| `openAddress` | Open a map address |
-| `closeAddress` | Close a map address |
-| `clearForm` | Clear a form |
-| `storageAdd` | Add item to browser storage |
-| `storageRemove` | Remove item from browser storage |
-| `storageCount` | Count items in browser storage |
+| `setText` | Set text |
+| `setAttribute` | Set attribute |
+| `removeAttribute` | Remove attribute |
+| `toggleAttribute` | Toggle attribute |
+| `toggleOffCanvas` | Toggle offcanvas |
+| `loadMore` | Load more (Query loop) |
+| `loadMoreGallery` | Load more (Image gallery) |
+| `startAnimation` | Start animation |
+| `lottie` | Lottie: Playback |
+| `scrollTo` | Scroll to |
+| `sliderPlayback` | Slider playback |
+| `checkoutStep` | Checkout step |
+| `javascript` | JavaScript (Function) |
+| `openAddress` | Open address (Map) |
+| `closeAddress` | Close address (Map) |
+| `clearForm` | Clear form |
+| `copyToClipboard` | Copy to clipboard |
+| `storageAdd` | Browser storage: Add |
+| `storageRemove` | Browser storage: Remove |
+| `storageCount` | Browser storage: Count |
 
 ## Interaction sub-conditions
 

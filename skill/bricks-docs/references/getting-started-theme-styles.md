@@ -12,7 +12,7 @@ Theme Styles are your site-wide design system. They control the default look of 
 
 ## Create a theme style
 
-1. Click the **Styles** icon in the toolbar (or press `Cmd/Ctrl + .`)
+1. Click the **Styles** icon in the toolbar (or use the default shortcut `Cmd/Ctrl + .`)
 2. Click the **Select: Theme Styles** dropdown and enter a name for the theme style
 3. Click the "Create" icon
 

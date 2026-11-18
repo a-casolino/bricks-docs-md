@@ -11,6 +11,7 @@
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
+| `lightbox` | checkbox | Lightbox | — |
 | `dataSource` | select | Data source | — |
 
 ## Inherited CSS controls
@@ -37,6 +38,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

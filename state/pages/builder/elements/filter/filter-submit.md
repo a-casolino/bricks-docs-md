@@ -1,14 +1,15 @@
-*Creates submit/reset buttons for filter forms. Provides control over when filters are applied - either as a submit button to apply all filters at once, or as a.*
+*Apply or reset query filters, redirect submissions, and preserve selected filters when resetting.*
 
 Creates submit/reset buttons for filter forms. Provides control over when filters are applied - either as a submit button to apply all filters at once, or as a reset button to clear all active filters. Supports redirection to specific URLs after submission.
 
 ## Settings
 
-- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
+- **Target query** (query-list) - Select the query this button should submit or reset.
+- **Global filter** (Bricks 2.5) - Reuse shared Submit/Reset behavior, including reset exclusions. The target query and button presentation remain local.
 - **Action** (select) - Button behavior. Options: Submit (apply filters), Reset (clear filters).
 - **Redirect to** (text) - URL to redirect to after applying filters (Submit action only).
 - **Open in new tab** (checkbox) - Open redirect URL in new tab (Submit action only).
-- **Exclude filter IDs** (text, Bricks 2.4) - Comma-separated Bricks element IDs of filters to preserve when resetting (Reset action only).
+- **Exclude filter IDs** (text, Bricks 2.4) - Comma-separated filter IDs to preserve when resetting (Reset action only). From Bricks 2.5, accepts global filter IDs as well as Bricks element IDs.
 - **Hide if no active filter** (checkbox) - Hide the reset button when no filters it can reset are active. Excluded filters do not keep the button visible. Adds .brx-no-active-filter class for styling (Reset action only).
 - **Button** - Settings for the submit/reset button.
   - **Text** (text) - Button text. Default: Filter.
@@ -22,9 +23,13 @@ Creates submit/reset buttons for filter forms. Provides control over when filter
 
 ## Preserve a search while resetting refinements
 
-Set **Action** to **Reset**, then enter the Search filter's Bricks element ID in **Exclude filter IDs**. For example, enter `q1w2e3,mn9456` to preserve two filters. Use the filter elements' IDs, not the target query ID or URL parameter names.
+Set **Action** to **Reset**, then enter the Search filter's Bricks element ID in **Exclude filter IDs**. For example, enter `q1w2e3,mn9456` to preserve two filters. Use filter IDs, not the target query ID or URL parameter names.
+
+From Bricks 2.5, enter a [global filter](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#global-filters) ID or any element ID linked to it to preserve that shared selection for the target query. Copy the definition ID from Filter manager, or copy the element's Bricks ID from its element panel.
 
 Reset clears the other filters for the target query while keeping the excluded values, such as the visitor's search term. With **Hide if no active filter** enabled, the reset button hides once only excluded filters remain active.
+
+Starting with Bricks 2.5, Reset also clears [configured default selections](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) and their URL parameters, unless excluded. It does not restore the defaults. A fresh visit or reload without filter parameters applies them again.
 
 This setting is separate from the exclusion list on the Active Filters element, which controls which filters appear in that element.
 

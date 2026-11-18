@@ -18,6 +18,17 @@
 | `labelTypography` | typography | Typography | `font` |
 | `termsLinkTypography` | typography | Typography | `font` on `.woocommerce-terms-and-conditions-link` |
 | `termsAbbrTypography` | typography | Typography | `font` on `abbr.required` |
+| `indicatorGap` | number | Gap | `--brx-indicator-gap` |
+| `indicatorSize` | number | Size | `--brx-indicator-size` |
+| `indicatorBorderWidth` | number | Border width | `--brx-indicator-border-width` |
+| `indicatorBorderStyle` | text | Border style | `--brx-indicator-border-style` |
+| `indicatorBorderColor` | color | Border color | `--brx-indicator-border-color` |
+| `indicatorBorderRadius` | number | Border radius | `--brx-indicator-border-radius` |
+| `indicatorBackgroundColor` | color | Background color | `--brx-indicator-bg` |
+| `indicatorFocusColor` | color | Focus ring color | `--brx-indicator-focus-color` |
+| `indicatorCheckedColor` | color | Color | `--brx-indicator-check-color-checked` |
+| `indicatorCheckedBackgroundColor` | color | Background color | `--brx-indicator-bg-checked` |
+| `indicatorCheckedBorderColor` | color | Border color | `--brx-indicator-border-color-checked` |
 
 ## Inherited CSS controls
 
@@ -43,6 +54,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

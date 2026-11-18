@@ -201,17 +201,17 @@ You'll master Bricks by using it, not by reading about it. These resources exist
 
 **What it is:** Speed up your workflow with keyboard shortcuts for common actions.
 
-**Why it matters:** Professionals use shortcuts. They're faster than clicking through menus repeatedly.
+**Why it matters:** Save changes or switch panels while keeping your focus on the page you are building.
 
-**Common shortcuts:**
-- `Cmd/Ctrl + K` - Command panel (search elements, actions)
-- `Cmd/Ctrl + D` - Duplicate selected element
+**Default shortcuts:**
+- `Cmd/Ctrl + K` - Command Palette (search elements and actions)
+- `Cmd/Ctrl + Shift + D` - Duplicate selected element
 - `Cmd/Ctrl + Z` - Undo
 - `Cmd/Ctrl + Shift + Z` - Redo
 - `Cmd/Ctrl + B` - Toggle responsive breakpoints
-- `Delete` - Delete selected element
+- `Cmd/Ctrl + Delete` - Delete selected element
 
-**When you'll need it:** Every project. Learn shortcuts gradually as you work.
+In Bricks 2.5, use **Manage → Keyboard shortcuts** to change these combinations for your account.
 
 **Where to learn more:** [Keyboard Shortcuts documentation](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/)
 

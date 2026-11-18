@@ -28,7 +28,7 @@ Use the new Dropdown element to create fully accessible sub-menus. Which you can
 
 The little dropdown arrow next to the dropdown text/link lets you always toggle the Dropdown via the keyboard (on SPACE or ENTER press) for accessibility.
 
-A Dropdown can be turned into a fully-fledged nestable mega menu in one click. Covering the entire width of the viewport or adapting to the width and vertical position of any other element on your page.
+Enable **Mega menu** on a Dropdown to create a nestable mega panel. Use the available page width, set a custom width, or align it to another element on the page.
 
 You can even create multilevel mobile menus where only the active dropdown slides into the view.
 
@@ -93,6 +93,29 @@ By default, the Dropdown Content covers the entire available (viewport) width li
 You can also define a "CSS selector" whose width & horizontal position the mega menu will adjust to. The following screenshot uses the element `id` of its outer Container:
 
 ![](https://academy.bricksbuilder.io/assets/bricks-1.8-dropdown-mega-menu-css-selector.png)
+
+### Set a custom mega menu width {#mega-menu-width}
+
+Since Bricks 2.5, open the Dropdown's **Mega menu** group and set **Width** directly, for example to `900px`, `80%`, or `clamp(20rem, 80%, 60rem)`. You do not need an extra element just to define a width. These settings are also available in the **Nav Menu** element's **Mega menu** group.
+
+**Width** uses the horizontal reference area:
+
+- Leave **CSS selector (Horizontal)** empty to use the page body.
+- Enter a selector, such as `#site-header-container`, to use that element's width and horizontal position.
+- Percentage widths use the reference area's width. For example, `80%` of a 1000px reference area is 800px.
+- Leave **Width** empty to retain the reference area's full width.
+
+When a custom width is set, choose **Alignment > Left**, **Center**, or **Right** to place the panel within that reference area. The default is **Left**. Width and alignment can be adjusted at responsive breakpoints.
+
+For a centered panel occupying most of the page width, leave the horizontal selector empty, set **Width** to `80%`, and choose **Center**. Preview narrower screen widths as well. In a Nav (Nestable) mobile drawer, the panel returns to the drawer layout instead of retaining a fixed desktop width.
+
+<div className="screenshot screenshot--control-panel">
+
+![Dropdown Mega menu enabled with Width set to 80%, Alignment set to Center, and no horizontal reference selector.](https://academy.bricksbuilder.io/assets/builder/release-2.5/mega-menu-panel.webp)
+
+</div>
+
+![An open mega menu panel occupies 80% of the page width with equal space on its left and right.](https://academy.bricksbuilder.io/assets/builder/release-2.5/mega-menu-result.webp)
 
 The Dropdown "Content" is just a Div element. Allowing you to can create any mega menu layout:
 

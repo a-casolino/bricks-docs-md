@@ -12,10 +12,13 @@
 | Key | Type | Label | CSS |
 |---|---|---|---|
 | `filterQueryId` | query-list | Target query | — |
+| `filterDefinitionId` | filter-definition-manager | Global filter | — |
 | `filterNiceName` | text | URL parameter | — |
 | `filterApplyOn` | select | Apply on | — |
 | `filterSource` | select | Source | — |
 | `sourceFieldType` | select | Field type | — |
+| `fieldProvider` | select | Provider | — |
+| `customFieldKey` | text | Meta key | — |
 | `wpPostField` | select | Field | — |
 | `wpUserField` | select | Field | — |
 | `wpTermField` | select | Field | — |
@@ -25,11 +28,11 @@
 | `filterTermInclude` | select | filterTermInclude | — |
 | `filterTermExclude` | select | filterTermExclude | — |
 | `filterTermTopLevel` | checkbox | Top level terms only | — |
-| `fieldProvider` | select | Provider | — |
-| `customFieldKey` | text | Meta key | — |
 | `filterActivePrefix` | text | Prefix | — |
 | `filterActiveSuffix` | text | Suffix | — |
 | `filterActiveTitle` | text | Title | — |
+| `filterDefaultMin` | text | Minimum | — |
+| `filterDefaultMax` | text | Maximum | — |
 | `disableAutoMinMax` | checkbox | Disable auto min/max value | — |
 | `displayMode` | select | Mode | — |
 | `step` | number | step | — |
@@ -86,6 +89,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

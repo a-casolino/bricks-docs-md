@@ -4,7 +4,7 @@ Displays social media sharing buttons for the current post.
 
 ## Settings
 
-- **Share via** (repeater) - Social media services to include. Default includes: Facebook, X, LinkedIn, WhatsApp, Pinterest, Telegram, VKontakte, Bluesky, Email.
+- **Share via** (repeater) - Social media services to include. Default includes: Facebook, X, LinkedIn, WhatsApp, Pinterest, Telegram, VKontakte, Bluesky, Viber (since Bricks 2.5), Email.
   - **Service** (select) - Social media platform.
   - **Excerpt** (checkbox) - Include post excerpt in share (WhatsApp only).
   - **Icon** (icon) - Custom icon for the service.

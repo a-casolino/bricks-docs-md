@@ -94,3 +94,9 @@ Sizes aure automatically calculated from your main element settings. For instanc
 ![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-22.31.58@2x.png)
 
 You can also view the index of each element, and if an element is part of a query loop, its specific index within the loop will be displayed, starting at 0.
+
+## When columns or rows cannot be reduced {#grid-reduction}
+
+Since Bricks 2.5, the Visual Grid Builder shows a notice when an item’s placement prevents reducing the number of columns or rows. Items causing the issue are highlighted in orange when identified.
+
+Move or resize those items to fit within the desired grid, then reduce the count again.

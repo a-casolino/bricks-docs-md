@@ -72,10 +72,17 @@ All property types are supported:
 - Image gallery
 - Link
 - Query loop *(Query editor (PHP), External APIs, and Query manager are not supported at this time)*
+- Repeater *(since Bricks 2.5)*
 
 Each block instance can have unique property values, while the component design remains consistent.
 
 [Component slots](https://academy.bricksbuilder.io/builder/features/components/#slots) are not supported in component blocks. The block editor offers no way to add elements to a slot, so a slot stays empty in the editor and on the frontend.
+
+### Repeater rows
+
+Since Bricks 2.5, connected [Repeater properties](https://academy.bricksbuilder.io/builder/features/components/#repeater-properties) let editors manage structured lists in the Block settings sidebar. Open an item to edit its fields. Use **Add item**, **Duplicate**, **Delete**, and the up/down controls to manage the list. Nested repeaters expose their own items inside the parent row.
+
+Deleting all rows leaves an empty list for that block instance. Use **Reset** to return to the main component's default rows.
 
 ## Centralized design updates
 

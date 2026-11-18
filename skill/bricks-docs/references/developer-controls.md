@@ -362,102 +362,6 @@ class Prefix_Element_Code extends \Bricks\Element {
 
 ---
 
-# Color Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/color-control/
-
-*Reference for the Bricks Color control, including its options, CSS mapping, and usage in custom elements.*
-
-The color control is a custom-built color picker that you won't find anywhere else.
-
-It lets you pick and adjust colors in `hex`, `rgba` and `hsl` format. It also includes a global color palette to save any color for later reuse anywhere else on your site.
-
-Define your own default color palette with the `bricks/builder/color_palette` filter.
-
-You can set the CSS `property` to `color` or `background-color` as illustrated in the example below.
-
-```php
-class Prefix_Element_Color extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    // Text color applied to '.prefix-element-test-title'
-    $this->controls['exampleColor'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Title color', 'bricks' ),
-      'type' => 'color',
-      'inline' => true,
-      'css' => [
-        [
-          'property' => 'color',
-          'selector' => '.prefix-element-test-title',
-        ]
-      ],
-      'default' => [
-        'hex' => '#3ce77b',
-        'rgb' => 'rgba(60, 231, 123, 0.9)',
-      ],
-    ];
-
-    // Background color applied to '.prefix-element-test-content'
-    $this->controls['exampleBackgroundColor'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Background color', 'bricks' ),
-      'type' => 'color',
-      'inline' => true,
-      'css' => [
-        [
-          'property' => 'background-color',
-          'selector' => '.prefix-element-test-content',
-        ]
-      ],
-      'default' => [
-        'hex' => '#1ebea5',
-        'rgb' => 'rgba(30, 190, 165, 0.8)',
-      ],
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    echo '<h5 class="prefix-element-test-title">' . get_bloginfo( 'name' ) . '</h5>';
-    echo '<p class="prefix-element-test-content">Just some bogus text ..</p>';
-  }
-}
-
-```
-
-### Color palette filter
-
-Add the following PHP code into the funcions.php file of your [chil](https://docs.bricksbuilder.io/article/71-child-theme)[d theme](https://academy.bricksbuilder.io/developer/guides/child-theme/) to add your own colors to the default color palette (option #1) or replace all default colors with your own choice of colors (option #2).
-
-```php
-// functions.php
-add_filter( 'bricks/builder/color_palette', function( $colors ) {
-  // Option #1: Add individual color
-  $colors[] = [
-    'hex' => '#3ce77b',
-    'rgb' => 'rgba(60, 231, 123, 0.56)',
-  ];
-
-  // Option #2: Override entire color palette
-  $colors = [
-    ['hex' => '#3ce77b'],
-    ['hex' => '#f1faee'],
-    ['hex' => '#a8dadc'],
-    ['hex' => '#457b9d'],
-    ['hex' => '#1d3557'],
-  ];
-
-  return $colors;
-} );
-```
-
-> **Note**
->
-> If you have saved any custom colors with the builder you need to reset your global settings in order for your new default colors to take effect.
-
----
-
 # Datepicker Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/datepicker-control/
@@ -567,6 +471,102 @@ class Prefix_Element_Countdown extends \Bricks\Element {
   }
 }
 ```
+
+---
+
+# Color Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/color-control/
+
+*Reference for the Bricks Color control, including its options, CSS mapping, and usage in custom elements.*
+
+The color control is a custom-built color picker that you won't find anywhere else.
+
+It lets you pick and adjust colors in `hex`, `rgba` and `hsl` format. It also includes a global color palette to save any color for later reuse anywhere else on your site.
+
+Define your own default color palette with the `bricks/builder/color_palette` filter.
+
+You can set the CSS `property` to `color` or `background-color` as illustrated in the example below.
+
+```php
+class Prefix_Element_Color extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    // Text color applied to '.prefix-element-test-title'
+    $this->controls['exampleColor'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Title color', 'bricks' ),
+      'type' => 'color',
+      'inline' => true,
+      'css' => [
+        [
+          'property' => 'color',
+          'selector' => '.prefix-element-test-title',
+        ]
+      ],
+      'default' => [
+        'hex' => '#3ce77b',
+        'rgb' => 'rgba(60, 231, 123, 0.9)',
+      ],
+    ];
+
+    // Background color applied to '.prefix-element-test-content'
+    $this->controls['exampleBackgroundColor'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Background color', 'bricks' ),
+      'type' => 'color',
+      'inline' => true,
+      'css' => [
+        [
+          'property' => 'background-color',
+          'selector' => '.prefix-element-test-content',
+        ]
+      ],
+      'default' => [
+        'hex' => '#1ebea5',
+        'rgb' => 'rgba(30, 190, 165, 0.8)',
+      ],
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    echo '<h5 class="prefix-element-test-title">' . get_bloginfo( 'name' ) . '</h5>';
+    echo '<p class="prefix-element-test-content">Just some bogus text ..</p>';
+  }
+}
+
+```
+
+### Color palette filter
+
+Add the following PHP code into the funcions.php file of your [chil](https://docs.bricksbuilder.io/article/71-child-theme)[d theme](https://academy.bricksbuilder.io/developer/guides/child-theme/) to add your own colors to the default color palette (option #1) or replace all default colors with your own choice of colors (option #2).
+
+```php
+// functions.php
+add_filter( 'bricks/builder/color_palette', function( $colors ) {
+  // Option #1: Add individual color
+  $colors[] = [
+    'hex' => '#3ce77b',
+    'rgb' => 'rgba(60, 231, 123, 0.56)',
+  ];
+
+  // Option #2: Override entire color palette
+  $colors = [
+    ['hex' => '#3ce77b'],
+    ['hex' => '#f1faee'],
+    ['hex' => '#a8dadc'],
+    ['hex' => '#457b9d'],
+    ['hex' => '#1d3557'],
+  ];
+
+  return $colors;
+} );
+```
+
+> **Note**
+>
+> If you have saved any custom colors with the builder you need to reset your global settings in order for your new default colors to take effect.
 
 ---
 
@@ -784,7 +784,46 @@ Source: https://academy.bricksbuilder.io/developer/controls/filters-control/
 
 *Reference for the Bricks Filters control, including its options, CSS mapping, and usage in custom elements.*
 
-The filters control offers the following [CSS filters](https://developer.mozilla.org/en-US/docs/Web/CSS/filter): `blur`, `brightness`, `contrast`, `hue`, `invert`, `opacity`, `saturation`, `sepia`.
+The filters control applies visual effects to an element, including blur, brightness, contrast, grayscale, hue rotation, invert, opacity, saturation, sepia, and drop shadow. Multiple effects combine in a single CSS `filter` declaration.
+
+**Grayscale** and **Drop shadow** are available from Bricks 2.5.
+
+## Using CSS Filters
+
+Select an element and open **Style > CSS > CSS Filters**. Click the filter icon to open the controls.
+
+<div className="screenshot screenshot--control-panel">
+
+![CSS Filters popup with Grayscale, Drop shadow dimensions, Color, and separate Clear actions.](https://academy.bricksbuilder.io/assets/css-filters-grayscale-drop-shadow.webp)
+
+</div>
+
+### Grayscale
+
+Set **Grayscale** between `0` and `1`: `0` keeps the original colors, `0.5` partially removes color, and `1` removes all color. Clear the field to remove this filter.
+
+### Drop shadow
+
+Drop shadow follows the visible shape of the content, including the opaque parts of a transparent image. This makes it useful for cutout product images, icons, and text. A box shadow follows the element's box instead.
+
+| Setting | Effect |
+| --- | --- |
+| **X** | Horizontal offset. Positive values move the shadow right; negative values move it left. |
+| **Y** | Vertical offset. Positive values move the shadow down; negative values move it up. |
+| **Blur** | Softness of the shadow. Use `0` for a sharp edge and a positive value for a softer shadow. |
+| **Color** | Shadow color. Set its opacity in the color picker for a translucent shadow. |
+
+Numeric dimensions use pixels. You can enter a unit such as `rem`; omitted dimensions use `0`. Drop shadow has no spread or inset setting.
+
+For example, set **Grayscale** to `1`, then set the shadow's **X** to `6`, **Y** to `8`, **Blur** to `4`, and **Color** to `#3366cc`. This combines a monochrome effect with a blue shadow. Both effects can be used alongside the other filter controls.
+
+Click **Clear** beside **Drop shadow** to remove only the shadow. The **Clear** action at the top of the popup removes all filters in this control.
+
+The native control provides one value per filter type. It does not provide SVG filter URLs, repeated filters, or a filter reordering interface. Use [custom CSS](https://academy.bricksbuilder.io/builder/features/custom-code/) for a filter chain that needs those features.
+
+## Adding a filters control to a custom element
+
+Use the `filters` control type and map it to the CSS `filter` property. The example below applies the selected effects to the element's `.css-filter` child.
 
 ```php
 class Prefix_Element_Filters extends \Bricks\Element {
@@ -806,14 +845,14 @@ class Prefix_Element_Filters extends \Bricks\Element {
 
   // Render element HTML
   public function render() {
-    echo '<div class="css-filter">' . echo get_bloginfo( 'name' ); . '</div>';
+    echo '<div class="css-filter">' . esc_html( get_bloginfo( 'name' ) ) . '</div>';
   }
 }
 ```
 
 > **Note**
 >
-> All sections, rows, columns, and elements already have a **CSS Filters** control under the Style tab CSS group.
+> Elements already have a **CSS Filters** control under **Style > CSS**. Add a custom control when you need to target a specific part of your element.
 
 ---
 
@@ -825,7 +864,7 @@ Source: https://academy.bricksbuilder.io/developer/controls/gradient-control/
 
 The gradient control lets you define an unlimited number of gradients that you can apply to text, background, and as an overlay.
 
-You can set the CSS selector in the control, adjust the angle between 0 and 360°, and set a color stop for each color.
+For generated gradients, you can set the CSS selector, adjust the angle between 0 and 360°, and set a color stop for each color. Since Bricks 2.5, the **Custom** type accepts complete gradient values and CSS variable references. See [Custom gradients](https://academy.bricksbuilder.io/builder/styling/gradients-overlays/#custom-gradients) for the Builder workflow.
 
 ```php
 class Prefix_Element_Gradient extends \Bricks\Element {
@@ -849,10 +888,6 @@ class Prefix_Element_Gradient extends \Bricks\Element {
   }
 }
 ```
-
-> **Note**
->
-> All sections, rows, columns, and elements already have a **CSS Gradient** control under the Style tab Gradient / Overlay group.
 
 ---
 
@@ -1006,6 +1041,24 @@ class Prefix_Element_Image extends \Bricks\Element {
 
 ---
 
+# Controls
+
+Source: https://academy.bricksbuilder.io/developer/controls/
+
+*Reference the Bricks controls used in custom elements and builder extensions, from layout and typography controls to media, code, query, and repeater controls.*
+
+Bricks controls define how users edit custom element settings inside the builder. This section helps you understand the available control types, the data they store, and when to use each one.
+
+## Common control groups
+
+- [Element Controls](https://academy.bricksbuilder.io/developer/controls/element-controls/) for the overall structure of element settings
+- [Content Controls](https://academy.bricksbuilder.io/developer/controls/text-control/) for text, textarea, editor, select, and checkbox inputs
+- [Styling Controls](https://academy.bricksbuilder.io/developer/controls/color-control/) for visual styling fields such as color, typography, border, and shadow
+- [Media Controls](https://academy.bricksbuilder.io/developer/controls/image-control/) for images, galleries, icons, SVG, and audio
+- [Advanced Controls](https://academy.bricksbuilder.io/developer/controls/query-control/) for query, repeater, code, filters, and apply workflows
+
+---
+
 # Info Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/info-control/
@@ -1087,24 +1140,6 @@ public function set_controls() {
 
 ---
 
-# Controls
-
-Source: https://academy.bricksbuilder.io/developer/controls/
-
-*Reference the Bricks controls used in custom elements and builder extensions, from layout and typography controls to media, code, query, and repeater controls.*
-
-Bricks controls define how users edit custom element settings inside the builder. This section helps you understand the available control types, the data they store, and when to use each one.
-
-## Common control groups
-
-- [Element Controls](https://academy.bricksbuilder.io/developer/controls/element-controls/) for the overall structure of element settings
-- [Content Controls](https://academy.bricksbuilder.io/developer/controls/text-control/) for text, textarea, editor, select, and checkbox inputs
-- [Styling Controls](https://academy.bricksbuilder.io/developer/controls/color-control/) for visual styling fields such as color, typography, border, and shadow
-- [Media Controls](https://academy.bricksbuilder.io/developer/controls/image-control/) for images, galleries, icons, SVG, and audio
-- [Advanced Controls](https://academy.bricksbuilder.io/developer/controls/query-control/) for query, repeater, code, filters, and apply workflows
-
----
-
 # Link Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/link-control/
@@ -1147,6 +1182,56 @@ class Prefix_Element_Link extends \Bricks\Element {
   }
 }
 ```
+
+---
+
+# Query Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/query-control/
+
+*Reference for the Bricks Query control, including its options, CSS mapping, and usage in custom elements.*
+
+The query control lets you set query arguments to retrieve items of any post type. Use the returned value to set up a custom `WP_Query` to render the matching posts in any way you want.
+
+```php
+class Prefix_Element_Posts extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleQueryArgs'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Posts', 'bricks' ),
+      'type' => 'query',
+      // Default required for query to populate
+      'default' => [
+        'post_type' => 'post',
+      ],
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    $query_args = $this->settings['exampleQueryArgs'];
+    $posts_query = new WP_Query( $query_args );
+
+    // Standard WordPress loop
+    if ( $posts_query->have_posts() ) :
+      while ( $posts_query->have_posts() ) : $posts_query->the_post();
+        // Render post title and thumbnail
+        the_title( '<h5>', '</h5>' );
+        the_post_thumbnail( 'thumbnail' );
+      endwhile;
+
+      wp_reset_postdata();
+    else :
+     esc_html_e( 'No posts matched your criteria.', 'bricks' );
+    endif;
+  }
+}
+```
+
+### Resources
+
+- [https://codex.wordpress.org/Class_Reference/WP_Query#Parameters](https://codex.wordpress.org/Class_Reference/WP_Query#Parameters)
 
 ---
 
@@ -1204,56 +1289,6 @@ class Prefix_Element_Number extends \Bricks\Element {
   }
 }
 ```
-
----
-
-# Query Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/query-control/
-
-*Reference for the Bricks Query control, including its options, CSS mapping, and usage in custom elements.*
-
-The query control lets you set query arguments to retrieve items of any post type. Use the returned value to set up a custom `WP_Query` to render the matching posts in any way you want.
-
-```php
-class Prefix_Element_Posts extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleQueryArgs'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Posts', 'bricks' ),
-      'type' => 'query',
-      // Default required for query to populate
-      'default' => [
-        'post_type' => 'post',
-      ],
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    $query_args = $this->settings['exampleQueryArgs'];
-    $posts_query = new WP_Query( $query_args );
-
-    // Standard WordPress loop
-    if ( $posts_query->have_posts() ) :
-      while ( $posts_query->have_posts() ) : $posts_query->the_post();
-        // Render post title and thumbnail
-        the_title( '<h5>', '</h5>' );
-        the_post_thumbnail( 'thumbnail' );
-      endwhile;
-
-      wp_reset_postdata();
-    else :
-     esc_html_e( 'No posts matched your criteria.', 'bricks' );
-    endif;
-  }
-}
-```
-
-### Resources
-
-- [https://codex.wordpress.org/Class_Reference/WP_Query#Parameters](https://codex.wordpress.org/Class_Reference/WP_Query#Parameters)
 
 ---
 
@@ -1320,6 +1355,60 @@ class Prefix_Element_Posts extends \Bricks\Element {
 
 ---
 
+# Slider Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/slider-control/
+
+*Reference for the Bricks Slider control, including its options, CSS mapping, and usage in custom elements.*
+
+The slider control shows a draggable range input field. Default units are `px`, `em` and `rem`. You can set the following control parameters:
+
+- units (array with custom units and `min`, `max`, `step` attributes)
+- unitless (set to `false` for plain number)
+
+```php
+class Prefix_Element_Slider extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleSliderFontSize'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Font size', 'bricks' ),
+      'type' => 'slider',
+      'css' => [
+        [
+          'property' => 'font-size',
+        ],
+      ],
+      'units' => [
+        'px' => [
+          'min' => 1,
+          'max' => 50,
+          'step' => 1,
+        ],
+        'em' => [
+          'min' => 1,
+          'max' => 20,
+          'step' => 0.1,
+        ],
+      ],
+      'default' => '30px',
+      'description' => esc_html__( 'Slider adjusts font size via CSS.', 'bricks' ),
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    echo '<h3>' . get_bloginfo( 'name' ) . '</h3>';
+  }
+}
+```
+
+### Resources
+
+- [https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range)
+
+---
+
 # Select Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/select-control/
@@ -1382,60 +1471,6 @@ class Prefix_Element_Posts extends \Bricks\Element {
   }
 }
 ```
-
----
-
-# Slider Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/slider-control/
-
-*Reference for the Bricks Slider control, including its options, CSS mapping, and usage in custom elements.*
-
-The slider control shows a draggable range input field. Default units are `px`, `em` and `rem`. You can set the following control parameters:
-
-- units (array with custom units and `min`, `max`, `step` attributes)
-- unitless (set to `false` for plain number)
-
-```php
-class Prefix_Element_Slider extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleSliderFontSize'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Font size', 'bricks' ),
-      'type' => 'slider',
-      'css' => [
-        [
-          'property' => 'font-size',
-        ],
-      ],
-      'units' => [
-        'px' => [
-          'min' => 1,
-          'max' => 50,
-          'step' => 1,
-        ],
-        'em' => [
-          'min' => 1,
-          'max' => 20,
-          'step' => 0.1,
-        ],
-      ],
-      'default' => '30px',
-      'description' => esc_html__( 'Slider adjusts font size via CSS.', 'bricks' ),
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    echo '<h3>' . get_bloginfo( 'name' ) . '</h3>';
-  }
-}
-```
-
-### Resources
-
-- [https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range)
 
 ---
 
@@ -1578,45 +1613,6 @@ public function set_controls() {
 
 ---
 
-# Text Shadow Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/text-shadow-control/
-
-*Reference for the Bricks Text Shadow control, including its options, CSS mapping, and usage in custom elements.*
-
-The text-shadow control displays a popup that lets you set the CSS text-shadow of a specified HTML text element.
-
-```php
-class Prefix_Element_Textarea extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleTextShadow'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Text Shadow', 'bricks' ),
-      'type' => 'text-shadow',
-      'css' => [
-        [
-          'property' => 'text-shadow',
-          'selector' => '.prefix-text',
-        ],
-      ],
-      'inline' => true,
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    echo '<h3 class="prefix-text">' . get_bloginfo( 'name' ) . '</h3>';
-  }
-}
-```
-
-### Resources
-
-[https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow](https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow)
-
----
-
 # Text Transform Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/text-transform-control/
@@ -1682,6 +1678,45 @@ class Prefix_Element_Textarea extends \Bricks\Element {
   }
 }
 ```
+
+---
+
+# Text Shadow Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/text-shadow-control/
+
+*Reference for the Bricks Text Shadow control, including its options, CSS mapping, and usage in custom elements.*
+
+The text-shadow control displays a popup that lets you set the CSS text-shadow of a specified HTML text element.
+
+```php
+class Prefix_Element_Textarea extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleTextShadow'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Text Shadow', 'bricks' ),
+      'type' => 'text-shadow',
+      'css' => [
+        [
+          'property' => 'text-shadow',
+          'selector' => '.prefix-text',
+        ],
+      ],
+      'inline' => true,
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    echo '<h3 class="prefix-text">' . get_bloginfo( 'name' ) . '</h3>';
+  }
+}
+```
+
+### Resources
+
+[https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow](https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow)
 
 ---
 

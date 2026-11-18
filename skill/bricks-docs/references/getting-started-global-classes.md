@@ -181,7 +181,7 @@ As your class library grows, organization matters.
 
 ### View all classes
 
-Press `Cmd/Ctrl + .` to open the **Style Manager** (or click the **Styles** icon in the toolbar). Navigate to the **Classes** tab.
+Use the default shortcut `Cmd/Ctrl + .` to open the **Style Manager** (or click the **Styles** icon in the toolbar). Navigate to the **Classes** tab.
 
 ![](https://academy.bricksbuilder.io/assets/style-manager-classes.png)
 

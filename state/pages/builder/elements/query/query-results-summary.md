@@ -27,6 +27,8 @@ Example:
 
 Select the **target query** for which the summary should be displayed.
 
+For a listing with synced map markers, select the results loop containing [Map Connectors](https://academy.bricksbuilder.io/builder/elements/general/map-connector/). The summary describes that loop's results. See [map queries and interactive listings](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/#map-queries).
+
 ### Format
 
 Customize the summary text using placeholders:

@@ -32,17 +32,18 @@ Whenever variables are generated, all existing variables within the selected cat
 
 ## Scale controls {#controls-overview}
 
-### Prefix {#control-prefix}
+### Variable prefix {#control-prefix}
 
 The prefix determines how variable names are structured. For instance, setting the prefix to `text-` results in variables being named `--text-m` or `--text-xl`, depending on the scale. It is recommended to use a prefix that is both unique and descriptive to maintain clarity and avoid conflicts.
 
 ### Scale type {#control-scale-type}
 
-The scale type specifies the naming convention used for fluid typography variables. There are three available options:
+The scale type specifies the naming convention used for fluid typography variables:
 
 1. **T-shirt:** Generates variable names based on standard t-shirt sizes, such as `2xs, xs, s, m, l, xl, 2xl`. An example output would be `--text-m`.
 2. **Numeric:** Generates variable names using numbers, typically ranging from 1 through 6. An example output would be `--text-4`.
-3. **Custom:** Allows complete manual control over the naming convention. For example, scale names such as `small, medium, large, title` could be entered, resulting in variable names such as `--text-medium`.
+3. **Numeric (reverse)** (since 2.5): Generates descending numbers, such as `6, 5, 4, 3, 2, 1`. In automatic mode, with ratios greater than 1 and a prefix of `h`, a six-step scale produces `--h6` through `--h1`, from the smallest to the largest generated font size.
+4. **Custom:** Allows complete manual control over the naming convention. For example, scale names such as `small, medium, large, title` could be entered, resulting in variable names such as `--text-medium`.
 
 ### Custom scale type {#control-custom-scale-type}
 

@@ -4,9 +4,9 @@ Source: https://academy.bricksbuilder.io/integrations/map-leaflet/
 
 *Use the Leaflet-based map element in Bricks to build interactive maps with layers, markers, and configurable map behavior.*
 
-Starting with **Bricks 2.1**, you can use the new **Map (Leaflet)** element to display fully interactive maps powered by [Leaflet.js](https://leafletjs.com/).
+The **Map (Leaflet)** element, available since Bricks 2.1, displays maps powered by [Leaflet.js](https://leafletjs.com/). Choose tile providers, add markers, and configure the map inside Bricks without a Google Maps API key.
 
-This element allows you to combine multiple map layers, add custom markers, and fine-tune map behaviour directly inside Bricks.
+Starting with **Bricks 2.5**, it supports query-generated markers, syncing with a separate query loop, clustering, text and image markers with active styles, and custom Info Boxes. See the [Map (Leaflet) element reference](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/) for setup and settings.
 
 ## Overview {#overview}
 
@@ -15,8 +15,6 @@ The Map (Leaflet) element is divided into three main groups of settings:
 1. **Layers** – define map sources (OpenStreetMap, OpenTopoMap, etc.)
 2. **Markers** – add custom points with icons and popups
 3. **Map** – configure global map settings (center, zoom, etc.)
-
-Let’s explore each group in detail.
 
 ## Layers {#layers}
 
@@ -36,7 +34,7 @@ For each layer, you'll configure:
 - **Error Tile URL** – fallback image if tiles fail to load.
 - **Attribution** – copyright or usage text (required by most providers).
 
-👉 Example:
+For example:
 
 - **Street Map** → OpenStreetMap tiles
 - **Topo Map** → OpenTopoMap tiles
@@ -46,19 +44,28 @@ Your users can then toggle between these layers on the frontend.
 
 ## Markers {#markers}
 
-Markers let you highlight specific points of interest on your map.
+Markers identify locations using latitude and longitude. Choose one of three sources:
 
-You can set:
+- **Static**: Add rows under **Markers**, with coordinates, optional icons, and popup text.
+- **Query loop** (Bricks 2.5): Populate the first marker row with dynamic data and use it as a template for each query result.
+- **Sync with query** (Bricks 2.5): Place [Map Connectors](https://academy.bricksbuilder.io/builder/elements/general/map-connector/) inside a separate results loop and select that loop on the map. Markers update with frontend filters, AJAX pagination, and Load More.
 
-- **Default Marker Icon** – used if no custom icon is defined.
-- **Marker Repeater** – add multiple markers, each with:
-  - **Coordinates (Lat, Lng)**
-  - **Label** (for identification)
-  - **Custom Icon** (optional, overrides default icon)
-  - **Popup Text** (text that shows when the marker is clicked)
+Leaflet does not geocode street addresses. Provide latitude and longitude on every connector. Use the separate results loop as the target for filters, pagination, and Load More.
+
+For marker appearance, clustering, custom Info Boxes, and scrolling to a connected result, see the [element reference](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/#marker-source).
+
+## Geolocation filtering {#geolocation-filtering}
+
+From Bricks 2.5, use [Filter - Geolocation](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-geolocation-element) with a Posts, Terms, or Users listing and **Sync with query** to search within a radius. The filter reads saved coordinates; Leaflet's marker coordinates come from Map Connectors inside the same results loop.
+
+Device location and searching after map drags work without Google APIs. Enabling address search requires Google Maps JavaScript API and Geocoding API; autocomplete additionally requires Places API (New). See [Leaflet geolocation setup](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/#geolocation-filtering) for the filter and map connection.
 
 ## Map
 
-The **Map** group controls the basic setup of your map. The most important settings are the **map height**, which is set to 300 px by default but can be adjusted to match your layout, along with the **map center** (latitude and longitude) and the **initial zoom level**. These define how the map looks and where it is focused when first loaded.
+Set **Height** (the placeholder is `300px`), **Map center**, and the initial zoom level in the **Map** group.
 
-Beyond that, you’ll also find controls grouped around **zoom behaviour**, **map interactions** (like dragging and clicking), and **display options** (such as attribution and resizing). All of these settings are based on Leaflet.js, and you can find full descriptions in the [Leaflet documentation](https://leafletjs.com/reference.html#map).
+From Bricks 2.5, the initial view centers a single marker at the configured zoom or fits multiple markers. Enable **Disable initial fit map** to preserve your configured center and zoom. Existing static maps also adopt this behavior, so enable the setting if you need to retain their previous view.
+
+**Fit map on markers change** separately controls whether frontend updates to the synced query adjust the view. Both settings are off by default. See [Map view and behavior](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/#map-view) for details.
+
+The Map group also includes zoom interactions, dragging, attribution, and resize tracking. See the [Leaflet documentation](https://leafletjs.com/reference.html#map) for the underlying options.

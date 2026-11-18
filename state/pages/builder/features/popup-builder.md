@@ -292,6 +292,12 @@ When AJAX is enabled:
 
 AJAX popup rendering supports post, term, and user context. Dynamic data that does not have a stable object ID, such as some repeater rows, cannot always be resolved as an AJAX popup context.
 
+### Query loops inside AJAX popups (since 2.5) {#ajax-query-loops}
+
+Query loops inside an AJAX popup support **Load more**, **Infinite scroll** and AJAX pagination. Pagination links point to the page that opened the popup, not to the popup request, and query filters inside the popup keep working. The selected page is restored when the popup is reopened or the page is reloaded.
+
+Each popup query keeps its own post, term, or user context instead of inheriting the context of the page that opened it.
+
 ### AJAX popup context settings {#ajax-context-settings}
 
 When an interaction opens a popup, Bricks exposes context controls for AJAX popups:

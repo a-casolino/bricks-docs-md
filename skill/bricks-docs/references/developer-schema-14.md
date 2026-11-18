@@ -1,0 +1,476 @@
+# Element Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/elements/common/element/
+
+*Canonical reference for a Bricks element: the envelope structure, settings layers, meta-settings, and selectors.*
+
+Every element in Bricks uses the same envelope structure, regardless of type. Element-specific controls are documented in each [individual element schema](../../elements/accordion/); content areas (the flat arrays that hold elements) are documented in the [content area schema](../../general/content-area/).
+
+## Element envelope
+
+Every element object has these top-level fields:
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | Unique 6-character alphanumeric identifier (e.g. `"dlceeu"`) |
+| `name` | string | Yes | Element type, matches the element schema filename (e.g. `"button"`, `"heading"`) |
+| `parent` | string \| 0 | Yes | Parent element ID, or `0` for root-level elements |
+| `children` | string[] | Yes | Ordered array of child element IDs |
+| `settings` | object | Yes | All control values for this element (element-specific + inherited + meta) |
+| `selectors` | array | No | Custom CSS selectors with scoped settings (since Bricks 2.0) |
+| `label` | string | No | Custom label assigned by the user in the builder |
+| `themeStyles` | array | No | Theme style overrides applied to this element |
+
+## Settings: three layers
+
+The `settings` object combines three layers of keys:
+
+1. **Element-specific controls:** unique to each element type (e.g. `text`, `tag`, `link` on a button). Documented in each element's schema.
+2. **Inherited CSS controls:** shared by all elements, prefixed with `_` (e.g. `_typography`, `_margin`, `_padding`, `_background`). These support responsive and pseudo-class variants via colon suffixes (e.g. `_typography:tablet_portrait:hover`). Documented in each element's schema under the `_`-prefixed keys.
+3. **Meta-settings:** shared by all elements but not listed in individual element schemas. These control visibility, behavior, and class assignment. Documented below.
+
+## Meta-settings
+
+These keys can appear in any element's `settings` object. They are not included in per-element schemas to avoid duplication across 184+ elements.
+
+### `_cssGlobalClasses`
+
+Array of global class IDs applied to this element. Each ID references a global class defined in the [global classes](../../global/global-classes/) data.
+
+```json
+"_cssGlobalClasses": ["mmdqed", "xkatss"]
+```
+
+### `_conditions`
+
+Element display conditions that control whether this element renders. Structured as an array of arrays: outer array is OR groups, inner arrays are AND items.
+
+```json
+"_conditions": [
+  [
+    { "id": "abc123", "key": "user_logged_in", "compare": "==", "value": true }
+  ]
+]
+```
+
+See the [Element Conditions](./conditions/) page for the full `conditionItem` schema, all 32 condition keys, and available comparison operators.
+
+### `_interactions`
+
+Array of interaction rules that trigger actions in response to events (click, scroll, hover, etc.). Each interaction specifies a trigger, action, and target.
+
+```json
+"_interactions": [
+  {
+    "id": "abc123",
+    "trigger": "click",
+    "action": "startAnimation",
+    "target": "self"
+  }
+]
+```
+
+See the [Element Interactions](./interactions/) page for the full `interactionItem` schema, all triggers, actions, and sub-conditions.
+
+### `_hideElementBuilder`
+
+Boolean (default `false`). When `true`, the element is hidden on the builder canvas but still renders on the frontend.
+
+### `_hideElementFrontend`
+
+Boolean (default `false`). When `true`, the element is hidden on the frontend but remains visible in the builder.
+
+### `_attributes`
+
+Array of custom HTML attributes added to the element's root DOM node.
+
+```json
+"_attributes": [
+  { "id": "abc123", "name": "data-aos", "value": "fade-up" }
+]
+```
+
+## Selectors
+
+The `selectors` array allows scoping control settings to arbitrary CSS selectors on an element (since Bricks 2.0). Each selector entry has its own `settings` object that follows the same structure as the element's main settings.
+
+```json
+"selectors": [
+  {
+    "id": "nopzhs",
+    "selector": "#brxe-opxcoa h3",
+    "settings": {
+      "_typography": { "color": { "raw": "blue" } }
+    },
+    "label": "Heading within container"
+  }
+]
+```
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | Unique identifier for this selector entry |
+| `selector` | string | Yes | CSS selector string (e.g. `".my-class"`, `"&::before"`, `"& > span"`) |
+| `settings` | object | Yes | Control settings scoped to this selector |
+| `label` | string | No | Display label in the builder UI |
+
+### Selector item schema
+
+```json
+{
+  "type": "object",
+  "description": "Custom CSS selector on an element or global class (since Bricks 2.0). Allows scoping control settings to arbitrary CSS selectors.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for this selector entry"
+    },
+    "selector": {
+      "type": "string",
+      "description": "CSS selector string (e.g. \".my-class\", \"&::before\", \"& > span\")"
+    },
+    "settings": {
+      "description": "Control settings scoped to this selector (same shape as element settings)",
+      "_note": "Dynamic map of all settings for this element or class. Keys are element-specific control names (e.g. `text`, `style`) or inherited CSS setting keys, optionally suffixed with a breakpoint and/or pseudo-class using colon syntax (e.g. `_typography:tablet_portrait:hover`). See the individual element schemas for available control keys."
+    },
+    "label": {
+      "type": "string",
+      "description": "Optional display label for this selector in the builder UI"
+    }
+  },
+  "required": [
+    "id",
+    "selector",
+    "settings"
+  ],
+  "additionalProperties": false
+}
+```
+
+## How this relates to individual element schemas
+
+Each element schema (e.g. [button](../../elements/button/), [heading](../../elements/heading/)) documents the element-specific and inherited CSS controls that go into the `settings` object. The envelope fields (`id`, `name`, `parent`, `children`, `selectors`, `label`, `themeStyles`) and meta-settings (`_cssGlobalClasses`, `_conditions`, `_interactions`, etc.) documented on this page apply identically to every element type.
+
+To construct a complete element, combine:
+1. The envelope fields from this page
+2. Element-specific controls from the individual element schema
+3. Inherited CSS controls (the `_`-prefixed keys in the element schema)
+4. Any applicable meta-settings from this page
+
+---
+
+# Element Interactions Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/elements/common/interactions/
+
+*Full schema for element interactions: triggers, actions, targets, animation settings, and sub-conditions.*
+
+Element interactions define event-driven behavior: when a trigger fires, an action is executed on a target. They are stored in the `_interactions` key inside any element's `settings` object.
+
+## Data structure
+
+Interactions are a flat array of interaction items. Each item specifies a trigger event, the action to perform, and a target element or selector.
+
+## `interactionItem` core properties
+
+| Property | Type | Description |
+|---|---|---|
+| `id` | string \| integer | Unique identifier for this interaction |
+| `trigger` | string | Event that fires this interaction (see triggers below) |
+| `action` | string | Action to perform (see actions below) |
+| `target` | string | Target reference (`"self"`, element ID, or selector context) |
+| `targetSelector` | string | CSS selector for the target element |
+| `delay` | string | Delay before executing the action (ms) |
+| `runOnce` | boolean | If true, the interaction fires only once |
+
+## Additional properties
+
+These properties apply depending on the chosen action:
+
+| Property | Type | Used with |
+|---|---|---|
+| `animationType` | string | `startAnimation` (animation type) |
+| `animationId` | string | `startAnimation` (predefined animation ID) |
+| `animationDelay` | string | `startAnimation` (animation delay) |
+| `animationDuration` | string | `startAnimation` (animation duration) |
+| `jsFunction` | string | `javascript` (function name to call) |
+| `jsFunctionArgs` | array | `javascript` (arguments array: `[{ jsFunctionArg: "value" }]`) |
+| `scrollToDelay` | string | `scrollTo` (delay before scrolling) |
+| `scrollToOffset` | string | `scrollTo` (scroll offset in pixels) |
+| `scrollOffset` | string | `scroll` trigger (scroll position threshold) |
+| `rootMargin` | string | `enterView`/`leaveView` (IntersectionObserver root margin) |
+| `templateId` | string | Template ID reference |
+| `formId` | string | Form element ID |
+| `ajaxQueryId` | string | AJAX query element ID |
+| `offCanvasSelector` | string | `toggleOffCanvas` (offcanvas CSS selector) |
+| `toggleOffCanvasInfo` | string | `toggleOffCanvas` (info field) |
+| `filterElementId` | string | Query filter element ID |
+| `infoBoxId` | string | Info box element ID |
+| `loadMoreQuery` | string | `loadMore` (query element ID) |
+| `targetFormSelector` | string | `clearForm` (form CSS selector) |
+| `actionAttributeKey` | string | `setAttribute`/`removeAttribute`/`toggleAttribute` (attribute name) |
+| `actionAttributeValue` | string | `setAttribute`/`toggleAttribute` (attribute value) |
+| `disablePreventDefault` | boolean | Do not call `preventDefault()` on the trigger event |
+| `storageType` | string | `storageAdd`/`storageRemove`/`storageCount` (storage type) |
+| `popupContextId` | string | Popup context ID |
+| `popupContextType` | string | Popup context type |
+| `conditionsSep` | string | Visual separator for conditions UI |
+
+### Example
+
+```json
+{
+  "_interactions": [
+    {
+      "id": "abc123",
+      "trigger": "click",
+      "action": "startAnimation",
+      "target": "self",
+      "animationType": "fadeIn",
+      "animationDuration": "500"
+    },
+    {
+      "id": "def456",
+      "trigger": "enterView",
+      "action": "show",
+      "target": "self",
+      "rootMargin": "0px 0px -100px 0px",
+      "runOnce": true
+    }
+  ]
+}
+```
+
+## Triggers
+
+**Element**
+- `click`
+- `mouseover`
+- `focus`
+- `blur`
+- `mouseenter`
+- `mouseleave`
+- `enterView`
+- `leaveView`
+- `animationEnd`
+- `ajaxStart`
+- `ajaxEnd`
+- `filterSubmitStart`
+- `filterSubmitEnd`
+- `formSubmit`
+- `copySuccess`
+- `copyFail`
+- `formSuccess`
+- `formError`
+
+**Browser / Window**
+- `scroll`
+- `contentLoaded`
+- `mouseleaveWindow`
+
+**Query filters**
+- `filterOptionEmpty`
+- `filterOptionNotEmpty`
+
+**WooCommerce**
+- `wooAddedToCart`
+- `wooAddingToCart`
+- `wooRemovedFromCart`
+- `wooCartContentsChanged`
+- `wooUpdateCart`
+- `wooCouponApplied`
+- `wooCouponError`
+- `wooCouponRemoved`
+- `wooDynamicFragmentsRefreshed`
+- `wooCheckoutStepChanged`
+
+Popup templates add `showPopup`, `hidePopup` via the `templateInteractionItem` variant in template settings.
+
+## Actions
+
+| Action | Description |
+|---|---|
+| `show` | Show element |
+| `hide` | Hide element |
+| `click` | Click element |
+| `setText` | Set text |
+| `setAttribute` | Set attribute |
+| `removeAttribute` | Remove attribute |
+| `toggleAttribute` | Toggle attribute |
+| `toggleOffCanvas` | Toggle offcanvas |
+| `loadMore` | Load more (Query loop) |
+| `loadMoreGallery` | Load more (Image gallery) |
+| `startAnimation` | Start animation |
+| `lottie` | Lottie: Playback |
+| `scrollTo` | Scroll to |
+| `sliderPlayback` | Slider playback |
+| `checkoutStep` | Checkout step |
+| `javascript` | JavaScript (Function) |
+| `openAddress` | Open address (Map) |
+| `closeAddress` | Close address (Map) |
+| `clearForm` | Clear form |
+| `copyToClipboard` | Copy to clipboard |
+| `storageAdd` | Browser storage: Add |
+| `storageRemove` | Browser storage: Remove |
+| `storageCount` | Browser storage: Count |
+
+## Interaction sub-conditions
+
+Each interaction can optionally include sub-conditions that must be met before the action fires. These are stored in the `interactionConditions` array, with `interactionConditionsRelation` controlling whether conditions are combined with AND or OR logic.
+
+| Property | Type | Description |
+|---|---|---|
+| `interactionConditions` | array | Array of `interactionConditionItem` objects |
+| `interactionConditionsRelation` | string | `"and"` or `"or"` (default: `"and"`) |
+
+### `interactionConditionItem` properties
+
+| Property | Type | Description |
+|---|---|---|
+| `conditionType` | string | Type of condition check |
+| `storageCompare` | string | Comparison operator for storage value |
+| `storageCompareValue` | any | Value to compare storage against |
+| `storageKey` | any | Browser storage key to check |
+| `id` | string,integer | id |
+
+### Example with sub-conditions
+
+```json
+{
+  "id": "abc123",
+  "trigger": "click",
+  "action": "show",
+  "target": "self",
+  "interactionConditions": [
+    {
+      "conditionType": "storage",
+      "storageKey": "user_preference",
+      "storageCompare": "==",
+      "storageCompareValue": "dark"
+    }
+  ],
+  "interactionConditionsRelation": "and"
+}
+```
+
+---
+
+# Element Conditions Schema
+
+Source: https://academy.bricksbuilder.io/developer/schema/elements/common/conditions/
+
+*Full schema for element display conditions: condition keys, comparison operators, and the OR-of-AND data structure.*
+
+Element display conditions control whether an element renders on the frontend. They are stored in the `_conditions` key inside any element's `settings` object.
+
+## Data structure
+
+Conditions use an OR-of-AND structure: the outer array contains OR groups, and each inner array contains AND items. The element renders if **any** OR group evaluates to true, and an OR group is true when **all** its AND items are true.
+
+## `conditionItem` properties
+
+Each condition item has the following properties:
+
+| Property | Type | Required | Description |
+|---|---|---|---|
+| `id` | string \| integer | Yes | Unique identifier for this condition |
+| `key` | string | Yes | Condition type (see enum below) |
+| `compare` | string | Yes | Comparison operator (see table below) |
+| `value` | any | Conditional | The value to compare against. Not needed when compare is `empty` or `empty_not`. |
+| `dynamic_data` | string | No | Dynamic data tag to use as the value source |
+
+### Example
+
+```json
+{
+  "_conditions": [
+    [
+      { "id": "abc123", "key": "user_logged_in", "compare": "==", "value": true },
+      { "id": "def456", "key": "user_role", "compare": "==", "value": "administrator" }
+    ],
+    [
+      { "id": "ghi789", "key": "dynamic_data", "compare": "contains", "value": "sale", "dynamic_data": "{post_title}" }
+    ]
+  ]
+}
+```
+
+This reads as: show the element if (user is logged in AND is an administrator) OR (the post title contains "sale").
+
+## Condition keys
+
+**General**
+- `browser`
+- `cookie`
+- `current_url`
+- `date`
+- `datetime`
+- `dynamic_data`
+- `featured_image`
+- `inner_content`
+- `operating_system`
+- `referer`
+- `time`
+- `weekday`
+
+**Post**
+- `post_author`
+- `post_date`
+- `post_id`
+- `post_parent`
+- `post_status`
+- `post_title`
+
+**User**
+- `user_id`
+- `user_logged_in`
+- `user_registered`
+- `user_role`
+
+**WooCommerce**
+- `woo_checkout_login_step_needed`
+- `woo_checkout_needs_shipping`
+- `woo_checkout_needs_shipping_address`
+- `woo_order_has_downloads`
+- `woo_order_has_status`
+- `woo_order_needs_shipping_address`
+- `woo_order_withdrawal_screen`
+- `woo_product_category`
+- `woo_product_featured`
+- `woo_product_new`
+- `woo_product_purchased_by_user`
+- `woo_product_rating`
+- `woo_product_sale`
+- `woo_product_sold_individually`
+- `woo_product_stock_management`
+- `woo_product_stock_quantity`
+- `woo_product_stock_status`
+- `woo_product_tag`
+- `woo_product_type`
+
+Available compare operators vary by condition key. For example, `post_id` supports math operators (`==`, `!=`, `>=`, `<=`, `>`, `<`), while `user_logged_in` only supports `==` and `!=`.
+
+## Comparison operators
+
+| Operator | Description |
+|---|---|
+| `==` | Equal (loose comparison, supports arrays via intersection) |
+| `!=` | Not equal (loose comparison) |
+| `>=` | Greater than or equal |
+| `<=` | Less than or equal |
+| `>` | Greater than |
+| `<` | Less than |
+| `contains` | String contains substring |
+| `contains_not` | String does not contain substring |
+| `empty` | Value is empty (no value field needed) |
+| `empty_not` | Value is not empty (no value field needed) |
+
+## Extensibility
+
+Condition keys and comparison operators are filterable via PHP hooks:
+
+- `bricks/conditions/groups`: add custom condition groups
+- `bricks/conditions/options`: add custom condition keys with their own compare operators
+- `bricks/conditions/result`: modify the boolean result of any individual condition evaluation
+
+Third-party plugins can introduce additional condition keys beyond those listed above.

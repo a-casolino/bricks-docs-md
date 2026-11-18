@@ -27,7 +27,7 @@ The `settings` object combines three layers of keys:
 
 ## Meta-settings
 
-These keys can appear in any element's `settings` object. They are not included in per-element schemas to avoid duplication across 182+ elements.
+These keys can appear in any element's `settings` object. They are not included in per-element schemas to avoid duplication across 184+ elements.
 
 ### `_cssGlobalClasses`
 

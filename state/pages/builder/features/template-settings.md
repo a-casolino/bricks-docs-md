@@ -19,6 +19,7 @@ The groups you see depend on the template type you are editing.
 | Group | Visible when | Purpose |
 | --- | --- | --- |
 | Header | Header templates | Controls header location, width, sticky behavior, and scrolling styles. |
+| Footer | Footer templates | Enables the footer reveal effect. |
 | Popup | Popup templates | Controls popup layout, styling, interactions, AJAX behavior, and popup limits. |
 | Search Criteria | Search Results templates | Customizes the native WordPress search criteria for the search results template. |
 | Conditions | Most template types | Determines where the template applies. |
@@ -45,6 +46,22 @@ Use these settings to control the header area itself:
 - **Transition:** controls the CSS transition used by sticky header state changes.
 
 Left and right headers also create spacing beside the content and footer. Use them only when the site layout is intentionally built around a side header.
+
+## Group: Footer {#template-settings-footer}
+
+Available when editing a **Footer** template in Bricks 2.5.
+
+Enable **Settings > Template Settings > Footer > Reveal effect** to reveal the footer from behind the page content as visitors scroll to the bottom. The setting is off by default. Save the template, then open a page using that footer on the frontend to see the effect.
+
+<div className="screenshot screenshot--control-panel">
+
+![Template settings of a Footer template with the Footer group open and Reveal effect turned on.](https://academy.bricksbuilder.io/assets/builder/template-settings/footer-reveal-setting.webp)
+
+</div>
+
+The page content in front of the footer needs an opaque background. A transparent background can expose the footer before the visitor reaches the bottom. Place Offcanvas elements and other fixed overlays outside the footer so they can appear above the page content.
+
+The footer returns to normal flow when it is too tall to fit the available viewport, including the space occupied by a fixed WordPress admin bar. Bricks checks this again when the viewport or footer content changes. The effect is also disabled in the Builder, for visitors who prefer reduced motion, while keyboard focus is inside the footer, and when printing.
 
 ## Group: Popup {#template-settings-popup}
 
@@ -152,6 +169,8 @@ When editing a Section template, each condition can expose:
 Bricks checks the condition and then renders the section when the hook runs. For example, a Section template with condition **Entire website** and hook name `bricks_before_footer` renders at that hook across the site.
 
 Hook fields are only available for Section templates in the builder.
+
+Since Bricks 2.5, the [`bricks/section_template/run_on_hook`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-section_template-run_on_hook/) filter lets developers change the injection decision after Bricks evaluates the saved conditions. It runs during hook assignment, before the destination action fires.
 
 ### Default templates
 

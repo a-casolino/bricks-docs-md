@@ -222,7 +222,11 @@ The Nav Menu element displays WordPress navigation menus with customizable styli
 
 - **Enable** (checkbox) - Enable mega menu functionality.
 
-- **CSS selector** (text) - CSS selector for mega menu positioning. Uses width & horizontal position of target node. Only available when mega menu is enabled.
+- **Width** (since Bricks 2.5) - Set a responsive mega menu width directly, such as `900px`, `80%`, a CSS variable, or a `clamp()` value. Leave empty to use the horizontal reference width.
+
+- **Alignment** (since Bricks 2.5) - Position a custom-width menu at the left, center, or right of the horizontal reference area. Default: Left.
+
+- **CSS selector (Horizontal)** (text) - Choose the horizontal reference element. Leave empty to use the page body. Percentage widths are relative to this area. See [Set a custom mega menu width](https://academy.bricksbuilder.io/builder/features/menu-builder/#mega-menu-width) for examples.
 
 - **Toggle on** (select) - How mega menus are triggered. Options: Click, Hover, Click or hover. Default placeholder: "Hover". Only available when mega menu is enabled.
 

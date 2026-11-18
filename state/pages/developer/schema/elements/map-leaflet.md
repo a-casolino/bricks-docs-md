@@ -13,11 +13,27 @@
 |---|---|---|---|
 | `layers` | repeater | Name | — |
 | `markers` | repeater | Coordinates | — |
+| `infoBoxTemplateId` | select | Info Box | — |
+| `syncQuery` | query-list | syncQuery | — |
+| `mapNoResultsText` | text | Text | — |
+| `mapNoResultsTypography` | typography | No results typography | `font` on `.brx-map-no-results` |
+| `mapNoResultsPosition` | select | No results position | — |
+| `mapUpdatingText` | text | Loading message | — |
+| `mapUpdatingPosition` | select | Loading message position | — |
+| `scrollActiveItemIntoView` | checkbox | Scroll active item into view | — |
+| `scrollActiveItemBehavior` | select | Scroll behavior | — |
+| `scrollActiveItemPosition` | select | Scroll position | — |
+| `markerCluster` | checkbox | Cluster | — |
+| `markerClusterBgColor` | color | Cluster | `fill` on `.brx-map-cluster` |
+| `markerClusterTextColor` | color | Cluster | `fill` on `.brx-map-cluster text` |
+| `markerType` | select | Type | — |
 | `markerIcon` | image | Icon | — |
 | `markerIconHeight` | number | Icon | — |
 | `markerIconWidth` | number | Icon | — |
 | `height` | number | Height | `height` |
 | `center` | text | Map center | — |
+| `disableInitialFitBounds` | checkbox | Disable initial fit map | — |
+| `fitMapOnMarkersChange` | checkbox | Fit map on markers change | — |
 | `zoom` | number | Zoom level | — |
 | `minZoom` | number | Zoom level | — |
 | `maxZoom` | number | Zoom level | — |
@@ -56,6 +72,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

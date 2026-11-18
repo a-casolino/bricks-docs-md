@@ -12,6 +12,7 @@
 | Key | Type | Label | CSS |
 |---|---|---|---|
 | `fields` | repeater | Set options as %s | `font` on `.password-toggle .show-password i` |
+| `autofocusField` | select | Auto-focus field | — |
 | `requiredAsterisk` | checkbox | Show required asterisk | — |
 | `disableRequiredAsteriskInPlaceholder` | checkbox | Disable required asterisk in placeholder | — |
 | `showLabels` | checkbox | Show labels | — |
@@ -26,6 +27,11 @@
 | `fieldBackgroundColor` | color | Background color | `background-color` on `.form-group input`, `background-color` on `.flatpickr`, `background-color` on `select`, `background-color` on `textarea`, `background-color` on `.form-field-richtext + .tox-tinymce` |
 | `fieldBorder` | border | Border | `border` on `.form-group input`, `border` on `.flatpickr`, `border` on `select`, `border` on `textarea`, `border` on `.form-field-richtext + .tox-tinymce`, `border` on `.bricks-button:not([type=submit])`, `border` on `.choose-files` |
 | `fieldTypography` | typography | Typography | `font` on `.form-group input`, `font` on `select`, `font` on `textarea` |
+| `descriptionTypography` | typography | Typography | `font` on `.form-field-description` |
+| `descriptionMargin` | spacing | Margin | `margin` on `.form-field-description` |
+| `descriptionPadding` | spacing | Padding | `padding` on `.form-field-description` |
+| `descriptionBackgroundColor` | color | Background color | `background-color` on `.form-field-description` |
+| `descriptionBorder` | border | Border | `border` on `.form-field-description` |
 | `submitButtonText` | text | Text | — |
 | `submitButtonSize` | select | Size | — |
 | `submitButtonStyle` | select | Style | — |
@@ -166,6 +172,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

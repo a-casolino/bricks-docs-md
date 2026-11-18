@@ -38,6 +38,8 @@ Each custom page should contain a [Form element](https://academy.bricksbuilder.i
 
 Add a form with the **User login** action. Map the login field, password field, and optional remember-me field in the **User Login** control group.
 
+Since Bricks 2.5, you can select the login field under **Content > Fields > Auto-focus field** to request focus on page load. Test the frontend with saved credentials and keyboard submission in the browsers your visitors use. See [Auto-focus field](https://academy.bricksbuilder.io/builder/elements/general/form/#auto-focus-field) for eligible fields and focus behavior.
+
 If your custom login URL receives a `redirect_to` query parameter, Bricks adds it as a hidden field and redirects there after successful login when your form does not already use an explicit Redirect action.
 
 For better privacy and security, set a generic login error message. Otherwise, the default WordPress login error can reveal why the login failed.

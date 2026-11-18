@@ -335,6 +335,28 @@ Use slash-separated ability names. Bricks removes duplicates, disabled abilities
 
 This changes tool discovery only. Removing a direct tool does not disable its ability: it remains callable through the dispatcher. Use **Bricks > AI > Abilities** to disable an ability. User permissions still apply.
 
+## Drafts and site versions {#drafts-versions-recovery}
+
+Since Bricks 2.5, connected agents can prepare [drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) for review before publishing. Enable the experimental **Enable drafts** setting under **Bricks > Settings > Builder > Drafts** first. The connected account still needs permission to edit the target page and each affected shared resource. Site versions also require the WordPress permission to edit other users' posts.
+
+Supporting read and write abilities accept a `draft` parameter. Use `true` to use or create the target page's draft, or pass an explicit draft or site-version ID to continue work in it. For site-wide work without a page target, `true` uses the connected user's **Agent draft**. Ask the agent to keep using the same ID for the relevant reads and edits.
+
+| Task | Abilities and workflow |
+| --- | --- |
+| Inspect pending work | `bricks/list-drafts` finds available drafts and undo points. `bricks/review-draft` lists saved changes and conflicts before publishing. |
+| Work across several pages | `bricks/create-version` creates a named [site version](https://academy.bricksbuilder.io/builder/interface/site-versions/). Use its ID on supporting abilities while editing those pages. |
+| Try several directions | `bricks/create-alternatives` prepares groups such as Headline and Accent color. `bricks/compare` returns a comparison link. Inspect the choices in [Explore](https://academy.bricksbuilder.io/builder/interface/explore-alternatives/) before using **Apply to draft** or `bricks/apply-alternatives`. |
+| Share a preview | With **Enable review links** turned on, `bricks/share-version` creates a [view-only review link](https://academy.bricksbuilder.io/builder/interface/review-links/). `bricks/list-review-links` lists its status and expiry without returning the secret link again. |
+| Publish or discard | `bricks/publish-draft` publishes reviewed changes; it is disabled by default and should run only after your approval. `bricks/discard-draft` removes pending work. |
+
+For example:
+
+> Work in the homepage's draft. Prepare two headline choices and give me an Explore link. Tell me which shared resources changed and keep publishing as a separate step for my approval.
+
+Drafts hold page changes and shared changes that affect live content. Reusable items that do not affect live content are shared across the site immediately, so a new class is available when editing other pages and templates. See the [shared-data rules](https://academy.bricksbuilder.io/builder/interface/drafts/#shared-data). Review `draft.sharedLive` and `draft.keptInDraft` in editing results, or the equivalent fields returned by Apply alternatives, to see which items were shared and which stayed in the draft.
+
+Passing an unavailable draft ID or requesting a draft while the feature is disabled produces an error. It does not fall back to editing Live. Omitting `draft` from an ordinary editing ability uses its normal live workflow, so a previous draft call does not make every later call private.
+
 ## Code authoring and HTML/CSS imports
 
 Agents can create and edit Bricks content through the same permissions that apply in the builder. An agent does not receive PHP access merely because it can edit HTML, CSS, or JavaScript.
@@ -389,6 +411,10 @@ Skills help with workflows such as:
 - Writing element conditions and interactions.
 - Converting HTML and CSS into Bricks element data.
 - Verifying frontend output with screenshots or browser automation.
+
+## Shared-item recovery
+
+Use `bricks/list-global-revisions` to find recorded versions of a shared item, then `bricks/restore-global-revision` to restore one. Pass `target: "active"` to bring a deleted item back into use. See [Global data revisions](https://academy.bricksbuilder.io/builder/interface/global-data-history/) for permissions and recovery limits.
 
 ## WP-CLI access
 

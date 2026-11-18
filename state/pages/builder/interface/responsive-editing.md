@@ -15,17 +15,46 @@ Styles set on the base breakpoint are inherited by all other breakpoints.
 
 Once you've finished styling a page on the base breakpoint (desktop), make sure to view & adjust the styling on the other breakpoints too.
 
-## Background video on larger breakpoints only
+## Background videos at different breakpoints {#responsive-background-video}
 
-The Background control includes **Start play at** for background videos. Select the smallest breakpoint where the video should run. Below that width, Bricks stops before assigning the video source, so the desktop video is not downloaded by the native background-video script.
+Since Bricks 2.5, background videos on **Section**, **Container**, **Block**, and **Div** elements can use different URLs and playback settings at each breakpoint. Open **Style > Background** on the element or its global class.
 
-To show an image on smaller screens:
+Set the video on the base breakpoint, then switch to another breakpoint to change only the settings it needs. The URL, aspect ratio, scale, start and end times, **Play once**, poster, and YouTube/Vimeo options inherit through breakpoints. Inherited settings appear as placeholders; entering a value creates a local override. Clear a local value to use the inherited setting again.
 
-1. Set the background video on the element.
-2. Set **Start play at** to the smallest breakpoint that should play it.
-3. Set a background image for the smaller breakpoint.
+Use **Background video** to choose:
 
-To view & edit the styles for a specific breakpoint simply click on its breakpoint icon located in the center of the builder toolbar. Or via the [keyboard shortcut](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/) "CMD/CTRL + B".
+- **Enable**: Play the resolved video at this breakpoint.
+- **No video**: Show the element's normal background instead. Set a background image or color if needed.
+
+For example, use a wide video at Desktop, enter a shorter video URL at Tablet portrait, and choose **No video** at Mobile portrait. Bricks loads the matching breakpoint's video and stops the previous video when the breakpoint changes. This applies to uploaded videos, YouTube, and Vimeo.
+
+At Tablet portrait, the video URL is a local override while playback settings such as **Start time (s)** remain inherited:
+
+<div className="screenshot screenshot--control-panel">
+
+![Tablet portrait Background video controls with a local Video URL and an inherited Start time of 0.](https://academy.bricksbuilder.io/assets/builder/release-2.5/video-tablet-panel.webp)
+
+</div>
+
+At Mobile portrait, **No video** leaves the normal background visible:
+
+<div className="screenshot screenshot--control-panel">
+
+![Mobile portrait Background video set to No video.](https://academy.bricksbuilder.io/assets/builder/release-2.5/video-mobile-panel.webp)
+
+</div>
+
+### Existing background videos
+
+Updating Bricks does not activate previously ignored breakpoint-specific video URLs. Existing videos keep their previous output until you intentionally edit a video setting. The first edit switches that element or class to responsive video settings. Bricks uses the previously rendered video and playback behavior as the starting point, then applies your edit.
+
+Older videos may have a **Start play at** restriction. That restriction survives the first edit; changing the legacy video URL alone does not remove it. To allow playback at a restricted breakpoint, explicitly choose **Background video > Enable** there. A poster can still appear below the old playback threshold.
+
+Entering a new URL at another breakpoint also enables video there if it inherited **No video**. Choose **No video** again if you want that breakpoint to keep its normal background.
+
+Class videos are inherited rather than copied into each element. Editing a class video does not switch an element's own untouched legacy video to responsive behavior. Check elements with their own video separately after changing a shared class.
+
+To view & edit the styles for a specific breakpoint simply click on its breakpoint icon located in the center of the builder toolbar. Or use the default [keyboard shortcut](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/) `CMD/CTRL + B`.
 
 ![](https://academy.bricksbuilder.io/assets/bricks-1.5.1-in-builder-breakpoint-mobile-landscape-1024x576.jpg)
 
@@ -36,6 +65,10 @@ Editing in the "Mobile landscape" breakpoint
 </figcaption>
 
 Next to the breakpoint icons are inputs for width ("W"), height ("H"), and scale (%).
+
+## Inherited background images {#inherited-background-images}
+
+Since Bricks 2.5, an inherited background image appears as a dimmed preview under **Style > Background**. Its remove button and image-size selector stay hidden until you select an image at the current breakpoint, creating a local override.
 
 ## Custom Breakpoints {#custom-breakpoints}
 
@@ -183,6 +216,50 @@ You'll also notice that the order of the breakpoints is reversed and now starts 
 Whenever you customize the width of a default breakpoint, Bricks automatically updates any Bricks CSS files (like frontend.min.css, etc.) that contain media queries for this breakpoint.
 
 If you experience that your breakpoint widths on the front end are not correctly applied, please regenerate your Bricks CSS files by clicking the "Regenerate CSS files" button under `Bricks > Settings > General > Custom breakpoints`.
+
+## Breakpoint data attribute {#breakpoint-data-attribute}
+
+Since Bricks 2.5, the **Breakpoint data attribute** setting exposes the active breakpoint key for use in custom CSS and JavaScript. Enable it under **Bricks > Settings > General > Breakpoint data attribute**, then save your settings. It is disabled by default and works with both default and custom breakpoints.
+
+When enabled, Bricks adds `data-brx-breakpoint` to the page's `<body>` element on the frontend and in the Builder canvas. For example:
+
+```html
+<body data-brx-breakpoint="mobile_portrait">
+```
+
+The value updates when the viewport crosses a breakpoint boundary.
+
+### Breakpoint keys and matching
+
+The attribute contains one breakpoint key at a time. It uses the smallest matching `max-width` breakpoint or the largest matching `min-width` breakpoint. The base breakpoint key applies only when no other enabled breakpoint matches. Paused custom breakpoints are excluded.
+
+The default keys are `desktop`, `tablet_portrait`, `mobile_landscape`, and `mobile_portrait`. Custom breakpoints use their own keys. Renaming a breakpoint's label does not change its key or the attribute value. Inspect the page's `<body>` element in your browser's developer tools to check the active key.
+
+This value does not list every breakpoint whose styles apply. For example, `mobile_portrait` can be active while the element still inherits styles from the base and larger breakpoints.
+
+### Target a breakpoint in CSS
+
+Add a rule like this to your [custom CSS](https://academy.bricksbuilder.io/builder/features/custom-code/):
+
+```css
+body[data-brx-breakpoint="mobile_portrait"] .product-card {
+  gap: 0.75rem;
+}
+```
+
+This rule applies only while `mobile_portrait` is the active key. With the default desktop-first configuration, a selector for `tablet_portrait` does not also match the two mobile ranges. Use a media query when a rule should apply across several ranges.
+
+### Read the active key in JavaScript
+
+After Bricks initializes the page, read the current key with:
+
+```js
+const activeBreakpoint = document.body.dataset.brxBreakpoint;
+```
+
+This reads the value at that moment. Read it again when your code needs the current breakpoint.
+
+The attribute requires JavaScript and is added during page initialization. It is absent when the setting is disabled or Bricks' JavaScript has not run. Use media queries for styles that must apply before JavaScript runs or when JavaScript is unavailable.
 
 ## Responsive control indicator {#responsive-control-indicator}
 

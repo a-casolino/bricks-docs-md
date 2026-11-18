@@ -109,7 +109,7 @@ Typography scales are useful when you want:
 - Responsive sizing without manual breakpoints
 - Fewer arbitrary font-size decisions
 
-You can use t-shirt sizing, numeric steps, or custom names. Generated variables can be used directly or via utility classes.
+You can use t-shirt sizing, numeric steps, or custom names. Since Bricks 2.5, **Numeric (reverse)** generates descending names such as `--h6` through `--h1`. In automatic mode with ratios greater than 1, smaller numbers correspond to larger generated sizes. Generated variables can be used directly or via utility classes.
 
 Manual mode allows overriding calculated values when precise control is required.
 
@@ -180,7 +180,9 @@ The canvas preview shows the currently edited page and updates in real time as y
 
 You can switch between Style Manager tabs using number keys based on their position.
 
-You can also open and close the Style Manager popup using:
+The default shortcut to open or close Style Manager is:
 
 `CMD + .` (macOS)
 `CTRL + .` (Windows/Linux)
+
+In Bricks 2.5, change this combination under **Manage → Keyboard shortcuts**. Number-key tab navigation remains fixed. See [Keyboard Shortcuts](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/).

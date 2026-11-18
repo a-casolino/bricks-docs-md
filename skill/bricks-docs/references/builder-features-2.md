@@ -315,6 +315,7 @@ From there you can:
 
 - Search components.
 - Filter by category.
+- Show and filter components by element type (Bricks 2.5).
 - Filter by usage: all usage, used on current page, used elsewhere, or unused.
 - Switch between grid and list view.
 - Import component JSON or ZIP files.
@@ -326,6 +327,57 @@ Generating component screenshots requires the **Edit components** builder permis
 **Component screenshots** are enabled by default on new installations under **Bricks > Settings > Templates & components**. Disable the setting to stop automatic and manual generation and hide stored local thumbnails. Disabling it does not delete existing screenshot files. Use **Delete screenshots** in the same settings section to remove all generated component screenshots.
 
 ![](https://academy.bricksbuilder.io/assets/bricks-browser-component-manager.webp)
+
+### Element types
+
+Since Bricks 2.5, the Components browser can show each component's element type and filter the library by it. The element type is the component's root, its outermost element, such as a Section, Container, Block, Div, or Heading. Check it before inserting a component to see what kind of element you are adding.
+
+Element types are hidden by default. To show them, click **More** (the three-dot icon) in the toolbar and enable **Show element type**. Bricks remembers this choice in your current browser.
+
+![More menu in the Components browser with Show element type enabled. Element type labels appear on the component cards and the Element type filter shows All (25).](https://academy.bricksbuilder.io/assets/components-browser-show-element-type.webp)
+
+With the setting enabled:
+
+- Each component shows its element type as a label in the top-left corner of the card in grid and masonry views, or at the end of the row in list view.
+- An **Element type** dropdown appears in the toolbar. Select a type, or choose **All** to remove the type filter.
+
+![Components browser in list view with the Element type menu open, listing each type with its component count, and element type labels at the end of each row.](https://academy.bricksbuilder.io/assets/components-browser-element-type-filter.webp)
+
+The menu lists the types available in the current results, with a component count for each. Search, category, and local usage filters narrow these options and counts. For example, select your page-section category, then choose **Section** to find components whose outermost element is a Section.
+
+Changing the type returns to the first page of results. If another filter removes every component of the selected type, the type filter returns to **All**. Disabling **Show element type** also resets the filter to **All**, so a hidden filter never narrows your results.
+
+Remote components use the element type supplied by their source site. If that information is unavailable, the component has no type label and appears under **All**, but not under a specific type.
+
+### Sorting and importing components
+
+Since Bricks 2.5, use **Sort by** in the Components browser toolbar to choose **Newest**, **Oldest**, **Title A–Z**, or **Title Z–A**. **Newest** is the default. Date sorting uses creation dates, including for remote components.
+
+Click **Import** in the toolbar to import component JSON or ZIP files into the local library. This action requires the **Import/export components** builder permission. When an import switches you from a remote source to the local library, the usage filter is cleared so it does not hide the imported components.
+
+![Components browser with the sort menu open and arrows pointing to the sorting control and Import button.](https://academy.bricksbuilder.io/assets/builder/browser-sorting/components-browser-sorting-import.webp)
+
+### Organize components into categories {#component-categories}
+
+Since Bricks 2.5, the Components browser has a **Categories** sidebar. It lists **All components**, **Uncategorized**, and each category with its component count. Click a row to filter the library. Drag the sidebar edge to resize it, or use the arrow button to collapse it.
+
+Each component belongs to one category at a time. You can assign categories in three ways from **My components**:
+
+- **Drag and drop:** Drag a component card onto a category in the sidebar. If the card is selected, Bricks moves every selected component, including selections on other pages. An unselected card moves on its own. Drop onto **Uncategorized** to remove the category. If the sidebar is collapsed, hold the dragged card over the expand button to open it.
+- **Assign category:** Select components with their checkboxes. In the selection toolbar, click **Assign category**, choose a category, and click **Apply**. To create a category, type a new name in the picker and choose the `Create "name"` option before you apply it.
+- **Create category:** With components selected, enter a name in the **New category name** field below the category list and click **Create category**. Bricks assigns the selected components to it. If a category with the same name already exists, ignoring letter case, Bricks uses that category instead of adding a duplicate.
+
+Each assignment is a single undo step. Click the info icon in the sidebar header to show a short version of these instructions.
+
+Categories exist only while at least one component uses them. If you move the last component out of a category, the category disappears from the sidebar.
+
+Category labels are hidden on component cards by default. To show them, open the **More** (three dots) menu in the toolbar and enable **Show category**. Bricks stores this choice in your browser. Click a category label on a card to filter the library to that category.
+
+Assigning categories requires the **Edit components** permission. Remote libraries and users without that permission can browse categories, but cannot change them. Save in the Builder to keep the changes.
+
+![Components browser with two selected components. The Categories sidebar shows counts, the help text, and a New category name field filled with Hero sections above the Create category button.](https://academy.bricksbuilder.io/assets/builder/release-2.5/component-category-sidebar.webp)
+
+![Assign category picker with Uncategorized, Atelier North, and Studio essentials options, plus Cancel and Apply buttons.](https://academy.bricksbuilder.io/assets/builder/release-2.5/component-category-picker-detail.webp)
 
 ### Instance Count and Location
 
@@ -384,13 +436,17 @@ All instances of the Card component automatically reflect this change:
 
 This is useful for shared structure and design. The real power of components comes from combining shared structure with properties that can be customized per instance.
 
+## Recover an earlier component {#history}
+
+Since Bricks 2.5, use **Revisions** on a component row in the Components panel, or on a component in the Browser, to open that component's earlier versions. Component revisions include a rendered preview and changed values named by element label. Restoring one component keeps unrelated components at their current versions. See [Global data revisions](https://academy.bricksbuilder.io/builder/interface/global-data-history/) for permissions, deleted-item recovery, and the behavior inside drafts.
+
 ## Properties {#properties}
 
 Properties let you expose controls for customization on each instance.
 
 For example, a Card component can expose a card title property and a card image property. Each Card instance can then use different content while still sharing the same component structure and styling.
 
-There is a two-step process:
+To connect a property directly to a control, follow these two steps:
 
 1. Create a property.
 2. Connect that property to one or more compatible controls inside the component.
@@ -422,6 +478,7 @@ You can choose from these property types and connect them to compatible controls
 | Select _(@since 2.0)_         | Select, text, textarea, and rich text controls | HTML tag, Button style            |
 | Toggle _(@since 2.0)_         | Checkbox and toggle controls                   | Hide element toggle               |
 | Query loop                    | Query controls                                 | Layout elements                   |
+| Repeater _(@since 2.5)_       | Native repeater controls and Array queries      | Testimonials, FAQ or card lists    |
 | Global classes _(@since 2.0)_ | Global classes controls                        | Element global classes            |
 
 ![](https://academy.bricksbuilder.io/assets/bricks-2.0-components-create-property-form.png)
@@ -432,7 +489,49 @@ The **property description** is optional, but it helps other builders understand
 
 The **property group** is optional and helps organize properties inside the instance panel.
 
-The **default property value** is optional. It is used when an instance has not set its own value. If an instance value is cleared or reset, Bricks removes the override so the default value can apply again.
+The **default property value** is optional. It is used when an instance has not set its own value. If an instance value is cleared or reset, Bricks removes the override so the default value can apply again. Repeater properties distinguish an intentionally empty row list from a reset; see [instance rows and defaults](#repeater-instance-defaults).
+
+### Creating Properties from Content {#create-properties-from-content}
+
+Since Bricks 2.5, **Create properties from content** creates and connects several properties in one step. Use it after building a component's content, such as a card with a heading, image, and button.
+
+Open the component's **Properties** panel and click **Create properties from content**. Bricks detects these controls in the main component:
+
+| Element | Detected content |
+| --- | --- |
+| Heading, Basic Text | Text |
+| Rich Text | Rich text |
+| Image | Image and alternative text |
+| Button | Text and link |
+| Icon | Icon |
+
+The scan stops at nested component instances. Edit a nested component's own properties separately.
+
+1. Review the detected rows and deselect content that should stay fixed. Hover a row to locate its element on the canvas and in the Structure panel.
+2. Give each property a clear name. Open its **More** menu to edit its description, default value, and group. The element's existing content supplies the initial default.
+3. Drag rows to change their order. Use **Groups** to create or edit groups, then assign rows with the group selector or drag them into a group.
+4. Click **Create and connect** to apply the selected properties and their connections. If you are only editing existing properties, the button reads **Save**.
+5. Save in the Builder, then select an instance to customize the new properties.
+
+Search and group filters help narrow the list. **Select all** applies to the unconnected rows in the current search and group. Existing connected properties retain their connections while you edit their names, defaults, descriptions, groups, or order.
+
+Closing and reopening **Groups** keeps your pending changes while you remain in the creation panel. **Cancel** or the back arrow leaves the creation panel without applying the pending changes.
+
+<div className="screenshot screenshot--control-panel">
+
+![Create properties panel with six selected properties, condition icons, and the Create and connect button.](https://academy.bricksbuilder.io/assets/bricks-components-create-properties-from-content.webp)
+
+</div>
+
+#### Hide If Empty {#hide-if-empty}
+
+For newly selected content, enable **Hide if empty** from the row's condition icon or **More** menu. This requires access to element conditions. Bricks adds a connected **Dynamic data → is not empty** condition to the element. You can inspect or edit it in the element's [Conditions](https://academy.bricksbuilder.io/builder/features/element-conditions/) panel afterward.
+
+For a Button, both its text and link must resolve to non-empty values. Image alternative text is not used to decide whether an Image should render. If the element already has multiple condition groups, the presence check is added to each group so the existing OR logic is retained.
+
+The check uses the resolved property value, including its default. Clearing an instance's text or rich-text value restores the default. If that default contains content, the element stays visible. For an optional text field, clear its property default too, then enter text only on the instances that need it.
+
+Rich-text markup such as `<p><br></p>` still counts as content for this comparison. Remove the markup as well if the field should be empty. Check the frontend result: element conditions keep elements available for editing in the Builder.
 
 ### 2. Connecting a Property to a Control
 
@@ -474,9 +573,161 @@ To disconnect a property from a setting, click the connected property setting, h
 
 ![](https://academy.bricksbuilder.io/assets/bricks-component-disconnect-property.png)
 
+#### Disconnect All Connections {#disconnect-all}
+
+Since Bricks 2.5, you can disconnect a property everywhere it is used inside the main component:
+
+1. Open the component's **Properties** panel.
+2. Find the connected property and click **Disconnect all** on its row.
+3. Confirm the dialog, then save in the Builder.
+
+The property, its default value, and its group remain available, so you can connect it again later. The action removes that property's control connections and connections forwarded to nested component instances inside the main component. Other properties keep their connections.
+
+Disconnected controls return to their own saved settings. Inline references such as `{prop.title}` are replaced with the property's default value, rather than the value of the instance you happen to be editing. Review the affected content and conditions before saving, especially if the component's instances had different values.
+
+If Bricks cannot safely replace a reference, it leaves the component unchanged and identifies the reference to resolve first. Fix or remove that reference, then try **Disconnect all** again. Choosing **Cancel** in the confirmation dialog also leaves the connections intact.
+
+![The FAQ items property row with the Disconnect all button highlighted and its tooltip visible.](https://academy.bricksbuilder.io/assets/bricks-components-disconnect-all.webp)
+
+## Repeater Properties {#repeater-properties}
+
+Since Bricks 2.5, a **Repeater** property lets each component instance manage a list of structured items. Use it for FAQs, testimonials, pricing features, or cards whose layout stays the same while their content and number of items change.
+
+A repeater property can supply an element's native repeater control or an Array query loop inside the component.
+
+### Define fields and default items
+
+1. Edit the main component and open **Properties**.
+2. Create a property with **Type** set to **Repeater** and name it `Cards`.
+3. Under **Fields**, add `Title` (Text), `Image` (Image), and `Link` (Link).
+4. Use **Add item** in the default-value editor to enter the initial rows.
+5. Save the property, then connect it to the content it should control.
+
+Supported field types are **Text**, **Rich text**, **Image**, **Link**, **Select**, **Toggle**, and **Repeater**. For Select fields, enter one option per line. A nested Repeater contains another set of fields; Bricks supports two repeater levels in total.
+
+<div className="screenshot screenshot--control-panel">
+
+![Cards has Title, Image, and Link fields and two default items, Lake Bohinj and Soča Valley.](https://academy.bricksbuilder.io/assets/component-repeater-cards-fields.webp)
+
+</div>
+
+### Repeat a custom layout
+
+Use a query loop to design each item with ordinary Bricks elements.
+
+1. Inside the main component, create a Block containing a Heading, Image, and Button. This Block is the layout for one card.
+2. Enable **Query loop** on the Block.
+3. Open the property connection control for its **Query** and select `Cards`. Bricks supplies an Array query from the repeater rows.
+
+   ![The Card Block’s Query is connected to Cards, and two destination cards appear on the canvas.](https://academy.bricksbuilder.io/assets/component-repeater-cards-query.webp)
+
+4. Select each child element and use its property connection control to connect the Heading text to the Title field, the Image to the Image field, and the Button link to the Link field of Cards.
+
+   ![The selected destination Heading is connected to Cards.Title and displays Lake Bohinj in the first card.](https://academy.bricksbuilder.io/assets/component-repeater-title-connection.webp)
+
+5. Exit component editing and edit the Cards rows on the instance.
+
+The loop repeats the Block for each row. Compatible Array-query options, including offset, results conditions, and pagination, remain available. A repeater property can supply multiple queries, but each query takes its rows from one source property.
+
+#### Use field tags in text
+
+Each field exposes a copyable **Field tag**. For a field whose key is `title`, the tag is:
+
+```text
+{query_array @key:'title'}
+```
+
+Use the copied tag inside the matching repeater query loop. It also works in mixed text, such as `Read more about {query_array @key:'title'}`. Copy the actual tag from the field editor: changing a field's display name does not change its saved key.
+
+Image and Link field tags include the field type so Bricks can resolve their structured values in compatible image and link controls:
+
+```text
+{query_array @key:'image' @field-type:'image'}
+{query_array @key:'link' @field-type:'link'}
+```
+
+For general Array-query syntax and nested loops, see [Query Type: Array](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/#array).
+
+### Connect a native repeater
+
+For elements that already have an item list, such as Testimonials, connect the property directly to that repeater control.
+
+To start from existing content, open the repeater's property connection menu and create a new property there. Bricks creates supported fields, default rows, and mappings from the native items.
+
+To use an existing Repeater property, connect it to the item list, then open the visible template item and connect its compatible controls to the repeater fields. Field names do not need to match the element's control names. For example, a field named `Quote` can supply the testimonial content control.
+
+Unconnected controls keep the fixed values from the first native item. Unsupported field types, such as Number and Icon, can remain fixed this way. **Auto create and populate properties** adds missing supported fields and connections without replacing existing mappings or row values.
+
+### Edit instance rows and defaults {#repeater-instance-defaults}
+
+Select an instance to add, edit, duplicate, remove, or drag rows into a different order. These changes affect that instance only.
+
+An instance without its own rows uses the property's default rows. Deleting every row creates an intentionally empty list; it does not restore the defaults. Reset the property to inherit its defaults again. Repeater properties also support row editing in [Components as Blocks](https://academy.bricksbuilder.io/integrations/gutenberg/components-as-blocks/).
+
+### Change fields and forward nested properties
+
+Renaming a field keeps its key and existing values. Deleting a field removes it from the editable schema, so update copied tags and nested connections that reference it.
+
+Changing a saved field to an incompatible type creates a new key and clears its default. Existing instance values are not converted. Changes between Text, Rich text, and Select preserve the field key.
+
+When forwarding a Repeater property through a nested component, the parent and child definitions must have matching field keys and types, including nested fields. Creating the parent property from the child's connection control copies its field definitions. Disconnect the forwarding before making incompatible changes to either definition.
+
+## Properties as Dynamic Data {#property-dynamic-data}
+
+Since Bricks 2.5, insert a component property into dynamic-data-enabled content with `{prop.key}`. Combine a property with surrounding text, use it in a condition, or reuse it in a supported field without connecting the entire control to that property.
+
+### Copy a property reference
+
+Open the main component's **Properties** panel and edit a property. Its **Reference key** identifies it within that component. Use the copy button to copy its tag, such as `{prop.title}`.
+
+Choose the key when creating the property. It must be unique within the component and contain lowercase letters, numbers, and underscores, starting with a letter or underscore. Once created, the key is read-only. Renaming the property label does not break its references.
+
+<div className="screenshot screenshot--control-panel">
+
+![The Title property has the reference key title and a button to copy its tag.](https://academy.bricksbuilder.io/assets/component-property-reference-key.webp)
+
+</div>
+
+### Mix property values with text
+
+For a promotion component with Text properties using the keys `title` and `price`, enter this in a Basic Text element inside the main component:
+
+```text
+Book {prop.title} for {prop.price}.
+```
+
+Each instance supplies its own title and price. An instance without an override uses the property default. Clearing a text override restores the default; `0` and Toggle `false` remain explicit values.
+
+In supported text controls, type `{prop.` to see property suggestions, or select a property from the dynamic data picker. Bricks also flags incomplete, missing, or unsupported references in the Builder.
+
+### Images, links, and conditions
+
+Use a full Image or Link property in a compatible image or link control. To use a single value in text, select a supported field:
+
+| Property | Example | Value |
+| --- | --- | --- |
+| Image | `{prop.photo.url}` | Image URL |
+| Image | `{prop.photo.id}` | Attachment ID, when available |
+| Image | `{prop.photo.alt}` | Image alternative text |
+| Link | `{prop.cta.url}` | Resolved link URL |
+
+Replace `photo` and `cta` with your actual reference keys. A whole structured Image or Link value cannot be printed as ordinary text.
+
+For a conditional offer label, add a **Dynamic data** [element condition](https://academy.bricksbuilder.io/builder/features/element-conditions/), enter `{prop.offer}`, and compare it with the value you want to match. The condition uses the current instance's resolved value, including its default when no override is present.
+
+### Scope and supported output
+
+Property keys belong to their component. The same key can exist in different components without sharing values. A reference outside a component instance cannot read a property from an unrelated component on the page. To pass values into a nested component, connect its properties to the parent properties.
+
+Property references are intended for content and supported settings. They do not substitute editable values into CSS, JavaScript, executable PHP source, or executable HTML attributes such as `onclick` and `style`.
+
+A [Code element](https://academy.bricksbuilder.io/builder/elements/general/code/#component-properties) inside a component can render property tags in its HTML output when **Execute code** and **Parse dynamic data** are enabled. PHP code can read typed values with `bricks_get_component_property()`.
+
+Deleting a property can leave unresolved references. Review the locations shown in the deletion warning and replace or remove those references before saving. Unlinking a component replaces supported references with resolved instance values; Bricks stops the unlink operation when a reference cannot be replaced safely.
+
 ## Customizing an Instance
 
-Select a component instance to customize the properties exposed by the main component. Only connected properties appear in the instance controls.
+Select a component instance to customize the properties exposed by the main component. Properties used through control connections or [dynamic data references](#property-dynamic-data) appear in the instance controls.
 
 ![](https://academy.bricksbuilder.io/assets/bricks-components-instances-custom-values.png)
 
@@ -689,7 +940,7 @@ These details explain how Bricks stores and renders component instances:
 - A component must have one root element. The root element ID is the component ID.
 - A page instance references its component through the component ID.
 - Instance-specific property values are stored on the instance by property ID.
-- Component properties are definitions. A property controls an instance value only after it is connected to one or more compatible controls inside the component.
+- Component properties are definitions. A property exposes an instance value when it is connected to compatible controls or used through a supported dynamic data reference inside the component.
 - Variant selections live on the instance. Variant-specific settings live on the component definition.
 - Slot children live on the instance, not in the main component definition.
 - A missing component reference should be treated as invalid. Bricks skips instances whose component definition no longer exists.
@@ -780,155 +1031,192 @@ For a full list of all available tooltip HTML attributes please visit the offici
 
 ---
 
-# Creating Your First Template
+# Create & Update Posts on the Frontend
 
-Source: https://academy.bricksbuilder.io/builder/features/create-template/
+Source: https://academy.bricksbuilder.io/builder/features/create-update-posts-on-the-frontend/
 
-*Create your first Bricks template, choose the right template type, and prepare it for conditions and reusable content.*
+*Build frontend forms in Bricks that create or update WordPress posts without sending users into wp-admin.*
 
-Templates let you design parts of your site once and let Bricks render them in the right place. A header template can render above your content, a footer template below it, and a single template can replace the main layout for posts, pages, or custom post types.
+Bricks 2.1 introduced the **Create post** and **Update post** form actions. They let a frontend Form element create a new WordPress post or update an existing one without sending the user to wp-admin.
 
-This article walks through the first three templates most sites need:
+Use these actions for workflows such as property listings, classifieds, member-submitted posts, profile pages, or client portals. The examples below use a custom post type named `property`, but the same rules apply to any public post type that exists on your site.
 
-- A site header
-- A site footer
-- A single post layout
+> **Note**
+>
+> **IMPORTANT:** By default, Bricks checks permissions twice: when rendering the form and again when processing the submission.
+>
+> - **Create post** requires the current user to have the selected post type's `edit_posts` capability.
+> - **Update post** requires the current user to have `edit_post` for the target post.
+>
+> Do not enable **Disable capability checks** unless the form is protected another way. When disabled, non-logged-in or unauthorized visitors can create or edit content through that form.
 
-The same workflow applies to archive, search, error, popup, password protection, WooCommerce product archive, and WooCommerce single product templates. The important decisions are usually the same: choose the right template type, build the layout, set the preview content, decide where the template should render, then publish and test it on the frontend.
+https://www.youtube.com/watch?v=c9JcrLEVbnM
 
-Other WooCommerce route templates, such as cart, checkout, thank-you, and account templates, use the same create-build-publish flow, but Bricks renders them automatically on the matching WooCommerce route. Those route templates do not use the normal Conditions or Populate Content controls.
+## Before you start
 
-https://youtu.be/bLZDN9UcUyo
+Decide these things before building the form:
 
-## Create a template
+- Which post type the form creates or updates.
+- Which users are allowed to submit the form.
+- Whether new posts should be saved as draft, pending review, published, or another available post status.
+- Which core post fields, custom fields, and taxonomies the form may change.
+- Whether uploads should be saved to the Media Library. Featured images, attachment posts, and many ACF/Meta Box media fields need attachment IDs.
 
-You can create templates from the WordPress dashboard or from inside the builder.
+## How to create or update posts via form submission
 
-From the WordPress dashboard:
+The create and update workflows use the same pattern: add fields, choose the form action, then map the fields to the WordPress data that should change.
 
-1. Go to **Bricks > Templates**.
-2. Click **Add New Template**.
-3. Enter a clear name, such as "Main Header", "Main Footer", or "Single Post".
-4. Select the **Template type** in the sidebar.
-5. Publish the template.
-6. Click **Edit with Bricks**.
+### Step 1: Add form fields for post data
 
-From inside the builder:
+Create form fields for all the post data that you want to save when creating or updating a post through the Form element:
 
-1. Open the **Templates** popup from the folder icon in the toolbar.
-2. Open **My Templates**.
-3. Click **New template**.
-4. Enter a title and select the template type.
-5. Create the template, then start editing it.
+| Post data | Recommended field type |
+| --- | --- |
+| Post title | Text |
+| Post content | Rich text |
+| Post excerpt | Textarea |
+| Featured image | Image |
+| Post meta | The most suitable field type for the custom field |
+| Taxonomy terms | Checkbox, radio, or select |
 
-The template type controls how Bricks treats the template. For example, a **Header** template is stored and rendered as the site header area, while a **Single** template is stored and rendered as the main content area for matching pages.
+#### Post meta
 
-## Create a header template
+Make sure to select the most suitable field type for every piece of post meta data you want to modify. Bricks stores mapped meta through ACF, Meta Box, or `update_post_meta()` depending on the meta key and the integrations available on the site.
 
-Use a header template for the site area that appears before the main content. A normal header usually contains a logo, navigation, call-to-action button, search, account links, or similar site-wide elements.
+For checkbox, radio, and select fields, Bricks can automatically load choices from ACF or Meta Box when:
 
-1. Create a new template named "Main Header".
-2. Set **Template type** to **Header**.
-3. Publish it and open it with Bricks.
-4. Build the header layout on the canvas.
-5. Open **Settings > Template Settings > Populate Content**.
-6. Select content that makes sense for previewing the header, such as a page or single post.
-7. Open **Settings > Template Settings > Conditions**.
-8. Add **Entire website** if the header should appear everywhere.
-9. Save the template and test a normal frontend page.
+- The field is mapped to a matching meta key.
+- The form field has no manual options.
+- ACF or Meta Box can resolve that field for the post or post type.
 
-By default, Bricks can use a published header template even if it has no conditions. This default-template behavior is controlled from **Bricks > Settings > Templates & components > Disable default templates**.
+If you add manual options to the form field, Bricks uses your manual options instead.
 
-If default templates are enabled and you have a published header without conditions, Bricks can use it as the site header. If default templates are disabled, set template conditions explicitly.
+#### Taxonomy
 
-## Header settings
+Use checkbox, radio, or select fields for taxonomies such as categories, tags, or custom taxonomies. You can leave the form field options empty. When the field is mapped in the **Taxonomies** repeater, Bricks automatically populates the field with terms from the selected taxonomy.
 
-Header templates have an additional **Header** settings group under **Settings > Template Settings**.
+If you manually add options, use term IDs as the submitted values. On submission, Bricks stores taxonomy terms by ID. If the mapped taxonomy field is empty, Bricks clears the terms for that mapped taxonomy.
 
-Use it to control:
+### Step 2: Select the form action
 
-- **Header location:** top, left, or right.
-- **Header width:** available for left and right headers.
-- **Sticky header:** available for top headers.
-- **Sticky on scroll:** keeps the header in normal flow on page load, then makes it sticky after scrolling.
-- **Slide up after:** lets a sticky header hide after a scroll distance.
-- **Scrolling styles:** text color, hover color, background, box shadow, and transition while the sticky header is in its scrolling state.
+Edit the Form element and select **Create post** or **Update post** in the **Actions** control group.
 
-Left and right headers affect the layout beside the content and footer. Top headers are the usual choice for most websites.
+![](https://academy.bricksbuilder.io/assets/bricks-form-action-create-update-post.png)
 
-## Create a footer template
+The order of actions matters. If an action returns an error, Bricks stops processing the remaining actions. The **Redirect** action is always moved to the end of the action list so other selected actions can run first.
 
-Use a footer template for the site area that appears after the main content. A normal footer contains copyright text, footer navigation, contact links, social links, newsletter forms, or legal links.
+### Step 3: Configure the action
 
-1. Create a new template named "Main Footer".
-2. Set **Template type** to **Footer**.
-3. Publish it and open it with Bricks.
-4. Build the footer layout.
-5. Use **Populate Content** to preview the footer with a real page or post.
-6. Add a condition, usually **Entire website**.
-7. Save and test the frontend.
+When creating a new post, select the post type that you want to create a new post for under the "Create post" control group:
 
-Like headers, published footer templates can be used by default when no conditions are set, unless default templates are disabled in Bricks settings.
+![](https://academy.bricksbuilder.io/assets/CleanShot-2025-09-16-at-14.07.14@2x.png)
 
-## Create a single post template
+<figcaption>
 
-Use a **Single** template when you want Bricks to control the layout for posts, pages, or custom post type entries. For a blog post template, the canvas usually contains elements such as Post Title, Featured Image, Post Content, Author, Date, Terms, Comments, and related content.
+Create new post for post type "Property" on form submission
 
-1. Create a new template named "Single Post".
-2. Set **Template type** to **Single**.
-3. Publish it and open it with Bricks.
-4. Open **Settings > Template Settings > Populate Content**.
-5. Set **Content type** to **Single (Post/Page/CPT)**.
-6. Select a real post to preview.
-7. Build the post layout using dynamic data and post elements.
-8. Open **Settings > Template Settings > Conditions**.
-9. Add **Post type** and select **Posts**.
-10. Save and test several published posts on the frontend.
+</figcaption>
 
-The preview post only controls what you see while editing the template. The condition controls where the template is used on the frontend.
+When updating an existing post, select the specific post that you want to update under the "Update post" control group:
 
-## Conditions or default templates?
+![](https://academy.bricksbuilder.io/assets/bricks-form-update-post-control-group.png)
 
-For production sites, set conditions deliberately. Conditions make the template assignment visible and predictable.
+Leave **Post to update** empty to update the current post. If the form is inside a query loop, Bricks uses the submitted loop object ID so each repeated form can update its own loop item.
 
-Default templates are useful while getting started because Bricks can automatically use published templates of certain types when no conditions are set. This is most common for headers and footers, but Bricks also supports default behavior for archive, search, error, and supported WooCommerce route templates.
+Both actions include a **Post status** setting. For **Create post**, leaving it empty lets WordPress use its default insert behavior. For **Update post**, leaving it empty keeps the current post status.
 
-Disable default templates when you want every rendered template to be controlled by explicit conditions. You can do this in **Bricks > Settings > Templates & components > Disable default templates**.
+When **Create post** runs for a logged-in user, that user becomes the post author. If you disable capability checks and allow anonymous submissions, Bricks falls back to the site's first super admin user when assigning the author.
 
-## Disable a header or footer on one page
+## Step 4: Field mapping
 
-Landing pages and campaign pages often need no global header or footer.
+The last, and most important step is to map/connect your form fields with the post data that should be modified when the form is submitted. The mapping controls are also located within the "Create post" and "Update post" control groups.
 
-To disable the header or footer for a specific page:
+### Mapping simple post data
 
-1. Open the page with Bricks.
-2. Open **Settings > Page Settings > General**.
-3. Enable **Disable header** or **Disable footer**.
-4. Save the page.
+For simple post data such as the Post title, Post content, Post excerpt, and Featured image you just have to select the corresponding form field from the select dropdown:
 
-This page setting applies to the page being rendered. It does not delete or change the template.
+![](https://academy.bricksbuilder.io/assets/bricks-form-create-post-field-mapping-simple-post-data.png)
 
-## Preview content vs frontend output
+For featured images and attachment posts, use fields that save uploads to the Media Library so Bricks can work with the uploaded attachment ID.
 
-Template editing needs a preview context. For example, a single post template needs one post to show dynamic data on the canvas. An archive template needs an archive context. A header or footer may need a page or post behind it so you can judge spacing and overlap.
+Bricks verifies that the mapped featured image value is an image attachment ID before calling WordPress' featured image logic. If the mapped field has no value, Bricks removes the featured image.
 
-Preview content does not assign the template to that content. It only changes the canvas context while editing.
+### Mapping post meta
 
-Use conditions to control frontend assignment.
+When updating post meta via a form field, add an item under **Post meta** and provide:
 
-## Common mistakes
+- **Meta key**: The custom field key to update. Bricks sanitizes this key before saving.
+- **Meta value**: The form field whose submitted value should be saved.
+- **Sanitization method**: How Bricks should sanitize the submitted value before saving it.
 
-**The template is published but not visible:** Check whether it has matching conditions. If default templates are disabled, a template without conditions will not be used automatically.
+![](https://academy.bricksbuilder.io/assets/bricks-form-create-post-field-mapping-post-meta.png)
 
-**The wrong template appears:** Look for a more specific matching template. Individual conditions outrank broad conditions such as Entire website. Exclude conditions can also disqualify a template.
+Available sanitization methods include text, integer, float, email, URL, and post-safe HTML. Values that are not handled by ACF or Meta Box fall back to WordPress post meta.
 
-**The canvas looks empty or the dynamic data is wrong:** Set **Populate Content** to a real page, post, archive, or search context that matches the template you are building.
+#### Date and time meta {#date-and-time-meta}
 
-**A header or footer is missing on one page:** Check that page's **Page Settings > General** for **Disable header** or **Disable footer**.
+In Bricks 2.5, a **Datepicker** field with **Enable time** and **Disable calendar** turned on collects a time without a date. See the [Form date and time picker settings](https://academy.bricksbuilder.io/builder/elements/general/form/#timepicker) for the field configuration.
 
-**A Single template does not affect posts:** Make sure the template type is **Single**, the template is published, and the condition targets the correct post type or individual entries.
+To save an appointment time:
 
-**A Section template does not update inserted copies:** Section templates are reusable library items. They do not sync inserted content between pages. Use Components for linked reusable structures.
+1. Add a mapping under **Post meta** in the **Create post** or **Update post** action.
+2. Set **Meta key** to your custom field key, such as `appointment_time`.
+3. Set **Meta value** to the time-only form field.
+4. Set **Sanitization method** to **Text (sanitize_text_field)** so the colon and minutes are preserved.
+
+For ordinary WordPress post meta, selecting `14:30` saves `14:30`. **Update post** preserves time-only values instead of converting them to a date. Datepicker fields that include a calendar retain their existing `Ymd` conversion in **Update post**, so a date-only selection of October 15, 2026 is saved as `20261015`.
+
+The **24-hour time** setting changes the picker's hour display. It does not change the submitted `H:i` time format. If the meta key belongs to an ACF or Meta Box field, choose a field type that accepts the submitted value; integration-specific handling still applies.
+
+#### ACF and Meta Box handling
+
+When possible, Bricks updates ACF fields through `update_field()` and Meta Box fields through `rwmb_set_meta()` instead of writing raw post meta only. This matters for field types that expect a specific value shape.
+
+For media fields, file upload fields should save files to the Media Library. Bricks processes those uploads before the create/update action so mapped fields can receive attachment IDs.
+
+For ACF group fields, Bricks can resolve nested meta keys and update the parent group value so nested data remains structured correctly.
+
+### Taxonomies
+
+Mapping a form field to a taxonomy is straightforward. Under **Taxonomies**, select the taxonomy to update and the corresponding form field.
+
+There is no need to manually enter taxonomy terms unless you want to limit the choices. Bricks will automatically populate the form field with the selected taxonomy's terms when the mapped form field has no manual options.
+
+## Security and validation details
+
+Bricks still runs the normal form submission checks before the create/update action:
+
+- The AJAX submission must include a valid Bricks form nonce.
+- Submitted field IDs must match fields that exist in the form settings. Unexpected or duplicate field IDs are rejected.
+- Required field validation, max-length validation, honeypot checks, and enabled captcha checks run before actions.
+- The action repeats capability checks server-side unless you disabled them.
+
+The form is not rendered for unauthorized users when capability checks are enabled. If you set a custom error message in the Create post or Update post control group, Bricks displays that message instead.
+
+## Common setups
+
+### Let users submit posts for review
+
+Use **Create post**, keep capability checks enabled for trusted logged-in users, and set **Post status** to **Pending** or **Draft**. Map only the fields users should control.
+
+### Let authors edit their own posts
+
+Use **Update post**, leave **Post to update** empty on a single post template, and keep capability checks enabled. WordPress will allow the update only if the current user can edit that post.
+
+### Update items inside a query loop
+
+Place the update form inside the query loop and leave **Post to update** empty. Bricks submits the loop object ID and updates the matching loop item.
+
+### Create attachment posts from uploads
+
+Set **Post type** to **Attachment** and use a file upload field that saves to the Media Library. Bricks uses the first uploaded attachment it finds and can update its title, content, excerpt, status, meta, and terms through the mapped fields.
+
+## Filters
+
+Bricks supports many ACF and Meta Box field types out of the box, but every custom setup is different. You can adjust mapped meta values before they are saved with these filters:
+
+- [`bricks/form/create_post/meta_value`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-create_post-meta_value/)
+- [`bricks/form/update_post/meta_value`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-update_post-meta_value/)
 
 ---
 
@@ -975,6 +1263,8 @@ Each custom page should contain a [Form element](https://academy.bricksbuilder.i
 ### Login page
 
 Add a form with the **User login** action. Map the login field, password field, and optional remember-me field in the **User Login** control group.
+
+Since Bricks 2.5, you can select the login field under **Content > Fields > Auto-focus field** to request focus on page load. Test the frontend with saved credentials and keyboard submission in the browsers your visitors use. See [Auto-focus field](https://academy.bricksbuilder.io/builder/elements/general/form/#auto-focus-field) for eligible fields and focus behavior.
 
 If your custom login URL receives a `redirect_to` query parameter, Bricks adds it as a hidden field and redirects there after successful login when your form does not already use an explicit Redirect action.
 
@@ -1202,7 +1492,7 @@ When **Execute code** is enabled, Bricks verifies the code signature before runn
 The Code element also has optional execution settings:
 
 - **Parse dynamic data**: Parses Bricks dynamic data inside the executable PHP/HTML.
-- **Suppress PHP errors**: Hides PHP errors unless the URL includes `brx_code_errors`.
+- **Suppress PHP errors**: Hides caught error diagnostics for the element. Adding `brx_code_errors=1` overrides suppression only for an authorized user; it does not grant diagnostic access. See [Inspect PHP execution errors](https://academy.bricksbuilder.io/builder/elements/general/code/#php-errors) for permissions and frontend behavior.
 - **Render without wrapper**: Outputs the executed result without the Code element wrapper on the frontend.
 
 ## Security checklist
@@ -1239,537 +1529,3 @@ You can use abbreviations to generate your HTML structures much faster via a fam
 ```
 
 [https://docs.emmet.io/cheat-sheet/](https://docs.emmet.io/cheat-sheet/)
-
----
-
-# Element Conditions
-
-Source: https://academy.bricksbuilder.io/builder/features/element-conditions/
-
-*Use Bricks element conditions to show or hide content based on post data, user state, query results, and other runtime rules.*
-
-Element Conditions let you define one or multiple conditions for any element. Only if those conditions are met is the element rendered on the front end.
-
-Conditions are validated server-side and are meant to filter out/not load an element based on data (post, user, dynamic data, date & time, etc.).
-
-Not rendering an element means **the element HTML doesn't exist in the source code**.
-
-https://youtu.be/w8DW0VH-4pc
-
-This is perfect for restricting content to logged-in users or users with a specific role (e.g., membership sites) to hide time-sensitive information according to a certain weekday/date/time, according to dynamic data, etc.
-
-Element conditions are display logic. They are useful for hiding interface, marketing, membership, or product-state content, but they are not a replacement for server-side permissions around truly sensitive data, downloads, or actions. For example, hiding a download button removes the link from the page, but anyone who already has the file URL can still open the file. Protect private files and actions with your membership, file protection, or permission setup.
-
-If you need full programmatic power to define your element conditions, use the [bricks/element/render](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-element-render/) Bricks filter.
-
-## Accessing conditions
-
-When editing an element, click the "Conditions" (toggle) icon in the panel header to open/close the element conditions interface. You'll see the "Conditions" toggle icon in the structure panel if an element has conditions. Click the icon to jump right into the conditions interface for this element.
-
-![](https://academy.bricksbuilder.io/assets/bricks-render-conditions-toggle.png)
-
-## How element conditions work
-
-At least one set of conditions must be fulfilled to render the element. This means all conditions inside a condition "set" must be evaluated to be true.
-
-So there is an OR relationship between condition sets and an AND relationship between conditions inside a set.
-
-> **Note**
->
-> Element conditions are evaluated when each element renders on the frontend. In the builder dynamic area, Bricks renders elements even when their conditions would fail, so you can keep editing them. Inside a query loop, conditions run with the current loop object, so they can show or hide that element per loop item. Use query settings or filters when you need to remove items from the query result set itself.
-
-To add your first set of conditions, click the "+" icon next to the "Conditions" title:
-
-![](https://academy.bricksbuilder.io/assets/bricks-render-conditions-add-condition.png)
-
-We now have one set with one condition. Every condition consists of the following three properties:
-
-- **Key** (post ID, user role, date, dynamic data, etc.)
-- **Comparison operand** (==, !=, >, &lt;, contains, before, after, etc.)
-- **Value** (numeric, text, checkbox, select option(s), etc.)
-
-Built-in condition groups include:
-
-- **Post**: post ID, title, parent, status, author, date, and featured image.
-- **User**: login state, user ID, registration date, and role.
-- **Date & time**: weekday, date, time, and datetime. These use the WordPress site timezone.
-- **WooCommerce**: product type, sale/new/stock states, stock quantity, stock management, sold individually, purchased by current user, featured status, rating, product categories, and product tags. This group is available when WooCommerce is active.
-- **Other**: dynamic data, browser, operating system, current URL, and referrer URL.
-
-The **Current URL** condition includes query parameters. Browser, operating system, and referrer checks depend on request headers, so treat them as convenience targeting rules rather than trusted security checks.
-
-Let's say we want to show an element only to logged-in users. We'd create the following condition:
-
-![](https://academy.bricksbuilder.io/assets/bricks-render-conditions-user-is-logged-in.png)
-
-This element is only rendered when the person viewing this page is logged in.
-
-Non-logged-in guests, bots, crawlers, etc., will not be able to see this element (as it's not in the source code).
-
-## Conditions indicator
-
-Notice the highlighted "Conditions" icon in the screenshot above. It's a great indicator to see at a glance if the element you are editing has any conditions (without having to open the conditions interface).
-
-The "Conditions" (toggle) icon is also visible next to an element in the structure panel to quickly scan for element conditions on your page. A click on it brings you right into the conditions interface.
-
-## Checking multiple conditions
-
-Between a set of conditions exists an **OR** relation. And conditions within a set have an **AND** relation.
-
-Let's create a second set of conditions (by clicking the "+" icon at the top-right again) to illustrate this.
-
-The condition in this new set is fulfilled (true) if the post title is "Account".
-
-As there is an OR relation between condition sets, the element is rendered if (1) the user is logged in **OR** (2) the title of the post/page being viewed is "Account".
-
-![](https://academy.bricksbuilder.io/assets/bricks-render-conditions-groups.png)
-
-## Combining AND & OR conditions
-
-Let's extend the conditions for this element by checking if the logged-in user has been registered before the 1st of Jan 2022.
-
-As there is an AND relation between conditions inside a set, click the "+" button on the bottom-right of the first condition to add another condition to this first set:
-
-![](https://academy.bricksbuilder.io/assets/bricks-render-conditions-and-or.png)
-
-You'll also notice the vertical "**AND**" label between conditions inside a set.
-
-And the horizontal "**OR**" label between condition sets.
-
-This visualizes the element conditions logic.
-
-### Repeat shared conditions in every set {#repeat-shared-conditions}
-
-Bricks checks each set on its own. Inside a set, it stops at the first condition that fails and moves on to the next set. A condition in one set does not apply to the other sets.
-
-If a requirement applies in every case, add it to each set. For example, a "Download recipe card" button should appear for logged-in visitors, or on recipes that are free for everyone, but only when the recipe actually has a card file:
-
-- **Set 1**: User login **is** Logged in, AND Dynamic data `{acf_recipe_card}` **is not empty**
-- **Set 2**: Dynamic data `{acf_card_access}` **==** `Everyone`, AND Dynamic data `{acf_recipe_card}` **is not empty**
-
-Without the card check in the second set, a free recipe without a card file would still render the button.
-
-## Show content only when a field has a value {#empty-fields}
-
-A single post template often contains sections that only some posts can fill, such as a video, a download, or a "Chef's tip" box. Without a condition, posts that leave the field empty still render the section's heading and an empty player or box.
-
-Add a **Dynamic data** condition to the section, pick the field, and set the comparison to **is not empty**. Leave the value empty. The section then renders only on posts where the field has content.
-
-<div className="screenshot screenshot--control-panel">
-
-![Conditions panel for a Section named Video with one condition: Dynamic data, {acf_recipe_video}, is not empty.](https://academy.bricksbuilder.io/assets/element-conditions-dynamic-data-is-not-empty.webp)
-
-</div>
-
-**is empty** and **is not empty** are available for the **Dynamic data** condition. They check whether the rendered output of the tag is an empty string, so a field that was never filled in counts as empty, the same as a field that was cleared. Use **is empty** to show fallback content in the posts that have no value.
-
-## Comparison behavior
-
-`==` and `!=` comparisons use PHP-style loose comparison and convert common boolean-like values such as `true`, `false`, `1`, `0`, and empty strings before comparing. Numeric comparisons (`>`, `<`, `>=`, `<=`) compare the resolved values directly.
-
-For multi-select values such as user roles, post statuses, WooCommerce product categories, and product tags, `is` matches if any selected value overlaps. `is not` matches when there is no overlap.
-
-The `contains` and `does not contain` comparisons are string checks. Use them for text-like values such as post titles, dynamic data output, URLs, and referrers. Both return false when the checked value is empty, so a `does not contain` condition hides the element on posts where the field has no value. Add a separate set with **is empty** if those posts should still show the element.
-
-If you leave the comparison empty, the condition uses `==`.
-
-### How to compare dynamic data against the value {#dynamic-data}
-
-> **Note**
->
-> The element conditions, by default, compare against the label.
-
-Certain dynamic data provider fields allow you to specify the value & label (e.g., [ACF true false](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/#acf), Metabox checkbox list, radio, select, etc.).
-
-To compare against the value instead, you can use the `:value` filter like this:
-
-![](https://academy.bricksbuilder.io/assets/bricks-1.5.7-dynamic-data-value-filter.png)
-
-In the example above, the condition is fulfilled when the Metabox checkbox list has the `blue` value selected. Without the `:value` filter, the condition would compare against the checkbox option label.
-
-## WooCommerce checkout and order conditions {#woocommerce}
-
-Bricks 2.4 adds WooCommerce conditions for checkout and order-aware layouts:
-
-- **Checkout : Login step needed**
-- **Checkout : Needs shipping**
-- **Checkout : Needs shipping address**
-- **Checkout : Order has status**
-- **Order : Needs shipping address**
-- **Order : Has downloads**
-
-Use these conditions inside WooCommerce v2 checkout, pay, thank-you, order receipt, account view-order, and other order-aware layouts when content should only appear for a matching checkout or order state.
-
-**Checkout : Login step needed** is **Yes** only for a logged-out customer when **WooCommerce > Settings > Accounts & Privacy > Enable log-in during checkout** is enabled. The generated [Checkout v2 multistep structure](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/#account-login-step-visibility) uses it to keep the Account Login navigation item, step, and Customer info Back button in sync.
-
-**Checkout : Needs shipping** checks whether the non-empty cart contains products that require shipping. Use it for shipping methods and any Checkout v2 section or step that customers need to access to choose a shipping method.
-
-**Checkout : Needs shipping address** checks whether WooCommerce needs a separate shipping address. This can return **No** when WooCommerce is set to force shipping to the billing address, even though the cart still requires shipping and customers still need to choose a shipping method.
-
-For a Checkout v2 layout, apply **Checkout : Needs shipping** to the Shipping options wrapper. In a multistep layout, apply the same condition to both the Shipping step and its matching navigation item. Apply **Checkout : Needs shipping address** only to the **Ship to another address** control and shipping-address fields.
-
-See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#conditions) for the related WooCommerce v2 data reference.
-
-### Order withdrawal screen
-
-With advanced modular elements and WooCommerce Order Withdrawal enabled, use **Order withdrawal screen** inside the [Account Page v2 withdrawal state](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page-v2/#order-withdrawal). Compare with **Your details**, **Review**, or **Confirmation** using **is** or **is not**. The generated structure includes these conditions. They control frontend output; all three sections remain visible in the builder.
-
-## Element Conditions API {#api}
-
-The following information is intended for developers who wish to extend the default element conditions interface programmatically (`@since 1.8.4`).
-
-The custom element condition should resemble the following example:
-
-![](https://academy.bricksbuilder.io/assets/custom-condition-in-bricks.png)
-
-<figcaption>
-
-Builder: New condition group with "Post type" option
-
-</figcaption>
-
-### Step 1: Add condition group via filter:  bricks/conditions/groups {#bricks-conditions-groups}
-
-```php
-add_filter( 'bricks/conditions/groups', 'add_my_condition_group' );
-function add_my_condition_group( $groups ) {
-  // Ensure your group name is unique (best to prefix it)
-  $groups[] = [
-    'name'  => 'my_group',
-    'label' => esc_html__( 'My Group', 'my-plugin' ),
-  ];
-
-  return $groups;
-}
-```
-
-### Step 2: Add condition options via filter: bricks/conditions/options {#bricks-conditions-lists}
-
-In this example, create a new condition to compare the current page post type with the user's value. The compare control is a dropdown with "is" and "is not" options. The value field type is a `text` input.
-
-```php
-add_filter( 'bricks/conditions/options', 'add_my_custom_condition' );
-function add_my_custom_condition( $options ) {
-  // Ensure key is unique, and that group exists
-  $options[] = [
-    'key'   => 'my_post_type',
-    'label' => esc_html__( 'Post Type (New)', 'my-plugin' ),
-    'group' => 'my_group',
-    'compare' => [
-      'type'        => 'select',
-      'options'     =>  [
-        '==' => esc_html__( 'is', 'my-plugin' ),
-        '!=' => esc_html__( 'is not', 'my-plugin' ),
-      ],
-      'placeholder' => esc_html__( 'is', 'my-plugin' ),
-    ],
-    'value'   => [
-      'type'        => 'text',
-    ],
-  ];
-
-  return $options;
-}
-```
-
-![](https://academy.bricksbuilder.io/assets/custom-condition-in-bricks-example01.png)
-
-<figcaption>
-
-Expected result: New condition in the builder
-
-</figcaption>
-
-### Step 3: Execute your logic to return a Boolean result via filter: bricks/conditions/result {#bricks-conditions-result}
-
-Based on your custom logic, return `true` or `false` for your condition. Bricks take care of the `OR` and `AND` conditions.
-
-In this example, we check if the current post type matches the user value.
-
-If the condition is met, return `true`.
-
-You can access the `$condition` variable, which has been set inside the builder.
-
-```php
-add_filter( 'bricks/conditions/result', 'run_my_custom_condition', 10, 3 );
-function run_my_custom_condition( $result, $condition_key, $condition ) {
-  // If $condition_key is not 'my_post_type', we return the $render as it is
-  if ( $condition_key !== 'my_post_type' ) {
-    return $result;
-  }
-
-  // Now you can perform your logic by using the $condition variable
-  // $condition['compare'] is the compare operator, might be empty
-  // $condition['value'] is the user value, might be empty
-
-  // In my example, if compare is empty, we set it to '==' as default
-  $compare    = isset( $condition['compare'] ) ? $condition['compare'] : '==';
-  $user_value = isset( $condition['value'] ) ? $condition['value'] : '';
-
-  $condition_met = false;
-
-  // Get the current post type of the page
-  $current_post_type = get_post_type();
-
-  switch( $compare ) {
-    case '==': // "is"
-      $condition_met = $current_post_type === $user_value;
-      break;
-    case '!=': // "is not"
-      $condition_met = $current_post_type !== $user_value;
-      break;
-  }
-
-  return $condition_met;
-}
-```
-
-If you have added multiple options under the same group, you can target them like this:
-
-```php
-add_filter( 'bricks/conditions/result', 'run_my_custom_condition', 10, 3 );
-function run_my_custom_condition( $result, $condition_key, $condition ) {
-
-  $condition_options = \Bricks\Conditions::$options;
-  $registered_condition = null;
-
-  foreach ( $condition_options as $option ) {
-    if ( isset( $option['key'] ) && $option['key'] === $condition_key ) {
-      $registered_condition = $option;
-      break;
-    }
-  }
-
-  if ( ! $registered_condition || $registered_condition['group'] !== 'my_group' ) {
-    return $result;
-  }
-  // Now you can perform your logic by using the $condition variable
-  // $condition['compare'] is the compare operator, might be empty
-  // $condition['value'] is the user value, might be empty
-
-  $condition_met= false;
-
-  switch( $condition_key ) {
-    case 'my_condition_option_1':
-      // Example
-      $condition_met = execute_my_logic_1( $condition );
-      break;
-    case 'my_condition_option_2':
-      // Example
-      $condition_met = execute_my_logic_2( $condition );
-      break;
-  }
-
-  return $condition_met;
-}
-```
-
----
-
-# Global Elements
-
-Source: https://academy.bricksbuilder.io/builder/features/global-elements/
-
-*Review legacy global elements in Bricks, convert them to components, and understand why new reusable work should use Components instead.*
-
-> **Note**
->
-> **Global elements are deprecated since Bricks 2.0. Use Components for new reusable builder structures, and convert existing global elements as soon as possible.**
-
-Global elements remain visible for sites that already use them, but they are now a legacy feature. New reusable work should be created as [Components](https://academy.bricksbuilder.io/builder/features/components/), not as global elements.
-
-## Review existing global elements
-
-To find existing global element instances:
-
-1. Go to `Bricks > Settings > General`.
-2. Scroll to **Global elements** under the **Convert** section.
-3. Start the global-elements review to retrieve a list of global element instances.
-
-From there, review the affected pages and templates before converting, unlinking, or deleting anything.
-
-## Convert to components
-
-Use the converter under `Bricks > Settings > General > Convert` to convert global elements to components.
-
-Bricks can convert global elements individually or in bulk. Nestable global elements cannot always be converted directly to components; in those cases, unlink them manually in the builder or use the converter flow that unlinks nestable global elements.
-
-After conversion, delete the remaining global elements from the builder's elements panel.
-
-## When to use templates instead
-
-If you need to reuse a larger section or layout pattern without linked shared editing, save it as a template and insert it where needed. For linked reusable structures, use Components.
-
----
-
-# Create & Update Posts on the Frontend
-
-Source: https://academy.bricksbuilder.io/builder/features/create-update-posts-on-the-frontend/
-
-*Build frontend forms in Bricks that create or update WordPress posts without sending users into wp-admin.*
-
-Bricks 2.1 introduced the **Create post** and **Update post** form actions. They let a frontend Form element create a new WordPress post or update an existing one without sending the user to wp-admin.
-
-Use these actions for workflows such as property listings, classifieds, member-submitted posts, profile pages, or client portals. The examples below use a custom post type named `property`, but the same rules apply to any public post type that exists on your site.
-
-> **Note**
->
-> **IMPORTANT:** By default, Bricks checks permissions twice: when rendering the form and again when processing the submission.
->
-> - **Create post** requires the current user to have the selected post type's `edit_posts` capability.
-> - **Update post** requires the current user to have `edit_post` for the target post.
->
-> Do not enable **Disable capability checks** unless the form is protected another way. When disabled, non-logged-in or unauthorized visitors can create or edit content through that form.
-
-https://www.youtube.com/watch?v=c9JcrLEVbnM
-
-## Before you start
-
-Decide these things before building the form:
-
-- Which post type the form creates or updates.
-- Which users are allowed to submit the form.
-- Whether new posts should be saved as draft, pending review, published, or another available post status.
-- Which core post fields, custom fields, and taxonomies the form may change.
-- Whether uploads should be saved to the Media Library. Featured images, attachment posts, and many ACF/Meta Box media fields need attachment IDs.
-
-## How to create or update posts via form submission
-
-The create and update workflows use the same pattern: add fields, choose the form action, then map the fields to the WordPress data that should change.
-
-### Step 1: Add form fields for post data
-
-Create form fields for all the post data that you want to save when creating or updating a post through the Form element:
-
-| Post data | Recommended field type |
-| --- | --- |
-| Post title | Text |
-| Post content | Rich text |
-| Post excerpt | Textarea |
-| Featured image | Image |
-| Post meta | The most suitable field type for the custom field |
-| Taxonomy terms | Checkbox, radio, or select |
-
-#### Post meta
-
-Make sure to select the most suitable field type for every piece of post meta data you want to modify. Bricks stores mapped meta through ACF, Meta Box, or `update_post_meta()` depending on the meta key and the integrations available on the site.
-
-For checkbox, radio, and select fields, Bricks can automatically load choices from ACF or Meta Box when:
-
-- The field is mapped to a matching meta key.
-- The form field has no manual options.
-- ACF or Meta Box can resolve that field for the post or post type.
-
-If you add manual options to the form field, Bricks uses your manual options instead.
-
-#### Taxonomy
-
-Use checkbox, radio, or select fields for taxonomies such as categories, tags, or custom taxonomies. You can leave the form field options empty. When the field is mapped in the **Taxonomies** repeater, Bricks automatically populates the field with terms from the selected taxonomy.
-
-If you manually add options, use term IDs as the submitted values. On submission, Bricks stores taxonomy terms by ID. If the mapped taxonomy field is empty, Bricks clears the terms for that mapped taxonomy.
-
-### Step 2: Select the form action
-
-Edit the Form element and select **Create post** or **Update post** in the **Actions** control group.
-
-![](https://academy.bricksbuilder.io/assets/bricks-form-action-create-update-post.png)
-
-The order of actions matters. If an action returns an error, Bricks stops processing the remaining actions. The **Redirect** action is always moved to the end of the action list so other selected actions can run first.
-
-### Step 3: Configure the action
-
-When creating a new post, select the post type that you want to create a new post for under the "Create post" control group:
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-09-16-at-14.07.14@2x.png)
-
-<figcaption>
-
-Create new post for post type "Property" on form submission
-
-</figcaption>
-
-When updating an existing post, select the specific post that you want to update under the "Update post" control group:
-
-![](https://academy.bricksbuilder.io/assets/bricks-form-update-post-control-group.png)
-
-Leave **Post to update** empty to update the current post. If the form is inside a query loop, Bricks uses the submitted loop object ID so each repeated form can update its own loop item.
-
-Both actions include a **Post status** setting. For **Create post**, leaving it empty lets WordPress use its default insert behavior. For **Update post**, leaving it empty keeps the current post status.
-
-When **Create post** runs for a logged-in user, that user becomes the post author. If you disable capability checks and allow anonymous submissions, Bricks falls back to the site's first super admin user when assigning the author.
-
-## Step 4: Field mapping
-
-The last, and most important step is to map/connect your form fields with the post data that should be modified when the form is submitted. The mapping controls are also located within the "Create post" and "Update post" control groups.
-
-### Mapping simple post data
-
-For simple post data such as the Post title, Post content, Post excerpt, and Featured image you just have to select the corresponding form field from the select dropdown:
-
-![](https://academy.bricksbuilder.io/assets/bricks-form-create-post-field-mapping-simple-post-data.png)
-
-For featured images and attachment posts, use fields that save uploads to the Media Library so Bricks can work with the uploaded attachment ID.
-
-Bricks verifies that the mapped featured image value is an image attachment ID before calling WordPress' featured image logic. If the mapped field has no value, Bricks removes the featured image.
-
-### Mapping post meta
-
-When updating post meta via a form field, add an item under **Post meta** and provide:
-
-- **Meta key**: The custom field key to update. Bricks sanitizes this key before saving.
-- **Meta value**: The form field whose submitted value should be saved.
-- **Sanitization method**: How Bricks should sanitize the submitted value before saving it.
-
-![](https://academy.bricksbuilder.io/assets/bricks-form-create-post-field-mapping-post-meta.png)
-
-Available sanitization methods include text, integer, float, email, URL, and post-safe HTML. Values that are not handled by ACF or Meta Box fall back to WordPress post meta.
-
-#### ACF and Meta Box handling
-
-When possible, Bricks updates ACF fields through `update_field()` and Meta Box fields through `rwmb_set_meta()` instead of writing raw post meta only. This matters for field types that expect a specific value shape.
-
-For media fields, file upload fields should save files to the Media Library. Bricks processes those uploads before the create/update action so mapped fields can receive attachment IDs.
-
-For ACF group fields, Bricks can resolve nested meta keys and update the parent group value so nested data remains structured correctly.
-
-### Taxonomies
-
-Mapping a form field to a taxonomy is straightforward. Under **Taxonomies**, select the taxonomy to update and the corresponding form field.
-
-There is no need to manually enter taxonomy terms unless you want to limit the choices. Bricks will automatically populate the form field with the selected taxonomy's terms when the mapped form field has no manual options.
-
-## Security and validation details
-
-Bricks still runs the normal form submission checks before the create/update action:
-
-- The AJAX submission must include a valid Bricks form nonce.
-- Submitted field IDs must match fields that exist in the form settings. Unexpected or duplicate field IDs are rejected.
-- Required field validation, max-length validation, honeypot checks, and enabled captcha checks run before actions.
-- The action repeats capability checks server-side unless you disabled them.
-
-The form is not rendered for unauthorized users when capability checks are enabled. If you set a custom error message in the Create post or Update post control group, Bricks displays that message instead.
-
-## Common setups
-
-### Let users submit posts for review
-
-Use **Create post**, keep capability checks enabled for trusted logged-in users, and set **Post status** to **Pending** or **Draft**. Map only the fields users should control.
-
-### Let authors edit their own posts
-
-Use **Update post**, leave **Post to update** empty on a single post template, and keep capability checks enabled. WordPress will allow the update only if the current user can edit that post.
-
-### Update items inside a query loop
-
-Place the update form inside the query loop and leave **Post to update** empty. Bricks submits the loop object ID and updates the matching loop item.
-
-### Create attachment posts from uploads
-
-Set **Post type** to **Attachment** and use a file upload field that saves to the Media Library. Bricks uses the first uploaded attachment it finds and can update its title, content, excerpt, status, meta, and terms through the mapped fields.
-
-## Filters
-
-Bricks supports many ACF and Meta Box field types out of the box, but every custom setup is different. You can adjust mapped meta values before they are saved with these filters:
-
-- [`bricks/form/create_post/meta_value`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-create_post-meta_value/)
-- [`bricks/form/update_post/meta_value`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-update_post-meta_value/)

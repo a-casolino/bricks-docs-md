@@ -12,11 +12,16 @@
 | Key | Type | Label | CSS |
 |---|---|---|---|
 | `filterQueryId` | query-list | Target query | — |
+| `filterDefinitionId` | filter-definition-manager | Global filter | — |
 | `filterNiceName` | text | URL parameter | — |
 | `filterApplyOn` | select | Apply on | — |
 | `filterAction` | select | Action | — |
 | `filterSource` | select | Source | — |
 | `sourceFieldType` | select | Field type | — |
+| `fieldProvider` | select | Provider | — |
+| `customFieldKey` | text | Meta key | — |
+| `fieldCompareOperator` | select | Compare | — |
+| `fieldCompareType` | select | Compare type | — |
 | `wpPostField` | select | Field | — |
 | `wpUserField` | select | Field | — |
 | `wpTermField` | select | Field | — |
@@ -27,17 +32,14 @@
 | `filterTermInclude` | select | filterTermInclude | — |
 | `filterTermExclude` | select | filterTermExclude | — |
 | `filterTermTopLevel` | checkbox | Top level terms only | — |
-| `filterHideCount` | checkbox | Hide count | — |
-| `filterHideEmpty` | checkbox | Hide empty | — |
-| `filterCountNoBracket` | checkbox | Hide count bracket | — |
+| `filterIncludeChildrenCount` | checkbox | Count | — |
 | `filterHierarchical` | checkbox | Hierarchical | — |
 | `filterChildIndentation` | text | Indent | — |
 | `filterChildIndentationGap` | number | Indent | `margin-inline-start` on `[class*="depth-"]:not([class*="depth-0"])` |
-| `fieldProvider` | select | Provider | — |
-| `customFieldKey` | text | Meta key | — |
-| `fieldCompareOperator` | select | Compare | — |
-| `fieldCompareType` | select | Compare type | — |
 | `filterGroupLabel` | text | Group label | — |
+| `filterHideEmpty` | checkbox | Hide empty | — |
+| `filterHideCount` | checkbox | Hide count | — |
+| `filterCountNoBracket` | checkbox | Hide count bracket | — |
 | `filterHideAllOption` | checkbox | Hide "All" option | — |
 | `filterLabelAll` | text | Label | — |
 | `labelMapping` | select | Label | — |
@@ -75,6 +77,7 @@
 | `showMoreButtonBackgroundColor` | color | Background color | `background-color` on `.brx-show-more-less-button` |
 | `showMoreButtonBorder` | border | Border | `border-color` on `.brx-show-more-less-button` |
 | `showMoreButtonTypography` | typography | Typography | `font` on `.bricks-button.brx-show-more-less-button` |
+| `filterDefaultValue` | text | Default value | — |
 
 ## Inherited CSS controls
 
@@ -100,6 +103,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

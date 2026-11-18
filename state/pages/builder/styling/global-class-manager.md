@@ -51,6 +51,8 @@ Use the Class Manager when you want to:
 - Export and import classes.
 - Review usage, conflicts, and imported classes.
 
+To generate names from element labels or review the classes used by one structure, use [Generate Classes](https://academy.bricksbuilder.io/builder/styling/generate-classes/) from the Structure panel's context menu.
+
 ## Create and edit classes
 
 In the Class Manager, use the new-class input at the bottom of the class list to create a class.
@@ -134,7 +136,7 @@ Locking is permission-based. Users without lock/unlock permission cannot change 
 
 ## Trash, restore, and permanent delete
 
-Deleting a class from the active list moves it to trash. Trashed classes can be restored from the trash view.
+Deleting a class with an ID from the active list moves it to trash. Trashed classes can be restored from the trash view. Classes with a missing ID use the separate [recovery workflow](#classes-with-missing-names-or-ids).
 
 When a class is restored, Bricks attempts to restore it to its previous position. If a class with the same name already exists, Bricks may rename the restored class to avoid the name conflict.
 
@@ -143,6 +145,35 @@ Permanent delete removes the class from the trash. Use permanent delete only aft
 > **Note**
 >
 > Moving a class to trash is not the same as removing a class from one element. Removing a class from an element only removes that element's assignment. Moving a class to trash removes the class from the active class library.
+
+## Classes with missing names or IDs
+
+A global class needs a name for its CSS selector and an internal ID for Bricks to track it. Imported class data can be missing either value. Starting in Bricks 2.5, affected classes show a **Missing class name** or **Missing class ID** badge in the Class Manager list. Empty values and values containing only whitespace count as missing.
+
+If both values are missing, the class shows **Missing class ID**. These badges identify incomplete class records; they do not validate every possible CSS class name or guarantee that an import will reject invalid data.
+
+### Restore a missing class name
+
+A class with an ID but no name can be renamed without replacing its existing class record.
+
+1. Open **Style Manager > Classes**.
+2. Click the class marked **Missing class name**.
+3. In the editor column, choose **Rename**, enter a name in the **Name** field, and click **Rename**.
+4. Save your class changes with the Class Manager save button.
+
+Until the class has a name, custom CSS editing, categorizing, locking, duplicating, exporting the selection, and drag reordering are unavailable for it. If a selection includes a class with a missing name, the corresponding selection actions are unavailable too.
+
+If you do not need the class, use **Move to trash** in the class-list toolbar instead. Existing locks still block renaming and moving a class to trash.
+
+![Class Manager with a class marked Missing class name selected and the Name field and Rename button visible.](https://academy.bricksbuilder.io/assets/global-class-manager-missing-class-name.webp)
+
+### Remove a class with a missing ID
+
+Click a class marked **Missing class ID** to open its recovery panel. The panel explains why other actions are unavailable and provides a **Remove** button.
+
+Click **Remove**, then save your class changes. This removes the record directly from the active class library. It does not move it to trash, so it cannot be restored from the trash view.
+
+Classes with a missing ID must be selected individually. **Select all** skips them. If you still need the class, create a replacement with a name and assign it to the relevant elements.
 
 ## Exporting and importing classes
 
@@ -227,6 +258,10 @@ The save flow can report:
 - True conflicts where both your session and another session changed the same class.
 
 Resolve the notification before continuing. This protects shared class systems on teams.
+
+## Recover an earlier class
+
+Use [Global data revisions](https://academy.bricksbuilder.io/builder/interface/global-data-history/) to inspect recorded class changes or recover an earlier value, including after deletion. Select **Revisions** in the class editor, or open **Manage > Global data revisions** and select **Classes**. Restoring a recorded class changes that item, while other classes keep their current values. This is separate from restoring a class out of trash.
 
 ## Best practices
 

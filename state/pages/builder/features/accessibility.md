@@ -42,6 +42,8 @@ It is also important to mention that it is a good practice to avoid using links 
 
 The Form element lets you add or remove field labels. Field labels are important to comply with a11y guidelines as they provide a description of what is expected to be input in each field. If you prefer to not present field labels, Bricks automatically adds the `aria-label` attribute to the field input using the label defined for each field in the builder.
 
+Since Bricks 2.5, [field descriptions](https://academy.bricksbuilder.io/builder/elements/general/form/#field-descriptions) let you add visible instructions below form controls. Bricks connects each control to its description using `aria-describedby`. Keep a clear field label alongside the description so visitors can identify the field and read its instructions.
+
 ## Keyboard navigation
 
 One of the main a11y requirements is to make sure your website can be operated/navigated using the keyboard only.  Assuring good keyboard navigation not only will allow people that cannot use a mouse to navigate through your website but also people using other assistive technologies.

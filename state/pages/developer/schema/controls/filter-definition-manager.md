@@ -1,0 +1,1 @@
+*Global filter ID, or an empty string for a local filter*

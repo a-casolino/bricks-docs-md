@@ -219,7 +219,9 @@ If the filter element continues to display "Indexing in Progress" in the builder
 
 ![](https://academy.bricksbuilder.io/assets/indexer-always-stuck-issue.png)
 
-However, if the indexing jobs remain pending without any progress, it might be caused by specific firewall rules blocking the background process.
+Starting with Bricks 2.5, requesting another full reindex preserves pending jobs instead of restarting their progress. Use **Continue index job** to process the existing queue. Programmatic requests can continue without a browser login cookie, but later background passes still need working WP-Cron. See [Programmatic query filter reindexing](https://academy.bricksbuilder.io/developer/hooks/actions/bricks-query_filters-reindex/#background).
+
+If jobs still make no progress, check whether firewall rules block the background process.
 
 Best to check your website firewall settings or contact your hosting support. If your website is protected by HTTP Authentication, please add this [code snippet](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-index) in your child theme's functions.php as well.
 

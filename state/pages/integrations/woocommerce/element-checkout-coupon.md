@@ -27,4 +27,4 @@ To use this element, first enable it under **`Bricks > Settings > WooCommerce`**
 
 ![](https://academy.bricksbuilder.io/assets/element-location-example.png)
 
-You can set the form to be toggle-able, hiding it by default and revealing it only when the toggle is clicked, for a cleaner layout.
+Enable **Toggleable form** to hide the form until its prompt is clicked. For the expanded icon and transition controls added in Bricks 2.5, see the [Checkout Coupon settings](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-coupon/#settings).

@@ -8,6 +8,29 @@ Bricks dispatches custom JavaScript events for several frontend actions. Use the
 - [bricks/form/success](https://academy.bricksbuilder.io/builder/features/interactions/#trigger-form-success) Emitted after a successful form submission AJAX call is returned.
 - [bricks/form/error](https://academy.bricksbuilder.io/builder/features/interactions/#trigger-form-error) Emitted after an error in the form submission AJAX call is returned.
 
+## Clipboard events {#clipboard-events}
+
+Since Bricks 2.5, the [Copy to clipboard interaction](https://academy.bricksbuilder.io/builder/features/interactions/#copy-to-clipboard) dispatches these events on the element that owns the interaction:
+
+- `bricks/clipboard/success`: The browser confirmed that the text was copied.
+- `bricks/clipboard/fail`: Clipboard writing failed or the source element could not be found.
+
+`event.detail.text` contains the copied or attempted text. It is `null` if the source text could not be read. These events do not bubble, so attach listeners directly to the element that owns the copy interaction.
+
+```js
+const copyButton = document.querySelector('#copy-coupon')
+
+copyButton?.addEventListener('bricks/clipboard/success', (event) => {
+  console.log('Copied:', event.detail.text)
+})
+
+copyButton?.addEventListener('bricks/clipboard/fail', (event) => {
+  console.log('Could not copy:', event.detail.text)
+})
+```
+
+Replace `#copy-coupon` with your copy element's selector and run this code after that element exists in the DOM. To configure feedback in the builder, use the [Copy successful and Copy failed triggers](https://academy.bricksbuilder.io/builder/features/interactions/#copy-result-triggers).
+
 ## Tabs / Tabs (Nestable) element events
 
 - [bricks/tabs/changed](#bricks-tabs-changed-code): Emitted after click on a tab title (`@since 1.9.8`)
@@ -109,6 +132,7 @@ document.addEventListener('bricks/accordion/close', (event) => {
 - [bricks/ajax/start](#bricks-ajax-start-code): Emitted before a Bricks AJAX call is made.
 - [bricks/ajax/end](#bricks-ajax-end-code): Emitted after completing a Bricks AJAX call.
 - [bricks/ajax/pagination/completed](#bricks-ajax-pagination-completed-code): Emitted after an AJAX pagination call is completed.
+- [bricks/ajax/pagination/history](#bricks-ajax-pagination-history-code): Emitted after standalone AJAX pagination finishes restoring browser history in Bricks 2.5.
 - [bricks/ajax/load_page/completed](#bricks-ajax-load_page-completed-code): Emitted after an Infinite scroll AJAX call is completed.
 - [bricks/ajax/query_result/completed](#bricks-ajax-query_result-completed-code): Emitted after a Query filter AJAX call is completed.
 - [bricks/ajax/nodes_added](#bricks-ajax-nodes_added-code): Emitted after Bricks adds new AJAX result nodes to the DOM. The event detail contains the `queryId`. (`@since 1.11.1`)
@@ -132,7 +156,7 @@ document.addEventListener('bricks/accordion/close', (event) => {
 
 > **Note**
 >
-> The `bricks/ajax/pagination/completed` event is only emitted for standalone AJAX pagination. If the Pagination element targets a query that uses Bricks Query Filters, this event is not emitted. In this case, listen for the Query Filter events instead.
+> In Bricks 2.5, `bricks/ajax/pagination/completed` also fires after a successful Pagination click updates a query that uses Query Filters. It follows the Query Filter event sequence below, after `bricks/ajax/query_result/displayed`. Changing a filter value alone does not emit this pagination event.
 
 ### AJAX query filter event sequence
 
@@ -141,6 +165,26 @@ document.addEventListener('bricks/accordion/close', (event) => {
 3. bricks/ajax/query_result/completed
 4. bricks/ajax/nodes_added
 5. bricks/ajax/query_result/displayed
+
+### Browser history restoration
+
+For standalone AJAX pagination, `bricks/ajax/pagination/completed` includes `isPopState: true` during Back/Forward restoration. Check `queryUpdated` before acting on replaced results: a standalone completion event can also follow a failed request.
+
+After all standalone query restoration requests for the current history navigation finish successfully, Bricks emits `bricks/ajax/pagination/history`. Its `queryIds` array identifies the standalone queries requested for restoration; it can be empty when no standalone query needs refreshing. This event does not wait for queries handled by Query Filters and does not indicate that accumulated Load more or Infinite scroll results were restored. A failed standalone history request falls back to loading the target document.
+
+Use this event for site-specific work after the asynchronous restoration, rather than assuming a `popstate` listener runs after results have loaded. Bricks does not disable native browser scroll restoration.
+
+<span id="bricks-ajax-pagination-history-code"></span>
+
+```js
+document.addEventListener('bricks/ajax/pagination/history', (event) => {
+  const { queryIds } = event.detail;
+
+  if (!queryIds.includes('your-query-id')) return;
+
+  // The requested standalone query results have finished restoring.
+});
+```
 
 ### Filter submit event sequence
 
@@ -192,11 +236,11 @@ document.addEventListener('bricks/ajax/end', (event) => {
 
 ```php
 document.addEventListener('bricks/ajax/pagination/completed', (event) => {
-  // Extract queryId from the event detail
-  const queryId = event.detail.queryId;
+  const { queryId, queryUpdated, isPopState = false } = event.detail;
+  if (!queryUpdated) return;
 
-  // Your custom logic here
-  // For example, handle the completed pagination for the specific queryId
+  // isPopState identifies standalone Back/Forward restoration.
+  // Add your query-specific logic here.
 });
 ```
 

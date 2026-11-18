@@ -54,6 +54,12 @@ Bricks accepts class names with or without a leading dot. The builder stores the
 
 You can enter more than one class name separated by spaces or commas when creating classes. Bricks creates the missing classes and reuses existing classes with the same name.
 
+## Generate classes from a structure
+
+Starting in Bricks 2.5, right-click a parent element in the Structure panel and select **Generate classes** to propose class names for it and its descendants. You can add classes, move ID styles into them, or review existing names before choosing a global rename or a copy for the selected elements.
+
+See [Generate Classes](https://academy.bricksbuilder.io/builder/styling/generate-classes/) for naming options, style transfer, and shared-class review.
+
 ## Assign an existing class to an element
 
 1. Select the element.
@@ -115,6 +121,32 @@ When a selector starts with `:`, Bricks attaches it directly to the class select
 >
 > Use class selectors for reusable states and child styling. Use element ID selectors only for one-off exceptions.
 
+## Dynamic class styles in query loops {#dynamic-data-in-query-loops}
+
+Since Bricks 2.5, dynamic data in supported global-class style controls resolves for each query-loop item. A shared card class can use `{featured_image}` as its background while each card displays the image belonging to its own post.
+
+For a post-card background:
+
+1. Add a Block or Container and enable **Use Query Loop**. Configure a Posts query with posts that have featured images.
+2. Assign a global class, such as `academy-demo-card`, to the repeated element. Select its class chip so the class is the active styling target.
+3. Open **Style > Background** and choose **Featured image** from the background image's dynamic-data picker.
+4. Give the card a height or padding so the background has visible space. Add a Heading using `{post_title}` if the cards need titles.
+5. Save, reload the Builder, and check the frontend. Each card should show its own post's featured image, with the same shared class settings.
+
+<div className="screenshot screenshot--control-panel">
+
+![The academy-demo-card global class active on a Journal card, with featured_image selected as its background image.](https://academy.bricksbuilder.io/assets/builder/release-2.5/dynamic-class-panel.webp)
+
+</div>
+
+![Coastal notes, Studio materials, and Quiet forms cards showing different featured-image backgrounds through the same global class.](https://academy.bricksbuilder.io/assets/builder/release-2.5/dynamic-class-result.webp)
+
+The value follows the current query context. In a nested loop, it resolves against the inner loop item, rather than the outer item or the page being edited. Reusing the class in another loop does not force both loops to use the same post's data. See [Dynamic data in nested loops](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/#dynamic-data-in-nested-loops).
+
+Use the visual style controls, including their responsive and class-selector settings. This support does not make dynamic tags in a class's handwritten **Custom CSS** resolve separately for every loop item. Element-level style overrides still keep their normal priority over class defaults.
+
+Bricks generates additional dynamic CSS for the styled loop items. Keep large loops and classes with many dynamic style values in mind when checking frontend output size. A post without a featured image still needs an intentional fallback or empty-state design.
+
 ## Copy, paste, reset, and rename class styles
 
 The class selector actions let you work with styles without manually copying CSS:
@@ -154,6 +186,10 @@ Administrators can control access to global class features. Depending on your pe
 
 Administrators can also disable the Global Class Manager under `Bricks > Settings > General > Disable global class manager`. That hides the manager tab. Element-panel class actions are controlled by the global-class permissions above.
 
+## Classes in drafts
+
+When you edit a class inside [a draft](https://academy.bricksbuilder.io/builder/interface/drafts/#shared-data), changes affecting live content stay held until publication. Classes that do not affect live content are saved to the site's class library immediately, ready to use on other pages and templates.
+
 ## Relationship to Class Manager
 
 The element panel is where you apply a class and edit the active class while working on an element.
@@ -164,6 +200,10 @@ You can create and use classes from either workflow, but they serve different jo
 
 - Element panel: "Use or edit this class on this element."
 - Class Manager: "Maintain the whole class system."
+
+## Recover class changes
+
+Since Bricks 2.5, [Global data revisions](https://academy.bricksbuilder.io/builder/interface/global-data-history/) record earlier class values and supports per-item recovery.
 
 ## Relationship to utility classes
 
@@ -196,3 +236,7 @@ Check your builder permissions and whether the Global Class Manager is disabled 
 Bricks tracks classes by ID and name. If an imported class has the same ID or name as a local class, Bricks may map it to the existing class or ask you to review the conflict, depending on your import settings.
 
 Review conflicts before accepting imports on production sites, especially when classes are part of a design system.
+
+### An imported class has no name or ID
+
+Starting in Bricks 2.5, you can [recover classes with missing names or IDs](https://academy.bricksbuilder.io/builder/styling/global-class-manager/#classes-with-missing-names-or-ids) in the Class Manager. A class with a missing name can be renamed or moved to trash. A class with a missing ID has a separate **Remove** action and cannot be restored from trash.

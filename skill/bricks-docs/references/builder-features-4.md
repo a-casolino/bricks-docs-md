@@ -1,1940 +1,1610 @@
-# Popup Builder
+# Interactions
 
-Source: https://academy.bricksbuilder.io/builder/features/popup-builder/
+Source: https://academy.bricksbuilder.io/builder/features/interactions/
 
-*Build popups in Bricks with popup templates, template conditions, popup settings, interactions, limits, AJAX rendering, looping context, JavaScript helpers, and popup events.*
+*Create interactive behaviors in Bricks with triggers, actions, targets, conditions, animations, browser storage, query events, forms, popups, maps, and WooCommerce events.*
 
-The Popup Builder lets you create fully custom popups in Bricks. A popup is a Bricks template with the template type **Popup**. Bricks renders the popup HTML on the front end, keeps it hidden by default, and opens or closes it through [Interactions](https://academy.bricksbuilder.io/builder/features/interactions/) or JavaScript.
+Interactions, available since Bricks 1.6, let you run an action when something happens on the front end. A simple interaction can show a hidden element on click. A more advanced interaction can listen for a query AJAX event, check browser storage, fetch an AJAX popup with the right post context, or call a custom JavaScript function.
 
-Use popups for modals, newsletter forms, exit-intent offers, quick views, map info boxes, and contextual content in query loops.
+https://youtu.be/weFimInMJPE
 
-https://youtu.be/R9isNzCSO_A
+An interaction has three main parts:
 
-## Create a popup template {#create-popup-template}
-
-Create a new template and choose the **Popup** template type.
-
-![](https://academy.bricksbuilder.io/assets/popup-template-type.png)
-
-Save the template, then edit it with Bricks.
-
-Popup templates look different from normal page templates:
-
-- The canvas shows only the popup: the content box in the middle, over the dimmed backdrop.
-- Template Settings includes a **Popup** group next to **Conditions** and **Populate Content**.
-
-![](https://academy.bricksbuilder.io/assets/popup-template-type-screen.png)
-
-Build the popup body like any other Bricks layout: add sections, containers, forms, buttons, icons, images, or dynamic data to the canvas.
-
-## Popup availability and template conditions {#popup-template-conditions}
-
-Template conditions decide where Bricks renders a popup template. Open **Settings > Template Settings > Conditions** and choose the pages where the popup should be available.
-
-![](https://academy.bricksbuilder.io/assets/popup-condition.png)
-
-For example, a newsletter popup that can open from the global footer usually needs a condition such as Entire website. A product quick-view popup may only need to be available on shop or product archive pages.
-
-If a popup is not rendered on the current page, an interaction cannot open it because there is no popup element in the DOM. If a page has **Disable popups** enabled in Page Settings, Bricks does not render page popups.
-
-You can render multiple popup templates on the same page.
-
-## Popup settings {#popup-settings}
-
-Popup-specific settings are under **Settings > Template Settings > Popup**.
-
-![](https://academy.bricksbuilder.io/assets/popup-settings.png)
-
-Theme Styles also have a Popup control group for site-wide defaults. It covers the popup's styling, the backdrop, the content box and the breakpoint display. Behavior settings such as **Close on**, AJAX and the popup limit are only available in the template settings of each popup.
-
-The main popup settings include:
-
-- **Padding**: padding on the popup wrapper.
-- **Align main axis** and **Align cross axis**: position the popup content inside the viewport.
-- **Close on**: by default (placeholder **Backdrop & ESC**), a click on the backdrop and the ESC key both close the popup. Choose **Backdrop (Click)**, **ESC (Key)**, or **None** to change that.
-- **Z-index**: controls popup stacking.
-- **Scroll (body)**: allow the page body to scroll while the popup is open. If disabled, Bricks adds `no-scroll` to the body while the popup is open.
-- **Scroll to top**: scroll popup content to the top when opening.
-- **Disable auto focus**: prevent Bricks from focusing the first focusable element inside the popup.
-- **Disable auto focus on close**: prevent Bricks from moving focus back to the element that was focused before the popup opened.
-- **Info Box (Map)**: use this popup template as the info box of a map element.
-- **Fetch content via AJAX**: render popup content on demand instead of in the initial DOM.
-- **AJAX loader**: choose a loader animation and optional selector, color, and scale for AJAX popups.
-- **Breakpoints**: choose where the popup is allowed to display.
-- **Backdrop**: **Disable backdrop**, the backdrop **Background**, and its **Transition**.
-- **Content**: style the `.brx-popup-content` wrapper.
-- **Popup limit**: restrict how often the popup can open.
-
-On the front end, Bricks traps keyboard focus inside open popups, restores focus after closing, supports ESC/backdrop closing according to the **Close on** setting, and emits popup JavaScript events.
+- **Trigger**: the event Bricks listens for, such as click, content loaded, scroll, enter viewport, form success, or query AJAX end.
+- **Action**: the behavior Bricks runs, such as show, hide, toggle a class, scroll to an element, open a popup, load more results, or run a JavaScript function.
+- **Target**: the element affected by the action. Depending on the action, the target can be the same element, a CSS selector, or a popup template.
 
 > **Note**
 >
-> Clicking outside the popup or pressing ESC only closes the popup if the **Close on** setting includes that behavior. If you set Close on to None, add your own close interaction or JavaScript.
-
-## Popup interactions {#popup-interactions}
-
-Further down the popup settings panel, the **Interactions** group lets the popup react to events. Popup template interactions use the same interaction system as elements, plus two popup-specific triggers:
-
-- **Show popup**: runs after this popup opens.
-- **Hide popup**: runs after this popup closes.
-
-Use these triggers when the popup itself should run follow-up actions, such as starting an animation, setting storage, or updating another element after the popup has opened or closed.
+> Interactions run on the front end, not inside the builder canvas. Use preview or the published page to test timing, selectors, popup behavior, browser storage, and AJAX flows.
 
 > **Note**
 >
-> For **Hide popup**, target a CSS selector rather than the popup directly. The trigger runs after the popup has already closed.
+> You can define interactions on global classes instead of individual elements. Bricks merges global-class interactions into the element output, which is useful for repeated behaviors such as reusable buttons, close icons, or toggles.
 
-Most popups are opened by an interaction on another element. For example, add a Click interaction to a Button, set **Target** to Popup, select the popup template, and use **Show element**.
+## Accessing interactions {#access}
 
-A common automatic popup uses **Content loaded**:
+When editing an element, click the "Interactions" toggle icon in the panel header to open or close the element interactions interface.
 
-![](https://academy.bricksbuilder.io/assets/bricks-popup-builder-interaction-content-loaded-465x1024.png)
+![](https://academy.bricksbuilder.io/assets/element-interactions-toggle.png)
 
-If no popup interaction exists on the popup itself and no other element interaction opens the popup, the popup stays hidden.
+If an element has interactions, the same icon appears in the structure panel. Click the icon to open that element's interactions.
 
-## Popup open and close lifecycle {#popup-lifecycle}
+## Adding interactions {#add}
 
-When Bricks opens a popup, it follows this front-end flow:
+Click the "+" icon next to the "Interactions" title to add an interaction. You can add multiple interactions to the same element. Clicking the title of a specific interaction lets you rename it.
 
-1. Resolve the popup element by template ID or element node.
-2. Check popup limits.
-3. Check popup breakpoint rules.
-4. Remove the `hide` class.
-5. Add `no-scroll` to the body unless body scroll is allowed.
-6. Fetch AJAX popup content if the popup is configured for AJAX.
-7. Insert AJAX content into `.brx-popup-content`, if content was fetched.
-8. Emit `bricks/ajax/popup/loaded`, only for AJAX content that was inserted.
-9. Emit `bricks/popup/open`.
-10. Increment the popup counters.
+![](https://academy.bricksbuilder.io/assets/element-interactions-add.png)
 
-When Bricks closes a popup, it adds the `hide` class, removes `no-scroll` from the body if no other non-body-scroll popup is open, and emits `bricks/popup/close`.
+Each interaction receives its own ID. Bricks uses this ID internally, and you can copy it when another interaction needs to listen for a specific animation-end event.
 
-This lifecycle matters for custom code:
+![](https://academy.bricksbuilder.io/assets/element-interactions-add-first.png)
 
-- Listen to `bricks/ajax/popup/loaded` when you need newly fetched AJAX popup DOM to exist.
-- Listen to `bricks/popup/open` when you need the popup to be open.
-- Listen to `bricks/popup/close` when you need cleanup after close.
+## Triggers {#trigger}
 
-## Popup limit {#limit}
+The **Trigger** determines when the interaction runs.
 
-By default, a popup can open every time it is triggered. Use **Settings > Template Settings > Popup > Popup limit** to restrict how often it opens.
+### Element triggers {#element-triggers}
 
-Bricks checks limits before opening the popup. Once a limit is reached, the popup does not open and the open event is not emitted.
+Element triggers listen on the source element:
 
-The limit applies to every way of opening the popup: an automatic trigger, a click on a button, or `bricksOpenPopup()`. Use limits for popups that open on their own. A popup that a visitor opens with a button stops opening once its limit is reached.
+- Click
+- Hover
+- Focus
+- Blur
+- Mouse enter
+- Mouse leave
+- Enter viewport
+- Leave viewport
+- [Copy successful / Copy failed](#copy-result-triggers) (since Bricks 2.5)
+- [Animation end](#animation-end)
+- [Query AJAX loader: Start / End](#query-ajax-loader)
+- [Filter Submit: Start / End](#filter-submit-triggers)
+- [Form Submit](#trigger-form-submit), [Form Success](#trigger-form-success), [Form Error](#trigger-form-error)
 
-There are four popup limit controls:
+**Hover** listens for the browser's `mouseover` event, which fires again each time the pointer moves onto a child element. **Mouse enter** fires once when the pointer enters the element. Use Mouse enter with Mouse leave when an interaction should run once per visit, such as showing and hiding a tooltip.
 
-| Limit type | Browser storage | Description |
-| --- | --- | --- |
-| Per page load | `window.brx_popup_{id}_total` | Resets after the page reloads. |
-| Per session | `sessionStorage.brx_popup_{id}_total` | Resets when the browser session/tab storage is cleared. |
-| Across sessions | `localStorage.brx_popup_{id}_total` | Persists until local storage is cleared. |
-| Show again after .. hours | `localStorage.brx_popup_{id}_lastShown` | Stores the last shown timestamp and waits the configured number of hours before allowing another open. |
+Click interactions call `event.preventDefault()` by default. Since Bricks 2.0, you can enable **Disable: preventDefault** for a click interaction if the clicked element should keep its normal browser behavior, such as following a link.
 
-![](https://academy.bricksbuilder.io/assets/bricks-1.6-popup-limit.png)
+### Viewport triggers {#viewport-triggers}
 
-The page-load, session, and across-session counters increment each time the popup is successfully opened. The hour-based setting stores the last shown timestamp when the popup passes its limit check.
+**Enter viewport** and **Leave viewport** watch the interaction's source element. Since Bricks 2.4, both triggers include **Element visibility**, which sets how much of that element must cross the viewport boundary:
 
-## Popup breakpoints {#popup-breakpoints}
+- `0%`: Enter viewport runs when any part of the element becomes visible. Leave viewport runs when the element is no longer visible.
+- `50%`: Enter viewport runs when half of the element is visible. Leave viewport runs after the element has reached that amount and its visible area drops below half.
+- `100%`: Enter viewport runs when the whole element is visible. Leave viewport runs when it is no longer fully visible.
 
-Popup breakpoint settings control whether a popup is allowed to display at the current viewport width.
+The default is `0%`. Values between `0` and `100` are supported.
 
-Bricks supports two modes:
+An element must fit inside the active viewport area to reach `100%`. Use a lower value for elements that are taller or wider than that area.
 
-- **Start display at breakpoint**: show the popup at or above the selected breakpoint width.
-- **Display on breakpoints**: show the popup only inside the selected breakpoint ranges.
+**Enter viewport** also supports **Root margin** since Bricks 2.0. Root margin changes the active viewport boundary, while Element visibility controls how much of the source element must cross that boundary. For example, a bottom root margin of `0px 0px -50% 0px` moves the lower boundary to the middle of the viewport. Leave viewport does not use Root margin.
 
-If the current viewport does not match the popup breakpoint rule, Bricks does not open the popup.
+<div className="screenshot screenshot--control-panel">
 
-## Closing a popup {#closing-popup}
+![Enter viewport interaction with Element visibility set to 50% and the Root margin field visible.](https://academy.bricksbuilder.io/assets/bricks-interactions-element-visibility.webp)
 
-You can close a popup in several ways:
+</div>
 
-- Use the popup **Close on** setting for backdrop click and/or ESC.
-- Add a close icon or button inside the popup and give it a Hide element interaction targeting the popup.
-- Use a reusable close element that targets `.brx-popup`.
-- Call `bricksClosePopup()` from JavaScript.
+The source element remains the element that Bricks observes. To animate or modify another element when the source crosses the boundary, choose **CSS selector** as the interaction [target](#targets) and enter that element's selector.
 
-### Example: Add popup close icon {#example-close-icon}
+### Browser and window triggers {#browser-window-triggers}
 
-Add an Icon element to your popup. Set its cursor to pointer under **Styles > Layout > Misc**.
+Browser/window triggers are not tied to a single element event:
 
-> **Tip**
->
-> An icon can't be reached with the keyboard. To make the close control keyboard accessible, use a Button element instead and set its **HTML tag** to `button`. Without a link, a Button element renders as a `span` by default.
+- Scroll
+- Content loaded
+- Mouse leave window
 
-Open the Icon element's Interactions panel and add:
+The scroll trigger accepts a scroll offset. Bricks supports pixel values, percentage values based on the document height, and `vh` values based on the viewport height. Content loaded accepts a delay such as `500ms` or `1s`.
 
-- Trigger: Click
-- Target: Popup
-- Popup: the current popup
-- Action: Hide element
+The **Run only once** control is available for most triggers, but not for Content loaded.
 
-![](https://academy.bricksbuilder.io/assets/popup-close-icon-interaction.png)
+### Query filter triggers {#query-filter-triggers}
 
-If you want to reuse the same close icon in different popups, create it as a [Component](https://academy.bricksbuilder.io/builder/features/components/). Then use:
+When Query Filters are enabled, Bricks adds:
 
-- Target: CSS selector
-- CSS selector: `.brx-popup`
-- Action: Hide element
+- Filter: Empty
+- Filter: Not empty
 
-![](https://academy.bricksbuilder.io/assets/popup-global-close-icon-interaction.png)
+These triggers listen for a specific filter element ID. You can enter the raw Bricks ID, `#id`, or `#brxe-id`; Bricks normalizes it before comparing.
 
-## JavaScript helper functions and events {#events-functions}
+Supported filter types are:
 
-Bricks exposes popup helper functions and custom events on the front end.
+- Active filters
+- Checkbox
+- Datepicker
+- Radio
+- Range
+- Search
+- Select
 
-### Open or close a popup via JavaScript {#popup-js-functions}
-
-Use `bricksOpenPopup` and `bricksClosePopup` to open or close Bricks popups.
-
-Both functions accept a popup template ID or a popup element node:
-
-```php
-bricksOpenPopup(3321)
-bricksClosePopup(3321)
-```
-
-```php
-const popup = document.querySelector('.brx-popup[data-popup-id="3321"]')
-
-bricksOpenPopup(popup)
-bricksClosePopup(popup)
-```
-
-### Example: Open popup by selector {#open-popup-by-selector}
-
-```php
-document.querySelectorAll('.brxe-heading, .my-custom-selector').forEach((el) => {
-  el.addEventListener('click', () => {
-    bricksOpenPopup(3321)
-  })
-})
-```
-
-### Listen to popup open or close events {#popup-js-events}
-
-Use `bricks/popup/open` and `bricks/popup/close` to run code when a popup opens or closes.
-
-<span id="bricks-popup-open-close-code"></span>
-
-```php
-document.addEventListener('bricks/popup/open', (event) => {
-  const popupId = event.detail.popupId
-  const popupElement = event.detail.popupElement
-
-  if (popupId == 3321) {
-    console.log('3321 popup is opened')
-  }
-})
-
-document.addEventListener('bricks/popup/close', (event) => {
-  const popupId = event.detail.popupId
-  const popupElement = event.detail.popupElement
-
-  if (popupId == 3321) {
-    console.log('3321 popup is closed')
-  }
-})
-```
-
-Use `event.detail.popupId` and `event.detail.popupElement`. The property is `detail`, not `details`.
-
-## Popup inside query loop {#query-loop}
-
-You can add a popup inside a query loop with the **Template** element. Inside the popup template, dynamic data can reference the current loop item.
-
-The example below shows a Quick View button inside a product query loop. The button uses an interaction to show the selected Quick View popup.
-
-![](https://academy.bricksbuilder.io/assets/bricks-1.6-popup-inside-query-loop-1024x403.jpg)
-
-For Bricks 1.7.1 and newer, Bricks can build loop-specific popup HTML for query loop popups. For older versions, do not set the interaction on the Query Loop div itself; set it on an element inside the loop item.
-
-![](https://academy.bricksbuilder.io/assets/query-loop-popup-template-interaction-structure.png)
-
-<figcaption>
-
-Example layout structure to trigger a looping popup for Bricks versions earlier than 1.7.1
-
-</figcaption>
-
-### Example: Open a looping popup by query element ID and loop index {#open-looping-popup-by-query-element-id-and-loop-index}
-
-If a looping popup is already rendered on the page, you can target it by its query element ID and loop index:
-
-```php
-document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(() => {
-    const queryId = 'vfiqrn'
-    const targetPopup = document.querySelector(
-      `.brx-popup[data-popup-loop="${queryId}"][data-popup-loop-index="7"]`
-    )
-
-    bricksOpenPopup(targetPopup)
-  }, 200)
-})
-```
-
-The small delay is useful in custom code elements because it gives Bricks frontend globals and popup markup time to initialize.
-
-## AJAX popup {#ajax}
-
-AJAX popups were introduced in Bricks 1.9.4. Enable **Fetch content via AJAX** when you want Bricks to keep the initial DOM lighter and fetch popup content only when the popup opens.
-
-This is especially useful for popups inside query loops, where rendering every popup's full content on initial page load can be expensive.
-
-![](https://academy.bricksbuilder.io/assets/ajax-popup-controls-in-popup-template.png)
-
-When AJAX is enabled:
-
-- The popup wrapper is rendered on the page.
-- `.brx-popup-content` starts empty outside the builder preview.
-- Bricks fetches the content from the REST endpoint when the popup opens.
-- Returned HTML and dynamic CSS are inserted into `.brx-popup-content`.
-- Additional nested popup HTML can be appended to the body if the AJAX content contains looping AJAX popups.
-
-AJAX popup rendering supports post, term, and user context. Dynamic data that does not have a stable object ID, such as some repeater rows, cannot always be resolved as an AJAX popup context.
-
-### AJAX popup context settings {#ajax-context-settings}
-
-When an interaction opens a popup, Bricks exposes context controls for AJAX popups:
-
-![](https://academy.bricksbuilder.io/assets/context-controls-in-interactions-ui.png)
-
-Bricks tries to infer the current context automatically. Inside normal post, term, and user loops, this often works. In nested query loops, component instances, custom field repeaters, or more complex dynamic data setups, automatic context can be wrong or unavailable.
-
-Use these fields when dynamic data in the AJAX popup renders empty or from the wrong object:
-
-- **Context type**: Post, Term, or User.
-- **Context ID**: the object ID to render dynamic data against.
-
-You can use dynamic data such as `{post_id}`, `{term_id}`, or a custom field value that resolves to a post, term, or user ID.
-
-![](https://academy.bricksbuilder.io/assets/example-for-woo-product-quick-view-setup.png)
-
-<figcaption>
-
-A looping product quick-view popup structure in Bricks
-
-</figcaption>
+For Active filters, Checkbox, Radio, and Select, Bricks checks whether options or values are available. Select excludes the placeholder option, and Checkbox/Radio exclude the "All" option. For Datepicker and Search, Bricks checks whether the current value is empty. For Range, Bricks checks whether the selected range differs from the filter's min/max values.
 
 > **Note**
 >
-> Do not use a repeater row number as popup context. AJAX popup context expects an object Bricks can resolve, such as a post, term, or user.
+> Use Filter: Empty and Filter: Not empty together when you are toggling visibility. If you only hide an element on empty, you usually need the matching not-empty interaction to show it again after the next filter update.
 
-### Open an AJAX popup with context in JavaScript {#open-ajax-popup}
+### WooCommerce triggers {#woocommerce-triggers}
 
-Since Bricks 1.9.4, `bricksOpenPopup` accepts three parameters:
+When WooCommerce is active, Bricks adds WooCommerce interaction triggers:
 
-- `object`: popup ID or popup element node.
-- `timeout`: timeout in milliseconds used by popup animation/counter logic.
-- `additionalParams`: AJAX popup context data.
+- Added to cart
+- Adding to cart
+- Removed from cart
+- Bricks cart contents changed
+- Cart updated
+- Coupon applied
+- Coupon error (since Bricks 2.5)
+- Coupon removed
+- Bricks dynamic fragments refreshed
+- Bricks checkout step changed
 
-```php
-bricksOpenPopup(
-  1190,
-  0,
-  {
-    popupContextId: 668,
-    popupContextType: 'post'
-  }
-)
+The classic WooCommerce triggers listen for WooCommerce frontend jQuery events. **Bricks cart contents changed**, **Bricks dynamic fragments refreshed**, and **Bricks checkout step changed** listen for Bricks custom events and are available since Bricks 2.4.
 
-bricksOpenPopup(
-  2350,
-  0,
-  {
-    popupContextId: 39,
-    popupContextType: 'term'
-  }
-)
-```
+#### Coupon error {#coupon-error}
 
-For users, the Interactions panel usually handles these parameters. Use JavaScript when you are opening popups from custom scripts.
+Since Bricks 2.5, **Coupon error** runs when a coupon application fails on the cart or checkout. Use it to open a popup or run another interaction action. A successful application does not run this trigger.
 
-### AJAX popup events {#ajax-events}
+To display the returned error in a popup:
 
-AJAX popups emit three AJAX-specific events:
+First enable the [WooCommerce Notice element](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-notices/#woocommerce-notice-element) under **Bricks > Settings > WooCommerce**. This replaces native WooCommerce notices, so follow that guide to place notices wherever your store needs them.
 
-- `bricks/ajax/popup/start`: emitted before the AJAX popup request is made.
-- `bricks/ajax/popup/end`: emitted after the AJAX popup request finishes.
-- `bricks/ajax/popup/loaded`: emitted after fetched popup content is inserted into the DOM.
+1. Create a [popup](https://academy.bricksbuilder.io/builder/features/popup-builder/) containing a WooCommerce Notice element and a close button. Keep AJAX loading disabled for this popup.
+2. Set the popup's template conditions so it is available on the cart or checkout page.
+3. On an element rendered on that page, add an interaction with **Trigger: Coupon error**, **Action: Show element**, and **Target: Popup**. Select your popup.
+4. Save and test an invalid coupon on the frontend. For the Cart coupon element, enable its AJAX behavior.
 
-Each event uses `event.detail.popupId` and `event.detail.popupElement`.
+<div className="screenshot screenshot--control-panel">
 
-```php
-document.addEventListener('bricks/ajax/popup/loaded', (event) => {
-  const popupId = event.detail.popupId
-  const popupElement = event.detail.popupElement
+![Coupon error interaction configured with the Show element action, Popup target, and a selected popup.](https://academy.bricksbuilder.io/assets/woocommerce-coupon-error-interaction.webp)
 
-  if (popupId == 3321) {
-    console.log('3321 AJAX popup content DOM loaded')
-  }
-})
-```
+</div>
 
-The AJAX popup open sequence is:
+The Notice element displays WooCommerce's returned message, such as an invalid or already-applied coupon. The trigger does not provide a text placeholder for inserting the error into an ordinary Text element, or separate triggers for individual failure reasons.
 
-1. `bricks/ajax/popup/start`
-2. `bricks/ajax/popup/end`
-3. `bricks/ajax/popup/loaded`
-4. `bricks/popup/open`
+Leave **Run only once** disabled if the popup should open after every failed attempt. Test a second failure after closing the popup to check both the message and reopening behavior.
 
-`bricks/ajax/popup/loaded` only fires when AJAX content is inserted. Non-AJAX popups emit `bricks/popup/open` directly after opening.
+#### Bricks cart contents changed {#cart-contents-changed}
 
-## Popup setup examples {#popup-setup-examples}
+Use **Bricks cart contents changed** to show a custom notice or popup after a successful AJAX addition, removal, or quantity change. It covers cart, Checkout v2, mini-cart, and Cart contents loop updates handled by Bricks and WooCommerce, including loops inside Dynamic fragments.
 
-### Example: Show popup when the mouse leaves the browser window {#example-mouse-leaves}
+The trigger runs after the server confirms an item change and the related cart, checkout, and fragment updates finish. A change that needs several refresh requests produces one notification. Separate confirmed changes each produce a notification, even when their refreshes are combined.
 
-After creating the popup template and layout, open **Settings > Template Settings > Popup**, scroll to Interactions, and add a **Mouse leave window** interaction that shows the popup.
+It does not run for:
 
-![](https://academy.bricksbuilder.io/assets/popup-builder-mouse-leave-open.png)
+- Initial page loading or synchronization of cached cart content.
+- Submitting a quantity without changing its value.
+- Failed requests or failed related UI refreshes.
+- Coupon, shipping, address, or totals-only recalculations.
 
-For a real exit-intent popup, combine this with popup limits or browser storage conditions so the popup does not appear too often.
+WooCommerce must be active. This trigger does not require **Enable advanced modular elements** or a Dynamic fragment on the page. It listens for supported AJAX cart updates, so a normal page reload or a custom third-party cart request is not a guaranteed trigger.
 
-### Example: Show popup before a date/time {#example-date-time}
+Choose the trigger that matches the behavior you need:
 
-Template conditions decide where the popup template is available. Element Conditions can decide whether the popup content renders.
-
-To show a popup only before a specific date, add an [Element Condition](https://academy.bricksbuilder.io/builder/features/element-conditions/) to the outermost popup element.
-
-![](https://academy.bricksbuilder.io/assets/bricks-popup-builder-element-conditions-1536x624.png)
-
-If that condition is not fulfilled, Bricks does not render the popup content and skips the popup HTML. A trigger that targets that popup has no popup element to open on the page.
-
-### Example: Use popup open/close as triggers {#example-popup-open-close-trigger}
-
-Popup template interactions can react after the popup opens or closes.
-
-For example:
-
-1. Open **Settings > Template Settings > Popup > Interactions**.
-2. Add a **Show popup** trigger.
-3. Set the action to Browser storage: Count.
-4. Store a key such as `newsletter_popup_opened`.
-
-You can then use interaction conditions elsewhere to check that key and adjust page behavior.
-
----
-
-# Remote Components
-
-Source: https://academy.bricksbuilder.io/builder/features/remote-components/
-
-*Share Bricks components between sites, review their dependencies, and import updates from the Component Manager.*
-
-Remote Components let one Bricks site expose selected components and another Bricks site import them from the Component Manager. Use this for component libraries that you maintain across client sites, staging sites, or related projects.
-
-Remote Components are available in Bricks 2.4. Both sites need Bricks 2.4 or later for remote component browsing and dependency-complete imports.
-
-A remote import creates a local component. It does not keep a live connection to the source site, but Bricks records where the component came from so a later import can detect and apply source changes.
-
-## Before You Start
-
-You need:
-
-- A **source site** that contains the components you want to share.
-- A **destination site** where you want to import them.
-- A non-Plain WordPress permalink structure on the source site.
-- Permission to configure Bricks settings on both sites.
-- The required [builder permissions](#permissions) for the user importing the component.
-
-## 1. Expose Components on the Source Site
-
-On the source site:
-
-1. Go to **Bricks > Settings > Templates & components**.
-2. Under **My components**, enable **My components access**.
-3. If needed, choose components under **Exclude components**.
-4. Configure the shared **Remote access** controls.
-5. Save the settings.
-
-![Remote component access and shared remote access settings in Bricks](https://academy.bricksbuilder.io/assets/remote-components-source-access-settings.webp)
-
-### Exclude Components
-
-Components selected under **Exclude components** do not appear in the remote catalog.
-
-Bricks also blocks the import of any component that depends on an excluded component. For example, if a Card component contains an excluded Button component, the Card may appear in the catalog, but the destination site cannot import it until the Button is allowed or removed from the Card.
-
-### Restrict Remote Access
-
-The **Remote access** settings apply to both remote templates and remote components:
-
-- **Whitelist URLs** allows only the listed destination sites to connect. Enter one URL per line. Leave it empty to allow requests from any site that meets the other access requirements.
-- **Password protection** requires destination sites to send the same password. Use the password generator or enter your own value.
-
-Enabling **My components access** without a whitelist or password allows other Bricks sites that know the source URL to browse the exposed component catalog.
-
-## 2. Add the Source to the Destination Site
-
-On the destination site:
-
-1. Go to **Bricks > Settings > Templates & components**.
-2. Find **Remote libraries** and click **Add**.
-3. Enter the source site's full **URL**.
-4. Enter a **Name** to control how the source appears in the builder. This is optional.
-5. If the source uses password protection, enter its **Remote access** password.
-6. Save the settings.
-
-The same remote-library entry can provide templates, components, or both, depending on what the source site exposes.
-
-![A configured HappyFiles remote library on the destination Bricks site](https://academy.bricksbuilder.io/assets/remote-components-remote-library-settings.webp)
-
-## 3. Browse the Remote Component Library
-
-Open the builder, click the folder icon to open the [Builder Browser](https://academy.bricksbuilder.io/builder/features/builder-browser/), and select **Components**.
-
-Use the **Source** dropdown to switch from **My components** to a configured remote site. Remote libraries appear only when the current user has **Access remote components** permission.
-
-For a remote source, you can:
-
-- Search by component name.
-- Filter by category.
-- Switch between grid and list view.
-- Click **Refresh** to request the catalog again.
-- Click **Load more** when the catalog has additional pages.
-- View source-provided component thumbnails.
-
-![A HappyFiles remote component library open in the Bricks Builder Browser](https://academy.bricksbuilder.io/assets/remote-components-builder-browser.webp)
-
-If the source cannot be reached or does not support Remote Components, the Component Manager shows the returned source error instead of a component list.
-
-## 4. Review and Import a Component
-
-Click the import icon on a remote component. Bricks first inspects the package and opens a review for the component and any related design-system data.
-
-Save pending component, global class, global variable, and color changes before importing. Bricks blocks the import when these local changes are unsaved so it does not overwrite a newer in-memory design system with an older saved version.
-
-The review can include:
-
-- Nested components.
-- Global classes and their categories.
-- Global variables, their categories, and variables referenced by other variables.
-- Color palettes containing referenced colors.
-
-Matching local dependencies are skipped automatically. You can skip the Global classes, Global variables, or Color palettes step. The skipped group is not added. When you skip global classes, Bricks also removes those class assignments from the imported component. Review the component after using **Skip**.
-
-Referenced images hosted on the configured source site are downloaded to the destination Media Library when the importing user can upload files. Images from other hosts are left unchanged.
-
-![The Global classes step of the remote component import review](https://academy.bricksbuilder.io/assets/remote-components-import-review.webp)
-
-### Name Conflicts
-
-If an unrelated local component already has the same name, Bricks asks for a name for the imported component and suggests one based on the remote-source name. The local component is left unchanged.
-
-Nested components with conflicting names are renamed during the import. Their references are remapped to the imported local copies.
-
-### Previously Imported Components
-
-Bricks tracks each imported component by its remote source and remote component ID.
-
-- If the remote package is unchanged, Bricks reports that the component is already imported.
-- If the remote component or one of its nested components changed, the review marks the existing local copy for replacement.
-- Replacing a previously imported component keeps its local identity, so existing instances use the updated definition.
-
-Local components that merely share the same name are not treated as previous imports. Provenance, not the label, controls repeat-import behavior.
-
-After a successful import, Bricks returns to **My components**, refreshes the affected components and design-system data, and highlights the imported component.
-
-On a multisite installation configured to use main-site components, the import uses that shared component store instead of creating a separate child-site copy.
-
-Bricks validates the package before writing it and prevents concurrent remote imports. If an import fails after changes begin, Bricks restores the saved component and design-system data.
-
-## What Does Not Transfer Automatically
-
-The package includes the component graph and the referenced Bricks design-system data listed above. Some site-specific features need attention on the destination site.
-
-Bricks shows portability warnings when it detects items such as:
-
-- Query or Global Query settings.
-- Icons.
-- Executable code.
-- Dynamic data.
-- Custom fonts.
-- Element types that the destination site does not support.
-
-A warning does not always block the import. It tells you to verify the imported component against the destination site's plugins, content model, fonts, icon sets, queries, and code permissions.
-
-Code signatures from the source are not trusted. Bricks removes source signatures and runs imported code through the destination site's normal signing and code-permission flow. Users without code-execution permission receive redacted code-sensitive settings.
-
-### Missing Global Classes
-
-If a component references a global class ID that no longer exists on the source site, the review shows the missing ID and blocks the normal import.
-
-Fix the source component before trying again:
-
-1. Edit the component on the source site.
-2. Remove or replace the missing class reference.
-3. Save the component and design-system data.
-4. Refresh the remote library on the destination site.
-5. Import the component again.
-
-Skipping the Global classes step skips every class listed in that step, not only the missing class. Bricks removes those class assignments from the imported component.
-
-## Permissions
-
-Remote component operations combine separate [builder permissions](https://academy.bricksbuilder.io/builder/interface/builder-access/#components):
-
-| Task | Required permissions |
+| Trigger | When to use it |
 | --- | --- |
-| See configured remote sources and browse their catalogs | **Access remote components** |
-| Import a component from a remote source | **Access remote components** and **Import/export components** |
-| Insert the imported local component onto a page | **Insert components** |
-| Insert a remote template that contains components | **Access remote templates**, **Insert templates**, **Access remote components**, **Import/export components**, and **Insert components** |
-| Save a remote template to My Templates when it contains components | **Access remote templates**, **Import/export templates**, **Access remote components**, and **Import/export components** |
+| **Bricks cart contents changed** | Show a confirmation after an item is added, removed, or its quantity changes successfully. |
+| **Added to cart** | Respond only to an AJAX addition, such as toggling a mini-cart Offcanvas. |
+| **Cart updated** | Respond to WooCommerce's `updated_cart_totals` event. This is not a general confirmation of every cart item change, particularly in checkout. |
+| **Bricks dynamic fragments refreshed** | Run an action after Dynamic fragment content is replaced. This can also happen on initial synchronization or checkout recalculation without an item change. |
 
-Administrators have full builder access. Other users need a custom builder capability with the permissions required for their workflow.
+To show a “Cart updated” popup:
 
-## Troubleshooting
+1. Create a [popup template](https://academy.bricksbuilder.io/builder/features/popup-builder/) containing your confirmation message and a close control.
+2. On an element that renders on the relevant pages, open **Interactions** and add an interaction.
+3. Set **Trigger** to **Bricks cart contents changed**.
+4. Set **Action** to **Show element** and **Target** to **Popup**, then select your popup template.
+5. Leave **Run only once** disabled if the popup should appear after each confirmed change.
 
-### A Remote Site Is Missing From the Source Dropdown
+Test on the frontend by adding an item, changing its quantity, and removing it. Close the popup between changes. Reload the page or change only a checkout address to confirm the popup stays closed.
 
-- Confirm the remote library is saved under **Bricks > Settings > Templates & components**.
-- Confirm the current user has **Access remote components** permission.
-- Reload the builder after saving the settings.
+## Actions {#action}
 
-### The Source Loads, but No Components Appear
+The **Action** is what Bricks runs after the trigger passes any conditions.
 
-- Enable **My components access** on the source site.
-- Check whether the components are selected under **Exclude components**.
-- Confirm the destination URL matches the source whitelist exactly after URL normalization.
-- Confirm the destination has the current **Remote access** password.
-- Confirm both sites run Bricks 2.4 or later.
+Available actions:
 
-### An Import Says the Component Depends on an Excluded Component
+- Show element
+- Hide element
+- Click element
+- [Set text](#set-text) (since Bricks 2.5)
+- [Copy to clipboard](#copy-to-clipboard) (since Bricks 2.5)
+- Set attribute
+- Remove attribute
+- Toggle attribute
+- [Toggle offcanvas](#toggle-offcanvas)
+- Load more (Query loop)
+- Load more (Image Gallery)
+- [Start animation](#animation-start)
+- [Scroll to](#scroll-to)
+- [Slider playback](#slider-playback) (since Bricks 2.5)
+- [JavaScript (Function)](#javascript)
+- Open address (Map)
+- Close address (Map)
+- Clear form
+- Checkout step
+- Browser storage: Add
+- Browser storage: Remove
+- Browser storage: Count
 
-Allow the nested dependency under **Exclude components**, or remove that nested component from the component you are sharing. Bricks will not create an incomplete component graph.
+Show and Hide can target regular elements or popup templates. For regular elements, Bricks changes the inline `display` style. For popups, Bricks calls the popup open/close logic.
 
-### Bricks Asks You to Save Changes First
+Show element removes an inline `display: none`. If the element is still hidden after that, for example by a class, Bricks sets `display: block`. A flex or grid element then loses its layout. In that case, toggle a class with **Toggle attribute** (key `class`) and set the hidden and visible states in that class instead.
 
-Save the current component, class, variable, and color changes, then start the import again. If another import changed the saved design system while the review was open, inspect the component again to create a current import plan.
+Set, Remove, and Toggle attribute work on the selected target. If the attribute key is `class`, Bricks adds, removes, or toggles class names via `classList`; otherwise it sets or removes the attribute itself.
 
-For local component creation, properties, variants, slots, and instance behavior, see [Components](https://academy.bricksbuilder.io/builder/features/components/). For sharing templates between sites, see [Remote Templates](https://academy.bricksbuilder.io/builder/features/remote-templates/).
+The **Click element** action calls `.click()` on each target element. This is useful when you want one UI control to trigger another existing control.
 
----
+The **Clear form** action clears inputs, textareas, selects, checkboxes, radios, and visible file results. Hidden inputs are not cleared. If the interaction is triggered by Form Submit, Form Success, or Form Error, Bricks clears the matching form. Otherwise, you can provide a target form selector; if no selector is provided, Bricks clears all forms on the page.
 
-# Remote Templates
+Map actions are available since Bricks 2.0. Use **Open address (Map)** and **Close address (Map)** when working with Map/Info Box popups and address interactions. Starting with **Bricks 2.5**, these actions also support [Map (Leaflet)](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/#info-boxes).
 
-Source: https://academy.bricksbuilder.io/builder/features/remote-templates/
+To load more listing items and update their map markers, target the results loop containing [Map Connectors](https://academy.bricksbuilder.io/builder/elements/general/map-connector/) with **Load more (Query loop)**, then select that loop under the map's **Sync with query** setting.
 
-*Connect Bricks sites, browse shared template libraries, and transfer templates with their component dependencies.*
+## Targets {#targets}
 
-Remote Templates let you browse and insert templates from another Bricks installation without exporting and importing files manually.
+Most actions use one of these target modes:
 
-The workflow has two sides:
+- **Self**: run on the source element.
+- **CSS selector**: run on every element matching the selector.
+- **Popup**: run on a selected popup template.
 
-- The **source site** exposes selected templates through its remote library.
-- The **destination site** adds that site under **Remote libraries** and accesses its templates from the Builder Browser.
+For target fields that accept an element selector or ID, use the copy button beside the field, then right-click the target element in the canvas or Structure panel and choose the offered copy action. Selector fields copy the element's CSS ID with `#`; form and filter event fields copy its internal Bricks ID. Press Esc to leave this mode without copying.
 
-## 1. Expose Templates on the Source Site
+Some actions do not use the standard target control because they have their own target field or no target at all. Examples include Load more, Browser storage, Toggle offcanvas, Map actions, and Clear form.
 
-On the site that contains the templates:
+A CSS selector matches every element on the page that fits it. Inside a query loop, an interaction on one card with the selector `.save-button` changes the button on every card. Use **Self** when the change belongs to the element that was clicked: each loop item then keeps its own state. On the front end, elements inside a query loop don't get their automatic `#brxe-` ID unless you set a CSS ID yourself, so a copied CSS ID matches nothing there. Target loop elements by class instead.
 
-1. Go to **Bricks > Settings > Templates & components**.
-2. Under **My templates**, enable **My templates access**.
-3. Use **Exclude templates** to hide any templates that should not be shared.
-4. Configure the shared **Remote access** controls.
-5. Save the settings.
+When a popup interaction is inside a query loop, Bricks first tries to match the popup by both the selected popup template ID and the current loop item ID. If no loop-specific popup is found, it falls back to the popup template ID.
 
-![Bricks Templates and components settings with My templates access enabled and Exclude templates visible](https://academy.bricksbuilder.io/assets/bricks-settings-remote-templates-access.webp)
+## Run only once {#run-only-once}
 
-The **Remote access** settings apply to remote templates and remote components:
+Enable **Run only once** when the interaction should only run one time during the current page lifecycle. For normal element events, Bricks uses a one-time event listener. For document-level events such as form, AJAX, popup, filter, or WooCommerce events, Bricks tracks and removes the interaction after it runs.
 
-- **Whitelist URLs** restricts access to the listed destination sites. Enter one URL per line.
-- **Password protection** requires destination sites to provide the same password.
+Run only once is page-local. It is not stored across page loads. Use [Browser storage actions](#browser-storage) and [interaction conditions](#conditions) if you need a persistent or session-based rule.
 
-If both fields are empty, any Bricks site that knows the source URL can request the templates exposed by **My templates access**.
+## Action: Slider playback {#slider-playback}
 
-The source site's WordPress permalink structure must not be set to **Plain**.
+Since Bricks 2.5, **Slider playback** controls autoplay and auto scroll on a [Slider (nestable)](https://academy.bricksbuilder.io/builder/elements/media/slider-nested/). Set **Playback** to **Pause**, **Resume**, or **Toggle** (the default).
 
-![](https://academy.bricksbuilder.io/assets/permalink-structure-not-plain-type-for-remote-templates-01.png)
+For example, to pause a row of reviews from a separate button:
 
-## 2. Add a Remote Site on the Destination Site
+1. Add a Button and set its **HTML tag** to `button`. Give it a label such as “Pause reviews”.
+2. Add an interaction with **Trigger → Click** and **Action → Slider playback**.
+3. Set **Playback** to **Pause**.
+4. Set **Target** to **CSS selector** and copy the slider's CSS selector into the field.
 
-On the site where you want to use the templates:
+<div className="screenshot screenshot--control-panel">
 
-1. Go to **Bricks > Settings > Templates & components**.
-2. Under **Remote libraries**, click **Add**.
-3. Enter the source site's full **URL**.
-4. Optionally enter a **Name**. Bricks shows this instead of the URL in source dropdowns.
-5. Enter the source site's **Remote access** password, if it uses one.
-6. Save the settings.
+![A Button interaction configured to pause the review slider using its CSS selector.](https://academy.bricksbuilder.io/assets/builder/release-2.5/slider-playback-interaction.webp)
 
-You can add multiple remote sites. The same entry can provide templates, components, or both.
+</div>
 
-![Remote libraries settings with Name, URL, and Password fields](https://academy.bricksbuilder.io/assets/bricks-settings-remote-libraries.webp)
+Add a second button with **Playback → Resume** if visitors need a separate way to start movement again. **Toggle** switches between paused and playing. The interaction does not update a custom button's text; the slider's [native Playback control](https://academy.bricksbuilder.io/builder/elements/media/slider-nested/#playback-control) provides changing Pause/Play labels.
 
-## 3. Browse Remote Templates
+Test on the frontend. Autoplay and auto scroll remain stationary in the Builder, and playback stays off for visitors who request reduced motion.
 
-Open the builder, click the folder icon, and select **Templates** in the [Builder Browser](https://academy.bricksbuilder.io/builder/features/builder-browser/).
-
-Choose the remote site under **Source**. You can search the library, filter its templates, switch between grid and list view, and use **Reload** to request the source again.
-
-The current user needs **Access remote templates** permission to see configured remote sites.
-
-![Builder Browser Templates view with HappyFiles selected as the remote source](https://academy.bricksbuilder.io/assets/bricks-browser-remote-templates.webp)
-
-## Insert a Remote Template
-
-Click **Insert** to add the template to the current canvas. The **Replace content** control decides whether Bricks replaces the current canvas or adds the template to it.
-
-Use **Import images** to download eligible template and component images to the destination Media Library. Leave it disabled to use placeholder images where the normal template import flow supports them.
-
-When the remote template includes related design-system data, Bricks may open additional reviews for theme styles, color palettes, variables, global classes, or Style Manager settings.
-
-Remote code signatures are not trusted. Bricks removes source signatures, and users without code-execution permission do not receive executable Code, SVG, or custom-query settings from the remote template.
-
-### Templates That Use Components
-
-In Bricks 2.4 and later, inserting a remote template also requests the components used by that template. The dependency package includes nested components and their referenced global classes, variable categories and variables, and color palettes.
-
-Bricks remaps the template to the imported local component and design-system IDs before inserting it. Save pending component, class, variable, and color changes before starting the insert.
-
-If a component from this source was imported before and changed remotely, Bricks asks whether to replace the local component before inserting the template. Replacing it updates the existing local component definition and its instances.
-
-If the template depends on a component excluded from remote access on the source site, Bricks blocks the dependency package instead of inserting an incomplete component graph.
-
-## Import to Templates
-
-Click **Import to templates** on a non-local template to save it into **My Templates** instead of inserting it directly onto the current canvas.
-
-For a configured Bricks remote site, Bricks first localizes supported component and design-system dependencies, then passes the template through the regular template import flow. The current user needs **Import/export templates** permission.
-
-## Compatibility With Older Remote Sites
-
-Bricks 2.4 introduces a versioned remote-library package for templates with component dependencies.
-
-When a configured source does not support that package protocol, Bricks falls back to the legacy Remote Templates response. The template can still use the older insertion workflow, but the legacy response does not provide the dependency-complete component package. Update the source site before sharing templates that use components.
-
-## Permissions
-
-Remote template operations use separate builder permissions:
-
-| Task                                                                 | Required permissions                                                                                                     |
-| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| See configured remote sites                                          | **Access remote templates**                                                                                              |
-| Insert a remote template without component dependencies              | **Access remote templates** and **Insert templates**                                                                     |
-| Save a remote template under My Templates                            | **Access remote templates** and **Import/export templates**                                                              |
-| Insert a remote template with component dependencies                 | The insert permissions above, plus **Access remote components**, **Import/export components**, and **Insert components** |
-| Import a remote template with component dependencies to My Templates | The template import permissions above, plus **Access remote components** and **Import/export components**                |
-
-See [Builder Access & Capabilities](https://academy.bricksbuilder.io/builder/interface/builder-access/) for assigning these permissions.
-
-## Fetching and Caching
-
-Bricks keeps fetched template data outside the WordPress database. Remote template data can be cached in the builder browser for up to seven days per source. Use **Reload** when you need the source again before that cache expires.
-
-Remote-library capability checks and component catalogs use shorter server-side caches. In the Component Manager, **Refresh** bypasses those short caches and requests the source again.
-
-## Troubleshooting
-
-### A Remote Site Does Not Appear
-
-- Confirm the remote library row is saved under **Templates & components**.
-- Confirm the current user has **Access remote templates** permission.
-
-### A Remote Site Appears but Does Not Load
-
-Check the source site:
-
-- **My templates access** is enabled.
-- Permalinks are not set to **Plain**.
-- The destination site's URL is included under **Whitelist URLs**, when used.
-- The password saved on the destination matches **Remote access > Password protection**.
-- The expected templates are not selected under **Exclude templates**.
-
-### A Template With Components Cannot Be Inserted
-
-- Save pending component, class, variable, and color changes on the destination.
-- Confirm the user has the required component permissions.
-- Confirm every component dependency is available and not excluded on the source.
-- Update the source to Bricks 2.4 or later if it only supports the legacy template response.
-
-For the template library controls and local template actions, see [Template Library](https://academy.bricksbuilder.io/builder/features/template-library/).
-
----
-
-# Save Form Submissions
-
-Source: https://academy.bricksbuilder.io/builder/features/save-form-submissions/
-
-*Store Bricks form submissions in WordPress so you can review entries, keep records, and work with the saved data later.*
-
-Bricks 1.9.2 introduced the ability to save Form element submissions in your WordPress database. Once enabled globally, each form can use the **Save submission** action to store entries in a Bricks-managed database table and review them from the WordPress dashboard.
-
-Use this for contact forms, quote requests, event registrations, lead capture, and other workflows where you need a dashboard record in addition to email, webhook, or third-party integrations.
+## Action: Copy to clipboard {#copy-to-clipboard}
 
 > **Note**
 >
-> Saved submissions are stored in your WordPress database. Treat them as personal data when forms collect names, emails, IP addresses, files, or account-related information.
+> Copy to clipboard, Copy successful, Copy failed, and Set text are available since Bricks 2.5.
 
-## How to enable {#how-to-activate}
+Use **Copy to clipboard** to let visitors copy a coupon code, address, link, or other text. Add an interaction to a Button or another clickable element, set **Trigger** to **Click**, and choose **Copy to clipboard** as the action.
 
-Enable **Save form submissions in database** under **Bricks > Settings > General > Form submissions**.
+The **Source** control has two options:
 
-![](https://academy.bricksbuilder.io/assets/bricks-form-submissions-settings.png)
+| Source | What gets copied |
+| --- | --- |
+| **Custom text** (default) | The content of the **Text** field, including [dynamic data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/). |
+| **Element text** | The text of the first element matching **Target selector**. Leave the selector empty to copy the text of the element that owns the interaction. |
 
-After enabling it, save your settings. Bricks now creates a custom table named `bricks_form_submissions` in your database (plus your WP database prefix).
+For example, enter `SAVE20` as Custom text to copy a coupon code. In a post query loop, enter `{post_url}` to copy the clicked item's URL. Dynamic copy text is resolved for each rendered query item, including when the interaction comes from a global class.
 
-You should now also see the following action buttons:
+Element text is read when the action runs. It includes descendant text, but not HTML tags. It does not read an input's current value or a link's `href`; use Custom text with dynamic data to copy a URL that differs from the link label.
 
-- **Reset database table**: Removes all saved submission rows from the table.
-- **Delete database table**: Deletes the custom submissions table and disables the global setting.
+**Target selector** searches the whole page and uses only the first match. A shared class inside a query loop does not automatically select the clicked item's content. Use dynamic Custom text for item-specific values, or leave the selector empty when the interaction's own element contains the text to copy.
+
+Test copying on the frontend over HTTPS and use a direct visitor click. The browser must support and allow clipboard writing. If clipboard access is unavailable or denied, or an Element text selector is invalid or matches nothing, Bricks runs **Copy failed**.
+
+### Copy result triggers {#copy-result-triggers}
+
+Add result interactions to the same element that owns the Copy to clipboard action:
+
+- **Copy successful** runs after the browser confirms that the text was copied.
+- **Copy failed** runs when copying fails.
+
+Use these triggers to show a message, update text, or open a popup. A separate Click interaction that displays “Copied” can run before copying finishes, so use **Copy successful** for confirmation feedback.
+
+Bricks does not add a notification automatically. Leave **Run only once** disabled if the feedback should update after each copy attempt.
+
+### Example: Copy a coupon code with feedback
+
+1. Add a Button labeled “Copy coupon” and a Basic Text element for the result message. Give the message element the CSS ID `copy-status`.
+2. Keep the message element visible and add the custom attribute `role` with the value `status` so assistive technology can announce text changes.
+3. On the Button, add **Click → Copy to clipboard**, select **Custom text**, and enter `SAVE20`.
+4. Add another interaction to the Button: **Copy successful → Set text**. Enter `Copied: %copyText%`, choose **CSS selector** as the target, and enter `#copy-status`.
+5. Add **Copy failed → Set text**, targeting the same message element, with the text “Could not copy. Select the coupon code and copy it manually.” Keep the coupon code visible on the page for this fallback.
+
+Preview the page, click the Button, and paste into a text field to check the copied value. The result message should change only after the copy attempt finishes.
+
+## Action: Set text {#set-text}
+
+Since Bricks 2.5, **Set text** replaces the target element's contents with the value of its **Text** field. Use **Self** to update the interaction's own element or **CSS selector** to update matching elements.
+
+Text is inserted as plain text. HTML markup is displayed literally, and existing child elements are removed. Target a dedicated message element rather than a container holding buttons, icons, or other content.
+
+With **Copy successful** or **Copy failed**, `%copyText%` inserts the copied or attempted text. It becomes empty if copying failed before the source text could be read. With other triggers, `%copyText%` remains literal text.
+
+## Action: Scroll to {#scroll-to}
+
+Use **Scroll to** to move the page to the target element. The action supports:
+
+- **Offset (px)**: subtracts pixels from the target position.
+- **Delay (ms)**: waits before scrolling. Bricks uses a small delay by default so the DOM can update first.
+
+![](https://academy.bricksbuilder.io/assets/bricks-interactions-scroll-to-action.png)
+
+In this example, after the "Posts Query" AJAX call finishes, the page scrolls to the element with the CSS selector `#my-grid-wrapper`, waiting `500` milliseconds first.
+
+## Action: Checkout step {#checkout-step}
+
+The Checkout step action is available for [WooCommerce Checkout v2 multistep layouts](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/).
+
+It can move the checkout flow to:
+
+- Next step
+- Previous step
+- A specific step
+- A specific checkout field
+
+Enable **Scroll into view** when the action should scroll the target step or field into view after the step changes.
+
+Checkout v2 also adds the **Bricks checkout step changed** trigger, which runs after the active checkout step changes. See [Checkout v2 multistep checkout](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/) for the full setup workflow and [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#interactions) for the related WooCommerce events.
+
+## Action: Toggle offcanvas {#toggle-offcanvas}
+
+Since Bricks 1.11, interactions can toggle an Offcanvas element from any element. Set the action to **Toggle offcanvas** and provide the Offcanvas CSS selector, such as `#brxe-off123`.
+
+![](https://academy.bricksbuilder.io/assets/new-toggle-offcanvas-interaction-action.png)
+
+Do not apply this action directly to the Toggle element itself.
+
+## Browser storage {#browser-storage}
+
+Browser storage actions let an interaction write, remove, or count a key:
+
+- **Window storage**: stored on `window`; resets on page load.
+- **Session storage**: stored in `sessionStorage`; normally resets when the browser tab/session ends.
+- **Local storage**: stored in `localStorage`; persists until cleared.
+
+The storage actions use the same **Key** field as attribute actions:
+
+- **Browser storage: Add** writes the configured value to the key.
+- **Browser storage: Remove** removes the key.
+- **Browser storage: Count** reads the key as a number, defaults to `0`, increments it by one, and stores the result.
+
+Storage is especially useful with [interaction conditions](#conditions). For example, one interaction can count how many times a button was clicked, while another interaction only runs when that count is greater than `2`.
+
+Interaction fields accept dynamic data, so a key can be unique per post, for example `saved-{post_id}` on a button inside a query loop.
+
+### Example: Remember a saved state after reload {#example-remember-state}
+
+A save button on each card of a query loop can keep its state in the visitor's browser. Write the saved look as CSS for a class such as `is-saved` (for example, a filled icon), then add four interactions to the button:
+
+1. **Click**, **Toggle attribute**, key `class`, value `is-saved`, target **Self**. This switches the look.
+2. **Click**, **Browser storage: Count**, type **Local storage**, key `saved-{post_id}`. The first click stores `1`, the second click `2`.
+3. **Click**, **Browser storage: Remove**, type **Local storage**, key `saved-{post_id}`, with the condition **Local storage** `saved-{post_id}` `>=` `2`. The second click removes the key again, so the next click starts at `1`.
+4. **Content loaded**, **Set attribute**, key `class`, value `is-saved`, target **Self**, with the condition **Local storage** `saved-{post_id}` **Exists**. This marks the saved buttons again after a reload.
+
+Keep the interactions in this order. Interactions on the same trigger run one after another, and each condition is checked when its interaction runs. Two interactions that add and remove the same key on one click would undo each other.
+
+The saved state is stored in the visitor's browser, not in a user account. It is not shared between browsers or devices.
+
+## Action: JavaScript (Function) {#javascript}
+
+Since Bricks 1.9.5, interactions can execute your own JavaScript functions.
 
 > **Note**
 >
-> These actions are permanent. Make sure you have a backup before resetting or deleting the table.
+> Only functions available from the global `window` scope can be executed.
 
-## Form action: Save submission {#save-submission-form-action}
+Define your functions globally:
 
-![](https://academy.bricksbuilder.io/assets/save-submission-action-in-form-element.png)
+```php
+<script>
+window.myHelperFunctions = {}
 
-After the global setting is enabled, edit a Form element and select **Save submission** under the **Actions** control group.
+myHelperFunctions.myCall = () => {
+  console.log('myCall executed')
+}
 
-In the example below, the form uses **Save submission** and **Email**.
+myHelperFunctions.nestedFn = {
+  fn1: () => {
+    console.log('fn1 executed')
+  },
+  fn2: () => {
+    console.log('fn2 executed')
+  }
+}
 
-The sequence of your actions matters. If an action fails, execution of all subsequent form actions is halted. Set the order according to your workflow.
+function toggleMiniCart() {
+  const run = () => {
+    document.querySelector('.bricks-woo-toggle').dispatchEvent(new Event('click'))
+  }
 
-In this example, if **Save submission** fails, the **Email** action that follows it will not be triggered.
+  setTimeout(run, 100)
+}
+</script>
+```
 
-Bricks always moves the **Redirect** action to the end of the action list during submission processing.
+Enter the function name in the **Function name (JavaScript)** field without parentheses and without `window.`:
 
-## What Bricks saves
+- `myHelperFunctions.myCall`
+- `myHelperFunctions.nestedFn.fn1`
+- `myHelperFunctions.nestedFn.fn2`
+- `toggleMiniCart`
 
-The saved entry includes the submitted form fields and selected metadata:
+You cannot execute `run()` from the example above because it is scoped inside `toggleMiniCart()`, not on `window`.
 
-- The post ID where the form was submitted from, when available.
-- The Form element ID. If the form is a global element, Bricks uses the global element ID.
-- The submission date in the database.
-- Submitted form field data, stored as JSON.
-- Browser and operating system, derived from the user agent.
-- Referrer URL, when submitted by the form.
-- Logged-in user ID, when the submitter is logged in.
-- IP address, only when **Save IP address** is enabled for that form.
+> **Note**
+>
+> If your target is a CSS selector that matches multiple elements, Bricks executes the function once per target.
 
-HTML fields and honeypot fields are not saved as submitted form data.
+### JavaScript function arguments {#custom-javascript-arguments}
 
-Bricks sanitizes data before inserting it into the database. For example, email fields are sanitized as email addresses, URL fields as URLs, number fields as numbers, textarea values as post-safe HTML, and most other values as text or URLs.
+Use the **Arguments** repeater to pass values to your function. The `%brx%` placeholder passes a Bricks object with interaction context:
 
-## Save submission settings
+- `source`: the source element that triggered the interaction.
+- `targets`: the array of resolved target elements.
+- `target`: the current target element for this function call.
 
-![](https://academy.bricksbuilder.io/assets/save-submission-settings.png)
+![](https://academy.bricksbuilder.io/assets/bricks-interaction-action-javascript-function.png)
 
-### Form name
+```php
+function playOrPauseVideo(brxParam, postId) {
+  const target = brxParam?.target || false
 
-Give your form a unique and descriptive name. This name is used on the **Form Submissions** page in the dashboard. If no name is set, Bricks displays the form as **[No name]** and still identifies it by Form ID.
+  if (!target) {
+    return
+  }
 
-### Save IP address
+  const video = target.querySelector('video')
 
-Enable this to save the submitter's IP address in the submission entry. Only enable it when you have a clear reason to store the IP address and have updated any required privacy notice.
+  if (!video || !video.play || !video.pause) {
+    return
+  }
 
-### Max. entries
+  if (video.paused) {
+    video.play()
+  } else {
+    video.pause()
+  }
+}
+```
 
-Set the maximum number of submissions to store for this form. This is useful for event registration, limited waitlists, and other capacity-based workflows.
+## Interaction conditions {#conditions}
 
-When the limit is reached, Bricks returns an error and does not save the new entry. You can customize the error message. Because this is an action error, later actions in the form action list are not executed.
+Interaction conditions let an interaction run only when browser storage matches your rules. Conditions support:
 
-### Prevent duplicates
+- Window storage
+- Session storage
+- Local storage
 
-You can prevent storing duplicate submissions when matching data already exists for the same form.
+Each condition checks a storage key with one of these comparisons:
 
-![](https://academy.bricksbuilder.io/assets/save-submission-prevent-duplicate-for-2-form-fields.png)
+- Exists
+- Not exists
+- `==`
+- `!=`
+- `>=`
+- `<=`
+- `>`
+- `<`
 
-Copy the unique six-character ID of the field you want to check, create a new item under **Prevent duplicates**, and paste the field ID into **Compare with (Field ID)**.
+For numeric comparisons, Bricks converts the stored value and comparison value to numbers. Non-numeric values become `0` for those comparisons.
 
-If **Save IP address** is enabled, you can use the `ip` keyword to prevent saving more than one submission from the same IP address.
+The **Relation** setting controls whether all conditions must pass or whether any condition can pass:
 
-A submission is considered a duplicate only if all configured duplicate checks match an existing entry for that form. Field values are compared case-insensitively after trimming whitespace.
+- **And**: every condition must be true.
+- **Or**: at least one condition must be true.
 
-Submissions flagged as duplicates are not saved. A customizable error message appears, and all subsequent form actions are halted.
+![](https://academy.bricksbuilder.io/assets/bricks-interaction-conditions.png)
 
-## Viewing form submissions
+The example above runs when `window.some_key` equals `some_value`.
 
-To view collected submissions, navigate to **Bricks > Form Submissions** in the WordPress dashboard.
+## Animations {#animations}
 
-### Overview page
+Bricks uses [Animate.css](https://animate.style/) for interaction animations.
 
-The overview page groups submissions by Form ID and shows each form's name and entry count. This helps you quickly understand which forms have stored submissions.
+### Action: Start animation {#animation-start}
 
-![](https://academy.bricksbuilder.io/assets/form-submissions-admin-overview-page.png)
+Set action to **Start animation** and choose an animation type, duration, and optional delay.
 
-The **Delete** button in each form row deletes all entries for that form.
+Since Bricks 2.5, **Animation repetitions** controls how many times the animation plays. Leave it empty for one play, or enter a positive whole number such as `3` for three plays. Enter `-1` or `infinite` for continuous playback.
 
-This action permanently removes all submissions for the selected form, so make sure you have a backup or genuinely intend to delete them.
+A finite animation runs **Animation end** after its final repetition. An infinite animation never reaches that event. Use a finite value when another interaction depends on completion, or when an exit animation must finish before a popup closes.
 
-### Individual form submission
+![](https://academy.bricksbuilder.io/assets/bricks-interaction-start-animation.png)
 
-Click a form name on the overview page to view all entries for that specific form.
+When the target is a popup, Bricks applies the animation to `.brx-popup-content`. If the animation name includes `In`, Bricks opens the popup. If a popup content animation includes `Out`, Bricks closes the popup after the animation ends.
 
-![](https://academy.bricksbuilder.io/assets/form-submissions-single-form-view.png)
+### Popup animation behavior {#popup-animation}
 
-The table has one column per form field, using the field label as the column title, followed by metadata columns. **Referrer** links to the page the form was submitted from, which tells you which post an entry belongs to when the form sits in a template.
+Popups handle open and close animations directly. To open or close a popup after an animation, set the interaction action to **Start animation** and choose an animation ending in `In` or `Out`.
 
-Click **Screen options** in the top-right corner to toggle metadata columns. Available metadata columns include Date, Browser, IP address, OS, Referrer, and User.
+You do not need a second interaction that listens for the animation-end trigger only to open or close the popup.
 
-The search box searches the stored form data JSON. It is useful for submitted field values, but it does not search metadata columns such as browser, IP address, OS, referrer, or user.
+![](https://academy.bricksbuilder.io/assets/popup-special-consideration.png)
 
-You can select multiple entries from the list and delete them in bulk. This feature simplifies the process of removing specific submissions, especially if you want to clear out any irrelevant, outdated, or test data.
+### Trigger: Animation end {#animation-end}
 
-Click **Download (CSV)** to export all submissions for the form you are viewing.
+Since Bricks 1.8.4, **Animation end** can run another interaction after a Start animation action finishes.
 
-CSV exports include the visible submission columns and submitted field values. Bricks prefixes cells that could be interpreted as spreadsheet formulas, helping reduce CSV formula-injection risk when exported files are opened in spreadsheet software.
+![](https://academy.bricksbuilder.io/assets/bricks-interaction-animation-end-trigger.png)
 
-### Form submission access {#access}
+Use **Target interaction ID** to listen for a specific Start animation interaction. If you leave it empty, Bricks looks for the previous Start animation interaction in the same interaction group.
 
-Bricks 1.11 introduces more granular control over who can view form submissions on your site. With the new `bricks_form_submission_access` capability, you can specify which user roles or individual users have permission to access form submissions.
+If the target ID points to the current interaction, or to an interaction that is not a Start animation action, Bricks ignores it.
 
-Administrators have form submission access by default and cannot be disabled in the role list.
+![](https://academy.bricksbuilder.io/assets/how-target-interaction-id-works.png)
 
-#### User role access
+In this example, interaction `uzfgcm` runs after the `xyyyeh` animation ends.
 
-To configure role-based access:
+You can also listen for the same JavaScript event:
 
-1. Navigate to **Bricks** > **Settings** > **General** > **Form submissions**.
-2. Under **Form submission access**, you will see checkboxes for available user roles such as Administrator, Editor, Author, and Contributor.
+<span id="bricks-animation-end-code"></span>
 
-The **Administrator** role is always enabled by default and cannot be disabled. For other roles, check or uncheck the boxes to grant or revoke access to form submissions.
+```php
+document.addEventListener('bricks/animation/end/xyyyeh', (event) => {
+  const element = event.detail.el || false
 
-This allows you to easily control who on your team can view form submissions based on their user role.
+  if (!element) {
+    return
+  }
 
-#### Individual user access
+  // Your logic here
+})
+```
+
+## Query AJAX loader triggers {#query-ajax-loader}
+
+Query AJAX loader triggers were introduced in Bricks 1.9. They listen to Bricks AJAX start/end events for a selected query ID.
+
+> **Note**
+>
+> Bricks AJAX includes Infinite Scroll, Load More, AJAX pagination, and Query Filter requests.
+
+Use **Query AJAX loader (Start)** to run an action before a query AJAX request starts, and **Query AJAX loader (End)** to run an action after it completes.
+
+Use the Filter Submit triggers for AJAX submissions from a Filter - Submit element or an Enter-key search with **Trigger Filter Submit interactions** enabled.
+
+##### Example: Apply opacity during AJAX loading
+
+1. Create a grid layout for your query loop and add a custom class that sets opacity to `0.5`.
+2. Add one interaction to apply the class when AJAX starts.
+3. Add another interaction to remove the class when AJAX ends.
+
+![](https://academy.bricksbuilder.io/assets/query-ajax-loader-trigger-01custom-css.png)
+
+![](https://academy.bricksbuilder.io/assets/query-ajax-loader-trigger-02-interactions.png)
+
+You can also listen to the underlying JavaScript events:
+
+<span id="bricks-ajax-start-end-code"></span>
+
+```php
+document.addEventListener('bricks/ajax/start', (event) => {
+  const queryId = event.detail.queryId || false
+
+  if (!queryId) {
+    return
+  }
+
+  // Your logic here
+})
+```
+
+## Filter Submit triggers {#filter-submit-triggers}
+
+Filter Submit triggers were introduced in Bricks 2.4. They listen to AJAX submissions from the [Filter - Submit element](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-submit-reset-element) for a selected query ID. They also run when a visitor presses Enter in a [Filter - Search element](https://academy.bricksbuilder.io/builder/elements/filter/filter-search/#search-with-enter) with **Trigger Filter Submit interactions** enabled. Ordinary typing does not run these triggers.
+
+- **Filter Submit (Start)** runs after Bricks updates the selected filter values and before the AJAX filter request starts.
+- **Filter Submit (End)** runs after the AJAX filter request finishes.
+
+Select the target query in the **Query** control. Bricks only runs the interaction when the event's `queryId` matches that selected query.
+
+These triggers are useful when filters are placed inside an Offcanvas on mobile. Add a **Filter Submit (End)** interaction that closes the Offcanvas, and it will run after the submitted filter results have finished loading. Use **Filter Submit (Start)** if the Offcanvas should close as soon as the visitor clicks Submit.
+
+Filter Submit triggers only run for AJAX filter submissions that refresh the current page results. They do not run when the Submit or Search element redirects to another URL.
+
+The underlying JavaScript events are documented in [Custom JavaScript events in Bricks](https://academy.bricksbuilder.io/developer/guides/custom-javascript-events-in-bricks/#filter-submit-event-sequence).
+
+## Form triggers {#form}
+
+Since Bricks 1.9.2, interactions can listen to Bricks form events.
+
+![](https://academy.bricksbuilder.io/assets/form-new-interactions.png)
+
+<figcaption>
+
+Triggers: Form Submit, Form Success, Form Error
+
+</figcaption>
+
+### Trigger: Form Submit {#trigger-form-submit}
+
+Form Submit runs after Bricks has prepared the form data and before the AJAX form request is sent.
+
+```php
+document.addEventListener('bricks/form/submit', (event) => {
+  const elementId = event.detail.elementId
+  const formData = event.detail.formData
+
+  console.log('Element ID:', elementId)
+  console.log('Form Data:', formData)
+})
+```
+
+### Trigger: Form Success {#trigger-form-success}
+
+Form Success runs after a successful form AJAX response.
+
+```php
+document.addEventListener('bricks/form/success', (event) => {
+  const elementId = event.detail.elementId
+  const formData = event.detail.formData
+  const res = event.detail.res
+
+  // Your logic here
+})
+```
+
+### Trigger: Form Error {#trigger-form-error}
+
+Form Error runs after an error form AJAX response.
+
+```php
+document.addEventListener('bricks/form/error', (event) => {
+  const elementId = event.detail.elementId
+  const formData = event.detail.formData
+  const res = event.detail.res
+
+  // Your logic here
+})
+```
+
+When configuring a form trigger in the Interactions panel, provide the Form ID. Bricks accepts values such as `abcde`, `#abcde`, or `#brxe-abcde` and compares them against the form element ID.
+
+## Trigger: Filter: Empty / Not Empty {#trigger-filter-empty-or-not-empty}
+
+Filter: Empty and Filter: Not Empty were introduced in Bricks 1.11 and are available when the Query Filters feature is active.
+
+![](https://academy.bricksbuilder.io/assets/interaction-filter-empty-not-empty.png)
+
+Use them to hide, show, or otherwise update UI around filter elements whose options or values become empty after the initial page load or after a query filter AJAX update.
+
+**Filter: Empty** runs when:
+
+- Active filters have no rendered content.
+- Checkbox, Radio, or Select has no available options, excluding "All" or placeholder options.
+- Datepicker or Search has an empty current value.
+- Range is still at its min/max default.
+
+**Filter: Not Empty** runs when:
+
+- Active filters have rendered content.
+- Checkbox, Radio, or Select has available options.
+- Datepicker or Search has a current value.
+- Range differs from its min/max default.
+
+![](https://academy.bricksbuilder.io/assets/interaction-filter-empty-not-empty-example.png)
+
+Example: If a Filter - Select returns no options, hide its wrapper to avoid an empty control. Add the matching Not Empty interaction to show the wrapper again when options return.
+
+## Popup example {#example-open-modal}
+
+To open a newsletter popup from a footer button:
+
+1. Create a Popup template named "Newsletter popup".
+2. Set the popup template conditions to the pages where the popup should be available, such as Entire website.
+3. Add a button in the footer.
+4. Add a Click interaction to the button.
+5. Set the target to Popup, select the Newsletter popup template, and use Show element.
+
+![](https://academy.bricksbuilder.io/assets/element-interactions-example-click.png)
+
+Now the button opens that popup wherever the popup template is rendered.
+
+## Example: Show custom tooltip on hover {#example-tooltip}
+
+Create a hidden tooltip element, such as a Div with the class `.my-tooltip`, near an Icon element.
+
+![](https://academy.bricksbuilder.io/assets/custom-tooltip-1.png)
+
+Add two interactions to the Icon:
+
+- Hover or Mouse enter: show `.my-tooltip`.
+- Mouse leave: hide `.my-tooltip`.
+
+![](https://academy.bricksbuilder.io/assets/element-interactions-custom-tooltip.png)
+
+The result can look like this:
+
+![](https://academy.bricksbuilder.io/assets/tooltip.gif)
+
+## Example: Create a toggle button {#example-toggle-button}
+
+You can build a custom toggle button with two Icon elements inside a Div.
+
+![](https://academy.bricksbuilder.io/assets/open-close.gif)
+
+Add a custom class `.toggle-button` to the wrapper Div and use CSS like this:
+
+```php
+%root% .toggle-close-icon {
+  display: none;
+}
+
+%root%.is-open .toggle-open-icon {
+  display: none;
+}
+
+%root%.is-open .toggle-close-icon {
+  display: block;
+}
+```
+
+Give the default icon the class `.toggle-open-icon`, and the active icon the class `.toggle-close-icon`.
+
+Then add interactions:
+
+- On the default icon, add class `is-open` to the wrapper.
+- On the active icon, remove class `is-open` from the wrapper.
+
+![](https://academy.bricksbuilder.io/assets/interaction-default-icon.png)
+
+![](https://academy.bricksbuilder.io/assets/element-interaction-active-icon.png)
+
+---
+
+# Maintenance Mode
+
+Source: https://academy.bricksbuilder.io/builder/features/maintenance-mode/
+
+*Set up maintenance mode in Bricks, choose what visitors see, and control access while you work on the site.*
+
+Bricks 1.9.4 introduces the **Maintenance Mode** feature. A straightforward way to manage your site's availability during updates or construction.
+
+https://youtu.be/df7nzqiv32s
+
+![](https://academy.bricksbuilder.io/assets/bricks-settings-maintenance-mode-2-0.png)
+
+Maintenance Mode runs on the frontend only. It does not replace the WordPress admin, and it does not block the Bricks builder.
+
+## How to enable Maintenance Mode
+
+1. Log in to the WordPress dashboard.
+2. Navigate to Bricks > Settings > Maintenance mode.
+
+Here, you'll find several settings to configure:
+
+- **Mode selection**: Choose `Disabled`, `Maintenance`, or `Coming soon`. "Maintenance" mode (HTTP status code 503) indicates that your site is temporarily unavailable, signaling search engines to come back later. "Coming soon" mode (HTTP status code 200) indicates that your site is available for search engine indexing.
+- **Template** *(optional)*: Assign a custom single template for your maintenance or coming soon mode.
+  - **Render header** *(optional)*: Enable this setting if you want the active Bricks header to render with the maintenance or coming soon template. This is **disabled by default**.
+  - **Render footer** *(optional)*: Enable this setting if you want the active Bricks footer to render with the maintenance or coming soon template. This is **disabled by default**.
+  - **Render popups** *(optional)*: Enable this setting if you want Bricks popups to be rendered on the maintenance or coming soon template. This is **disabled by default**.
+- **Bypass maintenance**: Customize access settings for different user roles.
+- **Exclude posts/pages** *(since 2.0)*: Select specific pages or posts where Maintenance Mode should **not** be applied.
+
+If no template is selected, or the selected template is not published or has no Bricks data, Bricks renders a simple default page with a `Maintenance` or `Coming soon` heading.
+
+## When maintenance mode applies
+
+Maintenance mode is skipped for:
+
+- WordPress admin requests.
+- Bricks builder requests.
+- The Bricks custom login page, if one is configured.
+- Logged-in users who can bypass maintenance.
+- Posts or pages selected under **Exclude posts/pages**.
+
+If none of those bypasses apply, Bricks serves the maintenance response. In **Maintenance** mode, Bricks sends HTTP status `503`. In **Coming soon** mode, Bricks sends HTTP status `200`.
+
+When maintenance mode is active, Bricks also removes the canonical tag and does not output Bricks Open Graph meta tags for the maintenance response.
+
+## Check what visitors see
+
+Because logged-in users bypass maintenance mode by default, the site looks unchanged while you are logged in. Inside the WordPress admin, the admin bar shows a **Mode: Maintenance** (or **Mode: Coming soon**) label while the mode is active. The label links to the **Maintenance mode** settings tab.
+
+To see what visitors get, open the site in a private browser window where you are not logged in.
+
+To switch maintenance mode off, set **Mode** to `Disabled` and save the settings.
+
+## Custom maintenance templates
+
+The selected maintenance template replaces the requested page content while maintenance mode is applied. The normal search, archive, and error templates are disabled for that response.
+
+Header and footer rendering are off by default and must be enabled with **Render header** and **Render footer**. Popups are also off by default and only load when **Render popups** is enabled, or when the current user can bypass maintenance.
+
+For multilingual sites, Bricks resolves the selected maintenance template through WPML or Polylang when those integrations are active.
+
+## Configuring role-based access
+
+In the "Bypass maintenance" setting:
+
+1. Select from the dropdown menu: `Logged-in users` allows all logged-in users to bypass maintenance mode; `Logged-in users with role` provides a more granular control.
+2. If `Logged-in users with role` is selected, checkboxes will appear to enable or disable maintenance mode bypass for specific roles such as Editor, Author, Contributor, etc.
+
+Administrators can bypass maintenance by default. If no custom role selection is enabled, logged-in users can bypass maintenance mode.
+
+## Individual user access settings
 
 To configure access on an individual user level:
 
-1. From the WordPress dashboard, go to **Users**.
+1. From the WordPress dashboard, go to "Users".
 2. Click to edit a specific user's profile.
-3. In the user profile, find and adjust the **Form submission access** setting.
+3. In the user profile, find and adjust the "Bypass Maintenance" setting.
 
-This lets you manage form submissions access for specific users, overriding the broader role-based settings if needed.
+The individual user setting can explicitly enable or disable maintenance bypass for that user. This takes precedence over the role-based setting and over the default administrator/logged-in behavior.
 
-Users with form submission access but without broader Bricks admin access can still get a limited **Bricks - Form Submissions** admin menu when submissions are enabled.
+<span id="filters"></span>
 
-Only users who can manage options can reset or delete the whole submissions table, delete all entries for a form from the overview, or delete selected entries in bulk.
+**Filters:**
 
-## Developer notes
-
-Before saving, Bricks passes the form data through the [`bricks/form/save-submission/form_data`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-save-submission-form_data/) filter. Use this if you need to normalize, remove, or add stored fields before the database insert.
-
-For file fields, the Form Submissions table can link to files saved in the Media Library, the uploads directory, or a custom directory. The file URL used in the submissions table can be adjusted with the `bricks/form/submission-table/file_url` filter.
+- [/developer/hooks/filters/filter-bricks-maintenance-should_apply/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-maintenance-should_apply/)
 
 ---
 
-# Search Criteria
+# Media Browser
 
-Source: https://academy.bricksbuilder.io/builder/features/search-criteria/
+Source: https://academy.bricksbuilder.io/builder/features/media-browser/
 
-*Use Search Criteria in Bricks to control which WordPress fields and meta values are searched for native search and query-filter search inputs.*
+*Search, upload, organize, inspect, repair, and select WordPress media from the Bricks Builder Browser.*
 
-Bricks 2.2 introduces a powerful new way to control **how search results are generated**, whether the search is triggered by:
+The **Media Browser**, introduced in Bricks 2.4, adds media selection and management to the [Builder Browser](https://academy.bricksbuilder.io/builder/features/builder-browser/). It works with attachments in the WordPress Media Library, so files uploaded or edited in either interface remain available in both.
 
-- the **native WordPress search** (via the Search element), or
-- the **Filter – Search** element - Query Filters feature.
+Use the Media Browser to:
 
-With **Search Criteria**, you can define exactly where Bricks should search: post fields, assigned post terms, term fields, user fields, and custom meta fields. This gives you far more control than the default WordPress `"s"` search and allows fully customized search behaviour across your site.
+- Select files for Image, Image Gallery, Video, Audio, SVG, and File controls.
+- Search and filter attachments by their metadata and file properties.
+- Upload local files or import public files from URLs.
+- Edit attachment details without leaving the builder.
+- Select multiple attachments for metadata, download, folder, image-size, and deletion actions.
+- Find and resolve common accessibility and file problems with Media Health.
+
+![](https://academy.bricksbuilder.io/assets/media-browser-main-view.webp)
+
+## Open the Media Browser
+
+Open the Builder Browser from the folder icon in the builder toolbar, then select **Media**.
+
+The Media Browser can also open as a picker when you choose or change a file in a supported builder control. The picker limits results to the type accepted by the control. For example, an Audio control shows audio files, while an SVG control only shows SVG files.
+
+Image Gallery opens in multi-select mode. Image, Video, Audio, SVG, and File controls select one attachment at a time. Existing control values are preselected when you reopen the picker.
+
+To confirm a selection in the Bricks picker, click **Insert** or press the default `CMD / CTRL + ENTER`. In Bricks 2.5, you can change this combination under **Manage → Keyboard shortcuts**. It applies to picker selection, not standalone media management. See [Keyboard Shortcuts](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/).
+
+### Choose the media picker
+
+Go to **Bricks > Settings > Builder > Media > Media picker** and choose:
+
+- **Bricks: Media browser (Default)**: Opens the Bricks interface in supported media controls.
+- **WordPress: Media library**: Opens the standard WordPress media picker.
+
+This setting changes the interface, not where the files are stored. Both options use the WordPress Media Library.
+
+## Browse, search, and filter media
+
+Use the sidebar to switch between all media, images, video, audio, Trash, and Media Health. If a compatible media-folder integration is active, folders also appear in the sidebar.
+
+The layout control provides grid, masonry, and list views. Media defaults to 50 results per page. Open the settings popover to change the number of results from 1 to 100 and choose whether attachment details open beside the results or in an overlay.
+
+### Adjust thumbnails and visible details
+
+Open the **More** menu above the results to adjust the Media view. **Thumbnail size** and **Thumbnail fit** are available since Bricks 2.4.6:
+
+- **Thumbnail size**: Choose **Small**, **Medium**, or **Large** in grid view. The default is **Medium**.
+- **Thumbnail fit**: Choose **Cropped** to fill each grid thumbnail or **Fitted** to see the whole image without cropping. The default is **Cropped**. This changes the Browser preview, not the attachment or its frontend display.
+- **Image dimensions** (since Bricks 2.5): Show each image's width and height in the result metadata. This is off by default and is available across grid, masonry, and list views.
+
+These preferences are remembered in your browser for the current user. Thumbnail size and fit apply only to grid view.
+
+![Media Browser grid showing complete portrait and landscape images, with Thumbnail size set to Medium, Thumbnail fit set to Fitted, and Image dimensions enabled in More.](https://academy.bricksbuilder.io/assets/builder/release-2.5/media-thumbnail-settings.webp)
+
+<div className="screenshot screenshot--control-panel">
+
+![More menu with Medium thumbnail size, Fitted thumbnail fit, and Image dimensions enabled.](https://academy.bricksbuilder.io/assets/builder/release-2.5/media-thumbnail-menu-detail.webp)
+
+</div>
+
+### Search and filter results
+
+Search checks the attachment ID, file name, title, caption, description, and alternative text.
+
+The filter panel includes:
+
+- Media type and MIME subtype.
+- Uploader.
+- Attached or unattached status. Featured images count as attached.
+- Upload date range.
+- Minimum and maximum width, height, and file size.
+- Images with missing alternative text.
+- Media Health status.
+
+Width and height filters appear for compatible image and video types. The missing-alt filter only applies to images. The filter button shows the number of active filters, and **Clear all** removes them.
+
+![](https://academy.bricksbuilder.io/assets/media-browser-filters.webp)
+
+## Upload media
+
+Click the upload icon in the Media Browser to open the upload workspace.
+
+### Drop images directly onto a control
+
+Since Bricks 2.5, you can drop a local image onto an **Image** selector or its preview to upload and select it without opening the Media Browser. Dropping onto an existing image replaces that control's selection; it does not replace the original Media Library attachment.
+
+This requires WordPress upload permission and a control that is not using dynamic data. WordPress file-type and upload-size restrictions still apply.
+
+### Upload local files
+
+Drop files into the workspace or click **Browse files**. You can stage and upload multiple files in one batch.
+
+Before a local file is uploaded, you can change its file name without changing the extension. Bricks checks the current WordPress upload directory for conflicts. If the name already exists, rename the file or accept the unique name suggested by WordPress.
+
+Existing attachments cannot be renamed from this workflow. Changing an existing file name could break stored URLs and references.
+
+### Drop images onto an Image Gallery
+
+Since Bricks 2.5, for an **Image Gallery** control, drop one or more images to append them to the selected gallery. Hold **Shift** while dropping to replace the entire selection. A replacement is applied only when every file in the batch uploads successfully. If one fails, the current gallery selection stays unchanged; retry the failed uploads from the error message.
+
+This requires WordPress upload permission and a control that is not using dynamic data. WordPress file-type and upload-size restrictions still apply.
+
+<div className="screenshot screenshot--control-panel">
+
+![Image Gallery control during a file drag, showing Add images and Hold Shift to replace.](https://academy.bricksbuilder.io/assets/builder/release-2.5/gallery-drop-panel.webp)
+
+</div>
+
+### Import files from URLs
+
+Select **From URL**, then enter one public HTTP or HTTPS file URL per line. Bricks downloads the files into the WordPress Media Library. WordPress upload permissions, allowed file types, and upload-size limits still apply.
+
+### Upload destinations
+
+Open the destination folder before adding files or URLs to the upload queue. Each queued file keeps the folder selected when it was added, even if you browse to another folder before uploading or retry a failed upload.
+
+From Bricks 2.4.4, both local uploads and URL imports support folders from custom media-folder providers as well as HappyFiles.
+
+For custom providers, **No folder assignment** means Bricks has not requested a destination folder. The provider's default upload behavior applies, so the file may still be assigned to a folder. HappyFiles shows **Uncategorized** when no folder is selected.
+
+A provider can also exclude an individual folder from automatic upload assignment, for example a virtual grouping called Collections. Uploads queued there show **No folder assignment** and follow the provider's defaults. This does not prevent uploads into its child folders.
+
+### Edit uploaded files
+
+After an upload completes, you can edit its title, alternative text, caption, and description. Changes to an individual attachment save after you leave the edited field. Select several completed uploads to apply metadata changes in bulk.
+
+For a completed upload, choose **View in library** to find the attachment even if the current folder or filters would hide it. **Remove from list** only clears the upload workspace entry; the attachment stays in the Media Library.
+
+When an intended folder assignment cannot be confirmed, use **Retry folder assignment** on that upload. This retries the assignment on the existing attachment without uploading another copy. From Bricks 2.4.4, this also works with custom media-folder providers.
+
+Completed uploads also offer **Move** when a compatible folder integration is available, plus **Trash** or **Delete permanently** according to the site's Media Trash setting. These actions change the Media Library attachment and require the relevant attachment permissions. A successful Trash or Delete action removes the entry from the upload list.
+
+When Media Health is enabled, images can also be marked **Decorative** during upload. This clears their alternative text and excludes them from the missing-alt check.
+
+If you started the upload from a media control, compatible files can be inserted directly into that control. An uploaded file that does not match the control remains in the Media Library but cannot be inserted into that control.
+
+![](https://academy.bricksbuilder.io/assets/media-browser-upload-screen.webp)
+
+## Inspect and edit an attachment
+
+In the standalone Media Browser, click an attachment to open **Attachment details**. Depending on the Browser setting and available space, the inspector opens beside the results or in an overlay.
+
+The inspector provides:
+
+- A preview for supported images, video, audio, and PDF files.
+- File name, dimensions, file size, upload date, author, and generated image sizes.
+- Editable title, alternative text, caption, and description.
+- A **Decorative** toggle for images.
+- Copy URL and download actions.
+- Previous and next navigation through the current results, including other result pages.
+- Available Trash, restore, and permanent-delete actions.
+
+Metadata changes save when you leave a changed field. Bricks waits for pending saves before closing the inspector or moving to another attachment.
 
 > **Note**
 >
-> Search Criteria does not build or maintain a separate search index. It searches the selected WordPress database fields at query time, caches the matched IDs briefly, and then passes those IDs into the target query.
+> The **Decorative** flag classifies an attachment for Media Health and clears its stored alternative text. It does not add `aria-hidden`, change an Image or SVG element's frontend markup, or override an element's custom alternative text. Decide whether an image is decorative in the context where it is used.
 
-## Override Native WordPress Search ("s" parameter)
+## Select and manage multiple attachments
 
-The native WordPress search is usually triggered through the **Search element**, and the results land on the **Search Result template**.
+In the standalone Media Browser, use the selection controls on attachment cards to start a bulk selection. You can select the current page, then use **Select all matching items** to include every result from the current search and filters. Individual items can still be excluded.
 
-By default, WordPress only searches the following post fields:
+Available bulk actions depend on your WordPress permissions and the selected attachments:
 
-- post_title
-- post_content
-- post_excerpt
+- **Edit metadata**: Change selected metadata fields and mark images as decorative.
+- **Download**: Prepare the selected files as an archive.
+- **Move**: Assign the files to a folder when a compatible folder integration is active.
+- **Regenerate image sizes**: Rebuild registered image sizes for selected images.
+- **Trash** or **Delete permanently**: Remove attachments after a usage review.
 
-If you want to override or extend this behaviour for native search results, configure Search Criteria **inside your Search Result template**.
+Bulk work is processed in batches. If part of an action fails or is interrupted, the results identify completed, skipped, and failed items and offer a retry when the action can continue.
 
-## Search Criteria in the Search Result Template
+![](https://academy.bricksbuilder.io/assets/media-browser-bulk-edit.webp)
 
-![](https://academy.bricksbuilder.io/assets/bricks-search-criteria-search-results-template.png)
+## Trash and permanent deletion
 
-Inside the builder, open your **Search Result** template → Template Settings → **Search Criteria** section.
+When WordPress Media Trash is enabled, attachments must first be moved to **Trash**. Open Trash from the Media sidebar to restore a file or delete it permanently. If Media Trash is disabled, the Media Browser offers permanent deletion directly.
 
-**Custom search criteria**: This reveals all available search settings for controlling how the native `s` search behaves.
+WordPress disables Media Trash by default. To enable it, edit the `wp-config.php` file in the root of your WordPress installation and add this line before `/* That's all, stop editing! Happy publishing. */`:
 
-**Use weight score (optional):** When enabled, Bricks will calculate a ranking score based on your defined weight values and order the results accordingly. More about [weight scoring](#weight-score).
+```php
+define( 'MEDIA_TRASH', true );
+```
 
-#### Search Controls
+Media Trash also requires `EMPTY_TRASH_DAYS` to be greater than `0`. See the [WordPress Core attachment deletion documentation](https://developer.wordpress.org/reference/functions/wp_delete_attachment/) for how WordPress handles Trash and permanent deletion.
 
-Search post fields - Enable to define which standard WordPress post fields should be searched. Available fields are Title, Content, and Excerpt.
+Before moving attachments to Trash or deleting them permanently, Bricks checks for detected uses and lists affected locations. You must review and acknowledge detected references before continuing with files that are in use.
 
-Search post meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
+The usage check covers attachment IDs stored in:
 
-Search post terms - Search assigned terms of selected taxonomies by term name, slug, and description.
+- Saved Bricks elements and page settings.
+- Featured images.
+- Global classes and theme styles.
+- Components.
 
-Search Result templates only provide post-search criteria, because native WordPress search returns posts. Term and user search criteria are available in the **Filter – Search** element when that filter targets a term or user query.
+It does not detect every possible reference. URL-only references, Custom CSS, Code elements, Gutenberg or Classic Editor content, custom fields, unsaved changes, other sites, and external systems are outside the check. Review important files manually before permanent deletion.
 
-> **Note**
+> **Caution**
 >
-> Make sure the **main Query Loop inside the Search Result template** has **"Is main query"** enabled. Otherwise the native search override will not apply.
+> Deleting an attachment permanently removes its files. Any reference the usage check did not find may become a broken image or download.
 
-Once configured, perform a search on the frontend and your results will follow the criteria defined in the Search Result template. If **Custom search criteria** is enabled but no post fields, meta fields, or taxonomies are enabled, the search has no custom source to search and will return no matches.
+## Organize media with folders
 
-## Search Criteria in the "Filter – Search" Element
+Media folders require a compatible integration. Bricks 2.4 includes support for <a href="https://happyfiles.io/" target="_blank" rel="noopener noreferrer">HappyFiles</a>.
 
-When [Query Filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/) are enabled in Bricks, you can create advanced filtering systems for any Query Loop on any page.
+When the integration and your permissions allow it, you can:
 
-Before Bricks 2.2, the **Filter – Search** element always used the default WordPress `"s"` logic. Now, you can define custom search criteria per filter element. Inside the Filter – Search element settings, you will now see a **Search Criteria** section.
+- Browse all media, uncategorized media, and nested folders.
+- Create, rename, move, and delete folders.
+- Drag attachments or a selection into a folder.
+- Move selected attachments with the bulk action.
+- Upload files directly into the active folder.
 
-If the Filter – Search element uses the native WordPress search URL parameter `s`, Bricks expects the search criteria to come from the Search Result template instead of the individual filter element. This keeps the frontend search box, URL parameter, and Search Result template aligned.
+Open a subfolder from the folder sidebar or from the child folders shown above the media results. Attachment file names are available when you hover over an item or focus it with the keyboard.
 
-> **Note**
->
-> Meta field search: ACF, Meta Box, and JetEngine Post Object, Relationship, and User fields usually store IDs in post meta. **Search Criteria searches the raw meta value** and does not automatically resolve those IDs to related post titles, post content, or user display names. To search those labels, store them in a separate searchable text meta field and include that meta key in Search Criteria.
+Deleting a folder does not delete its attachments. Their relationship to that folder is removed. Files without another folder become uncategorized, and child folders move to the deleted folder's parent.
 
-#### Post Query
+![](https://academy.bricksbuilder.io/assets/media-browser-folders-via-happyfiles-integration.webp)
 
-Search post fields - Enable to define whether to search in Title, Content, and Excerpt
+## Check media with Media Health
 
-Search post meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
+Media Health audits attachments in the background and groups them by issue. Open **Health** in the Media sidebar to see the scan status, issue counts, decorative images, and attachments that passed all enabled checks.
 
-Search post terms - Search assigned terms of selected taxonomies by term name, slug, and description. Useful for product categories, tags, brands, or other taxonomy-based relationships.
+The available checks are:
 
-#### Term Query
+- **Missing alt text**: Images with empty alternative text that are not marked decorative.
+- **Broken files**: Local original files that are missing, unreadable, or empty.
+- **Missing image sizes**: Eligible registered sizes missing from attachment metadata or local storage.
+- **Oversized files**: Original files above the configured threshold for their media type.
+- **Obsolete formats**: Files whose extensions match the configured list.
 
-Search term fields - Enable to define whether to search in Name, Slug, and Description.
+If an offload service removes local originals, its integration can use the [`bricks/media_browser/health/file_status` filter](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-media-browser-health-file-status/) to classify file availability. This changes the health status check; it does not download remote files or make local repair actions available.
 
-Search term meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
+Select an issue to inspect the attachment and use the available resolution:
 
-#### User Query
+- Add alternative text, mark the image decorative, or ignore the missing-alt finding.
+- Generate missing image sizes or regenerate every registered size.
+- Optimize an oversized image or replace another oversized file.
+- Convert an obsolete image or replace another obsolete file type.
+- Replace or relink a broken file, then recheck it.
+- Ignore a finding and restore it later if no change is required.
 
-Search user fields - Enable to define whether to search in Username, Nicename, Email, URL, and Display name.
+File replacement preserves the attachment ID and editorial metadata, such as title, caption, and alternative text. Replacing, relinking, or optimizing an attachment can affect every location that uses it, so Bricks shows detected usage before applying the change.
 
-Search user meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
+### Preserve file URLs during repairs
 
-## How matches are applied
+An in-place repair must preserve the attachment's current upload path and file URL. Choose a replacement in the same compatible format as the original. For example, replacing a JPEG with another JPEG can preserve its URL; replacing it with a WebP file would require a different extension and is blocked.
 
-For post queries, Bricks searches the selected sources and sets the matching post IDs on the query. For term and user queries, Bricks sets the matching term or user IDs on the query. If there are no matches, Bricks passes an impossible ID/slug so the target query returns no results.
+The same restriction applies to relinking, optimization, and conversion. Bricks rejects an in-place action that changes the upload path, even if the usage check finds no references. Stored URLs in content or external systems may be outside that check.
 
-Search Criteria uses partial `LIKE` matching. For post terms, Bricks searches the assigned term name, slug, and description for each selected taxonomy. For custom meta fields, it searches the raw stored `meta_value`.
+For a format conversion, use a copy action when offered to create a separate attachment, then select that attachment in the locations that should use it. Otherwise, upload the new file as a separate attachment. Creating a copy does not update existing references to the original.
 
-Every enabled field, meta key, or taxonomy adds work to the database query. Use the smallest set of searchable fields that matches the frontend experience you need.
+![](https://academy.bricksbuilder.io/assets/media-browser-media-health.webp)
 
-## What is "Use weight score"? {#weight-score}
+### Configure Media Health
 
-Weight score lets you control the order of your search results. The higher the weight score for a specific search field, the higher the result will appear if that field matches the search term.
+Go to **Bricks > Settings > Builder > Media**. Media Health and all five checks are enabled by default.
 
-> **Note**
->
-> Important Notes:
-> - You must enable **Use weight score** for ranking to take effect.
-> - If a **Sort** filter is active, it will override the weight-score ordering.
+The default oversized-file thresholds are:
 
-#### Example: How weight scoring works
+| Media type | Default threshold |
+| ---------- | ----------------: |
+| Images     |              1 MB |
+| Fonts      |            0.5 MB |
+| Documents  |              5 MB |
+| Audio      |             10 MB |
+| Video      |             50 MB |
 
-Search Criteria setup:
+Set a threshold to `0` to disable oversized-file warnings for that media type.
 
-Search post fields:
-- Title → **weight 1**
-- Content → **weight 1**
+The default obsolete extension list is `bmp,tif,tiff`. Enter extensions without leading dots, separated by commas. An empty list disables obsolete-format findings while leaving the other health checks active.
 
-Search post meta fields:
-- my_field → **weight 3**
+Changing the enabled checks, thresholds, or obsolete extensions updates the Media Health policy. Attachments are checked again against the current policy.
 
-Search term: **car**
+## Permissions
 
-Matched posts:
+The Media Browser follows WordPress attachment capabilities:
 
-| Post ID | Found in | Weight |
-| --- | --- | --- |
-| 1001 | Title | 1 |
-| 1002 | Title + Content | 1 + 1 = 2 |
-| 1003 | my_field | 3 |
+- Upload actions require permission to upload files.
+- Metadata, download, regeneration, move, and repair actions require permission to edit the affected attachments.
+- Trash, restore, and permanent deletion require permission to delete the affected attachments.
+- Site-wide Media Health auditing requires permission to edit attachments uploaded by other users.
 
-**Final result order:**
-**1003**, **1002**, **1001**
-
-Weight scores are integer values with a minimum of 1. Matching scores are added together, so an item that matches multiple low-weight fields can outrank an item that matches one field. Bricks preserves the weighted order by ordering the query by the matched ID list. If a Sort filter is active, that sort order takes precedence.
+Users can inspect attachments they are allowed to see even when they cannot edit or delete them. Bulk actions are only offered when every selected attachment supports the action.
 
 ---
 
-# Create Your Own Sidebars
+# Menu Builder
 
-Source: https://academy.bricksbuilder.io/builder/features/sidebars/
+Source: https://academy.bricksbuilder.io/builder/features/menu-builder/
 
-*Create and register sidebars for Bricks so widget areas can be placed and styled inside templates and layouts.*
+*Build fully custom navigation menus in Bricks with template-driven layouts, dynamic menus, and responsive behavior.*
 
-Bricks provides you with its own, built-in sidebar generator. Located in your WordPress dashboard under **Bricks > Sidebars** it lets you to create unlimited sidebars (widgetized areas).
+Bricks 1.8 introduced a completely new, fully responsive, accessible, and highly customizable suite of elements to create nav menus/site navigations in Bricks.
 
-All you need to do is give your sidebar a name and description (optional), and click Create new sidebar.
+https://www.youtube.com/watch?v=1GbJx0JnDDE
 
-Once your custom sidebar is created go to **Appearance > Widgets** and drag and drop the widgets of your choice into your newly created sidebar.
+The new menu builder consists of 5 new elements (listed below), which you can mix, match, and configure to your liking to design all kinds of desktop & mobile menus.
 
-You can now add this newly created sidebar inside the builder by dragging the **Sidebar** element onto the canvas.
+There are some best practices to be aware of to ensure proper accessibility & styling. So please take the time to go over the information below to get a solid understanding of this new, powerful tool.
 
----
+### Nav (nestable) {#nav-nestable}
 
-# SVG Uploads
+This new nestable element contains both your desktop & mobile menu.
 
-Source: https://academy.bricksbuilder.io/builder/features/svg-uploads/
+As with any other nestable element, you can now add any element to your menus in Bricks and are no longer limited to the old "flat" Nav menu.
 
-*Enable SVG uploads in Bricks, understand the security tradeoffs, and manage SVG assets inside the builder workflow.*
+There is a built-in setting for selecting the breakpoint at which you want to show your mobile menu. The mobile menu uses the same markup & elements as the desktop menu. It's just optimized & styled for mobile devices & small screens.
 
-WordPress does not allow SVG file uploads by default because SVG is an XML-based image format that can contain malicious code. SVG files are especially risky when they come from unknown sources or are uploaded by untrusted users.
+You can also design mobile menus with completely different content/elements by using the new Offcanvas & Toggle elements. Both of which we'll explore later on.
 
-## How to enable SVG support
+### Text link {#text-link}
 
-You can enable SVG uploads by user role under **Bricks > Settings > General > SVG uploads**.
+A simple, but super handy new element to create simple nav menu text links (plus an icon if needed). This is much better than turning a Basic Text element into a link. You can, of course, use the Text link anywhere else on your site.
 
-Bricks only lists roles that can edit posts. When a role is enabled, Bricks grants that role the `bricks_upload_svg` capability and adds `svg` and `svgz` to the allowed upload MIME types for users with that capability.
+### Dropdown (nestable) {#dropdown}
 
-You can also override SVG upload access for an individual user from the user's WordPress profile. An individual user setting can enable or disable SVG uploads separately from the user's role default.
+Use the new Dropdown element to create fully accessible sub-menus. Which you can nest as many levels as you want by adding dropdowns within dropdowns. You can also choose when to trigger a dropdown (on hover, click, or both).
 
-Once SVG uploads are enabled for a user, Bricks tries to sanitize uploaded SVG files during the WordPress upload process.
+The little dropdown arrow next to the dropdown text/link lets you always toggle the Dropdown via the keyboard (on SPACE or ENTER press) for accessibility.
+
+Enable **Mega menu** on a Dropdown to create a nestable mega panel. Use the available page width, set a custom width, or align it to another element on the page.
+
+You can even create multilevel mobile menus where only the active dropdown slides into the view.
+
+We also got settings to easily design custom dropdown carets.
+
+### Toggle {#toggle}
+
+The main purpose of this new, fully-accessible "hamburger" toggle icon/button is to show/hide your mobile menu and/or Offcanvas elements.
+
+You can choose from various animation effects, and even set your own custom toggle icon.
+
+Without a "CSS selector", a Toggle opens the first Offcanvas on the page. Only when the page has no Offcanvas does it toggle the Nav (Nestable) it is placed in. So if a page has an Offcanvas (for example in the header template) and a Nav (Nestable) mobile menu, or several Offcanvas elements, enter the target's "CSS selector" in the Toggle.
+
+You can use it for so much more, though. As it provides settings to toggle any HTML attribute of any element on your page.
+
+Similar triggers can be achieved via [Interactions](https://academy.bricksbuilder.io/builder/features/interactions/). But the Toggle comes with built-in accessibility & menu builder logic that makes the whole toggle process so much faster, easier, and better.
+
+### Offcanvas (nestable) {#offcanvas}
+
+Being nestable, the new Offcanvas element lets you create unique mobile menus with completely different content from your desktop menu. You can populate the Offcanvas with any elements you like, and are not limited to menus, though.
+
+The Offcanvas comes with two effects: slide-in (default) & offset, and can be toggled (open/close) through the "Toggle" element. It's super simple as you can see in the [Offcanvas set up](#mobile-menu-offcanvas) section down below.
+
+Starting at Bricks 1.11, [the new "Toggle Offcanvas" interaction](https://academy.bricksbuilder.io/builder/features/interactions/#toggle-offcanvas), lets you toggle your Offcanvas from any element.
+
+## Default menu structure {#menu-structure}
+
+When adding a **Nav (Nestable)** element to the canvas it is populated with 2 Nav links, 1 Dropdown, and 2 Toggle elements (to show & hide the mobile menu).
+
+![](https://academy.bricksbuilder.io/assets/bricks-1.8-nav-nestable-default-structure.png)
+
+Being a nestable element, you can add any Bricks element inside your menu.
+
+The "Nav items" Block is a special element that can't be deleted individually as it holds all top-level menu items, and serves as the mobile menu wrapper. The same goes for the "Content" Div inside the Dropdown element, which contains all dropdown content.
+
+All top-level menu items are automatically wrapped in a `li` HTML tag for accessibility. The "Nav items" uses an `ul` tag. The same goes for the "Dropdown structure.
+
+## Default mobile menu structure {#mobile-menu}
+
+By default, the mobile menu becomes visible at the "Mobile landscape" breakpoint. Meaning instead of displaying the top-level menu items, a (hamburger) Toggle becomes visible that opens the mobile menu when you click on it. You can, of course, select any other breakpoint to start showing your mobile menu when editing your Nav nestable element.
 
 > **Note**
 >
-> No built-in SVG sanitizer can guarantee that every malicious SVG will be made safe. Upload SVG files only from trusted sources, and enable SVG uploads only for users you trust.
+> **IMPORTANT**: Make sure you are editing the "Mobile menu" and "Nav items" element settings on the breakpoint at which the mobile menu starts to display at (default: Mobile landscape).
 
-## What Bricks sanitizes
+![](https://academy.bricksbuilder.io/assets/bricks-1.8-nav-nestable-mobile-menu-toggle.png)
 
-Bricks sanitizes uploaded files whose upload type is `image/svg+xml`.
+The Toggle element labeled "Toggle (Open: Mobile)" opens the mobile menu (highlighted in the screenshot above).
 
-During upload, Bricks:
+You can choose from various animations that are performed on the Toggle when clicked.
 
-- Allows `.svg` and `.svgz` uploads for users with SVG upload capability.
-- Runs SVG uploads through the `enshrined/svg-sanitize` sanitizer library.
-- Minifies the sanitized SVG output.
-- Detects gzipped SVG content, decodes it for sanitization, and re-encodes it afterward.
-- Blocks the upload with an error message if sanitization fails.
-- Removes the forced 1px image dimensions WordPress can assign to SVG attachments.
+The "Toggle (Close: Mobile)" element is located inside the "Nav items" (the mobile menu wrapper).
 
-SVG media uploads are different from the **SVG element > Source: Code** workflow. Pasted SVG source code in the SVG element is treated as executable Bricks code, requires code execution capability, and requires a valid code signature.
+## Mega menus {#mega-menu}
 
-## Bypass sanitization {#bypass-sanitization}
+Creating mega menus with Bricks couldn't be easier. Just "Enable" the mega menu setting when editing the "Dropdown" element of your choice.
 
-Although it is wise to sanitize SVG files uploaded to WordPress, there may be situations where you want to bypass the Bricks SVG sanitizer because another trusted process handles sanitization.
+By default, the Dropdown Content covers the entire available (viewport) width like this:
 
-To bypass Bricks SVG sanitization, use the `bricks/svg/bypass_sanitization` filter:
+![](https://academy.bricksbuilder.io/assets/bricks-1.8-dropdown-mega-menu.png)
 
-```php
-add_filter( 'bricks/svg/bypass_sanitization', function( $bypass, $file ) {
-  // Perform your own checks before bypassing Bricks sanitization.
+You can also define a "CSS selector" whose width & horizontal position the mega menu will adjust to. The following screenshot uses the element `id` of its outer Container:
 
-  return $bypass;
-}, 10, 2 );
-```
+![](https://academy.bricksbuilder.io/assets/bricks-1.8-dropdown-mega-menu-css-selector.png)
 
-Filter callback parameters:
+### Set a custom mega menu width {#mega-menu-width}
 
-- `$bypass` is a boolean. Return `true` to bypass Bricks sanitization.
-- `$file` is the uploaded file array from `$_FILES`.
+Since Bricks 2.5, open the Dropdown's **Mega menu** group and set **Width** directly, for example to `900px`, `80%`, or `clamp(20rem, 80%, 60rem)`. You do not need an extra element just to define a width. These settings are also available in the **Nav Menu** element's **Mega menu** group.
 
-To bypass Bricks SVG sanitization for every SVG upload:
+**Width** uses the horizontal reference area:
 
-```php
-add_filter( 'bricks/svg/bypass_sanitization', '__return_true' );
-```
+- Leave **CSS selector (Horizontal)** empty to use the page body.
+- Enter a selector, such as `#site-header-container`, to use that element's width and horizontal position.
+- Percentage widths use the reference area's width. For example, `80%` of a 1000px reference area is 800px.
+- Leave **Width** empty to retain the reference area's full width.
 
-Only bypass sanitization when you fully control the SVG source or run another trusted sanitizer before the file is stored.
+When a custom width is set, choose **Alignment > Left**, **Center**, or **Right** to place the panel within that reference area. The default is **Left**. Width and alignment can be adjusted at responsive breakpoints.
 
-## Sanitizer allowed tags and attributes {#allowed-tags-attributes}
+For a centered panel occupying most of the page width, leave the horizontal selector empty, set **Width** to `80%`, and choose **Center**. Preview narrower screen widths as well. In a Nav (Nestable) mobile drawer, the panel returns to the drawer layout instead of retaining a fixed desktop width.
 
-The sanitizer uses the default allowed tags and attributes from the `enshrined/svg-sanitize` library. In some edge cases, you may need to allow additional SVG tags or attributes. In high-security environments, you may want to narrow the allowed lists.
+<div className="screenshot screenshot--control-panel">
 
-Bricks exposes two filters:
+![Dropdown Mega menu enabled with Width set to 80%, Alignment set to Center, and no horizontal reference selector.](https://academy.bricksbuilder.io/assets/builder/release-2.5/mega-menu-panel.webp)
 
-```php
-add_filter( 'bricks/svg/allowed_tags', function( $tags ) {
-    $tags[] = 'filter'; // Allow the "filter" tag.
+</div>
 
-    return $tags;
-} );
-```
+![An open mega menu panel occupies 80% of the page width with equal space on its left and right.](https://academy.bricksbuilder.io/assets/builder/release-2.5/mega-menu-result.webp)
 
-```php
-add_filter( 'bricks/svg/allowed_attributes', function( $attributes ) {
-    $attributes[] = 'filterUnits'; // Allow the "filterUnits" attribute.
+The Dropdown "Content" is just a Div element. Allowing you to can create any mega menu layout:
 
-    return $attributes;
-} );
-```
-
-Use these filters carefully. Allowing extra SVG tags or attributes can reintroduce security risk, especially for attributes that can reference external resources or execute script-like behavior.
-
-## Security checklist
-
-Before enabling SVG uploads:
-
-- Enable SVG uploads only for trusted roles or trusted individual users.
-- Upload SVG files only from trusted sources.
-- Keep sanitization enabled unless you have another trusted sanitizer in place.
-- Review any custom allowed tags or attributes.
-- Do not treat media-upload SVG sanitization as protection for SVG element source code; SVG element source code uses the code execution and code signature security model.
-
----
-
-# Template Library
-
-Source: https://academy.bricksbuilder.io/builder/features/template-library/
-
-*Browse, import, and manage templates from the Bricks Template Library.*
-
-In Bricks 2.4, templates are managed inside the Builder Browser. Open it by clicking the folder icon in the builder toolbar.
-
-You can also press `CMD / CTRL + SHIFT + L` to open the Browser on the Templates view if your user has template access.
-
-All of your own templates are located under the **My Templates** source. You can also browse built-in remote sources such as Wireframes and Design sets, plus any Remote Templates sources configured for your site.
-
-![](https://academy.bricksbuilder.io/assets/docs-template-library-1024x576.png)
+![](https://academy.bricksbuilder.io/assets/bricks-1.8-dropdown-mega-menu-three-columns.png)
 
 <figcaption>
 
-Template Library: My Templates and remote sources
+A simple three-column mega menu
 
 </figcaption>
 
-https://www.youtube.com/watch?v=gbWPw9ebxjQ
+### WordPress mega menu {#wp-mega-menu}
 
-## Template Sources {#interface}
+You can also add mega menus to your WordPress menu by enabling the "Mega menu" setting of your  "Nav menu" element like this:
 
-In the Templates view, the **Source** dropdown can include:
+![](https://academy.bricksbuilder.io/assets/bricks-1.8-nav-menu-mega-menu.png)
 
-- **My Templates**: Templates from the current site.
-- **Wireframes**: Structural Bricks templates based on classes and variables.
-- **Design sets**: Pre-designed Bricks template sets.
-- **Remote sites**: Templates from configured remote Bricks installations.
+Next, create your mega menu using a new template (template type: section).
 
-[Remote Templates](https://academy.bricksbuilder.io/builder/features/remote-templates/) allow you to browse templates from any other Bricks installation that you have access to.
+Then, go to "Appearance > Menus" and expand the top-level menu item you want to display this mega menu under, and select your mega menu template from the "Mega menu" options:
 
-## Import Images & Replace Content {#import-images}
+![](https://academy.bricksbuilder.io/assets/bricks-1.8-wordpress-mega-menu.png)
 
-The Templates view includes two import controls:
+Your mega menu template now appears when you hover over this menu item on the frontend.
 
-- **Import images**: When enabled, template images are downloaded into your Media Library. Leave it disabled to insert the template with placeholder images.
-- **Replace content**: When enabled, Bricks replaces the current canvas with the inserted template. Leave it disabled to insert the template into the existing content.
+## Multilevel dropdown menus {#multilevel}
 
-## Template Filters {#filters}
+Creating multilevel dropdowns is just as easy. Simply enable the "Multilevel" setting on an individual Dropdown or directly on the "Nav nestable" element so it gets applied to all your Dropdowns.
 
-The Templates view can show these filters:
+"Multilevel" means that only the active Dropdown Content is visible. This is especially useful for dropdown menus with a lot of items or for dropdowns with multiple nested Dropdowns, as they most likely overflow the viewport. Especially on mobile.
 
-- **Template Bundle**: Select a template bundle to show only templates that belong to the selected bundle. A template bundle can be a collection of templates of the same website (e.g. home page, contact, about us page, etc.)
-- **Template Tag**: Select a template tag to show only templates that have the selected tag assigned to them.
-- **Template Type**: Select a template type to show only templates of the selected template type.
-- **Search Templates**: Enter any keyword to search for a specific template.
+A customizable "back" link can also be set, which is displayed as the first item of every Dropdown level.
 
-## Template Actions
+As only the active Dropdown is visible, the multilevel dropdown automatically toggles on click, not hover.
 
-The Templates view includes action icons for creating, saving, importing, reloading remote sources, generating local template screenshots when available, and switching between grid and list view.
+You also only have to enable "Multilevel" at the root level of your Dropdown. All sub Dropdowns have multilevel capability out-of-the-box.
 
-Individual templates can show actions such as insert, edit, export, delete, preview, and **Import to templates**, depending on the source and your builder permissions.
+### WordPress multilevel menus {#wp-multilevel}
 
-**Import to templates** saves a non-local template under **My Templates**. For a configured Bricks remote site, Bricks 2.4 also localizes component dependencies and their referenced design-system data before continuing through the normal template import flow.
+Bricks 1.8 lets you turn your WordPress sub menus into multilevel menus too. Simply enable the "Multilevel" setting of your "Nav menu" element, and then activate the "Multilevel" setting of your WordPress menu items under "Appearance > Menus" like this:
 
-### Create Template {#create-template}
+![](https://academy.bricksbuilder.io/assets/bricks-1.8-wordpress-multilevel-menu.png)
 
-Click the **Create template** icon to create a new template. Enter a title and select a template type. The template bundle is optional. Click **Create template** to create it.
+## Static (position) dropdown menus {#dropdown-static}
 
-You can also create a new Bricks template from the WordPress dashboard by going to **Bricks → Templates** and click **Add New**. Then give your template a title, select a template type from the meta box on the right side of the editing screen and click **Publish**. Template tags and bundles are optional.
+![](https://academy.bricksbuilder.io/assets/bricks-1.8-menu-builder-dropdown-position-static.png)
 
-### Save As Template {#save-as-template}
+By default, the dropdown content is positioned `absolute`. Taking it out over the document flow. Which is the expected/desired in a desktop menu.
 
-Click the **Save as template** icon to save your current builder content as a template. Enter a title and select a template type. Selecting a template bundle is optional.
+But when, for example, the Dropdown is placed inside an Offcanvas you most likely don't want this behaviour.
 
-To save a specific section as a template hover over a section in the builder. The Edit (pen) icon should appear in the bottom right corner. Hover over it, and click the "disk" icon (Save Section As Template). Give your template section a name and select template type "Section". Then click **SAVE NEW TEMPLATE**.
+Instead you want to show the dropdown content on click and positioned right underneath the dropdown toggle & in the normal document flow.
 
-### Import Template {#import-template}
+To accomplish that simply enable the "Position: Static" setting when editing the Dropdown of your choice.
 
-Click the **Import template** icon to import existing template files. You can import a single template as JSON or multiple templates in ZIP format.
+## WordPress dropdown menus {#wordpress-menu}
 
-Click "Select file(s) to import" and select the JSON/ZIP file from your computer or drag and drop those files into the marked drop zone.
+To use a WordPress menu inside your custom nav nestable, add the "Nav menu" element inside your Dropdown > Content element. Then edit it, and select the WordPress menu you'd like to display inside your dropdown.
 
-To import templates from the WordPress dashboard go to
-**Bricks > Templates** and click **Import Templates**.
+![](https://academy.bricksbuilder.io/assets/bricks-1.8-nav-menu-inside-dropdown.png)
 
-Select your template file (JSON/ZIP) from your computer and click **Import template(s)**. Or drag and drop those files into the drop zone.
+This means every WordPress menu you create for your nav nestable should hold the menu items you want to display inside a specific dropdown.
 
-When imported templates include related data, Bricks may ask you to review imported theme styles, color palettes, global variables, global classes, or Style Manager settings before inserting the template.
+We have chosen this approach as it lets you take full advantage of the nav nestable customisation options, while still being able to control your menu via WordPress.
 
-Remote templates that use components can also transfer those components, including nested component dependencies. See [Remote Templates](https://academy.bricksbuilder.io/builder/features/remote-templates/) for the access, permission, conflict, and compatibility rules.
+You can style this WordPress menu by editing the "Dropdown" it's been places in, or if you wish to style it like the entire menu you can tweak the "Dropdown" settings of your "Nav nestable".
 
-### Sync Templates
+## Unique mobile menus (Offcanvas + Toggle) {#mobile-menu-offcanvas}
 
-The sync icon is available for non-My Templates sources. It refreshes the selected remote source.
+Use the new Offcanvas element to create unique mobile menus. Or any other content you want to slide into view via the Toggle element.
 
-## Export Template(s) {#export-templates}
+Let's start by adding an Offcanvas element to our page.
 
-To export a template, hover over the template title and click **Export Template**. This will generate and download a JSON file with your template data onto your computer.
+> **Note**
+>
+> Make sure you position the Offcanvas element outside the "Nav (nestable)". Otherwise, the Toggle logic of those two togglable elements can interfere. **We position it AFTER our "Nav nestable". **
 
-To export multiple templates at once as a ZIP file, go to **Bricks → Templates** in your WordPress dashboard, and select the templates you want to export.
+As we don't use the default mobile menu view of the Nav nestable, we can delete the "Toggle (Close: Mobile)" element.
 
-Now select **Export** from the **Bulk Actions** dropdown, and click **Apply**:
+We'll use the "Toggle (Open: Mobile)" element to open our Offcanvas element. Simply copy the Offcanvas element ID from the panel, edit the "Toggle (Open: Mobile)" element, and paste it under the "CSS selector" setting.
 
-![](https://academy.bricksbuilder.io/assets/file-XTTkSk9tej.jpg)
-
-A ZIP file of your selected templates will be generated and downloaded onto your computer.
-
-This ZIP file contains all templates as individual JSON files. Either unzip it to import individual templates or import the entire ZIP file to bulk import all templates at once.
-
----
-
-# Style Manager
-
-Source: https://academy.bricksbuilder.io/builder/features/style-manager/
-
-*Use Bricks Style Manager to manage theme styles, classes, variables, colors, spacing, and other design-system primitives in one place.*
-
-The Style Manager is the central place in Bricks for managing design system primitives and reusable styling tools. It brings together theme styles, classes, variables, colors, scales, and imported CSS into a single interface inside the builder.
-
-Its purpose is to centralize styling decisions so you can change colors, spacing, typography, and layout rules in one place without hunting through different panels.
-
-## What the style manager contains
-
-The Style Manager is organized into eight tabs:
-
-1. Theme styles
-2. Classes
-3. Variables
-4. Colors
-5. Typography
-6. Spacing
-7. Framework
-8. Settings
-
----
-
-## Theme styles
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.2-style-manager-canvas-preview-fullscreen-scaled.png)
-
-Theme Styles define global default styles for HTML elements and Bricks elements.
-
-Typical use cases include:
-
-- Base typography for headings and body text
-- Default button and form styles
-- Global colors and spacing
-- Responsive defaults
-- Global hover and focus states
-
-Theme Styles are condition-based. You can apply them to the entire site, specific templates, or specific pages. They support breakpoints and pseudo-classes, which makes them suitable for defining interaction behavior centrally.
-
-For more: [/builder/styling/theme-styles/](https://academy.bricksbuilder.io/builder/styling/theme-styles/)
-
-## Classes
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.2-style-manager-class-manager-scaled.png)
-
-The Class Manager is used to create reusable CSS classes that can be applied to any element.
-
-Use classes when:
-
-- A style is reused across multiple elements
-- The style is not a global default
-- You want consistent reuse instead of copying values
-
-Classes can be organized into categories, locked, and filtered by usage and status.
-
-Theme Styles define defaults. Classes opt elements into specific behavior.
-
-For more: [/builder/styling/global-class-manager/](https://academy.bricksbuilder.io/builder/styling/global-class-manager/)
-
-## Variables
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.2-style-manager-variable-manager-scaled.png)
-
-The Variable Manager is where you define CSS custom properties that act as design tokens.
-
-Variables are commonly used for:
-
-- Colors
-- Spacing values
-- Font sizes
-- Layout dimensions
-- Reusable numeric values
-
-Instead of repeating numbers, you reference variables using `var(--variable-name)`. Updating a variable updates every place where it is used.
-
-Variables can be imported from CSS or JSON, grouped into categories, and renamed.
-
-For more: [/builder/styling/global-variables-manager/](https://academy.bricksbuilder.io/builder/styling/global-variables-manager/)
-
-## Colors
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.2-color-manager-scaled.png)
-
-The Color Manager builds structured color systems on top of CSS variables.
-
-Each color is stored as a variable and can optionally:
-
-- Have light and dark mode values
-- Generate shade and transparency variants
-- Generate utility classes
-
-For more: [/builder/features/color-manager/](https://academy.bricksbuilder.io/builder/features/color-manager/)
-
-## Typography
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.2-style-manager-typography-scales-scaled.png)
-
-The Typography tab generates fluid type scales using CSS variables and `clamp()`.
-
-Instead of manually setting font sizes, you define:
-
-- A base size
-- A scale ratio
-- Minimum and maximum viewport widths
-
-From this, Bricks generates a set of variables that scale smoothly between mobile and desktop.
-
-Typography scales are useful when you want:
-
-- Consistent hierarchy
-- Responsive sizing without manual breakpoints
-- Fewer arbitrary font-size decisions
-
-You can use t-shirt sizing, numeric steps, or custom names. Generated variables can be used directly or via utility classes.
-
-Manual mode allows overriding calculated values when precise control is required.
-
-For all scale controls and how to use the variables in a theme style, see [Fluid Typography](https://academy.bricksbuilder.io/builder/styling/fluid-typography/).
-
-## Spacing
-
-![Style Manager Spacing tab with a scale named Spacing: prefix space-, scale type T-shirt, baseline step m, minimum and maximum settings, and steps from space-2xs to space-4xl with their minimum and maximum values.](https://academy.bricksbuilder.io/assets/bricks-style-manager-spacing-scale.webp)
-
-The Spacing tab generates fluid spacing values for margins, padding, and gaps using the same scale-based system as typography.
-
-Each value is a CSS variable with a `clamp()` value that grows smoothly between small and large screens, so one variable can replace a padding value and its breakpoint overrides. Set the variables once in a theme style, for example on every section, to keep the spacing consistent across pages.
-
-You can generate utility classes such as `gap-m` or `p-l`, but only generate what you actually use.
-
-For creating a scale, adding steps and using the variables in a theme style, see [Fluid Spacing](https://academy.bricksbuilder.io/builder/styling/fluid-spacing/).
-
-## Framework
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.2-framework-importer-scaled.png)
-
-The Framework tab imports external CSS and converts it into Bricks classes & variables.
-
-It can:
-
-- Parse class rules
-- Extract variables from `:root`
-- Categorize styles by intent
-- Apply prefixes to avoid conflicts
-
-This is mainly useful for:
-
-- Migrating or importing CSS frameworks
-- Importing existing custom CSS stylesheets
-
-All imports can be manually reviewed before being added.
-
-## Settings
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.2-style-manager-settings-scaled.png)
-
-The Settings tab controls how typography and spacing scales are generated, and which color mode is used by default.
-
-### Color mode
-
-- Light: always start in light mode
-- Dark: always start in dark mode
-- Auto: follow system preference
-
-### Scale configuration
-
-These settings affect typography and spacing:
-
-- HTML font-size for rem calculations
-- Minimum and maximum viewport widths
-
----
-
-## Interface controls and preview
-
-The Style Manager header includes a full-screen button and a toggle to show or hide the canvas preview per tab.
-
-The canvas preview shows the currently edited page and updates in real time as you make changes. It responds to breakpoint switching and can be resized.
-
----
-
-## Keyboard shortcuts
-
-You can switch between Style Manager tabs using number keys based on their position.
-
-You can also open and close the Style Manager popup using:
-
-`CMD + .` (macOS)
-`CTRL + .` (Windows/Linux)
-
----
-
-# Template Settings
-
-Source: https://academy.bricksbuilder.io/builder/features/template-settings/
-
-*Use Bricks template settings to control template type, conditions, popup behavior, headers, and other template-level options.*
-
-Template Settings control how a Bricks template behaves as a template. They are separate from element settings and page settings.
-
-Use Template Settings to choose where a template renders, which content appears in the builder preview, how a header behaves, how a popup behaves, how a search template modifies native search, and how a password-protection template protects content.
-
-When editing a template, click the **Settings** icon in the builder toolbar, then open **Template Settings**.
-
-![](https://academy.bricksbuilder.io/assets/builder-template-settings-1024x576.png)
+![](https://academy.bricksbuilder.io/assets/bricks-1.8-offcanvas-add-element-id-to-toggle-open.png)
 
 <figcaption>
 
-Toolbar > Settings > Template Settings
+Toggle: "CSS selector" setting containing our Offcanvas element ID
 
 </figcaption>
 
-The groups you see depend on the template type you are editing.
+Save your changes, and head to the front end. A click on the Toggle icon should open your Offcanvas.
 
-| Group | Visible when | Purpose |
-| --- | --- | --- |
-| Header | Header templates | Controls header location, width, sticky behavior, and scrolling styles. |
-| Popup | Popup templates | Controls popup layout, styling, interactions, AJAX behavior, and popup limits. |
-| Search Criteria | Search Results templates | Customizes the native WordPress search criteria for the search results template. |
-| Conditions | Most template types | Determines where the template applies. |
-| Password Protection | Password Protection templates | Controls password source, password, logged-in bypass, and schedule. |
-| Populate Content | Most template types | Controls the builder preview context. |
+As the Offcanvas is a nestable element, you can add any layouts & elements inside of it.
 
-Product archive and single product WooCommerce templates can use **Conditions**. Other WooCommerce route templates hide **Conditions** and **Populate Content** because WooCommerce controls when those templates are rendered.
+The Offcanvas comes prepopulated with a close Toggle. Clicking outside the Offcanvas (on the backdrop) or pressing Esc also closes it. For focus and keyboard behavior, see [Offcanvas](https://academy.bricksbuilder.io/builder/elements/general/offcanvas/#opening-closing-and-keyboard-focus).
 
-## Group: Header {#template-settings-header}
+When editing the Offcanvas in the builder make sure to enable the "Keep open while styling" setting, so the Offcanvas does not disappear when you edit different elements.
 
-Only available when editing a **Header** template.
+![](https://academy.bricksbuilder.io/assets/bricks-1.8-offcanvas-element-keep-open-while-styling.png)
 
-Use these settings to control the header area itself:
+<figcaption>
 
-- **Header location:** default top header, or left/right side header.
-- **Header width:** available when the header is placed left or right.
-- **Sticky header:** keeps a top header fixed while scrolling.
-- **Sticky on scroll:** keeps the header in normal flow on page load, then switches it to sticky after scrolling.
-- **Slide up after:** hides the sticky header after the visitor scrolls past a defined distance.
-- **Scrolling text color:** changes text/icon color when the sticky header is in its scrolling state.
-- **Scrolling text color (hover):** changes hover color while scrolling.
-- **Scrolling background:** changes the sticky header background while scrolling.
-- **Scrolling box shadow:** adds a shadow while scrolling.
-- **Transition:** controls the CSS transition used by sticky header state changes.
+Offcanvas: Enable the "Keep open while styling" setting while editing the Offcanvas content
 
-Left and right headers also create spacing beside the content and footer. Use them only when the site layout is intentionally built around a side header.
+</figcaption>
 
-## Group: Popup {#template-settings-popup}
+## Non-fullscreen mobile menus {#mobile-menu-non-fullscreen}
 
-Only available when editing a **Popup** template.
+To show the default mobile menu without it covering the full screen, edit your Nav (nestable) and set the "Height" under "Mobile menu" to `fit-content`.
 
-Popup settings control the popup container and behavior. Depending on your Bricks version and selected options, this includes layout, backdrop, dimensions, position, animation, close behavior, body-scroll behavior, z-index, AJAX rendering, and limits.
+This way the height of your mobile menu automatically grows or shrinks according to its content.
 
-Popup templates can also use interactions. The Popup group includes popup-specific interaction triggers such as **Show popup** and **Hide popup**.
+![](https://academy.bricksbuilder.io/assets/bricks-1.8-menu-builder-mobile-height-fit-content.png)
 
-When using **Hide popup**, target a CSS selector for the action that should run after the popup closes. Do not target the popup itself for that post-close action.
+Then set the "Position" of your "Mobile menu" to your liking, (see screenshot above) so it doesn't cover the Toggle.
 
-## Group: Search Criteria {#template-settings-search-criteria}
+As the "Nav items" element serves as the mobile menu wrapper, you can edit it to set your mobile menu padding, background, etc. Make sure you perform those styling changes on the breakpoint at which your mobile menu starts to show, so those styles only apply to the mobile, and not the desktop menu.
 
-Only available when editing a **Search Results** template.
+Now that the mobile menu no longer covers the entire screen, you can probably remove the "Toggle (Close: Mobile)" element that Bricks adds by default.
 
-By default, WordPress search uses its own criteria. The Search Criteria group lets the Search Results template customize that native search behavior.
-
-Enable **Custom search criteria** to configure:
-
-- **Search post fields:** title, content, and excerpt.
-- **Search post meta fields:** custom meta keys.
-- **Search post terms:** selected taxonomies, including term slug, name, and description.
-- **Use weight score:** assign numeric weights so stronger matches can sort higher.
-
-Every added meta key or taxonomy can affect query performance. Use only the fields that matter for your site search.
-
-For the custom criteria to affect the displayed result list, the main Query Loop in the Search Results template should be configured as the main query.
-
-## Group: Conditions {#template-conditions}
-
-Conditions determine where a template applies on the frontend.
-
-Bricks evaluates conditions against the current WordPress request: single post, page, front page, archive, taxonomy term, search results, 404 page, WooCommerce route, and similar contexts.
-
-You can add more than one condition to a template.
-
-You can choose from the following template conditions:
-
-- **Entire website:** broad condition for the whole site.
-- **Front page:** the page configured as the WordPress front page.
-- **Post type:** posts, pages, products, or custom post types.
-- **Archive:** all archives, post type archives, author archives, date archives, or term archives.
-- **Search results:** native WordPress search results.
-- **Error page:** 404 pages.
-- **Terms:** single entries assigned to selected terms.
-- **Individual:** selected posts, pages, custom post type entries, or child pages.
-
-### Condition fields
-
-The fields shown inside each condition depend on the selected condition type.
-
-| Condition type | Extra fields | How it is used |
-| --- | --- | --- |
-| Entire website | None | Matches every frontend page. |
-| Front page | None | Matches the configured WordPress front page. |
-| Post type | Post type selector | Matches entries of selected post types. |
-| Archive | Archive type, archive post types, archive terms, child terms | Matches archive contexts. Empty archive post type or term fields can mean "all" for that archive subgroup. |
-| Search results | None | Matches native search results pages. |
-| Error page | None | Matches 404 pages. |
-| Terms | Term selector | Matches single entries assigned to selected terms. |
-| Individual | Post/page/CPT selector, child pages | Matches selected entries and optionally their child pages. |
-
-### Include and exclude conditions {#exclude}
-
-Every condition can be used as an include or an exclude.
-
-Use include conditions to define where the template should apply. Use exclude conditions to remove a more specific area from a broad condition.
-
-Example:
-
-1. Include **Entire website**.
-2. Exclude **Individual > Landing Page**.
-
-The template applies everywhere except the selected landing page.
-
-Exclude conditions can disqualify a template even when another condition matches. This is useful for global headers, footers, and broad Single or Archive templates.
-
-![](https://academy.bricksbuilder.io/assets/template-condition-exclude.png)
-
-When selecting archive terms or individual entries, you can also apply the condition to child terms or child pages.
-
-### Condition specificity
-
-If multiple templates of the same area match the current page, Bricks uses the most specific match.
-
-As a practical guide:
-
-- Individual entries are more specific than child-page matches.
-- Front page is more specific than a general post type match.
-- Selected terms, selected archives, and child-page matches are more specific than broad archive or post type matches.
-- Post type is more specific than Entire website.
-- Entire website is a broad fallback.
-
-If the wrong template renders, check for another published template with a more specific matching condition.
-
-### Section hooks
-
-Section templates can be rendered at a WordPress action hook.
-
-When editing a Section template, each condition can expose:
-
-- **Hook: Name**
-- **Hook: Priority**
-
-Bricks checks the condition and then renders the section when the hook runs. For example, a Section template with condition **Entire website** and hook name `bricks_before_footer` renders at that hook across the site.
-
-Hook fields are only available for Section templates in the builder.
-
-### Default templates
-
-If no template conditions are set, Bricks can still use published templates of supported types when default templates are enabled.
-
-This setting is in **Bricks > Settings > Templates & components > Disable default templates**.
-
-When disabled, templates need matching conditions or route-specific behavior to render. This makes production template assignment easier to audit.
-
-## Group: Password Protection {#template-settings-password-protection}
-
-Only available when editing a **Password Protection** template.
-
-Password protection templates replace the normal content template when their conditions match and the password gate is active.
-
-Settings include:
-
-- **Password source:** choose **Template & post password**, **Template password**, or **Post password**.
-- **Password:** the template-level password. Not available when using only post passwords.
-- **Disable for logged-in users:** bypass the gate for logged-in users.
-- **Schedule:** optionally set start and end dates.
-- **Start date / End date:** UTC+0 schedule fields.
-
-If a Password Protection template uses a template password source but no password is set, Bricks shows a warning because the template will not render as an active password gate.
-
-Older password-protection controls for disabling header, footer, and popups are deprecated. New implementations should use the current password-protection behavior and page/template settings instead of relying on those deprecated controls.
-
-## Group: Populate Content {#template-preview}
-
-Populate Content controls the builder preview context. It does not decide where the template renders on the frontend.
-
-Use it when dynamic data, query loops, archive titles, search results, product data, or page spacing need a real context on the canvas.
-
-Available preview types include:
-
-| Preview type | Extra field | Use it for |
-| --- | --- | --- |
-| Archive (Recent posts) | None | Blog/archive preview. |
-| Archive (Author) | Author | Author archive templates. |
-| Archive (Date) | None | Date archive templates. |
-| Archive (Posts) | Post type | Post type archive templates. |
-| Archive (Term) | Term | Category, tag, or taxonomy archive templates. |
-| Single (Post/Page/CPT) | Single entry | Single templates, headers, footers, and layouts that need a real page or post behind them. |
-| Search results | Search term | Search Results templates. |
-
-After choosing the content type and related field, click **Apply preview**. Bricks saves the preview setting and reloads the template canvas in that context.
-
-Example: when editing a header, choose **Single (Post/Page/CPT)** and select the homepage or a representative page. This lets you see how the header sits above real content while editing.
-
-WooCommerce cart, checkout, thank-you, and account route templates hide Template Conditions and Populate Content because WooCommerce controls when those templates are used. Product archive and single product templates still use the normal condition and preview controls.
-
-## WordPress admin: template preview image
-
-A template's featured image is used when browsing "My Templates" in the Template Library. You can assign a featured image when editing a template in the WordPress dashboard.
-
-Use preview images to make large template libraries easier to scan. They do not affect frontend output.
-
-## Troubleshooting
-
-**The template does not show on the frontend:** Confirm it is published, has the correct template type, and has matching conditions. If it has no conditions, check whether default templates are disabled.
-
-**The wrong template shows:** Look for a more specific matching condition on another template, or an exclude condition that removes the template you expected.
-
-**Dynamic data is empty in the builder:** Set **Populate Content** to a real context that contains the data you expect.
-
-**Template Conditions are missing:** Check the template type. WooCommerce route templates other than product archive and single product render automatically and do not expose normal conditions.
-
-**Header or footer is missing only on one page:** Open that page and check **Settings > Page Settings > General** for **Disable header** or **Disable footer**.
-
-**A Search Results template does not change results:** Enable custom Search Criteria, configure the fields you need, and make sure the result Query Loop is using the main query.
+Bonus tip: To prevent the mobile menu from covering your Toggle, which might happen on certain screen sizes & positioning, edit the Toggle element and set it's `z-index` under "Style > Layout > Z-index" to a value of `1001` or more.
 
 ---
 
-# User activation
+# Nestable Slider: Customization via JavaScript
 
-Source: https://academy.bricksbuilder.io/builder/features/user-activation/
+Source: https://academy.bricksbuilder.io/builder/features/nestable-slider-instance/
 
-*Configure user activation in Bricks for registration flows that require email confirmation before an account becomes active.*
+*Customize individual Nestable Slider instances in Bricks with JavaScript while keeping the main slider reusable.*
 
-Starting with **Bricks 2.1**, you can enable **User activation** for WordPress registrations. Once enabled, newly registered users receive an activation email and must click the activation link before they can log in.
+Bricks introduced the Nestable Slider in version 1.5, utilizing the [SplideJS](https://splidejs.com/) library.
 
-> **Note**
->
-> **IMPORTANT: This feature applies to all new user registrations, not just those submitted via the Form element.**
+This article is intended for developers, walking you through how to access and customize the Splide instance.
 
-## Quick overview {#quick-overview}
+All initialized Splide instances are stored and can be accessed through `window.bricksData.splideInstances`.
 
-Here is a step-by-step overview of how this feature works once it's enabled.
+You must first identify the Nestable Slider element's unique ID to retrieve the appropriate instance from the variable. You can find this ID within the builder when editing this element or through your browsers' developer tools.
 
-1. A new user account is created.
-2. Bricks stores a generated activation key and marks the user as **pending**.
-3. Bricks sends the activation email to the new user's email address.
-4. The activation link points to the configured **Verification success page** with `user_id` and `activation_key` query parameters.
-5. When the user opens that valid link, Bricks deletes the activation key and marks the user as **active**.
-6. If **Auto login after activation** is enabled, Bricks logs the user in after successful activation.
-7. If the activation link is invalid, Bricks redirects the user to the configured **Verification failure page**.
-8. Pending users cannot log in. Bricks returns an inactive-account login error.
+![](https://academy.bricksbuilder.io/assets/how-to-get-nestable-slider-id.png)
 
-Users created before User activation was enabled do not have activation status meta. Bricks treats them as active.
-
-## Configuration and controls {#configuration-and-controls}
-
-Inside the WordPress dashboard, go to **Bricks > Settings > General** and scroll to **User activation**.
-
-![](https://academy.bricksbuilder.io/assets/bricks-user-activation-settings.png)
-
-**User activation**: Enable this to require new users to verify their email after registration. After enabling it, the rest of the settings become available.
+According to the example above, I can access my Splide Instance through `window.bricksData.splideInstances['rrbqsp']`
 
 > **Note**
 >
-> When User activation is enabled, the Form element's registration **Auto log in user** setting is not available. Use **Auto login after activation** instead.
+> If you have assigned a custom CSS ID to the Slider, please note that this ID is not the same as the element ID. In such cases, you should obtain the correct element ID through your browser's developer tools.
 
-**Auto login after activation**: Automatically logs the user in after successful email verification.
+## Update Nestable Slider options via JavaScript {#update-slider-options}
 
-**Verification success page**: The page used for successful activation links. Bricks expects the activation link to point to this page. If the user opens this page without `user_id` and `activation_key`, Bricks simply renders the page normally.
+Objective: Update `noDrag` option for all Nestable Sliders on the current page.
 
-**Verification failure page**: The page users are redirected to when activation fails because the user ID or activation key is missing or invalid.
+```php
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  // Define a function to update the no-drag option for all splide instances on the page
+  const updateNoDragOption = () => {
+    for( const splideId in window.bricksData.splideInstances ) {
+      const splideInstance = window.bricksData.splideInstances[splideId]
+      if ( splideInstance ) {
+        // Tell Splide that any elements with .no-drag class is not draggable
+        splideInstance.options = { noDrag : '.no-drag' }
+      }
+    }
+  }
 
-**User activation: Email**:
-
-- **From email address**: Optional sender email. If empty, WordPress' normal `wp_mail_from` value is used.
-- **From name**: Optional sender name. If empty, WordPress' normal `wp_mail_from_name` value is used.
-- **Subject**: Email subject. If empty, Bricks uses "Activate your account".
-- **Email content**: Email body. If empty, Bricks sends a default activation message.
-- **HTML email**: Sends the email as HTML. If enabled and the content is not a full HTML document, Bricks converts line breaks with `nl2br()`.
-
-Available email placeholders:
-
-| Placeholder | Output |
-| --- | --- |
-| `{{site_name}}` | Site name |
-| `{{site_tagline}}` | Site tagline |
-| `{{site_url}}` | Site URL |
-| `{{username}}` | User login |
-| `{{user_display_name}}` | User display name |
-| `{{user_first_name}}` | User first name |
-| `{{user_last_name}}` | User last name |
-| `{{user_email}}` | User email |
-| `{{activation_link}}` | Activation URL, or an HTML link when HTML email is enabled |
-| `{{activation_url}}` | Plain activation URL |
-
-## Registration behavior
-
-User activation hooks into WordPress' `user_register` flow while the feature is enabled. This means it affects:
-
-- Users registered through the Bricks Form element.
-- Users registered through other WordPress registration flows that trigger `user_register`.
-
-For Bricks Form element registrations:
-
-- The registration action still validates username, email, password, password length, and role.
-- Administrator and Super Admin roles are blocked as registration targets for security.
-- If the username is not mapped, Bricks can generate it from the email address.
-- If the password is not mapped or submitted, Bricks can generate one.
-- Auto-login after registration is skipped while User activation is enabled.
-
-If **Send WordPress notification** is enabled in the registration form action, Bricks triggers WordPress' `register_new_user` action after creating the user. The activation email is still sent by the User activation feature.
-
-## Activation link behavior
-
-The activation URL is built from your configured **Verification success page** plus two query parameters:
-
-```text
-?user_id=123&activation_key=generated_key
+  // Need some delay for Bricks to init the sliders
+  setTimeout(updateNoDragOption, 250)
+})
+</script>
 ```
 
-When the request reaches the success page, Bricks checks those parameters:
+## Custom navigation arrows outside the slider {#custom-arrows}
 
-- Missing `user_id` or `activation_key`: the success page renders normally.
-- Empty `user_id` or `activation_key`: the user is redirected to the failure page.
-- Invalid activation key: the user is redirected to the failure page.
-- Valid activation key: the account is marked active and the activation key is deleted.
-- Already active user: Bricks skips activation and renders the success page normally.
+Objective: Implement custom navigation buttons located outside of the Nestable Slider.
 
-Both the success page and failure page should be published pages.
+![](https://academy.bricksbuilder.io/assets/slider-structure-example.png)
 
-## Users page {#users-page}
+Please set unique classes for your buttons. We assigned the `my-prev` and `my-next` CSS classes in our example.
 
-A new **Activation status** column appears on the WordPress **Users** page.
+![](https://academy.bricksbuilder.io/assets/assign-css-classes-to-custom-slider-buttons.png)
 
-![](https://academy.bricksbuilder.io/assets/bricks-user-activation-admin-column.png)
+Next, place a Code element and write some simple JavaScript. Remember to turn **ON **the Execute code checkbox. (Arrows for the Slider remained **OFF**)
 
-Possible statuses:
+![](https://academy.bricksbuilder.io/assets/slider-arrows-off.png)
 
-- **Active**: user can log in normally.
-- **Inactive**: user has pending activation status and cannot log in until activated.
+![](https://academy.bricksbuilder.io/assets/code-element-for-custom-navigation.png)
 
-For each user, you can perform different actions based on their activation status by hovering over the user entry:
+```php
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  // Give some times for Bricks to init the sliders
+  setTimeout(() => {
+    // Please replace rrbqsp to your Slider element ID !!NOT CSS ID!!
+    const mySlider = window.bricksData?.splideInstances['rrbqsp'] || false
+    // Please replace the button classes to suit your scenario
+    const myPrevBtn = document.querySelector('.my-prev')
+    const myNextBtn = document.querySelector('.my-next')
 
-For an **active** user, **Mark as inactive** prevents the user from logging in.
+    if (mySlider && myPrevBtn && myNextBtn) {
+      // Add click event handlers for your custom buttons
+      myPrevBtn.addEventListener('click', function () {
+        mySlider.go('-1') // go() function by SplideJS
+      })
+      myNextBtn.addEventListener('click', function () {
+        mySlider.go('+1') // go() function by SplideJS
+      })
+    }
+  }, 250)
+})
+</script>
 
-For an **inactive** user, **Resend activation email** sends a new activation link using the current email template, and **Mark as active** manually marks the user as active without email verification.
-
-Only users with the WordPress `edit_users` capability can change activation status or resend activation emails from the Users screen.
-
-## Login behavior
-
-When a pending user tries to log in, Bricks blocks authentication and shows an inactive-account error. Users with `active` status, and users with no activation status from before the feature was enabled, can log in normally.
-
-If you also use [Custom Authentication Pages](https://academy.bricksbuilder.io/builder/features/custom-authentication-pages/), the same activation check applies to the Bricks **User login** form action because it uses WordPress authentication.
-
-## Email customization filters
-
-The email settings can also be adjusted programmatically:
-
-- `bricks/user_activation_email/from_name`
-- `bricks/user_activation_email/subject`
-- `bricks/user_activation_email/content`
-
-These filters are useful for multilingual sites or projects that need different email text per user or context.
+```
 
 ---
 
-# Visual Grid Builder
+# Password Protection
 
-Source: https://academy.bricksbuilder.io/builder/features/visual-grid-builder/
+Source: https://academy.bricksbuilder.io/builder/features/password-protection/
 
-*Design CSS Grid layouts in Bricks with the Visual Grid Builder instead of hand-writing grid-template values.*
+*Protect Bricks content with password gates, understand how the feature works, and customize the related templates and hooks.*
 
-https://youtu.be/V-YTXvwg6Fc
+Bricks 1.11.1 introduces a Bricks-native Password Protection feature, giving you a simple yet powerful way to secure content across your website without needing extra plugins.
 
-The new **Visual Grid Builder **allows you to visually design and manage your grid layouts. The feature is available for any element with the `display` control set to `grid`, and allows you to:
+Whether you want to lock down individual pages, posts, broader areas like custom post types, or even the entire website, you can create custom templates that control access with ease.
 
-- **Adjust grid size**: Modify the number of columns and rows to fit your design needs.
-- **Resize and move elements**: Easily adjust the size and position of elements within your grid through simple drag and drop.
-- **Query loop support**: Tweak any query loop item inside your grid.
-- **Breakpoint support**: Create different grid layouts for various breakpoints to ensure responsiveness.
-- **Rename elements**: Organize your layout by renaming elements for better identification.
-- **Edit elements**: Hover over any grid item and click the pencil icon to continue editing it in the element panel.
-- **Reset options**: Reset the entire grid or individual elements on the current breakpoint.
-- **History**: Use history buttons to go back and forth between changes.
-- **Fill grid**: Auto-fill any empty grid cells with one click using Block elements.
-- **ID & class level**: Visually design your grid on the element ID or class-level.
+Customize the password entry experience, schedule when protection is active, and manage everything directly within Bricks.
 
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-21.17.50@2x-1.png)
-
-<figcaption>
-
-Visual Grid Builder modal
-
-</figcaption>
-
-## How it works {#how-it-works}
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-21.39.14@2x.png)
-
-### Accessing the Visual Grid Builder {#access}
-
-Begin by setting the `display` property of your grid layout element to `grid`. Once activated, the Visual Grid Builder icon appears next to the `grid` value.
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-21.43.02@2x.png)
+https://youtu.be/PJ5R_XOyfRo
 
 > **Note**
 >
-> *NOTE: The visual grid builder (icon) is not available when bulk-editing elements.*
+> Password protection controls Bricks-rendered frontend output. For sensitive data, use stricter security controls such as proper authentication, authorization, and file access rules.
 
-### Styling elements
+## How to set up password protection
 
-The Visual Grid Builder allows you to style both individual elements and elements that are part of a query loop. The approach to styling depends on whether you are working at the class or ID level. Here’s an overview of how this works:
+1. Enable this feature under `Bricks > Settings > General > Password Protection` and save. The **Password protection** template type is only available while this setting is on.
+2. **Create a password protection template**
+  - From the WordPress dashboard, navigate to `Bricks > Templates` and create a new template.
+  - Under **Template type**, select **Password protection**.
+  - Bricks fills the empty template with a starting layout: a heading, a line of text, and a form with a password field and an **Unlock** button. The form already uses the **Unlock password protection** action.
+3. **Configure password protection settings**
+  - Click **Edit with Bricks** to customize the template.
+  - To access the password protection settings, go to `Settings > Template settings > Password protection`.
+  - Available settings include:
+    - **Password source:** Select how passwords are managed. Options are **Template password**, **Post password**, or **Template & post password**. See details on each method in the [password source options](#password-source-options) section below.
+    - **Password:** Set the password for template-wide protection. This field is only available if the **Password source** is set to **Template password** or **Template & post password**.
+    - **Disable for logged-in users:** Allow logged-in visitors to bypass the template password.
+    - **Schedule:** Schedule when the template password protection is active.
+      - **Start date:** Set the date and time when protection begins.
+      - **End date:** Set the date and time when protection ends.
 
-**Static elements:**
+The older **Disable header**, **Disable footer**, and **Disable popups** controls are deprecated and should not be treated as ordinary controls for new password-protection templates.
 
-- **ID level**: When you resize or move a static element, the changes are reflected in the `Grid Item` controls, specifically updating the `Grid Column` and `Grid Row` properties. This approach is straightforward and directly modifies the element's grid positioning.
-- **Class level**: If you have defined the grid at the class level, any resizing or movement of the element will save the changes as custom CSS. These custom styles are applied to the `Custom CSS` control of the main element.
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-settings.png)
 
-**Query loop element:**
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-settings-group.png)
 
-- **ID or class level**: When working with elements that are part of a query loop, changes to size or position are saved as custom CSS in the `Custom CSS` control of the main element, regardless of whether you are styling at the ID or class level.
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-settings-1.png)
 
-**Important**: It is crucial not to alter the auto-generated CSS styles, as they are essential for maintaining the layout's integrity. These styles are clearly marked with code comments, making them easy to identify and preserve. After moving or resizing an element, the CSS will automatically update to reflect the new values. If you choose to reset an element, the auto-generated custom CSS will be cleared, reverting the element to its original state.
+4. **Set template conditions**
+  - Set [the template conditions](https://academy.bricksbuilder.io/builder/features/template-settings/#template-conditions) under `Settings > Template settings > Conditions` to define where this template applies.
+  - For more dynamic control, use the [`bricks/password_protection/is_active`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-is_active/) filter to customize when the template should be active or bypassed.
 
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-22.04.21@2x.png)
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-template-conditions.png)
 
-## Controls {#controls}
+5. **Add form element for unlocking**
+  - Add a **Form Element** to the password protection template.
+  - Add an **Unlock password protection** form action. This action will allow users to unlock the protected content by entering the correct password.
+  - Add a password field. In the form action settings, choose that password field. If no field is selected, Bricks uses the first password field in the form.
+  - You can customize the form action error message. The default error is `Incorrect password.`
 
-**Grid actions:**
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-form-action.png)
 
-1. **Reset (Grid)**: Resets all grid styles for the currently selected breakpoint.
-2. **Breakpoints**: Toggle between different breakpoints without leaving the editor.
-3. **History**: Undo or redo actions.
+Password protection templates have priority over other matching content templates. When an active password protection template matches the current page, Bricks renders that template as the content template until the visitor unlocks the content or the protection is otherwise bypassed.
 
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-22.06.50@2x.png)
+With a wrong password, the form shows its error message and the page stays locked. With the correct template password, the form shows its success message, and about a second later the page reloads with the protected content.
 
-**Grid controls: **
+## Password source options {#password-source-options}
 
-1. **Columns and rows**: Adjust the number of columns and rows within the grid.
-2. **Gap**: Modify the gap between grid elements using any valid CSS value, including variables.
-3. **Use min/max**: Toggle to set column or row size to `minmax(0, 1fr)` for better flexibility.
+The behavior of the password protection feature depends on the selected **password source** option. Below are details on how each option works and instructions for setup:
 
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-22.11.56@2x.png)
+### Template password
 
-When you open the Visual Grid Builder, it will automatically detect and adjust the column and row controls to match your existing grid configuration.
+Selecting **Template password** applies the password set in the template settings to all pages or posts that meet the template conditions. No further configuration is needed on individual posts. Simply:
 
-**Grid panel controls: **
+- Set the password in `Settings > Template settings > Password protection > Password`.
+- Define the template conditions under `Settings > Template settings > Conditions` to specify where this template will apply.
 
-1. **Individual Columns and rows**: Precisely control the size of columns and rows.
-2. **Elements**: Edit the elements within the grid.
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-template-password.png)
 
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-22.20.35@2x.png)
+For any content matching these conditions, the password form will be automatically rendered, restricting access to those pages.
 
-Sizes aure automatically calculated from your main element settings. For instance, `repeat(3, 2fr)` is converted to `2fr 2fr 2fr`. You can also customize sizes using values like `1fr`, `300px`, or `minmax(0, 1fr)` or any other valid value, to adjust the design to your needs.
+When a visitor enters the correct template password, Bricks stores a hashed password cookie named `brx_pp_` plus the WordPress cookie hash. The cookie is checked against the template password, so one unlock covers every page the template protects. The cookie is HTTP-only, uses the current SSL state, and expires after 10 days by default. You can customize the expiry with the [`bricks/password_protection/cookie_expires`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-cookie-expires/) filter.
 
-**Single element controls: **
+### Post password
 
-1. **Resize**: Click and drag the borders to resize elements.
-2. **Move**: Click and drag within the element to reposition it.
-3. **Rename**: Click on the element label to rename it.
-4. **Reset**: Reset all styling for the element on the current breakpoint.
-5. **Edit**: Close the Visual Grid Builder and select the element in the structure panel for further editing.
+When **Post password** is selected, this template customizes the default WordPress password protection form but requires individual post-level password settings.
 
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-22.31.58@2x.png)
+To protect content using the **Post password** method:
 
-You can also view the index of each element, and if an element is part of a query loop, its specific index within the loop will be displayed, starting at 0.
+1. Enable password protection on each post or page through the WordPress editor.
+2. Set a password directly on the individual post or page (or through quick edit).
+3. The template conditions will control where the custom password form appearance applies, but protection is managed at the post level.
+
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-wp-editor.png)
+
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-post-password.png)
+
+For post passwords, Bricks uses the WordPress password-protected post flow. The Bricks form posts to the WordPress `postpass` action, and WordPress decides whether the current post still requires a password. Template password, logged-in bypass, and schedule controls are not used when the source is **Post password**.
+
+### Template & post password
+
+The **Template & post password** option uses the template password by default. However, if an individual post password is set, it will take precedence.
+
+Setup process:
+
+1. Enter a password in **Password protection > Password**.
+2. Define template conditions as needed to apply the password protection across relevant content.
+3. For any posts with an individual password set, that password will override the template password.
+
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-template-and-post-password.png)
+
+This setup provides flexibility by allowing individual content to have unique passwords while maintaining general protection for all content under the template.
+
+## Scheduling and bypass behavior
+
+The schedule applies to template-password protection. If no schedule is enabled, template-password protection is active whenever the template conditions match. If a start date is set, protection starts after that time. If an end date is set, protection stops after that time. The Start date and End date controls are labeled UTC+0, so enter schedule times in UTC+0.
+
+**Disable for logged-in users** bypasses template-password protection for any logged-in visitor. If the matched post is protected with a WordPress post password and this bypass is enabled through a template-password source, Bricks also skips the WordPress password requirement for logged-in users.
+
+If a password protection template has no template password and the source is not **Post password**, Bricks does not render the template as a password gate.
+
+## Template parts and popups
+
+Password protection templates can hide the normal header, footer, and popups through the deprecated **Disable header**, **Disable footer**, and **Disable popups** settings. These controls are kept for backwards compatibility.
+
+For new templates, prefer designing the password protection template itself as the complete gate the visitor should see. If an older template has those settings enabled, Bricks will remove the matching header/footer/popup template parts while the password protection template is active.
+
+### Password protection filters: {#filters}
+
+- [/developer/hooks/filters/filter-bricks-password_protection-cookie-expires/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-cookie-expires/)
+- [/developer/hooks/filters/filter-bricks-password_protection-is_active/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-is_active/)

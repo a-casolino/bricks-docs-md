@@ -12,11 +12,16 @@
 | Key | Type | Label | CSS |
 |---|---|---|---|
 | `filterQueryId` | query-list | Target query | — |
+| `filterDefinitionId` | filter-definition-manager | Global filter | — |
 | `filterNiceName` | text | URL parameter | — |
 | `filterApplyOn` | select | Apply on | — |
 | `filterAction` | select | Action | — |
 | `filterSource` | select | Source | — |
 | `sourceFieldType` | select | Field type | — |
+| `fieldProvider` | select | Provider | — |
+| `customFieldKey` | text | Meta key | — |
+| `fieldCompareOperator` | select | Compare | — |
+| `fieldCompareType` | select | Compare type | — |
 | `wpPostField` | select | Field | — |
 | `wpUserField` | select | Field | — |
 | `wpTermField` | select | Field | — |
@@ -27,15 +32,12 @@
 | `filterTermInclude` | select | filterTermInclude | — |
 | `filterTermExclude` | select | filterTermExclude | — |
 | `filterTermTopLevel` | checkbox | Top level terms only | — |
-| `filterHideCount` | checkbox | Hide count | — |
-| `filterHideEmpty` | checkbox | Hide empty | — |
+| `filterIncludeChildrenCount` | checkbox | Count | — |
 | `filterHierarchical` | checkbox | Hierarchical | — |
 | `filterChildIndentation` | text | Indent | — |
-| `fieldProvider` | select | Provider | — |
-| `customFieldKey` | text | Meta key | — |
-| `fieldCompareOperator` | select | Compare | — |
-| `fieldCompareType` | select | Compare type | — |
 | `filterMultiLogic` | select | Multiple options | — |
+| `filterHideEmpty` | checkbox | Hide empty | — |
+| `filterHideCount` | checkbox | Hide count | — |
 | `filterLabelAll` | text | Label | — |
 | `labelMapping` | select | Label | — |
 | `customLabelMapping` | repeater | Label | — |
@@ -46,6 +48,7 @@
 | `filterActivePrefix` | text | Prefix | — |
 | `filterActiveSuffix` | text | Suffix | — |
 | `filterActiveTitle` | text | Title | — |
+| `filterDefaultValue` | text | Default value | — |
 | `placeholder` | text | Selection placeholder | — |
 | `choicesJs` | checkbox | Enhanced select | — |
 | `choicesPosition` | select | Dropdown position | — |
@@ -63,20 +66,20 @@
 | `choicesPillTypography` | typography | Pill | `font` on `.bricks-choices__list--multiple .bricks-choices__item` |
 | `choicesPadding` | text | Padding | `--choices-inner-padding` |
 | `choicesBackgroundColor` | color | Background | `--choices-bg-color` |
-| `choicesBorderBase` | text | Border | `--choices-base-border` |
+| `choicesBorderBase` | text | Border (Base) | `--choices-base-border` |
 | `choicesBorderColor` | color | Border color | `--choices-keyline-color`, `border-color` on `.bricks-choices__inner, .bricks-choices__list--dropdown`, `border-color` on `.bricks-choices.is-focused .bricks-choices__inner, .bricks-choices.is-open .bricks-choices__inner, .bricks-choices.is-open .bricks-choices__list--dropdown` |
 | `choicesBorderRadius` | number | Border radius | `--choices-border-radius` |
 | `choicesFontSize` | number | Font size | `--choices-font-size` |
 | `choicesTextColor` | color | Text color | `--choices-brx-text-color` |
-| `choicesSearchTypography` | typography | Placeholder | `font` on `.bricks-choices__placeholder`, `font` on `.bricks-choices__input::placeholder` |
-| `choicesPlaceholderOpacity` | number | Placeholder | `--choices-placeholder-opacity` |
 | `choicesArrowColor` | color | Arrow color | `--choices-text-color` |
 | `choicesItemPadding` | text | Padding | `--choices-dropdown-item-padding` |
 | `choicesDropdownBackground` | color | Background | `--choices-bg-color-dropdown` |
-| `choicesHighlightBackground` | color | Highlight | `--choices-highlighted-color` |
-| `choicesHighlightTextColor` | color | Highlight | `--choices-brx-highlighted-text-color` |
-| `choicesDisabledBackground` | color | Disabled | `--choices-brx-bg-color-disabled` |
-| `choicesDisabledTextColor` | color | Disabled | `--choices-brx-text-color-disabled` |
+| `choicesHighlightBackground` | color | Highlight: Background | `--choices-highlighted-color` |
+| `choicesHighlightTextColor` | color | Highlight: Text color | `--choices-brx-highlighted-text-color` |
+| `choicesDisabledBackground` | color | Disabled: Background | `--choices-brx-bg-color-disabled` |
+| `choicesDisabledTextColor` | color | Disabled: Text color | `--choices-brx-text-color-disabled` |
+| `choicesSearchTypography` | typography | Placeholder: Typography | `font` on `.bricks-choices__placeholder`, `font` on `.bricks-choices__input::placeholder` |
+| `choicesPlaceholderOpacity` | number | Placeholder: Opacity | `--choices-placeholder-opacity` |
 
 ## Inherited CSS controls
 
@@ -102,6 +105,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

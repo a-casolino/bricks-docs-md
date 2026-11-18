@@ -13,17 +13,31 @@
 |---|---|---|---|
 | `location` | select | Location | — |
 | `toggleableForm` | checkbox | Toggleable form | — |
+| `toggleTransition` | number | Transition | — |
 | `toggleText` | text | Text | — |
 | `toggleDivJustifyContent` | justify-content | Justify content | `justify-content` on `.login-toggle` |
 | `toggleDivGap` | number | Gap | `gap` on `.login-toggle` |
 | `toggleButtonNoText` | checkbox | Disable text | — |
 | `toggleButtonText` | text | Text | — |
 | `toggleIcon` | icon | Icon | — |
+| `toggleIconExpanded` | icon | Icon expanded | — |
 | `toggleIconTypography` | typography | Icon typography | `font` on `.login-toggle .showlogin i` |
+| `toggleIconExpandedTypography` | typography | Icon expanded typography | `font` on `.login-toggle .showlogin i.brx-toggle-icon-expanded` |
 | `disableLoginMessage` | checkbox | Disable login message | — |
 | `loginMessage` | text | Login message | — |
 | `rememberMeDisable` | checkbox | Disable | — |
 | `rememberMeTypography` | typography | Typography | `font` on `.woocommerce-form-login__rememberme` |
+| `indicatorGap` | number | Gap | `--brx-indicator-gap` |
+| `indicatorSize` | number | Size | `--brx-indicator-size` |
+| `indicatorBorderWidth` | number | Border width | `--brx-indicator-border-width` |
+| `indicatorBorderStyle` | text | Border style | `--brx-indicator-border-style` |
+| `indicatorBorderColor` | color | Border color | `--brx-indicator-border-color` |
+| `indicatorBorderRadius` | number | Border radius | `--brx-indicator-border-radius` |
+| `indicatorBackgroundColor` | color | Background color | `--brx-indicator-bg` |
+| `indicatorFocusColor` | color | Focus ring color | `--brx-indicator-focus-color` |
+| `indicatorCheckedColor` | color | Color | `--brx-indicator-check-color-checked` |
+| `indicatorCheckedBackgroundColor` | color | Background color | `--brx-indicator-bg-checked` |
+| `indicatorCheckedBorderColor` | color | Border color | `--brx-indicator-border-color-checked` |
 | `lostPasswordDisable` | checkbox | Disable | — |
 | `lostPasswordTypography` | typography | Typography | `font` on `.woocommerce-LostPassword a` |
 | `toggleDivMargin` | spacing | Margin | `margin` on `.login-toggle` |
@@ -84,6 +98,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

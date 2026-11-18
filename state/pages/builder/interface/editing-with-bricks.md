@@ -100,6 +100,14 @@ The left panel changes depending on what you are doing. It can show the element 
 
 The panel can be resized and minimized. When an element is selected, the panel shows the element label, element actions, class/selector controls, and the relevant Content and Style controls.
 
+### Finding another page {#pages-panel}
+
+Open **Pages** from the builder toolbar and choose the post type you want to browse. Since Bricks 2.5, results load in batches as you scroll. Use the search field to find a title anywhere in the available results, including pages that have not loaded into the list yet.
+
+Use the star beside a result to add or remove a favorite. Favorites are kept separately for each post type and saved in your browser. They can include pages outside the first batch of results. The current search also applies to the favorites list.
+
+Save your current changes before opening another page. If loading fails, use the panel's retry control.
+
 ### Canvas
 
 The canvas is the live visual preview of the current page. It renders the Bricks layout in an iframe, so selecting and editing elements feels close to editing the frontend output.
@@ -111,6 +119,18 @@ The canvas can be reloaded from the toolbar. Reloading is useful after changing 
 The Structure panel shows the element tree. It is the safest place to understand nesting, select hard-to-click elements, move elements, and work with deeply nested layouts.
 
 Use the Structure panel whenever the canvas view is visually crowded, an element is hidden, or you need to confirm parent-child relationships.
+
+In Bricks 2.5, use **Search structure** to find elements by name, text, ID, class, and more. The funnel button filters elements by features such as query loops, conditions, and interactions. Clear the search and filters before dragging elements in the panel. See [Structure Panel Search and Filters](https://academy.bricksbuilder.io/builder/interface/structure-panel-search/).
+
+Since Bricks 2.5, the Structure panel can show HTML tags beside element labels. Choose **Icons**, **HTML tags**, or **Icons and HTML tags** under **Bricks > Settings > Builder > Structure panel > Element display** and save the settings. This helps you distinguish, for example, a heading rendered as `h2` from a wrapper rendered as `div`.
+
+The displayed tag follows the root rendered on the canvas. If no rendered root is available, Bricks falls back to the element icon. Component and slot indicators remain available.
+
+<div className="screenshot screenshot--control-panel">
+
+![Structure panel showing icons and HTML tags for a Section, a div Container, an h3 Heading, and a Basic Text paragraph.](https://academy.bricksbuilder.io/assets/builder/structure-panel/structure-panel-icons-html-tags.webp)
+
+</div>
 
 ## First successful edit workflow
 

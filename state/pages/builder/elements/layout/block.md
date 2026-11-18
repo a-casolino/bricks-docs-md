@@ -97,6 +97,12 @@ You can change the following Block default settings in your theme styles under "
 - `margin`
 - `padding`
 
+## Background lazy loading
+
+From Bricks 2.5, enable **Style > Background > Disable lazy load** to load this element's background images and videos without waiting for them to become visible. The checkbox is hidden when lazy loading is already disabled globally or for the page.
+
+See [Lazy Loading](https://academy.bricksbuilder.io/builder/features/lazy-loading/) for setup steps and how this differs from the Image and Logo elements' Loading controls.
+
 > **Developer reference**
 >
 > See the [Block Schema](https://academy.bricksbuilder.io/developer/schema/elements/block/) for the full JSON schema of this element's settings and controls.

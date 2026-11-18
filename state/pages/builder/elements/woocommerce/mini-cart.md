@@ -8,6 +8,10 @@ Displays a mini cart icon with cart count and dropdown cart details.
 - **Icon typography** (typography) - Typography for cart icon. Only available when Icon is set.
 - **Open on add to cart (AJAX)** (checkbox) - Open mini cart when products are added via AJAX.
 
+### Hide an empty cart (since 2.5)
+
+Enable **Hide if empty** to hide the entire Mini cart element on the frontend when the cart has no products. It remains visible in the Builder so you can edit it. This is separate from **Cart count > Visibility**, which only controls the count badge. The element updates after AJAX cart changes.
+
 ### Cart count
 
 - **Visibility** (select) - Show/hide cart count. Options: Hide (Always), Show (Always). Default: Hide if empty.
@@ -27,6 +31,28 @@ Displays a mini cart icon with cart count and dropdown cart details.
 - **Position** (select) - Subtotal position. Options: Right, Left.
 - **Gap** (number with units) - Gap between icon and subtotal. Only available when Position is set.
 - **Typography** (typography) - Subtotal typography. Only available when Position is set.
+
+### Custom empty cart template (since 2.5)
+
+To show a custom empty state in the cart details instead:
+
+1. Create and publish a **Section** template containing the empty-cart message or layout.
+2. Select the Mini cart and open **Content > Cart details**.
+3. Leave **Hide** off and select the Section under **Empty cart template**.
+4. Enable **Preview empty state** to inspect the template in the Builder. This preview setting does not change the visitor's cart.
+5. Save and test the frontend with an empty cart, then add and remove a product.
+
+Leave **Hide if empty** off if visitors should be able to open this empty state. An unpublished, empty, or non-Section template cannot be used. Avoid placing the Mini cart inside the same Section template selected as its empty state.
+
+<div className="screenshot screenshot--control-panel">
+
+![Mini cart controls with Hide if empty off, an Empty cart template selected, and Preview empty state enabled.](https://academy.bricksbuilder.io/assets/builder/release-2.5/mini-cart-empty-panel.webp)
+
+</div>
+
+The selected Section replaces the default empty-cart message:
+
+![An empty Mini cart displays a custom message and an Explore the collection button.](https://academy.bricksbuilder.io/assets/builder/release-2.5/mini-cart-empty-result.webp)
 
 ### Cart details
 

@@ -6,6 +6,8 @@ Internally this is done via a scoring system from 0 to 10. 0 is the least specif
 
 For each template/theme style condition that could apply to a certain context, the template/theme style earns a specific score. After analyzing all templates/theme styles, Bricks chooses the one with the highest score.
 
+Section templates assigned to action hooks use a separate condition evaluator. Since Bricks 2.5, use [`bricks/section_template/run_on_hook`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-section_template-run_on_hook/) to change their injection decisions.
+
 If you need to add new template conditions using the filter [`builder/settings/template/controls_data`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-builder-settings-type-controls_data/) or `bricks/theme_styles/controls` for theme styles, you then need to hook into the scoring logic to score the templates/theme styles based on the custom conditions.
 
 This is where the `bricks/screen_conditions/scores` filter comes in handy, like so:

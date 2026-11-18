@@ -26,6 +26,16 @@
 | `secondaryCheckedTypography` | typography | Typography | `font` on `.brx-payment-options__option > input[type="radio"]:checked ~ .brx-payment-options__option-layout .brx-payment-options__secondary-label` |
 | `contentTypography` | typography | Typography | `font` on `.brx-payment-options__content` |
 | `noticeTypography` | typography | Typography | `font` on `.brx-payment-options__empty` |
+| `indicatorGap` | number | Gap | `--brx-indicator-gap` |
+| `indicatorSize` | number | Size | `--brx-indicator-size` |
+| `indicatorBorderWidth` | number | Border width | `--brx-indicator-border-width` |
+| `indicatorBorderStyle` | text | Border style | `--brx-indicator-border-style` |
+| `indicatorBorderColor` | color | Border color | `--brx-indicator-border-color` |
+| `indicatorBackgroundColor` | color | Background color | `--brx-indicator-bg` |
+| `indicatorFocusColor` | color | Focus ring color | `--brx-indicator-focus-color` |
+| `indicatorCheckedColor` | color | Color | `--brx-indicator-check-color-checked` |
+| `indicatorCheckedBackgroundColor` | color | Background color | `--brx-indicator-bg-checked` |
+| `indicatorCheckedBorderColor` | color | Border color | `--brx-indicator-border-color-checked` |
 | `optionMargin` | spacing | Margin | `margin` on `.brx-payment-options__option` |
 | `optionPadding` | spacing | Padding | `padding` on `.brx-payment-options__option` |
 | `optionBackgroundColor` | color | Background color | `background-color` on `.brx-payment-options__option` |
@@ -61,6 +71,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

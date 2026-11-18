@@ -1,1 +1,1 @@
-*Unknown control type: radio*
+*Selected option key*

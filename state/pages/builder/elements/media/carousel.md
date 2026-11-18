@@ -66,6 +66,8 @@ The Carousel element displays images or posts in a swipeable carousel with custo
 
 - **Padding** (dimensions) - Lightbox padding in pixels.
 
+- **Lightbox: ID** (text, since 2.5) - Group this media Carousel's images with other Carousels, Image Galleries, or Image elements that use the same lightbox ID. Enable **Link to lightbox** first. Leave the ID empty to keep the Carousel's own lightbox group.
+
 ### Fields
 
 - **Fields** (repeater) - Configure which post fields to display. Each field has:

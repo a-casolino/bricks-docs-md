@@ -18,11 +18,29 @@ Below you can see an Advanced Custom Fields gallery (named "Gallery") rendered i
 
 ![](https://academy.bricksbuilder.io/assets/builder-dynamic-data-panel-1024x576.png)
 
-All dynamic data tags are available in all elements that support dynamic data. This means that you may insert a gallery field (like an ACF gallery field type) inside a text element and it will be rendered as a set of `img` tags (using the filter `:image`), like so:
+Dynamic data availability depends on the element, output type, and context. Component property tags, for example, require a component instance. For gallery output, you may insert a gallery field (like an ACF gallery field type) inside a text element and it will be rendered as a set of `img` tags (using the filter `:image`), like so:
 
 ![](https://academy.bricksbuilder.io/assets/dynamic-data-gallery-text-element.png)
 
 ![](https://academy.bricksbuilder.io/assets/dynamic-data-gallery-output-text-element.png)
+
+## Distance from a location search {#filter-geo-distance}
+
+Starting with Bricks 2.5, place `{filter_geo_distance}` inside a Posts, Terms, or Users query loop to show each result's distance from an applied Geolocation filter's origin. It uses the filter's unit and label format with one decimal place by default.
+
+```text
+{filter_geo_distance}
+{filter_geo_distance @to:'mi' @decimals:'2'}
+{filter_geo_distance @fallback:'Select a location'}
+```
+
+The tag returns nothing when no distance is available unless you provide a fallback. It also works in AJAX-rendered map Info Boxes for the filtered results. See [Geolocation distance arguments](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-geo-distance) for unit conversion, precision, and value-only output.
+
+## Component property values {#component-properties}
+
+Since Bricks 2.5, use `{prop.key}` in supported content and settings inside a component to read a value from the current instance. For example, `From {prop.price}` combines a price property with fixed text. Copy the tag from the property's **Reference key** control.
+
+These tags require a component instance context. Image and Link properties offer supported fields such as `{prop.photo.url}` and `{prop.cta.url}` when you need a scalar value in text. See [Properties as Dynamic Data](https://academy.bricksbuilder.io/builder/features/components/#property-dynamic-data) for scope, defaults, conditions, and output limitations.
 
 ## Custom Fields Integrations {#integrations}
 
@@ -65,6 +83,8 @@ Bricks is compatible with the Meta Box Post Types, Taxonomies, Custom Fields, an
 
 The Group field (when cloneable) and the Relationships will also be available inside the Query Loop builder. You can iterate through these values and render the sub-fields as dynamic data.
 
+Since Bricks 2.5, Meta Box relationships can also supply options for Select, Radio, and Checkbox query filters. See [Meta Box Relationship Filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#metabox-relationship-filters) for setup and relationship direction.
+
 It is also possible to build nested non-clone-able Group fields in Bricks Query Loop.
 
 ### Crocoblock JetEngine {#jetengine}
@@ -87,6 +107,36 @@ For example, a Product Data field named `delivery_note` uses `{je_woo_product_de
 
 Bricks also integrates with the JetEngine Relations and Repeaters to feed the Bricks builder query loop.
 
+#### JetEngine Values and Labels {#jetengine-values}
+
+The output of a JetEngine tag depends on its field type. Use `:value` when you need choice keys or object IDs, for example in an element condition.
+
+| Field type | Default output in text | With `:value` |
+| --- | --- | --- |
+| Select, Radio | Stored choice key, or keys for a multiple Select | The same stored keys |
+| Checkbox | Labels of the checked choices | Keys of the checked choices |
+| Posts | Linked post titles | Referenced post IDs |
+| Relationship | Linked post titles for relationships between posts | Connected object IDs |
+| Media, Gallery | Attachment titles | Attachment IDs |
+
+Select and Radio tags return stored keys by default, so adding `:value` does not change their output. Starting with **Bricks 2.5**, use `:label` to return the selected choice's display label.
+
+For example, a Villa Select field named `country` stores `fr` with the label "France":
+
+| Tag | Output |
+| --- | --- |
+| `{je_villa_country}` | `fr` |
+| `{je_villa_country:value}` | `fr` |
+| `{je_villa_country:label}` | `France` |
+
+For a Checkbox field named `amenities`, `{je_villa_amenities}` keeps its existing label output, while `{je_villa_amenities:value}` outputs the checked keys. `{je_villa_amenities:label}` explicitly requests labels from the field's configured option source, including manual choices, glossaries, and registered option sources. Multiple choice keys or object IDs appear as a comma-separated list in text. See [Labels for Choice and Status Values](#label-modifier) for all supported providers and modifier combinations.
+
+For Media and Gallery fields, `:value` resolves attachment IDs from JetEngine's ID, URL, or ID-and-URL array formats. A URL must resolve to a WordPress attachment to return an ID. Image and gallery controls render the selected media according to the control's context.
+
+Dates use Bricks' date formatting. Use a date format or `:timestamp` when you need a specific date representation.
+
+Bricks 2.5 adds [JetEngine Query Filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#jetengine-filters). Those filters match stored keys or IDs while displaying choice labels or related object names. Their supported field types and storage formats are more limited than dynamic data.
+
 ## Standard WordPress data {#wordpress}
 
 By default, you may use the following dynamic data tags.
@@ -103,7 +153,7 @@ The following fields are related to the posts or custom post types.
 
 `{post_slug}` - Returns the post slug
 
-`{post_type}` - Returns the post type (@since 1.12)
+`{post_type}` - Returns the post type (@since 1.12). From Bricks 2.5, `{post_type:label}` returns its registered singular label, such as "Villa" instead of `villa`.
 
 `{post_date}` - Returns post published date
 
@@ -255,7 +305,7 @@ You can get dynamic data from the URL parameters like so:
 
 `{wp_user_author_url}` - Returns current user context author URL
 
-`{wp_user_role}` - Returns current user context primary role. Use `:value` to return the role slug. (@since 1.12)
+`{wp_user_role}` - Returns current user context primary role. Use `:value` to return the role slug. (@since 1.12) From Bricks 2.5, `:label` explicitly requests the primary role's display name.
 
 `{wp_user_registered_date}` - Returns current user context registered date (@since 1.12)
 
@@ -421,7 +471,8 @@ You can change the output of certain dynamic data tags by using the following fi
   - Date format
   - Image size slug (e.g., thumbnail or full)
   - The echo tag function name
-- `:value` - Outputs the value instead of the label. Useful for comparing choices field types like MetaBox checkbox list, etc. inside element conditions, or with ACF choice fields (set the return type to "Both (Array)") such as Select, Checkbox, Radio Button, and Button Group. ACF field types that supporting this filter: True/False, User, Taxonomy, Image, Gallery, Post Object, Relationship (`@since 1.12`) MetaBox field types that supporting this filter: File Input, File, File Upload, File Advanced, Video, Image, Image Advanced, Image Upload, Single Image, Image Select Taxonomy, Taxonomy Advanced, Post, User (`@since 1.12`)
+- `:value` - Outputs stored values or object IDs instead of labels where the field type supports it. Use it in element conditions when comparing choice keys or IDs. For ACF choice fields, set the return type to "Both (Array)". Supported ACF types include Select, Checkbox, Radio Button, Button Group, True/False, User, Taxonomy, Image, Gallery, Post Object, and Relationship (`@since 1.12`). Supported Meta Box types include Checkbox List, File Input, File, File Upload, File Advanced, Video, Image, Image Advanced, Image Upload, Single Image, Image Select, Taxonomy, Taxonomy Advanced, Post, and User (`@since 1.12`). See [JetEngine Values and Labels](#jetengine-values) for JetEngine's field-specific output.
+- `:label` - Returns the selected choice or status label for supported JetEngine, ACF, Meta Box, WordPress, and WooCommerce tags. Added in Bricks 2.5. See [Labels for Choice and Status Values](#label-modifier) for supported fields, examples, and precedence.
 - `:raw` - Skip parsing dynamic data tag
 - `:url` - Return URL from post ID. Useful to return URL for `file` field, etc.
 - `:format` - Keep HTML format or show empty Star rating for [WooCommerce dynamic data](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/#dynamic-data)
@@ -430,7 +481,33 @@ You can change the output of certain dynamic data tags by using the following fi
 - `:timestamp` - Convert the date or time related dynamic data to timestamp value.
 - `:slug` and `:term_id` - Used in `{post_terms_xxxx}` dynamic tags, to output slug or term ID, instead of the term name. It can also be helpful in combination with `:plain` filter, like `{post_terms_xxxx:slug:plain}`, when using it inside conditions, taxonomy query, ... to compare the correct values (`@since 2.0`).
 
-##### Examples of :array_value filter {#array_value-filter-examples}
+### Labels for Choice and Status Values {#label-modifier}
+
+Starting with **Bricks 2.5**, append `:label` to a supported dynamic data tag to output the selected option's display text. For example, `{je_villa_country:label}` returns "France" for a choice stored as `fr`. The label is the selected option's text, not the field title, such as "Country".
+
+Adding this modifier is optional. Existing tags keep their default output, and `:value` keeps its existing behavior.
+
+| Provider | Supported fields or tags |
+| --- | --- |
+| JetEngine | Select, Radio, and Checkbox, including multiple selections and configured option sources. |
+| ACF | Select, Radio Button, Checkbox, and Button Group, with Value, Label, or Both return formats. True/False uses its existing True/False display. |
+| Meta Box | Radio, Select, Select Advanced, Checkbox List, Autocomplete, and Button Group. Single Checkbox uses its existing Yes/No display, including customizations. Clone selections are supported. |
+| WordPress | `{post_type:label}` returns the registered singular post-type label. `{wp_user_role:label}` returns the primary role's display name. |
+| WooCommerce | `{woo_product_type:label}` returns the registered product-type label. `{woo_product_stock_status:label}` returns a stock-status label, such as "In stock". `{woo_order_status:label}` explicitly requests the order-status display name. |
+
+WordPress and WooCommerce labels follow the registered labels, including translations and customizations. Tags still require their normal object context. For example, `{woo_order_status:label}` needs an [order context](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#order-tags), just like the plain order-status tag.
+
+When combining modifiers:
+
+- `:value` takes precedence over `:label` in either order. Both `{je_villa_country:label:value}` and `{je_villa_country:value:label}` return `fr`.
+- `:raw` keeps its existing bypass behavior. `:array_value|key` extracts the array value before label conversion.
+- Normal text formatting still applies, including `:plain`, word limits, and text separators.
+
+Multiple selections keep their selected order. A selected key with no matching label keeps its original value. A zero key remains valid, an empty selection stays empty, and an explicitly configured empty label stays empty.
+
+This modifier does not add label lookup to generic `cf_*` metadata, relationship titles, media, dates, prices, or fields from CMB2, Pods, or Toolset. On unsupported tags, `label` keeps its existing positional meaning. For example, `{wp_user_meta:label}` still reads the user meta key named `label`.
+
+### Examples of :array_value filter {#array_value-filter-examples}
 
 `{acf_place_map:array_value|lat}` - Echoes the `$value['lat']` of the ACF google map type field
 

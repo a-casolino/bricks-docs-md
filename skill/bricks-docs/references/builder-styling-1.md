@@ -76,173 +76,6 @@ You can view available variable Adobe fonts by selecting "Variable Fonts" under 
 
 ---
 
-# Build a Design System in Bricks
-
-Source: https://academy.bricksbuilder.io/builder/styling/build-a-design-system/
-
-*Build a design system in Bricks from an unstyled page: color palette and shades, fluid type and spacing scales, variables, a theme style, classes, and components.*
-
-A design system is a set of decisions you make once and reuse everywhere: your colors, font sizes, spacing, the default look of plain elements, and the patterns and blocks that repeat. In Bricks, those decisions live in the Style Manager, in a theme style, in global classes, and in components. Once they are in place, a new page needs no new styles, and changing one value updates every page that uses it.
-
-This article builds a design system for a small coffee roaster's website, starting from a page with content and no styling. It follows the same steps as the video.
-
-https://youtu.be/lo2L313Cpko
-
-## The four layers
-
-Each layer builds on the one below it:
-
-| Layer | In Bricks | Example |
-| --- | --- | --- |
-| Values | Colors and variables in the [Style Manager](https://academy.bricksbuilder.io/builder/features/style-manager/) | `var(--brand)`, `var(--heading-xl)`, `var(--space-m)` |
-| Rules | A [theme style](https://academy.bricksbuilder.io/builder/styling/theme-styles/) | Body text, headings, buttons, section padding |
-| Classes | [Global classes](https://academy.bricksbuilder.io/builder/styling/global-css-classes/) | `.eyebrow` for the small label above a heading |
-| Components | [Components](https://academy.bricksbuilder.io/builder/features/components/) | A product card |
-
-A component uses classes, and classes use variables. When a value changes, everything above it follows.
-
-## Starting point
-
-The example starts with a header template, a footer template, and a home page with its content in place. Nothing is styled yet: default fonts, default colors, no spacing.
-
-You could style this page element by element. A second page would then mean doing it all again and keeping both pages in sync by hand. The steps below put every decision in one place first.
-
-{/* screenshot: The unstyled home page in the Builder: header and footer templates, hero, product cards and panels with Bricks default styles. */}
-
-## 1. Colors
-
-Open the Style Manager and select **Colors**. See [Color Manager](https://academy.bricksbuilder.io/builder/features/color-manager/) for every setting.
-
-1. Create a palette for the site.
-2. Add the brand color and name it `brand`, not `orange`. If the brand color changes later, the name is still correct.
-3. Enable **Light shades** and **Dark shades**. Bricks generates ten steps of each from the base color and names them after it: `brand-d-1` is one step darker than `brand`, `brand-l-9` is a soft tint for backgrounds.
-4. Add the neutrals: `ink` for text, `ink-muted` for quieter text, and `paper` for the page background.
-5. Add the colors that only serve one purpose. The example uses six pastels for the product cards (`blush`, `butter`, `lilac`, `mint`, `sky`, `clay`).
-6. For the pastels, enable the `background-color` utility class. Bricks then creates a global class for each color, such as `bg-butter`.
-
-Only enable utility classes for colors you will apply as classes. Each one adds a global class per shade.
-
-{/* screenshot: Color Manager with the brand color expanded, light and dark shades enabled and the generated shade strips visible. */}
-
-## 2. Typography and spacing scales
-
-Open **Typography** in the Style Manager and create a scale for headings:
-
-1. Give the scale the prefix `heading-`.
-2. Set a base size and a ratio for the minimum (mobile) and another pair for the maximum (desktop). The example uses 20 px at 1.25 for mobile and 24 px at 1.5 for desktop.
-3. Generate the variables.
-
-Bricks turns every step into a `clamp()` value, from `--heading-2xs` to `--heading-2xl`. A heading grows with the screen instead of jumping at breakpoints. See [Fluid Typography](https://academy.bricksbuilder.io/builder/styling/fluid-typography/) for how the values are calculated.
-
-Create a second scale with the prefix `text-` for body sizes.
-
-Spacing works the same way. Open **Spacing** and create a scale with the prefix `space-`, from `--space-2xs` to `--space-2xl`.
-
-{/* screenshot: Typography scale "Headings" with prefix heading-, minimum and maximum values and the generated preview rows. */}
-
-## 3. Variables and categories
-
-A few values are not part of a scale. Add them in **Variables** and give each group its own category:
-
-| Category | Variable | Value |
-| --- | --- | --- |
-| Layout | `container` | `1240px` |
-| Shape | `radius-s` | `10px` (buttons) |
-| Shape | `radius-m` | `24px` (cards) |
-
-The scales already sit in their own categories, so the variable picker stays readable as the list grows. See [Global Variables Manager](https://academy.bricksbuilder.io/builder/styling/global-variables-manager/).
-
-Name variables by role or step, like `radius-s` and `radius-m`. A name like `radius-24` is wrong the moment you change the value.
-
-Values do nothing until something uses them. The page still looks the same after this step.
-
-## 4. Theme style
-
-The theme style sets the defaults for every element, so plain headings, text and buttons never need their own settings.
-
-Create a theme style. A new theme style applies to the entire website by default. Then set:
-
-| Group | Setting | Value |
-| --- | --- | --- |
-| Typography | Body | Figtree, `var(--text-m)`, `var(--ink)` |
-| Typography | Headings | Fraunces, `var(--brand)` |
-| Typography | H1 / H2 / H3 | `var(--heading-2xl)` / `var(--heading-l)` / `var(--heading-m)` |
-| Elements > Button | Background, text color, border radius | `var(--brand)`, `var(--brand-d-8)`, `var(--radius-s)` |
-| Elements > Section | Padding | `var(--space-2xl)` top and bottom, `var(--space-m)` left and right |
-| Elements > Container | Width | `var(--container)` |
-| Elements > Container and Block | Row gap | `var(--space-s)` |
-
-The row gap on Container and Block gives stacked headings and text even space without a single margin.
-
-Save, and the whole page changes, including the header and footer templates. Switch to the mobile breakpoint: headings and section padding shrink with the screen, without any breakpoint-specific setting.
-
-{/* screenshot: Theme style Typography group with Body and Headings set, live preview of the styled home page on the right. */}
-
-## 5. Classes
-
-A theme style styles headings, text and buttons. It does not know the small label above a heading or the quieter line under a title. Those are patterns, and patterns need [global classes](https://academy.bricksbuilder.io/builder/styling/global-css-classes/).
-
-1. Select the label above the hero heading and add a class named `eyebrow`.
-2. Style it once: `var(--text-s)`, uppercase, a little letter spacing, and `var(--brand-d-4)`.
-3. Add the same class to the other labels.
-4. Add `text-l` for intro paragraphs and `text-muted` for quieter text.
-
-Name classes by purpose, in lowercase with hyphens. `text-muted` still makes sense when the color changes; `grey-text` does not.
-
-In the [Global Class Manager](https://academy.bricksbuilder.io/builder/styling/global-class-manager/), put the three classes into a category called **Typography**. Layout classes such as `card-grid` (below) go into a second category, **Layout**.
-
-## 6. Components
-
-The coffee card repeats eight times on the home page. That makes it a component.
-
-1. Style one card first: `var(--space-m)` as padding and `var(--radius-m)` as border radius. In the variable picker, open the **Shape** category to find the radius quickly.
-2. Give the origin the `eyebrow` class, the tasting notes `text-muted`, and the name a darker brand shade.
-3. Right-click the card in the Structure panel, choose **Save as component**, and name it `Coffee card`.
-4. Add a property for everything that changes from card to card (image, origin, name, notes, price) and connect each one to its element. See [Property types](https://academy.bricksbuilder.io/builder/features/components/#property-types).
-
-A component has no color property type, but it has a [global classes property](https://academy.bricksbuilder.io/builder/features/components/#global-classes). Create one named `Color`, add an option for each pastel, assign each option its `bg-*` class, and connect the property to the card's root element. Each instance now only asks for its content and a color.
-
-Give the row of cards a class too:
-
-```css
-/* card-grid: as many columns as fit, four on a desktop */
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
-gap: var(--space-m);
-```
-
-The numbered section headings and the café panel become components the same way: `Section head`, and `Feature panel` with a `Style` option (global classes property) for a soft or a bold background.
-
-{/* screenshot: Coffee card component with its properties in the panel, the Color property dropdown open with the pastel options. */}
-
-## 7. Build a new page
-
-On a new page, the header and footer are already there because they are templates.
-
-1. Add a heading and an intro. They pick up the theme style without a single setting.
-2. Insert a `Section head`, then a Block with the `card-grid` class and `Coffee card` instances. Fill in the content and pick a color.
-3. Add a `Feature panel` with its own image and text.
-
-The page has no new styles. Everything on it comes from the system.
-
-{/* screenshot: The finished shop page on the frontend, built only from components, classes and the theme style. */}
-
-## Change the brand color
-
-Open the Color Manager and change `brand` to a new color. Bricks regenerates the shades from it, and headings, buttons, labels and panels follow on every page, in the header and in the footer.
-
-## Related
-
-- [Style Manager](https://academy.bricksbuilder.io/builder/features/style-manager/)
-- [Color Manager](https://academy.bricksbuilder.io/builder/features/color-manager/)
-- [Fluid Typography](https://academy.bricksbuilder.io/builder/styling/fluid-typography/)
-- [Global Variables Manager](https://academy.bricksbuilder.io/builder/styling/global-variables-manager/)
-- [Theme Styles](https://academy.bricksbuilder.io/builder/styling/theme-styles/)
-- [Global Class Manager](https://academy.bricksbuilder.io/builder/styling/global-class-manager/)
-- [Components](https://academy.bricksbuilder.io/builder/features/components/)
-
----
-
 # Cascade layer
 
 Source: https://academy.bricksbuilder.io/builder/styling/cascade-layer/
@@ -519,6 +352,173 @@ To unify the layout:
 
 ---
 
+# Build a Design System in Bricks
+
+Source: https://academy.bricksbuilder.io/builder/styling/build-a-design-system/
+
+*Build a design system in Bricks from an unstyled page: color palette and shades, fluid type and spacing scales, variables, a theme style, classes, and components.*
+
+A design system is a set of decisions you make once and reuse everywhere: your colors, font sizes, spacing, the default look of plain elements, and the patterns and blocks that repeat. In Bricks, those decisions live in the Style Manager, in a theme style, in global classes, and in components. Once they are in place, a new page needs no new styles, and changing one value updates every page that uses it.
+
+This article builds a design system for a small coffee roaster's website, starting from a page with content and no styling. It follows the same steps as the video.
+
+https://youtu.be/lo2L313Cpko
+
+## The four layers
+
+Each layer builds on the one below it:
+
+| Layer | In Bricks | Example |
+| --- | --- | --- |
+| Values | Colors and variables in the [Style Manager](https://academy.bricksbuilder.io/builder/features/style-manager/) | `var(--brand)`, `var(--heading-xl)`, `var(--space-m)` |
+| Rules | A [theme style](https://academy.bricksbuilder.io/builder/styling/theme-styles/) | Body text, headings, buttons, section padding |
+| Classes | [Global classes](https://academy.bricksbuilder.io/builder/styling/global-css-classes/) | `.eyebrow` for the small label above a heading |
+| Components | [Components](https://academy.bricksbuilder.io/builder/features/components/) | A product card |
+
+A component uses classes, and classes use variables. When a value changes, everything above it follows.
+
+## Starting point
+
+The example starts with a header template, a footer template, and a home page with its content in place. Nothing is styled yet: default fonts, default colors, no spacing.
+
+You could style this page element by element. A second page would then mean doing it all again and keeping both pages in sync by hand. The steps below put every decision in one place first.
+
+{/* screenshot: The unstyled home page in the Builder: header and footer templates, hero, product cards and panels with Bricks default styles. */}
+
+## 1. Colors
+
+Open the Style Manager and select **Colors**. See [Color Manager](https://academy.bricksbuilder.io/builder/features/color-manager/) for every setting.
+
+1. Create a palette for the site.
+2. Add the brand color and name it `brand`, not `orange`. If the brand color changes later, the name is still correct.
+3. Enable **Light shades** and **Dark shades**. Bricks generates ten steps of each from the base color and names them after it: `brand-d-1` is one step darker than `brand`, `brand-l-9` is a soft tint for backgrounds.
+4. Add the neutrals: `ink` for text, `ink-muted` for quieter text, and `paper` for the page background.
+5. Add the colors that only serve one purpose. The example uses six pastels for the product cards (`blush`, `butter`, `lilac`, `mint`, `sky`, `clay`).
+6. For the pastels, enable the `background-color` utility class. Bricks then creates a global class for each color, such as `bg-butter`.
+
+Only enable utility classes for colors you will apply as classes. Each one adds a global class per shade.
+
+{/* screenshot: Color Manager with the brand color expanded, light and dark shades enabled and the generated shade strips visible. */}
+
+## 2. Typography and spacing scales
+
+Open **Typography** in the Style Manager and create a scale for headings:
+
+1. Give the scale the prefix `heading-`.
+2. Set a base size and a ratio for the minimum (mobile) and another pair for the maximum (desktop). The example uses 20 px at 1.25 for mobile and 24 px at 1.5 for desktop.
+3. Generate the variables.
+
+Bricks turns every step into a `clamp()` value, from `--heading-2xs` to `--heading-2xl`. A heading grows with the screen instead of jumping at breakpoints. See [Fluid Typography](https://academy.bricksbuilder.io/builder/styling/fluid-typography/) for how the values are calculated.
+
+Create a second scale with the prefix `text-` for body sizes.
+
+Spacing works the same way. Open **Spacing** and create a scale with the prefix `space-`, from `--space-2xs` to `--space-2xl`.
+
+{/* screenshot: Typography scale "Headings" with prefix heading-, minimum and maximum values and the generated preview rows. */}
+
+## 3. Variables and categories
+
+A few values are not part of a scale. Add them in **Variables** and give each group its own category:
+
+| Category | Variable | Value |
+| --- | --- | --- |
+| Layout | `container` | `1240px` |
+| Shape | `radius-s` | `10px` (buttons) |
+| Shape | `radius-m` | `24px` (cards) |
+
+The scales already sit in their own categories, so the variable picker stays readable as the list grows. See [Global Variables Manager](https://academy.bricksbuilder.io/builder/styling/global-variables-manager/).
+
+Name variables by role or step, like `radius-s` and `radius-m`. A name like `radius-24` is wrong the moment you change the value.
+
+Values do nothing until something uses them. The page still looks the same after this step.
+
+## 4. Theme style
+
+The theme style sets the defaults for every element, so plain headings, text and buttons never need their own settings.
+
+Create a theme style. A new theme style applies to the entire website by default. Then set:
+
+| Group | Setting | Value |
+| --- | --- | --- |
+| Typography | Body | Figtree, `var(--text-m)`, `var(--ink)` |
+| Typography | Headings | Fraunces, `var(--brand)` |
+| Typography | H1 / H2 / H3 | `var(--heading-2xl)` / `var(--heading-l)` / `var(--heading-m)` |
+| Elements > Button | Background, text color, border radius | `var(--brand)`, `var(--brand-d-8)`, `var(--radius-s)` |
+| Elements > Section | Padding | `var(--space-2xl)` top and bottom, `var(--space-m)` left and right |
+| Elements > Container | Width | `var(--container)` |
+| Elements > Container and Block | Row gap | `var(--space-s)` |
+
+The row gap on Container and Block gives stacked headings and text even space without a single margin.
+
+Save, and the whole page changes, including the header and footer templates. Switch to the mobile breakpoint: headings and section padding shrink with the screen, without any breakpoint-specific setting.
+
+{/* screenshot: Theme style Typography group with Body and Headings set, live preview of the styled home page on the right. */}
+
+## 5. Classes
+
+A theme style styles headings, text and buttons. It does not know the small label above a heading or the quieter line under a title. Those are patterns, and patterns need [global classes](https://academy.bricksbuilder.io/builder/styling/global-css-classes/).
+
+1. Select the label above the hero heading and add a class named `eyebrow`.
+2. Style it once: `var(--text-s)`, uppercase, a little letter spacing, and `var(--brand-d-4)`.
+3. Add the same class to the other labels.
+4. Add `text-l` for intro paragraphs and `text-muted` for quieter text.
+
+Name classes by purpose, in lowercase with hyphens. `text-muted` still makes sense when the color changes; `grey-text` does not.
+
+In the [Global Class Manager](https://academy.bricksbuilder.io/builder/styling/global-class-manager/), put the three classes into a category called **Typography**. Layout classes such as `card-grid` (below) go into a second category, **Layout**.
+
+## 6. Components
+
+The coffee card repeats eight times on the home page. That makes it a component.
+
+1. Style one card first: `var(--space-m)` as padding and `var(--radius-m)` as border radius. In the variable picker, open the **Shape** category to find the radius quickly.
+2. Give the origin the `eyebrow` class, the tasting notes `text-muted`, and the name a darker brand shade.
+3. Right-click the card in the Structure panel, choose **Save as component**, and name it `Coffee card`.
+4. Add a property for everything that changes from card to card (image, origin, name, notes, price) and connect each one to its element. See [Property types](https://academy.bricksbuilder.io/builder/features/components/#property-types).
+
+A component has no color property type, but it has a [global classes property](https://academy.bricksbuilder.io/builder/features/components/#global-classes). Create one named `Color`, add an option for each pastel, assign each option its `bg-*` class, and connect the property to the card's root element. Each instance now only asks for its content and a color.
+
+Give the row of cards a class too:
+
+```css
+/* card-grid: as many columns as fit, four on a desktop */
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+gap: var(--space-m);
+```
+
+The numbered section headings and the café panel become components the same way: `Section head`, and `Feature panel` with a `Style` option (global classes property) for a soft or a bold background.
+
+{/* screenshot: Coffee card component with its properties in the panel, the Color property dropdown open with the pastel options. */}
+
+## 7. Build a new page
+
+On a new page, the header and footer are already there because they are templates.
+
+1. Add a heading and an intro. They pick up the theme style without a single setting.
+2. Insert a `Section head`, then a Block with the `card-grid` class and `Coffee card` instances. Fill in the content and pick a color.
+3. Add a `Feature panel` with its own image and text.
+
+The page has no new styles. Everything on it comes from the system.
+
+{/* screenshot: The finished shop page on the frontend, built only from components, classes and the theme style. */}
+
+## Change the brand color
+
+Open the Color Manager and change `brand` to a new color. Bricks regenerates the shades from it, and headings, buttons, labels and panels follow on every page, in the header and in the footer.
+
+## Related
+
+- [Style Manager](https://academy.bricksbuilder.io/builder/features/style-manager/)
+- [Color Manager](https://academy.bricksbuilder.io/builder/features/color-manager/)
+- [Fluid Typography](https://academy.bricksbuilder.io/builder/styling/fluid-typography/)
+- [Global Variables Manager](https://academy.bricksbuilder.io/builder/styling/global-variables-manager/)
+- [Theme Styles](https://academy.bricksbuilder.io/builder/styling/theme-styles/)
+- [Global Class Manager](https://academy.bricksbuilder.io/builder/styling/global-class-manager/)
+- [Components](https://academy.bricksbuilder.io/builder/features/components/)
+
+---
+
 # CSS Grid Layout
 
 Source: https://academy.bricksbuilder.io/builder/styling/css-grid-layout/
@@ -550,6 +550,8 @@ As you can see in the screenshot above grid items are laid out in rows by defaul
 When a layout element's **Display** value is set to `grid`, Bricks adds a Visual Grid Builder action to the grid control. Open it to create and adjust columns, rows, and gaps visually instead of writing every `grid-template-columns` or `grid-template-rows` value by hand.
 
 The Visual Grid Builder shows the grid panel, row and column controls, breakpoint controls, undo/redo history, and actions such as filling or resetting the grid. Column, row, and gap values are saved back to the grid controls. Grid item placement is saved to child grid controls where possible; for query loop items, active class styling, non-nestable elements, or component roots, Bricks writes generated placement CSS into the selected grid's custom CSS between Visual Grid Builder markers.
+
+Since Bricks 2.5, a notice explains when placed items prevent reducing the column or row count. Identifiable blocking items are highlighted in the grid panel. Move, resize, or reset those items before trying the reduction again. See [when columns or rows cannot be reduced](https://academy.bricksbuilder.io/builder/features/visual-grid-builder/#grid-reduction).
 
 ## Setting up column & row tracks (explicit grid)
 
@@ -627,7 +629,7 @@ Creates an explicit 3-column grid.
 `grid-template-rows: 100px repeat(2, 1fr) 200px`
 Creates an explicit 4-row grid. Where row 1 is 100px high, row 2 & 3 are 1fr each, and row 4 is 200px high.
 
-## Placing grid items (by line number)
+## Placing grid items (by line number) {#placing-grid-items-by-line-number}
 
 [Grid lines](https://developer.mozilla.org/en-US/docs/Glossary/Grid_Lines) mark the start or end of a column or row track. The count starts at 1.
 
@@ -890,17 +892,18 @@ Whenever variables are generated, all existing variables within the selected cat
 
 ## Scale controls {#controls-overview}
 
-### Prefix {#control-prefix}
+### Variable prefix {#control-prefix}
 
 The prefix determines how variable names are structured. For instance, setting the prefix to `text-` results in variables being named `--text-m` or `--text-xl`, depending on the scale. It is recommended to use a prefix that is both unique and descriptive to maintain clarity and avoid conflicts.
 
 ### Scale type {#control-scale-type}
 
-The scale type specifies the naming convention used for fluid typography variables. There are three available options:
+The scale type specifies the naming convention used for fluid typography variables:
 
 1. **T-shirt:** Generates variable names based on standard t-shirt sizes, such as `2xs, xs, s, m, l, xl, 2xl`. An example output would be `--text-m`.
 2. **Numeric:** Generates variable names using numbers, typically ranging from 1 through 6. An example output would be `--text-4`.
-3. **Custom:** Allows complete manual control over the naming convention. For example, scale names such as `small, medium, large, title` could be entered, resulting in variable names such as `--text-medium`.
+3. **Numeric (reverse)** (since 2.5): Generates descending numbers, such as `6, 5, 4, 3, 2, 1`. In automatic mode, with ratios greater than 1 and a prefix of `h`, a six-step scale produces `--h6` through `--h1`, from the smallest to the largest generated font size.
+4. **Custom:** Allows complete manual control over the naming convention. For example, scale names such as `small, medium, large, title` could be entered, resulting in variable names such as `--text-medium`.
 
 ### Custom scale type {#control-custom-scale-type}
 
@@ -1012,7 +1015,7 @@ When custom fonts are available, Bricks generates `@font-face` rules for them an
 
 ## Opening Font Manager
 
-You can open the Font Manager by going to **Settings > Font Manager** in the builder toolbar, or by clicking the **gear icon** next to any font-family control.
+Open **Manage > Font manager** in the builder toolbar, or click the **gear icon** next to a font-family control.
 
 This opens a popup where you can manage all available fonts (Google fonts, Adobe fonts, Standard fonts, and Custom fonts).
 
@@ -1105,6 +1108,20 @@ Bricks fetches the Google Fonts CSS, downloads the referenced font files, create
 
 Downloaded Google Fonts are custom fonts. Edit them from the Custom source if you need to inspect or adjust the stored variations.
 
+### Store imports outside the Media Library
+
+In Bricks 2.5, **Bricks > Settings > Performance > Google font imports** includes **Store Google font imports outside the Media Library**. The setting is off by default.
+
+Enable it before downloading a Google Font to store its files in a dedicated folder in your site's uploads directory. The font remains available in Font Manager, but its files do not become Media Library items.
+
+![Google font imports setting enabled under Bricks Performance settings.](https://academy.bricksbuilder.io/assets/builder/release-2.5/google-font-import-storage.webp)
+
+Google may supply several files for the same weight and style, each covering a different Unicode range. Bricks keeps these subsets so the font can display the characters it supports. This setting reduces Media Library clutter; the files still use disk space.
+
+The setting affects new Google imports only. Existing fonts and manual uploads stay where they are. Disabling it does not remove fonts previously imported into the dedicated folder.
+
+Managed fonts still support editing, updates, export, trash, and restore. Their files are kept while the font is in trash and removed when it is permanently deleted.
+
 > **Tip**
 >
 > If you want to avoid external Google Fonts requests on the frontend, download the Google Font locally and use the custom font version in your typography controls.
@@ -1139,7 +1156,7 @@ Moving a custom font to trash removes it from the active Custom font list and re
 To review trashed fonts, click the trash icon in Font Manager. From there you can:
 
 - **Restore**: Move the font out of trash and publish it again.
-- **Delete permanently**: Delete the custom font record and its stored font file attachments.
+- **Delete permanently**: Delete the custom font record and its stored font files, including files managed outside the Media Library.
 
 Permanent deletion cannot be undone from Font Manager. Use it only when you are sure the font is no longer needed.
 
@@ -1194,6 +1211,126 @@ Confirm that the file is `.woff2`, `.woff`, or `.ttf`, that the current user has
 ### The wrong Google Font loads instead of a custom font
 
 If a custom font and a Google Font share the same family name, Bricks skips the Google font when generating frontend webfont links. If you still see an unexpected font, check for custom CSS or third-party font loading outside Bricks.
+
+---
+
+# Generate Classes
+
+Source: https://academy.bricksbuilder.io/builder/styling/generate-classes/
+
+*Generate global CSS classes from an element structure, review existing names, and choose when to rename or duplicate shared classes.*
+
+Starting in Bricks 2.5, **Generate classes** creates [global CSS classes](https://academy.bricksbuilder.io/builder/styling/global-css-classes/) from element labels or types. Use it to name a section and its children consistently, move reusable styles into classes, or review class names after changing your structure.
+
+## Open the class generator
+
+In the **Structure** panel, right-click the parent element and select **Generate classes**. The popup lists that element and its descendants, with their current classes, proposed names, and actions.
+
+Existing classes default to **Keep existing**. Elements without a class default to **Add class**. Opening or cancelling the popup does not change your classes.
+
+![Generate classes showing a Feature section and its Title and Description children, with existing classes kept.](https://academy.bricksbuilder.io/assets/generate-classes-existing.webp)
+
+## Choose the names
+
+The **Base name** starts from the parent element's label. **Name children from** uses either **Element label** or **Element type** for the descendants. Descriptive labels such as `Title`, `Description`, and `Button` make the proposed names easier to recognize.
+
+Choose a **Convention** that matches your existing classes:
+
+| Convention | Parent class | Child labeled Title |
+| --- | --- | --- |
+| BEM | `feature` | `feature__title` |
+| BEMIT | `c-feature` | `c-feature__title` |
+| SUIT CSS | `Feature` | `Feature-title` |
+| SMACSS | `feature` | `feature-title` |
+| Custom | Your chosen format | Your chosen format |
+
+**Custom** exposes **Element separator**, **Block case**, and **Element case**. **Prefix** is available with every convention. Names use the same base throughout the selected structure: a deeply nested Title still becomes `feature__title`, rather than including every parent label.
+
+Edit a **Proposed class** directly to give it a custom name. Custom names survive changes to naming options. Use **Reset name** or **Reset selected names** to return to generated proposals. **Reset block name** restores the base from the parent label and updates generated child names while preserving custom names.
+
+### Repeated labels
+
+**Same label, same class** lets elements with identical labels share a class when adding classes. With type-based naming, the control becomes **Same type, same class**. Turn it off to give repeated names numbered suffixes such as `feature__button-2`.
+
+This option does not merge different existing classes.
+
+## Select elements and actions
+
+Use each row's checkbox to include or skip an element. **Select all** and **Deselect all** control the whole list. The **Element and descendants** checkbox selects a parent and its subtree, including the parent itself.
+
+| Action | What happens |
+| --- | --- |
+| **Keep existing** | Leaves the current class and its assignment unchanged. |
+| **Add class** | Creates and assigns the proposed class, or reuses an existing class with that name. Other assigned classes stay in place. |
+| **Rename globally** | Renames the current class everywhere it is assigned, including outside this structure. Its styles and class ID are preserved. |
+| **Duplicate and replace** | Copies the current class under a new name and replaces its assignment on the selected elements. Other uses keep the original class. |
+
+If an element has several classes and Bricks has no saved generator binding for it, choose the **Current class** you want to work with. With one assigned class, Bricks selects it automatically. Utility classes unrelated to the chosen source remain assigned.
+
+To set several actions together, choose **Set action for selected elements** and click the adjacent **Apply** button. This updates the proposals; the footer's **Apply changes** button applies them to your classes.
+
+### Shared classes and copies
+
+Rows using the same source class can have linked name and action proposals. The popup identifies these connections, including linked rows that are unchecked. Review the highlighted rows when changing a shared proposal.
+
+A global rename affects every assignment even if some rows are unchecked. **Duplicate and replace** changes only the selected assignments. The copy retains the source class's styles, responsive and state styles, custom selectors, and category.
+
+A copy needs a different name from the original, even if the original has only one assignment. It also cannot take another existing class's name. Resolve conflicts or use **Use unique names** before applying. Copies share one new class only when both their source class and proposed name match.
+
+## Move element styles into classes
+
+When adding classes, **Move ID styles into class** controls what happens to styles currently set on the elements:
+
+| Option | Behavior |
+| --- | --- |
+| **Keep styles on elements** | The default. Assigns classes without moving ID styles. |
+| **Move styles to new classes only** | Moves styles only when creating a new class. Existing class styles are preserved. |
+| **Move styles to new and existing classes** | Can also move styles into a reused class. Review changes that affect its other uses. |
+
+Moved styles are removed from the element ID. Content such as text, links, and images stays on the element. If several elements receive the same new class, only their matching style settings move into it; individual differences remain on each element.
+
+For example, two buttons with the same padding but different background colors can share the padding through a generated class while keeping their colors on their element IDs.
+
+Style transfer applies to **Add class**, not to renaming or duplicating a class. Use **New classes in** to select or create a category for newly added classes. Duplicated classes retain their original category.
+
+> **Caution**
+>
+> Moving styles into an existing class can change every element that uses it. Choose **Move styles to new classes only** when you want to preserve existing class styles.
+
+## Review and apply
+
+Before changing shared class names or existing class styles, open **Review changes**. Check the old and new names, affected elements, and style changes. Select a class in the overview for its details.
+
+The usage counts describe different sets of assignments:
+
+- **Saved** counts assignments stored across the site, including component definitions.
+- **In editor** counts assignments in the current Builder, including unsaved changes.
+
+The same assignment can appear in both counts, so do not add them together. Click the counts to inspect the locations.
+
+Saved usage does not count repeated rendered instances or literal class references in CSS and JavaScript. The review reports when permissions limit coverage or the location list is truncated. Global renaming requires a successful usage check; a loading or failed check blocks it.
+
+> **Caution**
+>
+> A global rename does not rewrite literal CSS or JavaScript references elsewhere on your site. Check custom code that refers to the old class name before renaming it.
+
+Confirm that you reviewed the listed changes, then click **Apply changes**. Changing a proposal or its usage evidence requires a fresh review. Save in the Builder to persist the result. A generator run is grouped into one undo step.
+
+## Revisit a structure
+
+After changing element labels or adding children, open **Generate classes** again on the same parent. Bricks restores the structure's saved naming options and updates label-derived proposals. Deliberate custom names remain intact.
+
+Class names do not automatically follow label changes. Existing classes still default to **Keep existing**, so choose whether to rename globally, duplicate and replace, or leave each class as it is. New children can receive classes in the same run.
+
+For example, if a shared `feature__title` should become `feature__heading` throughout the site, choose **Rename globally** and review its usage. If only this structure needs a differently styled heading, choose **Duplicate and replace**, give the copy a unique name, and edit the copied class afterward.
+
+## Availability and boundaries
+
+The generator respects your permissions to assign, create, and edit global classes. Global renaming also requires access to the [Global Class Manager](https://academy.bricksbuilder.io/builder/styling/global-class-manager/), and locked classes cannot be renamed.
+
+Component instances inside the selected structure are included without traversing their shared internal elements. To work on those internal elements, edit the component itself. A component instance cannot be the root used to open the generator.
+
+If **Generate classes** is missing, check **Bricks > Settings > General > Miscellaneous > Disable class generator**, your class permissions, and whether you are selecting a single regular element rather than a component instance or a bulk selection.
 
 ---
 
@@ -1294,6 +1431,8 @@ Use the Class Manager when you want to:
 - Export and import classes.
 - Review usage, conflicts, and imported classes.
 
+To generate names from element labels or review the classes used by one structure, use [Generate Classes](https://academy.bricksbuilder.io/builder/styling/generate-classes/) from the Structure panel's context menu.
+
 ## Create and edit classes
 
 In the Class Manager, use the new-class input at the bottom of the class list to create a class.
@@ -1377,7 +1516,7 @@ Locking is permission-based. Users without lock/unlock permission cannot change 
 
 ## Trash, restore, and permanent delete
 
-Deleting a class from the active list moves it to trash. Trashed classes can be restored from the trash view.
+Deleting a class with an ID from the active list moves it to trash. Trashed classes can be restored from the trash view. Classes with a missing ID use the separate [recovery workflow](#classes-with-missing-names-or-ids).
 
 When a class is restored, Bricks attempts to restore it to its previous position. If a class with the same name already exists, Bricks may rename the restored class to avoid the name conflict.
 
@@ -1386,6 +1525,35 @@ Permanent delete removes the class from the trash. Use permanent delete only aft
 > **Note**
 >
 > Moving a class to trash is not the same as removing a class from one element. Removing a class from an element only removes that element's assignment. Moving a class to trash removes the class from the active class library.
+
+## Classes with missing names or IDs
+
+A global class needs a name for its CSS selector and an internal ID for Bricks to track it. Imported class data can be missing either value. Starting in Bricks 2.5, affected classes show a **Missing class name** or **Missing class ID** badge in the Class Manager list. Empty values and values containing only whitespace count as missing.
+
+If both values are missing, the class shows **Missing class ID**. These badges identify incomplete class records; they do not validate every possible CSS class name or guarantee that an import will reject invalid data.
+
+### Restore a missing class name
+
+A class with an ID but no name can be renamed without replacing its existing class record.
+
+1. Open **Style Manager > Classes**.
+2. Click the class marked **Missing class name**.
+3. In the editor column, choose **Rename**, enter a name in the **Name** field, and click **Rename**.
+4. Save your class changes with the Class Manager save button.
+
+Until the class has a name, custom CSS editing, categorizing, locking, duplicating, exporting the selection, and drag reordering are unavailable for it. If a selection includes a class with a missing name, the corresponding selection actions are unavailable too.
+
+If you do not need the class, use **Move to trash** in the class-list toolbar instead. Existing locks still block renaming and moving a class to trash.
+
+![Class Manager with a class marked Missing class name selected and the Name field and Rename button visible.](https://academy.bricksbuilder.io/assets/global-class-manager-missing-class-name.webp)
+
+### Remove a class with a missing ID
+
+Click a class marked **Missing class ID** to open its recovery panel. The panel explains why other actions are unavailable and provides a **Remove** button.
+
+Click **Remove**, then save your class changes. This removes the record directly from the active class library. It does not move it to trash, so it cannot be restored from the trash view.
+
+Classes with a missing ID must be selected individually. **Select all** skips them. If you still need the class, create a replacement with a name and assign it to the relevant elements.
 
 ## Exporting and importing classes
 
@@ -1471,6 +1639,10 @@ The save flow can report:
 
 Resolve the notification before continuing. This protects shared class systems on teams.
 
+## Recover an earlier class
+
+Use [Global data revisions](https://academy.bricksbuilder.io/builder/interface/global-data-history/) to inspect recorded class changes or recover an earlier value, including after deletion. Select **Revisions** in the class editor, or open **Manage > Global data revisions** and select **Classes**. Restoring a recorded class changes that item, while other classes keep their current values. This is separate from restoring a class out of trash.
+
 ## Best practices
 
 - Use clear class names that describe purpose, not only appearance.
@@ -1498,208 +1670,3 @@ That can happen when a class with the same name already exists. Rename the resto
 ### Imported content does not look like the source site
 
 Check whether imported classes were accepted, mapped to local classes, or rejected. Also check whether required variables, color palettes, or theme styles were imported.
-
----
-
-# Global CSS Classes
-
-Source: https://academy.bricksbuilder.io/builder/styling/global-css-classes/
-
-*Use global CSS classes in Bricks to apply shared styles across multiple elements and keep designs easier to maintain.*
-
-A global CSS class is a reusable Bricks style target. Instead of styling one element's ID only, you create a class, assign it to one or more elements, and edit the class visually with the same controls you use for element styling.
-
-Use global classes for repeated design decisions: buttons, cards, grids, spacing wrappers, headings, badges, form rows, or any element pattern that should stay consistent across a page or site.
-
-https://youtu.be/V9bzI6poe-Y
-
-## The mental model
-
-Every element in Bricks has an element ID. When no global class is selected, visual style controls apply to that element ID only.
-
-When a global class is selected as the active selector, style controls apply to the class instead. Any element that uses that class can receive the same class styles.
-
-Think of the selector field at the top of the element panel as the current styling target:
-
-- `#my-element`: you are styling only that element.
-- `.card`: you are styling the global class named `card`.
-- `.card:hover`, `.card::before`, or another selector/pseudo state: you are styling that state or selector for the class.
-
-The important part is the active class state. Adding a class to an element and selecting that class are related, but not identical:
-
-- Assigned class: the element uses the class on the frontend.
-- Active class: the builder controls currently write styles to that class.
-
-If you add `.card` to an element, then deselect the class, you are back to styling the element ID. If you select `.card`, your style changes update the class.
-
-## Class styles vs element ID styles
-
-Element ID styles are more specific than global class styles. If the same CSS property is set on both the element ID and a global class, the element ID style usually wins.
-
-Use that on purpose:
-
-- Put shared defaults on the class.
-- Put one-off overrides on the element ID.
-- If a style is meant to be reusable, avoid leaving the same property on the element ID.
-
-> **Note**
->
-> If a class appears not to work, check whether the selected element already has the same property set on its element ID, page settings, or custom CSS.
-
-## How to create a global class
-
-![](https://academy.bricksbuilder.io/assets/adding-global-classes-bricks.png)
-
-1. Select any element by clicking on it in the canvas or via the structure panel.
-2. Click the selector input that shows the element's ID under its name in the left panel.
-3. Type a class name in the class input.
-4. Press `Enter` or click the save icon.
-5. Select the class so it becomes the active selector.
-6. Change style controls as needed.
-
-Bricks accepts class names with or without a leading dot. The builder stores the class name without the dot and displays it as `.class-name`.
-
-You can enter more than one class name separated by spaces or commas when creating classes. Bricks creates the missing classes and reuses existing classes with the same name.
-
-## Assign an existing class to an element
-
-1. Select the element.
-2. Open the selector/class dropdown at the top of the element panel.
-3. Search for the class name.
-4. Click the class to add it to the element.
-
-The class then appears in the element's active class list. Click the class chip to make it active for editing. Click the close icon on the chip to remove it from the element.
-
-Removing a class from an element does not delete the global class. It only removes that class assignment from the selected element.
-
-## Deselect a class before styling the element itself
-
-When a global class is active, the style controls edit the class. To return to the element ID:
-
-1. Click the active selector field.
-2. Choose the element ID entry, or click the clear icon.
-3. Confirm the selector field shows the element ID instead of the class name.
-
-This is the safest way to avoid accidentally changing every element that uses the class.
-
-## Multiple classes on one element
-
-An element can have multiple global classes. This lets you separate responsibilities:
-
-```text
-.button
-.button--primary
-.margin-top-l
-```
-
-A common pattern is:
-
-- One base class for structure and default styling.
-- One modifier class for a variation.
-- One utility class for a single property such as spacing or color.
-
-When two classes set the same property with similar specificity, normal CSS cascade rules decide the final value. Avoid relying on conflicting class definitions as your main workflow. It is clearer to keep each class focused.
-
-Starting in Bricks 2.4, admins can enable **Output global class CSS in Class Manager order** under [Bricks settings](https://academy.bricksbuilder.io/builder/setup/settings/#miscellaneous). When enabled, same-specificity global class rules follow the class order in the Class Manager. When disabled, Bricks uses the previous output order based on how classes are encountered on rendered elements.
-
-## Pseudo classes and custom selectors
-
-Global classes can have pseudo-class and custom-selector styles.
-
-Use pseudo classes for states such as:
-
-```text
-:hover
-:focus
-:active
-```
-
-Use custom selectors when you need to style a child or related selector from the class context. For example, you might style an icon inside a card class, or a nested heading inside a reusable wrapper.
-
-When a selector starts with `:`, Bricks attaches it directly to the class selector. Other selectors are treated as nested selectors.
-
-> **Tip**
->
-> Use class selectors for reusable states and child styling. Use element ID selectors only for one-off exceptions.
-
-## Copy, paste, reset, and rename class styles
-
-The class selector actions let you work with styles without manually copying CSS:
-
-- Copy styles from an element ID or class.
-- Paste styles into an element ID or class.
-- Reset styles on an element ID.
-- Reset styles on a class.
-- Rename the element CSS ID or the active class.
-
-When a class is renamed, Bricks updates the class name and also updates custom CSS stored inside that class where the old class root selector is used.
-
-Renaming a class does not rename unrelated CSS that you wrote outside Bricks-managed class settings.
-
-## Locked classes
-
-Locked classes cannot be edited until they are unlocked. This protects shared design-system classes from accidental changes while still allowing them to be assigned where permissions allow.
-
-If a class is locked and you cannot edit it, check whether your user role has permission to lock, unlock, and edit global classes.
-
-## Bulk editing
-
-When multiple elements are selected, the global classes panel shows classes that all selected elements have in common. You can add or remove a class across the selected elements.
-
-Bulk editing is useful for applying a shared utility or layout class to multiple elements. It is not the right place to do detailed per-element cleanup.
-
-## Permissions and disabled interface
-
-Administrators can control access to global class features. Depending on your permissions, you may be able to:
-
-- Create global classes.
-- Edit global classes.
-- Assign or unassign classes.
-- Delete global classes.
-- Lock or unlock classes.
-- Copy and paste global class styles.
-
-Administrators can also disable the Global Class Manager under `Bricks > Settings > General > Disable global class manager`. That hides the manager tab. Element-panel class actions are controlled by the global-class permissions above.
-
-## Relationship to Class Manager
-
-The element panel is where you apply a class and edit the active class while working on an element.
-
-The Global Class Manager is where you maintain the class library: custom CSS for a selected class, categories, bulk renaming, locks, trash, import/export, usage filters, and conflict review.
-
-You can create and use classes from either workflow, but they serve different jobs:
-
-- Element panel: "Use or edit this class on this element."
-- Class Manager: "Maintain the whole class system."
-
-## Relationship to utility classes
-
-Some Style Manager features can generate utility classes from colors or variable scales. Those utility classes are stored as global classes too, so they can appear in the class list and be assigned like other classes.
-
-Generated utility classes are best used as small, single-purpose classes. Avoid editing them into large component classes unless that is intentional.
-
-## Troubleshooting
-
-### The class is assigned, but the style does not show
-
-Check these first:
-
-1. Is the class selected as the active selector when you edit it?
-2. Does the element ID already set the same property?
-3. Is the class locked?
-4. Does the class have styles for the current element type?
-5. Is the class output affected by custom CSS with higher specificity?
-
-### I changed a class and many elements changed
-
-That is expected. A global class is reusable. If only one element should change, clear the active class and style the element ID instead, or create a more specific modifier class.
-
-### I cannot create or edit a class
-
-Check your builder permissions and whether the Global Class Manager is disabled in Bricks settings.
-
-### A class from an imported template conflicts with an existing class
-
-Bricks tracks classes by ID and name. If an imported class has the same ID or name as a local class, Bricks may map it to the existing class or ask you to review the conflict, depending on your import settings.
-
-Review conflicts before accepting imports on production sites, especially when classes are part of a design system.

@@ -21,6 +21,26 @@ If the element is inserted when editing a post or page, it will automatically sh
 
 This is useful when creating a **Single Post template** in which you want to show the WordPress content (e.g. a single blog post).
 
+## Lightbox for Gutenberg images
+
+Since Bricks 2.5, the **Lightbox** setting opens media-linked Gutenberg images in the Bricks lightbox. It is off by default and available when the Post Content element uses WordPress as its data source.
+
+1. In the WordPress block editor, link the images in your Image or Gallery blocks to **Media file**.
+2. In Bricks, select the **Post Content** element. If you are editing a template, set **Data source** to **WordPress**.
+3. Enable **Lightbox** in the element's **Content** tab, save, and check the images on the frontend.
+
+<div className="screenshot screenshot--control-panel">
+
+![Post Content settings with Lightbox enabled for media-linked Gutenberg images.](https://academy.bricksbuilder.io/assets/post-content-lightbox.webp)
+
+</div>
+
+Images within each Gallery block are grouped together so visitors can navigate between them. Separate galleries stay in separate groups, and standalone Image blocks open individually.
+
+The image must come from the WordPress Media Library and link to its full-size media file URL. Custom links, attachment-page links, and images without valid attachment dimensions keep their existing behavior. Unlinked images using WordPress's native **Expand on click** lightbox are unaffected.
+
+This setting changes the rendered output without rewriting your saved Gutenberg blocks. It does not apply when **Data source** is **Bricks**. For more on working with both editors, see [Gutenberg integration](https://academy.bricksbuilder.io/integrations/gutenberg/).
+
 ## Fetching Bricks Data with the Post Content element
 
 In certain scenarios, you'd like to edit each post with Bricks instead of using the WordPress editor such as when using more complex layouts that aren't possible with WordPress.
@@ -54,6 +74,7 @@ Bricks Page Template using a Post Content element to fetch page bricks data
 ## Settings
 
 - **Data source** (select) - Choose content source. Options: WordPress, Bricks. Default: WordPress. The select is only available for templates, since on pages it automatically uses WordPress as the source.
+- **Lightbox** (checkbox) - Open media-linked Gutenberg images in the Bricks lightbox. Default: Off. Available for the WordPress data source. Each Gallery block forms its own group.
 
 > **Developer reference**
 >

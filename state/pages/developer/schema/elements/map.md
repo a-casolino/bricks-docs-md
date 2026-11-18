@@ -15,7 +15,14 @@
 | `addresses` | repeater | Addresses | — |
 | `infoBoxTemplateId` | select | Info Box | — |
 | `syncQuery` | query-list | syncQuery | — |
-| `mapNoResultsText` | text | Text | — |
+| `mapNoResultsText` | text | No results text | — |
+| `mapNoResultsTypography` | typography | No results typography | `font` on `.brx-map-no-results` |
+| `mapNoResultsPosition` | select | No results position | — |
+| `scrollActiveItemIntoView` | checkbox | Scroll active item into view | — |
+| `mapUpdatingText` | text | Loading message | — |
+| `mapUpdatingPosition` | select | Loading message position | — |
+| `scrollActiveItemBehavior` | select | Scroll behavior | — |
+| `scrollActiveItemPosition` | select | Scroll position | — |
 | `markerCluster` | checkbox | Cluster | — |
 | `markerClusterBgColor` | color | Cluster | `fill` on `.brx-map-cluster` |
 | `markerClusterTextColor` | color | Cluster | `fill` on `.brx-map-cluster text` |
@@ -69,6 +76,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

@@ -4,7 +4,7 @@ https://www.youtube.com/watch?v=GQicN9DWEVg
 
 The **Query Loop** builder is available for [layout elements](https://academy.bricksbuilder.io/builder/styling/layout/) such as Container, Section, Block, and Div. It is also available on the classic Accordion and Slider elements.
 
-The Map element has its own query loop controls for dynamic addresses. Nestable elements such as Accordion (Nestable), Tabs (Nestable), and Slider (Nestable) use their own child repeaters, so they do not expose the same full Query Loop control as layout elements.
+The Google [Map](https://academy.bricksbuilder.io/builder/elements/general/map/) element and, starting with Bricks 2.5, [Map (Leaflet)](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/) have their own query controls to populate markers. Nestable elements such as Accordion (Nestable), Tabs (Nestable), and Slider (Nestable) use their own child repeaters, so they do not expose the same full Query Loop control as layout elements.
 
 It lets you query content and render each result through the same design. Everything inside the loop can use dynamic data from the current result.
 
@@ -23,6 +23,16 @@ You can query post types, taxonomy terms, users, API responses, and arrays. Some
 - **Users**: List blog authors, community members, and team members
 - **API**: Render items from an external JSON API
 - **Array**: Render items from a PHP or JSON-style array
+
+### Dynamic styles on global classes
+
+Since Bricks 2.5, a shared global class can use dynamic data in supported visual style controls inside a query loop. For example, set **Style > Background > Image** to **Featured image** while the card's global class is active, and each post card receives its own image. See [Dynamic class styles in query loops](https://academy.bricksbuilder.io/builder/styling/global-css-classes/#dynamic-data-in-query-loops) for setup, nested-loop context, and the Custom CSS limitation.
+
+## Map queries and interactive listings {#map-queries}
+
+A map's own query generates markers rather than a separate results listing.
+
+For an interactive map beside a listing, create a query loop on a layout element, place a [Map Connector](https://academy.bricksbuilder.io/builder/elements/general/map-connector/) inside each repeated item, and select that loop under the map's **Sync with query** setting. Point the external controls and summary at the results loop. Leaflet connectors require latitude and longitude; Google Maps also supports addresses.
 
 ## Important {#important}
 
@@ -96,6 +106,8 @@ As shown in the screenshot above, the query editor supports dynamic data.
 
 Bricks signs Query editor code. If the signature is missing or invalid, Bricks will not run the code. Keep the returned array focused on query arguments. Do not echo output or run unrelated database writes inside a Query editor.
 
+Starting with **Bricks 2.5**, a missing or invalid code signature, or an error thrown by the PHP code, leaves the query without results. To inspect a PHP error, open the Builder or view the frontend while logged in with **Execute code** permission and code execution enabled. Bricks shows the error type and message to that user; visitors without this permission do not see the diagnostic.
+
 ## Posts query {#posts-query}
 
 ![](https://academy.bricksbuilder.io/assets/post-query-1-6-3.png)
@@ -127,6 +139,8 @@ Bricks signs Query editor code. If the signature is missing or invalid, Bricks w
 **Taxonomy Query**: Add one or multiple taxonomy queries to filter the posts.
 
 **Tax Query Relation**: Define if the taxonomy queries should be inclusive (OR) or exclusive (AND).
+
+From Bricks 2.5, [Query Filters preserve an OR taxonomy group](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#taxonomy-or-queries) when narrowing a loop. For example, a loop matching category A or category B applies an active taxonomy filter as `(A OR B) AND selected filter`.
 
 **Meta Query**: Add one or multiple meta queries to filter the posts based on the custom fields.
 
@@ -599,6 +613,12 @@ For nested or associative arrays, use the `{query_array @key:'keyName'}` syntax 
 
 ![Bricks Structure and Array query settings for rendering ACF Checkbox selections as an ordered list.](https://academy.bricksbuilder.io/assets/acf-checkbox-array-query-use-case.webp)
 
+### Component repeater rows {#component-repeater-rows}
+
+Since Bricks 2.5, an Array query inside a component can take its rows from a **Repeater** component property. Connect the property to the repeated element's Query control, then connect child controls to the row fields or use their copied `{query_array}` field tags. Each component instance can supply its own rows.
+
+See [Repeater Properties](https://academy.bricksbuilder.io/builder/features/components/#repeater-properties) for the card-list setup, typed image and link fields, defaults, and nested repeaters.
+
 ### Dynamic Data Tag: `{query_array}`
 
 `{query_array}` - Output the current array value (array items are a simple list of strings).
@@ -731,6 +751,8 @@ Make sure only one loop is marked as the main archive/search query, and make sur
 Check the target query ID on every filter element. Then verify that the target query type is post, term, or user.
 
 ### AJAX pagination or Infinite Scroll stopped working
+
+After updating to Bricks 2.5, clear cached pages if AJAX pagination or filters stop updating results. Old cached HTML can lack the query context required by the updated requests.
 
 Check whether an optimization plugin is removing Bricks query loop HTML comments such as `<!--brx-loop-start-abc123-->`. Those comments are required markers.
 

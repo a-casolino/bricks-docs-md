@@ -166,6 +166,8 @@ When editing a Section template, add a condition and enter the action hook name 
 
 For example, a Section template with condition **Entire website** and hook name `bricks_before_header` renders at that hook across the site.
 
+Since Bricks 2.5, developers can add custom PHP checks, such as requiring a custom field value, with the [`bricks/section_template/run_on_hook`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-section_template-run_on_hook/) filter.
+
 ![](https://academy.bricksbuilder.io/assets/bricks-1.9.2-section-template-condition-hook-name.png)
 
 <figcaption>

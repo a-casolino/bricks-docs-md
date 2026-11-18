@@ -144,6 +144,20 @@ Integrations can register additional Theme Style groups.
 >
 > If a group does not appear, the related element or integration may not be registered in your installation.
 
+## WooCommerce form fields (since 2.5)
+
+With WooCommerce active, open **Style Manager > Theme Styles > WooCommerce: Form fields** to set shared defaults for checkout, cart, and account forms in both the classic and v2 workflows.
+
+The group includes field typography, padding, background, borders, placeholder and label styling, checkbox and radio indicators, and Select2 dropdown options. The option controls also cover the v2 Payment options and Shipping options elements; their indicators use the Radio settings.
+
+These are defaults. State, element, and global class settings can override them. Quantity inputs are excluded, and the group does not style the regular Bricks Form element. Floating labels retain their reserved space above the input text.
+
+![WooCommerce: Form fields Theme Styles with padding set to 14px vertically and 16px horizontally, a white background, and border controls.](https://academy.bricksbuilder.io/assets/builder/release-2.5/woo-form-controls.webp)
+
+The shared defaults style the checkout fields on the frontend:
+
+![Checkout billing fields use the shared padding, white background, and light border.](https://academy.bricksbuilder.io/assets/builder/release-2.5/woo-form-result.webp)
+
 ## Stylesheet group
 
 The **Stylesheet** group lets you add custom CSS as part of a Theme Style.

@@ -57,6 +57,7 @@ From there you can:
 
 - Search components.
 - Filter by category.
+- Show and filter components by element type (Bricks 2.5).
 - Filter by usage: all usage, used on current page, used elsewhere, or unused.
 - Switch between grid and list view.
 - Import component JSON or ZIP files.
@@ -68,6 +69,57 @@ Generating component screenshots requires the **Edit components** builder permis
 **Component screenshots** are enabled by default on new installations under **Bricks > Settings > Templates & components**. Disable the setting to stop automatic and manual generation and hide stored local thumbnails. Disabling it does not delete existing screenshot files. Use **Delete screenshots** in the same settings section to remove all generated component screenshots.
 
 ![](https://academy.bricksbuilder.io/assets/bricks-browser-component-manager.webp)
+
+### Element types
+
+Since Bricks 2.5, the Components browser can show each component's element type and filter the library by it. The element type is the component's root, its outermost element, such as a Section, Container, Block, Div, or Heading. Check it before inserting a component to see what kind of element you are adding.
+
+Element types are hidden by default. To show them, click **More** (the three-dot icon) in the toolbar and enable **Show element type**. Bricks remembers this choice in your current browser.
+
+![More menu in the Components browser with Show element type enabled. Element type labels appear on the component cards and the Element type filter shows All (25).](https://academy.bricksbuilder.io/assets/components-browser-show-element-type.webp)
+
+With the setting enabled:
+
+- Each component shows its element type as a label in the top-left corner of the card in grid and masonry views, or at the end of the row in list view.
+- An **Element type** dropdown appears in the toolbar. Select a type, or choose **All** to remove the type filter.
+
+![Components browser in list view with the Element type menu open, listing each type with its component count, and element type labels at the end of each row.](https://academy.bricksbuilder.io/assets/components-browser-element-type-filter.webp)
+
+The menu lists the types available in the current results, with a component count for each. Search, category, and local usage filters narrow these options and counts. For example, select your page-section category, then choose **Section** to find components whose outermost element is a Section.
+
+Changing the type returns to the first page of results. If another filter removes every component of the selected type, the type filter returns to **All**. Disabling **Show element type** also resets the filter to **All**, so a hidden filter never narrows your results.
+
+Remote components use the element type supplied by their source site. If that information is unavailable, the component has no type label and appears under **All**, but not under a specific type.
+
+### Sorting and importing components
+
+Since Bricks 2.5, use **Sort by** in the Components browser toolbar to choose **Newest**, **Oldest**, **Title A–Z**, or **Title Z–A**. **Newest** is the default. Date sorting uses creation dates, including for remote components.
+
+Click **Import** in the toolbar to import component JSON or ZIP files into the local library. This action requires the **Import/export components** builder permission. When an import switches you from a remote source to the local library, the usage filter is cleared so it does not hide the imported components.
+
+![Components browser with the sort menu open and arrows pointing to the sorting control and Import button.](https://academy.bricksbuilder.io/assets/builder/browser-sorting/components-browser-sorting-import.webp)
+
+### Organize components into categories {#component-categories}
+
+Since Bricks 2.5, the Components browser has a **Categories** sidebar. It lists **All components**, **Uncategorized**, and each category with its component count. Click a row to filter the library. Drag the sidebar edge to resize it, or use the arrow button to collapse it.
+
+Each component belongs to one category at a time. You can assign categories in three ways from **My components**:
+
+- **Drag and drop:** Drag a component card onto a category in the sidebar. If the card is selected, Bricks moves every selected component, including selections on other pages. An unselected card moves on its own. Drop onto **Uncategorized** to remove the category. If the sidebar is collapsed, hold the dragged card over the expand button to open it.
+- **Assign category:** Select components with their checkboxes. In the selection toolbar, click **Assign category**, choose a category, and click **Apply**. To create a category, type a new name in the picker and choose the `Create "name"` option before you apply it.
+- **Create category:** With components selected, enter a name in the **New category name** field below the category list and click **Create category**. Bricks assigns the selected components to it. If a category with the same name already exists, ignoring letter case, Bricks uses that category instead of adding a duplicate.
+
+Each assignment is a single undo step. Click the info icon in the sidebar header to show a short version of these instructions.
+
+Categories exist only while at least one component uses them. If you move the last component out of a category, the category disappears from the sidebar.
+
+Category labels are hidden on component cards by default. To show them, open the **More** (three dots) menu in the toolbar and enable **Show category**. Bricks stores this choice in your browser. Click a category label on a card to filter the library to that category.
+
+Assigning categories requires the **Edit components** permission. Remote libraries and users without that permission can browse categories, but cannot change them. Save in the Builder to keep the changes.
+
+![Components browser with two selected components. The Categories sidebar shows counts, the help text, and a New category name field filled with Hero sections above the Create category button.](https://academy.bricksbuilder.io/assets/builder/release-2.5/component-category-sidebar.webp)
+
+![Assign category picker with Uncategorized, Atelier North, and Studio essentials options, plus Cancel and Apply buttons.](https://academy.bricksbuilder.io/assets/builder/release-2.5/component-category-picker-detail.webp)
 
 ### Instance Count and Location
 
@@ -126,13 +178,17 @@ All instances of the Card component automatically reflect this change:
 
 This is useful for shared structure and design. The real power of components comes from combining shared structure with properties that can be customized per instance.
 
+## Recover an earlier component {#history}
+
+Since Bricks 2.5, use **Revisions** on a component row in the Components panel, or on a component in the Browser, to open that component's earlier versions. Component revisions include a rendered preview and changed values named by element label. Restoring one component keeps unrelated components at their current versions. See [Global data revisions](https://academy.bricksbuilder.io/builder/interface/global-data-history/) for permissions, deleted-item recovery, and the behavior inside drafts.
+
 ## Properties {#properties}
 
 Properties let you expose controls for customization on each instance.
 
 For example, a Card component can expose a card title property and a card image property. Each Card instance can then use different content while still sharing the same component structure and styling.
 
-There is a two-step process:
+To connect a property directly to a control, follow these two steps:
 
 1. Create a property.
 2. Connect that property to one or more compatible controls inside the component.
@@ -164,6 +220,7 @@ You can choose from these property types and connect them to compatible controls
 | Select _(@since 2.0)_         | Select, text, textarea, and rich text controls | HTML tag, Button style            |
 | Toggle _(@since 2.0)_         | Checkbox and toggle controls                   | Hide element toggle               |
 | Query loop                    | Query controls                                 | Layout elements                   |
+| Repeater _(@since 2.5)_       | Native repeater controls and Array queries      | Testimonials, FAQ or card lists    |
 | Global classes _(@since 2.0)_ | Global classes controls                        | Element global classes            |
 
 ![](https://academy.bricksbuilder.io/assets/bricks-2.0-components-create-property-form.png)
@@ -174,7 +231,49 @@ The **property description** is optional, but it helps other builders understand
 
 The **property group** is optional and helps organize properties inside the instance panel.
 
-The **default property value** is optional. It is used when an instance has not set its own value. If an instance value is cleared or reset, Bricks removes the override so the default value can apply again.
+The **default property value** is optional. It is used when an instance has not set its own value. If an instance value is cleared or reset, Bricks removes the override so the default value can apply again. Repeater properties distinguish an intentionally empty row list from a reset; see [instance rows and defaults](#repeater-instance-defaults).
+
+### Creating Properties from Content {#create-properties-from-content}
+
+Since Bricks 2.5, **Create properties from content** creates and connects several properties in one step. Use it after building a component's content, such as a card with a heading, image, and button.
+
+Open the component's **Properties** panel and click **Create properties from content**. Bricks detects these controls in the main component:
+
+| Element | Detected content |
+| --- | --- |
+| Heading, Basic Text | Text |
+| Rich Text | Rich text |
+| Image | Image and alternative text |
+| Button | Text and link |
+| Icon | Icon |
+
+The scan stops at nested component instances. Edit a nested component's own properties separately.
+
+1. Review the detected rows and deselect content that should stay fixed. Hover a row to locate its element on the canvas and in the Structure panel.
+2. Give each property a clear name. Open its **More** menu to edit its description, default value, and group. The element's existing content supplies the initial default.
+3. Drag rows to change their order. Use **Groups** to create or edit groups, then assign rows with the group selector or drag them into a group.
+4. Click **Create and connect** to apply the selected properties and their connections. If you are only editing existing properties, the button reads **Save**.
+5. Save in the Builder, then select an instance to customize the new properties.
+
+Search and group filters help narrow the list. **Select all** applies to the unconnected rows in the current search and group. Existing connected properties retain their connections while you edit their names, defaults, descriptions, groups, or order.
+
+Closing and reopening **Groups** keeps your pending changes while you remain in the creation panel. **Cancel** or the back arrow leaves the creation panel without applying the pending changes.
+
+<div className="screenshot screenshot--control-panel">
+
+![Create properties panel with six selected properties, condition icons, and the Create and connect button.](https://academy.bricksbuilder.io/assets/bricks-components-create-properties-from-content.webp)
+
+</div>
+
+#### Hide If Empty {#hide-if-empty}
+
+For newly selected content, enable **Hide if empty** from the row's condition icon or **More** menu. This requires access to element conditions. Bricks adds a connected **Dynamic data → is not empty** condition to the element. You can inspect or edit it in the element's [Conditions](https://academy.bricksbuilder.io/builder/features/element-conditions/) panel afterward.
+
+For a Button, both its text and link must resolve to non-empty values. Image alternative text is not used to decide whether an Image should render. If the element already has multiple condition groups, the presence check is added to each group so the existing OR logic is retained.
+
+The check uses the resolved property value, including its default. Clearing an instance's text or rich-text value restores the default. If that default contains content, the element stays visible. For an optional text field, clear its property default too, then enter text only on the instances that need it.
+
+Rich-text markup such as `<p><br></p>` still counts as content for this comparison. Remove the markup as well if the field should be empty. Check the frontend result: element conditions keep elements available for editing in the Builder.
 
 ### 2. Connecting a Property to a Control
 
@@ -216,9 +315,161 @@ To disconnect a property from a setting, click the connected property setting, h
 
 ![](https://academy.bricksbuilder.io/assets/bricks-component-disconnect-property.png)
 
+#### Disconnect All Connections {#disconnect-all}
+
+Since Bricks 2.5, you can disconnect a property everywhere it is used inside the main component:
+
+1. Open the component's **Properties** panel.
+2. Find the connected property and click **Disconnect all** on its row.
+3. Confirm the dialog, then save in the Builder.
+
+The property, its default value, and its group remain available, so you can connect it again later. The action removes that property's control connections and connections forwarded to nested component instances inside the main component. Other properties keep their connections.
+
+Disconnected controls return to their own saved settings. Inline references such as `{prop.title}` are replaced with the property's default value, rather than the value of the instance you happen to be editing. Review the affected content and conditions before saving, especially if the component's instances had different values.
+
+If Bricks cannot safely replace a reference, it leaves the component unchanged and identifies the reference to resolve first. Fix or remove that reference, then try **Disconnect all** again. Choosing **Cancel** in the confirmation dialog also leaves the connections intact.
+
+![The FAQ items property row with the Disconnect all button highlighted and its tooltip visible.](https://academy.bricksbuilder.io/assets/bricks-components-disconnect-all.webp)
+
+## Repeater Properties {#repeater-properties}
+
+Since Bricks 2.5, a **Repeater** property lets each component instance manage a list of structured items. Use it for FAQs, testimonials, pricing features, or cards whose layout stays the same while their content and number of items change.
+
+A repeater property can supply an element's native repeater control or an Array query loop inside the component.
+
+### Define fields and default items
+
+1. Edit the main component and open **Properties**.
+2. Create a property with **Type** set to **Repeater** and name it `Cards`.
+3. Under **Fields**, add `Title` (Text), `Image` (Image), and `Link` (Link).
+4. Use **Add item** in the default-value editor to enter the initial rows.
+5. Save the property, then connect it to the content it should control.
+
+Supported field types are **Text**, **Rich text**, **Image**, **Link**, **Select**, **Toggle**, and **Repeater**. For Select fields, enter one option per line. A nested Repeater contains another set of fields; Bricks supports two repeater levels in total.
+
+<div className="screenshot screenshot--control-panel">
+
+![Cards has Title, Image, and Link fields and two default items, Lake Bohinj and Soča Valley.](https://academy.bricksbuilder.io/assets/component-repeater-cards-fields.webp)
+
+</div>
+
+### Repeat a custom layout
+
+Use a query loop to design each item with ordinary Bricks elements.
+
+1. Inside the main component, create a Block containing a Heading, Image, and Button. This Block is the layout for one card.
+2. Enable **Query loop** on the Block.
+3. Open the property connection control for its **Query** and select `Cards`. Bricks supplies an Array query from the repeater rows.
+
+   ![The Card Block’s Query is connected to Cards, and two destination cards appear on the canvas.](https://academy.bricksbuilder.io/assets/component-repeater-cards-query.webp)
+
+4. Select each child element and use its property connection control to connect the Heading text to the Title field, the Image to the Image field, and the Button link to the Link field of Cards.
+
+   ![The selected destination Heading is connected to Cards.Title and displays Lake Bohinj in the first card.](https://academy.bricksbuilder.io/assets/component-repeater-title-connection.webp)
+
+5. Exit component editing and edit the Cards rows on the instance.
+
+The loop repeats the Block for each row. Compatible Array-query options, including offset, results conditions, and pagination, remain available. A repeater property can supply multiple queries, but each query takes its rows from one source property.
+
+#### Use field tags in text
+
+Each field exposes a copyable **Field tag**. For a field whose key is `title`, the tag is:
+
+```text
+{query_array @key:'title'}
+```
+
+Use the copied tag inside the matching repeater query loop. It also works in mixed text, such as `Read more about {query_array @key:'title'}`. Copy the actual tag from the field editor: changing a field's display name does not change its saved key.
+
+Image and Link field tags include the field type so Bricks can resolve their structured values in compatible image and link controls:
+
+```text
+{query_array @key:'image' @field-type:'image'}
+{query_array @key:'link' @field-type:'link'}
+```
+
+For general Array-query syntax and nested loops, see [Query Type: Array](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/#array).
+
+### Connect a native repeater
+
+For elements that already have an item list, such as Testimonials, connect the property directly to that repeater control.
+
+To start from existing content, open the repeater's property connection menu and create a new property there. Bricks creates supported fields, default rows, and mappings from the native items.
+
+To use an existing Repeater property, connect it to the item list, then open the visible template item and connect its compatible controls to the repeater fields. Field names do not need to match the element's control names. For example, a field named `Quote` can supply the testimonial content control.
+
+Unconnected controls keep the fixed values from the first native item. Unsupported field types, such as Number and Icon, can remain fixed this way. **Auto create and populate properties** adds missing supported fields and connections without replacing existing mappings or row values.
+
+### Edit instance rows and defaults {#repeater-instance-defaults}
+
+Select an instance to add, edit, duplicate, remove, or drag rows into a different order. These changes affect that instance only.
+
+An instance without its own rows uses the property's default rows. Deleting every row creates an intentionally empty list; it does not restore the defaults. Reset the property to inherit its defaults again. Repeater properties also support row editing in [Components as Blocks](https://academy.bricksbuilder.io/integrations/gutenberg/components-as-blocks/).
+
+### Change fields and forward nested properties
+
+Renaming a field keeps its key and existing values. Deleting a field removes it from the editable schema, so update copied tags and nested connections that reference it.
+
+Changing a saved field to an incompatible type creates a new key and clears its default. Existing instance values are not converted. Changes between Text, Rich text, and Select preserve the field key.
+
+When forwarding a Repeater property through a nested component, the parent and child definitions must have matching field keys and types, including nested fields. Creating the parent property from the child's connection control copies its field definitions. Disconnect the forwarding before making incompatible changes to either definition.
+
+## Properties as Dynamic Data {#property-dynamic-data}
+
+Since Bricks 2.5, insert a component property into dynamic-data-enabled content with `{prop.key}`. Combine a property with surrounding text, use it in a condition, or reuse it in a supported field without connecting the entire control to that property.
+
+### Copy a property reference
+
+Open the main component's **Properties** panel and edit a property. Its **Reference key** identifies it within that component. Use the copy button to copy its tag, such as `{prop.title}`.
+
+Choose the key when creating the property. It must be unique within the component and contain lowercase letters, numbers, and underscores, starting with a letter or underscore. Once created, the key is read-only. Renaming the property label does not break its references.
+
+<div className="screenshot screenshot--control-panel">
+
+![The Title property has the reference key title and a button to copy its tag.](https://academy.bricksbuilder.io/assets/component-property-reference-key.webp)
+
+</div>
+
+### Mix property values with text
+
+For a promotion component with Text properties using the keys `title` and `price`, enter this in a Basic Text element inside the main component:
+
+```text
+Book {prop.title} for {prop.price}.
+```
+
+Each instance supplies its own title and price. An instance without an override uses the property default. Clearing a text override restores the default; `0` and Toggle `false` remain explicit values.
+
+In supported text controls, type `{prop.` to see property suggestions, or select a property from the dynamic data picker. Bricks also flags incomplete, missing, or unsupported references in the Builder.
+
+### Images, links, and conditions
+
+Use a full Image or Link property in a compatible image or link control. To use a single value in text, select a supported field:
+
+| Property | Example | Value |
+| --- | --- | --- |
+| Image | `{prop.photo.url}` | Image URL |
+| Image | `{prop.photo.id}` | Attachment ID, when available |
+| Image | `{prop.photo.alt}` | Image alternative text |
+| Link | `{prop.cta.url}` | Resolved link URL |
+
+Replace `photo` and `cta` with your actual reference keys. A whole structured Image or Link value cannot be printed as ordinary text.
+
+For a conditional offer label, add a **Dynamic data** [element condition](https://academy.bricksbuilder.io/builder/features/element-conditions/), enter `{prop.offer}`, and compare it with the value you want to match. The condition uses the current instance's resolved value, including its default when no override is present.
+
+### Scope and supported output
+
+Property keys belong to their component. The same key can exist in different components without sharing values. A reference outside a component instance cannot read a property from an unrelated component on the page. To pass values into a nested component, connect its properties to the parent properties.
+
+Property references are intended for content and supported settings. They do not substitute editable values into CSS, JavaScript, executable PHP source, or executable HTML attributes such as `onclick` and `style`.
+
+A [Code element](https://academy.bricksbuilder.io/builder/elements/general/code/#component-properties) inside a component can render property tags in its HTML output when **Execute code** and **Parse dynamic data** are enabled. PHP code can read typed values with `bricks_get_component_property()`.
+
+Deleting a property can leave unresolved references. Review the locations shown in the deletion warning and replace or remove those references before saving. Unlinking a component replaces supported references with resolved instance values; Bricks stops the unlink operation when a reference cannot be replaced safely.
+
 ## Customizing an Instance
 
-Select a component instance to customize the properties exposed by the main component. Only connected properties appear in the instance controls.
+Select a component instance to customize the properties exposed by the main component. Properties used through control connections or [dynamic data references](#property-dynamic-data) appear in the instance controls.
 
 ![](https://academy.bricksbuilder.io/assets/bricks-components-instances-custom-values.png)
 
@@ -431,7 +682,7 @@ These details explain how Bricks stores and renders component instances:
 - A component must have one root element. The root element ID is the component ID.
 - A page instance references its component through the component ID.
 - Instance-specific property values are stored on the instance by property ID.
-- Component properties are definitions. A property controls an instance value only after it is connected to one or more compatible controls inside the component.
+- Component properties are definitions. A property exposes an instance value when it is connected to compatible controls or used through a supported dynamic data reference inside the component.
 - Variant selections live on the instance. Variant-specific settings live on the component definition.
 - Slot children live on the instance, not in the main component definition.
 - A missing component reference should be treated as invalid. Bricks skips instances whose component definition no longer exists.

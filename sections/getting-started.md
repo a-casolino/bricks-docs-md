@@ -1,7 +1,7 @@
 # Bricks Builder Documentation: Getting Started
 
-<!-- content-sha256: 5889de60b730f0fc07986dc343d8048a63e8a61184f324de9e69ab657b13507d -->
-<!-- content last changed: 2026-11-12 08:19 UTC -->
+<!-- content-sha256: 3f05b494001fc3cd91d8cad92aaecc81c86ddf35a0cac024f53a183becf05cbb -->
+<!-- content last changed: 2026-11-18 08:35 UTC -->
 
 Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricksbuilder.io/), refreshed daily. Content © Bricks. 13 pages.
 
@@ -9,13 +9,13 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
 
   - [Blog post template](#getting-started-blog-post-template)
   - [Global classes](#getting-started-global-classes)
-  - [Building a header template](#getting-started-header-template)
   - [Start your first page](#getting-started-building-your-first-page)
 - [Getting Started](#getting-started)
   - [Installation and setup](#getting-started-installation-setup)
+  - [Building a header template](#getting-started-header-template)
   - [Interface tour](#getting-started-interface-tour)
-  - [Query loops and dynamic data](#getting-started-query-loops-dynamic-data)
   - [Next steps](#getting-started-next-steps)
+  - [Query loops and dynamic data](#getting-started-query-loops-dynamic-data)
   - [Responsive basics](#getting-started-responsive-basics)
   - [Settings and defaults](#getting-started-settings-defaults)
   - [An intro to templates](#getting-started-templates-intro)
@@ -376,7 +376,7 @@ As your class library grows, organization matters.
 
 ### View all classes
 
-Press `Cmd/Ctrl + .` to open the **Style Manager** (or click the **Styles** icon in the toolbar). Navigate to the **Classes** tab.
+Use the default shortcut `Cmd/Ctrl + .` to open the **Style Manager** (or click the **Styles** icon in the toolbar). Navigate to the **Classes** tab.
 
 ![](https://academy.bricksbuilder.io/assets/style-manager-classes.png)
 
@@ -474,75 +474,6 @@ You can now:
 - Understand the difference between ID-specific and class-based styling
 
 Global classes are how you build sites that scale. They transform your workflow from repetitive styling to efficient system-building.
-
----
-
-<a id="getting-started-header-template"></a>
-
-# Building a header template
-
-Source: https://academy.bricksbuilder.io/getting-started/header-template/
-
-*Build a reusable Bricks header template with site branding, navigation, and the template settings needed to apply it across your site.*
-
-https://youtu.be/CL-viLFWjDg
-
-Let's build a global header with a logo and menu.
-
-## Create the template
-
-1. Go to **Bricks > Templates**
-2. Add New: "Header"
-3. Edit with Bricks
-
-## Settings
-
-1. **Settings (gear) > Template Settings**
-2. **Type**: Header
-3. **Conditions**: Entire Website
-
-## Build the structure
-
-1. Add a **Section**
-2. Inside the **Container**:
-   - Add a **Logo** element (or Image/Text)
-   - Add a **Nav Menu** element (we'll use the standard WordPress menu)
-
-## Style the layout
-
-**Container:**
-1. **Direction**: `Row` (horizontal)
-2. **Justify content**: `Space between` (pushes logo and menu apart)
-3. **Align items**: `Center` (vertically aligned)
-
-**Section:**
-1. **Background color**: Pick a light gray or your brand color
-2. **Padding**: `12` top/bottom (this intentionally overrides our global 80px for this specific section)
-
-Your header is part of the site chrome, not page content. It usually needs tighter spacing than regular sections, so it is a good place to make a deliberate exception to your global section padding.
-
-## Create a WordPress menu (if you do not have one yet)
-
-The Nav Menu element uses a normal WordPress menu. If **Appearance > Menus** is empty or you have never built a menu:
-
-1. From the WordPress dashboard, go to **Appearance > Menus**
-2. Enter a **Menu name** (for example `Main`) and click **Create Menu**
-3. Add a few items from the left (**Pages**, **Custom links**, and so on), then click **Save Menu**
-
-Then return to this template in the builder.
-
-## Configure the menu
-
-1. Select the **Nav Menu** element
-2. Under **Menu**, choose the WordPress menu you created (for example **Main**)
-
-## Save and verify
-
-1. Save the template
-2. Go to your **Pages** panel (top bar) -> **Home**
-3. You should see your new header sitting perfectly atop your hero section!
-
-![](https://academy.bricksbuilder.io/assets/header-template.png)
 
 ---
 
@@ -886,6 +817,75 @@ You now have Bricks installed and licensed.
 
 ---
 
+<a id="getting-started-header-template"></a>
+
+# Building a header template
+
+Source: https://academy.bricksbuilder.io/getting-started/header-template/
+
+*Build a reusable Bricks header template with site branding, navigation, and the template settings needed to apply it across your site.*
+
+https://youtu.be/CL-viLFWjDg
+
+Let's build a global header with a logo and menu.
+
+## Create the template
+
+1. Go to **Bricks > Templates**
+2. Add New: "Header"
+3. Edit with Bricks
+
+## Settings
+
+1. **Settings (gear) > Template Settings**
+2. **Type**: Header
+3. **Conditions**: Entire Website
+
+## Build the structure
+
+1. Add a **Section**
+2. Inside the **Container**:
+   - Add a **Logo** element (or Image/Text)
+   - Add a **Nav Menu** element (we'll use the standard WordPress menu)
+
+## Style the layout
+
+**Container:**
+1. **Direction**: `Row` (horizontal)
+2. **Justify content**: `Space between` (pushes logo and menu apart)
+3. **Align items**: `Center` (vertically aligned)
+
+**Section:**
+1. **Background color**: Pick a light gray or your brand color
+2. **Padding**: `12` top/bottom (this intentionally overrides our global 80px for this specific section)
+
+Your header is part of the site chrome, not page content. It usually needs tighter spacing than regular sections, so it is a good place to make a deliberate exception to your global section padding.
+
+## Create a WordPress menu (if you do not have one yet)
+
+The Nav Menu element uses a normal WordPress menu. If **Appearance > Menus** is empty or you have never built a menu:
+
+1. From the WordPress dashboard, go to **Appearance > Menus**
+2. Enter a **Menu name** (for example `Main`) and click **Create Menu**
+3. Add a few items from the left (**Pages**, **Custom links**, and so on), then click **Save Menu**
+
+Then return to this template in the builder.
+
+## Configure the menu
+
+1. Select the **Nav Menu** element
+2. Under **Menu**, choose the WordPress menu you created (for example **Main**)
+
+## Save and verify
+
+1. Save the template
+2. Go to your **Pages** panel (top bar) -> **Home**
+3. You should see your new header sitting perfectly atop your hero section!
+
+![](https://academy.bricksbuilder.io/assets/header-template.png)
+
+---
+
 <a id="getting-started-interface-tour"></a>
 
 # Interface tour
@@ -930,11 +930,11 @@ The toolbar at the top is always visible. Here's what the main icons do:
 ![](https://academy.bricksbuilder.io/assets/builder-toolbar-styles-icon.png)
 
 - **Bricks logo** - Open the link configured in Bricks settings (defaults to the WordPress dashboard; you can change this later)
-- **Styles** - Open the Style Manager, where you manage classes, variables, colors, typography scales, and spacing scales (`Cmd/Ctrl + .`)
+- **Styles** - Open the Style Manager, where you manage classes, variables, colors, typography scales, and spacing scales (default shortcut: `Cmd/Ctrl + .`)
 - **Pages** - Switch between pages while staying in the builder
 - **Templates** - Open the template library and your saved templates
 - **Manage** - Access builder-related settings and tools
-- **Command palette** - Search for elements and actions (`Cmd/Ctrl + K`)
+- **Command palette** - Search for elements and actions (default shortcut: `Cmd/Ctrl + K`)
 - **Elements / Components** - Toggle the elements and components panel
 - **Reload canvas** - Reload the preview if something looks out of sync
 - **Breakpoints and preview size** - Switch between desktop, tablet, and mobile editing and adjust the preview width
@@ -997,132 +997,6 @@ You now know:
 > **Help improve this lesson**
 >
 > Bricks Academy is new. If anything in this lesson felt unclear or missing, use the feedback box in the right sidebar and leave us a quick note.
-
----
-
-<a id="getting-started-query-loops-dynamic-data"></a>
-
-# Query loops and dynamic data
-
-Source: https://academy.bricksbuilder.io/getting-started/query-loops-dynamic-data/
-
-*Use query loops and dynamic data in Bricks to render posts, fields, and other WordPress content inside reusable layouts.*
-
-https://youtu.be/3WCyZaPtmpA
-
-We're back on the homepage. Let's add a "Latest Posts" section below the hero.
-
-## Before you begin: sample posts
-
-This section needs **at least three published blog posts** so the query loop has something to show. If you skip this, the grid can look empty or broken even when you did everything right in Bricks.
-
-**Create 3 test posts first:**
-
-1. In the WordPress dashboard, go to **Posts > Add New**
-2. Give each post a **title** and a short **excerpt** (use the excerpt field if your screen shows it, or add a couple of lines in the content and let WordPress generate one)
-3. Set a **featured image** for each post (**Featured image** in the sidebar)
-4. Click **Publish** and repeat until you have at least **3 published posts**
-
-You can use the same steps later in the [Blog post template](https://academy.bricksbuilder.io/getting-started/blog-post-template/) article; the posts you create here are what that template will display.
-
-Before we start clicking, we need two core ideas: **query loops** and **dynamic data**.
-
-## What is a query loop?
-
-In WordPress, a "query" is just a question like:
-
-- "Give me the 3 latest posts"
-- "Give me all posts in this category"
-
-A **query loop** takes the answer to that question (the list of posts) and repeats a design once for each item.
-
-You design a single **card** (image, title, excerpt, button). The loop runs through the posts and outputs one card per post. Change the query rules, and the same design shows different posts.
-
-## What is dynamic data?
-
-Until now, when you added a Heading or Text element, you typed the content manually. That is **static** text.
-
-With **dynamic data**, you connect an element to a WordPress field instead:
-
-- Heading pulls the **post title**
-- Image pulls the **featured image**
-- Text pulls the **post excerpt**
-
-In a loop, each card shows the field values for the current post in the list.
-
-You will see this as options like `{post_title}` or `{featured_image}` in Bricks. They are just visual placeholders for real WordPress fields.
-
-## Prepare content
-
-You should already have at least **3 published posts**, each with a **featured image** (see **Before you begin** above). Quick check: **Posts > All Posts** — you should see three or more posts with **Published** status.
-
-## Build the section
-
-1. Add a new **Section**
-2. Inside the Container, add a **Heading** ("Latest Posts")
-3. Add a **Block** element below the heading
-
-## Configure the Grid
-
-We want a 3-column grid for our posts.
-
-Earlier in the series you used flexbox for a simple row layout (text on the left, image on the right). **CSS Grid** is the other famous layout system. It is ideal for two dimensional layouts where you care about rows and columns at the same time, like a grid of cards.
-
-When you set a Block to use Grid, you tell the browser to place its children on a grid.
-
-- The **Grid template columns** control describes how many columns you want and how wide they should be.  
-  - `1fr 1fr 1fr` means “three equal columns”, each taking one fraction of the available width.
-- The **Gap** control sets the space between both columns and rows, so your cards are evenly spaced in all directions.
-
-As you add more cards, Grid automatically flows them into these columns, then wraps onto new rows as needed. You do not have to manually position each card.
-
-1. Select the **Block**
-2. **Display**: `Grid`
-3. **Grid template columns**: `1fr 1fr 1fr` (three equal columns)
-4. **Gap**: `24`
-
-## Create the card (Loop item)
-
-Inside the Grid Block, add another **Block** (this will be our repeating card).
-
-Inside this Card Block, add:
-1. **Image** (Featured Image)
-2. **Heading** (Post Title, H3)
-3. **Basic Text** (Post Excerpt)
-4. **Text Link** ("Read more")
-
-## Enable Query Loop
-
-1. Select the **Card Block** (the inner one)
-2. Toggle **Use query loop**
-3. **Query settings**:
-   - Post type: Posts
-   - Posts per page: 3
-
-You should now see 3 post cards!
-
-## Connect dynamic data
-
-1. **Image**: Select dynamic data -> `Featured Image`
-
-![](https://academy.bricksbuilder.io/assets/dynamic-data-featured-image.png)
-
-2. **Heading**: Select dynamic data -> `Post Title`. Link to -> `Post URL`
-
-![](https://academy.bricksbuilder.io/assets/dynamic-data-post-title.png)
-
-3. **Excerpt**: Select dynamic data -> `Post Excerpt`
-4. **Read more**: Link to -> `Post URL`
-
-![](https://academy.bricksbuilder.io/assets/query-loop.png)
-
-## Responsive check
-
-1. Switch to **Mobile Landscape**
-2. Select the **Grid Block**
-3. Change **Grid template columns** to `1fr` (stacks cards vertically)
-
-Done! You have a dynamic post grid.
 
 ---
 
@@ -1331,17 +1205,17 @@ You'll master Bricks by using it, not by reading about it. These resources exist
 
 **What it is:** Speed up your workflow with keyboard shortcuts for common actions.
 
-**Why it matters:** Professionals use shortcuts. They're faster than clicking through menus repeatedly.
+**Why it matters:** Save changes or switch panels while keeping your focus on the page you are building.
 
-**Common shortcuts:**
-- `Cmd/Ctrl + K` - Command panel (search elements, actions)
-- `Cmd/Ctrl + D` - Duplicate selected element
+**Default shortcuts:**
+- `Cmd/Ctrl + K` - Command Palette (search elements and actions)
+- `Cmd/Ctrl + Shift + D` - Duplicate selected element
 - `Cmd/Ctrl + Z` - Undo
 - `Cmd/Ctrl + Shift + Z` - Redo
 - `Cmd/Ctrl + B` - Toggle responsive breakpoints
-- `Delete` - Delete selected element
+- `Cmd/Ctrl + Delete` - Delete selected element
 
-**When you'll need it:** Every project. Learn shortcuts gradually as you work.
+In Bricks 2.5, use **Manage → Keyboard shortcuts** to change these combinations for your account.
 
 **Where to learn more:** [Keyboard Shortcuts documentation](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/)
 
@@ -1452,6 +1326,132 @@ But mastery doesn't come from reading. It comes from building, breaking, fixing,
 Welcome to the Bricks community. We're excited to see what you build.
 
 Now go make something great.
+
+---
+
+<a id="getting-started-query-loops-dynamic-data"></a>
+
+# Query loops and dynamic data
+
+Source: https://academy.bricksbuilder.io/getting-started/query-loops-dynamic-data/
+
+*Use query loops and dynamic data in Bricks to render posts, fields, and other WordPress content inside reusable layouts.*
+
+https://youtu.be/3WCyZaPtmpA
+
+We're back on the homepage. Let's add a "Latest Posts" section below the hero.
+
+## Before you begin: sample posts
+
+This section needs **at least three published blog posts** so the query loop has something to show. If you skip this, the grid can look empty or broken even when you did everything right in Bricks.
+
+**Create 3 test posts first:**
+
+1. In the WordPress dashboard, go to **Posts > Add New**
+2. Give each post a **title** and a short **excerpt** (use the excerpt field if your screen shows it, or add a couple of lines in the content and let WordPress generate one)
+3. Set a **featured image** for each post (**Featured image** in the sidebar)
+4. Click **Publish** and repeat until you have at least **3 published posts**
+
+You can use the same steps later in the [Blog post template](https://academy.bricksbuilder.io/getting-started/blog-post-template/) article; the posts you create here are what that template will display.
+
+Before we start clicking, we need two core ideas: **query loops** and **dynamic data**.
+
+## What is a query loop?
+
+In WordPress, a "query" is just a question like:
+
+- "Give me the 3 latest posts"
+- "Give me all posts in this category"
+
+A **query loop** takes the answer to that question (the list of posts) and repeats a design once for each item.
+
+You design a single **card** (image, title, excerpt, button). The loop runs through the posts and outputs one card per post. Change the query rules, and the same design shows different posts.
+
+## What is dynamic data?
+
+Until now, when you added a Heading or Text element, you typed the content manually. That is **static** text.
+
+With **dynamic data**, you connect an element to a WordPress field instead:
+
+- Heading pulls the **post title**
+- Image pulls the **featured image**
+- Text pulls the **post excerpt**
+
+In a loop, each card shows the field values for the current post in the list.
+
+You will see this as options like `{post_title}` or `{featured_image}` in Bricks. They are just visual placeholders for real WordPress fields.
+
+## Prepare content
+
+You should already have at least **3 published posts**, each with a **featured image** (see **Before you begin** above). Quick check: **Posts > All Posts** — you should see three or more posts with **Published** status.
+
+## Build the section
+
+1. Add a new **Section**
+2. Inside the Container, add a **Heading** ("Latest Posts")
+3. Add a **Block** element below the heading
+
+## Configure the Grid
+
+We want a 3-column grid for our posts.
+
+Earlier in the series you used flexbox for a simple row layout (text on the left, image on the right). **CSS Grid** is the other famous layout system. It is ideal for two dimensional layouts where you care about rows and columns at the same time, like a grid of cards.
+
+When you set a Block to use Grid, you tell the browser to place its children on a grid.
+
+- The **Grid template columns** control describes how many columns you want and how wide they should be.  
+  - `1fr 1fr 1fr` means “three equal columns”, each taking one fraction of the available width.
+- The **Gap** control sets the space between both columns and rows, so your cards are evenly spaced in all directions.
+
+As you add more cards, Grid automatically flows them into these columns, then wraps onto new rows as needed. You do not have to manually position each card.
+
+1. Select the **Block**
+2. **Display**: `Grid`
+3. **Grid template columns**: `1fr 1fr 1fr` (three equal columns)
+4. **Gap**: `24`
+
+## Create the card (Loop item)
+
+Inside the Grid Block, add another **Block** (this will be our repeating card).
+
+Inside this Card Block, add:
+1. **Image** (Featured Image)
+2. **Heading** (Post Title, H3)
+3. **Basic Text** (Post Excerpt)
+4. **Text Link** ("Read more")
+
+## Enable Query Loop
+
+1. Select the **Card Block** (the inner one)
+2. Toggle **Use query loop**
+3. **Query settings**:
+   - Post type: Posts
+   - Posts per page: 3
+
+You should now see 3 post cards!
+
+## Connect dynamic data
+
+1. **Image**: Select dynamic data -> `Featured Image`
+
+![](https://academy.bricksbuilder.io/assets/dynamic-data-featured-image.png)
+
+2. **Heading**: Select dynamic data -> `Post Title`. Link to -> `Post URL`
+
+![](https://academy.bricksbuilder.io/assets/dynamic-data-post-title.png)
+
+3. **Excerpt**: Select dynamic data -> `Post Excerpt`
+4. **Read more**: Link to -> `Post URL`
+
+![](https://academy.bricksbuilder.io/assets/query-loop.png)
+
+## Responsive check
+
+1. Switch to **Mobile Landscape**
+2. Select the **Grid Block**
+3. Change **Grid template columns** to `1fr` (stacks cards vertically)
+
+Done! You have a dynamic post grid.
 
 ---
 
@@ -1783,7 +1783,7 @@ Theme Styles are your site-wide design system. They control the default look of 
 
 ## Create a theme style
 
-1. Click the **Styles** icon in the toolbar (or press `Cmd/Ctrl + .`)
+1. Click the **Styles** icon in the toolbar (or use the default shortcut `Cmd/Ctrl + .`)
 2. Click the **Select: Theme Styles** dropdown and enter a name for the theme style
 3. Click the "Create" icon
 

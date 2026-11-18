@@ -116,6 +116,21 @@ When updating post meta via a form field, add an item under **Post meta** and pr
 
 Available sanitization methods include text, integer, float, email, URL, and post-safe HTML. Values that are not handled by ACF or Meta Box fall back to WordPress post meta.
 
+#### Date and time meta {#date-and-time-meta}
+
+In Bricks 2.5, a **Datepicker** field with **Enable time** and **Disable calendar** turned on collects a time without a date. See the [Form date and time picker settings](https://academy.bricksbuilder.io/builder/elements/general/form/#timepicker) for the field configuration.
+
+To save an appointment time:
+
+1. Add a mapping under **Post meta** in the **Create post** or **Update post** action.
+2. Set **Meta key** to your custom field key, such as `appointment_time`.
+3. Set **Meta value** to the time-only form field.
+4. Set **Sanitization method** to **Text (sanitize_text_field)** so the colon and minutes are preserved.
+
+For ordinary WordPress post meta, selecting `14:30` saves `14:30`. **Update post** preserves time-only values instead of converting them to a date. Datepicker fields that include a calendar retain their existing `Ymd` conversion in **Update post**, so a date-only selection of October 15, 2026 is saved as `20261015`.
+
+The **24-hour time** setting changes the picker's hour display. It does not change the submitted `H:i` time format. If the meta key belongs to an ACF or Meta Box field, choose a field type that accepts the submitted value; integration-specific handling still applies.
+
 #### ACF and Meta Box handling
 
 When possible, Bricks updates ACF fields through `update_field()` and Meta Box fields through `rwmb_set_meta()` instead of writing raw post meta only. This matters for field types that expect a specific value shape.

@@ -1,4 +1,4 @@
-*The Map element in Bricks allows you to display Google Maps with a range of capabilities, from showing a single location to dynamically rendering multiple.*
+*Display Google Maps, sync markers with a query loop, style the connected active item, and scroll it into view when a marker is selected.*
 
 The **Map** element in Bricks allows you to display Google Maps with a range of capabilities, from showing a single location to dynamically rendering multiple markers based on queries.
 
@@ -30,7 +30,7 @@ Manually define multiple locations using the "Addresses" **Repeater** control of
 
 ### 2) Query loop
 
-Use this mode when map addresses to feed the map with addresses/coordinates from a query.
+Use this mode to populate map markers with addresses or coordinates from a query.
 
 For example, if you have a **custom post type** like "Properties" where each property contains an address, enabling the Query loop allows you to show markers of all property addresses on the map. `(@since 2.0)`
 
@@ -40,11 +40,15 @@ You can also define a [custom Info Box](#info-box-popup-template) using a popup 
 
 In our example above, we selected the custom post type `property`, where each address is stored in a custom field (ACF). Providing the latitude & longitude coordinates will be more accurate than a physical address.
 
+The map's own query only populates markers. To update markers through filters, pagination, or Load More, use a separate results loop containing [Map Connectors](#map-connector-element) and sync the map to it.
+
 ### 3) Sync with query
 
 Ideal for use cases where the map is shown alongside a dynamic query loop such as a directory, Sync with query allows the map to update live with the query as users interact via **AJAX Pagination**, **Load More**, or **Query Filters**.
 
-This mode requires adding a [Map Connector](#map-connector-element) element inside the target query loop.
+This mode requires adding a [Map Connector](#map-connector-element) element inside the target query loop. Point filters, pagination, Load More, and any results summary at that loop.
+
+The builder previews the connected loop's markers. Test filtering and pagination on the frontend. [Map (Leaflet)](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/#sync-with-query) also supports this workflow.
 
 It also supports [custom Info Boxes](#info-box-popup-template) using popup templates.
 
@@ -55,6 +59,43 @@ It also supports [custom Info Boxes](#info-box-popup-template) using popup templ
 **Map markers update according to query results**:
 
 ![](https://academy.bricksbuilder.io/assets/bricks-2.0-map-sync-with-query-filters.png)
+
+### Geolocation filtering {#geolocation-filtering}
+
+Starting with **Bricks 2.5**, use a [Filter - Geolocation](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-geolocation-element) to search the connected listing within a radius of an address, device location, or map center. Target a Posts, Terms, or Users results loop containing Map Connectors, and select the same loop under **Addresses > Sync with query**. The map must use **Google Maps JavaScript API** rendering. Static maps and the map's own query are not filter targets.
+
+The filter reads saved coordinates from its configured data source. It does not geocode stored street addresses during indexing. Use matching location fields on the Map Connectors.
+
+One matching Geolocation filter and one synchronized map connect automatically. If several filters or maps use the query, select **Map (Optional)** on the filter. Each filter connects to one map, and each map can be controlled by one filter.
+
+The map shows the applied search origin and radius, including searches with no matching locations. Configure the origin marker and circle on the filter. Address search requires Maps JavaScript API and Geocoding API; autocomplete additionally requires Places API (New).
+
+Enable **Search on map drag** on the filter to use the map center after the visitor finishes panning. Dragging must be enabled on the map. **Visitor controlled** mode displays a **Search as I move the map** checkbox; **Automatic** mode searches after every qualifying drag. Zooming alone does not trigger a search. **Apply on: On submit** stages the new location until submitted.
+
+Under **Addresses**, use **No results text**, **No results typography**, and **No results position** to configure the empty-state message. Position it at the top or bottom to keep the origin marker visible.
+
+### Scroll the Active Item Into View {#scroll-active-item}
+
+Starting with **Bricks 2.5**, selecting a marker can scroll its connected query-loop item into view. This works when clicking a marker or selecting it through an **Open address (Map)** interaction, including markers without an Info Box.
+
+1. Save a Google Maps API key and use **Google Maps JavaScript API** render mode.
+2. Add a [Map Connector](https://academy.bricksbuilder.io/builder/elements/general/map-connector/) inside the target query loop and configure its location data.
+3. On the Map element, select the loop under **Addresses > Sync with query**.
+4. Enable **Scroll active item into view**. It is off by default.
+5. Choose the scrolling behavior and position, then save and test the frontend.
+
+| Setting | Options |
+| --- | --- |
+| Scroll behavior | **Follow site setting** (default) uses the scroll container's or page's CSS scroll behavior. **Smooth** animates scrolling. **Instant** scrolls immediately. |
+| Scroll position | **Nearest** (default) moves only as far as needed to bring the item into view. **Start** aligns its top with the scroll area. **Center** centers it vertically. |
+
+Bricks finds the connected loop item automatically and scrolls its nearest vertically scrollable parent. If there is no such parent, it scrolls the page. You do not need an interaction on each result, a target selector, or a scroll-container selector. With **Nearest**, an item already visible, or an oversized item spanning the scroll area, stays in place.
+
+<div className="screenshot screenshot--control-panel">
+
+![Map settings targeting the Publisher card query, with Scroll active item into view enabled, Smooth behavior, and Center positioning.](https://academy.bricksbuilder.io/assets/map-scroll-active-item-settings.webp)
+
+</div>
 
 ## Markers
 
@@ -83,7 +124,13 @@ When set:
 
 ![](https://academy.bricksbuilder.io/assets/map-center-control.png)
 
-Set the default center point of the map. Particularly useful when using **Sync with query**—if the synced query returns no results, the map will reset to this center point. `(@since 2.0)`
+Set the default center point of the map. With **Sync with query**, AJAX updates preserve the current view unless **Fit map on markers change** is enabled. When fitting is enabled and no locations remain, the map returns to its configured center and zoom. An active Geolocation search preserves its search origin and radius when there are no results.
+
+### Initial view and marker updates {#map-fitting}
+
+By default, the initial view centers a single marker at the configured zoom or fits multiple markers. Enable **Disable initial fit map** to retain the configured center and zoom on page load.
+
+**Fit map on markers change** separately controls whether the view adjusts after synced-query updates. It is off by default.
 
 ### Others
 
@@ -139,33 +186,30 @@ When an Info Box opens, Bricks adds the `infobox-opened` class to the interactio
 }
 ```
 
-## Resolving Google Maps Script Conflicts with Other Plugins
+### Style the Active Connected Item {#active-connected-item}
 
-If you're using a plugin like Fluent Form, which may enqueue the Google Maps script on the same page, this can result in a JavaScript conflict because the script cannot be loaded twice.
+Starting with **Bricks 2.5**, Bricks adds `map-marker-active` to the **Map Connector** associated with the selected marker. The class updates when a marker is clicked or selected through **Open address (Map)**, even if the marker has no Info Box. Bricks removes it when another marker is selected or the marker state is reset, including when query updates rebuild the markers.
 
-To prevent this issue, you can dequeue Bricks' Google Maps script and trigger the `bricksMap()` function manually after a short delay, ensuring the Fluent Forms map script has loaded first:
+Because the connector is an invisible `<template>` node, style the visible loop item that contains it. For example, assign the `property-card` class to the repeated card and add:
 
-```php
-add_action( 'wp_enqueue_scripts', function() {
-  if ( is_page( 1567 ) ) {
-    wp_deregister_script( 'bricks-google-maps' );
-  }
-}, 999 );
-
-add_action( 'wp_footer', function() {
-  if ( is_page( 1567 ) ) {
-    echo '<script>
-      document.addEventListener("DOMContentLoaded", function() {
-        setTimeout(function() {
-          bricksMap();
-        }, 1000); // Adjust delay if needed
-      });
-    </script>';
-  }
-}, 999 );
+```css
+.property-card:has(.map-marker-active) {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
 ```
 
-Replace `1567` with your actual page ID. Adjust the delay as necessary to ensure the Fluent Forms map script has fully loaded before `bricksMap()` runs.
+The active connector class and **Scroll active item into view** work independently. Use `map-marker-active` to style the selected location's card. Continue using `infobox-opened` on interaction elements for the Info Box's open/close state.
+
+![Selecting a map marker scrolls the publisher list to Penguin Random House and outlines its connected card.](https://academy.bricksbuilder.io/assets/map-active-connected-item.webp)
+
+## Resolving Google Maps Script Conflicts with Other Plugins
+
+Starting with **Bricks 2.5**, Bricks reuses a Google Maps API runtime that another integration has loaded or is loading. It preserves that integration's key, language, and callbacks. A manual script-dequeue workaround is usually unnecessary.
+
+If the map or address search fails, check that the key used by the shared Google loader permits the APIs your page needs. A key configured by another plugin can have different service or website restrictions from the key saved in Bricks. Consent tools and script optimizers can also control when Google becomes available.
+
+After upgrading, review custom code that deregisters `bricks-google-maps` or starts the map on a fixed timer. Test the map and address search together on the frontend before removing an existing workaround.
 
 ## Settings
 
@@ -197,6 +241,9 @@ Replace `1567` with your actual page ID. Adjust the delay as necessary to ensure
 
 - **Sync with query** (query-list) - Connect to existing query loop for dynamic markers.
 - **Text: No results** (text) - Message when no locations found. Placeholder: `No locations found`.
+- **Scroll active item into view** (checkbox, Bricks 2.5) - Scroll to the connected loop item when its marker is selected. Off by default. Requires a selected query and JavaScript API rendering.
+- **Scroll behavior** (select) - Follow site setting (default), Smooth, or Instant. Available when scrolling is enabled.
+- **Scroll position** (select) - Nearest (default), Start, or Center. Available when scrolling is enabled.
 
 ### Markers
 
@@ -260,7 +307,8 @@ Replace `1567` with your actual page ID. Adjust the delay as necessary to ensure
 - **Map style** (select) - Predefined map styles. Requires roadmap type.
 - **Custom map style** (code) - JSON code for custom styling from Snazzy Maps.
 - **Apply: Custom map style** (apply) - Apply custom style changes.
-- **Fit map on markers change** (checkbox) - Auto-adjust view when markers change.
+- **Disable initial fit map** (checkbox) - Preserve the configured center and zoom on page load. Off by default.
+- **Fit map on markers change** (checkbox) - Adjust the view after synced query results change. Off by default.
 - **Scroll** (checkbox) - Enable scroll wheel zooming. Default: true.
 - **Draggable** (checkbox) - Enable map dragging. Default: true.
 - **Fullscreen Control** (checkbox) - Show fullscreen button.

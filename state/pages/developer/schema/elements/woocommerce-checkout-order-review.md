@@ -14,6 +14,7 @@
 | `hideTitle` | checkbox | Hide title | `display` on `#order_review_heading` |
 | `orderTitle` | text | Title | — |
 | `orderTitleTypography` | typography | Title typography | `font` on `#order_review_heading` |
+| `orderTitleMargin` | spacing | Title margin | `margin` on `#order_review_heading` |
 | `orderSubtitlesTypography` | typography | Subtitles typography | `font` on `.shop_table thead`, `font` on `.shop_table tfoot` |
 | `cartItemsTypography` | typography | Typography | `font` on `.shop_table tbody td` |
 | `cartItemsPadding` | spacing | Padding | `padding` on `.shop_table thead th, .shop_table tbody td, .shop_table tfoot th, .shop_table tfoot td` |
@@ -60,6 +61,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

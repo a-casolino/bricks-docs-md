@@ -6,7 +6,7 @@ The Image element displays images with support for responsive sources, captions,
 
 ### Basic
 
-- **Image** (image) - Select an image from the media library or use dynamic data.
+- **Image** (image) - Select an image from the media library or use dynamic data. Since Bricks 2.5, drop a local image onto the selector or preview to upload and select it. This changes the element's selection without replacing an existing Media Library attachment. See [Media Browser](https://academy.bricksbuilder.io/builder/features/media-browser/#drop-images-directly-onto-a-control).
 
 - **HTML tag** (select) - The HTML tag to wrap the image. Options: `figure`, `picture`, `div`, `custom`. Default: `figure`. When sources are used, Bricks outputs a `<picture>` element around the image sources. If the image has a caption, Bricks keeps the `figure` wrapper and places the `<picture>` element inside it.
 

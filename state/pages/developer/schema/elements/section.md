@@ -11,6 +11,7 @@
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
+| `disableLazyLoad` | checkbox | Disable lazy load | — |
 | `link` | link | Link | — |
 | `tag` | select | HTML tag | — |
 | `customTag` | text | Custom tag | — |
@@ -62,6 +63,7 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_bottom` | number | Bottom | `bottom` |
 | `_left` | number | Left | `left` |
 | `_zIndex` | number | Z-index | `z-index` |
+| `_columns` | text | Columns | `columns` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

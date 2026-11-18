@@ -13,13 +13,16 @@
 |---|---|---|---|
 | `location` | select | Location | — |
 | `toggleableForm` | checkbox | Toggleable form | — |
+| `toggleTransition` | number | Transition | — |
 | `toggleText` | text | Text | — |
 | `toggleDivJustifyContent` | justify-content | Justify content | `justify-content` on `.coupon-toggle` |
 | `toggleDivGap` | number | Gap | `gap` on `.coupon-toggle` |
 | `toggleButtonNoText` | checkbox | Disable text | — |
 | `toggleButtonText` | text | Text | — |
 | `toggleIcon` | icon | Icon | — |
+| `toggleIconExpanded` | icon | Icon expanded | — |
 | `toggleIconTypography` | typography | Icon typography | `font` on `.coupon-toggle .showcoupon i` |
+| `toggleIconExpandedTypography` | typography | Icon expanded typography | `font` on `.coupon-toggle .showcoupon i.brx-toggle-icon-expanded` |
 | `disableCouponMessage` | checkbox | Disable coupon message | — |
 | `couponMessage` | text | Coupon message | — |
 | `fieldsWrapperFlexDirection` | direction | Flex direction | `flex-direction` on `.coupon-form` |
@@ -84,6 +87,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

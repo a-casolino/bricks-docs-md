@@ -98,6 +98,8 @@
 | `mobileMenuToggleColorClose` | color | Color close | `color` on `&.show-mobile-menu .bricks-mobile-menu-toggle` |
 | `mobileMenuToggleClosePosition` | dimensions | Close position | `—` on `&.show-mobile-menu .bricks-mobile-menu-toggle` |
 | `megaMenu` | checkbox | Enable | — |
+| `megaMenuWidth` | number | Width | `--brx-mega-menu-width` |
+| `megaMenuAlignment` | select | Alignment | `--brx-mega-menu-align` |
 | `megaMenuSelector` | text | CSS selector | — |
 | `megaMenuToggleOn` | select | Toggle on | — |
 | `megaMenuTransition` | text | Transition | `transition` on `.brx-megamenu` |
@@ -132,6 +134,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

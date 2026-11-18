@@ -26,6 +26,8 @@ When a layout element's **Display** value is set to `grid`, Bricks adds a Visual
 
 The Visual Grid Builder shows the grid panel, row and column controls, breakpoint controls, undo/redo history, and actions such as filling or resetting the grid. Column, row, and gap values are saved back to the grid controls. Grid item placement is saved to child grid controls where possible; for query loop items, active class styling, non-nestable elements, or component roots, Bricks writes generated placement CSS into the selected grid's custom CSS between Visual Grid Builder markers.
 
+Since Bricks 2.5, a notice explains when placed items prevent reducing the column or row count. Identifiable blocking items are highlighted in the grid panel. Move, resize, or reset those items before trying the reduction again. See [when columns or rows cannot be reduced](https://academy.bricksbuilder.io/builder/features/visual-grid-builder/#grid-reduction).
+
 ## Setting up column & row tracks (explicit grid)
 
 Once we've created our grid container it is time to define our grid column & row [tracks](https://developer.mozilla.org/en-US/docs/Glossary/Grid_Tracks).
@@ -102,7 +104,7 @@ Creates an explicit 3-column grid.
 `grid-template-rows: 100px repeat(2, 1fr) 200px`
 Creates an explicit 4-row grid. Where row 1 is 100px high, row 2 & 3 are 1fr each, and row 4 is 200px high.
 
-## Placing grid items (by line number)
+## Placing grid items (by line number) {#placing-grid-items-by-line-number}
 
 [Grid lines](https://developer.mozilla.org/en-US/docs/Glossary/Grid_Lines) mark the start or end of a column or row track. The count starts at 1.
 

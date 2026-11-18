@@ -21,6 +21,8 @@ The Media Browser can also open as a picker when you choose or change a file in 
 
 Image Gallery opens in multi-select mode. Image, Video, Audio, SVG, and File controls select one attachment at a time. Existing control values are preselected when you reopen the picker.
 
+To confirm a selection in the Bricks picker, click **Insert** or press the default `CMD / CTRL + ENTER`. In Bricks 2.5, you can change this combination under **Manage → Keyboard shortcuts**. It applies to picker selection, not standalone media management. See [Keyboard Shortcuts](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/).
+
 ### Choose the media picker
 
 Go to **Bricks > Settings > Builder > Media > Media picker** and choose:
@@ -35,6 +37,26 @@ This setting changes the interface, not where the files are stored. Both options
 Use the sidebar to switch between all media, images, video, audio, Trash, and Media Health. If a compatible media-folder integration is active, folders also appear in the sidebar.
 
 The layout control provides grid, masonry, and list views. Media defaults to 50 results per page. Open the settings popover to change the number of results from 1 to 100 and choose whether attachment details open beside the results or in an overlay.
+
+### Adjust thumbnails and visible details
+
+Open the **More** menu above the results to adjust the Media view. **Thumbnail size** and **Thumbnail fit** are available since Bricks 2.4.6:
+
+- **Thumbnail size**: Choose **Small**, **Medium**, or **Large** in grid view. The default is **Medium**.
+- **Thumbnail fit**: Choose **Cropped** to fill each grid thumbnail or **Fitted** to see the whole image without cropping. The default is **Cropped**. This changes the Browser preview, not the attachment or its frontend display.
+- **Image dimensions** (since Bricks 2.5): Show each image's width and height in the result metadata. This is off by default and is available across grid, masonry, and list views.
+
+These preferences are remembered in your browser for the current user. Thumbnail size and fit apply only to grid view.
+
+![Media Browser grid showing complete portrait and landscape images, with Thumbnail size set to Medium, Thumbnail fit set to Fitted, and Image dimensions enabled in More.](https://academy.bricksbuilder.io/assets/builder/release-2.5/media-thumbnail-settings.webp)
+
+<div className="screenshot screenshot--control-panel">
+
+![More menu with Medium thumbnail size, Fitted thumbnail fit, and Image dimensions enabled.](https://academy.bricksbuilder.io/assets/builder/release-2.5/media-thumbnail-menu-detail.webp)
+
+</div>
+
+### Search and filter results
 
 Search checks the attachment ID, file name, title, caption, description, and alternative text.
 
@@ -56,6 +78,12 @@ Width and height filters appear for compatible image and video types. The missin
 
 Click the upload icon in the Media Browser to open the upload workspace.
 
+### Drop images directly onto a control
+
+Since Bricks 2.5, you can drop a local image onto an **Image** selector or its preview to upload and select it without opening the Media Browser. Dropping onto an existing image replaces that control's selection; it does not replace the original Media Library attachment.
+
+This requires WordPress upload permission and a control that is not using dynamic data. WordPress file-type and upload-size restrictions still apply.
+
 ### Upload local files
 
 Drop files into the workspace or click **Browse files**. You can stage and upload multiple files in one batch.
@@ -63,6 +91,18 @@ Drop files into the workspace or click **Browse files**. You can stage and uploa
 Before a local file is uploaded, you can change its file name without changing the extension. Bricks checks the current WordPress upload directory for conflicts. If the name already exists, rename the file or accept the unique name suggested by WordPress.
 
 Existing attachments cannot be renamed from this workflow. Changing an existing file name could break stored URLs and references.
+
+### Drop images onto an Image Gallery
+
+Since Bricks 2.5, for an **Image Gallery** control, drop one or more images to append them to the selected gallery. Hold **Shift** while dropping to replace the entire selection. A replacement is applied only when every file in the batch uploads successfully. If one fails, the current gallery selection stays unchanged; retry the failed uploads from the error message.
+
+This requires WordPress upload permission and a control that is not using dynamic data. WordPress file-type and upload-size restrictions still apply.
+
+<div className="screenshot screenshot--control-panel">
+
+![Image Gallery control during a file drag, showing Add images and Hold Shift to replace.](https://academy.bricksbuilder.io/assets/builder/release-2.5/gallery-drop-panel.webp)
+
+</div>
 
 ### Import files from URLs
 

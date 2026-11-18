@@ -36,11 +36,11 @@ The toolbar at the top is always visible. Here's what the main icons do:
 ![](https://academy.bricksbuilder.io/assets/builder-toolbar-styles-icon.png)
 
 - **Bricks logo** - Open the link configured in Bricks settings (defaults to the WordPress dashboard; you can change this later)
-- **Styles** - Open the Style Manager, where you manage classes, variables, colors, typography scales, and spacing scales (`Cmd/Ctrl + .`)
+- **Styles** - Open the Style Manager, where you manage classes, variables, colors, typography scales, and spacing scales (default shortcut: `Cmd/Ctrl + .`)
 - **Pages** - Switch between pages while staying in the builder
 - **Templates** - Open the template library and your saved templates
 - **Manage** - Access builder-related settings and tools
-- **Command palette** - Search for elements and actions (`Cmd/Ctrl + K`)
+- **Command palette** - Search for elements and actions (default shortcut: `Cmd/Ctrl + K`)
 - **Elements / Components** - Toggle the elements and components panel
 - **Reload canvas** - Reload the preview if something looks out of sync
 - **Breakpoints and preview size** - Switch between desktop, tablet, and mobile editing and adjust the preview width

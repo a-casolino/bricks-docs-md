@@ -2,7 +2,7 @@
 
 The gradient control lets you define an unlimited number of gradients that you can apply to text, background, and as an overlay.
 
-You can set the CSS selector in the control, adjust the angle between 0 and 360°, and set a color stop for each color.
+For generated gradients, you can set the CSS selector, adjust the angle between 0 and 360°, and set a color stop for each color. Since Bricks 2.5, the **Custom** type accepts complete gradient values and CSS variable references. See [Custom gradients](https://academy.bricksbuilder.io/builder/styling/gradients-overlays/#custom-gradients) for the Builder workflow.
 
 ```php
 class Prefix_Element_Gradient extends \Bricks\Element {
@@ -26,7 +26,3 @@ class Prefix_Element_Gradient extends \Bricks\Element {
   }
 }
 ```
-
-> **Note**
->
-> All sections, rows, columns, and elements already have a **CSS Gradient** control under the Style tab Gradient / Overlay group.

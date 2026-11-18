@@ -12,6 +12,17 @@
 | Key | Type | Label | CSS |
 |---|---|---|---|
 | `items` | repeater | Slides | `width` on `.bricks-button` |
+| `slidesToShow` | number | Items to show | — |
+| `slidesToScroll` | number | Items to scroll | — |
+| `gutter` | number | Spacing (px) | — |
+| `height` | number | Min. height | `min-height` on `.swiper-slide` |
+| `effect` | select | Effect | — |
+| `swiperLoop` | select | Loop | — |
+| `speed` | number | Animation speed in ms | — |
+| `disableLazyLoad` | checkbox | Disable lazy load | — |
+| `autoplay` | checkbox | Autoplay | — |
+| `pauseOnHover` | checkbox | Pause on hover | — |
+| `autoplaySpeed` | number | Autoplay delay in ms | — |
 | `titleMargin` | spacing | Title margin | `margin` on `.slider-content .title` |
 | `titleTypography` | typography | Title typography | `font` on `.title` |
 | `contentWidth` | number | Content width | `width` on `.slider-content` |
@@ -33,6 +44,37 @@
 | `backgroundPositionRight` | number | Right | `right` on `.image` |
 | `backgroundPositionBottom` | number | Bottom | `bottom` on `.image` |
 | `backgroundPositionLeft` | number | Left | `left` on `.image` |
+| `arrows` | checkbox | Show arrows | — |
+| `arrowHeight` | number | Height | `height` on `.swiper-button` |
+| `arrowWidth` | number | Width | `width` on `.swiper-button` |
+| `arrowBackground` | color | Background | `background-color` on `.swiper-button` |
+| `arrowBorder` | border | Border | `border` on `.swiper-button` |
+| `arrowTypography` | typography | Typography | `font` on `.swiper-button` |
+| `prevArrow` | icon | Prev arrow | `—` on `.bricks-swiper-button-prev > *` |
+| `prevArrowTop` | number | Top | `top` on `.bricks-swiper-button-prev` |
+| `prevArrowRight` | number | Right | `right` on `.bricks-swiper-button-prev` |
+| `prevArrowBottom` | number | Bottom | `bottom` on `.bricks-swiper-button-prev` |
+| `prevArrowLeft` | number | Left | `left` on `.bricks-swiper-button-prev` |
+| `prevArrowTransform` | transform | Transform | `transform` on `.bricks-swiper-button-prev` |
+| `nextArrow` | icon | Next arrow | `—` on `.bricks-swiper-button-next > *` |
+| `nextArrowTop` | number | Top | `top` on `.bricks-swiper-button-next` |
+| `nextArrowRight` | number | Right | `right` on `.bricks-swiper-button-next` |
+| `nextArrowBottom` | number | Bottom | `bottom` on `.bricks-swiper-button-next` |
+| `nextArrowLeft` | number | Left | `left` on `.bricks-swiper-button-next` |
+| `nextArrowTransform` | transform | Transform | `transform` on `.bricks-swiper-button-next` |
+| `dots` | checkbox | Show dots | — |
+| `dotsDynamic` | checkbox | Dynamic dots | — |
+| `dotsVertical` | checkbox | Vertical | `flex-direction` on `.swiper-pagination-bullets` |
+| `dotsHeight` | number | Height | `height` on `.swiper-pagination-bullet` |
+| `dotsWidth` | number | Width | `width` on `.swiper-pagination-bullet` |
+| `dotsTop` | number | Top | `top` on `.bricks-swiper-container + .swiper-pagination-bullets` |
+| `dotsRight` | number | Right | `right` on `.bricks-swiper-container + .swiper-pagination-bullets`, `left` on `.bricks-swiper-container + .swiper-pagination-bullets`, `transform` on `.bricks-swiper-container + .swiper-pagination-bullets` |
+| `dotsBottom` | number | Bottom | `bottom` on `.bricks-swiper-container + .swiper-pagination-bullets` |
+| `dotsLeft` | number | Left | `left` on `.bricks-swiper-container + .swiper-pagination-bullets`, `transform` on `.bricks-swiper-container + .swiper-pagination-bullets` |
+| `dotsBorder` | border | Border | `border` on `.swiper-pagination-bullet` |
+| `dotsColor` | color | Color | `background-color` on `.swiper-pagination-bullet`, `color` on `.swiper-pagination-bullet` |
+| `dotsActiveColor` | color | Active color | `background-color` on `.swiper-pagination-bullet-active`, `color` on `.swiper-pagination-bullet-active` |
+| `dotsSpacing` | spacing | Margin | `margin` on `.swiper-pagination-bullet` |
 
 ## Inherited CSS controls
 
@@ -58,6 +100,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

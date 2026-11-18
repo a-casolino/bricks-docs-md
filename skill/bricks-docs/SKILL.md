@@ -18,7 +18,7 @@ Complete, daily-refreshed copy of the official Bricks Academy (https://academy.b
 
 - **Home** (1 pages): `references/_index-home.md`
 - **Getting Started** (13 pages): `references/_index-getting-started.md`
-- **Builder** (222 pages): `references/_index-builder.md`
-- **Developer** (335 pages): `references/_index-developer.md`
-- **Schema (Bricks Data Model)** (231 pages): `references/_index-schema.md`
+- **Builder** (234 pages): `references/_index-builder.md`
+- **Developer** (341 pages): `references/_index-developer.md`
+- **Schema (Bricks Data Model)** (234 pages): `references/_index-schema.md`
 - **Integrations** (28 pages): `references/_index-integrations.md`

@@ -184,6 +184,8 @@ That means you can reuse one global query in several places and use different fi
 
 If you change the global query's object type or base query settings, all filtered instances may be affected.
 
+Starting with Bricks 2.5, [Global Filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#global-filters) share a filter's behavior across elements of the same type. They are separate from Global Queries. Two linked filters targeting the same loop synchronize selections. Reusing that filter definition on another loop shares its settings while keeping the second loop's selections independent.
+
 ## Template Import And Remote Templates {#templates}
 
 Templates and imported content can include loops that reference global queries or include global query data. After importing templates, verify whether the expected global queries came with the import and whether the local site data supports them.

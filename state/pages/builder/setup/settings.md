@@ -89,12 +89,14 @@ Enables the query sort, filter, and live search system for Post, Term, and User 
 
 When enabled, an indexer manages a background database index used for filtering:
 
-- **Regenerate filter index**: Rebuilds the filter index for the entire site. Run this after enabling filters or after major content changes.
+- **Regenerate filter index**: Rebuilds the filter index for the entire site. Run this after enabling filters or after major content changes. From Bricks 2.5, a request preserves any existing queued work instead of restarting it. Newly queued jobs continue in the background.
 - **Continue index job**: Immediately runs any queued index jobs without waiting for the next WP cron execution.
 - **Fix corrupted database**: Appears when database corruption is detected. Repairs the filter index tables.
 - **Remove all index jobs**: Clears all queued indexer jobs. Use this if the indexer gets stuck, then regenerate the index afterwards.
 
 If your indexer makes no progress, see the [known issues: indexer no progress](https://academy.bricksbuilder.io/builder/setup/known-issues#query-filter-indexer-no-progress) article.
+
+From Bricks 2.5, developers can request a full reindex after an import or add a recurring schedule through PHP. See [Programmatic query filter reindexing](https://academy.bricksbuilder.io/developer/hooks/actions/bricks-query_filters-reindex/). A daily rebuild is not enabled automatically.
 
 Avoid using query filters in combination with third-party filter plugins.
 
@@ -105,6 +107,14 @@ Enables custom breakpoints beyond Bricks' default set. Configure these before yo
 See [responsive editing](https://academy.bricksbuilder.io/builder/interface/responsive-editing#custom-breakpoints) for details.
 
 - **Regenerate CSS files**: When using external CSS file loading, regenerates all CSS files to reflect the current breakpoint configuration.
+
+### Breakpoint data attribute
+
+Since Bricks 2.5. Disabled by default.
+
+Enable this setting to add `data-brx-breakpoint` to the page's `<body>` element on the frontend and in the Builder canvas. The attribute contains the active breakpoint key for use in custom CSS and JavaScript, and updates when the viewport crosses a breakpoint boundary. Renaming a breakpoint's label does not change the value.
+
+Works with both default and custom breakpoints. Requires JavaScript. See [Breakpoint data attribute](https://academy.bricksbuilder.io/builder/interface/responsive-editing/#breakpoint-data-attribute) for matching rules and examples.
 
 ### Custom authentication pages
 
@@ -246,6 +256,16 @@ The source site separately controls whether it exposes templates, components, or
 - **Disable autosave**: Turns off automatic background saving. The autosave creates a recovery copy of all canvas elements. Global data (components, classes, variables) is not included. Autosaves can be restored from **Manage > History / Revisions** in the builder toolbar.
 - **Autosave interval**: How often the autosave runs, in seconds. Default: 60. Minimum: 15.
 
+### Drafts <span title="Experimental">experimental</span> {#drafts}
+
+Since Bricks 2.5. **Enable drafts** is disabled by default. When enabled, the Builder adds a Live/Draft version switcher beside Save, with **Save page as draft** and controls to review, publish, or discard pending changes.
+
+Live saves still write directly to the live version. Drafts hold changes that affect existing live content; new or unused reusable items can be saved live immediately. See [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) for those boundaries and [Site versions](https://academy.bricksbuilder.io/builder/interface/site-versions/) for work across several pages.
+
+**Enable review links** is a separate setting shown when drafts are enabled. It is also disabled by default. Enable it to share pending work with people who do not have a login. Links expire after at most 30 days and can be revoked. See [Review links](https://academy.bricksbuilder.io/builder/interface/review-links/).
+
+Turning off drafts makes existing draft contexts unavailable. It does not turn an already open draft's next save into a Live save.
+
 ### Builder mode
 
 Sets the visual theme of the builder UI.
@@ -289,7 +309,7 @@ Fine-tune the behavior of the builder's settings panel.
 - **Variable preview on hover**: Shows the resolved value of a CSS variable when hovering over it in dropdowns or input fields.
 - **Disable auto-expand**: Prevents text editor and code controls from automatically expanding when you focus them.
 - **Disable pinned control groups**: Disables the ability to pin frequently used control groups to keep them open.
-- **Disable global classes (interface)**: Hides the global classes UI in the control panel. Global classes can still be used programmatically. This is distinct from disabling the global class manager under General.
+- **Disable global classes (interface)**: Deprecated in Bricks 2.5. Use [Builder permissions](https://academy.bricksbuilder.io/builder/interface/builder-access/) to control access to global class editing and assignment. This is distinct from disabling the global class manager under General.
 - **Variable dropdown: Hide value**: In the CSS variable picker dropdown, hides the resolved value shown next to variable names.
 - **Code control: Vim toggle**: Enables Vim keybindings in CodeMirror code editors within the builder.
 - **Spacing control: Remember linked state**: Persists the linked/unlinked state of spacing controls (margin, padding, border-radius) across all elements. When enabled, if you set one element's padding to "all sides linked," subsequent spacing controls open in that same state.
@@ -340,6 +360,8 @@ The default obsolete file extensions are `bmp,tif,tiff`. Enter extensions withou
 
 ### Structure panel
 
+- **Element display** (since Bricks 2.5): Choose **Icons** (default), **HTML tags**, or **Icons and HTML tags**. Tag labels reflect the element's rendered root in the builder canvas. This changes the Structure panel display, not the element's HTML.
+
 - **Element actions: Duplicate**: Adds a "Duplicate" button to each element row in the structure panel.
 - **Element actions: Delete**: Adds a "Delete" button to each element row in the structure panel.
 - **Collapse on page load**: The structure panel opens with all element groups collapsed when you first open the builder.
@@ -384,6 +406,16 @@ Loads `wp-polyfill.min.js` in the builder to improve compatibility with older br
 ### Cloudflare Rocket Loader <span title="Experimental">experimental</span>
 
 Enable if the builder fails to load when Cloudflare Rocket Loader is active. Rocket Loader defers JavaScript loading and can interfere with the builder's initialization.
+
+### Global data revisions
+
+Since Bricks 2.5. Recording earlier versions of shared Builder items is enabled by default, independently of experimental Drafts.
+
+- **Disable global data revisions**: Stops recording new changes.
+- **Storage used**: Shows the space used by recorded revisions when revisions exist.
+- **Delete revisions**: Deletes the recorded revisions while leaving your current global data in place. Deleted revisions can no longer be restored.
+
+See [Global data revisions](https://academy.bricksbuilder.io/builder/interface/global-data-history/) for supported items, restoring a version, and retention settings.
 
 ### Query loop
 
@@ -449,11 +481,27 @@ Removes WordPress' oEmbed scripts and the ability to paste URLs to auto-embed co
 
 Stops Bricks from loading Google Fonts from Google's CDN. Enable if you don't use any Google Fonts, or if you've uploaded and self-host your Google Fonts as custom fonts.
 
+### Google font imports
+
+In Bricks 2.5, **Store Google font imports outside the Media Library** is disabled by default.
+
+Enable it before importing a Google font through the [Font Manager](https://academy.bricksbuilder.io/builder/styling/font-manager/). New imports are saved in a dedicated folder inside your uploads directory instead of creating Media Library attachments for the font files. Bricks retains the Unicode subsets needed for language coverage.
+
+Existing fonts and manual uploads are unchanged. Turning the setting off affects future imports and keeps previously imported fonts available.
+
 ### Disable lazy loading
 
-Bricks applies native lazy loading to images by default. Disable if lazy loading causes display problems on your site.
+Disables Bricks' built-in lazy loading for images, videos, background images, and background videos across the site. Background videos honor this setting from Bricks 2.5.
 
-- **Lazy load offset**: How many pixels before an image enters the viewport for it to start loading. Default: 300px.
+- **Lazy load offset**: How many pixels before an image or background image enters the viewport Bricks' JavaScript lazy loader starts loading it. Default: 300px. This does not control native browser image loading or background-video loading.
+
+To make an exception for one background, use **Style > Background > Disable lazy load** on its Section, Container, Block, or Div instead (Bricks 2.5). See [Lazy Loading](https://academy.bricksbuilder.io/builder/features/lazy-loading/) for element and page-level options.
+
+### Use JavaScript lazy loading for images
+
+Since Bricks 2.5, images use native browser lazy loading by default on WordPress 6.4 or newer. Enable this setting if custom code relies on the previous placeholder images and `data-src` attributes. WordPress versions earlier than 6.4 keep the JavaScript loader automatically.
+
+**Lazy load offset** applies to images when the JavaScript loader is active. Background images and videos keep their separate JavaScript loading behavior. See [Native image loading](https://academy.bricksbuilder.io/builder/features/lazy-loading/#native-image-loading-in-bricks-25).
 
 ### Disable jQuery migrate
 

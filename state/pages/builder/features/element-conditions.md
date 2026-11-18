@@ -46,7 +46,7 @@ Built-in condition groups include:
 - **User**: login state, user ID, registration date, and role.
 - **Date & time**: weekday, date, time, and datetime. These use the WordPress site timezone.
 - **WooCommerce**: product type, sale/new/stock states, stock quantity, stock management, sold individually, purchased by current user, featured status, rating, product categories, and product tags. This group is available when WooCommerce is active.
-- **Other**: dynamic data, browser, operating system, current URL, and referrer URL.
+- **Other**: cookie, inner content, dynamic data, browser, operating system, current URL, and referrer URL.
 
 The **Current URL** condition includes query parameters. Browser, operating system, and referrer checks depend on request headers, so treat them as convenience targeting rules rather than trusted security checks.
 
@@ -117,7 +117,7 @@ Add a **Dynamic data** condition to the section, pick the field, and set the com
 
 ## Comparison behavior
 
-`==` and `!=` comparisons use PHP-style loose comparison and convert common boolean-like values such as `true`, `false`, `1`, `0`, and empty strings before comparing. Numeric comparisons (`>`, `<`, `>=`, `<=`) compare the resolved values directly.
+Except for [Cookie conditions](#cookie), `==` and `!=` comparisons use PHP-style loose comparison and convert common boolean-like values such as `true`, `false`, `1`, `0`, and empty strings before comparing. Numeric comparisons (`>`, `<`, `>=`, `<=`) compare the resolved values directly.
 
 For multi-select values such as user roles, post statuses, WooCommerce product categories, and product tags, `is` matches if any selected value overlaps. `is not` matches when there is no overlap.
 
@@ -138,6 +138,73 @@ To compare against the value instead, you can use the `:value` filter like this:
 ![](https://academy.bricksbuilder.io/assets/bricks-1.5.7-dynamic-data-value-filter.png)
 
 In the example above, the condition is fulfilled when the Metabox checkbox list has the `blue` value selected. Without the `:value` filter, the condition would compare against the checkbox option label.
+
+### Hide empty component content
+
+In Bricks 2.5, the component **Create properties from content** workflow can add connected **Dynamic data → is not empty** conditions for selected content. The check uses the resolved property value, including its default. Clearing an instance's text value therefore does not hide the element if its default still contains text. See [Hide If Empty in Components](https://academy.bricksbuilder.io/builder/features/components/#hide-if-empty) for setup and button, image, and rich-text behavior.
+
+## Hide a wrapper when its content is empty {#inner-content}
+
+Since Bricks 2.5, use **Inner content** to show or hide a parent based on the rendered output of a selected descendant. For example, hide a Related posts section, including its heading and background, when its query has no results.
+
+1. Build the wrapper and add the query element inside it. Give the query a clear label in the Structure panel, such as **Related posts**.
+2. Select the outer wrapper and open **Conditions**.
+3. Add a condition and choose **Inner content** from **Other**.
+4. Choose **is not empty** to show the wrapper when content is available, or **is empty** to show an empty state.
+5. Under **Select element**, choose the descendant whose output should control the wrapper.
+6. Save and check the frontend with both matching and empty query results.
+
+<div className="screenshot screenshot--control-panel">
+
+![The Related posts wrapper with Inner content set to is not empty and targeting its Journal card descendant.](https://academy.bricksbuilder.io/assets/builder/release-2.5/inner-content-panel.webp)
+
+</div>
+
+Only descendants are available, including nested children and content placed in component slots. To target an element inside a component definition, edit that component. The condition does not select unrelated elements elsewhere on the page.
+
+### What counts as empty?
+
+Bricks evaluates the selected element's final rendered HTML after its own conditions and render filters. No output, whitespace-only output, and a single empty wrapper such as `<div></div>` count as empty. Empty query-pagination markers and the Posts element's empty layout scaffolding are ignored.
+
+An image, text, a no-results message, or nested HTML can make the result non-empty. This is an output check, not a visibility check: hiding content with CSS does not make its HTML empty. If a query has a no-results message, that message counts as content, so clear it when you want the outer wrapper to disappear completely.
+
+If the selected target repeats in a query loop, **is not empty** passes when any rendered instance produces content. Other conditions in the same set still use **AND**, and separate sets still use **OR**.
+
+### Moving, copying, and previewing
+
+The Builder keeps the wrapper visible and editable. Check the frontend to confirm the condition's effect.
+
+If the selected target is deleted or moved outside the wrapper, Bricks treats it as empty and the selector shows an element-not-found entry. Select another descendant to repair the condition. Duplicating or pasting a complete structure updates its target references. When pasting conditions alone, the target is retained only if it is still a descendant of the destination.
+
+## Cookie conditions {#cookie}
+
+Since Bricks 2.5, the **Cookie** condition can check whether a named cookie is present or compare its value. Use it to tailor content to a visitor preference already stored by your site.
+
+1. Select the element and open **Conditions**.
+2. Add a condition and choose **Cookie** in the **Other** group.
+3. Enter the exact **Cookie name**, such as `audience`. Enter the name itself, without dynamic data tags.
+4. Choose a comparison. For **is** or **is not**, enter the value to compare, such as `returning`.
+
+| Comparison | The condition passes when |
+| --- | --- |
+| **exists** | The named cookie is present, including an empty value or `0`. |
+| **does not exist** | The named cookie is absent. |
+| **is** | The cookie exists and its value exactly matches the comparison value. |
+| **is not** | The cookie exists and its value differs from the comparison value. |
+
+Cookie value comparisons are case-sensitive: `returning` and `Returning` are different values. **is not** does not match a missing cookie. To include visitors without that cookie, add a separate OR condition set using **does not exist**.
+
+For example, a welcome-back message with **Cookie**, name `audience`, comparison **is**, and value `returning` renders only when the request contains that value. The condition reads the cookie; it does not create or update it.
+
+<div className="screenshot screenshot--control-panel">
+
+![Cookie condition with the cookie name audience, comparison is, and value returning.](https://academy.bricksbuilder.io/assets/builder/element-conditions/cookie-condition.webp)
+
+</div>
+
+Bricks evaluates the cookie on the server when rendering the page. After changing a browser cookie, load the page again to evaluate the new value. As with other element conditions, the Builder keeps the element visible for editing.
+
+If a full-page cache serves the page, configure it to vary by the relevant cookie or exclude that page from caching. Otherwise visitors can receive cached content produced for a different cookie value. Cookie conditions are for content targeting; use login and permission checks to protect restricted content.
 
 ## WooCommerce checkout and order conditions {#woocommerce}
 

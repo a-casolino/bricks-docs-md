@@ -28,6 +28,7 @@ Global Import / Export supports these data types:
 | Custom fonts   | Selected custom font families                                                    |
 | Icons          | Selected custom icon sets, their SVG files, and disabled state for exported sets |
 | Queries        | Selected global queries and query categories                                     |
+| Filters (Bricks 2.5) | Selected global filter definitions and their categories                    |
 | Settings       | Supported Bricks settings tabs from the WordPress dashboard                      |
 
 Supported settings tabs include **General**, **Templates**, **Builder**, **Performance**, **Maintenance mode**, **API keys**, **Custom code**, and **WooCommerce**.
@@ -76,7 +77,7 @@ Nothing is imported until you click **Import bundle**. Use the review step to de
 
 Bricks only imports selected items that your current user is allowed to import. If a package contains data types you cannot access, those items are not available to import.
 
-The unified importer also accepts supported JSON exports from individual managers, such as classes, variables, global queries, color palettes, theme styles, components, templates, settings, and icon manager data. Bricks wraps those JSON files into the same review flow so you can check conflicts before applying the import.
+The unified importer also accepts supported JSON exports from individual managers, such as classes, variables, global queries, global filters (Bricks 2.5), color palettes, theme styles, components, templates, settings, and icon manager data. Bricks wraps those JSON files into the same review flow so you can check conflicts before applying the import.
 
 ## Conflict Handling
 
@@ -96,7 +97,7 @@ Common conflicts include:
 - A custom font with the same ID or family.
 - An icon set with the same name or ID.
 - Breakpoints that differ from the current site configuration.
-- A global query or component with the same ID.
+- A global query, global filter, or component with the same ID.
 - A template with the same title and template type.
 
 ## Dependencies
@@ -112,6 +113,18 @@ If a dependency already exists on the target site, review the conflict before re
 Dependencies can be included even when you did not select the full **Classes**, **Variables**, or **Components** type for export. This helps components and templates keep the styles and component definitions they rely on without forcing you to transfer every global class, variable, or component from the source site.
 
 When a template uses Bricks components, Bricks includes the required component definitions in the template export. If the package does not include a separate **Components** transfer type, Bricks imports missing embedded component definitions while importing the template and keeps existing local components unchanged.
+
+## Global Filters {#global-filters}
+
+Starting with **Bricks 2.5**, select **Filters** to transfer [global filter definitions](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#global-filters) and their categories. Generated filter indexes stay on their own site. Check the destination's taxonomies, fields, and plugin data, then allow any required indexing to finish.
+
+An imported definition with an existing ID is a conflict. Use **Keep existing** to skip it or **Replace** to update the saved definition. Replacing a definition's type is blocked while elements still use it.
+
+Definitions can be transferred separately, but templates, components, and cross-site clipboard content that still reference a global filter are blocked. Unlink the filter elements on the source site and save before exporting or copying them. Import the destination definitions, select them on the imported elements, and check each element's target query.
+
+The Filter manager also accepts JSON and ZIP files, but imports there stay unsaved until you save the builder. In the manager, same-ID definitions of the same type replace the current definitions; same-ID definitions with a different type are skipped. The unified **Import bundle** action applies the selected imports through its conflict review flow.
+
+![Global Import / Export reviewing a Product categories filter conflict, with Keep existing and Replace choices available before importing.](https://academy.bricksbuilder.io/assets/global-filters-import-review.webp)
 
 ## Template Images
 
@@ -143,6 +156,7 @@ Access depends on the data type:
 - Icon manager requires **Access icon manager**. Importing custom icon sets also requires permission to upload files and upload SVGs.
 - Breakpoints require **Access breakpoints manager**.
 - Global queries require **Access query manager**.
+- Global filters require **Access filter manager** (Bricks 2.5).
 - Components require **Import/export components**.
 - Templates require **Import/export templates**.
 - Settings and custom capabilities require the WordPress `manage_options` capability.
@@ -150,6 +164,20 @@ Access depends on the data type:
 Sensitive data needs extra care. Settings such as API keys and custom code are marked during review, and API key values are hidden in the preview. Code-bearing component and template data is also guarded by code execution permissions.
 
 Only import a package from a source you trust. Review settings, custom code, templates, components, and dependencies before replacing existing data.
+
+### Importing executable code {#executable-code}
+
+Since Bricks 2.5, the manual **Global Import / Export** flow can import executable template, component, and global-query data when:
+
+- Your user has the Bricks **Execute code** capability as well as the permissions for the selected data types.
+- **Enable code execution** is active under **Bricks > Settings > Custom code**, and execution is not disabled by a filter.
+- Code signature generation is unlocked.
+
+The authenticated Builder import verifies the request and signs supported imported code on the destination site. This applies to code-bearing fields such as executable Code elements and PHP Query Editors; it does not make untrusted code safe. Review the selected package before importing it. See [Code signatures](https://academy.bricksbuilder.io/builder/features/code-signatures/) for signature settings and restrictions.
+
+Page-level header and body scripts have a separate WordPress **`unfiltered_html`** requirement. Execute code permission alone does not authorize importing those scripts.
+
+An AI or MCP import uses a separate authorization path. The connected user's Execute code capability alone does not allow PHP authoring. Supported PHP imports also require the PHP abilities opt-in and its additional safeguards, including `BRICKS_ENABLE_PHP_ABILITIES`, application-password authentication, `manage_options`, enabled code execution, and unlocked signing. See [Enable PHP abilities](https://academy.bricksbuilder.io/builder/features/ai-abilities-and-skills/#optional-enable-php-execution). Enabling PHP abilities is not required merely to use the manual Builder import flow.
 
 ## After Importing
 
@@ -160,6 +188,7 @@ Check the imported data in its manager:
 - Open the [Icon Manager](https://academy.bricksbuilder.io/builder/features/icon-manager/) for custom icon sets.
 - Open the breakpoint manager for breakpoints.
 - Open [Query Manager](https://academy.bricksbuilder.io/builder/dynamic-content/global-queries-query-manager/) for global queries.
+- Open **Browser > Filter manager** for global filters (Bricks 2.5).
 - Open [Components](https://academy.bricksbuilder.io/builder/features/components/) for imported components.
 - Open [Templates](https://academy.bricksbuilder.io/builder/templates/) for imported templates.
 - Open **Bricks > Settings** for imported settings.

@@ -12,10 +12,15 @@
 | Key | Type | Label | CSS |
 |---|---|---|---|
 | `filterQueryId` | query-list | Target query | — |
+| `filterDefinitionId` | filter-definition-manager | Global filter | — |
 | `filterNiceName` | text | URL parameter | — |
 | `filterApplyOn` | select | Apply on | — |
 | `filterSource` | select | Source | — |
 | `sourceFieldType` | select | Field type | — |
+| `fieldProvider` | select | Provider | — |
+| `customFieldKey` | text | Meta key | — |
+| `fieldCompareOperator` | select | Compare | — |
+| `fieldCompareType` | select | Compare type | — |
 | `wpPostField` | select | Field | — |
 | `wpUserField` | select | Field | — |
 | `wpTermField` | select | Field | — |
@@ -26,19 +31,22 @@
 | `filterTermInclude` | select | filterTermInclude | — |
 | `filterTermExclude` | select | filterTermExclude | — |
 | `filterTermTopLevel` | checkbox | Top level terms only | — |
-| `filterHideCount` | checkbox | Hide count | — |
-| `filterHideEmpty` | checkbox | Hide empty | — |
-| `filterCountNoBracket` | checkbox | Hide count bracket | — |
+| `filterIncludeChildrenCount` | checkbox | Count | — |
 | `filterHierarchical` | checkbox | Hierarchical | — |
 | `filterAutoCheckChildren` | checkbox | Auto toggle child terms | — |
+| `filterHierarchyCollapsible` | checkbox | Enable expand/collapse | — |
+| `filterHierarchyShowExpanded` | checkbox | Show expanded | — |
+| `filterHierarchyExpandIcon` | icon | Expand icon | — |
+| `filterHierarchyCollapseIcon` | icon | Collapse icon | — |
+| `filterHierarchyIconTypography` | typography | Icon typography | `font` on `.brx-hierarchy-toggle, .brx-hierarchy-toggle-spacer` |
+| `filterHierarchyIconGap` | number | Icon gap | `--brx-hierarchy-toggle-gap` |
 | `filterChildIndentation` | text | Indent | — |
 | `filterChildIndentationGap` | number | Indent | `margin-inline-start` on `[class*="depth-"]:not([class*="depth-0"])` |
-| `fieldProvider` | select | Provider | — |
-| `customFieldKey` | text | Meta key | — |
-| `fieldCompareOperator` | select | Compare | — |
-| `fieldCompareType` | select | Compare type | — |
 | `filterMultiLogic` | select | Multiple options | — |
 | `filterGroupLabel` | text | Group label | — |
+| `filterHideEmpty` | checkbox | Hide empty | — |
+| `filterHideCount` | checkbox | Hide count | — |
+| `filterCountNoBracket` | checkbox | Hide count bracket | — |
 | `labelMapping` | select | Label | — |
 | `customLabelMapping` | repeater | Label | — |
 | `populatedOptionsOrderBy` | select | Order by | — |
@@ -72,6 +80,7 @@
 | `showMoreButtonBackgroundColor` | color | Background color | `background-color` on `.brx-show-more-less-button` |
 | `showMoreButtonBorder` | border | Border | `border-color` on `.brx-show-more-less-button` |
 | `showMoreButtonTypography` | typography | Typography | `font` on `.bricks-button.brx-show-more-less-button` |
+| `filterDefaultValue` | text | Default value | — |
 
 ## Inherited CSS controls
 
@@ -97,6 +106,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

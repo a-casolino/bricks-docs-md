@@ -10,10 +10,12 @@ https://www.youtube.com/watch?v=f9LH7xihkc0
 
 Click the folder icon in the builder toolbar.
 
-You can also use these keyboard shortcuts:
+The default keyboard shortcuts are:
 
 - `CMD / CTRL + SHIFT + .` toggles the Builder Browser.
 - `CMD / CTRL + SHIFT + L` opens the Browser directly on the Templates view when your user has template access.
+
+In Bricks 2.5, change these combinations under **Manage → Keyboard shortcuts**. See [Keyboard Shortcuts](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/). Number-key navigation between visible Browser sections remains a built-in interaction.
 
 The **Manage: Browser** action is also available from the [Command Palette](https://academy.bricksbuilder.io/builder/interface/command-palette/).
 
@@ -77,6 +79,7 @@ You can:
 - Switch between **My components** and configured remote sites under **Source**.
 - Search components.
 - Filter by category.
+- Show each component's element type and filter by it using the **Element type** dropdown (Bricks 2.5). Enable **Show element type** in the **More** menu first. See [Element types](https://academy.bricksbuilder.io/builder/features/components/#element-types) for details.
 - Filter by usage: all usage, used on current page, used elsewhere, or unused.
 - Switch between grid and list view.
 - Import component JSON or ZIP files.

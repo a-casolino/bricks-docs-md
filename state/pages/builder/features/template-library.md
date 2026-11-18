@@ -43,6 +43,12 @@ The Templates view can show these filters:
 - **Template Type**: Select a template type to show only templates of the selected template type.
 - **Search Templates**: Enter any keyword to search for a specific template.
 
+### Sorting templates
+
+Since Bricks 2.5, use **Sort by** in the Templates toolbar to choose **Newest**, **Oldest**, **Title A–Z**, or **Title Z–A**. **Newest** is the default. Combine sorting with the source, search, and filters to find the template you need.
+
+![Templates browser with the sorting menu open, showing Newest, Oldest, Title A–Z, and Title Z–A, with the Import button beside the view toggle.](https://academy.bricksbuilder.io/assets/builder/browser-sorting/templates-browser-sorting-import.webp)
+
 ## Template Actions
 
 The Templates view includes action icons for creating, saving, importing, reloading remote sources, generating local template screenshots when available, and switching between grid and list view.
@@ -65,7 +71,7 @@ To save a specific section as a template hover over a section in the builder. Th
 
 ### Import Template {#import-template}
 
-Click the **Import template** icon to import existing template files. You can import a single template as JSON or multiple templates in ZIP format.
+Since Bricks 2.5, you can open the import dialog directly from **Import** in the Templates browser toolbar. Import requires the **Import/export templates** builder permission. You can also use the existing **Import template** action to import files. You can import a single template as JSON or multiple templates in ZIP format.
 
 Click "Select file(s) to import" and select the JSON/ZIP file from your computer or drag and drop those files into the marked drop zone.
 

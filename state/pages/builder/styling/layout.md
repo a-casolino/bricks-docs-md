@@ -122,6 +122,27 @@ When used inside one of the other layout elements the Div grows and shrinks acco
 
 *Learn more: *[Div element](https://academy.bricksbuilder.io/builder/elements/layout/div/)
 
+## Flowing content into CSS columns {#css-columns}
+
+Since Bricks 2.5, **Style > Layout > Columns** lets text and other flowing content continue from one column into the next. This is useful for a long text passage. The [Block layout above](#columns) creates separate elements that you arrange beside each other; CSS columns divide the content inside one element.
+
+Select the element containing the content and enter a column count, preferred column width, or both:
+
+| Columns value | Result |
+| --- | --- |
+| `3` | Divide the available width into three columns. |
+| `20rem` | Fit as many columns as the available width allows, using a preferred width of 20rem. |
+| `3 20rem` | Use up to three columns, reducing the count when the available width cannot accommodate them at the preferred width. |
+| `auto` | Let the browser use the automatic column layout. |
+
+Use **Column gap** to set the space between columns. **Columns** also accepts CSS variables.
+
+For example, add several paragraphs to a Text element, set **Columns** to `2`, and set **Column gap** to `2rem`. At a narrow breakpoint, set **Columns** to `1` so readers can follow the text without moving between short columns.
+
+![Columns set to 2 and Column gap set to 2rem in the Layout settings, with text flowing into two columns on the canvas.](https://academy.bricksbuilder.io/assets/builder/layout/css-columns.webp)
+
+For an element using flex or grid, change **Display** to `block` or `inline-block` before using CSS columns. Section, Container, and Block elements use flex by default. Use [CSS Grid](https://academy.bricksbuilder.io/builder/styling/css-grid-layout/) or flexbox when you need to position individual cards or other independent items in rows and columns.
+
 ## How to Insert, Wrap, and Convert layout elements {#actions}
 
 You can right-click on any layout element to reveal the context menu. From there you can "Insert", "Wrap", and "Convert" layout elements with one click.

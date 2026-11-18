@@ -12,13 +12,13 @@
 | Key | Type | Label | CSS |
 |---|---|---|---|
 | `buttonText` | text | Text | — |
-| `buttonWidth` | number | Width | `width` on `#place_order` |
-| `buttonTypography` | typography | Typography | `font` on `#place_order` |
 | `buttonMargin` | spacing | Margin | `margin` on `#place_order` |
 | `buttonPadding` | spacing | Padding | `padding` on `#place_order` |
 | `buttonBackgroundColor` | color | Background color | `background-color` on `#place_order` |
 | `buttonBorder` | border | Border | `border` on `#place_order` |
 | `buttonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `#place_order` |
+| `buttonWidth` | number | Width | `width` on `#place_order` |
+| `buttonTypography` | typography | Typography | `font` on `#place_order` |
 
 ## Inherited CSS controls
 
@@ -44,6 +44,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

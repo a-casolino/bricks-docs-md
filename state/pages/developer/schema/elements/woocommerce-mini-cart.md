@@ -14,6 +14,7 @@
 | `icon` | icon | Icon | — |
 | `iconTypography` | typography | Icon typography | `font` on `.mini-cart-link i` |
 | `openMiniCartOnAddedToCart` | checkbox | Open on add to cart (AJAX) | — |
+| `hideEmptyCart` | checkbox | Hide if empty | — |
 | `cartCount` | select | Visibility | `display` on `.cart-count` |
 | `cartCountBackground` | color | Background color | `background-color` on `.cart-count` |
 | `cartCountBorder` | border | Border | `border` on `.mini-cart-link .cart-icon .cart-count` |
@@ -29,12 +30,14 @@
 | `subtotalGap` | number | Gap | `gap` on `.mini-cart-link` |
 | `subtotalTypography` | typography | Typography | `font` on `.mini-cart-link .cart-subtotal` |
 | `hideCartDetails` | checkbox | Hide | — |
+| `emptyCartTemplate` | select | Empty cart template | — |
+| `previewEmptyCart` | checkbox | Preview empty state | — |
 | `skipClickOutside` | checkbox | Don\ | — |
 | `cartDetailsOffCanvas` | select | Off-Canvas | — |
 | `cartDetailsHeight` | number | Height | `height` on `.cart-detail` |
 | `cartDetailsWidth` | number | Width | `width` on `.cart-detail` |
-| `cartDetailsImageWidth` | number | Image width | `width` on `.cart-detail img` |
-| `cartDetailsPadding` | spacing | Padding | `padding` on `.cart-detail .widget_shopping_cart_content` |
+| `cartDetailsImageWidth` | number | Image width | `width` on `.widget_shopping_cart_content img` |
+| `cartDetailsPadding` | spacing | Padding | `padding` on `.cart-detail .widget_shopping_cart_content`, `padding` on `.bricks-mini-cart-empty-state` |
 | `cartDetailsPosition` | dimensions | Position | `—` on `.cart-detail` |
 | `cartDetailsTransform` | transform | Transform | `transform` on `.cart-detail` |
 | `cartDetailsBackground` | color | Background | `background-color` on `.cart-detail` |
@@ -76,6 +79,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

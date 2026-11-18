@@ -58,6 +58,16 @@ You can assign any builder capability, whether predefined or custom:
 
 This gives you flexibility to apply permissions globally or individually.
 
+## Drafts and site versions {#drafts-and-versions}
+
+With [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) enabled, users need WordPress permission to edit the page and Bricks access for that page's post type to open its page draft. A page draft can be opened by other users with the same required access; it is not private to its creator.
+
+[Site versions](https://academy.bricksbuilder.io/builder/interface/site-versions/) span multiple pages. Opening or creating them requires Builder access and WordPress permission to edit other users' posts (`edit_others_posts`). Existing Builder permissions still control the actions available inside either kind of draft.
+
+Publishing checks the rights required for all included changes, including page and template settings, shared data, and code execution. Having access to a draft does not grant permission to publish every change someone else added to it.
+
+[Review links](https://academy.bricksbuilder.io/builder/interface/review-links/) provide a separate, view-only preview for people without an editor login. They do not give reviewers Builder access or permission to edit or publish.
+
 ## Available permissions
 
 When editing a capability, the following permissions are available and grouped by category:
@@ -76,9 +86,12 @@ Choose which post types can be edited using Bricks.
 - Access font manager
 - Access icon manager
 - Access query manager
+- Access filter manager (Bricks 2.5)
 - Customize builder interface
 - Manage builder interface profiles
 - Manage global elements (only if legacy Global Elements exist)
+
+**Access filter manager** permits creating, editing, organizing, deleting, importing, and exporting [global filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#global-filters). This includes editing shared controls on linked elements. Users without it can select an existing compatible global filter and edit local settings such as the target query and presentation.
 
 ### Templates {#templates}
 

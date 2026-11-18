@@ -4,6 +4,7 @@
 
 | Key | Type | Label |
 |---|---|---|
+| `footerReveal` | checkbox | Reveal effect |
 | `headerPosition` | select | Header location |
 | `headerSticky` | checkbox | Sticky header |
 | `headerStickyOnScroll` | checkbox | Sticky on scroll |

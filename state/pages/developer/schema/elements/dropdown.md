@@ -48,6 +48,8 @@
 | `contentItemBorderActive` | border | Border | `border` on `.brx-dropdown-content > li [aria-current="page"]`, `border` on `.brx-dropdown-content > li .aria-current`, `border` on `&.brx-has-megamenu .brx-dropdown-content [aria-current="page"]` |
 | `contentItemTypographyActive` | typography | Typography | `font` on `.brx-dropdown-content > li [aria-current="page"]`, `font` on `.brx-dropdown-content > li .aria-current`, `font` on `&.brx-has-megamenu .brx-dropdown-content [aria-current="page"]` |
 | `megaMenu` | checkbox | Enable | — |
+| `megaMenuWidth` | number | Width | `--brx-mega-menu-width` |
+| `megaMenuAlignment` | select | Alignment | `--brx-mega-menu-align` |
 | `megaMenuSelector` | text | CSS selector | — |
 | `megaMenuSelectorVertical` | text | CSS selector | — |
 | `multiLevel` | checkbox | Enable | — |
@@ -79,6 +81,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

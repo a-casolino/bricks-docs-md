@@ -29,13 +29,15 @@ The General group contains page-wide output options.
 | CSS classes (body) | Adds space-separated classes to the page `<body>` tag. Dynamic data can be used when appropriate. |
 | Disable header | Prevents the active Bricks header from rendering on this page. Not shown for header or footer templates. |
 | Disable footer | Prevents the active Bricks footer from rendering on this page. Not shown for header or footer templates. |
-| Disable lazy load | Disables Bricks lazy loading for the current page. |
+| Disable lazy load | Disables Bricks' built-in lazy loading for images, videos, background images, and background videos on the current page. Background videos honor this setting from Bricks 2.5. |
 | Disable popups | Prevents Bricks popups from rendering on the current page. |
 | Page layout | Overrides the page layout inherited from Theme Styles. |
 | Page background | Overrides the page background inherited from Theme Styles. |
 | Content margin | Overrides the content margin inherited from Theme Styles when available. |
 
 Use these settings for page-specific exceptions. If you need the same behavior on many pages, use global settings, Theme Styles, or templates instead.
+
+For a single background, use the element's **Style > Background > Disable lazy load** control (Bricks 2.5). See [Lazy Loading](https://academy.bricksbuilder.io/builder/features/lazy-loading/) for the available scopes and how they affect the element control.
 
 ## Scroll snap
 

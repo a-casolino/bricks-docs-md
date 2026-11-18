@@ -4,7 +4,12 @@ Bricks features extend the core page-building workflow with reusable systems, in
 
 ## Featured areas
 
+- [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) and [Site Versions](https://academy.bricksbuilder.io/builder/interface/site-versions/) for pending changes, [Review Links](https://academy.bricksbuilder.io/builder/interface/review-links/), and [Explore and Compare](https://academy.bricksbuilder.io/builder/interface/explore-alternatives/)
+
+- [Lazy Loading](https://academy.bricksbuilder.io/builder/features/lazy-loading/) for background, image, page, and site-level loading controls
 - [Templates](https://academy.bricksbuilder.io/builder/templates/) for the main template workflow and related reference pages
+- [Global Data Revisions](https://academy.bricksbuilder.io/builder/interface/global-data-history/) for recovering recorded shared-item changes
+
 - [Components](https://academy.bricksbuilder.io/builder/features/components/) for reusable structures and nested component workflows
 - [Interactions](https://academy.bricksbuilder.io/builder/features/interactions/) for triggers, animations, and action-based behaviors
 - [Popup Builder](https://academy.bricksbuilder.io/builder/features/popup-builder/) for modal, slide-in, and notification-bar patterns

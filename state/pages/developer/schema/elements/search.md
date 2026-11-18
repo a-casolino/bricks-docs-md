@@ -12,11 +12,10 @@
 | Key | Type | Label | CSS |
 |---|---|---|---|
 | `searchType` | select | Type | — |
-| `ariaLabel` | text | aria-label | — |
 | `actionURL` | text | Action URL | — |
 | `additionalParams` | repeater | Additional parameters | — |
 | `inputHeight` | number | Height | `height` on `input[type=search]` |
-| `inputWidth` | number | Width | `width` on `input[type=search]`, `max-width` on `.bricks-search-overlay .bricks-search-form` |
+| `inputWidth` | number | Width | `width` on `input[type=search]` |
 | `placeholder` | text | Placeholder | — |
 | `placeholderColor` | color | Placeholder color | `color` on `input[type=search]::placeholder` |
 | `inputBackgroundColor` | color | Background color | `background-color` on `input[type=search]` |
@@ -29,25 +28,53 @@
 | `buttonAriaLabel` | text | aria-label | — |
 | `buttonText` | text | Text | — |
 | `icon` | icon | Icon | — |
-| `buttonPadding` | spacing | Padding | `padding` on `button` |
-| `iconHeight` | number | Height | `height` on `button` |
-| `iconWidth` | number | Width | `width` on `button` |
-| `iconBackgroundColor` | color | Background color | `background-color` on `button` |
-| `iconBorder` | border | Border | `border` on `button` |
-| `iconBoxShadow` | box-shadow | Box shadow | `box-shadow` on `button` |
-| `iconTypography` | typography | Typography | `font` on `button` |
+| `buttonPadding` | spacing | Padding | `padding`, `padding` |
+| `iconHeight` | number | Height | `height`, `min-height`, `height`, `min-height` |
+| `iconWidth` | number | Width | `width`, `min-width`, `width`, `min-width` |
+| `iconBackgroundColor` | color | Background color | `background-color`, `background-color` |
+| `iconBorder` | border | Border | `border`, `border` |
+| `iconBoxShadow` | box-shadow | Box shadow | `box-shadow`, `box-shadow` |
+| `iconTypography` | typography | Typography | `font`, `font` |
+| `overlayOpenAriaLabel` | text | aria-label | — |
+| `overlayOpenIcon` | icon | Icon | — |
+| `overlayOpenIconSize` | number | Icon size | `font-size` on `$overlay_open_selector > *` |
+| `overlayOpenIconColor` | color | Icon color | `color` on `$overlay_open_selector > *`, `fill` on `$overlay_open_selector > *`, `stroke` on `$overlay_open_selector > *` |
+| `overlayOpenPadding` | spacing | Padding | `padding` |
+| `overlayOpenHeight` | number | Height | `height`, `min-height` |
+| `overlayOpenWidth` | number | Width | `width`, `min-width` |
+| `overlayOpenBackgroundColor` | color | Background color | `background-color` |
+| `overlayOpenBorder` | border | Border | `border` |
+| `overlayOpenBoxShadow` | box-shadow | Box shadow | `box-shadow` |
 | `overlayFormDirection` | direction | Direction | `flex-direction` on `.bricks-search-overlay form` |
 | `overlayFormGap` | number | Gap | `gap` on `.bricks-search-overlay form` |
+| `hideSearchOverlayTitle` | checkbox | Hide title | — |
 | `searchOverlayTitle` | text | Title | — |
 | `searchOverlayTitleTag` | text | Title tag | — |
 | `searchOverlayTitleTypography` | typography | Title typography | `font` on `.title` |
 | `searchOverlayBackground` | background | Background | `background` on `.bricks-search-overlay` |
 | `searchOverlayBackgroundOverlay` | color | Background | `background-color` on `.bricks-search-overlay:after` |
-| `overlayIconWidth` | number | Button | `width` on `.bricks-search-overlay button[type="submit"]` |
-| `overlayButtonPadding` | spacing | Button | `padding` on `.bricks-search-overlay button[type="submit"]` |
-| `overlayButtonBackground` | color | Button | `background-color` on `.bricks-search-overlay button[type="submit"]` |
-| `overlayButtonBorder` | border | Button | `border` on `.bricks-search-overlay button[type="submit"]` |
-| `overlayButtonTypography` | typography | Button | `font` on `.bricks-search-overlay button[type="submit"]` |
+| `overlaySubmitAriaLabel` | text | aria-label | — |
+| `overlaySubmitText` | text | Text | — |
+| `overlaySubmitIcon` | icon | Icon | — |
+| `overlaySubmitIconSize` | number | Icon size | `font-size` on `.bricks-search-overlay button[type="submit"] > *` |
+| `overlaySubmitIconColor` | color | Icon color | `color` on `.bricks-search-overlay button[type="submit"] > *`, `fill` on `.bricks-search-overlay button[type="submit"] > *`, `stroke` on `.bricks-search-overlay button[type="submit"] > *` |
+| `overlayIconWidth` | number | Width | `width` on `.bricks-search-overlay button[type="submit"]`, `min-width` on `.bricks-search-overlay button[type="submit"]` |
+| `overlayButtonHeight` | number | Height | `height` on `.bricks-search-overlay button[type="submit"]`, `min-height` on `.bricks-search-overlay button[type="submit"]` |
+| `overlayButtonPadding` | spacing | Padding | `padding` on `.bricks-search-overlay button[type="submit"]` |
+| `overlayButtonBackground` | color | Background color | `background-color` on `.bricks-search-overlay button[type="submit"]` |
+| `overlayButtonBorder` | border | Border | `border` on `.bricks-search-overlay button[type="submit"]` |
+| `overlayButtonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.bricks-search-overlay button[type="submit"]` |
+| `overlayButtonTypography` | typography | Typography | `font` on `.bricks-search-overlay button[type="submit"]` |
+| `overlayCloseAriaLabel` | text | aria-label | — |
+| `overlayCloseIcon` | icon | Icon | — |
+| `overlayCloseIconSize` | number | Icon size | `font-size` on `.bricks-search-overlay > .close` |
+| `overlayCloseIconColor` | color | Icon color | `color` on `.bricks-search-overlay > .close`, `color` on `.bricks-search-overlay > .close > *`, `fill` on `.bricks-search-overlay > .close`, `fill` on `.bricks-search-overlay > .close > *`, `stroke` on `.bricks-search-overlay > .close`, `stroke` on `.bricks-search-overlay > .close > *` |
+| `overlayCloseWidth` | number | Width | `width` on `.bricks-search-overlay > .close`, `min-width` on `.bricks-search-overlay > .close` |
+| `overlayCloseHeight` | number | Height | `height` on `.bricks-search-overlay > .close`, `min-height` on `.bricks-search-overlay > .close` |
+| `overlayClosePadding` | spacing | Padding | `padding` on `.bricks-search-overlay > .close` |
+| `overlayCloseBackgroundColor` | color | Background color | `background-color` on `.bricks-search-overlay > .close` |
+| `overlayCloseBorder` | border | Border | `border` on `.bricks-search-overlay > .close` |
+| `overlayCloseBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.bricks-search-overlay > .close` |
 
 ## Inherited CSS controls
 
@@ -73,6 +100,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

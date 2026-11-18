@@ -300,7 +300,7 @@ The Image element displays images with support for responsive sources, captions,
 
 ### Basic
 
-- **Image** (image) - Select an image from the media library or use dynamic data.
+- **Image** (image) - Select an image from the media library or use dynamic data. Since Bricks 2.5, drop a local image onto the selector or preview to upload and select it. This changes the element's selection without replacing an existing Media Library attachment. See [Media Browser](https://academy.bricksbuilder.io/builder/features/media-browser/#drop-images-directly-onto-a-control).
 
 - **HTML tag** (select) - The HTML tag to wrap the image. Options: `figure`, `picture`, `div`, `custom`. Default: `figure`. When sources are used, Bricks outputs a `<picture>` element around the image sources. If the image has a caption, Bricks keeps the `figure` wrapper and places the `<picture>` element inside it.
 
@@ -708,7 +708,7 @@ Enabling the "YouTube Preview Thumbnails" setting of the Perfmatters plugin migh
 
 Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-active-filters/
 
-*Displays the currently active or selected filters, allowing users to easily remove a filter with a single click for faster navigation. This element shows all.*
+*Display selected query filters as removable buttons and exclude filters from the active list.*
 
 Displays the currently active or selected filters, allowing users to easily remove a filter with a single click for faster navigation. This element shows all active filters from the connected target query and provides quick access to clear individual filters.
 
@@ -716,10 +716,9 @@ Displays the currently active or selected filters, allowing users to easily remo
 
 ## Settings
 
-- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
-- **Exclude filter IDs** (text) - Enter Bricks IDs, separated by comma, of filter elements to exclude from the active filters list.
-- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
-- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
+- **Target query** (query-list) - Select the query whose active filters should be displayed.
+- **Global filter** (Bricks 2.5) - Reuse the shared behavior of another Active Filters configuration. The target query and styling remain local.
+- **Exclude filter IDs** (text) - Enter filter element IDs, separated by commas, to exclude from the active filters list. From Bricks 2.5, accepts global filter IDs too. A linked element's ID excludes its shared filter for the target query.
 - **Button** - Settings for the remove filter buttons.
   - **Padding** (spacing) - Padding for filter remove buttons.
   - **Gap** (number) - Gap between filter buttons.
@@ -741,6 +740,16 @@ Displays the currently active or selected filters, allowing users to easily remo
   - **Suffix** (text) - Text to display after filter value.
   - **Title** (text) - Custom title attribute for filter links.
 
+## Default selections
+
+Starting with Bricks 2.5, [configured default values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) appear as active selections on the first page load. Visitors can remove them like other selections. Removing a default does not immediately reapply it; a fresh visit or reload without filter parameters applies it again. Display exclusions still apply.
+
+## Excluding a Global Filter
+
+Starting with Bricks 2.5, use a [global filter](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#global-filters) ID or any linked element's ID in **Exclude filter IDs**. For example, exclude a shared results-per-page filter to keep it out of the active-filter list across desktop and mobile copies. This hides the entry without clearing its selection or changing the query.
+
+Copy a definition ID from Filter manager, or use the Bricks ID from a linked element's panel. Do not use a target query ID or URL parameter name. This display exclusion is separate from a Reset button's exclusions, which preserve values when resetting.
+
 > **Developer reference**
 >
 > See the [Filter - Active Filters Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-active-filters/) for the full JSON schema of this element's settings and controls.
@@ -751,15 +760,15 @@ Displays the currently active or selected filters, allowing users to easily remo
 
 Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-checkbox/
 
-*Creates a checkbox filter interface for AJAX-powered content filtering. Users can select multiple options to narrow down query results. Supports taxonomy terms,.*
+*Filter query results with multiple selections, include child-term counts, and show collapsible taxonomy branches with Show more/less controls.*
 
 Creates a checkbox filter interface for AJAX-powered content filtering. Users can select multiple options to narrow down query results. Supports taxonomy terms, WordPress fields, and custom fields as filter sources.
 
-**Tip:** Perfect for allowing users to filter by multiple categories, tags, or custom attributes simultaneously.
+For initial setup, see [Query Filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#setup).
 
 ## Settings
 
-- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
+- **Target query** (query-list) - Select the post, term, or user query this filter should target. Available sources depend on the query type.
 - **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
 - **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
 - **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
@@ -773,12 +782,9 @@ Creates a checkbox filter interface for AJAX-powered content filtering. Users ca
 - **Terms: Exclude** (select) - Specific taxonomy terms to exclude from filter options.
 - **Top level terms only** (checkbox) - Display only top-level terms (parent = 0) when source is taxonomy.
 - **Hide count** (checkbox) - Hide the result count for each option.
+- **Count: Include children** (checkbox, Bricks 2.5) - Include descendant-term posts in parent taxonomy counts. Off by default. Requires a target query and a selected taxonomy. See [taxonomy child counts](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#taxonomy-child-counts).
 - **Hide empty** (checkbox) - Hide options with zero results.
 - **Hide count bracket** (checkbox) - Remove brackets around count values. Style count via .brx-option-count.
-- **Hierarchical** (checkbox) - Display taxonomy terms in hierarchical structure.
-- **Auto toggle child terms** (checkbox) - Automatically toggle child term checkboxes when parent is clicked.
-- **Indent: Prefix** (text) - Prefix text for hierarchical indentation. Default: —.
-- **Indent: Gap** (number) - Gap spacing for hierarchical indentation.
 - **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
 - **Meta key** (text) - Custom field key for filtering.
 - **Compare** (select) - Comparison operator for filtering. Options: IN, NOT IN, BETWEEN, NOT BETWEEN.
@@ -788,9 +794,455 @@ Creates a checkbox filter interface for AJAX-powered content filtering. Users ca
   - **Suffix** (text) - Text to display after filter value.
   - **Title** (text) - Custom title attribute for filter links.
 
+## Collapsible Taxonomy Branches {#collapsible-hierarchy}
+
+Starting with **Bricks 2.5**, visitors can expand and collapse child branches in a hierarchical taxonomy Checkbox filter. This is useful for category lists where showing every nested term would make the filter too long.
+
+1. Set **Target query**, choose **Taxonomy** as the source, and select a taxonomy with parent and child terms.
+2. Open the **Hierarchy** control group and enable **Hierarchical**.
+3. Turn on **Enable expand/collapse**.
+4. Leave **Show expanded** off to start with branches collapsed, or enable it to show all branches expanded initially.
+5. Save and check the frontend. Parent terms with visible children have a separate expand/collapse button beside the checkbox.
+
+| Hierarchy setting | Behavior |
+| --- | --- |
+| Hierarchical | Arrange taxonomy terms under their parents. |
+| Auto toggle child terms | Toggle child checkboxes when a parent checkbox changes. This is separate from expanding a branch. |
+| Enable expand/collapse | Add buttons to open and close child branches. Off by default. |
+| Show expanded | Expand all branches initially. Off by default. |
+| Expand icon / Collapse icon | Choose the disclosure icons. Defaults are plus and minus. |
+| Icon typography / Icon gap | Set the icon appearance and spacing. |
+| Indent: Prefix / Indent: Gap | Set child-term indentation in the default display mode. |
+
+The disclosure button opens or closes a branch without selecting its checkbox. Visitors can focus the button and use Enter or Space to toggle it. Selected child terms open their ancestor branches on page load, including selections loaded from URL parameters. Bricks preserves each element's expanded branches through AJAX updates and opens the path to selected terms when needed.
+
+Only terms present in the filter's options can appear in a branch. **Top level terms only**, term exclusions, and **Hide empty** can remove child options. If a parent has no visible children, it has no expand/collapse button. Use [Count: Include children](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#taxonomy-child-counts) if parent counts should include posts assigned to descendants.
+
+<div className="screenshot screenshot--control-panel">
+
+![Hierarchy settings with expand/collapse enabled, Show expanded off, and plus and minus icons selected.](https://academy.bricksbuilder.io/assets/filter-checkbox-hierarchy-settings.webp)
+
+</div>
+
+### Show More/Less With Branches {#show-more-less}
+
+In the **Show more / Show less** control group, set **Visible options limit** to limit the initial list. Leave it empty to show all options.
+
+When **Enable expand/collapse** is on, this limit counts whole root branches, not individual child terms. For example, a limit of three shows the first three root branches. Expanding one of them reveals its children without using up another place in the limit. **Show more** reveals the remaining root branches; **Show less** returns to the initial limit.
+
+A branch containing a selected term stays visible even beyond the limit, so the list can show more than the configured number of roots. **Show more: Text** accepts `%number%` for the number of hidden root branches. In the collapsed list, the Show more button is hidden when no additional branches remain hidden. Without expand/collapse, the limit counts individual options.
+
+![The Hoodies child term remains visible under Clothing beyond the two-branch limit, with Show 1 more available and three matching products.](https://academy.bricksbuilder.io/assets/filter-checkbox-collapsible-branches.webp)
+
+### Linked Desktop and Mobile Filters {#linked-hierarchies}
+
+When using a [global filter](https://academy.bricksbuilder.io/builder/dynamic-content/global-filters-filter-manager/), **Hierarchical**, **Auto toggle child terms**, and **Count: Include children** are shared settings. Expand/collapse, Show expanded, icons, indentation, and Show more/less limits stay on each element.
+
+Linked elements targeting the same query synchronize their checkbox selections. Each copy keeps its own expanded branches and Show more/less state, so a mobile filter can start collapsed while the desktop copy starts expanded.
+
+## Default selection {#default-selection}
+
+Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. Use **Default value** to preselect exact option values, separated by commas, such as `cotton, wool`. Use taxonomy slugs or raw stored values rather than display labels. Wrap a value containing a comma in double quotes. Dynamic data is supported.
+
+<div className="screenshot screenshot--control-panel">
+
+![A Checkbox filter's Default value set to cotton, wool.](https://academy.bricksbuilder.io/assets/query-filter-default-values.webp)
+
+</div>
+
+The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
+
 > **Developer reference**
 >
 > See the [Filter - Checkbox Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-checkbox/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Filter datepicker
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-datepicker/
+
+*Filter query results by a single date or date range, including events stored with separate start and end date fields.*
+
+Use Filter - Datepicker to filter a Query Loop by post dates, user registration dates, or custom date fields. Visitors can select a single date or a date range, with optional time selection.
+
+Enable [Query Filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#enable), add the element, and select its **Target query**. Starting with **Bricks 2.5**, date ranges can use separate start and end custom fields on posts, terms, or users, including supported ACF, Meta Box, and JetEngine fields.
+
+## Settings
+
+- **Target query** (query-list) - Select the Posts, Terms, or Users query this filter should target.
+- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
+- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
+- **Source** (select) - Data source for filter options. Options: WordPress field, Custom field.
+- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
+- **Field** (select) - Specific date field to filter by (post date, modified date, user registered date).
+- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
+- **Meta key** (text) - Custom field containing date values. For separate start and end fields, this is the start field. Enter a native meta key or use the selected provider's field picker.
+- **End date meta key** (text, Bricks 2.5) - Optional separate end-date field from the same provider and object type as **Meta key**. Leave empty to compare both selected dates against **Meta key**. See [separate start and end fields](#separate-date-fields).
+- **Enable time** (checkbox) - Add time selection capability to the date picker.
+- **Date range** (checkbox) - Enable selection of date ranges instead of single dates.
+- **Min/max date** (checkbox) - Use minimum and maximum dates from the index table for date picker limits.
+- **Compare** (select) - Comparison operator for single-date filtering. Options: == (is), < (before), > (after).
+- **Input** - Settings for the date input field.
+  - **Placeholder** (text) - Placeholder text for the input field. Default: Date.
+  - **Placeholder typography** (typography) - Typography for placeholder text.
+  - **Language** (text) - Language code for date picker localization (de, es, fr, etc.).
+  - **Datepicker format** (text) - Display format, defaulting to `Y-m-d`. **Enable time** appends `H:i`. This does not change how dates are stored in the database.
+- **Active filter** - Settings for active filter display.
+  - **Prefix** (text) - Text to display before filter value.
+  - **Suffix** (text) - Text to display after filter value.
+  - **Title** (text) - Custom title attribute for filter links.
+
+## Separate start and end fields {#separate-date-fields}
+
+Use **End date meta key** when each item in a Posts, Terms, or Users query stores its start and end dates in separate custom fields.
+
+1. Set **Target query** to the results loop.
+2. Set **Source** to **Custom field** and **Field type** to the objects in that loop: **Post**, **Term**, or **User**.
+3. For native metadata, leave **Provider** at **WordPress**. For ACF, Meta Box, or JetEngine, enable [Custom fields integration](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#custom-fields-integration) and select the provider.
+4. In **Meta key**, enter the native start field's key, such as `event_start`, or select the provider field using the dynamic data picker.
+5. Enable **Date range**.
+6. In **End date meta key**, enter the native end field's key, such as `event_end`, or use its picker to select the provider field.
+7. Optionally enable **Min/max date** to limit the calendar to the indexed date bounds.
+8. Save the builder and allow indexing to finish before testing the frontend.
+
+For native metadata, enter literal keys without dynamic data braces. For provider fields, use the picker on each control. Bricks reads the selected field's definition; these references are not frontend dynamic data output. Both fields must belong to the same provider and object type, with compatible post type or taxonomy locations.
+
+<div className="screenshot screenshot--control-panel">
+
+![Datepicker controls using Post fields and ACF, with departure_date as the start field, return_date as the end field, and Date range and Min/max date enabled.](https://academy.bricksbuilder.io/assets/datepicker-acf-separate-date-fields.webp)
+
+</div>
+
+### Supported fields and storage {#supported-date-fields}
+
+Each field must store one date or datetime value per object. These sources support field pairs on posts, terms, and users:
+
+| Source | Supported date fields |
+| --- | --- |
+| WordPress metadata | Date strings such as `2027-03-09` or `20270309`, and ISO datetime strings such as `2027-03-09 10:00:00`. |
+| ACF | Date Picker and Date Time Picker, including scalar fields inside ordinary Group fields. |
+| Meta Box | Date and Datetime fields stored in native WordPress metadata, including numeric save formats such as `d/m/Y H:i:s` and timestamp storage. User and term fields require the corresponding Meta Box extensions. |
+| JetEngine | Date and Datetime fields stored in native WordPress metadata, as strings or timestamps. |
+
+Bricks resolves each field's storage separately. The start and end fields can use different supported formats or timestamp settings. ACF's Date Picker stores `Ymd` values; changing its return format or **Datepicker format** does not change how Bricks compares the stored dates.
+
+Time-only fields, repeating or cloneable fields, serialized groups, and custom-table storage are not supported for separate start and end fields. The provider pickers limit choices to compatible date fields. ACF Group fields are supported only where each date is stored as its own metadata value, rather than inside a repeated or serialized structure.
+
+If a provider is unavailable or a selected field is deleted or incompatible, Bricks reports a configuration error. Select a compatible replacement or clear **End date meta key** to return to one-field behavior. An invalid pair does not silently compare the start field twice.
+
+### Example: ACF dates on taxonomy terms
+
+If each term in an event taxonomy has ACF `event_start` and `event_end` Date Picker fields, target the **Terms** loop and set **Field type** to **Term** and **Provider** to **ACF**. Select `event_start` in **Meta key**, enable **Date range**, and select `event_end` in **End date meta key**. Both ACF fields must be available on the taxonomy being queried.
+
+### Which events match?
+
+Both conditions must be met:
+
+- The event starts on or after the selected start date.
+- The event ends on or before the selected end date.
+
+For a selected range of **March 8–10, 2027**, with **Enable time** off:
+
+| Event dates | Included? |
+| --- | --- |
+| March 8–10 | Yes, both boundaries are included. |
+| March 9 | Yes, the event fits within the range. |
+| March 9–12 | No, it ends after March 10. |
+| March 7–9 | No, it starts before March 8. |
+
+An event must fit entirely within the selection. An event that overlaps only part of the range is excluded. Both date fields must contain valid values, and the stored start must not be later than the stored end. Items with missing, empty, invalid, or reversed dates are excluded from filtered results and calendar bounds.
+
+With **Enable time** off, the selection covers complete days, including the whole final day. With it on, the selected hours and minutes are part of the comparisons, and the final minute includes seconds through `:59`. A stored end field containing only a date represents the end of that day.
+
+Select both endpoints to apply a range; selecting only the first date does not filter the query. Choose the same day for both endpoints to filter a single day. The range narrows the query's existing restrictions, including groups of conditions joined by **OR**.
+
+Leave **End date meta key** empty to filter one field between the selected dates. Turning off **Date range** uses **Meta key** and the **Compare** setting; the separate end field is ignored.
+
+Changing **Source**, **Provider**, or **Field type** clears the retained end-field selection. Select a compatible end field again after the change. The **WordPress field** source, such as Post date or User registered date, keeps its existing single-field behavior.
+
+### Calendar limits and indexing
+
+With a separate end field configured, Bricks indexes both dates from complete, valid intervals. **Min/max date** uses those indexed values, so a multi-day event's end date can extend the calendar's upper limit. It does not disable individual days without events inside those limits or select a particular opening month.
+
+Adding, updating, or deleting either date field refreshes the affected post, term, or user's complete interval through the normal queue. If either value is removed or becomes invalid, neither date from that item contributes to the bounds. Upgrades and changes to the selected field definitions can queue an index rebuild. If the calendar limits appear stale, check the [filter indexing tools](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-index) and allow pending jobs to finish.
+
+### Shared Datepicker settings
+
+When using a [Global Filter](https://academy.bricksbuilder.io/builder/dynamic-content/global-filters-filter-manager/), the provider, field type, and both field selections belong to the shared configuration. Linked Datepickers use those fields and one shared index while keeping their own target queries and styling. Linking to a global filter without an end key uses one-field behavior, even if the element previously had a local end key.
+
+## Default selection {#default-selection}
+
+Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. For a single date, enter **Default value** in `YYYY-MM-DD` format. With **Date range** enabled, provide both **Start date** and **End date** in that format, with the start no later than the end. These fields support dynamic data, which must return the same format regardless of the display or stored field format.
+
+The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
+
+> **Developer reference**
+>
+> See the [Filter - Datepicker Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-datepicker/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Filter Geolocation
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-geolocation/
+
+*Filter posts, terms, or users by distance from an address, device location, or map center, and show nearby results on Google Maps or Leaflet.*
+
+The **Filter - Geolocation** element, available in **Bricks 2.5**, finds results within a radius of a selected location. Use it for store locators, property listings, or directories where visitors need to find nearby places.
+
+Visitors can search from an address, their device location, or the center of a connected map. A map is optional. The filter supports native **Posts**, **Terms**, and **Users** query loops.
+
+Distance is measured along the earth's surface in a straight line, not along roads. It does not represent driving distance or travel time.
+
+## Basic setup {#setup}
+
+1. Enable **Enable query sort / filter / live search** under **Bricks > Settings > Query filters**.
+2. Create a [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/) for your listing.
+3. Add **Filter - Geolocation** from the **Filter** element group.
+4. Set **Target query** to the listing's loop.
+5. Under **Data source**, set **Object type** to **Post**, **Term**, or **User** to match the listing, then configure its [coordinate fields](#coordinates).
+6. Enable **Search by address**, **Search by device location**, or both. Both are off by default.
+7. Set the radius and distance unit. Enable **Radius dropdown** if visitors should choose the radius.
+8. Save the builder and let indexing finish. Test the search on the frontend.
+
+For example, a store directory can use a Posts query with `store_latitude` and `store_longitude` custom fields. Enable device-location search and offer 5, 10, 25, and 50 km radii. A visitor selects their location and 25 km, and the listing shows stores within that distance.
+
+![A 25 km device-location search around Johor Bahru, with a removable active-filter label, a result showing its distance, and a Leaflet map showing the origin and radius.](https://academy.bricksbuilder.io/assets/academy-filter-geolocation-leaflet.webp)
+
+## Coordinate fields {#coordinates}
+
+Every result needs saved latitude and longitude values. Bricks indexes these coordinates for distance searches. It does not convert saved street addresses into coordinates during indexing.
+
+### WordPress meta fields
+
+Use the **WordPress** provider, or the native coordinate controls when custom-field integration is disabled.
+
+| Coordinate format | Settings | Example saved values |
+| --- | --- | --- |
+| **Separate fields** (default) | **Latitude meta key** and **Longitude meta key** | `store_latitude`: `1.4927`; `store_longitude`: `103.7414` |
+| **Combined field** | **Coordinates meta key** | `store_coordinates`: `1.4927,103.7414` |
+
+Enter the meta key names, not dynamic data tags. For combined fields, latitude comes first. Bricks reads post, term, or user metadata according to **Object type**.
+
+Latitude must be between -90 and 90, and longitude between -180 and 180. Missing or invalid coordinates are excluded from location searches. An item can appear in the unfiltered listing and disappear when a radius search is applied if its coordinates are missing.
+
+### ACF and Meta Box map fields
+
+1. Enable **Custom fields integration** under **Bricks > Settings > Query filters**.
+2. Set **Provider** to **ACF** or **Meta Box** on the Geolocation filter.
+3. Open the dynamic data picker in **Location field** and select an **ACF Google Map** or **Meta Box Map** field.
+
+These integrations read the saved coordinates from the map field. The provider choices for this element are limited to ACF and Meta Box, even when other query-filter integrations are active.
+
+After importing locations or changing the coordinate source, use **Regenerate filter index** under **Bricks > Settings > Query filters** if results are missing or outdated. See [Filter Index](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-index) for background indexing controls.
+
+### Coordinates from a custom storage format {#custom-coordinate-storage}
+
+For integrations that store coordinates in another format, use the `bricks/query_filters/geolocation/coordinates` PHP filter. It runs while Bricks indexes each object, after the normal coordinate lookup, rather than on every visitor search.
+
+The callback receives five arguments:
+
+| Argument | Value |
+| --- | --- |
+| `$coordinates` | The resolved `['lat' => ..., 'lng' => ...]` array, or `false` when no valid coordinates were found. |
+| `$object_id` | The post, term, or user ID being indexed. |
+| `$object_type` | `post`, `term`, or `user`. |
+| `$settings` | The Geolocation filter settings used for indexing. |
+| `$filter_id` | The filter ID that owns the coordinate index. |
+
+For example, suppose a `store` post type saves an array under `_directory_location`, with `latitude` and `longitude` keys. Configure the Geolocation filter with **Object type > Post**, **Combined field**, and **Coordinates meta key** set to `_directory_location`. Add this callback to your child theme or a custom plugin:
+
+```php
+add_filter( 'bricks/query_filters/geolocation/coordinates', function ( $coordinates, $object_id, $object_type, $settings, $filter_id ) {
+    if (
+        $object_type !== 'post' ||
+        get_post_type( $object_id ) !== 'store' ||
+        ( $settings['geoCoordinateSource'] ?? 'separate' ) !== 'combined' ||
+        ( $settings['geoCoordinatesKey'] ?? '' ) !== '_directory_location'
+    ) {
+        return $coordinates;
+    }
+
+    $location = get_post_meta( $object_id, '_directory_location', true );
+
+    if ( ! is_array( $location ) ) {
+        return false;
+    }
+
+    return [
+        'lat' => $location['latitude'] ?? null,
+        'lng' => $location['longitude'] ?? null,
+    ];
+}, 20, 5 );
+```
+
+The scope checks preserve other filters and object types. Return the incoming value when your integration does not apply, or `false` to exclude that object's coordinates. Bricks validates the returned array again: latitude and longitude must be finite numbers within the ranges above. An invalid result is not indexed, and stale coordinates for that object are removed during reindexing.
+
+After adding the callback or changing its stored data, [regenerate the filter index](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-index) to update existing results. Integrations can also [request a rebuild from PHP](https://academy.bricksbuilder.io/developer/hooks/actions/bricks-query_filters-reindex/#request).
+
+## Search methods {#search-methods}
+
+### Address search
+
+Enable **Search by address** to display an address field and Search button. Save a Google Maps API key under **Bricks > Settings > API keys**. The key needs access to **Maps JavaScript API** and **Geocoding API**, with billing and website restrictions configured for your site. Saving a key does not verify access to those services.
+
+**Address autocomplete** adds suggestions while typing and additionally requires **Places API (New)**. If suggestions fail, visitors can still type an address and use Search. See [Google Maps API key setup](https://academy.bricksbuilder.io/integrations/how-to-set-up-your-google-maps-api-key/#geolocation).
+
+- **Country codes** limits suggestions to up to 15 two-letter country codes, separated by commas or spaces. Leave it empty for all countries.
+- **Autocomplete map area** can **Prefer map area** (default), **Limit to map area**, or **Ignore map area** when a map is connected.
+- **Hide label** hides the address label visually while retaining its accessible name.
+- **Hide search button** leaves Enter available to run a search.
+
+Autocomplete restrictions affect address suggestions. The selected origin and radius determine which listing items match.
+
+### Device-location search
+
+Enable **Search by device location** to display a location button. Choose text, an icon, or both, and configure the enabled and clear states under **Device location button**.
+
+Bricks requests location permission only after the visitor activates the button. The browser must support geolocation and permit it on the site, normally over HTTPS. If permission is denied or the location cannot be retrieved, the previous applied search remains in place.
+
+Device-location search does not need a Google Maps API key. It works with a listing alone or a connected Leaflet map without Google services. Enabling address search still requires the Google APIs, including when the connected map uses Leaflet.
+
+## Default location {#default-location}
+
+Enable **Use default location** to apply a radius search before the first query runs. This works with Google Maps, Leaflet, or a listing without a map.
+
+1. Set **Target query** and enable at least one visitor search method: **Search by address** or **Search by device location**.
+2. Under **Default location**, enable **Use default location**.
+3. Enter **Latitude** and **Longitude**, for example `3.1390` and `101.6869` for Kuala Lumpur.
+4. Optionally enter a **Location label**, such as "Kuala Lumpur". An empty label displays "Default location".
+5. Set **Default radius** and **Distance unit**, for example 25 km, then save and test a URL without filter parameters.
+
+<div className="screenshot screenshot--control-panel">
+
+![Use default location enabled with latitude 3.1390, longitude 101.6869, and Kuala Lumpur as the location label.](https://academy.bricksbuilder.io/assets/query-filter-default-location.webp)
+
+</div>
+
+Latitude, longitude, and label support dynamic data from the original page or template preview context. Coordinates must resolve to valid numbers. The label is display text, not an address that Bricks needs to geocode. It appears in Active Filters and the address input when address search is enabled. Submitting the unchanged label uses the existing coordinates.
+
+The default applies immediately, including with **Apply on** set to **On submit**. It uses the configured radius and unit, does not derive coordinates from the map center, and does not request the visitor's device location. Device access still requires the visitor to activate its button.
+
+Use one default location per target query. Duplicate desktop and mobile controls can share a default through one [global filter](https://academy.bricksbuilder.io/builder/dynamic-content/global-filters-filter-manager/). If independent Geolocation filters targeting the same query each define a valid default location, Bricks skips those defaults and shows a warning in the builder preview. Invalid or incomplete coordinates are also skipped.
+
+Recognized filter URL parameters take precedence over defaults. **Reset** clears the location; a fresh visit or reload without filter parameters applies it again. Defaults are not reapplied during AJAX updates, pagination, or browser Back/Forward. Coordinates enter the URL only when **Save location in URL** is enabled. See [default filter state](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-state).
+
+## Radius and sorting {#radius}
+
+| Setting | Behavior |
+| --- | --- |
+| **Default radius** | Uses 5 by default. With a radius dropdown, choose a value from **Radius options**; otherwise Bricks uses the first valid option. Without a dropdown, this is the fixed search radius. |
+| **Distance unit** | **Kilometres (km)** by default, or **Miles (mi)**. |
+| **Radius dropdown** | Off by default. Lets visitors select one configured radius. Default presets are 5, 10, 25, and 50. Each row has a numeric **Radius** and an **Option label**. |
+| **Unit label format** | **Abbreviated (km/mi)** by default, **Full text**, or **Disable**. Applies to the radius options and Active Filters label. Disable it when your option labels already contain their units. |
+| **Sort results by distance** | On by default. Shows nearest matches first while the filter is active. An active Sort filter takes precedence without removing the radius constraint. |
+
+Radius changes need an origin before they can filter results. Existing taxonomy, custom-field, search, and other query restrictions still apply. Pagination totals reflect the filtered results.
+
+Under **Radius dropdown**, enable **Enhanced radius dropdown** for Choices.js styling. It remains a single-selection control with a valid radius required.
+
+### Let visitors choose the distance order {#distance-sorting}
+
+Add a [Select](https://academy.bricksbuilder.io/builder/elements/filter/filter-select/) or [Radio](https://academy.bricksbuilder.io/builder/elements/filter/filter-radio/) filter targeting the same query and set **Action** to **Sort**. In **Sort options**, set **Source** to **Distance** and choose **Ascending** for nearest first or **Descending** for farthest first. Give each option a label visitors can recognize.
+
+Distance uses the Geolocation search, including a configured default location. It retains the radius when visitors change sort options and works even when this element's **Sort results by distance** is off. A farthest-first 25 km search still excludes results outside 25 km.
+
+On the frontend, Distance options stay visible but disabled without a valid location for the same query. A valid location enables them even when no results match. Choosing a sort option never requests device location; visitors obtain their location through this element's search controls.
+
+See [Distance sorting setup](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#distance-sorting) for the complete configuration.
+
+## When a search applies {#apply-mode}
+
+The Geolocation filter uses **Immediately** and **On submit** labels under **Apply on**.
+
+| Action | Immediately (default) | On submit |
+| --- | --- | --- |
+| Select an address suggestion or resolve device location | Applies the selected location | Stages the location until a search is submitted |
+| Change the radius or pan a map with map search enabled | Applies the change | Stages the change |
+| Use the address Search button or press Enter to search | Resolves and applies this location alongside already applied filters | Resolves and applies this location alongside already applied filters |
+| Activate a Filter - Submit targeting the same query | Applies all pending filters | Applies all pending filters |
+
+When Enter selects an autocomplete suggestion, that keypress only selects it. Press Enter again to search. In **Immediately** mode, selecting the suggestion can already trigger the update.
+
+In **On submit** mode, device-only setups need a [Filter - Submit](https://academy.bricksbuilder.io/builder/elements/filter/filter-submit/) element targeting the same query. Keep status messages visible so visitors can tell when a location is waiting to be applied.
+
+To apply a pending location and Distance sorting together, set the Select or Radio sort filter's **Apply on** to **Submit** too. A resolved pending location enables its Distance options before submission. Clearing the pending location disables them and clears the pending Distance choice. Use Filter - Submit to apply both changes together.
+
+While a new location is pending, the visible results, distances, active-filter label, and map radius still describe the applied search. They update when the matching results arrive. Failed lookups or requests preserve the previous applied location and results.
+
+## Connect a map {#map}
+
+1. Add a [Map Connector](https://academy.bricksbuilder.io/builder/elements/general/map-connector/) inside the results loop and give it location data for each item. Use coordinates matching the filter's indexed location.
+2. Add a [Google Map](https://academy.bricksbuilder.io/builder/elements/general/map/#3-sync-with-query) in JavaScript API render mode, or [Map (Leaflet)](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/#sync-with-query).
+3. Set the map's **Sync with query** to the same results loop targeted by the filter.
+4. If exactly one Geolocation filter and one matching map use that query, Bricks connects them automatically. Otherwise, select the intended map under **Map (Optional)** on the filter.
+
+Each Geolocation filter connects to at most one map, and each map to at most one Geolocation filter. Static maps and a map's internal query are not supported filter targets. Leaflet Map Connectors require latitude and longitude.
+
+The map shows the search origin and radius, with markers for the current results. The applied origin and radius stay visible when no results match. Under **Map appearance**, customize the circle's fill and border, origin marker color, or a custom origin marker image.
+
+### Search on map drag
+
+Enable **Search on map drag** on the filter and allow dragging on the connected map. The map center becomes the search origin after the visitor stops panning.
+
+- **Visitor controlled** (default) shows a **Search as I move the map** checkbox. Configure its label, corner position, and **Checked by default** state.
+- **Automatic** searches after every qualifying drag without displaying the checkbox.
+- **Search delay (ms)** waits after the map settles, using 400 ms by default.
+
+Zooming alone and programmatic map movements do not start a search. **Apply on** still controls whether map changes apply immediately or wait for submission.
+
+## Show the distance in each result {#distance}
+
+Place the following tag in a text element inside the filtered Posts, Terms, or Users loop:
+
+```text
+{filter_geo_distance}
+```
+
+It shows the current item's distance from the applied origin, using the filter's unit and unit-label format with one decimal place by default. It also works in AJAX-rendered map Info Boxes for those results.
+
+| Argument | Use |
+| --- | --- |
+| `@to:'km'` or `@to:'mi'` | Convert the displayed distance without changing the search radius. |
+| `@decimals:'0'` through `@decimals:'6'` | Set the number of decimal places. |
+| `@output:'value'` | Return the rounded numeric value only. |
+| `@output:'unit'` | Return the unit label only. |
+| `@fallback:'Select a location'` | Show fallback text when no distance is available. |
+
+For example:
+
+```text
+{filter_geo_distance @to:'mi' @decimals:'2'}
+{filter_geo_distance @fallback:'Select a location'}
+```
+
+Without a fallback, the tag returns nothing before a location search is applied or outside a supported filtered loop. API, Array, and provider-specific query loops do not support this tag or Geolocation filtering.
+
+## Active filters and URL state {#state}
+
+An [Active Filters](https://academy.bricksbuilder.io/builder/elements/filter/filter-active-filters/) element shows the location and radius as one removable item. Clear, Reset, and removing that item clear the location search. Applying another independent Geolocation filter to the same query replaces the previous location constraint.
+
+Clearing the location also clears a selected Distance sort and restores the query's normal ordering. Results and URL history update together after the request succeeds. Failed or cancelled requests preserve the last applied results and ordering. Distance options remain configured so they can be enabled for another valid location.
+
+**Save location in URL** is off by default. Enable it if searches should survive a reload or be shareable. It writes the selected coordinates to the page URL and browser history. **URL parameter** changes the parameter name. Browser Back and Forward can restore saved searches.
+
+Geolocation filters support [Global Filters](https://academy.bricksbuilder.io/builder/dynamic-content/global-filters-filter-manager/). Shared behavior includes the coordinate source, search methods, default location, radius, and apply mode. Target query, map connection, and presentation remain local to each linked element.
+
+## Styling and status messages {#styling}
+
+The element has separate control groups for **Layout**, **Label**, **Address**, **Search button**, **Radius dropdown**, **Device location button**, and **Status**. Use these to style the controls at each breakpoint.
+
+Under **Status**, override the pending, loading, success, and error messages. Empty values retain the translated defaults. **Hide status messages** hides them visually while keeping screen reader announcements. It does not hide the separate address-autocomplete fallback notice.
+
+## Troubleshooting {#troubleshooting}
+
+- **No controls appear:** Enable an address or device-location search method. Both are off on a new element.
+- **Known locations are missing:** Check the object type, meta keys or provider field, coordinate order and ranges, and filter-index progress. Address-only values cannot be indexed as coordinates.
+- **Address search fails:** Check the saved Google key, billing, enabled APIs, and website/API restrictions. Autocomplete needs Places API (New) in addition to the manual-search APIs.
+- **Location selected but results have not changed:** Check **Apply on**. Use Search, Enter, or a Filter Submit in **On submit** mode.
+- **Map does not connect:** Target the results loop, set the map's **Sync with query** to it, and select the map explicitly if the layout contains multiple filters or maps.
+- **Dragging does not search:** Enable map dragging and **Search on map drag**, then check the visitor checkbox and apply mode.
 
 ---
 
@@ -798,15 +1250,15 @@ Creates a checkbox filter interface for AJAX-powered content filtering. Users ca
 
 Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-radio/
 
-*Creates a radio button filter interface for single-selection filtering. Users can select one option at a time to filter query results. Supports taxonomy terms,.*
+*Use radio buttons for single-selection query filters, sorting, or results per page, with optional child-term counts for taxonomy filters.*
 
 Creates a radio button filter interface for single-selection filtering. Users can select one option at a time to filter query results. Supports taxonomy terms, WordPress fields, custom fields, and can also function as a sorting or results-per-page control.
 
-**Tip:** Use radio buttons when users should select only one filter option. Combine with the "Action" setting to create sorting dropdowns or results-per-page selectors.
+Use radio buttons when visitors should select only one option. Set **Action** to **Sort** or **Results per page** when the control should change ordering or page size.
 
 ## Settings
 
-- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
+- **Target query** (query-list) - Select the post, term, or user query this filter should target. Available sources depend on the query type.
 - **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
 - **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
 - **Action** (select) - Filter behavior. Options: Filter (traditional filtering), Sort (sorting control), Results per page (pagination control).
@@ -821,6 +1273,7 @@ Creates a radio button filter interface for single-selection filtering. Users ca
 - **Terms: Exclude** (select) - Specific taxonomy terms to exclude from filter options.
 - **Top level terms only** (checkbox) - Display only top-level terms (parent = 0) when source is taxonomy.
 - **Hide count** (checkbox) - Hide the result count for each option.
+- **Count: Include children** (checkbox, Bricks 2.5) - Include descendant-term posts in parent taxonomy counts. Off by default. Available with Action set to Filter, a target query, and a selected taxonomy.
 - **Hide empty** (checkbox) - Hide options with zero results.
 - **Hide count bracket** (checkbox) - Remove brackets around count values. Style count via .brx-option-count.
 - **Hierarchical** (checkbox) - Display taxonomy terms in hierarchical structure.
@@ -831,15 +1284,37 @@ Creates a radio button filter interface for single-selection filtering. Users ca
 - **Compare** (select) - Comparison operator for filtering. Default: Equal.
 - **Mode** (select) - Display mode for radio buttons. Options: Default (traditional radio buttons), Button (modern button style).
 - **Sort options** (repeater) - Configure sorting options when Action is set to Sort.
-  - **Option source** (text) - Sort field and direction (e.g., post_date_DESC).
-  - **Option label** (text) - Display label for the sort option.
-  - **Option order** (select) - Sort direction override.
-  - **Option meta key** (text) - Meta key for meta-based sorting.
+  - **Source** (select) - Sort field, including **Distance** in Bricks 2.5.
+  - **Label** (text) - Display label for the sort option.
+  - **Order** (select) - Ascending or Descending. For Distance, nearest first or farthest first.
+  - **Meta key** (text) - Meta key for meta-based sorting.
 - **Results per page options** (text) - Comma-separated list of results per page options when Action is set to Results per page. Default: 10, 20, 50, 100.
 - **Active filter** - Settings for active filter display.
   - **Prefix** (text) - Text to display before filter value.
   - **Suffix** (text) - Text to display after filter value.
   - **Title** (text) - Custom title attribute for filter links.
+
+## Parent-Term Counts {#parent-term-counts}
+
+Enable **Count: Include children** when a parent option should count posts assigned to its child terms and deeper descendants. Posts assigned to both a parent and a descendant count once for the parent. The setting works independently of **Hierarchical** display and is shared when the element uses a global filter. See [taxonomy child counts](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#taxonomy-child-counts) for setup, indexing, and an example.
+
+## Default selection {#default-selection}
+
+Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. Use **Default value** for one exact option value. For the Sort action, enter a configured sort value such as `title_ASC` or `distance_ASC`; for Results per page, enter a configured page size such as `20`. Dynamic data is supported.
+
+A Distance default such as `distance_ASC` also requires a valid location from a Geolocation filter targeting the same query. Without one, Bricks clears the Distance selection and uses the query's normal order.
+
+The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
+
+## Distance sorting {#distance-sorting}
+
+Starting with **Bricks 2.5**, set **Action** to **Sort** and add **Distance** as a sort option's **Source**. Set **Order** to **Ascending** for nearest first or **Descending** for farthest first, and give the option a descriptive **Label**.
+
+A [Geolocation filter](https://academy.bricksbuilder.io/builder/elements/filter/filter-geolocation/) must target the same query and provide a valid location, including a default location. Sorting keeps its radius constraint.
+
+Distance options remain visible but disabled without a valid location. A valid location enables them even when no results match. Clearing the location also clears a selected Distance sort and restores the query's normal order. Choosing a sort option never requests device location.
+
+With this filter set to **Submit** and Geolocation set to **On submit**, a resolved pending location enables Distance before submission so visitors can apply both together. See [Distance sorting setup](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#distance-sorting) for apply modes, URL behavior, and failed requests.
 
 > **Developer reference**
 >
@@ -851,7 +1326,7 @@ Creates a radio button filter interface for single-selection filtering. Users ca
 
 Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-range/
 
-*Creates a range slider or input interface for filtering content by numeric ranges. Perfect for price filtering, numeric custom fields, or any data that has.*
+*Filter query results by numeric ranges using sliders or input fields, with optional default minimum and maximum values.*
 
 Creates a range slider or input interface for filtering content by numeric ranges. Perfect for price filtering, numeric custom fields, or any data that has minimum and maximum values. Supports both slider and input field display modes.
 
@@ -859,7 +1334,7 @@ Creates a range slider or input interface for filtering content by numeric range
 
 ## Settings
 
-- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
+- **Target query** (query-list) - Select the Posts, Terms, or Users query this filter should target.
 - **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
 - **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
 - **Source** (select) - Data source for filter options. Currently limited to Custom field.
@@ -891,6 +1366,12 @@ Creates a range slider or input interface for filtering content by numeric range
   - **Suffix** (text) - Text to display after filter value.
   - **Title** (text) - Custom title attribute for filter links.
 
+## Default selection {#default-selection}
+
+Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. Under **Default value**, enter numeric **Minimum** and **Maximum** values. Leave one endpoint empty to use the original range boundary. Defaults are limited to the original available range and support dynamic data.
+
+The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
+
 > **Developer reference**
 >
 > See the [Filter - Range Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-range/) for the full JSON schema of this element's settings and controls.
@@ -901,7 +1382,7 @@ Creates a range slider or input interface for filtering content by numeric range
 
 Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-search/
 
-*Provides a live AJAX search input for real-time content filtering. Searches through post content, titles, and custom fields without page refresh. Features.*
+*Search query results without a page reload, configure initial search text, and choose AJAX or redirect behavior for Enter.*
 
 Provides a live AJAX search input for real-time content filtering. Searches through post content, titles, and custom fields without page refresh. Features debouncing, minimum character requirements, and optional clear functionality.
 
@@ -909,7 +1390,7 @@ Provides a live AJAX search input for real-time content filtering. Searches thro
 
 ## Settings
 
-- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
+- **Target query** (query-list) - Select the Posts, Terms, or Users query this filter should target.
 - **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
 - **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (button click or Enter). Default: Input.
 - **Debounce (ms)** (number) - Delay before triggering search after typing stops. Default: 500ms.
@@ -940,956 +1421,12 @@ For a search field that takes visitors to another results page, select a **Targe
 
 For an AJAX search that should close an Offcanvas after submission, enable **Trigger Filter Submit interactions** and use the [Filter Submit interaction triggers](https://academy.bricksbuilder.io/builder/features/interactions/#filter-submit-triggers). Ordinary typing does not trigger these submit interactions. The redirect action does not run them.
 
+## Default selection {#default-selection}
+
+Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. Use **Default value** to set initial search text. The field supports dynamic data and treats commas as part of the search text.
+
+The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
+
 > **Developer reference**
 >
 > See the [Filter - Search Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-search/) for the schema snapshot and Bricks 2.4 settings reference.
-
----
-
-# Filter datepicker
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-datepicker/
-
-*Provides a date picker interface for filtering content by date ranges. Supports single dates or date ranges with time selection. Can filter by post dates, user.*
-
-Provides a date picker interface for filtering content by date ranges. Supports single dates or date ranges with time selection. Can filter by post dates, user registration dates, or custom date fields.
-
-**Tip:** Ideal for filtering content by publication date, event dates, or any time-based data. Enable "Date range" for before/after date filtering, and "Enable time" for precise time-based queries.
-
-## Settings
-
-- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
-- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
-- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
-- **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
-- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
-- **Field** (select) - Specific date field to filter by (post date, modified date, user registered date).
-- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
-- **Meta key** (text) - Custom field key containing date values.
-- **Enable time** (checkbox) - Add time selection capability to the date picker.
-- **Date range** (checkbox) - Enable selection of date ranges instead of single dates.
-- **Date format** (text) - Date format matching the database storage format. Default: Y-m-d H:i:s. ACF uses Ymd format.
-- **Min/max date** (checkbox) - Use minimum and maximum dates from the index table for date picker limits.
-- **Compare** (select) - Comparison operator for date filtering. Options: == (is), < (before), > (after).
-- **Input** - Settings for the date input field.
-  - **Placeholder** (text) - Placeholder text for the input field. Default: Date.
-  - **Placeholder typography** (typography) - Typography for placeholder text.
-  - **Language** (text) - Language code for date picker localization (de, es, fr, etc.).
-- **Active filter** - Settings for active filter display.
-  - **Prefix** (text) - Text to display before filter value.
-  - **Suffix** (text) - Text to display after filter value.
-  - **Title** (text) - Custom title attribute for filter links.
-
-> **Developer reference**
->
-> See the [Filter - Datepicker Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-datepicker/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Filter select
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-select/
-
-*Creates a dropdown select filter interface for single or multiple selection filtering. Supports taxonomy terms, WordPress fields, and custom fields. Can also.*
-
-Creates a dropdown select filter interface for single or multiple selection filtering. Supports taxonomy terms, WordPress fields, and custom fields. Can also function as a sorting or results-per-page control.
-
-## Settings
-
-- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
-- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
-- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
-- **Action** (select) - Filter behavior. Options: Filter (traditional filtering), Sort (sorting control), Results per page (pagination control).
-- **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
-- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
-- **Field** (select) - Specific field to filter/sort by (varies based on field type and action).
-- **Taxonomy** (select) - Taxonomy to use for filtering when source is taxonomy.
-- **Order by** (select) - How to order taxonomy terms. Options: Name, Slug, Term ID, Description, Parent, Count, Include, Menu Order, Meta Value, Meta Value Num.
-- **Order meta key** (text) - Meta key for ordering when using meta value ordering.
-- **Order** (select) - Sort direction. Options: ASC, DESC. Default: ASC.
-- **Terms: Include** (select) - Specific taxonomy terms to include in filter options.
-- **Terms: Exclude** (select) - Specific taxonomy terms to exclude from filter options.
-- **Top level terms only** (checkbox) - Display only top-level terms (parent = 0) when source is taxonomy.
-- **Hide count** (checkbox) - Hide the result count for each option.
-- **Hide empty** (checkbox) - Hide options with zero results.
-- **Hierarchical** (checkbox) - Display taxonomy terms in hierarchical structure.
-- **Indent: Prefix** (text) - Prefix text for hierarchical indentation. Default: —.
-- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
-- **Meta key** (text) - Custom field key for filtering.
-- **Compare** (select) - Comparison operator for filtering. Default: Equal.
-- **Input** - Settings for the select dropdown.
-  - **Placeholder** (text) - Placeholder text for the select dropdown.
-- **Sort options** (repeater) - Configure sorting options when Action is set to Sort.
-  - **Option source** (text) - Sort field and direction (e.g., post_date_DESC).
-  - **Option label** (text) - Display label for the sort option.
-  - **Option order** (select) - Sort direction override.
-  - **Option meta key** (text) - Meta key for meta-based sorting.
-- **Results per page options** (text) - Comma-separated list of results per page options when Action is set to Results per page. Default: 10, 20, 50, 100.
-- **Active filter** - Settings for active filter display.
-  - **Prefix** (text) - Text to display before filter value.
-  - **Suffix** (text) - Text to display after filter value.
-  - **Title** (text) - Custom title attribute for filter links.
-
-> **Developer reference**
->
-> See the [Filter - Select Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-select/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Filter submit
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-submit/
-
-*Creates submit/reset buttons for filter forms. Provides control over when filters are applied - either as a submit button to apply all filters at once, or as a.*
-
-Creates submit/reset buttons for filter forms. Provides control over when filters are applied - either as a submit button to apply all filters at once, or as a reset button to clear all active filters. Supports redirection to specific URLs after submission.
-
-## Settings
-
-- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
-- **Action** (select) - Button behavior. Options: Submit (apply filters), Reset (clear filters).
-- **Redirect to** (text) - URL to redirect to after applying filters (Submit action only).
-- **Open in new tab** (checkbox) - Open redirect URL in new tab (Submit action only).
-- **Exclude filter IDs** (text, Bricks 2.4) - Comma-separated Bricks element IDs of filters to preserve when resetting (Reset action only).
-- **Hide if no active filter** (checkbox) - Hide the reset button when no filters it can reset are active. Excluded filters do not keep the button visible. Adds .brx-no-active-filter class for styling (Reset action only).
-- **Button** - Settings for the submit/reset button.
-  - **Text** (text) - Button text. Default: Filter.
-  - **Size** (select) - Button size preset. Options: Default, Small, Medium, Large, Extra Large.
-  - **Style** (select) - Button style. Options: None, Primary, Secondary, Success, Info, Warning, Danger, Dark, Light. Default: Primary.
-  - **Circle** (checkbox) - Make button circular.
-  - **Outline** (checkbox) - Use outline button style.
-  - **Icon** (icon) - Icon to display on the button.
-  - **Icon color** (color) - Color of the button icon.
-  - **Icon size** (number) - Size of the button icon.
-
-## Preserve a search while resetting refinements
-
-Set **Action** to **Reset**, then enter the Search filter's Bricks element ID in **Exclude filter IDs**. For example, enter `q1w2e3,mn9456` to preserve two filters. Use the filter elements' IDs, not the target query ID or URL parameter names.
-
-Reset clears the other filters for the target query while keeping the excluded values, such as the visitor's search term. With **Hide if no active filter** enabled, the reset button hides once only excluded filters remain active.
-
-This setting is separate from the exclusion list on the Active Filters element, which controls which filters appear in that element.
-
-> **Developer reference**
->
-> See the [Filter - Submit / Reset Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-submit/) for the schema snapshot and Bricks 2.4 settings reference.
-
----
-
-# Block
-
-Source: https://academy.bricksbuilder.io/builder/elements/layout/block/
-
-*The Block element is one of the four layout elements in Bricks (1.5+).*
-
-The Block element is one of the four [layout elements](https://academy.bricksbuilder.io/builder/styling/layout/) in Bricks (1.5+).
-
-Introduced together with the Section & Div element, it provides the same powerful layout controls as the Container but uses a default width of 100% instead of the Container's fixed 1100px width.
-
-This makes it the perfect element to use inside of a Container (e.g. column/row based layout). Or wherever you need to span the entire available width, plus quick access to direction & alignment settings. As the Block element uses `flex` by default.
-
-Use blocks to create multi-column layouts, sidebars, or any layout where you want full-width flexbox behavior without the Container's width constraints. If you want your layout element to only take up the space of its content, use the Div element instead.
-
-**Tip:** Blocks are ideal for creating column-based layouts. When you need multiple equal-width columns, insert blocks inside a container and set the direction to horizontal - they'll automatically distribute the available space equally.
-
-## Settings
-
-- **Grid column** (text) - CSS grid column span when parent uses grid layout. Controls `grid-column` property.
-
-- **Grid row** (text) - CSS grid row span when parent uses grid layout. Controls `grid-row` property.
-
-- **Query loop** - Enable query loop functionality for dynamic content. Available for Container, Block, Div, and Section elements.
-
-- **Link** (link) - Link settings when using anchor tag. Required when HTML tag is set to 'a'.
-
-- **HTML tag** (select) - HTML tag for the block element. Options: div, section, a [Link], article, nav, ol, ul, li, aside, address, figure, custom. Default: div.
-
-- **Custom tag** (text) - Custom HTML tag when "custom" is selected. Without attributes. Required when HTML tag is 'custom'.
-
-- **Display** (select) - CSS display property. Options: flex, grid, block, inline-block, inline, none. Default: flex.
-
-### Grid Layout (when Display is grid)
-
-- **Gap** (number with units) - Gap between grid items. Controls `grid-gap` property.
-
-- **Grid template columns** (text) - CSS grid template columns. Supports dynamic data and variables.
-
-- **Grid template rows** (text) - CSS grid template rows. Supports dynamic data and variables.
-
-- **Grid auto columns** (text) - Grid auto columns size. Supports dynamic data and variables.
-
-- **Grid auto rows** (text) - Grid auto rows size. Supports dynamic data and variables.
-
-- **Grid auto flow** (select) - Grid auto flow direction. Options: row, column, dense.
-
-- **Justify items** (justify-content) - Grid justify items alignment.
-
-- **Align items** (align-items) - Grid align items alignment.
-
-- **Justify content** (justify-content) - Grid justify content alignment.
-
-- **Align content** (align-items) - Grid align content alignment.
-
-### Flex Layout (when Display is flex)
-
-- **Flex wrap** (select) - Flexbox wrapping behavior. Options: No wrap, Wrap, Wrap reverse.
-
-- **Direction** (direction) - Flexbox direction (row/column). Controls `flex-direction` property.
-
-- **Align self** (align-items) - Align self for this flex item. Controls `align-self` property with `!important`.
-
-- **Align main axis** (justify-content) - Justify content alignment. Controls `justify-content` property.
-
-- **Align cross axis** (align-items) - Align items alignment. Controls `align-items` property.
-
-- **Column gap** (number with units) - Gap between flex columns. Controls `column-gap` property.
-
-- **Row gap** (number with units) - Gap between flex rows. Controls `row-gap` property.
-
-- **Flex grow** (number) - Flex grow factor. Minimum: 0. Controls `flex-grow` property. Default placeholder: 0.
-
-- **Flex shrink** (number) - Flex shrink factor. Minimum: 0. Controls `flex-shrink` property. Default placeholder: 1.
-
-- **Flex basis** (text) - Flex basis value. Supports dynamic data and variables. Controls `flex-basis` property. Default placeholder: auto.
-
-### Order
-
-- **Order** (number) - Flexbox order. Minimum: -999. Controls `order` property. Default placeholder: 0. Available when display is not 'none'.
-
-## Style
-
-These controls can be accessed under the **Style** tab in the element settings.
-
-### Masonry
-
-- **Masonry layout** (checkbox) - Enable masonry layout for child elements.
-- **Columns** (number) - Number of masonry columns. Default: 3. Controls `--columns` CSS property.
-- **Spacing** (number with units) - Spacing between masonry items. Default: 10px. Controls `--gutter` CSS property.
-- **Horizontal order** (checkbox) - Enable horizontal ordering in masonry layout.
-- **Transition: Duration** (number with units) - Animation duration for masonry transitions. Default: 0.4s. Set to "0" to disable default animations.
-- **Reveal animation** (select) - Animation type for masonry items. Options: Scale, Fade, Slide from left, Slide from right, Skew. Default: Scale. Only applies to new items added to the DOM.
-
-## Theme Style: Element – Block
-
-You can change the following Block default settings in your theme styles under "Element – Block":
-
-- `width`
-- `min-width`
-- `max-width`
-- `margin`
-- `padding`
-
-> **Developer reference**
->
-> See the [Block Schema](https://academy.bricksbuilder.io/developer/schema/elements/block/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Container
-
-Source: https://academy.bricksbuilder.io/builder/elements/layout/container/
-
-*The Container element used to be the only layout element in Bricks until version 1.5. It has now been extended by the Section, Block, and Div element to provide.*
-
-The Container element used to be the only layout element in Bricks until version 1.5. It has now been extended by the Section, Block, and Div element to provide a more maintainable & streamlined layout creation process.
-
-The [Understanding the Layout](https://academy.bricksbuilder.io/builder/styling/layout/) article covers in more detail how to best use the layout elements in Bricks.
-
-## How To Use The Container
-
-The Container has a default width of 1100px, is centered, and uses the **flexbox** layout model. This provides various settings to easily direct, align, and space out the elements inside a Container.
-
-We recommend using the Container at the root level or inside a Section.
-
-When editing the Container, you can click the "column" layout icon on the canvas to quickly insert a pre-designed column-based layout:
-
-![](https://academy.bricksbuilder.io/assets/bricks-insert-layout-tool-1024x293.jpg)
-
-Let's explore the container capabilities and go over a few container layout examples in the video below:
-
-https://www.youtube.com/watch?v=_dhKJdNNxLI
-
-## Convert your pre-1.2 Bricks layout to Containers
-
-If you've built your site prior to version 1.2 using the "old" section, row, and column layout, you first need to convert your data to the new container layout.
-
-Bricks comes with a built-in **container migrator** that migrates your existing Bricks data to the new container layout with one-click. So you don't have to re-create your entire site from scratch.
-
-As the new container layout is fully flexible and does NOT have a pre-defined concept of "sections", "rows" or "columns" you most likely have to make some manual adjustments after running the migrator.
-
-After updating to Bricks 1.2 your old data will still be rendered on the frontend, but it's not a 100% accurate representation of your existing section layout.
-
-Once you've updated to Bricks 1.2+, please convert your existing Bricks data as soon as possible as outlined in the step-by-step migration guide below.  
-  
-We highly recommend migrating your pages one by one, to ensure you don't miss reviewing any of your migrated pages.  
-  
-As an extra precaution, you can also clone your existing site or editing it on a staging server first, and perform the migration there (rather than on any live site).  
-  
-**The migrator does NOT delete any of your existing (section) Bricks data. If you feel Bricks 1.2 and the migrator are not ready for your site yet, you can always download a previous version of Bricks (like 1.1.3) from your Bricks account to roll back and continue using the section, row, column layout for now.**
-
-https://youtu.be/3MrLHRQssrg
-
-### STEP #1: View your un-migrated data on the post type screen
-
-All un-migrated posts/pages/templates, etc. all marked as such by the "**(not migrated)**" label behind the title. As you can see in the screenshot below, we need to migrate a page named "Blank":
-
-<figure>
-
-![](https://academy.bricksbuilder.io/assets/bricks-container-migrator-step-1.png)
-
-<figcaption>
-
-Page "Blank" needs to be migrated
-
-</figcaption>
-
-</figure>
-
-### STEP #2: Select your page and run the migrator
-
-Now select the page you want to migrate, click on the "Bulk actions" dropdown. Select "Migrate Bricks Data" and click "Apply" to run the migrator:
-
-<figure>
-
-![](https://academy.bricksbuilder.io/assets/bricks-container-migrator-step-2.png)
-
-<figcaption>
-
-Select and apply the "Migrate Bricks Data" bulk action
-
-</figcaption>
-
-</figure>
-
-### STEP #3: Review the migration result
-
-To inspect the results of the one-click migrator, edit your migrated page with Bricks, and perform any necessary adjustments inside the builder. Then preview your changes on the frontend as well, to ensure your layout matches your expectations.
-
-### Migration tips:
-
-- Restore the default section margin-bottom of 30px under: Theme Styles > General > Root Container Margin
-- Restore the default element margin-bottom of 15px under: Theme Styles > General > Element Margin
-
-![](https://academy.bricksbuilder.io/assets/bricks-container-migrator-tips-1024x429.png)
-
-## Settings
-
-- **Grid column** (text) - CSS grid column span when parent uses grid layout. Controls `grid-column` property.
-
-- **Grid row** (text) - CSS grid row span when parent uses grid layout. Controls `grid-row` property.
-
-- **Query loop** - Enable query loop functionality for dynamic content. Available for Container, Block, Div, and Section elements.
-
-- **Link** (link) - Link settings when using anchor tag. Required when HTML tag is set to 'a'.
-
-- **HTML tag** (select) - HTML tag for the container element. Options: div, section, a [Link], article, nav, ol, ul, li, aside, address, figure, custom. Default: div.
-
-- **Custom tag** (text) - Custom HTML tag when "custom" is selected. Without attributes. Required when HTML tag is 'custom'.
-
-- **Display** (select) - CSS display property. Options: flex, grid, block, inline-block, inline, none. Default: flex.
-
-### Grid Layout (when Display is grid)
-
-- **Gap** (number with units) - Gap between grid items. Controls `grid-gap` property.
-
-- **Grid template columns** (text) - CSS grid template columns. Supports dynamic data and variables.
-
-- **Grid template rows** (text) - CSS grid template rows. Supports dynamic data and variables.
-
-- **Grid auto columns** (text) - Grid auto columns size. Supports dynamic data and variables.
-
-- **Grid auto rows** (text) - Grid auto rows size. Supports dynamic data and variables.
-
-- **Grid auto flow** (select) - Grid auto flow direction. Options: row, column, dense.
-
-- **Justify items** (justify-content) - Grid justify items alignment.
-
-- **Align items** (align-items) - Grid align items alignment.
-
-- **Justify content** (justify-content) - Grid justify content alignment.
-
-- **Align content** (align-items) - Grid align content alignment.
-
-### Flex Layout (when Display is flex)
-
-- **Flex wrap** (select) - Flexbox wrapping behavior. Options: No wrap, Wrap, Wrap reverse.
-
-- **Direction** (direction) - Flexbox direction (row/column). Controls `flex-direction` property.
-
-- **Align self** (align-items) - Align self for this flex item. Controls `align-self` property with `!important`.
-
-- **Align main axis** (justify-content) - Justify content alignment. Controls `justify-content` property.
-
-- **Align cross axis** (align-items) - Align items alignment. Controls `align-items` property.
-
-- **Column gap** (number with units) - Gap between flex columns. Controls `column-gap` property.
-
-- **Row gap** (number with units) - Gap between flex rows. Controls `row-gap` property.
-
-- **Flex grow** (number) - Flex grow factor. Minimum: 0. Controls `flex-grow` property. Default placeholder: 0.
-
-- **Flex shrink** (number) - Flex shrink factor. Minimum: 0. Controls `flex-shrink` property. Default placeholder: 1.
-
-- **Flex basis** (text) - Flex basis value. Supports dynamic data and variables. Controls `flex-basis` property. Default placeholder: auto.
-
-### Order
-
-- **Order** (number) - Flexbox order. Minimum: -999. Controls `order` property. Default placeholder: 0. Available when display is not 'none'.
-
-## Style
-
-These controls can be accessed under the **Style** tab in the element settings.
-
-### Masonry
-
-- **Masonry layout** (checkbox) - Enable masonry layout for child elements.
-- **Columns** (number) - Number of masonry columns. Default: 3. Controls `--columns` CSS property.
-- **Spacing** (number with units) - Spacing between masonry items. Default: 10px. Controls `--gutter` CSS property.
-- **Horizontal order** (checkbox) - Enable horizontal ordering in masonry layout.
-- **Transition: Duration** (number with units) - Animation duration for masonry transitions. Default: 0.4s. Set to "0" to disable default animations.
-- **Reveal animation** (select) - Animation type for masonry items. Options: Scale, Fade, Slide from left, Slide from right, Skew. Default: Scale. Only applies to new items added to the DOM.
-
-> **Developer reference**
->
-> See the [Container Schema](https://academy.bricksbuilder.io/developer/schema/elements/container/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Div
-
-Source: https://academy.bricksbuilder.io/builder/elements/layout/div/
-
-*The Div element is one of the four layout elements in Bricks (1.5+).*
-
-The Div element is one of the four [layout elements](https://academy.bricksbuilder.io/builder/styling/layout/) in Bricks (1.5+).
-
-Introduced together with the Section & Block element, it allows you to create flexible layouts in record time. The Div element in Bricks is a plain, unstyled div. It's the most generic element to group and lay out your content.
-
-While you use the **Container** to "contain" other elements inside a preset width of 1100px, and the **Block** element with a 100% width, the **Div** element has no presets at all.
-
-This makes it perfect to use inside other layout elements as it grows & shrinks according to its content, or to build Div-only class-based layouts. Use the Div element for grouping content, creating custom layouts, or when you need complete control over styling without any predefined properties.
-
-**Tip:** The Div element's HTML tag setting allows you to transform it into any semantic HTML element (article, nav, ul, li, a (link), etc.) while keeping all the powerful layout and styling controls. This flexibility makes it a versatile building block that can adapt to different content structures and semantic requirements.
-
-## Settings
-
-- **Grid column** (text) - CSS grid column span when parent uses grid layout. Controls `grid-column` property.
-
-- **Grid row** (text) - CSS grid row span when parent uses grid layout. Controls `grid-row` property.
-
-- **Query loop** - Enable query loop functionality for dynamic content. Available for Container, Block, Div, and Section elements.
-
-- **Link** (link) - Link settings when using anchor tag. Required when HTML tag is set to 'a'.
-
-- **HTML tag** (select) - HTML tag for the div element. Options: div, section, a [Link], article, nav, ol, ul, li, aside, address, figure, custom. Default: div.
-
-- **Custom tag** (text) - Custom HTML tag when "custom" is selected. Without attributes. Required when HTML tag is 'custom'.
-
-- **Display** (select) - CSS display property. Options: flex, grid, block, inline-block, inline, none. Default: block.
-
-### Grid Layout (when Display is grid)
-
-- **Gap** (number with units) - Gap between grid items. Controls `grid-gap` property.
-
-- **Grid template columns** (text) - CSS grid template columns. Supports dynamic data and variables.
-
-- **Grid template rows** (text) - CSS grid template rows. Supports dynamic data and variables.
-
-- **Grid auto columns** (text) - Grid auto columns size. Supports dynamic data and variables.
-
-- **Grid auto rows** (text) - Grid auto rows size. Supports dynamic data and variables.
-
-- **Grid auto flow** (select) - Grid auto flow direction. Options: row, column, dense.
-
-- **Justify items** (justify-content) - Grid justify items alignment.
-
-- **Align items** (align-items) - Grid align items alignment.
-
-- **Justify content** (justify-content) - Grid justify content alignment.
-
-- **Align content** (align-items) - Grid align content alignment.
-
-### Flex Layout (when Display is flex)
-
-- **Flex wrap** (select) - Flexbox wrapping behavior. Options: No wrap, Wrap, Wrap reverse.
-
-- **Direction** (direction) - Flexbox direction (row/column). Controls `flex-direction` property.
-
-- **Align self** (align-items) - Align self for this flex item. Controls `align-self` property with `!important`.
-
-- **Align main axis** (justify-content) - Justify content alignment. Controls `justify-content` property.
-
-- **Align cross axis** (align-items) - Align items alignment. Controls `align-items` property.
-
-- **Column gap** (number with units) - Gap between flex columns. Controls `column-gap` property.
-
-- **Row gap** (number with units) - Gap between flex rows. Controls `row-gap` property.
-
-- **Flex grow** (number) - Flex grow factor. Minimum: 0. Controls `flex-grow` property. Default placeholder: 0.
-
-- **Flex shrink** (number) - Flex shrink factor. Minimum: 0. Controls `flex-shrink` property. Default placeholder: 1.
-
-- **Flex basis** (text) - Flex basis value. Supports dynamic data and variables. Controls `flex-basis` property. Default placeholder: auto.
-
-### Order
-
-- **Order** (number) - Flexbox order. Minimum: -999. Controls `order` property. Default placeholder: 0. Available when display is not 'none'.
-
-## Style
-
-These controls can be accessed under the **Style** tab in the element settings.
-
-### Masonry
-
-- **Masonry layout** (checkbox) - Enable masonry layout for child elements.
-- **Columns** (number) - Number of masonry columns. Default: 3. Controls `--columns` CSS property.
-- **Spacing** (number with units) - Spacing between masonry items. Default: 10px. Controls `--gutter` CSS property.
-- **Horizontal order** (checkbox) - Enable horizontal ordering in masonry layout.
-- **Transition: Duration** (number with units) - Animation duration for masonry transitions. Default: 0.4s. Set to "0" to disable default animations.
-- **Reveal animation** (select) - Animation type for masonry items. Options: Scale, Fade, Slide from left, Slide from right, Skew. Default: Scale. Only applies to new items added to the DOM.
-
-## Theme Style: Element – Div
-
-You can change the defaults of the Div element in your theme styles under "Element – Div":
-
-- `display`
-- `flex-direction` (if display set to "flex")
-- `justify-content` (if display set to "flex")
-- `align-items` (if display set to "flex")
-- `width`
-- `min-width`
-- `max-width`
-- `margin`
-- `padding`
-
-> **Developer reference**
->
-> See the [Div Schema](https://academy.bricksbuilder.io/developer/schema/elements/div/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Divider
-
-Source: https://academy.bricksbuilder.io/builder/elements/layout/divider/
-
-*The Divider element creates horizontal or vertical separator lines with optional icons.*
-
-The Divider element creates horizontal or vertical separator lines with optional icons.
-
-## Settings
-
-- **Height** (number with units) - The height/thickness of the divider line. Default: 1.
-
-- **Width** (number with units) - The width/length of the divider line.
-
-- **Style** (select) - The line style. Options: `solid`, `dashed`, `dotted`, `double`, `groove`, `ridge`, `inset`, `outset`. Default: `solid`.
-
-- **Direction** (select) - Orientation of the divider. Options: `horizontal`, `vertical`. Default: `horizontal`.
-
-- **Align** (justify-content) - Alignment of the divider within its container. Options: `flex-start`, `center`, `flex-end`.
-
-- **Color** (color) - Color of the divider line and icon.
-
-### Icon
-
-- **Icon** (icon) - Add an icon that appears on the divider line.
-
-- **Typography** (typography) - Style settings for the icon (size, font properties). Only available when an icon is selected.
-
-> **Developer reference**
->
-> See the [Divider Schema](https://academy.bricksbuilder.io/developer/schema/elements/divider/) for the full JSON schema of this element's settings and controls.
-
----
-
-# List
-
-Source: https://academy.bricksbuilder.io/builder/elements/layout/list/
-
-*The List element creates customizable lists with icons, titles, meta information, descriptions, and optional highlight labels.*
-
-The List element creates customizable lists with icons, titles, meta information, descriptions, and optional highlight labels.
-
-## Settings
-
-### List Items
-
-- **List items** (repeater) - Add and configure list items. Each item has:
-  - **Icon** (icon) - Optional icon for the list item
-  - **Title** (text) - Main title text
-  - **Link title** (link) - Make the title clickable
-  - **Meta** (text) - Additional meta information (e.g., price, date)
-  - **Description** (textarea) - Longer description text
-  - **Highlight** (checkbox) - Mark this item as highlighted
-  - **Highlight label** (text) - Custom label text for highlighted items. Only available when highlight is enabled.
-
-### List Item
-
-- **Justify content** (justify-content) - Horizontal alignment of list item content. Controls `justify-content` property for `.content` and `.description` selectors.
-
-- **Align items** (align-items) - Vertical alignment of list item content. Options: `flex-start`, `center`, `flex-end`, `baseline`. Controls `align-items` property for `.content` and `.description` selectors. Excludes `stretch` option.
-
-- **Margin** (spacing) - Margin around each list item. Controls `margin` property for `li` selector.
-
-- **Padding** (spacing) - Padding inside each list item. Controls `padding` property for `li` selector.
-
-- **Odd background** (color) - Background color for odd-numbered list items. Controls `background-color` property for `li:nth-child(odd)` selector.
-
-- **Even background** (color) - Background color for even-numbered list items. Controls `background-color` property for `li:nth-child(even)` selector.
-
-- **Border** (border) - Border styling for list items. Controls `border` property for `li` selector.
-
-- **Auto width** (checkbox) - Enable automatic width for list items. Sets `justify-content` to `initial` for `.content` selector and `flex-grow` to `0` for `.separator` selector.
-
-### Highlight
-
-- **Block** (checkbox) - Display highlight label as block element. Controls `display` property for `li[data-highlight]::before` selector.
-
-- **Padding** (spacing) - Padding for highlight label. Controls `padding` property for `li[data-highlight]::before` selector.
-
-- **Background** (color) - Background color for highlight label. Controls `background-color` property for `li[data-highlight]::before` selector.
-
-- **Border** (border) - Border styling for highlight label. Controls `border` property for `li[data-highlight]::before` selector.
-
-- **Typography** (typography) - Typography settings for highlight label. Controls `font` property for `li[data-highlight]::before` selector.
-
-- **Content** (separator) - Visual separator in the control panel.
-
-- **Padding** (spacing) - Padding for highlighted item content. Controls `padding` property for `li[data-highlight] .content` selector.
-
-- **Background** (color) - Background color for highlighted item content. Controls `background-color` property for `li[data-highlight] .content` selector.
-
-- **Border** (border) - Border styling for highlighted item content. Controls `border` property for `li[data-highlight] .content` selector.
-
-- **Text color** (color) - Text color for highlighted item content. Controls `color` property for `li[data-highlight] .content .title`, `li[data-highlight] .content .meta`, and `li[data-highlight] .content .description` selectors.
-
-### Icon
-
-- **Icon** (icon) - Default icon for all list items.
-
-- **After title** (checkbox) - Position icon after the title instead of before.
-
-- **Width** (number with units) - Width of the icon. Controls `width` property for `.icon` selector.
-
-- **Height** (number with units) - Height of the icon. Controls `height` property for `.icon` selector.
-
-- **Size** (number with units) - Font size of the icon. Controls `font-size` property for `.icon` selector, and `height`/`width` properties for `.icon svg` selector.
-
-- **Color** (color) - Color of the icon. Controls `color` property for `.icon` selector.
-
-- **Background color** (color) - Background color of the icon. Controls `background-color` property for `.icon` selector.
-
-- **Border** (border) - Border styling for the icon. Controls `border` property for `.icon` selector.
-
-- **Box shadow** (box-shadow) - Box shadow for the icon. Controls `box-shadow` property for `.icon` selector.
-
-### Title
-
-- **Margin** (spacing) - Margin around the title. Controls `margin` property for `.title` selector.
-
-- **HTML tag** (text) - HTML tag for the title. Supports dynamic data. Default placeholder: `span`. Validates HTML tag format.
-
-- **Typography** (typography) - Typography settings for the title. Controls `font` property for `.title` selector.
-
-### Meta
-
-- **Margin** (spacing) - Margin around the meta text. Controls `margin` property for `.meta` selector.
-
-- **Typography** (typography) - Typography settings for the meta text. Controls `font` property for `.meta` selector.
-
-### Description
-
-- **Typography** (typography) - Typography settings for the description. Controls `font` property for `.description` selector.
-
-### Separator
-
-- **Disable** (checkbox) - Disable the separator line between items. Controls `display` property for `.separator` selector (sets to `none`). Triggers re-render.
-
-- **Style** (select) - Border style for the separator. Options from border style control options. Controls `border-top-style` property for `.separator` selector. Only available when separator is not disabled.
-
-- **Width** (number with units) - Width of the separator. Controls `flex-basis` property for `.separator` selector and sets `flex-grow` to `0`. Only available when separator is not disabled.
-
-- **Height** (number with units) - Height/thickness of the separator. Controls `border-top-width` property for `.separator` selector. Only available when separator is not disabled.
-
-- **Color** (color) - Color of the separator. Controls `border-top-color` property for `.separator` selector. Only available when separator is not disabled.
-
-> **Developer reference**
->
-> See the [List Schema](https://academy.bricksbuilder.io/developer/schema/elements/list/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Accordion (nestable)
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/accordion-nested/
-
-*The Nestable Accordion element allows creating hierarchical collapsible content with drag-and-drop nesting in the builder.*
-
-The Nestable Accordion element allows creating hierarchical collapsible content with drag-and-drop nesting in the builder.
-
-## Settings
-
-- **Children** (nestable) - Drag and drop elements to create accordion items. Each item can contain nested content. Set "ID" on items to open via anchor link (no spaces, no pound sign).
-
-- **Expand item indexes** (text) - Comma-separated indexes of items to expand on page load (starting at 0).
-
-- **Independent toggle** (checkbox) - Allow multiple items to be open simultaneously. Enable to open & close an item without toggling other items.
-
-- **Transition (ms)** (number) - Animation duration for expanding/collapsing in milliseconds. Default: 200.
-
-- **FAQ schema** (checkbox) - Generate FAQPage structured data (JSON-LD) for search engines.
-
-### Title
-
-- **Min. height** (number with units) - Minimum height for title areas. Default: 50px.
-
-- **Margin** (spacing) - Margin around title wrappers.
-
-- **Padding** (spacing) - Padding inside title wrappers.
-
-- **Background color** (color) - Background color for title wrappers.
-
-- **Border** (border) - Border styling for title wrappers.
-
-- **Typography** (typography) - Typography settings for title text and headings.
-
-#### Active Title
-
-- **Background color** (color) - Background color for active/expanded title wrappers.
-
-- **Border** (border) - Border styling for active/expanded title wrappers.
-
-- **Typography** (typography) - Typography settings for active/expanded title text and headings.
-
-### Content
-
-- **Margin** (spacing) - Margin around content wrappers.
-
-- **Padding** (spacing) - Padding inside content wrappers. Default: 15px top/bottom, 0px left/right.
-
-- **Background color** (color) - Background color for content wrappers.
-
-- **Border** (border) - Border styling for content wrappers.
-
-- **Typography** (typography) - Typography settings for content text.
-
-> **Developer reference**
->
-> See the [Accordion (Nestable) Schema](https://academy.bricksbuilder.io/developer/schema/elements/accordion-nested/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Section
-
-Source: https://academy.bricksbuilder.io/builder/elements/layout/section/
-
-*The Section element allows you to structure/divide your page into self-containing areas (think: one topic per section).*
-
-The Section element allows you to structure/divide your page into self-containing areas (think: one topic per section).
-
-The [Understanding the Layout](https://academy.bricksbuilder.io/builder/styling/layout/) article covers in more detail how to best use the layout elements in Bricks.
-
-The Section element is the outermost building block for structuring and dividing your page. Use sections to separate and space out individual parts of your page, such as hero sections, content areas, or footers.
-
-The Section element has a default width of 100%, uses the `section` tag, and flexbox. Sections take up 100% of the available width and adjust in height according to their content. They are stacked vertically on top of each other.
-
-It should be used at the root level to structure your page into self-containing areas. When adding a Section to the canvas, a Container element is added inside of the Section automatically. You can delete this Container if not needed. It's just the default behaviour to speed up your site creation process.
-
-<figure>
-
-![](https://academy.bricksbuilder.io/assets/bricks-1.5-section-element-1024x484.jpg)
-
-<figcaption>
-
-Example: Section > Container > Heading
-
-</figcaption>
-
-</figure>
-
-**Tip:** Use sections as the root level elements in your page structure. They work great for creating distinct page sections with different backgrounds, spacing, and layouts.
-
-## Settings
-
-- **Grid column** (text) - CSS grid column span when parent uses grid layout. Controls `grid-column` property.
-
-- **Grid row** (text) - CSS grid row span when parent uses grid layout. Controls `grid-row` property.
-
-- **Query loop** - Enable query loop functionality for dynamic content. Available for Container, Block, Div, and Section elements.
-
-- **Link** (link) - Link settings when using anchor tag. Required when HTML tag is set to 'a'.
-
-- **HTML tag** (select) - HTML tag for the section element. Options: div, section, a [Link], article, nav, ol, ul, li, aside, address, figure, custom. Default: section.
-
-- **Custom tag** (text) - Custom HTML tag when "custom" is selected. Without attributes. Required when HTML tag is 'custom'.
-
-- **Display** (select) - CSS display property. Options: flex, grid, block, inline-block, inline, none. Default: flex.
-
-### Grid Layout (when Display is grid)
-
-- **Gap** (number with units) - Gap between grid items. Controls `grid-gap` property.
-
-- **Grid template columns** (text) - CSS grid template columns. Supports dynamic data and variables.
-
-- **Grid template rows** (text) - CSS grid template rows. Supports dynamic data and variables.
-
-- **Grid auto columns** (text) - Grid auto columns size. Supports dynamic data and variables.
-
-- **Grid auto rows** (text) - Grid auto rows size. Supports dynamic data and variables.
-
-- **Grid auto flow** (select) - Grid auto flow direction. Options: row, column, dense.
-
-- **Justify items** (justify-content) - Grid justify items alignment.
-
-- **Align items** (align-items) - Grid align items alignment.
-
-- **Justify content** (justify-content) - Grid justify content alignment.
-
-- **Align content** (align-items) - Grid align content alignment.
-
-### Flex Layout (when Display is flex)
-
-- **Flex wrap** (select) - Flexbox wrapping behavior. Options: No wrap, Wrap, Wrap reverse.
-
-- **Direction** (direction) - Flexbox direction (row/column). Controls `flex-direction` property.
-
-- **Align self** (align-items) - Align self for this flex item. Controls `align-self` property with `!important`.
-
-- **Align main axis** (justify-content) - Justify content alignment. Controls `justify-content` property.
-
-- **Align cross axis** (align-items) - Align items alignment. Controls `align-items` property.
-
-- **Column gap** (number with units) - Gap between flex columns. Controls `column-gap` property.
-
-- **Row gap** (number with units) - Gap between flex rows. Controls `row-gap` property.
-
-- **Flex grow** (number) - Flex grow factor. Minimum: 0. Controls `flex-grow` property. Default placeholder: 0.
-
-- **Flex shrink** (number) - Flex shrink factor. Minimum: 0. Controls `flex-shrink` property. Default placeholder: 1.
-
-- **Flex basis** (text) - Flex basis value. Supports dynamic data and variables. Controls `flex-basis` property. Default placeholder: auto.
-
-### Order
-
-- **Order** (number) - Flexbox order. Minimum: -999. Controls `order` property. Default placeholder: 0. Available when display is not 'none'.
-
-### Style
-
-These controls can be accessed under the **Style** tab in the element settings.
-
-### Masonry
-
-- **Masonry layout** (checkbox) - Enable masonry layout for child elements.
-- **Columns** (number) - Number of masonry columns. Default: 3. Controls `--columns` CSS property.
-- **Spacing** (number with units) - Spacing between masonry items. Default: 10px. Controls `--gutter` CSS property.
-- **Horizontal order** (checkbox) - Enable horizontal ordering in masonry layout.
-- **Transition: Duration** (number with units) - Animation duration for masonry transitions. Default: 0.4s. Set to "0" to disable default animations.
-- **Reveal animation** (select) - Animation type for masonry items. Options: Scale, Fade, Slide from left, Slide from right, Skew. Default: Scale. Only applies to new items added to the DOM.
-
-## Theme Style: Element – Section
-
-You can change the section `width`, `min-width`, `max-width`, `margin`, and `padding` in your theme styles under the "Elements > Section" group.
-
-> **Developer reference**
->
-> See the [Section Schema](https://academy.bricksbuilder.io/developer/schema/elements/section/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Accordion
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/accordion/
-
-*The Accordion element creates collapsible content sections with titles and expandable content.*
-
-The Accordion element creates collapsible content sections with titles and expandable content.
-
-## Settings
-
-- **Accordion** (repeater) - Add accordion items. Each item has:
-  - **Title** (text) - The clickable title of the accordion item.
-  - **ID** (text) - Anchor ID for linking to the item (no spaces, no pound sign).
-  - **Subtitle** (text) - Optional subtitle below the title.
-  - **Content** (rich text) - The expandable content of the item.
-
-- **Expand item indexes** (text) - Comma-separated indexes of items to expand on page load (starting at 0).
-
-- **Independent toggle** (checkbox) - Allow multiple items to be open simultaneously. Enable to open & close an item without toggling other items.
-
-- **Transition (ms)** (number) - Animation duration for expanding/collapsing in milliseconds. Default: 200.
-
-- **FAQ schema** (checkbox) - Generate FAQPage structured data (JSON-LD) for search engines.
-
-### Title
-
-- **HTML tag** (select) - HTML tag for titles. Options: `div`, `h1`-`h6`. Default: `h3`.
-
-- **Icon** (icon) - Icon for collapsed state. Default: right arrow (ion-ios-arrow-forward).
-
-- **Icon typography** (typography) - Font settings for the collapsed icon.
-
-- **Icon expanded** (icon) - Icon for expanded state. Default: down arrow (ion-ios-arrow-down).
-
-- **Icon expanded typography** (typography) - Font settings for the expanded icon.
-
-- **Icon position** (select) - Position of the icon relative to text. Default: Right.
-
-- **Icon rotate in °** (number) - Rotation angle for the icon in degrees. Icon rotation for expanded accordion.
-
-- **Margin** (spacing) - Margin around title wrappers.
-
-- **Padding** (spacing) - Padding inside title wrappers.
-
-- **Title typography** (typography) - Typography settings for title text.
-
-- **Subtitle typography** (typography) - Typography settings for subtitle text.
-
-- **Background color** (color) - Background color for title wrappers.
-
-- **Border** (border) - Border styling for title wrappers.
-
-- **Box shadow** (box-shadow) - Box shadow for title wrappers.
-
-- **Active typography** (typography) - Typography settings for active/expanded title text.
-
-- **Active background** (color) - Background color for active/expanded title wrappers.
-
-- **Active border** (border) - Border styling for active/expanded title wrappers.
-
-### Content
-
-- **Margin** (spacing) - Margin around content wrappers.
-
-- **Padding** (spacing) - Padding inside content wrappers.
-
-- **Content typography** (typography) - Typography settings for content text.
-
-- **Background color** (color) - Background color for content wrappers.
-
-- **Border** (border) - Border styling for content wrappers.
-
-> **Developer reference**
->
-> See the [Accordion Schema](https://academy.bricksbuilder.io/developer/schema/elements/accordion/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Alert
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/alert/
-
-*The Alert element displays informational messages with different types and optional dismiss functionality.*
-
-The Alert element displays informational messages with different types and optional dismiss functionality.
-
-## Settings
-
-- **Content** (rich text) - The alert message content. Supports dynamic data and rich text.
-
-- **Type** (select) - The alert style type. Options: `info`, `success`, `warning`, `danger`, `muted`. Default: `info`.
-
-- **Dismissable** (checkbox) - Adds a close button to allow users to dismiss the alert.
-
-> **Developer reference**
->
-> See the [Alert Schema](https://academy.bricksbuilder.io/developer/schema/elements/alert/) for the full JSON schema of this element's settings and controls.

@@ -52,6 +52,7 @@ Element triggers listen on the source element:
 - Mouse leave
 - Enter viewport
 - Leave viewport
+- [Copy successful / Copy failed](#copy-result-triggers) (since Bricks 2.5)
 - [Animation end](#animation-end)
 - [Query AJAX loader: Start / End](#query-ajax-loader)
 - [Filter Submit: Start / End](#filter-submit-triggers)
@@ -130,11 +131,35 @@ When WooCommerce is active, Bricks adds WooCommerce interaction triggers:
 - Bricks cart contents changed
 - Cart updated
 - Coupon applied
+- Coupon error (since Bricks 2.5)
 - Coupon removed
 - Bricks dynamic fragments refreshed
 - Bricks checkout step changed
 
 The classic WooCommerce triggers listen for WooCommerce frontend jQuery events. **Bricks cart contents changed**, **Bricks dynamic fragments refreshed**, and **Bricks checkout step changed** listen for Bricks custom events and are available since Bricks 2.4.
+
+#### Coupon error {#coupon-error}
+
+Since Bricks 2.5, **Coupon error** runs when a coupon application fails on the cart or checkout. Use it to open a popup or run another interaction action. A successful application does not run this trigger.
+
+To display the returned error in a popup:
+
+First enable the [WooCommerce Notice element](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-notices/#woocommerce-notice-element) under **Bricks > Settings > WooCommerce**. This replaces native WooCommerce notices, so follow that guide to place notices wherever your store needs them.
+
+1. Create a [popup](https://academy.bricksbuilder.io/builder/features/popup-builder/) containing a WooCommerce Notice element and a close button. Keep AJAX loading disabled for this popup.
+2. Set the popup's template conditions so it is available on the cart or checkout page.
+3. On an element rendered on that page, add an interaction with **Trigger: Coupon error**, **Action: Show element**, and **Target: Popup**. Select your popup.
+4. Save and test an invalid coupon on the frontend. For the Cart coupon element, enable its AJAX behavior.
+
+<div className="screenshot screenshot--control-panel">
+
+![Coupon error interaction configured with the Show element action, Popup target, and a selected popup.](https://academy.bricksbuilder.io/assets/woocommerce-coupon-error-interaction.webp)
+
+</div>
+
+The Notice element displays WooCommerce's returned message, such as an invalid or already-applied coupon. The trigger does not provide a text placeholder for inserting the error into an ordinary Text element, or separate triggers for individual failure reasons.
+
+Leave **Run only once** disabled if the popup should open after every failed attempt. Test a second failure after closing the popup to check both the message and reopening behavior.
 
 #### Bricks cart contents changed {#cart-contents-changed}
 
@@ -179,6 +204,8 @@ Available actions:
 - Show element
 - Hide element
 - Click element
+- [Set text](#set-text) (since Bricks 2.5)
+- [Copy to clipboard](#copy-to-clipboard) (since Bricks 2.5)
 - Set attribute
 - Remove attribute
 - Toggle attribute
@@ -187,6 +214,7 @@ Available actions:
 - Load more (Image Gallery)
 - [Start animation](#animation-start)
 - [Scroll to](#scroll-to)
+- [Slider playback](#slider-playback) (since Bricks 2.5)
 - [JavaScript (Function)](#javascript)
 - Open address (Map)
 - Close address (Map)
@@ -206,7 +234,9 @@ The **Click element** action calls `.click()` on each target element. This is us
 
 The **Clear form** action clears inputs, textareas, selects, checkboxes, radios, and visible file results. Hidden inputs are not cleared. If the interaction is triggered by Form Submit, Form Success, or Form Error, Bricks clears the matching form. Otherwise, you can provide a target form selector; if no selector is provided, Bricks clears all forms on the page.
 
-Map actions are available since Bricks 2.0. Use **Open address (Map)** and **Close address (Map)** when working with Map/Info Box popups and address interactions.
+Map actions are available since Bricks 2.0. Use **Open address (Map)** and **Close address (Map)** when working with Map/Info Box popups and address interactions. Starting with **Bricks 2.5**, these actions also support [Map (Leaflet)](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/#info-boxes).
+
+To load more listing items and update their map markers, target the results loop containing [Map Connectors](https://academy.bricksbuilder.io/builder/elements/general/map-connector/) with **Load more (Query loop)**, then select that loop under the map's **Sync with query** setting.
 
 ## Targets {#targets}
 
@@ -229,6 +259,79 @@ When a popup interaction is inside a query loop, Bricks first tries to match the
 Enable **Run only once** when the interaction should only run one time during the current page lifecycle. For normal element events, Bricks uses a one-time event listener. For document-level events such as form, AJAX, popup, filter, or WooCommerce events, Bricks tracks and removes the interaction after it runs.
 
 Run only once is page-local. It is not stored across page loads. Use [Browser storage actions](#browser-storage) and [interaction conditions](#conditions) if you need a persistent or session-based rule.
+
+## Action: Slider playback {#slider-playback}
+
+Since Bricks 2.5, **Slider playback** controls autoplay and auto scroll on a [Slider (nestable)](https://academy.bricksbuilder.io/builder/elements/media/slider-nested/). Set **Playback** to **Pause**, **Resume**, or **Toggle** (the default).
+
+For example, to pause a row of reviews from a separate button:
+
+1. Add a Button and set its **HTML tag** to `button`. Give it a label such as “Pause reviews”.
+2. Add an interaction with **Trigger → Click** and **Action → Slider playback**.
+3. Set **Playback** to **Pause**.
+4. Set **Target** to **CSS selector** and copy the slider's CSS selector into the field.
+
+<div className="screenshot screenshot--control-panel">
+
+![A Button interaction configured to pause the review slider using its CSS selector.](https://academy.bricksbuilder.io/assets/builder/release-2.5/slider-playback-interaction.webp)
+
+</div>
+
+Add a second button with **Playback → Resume** if visitors need a separate way to start movement again. **Toggle** switches between paused and playing. The interaction does not update a custom button's text; the slider's [native Playback control](https://academy.bricksbuilder.io/builder/elements/media/slider-nested/#playback-control) provides changing Pause/Play labels.
+
+Test on the frontend. Autoplay and auto scroll remain stationary in the Builder, and playback stays off for visitors who request reduced motion.
+
+## Action: Copy to clipboard {#copy-to-clipboard}
+
+> **Note**
+>
+> Copy to clipboard, Copy successful, Copy failed, and Set text are available since Bricks 2.5.
+
+Use **Copy to clipboard** to let visitors copy a coupon code, address, link, or other text. Add an interaction to a Button or another clickable element, set **Trigger** to **Click**, and choose **Copy to clipboard** as the action.
+
+The **Source** control has two options:
+
+| Source | What gets copied |
+| --- | --- |
+| **Custom text** (default) | The content of the **Text** field, including [dynamic data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/). |
+| **Element text** | The text of the first element matching **Target selector**. Leave the selector empty to copy the text of the element that owns the interaction. |
+
+For example, enter `SAVE20` as Custom text to copy a coupon code. In a post query loop, enter `{post_url}` to copy the clicked item's URL. Dynamic copy text is resolved for each rendered query item, including when the interaction comes from a global class.
+
+Element text is read when the action runs. It includes descendant text, but not HTML tags. It does not read an input's current value or a link's `href`; use Custom text with dynamic data to copy a URL that differs from the link label.
+
+**Target selector** searches the whole page and uses only the first match. A shared class inside a query loop does not automatically select the clicked item's content. Use dynamic Custom text for item-specific values, or leave the selector empty when the interaction's own element contains the text to copy.
+
+Test copying on the frontend over HTTPS and use a direct visitor click. The browser must support and allow clipboard writing. If clipboard access is unavailable or denied, or an Element text selector is invalid or matches nothing, Bricks runs **Copy failed**.
+
+### Copy result triggers {#copy-result-triggers}
+
+Add result interactions to the same element that owns the Copy to clipboard action:
+
+- **Copy successful** runs after the browser confirms that the text was copied.
+- **Copy failed** runs when copying fails.
+
+Use these triggers to show a message, update text, or open a popup. A separate Click interaction that displays “Copied” can run before copying finishes, so use **Copy successful** for confirmation feedback.
+
+Bricks does not add a notification automatically. Leave **Run only once** disabled if the feedback should update after each copy attempt.
+
+### Example: Copy a coupon code with feedback
+
+1. Add a Button labeled “Copy coupon” and a Basic Text element for the result message. Give the message element the CSS ID `copy-status`.
+2. Keep the message element visible and add the custom attribute `role` with the value `status` so assistive technology can announce text changes.
+3. On the Button, add **Click → Copy to clipboard**, select **Custom text**, and enter `SAVE20`.
+4. Add another interaction to the Button: **Copy successful → Set text**. Enter `Copied: %copyText%`, choose **CSS selector** as the target, and enter `#copy-status`.
+5. Add **Copy failed → Set text**, targeting the same message element, with the text “Could not copy. Select the coupon code and copy it manually.” Keep the coupon code visible on the page for this fallback.
+
+Preview the page, click the Button, and paste into a text field to check the copied value. The result message should change only after the copy attempt finishes.
+
+## Action: Set text {#set-text}
+
+Since Bricks 2.5, **Set text** replaces the target element's contents with the value of its **Text** field. Use **Self** to update the interaction's own element or **CSS selector** to update matching elements.
+
+Text is inserted as plain text. HTML markup is displayed literally, and existing child elements are removed. Target a dedicated message element rather than a container holding buttons, icons, or other content.
+
+With **Copy successful** or **Copy failed**, `%copyText%` inserts the copied or attempted text. It becomes empty if copying failed before the source text could be read. With other triggers, `%copyText%` remains literal text.
 
 ## Action: Scroll to {#scroll-to}
 
@@ -414,6 +517,10 @@ Bricks uses [Animate.css](https://animate.style/) for interaction animations.
 ### Action: Start animation {#animation-start}
 
 Set action to **Start animation** and choose an animation type, duration, and optional delay.
+
+Since Bricks 2.5, **Animation repetitions** controls how many times the animation plays. Leave it empty for one play, or enter a positive whole number such as `3` for three plays. Enter `-1` or `infinite` for continuous playback.
+
+A finite animation runs **Animation end** after its final repetition. An infinite animation never reaches that event. Use a finite value when another interaction depends on completion, or when an exit animation must finish before a popup closes.
 
 ![](https://academy.bricksbuilder.io/assets/bricks-interaction-start-animation.png)
 

@@ -12,10 +12,14 @@
 | Key | Type | Label | CSS |
 |---|---|---|---|
 | `filterQueryId` | query-list | Target query | — |
+| `filterDefinitionId` | filter-definition-manager | Global filter | — |
 | `filterNiceName` | text | URL parameter | — |
 | `filterApplyOn` | select | Apply on | — |
 | `filterSource` | select | Source | — |
 | `sourceFieldType` | select | Field type | — |
+| `fieldProvider` | select | Provider | — |
+| `customFieldKey` | text | Meta key | — |
+| `fieldCompareOperator` | select | Compare | — |
 | `wpPostField` | select | Field | — |
 | `wpUserField` | select | Field | — |
 | `wpTermField` | select | Field | — |
@@ -25,14 +29,15 @@
 | `filterTermInclude` | select | filterTermInclude | — |
 | `filterTermExclude` | select | filterTermExclude | — |
 | `filterTermTopLevel` | checkbox | Top level terms only | — |
-| `fieldProvider` | select | Provider | — |
-| `customFieldKey` | text | Meta key | — |
-| `fieldCompareOperator` | select | Compare | — |
 | `filterActivePrefix` | text | Prefix | — |
 | `filterActiveSuffix` | text | Suffix | — |
 | `filterActiveTitle` | text | Title | — |
+| `filterDefaultValue` | text | Default value | — |
+| `filterDefaultMin` | text | Start date | — |
+| `filterDefaultMax` | text | End date | — |
 | `enableTime` | checkbox | Enable time | — |
 | `isDateRange` | checkbox | Date range | — |
+| `customFieldEndKey` | text | End date meta key | — |
 | `useMinMax` | checkbox | Min/max date | — |
 | `placeholder` | text | Placeholder | — |
 | `placeholderTypography` | typography | Placeholder typography | `font` on `input::placeholder` |
@@ -66,6 +71,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

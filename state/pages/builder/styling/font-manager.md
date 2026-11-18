@@ -38,7 +38,7 @@ When custom fonts are available, Bricks generates `@font-face` rules for them an
 
 ## Opening Font Manager
 
-You can open the Font Manager by going to **Settings > Font Manager** in the builder toolbar, or by clicking the **gear icon** next to any font-family control.
+Open **Manage > Font manager** in the builder toolbar, or click the **gear icon** next to a font-family control.
 
 This opens a popup where you can manage all available fonts (Google fonts, Adobe fonts, Standard fonts, and Custom fonts).
 
@@ -131,6 +131,20 @@ Bricks fetches the Google Fonts CSS, downloads the referenced font files, create
 
 Downloaded Google Fonts are custom fonts. Edit them from the Custom source if you need to inspect or adjust the stored variations.
 
+### Store imports outside the Media Library
+
+In Bricks 2.5, **Bricks > Settings > Performance > Google font imports** includes **Store Google font imports outside the Media Library**. The setting is off by default.
+
+Enable it before downloading a Google Font to store its files in a dedicated folder in your site's uploads directory. The font remains available in Font Manager, but its files do not become Media Library items.
+
+![Google font imports setting enabled under Bricks Performance settings.](https://academy.bricksbuilder.io/assets/builder/release-2.5/google-font-import-storage.webp)
+
+Google may supply several files for the same weight and style, each covering a different Unicode range. Bricks keeps these subsets so the font can display the characters it supports. This setting reduces Media Library clutter; the files still use disk space.
+
+The setting affects new Google imports only. Existing fonts and manual uploads stay where they are. Disabling it does not remove fonts previously imported into the dedicated folder.
+
+Managed fonts still support editing, updates, export, trash, and restore. Their files are kept while the font is in trash and removed when it is permanently deleted.
+
 > **Tip**
 >
 > If you want to avoid external Google Fonts requests on the frontend, download the Google Font locally and use the custom font version in your typography controls.
@@ -165,7 +179,7 @@ Moving a custom font to trash removes it from the active Custom font list and re
 To review trashed fonts, click the trash icon in Font Manager. From there you can:
 
 - **Restore**: Move the font out of trash and publish it again.
-- **Delete permanently**: Delete the custom font record and its stored font file attachments.
+- **Delete permanently**: Delete the custom font record and its stored font files, including files managed outside the Media Library.
 
 Permanent deletion cannot be undone from Font Manager. Use it only when you are sure the font is no longer needed.
 

@@ -1,7 +1,7 @@
 # Bricks Builder Documentation: Integrations
 
-<!-- content-sha256: 742aca614e87b73d1cfaecd287854f527cb244948d96b706033e5de6dbf0410f -->
-<!-- content last changed: 2026-11-12 08:19 UTC -->
+<!-- content-sha256: 6888ff492f7598bd355c0ec569ddbb17ed52fd36af3ff135e9f55e244b01706a -->
+<!-- content last changed: 2026-11-18 08:35 UTC -->
 
 Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricksbuilder.io/), refreshed daily. Content © Bricks. 28 pages.
 
@@ -10,29 +10,29 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
   - [Gutenberg](#integrations-gutenberg)
   - [How to set up your Google Maps API key](#integrations-how-to-set-up-your-google-maps-api-key)
   - [How to use WPML with Bricks](#integrations-how-to-use-wpml-with-bricks)
-- [Integrations](#integrations)
   - [How to get your Instagram Access Token](#integrations-instagram-access-token)
   - [Map (Leaflet)](#integrations-map-leaflet)
-  - [How to use Polylang with Bricks](#integrations-polylang)
   - [Unsplash Integration](#integrations-unsplash)
+- [Integrations](#integrations)
+  - [How to use Polylang with Bricks](#integrations-polylang)
     - [Bricks components as blocks](#integrations-gutenberg-components-as-blocks)
-    - [WooCommerce advanced modular elements](#integrations-woocommerce-advanced-modular-elements)
     - [Cart (WooCommerce)](#integrations-woocommerce-cart)
-    - [Create a custom mini cart with Dynamic fragment](#integrations-woocommerce-create-custom-mini-cart-dynamic-fragment)
     - [Checkout (WooCommerce)](#integrations-woocommerce-checkout)
-    - [Creating dynamic WooCommerce archive pages](#integrations-woocommerce-creating-dynamic-woocommerce-archive-pages)
+    - [Create a custom mini cart with Dynamic fragment](#integrations-woocommerce-create-custom-mini-cart-dynamic-fragment)
+    - [WooCommerce advanced modular elements](#integrations-woocommerce-advanced-modular-elements)
     - [Element: Checkout Coupon](#integrations-woocommerce-element-checkout-coupon)
+    - [Creating dynamic WooCommerce archive pages](#integrations-woocommerce-creating-dynamic-woocommerce-archive-pages)
     - [Element: Checkout Login](#integrations-woocommerce-element-checkout-login)
-  - [WooCommerce](#integrations-woocommerce)
     - [How to Create Product Quick View with Bricks](#integrations-woocommerce-how-to-create-product-quick-view-with-bricks)
+  - [WooCommerce](#integrations-woocommerce)
     - [Checkout v2 multistep checkout](#integrations-woocommerce-multistep-checkout-v2)
     - [Product Archive (WooCommerce)](#integrations-woocommerce-product-archive-woocommerce)
     - [Product Variation Swatches (WooCommerce)](#integrations-woocommerce-product-variation-swatches)
     - [Single Product (WooCommerce)](#integrations-woocommerce-single-product)
     - [Woo Setup Wizard](#integrations-woocommerce-woo-setup-wizard)
+    - [WooCommerce Account Builder](#integrations-woocommerce-woocommerce-account-builder)
     - [WooCommerce Builder](#integrations-woocommerce-woocommerce-builder)
     - [WooCommerce Notices](#integrations-woocommerce-woocommerce-notices)
-    - [WooCommerce Account Builder](#integrations-woocommerce-woocommerce-account-builder)
     - [WooCommerce Template Hooks](#integrations-woocommerce-woocommerce-template-hooks)
     - [WooCommerce v2 query loops and dynamic tags](#integrations-woocommerce-woocommerce-v2-query-loops-dynamic-tags)
 
@@ -70,6 +70,16 @@ By default, your WordPress-generated data won’t change when editing with Brick
 
 From now on whenever you edit and save in Bricks, your content will be saved as WordPress content, too. So your WordPress and Bricks data are in sync.
 
+## Use the Bricks lightbox with Gutenberg images
+
+Since Bricks 2.5, you can keep writing content in Gutenberg and use the Bricks lightbox for images displayed through a **Post Content** element.
+
+Link the images in your Gutenberg Image or Gallery blocks to **Media file**. In Bricks, select the **Post Content** element, use the **WordPress** data source, and enable **Lightbox** in its **Content** tab. The setting is off by default.
+
+Each Gallery block forms a separate lightbox group with navigation between its images. Standalone Image blocks open individually. Images must link to their full-size Media Library file; custom links and unlinked images using WordPress's native **Expand on click** lightbox keep their existing behavior.
+
+The saved blocks stay unchanged. See [Post Content: Lightbox for Gutenberg images](https://academy.bricksbuilder.io/builder/elements/single/post-content/#lightbox-for-gutenberg-images) for setup and link requirements.
+
 ## Render content with Bricks or WordPress {#render-with-wordpress}
 
 You decide which pages you want to create with Gutenberg, the Classic Editor, or Bricks. The post status next to the page title tells you which content is used for rendering on the frontend:
@@ -96,7 +106,7 @@ Source: https://academy.bricksbuilder.io/integrations/how-to-set-up-your-google-
 
 *Set up a Google Maps API key for Bricks and enable the services required for map elements and location features.*
 
-Thanks to the `Map` element, adding a Google Map to Bricks is easy. The biggest hurdle is creating the Google Maps API key. This article will show you how to create an API key and how to prevent unauthorized use by setting API and application restrictions.
+Save a Google Maps API key in Bricks to use JavaScript maps and address search. This article covers the required services and restrictions for your website.
 
 > **Note**
 >
@@ -115,6 +125,20 @@ Copy and paste the key into **Bricks » Settings » API keys » Google Maps: API
 ![](https://academy.bricksbuilder.io/assets/Settings-%E2%80%B9-bricksRecent-%E2%80%94-WordPress.jpg)
 
 Now, you can use the "Map" element on any page. If your map doesn’t show properly, inspect the developer console for more information.
+
+## Geolocation address search {#geolocation}
+
+The [Geolocation filter](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-geolocation-element), available in Bricks 2.5, uses the same saved key for address searches, including when the connected map is Leaflet or the listing has no map.
+
+| Feature | Required Google APIs |
+| --- | --- |
+| Search by address using Search or Enter | Maps JavaScript API and Geocoding API |
+| Address autocomplete suggestions | Maps JavaScript API, Geocoding API, and Places API (New) |
+| Device location or map-drag search with Leaflet | No Google APIs required |
+
+Enable **Places API (New)** in the same Google Cloud project when using **Address autocomplete**, and allow it in the key's API restrictions. See Google's [autocomplete prerequisites](https://developers.google.com/maps/documentation/javascript/place-autocomplete-new#prerequisites) and [Geocoding setup](https://developers.google.com/maps/documentation/javascript/geocoding#get-started).
+
+Saving the key in Bricks does not verify API access. Test address search and suggestions on the frontend. If suggestions fail, visitors can still type an address and select Search, provided manual geocoding is available.
 
 ## API and application restrictions
 
@@ -136,6 +160,8 @@ https://*.example.com
 ### API Restrictions
 
 **Restrict key** » Select APIs and allow the **Maps JavaScript API** and **Geocoding API**.
+
+Also allow **Places API (New)** if a Geolocation filter uses address autocomplete.
 
 Save your API key settings.
 
@@ -345,27 +371,6 @@ If you found this post insightful and you're considering giving WPML a try, we e
 
 ---
 
-<a id="integrations"></a>
-
-# Integrations
-
-Source: https://academy.bricksbuilder.io/integrations/
-
-*Learn how Bricks works with WooCommerce, Gutenberg, WPML, Polylang, Google Maps, Unsplash, and other supported integrations.*
-
-The Integrations section brings together Bricks guides for third-party platforms, plugins, and external services that commonly shape real production projects.
-
-## Browse integrations
-
-- [WooCommerce](https://academy.bricksbuilder.io/integrations/woocommerce/) for shop, product, cart, checkout, account, and notice workflows
-- [Gutenberg](https://academy.bricksbuilder.io/integrations/gutenberg/) for mixed editor and block-based workflows
-- [WPML](https://academy.bricksbuilder.io/integrations/how-to-use-wpml-with-bricks/) for multilingual projects with translated content and templates
-- [Polylang](https://academy.bricksbuilder.io/integrations/polylang/) for multilingual content and templates with Polylang
-- [Google Maps](https://academy.bricksbuilder.io/integrations/how-to-set-up-your-google-maps-api-key/) for map element setup
-- [Unsplash](https://academy.bricksbuilder.io/integrations/unsplash/) for external image sourcing
-
----
-
 <a id="integrations-instagram-access-token"></a>
 
 # How to get your Instagram Access Token
@@ -444,9 +449,9 @@ Source: https://academy.bricksbuilder.io/integrations/map-leaflet/
 
 *Use the Leaflet-based map element in Bricks to build interactive maps with layers, markers, and configurable map behavior.*
 
-Starting with **Bricks 2.1**, you can use the new **Map (Leaflet)** element to display fully interactive maps powered by [Leaflet.js](https://leafletjs.com/).
+The **Map (Leaflet)** element, available since Bricks 2.1, displays maps powered by [Leaflet.js](https://leafletjs.com/). Choose tile providers, add markers, and configure the map inside Bricks without a Google Maps API key.
 
-This element allows you to combine multiple map layers, add custom markers, and fine-tune map behaviour directly inside Bricks.
+Starting with **Bricks 2.5**, it supports query-generated markers, syncing with a separate query loop, clustering, text and image markers with active styles, and custom Info Boxes. See the [Map (Leaflet) element reference](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/) for setup and settings.
 
 ## Overview {#overview}
 
@@ -455,8 +460,6 @@ The Map (Leaflet) element is divided into three main groups of settings:
 1. **Layers** – define map sources (OpenStreetMap, OpenTopoMap, etc.)
 2. **Markers** – add custom points with icons and popups
 3. **Map** – configure global map settings (center, zoom, etc.)
-
-Let’s explore each group in detail.
 
 ## Layers {#layers}
 
@@ -476,7 +479,7 @@ For each layer, you'll configure:
 - **Error Tile URL** – fallback image if tiles fail to load.
 - **Attribution** – copyright or usage text (required by most providers).
 
-👉 Example:
+For example:
 
 - **Street Map** → OpenStreetMap tiles
 - **Topo Map** → OpenTopoMap tiles
@@ -486,22 +489,90 @@ Your users can then toggle between these layers on the frontend.
 
 ## Markers {#markers}
 
-Markers let you highlight specific points of interest on your map.
+Markers identify locations using latitude and longitude. Choose one of three sources:
 
-You can set:
+- **Static**: Add rows under **Markers**, with coordinates, optional icons, and popup text.
+- **Query loop** (Bricks 2.5): Populate the first marker row with dynamic data and use it as a template for each query result.
+- **Sync with query** (Bricks 2.5): Place [Map Connectors](https://academy.bricksbuilder.io/builder/elements/general/map-connector/) inside a separate results loop and select that loop on the map. Markers update with frontend filters, AJAX pagination, and Load More.
 
-- **Default Marker Icon** – used if no custom icon is defined.
-- **Marker Repeater** – add multiple markers, each with:
-  - **Coordinates (Lat, Lng)**
-  - **Label** (for identification)
-  - **Custom Icon** (optional, overrides default icon)
-  - **Popup Text** (text that shows when the marker is clicked)
+Leaflet does not geocode street addresses. Provide latitude and longitude on every connector. Use the separate results loop as the target for filters, pagination, and Load More.
+
+For marker appearance, clustering, custom Info Boxes, and scrolling to a connected result, see the [element reference](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/#marker-source).
+
+## Geolocation filtering {#geolocation-filtering}
+
+From Bricks 2.5, use [Filter - Geolocation](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-geolocation-element) with a Posts, Terms, or Users listing and **Sync with query** to search within a radius. The filter reads saved coordinates; Leaflet's marker coordinates come from Map Connectors inside the same results loop.
+
+Device location and searching after map drags work without Google APIs. Enabling address search requires Google Maps JavaScript API and Geocoding API; autocomplete additionally requires Places API (New). See [Leaflet geolocation setup](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/#geolocation-filtering) for the filter and map connection.
 
 ## Map
 
-The **Map** group controls the basic setup of your map. The most important settings are the **map height**, which is set to 300 px by default but can be adjusted to match your layout, along with the **map center** (latitude and longitude) and the **initial zoom level**. These define how the map looks and where it is focused when first loaded.
+Set **Height** (the placeholder is `300px`), **Map center**, and the initial zoom level in the **Map** group.
 
-Beyond that, you’ll also find controls grouped around **zoom behaviour**, **map interactions** (like dragging and clicking), and **display options** (such as attribution and resizing). All of these settings are based on Leaflet.js, and you can find full descriptions in the [Leaflet documentation](https://leafletjs.com/reference.html#map).
+From Bricks 2.5, the initial view centers a single marker at the configured zoom or fits multiple markers. Enable **Disable initial fit map** to preserve your configured center and zoom. Existing static maps also adopt this behavior, so enable the setting if you need to retain their previous view.
+
+**Fit map on markers change** separately controls whether frontend updates to the synced query adjust the view. Both settings are off by default. See [Map view and behavior](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/#map-view) for details.
+
+The Map group also includes zoom interactions, dragging, attribution, and resize tracking. See the [Leaflet documentation](https://leafletjs.com/reference.html#map) for the underlying options.
+
+---
+
+<a id="integrations-unsplash"></a>
+
+# Unsplash Integration
+
+Source: https://academy.bricksbuilder.io/integrations/unsplash/
+
+*Connect Unsplash to Bricks so you can browse, download, and optionally rename royalty-free images directly from the builder.*
+
+Finding affordable, high-quality, commercially useable photography for your website (that doesn't scream stock photography) is really hard. Bricks is putting an end to it.
+
+[Unsplash.com](https://unsplash.com?ref=bricksbuilder), the world's largest and most generous community of photographers, allows you to use their photography royalty free (commercial use included). No linking back or attribution required. Unsplash operates under a so-called "do whatever you want" [license](https://unsplash.com/license).
+
+Browse and download any Unsplash photo inside the builder by clicking the **Browse Unsplash** button below eligible image and image gallery controls after entering your Unsplash API key. The button appears only on controls that support Unsplash and have not disabled it.
+
+https://youtu.be/yLgi-L2doIM
+
+## Rename & Download
+
+Hover over any photo and click the** Download** button to download a photo from Unsplash directly into your WordPress media library. All resizing is done automatically in the background for you.
+
+File renaming is disabled by default. If you want to enter a custom filename before downloading a photo, enable the "Rename images" checkbox in the top right corner of the Unsplash popup.
+
+## How To Generate Your Unsplash API Key
+
+To receive access to Unsplash's photo library you need to generate an API key. It's 100% free and only takes two minutes.
+
+1. Create an Unsplash developer account if you don't already have one:
+[https://unsplash.com/developers](https://unsplash.com/developers)
+2. Log in and visit [https://unsplash.com/oauth/applications](https://unsplash.com/oauth/applications)
+3. Click **New Application**, check all boxes and click **Accept terms**.
+4. Fill out the application name and description and click **Create application**.
+5. Scroll down to **Keys** and copy the **Access key**.
+6. Return to your WordPress dashboard. Go to **Bricks > Settings > API Keys** and paste your Unsplash API key under **Unsplash API Key**. Click Save.
+
+If you click on **Browse Unsplash** below an eligible image or image gallery control in the builder, the latest Unsplash photos should now appear, ready for you to download.
+
+---
+
+<a id="integrations"></a>
+
+# Integrations
+
+Source: https://academy.bricksbuilder.io/integrations/
+
+*Learn how Bricks works with WooCommerce, Gutenberg, WPML, Polylang, Google Maps, Unsplash, and other supported integrations.*
+
+The Integrations section brings together Bricks guides for third-party platforms, plugins, and external services that commonly shape real production projects.
+
+## Browse integrations
+
+- [WooCommerce](https://academy.bricksbuilder.io/integrations/woocommerce/) for shop, product, cart, checkout, account, and notice workflows
+- [Gutenberg](https://academy.bricksbuilder.io/integrations/gutenberg/) for mixed editor and block-based workflows
+- [WPML](https://academy.bricksbuilder.io/integrations/how-to-use-wpml-with-bricks/) for multilingual projects with translated content and templates
+- [Polylang](https://academy.bricksbuilder.io/integrations/polylang/) for multilingual content and templates with Polylang
+- [Google Maps](https://academy.bricksbuilder.io/integrations/how-to-set-up-your-google-maps-api-key/) for map element setup
+- [Unsplash](https://academy.bricksbuilder.io/integrations/unsplash/) for external image sourcing
 
 ---
 
@@ -685,44 +756,6 @@ These resources can provide additional insights and answers to more specific or 
 
 ---
 
-<a id="integrations-unsplash"></a>
-
-# Unsplash Integration
-
-Source: https://academy.bricksbuilder.io/integrations/unsplash/
-
-*Connect Unsplash to Bricks so you can browse, download, and optionally rename royalty-free images directly from the builder.*
-
-Finding affordable, high-quality, commercially useable photography for your website (that doesn't scream stock photography) is really hard. Bricks is putting an end to it.
-
-[Unsplash.com](https://unsplash.com?ref=bricksbuilder), the world's largest and most generous community of photographers, allows you to use their photography royalty free (commercial use included). No linking back or attribution required. Unsplash operates under a so-called "do whatever you want" [license](https://unsplash.com/license).
-
-Browse and download any Unsplash photo inside the builder by clicking the **Browse Unsplash** button below eligible image and image gallery controls after entering your Unsplash API key. The button appears only on controls that support Unsplash and have not disabled it.
-
-https://youtu.be/yLgi-L2doIM
-
-## Rename & Download
-
-Hover over any photo and click the** Download** button to download a photo from Unsplash directly into your WordPress media library. All resizing is done automatically in the background for you.
-
-File renaming is disabled by default. If you want to enter a custom filename before downloading a photo, enable the "Rename images" checkbox in the top right corner of the Unsplash popup.
-
-## How To Generate Your Unsplash API Key
-
-To receive access to Unsplash's photo library you need to generate an API key. It's 100% free and only takes two minutes.
-
-1. Create an Unsplash developer account if you don't already have one:
-[https://unsplash.com/developers](https://unsplash.com/developers)
-2. Log in and visit [https://unsplash.com/oauth/applications](https://unsplash.com/oauth/applications)
-3. Click **New Application**, check all boxes and click **Accept terms**.
-4. Fill out the application name and description and click **Create application**.
-5. Scroll down to **Keys** and copy the **Access key**.
-6. Return to your WordPress dashboard. Go to **Bricks > Settings > API Keys** and paste your Unsplash API key under **Unsplash API Key**. Click Save.
-
-If you click on **Browse Unsplash** below an eligible image or image gallery control in the builder, the latest Unsplash photos should now appear, ready for you to download.
-
----
-
 <a id="integrations-gutenberg-components-as-blocks"></a>
 
 # Bricks components as blocks
@@ -803,10 +836,17 @@ All property types are supported:
 - Image gallery
 - Link
 - Query loop *(Query editor (PHP), External APIs, and Query manager are not supported at this time)*
+- Repeater *(since Bricks 2.5)*
 
 Each block instance can have unique property values, while the component design remains consistent.
 
 [Component slots](https://academy.bricksbuilder.io/builder/features/components/#slots) are not supported in component blocks. The block editor offers no way to add elements to a slot, so a slot stays empty in the editor and on the frontend.
+
+### Repeater rows
+
+Since Bricks 2.5, connected [Repeater properties](https://academy.bricksbuilder.io/builder/features/components/#repeater-properties) let editors manage structured lists in the Block settings sidebar. Open an item to edit its fields. Use **Add item**, **Duplicate**, **Delete**, and the up/down controls to manage the list. Nested repeaters expose their own items inside the parent row.
+
+Deleting all rows leaves an empty list for that block instance. Use **Reset** to return to the main component's default rows.
 
 ## Centralized design updates
 
@@ -820,202 +860,6 @@ All block instances remain linked to the main component in Bricks. Any design ch
 - **Workflow separation**: Designers build components in Bricks, editors use them in the block editor.
 
 As this feature is experimental, we would love your feedback on components as blocks specifically, as well as ideas for how Bricks could integrate even smoother with the block editor to support your workflow. Share your thoughts in the [Bricks forum](https://forum.bricksbuilder.io/) or get in touch with us directly via email.
-
----
-
-<a id="integrations-woocommerce-advanced-modular-elements"></a>
-
-# WooCommerce advanced modular elements
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/
-
-*Set up and customize WooCommerce cart, checkout, account, and cart-dependent content with the Bricks 2.4 advanced modular workflow.*
-
-Starting in Bricks 2.4, the WooCommerce integration includes an advanced modular workflow for the store areas that usually require the most setup: Cart, Checkout, and My Account.
-
-WooCommerce v2 lets you build these system pages from editable Bricks elements, protected state containers, predefined structures, dynamic data, query loops, conditions, and interactions.
-
-In the classic setup, screens such as empty cart, checkout payment, order received, account orders, account downloads, and password reset are handled through separate Bricks templates or WooCommerce endpoints. In the v2 setup, those screens live as states on the assigned WooCommerce page, so you can switch between them in the builder and edit them in one place.
-
-https://youtu.be/IPgWoKkPY1s
-
-![](https://academy.bricksbuilder.io/assets/woo-v2-state-filled-cart.png)
-
-![](https://academy.bricksbuilder.io/assets/woo-v2-state-empty-cart.png)
-
-> **Note**
->
-> Advanced modular elements are experimental. Enable them under **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
->
-> The generated v2 layouts also use the Bricks **Notice**, **Checkout coupon**, and **Checkout login** elements. Enable **Enable Bricks WooCommerce "Notice" element**, **Enable Bricks WooCommerce "Checkout coupon" element**, and **Enable Bricks WooCommerce "Checkout login" element** on the same screen. In Bricks 2.4.3 and 2.4.4, the Woo Setup Wizard does not enable the coupon and login settings for Checkout v2, and the checkout then shows "PHP class does not exist" in place of those forms.
->
-> ![](https://academy.bricksbuilder.io/assets/woo-advanced-modular-setting.png)
-
-## What changes in v2
-
-The v2 workflow is useful when you want more control over WooCommerce system pages without recreating WooCommerce logic from scratch.
-
-- Build Cart, Checkout, and My Account pages with editable Bricks elements.
-- Edit template or endpoint-style views as page states directly on the assigned WooCommerce page.
-- Preview states such as filled/empty cart, checkout/pay/thank-you, and account orders/downloads while editing.
-- Insert predefined complete blocks and smaller section blocks.
-- Keep generated checkout and account address fields aligned with WooCommerce field definitions.
-- Refresh cart-dependent content with the [Dynamic fragment element](https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/).
-- Use new WooCommerce v2 [query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/).
-- Build [multistep checkout flows](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/) with checkout step elements and interactions.
-
-## When to use this workflow
-
-Use the advanced modular workflow when you want a more guided setup and a single editing place for each WooCommerce page.
-
-| Workflow | Best for |
-| --- | --- |
-| **Standard (v1)** | Existing sites that already use WooCommerce shortcode pages and Bricks WooCommerce templates, or stores that prefer separate templates for each WooCommerce screen. |
-| **Advanced (v2)** | New or redesigned Cart, Checkout, and My Account pages where you want editable page states, generated structures, and v2 dynamic data directly on the assigned page. |
-
-The classic template workflow remains supported. You can keep using the existing Cart, Empty Cart, Checkout, Thank You, Pay, Order Receipt, and Account template types.
-
-For guided setup checks and presets, use the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/). The wizard can set up classic WooCommerce layouts without advanced modular elements enabled. V2 setup types are disabled until advanced modular elements are enabled.
-
-## Predefined structures
-
-Cart, Checkout, and Account Page v2 states can generate complete starter layouts or smaller WooCommerce sections through **Insert a structure**. Select the state element in the Structure panel to see the structures that fit that state. A generated structure is appended to the state's current content and never overwrites it.
-
-![](https://academy.bricksbuilder.io/assets/woo-v2-insert-structure-cart.png)
-
-Generated structures are site-aware where needed. For checkout, checkout account credentials, and account address forms, Bricks reads the WooCommerce field definitions that exist at generation time and turns them into editable Bricks form field elements. After generation, you can style, move, reorder, and place those fields like regular Bricks elements.
-
-> **Note**
->
-> Some WooCommerce v2 support elements are generated-only or context-specific. If you do not see a v2 support element in the regular Elements panel, create it through **Insert a structure** or the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/). After generation, the element appears in the Structure panel and can be edited inside its v2 state.
-
-> **Note**
->
-> Checkout fields can change after a layout is generated. For example, a plugin may add a VAT field, remove a company field, change labels and placeholders, or add an account field. Use field sync after installing, removing, or reconfiguring plugins that modify WooCommerce checkout or account address fields.
-
-Field sync can report valid, missing, invalid, and duplicate generated fields. It can generate missing fields and remove invalid or duplicate generated fields. New elements copy the current WooCommerce label and placeholder; existing elements keep theirs. See [Checkout v2 field maintenance](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/#field-maintenance) for the workflow.
-
-Checkout v2 and several Account v2 form states also include a **Floating label style** option for supported generated fields. Review third-party fields manually because plugin-generated fields can use different markup.
-
-## V2 element groups
-
-The main parent elements are:
-
-- [Cart v2](https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-v2/)
-- [Checkout v2](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/)
-- [Account Page v2](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page-v2/)
-
-V2 layouts can also include support elements that only make sense inside their matching WooCommerce state or generated structure.
-
-Bricks 2.4 registers these advanced modular support elements:
-
-| Area | Registered support elements |
-| --- | --- |
-| Cart v2 | Cart form, Cart quantity |
-| Checkout v2 | Checkout steps navigation, Checkout step nav item, Checkout step, Shipping options, Payment options, WooCommerce form field, WooCommerce form submit, Checkout account fields, Checkout billing address, Checkout shipping address, Checkout order summary, Checkout place order |
-| Account Page v2 | WooCommerce login form, Account register form, Account lost password form, Account reset password form, Account orders pagination, Account edit address form, Account edit account form, Account order withdrawal form (when Order Withdrawal is enabled) |
-| Cart-dependent content | Dynamic fragment |
-
-Some support elements are generated-only. Create them through **Insert a structure** or the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/), then edit them from the Structure panel.
-
-## Cart v2
-
-The [Cart v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-v2/) is added to the assigned Cart page. It contains two states:
-
-- **Filled cart** for carts that contain products.
-- **Empty cart** for carts with no products.
-
-Use the **State** control while editing to switch the builder preview between these states. The top of the Structure panel shows the state you are editing; its **Switch** button opens the same State control. The Structure panel lists only the elements of the current state.
-
-Each state can contain custom layouts and generated structures, such as the complete cart block or complete empty cart block. Everything inside a state is made of regular Bricks elements, so you can edit, add, or paste elements there like in any other layout. When the store has a free shipping minimum, the complete cart block also shows how much is left until free shipping.
-
-## Checkout v2
-
-The [Checkout v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/) is added to the assigned Checkout page. It contains these states:
-
-- Checkout
-- Login required
-- Pay
-- Thank you
-- Order receipt
-
-Use the **State** control to design each checkout screen from one page. The checkout state can generate complete checkout structures or smaller sections such as billing fields, shipping fields, payment options, additional fields, order summary, and place order.
-
-Checkout v2 also includes checkout field maintenance actions to help compare generated fields with the site's current WooCommerce checkout fields.
-
-Generated billing and complete checkout structures include a **Checkout account fields** wrapper. It follows WooCommerce's guest checkout, account creation, username generation, and password setup settings. See [Checkout v2 account creation](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/#account-creation-during-checkout) for the settings matrix and field sync behavior.
-
-The **Login required** state is used when WooCommerce requires a customer to log in before viewing order-related checkout screens, such as pay, receipt, or thank you flows for a registered customer order.
-
-For multistep layouts, see [Checkout v2 multistep checkout](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/).
-
-## Account Page v2
-
-The [Account Page v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page-v2/) is added to the assigned My Account page. It keeps the account navigation and endpoint content together.
-
-It includes states for the common My Account endpoints:
-
-- Dashboard
-- Orders
-- View order
-- Downloads
-- Addresses
-- Edit address
-- Edit account
-- Payment methods
-- Add payment method
-- Login
-- Lost password
-- Lost password confirmation
-- Reset password
-- Order withdrawal (WooCommerce 11.1 or later, with Order Withdrawal enabled)
-
-Use the **State** control to switch between endpoint previews while editing. Each state can contain generated starter content that you can customize in the builder.
-
-## Dynamic Fragment
-
-The [Dynamic fragment element](https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/) re-renders itself and its children after WooCommerce cart changes.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-mini-cart-structure-example.png)
-
-Use it for cart-dependent content outside the main Cart page, such as:
-
-- Custom mini cart content
-- Free shipping progress
-- Cart totals or subtotal displays
-
-The element includes generated structures for **Mini cart** and **Free shipping progress**. For custom mini carts, wrap the mini cart in Dynamic fragment, add a child loop using the `wooCart` query type, and use cart tags such as `{woo_cart_product_name}`, `{woo_cart_quantity:value}`, `{woo_cart_subtotal}`, and `{woo_cart_remove_link:url}` inside the loop.
-
-Keep the Dynamic fragment wrapper outside other query loops. The cart loop should be a child of the fragment.
-
-Dynamic fragment is frontend-only. It can refresh when it is rendered from the header, content, or footer area, but it does not refresh inside query loop instances or component instances.
-
-## Query loops, dynamic tags, conditions, and interactions
-
-WooCommerce v2 adds query loops for applied coupons, fees, taxes, order items, order totals, order downloads, order customer notes, account orders, account order actions, account downloads, and account addresses.
-
-It also adds dynamic tags for cart totals, free shipping progress, WooCommerce URLs, account addresses, order data, order items, order totals, order actions, downloads, and customer notes.
-
-See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/) for the complete reference.
-
-Bricks 2.4 also adds WooCommerce conditions for shipping/order visibility and interactions for Dynamic fragment refreshes and checkout step changes.
-
-## Existing WooCommerce templates
-
-Bricks 2.4 also improves WooCommerce order-related template handling. Logged-out customers can still get Bricks layouts for Thank You, Order Receipt, and Order Pay flows when WooCommerce requires login for a non-guest order.
-
-Classic templates and v2 page states can coexist on the same site, but each WooCommerce area should use one setup approach at a time to avoid confusion.
-
-## Caveats
-
-- Advanced modular elements must be enabled before you can add or edit v2 elements.
-- V2 page rendering still follows WooCommerce page routing. Cart v2 and Checkout v2 render through the assigned WooCommerce cart and checkout pages.
-- WooCommerce block content on assigned WooCommerce pages is not compatible with the v2 setup. The [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) can replace the page content with the matching v2 structure.
-- Protected state elements are required children of their v2 parent elements. Do not remove them manually.
-- Predefined structures are authored with the default Bricks breakpoint keys. Review responsive styling on sites with custom breakpoints.
-- Third-party checkout fields may need manual review after generation or field sync.
-- The builder previews v2 states with sample data. Filled cart, checkout, and account states show sample WooCommerce notices, and loops without data (applied coupons, fees, taxes, or orders of a user without orders) show unresolved dynamic tags such as `{woo_cart_applied_coupon}`. The frontend renders the real cart, order, and account data.
-- In Bricks 2.4.3 and 2.4.4, the generated checkout shows a required terms and conditions checkbox even when no terms page is set under **WooCommerce > Settings > Advanced**. Set a terms page so the checkbox links to your terms.
 
 ---
 
@@ -1232,171 +1076,6 @@ To add the update cart button, there's also another dynamic data tag `{woo_cart_
 
 ---
 
-<a id="integrations-woocommerce-create-custom-mini-cart-dynamic-fragment"></a>
-
-# Create a custom mini cart with Dynamic fragment
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/create-custom-mini-cart-dynamic-fragment/
-
-*Build a WooCommerce mini cart that refreshes after cart changes using Dynamic fragment, the Cart contents query loop, and cart dynamic tags.*
-
-Use the Dynamic fragment element when you need cart-dependent content outside the main Cart page, such as a custom mini cart in a header Offcanvas, dropdown, or popup.
-
-Dynamic fragment re-renders itself and its children after WooCommerce cart changes. For a mini cart, place the cart item loop and cart totals inside the fragment so product rows, quantities, subtotal, and buttons stay current after add-to-cart, remove, and quantity changes.
-
-https://youtu.be/ExpIHVe2tho
-
-> **Note**
->
-> Dynamic fragment requires **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
-
-The classic [Mini cart element](https://academy.bricksbuilder.io/builder/elements/woocommerce/mini-cart/) shows WooCommerce's own mini cart list. You can style it, but not change its structure. Use Dynamic fragment when you want to build the cart rows, totals, and buttons from Bricks elements.
-
-## Common setup
-
-Mini carts are usually added to a header template and shown in an Offcanvas:
-
-- The header contains the cart icon and cart count.
-- The cart icon toggles the Offcanvas.
-- The Offcanvas contains the generated mini cart structure.
-
-Place the generated mini cart in a dropdown or popup for smaller layouts. Use an Offcanvas when you want more room for product rows, quantity controls, totals, and checkout actions.
-
-## Create the Offcanvas mini cart
-
-1. Open the header template or page where the mini cart should appear.
-2. Add an **Offcanvas** element.
-3. Inside the Offcanvas content area, add a **Dynamic fragment** element.
-4. In the Dynamic fragment controls, go to **Insert a structure**.
-5. Select **Mini cart**.
-6. Click **Generate**.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart.png)
-
-Bricks appends the generated structure inside the Dynamic fragment. It does not replace existing child elements.
-
-## What Bricks generates
-
-The generated Mini cart structure already includes the cart item layout, totals, and buttons. You do not need to add these manually unless you want to change the design or content.
-
-Inside the Dynamic fragment, Bricks creates:
-
-- A **Details wrapper** that contains the mini cart content.
-- A **Cart loop** using the **Cart contents** query type.
-- A cart row inside the loop with product image, product title, product price, product excerpt, item data, quantity control, remove icon, and line subtotal.
-- An empty-cart message from the Cart contents query loop. Change it in the Cart loop's query settings under **No results** > **Text**.
-- A separate block after the Cart loop for the subtotal and action buttons.
-- A condition on that subtotal/actions block so it only shows when the Cart loop has more than `0` results.
-- **View Cart** and **Checkout** buttons using WooCommerce URL dynamic data.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-mini-cart-structure-example.png)
-
-## What the generated structure uses
-
-The generated cart row uses WooCommerce cart tags inside the **Cart contents** loop.
-
-Common row tags:
-
-| Tag or element | Use |
-| --- | --- |
-| `{featured_image}` | Product image. |
-| `{woo_cart_product_title:plain}` | Product title as plain text, without variation metadata. |
-| **Cart item data** | Variation attributes and compatible extension-provided item data. |
-| **Cart quantity** | Quantity input with plus and minus buttons. |
-| `{woo_cart_quantity:value}` | Quantity number as text. |
-| `{woo_cart_subtotal}` | Line subtotal. |
-| `{woo_cart_remove_link:url}` | Remove URL for a link or icon. |
-
-For a custom row, use `{woo_cart_item_price}` when you need the formatted unit price with sale-price markup. `{woo_cart_item_save}` returns the quantity-aware product savings and can be used in a condition through `{woo_cart_item_save:value}`.
-
-The subtotal and buttons are outside the Cart contents loop, but still inside the Dynamic fragment. The generated structure uses:
-
-| Element              | Dynamic data                |
-| -------------------- | --------------------------- |
-| Subtotal amount      | `{woo_cart_order_subtotal}` |
-| View Cart button URL | `{woo_url:cart}`            |
-| Checkout button URL  | `{woo_url:checkout}`        |
-
-The generated remove icon uses `{woo_cart_remove_link:url}` as its link URL. Keep the `product-remove` CSS class on the remove element so WooCommerce cart behavior can target it.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-subtotal-condition.png)
-
-## Add a header cart icon
-
-In the header template, add a second Dynamic fragment near the navigation for the cart icon and count. This fragment only needs to contain the small cart trigger, not the full mini cart.
-
-Inside that header Dynamic fragment:
-
-1. Add an Icon element and choose a cart icon.
-2. Add a Text Basic element for the cart count.
-3. Set the count text to `{woo_cart_items_count}`.
-4. Position the count as a small badge on the cart icon.
-5. Add an element condition to the count so it only shows when `{woo_cart_items_count}` is greater than `0`.
-6. Add an interaction to the cart icon:
-   - **Trigger**: Click
-   - **Action**: Toggle offcanvas
-   - **Offcanvas: CSS selector**: the target Offcanvas element ID, such as `#brxe-evudao`
-
-Because the icon and count are inside Dynamic fragment, the count updates after cart changes. Keep the rest of the header outside the Dynamic fragment unless it also depends on cart data.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-header-mini-cart-trigger.png)
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-header-mini-cart-trigger-interaction.png)
-
-## Open the Offcanvas after add to cart
-
-You can open the mini cart Offcanvas when a product is added through AJAX.
-
-On the Offcanvas element, add an interaction:
-
-- **Trigger**: Added to cart
-- **Action**: Toggle offcanvas
-- **Offcanvas: CSS selector**: the Offcanvas element ID
-
-Add a condition to the Offcanvas if you do not want this behavior on checkout. For example, show the Offcanvas only when the current URL does not contain `{woo_url:checkout}`.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-interaction.png)
-
-**Added to cart** also runs for WooCommerce's own add to cart buttons on shop and category pages when **WooCommerce > Settings > Products > Enable AJAX add to cart buttons on archives** is on (the WooCommerce default).
-
-Keep **Added to cart** for this interaction if the Offcanvas should toggle only after an addition. The [Bricks cart contents changed](https://academy.bricksbuilder.io/builder/features/interactions/#cart-contents-changed) trigger, available since Bricks 2.4, also runs after successful AJAX quantity changes and removals. Using it with **Toggle offcanvas** would toggle the mini cart during those updates too.
-
-## Preview the refresh behavior
-
-Dynamic fragment refreshes on the frontend after WooCommerce cart events such as add to cart, remove from cart, cart emptied, cart totals updated, checkout updated, and coupon apply/remove events.
-
-In the Builder, the cart loop previews your own cart, or sample products when your cart is empty. **Cart item data** shows a placeholder for products without item data, such as simple products. The frontend renders each visitor's real cart.
-
-The **Bricks dynamic fragments refreshed** interaction signals that fragment content has been replaced. It can run during initial synchronization or checkout recalculation without a cart item change. To show a custom “Cart updated” confirmation, use **Bricks cart contents changed**, which waits for a confirmed item change and the related UI updates to finish.
-
-To test the mini cart:
-
-1. Open the frontend page that contains the mini cart.
-2. Add a product to the cart.
-3. Confirm the mini cart updates without reloading the page.
-4. Confirm the header cart count updates.
-5. Click the cart icon and confirm the Offcanvas opens.
-6. Remove the item or change quantity if your layout includes quantity controls.
-7. Confirm the row count, subtotal, and buttons still render correctly.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-frontend-added-to-cart.png)
-
-## Limits
-
-- Dynamic fragment is frontend-only.
-- Keep the Dynamic fragment wrapper outside other query loops. The Cart contents loop can be inside the fragment.
-- Component instances are not supported.
-- The fragment must render from the header, content, or footer area.
-- Keep the fragment focused on cart-dependent content. Static header, menu, or layout elements do not need to be inside it.
-
-## Related
-
-- [Dynamic fragment element](https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/)
-- [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/)
-- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/)
-
----
-
 <a id="integrations-woocommerce-checkout"></a>
 
 # Checkout (WooCommerce)
@@ -1573,6 +1252,406 @@ Bricks 2.4 adds additional order tags and order-aware query loops for v2 layouts
 
 ---
 
+<a id="integrations-woocommerce-create-custom-mini-cart-dynamic-fragment"></a>
+
+# Create a custom mini cart with Dynamic fragment
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/create-custom-mini-cart-dynamic-fragment/
+
+*Build a WooCommerce mini cart that refreshes after cart changes using Dynamic fragment, the Cart contents query loop, and cart dynamic tags.*
+
+Use the Dynamic fragment element when you need cart-dependent content outside the main Cart page, such as a custom mini cart in a header Offcanvas, dropdown, or popup.
+
+Dynamic fragment re-renders itself and its children after WooCommerce cart changes. For a mini cart, place the cart item loop and cart totals inside the fragment so product rows, quantities, subtotal, and buttons stay current after add-to-cart, remove, and quantity changes.
+
+https://youtu.be/ExpIHVe2tho
+
+> **Note**
+>
+> Dynamic fragment requires **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
+
+The classic [Mini cart element](https://academy.bricksbuilder.io/builder/elements/woocommerce/mini-cart/) shows WooCommerce's own mini cart list. You can style it, but not change its structure. Use Dynamic fragment when you want to build the cart rows, totals, and buttons from Bricks elements.
+
+## Common setup
+
+Mini carts are usually added to a header template and shown in an Offcanvas:
+
+- The header contains the cart icon and cart count.
+- The cart icon toggles the Offcanvas.
+- The Offcanvas contains the generated mini cart structure.
+
+Place the generated mini cart in a dropdown or popup for smaller layouts. Use an Offcanvas when you want more room for product rows, quantity controls, totals, and checkout actions.
+
+## Create the Offcanvas mini cart
+
+1. Open the header template or page where the mini cart should appear.
+2. Add an **Offcanvas** element.
+3. Inside the Offcanvas content area, add a **Dynamic fragment** element.
+4. In the Dynamic fragment controls, go to **Insert a structure**.
+5. Select **Mini cart**.
+6. Click **Generate**.
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart.png)
+
+Bricks appends the generated structure inside the Dynamic fragment. It does not replace existing child elements.
+
+## What Bricks generates
+
+The generated Mini cart structure already includes the cart item layout, totals, and buttons. You do not need to add these manually unless you want to change the design or content.
+
+Inside the Dynamic fragment, Bricks creates:
+
+- A **Details wrapper** that contains the mini cart content.
+- A **Cart loop** using the **Cart contents** query type.
+- A cart row inside the loop with product image, product title, product price, product excerpt, item data, quantity control, remove icon, and line subtotal.
+- An empty-cart message from the Cart contents query loop. Change it in the Cart loop's query settings under **No results** > **Text**.
+- A separate block after the Cart loop for the subtotal and action buttons.
+- A condition on that subtotal/actions block so it only shows when the Cart loop has more than `0` results.
+- **View Cart** and **Checkout** buttons using WooCommerce URL dynamic data.
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-mini-cart-structure-example.png)
+
+## What the generated structure uses
+
+The generated cart row uses WooCommerce cart tags inside the **Cart contents** loop.
+
+Common row tags:
+
+| Tag or element | Use |
+| --- | --- |
+| `{featured_image}` | Product image. |
+| `{woo_cart_product_title:plain}` | Product title as plain text, without variation metadata. |
+| **Cart item data** | Variation attributes and compatible extension-provided item data. |
+| **Cart quantity** | Quantity input with plus and minus buttons. |
+| `{woo_cart_quantity:value}` | Quantity number as text. |
+| `{woo_cart_subtotal}` | Line subtotal. |
+| `{woo_cart_remove_link:url}` | Remove URL for a link or icon. |
+
+For a custom row, use `{woo_cart_item_price}` when you need the formatted unit price with sale-price markup. `{woo_cart_item_save}` returns the quantity-aware product savings and can be used in a condition through `{woo_cart_item_save:value}`.
+
+The subtotal and buttons are outside the Cart contents loop, but still inside the Dynamic fragment. The generated structure uses:
+
+| Element              | Dynamic data                |
+| -------------------- | --------------------------- |
+| Subtotal amount      | `{woo_cart_order_subtotal}` |
+| View Cart button URL | `{woo_url:cart}`            |
+| Checkout button URL  | `{woo_url:checkout}`        |
+
+The generated remove icon uses `{woo_cart_remove_link:url}` as its link URL. Keep the `product-remove` CSS class on the remove element so WooCommerce cart behavior can target it.
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-subtotal-condition.png)
+
+## Add a header cart icon
+
+In the header template, add a second Dynamic fragment near the navigation for the cart icon and count. This fragment only needs to contain the small cart trigger, not the full mini cart.
+
+Inside that header Dynamic fragment:
+
+1. Add an Icon element and choose a cart icon.
+2. Add a Text Basic element for the cart count.
+3. Set the count text to `{woo_cart_items_count}`.
+4. Position the count as a small badge on the cart icon.
+5. Add an element condition to the count so it only shows when `{woo_cart_items_count}` is greater than `0`.
+6. Add an interaction to the cart icon:
+   - **Trigger**: Click
+   - **Action**: Toggle offcanvas
+   - **Offcanvas: CSS selector**: the target Offcanvas element ID, such as `#brxe-evudao`
+
+Because the icon and count are inside Dynamic fragment, the count updates after cart changes. Keep the rest of the header outside the Dynamic fragment unless it also depends on cart data.
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-header-mini-cart-trigger.png)
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-header-mini-cart-trigger-interaction.png)
+
+## Open the Offcanvas after add to cart
+
+You can open the mini cart Offcanvas when a product is added through AJAX.
+
+On the Offcanvas element, add an interaction:
+
+- **Trigger**: Added to cart
+- **Action**: Toggle offcanvas
+- **Offcanvas: CSS selector**: the Offcanvas element ID
+
+Add a condition to the Offcanvas if you do not want this behavior on checkout. For example, show the Offcanvas only when the current URL does not contain `{woo_url:checkout}`.
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-interaction.png)
+
+**Added to cart** also runs for WooCommerce's own add to cart buttons on shop and category pages when **WooCommerce > Settings > Products > Enable AJAX add to cart buttons on archives** is on (the WooCommerce default).
+
+Keep **Added to cart** for this interaction if the Offcanvas should toggle only after an addition. The [Bricks cart contents changed](https://academy.bricksbuilder.io/builder/features/interactions/#cart-contents-changed) trigger, available since Bricks 2.4, also runs after successful AJAX quantity changes and removals. Using it with **Toggle offcanvas** would toggle the mini cart during those updates too.
+
+## Preview the refresh behavior
+
+Dynamic fragment refreshes on the frontend after WooCommerce cart events such as add to cart, remove from cart, cart emptied, cart totals updated, checkout updated, and coupon apply/remove events.
+
+In the Builder, the cart loop previews your own cart, or sample products when your cart is empty. **Cart item data** shows a placeholder for products without item data, such as simple products. The frontend renders each visitor's real cart.
+
+The **Bricks dynamic fragments refreshed** interaction signals that fragment content has been replaced. It can run during initial synchronization or checkout recalculation without a cart item change. To show a custom “Cart updated” confirmation, use **Bricks cart contents changed**, which waits for a confirmed item change and the related UI updates to finish.
+
+To test the mini cart:
+
+1. Open the frontend page that contains the mini cart.
+2. Add a product to the cart.
+3. Confirm the mini cart updates without reloading the page.
+4. Confirm the header cart count updates.
+5. Click the cart icon and confirm the Offcanvas opens.
+6. Remove the item or change quantity if your layout includes quantity controls.
+7. Confirm the row count, subtotal, and buttons still render correctly.
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-frontend-added-to-cart.png)
+
+## Limits
+
+- Dynamic fragment is frontend-only.
+- Keep the Dynamic fragment wrapper outside other query loops. The Cart contents loop can be inside the fragment.
+- Component instances are not supported.
+- The fragment must render from the header, content, or footer area.
+- Keep the fragment focused on cart-dependent content. Static header, menu, or layout elements do not need to be inside it.
+
+## Related
+
+- [Dynamic fragment element](https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/)
+- [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/)
+- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/)
+
+---
+
+<a id="integrations-woocommerce-advanced-modular-elements"></a>
+
+# WooCommerce advanced modular elements
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/
+
+*Set up and customize WooCommerce cart, checkout, account, and cart-dependent content with the Bricks 2.4 advanced modular workflow.*
+
+Starting in Bricks 2.4, the WooCommerce integration includes an advanced modular workflow for the store areas that usually require the most setup: Cart, Checkout, and My Account.
+
+WooCommerce v2 lets you build these system pages from editable Bricks elements, protected state containers, predefined structures, dynamic data, query loops, conditions, and interactions.
+
+In the classic setup, screens such as empty cart, checkout payment, order received, account orders, account downloads, and password reset are handled through separate Bricks templates or WooCommerce endpoints. In the v2 setup, those screens live as states on the assigned WooCommerce page, so you can switch between them in the builder and edit them in one place.
+
+https://youtu.be/IPgWoKkPY1s
+
+![](https://academy.bricksbuilder.io/assets/woo-v2-state-filled-cart.png)
+
+![](https://academy.bricksbuilder.io/assets/woo-v2-state-empty-cart.png)
+
+> **Note**
+>
+> Advanced modular elements are experimental. Enable them under **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
+>
+> The generated v2 layouts also use the Bricks **Notice**, **Checkout coupon**, and **Checkout login** elements. Enable **Enable Bricks WooCommerce "Notice" element**, **Enable Bricks WooCommerce "Checkout coupon" element**, and **Enable Bricks WooCommerce "Checkout login" element** on the same screen. In Bricks 2.4.3 and 2.4.4, the Woo Setup Wizard does not enable the coupon and login settings for Checkout v2, and the checkout then shows "PHP class does not exist" in place of those forms.
+>
+> ![](https://academy.bricksbuilder.io/assets/woo-advanced-modular-setting.png)
+
+## What changes in v2
+
+The v2 workflow is useful when you want more control over WooCommerce system pages without recreating WooCommerce logic from scratch.
+
+- Build Cart, Checkout, and My Account pages with editable Bricks elements.
+- Edit template or endpoint-style views as page states directly on the assigned WooCommerce page.
+- Preview states such as filled/empty cart, checkout/pay/thank-you, and account orders/downloads while editing.
+- Insert predefined complete blocks and smaller section blocks.
+- Keep generated checkout and account address fields aligned with WooCommerce field definitions.
+- Refresh cart-dependent content with the [Dynamic fragment element](https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/).
+- Use new WooCommerce v2 [query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/).
+- Build [multistep checkout flows](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/) with checkout step elements and interactions.
+
+## When to use this workflow
+
+Use the advanced modular workflow when you want a more guided setup and a single editing place for each WooCommerce page.
+
+| Workflow | Best for |
+| --- | --- |
+| **Standard (v1)** | Existing sites that already use WooCommerce shortcode pages and Bricks WooCommerce templates, or stores that prefer separate templates for each WooCommerce screen. |
+| **Advanced (v2)** | New or redesigned Cart, Checkout, and My Account pages where you want editable page states, generated structures, and v2 dynamic data directly on the assigned page. |
+
+The classic template workflow remains supported. You can keep using the existing Cart, Empty Cart, Checkout, Thank You, Pay, Order Receipt, and Account template types.
+
+For guided setup checks and presets, use the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/). The wizard can set up classic WooCommerce layouts without advanced modular elements enabled. V2 setup types are disabled until advanced modular elements are enabled.
+
+## Predefined structures
+
+Cart, Checkout, and Account Page v2 states can generate complete starter layouts or smaller WooCommerce sections through **Insert a structure**. Select the state element in the Structure panel to see the structures that fit that state. A generated structure is appended to the state's current content and never overwrites it.
+
+![](https://academy.bricksbuilder.io/assets/woo-v2-insert-structure-cart.png)
+
+Generated structures are site-aware where needed. For checkout, checkout account credentials, and account address forms, Bricks reads the WooCommerce field definitions that exist at generation time and turns them into editable Bricks form field elements. After generation, you can style, move, reorder, and place those fields like regular Bricks elements.
+
+> **Note**
+>
+> Some WooCommerce v2 support elements are generated-only or context-specific. If you do not see a v2 support element in the regular Elements panel, create it through **Insert a structure** or the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/). After generation, the element appears in the Structure panel and can be edited inside its v2 state.
+
+> **Note**
+>
+> Checkout fields can change after a layout is generated. For example, a plugin may add a VAT field, remove a company field, change labels and placeholders, or add an account field. Use field sync after installing, removing, or reconfiguring plugins that modify WooCommerce checkout or account address fields.
+
+Field sync can report valid, missing, invalid, and duplicate generated fields. It can generate missing fields and remove invalid or duplicate generated fields. New elements copy the current WooCommerce label and placeholder; existing elements keep theirs. See [Checkout v2 field maintenance](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/#field-maintenance) for the workflow.
+
+Checkout v2 and several Account v2 form states also include a **Floating label style** option for supported generated fields. Review third-party fields manually because plugin-generated fields can use different markup.
+
+## V2 element groups
+
+The main parent elements are:
+
+- [Cart v2](https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-v2/)
+- [Checkout v2](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/)
+- [Account Page v2](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page-v2/)
+
+V2 layouts can also include support elements that only make sense inside their matching WooCommerce state or generated structure.
+
+Bricks 2.4 registers these advanced modular support elements:
+
+| Area | Registered support elements |
+| --- | --- |
+| Cart v2 | Cart form, Cart quantity |
+| Checkout v2 | Checkout steps navigation, Checkout step nav item, Checkout step, Shipping options, Payment options, WooCommerce form field, WooCommerce form submit, Checkout account fields, Checkout billing address, Checkout shipping address, Checkout order summary, Checkout place order |
+| Account Page v2 | WooCommerce login form, Account register form, Account lost password form, Account reset password form, Account orders pagination, Account edit address form, Account edit account form, Account order withdrawal form (when Order Withdrawal is enabled) |
+| Cart-dependent content | Dynamic fragment |
+
+Some support elements are generated-only. Create them through **Insert a structure** or the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/), then edit them from the Structure panel.
+
+## Cart v2
+
+The [Cart v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-v2/) is added to the assigned Cart page. It contains two states:
+
+- **Filled cart** for carts that contain products.
+- **Empty cart** for carts with no products.
+
+Use the **State** control while editing to switch the builder preview between these states. The top of the Structure panel shows the state you are editing; its **Switch** button opens the same State control. The Structure panel lists only the elements of the current state.
+
+Each state can contain custom layouts and generated structures, such as the complete cart block or complete empty cart block. Everything inside a state is made of regular Bricks elements, so you can edit, add, or paste elements there like in any other layout. When the store has a free shipping minimum, the complete cart block also shows how much is left until free shipping.
+
+## Checkout v2
+
+The [Checkout v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/) is added to the assigned Checkout page. It contains these states:
+
+- Checkout
+- Login required
+- Pay
+- Thank you
+- Order receipt
+
+Use the **State** control to design each checkout screen from one page. The checkout state can generate complete checkout structures or smaller sections such as billing fields, shipping fields, payment options, additional fields, order summary, and place order.
+
+Checkout v2 also includes checkout field maintenance actions to help compare generated fields with the site's current WooCommerce checkout fields.
+
+Generated billing and complete checkout structures include a **Checkout account fields** wrapper. It follows WooCommerce's guest checkout, account creation, username generation, and password setup settings. See [Checkout v2 account creation](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/#account-creation-during-checkout) for the settings matrix and field sync behavior.
+
+The **Login required** state is used when WooCommerce requires a customer to log in before viewing order-related checkout screens, such as pay, receipt, or thank you flows for a registered customer order.
+
+For multistep layouts, see [Checkout v2 multistep checkout](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/).
+
+## Account Page v2
+
+The [Account Page v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page-v2/) is added to the assigned My Account page. It keeps the account navigation and endpoint content together.
+
+It includes states for the common My Account endpoints:
+
+- Dashboard
+- Orders
+- View order
+- Downloads
+- Addresses
+- Edit address
+- Edit account
+- Payment methods
+- Add payment method
+- Login
+- Lost password
+- Lost password confirmation
+- Reset password
+- Order withdrawal (WooCommerce 11.1 or later, with Order Withdrawal enabled)
+
+Use the **State** control to switch between endpoint previews while editing. Each state can contain generated starter content that you can customize in the builder.
+
+## Dynamic Fragment
+
+The [Dynamic fragment element](https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/) re-renders itself and its children after WooCommerce cart changes.
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-mini-cart-structure-example.png)
+
+Use it for cart-dependent content outside the main Cart page, such as:
+
+- Custom mini cart content
+- Free shipping progress
+- Cart totals or subtotal displays
+
+The element includes generated structures for **Mini cart** and **Free shipping progress**. For custom mini carts, wrap the mini cart in Dynamic fragment, add a child loop using the `wooCart` query type, and use cart tags such as `{woo_cart_product_name}`, `{woo_cart_quantity:value}`, `{woo_cart_subtotal}`, and `{woo_cart_remove_link:url}` inside the loop.
+
+Keep the Dynamic fragment wrapper outside other query loops. The cart loop should be a child of the fragment.
+
+Dynamic fragment is frontend-only. It can refresh when it is rendered from the header, content, or footer area, but it does not refresh inside query loop instances or component instances.
+
+## Query loops, dynamic tags, conditions, and interactions
+
+WooCommerce v2 adds query loops for applied coupons, fees, taxes, order items, order totals, order downloads, order customer notes, account orders, account order actions, account downloads, and account addresses.
+
+It also adds dynamic tags for cart totals, free shipping progress, WooCommerce URLs, account addresses, order data, order items, order totals, order actions, downloads, and customer notes.
+
+See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/) for the complete reference.
+
+Bricks 2.4 also adds WooCommerce conditions for shipping/order visibility and interactions for Dynamic fragment refreshes and checkout step changes.
+
+## Existing WooCommerce templates
+
+Bricks 2.4 also improves WooCommerce order-related template handling. Logged-out customers can still get Bricks layouts for Thank You, Order Receipt, and Order Pay flows when WooCommerce requires login for a non-guest order.
+
+Classic templates and v2 page states can coexist on the same site, but each WooCommerce area should use one setup approach at a time to avoid confusion.
+
+## Caveats
+
+- Advanced modular elements must be enabled before you can add or edit v2 elements.
+- V2 page rendering still follows WooCommerce page routing. Cart v2 and Checkout v2 render through the assigned WooCommerce cart and checkout pages.
+- WooCommerce block content on assigned WooCommerce pages is not compatible with the v2 setup. The [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) can replace the page content with the matching v2 structure.
+- Protected state elements are required children of their v2 parent elements. Do not remove them manually.
+- Predefined structures are authored with the default Bricks breakpoint keys. Review responsive styling on sites with custom breakpoints.
+- Third-party checkout fields may need manual review after generation or field sync.
+- The builder previews v2 states with sample data. Filled cart, checkout, and account states show sample WooCommerce notices, and loops without data (applied coupons, fees, taxes, or orders of a user without orders) show unresolved dynamic tags such as `{woo_cart_applied_coupon}`. The frontend renders the real cart, order, and account data.
+- In Bricks 2.4.3 and 2.4.4, the generated checkout shows a required terms and conditions checkbox even when no terms page is set under **WooCommerce > Settings > Advanced**. Set a terms page so the checkbox links to your terms.
+
+---
+
+<a id="integrations-woocommerce-element-checkout-coupon"></a>
+
+# Element: Checkout Coupon
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/
+
+*Use the Bricks Checkout Coupon element inside WooCommerce checkout templates to render and style the coupon form.*
+
+This Checkout coupon element, available @since 1.11.1, allows you to display the coupon field in various locations on the checkout page, making it easy for customers to apply discount codes during their purchase.
+
+In previous versions, you couldn’t control the location of the checkout coupon. Additionally, styling options were limited, and adjustments required custom CSS. With this new, dedicated checkout coupon element you now have greater control over placement and design.
+
+To use this element, first enable it under **`Bricks > Settings > WooCommerce`** by turning on **`Enable Bricks WooCommerce "Checkout coupon" element`**.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-setting.png)
+
+> **Note**
+>
+> WooCommerce **`Enable the use of coupon codes`** must also be active under **WooCommerce > Settings > General**. When the Bricks Checkout Coupon element is enabled, the native WooCommerce checkout coupon form is removed, so add this element where you want the coupon form to appear.
+
+> **Note**
+>
+> **Note:** This element is specifically designed for the Checkout page and will only work when placed on the **Checkout template** or the Checkout page itself, depending on your design requirements.
+
+**Key Controls**
+
+**Location:**
+
+- By default, the **Checkout Coupon** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment
+- Custom location settings only apply on the actual frontend (Checkout page). To ensure correct placement, add this element at the top of your Checkout template.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-element-controls.png)
+
+![](https://academy.bricksbuilder.io/assets/element-location-example.png)
+
+Enable **Toggleable form** to hide the form until its prompt is clicked. For the expanded icon and transition controls added in Bricks 2.5, see the [Checkout Coupon settings](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-coupon/#settings).
+
+---
+
 <a id="integrations-woocommerce-creating-dynamic-woocommerce-archive-pages"></a>
 
 # Creating dynamic WooCommerce archive pages
@@ -1721,45 +1800,6 @@ Custom WooCommerce Archive Template
 
 ---
 
-<a id="integrations-woocommerce-element-checkout-coupon"></a>
-
-# Element: Checkout Coupon
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/
-
-*Use the Bricks Checkout Coupon element inside WooCommerce checkout templates to render and style the coupon form.*
-
-This Checkout coupon element, available @since 1.11.1, allows you to display the coupon field in various locations on the checkout page, making it easy for customers to apply discount codes during their purchase.
-
-In previous versions, you couldn’t control the location of the checkout coupon. Additionally, styling options were limited, and adjustments required custom CSS. With this new, dedicated checkout coupon element you now have greater control over placement and design.
-
-To use this element, first enable it under **`Bricks > Settings > WooCommerce`** by turning on **`Enable Bricks WooCommerce "Checkout coupon" element`**.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-setting.png)
-
-> **Note**
->
-> WooCommerce **`Enable the use of coupon codes`** must also be active under **WooCommerce > Settings > General**. When the Bricks Checkout Coupon element is enabled, the native WooCommerce checkout coupon form is removed, so add this element where you want the coupon form to appear.
-
-> **Note**
->
-> **Note:** This element is specifically designed for the Checkout page and will only work when placed on the **Checkout template** or the Checkout page itself, depending on your design requirements.
-
-**Key Controls**
-
-**Location:**
-
-- By default, the **Checkout Coupon** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment
-- Custom location settings only apply on the actual frontend (Checkout page). To ensure correct placement, add this element at the top of your Checkout template.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-element-controls.png)
-
-![](https://academy.bricksbuilder.io/assets/element-location-example.png)
-
-You can set the form to be toggle-able, hiding it by default and revealing it only when the toggle is clicked, for a cleaner layout.
-
----
-
 <a id="integrations-woocommerce-element-checkout-login"></a>
 
 # Element: Checkout Login
@@ -1799,36 +1839,7 @@ To use this element, activate it under **`Bricks > Settings > WooCommerce`** by 
 
 ![](https://academy.bricksbuilder.io/assets/element-location-example.png)
 
-You can set the form to be toggle-able, hiding it by default and revealing it only when the toggle is clicked, for a cleaner layout.
-
----
-
-<a id="integrations-woocommerce"></a>
-
-# WooCommerce
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/
-
-*Build WooCommerce shop, product, cart, checkout, account, and notice experiences with Bricks templates, elements, and integration guides.*
-
-Bricks includes dedicated WooCommerce elements and template workflows so you can build the full storefront experience visually while still working with WooCommerce data and hooks.
-
-## WooCommerce guides
-
-- [WooCommerce Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/) for the main workflow
-- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) for the Bricks 2.4 Cart, Checkout, and My Account v2 workflow
-- [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) for guided WooCommerce setup checks and presets
-- [Checkout v2 multistep checkout](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/) for the multistep checkout workflow
-- [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/) for the v2 data reference
-- [Product Archive](https://academy.bricksbuilder.io/integrations/woocommerce/product-archive-woocommerce/) for shop and archive layouts
-- [Single Product](https://academy.bricksbuilder.io/integrations/woocommerce/single-product/) for product detail pages
-- [Product Quick View](https://academy.bricksbuilder.io/integrations/woocommerce/how-to-create-product-quick-view-with-bricks/) for quick-view popup workflows
-- [Product Variation Swatches](https://academy.bricksbuilder.io/integrations/woocommerce/product-variation-swatches/) for color, image, and label swatches
-- [Cart](https://academy.bricksbuilder.io/integrations/woocommerce/cart/) for cart layouts
-- [Checkout](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/) for checkout flows
-- [WooCommerce Account Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/) for account templates
-- [WooCommerce Template Hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/) for hook-aware template work
-- [WooCommerce Notices](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-notices/) for notice styling and output
+Enable **Toggleable form** to hide the form until its prompt is clicked. For the expanded icon and transition controls added in Bricks 2.5, see the [Checkout Login settings](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-login/#settings).
 
 ---
 
@@ -1895,6 +1906,35 @@ By following these steps, you've successfully implemented a Quick View Popup fea
 This enhancement not only improves the user experience by allowing visitors to quickly access product details without navigating away from the current page, but it also provides a seamless integration with WooCommerce.
 
 Remember, fine-tuning the design and interaction settings can further optimize the effectiveness of the Quick View feature, ensuring it meets your specific needs and enhances your overall site performance.
+
+---
+
+<a id="integrations-woocommerce"></a>
+
+# WooCommerce
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/
+
+*Build WooCommerce shop, product, cart, checkout, account, and notice experiences with Bricks templates, elements, and integration guides.*
+
+Bricks includes dedicated WooCommerce elements and template workflows so you can build the full storefront experience visually while still working with WooCommerce data and hooks.
+
+## WooCommerce guides
+
+- [WooCommerce Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/) for the main workflow
+- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) for the Bricks 2.4 Cart, Checkout, and My Account v2 workflow
+- [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) for guided WooCommerce setup checks and presets
+- [Checkout v2 multistep checkout](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/) for the multistep checkout workflow
+- [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/) for the v2 data reference
+- [Product Archive](https://academy.bricksbuilder.io/integrations/woocommerce/product-archive-woocommerce/) for shop and archive layouts
+- [Single Product](https://academy.bricksbuilder.io/integrations/woocommerce/single-product/) for product detail pages
+- [Product Quick View](https://academy.bricksbuilder.io/integrations/woocommerce/how-to-create-product-quick-view-with-bricks/) for quick-view popup workflows
+- [Product Variation Swatches](https://academy.bricksbuilder.io/integrations/woocommerce/product-variation-swatches/) for color, image, and label swatches
+- [Cart](https://academy.bricksbuilder.io/integrations/woocommerce/cart/) for cart layouts
+- [Checkout](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/) for checkout flows
+- [WooCommerce Account Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/) for account templates
+- [WooCommerce Template Hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/) for hook-aware template work
+- [WooCommerce Notices](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-notices/) for notice styling and output
 
 ---
 
@@ -2473,6 +2513,153 @@ Open the generated page or template in Bricks and review the result.
 
 ---
 
+<a id="integrations-woocommerce-woocommerce-account-builder"></a>
+
+# WooCommerce Account Builder
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/
+
+*Customize WooCommerce account-area screens in Bricks with the classic Account builder templates or the Account Page v2 advanced modular workflow.*
+
+Bricks 1.9 introduces the My Account builder, which lets you customize the account area of your WooCommerce site.
+
+This includes the My Account page (logged-in), the account login/register/lost & reset password pages (shown when not logged-in), and all My Account endpoints (e.g., Orders, Downloads, etc.).
+
+> **Note**
+>
+> Starting in Bricks 2.4, you can also build the My Account page directly with [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) and the [Account Page v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page-v2/). The classic account template workflow below is still supported.
+
+> **Note**
+>
+> **IMPORTANT:** In order to ensure that all your customizations to the WooCommerce My Account templates are properly applied, it is imperative that you complete the "[My Account Page (logged in)](#my-account-page)" step.
+
+## Account Page v2 workflow
+
+With advanced modular elements enabled, Account Page v2 keeps the account wrapper, navigation, login state, password states, and account endpoint states together on the assigned My Account page.
+
+Use the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) and choose **Advanced (v2)** to replace the assigned My Account page content with the Account Page v2 element and generated state structure.
+
+Account Page v2 includes states for:
+
+- Dashboard
+- Orders
+- View order
+- Downloads
+- Addresses
+- Edit address
+- Edit account
+- Payment methods
+- Add payment method
+- Login
+- Lost password
+- Lost password confirmation
+- Reset password
+- Order withdrawal (WooCommerce 11.1 or later, with Order Withdrawal enabled)
+
+Each state can generate a complete starter block through **Insert a structure**. Address and account forms use editable Bricks form field elements, so you can style and reorder them after generation.
+
+The Account edit-address state has its own field sync because WooCommerce account address editing and checkout use different field contexts. Use it after plugins or WooCommerce settings change address fields.
+
+Account Page v2 also adds query loops and dynamic tags for account orders, order actions, account downloads, account addresses, order data, downloads, and customer notes. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#account-tags).
+
+### Endpoints added by plugins
+
+Account Page v2 provides editable states for the built-in WooCommerce account routes listed above. An endpoint registered by another plugin does not appear automatically as an additional editable state in the builder.
+
+WooCommerce account endpoints are routes on the assigned My Account page, not separate WordPress pages. A plugin that registers an endpoint and its output callback correctly can still render its content through WooCommerce on that page, but Bricks does not provide a dedicated Account Page v2 state for designing that endpoint.
+
+If a plugin endpoint is blank on the frontend, temporarily test the My Account page with WooCommerce's default account output or without the Account Page v2 element. If it remains blank, check the plugin's endpoint registration. If it works only without Account Page v2, include the plugin name and endpoint slug when contacting Bricks support.
+
+## My Account Page (logged in) {#my-account-page}
+
+To design your My Account page (navigation + content wrapper), **please edit your "My Account" page directly**. You'll find a dedicated "Account Page" element that you can add and adjust its settings to your liking.
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-my-account-page-1.png)
+
+<figcaption>
+
+Custom My Account page using the "Account - Page" element
+
+</figcaption>
+
+> **Note**
+>
+> **IMPORTANT:** If you have the *"Enable Bricks WooCommerce "Notice" element"* Bricks setting enabled, please make sure that you have added the "Notice" element to your account page or to all account templates individually. So the notifications when submitting the account forms (e.g., address, reset password, etc.) are displayed.
+
+Starting in Bricks 2.4, the classic **Account - Page** element supports WooCommerce's native Order Withdrawal flow for guests and logged-in customers when the WooCommerce feature is enabled; use the [Account Page v2 Order withdrawal state](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page-v2/#order-withdrawal) to customize its layout.
+
+## Account - Login / Register {#my-account-login-register}
+
+The login form is displayed when a not-logged-in visitor views the My Account page. And the registration form, if you have the *"Allow customers to create an account on the "My account" page"* WooCommerce setting enabled.
+
+You can design your account login/registration layout by creating a new template type "WooCommerce - Account - Login".
+
+When editing this template, you'll find dedicated elements for the **"Account - Login form"** & **"Account - Register form"** as shown in the screenshot below:
+
+You should also check the **Account creation** settings located at *WooCommerce > Settings > Accounts & Privacy* section to control what form to be displayed via **Account - Register form** element.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-account-creation-settings.png)
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-account-login-register.png)
+
+<figcaption>
+
+Custom account login/register template
+
+</figcaption>
+
+> **Note**
+>
+> **IMPORTANT:** Ensure you have inserted a Basic Text element with `{do_action:woocommerce_before_customer_login_form}` before your Login and Register form. And another Basic Text element with `{do_action:woocommerce_after_customer_login_form}` after the forms.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-do-action-account-login.png)
+
+<figcaption>
+
+Example do_action location. Before and after the login/register forms.
+
+</figcaption>
+
+## Account - Lost / reset password {#my-account-lost-reset-password}
+
+The WooCommerce account builder in Bricks also provides the following dedicated templates and elements for the lost & reset password pages:
+
+| **Account page** | **Template type** | **Elements** |
+| --- | --- | --- |
+| Lost password | WooCommerce - Account - Lost password | Account - Lost password |
+| Lost password confirmation | WooCommerce - Account - Lost password (Confirmation) | Displayed after submitting the lost password form. No special elements.<br /><br />Example:<br />*A password reset email has been sent to the email address on file for your account, but may take several minutes to show up in your inbox. Please wait at least 10 minutes before attempting another reset.* |
+| Reset password | WooCommerce - Account - Reset password | Account - Reset password |
+
+## Templates for specific account endpoints {#my-account-endpoints}
+
+Designing the account content area for individual account endpoints (Orders, Downloads, etc.) is possible by creating templates of the corresponding template type.
+
+In the example below, we created a "WooCommerce - Account - Orders" template, to which we then added the "Account - Orders" that we styled a bit.
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-account-orders-1024x384.png)
+
+> **Note**
+>
+> When editing the template for an account endpoint (Orders, Downloads, etc.), the drag & drop area is located inside the account content area. Offering a better preview in the builder than just rendering an empty canvas without the account navigation.
+
+The process of creating those account endpoint templates is the same for all other WooCommerce account template types.
+
+## Account template types & elements
+
+| **Template type** | **Endpoint** | **Element** |
+| --- | --- | --- |
+| WooCommerce - Account - Dashboard | `/` | - |
+| WooCommerce - Account - Orders | `orders/` | Account - Orders |
+| WooCommerce - Account - View order | `view-order/{order_id}/` | Account - View order |
+| WooCommerce - Account - Downloads | `downloads/` | Account - Downloads |
+| WooCommerce - Account - Payment methods | `payment-methods/` | Account - Payment methods |
+| WooCommerce - Account - Add payment method | `add-payment-method/` | Account - Add payment method |
+| WooCommerce - Account - Addresses | `edit-address/` | Account - Addresses |
+| WooCommerce - Account - Edit address | `edit-address/billing/`<br />`edit-address/shipping/` | Account - Edit address |
+| WooCommerce - Account - Edit account | `edit-account/` | Account - Edit account |
+
+---
+
 <a id="integrations-woocommerce-woocommerce-builder"></a>
 
 # WooCommerce Builder
@@ -2801,153 +2988,6 @@ In addition to the Bricks templates mentioned above, several pages within your W
 **Only one Notice element is needed per page.**
 
 If you happen to add multiple WC notice elements, only the first one will output the actual notices, following the native WooCommerce behavior. WooCommerce clears notices after the 1st output. Check WooCommerce `wc_print_notices()` for more information.
-
----
-
-<a id="integrations-woocommerce-woocommerce-account-builder"></a>
-
-# WooCommerce Account Builder
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/
-
-*Customize WooCommerce account-area screens in Bricks with the classic Account builder templates or the Account Page v2 advanced modular workflow.*
-
-Bricks 1.9 introduces the My Account builder, which lets you customize the account area of your WooCommerce site.
-
-This includes the My Account page (logged-in), the account login/register/lost & reset password pages (shown when not logged-in), and all My Account endpoints (e.g., Orders, Downloads, etc.).
-
-> **Note**
->
-> Starting in Bricks 2.4, you can also build the My Account page directly with [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) and the [Account Page v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page-v2/). The classic account template workflow below is still supported.
-
-> **Note**
->
-> **IMPORTANT:** In order to ensure that all your customizations to the WooCommerce My Account templates are properly applied, it is imperative that you complete the "[My Account Page (logged in)](#my-account-page)" step.
-
-## Account Page v2 workflow
-
-With advanced modular elements enabled, Account Page v2 keeps the account wrapper, navigation, login state, password states, and account endpoint states together on the assigned My Account page.
-
-Use the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) and choose **Advanced (v2)** to replace the assigned My Account page content with the Account Page v2 element and generated state structure.
-
-Account Page v2 includes states for:
-
-- Dashboard
-- Orders
-- View order
-- Downloads
-- Addresses
-- Edit address
-- Edit account
-- Payment methods
-- Add payment method
-- Login
-- Lost password
-- Lost password confirmation
-- Reset password
-- Order withdrawal (WooCommerce 11.1 or later, with Order Withdrawal enabled)
-
-Each state can generate a complete starter block through **Insert a structure**. Address and account forms use editable Bricks form field elements, so you can style and reorder them after generation.
-
-The Account edit-address state has its own field sync because WooCommerce account address editing and checkout use different field contexts. Use it after plugins or WooCommerce settings change address fields.
-
-Account Page v2 also adds query loops and dynamic tags for account orders, order actions, account downloads, account addresses, order data, downloads, and customer notes. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#account-tags).
-
-### Endpoints added by plugins
-
-Account Page v2 provides editable states for the built-in WooCommerce account routes listed above. An endpoint registered by another plugin does not appear automatically as an additional editable state in the builder.
-
-WooCommerce account endpoints are routes on the assigned My Account page, not separate WordPress pages. A plugin that registers an endpoint and its output callback correctly can still render its content through WooCommerce on that page, but Bricks does not provide a dedicated Account Page v2 state for designing that endpoint.
-
-If a plugin endpoint is blank on the frontend, temporarily test the My Account page with WooCommerce's default account output or without the Account Page v2 element. If it remains blank, check the plugin's endpoint registration. If it works only without Account Page v2, include the plugin name and endpoint slug when contacting Bricks support.
-
-## My Account Page (logged in) {#my-account-page}
-
-To design your My Account page (navigation + content wrapper), **please edit your "My Account" page directly**. You'll find a dedicated "Account Page" element that you can add and adjust its settings to your liking.
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-my-account-page-1.png)
-
-<figcaption>
-
-Custom My Account page using the "Account - Page" element
-
-</figcaption>
-
-> **Note**
->
-> **IMPORTANT:** If you have the *"Enable Bricks WooCommerce "Notice" element"* Bricks setting enabled, please make sure that you have added the "Notice" element to your account page or to all account templates individually. So the notifications when submitting the account forms (e.g., address, reset password, etc.) are displayed.
-
-Starting in Bricks 2.4, the classic **Account - Page** element supports WooCommerce's native Order Withdrawal flow for guests and logged-in customers when the WooCommerce feature is enabled; use the [Account Page v2 Order withdrawal state](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page-v2/#order-withdrawal) to customize its layout.
-
-## Account - Login / Register {#my-account-login-register}
-
-The login form is displayed when a not-logged-in visitor views the My Account page. And the registration form, if you have the *"Allow customers to create an account on the "My account" page"* WooCommerce setting enabled.
-
-You can design your account login/registration layout by creating a new template type "WooCommerce - Account - Login".
-
-When editing this template, you'll find dedicated elements for the **"Account - Login form"** & **"Account - Register form"** as shown in the screenshot below:
-
-You should also check the **Account creation** settings located at *WooCommerce > Settings > Accounts & Privacy* section to control what form to be displayed via **Account - Register form** element.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-account-creation-settings.png)
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-account-login-register.png)
-
-<figcaption>
-
-Custom account login/register template
-
-</figcaption>
-
-> **Note**
->
-> **IMPORTANT:** Ensure you have inserted a Basic Text element with `{do_action:woocommerce_before_customer_login_form}` before your Login and Register form. And another Basic Text element with `{do_action:woocommerce_after_customer_login_form}` after the forms.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-do-action-account-login.png)
-
-<figcaption>
-
-Example do_action location. Before and after the login/register forms.
-
-</figcaption>
-
-## Account - Lost / reset password {#my-account-lost-reset-password}
-
-The WooCommerce account builder in Bricks also provides the following dedicated templates and elements for the lost & reset password pages:
-
-| **Account page** | **Template type** | **Elements** |
-| --- | --- | --- |
-| Lost password | WooCommerce - Account - Lost password | Account - Lost password |
-| Lost password confirmation | WooCommerce - Account - Lost password (Confirmation) | Displayed after submitting the lost password form. No special elements.<br /><br />Example:<br />*A password reset email has been sent to the email address on file for your account, but may take several minutes to show up in your inbox. Please wait at least 10 minutes before attempting another reset.* |
-| Reset password | WooCommerce - Account - Reset password | Account - Reset password |
-
-## Templates for specific account endpoints {#my-account-endpoints}
-
-Designing the account content area for individual account endpoints (Orders, Downloads, etc.) is possible by creating templates of the corresponding template type.
-
-In the example below, we created a "WooCommerce - Account - Orders" template, to which we then added the "Account - Orders" that we styled a bit.
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-account-orders-1024x384.png)
-
-> **Note**
->
-> When editing the template for an account endpoint (Orders, Downloads, etc.), the drag & drop area is located inside the account content area. Offering a better preview in the builder than just rendering an empty canvas without the account navigation.
-
-The process of creating those account endpoint templates is the same for all other WooCommerce account template types.
-
-## Account template types & elements
-
-| **Template type** | **Endpoint** | **Element** |
-| --- | --- | --- |
-| WooCommerce - Account - Dashboard | `/` | - |
-| WooCommerce - Account - Orders | `orders/` | Account - Orders |
-| WooCommerce - Account - View order | `view-order/{order_id}/` | Account - View order |
-| WooCommerce - Account - Downloads | `downloads/` | Account - Downloads |
-| WooCommerce - Account - Payment methods | `payment-methods/` | Account - Payment methods |
-| WooCommerce - Account - Add payment method | `add-payment-method/` | Account - Add payment method |
-| WooCommerce - Account - Addresses | `edit-address/` | Account - Addresses |
-| WooCommerce - Account - Edit address | `edit-address/billing/`<br />`edit-address/shipping/` | Account - Edit address |
-| WooCommerce - Account - Edit account | `edit-account/` | Account - Edit account |
 
 ---
 

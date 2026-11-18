@@ -1,4 +1,4 @@
-*Creates a range slider or input interface for filtering content by numeric ranges. Perfect for price filtering, numeric custom fields, or any data that has.*
+*Filter query results by numeric ranges using sliders or input fields, with optional default minimum and maximum values.*
 
 Creates a range slider or input interface for filtering content by numeric ranges. Perfect for price filtering, numeric custom fields, or any data that has minimum and maximum values. Supports both slider and input field display modes.
 
@@ -6,7 +6,7 @@ Creates a range slider or input interface for filtering content by numeric range
 
 ## Settings
 
-- **Target query** (query-list) - Select the query this filter should target. Only post queries are supported in this version.
+- **Target query** (query-list) - Select the Posts, Terms, or Users query this filter should target.
 - **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
 - **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
 - **Source** (select) - Data source for filter options. Currently limited to Custom field.
@@ -37,6 +37,12 @@ Creates a range slider or input interface for filtering content by numeric range
   - **Prefix** (text) - Text to display before filter value.
   - **Suffix** (text) - Text to display after filter value.
   - **Title** (text) - Custom title attribute for filter links.
+
+## Default selection {#default-selection}
+
+Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. Under **Default value**, enter numeric **Minimum** and **Maximum** values. Leave one endpoint empty to use the original range boundary. Defaults are limited to the original available range and support dynamic data.
+
+The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
 
 > **Developer reference**
 >

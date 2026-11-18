@@ -28,6 +28,12 @@
 | `pauseOnHover` | checkbox | Pause on hover | — |
 | `pauseOnFocus` | checkbox | Pause on focus | — |
 | `interval` | number | Interval in ms | — |
+| `autoScroll` | checkbox | Auto scroll | — |
+| `autoScrollSpeed` | number | Speed | — |
+| `autoScrollPauseOnHover` | checkbox | Pause on hover | — |
+| `autoScrollPauseOnFocus` | checkbox | Pause on focus | — |
+| `playbackControl` | checkbox | Show playback control | — |
+| `playbackControlPosition` | select | Position | `position` on `> .bricks-slider-playback` |
 | `rewind` | checkbox | Rewind | — |
 | `rewindByDrag` | checkbox | Rewind by drag | — |
 | `rewindSpeed` | number | Speed in ms | — |
@@ -99,6 +105,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |

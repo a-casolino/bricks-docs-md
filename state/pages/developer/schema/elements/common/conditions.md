@@ -40,11 +40,13 @@ This reads as: show the element if (user is logged in AND is an administrator) O
 
 **General**
 - `browser`
+- `cookie`
 - `current_url`
 - `date`
 - `datetime`
 - `dynamic_data`
 - `featured_image`
+- `inner_content`
 - `operating_system`
 - `referer`
 - `time`

@@ -13,12 +13,12 @@
 |---|---|---|---|
 | `formType` | select | Form type | — |
 | `buttonText` | text | Text | — |
-| `buttonTypography` | typography | Typography | `font` on `button` |
 | `buttonMargin` | spacing | Margin | `margin` on `button` |
 | `buttonPadding` | spacing | Padding | `padding` on `button` |
 | `buttonBackgroundColor` | color | Background color | `background-color` on `button` |
 | `buttonBorder` | border | Border | `border` on `button` |
 | `buttonBoxShadow` | box-shadow | Box shadow | `box-shadow` on `button` |
+| `buttonTypography` | typography | Typography | `font` on `button` |
 
 ## Inherited CSS controls
 
@@ -44,6 +44,8 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
 | `_display` | select | Display | `display`, `align-items` |
+| `_columns` | text | Columns | `columns` |
+| `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |
 | `_overflow` | text | Overflow | `overflow` |
 | `_opacity` | number | Opacity | `opacity` |
