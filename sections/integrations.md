@@ -1,7 +1,7 @@
 # Bricks Builder Documentation: Integrations
 
-<!-- content-sha256: 6888ff492f7598bd355c0ec569ddbb17ed52fd36af3ff135e9f55e244b01706a -->
-<!-- content last changed: 2026-11-18 08:35 UTC -->
+<!-- content-sha256: 73b7bbfcff298ea053ea0857f716c09ba447fc3843bea8eb46132bee348f2a17 -->
+<!-- content last changed: 2026-11-20 08:29 UTC -->
 
 Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricksbuilder.io/), refreshed daily. Content © Bricks. 28 pages.
 
@@ -10,18 +10,18 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
   - [Gutenberg](#integrations-gutenberg)
   - [How to set up your Google Maps API key](#integrations-how-to-set-up-your-google-maps-api-key)
   - [How to use WPML with Bricks](#integrations-how-to-use-wpml-with-bricks)
-  - [How to get your Instagram Access Token](#integrations-instagram-access-token)
-  - [Map (Leaflet)](#integrations-map-leaflet)
-  - [Unsplash Integration](#integrations-unsplash)
 - [Integrations](#integrations)
+  - [Map (Leaflet)](#integrations-map-leaflet)
+  - [How to get your Instagram Access Token](#integrations-instagram-access-token)
+  - [Unsplash Integration](#integrations-unsplash)
   - [How to use Polylang with Bricks](#integrations-polylang)
-    - [Bricks components as blocks](#integrations-gutenberg-components-as-blocks)
     - [Cart (WooCommerce)](#integrations-woocommerce-cart)
+    - [Bricks components as blocks](#integrations-gutenberg-components-as-blocks)
     - [Checkout (WooCommerce)](#integrations-woocommerce-checkout)
-    - [Create a custom mini cart with Dynamic fragment](#integrations-woocommerce-create-custom-mini-cart-dynamic-fragment)
     - [WooCommerce advanced modular elements](#integrations-woocommerce-advanced-modular-elements)
-    - [Element: Checkout Coupon](#integrations-woocommerce-element-checkout-coupon)
+    - [Create a custom mini cart with Dynamic fragment](#integrations-woocommerce-create-custom-mini-cart-dynamic-fragment)
     - [Creating dynamic WooCommerce archive pages](#integrations-woocommerce-creating-dynamic-woocommerce-archive-pages)
+    - [Element: Checkout Coupon](#integrations-woocommerce-element-checkout-coupon)
     - [Element: Checkout Login](#integrations-woocommerce-element-checkout-login)
     - [How to Create Product Quick View with Bricks](#integrations-woocommerce-how-to-create-product-quick-view-with-bricks)
   - [WooCommerce](#integrations-woocommerce)
@@ -31,10 +31,10 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
     - [Single Product (WooCommerce)](#integrations-woocommerce-single-product)
     - [Woo Setup Wizard](#integrations-woocommerce-woo-setup-wizard)
     - [WooCommerce Account Builder](#integrations-woocommerce-woocommerce-account-builder)
-    - [WooCommerce Builder](#integrations-woocommerce-woocommerce-builder)
     - [WooCommerce Notices](#integrations-woocommerce-woocommerce-notices)
-    - [WooCommerce Template Hooks](#integrations-woocommerce-woocommerce-template-hooks)
+    - [WooCommerce Builder](#integrations-woocommerce-woocommerce-builder)
     - [WooCommerce v2 query loops and dynamic tags](#integrations-woocommerce-woocommerce-v2-query-loops-dynamic-tags)
+    - [WooCommerce Template Hooks](#integrations-woocommerce-woocommerce-template-hooks)
 
 ---
 
@@ -371,73 +371,24 @@ If you found this post insightful and you're considering giving WPML a try, we e
 
 ---
 
-<a id="integrations-instagram-access-token"></a>
+<a id="integrations"></a>
 
-# How to get your Instagram Access Token
+# Integrations
 
-Source: https://academy.bricksbuilder.io/integrations/instagram-access-token/
+Source: https://academy.bricksbuilder.io/integrations/
 
-*Generate an Instagram access token for Bricks so Instagram-based elements can retrieve and display feed content.*
+*Learn how Bricks works with WooCommerce, Gutenberg, WPML, Polylang, Google Maps, Unsplash, and other supported integrations.*
 
-To use the Instagram Feed element (@since 1.9.1), you need an access token. This token allows secure retrieval of your Instagram account data. This guide explains how to get the token using the Instagram API with Instagram Login.
+The Integrations section brings together Bricks guides for third-party platforms, plugins, and external services that commonly shape real production projects.
 
-> **Note**
->
-> Before you can publish your app and generate an access token, you must connect your app to a **Business that has completed Business Verification**. Follow Meta’s [Business Verification guide](https://developers.facebook.com/docs/development/release/business-verification/) for instructions.
+## Browse integrations
 
-## Step 1: Ensure you have an Instagram Creator or Business account
-
-Before proceeding, make sure your Instagram account is either a **Creator** or **Business** account.
-
-1. Log in to your Instagram account.
-2. Convert your account by following these instructions:
-  - [Set up a Creator Account](https://help.instagram.com/2358103564437429?helpref=faq_content).
-  - [Convert to a Business Account](https://help.instagram.com/502981923235522).
-
-## Step 2: Set up an application
-
-You first have to set up an application on the Meta for Developers platform by following these steps:
-
-1. Access your [Meta for Developers platform](https://developers.facebook.com/apps). You can use an existing account or [create a new one](https://developers.facebook.com/docs/development/register/).
-2. Provide an **App Name** and **Contact Email**.
-3. Click **Create App**, then:
-  - Under **Add use cases**, select **Manage messaging & content on Instagram** (from the **Content management category**), then click **Next**.
-  - When prompted, you may connect a Business account now or skip and do it later.
-4. Click **Next** and then **Go to dashboard** to complete the setup.
-
-You will be redirected to the app dashboard for your new app with products you can add to your app.
-
-## Step 3: Add the Instagram product to your app
-
-1. On the app dashboard, scroll down to **Products** and locate **Instagram**.
-2. Click **Set Up** next to Instagram.
-3. Select **API Setup with Instagram Login** (NOT API Setup with Facebook Login).
-
-## Step 4: Generate your Instagram access token
-
-To retrieve an access token:
-
-1. Assign an Instagram account for token generation:
-  - In the App Dashboard, go to **Instagram > API Setup with Instagram Login**.
-  - Click **Add an Instagram Account**.
-  - Log in with your Instagram Creator or Business account credentials.
-
-![](https://academy.bricksbuilder.io/assets/bricks-instagram-generate-access-token-1024x684.png)
-
-1. Confirm the account connection:
-  - Your Instagram account must be public.
-  - If you manage multiple accounts, ensure the correct one is selected.
-2. Copy the generated access token tied to the assigned Instagram account.
-
-## Step 5: Add the access token to Bricks
-
-To finalize the setup, navigate to `Bricks settings > API keys` from your WordPress dashboard and paste the access token into the `Instagram Access Token` input field, and save your changes.
-
-![](https://academy.bricksbuilder.io/assets/bricks-instagram-access-token-20-1024x101.png)
-
-For more information, refer to Meta’s official documentation: [Create a Meta App for Instagram Platform](https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/create-a-meta-app-with-instagram).
-
-**Note:** Once you retrieve and add the access token, Bricks will automatically refresh it every **20 days** using the `bricks_refresh_instagram_access_token` CRON job. No manual updates are required.
+- [WooCommerce](https://academy.bricksbuilder.io/integrations/woocommerce/) for shop, product, cart, checkout, account, and notice workflows
+- [Gutenberg](https://academy.bricksbuilder.io/integrations/gutenberg/) for mixed editor and block-based workflows
+- [WPML](https://academy.bricksbuilder.io/integrations/how-to-use-wpml-with-bricks/) for multilingual projects with translated content and templates
+- [Polylang](https://academy.bricksbuilder.io/integrations/polylang/) for multilingual content and templates with Polylang
+- [Google Maps](https://academy.bricksbuilder.io/integrations/how-to-set-up-your-google-maps-api-key/) for map element setup
+- [Unsplash](https://academy.bricksbuilder.io/integrations/unsplash/) for external image sourcing
 
 ---
 
@@ -517,6 +468,76 @@ The Map group also includes zoom interactions, dragging, attribution, and resize
 
 ---
 
+<a id="integrations-instagram-access-token"></a>
+
+# How to get your Instagram Access Token
+
+Source: https://academy.bricksbuilder.io/integrations/instagram-access-token/
+
+*Generate an Instagram access token for Bricks so Instagram-based elements can retrieve and display feed content.*
+
+To use the Instagram Feed element (@since 1.9.1), you need an access token. This token allows secure retrieval of your Instagram account data. This guide explains how to get the token using the Instagram API with Instagram Login.
+
+> **Note**
+>
+> Before you can publish your app and generate an access token, you must connect your app to a **Business that has completed Business Verification**. Follow Meta’s [Business Verification guide](https://developers.facebook.com/docs/development/release/business-verification/) for instructions.
+
+## Step 1: Ensure you have an Instagram Creator or Business account
+
+Before proceeding, make sure your Instagram account is either a **Creator** or **Business** account.
+
+1. Log in to your Instagram account.
+2. Convert your account by following these instructions:
+  - [Set up a Creator Account](https://help.instagram.com/2358103564437429?helpref=faq_content).
+  - [Convert to a Business Account](https://help.instagram.com/502981923235522).
+
+## Step 2: Set up an application
+
+You first have to set up an application on the Meta for Developers platform by following these steps:
+
+1. Access your [Meta for Developers platform](https://developers.facebook.com/apps). You can use an existing account or [create a new one](https://developers.facebook.com/docs/development/register/).
+2. Provide an **App Name** and **Contact Email**.
+3. Click **Create App**, then:
+  - Under **Add use cases**, select **Manage messaging & content on Instagram** (from the **Content management category**), then click **Next**.
+  - When prompted, you may connect a Business account now or skip and do it later.
+4. Click **Next** and then **Go to dashboard** to complete the setup.
+
+You will be redirected to the app dashboard for your new app with products you can add to your app.
+
+## Step 3: Add the Instagram product to your app
+
+1. On the app dashboard, scroll down to **Products** and locate **Instagram**.
+2. Click **Set Up** next to Instagram.
+3. Select **API Setup with Instagram Login** (NOT API Setup with Facebook Login).
+
+## Step 4: Generate your Instagram access token
+
+To retrieve an access token:
+
+1. Assign an Instagram account for token generation:
+  - In the App Dashboard, go to **Instagram > API Setup with Instagram Login**.
+  - Click **Add an Instagram Account**.
+  - Log in with your Instagram Creator or Business account credentials.
+
+![](https://academy.bricksbuilder.io/assets/bricks-instagram-generate-access-token-1024x684.png)
+
+1. Confirm the account connection:
+  - Your Instagram account must be public.
+  - If you manage multiple accounts, ensure the correct one is selected.
+2. Copy the generated access token tied to the assigned Instagram account.
+
+## Step 5: Add the access token to Bricks
+
+To finalize the setup, navigate to `Bricks settings > API keys` from your WordPress dashboard and paste the access token into the `Instagram Access Token` input field, and save your changes.
+
+![](https://academy.bricksbuilder.io/assets/bricks-instagram-access-token-20-1024x101.png)
+
+For more information, refer to Meta’s official documentation: [Create a Meta App for Instagram Platform](https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/create-a-meta-app-with-instagram).
+
+**Note:** Once you retrieve and add the access token, Bricks will automatically refresh it every **20 days** using the `bricks_refresh_instagram_access_token` CRON job. No manual updates are required.
+
+---
+
 <a id="integrations-unsplash"></a>
 
 # Unsplash Integration
@@ -552,27 +573,6 @@ To receive access to Unsplash's photo library you need to generate an API key. I
 6. Return to your WordPress dashboard. Go to **Bricks > Settings > API Keys** and paste your Unsplash API key under **Unsplash API Key**. Click Save.
 
 If you click on **Browse Unsplash** below an eligible image or image gallery control in the builder, the latest Unsplash photos should now appear, ready for you to download.
-
----
-
-<a id="integrations"></a>
-
-# Integrations
-
-Source: https://academy.bricksbuilder.io/integrations/
-
-*Learn how Bricks works with WooCommerce, Gutenberg, WPML, Polylang, Google Maps, Unsplash, and other supported integrations.*
-
-The Integrations section brings together Bricks guides for third-party platforms, plugins, and external services that commonly shape real production projects.
-
-## Browse integrations
-
-- [WooCommerce](https://academy.bricksbuilder.io/integrations/woocommerce/) for shop, product, cart, checkout, account, and notice workflows
-- [Gutenberg](https://academy.bricksbuilder.io/integrations/gutenberg/) for mixed editor and block-based workflows
-- [WPML](https://academy.bricksbuilder.io/integrations/how-to-use-wpml-with-bricks/) for multilingual projects with translated content and templates
-- [Polylang](https://academy.bricksbuilder.io/integrations/polylang/) for multilingual content and templates with Polylang
-- [Google Maps](https://academy.bricksbuilder.io/integrations/how-to-set-up-your-google-maps-api-key/) for map element setup
-- [Unsplash](https://academy.bricksbuilder.io/integrations/unsplash/) for external image sourcing
 
 ---
 
@@ -753,113 +753,6 @@ To learn more about Polylang and its various features, you can refer to the foll
 3. [Polylang advanced](https://polylang.pro/doc-category/polylang-advanced/): This section provides more advanced Polylang guides.
 
 These resources can provide additional insights and answers to more specific or complex issues you might encounter when using Polylang.
-
----
-
-<a id="integrations-gutenberg-components-as-blocks"></a>
-
-# Bricks components as blocks
-
-Source: https://academy.bricksbuilder.io/integrations/gutenberg/components-as-blocks/
-
-*Expose Bricks components as Gutenberg blocks so editors can insert styled, property-driven Bricks content directly inside the block editor.*
-
-https://youtu.be/HPpr1QLwgAk
-
-Most sites built with Bricks follow a simple pattern: you create your pages and templates in Bricks, and write your posts or other content in the block editor (Gutenberg).
-
-That works well for standard content, but as soon as you need something more custom inside the block editor, like a styled testimonial or a reusable promo block, you quickly run out of options.
-
-We are introducing a new experimental feature called **components as blocks** to bridge this gap. It lets you design blocks in Bricks and make them available directly inside the block editor.
-
-You get the same builder features you already use for pages and templates, while deciding exactly what editors can override through component properties.
-
-This makes it possible to:
-
-- Build custom, styled blocks entirely in Bricks
-- Keep design consistent across your site by updating the component once in Bricks
-- Give editors freedom to customize content inside the block editor while staying within your design system
-
-## Enable components as blocks
-
-This new feature is currently experimental and disabled by default. You can enable it from the WordPress dashboard under `Bricks → Settings → General → Block editor → Bricks components in the block editor`.
-
-Three options are available:
-
-- **Disabled** (default)
-- **Enable individual components manually**
-  - Components must be enabled individually to appear in the block editor.
-  - In the builder:
-    - Open the **Components panel**, hover over a component, click **Use in block editor**, confirm, then save in the builder.
-    - Or edit a component, toggle **Use in block editor → Enabled** from the component settings header, and save.
-  - A filter in the Components panel lets you view only components enabled for the block editor.
-- **Enable all components automatically**
-  - All Bricks components are instantly available in the block editor.
-
-When a component is enabled for block editor use, additional block-specific settings appear in the component settings header under "Use in block editor":
-
-- **Block category**: Choose which block category the component should appear under inside the block editor.
-- **Block icon**: Select the icon shown in the block picker.
-- **Block preview image**: Set an optional preview image that appears in the block inserter.
-
-## Insert a component in the block editor
-
-1. Open or create a post/page in the block editor.
-2. Click **Add block (+)** and search for your component by name.
-3. Select the component. It renders directly inside the editor.
-
-The component behaves like any other block. You can add text above or below, reorder it, or combine it with other block editor blocks.
-
-### Wide and full-width blocks
-
-The block editor's **Wide width** and **Full width** options apply to the outer WordPress block wrapper. The elements inside the component still use their Bricks layout settings.
-
-A Bricks Container has a default maximum width of 1100px. A component with a Container at its root, or a Container nested inside a full-width root element, can therefore remain constrained even when the Gutenberg block is set to **Full width**.
-
-For a full-width component block, use a Section, Block, or Div with 100% width as the outer element. Set the width or maximum width of any inner Container intentionally, then select the required alignment for the block in Gutenberg.
-
-If the editor preview still differs from the frontend, check both the selected Gutenberg alignment and every Bricks layout element that can set a width or maximum width.
-
-## Customize component properties
-
-When you select a Bricks component block in the block editor, its editable properties appear in the **Block settings sidebar** in the same way as editing an instance in Bricks.
-
-All property types are supported:
-
-- Text
-- Rich text
-- Icon
-- Select
-- Toggle
-- Global classes
-- Image
-- Image gallery
-- Link
-- Query loop *(Query editor (PHP), External APIs, and Query manager are not supported at this time)*
-- Repeater *(since Bricks 2.5)*
-
-Each block instance can have unique property values, while the component design remains consistent.
-
-[Component slots](https://academy.bricksbuilder.io/builder/features/components/#slots) are not supported in component blocks. The block editor offers no way to add elements to a slot, so a slot stays empty in the editor and on the frontend.
-
-### Repeater rows
-
-Since Bricks 2.5, connected [Repeater properties](https://academy.bricksbuilder.io/builder/features/components/#repeater-properties) let editors manage structured lists in the Block settings sidebar. Open an item to edit its fields. Use **Add item**, **Duplicate**, **Delete**, and the up/down controls to manage the list. Nested repeaters expose their own items inside the parent row.
-
-Deleting all rows leaves an empty list for that block instance. Use **Reset** to return to the main component's default rows.
-
-## Centralized design updates
-
-All block instances remain linked to the main component in Bricks. Any design change you make in Bricks (such as adjusting layout, typography, or spacing) applies site-wide to every instance, including those inside the block editor.
-
-## Use cases
-
-- **Reusable design elements**: Insert testimonials, event cards, promo blocks, or signup forms into posts.
-- **Design consistency**: Global updates in Bricks apply throughout your entire site.
-- **Content flexibility**: Editors can update text, images, and toggles per instance without leaving the block editor.
-- **Workflow separation**: Designers build components in Bricks, editors use them in the block editor.
-
-As this feature is experimental, we would love your feedback on components as blocks specifically, as well as ideas for how Bricks could integrate even smoother with the block editor to support your workflow. Share your thoughts in the [Bricks forum](https://forum.bricksbuilder.io/) or get in touch with us directly via email.
 
 ---
 
@@ -1076,6 +969,113 @@ To add the update cart button, there's also another dynamic data tag `{woo_cart_
 
 ---
 
+<a id="integrations-gutenberg-components-as-blocks"></a>
+
+# Bricks components as blocks
+
+Source: https://academy.bricksbuilder.io/integrations/gutenberg/components-as-blocks/
+
+*Expose Bricks components as Gutenberg blocks so editors can insert styled, property-driven Bricks content directly inside the block editor.*
+
+https://youtu.be/HPpr1QLwgAk
+
+Most sites built with Bricks follow a simple pattern: you create your pages and templates in Bricks, and write your posts or other content in the block editor (Gutenberg).
+
+That works well for standard content, but as soon as you need something more custom inside the block editor, like a styled testimonial or a reusable promo block, you quickly run out of options.
+
+We are introducing a new experimental feature called **components as blocks** to bridge this gap. It lets you design blocks in Bricks and make them available directly inside the block editor.
+
+You get the same builder features you already use for pages and templates, while deciding exactly what editors can override through component properties.
+
+This makes it possible to:
+
+- Build custom, styled blocks entirely in Bricks
+- Keep design consistent across your site by updating the component once in Bricks
+- Give editors freedom to customize content inside the block editor while staying within your design system
+
+## Enable components as blocks
+
+This new feature is currently experimental and disabled by default. You can enable it from the WordPress dashboard under `Bricks → Settings → General → Block editor → Bricks components in the block editor`.
+
+Three options are available:
+
+- **Disabled** (default)
+- **Enable individual components manually**
+  - Components must be enabled individually to appear in the block editor.
+  - In the builder:
+    - Open the **Components panel**, hover over a component, click **Use in block editor**, confirm, then save in the builder.
+    - Or edit a component, toggle **Use in block editor → Enabled** from the component settings header, and save.
+  - A filter in the Components panel lets you view only components enabled for the block editor.
+- **Enable all components automatically**
+  - All Bricks components are instantly available in the block editor.
+
+When a component is enabled for block editor use, additional block-specific settings appear in the component settings header under "Use in block editor":
+
+- **Block category**: Choose which block category the component should appear under inside the block editor.
+- **Block icon**: Select the icon shown in the block picker.
+- **Block preview image**: Set an optional preview image that appears in the block inserter.
+
+## Insert a component in the block editor
+
+1. Open or create a post/page in the block editor.
+2. Click **Add block (+)** and search for your component by name.
+3. Select the component. It renders directly inside the editor.
+
+The component behaves like any other block. You can add text above or below, reorder it, or combine it with other block editor blocks.
+
+### Wide and full-width blocks
+
+The block editor's **Wide width** and **Full width** options apply to the outer WordPress block wrapper. The elements inside the component still use their Bricks layout settings.
+
+A Bricks Container has a default maximum width of 1100px. A component with a Container at its root, or a Container nested inside a full-width root element, can therefore remain constrained even when the Gutenberg block is set to **Full width**.
+
+For a full-width component block, use a Section, Block, or Div with 100% width as the outer element. Set the width or maximum width of any inner Container intentionally, then select the required alignment for the block in Gutenberg.
+
+If the editor preview still differs from the frontend, check both the selected Gutenberg alignment and every Bricks layout element that can set a width or maximum width.
+
+## Customize component properties
+
+When you select a Bricks component block in the block editor, its editable properties appear in the **Block settings sidebar** in the same way as editing an instance in Bricks.
+
+All property types are supported:
+
+- Text
+- Rich text
+- Icon
+- Select
+- Toggle
+- Global classes
+- Image
+- Image gallery
+- Link
+- Query loop *(Query editor (PHP), External APIs, and Query manager are not supported at this time)*
+- Repeater *(since Bricks 2.5)*
+
+Each block instance can have unique property values, while the component design remains consistent.
+
+[Component slots](https://academy.bricksbuilder.io/builder/features/components/#slots) are not supported in component blocks. The block editor offers no way to add elements to a slot, so a slot stays empty in the editor and on the frontend.
+
+### Repeater rows
+
+Since Bricks 2.5, connected [Repeater properties](https://academy.bricksbuilder.io/builder/features/components/#repeater-properties) let editors manage structured lists in the Block settings sidebar. Open an item to edit its fields. Use **Add item**, **Duplicate**, **Delete**, and the up/down controls to manage the list. Nested repeaters expose their own items inside the parent row.
+
+Deleting all rows leaves an empty list for that block instance. Use **Reset** to return to the main component's default rows.
+
+## Centralized design updates
+
+All block instances remain linked to the main component in Bricks. Any design change you make in Bricks (such as adjusting layout, typography, or spacing) applies site-wide to every instance, including those inside the block editor.
+
+## Use cases
+
+- **Reusable design elements**: Insert testimonials, event cards, promo blocks, or signup forms into posts.
+- **Design consistency**: Global updates in Bricks apply throughout your entire site.
+- **Content flexibility**: Editors can update text, images, and toggles per instance without leaving the block editor.
+- **Workflow separation**: Designers build components in Bricks, editors use them in the block editor.
+
+As this feature is experimental, we would love your feedback on components as blocks specifically, as well as ideas for how Bricks could integrate even smoother with the block editor to support your workflow. Share your thoughts in the [Bricks forum](https://forum.bricksbuilder.io/) or get in touch with us directly via email.
+
+---
+
 <a id="integrations-woocommerce-checkout"></a>
 
 # Checkout (WooCommerce)
@@ -1249,171 +1249,6 @@ If you would like to customize this template you could add the Bricks **WooComme
 > **NOTE:** These Dynamic Data tags will also work inside the **WooCommerce - Thank you** template type.
 
 Bricks 2.4 adds additional order tags and order-aware query loops for v2 layouts, including order items, totals, downloads, actions, and customer notes. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#order-tags).
-
----
-
-<a id="integrations-woocommerce-create-custom-mini-cart-dynamic-fragment"></a>
-
-# Create a custom mini cart with Dynamic fragment
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/create-custom-mini-cart-dynamic-fragment/
-
-*Build a WooCommerce mini cart that refreshes after cart changes using Dynamic fragment, the Cart contents query loop, and cart dynamic tags.*
-
-Use the Dynamic fragment element when you need cart-dependent content outside the main Cart page, such as a custom mini cart in a header Offcanvas, dropdown, or popup.
-
-Dynamic fragment re-renders itself and its children after WooCommerce cart changes. For a mini cart, place the cart item loop and cart totals inside the fragment so product rows, quantities, subtotal, and buttons stay current after add-to-cart, remove, and quantity changes.
-
-https://youtu.be/ExpIHVe2tho
-
-> **Note**
->
-> Dynamic fragment requires **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
-
-The classic [Mini cart element](https://academy.bricksbuilder.io/builder/elements/woocommerce/mini-cart/) shows WooCommerce's own mini cart list. You can style it, but not change its structure. Use Dynamic fragment when you want to build the cart rows, totals, and buttons from Bricks elements.
-
-## Common setup
-
-Mini carts are usually added to a header template and shown in an Offcanvas:
-
-- The header contains the cart icon and cart count.
-- The cart icon toggles the Offcanvas.
-- The Offcanvas contains the generated mini cart structure.
-
-Place the generated mini cart in a dropdown or popup for smaller layouts. Use an Offcanvas when you want more room for product rows, quantity controls, totals, and checkout actions.
-
-## Create the Offcanvas mini cart
-
-1. Open the header template or page where the mini cart should appear.
-2. Add an **Offcanvas** element.
-3. Inside the Offcanvas content area, add a **Dynamic fragment** element.
-4. In the Dynamic fragment controls, go to **Insert a structure**.
-5. Select **Mini cart**.
-6. Click **Generate**.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart.png)
-
-Bricks appends the generated structure inside the Dynamic fragment. It does not replace existing child elements.
-
-## What Bricks generates
-
-The generated Mini cart structure already includes the cart item layout, totals, and buttons. You do not need to add these manually unless you want to change the design or content.
-
-Inside the Dynamic fragment, Bricks creates:
-
-- A **Details wrapper** that contains the mini cart content.
-- A **Cart loop** using the **Cart contents** query type.
-- A cart row inside the loop with product image, product title, product price, product excerpt, item data, quantity control, remove icon, and line subtotal.
-- An empty-cart message from the Cart contents query loop. Change it in the Cart loop's query settings under **No results** > **Text**.
-- A separate block after the Cart loop for the subtotal and action buttons.
-- A condition on that subtotal/actions block so it only shows when the Cart loop has more than `0` results.
-- **View Cart** and **Checkout** buttons using WooCommerce URL dynamic data.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-mini-cart-structure-example.png)
-
-## What the generated structure uses
-
-The generated cart row uses WooCommerce cart tags inside the **Cart contents** loop.
-
-Common row tags:
-
-| Tag or element | Use |
-| --- | --- |
-| `{featured_image}` | Product image. |
-| `{woo_cart_product_title:plain}` | Product title as plain text, without variation metadata. |
-| **Cart item data** | Variation attributes and compatible extension-provided item data. |
-| **Cart quantity** | Quantity input with plus and minus buttons. |
-| `{woo_cart_quantity:value}` | Quantity number as text. |
-| `{woo_cart_subtotal}` | Line subtotal. |
-| `{woo_cart_remove_link:url}` | Remove URL for a link or icon. |
-
-For a custom row, use `{woo_cart_item_price}` when you need the formatted unit price with sale-price markup. `{woo_cart_item_save}` returns the quantity-aware product savings and can be used in a condition through `{woo_cart_item_save:value}`.
-
-The subtotal and buttons are outside the Cart contents loop, but still inside the Dynamic fragment. The generated structure uses:
-
-| Element              | Dynamic data                |
-| -------------------- | --------------------------- |
-| Subtotal amount      | `{woo_cart_order_subtotal}` |
-| View Cart button URL | `{woo_url:cart}`            |
-| Checkout button URL  | `{woo_url:checkout}`        |
-
-The generated remove icon uses `{woo_cart_remove_link:url}` as its link URL. Keep the `product-remove` CSS class on the remove element so WooCommerce cart behavior can target it.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-subtotal-condition.png)
-
-## Add a header cart icon
-
-In the header template, add a second Dynamic fragment near the navigation for the cart icon and count. This fragment only needs to contain the small cart trigger, not the full mini cart.
-
-Inside that header Dynamic fragment:
-
-1. Add an Icon element and choose a cart icon.
-2. Add a Text Basic element for the cart count.
-3. Set the count text to `{woo_cart_items_count}`.
-4. Position the count as a small badge on the cart icon.
-5. Add an element condition to the count so it only shows when `{woo_cart_items_count}` is greater than `0`.
-6. Add an interaction to the cart icon:
-   - **Trigger**: Click
-   - **Action**: Toggle offcanvas
-   - **Offcanvas: CSS selector**: the target Offcanvas element ID, such as `#brxe-evudao`
-
-Because the icon and count are inside Dynamic fragment, the count updates after cart changes. Keep the rest of the header outside the Dynamic fragment unless it also depends on cart data.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-header-mini-cart-trigger.png)
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-header-mini-cart-trigger-interaction.png)
-
-## Open the Offcanvas after add to cart
-
-You can open the mini cart Offcanvas when a product is added through AJAX.
-
-On the Offcanvas element, add an interaction:
-
-- **Trigger**: Added to cart
-- **Action**: Toggle offcanvas
-- **Offcanvas: CSS selector**: the Offcanvas element ID
-
-Add a condition to the Offcanvas if you do not want this behavior on checkout. For example, show the Offcanvas only when the current URL does not contain `{woo_url:checkout}`.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-interaction.png)
-
-**Added to cart** also runs for WooCommerce's own add to cart buttons on shop and category pages when **WooCommerce > Settings > Products > Enable AJAX add to cart buttons on archives** is on (the WooCommerce default).
-
-Keep **Added to cart** for this interaction if the Offcanvas should toggle only after an addition. The [Bricks cart contents changed](https://academy.bricksbuilder.io/builder/features/interactions/#cart-contents-changed) trigger, available since Bricks 2.4, also runs after successful AJAX quantity changes and removals. Using it with **Toggle offcanvas** would toggle the mini cart during those updates too.
-
-## Preview the refresh behavior
-
-Dynamic fragment refreshes on the frontend after WooCommerce cart events such as add to cart, remove from cart, cart emptied, cart totals updated, checkout updated, and coupon apply/remove events.
-
-In the Builder, the cart loop previews your own cart, or sample products when your cart is empty. **Cart item data** shows a placeholder for products without item data, such as simple products. The frontend renders each visitor's real cart.
-
-The **Bricks dynamic fragments refreshed** interaction signals that fragment content has been replaced. It can run during initial synchronization or checkout recalculation without a cart item change. To show a custom “Cart updated” confirmation, use **Bricks cart contents changed**, which waits for a confirmed item change and the related UI updates to finish.
-
-To test the mini cart:
-
-1. Open the frontend page that contains the mini cart.
-2. Add a product to the cart.
-3. Confirm the mini cart updates without reloading the page.
-4. Confirm the header cart count updates.
-5. Click the cart icon and confirm the Offcanvas opens.
-6. Remove the item or change quantity if your layout includes quantity controls.
-7. Confirm the row count, subtotal, and buttons still render correctly.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-frontend-added-to-cart.png)
-
-## Limits
-
-- Dynamic fragment is frontend-only.
-- Keep the Dynamic fragment wrapper outside other query loops. The Cart contents loop can be inside the fragment.
-- Component instances are not supported.
-- The fragment must render from the header, content, or footer area.
-- Keep the fragment focused on cart-dependent content. Static header, menu, or layout elements do not need to be inside it.
-
-## Related
-
-- [Dynamic fragment element](https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/)
-- [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/)
-- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/)
 
 ---
 
@@ -1613,42 +1448,168 @@ Classic templates and v2 page states can coexist on the same site, but each WooC
 
 ---
 
-<a id="integrations-woocommerce-element-checkout-coupon"></a>
+<a id="integrations-woocommerce-create-custom-mini-cart-dynamic-fragment"></a>
 
-# Element: Checkout Coupon
+# Create a custom mini cart with Dynamic fragment
 
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/create-custom-mini-cart-dynamic-fragment/
 
-*Use the Bricks Checkout Coupon element inside WooCommerce checkout templates to render and style the coupon form.*
+*Build a WooCommerce mini cart that refreshes after cart changes using Dynamic fragment, the Cart contents query loop, and cart dynamic tags.*
 
-This Checkout coupon element, available @since 1.11.1, allows you to display the coupon field in various locations on the checkout page, making it easy for customers to apply discount codes during their purchase.
+Use the Dynamic fragment element when you need cart-dependent content outside the main Cart page, such as a custom mini cart in a header Offcanvas, dropdown, or popup.
 
-In previous versions, you couldn’t control the location of the checkout coupon. Additionally, styling options were limited, and adjustments required custom CSS. With this new, dedicated checkout coupon element you now have greater control over placement and design.
+Dynamic fragment re-renders itself and its children after WooCommerce cart changes. For a mini cart, place the cart item loop and cart totals inside the fragment so product rows, quantities, subtotal, and buttons stay current after add-to-cart, remove, and quantity changes.
 
-To use this element, first enable it under **`Bricks > Settings > WooCommerce`** by turning on **`Enable Bricks WooCommerce "Checkout coupon" element`**.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-setting.png)
+https://youtu.be/ExpIHVe2tho
 
 > **Note**
 >
-> WooCommerce **`Enable the use of coupon codes`** must also be active under **WooCommerce > Settings > General**. When the Bricks Checkout Coupon element is enabled, the native WooCommerce checkout coupon form is removed, so add this element where you want the coupon form to appear.
+> Dynamic fragment requires **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
 
-> **Note**
->
-> **Note:** This element is specifically designed for the Checkout page and will only work when placed on the **Checkout template** or the Checkout page itself, depending on your design requirements.
+The classic [Mini cart element](https://academy.bricksbuilder.io/builder/elements/woocommerce/mini-cart/) shows WooCommerce's own mini cart list. You can style it, but not change its structure. Use Dynamic fragment when you want to build the cart rows, totals, and buttons from Bricks elements.
 
-**Key Controls**
+## Common setup
 
-**Location:**
+Mini carts are usually added to a header template and shown in an Offcanvas:
 
-- By default, the **Checkout Coupon** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment
-- Custom location settings only apply on the actual frontend (Checkout page). To ensure correct placement, add this element at the top of your Checkout template.
+- The header contains the cart icon and cart count.
+- The cart icon toggles the Offcanvas.
+- The Offcanvas contains the generated mini cart structure.
 
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-element-controls.png)
+Place the generated mini cart in a dropdown or popup for smaller layouts. Use an Offcanvas when you want more room for product rows, quantity controls, totals, and checkout actions.
 
-![](https://academy.bricksbuilder.io/assets/element-location-example.png)
+## Create the Offcanvas mini cart
 
-Enable **Toggleable form** to hide the form until its prompt is clicked. For the expanded icon and transition controls added in Bricks 2.5, see the [Checkout Coupon settings](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-coupon/#settings).
+1. Open the header template or page where the mini cart should appear.
+2. Add an **Offcanvas** element.
+3. Inside the Offcanvas content area, add a **Dynamic fragment** element.
+4. In the Dynamic fragment controls, go to **Insert a structure**.
+5. Select **Mini cart**.
+6. Click **Generate**.
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart.png)
+
+Bricks appends the generated structure inside the Dynamic fragment. It does not replace existing child elements.
+
+## What Bricks generates
+
+The generated Mini cart structure already includes the cart item layout, totals, and buttons. You do not need to add these manually unless you want to change the design or content.
+
+Inside the Dynamic fragment, Bricks creates:
+
+- A **Details wrapper** that contains the mini cart content.
+- A **Cart loop** using the **Cart contents** query type.
+- A cart row inside the loop with product image, product title, product price, product excerpt, item data, quantity control, remove icon, and line subtotal.
+- An empty-cart message from the Cart contents query loop. Change it in the Cart loop's query settings under **No results** > **Text**.
+- A separate block after the Cart loop for the subtotal and action buttons.
+- A condition on that subtotal/actions block so it only shows when the Cart loop has more than `0` results.
+- **View Cart** and **Checkout** buttons using WooCommerce URL dynamic data.
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-mini-cart-structure-example.png)
+
+## What the generated structure uses
+
+The generated cart row uses WooCommerce cart tags inside the **Cart contents** loop.
+
+Common row tags:
+
+| Tag or element | Use |
+| --- | --- |
+| `{featured_image}` | Product image. |
+| `{woo_cart_product_title:plain}` | Product title as plain text, without variation metadata. |
+| **Cart item data** | Variation attributes and compatible extension-provided item data. |
+| **Cart quantity** | Quantity input with plus and minus buttons. |
+| `{woo_cart_quantity:value}` | Quantity number as text. |
+| `{woo_cart_subtotal}` | Line subtotal. |
+| `{woo_cart_remove_link:url}` | Remove URL for a link or icon. |
+
+For a custom row, use `{woo_cart_item_price}` when you need the formatted unit price with sale-price markup. `{woo_cart_item_save}` returns the quantity-aware product savings and can be used in a condition through `{woo_cart_item_save:value}`.
+
+The subtotal and buttons are outside the Cart contents loop, but still inside the Dynamic fragment. The generated structure uses:
+
+| Element              | Dynamic data                |
+| -------------------- | --------------------------- |
+| Subtotal amount      | `{woo_cart_order_subtotal}` |
+| View Cart button URL | `{woo_url:cart}`            |
+| Checkout button URL  | `{woo_url:checkout}`        |
+
+The generated remove icon uses `{woo_cart_remove_link:url}` as its link URL. Keep the `product-remove` CSS class on the remove element so WooCommerce cart behavior can target it.
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-subtotal-condition.png)
+
+## Add a header cart icon
+
+In the header template, add a second Dynamic fragment near the navigation for the cart icon and count. This fragment only needs to contain the small cart trigger, not the full mini cart.
+
+Inside that header Dynamic fragment:
+
+1. Add an Icon element and choose a cart icon.
+2. Add a Text Basic element for the cart count.
+3. Set the count text to `{woo_cart_items_count}`.
+4. Position the count as a small badge on the cart icon.
+5. Add an element condition to the count so it only shows when `{woo_cart_items_count}` is greater than `0`.
+6. Add an interaction to the cart icon:
+   - **Trigger**: Click
+   - **Action**: Toggle offcanvas
+   - **Offcanvas: CSS selector**: the target Offcanvas element ID, such as `#brxe-evudao`
+
+Because the icon and count are inside Dynamic fragment, the count updates after cart changes. Keep the rest of the header outside the Dynamic fragment unless it also depends on cart data.
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-header-mini-cart-trigger.png)
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-header-mini-cart-trigger-interaction.png)
+
+## Open the Offcanvas after add to cart
+
+You can open the mini cart Offcanvas when a product is added through AJAX.
+
+On the Offcanvas element, add an interaction:
+
+- **Trigger**: Added to cart
+- **Action**: Toggle offcanvas
+- **Offcanvas: CSS selector**: the Offcanvas element ID
+
+Add a condition to the Offcanvas if you do not want this behavior on checkout. For example, show the Offcanvas only when the current URL does not contain `{woo_url:checkout}`.
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-interaction.png)
+
+**Added to cart** also runs for WooCommerce's own add to cart buttons on shop and category pages when **WooCommerce > Settings > Products > Enable AJAX add to cart buttons on archives** is on (the WooCommerce default).
+
+Keep **Added to cart** for this interaction if the Offcanvas should toggle only after an addition. The [Bricks cart contents changed](https://academy.bricksbuilder.io/builder/features/interactions/#cart-contents-changed) trigger, available since Bricks 2.4, also runs after successful AJAX quantity changes and removals. Using it with **Toggle offcanvas** would toggle the mini cart during those updates too.
+
+## Preview the refresh behavior
+
+Dynamic fragment refreshes on the frontend after WooCommerce cart events such as add to cart, remove from cart, cart emptied, cart totals updated, checkout updated, and coupon apply/remove events.
+
+In the Builder, the cart loop previews your own cart, or sample products when your cart is empty. **Cart item data** shows a placeholder for products without item data, such as simple products. The frontend renders each visitor's real cart.
+
+The **Bricks dynamic fragments refreshed** interaction signals that fragment content has been replaced. It can run during initial synchronization or checkout recalculation without a cart item change. To show a custom “Cart updated” confirmation, use **Bricks cart contents changed**, which waits for a confirmed item change and the related UI updates to finish.
+
+To test the mini cart:
+
+1. Open the frontend page that contains the mini cart.
+2. Add a product to the cart.
+3. Confirm the mini cart updates without reloading the page.
+4. Confirm the header cart count updates.
+5. Click the cart icon and confirm the Offcanvas opens.
+6. Remove the item or change quantity if your layout includes quantity controls.
+7. Confirm the row count, subtotal, and buttons still render correctly.
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-frontend-added-to-cart.png)
+
+## Limits
+
+- Dynamic fragment is frontend-only.
+- Keep the Dynamic fragment wrapper outside other query loops. The Cart contents loop can be inside the fragment.
+- Component instances are not supported.
+- The fragment must render from the header, content, or footer area.
+- Keep the fragment focused on cart-dependent content. Static header, menu, or layout elements do not need to be inside it.
+
+## Related
+
+- [Dynamic fragment element](https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/)
+- [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/)
+- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/)
 
 ---
 
@@ -1797,6 +1758,45 @@ Now, your shop page and product category pages should be able to work as expecte
 Custom WooCommerce Archive Template
 
 </figcaption>
+
+---
+
+<a id="integrations-woocommerce-element-checkout-coupon"></a>
+
+# Element: Checkout Coupon
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/
+
+*Use the Bricks Checkout Coupon element inside WooCommerce checkout templates to render and style the coupon form.*
+
+This Checkout coupon element, available @since 1.11.1, allows you to display the coupon field in various locations on the checkout page, making it easy for customers to apply discount codes during their purchase.
+
+In previous versions, you couldn’t control the location of the checkout coupon. Additionally, styling options were limited, and adjustments required custom CSS. With this new, dedicated checkout coupon element you now have greater control over placement and design.
+
+To use this element, first enable it under **`Bricks > Settings > WooCommerce`** by turning on **`Enable Bricks WooCommerce "Checkout coupon" element`**.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-setting.png)
+
+> **Note**
+>
+> WooCommerce **`Enable the use of coupon codes`** must also be active under **WooCommerce > Settings > General**. When the Bricks Checkout Coupon element is enabled, the native WooCommerce checkout coupon form is removed, so add this element where you want the coupon form to appear.
+
+> **Note**
+>
+> **Note:** This element is specifically designed for the Checkout page and will only work when placed on the **Checkout template** or the Checkout page itself, depending on your design requirements.
+
+**Key Controls**
+
+**Location:**
+
+- By default, the **Checkout Coupon** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment
+- Custom location settings only apply on the actual frontend (Checkout page). To ensure correct placement, add this element at the top of your Checkout template.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-element-controls.png)
+
+![](https://academy.bricksbuilder.io/assets/element-location-example.png)
+
+Enable **Toggleable form** to hide the form until its prompt is clicked. For the expanded icon and transition controls added in Bricks 2.5, see the [Checkout Coupon settings](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-coupon/#settings).
 
 ---
 
@@ -2660,6 +2660,78 @@ The process of creating those account endpoint templates is the same for all oth
 
 ---
 
+<a id="integrations-woocommerce-woocommerce-notices"></a>
+
+# WooCommerce Notices
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-notices/
+
+*Style WooCommerce notices in Bricks and control how success, error, and info messages appear across storefront flows.*
+
+New theme style settings under "WooCommerce - Notice" and a new "WooCommerce Notice" element were introduced in Bricks `1.8.1`. Allowing you to elevate the appearance of WooCommerce (WC) notices across your website.
+
+With this new theme style, you can effortlessly customize the design of WC notices, ensuring they blend seamlessly with your website's overall look and feel.
+
+This article explains how to enable the Bricks WooCommerce Notice element, where to place it, and how it replaces native WooCommerce notice output.
+
+## Theme Style: WooCommerce - Notice {#woocommerce-notice-theme-style}
+
+You can find the "WooCommerce - Notice" settings in the builder under Settings > [Theme Styles](https://academy.bricksbuilder.io/builder/styling/theme-styles/).
+
+There are three different types of notice: Error, Success, and default Notice.
+
+![](https://academy.bricksbuilder.io/assets/wc-notice-theme-style.png)
+
+With the WC notice theme style, you can effortlessly align your notice styles with your brand guidelines, and achieve a uniform and professional appearance for your notices.
+
+## Element: WooCommerce Notice {#woocommerce-notice-element}
+
+One of the primary objectives of this new feature is to offer you greater control over the placement of WC notices within their website's design.
+
+Native WC notices often pose challenges, as they may appear outside of the desired design or wrapper, impacting the aesthetics and user experience.
+
+To start using the Bricks WooCommerce notice element you first have to enable it under `Bricks > Settings > WooCommerce > Enable Bricks WooCommerce "Notice" element`.
+
+![](https://academy.bricksbuilder.io/assets/bricks-wc-notice-element.png)
+
+> **Note**
+>
+> Once enabled all native WC notices are automatically removed from your website. So you can & have to manually place the notice element in your desired template & location.
+
+![](https://academy.bricksbuilder.io/assets/bricks-wc-notice-preview.png)
+
+<figcaption>
+
+WC notice element. Not only theme style but can also style individual elements as well.
+
+</figcaption>
+
+**The following Bricks templates should be equipped with the Notice element:**
+
+- WooCommerce Product Archive
+- WooCommerce Single Product
+- WooCommerce Cart
+- WooCommerce Empty Cart
+- WooCommerce Checkout
+- WooCommerce Pay
+- WooCommerce My account login
+- WooCommerce My account lost password
+- WooCommerce My account reset password
+
+In addition to the Bricks templates mentioned above, several pages within your WooCommerce website require the Notice element **if they are edited and rendered using Bricks**. These pages include:
+
+- My Account page (if the WC notice is not placed in the My account login template)
+- Checkout page (if the WC notice is not placed in the Checkout template)
+- Pay / order-pay page (if the WC notice element is not placed in the Pay template)
+- Cart page (if the WC notice element is not placed in the Cart template)
+- Shop page (if the WC notice element is not placed in the Product Archive template)
+
+**Only one Notice element is needed per page.**
+
+If you happen to add multiple WC notice elements, only the first one will output the actual notices, following the native WooCommerce behavior. WooCommerce clears notices after the 1st output. Check WooCommerce `wc_print_notices()` for more information.
+
+---
+
 <a id="integrations-woocommerce-woocommerce-builder"></a>
 
 # WooCommerce Builder
@@ -2916,216 +2988,6 @@ You can use these checkboxes under WooCommerce section to easily retrieve WooCom
 Check [this article](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/#woocommerce) for more examples.
 
 Bricks 2.4 adds v2 WooCommerce query loops for cart coupons, fees, taxes, orders, order items, downloads, customer notes, account orders, account order actions, account downloads, and account addresses. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#query-loops) for the complete list.
-
----
-
-<a id="integrations-woocommerce-woocommerce-notices"></a>
-
-# WooCommerce Notices
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-notices/
-
-*Style WooCommerce notices in Bricks and control how success, error, and info messages appear across storefront flows.*
-
-New theme style settings under "WooCommerce - Notice" and a new "WooCommerce Notice" element were introduced in Bricks `1.8.1`. Allowing you to elevate the appearance of WooCommerce (WC) notices across your website.
-
-With this new theme style, you can effortlessly customize the design of WC notices, ensuring they blend seamlessly with your website's overall look and feel.
-
-This article explains how to enable the Bricks WooCommerce Notice element, where to place it, and how it replaces native WooCommerce notice output.
-
-## Theme Style: WooCommerce - Notice {#woocommerce-notice-theme-style}
-
-You can find the "WooCommerce - Notice" settings in the builder under Settings > [Theme Styles](https://academy.bricksbuilder.io/builder/styling/theme-styles/).
-
-There are three different types of notice: Error, Success, and default Notice.
-
-![](https://academy.bricksbuilder.io/assets/wc-notice-theme-style.png)
-
-With the WC notice theme style, you can effortlessly align your notice styles with your brand guidelines, and achieve a uniform and professional appearance for your notices.
-
-## Element: WooCommerce Notice {#woocommerce-notice-element}
-
-One of the primary objectives of this new feature is to offer you greater control over the placement of WC notices within their website's design.
-
-Native WC notices often pose challenges, as they may appear outside of the desired design or wrapper, impacting the aesthetics and user experience.
-
-To start using the Bricks WooCommerce notice element you first have to enable it under `Bricks > Settings > WooCommerce > Enable Bricks WooCommerce "Notice" element`.
-
-![](https://academy.bricksbuilder.io/assets/bricks-wc-notice-element.png)
-
-> **Note**
->
-> Once enabled all native WC notices are automatically removed from your website. So you can & have to manually place the notice element in your desired template & location.
-
-![](https://academy.bricksbuilder.io/assets/bricks-wc-notice-preview.png)
-
-<figcaption>
-
-WC notice element. Not only theme style but can also style individual elements as well.
-
-</figcaption>
-
-**The following Bricks templates should be equipped with the Notice element:**
-
-- WooCommerce Product Archive
-- WooCommerce Single Product
-- WooCommerce Cart
-- WooCommerce Empty Cart
-- WooCommerce Checkout
-- WooCommerce Pay
-- WooCommerce My account login
-- WooCommerce My account lost password
-- WooCommerce My account reset password
-
-In addition to the Bricks templates mentioned above, several pages within your WooCommerce website require the Notice element **if they are edited and rendered using Bricks**. These pages include:
-
-- My Account page (if the WC notice is not placed in the My account login template)
-- Checkout page (if the WC notice is not placed in the Checkout template)
-- Pay / order-pay page (if the WC notice element is not placed in the Pay template)
-- Cart page (if the WC notice element is not placed in the Cart template)
-- Shop page (if the WC notice element is not placed in the Product Archive template)
-
-**Only one Notice element is needed per page.**
-
-If you happen to add multiple WC notice elements, only the first one will output the actual notices, following the native WooCommerce behavior. WooCommerce clears notices after the 1st output. Check WooCommerce `wc_print_notices()` for more information.
-
----
-
-<a id="integrations-woocommerce-woocommerce-template-hooks"></a>
-
-# WooCommerce Template Hooks
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/
-
-*Use WooCommerce template hooks in Bricks to preserve third-party plugin output and place additional content in key storefront locations.*
-
-Bricks 1.7 introduces a new [`do_action`](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/#do_action) dynamic tag, which is designed to address the majority of compatibility issues between Bricks and third-party WooCommerce plugins. This new dynamic tag not only solves these compatibility issues but also enhances the flexibility of design by allowing users to place hooks anywhere they desire.
-
-This article will guide you through the templates that need to be updated with the new `do_action` dynamic tag, though this step is optional if your Bricks-built WooCommerce website is already functioning properly.
-
-Please note that when using the `do_action` dynamic tag with the specified hooks, Bricks will automatically remove certain native WooCommerce actions to prevent duplicate content.
-
-As an example, consider using `{do_action:woocommerce_after_shop_loop_item_title}` dynamic tag in Bricks. This tag will automatically remove the `woocommerce_template_loop_rating` and `woocommerce_template_loop_price` actions. The reason for this is because the Product price and Product rating elements will be used to output the information in the desired location. At the same time, other plugins or codes will still be able to successfully hook onto the dynamic tag.
-
-#### WooCommerce actions list removed by Bricks when using the do_action tag {#woo-special-actions-list}
-
-| Hook | Actions removed by Bricks, Priority |
-| --- | --- |
-| woocommerce_before_shop_loop_item | woocommerce_template_loop_product_link_open, 10 |
-| woocommerce_before_shop_loop_item_title | woocommerce_show_product_loop_sale_flash, 10<br />woocommerce_template_loop_product_thumbnail, 10 |
-| woocommerce_shop_loop_item_title | woocommerce_template_loop_product_title,10 |
-| woocommerce_after_shop_loop_item_title | woocommerce_template_loop_rating, 5<br />woocommerce_template_loop_price, 10 |
-| woocommerce_after_shop_loop_item | woocommerce_template_loop_product_link_close, 5<br />woocommerce_template_loop_add_to_cart, 10 |
-| woocommerce_before_single_product_summary | woocommerce_show_product_sale_flash, 10<br />woocommerce_show_product_images, 20 |
-| woocommerce_single_product_summary | woocommerce_template_single_title, 5<br />woocommerce_template_single_rating, 10<br />woocommerce_template_single_price, 10<br />woocommerce_template_single_excerpt, 20<br />woocommerce_template_single_add_to_cart, 30<br />woocommerce_template_single_meta, 40<br />woocommerce_template_single_sharing, 50 |
-| woocommerce_after_single_product_summary | woocommerce_output_product_data_tabs, 10<br />woocommerce_upsell_display, 15<br />woocommerce_output_related_products, 20 |
-| woocommerce_before_main_content | woocommerce_output_content_wrapper,10<br />woocommerce_breadcrumb, 20 |
-| woocommerce_archive_description | woocommerce_taxonomy_archive_description, 10<br />woocommerce_product_archive_description, 10 |
-| woocommerce_before_shop_loop | woocommerce_result_count, 20<br />woocommerce_catalog_ordering, 30 |
-| woocommerce_after_shop_loop | woocommerce_pagination, 10 |
-| woocommerce_after_main_content | woocommerce_output_content_wrapper_end, 10 |
-| woocommerce_cart_is_empty | wc_empty_cart_message, 10 |
-
-> **Note**
->
-> Simply use a Basic Text element when applying the `{do_action:xxx}` dynamic tag within your template.
-
-## WooCommerce Single Product Template Hooks {#single-product-template-hooks}
-
-For the WooCommerce Single Product template, the following hooks are recommended to be used with the `do_action` dynamic tag:
-
-- `{do_action:woocommerce_before_single_product}` - Important (WooCommerce notice)
-- `{do_action:woocommerce_before_single_product_summary}`
-- `{do_action:woocommerce_single_product_summary}` - Important (Many third-party plugins using this hook to inject their code)
-- `{do_action:woocommerce_after_single_product_summary}`
-- `{do_action:woocommerce_after_single_product}`
-
-Best to place all of these in your single product template if you are not sure which hook will be using by the third-party plugins.
-
-![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-single-product-template-hooks.png)
-
-<figcaption>
-
-Single product template hooks location
-
-</figcaption>
-
-## WooCommerce Product Archive Template Hooks {#product-archive-template-hooks}
-
-For the WooCommerce Product Archive template, the following hooks are recommended to be used with the `do_action` dynamic tag:
-
-- `{do_action:woocommerce_archive_description}`
-- `{do_action:woocommerce_before_shop_loop}` - Important (WooCommerce notice)
-- `{do_action:woocommerce_before_shop_loop_item}`
-- `{do_action:woocommerce_before_shop_loop_item_title}`
-- `{do_action:woocommerce_shop_loop_item_title}`
-- `{do_action:woocommerce_after_shop_loop_item_title}`
-- `{do_action:woocommerce_after_shop_loop_item}`
-- `{do_action:woocommerce_after_shop_loop}`
-
-![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-product-archive-template-hooks.png)
-
-<figcaption>
-
-Product archive template hooks location (Custom Query Loop)
-
-</figcaption>
-
-In Bricks 1.7, the dynamic tag `do_action` hooks will be automatically included in the fields of the Products element (for newly inserted Products elements only).
-
-![](https://academy.bricksbuilder.io/assets/Products-element-with-do_action-included-since-1_6_3.png)
-
-<figcaption>
-
-Default Products element with do_action hooks (Bricks 1.7+)
-
-</figcaption>
-
-## WooCommerce Empty Cart Template Hooks {#empty-cart-template-hooks}
-
-For the WooCommerce Empty Cart template, the following hook is recommended to be used with the `do_action` dynamic tag:
-
-- `{do_action:woocommerce_cart_is_empty}` - Important (WooCommerce notice)
-
-![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-empty-cart-template-hooks.png)
-
-<figcaption>
-
-Empty cart template hook location
-
-</figcaption>
-
-## WooCommerce Cart Template Hooks {#cart-template-hooks}
-
-For the WooCommerce Cart template, the following hooks are recommended to be used with the `do_action` dynamic tag:
-
-- `{do_action:woocommerce_before_cart}` - Important (WooCommerce notice)
-- `{do_action:woocommerce_before_cart_collaterals}`
-- `{do_action:woocommerce_after_cart}`
-
-![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-cart-template-hooks.png)
-
-<figcaption>
-
-Cart template hooks location
-
-</figcaption>
-
-## WooCommerce Pay Template {#pay-template-hooks}
-
-For the WooCommerce Pay template, the following hooks are recommended to be used with the `do_action` dynamic tag:
-
-- `{do_action:woocommerce_pay_order_before_payment}`
-
-![](https://academy.bricksbuilder.io/assets/woo-pay-template.png)
-
-<figcaption>
-
-Pay template hooks location
-
-</figcaption>
-
-By following this guide, you can ensure that the templates created in Bricks are fully compatible with WooCommerce and that all necessary actions and details are displayed as intended.
 
 ---
 
@@ -3467,3 +3329,141 @@ Bricks' custom coupon handlers emit these WooCommerce events when the response c
 | `errored_coupon_in_checkout` | Checkout Coupon | Coupon code, raw returned notice HTML |
 
 The existing `applied_coupon` and `applied_coupon_in_checkout` events also fire for error responses. They do not confirm that a coupon was accepted.
+
+---
+
+<a id="integrations-woocommerce-woocommerce-template-hooks"></a>
+
+# WooCommerce Template Hooks
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/
+
+*Use WooCommerce template hooks in Bricks to preserve third-party plugin output and place additional content in key storefront locations.*
+
+Bricks 1.7 introduces a new [`do_action`](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/#do_action) dynamic tag, which is designed to address the majority of compatibility issues between Bricks and third-party WooCommerce plugins. This new dynamic tag not only solves these compatibility issues but also enhances the flexibility of design by allowing users to place hooks anywhere they desire.
+
+This article will guide you through the templates that need to be updated with the new `do_action` dynamic tag, though this step is optional if your Bricks-built WooCommerce website is already functioning properly.
+
+Please note that when using the `do_action` dynamic tag with the specified hooks, Bricks will automatically remove certain native WooCommerce actions to prevent duplicate content.
+
+As an example, consider using `{do_action:woocommerce_after_shop_loop_item_title}` dynamic tag in Bricks. This tag will automatically remove the `woocommerce_template_loop_rating` and `woocommerce_template_loop_price` actions. The reason for this is because the Product price and Product rating elements will be used to output the information in the desired location. At the same time, other plugins or codes will still be able to successfully hook onto the dynamic tag.
+
+#### WooCommerce actions list removed by Bricks when using the do_action tag {#woo-special-actions-list}
+
+| Hook | Actions removed by Bricks, Priority |
+| --- | --- |
+| woocommerce_before_shop_loop_item | woocommerce_template_loop_product_link_open, 10 |
+| woocommerce_before_shop_loop_item_title | woocommerce_show_product_loop_sale_flash, 10<br />woocommerce_template_loop_product_thumbnail, 10 |
+| woocommerce_shop_loop_item_title | woocommerce_template_loop_product_title,10 |
+| woocommerce_after_shop_loop_item_title | woocommerce_template_loop_rating, 5<br />woocommerce_template_loop_price, 10 |
+| woocommerce_after_shop_loop_item | woocommerce_template_loop_product_link_close, 5<br />woocommerce_template_loop_add_to_cart, 10 |
+| woocommerce_before_single_product_summary | woocommerce_show_product_sale_flash, 10<br />woocommerce_show_product_images, 20 |
+| woocommerce_single_product_summary | woocommerce_template_single_title, 5<br />woocommerce_template_single_rating, 10<br />woocommerce_template_single_price, 10<br />woocommerce_template_single_excerpt, 20<br />woocommerce_template_single_add_to_cart, 30<br />woocommerce_template_single_meta, 40<br />woocommerce_template_single_sharing, 50 |
+| woocommerce_after_single_product_summary | woocommerce_output_product_data_tabs, 10<br />woocommerce_upsell_display, 15<br />woocommerce_output_related_products, 20 |
+| woocommerce_before_main_content | woocommerce_output_content_wrapper,10<br />woocommerce_breadcrumb, 20 |
+| woocommerce_archive_description | woocommerce_taxonomy_archive_description, 10<br />woocommerce_product_archive_description, 10 |
+| woocommerce_before_shop_loop | woocommerce_result_count, 20<br />woocommerce_catalog_ordering, 30 |
+| woocommerce_after_shop_loop | woocommerce_pagination, 10 |
+| woocommerce_after_main_content | woocommerce_output_content_wrapper_end, 10 |
+| woocommerce_cart_is_empty | wc_empty_cart_message, 10 |
+
+> **Note**
+>
+> Simply use a Basic Text element when applying the `{do_action:xxx}` dynamic tag within your template.
+
+## WooCommerce Single Product Template Hooks {#single-product-template-hooks}
+
+For the WooCommerce Single Product template, the following hooks are recommended to be used with the `do_action` dynamic tag:
+
+- `{do_action:woocommerce_before_single_product}` - Important (WooCommerce notice)
+- `{do_action:woocommerce_before_single_product_summary}`
+- `{do_action:woocommerce_single_product_summary}` - Important (Many third-party plugins using this hook to inject their code)
+- `{do_action:woocommerce_after_single_product_summary}`
+- `{do_action:woocommerce_after_single_product}`
+
+Best to place all of these in your single product template if you are not sure which hook will be using by the third-party plugins.
+
+![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-single-product-template-hooks.png)
+
+<figcaption>
+
+Single product template hooks location
+
+</figcaption>
+
+## WooCommerce Product Archive Template Hooks {#product-archive-template-hooks}
+
+For the WooCommerce Product Archive template, the following hooks are recommended to be used with the `do_action` dynamic tag:
+
+- `{do_action:woocommerce_archive_description}`
+- `{do_action:woocommerce_before_shop_loop}` - Important (WooCommerce notice)
+- `{do_action:woocommerce_before_shop_loop_item}`
+- `{do_action:woocommerce_before_shop_loop_item_title}`
+- `{do_action:woocommerce_shop_loop_item_title}`
+- `{do_action:woocommerce_after_shop_loop_item_title}`
+- `{do_action:woocommerce_after_shop_loop_item}`
+- `{do_action:woocommerce_after_shop_loop}`
+
+![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-product-archive-template-hooks.png)
+
+<figcaption>
+
+Product archive template hooks location (Custom Query Loop)
+
+</figcaption>
+
+In Bricks 1.7, the dynamic tag `do_action` hooks will be automatically included in the fields of the Products element (for newly inserted Products elements only).
+
+![](https://academy.bricksbuilder.io/assets/Products-element-with-do_action-included-since-1_6_3.png)
+
+<figcaption>
+
+Default Products element with do_action hooks (Bricks 1.7+)
+
+</figcaption>
+
+## WooCommerce Empty Cart Template Hooks {#empty-cart-template-hooks}
+
+For the WooCommerce Empty Cart template, the following hook is recommended to be used with the `do_action` dynamic tag:
+
+- `{do_action:woocommerce_cart_is_empty}` - Important (WooCommerce notice)
+
+![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-empty-cart-template-hooks.png)
+
+<figcaption>
+
+Empty cart template hook location
+
+</figcaption>
+
+## WooCommerce Cart Template Hooks {#cart-template-hooks}
+
+For the WooCommerce Cart template, the following hooks are recommended to be used with the `do_action` dynamic tag:
+
+- `{do_action:woocommerce_before_cart}` - Important (WooCommerce notice)
+- `{do_action:woocommerce_before_cart_collaterals}`
+- `{do_action:woocommerce_after_cart}`
+
+![](https://academy.bricksbuilder.io/assets/bricks-standard-woocommerce-cart-template-hooks.png)
+
+<figcaption>
+
+Cart template hooks location
+
+</figcaption>
+
+## WooCommerce Pay Template {#pay-template-hooks}
+
+For the WooCommerce Pay template, the following hooks are recommended to be used with the `do_action` dynamic tag:
+
+- `{do_action:woocommerce_pay_order_before_payment}`
+
+![](https://academy.bricksbuilder.io/assets/woo-pay-template.png)
+
+<figcaption>
+
+Pay template hooks location
+
+</figcaption>
+
+By following this guide, you can ensure that the templates created in Bricks are fully compatible with WooCommerce and that all necessary actions and details are displayed as intended.

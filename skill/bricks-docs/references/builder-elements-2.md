@@ -1,938 +1,3 @@
-# Filter select
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-select/
-
-*Use dropdown query filters for single or multiple selections, sorting, and results per page, with optional child-term counts for taxonomy filters.*
-
-Creates a dropdown select filter interface for single or multiple selection filtering. Supports taxonomy terms, WordPress fields, and custom fields. Can also function as a sorting or results-per-page control.
-
-## Settings
-
-- **Target query** (query-list) - Select the post, term, or user query this filter should target. Available sources depend on the query type.
-- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
-- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
-- **Action** (select) - Filter behavior. Options: Filter (traditional filtering), Sort (sorting control), Results per page (pagination control).
-- **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
-- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
-- **Field** (select) - Specific field to filter/sort by (varies based on field type and action).
-- **Taxonomy** (select) - Taxonomy to use for filtering when source is taxonomy.
-- **Order by** (select) - How to order taxonomy terms. Options: Name, Slug, Term ID, Description, Parent, Count, Include, Menu Order, Meta Value, Meta Value Num.
-- **Order meta key** (text) - Meta key for ordering when using meta value ordering.
-- **Order** (select) - Sort direction. Options: ASC, DESC. Default: ASC.
-- **Terms: Include** (select) - Specific taxonomy terms to include in filter options.
-- **Terms: Exclude** (select) - Specific taxonomy terms to exclude from filter options.
-- **Top level terms only** (checkbox) - Display only top-level terms (parent = 0) when source is taxonomy.
-- **Hide count** (checkbox) - Hide the result count for each option.
-- **Count: Include children** (checkbox, Bricks 2.5) - Include descendant-term posts in parent taxonomy counts. Off by default. Available with Action set to Filter, a target query, and a selected taxonomy.
-- **Hide empty** (checkbox) - Hide options with zero results.
-- **Hierarchical** (checkbox) - Display taxonomy terms in hierarchical structure.
-- **Indent: Prefix** (text) - Prefix text for hierarchical indentation. Default: —.
-- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
-- **Meta key** (text) - Custom field key for filtering.
-- **Compare** (select) - Comparison operator for filtering. Default: Equal.
-- **Input** - Settings for the select dropdown.
-  - **Placeholder** (text) - Placeholder text for the select dropdown.
-- **Sort options** (repeater) - Configure sorting options when Action is set to Sort.
-  - **Source** (select) - Sort field, including **Distance** in Bricks 2.5.
-  - **Label** (text) - Display label for the sort option.
-  - **Order** (select) - Ascending or Descending. For Distance, nearest first or farthest first.
-  - **Meta key** (text) - Meta key for meta-based sorting.
-- **Results per page options** (text) - Comma-separated list of results per page options when Action is set to Results per page. Default: 10, 20, 50, 100.
-- **Active filter** - Settings for active filter display.
-  - **Prefix** (text) - Text to display before filter value.
-  - **Suffix** (text) - Text to display after filter value.
-  - **Title** (text) - Custom title attribute for filter links.
-
-## Parent-Term Counts {#parent-term-counts}
-
-Enable **Count: Include children** when a parent option should count posts assigned to its child terms and deeper descendants. Posts assigned to both a parent and a descendant count once for the parent. The setting works independently of **Hierarchical** display and is shared when the element uses a global filter. See [taxonomy child counts](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#taxonomy-child-counts) for setup, indexing, and an example.
-
-## Default selection {#default-selection}
-
-Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. Use **Default value** for one exact option value. With Choices.js and multiple selection enabled, separate values with commas, such as `cotton, wool`, and wrap values containing commas in double quotes. For Sort, enter a configured sort value such as `title_ASC` or `distance_ASC`; for Results per page, enter a configured page size such as `20`. Dynamic data is supported.
-
-A Distance default such as `distance_ASC` also requires a valid location from a Geolocation filter targeting the same query. Without one, Bricks clears the Distance selection and uses the query's normal order.
-
-The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
-
-## Distance sorting {#distance-sorting}
-
-Starting with **Bricks 2.5**, set **Action** to **Sort** and add **Distance** as a sort option's **Source**. Set **Order** to **Ascending** for nearest first or **Descending** for farthest first, and give the option a descriptive **Label**.
-
-<div className="screenshot screenshot--control-panel">
-
-![Sort options with Nearest first configured to use Distance in Ascending order, and Farthest first available as a second option.](https://academy.bricksbuilder.io/assets/query-filter-distance-sort-options.webp)
-
-</div>
-
-A [Geolocation filter](https://academy.bricksbuilder.io/builder/elements/filter/filter-geolocation/) must target the same query and provide a valid location, including a default location. Sorting keeps its radius constraint.
-
-Distance options remain visible but disabled without a valid location, in both native and Choices.js dropdowns. A valid location enables them even when no results match. Clearing the location also clears a selected Distance sort and restores the query's normal order. Choosing a sort option never requests device location.
-
-With this filter set to **Submit** and Geolocation set to **On submit**, a resolved pending location enables Distance before submission so visitors can apply both together. See [Distance sorting setup](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#distance-sorting) for apply modes, URL behavior, and failed requests.
-
-> **Developer reference**
->
-> See the [Filter - Select Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-select/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Filter submit
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-submit/
-
-*Apply or reset query filters, redirect submissions, and preserve selected filters when resetting.*
-
-Creates submit/reset buttons for filter forms. Provides control over when filters are applied - either as a submit button to apply all filters at once, or as a reset button to clear all active filters. Supports redirection to specific URLs after submission.
-
-## Settings
-
-- **Target query** (query-list) - Select the query this button should submit or reset.
-- **Global filter** (Bricks 2.5) - Reuse shared Submit/Reset behavior, including reset exclusions. The target query and button presentation remain local.
-- **Action** (select) - Button behavior. Options: Submit (apply filters), Reset (clear filters).
-- **Redirect to** (text) - URL to redirect to after applying filters (Submit action only).
-- **Open in new tab** (checkbox) - Open redirect URL in new tab (Submit action only).
-- **Exclude filter IDs** (text, Bricks 2.4) - Comma-separated filter IDs to preserve when resetting (Reset action only). From Bricks 2.5, accepts global filter IDs as well as Bricks element IDs.
-- **Hide if no active filter** (checkbox) - Hide the reset button when no filters it can reset are active. Excluded filters do not keep the button visible. Adds .brx-no-active-filter class for styling (Reset action only).
-- **Button** - Settings for the submit/reset button.
-  - **Text** (text) - Button text. Default: Filter.
-  - **Size** (select) - Button size preset. Options: Default, Small, Medium, Large, Extra Large.
-  - **Style** (select) - Button style. Options: None, Primary, Secondary, Success, Info, Warning, Danger, Dark, Light. Default: Primary.
-  - **Circle** (checkbox) - Make button circular.
-  - **Outline** (checkbox) - Use outline button style.
-  - **Icon** (icon) - Icon to display on the button.
-  - **Icon color** (color) - Color of the button icon.
-  - **Icon size** (number) - Size of the button icon.
-
-## Preserve a search while resetting refinements
-
-Set **Action** to **Reset**, then enter the Search filter's Bricks element ID in **Exclude filter IDs**. For example, enter `q1w2e3,mn9456` to preserve two filters. Use filter IDs, not the target query ID or URL parameter names.
-
-From Bricks 2.5, enter a [global filter](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#global-filters) ID or any element ID linked to it to preserve that shared selection for the target query. Copy the definition ID from Filter manager, or copy the element's Bricks ID from its element panel.
-
-Reset clears the other filters for the target query while keeping the excluded values, such as the visitor's search term. With **Hide if no active filter** enabled, the reset button hides once only excluded filters remain active.
-
-Starting with Bricks 2.5, Reset also clears [configured default selections](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) and their URL parameters, unless excluded. It does not restore the defaults. A fresh visit or reload without filter parameters applies them again.
-
-This setting is separate from the exclusion list on the Active Filters element, which controls which filters appear in that element.
-
-> **Developer reference**
->
-> See the [Filter - Submit / Reset Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-submit/) for the schema snapshot and Bricks 2.4 settings reference.
-
----
-
-# Accordion (nestable)
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/accordion-nested/
-
-*The Nestable Accordion element allows creating hierarchical collapsible content with drag-and-drop nesting in the builder.*
-
-The Nestable Accordion element allows creating hierarchical collapsible content with drag-and-drop nesting in the builder.
-
-## Settings
-
-- **Children** (nestable) - Drag and drop elements to create accordion items. Each item can contain nested content. Set "ID" on items to open via anchor link (no spaces, no pound sign).
-
-- **Expand item indexes** (text) - Comma-separated indexes of items to expand on page load (starting at 0).
-
-- **Independent toggle** (checkbox) - Allow multiple items to be open simultaneously. Enable to open & close an item without toggling other items.
-
-- **Transition (ms)** (number) - Animation duration for expanding/collapsing in milliseconds. Default: 200.
-
-- **FAQ schema** (checkbox) - Generate FAQPage structured data (JSON-LD) for search engines.
-
-### Title
-
-- **Min. height** (number with units) - Minimum height for title areas. Default: 50px.
-
-- **Margin** (spacing) - Margin around title wrappers.
-
-- **Padding** (spacing) - Padding inside title wrappers.
-
-- **Background color** (color) - Background color for title wrappers.
-
-- **Border** (border) - Border styling for title wrappers.
-
-- **Typography** (typography) - Typography settings for title text and headings.
-
-#### Active Title
-
-- **Background color** (color) - Background color for active/expanded title wrappers.
-
-- **Border** (border) - Border styling for active/expanded title wrappers.
-
-- **Typography** (typography) - Typography settings for active/expanded title text and headings.
-
-### Content
-
-- **Margin** (spacing) - Margin around content wrappers.
-
-- **Padding** (spacing) - Padding inside content wrappers. Default: 15px top/bottom, 0px left/right.
-
-- **Background color** (color) - Background color for content wrappers.
-
-- **Border** (border) - Border styling for content wrappers.
-
-- **Typography** (typography) - Typography settings for content text.
-
-> **Developer reference**
->
-> See the [Accordion (Nestable) Schema](https://academy.bricksbuilder.io/developer/schema/elements/accordion-nested/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Accordion
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/accordion/
-
-*The Accordion element creates collapsible content sections with titles and expandable content.*
-
-The Accordion element creates collapsible content sections with titles and expandable content.
-
-## Settings
-
-- **Accordion** (repeater) - Add accordion items. Each item has:
-  - **Title** (text) - The clickable title of the accordion item.
-  - **ID** (text) - Anchor ID for linking to the item (no spaces, no pound sign).
-  - **Subtitle** (text) - Optional subtitle below the title.
-  - **Content** (rich text) - The expandable content of the item.
-
-- **Expand item indexes** (text) - Comma-separated indexes of items to expand on page load (starting at 0).
-
-- **Independent toggle** (checkbox) - Allow multiple items to be open simultaneously. Enable to open & close an item without toggling other items.
-
-- **Transition (ms)** (number) - Animation duration for expanding/collapsing in milliseconds. Default: 200.
-
-- **FAQ schema** (checkbox) - Generate FAQPage structured data (JSON-LD) for search engines.
-
-### Title
-
-- **HTML tag** (select) - HTML tag for titles. Options: `div`, `h1`-`h6`. Default: `h3`.
-
-- **Icon** (icon) - Icon for collapsed state. Default: right arrow (ion-ios-arrow-forward).
-
-- **Icon typography** (typography) - Font settings for the collapsed icon.
-
-- **Icon expanded** (icon) - Icon for expanded state. Default: down arrow (ion-ios-arrow-down).
-
-- **Icon expanded typography** (typography) - Font settings for the expanded icon.
-
-- **Icon position** (select) - Position of the icon relative to text. Default: Right.
-
-- **Icon rotate in °** (number) - Rotation angle for the icon in degrees. Icon rotation for expanded accordion.
-
-- **Margin** (spacing) - Margin around title wrappers.
-
-- **Padding** (spacing) - Padding inside title wrappers.
-
-- **Title typography** (typography) - Typography settings for title text.
-
-- **Subtitle typography** (typography) - Typography settings for subtitle text.
-
-- **Background color** (color) - Background color for title wrappers.
-
-- **Border** (border) - Border styling for title wrappers.
-
-- **Box shadow** (box-shadow) - Box shadow for title wrappers.
-
-- **Active typography** (typography) - Typography settings for active/expanded title text.
-
-- **Active background** (color) - Background color for active/expanded title wrappers.
-
-- **Active border** (border) - Border styling for active/expanded title wrappers.
-
-### Content
-
-- **Margin** (spacing) - Margin around content wrappers.
-
-- **Padding** (spacing) - Padding inside content wrappers.
-
-- **Content typography** (typography) - Typography settings for content text.
-
-- **Background color** (color) - Background color for content wrappers.
-
-- **Border** (border) - Border styling for content wrappers.
-
-> **Developer reference**
->
-> See the [Accordion Schema](https://academy.bricksbuilder.io/developer/schema/elements/accordion/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Alert
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/alert/
-
-*The Alert element displays informational messages with different types and optional dismiss functionality.*
-
-The Alert element displays informational messages with different types and optional dismiss functionality.
-
-## Settings
-
-- **Content** (rich text) - The alert message content. Supports dynamic data and rich text.
-
-- **Type** (select) - The alert style type. Options: `info`, `success`, `warning`, `danger`, `muted`. Default: `info`.
-
-- **Dismissable** (checkbox) - Adds a close button to allow users to dismiss the alert.
-
-> **Developer reference**
->
-> See the [Alert Schema](https://academy.bricksbuilder.io/developer/schema/elements/alert/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Animated typing
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/animated-typing/
-
-*The Animated Typing element creates a typewriter effect that cycles through a list of strings with customizable timing and behavior.*
-
-The Animated Typing element creates a typewriter effect that cycles through a list of strings with customizable timing and behavior.
-
-## Settings
-
-- **Tag** (select) - The HTML tag to use for the element. Options: `div`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`. Default: `div`.
-
-- **Prefix** (text) - Text displayed before the animated strings. Default: "We ".
-
-- **Suffix** (text) - Text displayed after the animated strings. Default: " for you!".
-
-- **Strings** (repeater) - List of strings to cycle through. Each item has a **Text** field. Default: "design", "code", "launch".
-
-### Settings
-
-- **Type speed in ms** (number) - Speed of typing each character. Default: 55.
-
-- **Back speed in ms** (number) - Speed of deleting each character. Default: 30.
-
-- **Start delay in ms** (number) - Delay before starting the animation. Default: 500.
-
-- **Back delay in ms** (number) - Delay before starting to delete. Default: 500.
-
-- **Cursor character** (text) - Character used as the cursor. Default: "|".
-
-- **Loop** (checkbox) - Repeat the animation indefinitely. Default: checked.
-
-- **Shuffle** (checkbox) - Randomize the order of strings each cycle.
-
-> **Developer reference**
->
-> See the [Anim. Typing Schema](https://academy.bricksbuilder.io/developer/schema/elements/animated-typing/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Back to Top
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/back-to-top/
-
-*The Back to Top element renders a button (default tag: button) that scrolls the visitor back to the top of the page. It is nestable: you typically place an Icon.*
-
-The **Back to Top** element renders a button (default tag: `button`) that scrolls the visitor back to the top of the page. It is **nestable**: you typically place an **Icon** and/or **Text** element inside it (the defaults use an up-arrow icon and the label “Back to Top”).
-
-## Settings
-
-- **HTML tag** (text) — Root element tag. Default: `button`.
-
-- **aria-label** (text) — Accessible name when the control has no visible descriptive text.
-
-### Position
-
-- **Position** (select) — CSS `position` (placeholder suggests `fixed`).
-- **Top**, **Right**, **Bottom**, **Left** (number with units) — Position offsets.
-
-### Misc
-
-Bricks surfaces **z-index**, **gap** (space between nested children), and **CSS transition** on this element (moved from the default tabs).
-
-- **Visible after** (number) — Show the button only after the user has scrolled this many pixels. If empty and **Visible on scroll up** is off, the button stays visible.
-- **Visible on scroll up** (checkbox) — Show the button when the user scrolls upward.
-- **Smooth scroll** (checkbox) — Smooth scroll to the top when activated.
-- **Move focus to top** (checkbox) — Move keyboard focus to the top of the page after activation (accessibility).
-
-> **Developer reference**
->
-> See the [Back to Top Schema](https://academy.bricksbuilder.io/developer/schema/elements/back-to-top/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Breadcrumbs
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/breadcrumbs/
-
-*Breadcrumbs are an essential part of website navigation, providing users with a clear path to navigate through the site hierarchy. They improve the overall user.*
-
-Breadcrumbs are an essential part of website navigation, providing users with a clear path to navigate through the site hierarchy. They improve the overall user experience by helping users know their location within the site and easily navigate back to previous pages.
-
-The Breadcrumbs element generates different breadcrumb items depending on the type of page being viewed.
-
-It supports various page types, including single posts or pages (`is_singular()`), the homepage (`is_home()`), categories (`is_category()`), taxonomies (`is_tax()`), post type archives (`is_post_type_archive()`), tags (`is_tag()`), date archives (`is_date()`), author pages (`is_author()`), search results (`is_search()`), and error pages (`is_404()`).
-
-![](https://academy.bricksbuilder.io/assets/breadcrumbs-element.png)
-
-## Settings
-
-- **Gap** (number with units) - Gap between breadcrumb items. Controls `gap` property.
-
-### Structure
-
-This section allows you to customize the structure of breadcrumb items. Currently it supports single pages and the date archive.
-
-#### Date archive structure
-
-![](https://academy.bricksbuilder.io/assets/date-archive-context.png)
-
-#### Single page structure
-
-![](https://academy.bricksbuilder.io/assets/breadcrumbs-structure-section.png)
-
-By default, Bricks displays breadcrumb items as follows:
-
-For posts:  
-`Home` > `Parent categories (if any)` > `Category (if any)` > `Post parents (if any)` > `Current post`
-
-For other post types:  
-`Home` > `Post archives` > `Post parents (if any)` > `Current post`  
-  
-You can customize the breadcrumb structure for different post types. You can also group multiple post types together if you want them to share the same structure. Any post type not specifically defined in your custom structures will automatically use the default structure.
-
-**Example 1:**  
-For the Tanks post type singular page, I want to display the post type archive and the custom taxonomy as breadcrumb items.
-
-![](https://academy.bricksbuilder.io/assets/structure-example-1.png)
-
-![](https://academy.bricksbuilder.io/assets/result-example-1.png)
-
-**Example 2:**  
-For the products singular page, I want to display custom taxonomy as breadcrumb items.
-
-![](https://academy.bricksbuilder.io/assets/structure-example-2.png)
-
-![](https://academy.bricksbuilder.io/assets/result-example-2.png)
-
-- **Post types** (repeater) - Define custom breadcrumb structures for specific post types.
-  - **Post types** (select, multiple) - Select post types to apply this structure to. Options: registered post types. Default: Posts.
-  - **Hide current post** (checkbox) - Hide the current post from breadcrumbs.
-  - **Show parent posts** (checkbox) - Show parent posts in hierarchy.
-  - **Show post type archive** (checkbox) - Show post type archive link.
-  - **Show taxonomy** (checkbox) - Show taxonomy in breadcrumbs.
-  - **Taxonomy slug** (text) - Taxonomy slug to display. Required when Show taxonomy is enabled. Default: "category".
-  - **Taxonomy info** (info) - Only the first assigned term will be displayed. Only shown when Show taxonomy is enabled.
-  - **Show parent terms** (checkbox) - Show parent terms in hierarchy. Only works if the first assigned term is a child term.
-
-- **Date** (separator) - Date-related breadcrumb settings.
-
-- **Add context** (checkbox) - Add context to dates on archive templates.
-
-### Home
-
-![](https://academy.bricksbuilder.io/assets/breadcrumbs-home-section.png)
-
-In this section, you can customize the root item (home) of the breadcrumb trail. Adjust the URL, change the label text, select an icon, and determine the icon's position.
-
-- **URL** (text) - Custom URL for home link. Default: home URL.
-
-- **Text** (text) - Label for home link. Default: "Home".
-
-- **Icon** (icon) - Icon for home link.
-
-- **Icon: Gap** (number with units) - Gap between home icon and label. Controls `gap` property for `.item:has(> svg), .item:has(> i)` selector. Only available when Icon is set.
-
-- **Icon: Position** (select) - Position of home icon. Options: Before, After. Default: Before. Only available when Icon is set.
-
-- **Hide label** (checkbox) - Hide home label when icon is present. Only available when Icon is set.
-
-### Separator
-
-![](https://academy.bricksbuilder.io/assets/breadcrumbs-separator-section.png)
-
-Here, you can modify the appearance and behavior of the separators between breadcrumb links, adjusting both display mode and styling.
-
-- **Separator** (select) - Separator type. Options: Text, Icon, None. Default: Text.
-
-- **Separator** (text) - Separator text. Default: "/". Only available when Separator is Text or empty.
-
-- **Icon** (icon) - Separator icon. Only available when Separator is Icon.
-
-- **Color** (color) - Separator color. Controls `color` property for `.separator` selector.
-
-- **Size** (number with units) - Separator size. Controls `font-size` property for `.separator` selector.
-
-### Item
-
-![](https://academy.bricksbuilder.io/assets/breadcrumbs-item-section.png)
-
-This section allows you to style each breadcrumb link.
-
-- **Padding** (spacing) - Padding for breadcrumb items. Controls `padding` property for `.item` selector.
-
-- **Background color** (color) - Background color for breadcrumb items. Controls `background-color` property for `.item` selector.
-
-- **Border** (border) - Border settings for breadcrumb items. Controls `border` property for `.item` selector.
-
-- **Typography** (typography) - Typography for breadcrumb items. Controls `font` property for `.item` selector.
-
-### Current
-
-![](https://academy.bricksbuilder.io/assets/breadcrumbs-current-section.png)
-
-Use these settings to style the last item in the breadcrumb trail, which represents the current page or post.
-
-- **Padding** (spacing) - Padding for current page item. Controls `padding` property for `.item[aria-current="page"]` selector.
-
-- **Background color** (color) - Background color for current page item. Controls `background-color` property for `.item[aria-current="page"]` selector.
-
-- **Border** (border) - Border settings for current page item. Controls `border` property for `.item[aria-current="page"]` selector.
-
-- **Typography** (typography) - Typography for current page item. Controls `font` property for `.item[aria-current="page"]` selector.
-
-> **Developer reference**
->
-> See the [Breadcrumbs Schema](https://academy.bricksbuilder.io/developer/schema/elements/breadcrumbs/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Code
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/code/
-
-*The Code element allows you to add and execute PHP, HTML, CSS, or JavaScript code with syntax highlighting and optional code execution.*
-
-The Code element allows you to add and execute PHP, HTML, CSS, or JavaScript code with syntax highlighting and optional code execution.
-
-## Settings
-
-### Code Execution
-
-Available only for users with code execution permissions:
-
-- **Execute code** (checkbox) - Run the code on your site instead of displaying it. Only add code you consider safe.
-
-- **Parse dynamic data** (checkbox) - Parse dynamic data tags within the code. Only available when execute code is enabled.
-
-- **Suppress PHP errors** (checkbox) - Hide caught PHP error diagnostics for this element. An authorized user can add `brx_code_errors=1` to the page URL to override suppression. This parameter does not grant permission to view diagnostics. Only available when execute code is enabled.
-
-- **Render without wrapper** (checkbox) - Render on the frontend without the div wrapper. Style tab settings won't apply when this is enabled. Only available when execute code is enabled.
-
-### Code Editors
-
-Use these editors to enter the code to display or execute:
-
-- **PHP & HTML** (code editor) - PHP and HTML code editor with syntax highlighting. Supports dynamic data and variables. Default example includes HTML heading and PHP date output.
-
-- **CSS** (code editor) - CSS code editor with syntax highlighting. CSS is automatically wrapped in style tags. Supports dynamic data and variables.
-
-- **JavaScript** (code editor) - JavaScript code editor with syntax highlighting. JavaScript is automatically wrapped in script tags. Supports dynamic data.
-
-### Syntax Highlighting
-
-Available when code execution is disabled:
-
-- **Theme** (select) - Code syntax highlighting theme. Options: `github` (light), `tomorrow` (light), `tomorrow-night` (dark), `tranquil-heart` (dark). Default: None. Can also be set globally via theme styles.
-
-## Inspect PHP execution errors {#php-errors}
-
-Since Bricks 2.5, a caught PHP exception, parse error, or PHP `Error` can appear as a red diagnostic on the affected Code element. The notice contains the error type and message.
-
-To inspect it, open the Builder or view the frontend while logged in with the Bricks **Execute code** capability and code execution enabled. Anonymous visitors and users without that permission do not receive these diagnostic details. This also applies to frontend AJAX and REST renders.
-
-If **Suppress PHP errors** is enabled, turn it off while diagnosing the element, or add `brx_code_errors=1` to the page URL. The URL parameter only overrides suppression after the permission check; it does not expose errors to an unauthorized visitor.
-
-Fix the PHP, sign the changed code, and render the element again. A successful evaluation clears the previous diagnostic. When execution fails, Bricks discards partial output from that evaluation rather than displaying it alongside the error. PHP warnings, notices, and deprecations are not converted into these caught-error diagnostics.
-
-For errors in a PHP Query Editor rather than a Code element, see [Query editor (PHP)](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/#query-editor).
-
-## Component properties {#component-properties}
-
-Since Bricks 2.5, a Code element inside a component can display that instance's property values in its HTML output. Enable **Execute code** and **Parse dynamic data**, then use the copied property tag in the **PHP & HTML** editor:
-
-```html
-<p>Book {prop.title} today.</p>
-```
-
-Property tags are resolved in the rendered HTML after PHP execution. They are not substituted into PHP source, the CSS or JavaScript editors, script/style blocks, or executable HTML attributes. When code execution is disabled, the element displays the tag as part of the code snippet.
-
-For PHP logic, call `bricks_get_component_property()` with the reference key. It returns the typed value, or a `WP_Error` when the property cannot be resolved. Check the result and escape it for the output context:
-
-```php
-<?php
-$title = bricks_get_component_property( 'title' );
-
-if ( ! is_wp_error( $title ) && is_scalar( $title ) ) {
-    echo '<p>' . esc_html( (string) $title ) . '</p>';
-}
-?>
-```
-
-The PHP accessor requires **Execute code** and the usual code permissions and signature. It does not require **Parse dynamic data**. Both approaches need an active component instance. See [Properties as Dynamic Data](https://academy.bricksbuilder.io/builder/features/components/#property-dynamic-data) for reference keys and supported property fields.
-
-> **Developer reference**
->
-> See the [Code Schema](https://academy.bricksbuilder.io/developer/schema/elements/code/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Countdown
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/countdown/
-
-*The Countdown element displays a countdown timer to a specified date with customizable fields and actions.*
-
-The Countdown element displays a countdown timer to a specified date with customizable fields and actions.
-
-## Settings
-
-- **Date** (datepicker) - The target date and time for the countdown.
-
-- **Time zone** (select) - The time zone for the countdown calculation. Options include various UTC offsets. Default: UTC+00:00.
-
-- **Date Reached** (select) - Action when the countdown reaches zero. Options: `countdown` (show countdown), `hide` (hide element), `text` (show custom text). Default: `countdown`.
-
-- **Date Reached: Custom text** (text) - Custom text to display when the date is reached. Only shown when "Date Reached" is set to "text".
-
-### Fields
-
-- **Fields** (repeater) - Configure the countdown display fields. Each field has:
-  - **Prefix** (text) - Text before the field value.
-  - **Format** (text) - Format string using %D (days), %H (hours), %M (minutes), %S (seconds). Lowercase removes leading zeros. Default: "%D days", "%H hours", "%M minutes", "%S seconds".
-  - **Suffix** (text) - Text after the field value.
-
-- **Direction** (direction) - Flex direction for the fields container.
-
-- **Align main axis** (justify-content) - Justify content alignment for fields.
-
-- **Align cross axis** (align-items) - Align items for fields.
-
-### Field
-
-- **Direction** (direction) - Flex direction for individual fields.
-
-- **Margin** (spacing) - Margin around individual fields. Default: 0 5px 0 0.
-
-## Dynamic target dates
-
-The Date control accepts a date returned by dynamic data. Bricks supports common date strings such as `YYYY-MM-DD HH:MM`, `YYYY-MM-DD`, and ISO 8601, plus Unix timestamps in seconds or milliseconds.
-
-The dynamic tag must resolve to a plain date or timestamp. Place the Countdown inside a query loop or template to let each post or product resolve its own target date.
-
-For a WooCommerce sale countdown, use the sale end date as the target. The Countdown tracks one date, so use element conditions when it should appear only after a sale starts or while a product is on sale. Bricks does not provide dedicated WooCommerce sale start and end date tags. Store the target in a custom field or provide it through a custom dynamic tag or helper that returns one of the supported formats.
-
-> **Developer reference**
->
-> See the [Countdown Schema](https://academy.bricksbuilder.io/developer/schema/elements/countdown/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Dropdown
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/dropdown/
-
-*The Dropdown element is a nestable menu item: a toggle (link/text + optional icon button) with a dropdown panel (default inner structure is a Div with tag ul.*
-
-The **Dropdown** element is a **nestable** menu item: a toggle (link/text + optional icon button) with a **dropdown panel** (default inner structure is a **Div** with tag `ul` and class `brx-dropdown-content` containing links). Use it inside [Nav (Nestable)](https://academy.bricksbuilder.io/builder/elements/general/nav-nested/) or similar structures.
-
-Default HTML tag for the root is **`li`**. The script `bricksSubmenuPosition` handles positioning.
-
-## Top-level
-
-- **HTML tag** (text) — Root tag; validated in the builder. Placeholder: `li`.
-
-- **Text** (text) — Label for the trigger. Default: “Dropdown”.
-
-- **Link to** (link) — Optional link around the text (lightbox fields excluded).
-
-- **Attribute: aria-label** (text) — Applied to the **toggle button** when an icon is present. Placeholder: “Toggle dropdown”.
-
-## Icon
-
-- **Icon** (icon) — If set, shown in the toggle **button** next to the text.
-
-- **Icon padding** (spacing) — On `.brx-submenu-toggle button`.
-
-- **Gap** (number with units) — Flex gap on `.brx-submenu-toggle`.
-
-- **Icon position** (select) — Uses flex direction (`row-reverse` when set to place icon on the **left**).
-
-- **Icon size** (number with units) — `font-size` on the button.
-
-- **Icon color** (color).
-
-- **Icon transform**, **Icon transform (Open)** (transform) — Default vs `aria-expanded="true"`.
-
-- **Icon transition** (text) — CSS `transition` on the button.
-
-## Caret
-
-Optional triangle on the dropdown root (adds class `caret` when **Size** is set):
-
-- **Size** (number with units) — `border-width` on `> .brx-dropdown-content::before`.
-
-- **Color** (color) — `border-bottom-color` (when size ≠ 0).
-
-- **Transform** (transform).
-
-- **Position** (dimensions).
-
-## Content
-
-- **Position: Static** (checkbox) — Keeps the panel in document flow (e.g. inside [Offcanvas](https://academy.bricksbuilder.io/builder/elements/general/offcanvas/)). Static dropdowns **always toggle on click**, not hover.
-
-- **Toggle on** (select) — `click`, `hover`, or `click or hover`. Hidden when **Static** is enabled (click only).
-
-- **Min. width** (number with units) — On `.brx-dropdown-content`.
-
-- **Transition** (text), **Transform**, **Transform (Open)** — Panel motion (`&.open > .brx-dropdown-content` for open state).
-
-- **Background** (background), **Border**, **Box shadow**, **Typography** — Panel chrome on `.brx-dropdown-content`.
-
-### Item
-
-Row styling for direct links and submenu toggles inside the panel:
-
-- **Justify content** (justify-content).
-
-- **Padding** (spacing).
-
-- **Background** (color), **Border** (border), **Typography**, **Transition** (text).
-
-### Active
-
-States matching `aria-current="page"` / `.aria-current`:
-
-- **Background**, **Border**, **Typography**.
-
-## Mega menu
-
-- **Enable** (checkbox) — Full-width style mega panel (`brx-has-megamenu`); “covers entire available width” by default.
-
-- **Width** (since Bricks 2.5) — Set the mega panel width directly, such as `900px`, `80%`, a CSS variable, or a `clamp()` value. Leave empty to use the full horizontal reference width. Percentages are measured against that reference.
-
-- **Alignment** (since Bricks 2.5) — Position a custom-width panel at the left, center, or right of the horizontal reference area. Default: Left.
-
-- **CSS selector (Horizontal)** (text) — Optional: choose the horizontal reference element. Leave empty to use the page body.
-
-- **CSS selector (Vertical)** (text) — Optional: vertical alignment reference.
-
-Width and alignment support responsive breakpoint values. See [Set a custom mega menu width](https://academy.bricksbuilder.io/builder/features/menu-builder/#mega-menu-width) for examples.
-
-## Multilevel
-
-- **Enable** (checkbox) — Shows one submenu level at a time; toggles on click; inner dropdowns inherit multilevel behavior.
-
-- **Back: Text** (text) — Back control label (default “Back”).
-
-- **Back: Typography**, **Back: Background** — `.brx-multilevel-back` styling.
-
-> **Developer reference**
->
-> See the [Dropdown Schema](https://academy.bricksbuilder.io/developer/schema/elements/dropdown/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Counter
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/counter/
-
-*The Counter element animates a number from a starting value to an ending value with customizable prefix, suffix, and formatting.*
-
-The Counter element animates a number from a starting value to an ending value with customizable prefix, suffix, and formatting.
-
-## Settings
-
-- **Count from** (text) - The starting number for the animation. Default: 0.
-
-- **Count to** (text) - The ending number for the animation. Default: 1000.
-
-- **Animation in ms** (number) - Duration of the counting animation in milliseconds. Default: 1000.
-
-- **Typography** (typography) - Font settings for the counter number.
-
-### Prefix
-
-- **Prefix** (text) - Text displayed before the counter number.
-
-- **Typography** (typography) - Font settings for the prefix text.
-
-### Suffix
-
-- **Suffix** (text) - Text displayed after the counter number.
-
-- **Typography** (typography) - Font settings for the suffix text.
-
-### Separator
-
-- **Thousand separator** (checkbox) - Add thousand separators to the number.
-
-- **Separator** (text) - Character used as the thousand separator. Default: ",". Only shown when "Thousand separator" is enabled.
-
-> **Developer reference**
->
-> See the [Counter Schema](https://academy.bricksbuilder.io/developer/schema/elements/counter/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Facebook page
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/facebook-page/
-
-*The Facebook Page element embeds a Facebook page plugin with customizable display options.*
-
-The Facebook Page element embeds a Facebook page plugin with customizable display options.
-
-## Settings
-
-- **Facebook page URL** (text) - The URL of the Facebook page to embed. Default: "https://facebook.com/facebook".
-
-- **Height (px)** (number) - Height of the embedded page in pixels. Minimum: 70, Maximum: 500. Default: 500.
-
-- **Width (px)** (number) - Width of the embedded page in pixels. Minimum: 180, Maximum: 500. Default: 340.
-
-- **Tabs** (select) - Tabs to display on the page plugin. Options: `timeline`, `events`, `messages`. Multiple selection allowed.
-
-- **Hide cover** (checkbox) - Hide the page cover photo.
-
-- **Show friends' photos** (checkbox) - Display profile photos of the page's friends.
-
-- **Hide CTA button** (checkbox) - Hide the call-to-action button.
-
-- **Small header** (checkbox) - Use a smaller header size.
-
-> **Developer reference**
->
-> See the [Facebook Page Schema](https://academy.bricksbuilder.io/developer/schema/elements/facebook-page/) for the full JSON schema of this element's settings and controls.
-
----
-
-# HTML
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/html/
-
-*The HTML element outputs raw HTML from a single code field. In the theme it is marked deprecated (deprecated flag): prefer the Code element, blocks, or native.*
-
-The **HTML** element outputs **raw HTML** from a single code field. In the theme it is marked **deprecated** (`deprecated` flag): prefer the [Code](https://academy.bricksbuilder.io/builder/elements/general/code/) element, blocks, or native elements for new layouts so you keep validation, security, and editor consistency.
-
-It exists for **backward compatibility** and for the **Gutenberg** block mapping (`core/html`) when converting content.
-
-## Settings
-
-- **Raw HTML** (code) — HTML source, editor mode `text/html`. Default includes a sample heading and paragraph.
-
-If the field is empty, the element shows a “No HTML markup defined” placeholder on the front end.
-
-> **Developer reference**
->
-> See the [HTML Schema](https://academy.bricksbuilder.io/developer/schema/elements/html/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Icon box
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/icon-box/
-
-*The Icon Box element combines an icon with content in a flexible layout.*
-
-The Icon Box element combines an icon with content in a flexible layout.
-
-## Settings
-
-- **Direction** (direction) - Layout direction of the icon and content.
-
-- **Spacing** (number with units) - Gap between the icon and content.
-
-### Icon
-
-- **Icon** (icon) - The icon to display. Default: WordPress icon from Themify library.
-
-- **Align** (align-items) - Vertical alignment of the icon.
-
-- **Link** (link) - Make the icon clickable with a link.
-
-- **Margin** (spacing) - Margin around the icon.
-
-- **Padding** (spacing) - Padding inside the icon container.
-
-- **Size** (number with units) - Font size of the icon.
-
-- **Height** (number with units) - Height of the icon container.
-
-- **Width** (number with units) - Minimum width of the icon container.
-
-- **Color** (color) - Color of the icon.
-
-- **Background color** (color) - Background color of the icon container.
-
-- **Border** (border) - Border styling for the icon container.
-
-- **Box shadow** (box-shadow) - Shadow effect for the icon container.
-
-### Content
-
-- **Content** (rich text) - The text content to display alongside the icon. Supports rich text and dynamic data.
-
-- **Align** (align-items) - Vertical alignment of the content.
-
-- **Margin** (spacing) - Margin around the content.
-
-- **Padding** (spacing) - Padding inside the content container.
-
-- **Heading typography** (typography) - Font settings for heading elements (h1-h6) in the content.
-
-- **Body typography** (typography) - Font settings for the content text.
-
-- **Background** (color) - Background color of the content container.
-
-- **Border** (border) - Border styling for the content container.
-
-- **Box shadow** (box-shadow) - Shadow effect for the content container.
-
-> **Developer reference**
->
-> See the [Icon Box Schema](https://academy.bricksbuilder.io/developer/schema/elements/icon-box/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Icon list
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/icon-list/
-
-*The Icon List element creates a list of social media icons or custom icons with customizable styling, labels, and links.*
-
-The Icon List element creates a list of social media icons or custom icons with customizable styling, labels, and links.
-
-## Settings
-
-- **Icons** (repeater) - Add and configure icons. Each icon has:
-  - **Icon** (icon) - Icon selection. Default: `ion-logo-twitter`.
-  - **Icon: Color** (color) - Individual icon color.
-  - **Icon: Size** (number with units) - Individual icon size.
-  - **Label** (text) - Text label for the icon.
-  - **Label: Size** (number with units) - Label text size.
-  - **Color** (color) - Text color for the icon/label combination.
-  - **Background** (color) - Background color for the icon item.
-  - **Link** (link) - Link destination for the icon.
-
-- **Icon: Color** (color) - Global icon color for all icons.
-
-- **Icon: Size** (number with units) - Global icon size for all icons.
-
-### Alignment
-
-- **Direction** (direction) - Layout direction. Options: `row`, `column`.
-
-- **Align items** (align-items) - Vertical alignment of icons. Options: `flex-start`, `center`, `flex-end`, `baseline`.
-
-- **Justify content** (justify-content) - Horizontal alignment of icons. Options: `flex-start`, `center`, `flex-end`, `space-between`, `space-around`, `space-evenly`.
-
-- **Spacing (Items)** (number with units) - Spacing between icon items. Default: 0.
-
-- **Spacing (Item)** (number with units) - Internal spacing within each icon item. Default: 5px.
-
-> **Developer reference**
->
-> See the [Icon List Schema](https://academy.bricksbuilder.io/developer/schema/elements/social-icons/) for the full JSON schema of this element's settings and controls.
-
----
-
 # Form
 
 Source: https://academy.bricksbuilder.io/builder/elements/general/form/
@@ -1978,3 +1043,686 @@ Use the connector to set values for each loop item. Set global marker typography
 > **Developer reference**
 >
 > See the [Map Connector Schema](https://academy.bricksbuilder.io/developer/schema/elements/map-connector/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Map (Leaflet)
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/
+
+*Display tile-based maps, populate markers from a query, or sync them with a filterable listing using Map Connectors.*
+
+**Map (Leaflet)** displays maps using tile layers such as OpenStreetMap. Configure the tile provider under **Layers**, add locations under **Markers**, and set the center, zoom, and interactions under **Map**. It does not require a Google Maps API key. Tile providers may have their own access and attribution requirements.
+
+Starting with **Bricks 2.5**, the element supports query-generated markers, **Sync with query**, clustering, text and image markers with active styles, and custom Info Boxes.
+
+## Layers
+
+Add a row to **Layers** for each tile source visitors should be able to select. Each row has:
+
+- **Name**: Label in the layer switcher.
+- **URL**: Tile URL template, such as `https://tile.openstreetmap.org/{z}/{x}/{y}.png`.
+- **Min Zoom** and **Max Zoom**: Zoom levels supported by the tile provider.
+- **Error Tile URL**: Fallback image for failed tiles.
+- **Attribution**: Credits required by the provider.
+
+The default layer uses OpenStreetMap. See the [Leaflet integration guide](https://academy.bricksbuilder.io/integrations/map-leaflet/#layers) for tile URL placeholders and provider examples.
+
+## Choose the marker source {#marker-source}
+
+| Mode | Use it for | Location data comes from |
+| --- | --- | --- |
+| Static | A fixed set of locations | Rows in the **Markers** repeater |
+| Query loop | Markers generated from posts, terms, or other query results | Dynamic data in the first marker row |
+| Sync with query | A map beside a listing that changes through filters, AJAX pagination, or Load More | Map Connectors inside a separate query loop |
+
+Leaflet requires latitude and longitude. It does not convert street addresses into coordinates. Address-only Map Connectors are ignored.
+
+### Static markers {#static-markers}
+
+Add a row under **Markers** for each location. Enter **Coordinates** as `latitude, longitude`, for example `52.5164, 13.3776`. Dynamic data is supported. Static and query markers with missing, nonnumeric, or out-of-range coordinates are skipped.
+
+Use **Label** to distinguish rows in the builder. It is separate from the screen reader **Label** in the marker settings. Add **Popup (Text)** for content shown when the marker is clicked. Each row can override the map's text or image marker defaults.
+
+### Query loop {#query-loop}
+
+Use the map's own query when you need markers without a separate visible results listing.
+
+1. Under **Markers**, enable **Query loop**.
+2. Open **Query** and choose the content to retrieve.
+3. In the first marker row, use dynamic data for **Coordinates** and any marker text, images, or **Popup (Text)** that should change for each result.
+4. For a custom popup design, select an **Info Box: Template (Popup)**. See [Info Boxes](#info-boxes).
+
+Bricks uses the first marker row as the template for every query result. The screenshots below use a Publisher terms query with an ACF Google Map field named `map_location`. Its **Coordinates** value is:
+
+```text
+{acf_map_location:array_value|lat}, {acf_map_location:array_value|lng}
+```
+
+<div className="screenshot screenshot--control-panel">
+
+![The first Leaflet marker row uses dynamic latitude and longitude from an ACF map field.](https://academy.bricksbuilder.io/assets/leaflet-query-marker-coordinates-2x.webp)
+
+</div>
+
+<div className="screenshot screenshot--control-panel">
+
+![Leaflet Query loop enabled with a Terms query targeting the Publishers taxonomy.](https://academy.bricksbuilder.io/assets/leaflet-query-source-settings-2x.webp)
+
+</div>
+
+To update markers through filters, pagination, or Load More, create a separate results loop and use [Sync with query](#sync-with-query).
+
+### Sync with query {#sync-with-query}
+
+Use this mode to keep markers connected to a visible listing, such as property cards beside a map.
+
+1. Create a [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/) on a layout element, such as a Block or Div.
+2. Place one [Map Connector](https://academy.bricksbuilder.io/builder/elements/general/map-connector/) inside the repeated item.
+3. Set the connector's **Latitude** and **Longitude** using dynamic data from each result. Add marker overrides or an Info Box template if needed.
+4. On Map (Leaflet), leave **Query loop** off. Under **Markers > Sync with query**, select the results loop.
+5. Point filters, AJAX Pagination, Load More, and any Query Results Summary at that same results loop.
+6. Enable **Map > Fit map on markers change** if the map should adjust its view after the results change.
+
+Markers refresh when the connected loop changes on the frontend. Set **Text: No results** under **Markers** to customize the message when there are no locations. The default is `No locations found`. **No results typography** styles the message, and **No results position** places it at the top, bottom, or center of the map.
+
+![Publisher cards beside Leaflet markers populated from the same Terms query.](https://academy.bricksbuilder.io/assets/leaflet-synced-publisher-list-2x.webp)
+
+The builder previews the connected loop's markers. Test visitor filtering, pagination, and Load More on the frontend.
+
+### Geolocation filtering {#geolocation-filtering}
+
+Starting with **Bricks 2.5**, a [Filter - Geolocation](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-geolocation-element) can limit the connected Posts, Terms, or Users listing to a radius around a location. Set its **Target query** to the results loop containing the Map Connectors, then select that same loop under the map's **Sync with query** control. The map's own query and static markers are not filter targets.
+
+The filter connects automatically when exactly one Geolocation filter and one matching map use the query. For multiple filters or maps, select **Map (Optional)** on the filter. Each filter connects to one map, and each map can be controlled by one filter.
+
+Device-location searches and **Search on map drag** work without Google APIs. Optional address search uses Google Maps JavaScript API and Geocoding API, and autocomplete additionally requires Places API (New). These services are separate from Leaflet's tile provider.
+
+The map shows the applied search origin and radius, including when no locations match. Configure their appearance on the filter. Enable **Search on map drag** on the filter to search around the map center after a visitor finishes panning. Dragging must be enabled on the map. In **Visitor controlled** mode, visitors choose whether to search using a **Search as I move the map** checkbox; **Automatic** mode searches after every qualifying drag. Zooming alone does not trigger a search. **Apply on: On submit** stages the new location until submitted.
+
+### Scroll the active item into view {#scroll-active-item}
+
+In Sync mode, enable **Scroll active item into view** under **Markers** to scroll to a marker's connected result when the marker is clicked or selected through an **Open address (Map)** interaction. This works even when the marker has no Info Box. It is off by default.
+
+- **Scroll behavior**: **Follow site setting** (default), **Smooth**, or **Instant**.
+- **Scroll position**: **Nearest** (default), **Start**, or **Center**.
+
+Bricks finds the result's nearest vertically scrollable parent, or scrolls the page when there is none. **Nearest** leaves an already visible item in place. No scroll-container selector is needed.
+
+The selected result's Map Connector also receives `map-marker-active`, including when no Info Box is configured. Use this class to [style the connected card](https://academy.bricksbuilder.io/builder/elements/general/map-connector/#active-marker-state).
+
+<div className="screenshot screenshot--control-panel">
+
+![Leaflet synced to Publishers (Terms), with Scroll active item into view enabled, Smooth behavior, and Center positioning.](https://academy.bricksbuilder.io/assets/leaflet-sync-query-settings-2x.webp)
+
+</div>
+
+## Marker appearance {#marker-appearance}
+
+Under **Markers > Marker**, choose **Type: Image** (default) or **Text**. Settings on individual marker rows or Map Connectors override the map's defaults.
+
+### Text markers
+
+Set the marker text and its active text, then style typography, background, border, box shadow, and padding for each state. **Max. width** limits the text marker's width. Dynamic data can display a property's price or a location's name.
+
+### Image markers
+
+Choose the normal and active marker images. Each state has height, width, border, and box shadow controls. Existing Leaflet **Icon** and **Marker (Default)** settings remain supported for saved maps.
+
+Use the marker's screen reader **Label** to describe its location or purpose.
+
+### Clustering
+
+Enable **Cluster: Markers** to group nearby markers. Set **Cluster: Background color** and **Cluster: Text color** to style the cluster icons. The clustering library loads only when clustering is enabled.
+
+![Publisher-name text markers and purple clusters showing marker counts on a Leaflet map.](https://academy.bricksbuilder.io/assets/leaflet-text-markers-clustering-2x.webp)
+
+## Info Boxes and interactions {#info-boxes}
+
+Static markers use **Popup (Text)**. Query and Sync modes support custom Bricks popup templates:
+
+1. Create a Popup template and enable **Template Settings > Popup > Info Box (Map)**.
+2. Design and publish the template. Use dynamic data for the current query result.
+3. In Query mode, select it under **Markers > Info Box: Template (Popup)** on the map. In Sync mode, select it on the Map Connector instead.
+
+Info Box templates support **Fetch content via AJAX** and its loader animation. See the [Info Box template guide](https://academy.bricksbuilder.io/builder/elements/general/map/#info-box-popup-template) for template setup.
+
+Use **Open address (Map)** on an element inside the connected result to select its marker and open its Info Box. Use **Close address (Map)** on a button or icon inside the Info Box to close it. These actions are available under [Interactions](https://academy.bricksbuilder.io/builder/features/interactions/#action).
+
+![A custom publisher Info Box showing Hachette Book Group, Saint Joseph, MO, a View publisher link, and a close button.](https://academy.bricksbuilder.io/assets/leaflet-custom-infobox-detail.webp)
+
+## Map view and behavior {#map-view}
+
+| Setting | Behavior |
+| --- | --- |
+| Height | Map height. The placeholder is `300px`. |
+| Map center | Center coordinates as `latitude, longitude`. |
+| Disable initial fit map | Keep the configured center and zoom on page load. Off by default. |
+| Fit map on markers change | Adjust the view after synced query results change. Off by default. |
+| Zoom level (Initial) | Starting zoom. Defaults to `13`. Used when centering a single marker automatically. |
+| Zoom level (Min) / (Max) | Constrain how far the map can zoom. |
+
+By default, the initial view centers a single marker at the configured zoom or fits multiple markers.
+
+**Disable initial fit map** and **Fit map on markers change** are independent. Enable the first to preserve the view on page load, and the second if later query updates should fit the current markers.
+
+An active Geolocation search keeps its origin and radius visible instead of fitting the view to the result markers. A successful search with no matching locations retains the search area.
+
+> **Existing Leaflet maps**
+>
+> Starting with Bricks 2.5, existing static Leaflet maps also use automatic initial fitting. To retain a manually configured center and zoom, enable **Map > Disable initial fit map**, including for maps with one marker.
+
+<div className="screenshot screenshot--control-panel">
+
+![Leaflet Map settings with Disable initial fit map enabled, Fit map on markers change disabled, and the center and zoom controls visible.](https://academy.bricksbuilder.io/assets/leaflet-initial-fit-settings-2x.webp)
+
+</div>
+
+The Map group also includes zoom snapping and increments, double-click and scroll wheel zoom, box zoom, zoom and attribution controls, closing popups on map clicks, dragging, and resize tracking. See [Leaflet's map options](https://leafletjs.com/reference.html#map) for the underlying behavior.
+
+> **Developer reference**
+>
+> See the [Map (Leaflet) Schema](https://academy.bricksbuilder.io/developer/schema/elements/map-leaflet/) for the element's settings and controls.
+
+---
+
+# Nav (Nestable)
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/nav-nested/
+
+*The Nav (Nestable) element creates hierarchical navigation menus with dropdown functionality, multilevel support, and mobile-responsive behavior. It supports.*
+
+The Nav (Nestable) element creates hierarchical navigation menus with dropdown functionality, multilevel support, and mobile-responsive behavior. It supports nested menu structures and can be used to build complex navigation systems.
+
+## Settings
+
+### HTML Tag & Accessibility
+
+- **HTML tag** (text) - HTML tag for the navigation element. Supports dynamic data. Default placeholder: `nav`. Validates HTML tag format.
+
+- **aria-label** (text) - Accessibility label for the navigation. Supports dynamic data. Default placeholder: "Menu".
+
+### Top Level (Item)
+
+- **Gap** (number with units) - Gap between top-level navigation items. Controls `gap` property for `.brx-nav-nested-items` selector.
+
+- **Justify content** (justify-content) - Horizontal alignment of top-level items. Deprecated since version 1.10. Description suggests using "Align items" under "Mobile menu" instead. Direction: row. Excludes space options.
+
+- **Padding** (spacing) - Padding for top-level navigation items. Controls `padding` property for multiple selectors including `.brx-nav-nested-items > li > a`, text links, icons, SVG elements, and submenu toggles.
+
+- **Background color** (color) - Background color for top-level items. Controls `background-color` property for links, text links, icons, SVG elements, and submenu toggles.
+
+- **Border** (border) - Border styling for top-level items. Controls `border` property for links, text links, icons, SVG elements, and submenu toggles.
+
+- **Typography** (typography) - Typography settings for top-level items. Controls `font` property for links, text links, icons, SVG elements, and submenu toggles.
+
+- **Transform** (transform) - Transform settings for top-level items. Controls `transform` property for links, text links, icons, SVG elements, and submenu toggles.
+
+- **Transition** (text) - Transition settings for top-level items. Supports dynamic data. Controls `transition` property for list items, links, text links, icons, SVG elements, submenu toggles, and submenu toggle children.
+
+#### Active State
+
+- **Active** (separator) - Visual separator for active state controls.
+
+- **Background color** (color) - Background color for active/current page items. Controls `background-color` property for `[aria-current="page"]` and `.brx-submenu-toggle.aria-current` selectors.
+
+- **Border** (border) - Border styling for active items. Controls `border` property for `[aria-current="page"]` and `.brx-submenu-toggle.aria-current` selectors.
+
+- **Typography** (typography) - Typography settings for active items. Controls `font` property for `[aria-current="page"]` and `.brx-submenu-toggle.aria-current > *` selectors.
+
+#### Dropdown (Top Level Only)
+
+- **Dropdown** (separator) - Separator for top-level dropdown controls. Description: "Only applies to top level dropdown elements."
+
+- **Text padding** (spacing) - Padding for dropdown text. Controls `padding` property for `.brx-nav-nested-items > li > .brx-submenu-toggle > span` selector.
+
+- **Icon padding** (spacing) - Padding for dropdown icons. Controls `padding` property for `.brx-nav-nested-items > li > .brx-submenu-toggle button` selector.
+
+- **Gap** (number with units) - Gap between text and icon in dropdown toggles. Controls `gap` property for `.brx-nav-nested-items > li > .brx-submenu-toggle` selector.
+
+### Dropdown
+
+#### Text
+
+- **Text** (separator) - Separator for dropdown text controls. Description: "Control dropdown element text."
+
+- **Text padding** (spacing) - Padding for dropdown text. Controls `padding` property for `.brx-submenu-toggle span` selector (applies to all dropdowns).
+
+#### Icon
+
+- **Icon** (separator) - Separator for dropdown icon controls. Description: "Edit dropdown to set icon individually."
+
+- **Icon padding** (spacing) - Padding for dropdown icons. Controls `padding` property for `.brx-submenu-toggle button` selector.
+
+- **Gap** (number with units) - Gap between text and icon in dropdown toggles. Controls `gap` property for `.brx-submenu-toggle` selector.
+
+- **Icon position** (select) - Position of the dropdown icon. Options from icon position control options. Default placeholder: "Right". Controls `flex-direction` property for `.brx-submenu-toggle` selector (sets to `row-reverse` when left).
+
+- **Icon size** (number with units) - Size of the dropdown icon. Controls `font-size` property for `.brx-submenu-toggle button` selector.
+
+- **Icon color** (color) - Color of the dropdown icon. Controls `color` property for `.brx-submenu-toggle button` selector.
+
+- **Icon transform** (transform) - Transform settings for dropdown icons. Controls `transform` property for `.brx-submenu-toggle button > *` selector (targets icon only).
+
+- **Icon transform (Open)** (transform) - Transform settings for dropdown icons when open. Controls `transform` property for `.brx-submenu-toggle button[aria-expanded="true"] > *` selector (targets icon only).
+
+- **Icon transition** (text) - Transition settings for dropdown icons. Supports dynamic data. Controls `transition` property for `.brx-submenu-toggle button[aria-expanded] > *` selector (targets icon only). Uses `!important` to override other transitions.
+
+#### Content
+
+- **Content** (separator) - Separator for dropdown content controls. Description: "Sub menu, mega menu, or multilevel area."
+
+- **Min. width** (number with units) - Minimum width for dropdown content. Controls `min-width` property for `.brx-dropdown-content` selector. Triggers re-render.
+
+- **Background color** (color) - Background color for dropdown content. Controls `background-color` property for `.brx-dropdown-content` selector.
+
+- **Border** (border) - Border styling for dropdown content. Controls `border` property for `.brx-dropdown-content` selector.
+
+- **Box shadow** (box-shadow) - Box shadow for dropdown content. Controls `box-shadow` property for `.brx-dropdown-content` selector.
+
+- **Typography** (typography) - Typography settings for dropdown content. Controls `font` property for `.brx-dropdown-content` selector.
+
+- **Transform** (transform) - Transform settings for dropdown content. Controls `transform` property for `.brx-nav-nested-items > .brxe-dropdown > .brx-dropdown-content` selector.
+
+- **Transform (Open)** (transform) - Transform settings for dropdown content when open. Controls `transform` property for `.brx-nav-nested-items > .brxe-dropdown.open > .brx-dropdown-content` selector.
+
+- **Transition** (text) - Transition settings for dropdown content. Supports dynamic data. Controls `transition` property for `.brx-dropdown-content` selector.
+
+- **Z-index** (number) - Z-index for dropdown elements. Controls `z-index` property for `.brxe-dropdown` selector. Default placeholder: 1001.
+
+#### Item
+
+- **Item** (separator) - Separator for dropdown item controls.
+
+- **Padding** (spacing) - Padding for dropdown items. Controls `padding` property for `.brx-dropdown-content > li > a` and `.brx-dropdown-content :where(.brx-submenu-toggle > *)` selectors.
+
+- **Background** (color) - Background color for dropdown items. Controls `background-color` property for `.brx-dropdown-content > li` and `.brx-dropdown-content .brx-submenu-toggle` selectors.
+
+- **Border** (border) - Border styling for dropdown items. Controls `border` property for `.brx-dropdown-content > li:not(.brxe-dropdown)` and `.brx-dropdown-content .brx-submenu-toggle` selectors.
+
+- **Typography** (typography) - Typography settings for dropdown items. Controls `font` property for `.brx-dropdown-content > li > a` and `.brx-dropdown-content .brx-submenu-toggle > *` selectors.
+
+- **Transition** (text) - Transition settings for dropdown items. Supports dynamic data. Controls `transition` property for dropdown content items, links, submenu toggles, and megamenu elements.
+
+#### Multilevel
+
+- **Multilevel** (separator) - Separator for multilevel controls. Description: "Show only active dropdown. Toggle on click. Inner dropdowns inherit multilevel."
+
+- **Enable** (checkbox) - Enable multilevel dropdown functionality.
+
+- **Back: Text** (text) - Text for the back button in multilevel navigation. Only available when multilevel is enabled.
+
+- **Back: Typography** (typography) - Typography settings for the back button. Only available when multilevel is enabled. Controls `font` property for `.brx-multilevel-back` selector.
+
+- **Back: Background** (color) - Background color for the back button. Only available when multilevel is enabled. Controls `background-color` property for `.brx-multilevel-back` selector.
+
+### Mobile Menu
+
+- **Mobile menu** (separator) - Separator for mobile menu controls. Description: "Insert "Toggle" element after "Nav items" to show/hide your mobile menu."
+
+- **Keep open while styling** (checkbox) - Keep mobile menu open during styling in the builder. Adds `brx-open` class. Not saved as setting.
+
+- **Hide at breakpoint** / **Show at breakpoint** (select) - Breakpoint at which to show/hide mobile menu. Options include all breakpoints plus "Always" and "Never". Default placeholder: "Mobile landscape". Triggers re-render.
+
+- **Width** (number with units) - Width of the mobile menu. Controls `width` property for `&.brx-open .brx-nav-nested-items` selector.
+
+- **Height** (number with units) - Height of the mobile menu. Controls `height` property for `&.brx-open .brx-nav-nested-items` selector.
+
+- **Padding (Dropdown)** (spacing) - Padding for dropdown content in mobile view. Controls padding for `&.brx-open .brx-dropdown-content > *` selector. Description: "Used to create visual hierarchy between nested dropdowns."
+
+- **Align items** (align-items) - Vertical alignment of mobile menu items. Controls `align-items` property for `&.brx-open .brx-nav-nested-items` selector.
+
+- **Justify content** (justify-content) - Horizontal alignment of mobile menu items. Controls `justify-content` property for `&.brx-open .brx-nav-nested-items` selector.
+
+- **Position** (dimensions) - Position settings for the mobile menu. Controls multiple position properties.
+
+- **Background color** (color) - Background color for the mobile menu. Controls `background-color` property for mobile menu selectors.
+
+#### Item
+
+- **Item** (separator) - Separator for mobile menu item controls.
+
+- **Align items** (align-items) - Vertical alignment of mobile menu items. Excludes `stretch` option. Controls `align-items` property for various mobile menu item selectors.
+
+> **Developer reference**
+>
+> See the [Nav (Nestable) Schema](https://academy.bricksbuilder.io/developer/schema/elements/nav-nested/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Map
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/map/
+
+*Display Google Maps, sync markers with a query loop, style the connected active item, and scroll it into view when a marker is selected.*
+
+The **Map** element in Bricks allows you to display Google Maps with a range of capabilities, from showing a single location to dynamically rendering multiple markers based on queries.
+
+You can get started quickly by adding a Google Maps API key. Follow this guide to set it up: [How to set up your Google Maps API key](https://academy.bricksbuilder.io/integrations/how-to-set-up-your-google-maps-api-key/).
+
+Without an API key, the Map element is still functional but limited to displaying **a single marker** only.
+
+![](https://academy.bricksbuilder.io/assets/map-without-google-maps-api.png)
+
+To ensure a marker is shown, simply enter a pair of coordinates (latitude and longitude, separated by a comma) in the **Address** field.
+
+## Choose how the map renders
+
+With an API key saved, **Render mode** lets you choose **Google Maps JavaScript API** (the default) or **Iframe embed**. Use Iframe embed when the map only needs a single address and you do not need API-only features such as multiple markers, clustering, query syncing, or custom Info Boxes. The iframe mode does not load the Google Maps JavaScript API for that map. Set its **Loading** option to `lazy` (the default) or `eager`.
+
+Without an API key, the map uses the single-address iframe mode automatically. The Render mode selector appears only when an API key is saved.
+
+## Displaying multiple addresses
+
+To unlock advanced features such as multiple locations, clustering, and custom Info Boxes, save a valid **Google Maps API key** and use the **Google Maps JavaScript API** render mode. You will then see more controls on the element.
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-map-addresses.png)
+
+Bricks supports three address input modes:
+
+### 1) Static
+
+Manually define multiple locations using the "Addresses" **Repeater** control of the Map element. This mode supports only the default Google Maps Info Box.
+
+### 2) Query loop
+
+Use this mode to populate map markers with addresses or coordinates from a query.
+
+For example, if you have a **custom post type** like "Properties" where each property contains an address, enabling the Query loop allows you to show markers of all property addresses on the map. `(@since 2.0)`
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-map-query-loop.png)
+
+You can also define a [custom Info Box](#info-box-popup-template) using a popup template.
+
+In our example above, we selected the custom post type `property`, where each address is stored in a custom field (ACF). Providing the latitude & longitude coordinates will be more accurate than a physical address.
+
+The map's own query only populates markers. To update markers through filters, pagination, or Load More, use a separate results loop containing [Map Connectors](#map-connector-element) and sync the map to it.
+
+### 3) Sync with query
+
+Ideal for use cases where the map is shown alongside a dynamic query loop such as a directory, Sync with query allows the map to update live with the query as users interact via **AJAX Pagination**, **Load More**, or **Query Filters**.
+
+This mode requires adding a [Map Connector](#map-connector-element) element inside the target query loop. Point filters, pagination, Load More, and any results summary at that loop.
+
+The builder previews the connected loop's markers. Test filtering and pagination on the frontend. [Map (Leaflet)](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/#sync-with-query) also supports this workflow.
+
+It also supports [custom Info Boxes](#info-box-popup-template) using popup templates.
+
+**Example setup:** You want to display a query loop on the same page as your map and connect the two. If this query loop uses **AJAX Pagination**, **Query Filters**, or **Load More**, enabling Sync with query allows the map markers to update dynamically in real-time as users interact with those features.
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-map-sync-with-query.png)
+
+**Map markers update according to query results**:
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-map-sync-with-query-filters.png)
+
+### Geolocation filtering {#geolocation-filtering}
+
+Starting with **Bricks 2.5**, use a [Filter - Geolocation](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-geolocation-element) to search the connected listing within a radius of an address, device location, or map center. Target a Posts, Terms, or Users results loop containing Map Connectors, and select the same loop under **Addresses > Sync with query**. The map must use **Google Maps JavaScript API** rendering. Static maps and the map's own query are not filter targets.
+
+The filter reads saved coordinates from its configured data source. It does not geocode stored street addresses during indexing. Use matching location fields on the Map Connectors.
+
+One matching Geolocation filter and one synchronized map connect automatically. If several filters or maps use the query, select **Map (Optional)** on the filter. Each filter connects to one map, and each map can be controlled by one filter.
+
+The map shows the applied search origin and radius, including searches with no matching locations. Configure the origin marker and circle on the filter. Address search requires Maps JavaScript API and Geocoding API; autocomplete additionally requires Places API (New).
+
+Enable **Search on map drag** on the filter to use the map center after the visitor finishes panning. Dragging must be enabled on the map. **Visitor controlled** mode displays a **Search as I move the map** checkbox; **Automatic** mode searches after every qualifying drag. Zooming alone does not trigger a search. **Apply on: On submit** stages the new location until submitted.
+
+Under **Addresses**, use **No results text**, **No results typography**, and **No results position** to configure the empty-state message. Position it at the top or bottom to keep the origin marker visible.
+
+### Scroll the Active Item Into View {#scroll-active-item}
+
+Starting with **Bricks 2.5**, selecting a marker can scroll its connected query-loop item into view. This works when clicking a marker or selecting it through an **Open address (Map)** interaction, including markers without an Info Box.
+
+1. Save a Google Maps API key and use **Google Maps JavaScript API** render mode.
+2. Add a [Map Connector](https://academy.bricksbuilder.io/builder/elements/general/map-connector/) inside the target query loop and configure its location data.
+3. On the Map element, select the loop under **Addresses > Sync with query**.
+4. Enable **Scroll active item into view**. It is off by default.
+5. Choose the scrolling behavior and position, then save and test the frontend.
+
+| Setting | Options |
+| --- | --- |
+| Scroll behavior | **Follow site setting** (default) uses the scroll container's or page's CSS scroll behavior. **Smooth** animates scrolling. **Instant** scrolls immediately. |
+| Scroll position | **Nearest** (default) moves only as far as needed to bring the item into view. **Start** aligns its top with the scroll area. **Center** centers it vertically. |
+
+Bricks finds the connected loop item automatically and scrolls its nearest vertically scrollable parent. If there is no such parent, it scrolls the page. You do not need an interaction on each result, a target selector, or a scroll-container selector. With **Nearest**, an item already visible, or an oversized item spanning the scroll area, stays in place.
+
+<div className="screenshot screenshot--control-panel">
+
+![Map settings targeting the Publisher card query, with Scroll active item into view enabled, Smooth behavior, and Center positioning.](https://academy.bricksbuilder.io/assets/map-scroll-active-item-settings.webp)
+
+</div>
+
+## Markers
+
+![](https://academy.bricksbuilder.io/assets/markers-control.png)
+
+### Cluster markers
+
+Enable this option to automatically group nearby markers into a cluster. `(@since 2.0)`
+
+![](https://academy.bricksbuilder.io/assets/cluster-markers.png)
+
+## General Settings
+
+### Map ID
+
+![](https://academy.bricksbuilder.io/assets/map_id-control.png)
+
+Enter your **Google Maps ID** (available in your Google Cloud Console) to enable the latest Maps features `(@since 2.0)`  
+When set:
+
+- Bricks uses Google's modern `AdvancedMarker` API.
+- Map styles are managed via your Google Console (style settings in Bricks are disabled).
+- Deprecated browser console warnings are avoided.
+
+### Map Center
+
+![](https://academy.bricksbuilder.io/assets/map-center-control.png)
+
+Set the default center point of the map. With **Sync with query**, AJAX updates preserve the current view unless **Fit map on markers change** is enabled. When fitting is enabled and no locations remain, the map returns to its configured center and zoom. An active Geolocation search preserves its search origin and radius when there are no results.
+
+### Initial view and marker updates {#map-fitting}
+
+By default, the initial view centers a single marker at the configured zoom or fits multiple markers. Enable **Disable initial fit map** to retain the configured center and zoom on page load.
+
+**Fit map on markers change** separately controls whether the view adjusts after synced-query updates. It is off by default.
+
+### Others
+
+![](https://academy.bricksbuilder.io/assets/general-settings.png)
+
+## Map Connector (element)
+
+**The Map Connector element `(@since 2.0)` is required when using Sync with query.**
+
+Place it inside the target query loop that you want to sync with your map. It generates an invisible `<template>` node containing location data, which is then read by the map to dynamically render the markers.
+
+**Note:** It's strongly recommended to provide **latitude and longitude** values whenever available. If you rely solely on addresses and require geocoding every time markers are rendered, you may incur charges from the Google Maps Platform Geocoding API.
+
+![](https://academy.bricksbuilder.io/assets/map-connector.png)
+
+You can also define the Info Box (popup template) that should show when a marker is clicked. Make sure the selected popup template has the **"Info Box (Map)"** option enabled in its settings.
+
+## Info Box (Popup template)
+
+Introduced in version 2.0, the **Info Box (Map)** option is available in Popup template settings.
+
+![](https://academy.bricksbuilder.io/assets/infobox-popup.png)
+
+- Once enabled, the popup will display with a default width of 300px in the builder and remove the backdrop for preview.
+- You can customize the design of the Info Box in the builder.
+- Supports **Fetch content via AJAX**.
+- Supports **AJAX loader** animation when loading dynamically.
+- It is recommended to set **Populate Content** to the post or term being looped so dynamic data displays correctly in the builder.
+
+![](https://academy.bricksbuilder.io/assets/infobox-popup-preview.png)
+
+## Map Interactions
+
+Two new map interaction actions are introduced in Bricks 2.0:
+
+- Open address (Map)
+- Close address (Map)
+
+![](https://academy.bricksbuilder.io/assets/interaction.png)
+
+Use cases:
+
+- Use a button or element inside the query loop to **open** the Info Box for the corresponding marker.
+- Add a close icon inside the Info Box popup to allow users to manually **close** it.
+
+These interactions provide greater control and flexibility over how Info Boxes behave in dynamic mapping scenarios.
+
+When an Info Box opens, Bricks adds the `infobox-opened` class to the interaction elements associated with that marker. The class is removed when the Info Box closes. You can use this class to style the open state or a parent element that contains the interaction element:
+
+```css
+.looping-div:has(.infobox-opened) {
+  background-color: blue;
+}
+```
+
+### Style the Active Connected Item {#active-connected-item}
+
+Starting with **Bricks 2.5**, Bricks adds `map-marker-active` to the **Map Connector** associated with the selected marker. The class updates when a marker is clicked or selected through **Open address (Map)**, even if the marker has no Info Box. Bricks removes it when another marker is selected or the marker state is reset, including when query updates rebuild the markers.
+
+Because the connector is an invisible `<template>` node, style the visible loop item that contains it. For example, assign the `property-card` class to the repeated card and add:
+
+```css
+.property-card:has(.map-marker-active) {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+```
+
+The active connector class and **Scroll active item into view** work independently. Use `map-marker-active` to style the selected location's card. Continue using `infobox-opened` on interaction elements for the Info Box's open/close state.
+
+![Selecting a map marker scrolls the publisher list to Penguin Random House and outlines its connected card.](https://academy.bricksbuilder.io/assets/map-active-connected-item.webp)
+
+## Resolving Google Maps Script Conflicts with Other Plugins
+
+Starting with **Bricks 2.5**, Bricks reuses a Google Maps API runtime that another integration has loaded or is loading. It preserves that integration's key, language, and callbacks. A manual script-dequeue workaround is usually unnecessary.
+
+If the map or address search fails, check that the key used by the shared Google loader permits the APIs your page needs. A key configured by another plugin can have different service or website restrictions from the key saved in Bricks. Consent tools and script optimizers can also control when Google becomes available.
+
+After upgrading, review custom code that deregisters `bricks-google-maps` or starts the map on a fixed timer. Test the map and address search together on the frontend before removing an existing workaround.
+
+## Settings
+
+### Addresses
+
+- **Addresses** (repeater) - Add map locations. Each address has:
+  - **Latitude** (text) - Latitude coordinate. Placeholder: `52.5164154966524`.
+  - **Longitude** (text) - Longitude coordinate. Placeholder: `13.377643715349544`.
+  - **Address** (text) - Address for geocoding (alternative to coordinates). Placeholder: `Berlin, Germany`.
+  - **Info Box template** (select) - Template for infobox popup.
+  - **Title** (text) - Infobox title.
+  - **Subtitle** (text) - Infobox subtitle.
+  - **Content** (textarea) - Infobox content.
+  - **Images** (image-gallery) - Images for infobox.
+  - **Width** (number) - Infobox width. Placeholder: `300`.
+  - **Label** (text) - Screen reader label for accessibility.
+  - **Marker: Text** (text) - Text marker content. Placeholder: `Marker`.
+  - **Marker: Text (Active)** (text) - Active text marker content. Placeholder: `Marker`.
+  - **Marker: Image** (image) - Image marker.
+  - **Marker: Image (Active)** (image) - Active image marker.
+
+### Query loop
+
+- **Has loop** (checkbox) - Enable query loop for dynamic addresses.
+- **Query** (query) - Configure which posts to display.
+- **Info Box: Template** (select) - Template for infobox popup in query loop.
+
+### Sync with query
+
+- **Sync with query** (query-list) - Connect to existing query loop for dynamic markers.
+- **Text: No results** (text) - Message when no locations found. Placeholder: `No locations found`.
+- **Scroll active item into view** (checkbox, Bricks 2.5) - Scroll to the connected loop item when its marker is selected. Off by default. Requires a selected query and JavaScript API rendering.
+- **Scroll behavior** (select) - Follow site setting (default), Smooth, or Instant. Available when scrolling is enabled.
+- **Scroll position** (select) - Nearest (default), Start, or Center. Available when scrolling is enabled.
+
+### Markers
+
+- **Cluster: Markers** (checkbox) - Enable marker clustering.
+- **Cluster: Background color** (color) - Cluster background color.
+- **Cluster: Text color** (color) - Cluster text color.
+
+- **Marker** (separator) - Global marker settings.
+- **Type** (select) - Marker type. Options: `image`, `text`. Default: `image`.
+
+#### Marker: Text
+
+- **Max. width** (number with units) - Maximum text marker width.
+- **Typography** (typography) - Text marker font settings.
+- **Background color** (color) - Text marker background.
+- **Border** (border) - Text marker border styling.
+- **Box shadow** (box-shadow) - Text marker shadow.
+- **Padding** (spacing) - Text marker padding.
+
+#### Marker: Text (Active)
+
+- **Typography** (typography) - Active text marker font settings.
+- **Background color** (color) - Active text marker background.
+- **Border** (border) - Active text marker border styling.
+- **Box shadow** (box-shadow) - Active text marker shadow.
+- **Padding** (spacing) - Active text marker padding.
+
+#### Marker: Image
+
+- **Marker** (image) - Default marker image.
+- **Height** (number) - Marker height in pixels. Placeholder: `40`.
+- **Width** (number) - Marker width in pixels. Placeholder: `40`.
+- **Border** (border) - Marker border styling.
+- **Box shadow** (box-shadow) - Marker shadow.
+
+#### Marker: Image (Active)
+
+- **Marker (Active)** (image) - Active marker image.
+- **Height** (number) - Active marker height in pixels. Placeholder: `40`.
+- **Width** (number) - Active marker width in pixels. Placeholder: `40`.
+- **Border** (border) - Active marker border styling.
+- **Box shadow** (box-shadow) - Active marker shadow.
+
+### Map
+
+- **Map ID** (text) - Google Maps ID from Cloud Console for advanced features.
+- **Render mode** (select) - With an API key saved, choose Google Maps JavaScript API or Iframe embed. Default: Google Maps JavaScript API.
+- **Loading** (select) - For iframe rendering, choose `lazy` or `eager`. Default: `lazy`.
+
+#### Map center
+
+- **Latitude (Center)** (text) - Map center latitude. Placeholder: `52.5164154966524`.
+- **Longitude (Center)** (text) - Map center longitude. Placeholder: `13.377643715349544`.
+- **Address (Center)** (text) - Map center address. Placeholder: `Berlin, Germany`.
+
+#### General settings
+
+- **Height** (number with units) - Map container height. Placeholder: `300px`.
+- **Zoom level** (number) - Initial map zoom level. Range: 0-20. Placeholder: `12`.
+- **Map type** (select) - Map style. Options: `roadmap`, `satellite`, `hybrid`, `terrain`. Default: `roadmap`.
+- **Map style** (select) - Predefined map styles. Requires roadmap type.
+- **Custom map style** (code) - JSON code for custom styling from Snazzy Maps.
+- **Apply: Custom map style** (apply) - Apply custom style changes.
+- **Disable initial fit map** (checkbox) - Preserve the configured center and zoom on page load. Off by default.
+- **Fit map on markers change** (checkbox) - Adjust the view after synced query results change. Off by default.
+- **Scroll** (checkbox) - Enable scroll wheel zooming. Default: true.
+- **Draggable** (checkbox) - Enable map dragging. Default: true.
+- **Fullscreen Control** (checkbox) - Show fullscreen button.
+- **Map Type Control** (checkbox) - Show map type selector.
+- **Street View Control** (checkbox) - Show street view button. Default: true.
+- **Disable Default UI** (checkbox) - Hide all default controls.
+- **Disable clickable POI** (checkbox) - Disable clicking on points of interest.
+- **Zoom Control** (checkbox) - Show zoom controls. Default: true.
+- **Zoom level (Min)** (number) - Minimum zoom level.
+- **Zoom level (Max)** (number) - Maximum zoom level.
+
+### No API Key Mode
+
+When no Google Maps API key is configured, the element falls back to Google Maps Embed API with limited functionality:
+
+- **Address** (text) - Single address for embedded map. Placeholder: `Berlin, Germany`.
+- **Loading** (select) - Loading behavior. Options: `eager`, `lazy`. Default: `lazy`.
+
+> **Developer reference**
+>
+> See the [Map (Google) Schema](https://academy.bricksbuilder.io/developer/schema/elements/map/) for the full JSON schema of this element's settings and controls.

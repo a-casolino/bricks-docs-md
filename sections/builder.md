@@ -1,7 +1,7 @@
 # Bricks Builder Documentation: Builder
 
-<!-- content-sha256: 9066eed7430ca1ea42a3584b1e0f737ac94db7f00cb20febb03becdb71aa13fe -->
-<!-- content last changed: 2026-11-18 08:35 UTC -->
+<!-- content-sha256: 8eabb8e9d817c1c8103e19efaeb7d1df80b91ffebb3f46c9389b105f127685f5 -->
+<!-- content last changed: 2026-11-20 08:29 UTC -->
 
 Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricksbuilder.io/), refreshed daily. Content © Bricks. 234 pages.
 
@@ -9,22 +9,63 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
 
 - [Builder](#builder)
     - [Dynamic Data](#builder-dynamic-content-dynamic-data)
-    - [Global Queries & Query Manager](#builder-dynamic-content-global-queries-query-manager)
     - [Global Filters & Filter Manager](#builder-dynamic-content-global-filters-filter-manager)
+    - [Global Queries & Query Manager](#builder-dynamic-content-global-queries-query-manager)
     - [Query Data from APIs](#builder-dynamic-content-query-data-from-apis)
     - [Query Sort, Filter & Live Search](#builder-dynamic-content-query-filters)
     - [Query Loop](#builder-dynamic-content-query-loop)
-    - [Builder Mode (Custom)](#builder-interface-builder-mode)
+    - [How to add a custom animation in interaction](#builder-features-add-custom-animation-to-interaction)
+    - [Accessibility](#builder-features-accessibility)
+    - [AI Abilities and Skills](#builder-features-ai-abilities-and-skills)
+    - [An Intro To Templates](#builder-features-an-intro-to-templates)
+    - [Recovering a compromised Bricks or WordPress site](#builder-features-bricks-rce)
+    - [Builder Browser](#builder-features-builder-browser)
+    - [Code review](#builder-features-code-review)
+    - [Code signatures](#builder-features-code-signatures)
+    - [Color Manager](#builder-features-color-manager)
+    - [Components](#builder-features-components)
+    - [Creating Your First Template](#builder-features-create-template)
+    - [Custom Authentication Pages](#builder-features-custom-authentication-pages)
+    - [Custom Attributes](#builder-features-custom-attributes)
+    - [Create & Update Posts on the Frontend](#builder-features-create-update-posts-on-the-frontend)
+    - [Custom Code](#builder-features-custom-code)
+    - [Element Conditions](#builder-features-element-conditions)
+    - [Global Elements](#builder-features-global-elements)
+    - [Global Import / Export](#builder-features-global-import-export)
+    - [HTML & CSS to Bricks](#builder-features-html-css-to-bricks)
+    - [Icon Manager](#builder-features-icon-manager)
+    - [Interactions](#builder-features-interactions)
+  - [Features](#builder-features)
+    - [Lazy Loading](#builder-features-lazy-loading)
+    - [Maintenance Mode](#builder-features-maintenance-mode)
+    - [Media Browser](#builder-features-media-browser)
+    - [Menu Builder](#builder-features-menu-builder)
+    - [Password Protection](#builder-features-password-protection)
+    - [Nestable Slider: Customization via JavaScript](#builder-features-nestable-slider-instance)
+    - [Popup Builder](#builder-features-popup-builder)
+    - [Remote Templates](#builder-features-remote-templates)
+    - [Remote Components](#builder-features-remote-components)
+    - [Search Criteria](#builder-features-search-criteria)
+    - [Save Form Submissions](#builder-features-save-form-submissions)
+    - [Create Your Own Sidebars](#builder-features-sidebars)
+    - [Style Manager](#builder-features-style-manager)
+    - [SVG Uploads](#builder-features-svg-uploads)
+    - [Template Library](#builder-features-template-library)
+    - [Template Settings](#builder-features-template-settings)
+    - [User activation](#builder-features-user-activation)
+    - [Visual Grid Builder](#builder-features-visual-grid-builder)
     - [Builder Access & Capabilities](#builder-interface-builder-access)
+    - [Wireframe Templates](#builder-features-wireframe-templates)
+    - [Builder Interface Customiser and Profiles](#builder-interface-builder-interface-customiser-profiles)
+    - [Builder Mode (Custom)](#builder-interface-builder-mode)
     - [Command Palette](#builder-interface-command-palette)
     - [Context Menu](#builder-interface-context-menu)
-    - [Builder Interface Customiser and Profiles](#builder-interface-builder-interface-customiser-profiles)
     - [Drafts](#builder-interface-drafts)
     - [Adding & Editing Elements](#builder-interface-editing-elements)
     - [Start Editing With Bricks](#builder-interface-editing-with-bricks)
     - [Explore Alternatives and Compare](#builder-interface-explore-alternatives)
-    - [Keyboard Shortcuts](#builder-interface-keyboard-shortcuts)
     - [Global Data Revisions](#builder-interface-global-data-history)
+    - [Keyboard Shortcuts](#builder-interface-keyboard-shortcuts)
     - [Page Settings](#builder-interface-page-settings)
     - [Responsive Editing](#builder-interface-responsive-editing)
     - [Review Links](#builder-interface-review-links)
@@ -33,58 +74,17 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
     - [Site Versions](#builder-interface-site-versions)
     - [Structure Panel Search and Filters](#builder-interface-structure-panel-search)
     - [Undo, Redo & History](#builder-interface-undo-redo-history)
-    - [Accessibility](#builder-features-accessibility)
-    - [How to add a custom animation in interaction](#builder-features-add-custom-animation-to-interaction)
-    - [AI Abilities and Skills](#builder-features-ai-abilities-and-skills)
-    - [An Intro To Templates](#builder-features-an-intro-to-templates)
-    - [Recovering a compromised Bricks or WordPress site](#builder-features-bricks-rce)
-    - [Code review](#builder-features-code-review)
-    - [Builder Browser](#builder-features-builder-browser)
-    - [Code signatures](#builder-features-code-signatures)
-    - [Color Manager](#builder-features-color-manager)
-    - [Components](#builder-features-components)
-    - [Custom Attributes](#builder-features-custom-attributes)
-    - [Create & Update Posts on the Frontend](#builder-features-create-update-posts-on-the-frontend)
-    - [Custom Authentication Pages](#builder-features-custom-authentication-pages)
-    - [Custom Code](#builder-features-custom-code)
-    - [Creating Your First Template](#builder-features-create-template)
-    - [Global Elements](#builder-features-global-elements)
-    - [Element Conditions](#builder-features-element-conditions)
-    - [Global Import / Export](#builder-features-global-import-export)
-    - [HTML & CSS to Bricks](#builder-features-html-css-to-bricks)
-    - [Icon Manager](#builder-features-icon-manager)
-  - [Features](#builder-features)
-    - [Lazy Loading](#builder-features-lazy-loading)
-    - [Interactions](#builder-features-interactions)
-    - [Maintenance Mode](#builder-features-maintenance-mode)
-    - [Media Browser](#builder-features-media-browser)
-    - [Menu Builder](#builder-features-menu-builder)
-    - [Nestable Slider: Customization via JavaScript](#builder-features-nestable-slider-instance)
-    - [Password Protection](#builder-features-password-protection)
-    - [Popup Builder](#builder-features-popup-builder)
-    - [Remote Components](#builder-features-remote-components)
-    - [Remote Templates](#builder-features-remote-templates)
-    - [Save Form Submissions](#builder-features-save-form-submissions)
-    - [Search Criteria](#builder-features-search-criteria)
-    - [Create Your Own Sidebars](#builder-features-sidebars)
-    - [SVG Uploads](#builder-features-svg-uploads)
-    - [Template Library](#builder-features-template-library)
-    - [Style Manager](#builder-features-style-manager)
-    - [Template Settings](#builder-features-template-settings)
-    - [User activation](#builder-features-user-activation)
-    - [Visual Grid Builder](#builder-features-visual-grid-builder)
+    - [License, updates, and your account](#builder-license-license-and-updates)
   - [Elements](#builder-elements)
     - [Restrict License Key Usage](#builder-license-restrict-license-key-usage)
-    - [License, updates, and your account](#builder-license-license-and-updates)
-    - [Wireframe Templates](#builder-features-wireframe-templates)
-    - [Requirements](#builder-setup-requirements)
     - [Known issues](#builder-setup-known-issues)
+    - [Requirements](#builder-setup-requirements)
+    - [Integration: Adobe Fonts](#builder-styling-adobe-fonts)
     - [Bricks Settings](#builder-setup-settings)
     - [Troubleshooting a Bricks Website](#builder-setup-troubleshooting)
-    - [Integration: Adobe Fonts](#builder-styling-adobe-fonts)
+    - [Build a Design System in Bricks](#builder-styling-build-a-design-system)
     - [Cascade layer](#builder-styling-cascade-layer)
     - [Contextual Spacing](#builder-styling-contextual-spacing)
-    - [Build a Design System in Bricks](#builder-styling-build-a-design-system)
     - [CSS Grid Layout](#builder-styling-css-grid-layout)
     - [Custom Fonts](#builder-styling-custom-fonts)
     - [Fluid Spacing](#builder-styling-fluid-spacing)
@@ -102,8 +102,8 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
     - [Styling Element States & Parts](#builder-styling-pseudo-classes)
     - [Scroll Snap](#builder-styling-scroll-snap)
     - [Shape Dividers](#builder-styling-shape-dividers)
-    - [Theme Styles](#builder-styling-theme-styles)
   - [Templates](#builder-templates)
+    - [Theme Styles](#builder-styling-theme-styles)
       - [Button](#builder-elements-basic-button)
       - [Heading](#builder-elements-basic-heading)
       - [Icon](#builder-elements-basic-icon)
@@ -112,63 +112,68 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Text Link](#builder-elements-basic-text-link)
       - [Rich text](#builder-elements-basic-text)
       - [Video](#builder-elements-basic-video)
-      - [Filter active filters](#builder-elements-filter-filter-active-filters)
-      - [Filter checkbox](#builder-elements-filter-filter-checkbox)
-      - [Filter datepicker](#builder-elements-filter-filter-datepicker)
-      - [Filter Geolocation](#builder-elements-filter-filter-geolocation)
-      - [Filter radio](#builder-elements-filter-filter-radio)
-      - [Filter range](#builder-elements-filter-filter-range)
-      - [Filter search](#builder-elements-filter-filter-search)
-      - [Filter select](#builder-elements-filter-filter-select)
-      - [Filter submit](#builder-elements-filter-filter-submit)
       - [Accordion (nestable)](#builder-elements-general-accordion-nested)
-      - [Accordion](#builder-elements-general-accordion)
       - [Alert](#builder-elements-general-alert)
+      - [Accordion](#builder-elements-general-accordion)
       - [Animated typing](#builder-elements-general-animated-typing)
       - [Back to Top](#builder-elements-general-back-to-top)
       - [Breadcrumbs](#builder-elements-general-breadcrumbs)
-      - [Code](#builder-elements-general-code)
       - [Countdown](#builder-elements-general-countdown)
-      - [Dropdown](#builder-elements-general-dropdown)
+      - [Code](#builder-elements-general-code)
       - [Counter](#builder-elements-general-counter)
+      - [Dropdown](#builder-elements-general-dropdown)
       - [Facebook page](#builder-elements-general-facebook-page)
       - [HTML](#builder-elements-general-html)
       - [Icon box](#builder-elements-general-icon-box)
       - [Icon list](#builder-elements-general-icon-list)
       - [Form](#builder-elements-general-form)
       - [Map Connector](#builder-elements-general-map-connector)
-      - [Map](#builder-elements-general-map)
       - [Map (Leaflet)](#builder-elements-general-map-leaflet)
+      - [Nav (Nestable)](#builder-elements-general-nav-nested)
+      - [Map](#builder-elements-general-map)
       - [Offcanvas](#builder-elements-general-offcanvas)
       - [Pie chart](#builder-elements-general-pie-chart)
-      - [Nav (Nestable)](#builder-elements-general-nav-nested)
       - [Pricing tables](#builder-elements-general-pricing-tables)
       - [Progress bar](#builder-elements-general-progress-bar)
       - [Rating](#builder-elements-general-rating)
       - [Slot](#builder-elements-general-slot)
       - [Tabs (nestable)](#builder-elements-general-tabs-nested)
       - [Tabs](#builder-elements-general-tabs)
-      - [Team members](#builder-elements-general-team-members)
       - [Template](#builder-elements-general-template)
+      - [Team members](#builder-elements-general-team-members)
       - [Testimonials](#builder-elements-general-testimonials)
       - [Toggle - Mode](#builder-elements-general-toggle-mode)
       - [Toggle](#builder-elements-general-toggle)
+      - [Filter checkbox](#builder-elements-filter-filter-checkbox)
+      - [Filter active filters](#builder-elements-filter-filter-active-filters)
+      - [Filter datepicker](#builder-elements-filter-filter-datepicker)
+      - [Filter Geolocation](#builder-elements-filter-filter-geolocation)
+      - [Filter radio](#builder-elements-filter-filter-radio)
+      - [Filter search](#builder-elements-filter-filter-search)
+      - [Filter range](#builder-elements-filter-filter-range)
+      - [Filter select](#builder-elements-filter-filter-select)
+      - [Filter submit](#builder-elements-filter-filter-submit)
       - [Audio](#builder-elements-media-audio)
       - [Carousel](#builder-elements-media-carousel)
       - [File](#builder-elements-media-file)
-      - [Image gallery](#builder-elements-media-image-gallery)
       - [Instagram feed](#builder-elements-media-instagram-feed)
+      - [Image gallery](#builder-elements-media-image-gallery)
       - [Logo](#builder-elements-media-logo)
       - [Lottie](#builder-elements-media-lottie)
       - [Slider (nestable)](#builder-elements-media-slider-nested)
       - [Slider](#builder-elements-media-slider)
       - [SVG](#builder-elements-media-svg)
-      - [Query results summary](#builder-elements-query-query-results-summary)
+      - [Block](#builder-elements-layout-block)
+      - [Container](#builder-elements-layout-container)
+      - [Div](#builder-elements-layout-div)
+      - [Divider](#builder-elements-layout-divider)
+      - [List](#builder-elements-layout-list)
+      - [Section](#builder-elements-layout-section)
       - [Add to cart](#builder-elements-product-product-add-to-cart)
       - [Product additional information](#builder-elements-product-product-additional-information)
       - [Product content](#builder-elements-product-product-content)
-      - [Product meta](#builder-elements-product-product-meta)
       - [Product gallery](#builder-elements-product-product-gallery)
+      - [Product meta](#builder-elements-product-product-meta)
       - [Product price](#builder-elements-product-product-price)
       - [Product rating](#builder-elements-product-product-rating)
       - [Related products](#builder-elements-product-product-related)
@@ -178,19 +183,14 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Product tabs](#builder-elements-product-product-tabs)
       - [Product title](#builder-elements-product-product-title)
       - [Product up/cross-sells](#builder-elements-product-product-upsells)
-      - [Block](#builder-elements-layout-block)
-      - [Container](#builder-elements-layout-container)
-      - [Div](#builder-elements-layout-div)
-      - [Divider](#builder-elements-layout-divider)
-      - [List](#builder-elements-layout-list)
-      - [Section](#builder-elements-layout-section)
+      - [Query results summary](#builder-elements-query-query-results-summary)
       - [Author](#builder-elements-single-author)
       - [Comments](#builder-elements-single-comments)
       - [Excerpt](#builder-elements-single-excerpt)
       - [Meta data](#builder-elements-single-meta-data)
       - [Post content](#builder-elements-single-post-content)
-      - [Post reading progress bar](#builder-elements-single-post-reading-progress-bar)
       - [Post navigation](#builder-elements-single-post-navigation)
+      - [Post reading progress bar](#builder-elements-single-post-reading-progress-bar)
       - [Post reading time](#builder-elements-single-post-reading-time)
       - [Post title](#builder-elements-single-post-title)
       - [Post table of contents](#builder-elements-single-post-toc)
@@ -198,8 +198,8 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Social sharing](#builder-elements-single-social-sharing)
       - [Taxonomy](#builder-elements-single-taxonomy)
       - [Nav menu](#builder-elements-wordpress-nav-menu)
-      - [Pagination](#builder-elements-wordpress-pagination)
       - [Posts](#builder-elements-wordpress-posts)
+      - [Pagination](#builder-elements-wordpress-pagination)
       - [Search](#builder-elements-wordpress-search)
       - [Shortcode](#builder-elements-wordpress-shortcode)
       - [Sidebar](#builder-elements-wordpress-sidebar)
@@ -207,39 +207,39 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Account - Add payment method](#builder-elements-woocommerce-account-add-payment-method)
       - [Account - Addresses](#builder-elements-woocommerce-account-addresses)
       - [Account - Downloads](#builder-elements-woocommerce-account-downloads)
+      - [Account - Edit account](#builder-elements-woocommerce-account-form-edit-account)
       - [Account - Edit address](#builder-elements-woocommerce-account-form-edit-address)
       - [Account - Login form](#builder-elements-woocommerce-account-form-login)
-      - [Account - Edit account](#builder-elements-woocommerce-account-form-edit-account)
       - [Account - Lost password](#builder-elements-woocommerce-account-form-lost-password)
       - [Account - Register form](#builder-elements-woocommerce-account-form-register)
       - [Account - Reset password](#builder-elements-woocommerce-account-form-reset-password)
       - [Account - Orders](#builder-elements-woocommerce-account-orders)
       - [Account - Page](#builder-elements-woocommerce-account-page)
       - [Account - Page v2](#builder-elements-woocommerce-account-page-v2)
-      - [Account - View order](#builder-elements-woocommerce-account-view-order)
-      - [Cart totals](#builder-elements-woocommerce-cart-collaterals)
       - [Account - Payment methods](#builder-elements-woocommerce-account-payment-methods)
+      - [Account - View order](#builder-elements-woocommerce-account-view-order)
       - [WooCommerce Breadcrumbs](#builder-elements-woocommerce-breadcrumbs)
+      - [Cart totals](#builder-elements-woocommerce-cart-collaterals)
       - [Cart coupon](#builder-elements-woocommerce-cart-coupon)
       - [Cart items](#builder-elements-woocommerce-cart-items)
       - [Cart v2](#builder-elements-woocommerce-cart-v2)
       - [Checkout coupon](#builder-elements-woocommerce-checkout-coupon)
       - [Checkout customer details](#builder-elements-woocommerce-checkout-customer-details)
-      - [Checkout order review](#builder-elements-woocommerce-checkout-order-review)
+      - [Checkout login](#builder-elements-woocommerce-checkout-login)
       - [Checkout order payment](#builder-elements-woocommerce-checkout-order-payment)
+      - [Checkout order review](#builder-elements-woocommerce-checkout-order-review)
       - [Checkout order table](#builder-elements-woocommerce-checkout-order-table)
       - [Checkout thank you](#builder-elements-woocommerce-checkout-thankyou)
-      - [Checkout login](#builder-elements-woocommerce-checkout-login)
       - [Checkout v2](#builder-elements-woocommerce-checkout-v2)
       - [Dynamic fragment](#builder-elements-woocommerce-dynamic-fragment)
       - [Mini cart](#builder-elements-woocommerce-mini-cart)
       - [Notice](#builder-elements-woocommerce-notice)
+      - [Products filter](#builder-elements-woocommerce-products-filter)
       - [Products archive description](#builder-elements-woocommerce-products-archive-description)
       - [Products orderby](#builder-elements-woocommerce-products-orderby)
-      - [Products pagination](#builder-elements-woocommerce-products-pagination)
       - [Products total results](#builder-elements-woocommerce-products-total-results)
-      - [Products filter](#builder-elements-woocommerce-products-filter)
       - [Products](#builder-elements-woocommerce-products)
+      - [Products pagination](#builder-elements-woocommerce-products-pagination)
       - [WooCommerce Template Hook](#builder-elements-woocommerce-template-hook)
 
 ---
@@ -841,6 +841,180 @@ This argument is particularly useful if you have a shortcode outputting JavaScri
 
 ---
 
+<a id="builder-dynamic-content-global-filters-filter-manager"></a>
+
+# Global Filters & Filter Manager
+
+Source: https://academy.bricksbuilder.io/builder/dynamic-content/global-filters-filter-manager/
+
+*Reuse query filter settings across elements, synchronize desktop and mobile filters, and manage global filters in Bricks.*
+
+Starting with **Bricks 2.5**, Global Filters let several filter elements share one saved configuration. Use them for desktop sidebar and mobile Offcanvas filters that should filter the same listing and show the same selections.
+
+The **Filter manager** creates, edits, organizes, imports, and exports global filters. Each linked element keeps its own **Target query**, styling, and presentation.
+
+Enable [Query Filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#enable) before setting up filter elements. Creating and editing global filters requires the **Access filter manager** [builder permission](https://academy.bricksbuilder.io/builder/interface/builder-access/#general).
+
+## How Global Filters Work {#behavior}
+
+A global filter stores shared behavior, such as the source, taxonomy, comparison, URL parameter, and when to apply the filter. An element links to that configuration through its **Global filter** control.
+
+| Setup | Behavior |
+| --- | --- |
+| Two elements use the same global filter and target the same query | Selections synchronize, and Bricks applies the filter once to that query. |
+| Two elements use the same global filter and target different queries | Settings are shared. Each query keeps its own selections and results. |
+| Two elements have matching settings but no shared global filter | They remain independent filters. Matching URL parameter names do not link them. |
+
+Global filters are specific to an element type. A Checkbox global filter can be selected by other Checkbox elements, but not by Radio or Select elements.
+
+Supported types are Checkbox, Radio, Select, Range, Search, Datepicker, Geolocation, Submit/Reset, and Active Filters. Pagination is configured separately through its own [Query setting](https://academy.bricksbuilder.io/builder/elements/wordpress/pagination/).
+
+Global Filters do not require a [Global Query](https://academy.bricksbuilder.io/builder/dynamic-content/global-queries-query-manager/). A Global Query shares a loop's query settings. A Global Filter shares a filter's settings. Each filter element still targets the particular loop it should control.
+
+## Create From an Existing Filter {#create-from-element}
+
+1. Select a configured filter element in the builder.
+2. Click the save icon beside **Global filter** to open **Create global filter**.
+3. Enter a name, such as "Product categories".
+4. Optionally add a description and category.
+5. Click **Create**.
+6. Save the builder.
+
+Bricks moves the supported shared settings into the global filter and links the element to it. The element keeps its target query and presentation settings.
+
+<div className="screenshot screenshot--control-panel">
+
+![Create a global filter from a Checkbox element using the Name, Description, and Category fields.](https://academy.bricksbuilder.io/assets/global-filter-create-popover.webp)
+
+</div>
+
+## Create in Filter Manager {#create-in-manager}
+
+Open **Browser** from the builder toolbar and select **Filter manager**. The settings icon beside an element's **Global filter** control opens the manager directly.
+
+1. Enter a name in the new-filter field below the filter list.
+2. Click the save icon or press Enter.
+3. In the editor, choose the **Type**. New filters start as Checkbox filters.
+4. Set the source and other shared behavior.
+5. Optionally assign a category and description.
+6. Save the builder.
+
+Creating a global filter in the manager does not add an element to the page. Add a matching filter element and select the saved global filter to use it.
+
+![Filter manager with Product categories selected, organized under Products, and configured as a Checkbox filter using the product category taxonomy.](https://academy.bricksbuilder.io/assets/global-filter-manager-editor.webp)
+
+## Link and Edit Filter Elements {#link-and-edit}
+
+Select a filter element, choose a compatible entry under **Global filter**, and set **Target query** for that element. The dropdown only lists global filters of the same element type.
+
+On a linked element, settings marked with a globe icon belong to the global filter. Editing them updates the shared configuration for every linked element, including elements on other pages. Use the edit icon beside **Global filter** to open that configuration in Filter manager.
+
+| Shared settings | Settings kept on each element |
+| --- | --- |
+| Source, field mapping, comparison, taxonomy restrictions and ordering | Target query |
+| Hierarchical display, Auto toggle child terms, and Count: Include children | Expand/collapse controls, initial expansion, icons, and indentation |
+| Filter, sort, or results-per-page action and its options | Styling, classes, layout, and button-style display |
+| URL parameter and Apply on | Labels, placeholders, icons, and accessibility group labels |
+| Search criteria, debounce, minimum characters, and Enter behavior | Show more/less limits and presentation |
+| Range and date behavior, including Datepicker's End date meta key | Choices dropdown/search presentation |
+| Default values, range/date endpoints, and Geolocation default location | Geolocation map connection and appearance |
+| Reset exclusions and active-filter prefix, suffix, and title | The element's current selection, scoped to its target query |
+
+The available settings depend on the filter type. The globe icon identifies shared controls on the selected element.
+
+[Default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) belong to the global filter. Linked copies targeting the same query start with one shared selection. Copies targeting different queries resolve their defaults independently in the page context. Clearing a shared default leaves linked elements without that default; an older local default is not used instead.
+
+For a [Datepicker with separate start and end fields](https://academy.bricksbuilder.io/builder/elements/filter/filter-datepicker/#separate-date-fields), the provider, field type, and both field selections belong to the global filter. Native metadata and supported ACF, Meta Box, and JetEngine date fields work on posts, terms, and users. Linked elements share those settings and one index. Source, provider, or field-type changes clear the retained end field; select a compatible replacement. If you link an element to a global filter without an **End date meta key**, it uses one-field behavior. An older local end key is not used, including after unlinking.
+
+For a [hierarchical Checkbox filter](https://academy.bricksbuilder.io/builder/elements/filter/filter-checkbox/#collapsible-hierarchy), linked desktop and mobile copies share selections while keeping their own expanded branches and Show more/less state. For example, enable **Show expanded** on the desktop copy and leave it off on the mobile copy. **Count: Include children** uses the shared index. Edit it on the global filter to update every linked copy. See [taxonomy child counts](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#taxonomy-child-counts) for an example.
+
+When several elements in the current editing context use the same global filter, **Linked filter elements** lists them below the control. Click an entry to select it. Matching rows are highlighted in Structure. This list does not show every use across the site.
+
+<div className="screenshot screenshot--control-panel">
+
+![A Checkbox element linked to Product categories, with Desktop categories and Mobile categories listed as linked elements and globe icons beside shared settings.](https://academy.bricksbuilder.io/assets/global-filter-linked-controls.webp)
+
+</div>
+
+## Example: Desktop and Mobile Product Filters {#desktop-mobile}
+
+1. Create a product Query Loop and a Checkbox filter that targets it.
+2. Set the Checkbox source to **Taxonomy** and choose the product category taxonomy.
+3. Create a global filter from this element named "Product categories".
+4. Add a second Checkbox filter inside an Offcanvas.
+5. Select "Product categories" under **Global filter** and target the same product query.
+6. Style the sidebar and Offcanvas copies separately, then save the builder.
+
+Selecting a category in either copy updates the other copy. Both control one category selection for the product query. Test the selection after an AJAX update and after reloading a filtered URL.
+
+**Apply on** is shared. If it is set to **Submit**, both copies wait for a Submit button targeting that query. A desktop copy using Input and a mobile copy using Submit cannot share one global filter configuration.
+
+## URL Parameters and Separate Queries {#url-parameters}
+
+For one target query, the default parameter uses the global filter ID:
+
+```text
+?brx_glob01=shirts
+```
+
+A custom **URL parameter**, such as `product_category`, uses that name instead. Duplicate controls for one query and reuse on separate pages retain this format.
+
+When the same global filter targets multiple URL-enabled queries on one page, Bricks adds each target query ID to keep their selections separate:
+
+```text
+?brx_glob01_querya=shirts&brx_glob01_queryb=shoes
+```
+
+With a custom parameter:
+
+```text
+?product_category_querya=shirts&product_category_queryb=shoes
+```
+
+These IDs are examples. Component queries use their rendered instance IDs. Array-valued filters retain the `[]` URL format.
+
+Bricks derives the suffixes automatically. Reloads, resets, active-filter removal, submit/search redirects, and browser back/forward use the same query ownership. Existing unscoped links remain supported; an explicit query-scoped value takes precedence for that query.
+
+## Unlink, Delete, or Change Type {#unlink-delete}
+
+Clear **Global filter** on an element to unlink it. Bricks copies the current shared settings into that element, preserving its target query and presentation. Save the builder. Future edits on that element are independent.
+
+Bricks blocks deleting a global filter or changing its type while saved content still references it. Unlink the affected elements and save those changes first. References in saved templates, components, legacy global elements, and trashed posts can also prevent removal.
+
+The manager's linked-element list is local to the current editing context, so an empty list there does not prove the global filter is unused elsewhere.
+
+If a save reports that global filters changed since the builder loaded, preserve any work you need, reload the builder, and reapply the changes against the current configuration. Bricks rejects stale global-filter saves to prevent overwriting another saved edit.
+
+## Import and Export {#import-export}
+
+Filter manager's header exports the global filters and categories as JSON. To export only specific filters, select them and use the export icon in the filter-list toolbar. That export includes categories used by the selected filters.
+
+The manager accepts supported JSON and ZIP imports. Imported filters stay unsaved until you save the builder. An imported filter with an existing ID replaces that definition when its type matches. A same-ID filter with a different type is skipped.
+
+For a ZIP package with item selection and **Keep existing** or **Replace** conflict review, use [Global Import / Export](https://academy.bricksbuilder.io/builder/features/global-import-export/). Global filters appear as **Filters**. This import applies selected changes through the bundle importer.
+
+Global filter definitions can move between sites. Elements that still link to a global filter cannot be transferred through cross-site clipboard or template/component imports. Unlink the elements on the source site and save before copying or exporting them. After import, select the destination site's global filter on each matching element and check its target query. Same-site clipboard reuse can retain the link.
+
+Check that the destination has the required taxonomies, custom fields, and plugin data. Importing a definition does not create that content model or transfer generated filter indexes.
+
+## Indexing {#indexing}
+
+Indexable global filters share one index owned by the global filter ID. Adding another linked element does not create a second copy of that index. Counts still reflect each element's target query.
+
+Checkbox, Datepicker, Radio, Select, and Range global filters using the **Filter** action can own value indexes. Search, Submit/Reset, Active Filters, sorting, and results-per-page behavior do not generate their own value indexes.
+
+Source and behavior changes can queue indexing work. Renaming a global filter, changing its category, or editing only its default selections does not rebuild its index. Default-only edits preserve existing index data and indexing progress. Use the existing [indexing tools](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-index) to regenerate indexes or continue pending jobs.
+
+## Permissions and Compatibility {#compatibility}
+
+- **Access filter manager** controls creation, shared-setting edits, organization, deletion, and definition import/export. Users without it can select an existing compatible global filter and edit local settings.
+- Existing unlinked filter elements stay independent. Bricks does not automatically convert them into global filters.
+- Query Filter elements still cannot be placed inside components. Filters outside a component can target its query loops, including supported slot queries. Select the actual rendered loop instance as the target.
+- WPML and Polylang do not register global filter settings as translatable strings. Use separate definitions for languages that need different shared labels, values, or term restrictions, and link translated elements to the matching definition.
+- On multisite, definitions and categories follow their respective main-site sharing settings. Generated indexes remain separate for each site's content. Shared definition changes synchronize index ownership on each site's next applicable request, rather than immediately rebuilding every site's index.
+
+---
+
 <a id="builder-dynamic-content-global-queries-query-manager"></a>
 
 # Global Queries & Query Manager
@@ -1091,180 +1265,6 @@ Imported categories are included only for selected queries that use those catego
 ### Team members cannot edit queries
 
 Check the user's builder permissions and enable **Access query manager** only for users who should be allowed to make site-wide query changes.
-
----
-
-<a id="builder-dynamic-content-global-filters-filter-manager"></a>
-
-# Global Filters & Filter Manager
-
-Source: https://academy.bricksbuilder.io/builder/dynamic-content/global-filters-filter-manager/
-
-*Reuse query filter settings across elements, synchronize desktop and mobile filters, and manage global filters in Bricks.*
-
-Starting with **Bricks 2.5**, Global Filters let several filter elements share one saved configuration. Use them for desktop sidebar and mobile Offcanvas filters that should filter the same listing and show the same selections.
-
-The **Filter manager** creates, edits, organizes, imports, and exports global filters. Each linked element keeps its own **Target query**, styling, and presentation.
-
-Enable [Query Filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#enable) before setting up filter elements. Creating and editing global filters requires the **Access filter manager** [builder permission](https://academy.bricksbuilder.io/builder/interface/builder-access/#general).
-
-## How Global Filters Work {#behavior}
-
-A global filter stores shared behavior, such as the source, taxonomy, comparison, URL parameter, and when to apply the filter. An element links to that configuration through its **Global filter** control.
-
-| Setup | Behavior |
-| --- | --- |
-| Two elements use the same global filter and target the same query | Selections synchronize, and Bricks applies the filter once to that query. |
-| Two elements use the same global filter and target different queries | Settings are shared. Each query keeps its own selections and results. |
-| Two elements have matching settings but no shared global filter | They remain independent filters. Matching URL parameter names do not link them. |
-
-Global filters are specific to an element type. A Checkbox global filter can be selected by other Checkbox elements, but not by Radio or Select elements.
-
-Supported types are Checkbox, Radio, Select, Range, Search, Datepicker, Geolocation, Submit/Reset, and Active Filters. Pagination is configured separately through its own [Query setting](https://academy.bricksbuilder.io/builder/elements/wordpress/pagination/).
-
-Global Filters do not require a [Global Query](https://academy.bricksbuilder.io/builder/dynamic-content/global-queries-query-manager/). A Global Query shares a loop's query settings. A Global Filter shares a filter's settings. Each filter element still targets the particular loop it should control.
-
-## Create From an Existing Filter {#create-from-element}
-
-1. Select a configured filter element in the builder.
-2. Click the save icon beside **Global filter** to open **Create global filter**.
-3. Enter a name, such as "Product categories".
-4. Optionally add a description and category.
-5. Click **Create**.
-6. Save the builder.
-
-Bricks moves the supported shared settings into the global filter and links the element to it. The element keeps its target query and presentation settings.
-
-<div className="screenshot screenshot--control-panel">
-
-![Create a global filter from a Checkbox element using the Name, Description, and Category fields.](https://academy.bricksbuilder.io/assets/global-filter-create-popover.webp)
-
-</div>
-
-## Create in Filter Manager {#create-in-manager}
-
-Open **Browser** from the builder toolbar and select **Filter manager**. The settings icon beside an element's **Global filter** control opens the manager directly.
-
-1. Enter a name in the new-filter field below the filter list.
-2. Click the save icon or press Enter.
-3. In the editor, choose the **Type**. New filters start as Checkbox filters.
-4. Set the source and other shared behavior.
-5. Optionally assign a category and description.
-6. Save the builder.
-
-Creating a global filter in the manager does not add an element to the page. Add a matching filter element and select the saved global filter to use it.
-
-![Filter manager with Product categories selected, organized under Products, and configured as a Checkbox filter using the product category taxonomy.](https://academy.bricksbuilder.io/assets/global-filter-manager-editor.webp)
-
-## Link and Edit Filter Elements {#link-and-edit}
-
-Select a filter element, choose a compatible entry under **Global filter**, and set **Target query** for that element. The dropdown only lists global filters of the same element type.
-
-On a linked element, settings marked with a globe icon belong to the global filter. Editing them updates the shared configuration for every linked element, including elements on other pages. Use the edit icon beside **Global filter** to open that configuration in Filter manager.
-
-| Shared settings | Settings kept on each element |
-| --- | --- |
-| Source, field mapping, comparison, taxonomy restrictions and ordering | Target query |
-| Hierarchical display, Auto toggle child terms, and Count: Include children | Expand/collapse controls, initial expansion, icons, and indentation |
-| Filter, sort, or results-per-page action and its options | Styling, classes, layout, and button-style display |
-| URL parameter and Apply on | Labels, placeholders, icons, and accessibility group labels |
-| Search criteria, debounce, minimum characters, and Enter behavior | Show more/less limits and presentation |
-| Range and date behavior, including Datepicker's End date meta key | Choices dropdown/search presentation |
-| Default values, range/date endpoints, and Geolocation default location | Geolocation map connection and appearance |
-| Reset exclusions and active-filter prefix, suffix, and title | The element's current selection, scoped to its target query |
-
-The available settings depend on the filter type. The globe icon identifies shared controls on the selected element.
-
-[Default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) belong to the global filter. Linked copies targeting the same query start with one shared selection. Copies targeting different queries resolve their defaults independently in the page context. Clearing a shared default leaves linked elements without that default; an older local default is not used instead.
-
-For a [Datepicker with separate start and end fields](https://academy.bricksbuilder.io/builder/elements/filter/filter-datepicker/#separate-date-fields), the provider, field type, and both field selections belong to the global filter. Native metadata and supported ACF, Meta Box, and JetEngine date fields work on posts, terms, and users. Linked elements share those settings and one index. Source, provider, or field-type changes clear the retained end field; select a compatible replacement. If you link an element to a global filter without an **End date meta key**, it uses one-field behavior. An older local end key is not used, including after unlinking.
-
-For a [hierarchical Checkbox filter](https://academy.bricksbuilder.io/builder/elements/filter/filter-checkbox/#collapsible-hierarchy), linked desktop and mobile copies share selections while keeping their own expanded branches and Show more/less state. For example, enable **Show expanded** on the desktop copy and leave it off on the mobile copy. **Count: Include children** uses the shared index. Edit it on the global filter to update every linked copy. See [taxonomy child counts](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#taxonomy-child-counts) for an example.
-
-When several elements in the current editing context use the same global filter, **Linked filter elements** lists them below the control. Click an entry to select it. Matching rows are highlighted in Structure. This list does not show every use across the site.
-
-<div className="screenshot screenshot--control-panel">
-
-![A Checkbox element linked to Product categories, with Desktop categories and Mobile categories listed as linked elements and globe icons beside shared settings.](https://academy.bricksbuilder.io/assets/global-filter-linked-controls.webp)
-
-</div>
-
-## Example: Desktop and Mobile Product Filters {#desktop-mobile}
-
-1. Create a product Query Loop and a Checkbox filter that targets it.
-2. Set the Checkbox source to **Taxonomy** and choose the product category taxonomy.
-3. Create a global filter from this element named "Product categories".
-4. Add a second Checkbox filter inside an Offcanvas.
-5. Select "Product categories" under **Global filter** and target the same product query.
-6. Style the sidebar and Offcanvas copies separately, then save the builder.
-
-Selecting a category in either copy updates the other copy. Both control one category selection for the product query. Test the selection after an AJAX update and after reloading a filtered URL.
-
-**Apply on** is shared. If it is set to **Submit**, both copies wait for a Submit button targeting that query. A desktop copy using Input and a mobile copy using Submit cannot share one global filter configuration.
-
-## URL Parameters and Separate Queries {#url-parameters}
-
-For one target query, the default parameter uses the global filter ID:
-
-```text
-?brx_glob01=shirts
-```
-
-A custom **URL parameter**, such as `product_category`, uses that name instead. Duplicate controls for one query and reuse on separate pages retain this format.
-
-When the same global filter targets multiple URL-enabled queries on one page, Bricks adds each target query ID to keep their selections separate:
-
-```text
-?brx_glob01_querya=shirts&brx_glob01_queryb=shoes
-```
-
-With a custom parameter:
-
-```text
-?product_category_querya=shirts&product_category_queryb=shoes
-```
-
-These IDs are examples. Component queries use their rendered instance IDs. Array-valued filters retain the `[]` URL format.
-
-Bricks derives the suffixes automatically. Reloads, resets, active-filter removal, submit/search redirects, and browser back/forward use the same query ownership. Existing unscoped links remain supported; an explicit query-scoped value takes precedence for that query.
-
-## Unlink, Delete, or Change Type {#unlink-delete}
-
-Clear **Global filter** on an element to unlink it. Bricks copies the current shared settings into that element, preserving its target query and presentation. Save the builder. Future edits on that element are independent.
-
-Bricks blocks deleting a global filter or changing its type while saved content still references it. Unlink the affected elements and save those changes first. References in saved templates, components, legacy global elements, and trashed posts can also prevent removal.
-
-The manager's linked-element list is local to the current editing context, so an empty list there does not prove the global filter is unused elsewhere.
-
-If a save reports that global filters changed since the builder loaded, preserve any work you need, reload the builder, and reapply the changes against the current configuration. Bricks rejects stale global-filter saves to prevent overwriting another saved edit.
-
-## Import and Export {#import-export}
-
-Filter manager's header exports the global filters and categories as JSON. To export only specific filters, select them and use the export icon in the filter-list toolbar. That export includes categories used by the selected filters.
-
-The manager accepts supported JSON and ZIP imports. Imported filters stay unsaved until you save the builder. An imported filter with an existing ID replaces that definition when its type matches. A same-ID filter with a different type is skipped.
-
-For a ZIP package with item selection and **Keep existing** or **Replace** conflict review, use [Global Import / Export](https://academy.bricksbuilder.io/builder/features/global-import-export/). Global filters appear as **Filters**. This import applies selected changes through the bundle importer.
-
-Global filter definitions can move between sites. Elements that still link to a global filter cannot be transferred through cross-site clipboard or template/component imports. Unlink the elements on the source site and save before copying or exporting them. After import, select the destination site's global filter on each matching element and check its target query. Same-site clipboard reuse can retain the link.
-
-Check that the destination has the required taxonomies, custom fields, and plugin data. Importing a definition does not create that content model or transfer generated filter indexes.
-
-## Indexing {#indexing}
-
-Indexable global filters share one index owned by the global filter ID. Adding another linked element does not create a second copy of that index. Counts still reflect each element's target query.
-
-Checkbox, Datepicker, Radio, Select, and Range global filters using the **Filter** action can own value indexes. Search, Submit/Reset, Active Filters, sorting, and results-per-page behavior do not generate their own value indexes.
-
-Source and behavior changes can queue indexing work. Renaming a global filter, changing its category, or editing only its default selections does not rebuild its index. Default-only edits preserve existing index data and indexing progress. Use the existing [indexing tools](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-index) to regenerate indexes or continue pending jobs.
-
-## Permissions and Compatibility {#compatibility}
-
-- **Access filter manager** controls creation, shared-setting edits, organization, deletion, and definition import/export. Users without it can select an existing compatible global filter and edit local settings.
-- Existing unlinked filter elements stay independent. Bricks does not automatically convert them into global filters.
-- Query Filter elements still cannot be placed inside components. Filters outside a component can target its query loops, including supported slot queries. Select the actual rendered loop instance as the target.
-- WPML and Polylang do not register global filter settings as translatable strings. Use separate definitions for languages that need different shared labels, values, or term restrictions, and link translated elements to the matching definition.
-- On multisite, definitions and categories follow their respective main-site sharing settings. Generated indexes remain separate for each site's content. Shared definition changes synchronize index ownership on each site's next applicable request, rather than immediately rebuilding every site's index.
 
 ---
 
@@ -3388,2581 +3388,84 @@ Make sure the element with the dynamic tag is inside the loop element, and make 
 
 ---
 
-<a id="builder-interface-builder-mode"></a>
+<a id="builder-features-add-custom-animation-to-interaction"></a>
 
-# Builder Mode (Custom)
+# How to add a custom animation in interaction
 
-Source: https://academy.bricksbuilder.io/builder/interface/builder-mode/
+Source: https://academy.bricksbuilder.io/builder/features/add-custom-animation-to-interaction/
 
-*Customize the Bricks builder color scheme with custom builder-mode CSS variables.*
+*Add a custom GSAP animation to a Bricks interaction and connect it to triggers, timelines, and interaction events.*
 
-Starting with Bricks 1.3.7 you can customize the builder mode (color scheme) to your liking by tweaking a few CSS variables.
+## Step 1: Add a new option via bricks/setup/control_options hook
 
-You first have to set the "Builder Mode" under Bricks → Settings → Builder to "Custom" and save your settings.
-
-The following new setting called "Builder Mode (Custom)" should now appear:
-
-![Builder Mode: Custom](https://academy.bricksbuilder.io/assets/bricks-setting-builder-mode-custom-1024x721.png)
-
-Below you can find a starter CSS snippet with commonly customized builder CSS variables. Bricks 2.x defines additional variables for classes, components, status colors, muted colors, and the canvas scrollbar, so use this as a starting point and override any extra variables your custom mode needs.
+Hook documentation: [/developer/hooks/filters/filter-bricks-setup-control_options/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/)
 
 ```php
-[data-builder-mode=custom] {
-  --builder-bg: #f6f4f2;
-  --builder-bg-2: #efebe6;
-  --builder-bg-3: #e7e1da;
-  --builder-bg-4: #dbd2c8;
-  --builder-bg-accent: #EED8FD;
+add_filter( 'bricks/setup/control_options', function( $options ) {
+  // Add custom animation into animationTypes
+  // Note that the key is very important, must be unique
+  $options['animationTypes']['myAnim1'] = esc_html__( 'My animation 1', 'bricks' );
 
-  --builder-color: #2e271e;
-  --builder-color-description: #76634c;
-  --builder-color-accent: #7209B7;
-  --builder-color-accent-inverse: #fff;
-
-  --builder-color-knob: #c8baaa;
-  --builder-border-color: #d8cec2;
-  --builder-placeholder-opacity: .33;
-
-  --builder-color-class: #2b6cb0;
-  --builder-bg-class: #d8e8f6;
-  --builder-color-component: #6b46c1;
-  --builder-bg-component: #eadcf8;
-  --builder-color-info: #006c9c;
-  --builder-bg-info: #d9f1ff;
-  --builder-color-danger: #b42318;
-  --builder-bg-danger: #ffe4e2;
-  --builder-color-success: #027a48;
-  --builder-bg-success: #dcfae6;
-  --builder-color-muted: #7a6f63;
-  --builder-bg-muted: #e2ddd6;
-
-  --builder-canvas-scrollbar-thumb: #c8baaa;
-  --builder-canvas-scrollbar-thumb_hover: #76634c;
-  --builder-canvas-scrollbar-track: #efebe6;
-
-  --bricks-tooltip-bg:   #16130f;
-  --bricks-tooltip-text: #f6f4f2;
-}
+  return $options;
+}, 10 );
 ```
 
-If you copy the CSS above, paste it into your "Builder Mode (Custom)" setting, and save your settings, your builder should look like this:
+![](https://academy.bricksbuilder.io/assets/custom-animation-added.png)
 
-![](https://academy.bricksbuilder.io/assets/bricks-screenshot-builder-mode-custom-1024x576.png)
+Custom animation added to the interaction "Animation" dropdown
 
-<figcaption>
+## Step 2: Add animation CSS
 
-Bricks builder with a custom color scheme (mode)
+When the interaction is set, Bricks will assign a class to the element using your animation key (`myAnim1` in our example), and it will be prefixed with `brx-animate-`.
 
-</figcaption>
+All you have to do is create a CSS class that sets the animation name for your element, along with the corresponding keyframes for your animation. You can place these CSS inside `Bricks > Settings > Custom Code > Custom CSS`.
 
-### Resources
-
-- Color palettes: [https://coolors.co/palettes/trending](https://coolors.co/palettes/trending)
-- Color palettes: [https://colorhunt.co](https://colorhunt.co)
-- Generate color shades & tints: [https://www.colorhexa.com](https://www.colorhexa.com)
-
-Note: In custom builder mode, Code element's background color changes to a light color scheme.
-
----
-
-<a id="builder-interface-builder-access"></a>
-
-# Builder Access & Capabilities
-
-Source: https://academy.bricksbuilder.io/builder/interface/builder-access/
-
-*Control who can access Bricks and which builder capabilities are available for different WordPress roles.*
-
-Bricks gives you full control over who can access the builder, and what actions they're allowed to perform. You can either assign a **predefined capability**, or create your own **custom capability** that allows only the specific permissions you enable for it.
-
-This gives you complete freedom and control to tailor the builder experience to any roles (i.e. content editor, designer, client, etc.) depending on what they should be able to do.
-
-![](https://academy.bricksbuilder.io/assets/bricks-settings-builder-access.png)
-
-## Access levels
-
-There are two ways to manage builder access:
-
-1. Use one of the predefined capabilities: **Full access**, **Edit content**, or **No access**
-2. Create your own custom builder capability with detailed permission control
-
-### Predefined capabilities
-
-- **Full access**: Grants access to all features and permissions in the Bricks builder.
-- **Edit content**: Limits the user to content editing only. Layout, styling, and structural controls are disabled. More specifically, this includes the following permissions:
-  - Access revisions
-  - Set component properties (instance)
-  - Access content (HTML) settings
-  - Edit all elements
-  - Edit all Bricks-enabled post types
-- **No access**: Blocks access to the Bricks builder entirely.
-
-## Creating a custom capability {#custom}
-
-If you need precise control over the actions a user or role should be able to perform, you can create your very own custom builder capability, following the steps outlines below.
-
-1. Go to **Bricks > Settings > Builder access**
-2. Under **Builder capabilities**, click **Add new capability**
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-access-add-custom-capability.png)
-
-Inside the capability popup, you can:
-
-- Give the capability a name & a description
-- Enable exactly the permissions you want to grant
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-access-permissions.png)
-
-Once created, you can assign this capability to specific users or user roles.
-
-## Assigning capabilities
-
-You can assign any builder capability, whether predefined or custom:
-
-- To a **user role**, under **Bricks > Settings > Builder access > Builder access**
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-access-custom-capabilities.png)
-
-- To a **specific user**, by editing their WordPress user profile
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-edit-user-profile.png)
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-access-user-settings.png)
-
-This gives you flexibility to apply permissions globally or individually.
-
-## Drafts and site versions {#drafts-and-versions}
-
-With [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) enabled, users need WordPress permission to edit the page and Bricks access for that page's post type to open its page draft. A page draft can be opened by other users with the same required access; it is not private to its creator.
-
-[Site versions](https://academy.bricksbuilder.io/builder/interface/site-versions/) span multiple pages. Opening or creating them requires Builder access and WordPress permission to edit other users' posts (`edit_others_posts`). Existing Builder permissions still control the actions available inside either kind of draft.
-
-Publishing checks the rights required for all included changes, including page and template settings, shared data, and code execution. Having access to a draft does not grant permission to publish every change someone else added to it.
-
-[Review links](https://academy.bricksbuilder.io/builder/interface/review-links/) provide a separate, view-only preview for people without an editor login. They do not give reviewers Builder access or permission to edit or publish.
-
-## Available permissions
-
-When editing a capability, the following permissions are available and grouped by category:
-
-### Post types {#post-types}
-
-Choose which post types can be edited using Bricks.
-
-### General {#general}
-
-- Access breakpoints manager
-- Access page settings
-- Access template settings
-- Access revisions
-- Delete revisions
-- Access font manager
-- Access icon manager
-- Access query manager
-- Access filter manager (Bricks 2.5)
-- Customize builder interface
-- Manage builder interface profiles
-- Manage global elements (only if legacy Global Elements exist)
-
-**Access filter manager** permits creating, editing, organizing, deleting, importing, and exporting [global filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#global-filters). This includes editing shared controls on linked elements. Users without it can select an existing compatible global filter and edit local settings such as the target query and presentation.
-
-### Templates {#templates}
-
-- Create templates
-- Edit templates
-- Delete templates
-- Insert templates
-- Access remote templates
-- Import/export templates
-
-### Global styles & settings {#styles-setting}
-
-- Access theme styles
-- Access color manager
-- Access variable manager
-- Access class manager
-- Create global classes
-- Edit global classes
-- Assign/unassign global classes
-- Delete global classes
-- Lock/unlock global classes
-- Copy/paste global class styles
-- Access pseudos & selectors
-
-### Components {#components}
-
-- Access remote components
-- Insert components
-- Edit properties (instance)
-- Edit components
-- Create components
-- Delete components
-- Import/export components
-
-Remote workflows combine these permissions instead of using one broad access flag:
-
-| Workflow | Required permissions |
-| --- | --- |
-| Browse a configured remote component library | **Access remote components** |
-| Import a remote component | **Access remote components** and **Import/export components** |
-| Insert an imported component | **Insert components** |
-| Insert a remote template without components | **Access remote templates** and **Insert templates** |
-| Insert a remote template with component dependencies | **Access remote templates**, **Insert templates**, **Access remote components**, **Import/export components**, and **Insert components** |
-| Save a remote template to My Templates | **Access remote templates** and **Import/export templates** |
-| Save a remote template with component dependencies to My Templates | The template import permissions above, plus **Access remote components** and **Import/export components** |
-
-See [Remote Templates](https://academy.bricksbuilder.io/builder/features/remote-templates/) for the corresponding template setup.
-
-### Element editing & styling {#element-edit-style}
-
-- Access content (HTML) settings
-- Access style (CSS) settings
-- Access query loop builder
-- Access element hide
-- Access element conditions
-- Access element interactions
-- Duplicate elements
-- Delete elements
-- Move elements
-- Copy/paste elements
-- Copy/paste element styles
-- Copy/paste element conditions
-- Copy/paste element interactions
-- Copy/paste element attributes
-- Pin/unpin elements
-
-### Edit elements {#edit-elements}
-
-Controls general editing of existing elements.
-
-_Note: Requires access to content and/or style settings._
-
-### Add elements {#add-elements}
-
-Define which elements can be inserted.
-
----
-
-<a id="builder-interface-command-palette"></a>
-
-# Command Palette
-
-Source: https://academy.bricksbuilder.io/builder/interface/command-palette/
-
-*Use the Bricks Command Palette to run common actions, navigate faster, and insert element structures with keyboard-driven workflows.*
-
-The **Command Palette**, introduced in Bricks 2.0, lets you open Builder tools, find content, and insert element structures from the keyboard.
-
-https://youtu.be/gOVNlRvsYc8
-
-## How to launch it
-
-Click the command `⌘` icon in the builder toolbar or use the default `CMD/CTRL + K` keyboard shortcut to open the Command Palette, which appears as an overlay, allowing you to type and filter commands across four scopes. In Bricks 2.5, you can change the opening shortcut under **Manage → Keyboard shortcuts**. The navigation and insertion keys inside the palette remain fixed. See [Keyboard Shortcuts](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/).
-
-## Scope: Builder {#builder}
-
-Navigate to key parts of the builder from a growing list of targets such as classes, variables, templates, theme styles, settings, etc.
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-builder.png)
-
-## Scope: Post Types {#post-types}
-
-This scope lets you browse the registered post types your builder capability can access, create new posts when your user can edit posts, or duplicate existing posts.
-
-Besides "All" and "Template (Bricks)", a post type gets its own tab only when Bricks is enabled for it under **Bricks > Settings > General > Post types** and your role can access it in the builder. "All" searches every public post type.
-
-To create a post, select the post type tab, type the title, and click "Create". Bricks adds the post as a draft. Click a result to open it in the builder. `CMD/CTRL` + click opens it in a new browser tab. Posts of a type that is not enabled for Bricks open in the WordPress editor in a new tab.
-
-The scope auto-selects the post type that you are currently editing. So if you are editing a Bricks template the "Template (Bricks)" post type will be selected. If you edit a "Page", then "Page" is selected and so on.
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-post-types.png)
-
-## Scope: Components {#components}
-
-Type `*` at the start of the search to switch to Components. Search for a component and select it to insert it into the current page, when your builder permissions allow component insertion.
-
-## Scope: Elements {#elements}
-
-Use the **Elements** scope to insert one element or a nested structure in a single action. Save structures you use repeatedly so you can insert them again without retyping the expression.
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-elements.png)
-
-### Insert single element
-
-To insert a single element simply type its name, such as "Section", then `ARROW`-navigate to it in the elements list, and insert it by pressing `ENTER` or just click on the element name.
-
-### Insert element structure
-
-Each element starts with an **@** symbol.
-
-The element name that the command bar requires is displayed in square brackets in the results list:
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-element-name.png)
-
-<figcaption>
-
-Text link element command: `@text-link`
-
-</figcaption>
-
-### Supported operators
-
-Use the following operators to define nested structure, siblings, a multiplier, or to move back up one nesting level.
-
-| Symbol | Meaning |
-| --- | --- |
-| `@` | Bricks element name (e.g. `@heading`) |
-| `>` | Nest inside |
-| `+` | Insert element as sibling |
-| `*` | How often to insert the element |
-| `^` | Move one level up before inserting the next element |
-| `.class-name` | Assign a global class to the preceding element (since 2.5) |
-| `#custom-id` | Set a custom CSS ID on the preceding element (since 2.5) |
-
-### Add classes and custom IDs {#classes-and-ids}
-
-Since Bricks 2.5, append class names and a custom ID directly to an element name, without spaces:
-
-```text
-@section#contact > @container.card-grid > @block#card.card * 2
-```
-
-This inserts a Section with custom ID `contact`, a child Container using the global class `card-grid`, and two Blocks using the global class `card`. The Blocks receive custom IDs `card` and `card-2`. Because the expression supplies a Container directly below the Section, Bricks does not insert an extra automatic Container. A Section expression without that explicit Container keeps its normal automatic Container.
-
-The shorter expression `@block#card.card * 2` creates two Blocks with the same global class and distinct custom IDs:
-
-![The Command Palette Elements scope with @block#card.card * 2 entered and Insert available.](https://academy.bricksbuilder.io/assets/builder/release-2.5/palette-expression.webp)
-
-<div className="screenshot screenshot--control-panel">
-
-![The second Block selected with custom ID card-2 and the card global class assigned.](https://academy.bricksbuilder.io/assets/builder/release-2.5/palette-class-result.webp)
-
-</div>
-
-For each `.class-name`, Bricks reuses the global class with that exact name. If it does not exist, Bricks creates an empty global class when your user has permission to create classes. A name such as `card-grid` does not generate a grid layout by itself; define that class's styles or reuse an existing styled class.
-
-Assigning classes requires **Assign/unassign global classes** permission. Creating missing classes also requires **Create global classes** permission. Without assignment permission, class suffixes are not applied. With assignment permission but no creation permission, existing classes can be used and missing ones are skipped. If a matching class is in the trash, restore it in the Class Manager before trying to create it again.
-
-Combine classes as `@block.card.featured`, or combine an ID and classes as `@block#contact-card.card.featured`. These are native global-class assignments, not entries in the **Style > CSS > CSS classes** text field. See [Global CSS Classes](https://academy.bricksbuilder.io/builder/styling/global-css-classes/) for editing them.
-
-When an ID repeats within the same insertion command, Bricks adds numeric suffixes such as `-2` and `-3`. This numbering does not check IDs already on the page or IDs inserted by a separate command. Keep custom IDs unique when reusing saved structures.
-
-### Element structure example
-
-`@section * 2 > @heading + @text + @button`
-This creates the following structure *(two times because of the multiplier: `* 2`)*:
-
-- `Section`
- └ `Container`
-   ├ `Heading`
-   ├ `Text`
-   └ `Button`
-
-Bricks adds the Container inside every Section automatically, so you don't type `@container` after `@section`.
-
-### Quick element insertion
-
-> **Note**
->
-> After selecting an element from the search results, its name is added to your query with the `@` prefix, allowing you to quickly build complex queries:
-
-1. Type `@` to activate insertion mode
-2. Select an element (e.g., "section")
-3. Type `>` for a child element
-4. Continue building your structure
-5. Insert your element structure
-  - Click the "Insert" button that appears next to your query
-  - Press `CMD/CTRL + ENTER`
-
-If no element is selected, Bricks adds the structure at the end of the page or template.
-
-### Save element structures
-
-Instead of typing out your favorite structures by hand every time, you can save them by clicking the "Save" button next to the command bar. Your structures are stored in this browser's `localStorage`, so they are local to that browser/profile and are not synced between users or devices.
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-saved-element-structures.png)
-
-<figcaption>
-
-List of saved element structures
-
-</figcaption>
-
-To insert a saved structure, open the "Select element structure" dropdown in the Elements scope and pick it. To delete a structure, mouseover the structure item in the list, and click the "Delete" icon.
-
-## Scope: Components {#components}
-
-This scope lists the components on your site. Select a component to insert an instance of it, the same way you insert a single element. The scope is available when your role can insert components.
-
-## Keyboard shortcuts
-
-| **Keyboard shortcut** | **Action** |
-| --- | --- |
-| `CMD/CTRL + K` | Open/close the command palette |
-| `ESC` | Close the command palette |
-| `TAB > ENTER` (to enter selected scope) | Navigate between search and scopes |
-| `#` (as the first character in the search input) | Enter scope “Builder” |
-| `/` (as the first character in the search input) | Enter scope “Post Types” |
-| `+` or `@` (as the first character in the search input) | Enter scope “Elements” |
-| `*` (as the first character in the search input) | Enter scope “Components” |
-| `CMD/CTRL + ENTER` | Insert the element structure typed in scope “Elements” |
-| `/` followed by a post-type index | Navigate to a specific post type |
-| `ARROW UP/DOWN` + ENTER | Navigate to a search result and open it |
-
-## Notes
-
-Bricks remembers your last selected scope, even after builder reload (stored in your localStorage).
-
-The "Pages" panel remains available from the builder toolbar. The Command Palette is an additional fast way to browse, create, duplicate, and open posts.
-
-The docs entry is also accessible from the "Builder" scope.
-
----
-
-<a id="builder-interface-context-menu"></a>
-
-# Context Menu
-
-Source: https://academy.bricksbuilder.io/builder/interface/context-menu/
-
-*Use the Bricks context menu for quick element actions such as edit, clone, delete, structure moves, and style copy and paste.*
-
-The Bricks context menu gives you quick access to actions for the selected element. It is especially useful for copying, pasting, duplicating, deleting, hiding, wrapping, converting, and saving reusable layout pieces.
-
-To open it, right-click an element on the canvas or in the Structure panel.
-
-https://youtu.be/7HpRF6jRSlc
-
-## How the context menu selects an element
-
-Right-clicking an element makes that element active and opens the Element panel.
-
-The Bricks context menu is hidden in Preview mode. It also does not open from the Elements library panel, because that panel is for inserting new elements, not editing existing ones.
-
-## Action availability
-
-The context menu is dynamic. It changes based on:
-
-- The current user's builder permissions.
-- Whether one element or multiple elements are selected.
-- Whether the selected element is nestable.
-- Whether the selected element is cloneable or deletable.
-- Whether the selected element is a Component instance or Component root.
-- Whether the selected element is a legacy Global Element.
-- Whether the clipboard currently contains Bricks data that can be pasted.
-
-If an action is missing, it is usually because the current selection, permissions, or clipboard state does not support it.
-
-## Main actions
-
-| Action | What it does | Important limits |
-| --- | --- | --- |
-| Copy | Copies the selected element or selected elements. | Requires copy/paste element permission. |
-| Paste | Pastes copied Bricks elements when the clipboard contains element data. | Requires copy/paste element permission. |
-| Duplicate | Clones the active element. | Hidden for active Component roots and unavailable for elements marked as not cloneable. |
-| Delete | Deletes the active element. In bulk mode, deletes the selected elements. | Hidden for active Component roots and unavailable for elements marked as not deletable. |
-| Hide element | Toggles hide settings for builder, frontend, or both. | Requires access to element hide. |
-| Insert | Inserts a Container, Block, or Div inside the selected layout element. Hold Cmd/Ctrl to switch to **Insert after**. | Available for nestable elements. |
-| Wrap | Wraps the selected element or selected sibling elements in the configured wrapper type (Block by default). Use the adjacent icons to choose another type. Section is offered only for top-level elements. | In bulk mode, selected elements must share the same parent. |
-| Unwrap | Removes a selected nestable wrapper and moves its children up to the wrapper's parent. | Requires a nestable element with children. |
-| Convert | Converts Section, Container, Block, and Div layout elements to another layout type where allowed. | Only applies to layout elements. |
-| Save as Component | Opens the Components workflow for the selected element. | Hidden in bulk mode, while editing Components, or for Component/legacy Global Element selections. Shown but disabled for Template and Filter elements. |
-| Save as Template | Saves a nestable element as a Template. | Not available in bulk mode or while editing Components. |
-| Edit Component | Opens a Component instance for editing. | Requires Component permissions. |
-| Unlink Component | Converts a Component instance into regular local elements after confirmation. | Requires Component permissions. |
-| Unlink Global Element | Unlinks a legacy Global Element when one exists. | Requires legacy Global Element access. |
-
-## Copy sub-actions
-
-The Copy row can show extra icons for more specific data:
-
-| Copy icon/action | Copied data |
-| --- | --- |
-| CSS ID | The element's rendered CSS ID, including `#`. |
-| Bricks ID | The internal Bricks element ID. |
-| Query ID | The query ID for a selected query loop element. In Component loop contexts, this can include the instance ID. |
-| Styles | Element ID styles, or active global class styles if a class is active. |
-| Conditions | Element conditions. |
-| Interactions | Element interactions. |
-| Classes | Assigned global classes. |
-| Attributes | Custom attributes. |
-
-These actions are permission-gated. For example, copying attributes requires copy/paste element attributes permission, while copying conditions requires copy/paste element conditions permission.
-
-## Paste sub-actions
-
-The Paste row changes based on the clipboard data. Bricks shows only paste actions that match the current clipboard source.
-
-| Paste action | Behavior |
-| --- | --- |
-| Styles | Pastes copied element styles or global class styles to the selected target. |
-| Conditions | Appends copied conditions to the existing element conditions and generates new condition IDs. |
-| Interactions | Appends copied interactions to the existing element interactions and generates new interaction IDs. |
-| Attributes | Replaces the target element's copied custom attributes and generates new attribute IDs. |
-| Classes | Merges copied global classes into the target element's existing classes without duplicates. |
-
-Pasting styles can target one selected element or multiple selected elements. When multiple elements are selected, Bricks applies the paste operation to the selected elements.
-
-## Bulk editing behavior
-
-The context menu supports bulk editing, but not every action is available for multiple selected elements.
-
-Bulk editing works best for:
-
-- Copying selected elements.
-- Deleting selected elements.
-- Hiding selected elements.
-- Wrapping selected sibling elements with the same parent.
-- Pasting shared styles.
-- Applying copied classes, conditions, interactions, or attributes where supported.
-
-Bulk editing has important limits:
-
-- Save as Component and Save as Template are not shown in bulk mode.
-- Some copy sub-actions are disabled in bulk mode.
-- Wrap requires all selected elements to share the same parent.
-- Unwrap only works when the selected nestable elements contain children and the selected set does not include those children.
-
-## Insert, wrap, unwrap, and convert
-
-The context menu can create or reshape layout structure without dragging from the Elements panel.
-
-### Insert
-
-Insert adds a Container, Block, or Div inside the selected layout element, as its last child. The default insert type can be controlled by builder settings. Hold Cmd (macOS) or Ctrl (Windows) while the menu is open and the action changes to **Insert after**, which adds the new element after the selection instead.
-
-### Wrap
-
-Wrap places the selected element, or selected sibling elements, inside a new wrapper. Clicking **Wrap** uses the wrapper type selected in builder settings (Block by default). Use the icons next to it to choose another wrapper type. Section is only offered when the selected elements sit at the top level of the page.
-
-Use wrap when you already built content but need an additional layout layer.
-
-### Unwrap
-
-Unwrap removes a selected nestable wrapper and moves its children to the wrapper's parent. It preserves child order as much as the current hierarchy allows.
-
-Use unwrap carefully. It changes structure, not only styling.
-
-### Convert
-
-Convert changes one layout wrapper type into another, such as Container to Block or Div to Container. It is available for Section, Container, Block, and Div when the selected structure can be converted.
-
-Section conversion is restricted to root-level contexts because sections are top-level layout wrappers.
-
-## Components, templates, and legacy Global Elements
-
-Use **Save as Component** when the selected element should become reusable and editable through the Components system.
-
-Use **Save as Template** when the selected nestable element should become a reusable template that can be inserted later.
-
-Legacy [Global Elements](https://academy.bricksbuilder.io/builder/features/global-elements/) can still be unlinked from the context menu when they exist. For new reusable content, use [Components](https://academy.bricksbuilder.io/builder/features/components/) or Templates.
-
-## Permission notes
-
-Context menu actions follow the same Builder Access permission model as the rest of the builder. A user might be able to open the context menu but not see specific actions.
-
-Common permission-gated actions include:
-
-- Copy/paste elements
-- Copy/paste styles
-- Copy/paste conditions
-- Copy/paste interactions
-- Copy/paste attributes
-- Hide element
-- Duplicate elements
-- Delete elements
-- Create Components
-- Edit Components
-- Create Templates
-- Manage legacy Global Elements
-
-Review [Builder Access](https://academy.bricksbuilder.io/builder/interface/builder-access/) when a user reports that a context-menu action is missing.
-
-## Troubleshooting
-
-- **The Bricks context menu does not open:** Make sure you are not in Preview mode and that you are right-clicking an existing canvas or Structure element.
-- **Paste action is missing:** Copy the matching Bricks data first. The paste menu only shows actions that match the clipboard data.
-- **Copy/paste behaves differently in Safari:** Safari can be stricter about clipboard access, so perform copy and paste from direct user gestures.
-- **Save as Component is missing or disabled:** Check permissions and make sure you are not bulk editing, editing an active Component, selecting a Component or legacy Global Element, or selecting a Template or Filter element.
-- **Wrap is missing or disabled:** Confirm the selected elements share the same parent and can be wrapped in the current hierarchy.
-
----
-
-<a id="builder-interface-builder-interface-customiser-profiles"></a>
-
-# Builder Interface Customiser and Profiles
-
-Source: https://academy.bricksbuilder.io/builder/interface/builder-interface-customiser-profiles/
-
-*Customize the Bricks builder workspace, save reusable interface profiles, and assign layouts to roles or users.*
-
-The Builder Interface Customiser lets you adjust the Bricks builder workspace to match the way you work.
-
-You can add, hide and move toolbar items, dock the Control panel and Structure, place Pinned controls in the bottom dock, and save layouts as profiles for different users or roles.
-
-This changes the builder workspace only. It does not change frontend output, templates, elements, or page data.
-
-https://www.youtube.com/watch?v=iIUmLZQp_CY
-
-## Requirements
-
-Builder interface customization is available in Bricks 2.4.
-
-The Builder interface entry appears when the current user can customize the builder interface or manage builder interface profiles. Administrators with full builder access can use both by default.
-
-Use [Builder access](https://academy.bricksbuilder.io/builder/interface/builder-access/) to grant these permissions to other roles:
-
-- **Customize builder interface**: Lets the user save and reset their own builder interface preferences.
-- **Manage builder interface profiles**: Lets the user create, load, rename, overwrite, delete, import, and export builder interface profiles.
-
-Site admins can disable the customiser globally under `Bricks -> Settings -> Builder -> Builder interface` by enabling **Disable builder interface customiser**.
-
-## Open the Builder interface
-
-Open the builder, then use either of these entry points:
-
-- Open the builder settings panel and click **Builder interface**.
-- Open the [Command Palette](https://academy.bricksbuilder.io/builder/interface/command-palette/) and choose **Builder interface** from the Builder scope.
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-popup.webp)
-
-## Workspace layout
-
-The Builder interface popup controls the main workspace areas.
-
-### Control panel and Structure
-
-Use the **Control panel** and **Structure** settings to dock each panel to the **Left**, **Right**, or **Bottom**.
-
-When the Control panel and Structure are assigned to the same side dock, Bricks displays them next to each other instead of stacking both panels in the same area.
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-control-structure-panels.webp)
-
-### Pinned controls
-
-Pinned controls can stay inside the control panel or move to the bottom dock.
-
-When **Pinned controls** is set to **Bottom**, the popup shows a **Pinned controls layout** section. Use it to set the number of columns and optional column widths. Bricks supports up to six pinned-control columns.
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-pinned-controls.webp)
-
-### Bottom dock
-
-The bottom dock can contain:
-
-- Control panel
-- Structure
-- Pinned controls
-
-Items in the bottom dock appear as tabs. You can reorder those tabs while editing the builder interface.
-
-When more than one item is assigned to the bottom dock, the popup shows a **Bottom dock layout** section. Use it to set the number of bottom dock columns and optional CSS widths for each column. The maximum number of columns matches the number of items currently assigned to the bottom dock.
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-bottom-dock.webp)
-
-## Toolbar layout
-
-The toolbar can be placed on the **Top**, **Right**, **Bottom**, or **Left** edge of the builder.
-
-Each toolbar edge has three groups:
-
-- **Start**
-- **Center**
-- **End**
-
-Drag toolbar items between these groups to change their order and placement. Bricks keeps the breakpoint controls together as one locked cluster.
-
-### Toolbar items
-
-The **Toolbar items** section contains optional items you can drag into the toolbar. This includes repeatable toolbar dividers and custom **Insert element** shortcuts.
-
-An Insert element shortcut can insert a selected element or component directly from the toolbar.
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-toolbar-items.webp)
-
-### Hidden items
-
-Drag optional toolbar items into **Hidden items** to remove them from the visible toolbar. Use the restore button on a hidden item to bring it back.
-
-Required toolbar items cannot be hidden. In Bricks 2.4, **Elements**, **Structure**, **Preview**, and **Save** are required.
-
-## Keyboard shortcuts
-
-In Bricks 2.5, the **Keyboard shortcuts** section lets you include shortcut customizations with the current Builder Interface settings or profile.
-
-1. Click **Manage** in the Keyboard shortcuts section.
-2. Change the combinations you want to include, then click **Save** to return to the Builder Interface popup.
-3. Click **Save** to keep the current interface settings for your account, or use **Save as** / **Overwrite** in Profiles to save them with a reusable profile.
-
-![The Keyboard shortcuts section in Builder Interface with its Manage button.](https://academy.bricksbuilder.io/assets/keyboard-shortcuts/builder-interface-keyboard-shortcuts.webp)
-
-Shortcuts saved in an assigned profile take priority over personal shortcut preferences. The profile controls only the commands it defines; those bindings show the profile name and are read-only in the personal shortcut manager. Personal combinations for other commands remain available, unless they conflict with a managed command. Removing the profile restores the retained personal preferences.
-
-Use **Manage → Keyboard shortcuts** from the toolbar when you only want to change your personal shortcuts. See [Keyboard Shortcuts](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/) for remapping, conflicts, import/export, and the default combinations.
-
-## Save or reset your layout
-
-Click **Save** to store the current builder interface for your user account.
-
-Click **Reset** to remove your saved builder interface preferences and return to the resolved default layout. In Bricks 2.5, this also clears your personal keyboard shortcut overrides. The reset keeps pinned control groups where possible, so frequently used pinned groups are not lost just because the workspace layout was reset.
-
-If the popup shows an unsaved-changes message, save before closing the popup if you want to keep the layout.
-
-## Profiles
-
-Builder interface profiles save a complete builder interface layout that can be reused.
-
-In the **Profiles** section, you can:
-
-- **Load** an existing profile into the current popup.
-- **Save as** a new profile from the current layout.
-- **Overwrite** the selected profile.
-- **Rename** the selected profile.
-- **Delete** the selected profile.
-
-Profiles are useful when different people need different builder workspaces. For example, a designer might use a wide control panel and visible Structure panel, while a content editor might use fewer toolbar items and a simplified bottom dock.
-
-> **Note**
->
-> Bricks applies profiles after personal builder interface preferences. If a setting exists in both places, the assigned profile wins. Use profile assignments when you want a role or user to consistently receive a specific builder workspace.
-
-Saving a profile does not assign it automatically. Assign profiles under Builder access after creating them.
-
-## Assign profiles to roles or users
-
-After creating profiles, assign them under `Bricks -> Settings -> Builder access -> Builder interface profile`.
-
-Each WordPress role can use:
-
-- **Default**
-- Any saved builder interface profile
-
-You can override the role assignment for a specific person by editing that user's WordPress profile and selecting a **Builder interface profile**.
-
-![](https://academy.bricksbuilder.io/assets/builder-interface-profiles-user-roles.webp)
-
-If a user has multiple roles with different profile assignments, Bricks uses the first matching role assignment from the user's role list.
-
-Deleting a profile removes any role and user assignments that pointed to that profile.
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-profiles.webp)
-
-## Import and export
-
-Open the import/export icon in the Builder interface popup to move layouts between sites or browsers.
-
-![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-import-export.webp)
-
-You can export or import:
-
-- Current builder interface settings
-- The selected profile
-- All profiles
-
-Importing builder interface settings overrides the current builder interface settings. Importing profiles does not import role or user assignments.
-
-When imported profiles conflict with existing profile IDs, Bricks lets you overwrite, import as a copy, or skip each profile. Conflicting profiles are skipped by default until you choose another option.
-
-## Reset another user's preferences
-
-Admins can reset another user's saved builder interface preferences from that user's WordPress profile.
-
-In the user's WordPress profile, find **Builder interface** and click **Reset builder interface**. This removes that user's custom builder interface preferences, including personal keyboard shortcuts in Bricks 2.5, and restores the default or assigned profile settings on the next builder load.
-
-## Troubleshooting
-
-- **The Builder interface entry is missing:** Check that the user has **Customize builder interface** or **Manage builder interface profiles**, and that **Disable builder interface customiser** is not enabled.
-- **A user's saved layout does not appear after reload:** Check whether a builder interface profile is assigned to the user's role or user account. Assigned profiles override personal preferences.
-- **A toolbar item will not hide:** Required toolbar items cannot be hidden.
-- **A profile is missing after deletion:** Deleting a profile also removes role and user assignments for that profile.
-- **Profile assignments did not move during import:** Importing profiles does not import role or user assignments. Assign the profiles again under **Builder access**.
-
----
-
-<a id="builder-interface-drafts"></a>
-
-# Drafts
-
-Source: https://academy.bricksbuilder.io/builder/interface/drafts/
-
-*Save pending changes to a Bricks page, preview them against the live site, and review them before publishing.*
-
-Bricks 2.5 drafts let you save changes to an existing page and its templates before making them live. Use a page draft for one page, or a named [site version](https://academy.bricksbuilder.io/builder/interface/site-versions/) when work spans several pages.
-
-Drafts are **experimental** and disabled by default.
-
-> **Shared items and live pages**
->
-> Reusable items that do not affect live content become available across the site immediately. Changes that affect live content stay in the draft until you publish. See [what stays in the draft](#shared-data) for examples and the rules for shared styles.
-
-## Enable drafts
-
-1. In WordPress, open **Bricks > Settings > Builder**.
-2. Under **Drafts**, select **Enable drafts** and save the settings.
-3. Reload the Builder.
-
-![Experimental Drafts settings with Enable drafts and Enable review links checked.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/drafts-settings.webp)
-
-A version switcher appears just before **Save** in the toolbar. It shows **Live** when you are editing the live version, **Draft** for a page draft, or the name of an open site version.
-
-## Save a page as a draft {#save-as-draft}
-
-1. Open the page in Bricks. You can make your edits before creating the draft.
-2. Open the **Live** menu next to Save.
-3. Select **Save page as draft**. The label follows the post type, such as **Save post as draft** or **Save template as draft**.
-4. Bricks switches to **Draft** and saves your unsaved changes into it. Continue editing and use **Save** as usual.
-
-There is one active page draft per page. If the page already has a draft, select **Draft** in the version menu to continue working on it.
-
-![The Atelier North page open in Draft, with Discard, Publish, and the unchanged Save control in the toolbar.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/draft-builder.webp)
-
-### What Save does
-
-| Current version | Save behavior |
-| --- | --- |
-| **Live** | Saves directly to the page and shared data, using the normal conflict checks. Changes to a published page can appear to visitors immediately. |
-| **Draft** | Saves the page's pending changes into its Bricks draft, subject to the shared-data rules below. |
-| A named **site version** | Saves into that version, which can include several pages. |
-
-Enabling drafts does not change Live saves into draft saves. Check the version switcher before saving.
-
-A **Bricks page draft** is separate from a **WordPress draft post**. The former holds pending Bricks changes; the latter is a post whose publication status is Draft. Creating a Bricks draft does not change the WordPress post's status.
-
-## What stays in the draft {#shared-data}
-
-When you create a new class in a draft using the style controls, it becomes available immediately in the site's class library. You can use it on other pages and templates as you work. Adding the class to the library does not apply it to existing live pages.
-
-For example, create a `.service-card` class for a card in your page draft. You can immediately assign it to a card on another page or template, without publishing the first page's draft.
-
-If you edit a class that live pages already use, its changes stay in the draft until you publish. Saving those changes directly to the shared class would also change the pages visitors see. Your draft shows the edited class; live pages keep its published styles.
-
-Bricks checks whether an item affects live content. Edits to an existing class that no live content uses are shared immediately too.
-
-| Change | Behavior |
-| --- | --- |
-| Page content, page settings, and templates edited within the draft | Held until you publish the draft. Publishing a template change affects every page where that template applies. |
-| Theme Styles, breakpoints, and Style Manager settings | Held until you publish, because these can affect the site without an individual page reference. |
-| Classes, components, variables, palettes, queries, filters, icons, or fonts already used on the live site | Changes are held until you publish. |
-| Reusable items that do not affect live content, including new classes and components | Saved immediately to the site's shared library, ready to use on other pages and templates. |
-
-Classes containing custom CSS that targets elements outside the class stay in the draft even when the class is new or unused. That CSS could change live pages without the class being assigned to them.
-
-If Bricks cannot establish that sharing an item is safe, it keeps the change in the draft. Private and scheduled content also counts when checking usage. The save notice tells you which items were shared immediately and which stayed in the draft.
-
-A draft keeps the changes you make, rather than freezing the whole site. Items you have not changed continue to follow the live site. A later live update can therefore appear in your draft preview.
-
-### Boundaries
-
-Drafts cover supported Bricks design changes. They are not a copy of the WordPress installation or database:
-
-- Media uploads and changes to the Media Library are shared. Uploading a file while working in a draft does not make that file private.
-- New WordPress posts and changes made outside the draft's Bricks workflow are not staged by the page draft. This includes block editor edits, plugin settings, and external systems.
-- Builder preferences, such as pinned elements and favorite fonts, are not pending design changes.
-- An action that Bricks cannot support in a draft is refused with a message asking you to open the live version.
-
-## Preview and compare
-
-Save the draft, then open its version menu and choose **Compare with live**. This opens the draft and live page together. See [Explore and compare](https://academy.bricksbuilder.io/builder/interface/explore-alternatives/) for comparison controls and alternatives.
-
-A normal draft preview requires a logged-in user with permission to edit that draft. To show it to someone without a login, enable and create a [review link](https://academy.bricksbuilder.io/builder/interface/review-links/). Copying the Builder or preview URL alone does not grant access.
-
-## Publish a draft {#publish}
-
-1. While editing **Draft**, click **Publish** beside the version switcher.
-2. Review **Pages and templates** and **Shared styles**. Bricks saves any remaining unsaved draft edits before loading this review.
-3. Resolve any conflicts, then click **Publish draft**.
-4. Wait for confirmation. The Builder returns to **Live** and the page draft closes.
-
-On narrower screens, **Publish draft…** and **Discard draft…** move into the version menu. At smaller widths, the switcher shows a version icon instead of its text label; its tooltip still identifies the current context.
-
-![Publish draft review listing the Services page and the service-card class used on a live page.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/draft-publish.webp)
-
-Shared styles can affect more than the page you are editing. Review them before publishing: a component, class, or Theme Style may be used throughout the site.
-
-### If live changed while you worked
-
-Bricks compares the pending changes with the current live site. When both sides changed an item differently, choose **Your draft** or **The live version** for that conflict. When page content can be combined, the dialog asks only about conflicting elements and combines the other changes.
-
-Publishing stays blocked until the conflicts have choices. If the draft or live data changes again during review, Bricks can require another review. Keeping the live version leaves that item as it is on the live site.
-
-These publish decisions are separate from [conflicts while saving shared data](https://academy.bricksbuilder.io/builder/interface/save-publish/#save-conflicts) between open Builder sessions.
-
-### Undo a publish
-
-When a publish changes live data, Bricks keeps the values it replaced. Click **Undo** in the published confirmation, or open **Manage versions…** and find the recent entry under **Undo a publish**.
-
-Undo restores those replaced values; it is not a restore of the entire site. If someone changed those values again, undo can stop with a conflict instead of replacing their later work. Save or discard any unsaved Live edits before undoing.
-
-For one class, variable, component, or another supported shared item, [Global data history](https://academy.bricksbuilder.io/builder/interface/global-data-history/) offers a separate way to restore an earlier value.
-
-## Discard a draft
-
-Click **Discard** beside the version switcher and confirm. Bricks removes the draft's pending changes and opens the live page.
-
-If the draft created shared items that are still unused, Bricks offers **Discard, keep them** or **Discard and delete them**. It checks for usage before deleting them, including references from other open drafts.
-
-Discarding does not undo edits to existing unused shared items that were already saved live. Those changes were outside the draft's pending changes.
-
-## Return later or move to another page
-
-Opening a page with an active page draft automatically opens that draft for users who can edit it. Select **Live** in the version menu when you deliberately want to work on the live page. That explicit choice is kept when the Builder reloads the same live context.
-
-A page draft stays with its page and the templates you edit within it. Navigating to an unrelated page leaves that page draft; the destination opens in its own context, including its own draft if present. Use a [site version](https://academy.bricksbuilder.io/builder/interface/site-versions/) when those pages need to share the same pending changes.
-
-Before switching versions or navigating away, Bricks saves unsaved draft edits and stops the switch if saving fails. Switching from Live with unsaved changes asks for confirmation before replacing them, so save those edits first if you need them.
-
-## Access and availability
-
-A page draft is not restricted to its creator. Other logged-in users who can edit the page and use Bricks on it can open the same draft. Their existing Builder permissions still control which changes they may make.
-
-Publishing also checks the permissions needed for every included change, such as page settings, templates, shared styles, and executable code. If the draft contains changes you cannot publish, ask someone with those permissions to publish it. See [Builder access](https://academy.bricksbuilder.io/builder/interface/builder-access/#drafts-and-versions).
-
-Active drafts remain available until published or discarded. Finished draft records and publish undo points are removed after 30 days by default, measured from their last update. Developers can adjust this period with [`bricks/drafts/keep_days`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-drafts-keep_days/).
-
-Turning off **Enable drafts** makes draft contexts unavailable; a save from an already open draft is refused instead of becoming a Live save. Open Live to continue, or re-enable drafts to resume the pending work.
-
----
-
-<a id="builder-interface-editing-elements"></a>
-
-# Adding & Editing Elements
-
-Source: https://academy.bricksbuilder.io/builder/interface/editing-elements/
-
-*Add elements to the canvas, edit their settings, and understand the main element editing workflow in Bricks.*
-
-Elements are the building blocks of a Bricks layout. This article explains how elements are added, selected, nested, styled, reset, copied, and edited in single-element and bulk-edit workflows.
-
-## Element mental model
-
-A Bricks layout is an element tree. Every element has:
-
-- A type, such as Section, Heading, Image, Button, or Form.
-- A unique Bricks ID.
-- Optional children if the element can contain other elements.
-- A parent, unless it is a root element.
-- Settings, which store content, styles, classes, conditions, interactions, custom attributes, and other element-level data.
-
-Root elements sit at the top of the page content. Nested elements sit inside another element. The canvas shows the visual result; the Structure panel shows the actual hierarchy.
-
-## Add an element
-
-Open the Elements panel, then drag an element onto the canvas or into the Structure panel.
-
-Where the element lands depends on the current drop target:
-
-- Drop onto a nestable element to place the new element inside it.
-- Drop between siblings to place the new element at that position.
-- Drop at root level to create a top-level element.
-
-You can also add layout elements from the [Context Menu](https://academy.bricksbuilder.io/builder/interface/context-menu/) when an existing nestable element is selected.
-
-## Layout elements
-
-The current layout elements are **Section**, **Container**, **Block**, and **Div**.
-
-Use them as structural wrappers:
-
-- **Section**: Common top-level page section.
-- **Container**: Common content-width wrapper.
-- **Block**: Generic block-level wrapper.
-- **Div**: Generic wrapper with fewer layout assumptions.
-
-Not every element can contain children. Elements that can contain children are nestable. Non-nestable elements, such as many content elements, can be moved, styled, copied, or deleted, but they cannot be used as parents.
-
-## Select and edit an element
-
-Click an element on the canvas or in the Structure panel to select it. The panel switches to the selected element and shows its controls.
-
-> **Note**
->
-> You can edit text directly on the canvas by clicking on it and typing. Select text portions with your mouse to reveal the text formatting toolbar with styling options such as bold, italic, and links.
-
-The panel header shows the selected element label. You can rename the label to make the Structure panel easier to scan. The label is for builder organization and does not change the HTML tag or frontend text by itself.
-
-The panel can also show quick actions for hide settings, conditions, interactions, Components, and legacy Global Elements depending on the selected element and your permissions.
-
-## Content controls
-
-Content controls affect the element's markup, data, and behavior. Examples include an Image element's image source, a Button element's link, a Heading element's text, or a Form element's fields and actions.
-
-The screenshot below shows Content controls for the Image element:
-
-![Panel: Content (Tab)](https://academy.bricksbuilder.io/assets/bricks-academy-panel-content-tab-1024x576.png)
-
-<figcaption>
-
-Element Image: Content Tab
-
-</figcaption>
-
-Content controls are not only for visible text. They can also control semantic tags, attributes, query settings, form behavior, media sources, links, and dynamic data.
-
-## Style controls
-
-Style controls affect the CSS Bricks generates for the selected element, active class, active selector, active pseudo state, and active breakpoint.
-
-Style controls are commonly grouped into:
-
-- Layout
-- Typography
-- Background
-- Border / Box Shadow
-- Gradient / Overlay
-- Shape Dividers
-- Transform
-- CSS
-
-![Panel: Style (Tab)](https://academy.bricksbuilder.io/assets/bricks-academy-panel-style-tab-1024x576.png)
-
-<figcaption>
-
-Element Image: Style Tab
-
-</figcaption>
-
-Before changing styles, check which selector is active at the top of the panel:
-
-- If the element ID is active, styles apply only to that element.
-- If a global class is active, styles apply to that class everywhere it is used.
-- If a pseudo selector is active, styles apply to that selector state.
-- If a breakpoint is active, responsive style values are stored for that breakpoint.
-
-This is the most important styling habit in Bricks: select the target first, then change the control.
-
-## Classes, selectors, and responsive edits
-
-The selector area above the Content/Style tabs controls whether you are styling the element ID, a global class, or a selector/pseudo state.
-
-Use global classes for reusable styling. Use the element ID for one-off styling. Use selectors and pseudo classes when styling states or child selectors.
-
-Responsive edits are controlled by the active breakpoint in the toolbar. A control indicator can show when a control has a value at the active breakpoint or another breakpoint, depending on your builder settings.
-
-## Bulk editing
-
-You can select multiple elements with Cmd/Ctrl or Shift selection. Bulk editing is useful for shared style changes, class assignment, moving, hiding, deleting, and some context-menu actions.
-
-Bulk editing has limits:
-
-- Bricks calculates the settings shared by the selected elements.
-- If selected elements have different values, the shared control can appear empty.
-- Editing a shared setting applies that change to the selected elements.
-- If different element types are selected, Bricks shows only the Style tab.
-- Some actions are disabled in bulk mode, such as saving as a Component or Template.
-- Bulk wrapping only works when selected elements share the same parent.
-
-Use bulk editing for broad, predictable operations. For content-heavy edits, edit one element type at a time.
-
-## Hide, conditions, and interactions
-
-Element-level hide settings, conditions, and interactions are opened from the element panel header when available.
-
-- **Hide element** can hide an element in the builder, on the frontend, or both.
-- **Conditions** control whether the element should render for the current request.
-- **Interactions** attach frontend behavior to triggers and actions.
-
-These panels are permission-gated. If you cannot see them, check [Builder Access](https://academy.bricksbuilder.io/builder/interface/builder-access/).
-
-## Components and locked editing states
-
-When you select a Component instance, Bricks shows instance controls and exposed properties instead of treating every nested element as local page content. To edit the Component definition, enter Component editing mode.
-
-Some elements may also be disabled through the Element Manager or unavailable because their element type no longer exists. In those cases, Bricks shows a notice instead of normal controls.
-
-Legacy Global Elements can still appear on existing sites. Bricks marks them as deprecated and recommends Components for new reusable content.
-
-## How To Reset Controls
-
-Controls that have a stored value show a small indicator next to the control label or group label. Hover the indicator to reveal the reset action.
-
-You can reset:
-
-- A single control.
-- A control group, such as Typography.
-- Element ID styles.
-- Active class styles, if you are styling a class and it is not locked.
-
-Resetting style controls removes the stored style values for the current target. It does not remove content such as text, links, form fields, or image selections.
-
-When styling a global class, resetting styles affects that class, not only the selected element.
-
-## Copy & Paste Styles
-
-To copy and paste element styles, right-click an element on the canvas or in the Structure panel to reveal the context menu. Use **Copy Styles**, then select the target element and use **Paste Styles**.
-
-Style paste respects the copied style data and the current target:
-
-- Pasting element styles applies copied style settings to the target element.
-- Pasting global class styles applies copied class style settings when a class is the active target.
-- Shape dividers, custom CSS, and other complex style controls are handled as style data when supported.
-
-For more copy and paste actions, including classes, conditions, interactions, and attributes, use the [Context Menu](https://academy.bricksbuilder.io/builder/interface/context-menu/).
-
-## Practical editing checklist
-
-Before making a change, confirm:
-
-- The correct element is selected.
-- The correct selector is active: element ID, class, or pseudo selector.
-- The correct breakpoint is active.
-- You are editing Content for markup/data changes or Style for CSS changes.
-- You are not accidentally editing a Component definition when you meant to edit an instance.
-- You have saved before testing frontend behavior.
-
----
-
-<a id="builder-interface-editing-with-bricks"></a>
-
-# Start Editing With Bricks
-
-Source: https://academy.bricksbuilder.io/builder/interface/editing-with-bricks/
-
-*Start editing with Bricks by understanding the builder layout, canvas behavior, and the basic flow for working on a page.*
-
-This article explains how to open the Bricks builder, what each main area of the interface does, and how editing with Bricks relates to rendering the page on the frontend.
-
-## Before you open the builder
-
-Bricks shows builder entry points when the current post can be edited with Bricks:
-
-- The current user has permission to use the builder.
-- The post type is enabled for Bricks.
-- The post can be edited by the current user.
-
-Bricks checks the license when the builder opens. If the license is not valid, Bricks redirects to the [license screen](https://academy.bricksbuilder.io/builder/license/license-and-updates/) instead of loading the builder.
-
-Go to **Bricks -> Settings** and select the post types you want to edit with Bricks:
-
-![](https://academy.bricksbuilder.io/assets/bricks-settings-post-types.png)
-
-> **Note**
->
-> While you can enable Bricks for blog posts, most sites work better when posts are written in the WordPress editor and displayed through a Bricks template. Use Bricks for the layout, and use WordPress for the editorial content.
-
-## Open the builder
-
-You can open the builder from several places in WordPress.
-
-### Posts list
-
-Hover over a supported post, page, or custom post type in the WordPress dashboard and click **Edit with Bricks**:
-
-![](https://academy.bricksbuilder.io/assets/docs-edit-with-bricks-button.png)
-
-### Post edit screen
-
-When editing an existing post or creating a new one, click **Edit with Bricks** in the Bricks editor area:
-
-![](https://academy.bricksbuilder.io/assets/bricks-post-edit-screen-1024x576.png)
-
-### Frontend admin bar
-
-When you are logged in and viewing the page on the frontend, use the WordPress admin bar. The Bricks menu can open the current page, the active header template, the active content template, the active footer template, or the Templates screen when those links apply to the current page.
-
-If the **Edit with Bricks** link is missing, check the current user's builder permissions and make sure the post type is enabled under **Bricks -> Settings**.
-
-## Edit with Bricks vs render with Bricks
-
-Editing with Bricks opens the visual builder. Rendering with Bricks controls which content source the frontend uses.
-
-A post can have WordPress editor content, Bricks data, or both. The **Render with Bricks** / **Render with WordPress** option in the admin bar switches the editor mode for the current post. If a post is set to render with WordPress, its Bricks data remains stored, but the frontend uses the WordPress content instead.
-
-Bricks templates are different. Templates are Bricks documents by definition, so the editor mode toggle does not apply to them.
-
-Use the render mode deliberately:
-
-- Choose **Render with Bricks** when the page itself is built in Bricks.
-- Choose **Render with WordPress** when the page should use normal WordPress content, usually with a Bricks template controlling the surrounding layout.
-- Do not use the render toggle as a content backup system. It only chooses the frontend render source.
-
-If a page is rendered with Bricks, the post list shows a **- Bricks** status after the title:
-
-![](https://academy.bricksbuilder.io/assets/bricks-post-screen-post-status.png)
-
-<figcaption>
-
-Post status "Bricks" shows you that a page is rendered with Bricks
-
-</figcaption>
-
-## Delete Bricks data
-
-The admin bar and post edit screen can show a **Delete Bricks data** button when this option is enabled in **Bricks -> Settings**.
-
-This removes Bricks-generated data from the current post, including page content, page settings, header/footer data, editor mode, and template type metadata. Treat it as destructive. Use it only when you want the post to stop using its stored Bricks layout data.
-
-## Builder anatomy
-
-The builder is made of four main working areas.
-
-### Toolbar
-
-The toolbar runs across the top of the builder. It gives you access to global builder actions and mode switches, including:
-
-- Style Manager
-- Pages panel
-- Templates
-- Settings
-- Command Palette
-- Elements and Components
-- Breakpoints
-- Preview width, height, and scale
-- Reload canvas
-- Undo and redo
-- Preview and save actions
-
-Which buttons you see depends on your permissions and global builder settings. For example, template actions require template permissions, and the breakpoints manager requires breakpoint access.
-
-### Panel
-
-The left panel changes depending on what you are doing. It can show the element library, the selected element controls, page/template settings, revisions, pages, or other manager views.
-
-The panel can be resized and minimized. When an element is selected, the panel shows the element label, element actions, class/selector controls, and the relevant Content and Style controls.
-
-### Finding another page {#pages-panel}
-
-Open **Pages** from the builder toolbar and choose the post type you want to browse. Since Bricks 2.5, results load in batches as you scroll. Use the search field to find a title anywhere in the available results, including pages that have not loaded into the list yet.
-
-Use the star beside a result to add or remove a favorite. Favorites are kept separately for each post type and saved in your browser. They can include pages outside the first batch of results. The current search also applies to the favorites list.
-
-Save your current changes before opening another page. If loading fails, use the panel's retry control.
-
-### Canvas
-
-The canvas is the live visual preview of the current page. It renders the Bricks layout in an iframe, so selecting and editing elements feels close to editing the frontend output.
-
-The canvas can be reloaded from the toolbar. Reloading is useful after changing settings that need a fresh render, or when external scripts, query data, or dynamic content affect the preview.
-
-### Structure panel
-
-The Structure panel shows the element tree. It is the safest place to understand nesting, select hard-to-click elements, move elements, and work with deeply nested layouts.
-
-Use the Structure panel whenever the canvas view is visually crowded, an element is hidden, or you need to confirm parent-child relationships.
-
-In Bricks 2.5, use **Search structure** to find elements by name, text, ID, class, and more. The funnel button filters elements by features such as query loops, conditions, and interactions. Clear the search and filters before dragging elements in the panel. See [Structure Panel Search and Filters](https://academy.bricksbuilder.io/builder/interface/structure-panel-search/).
-
-Since Bricks 2.5, the Structure panel can show HTML tags beside element labels. Choose **Icons**, **HTML tags**, or **Icons and HTML tags** under **Bricks > Settings > Builder > Structure panel > Element display** and save the settings. This helps you distinguish, for example, a heading rendered as `h2` from a wrapper rendered as `div`.
-
-The displayed tag follows the root rendered on the canvas. If no rendered root is available, Bricks falls back to the element icon. Component and slot indicators remain available.
-
-<div className="screenshot screenshot--control-panel">
-
-![Structure panel showing icons and HTML tags for a Section, a div Container, an h3 Heading, and a Basic Text paragraph.](https://academy.bricksbuilder.io/assets/builder/structure-panel/structure-panel-icons-html-tags.webp)
-
-</div>
-
-## First successful edit workflow
-
-Use this workflow when creating or editing a normal page:
-
-1. Enable the page post type under **Bricks -> Settings**.
-2. Create or open the page in WordPress.
-3. Click **Edit with Bricks**.
-4. Open the Elements panel and add a layout element, such as a Section or Container.
-5. Add content elements inside the layout.
-6. Select an element on the canvas or in the Structure panel.
-7. Edit its Content controls for markup and data.
-8. Edit its Style controls for design.
-9. Switch breakpoints and adjust responsive styles where needed.
-10. Save the builder.
-11. Preview the page and confirm it is rendered with Bricks.
-
-## Common builder states
-
-### Preview mode
-
-Preview mode hides the normal editing controls so you can inspect the layout. While previewing, builder editing actions such as the custom context menu are disabled.
-
-### Unsaved changes
-
-The builder tracks history and unsaved changes. Use save before leaving the builder, switching important context, or testing frontend-only behavior.
-
-### Unsupported post type
-
-If a post type is not enabled for Bricks, Bricks redirects you back to WordPress admin instead of opening the builder. Enable the post type under **Bricks -> Settings** or use a Bricks template for that content type.
-
-### Missing permissions
-
-Users can have full access, content-editing access, or custom permission sets. Missing permissions can hide toolbar buttons, element categories, manager popups, settings panels, and editing controls. Review [Builder Access](https://academy.bricksbuilder.io/builder/interface/builder-access/) if a user can open the builder but cannot see or edit a specific area.
-
-### Login or license redirects
-
-If the builder detects that the current browser session is no longer logged in, it redirects to the login page. If the license is not valid, Bricks redirects to the [license screen](https://academy.bricksbuilder.io/builder/license/license-and-updates/).
-
-## Troubleshooting checklist
-
-- **No Edit with Bricks button:** Check post type support, user permissions, and whether the current user can edit the post.
-- **The page opens in WordPress instead of Bricks:** Confirm the page has Bricks data or switch the admin bar render mode to **Render with Bricks**.
-- **Builder opens but controls are missing:** Check builder permissions and whether the selected element is disabled.
-- **Canvas looks stale:** Reload the canvas from the toolbar.
-- **Page looks different on the frontend:** Save the builder, confirm render mode, and test outside preview mode.
-
----
-
-<a id="builder-interface-explore-alternatives"></a>
-
-# Explore Alternatives and Compare
-
-Source: https://academy.bricksbuilder.io/builder/interface/explore-alternatives/
-
-*Preview alternative copy and styles, compare drafts with the live site, and apply a chosen combination before publishing.*
-
-Explore lets you try prepared alternatives, such as two headlines or several accent colors, on a draft. Compare shows up to four views of the same page so you can inspect different combinations, [page drafts](https://academy.bricksbuilder.io/builder/interface/drafts/), [site versions](https://academy.bricksbuilder.io/builder/interface/site-versions/), or the live site together.
-
-## Requirements
-
-Explore and Compare are available in Bricks 2.5 with **Enable drafts** turned on under **Bricks → Settings → Builder**. Drafts are experimental and disabled by default.
-
-You need an active draft or site version that your account can edit. The **Explore alternatives** entry appears only when that version already contains alternatives. **Compare with live** works without alternatives.
-
-Alternative groups are currently created through [Bricks abilities](https://academy.bricksbuilder.io/builder/features/ai-abilities-and-skills/), for example by a connected AI assistant using `bricks/create-alternatives`. The Builder provides the interface for previewing and applying those groups; it does not have controls for creating groups or writing their choices manually.
-
-## Prepare alternatives
-
-Each **group** represents one decision, such as Headline or Accent color. Each **choice** contains proposed changes to existing element settings, global class settings, or variable values. You can select one choice per group and combine choices from different groups.
-
-For example, ask a connected assistant:
-
-> In the page's draft, prepare two headline alternatives and two accent-color alternatives. Keep the existing elements. Put headlines and colors in separate groups so I can mix them, and give me the Explore and Compare links.
-
-The assistant can use an existing page draft, create one if needed, or work in a specified site version. Preparing alternatives saves the options for review without applying their proposed changes.
-
-## Open Explore or Compare
-
-While editing a draft or site version, open the version menu beside Save:
-
-- Choose **Explore alternatives** to preview its groups in one view.
-- Choose **Compare with live** to open the version and live page together.
-
-These views open over the Builder. If the current draft has unsaved edits, Bricks saves them into the draft before opening the view. Click **Close** to return to editing.
-
-In **Manage versions**, select a version and click **Compare**. An editor can also open an Explore or Compare link returned by the connected assistant. These editor links require a login and permission to edit the version; use a [review link](#review-links) for someone without an account.
-
-<div className="screenshot screenshot--control-panel">
-
-![The compact draft menu with Publish, Discard, Compare with live, and Explore alternatives.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/draft-menu.webp)
-
-</div>
-
-## Try a combination
-
-The options panel shows the active view's groups. Select a choice under each group you want to change. Choose **As drafted** to show that group's current saved draft values without an alternative applied.
-
-For example, select the second Headline and the first Accent color. The page preview shows that combination. Switching choices previews their effect without saving those choices to the draft or publishing them.
-
-![Explore showing independent Headline and Accent color groups with Room to grow and Terracotta selected.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/explore-alternatives.webp)
-
-If a view has no alternative groups, the options panel is hidden. You can still compare its page with another view.
-
-## Compare views {#compare}
-
-Click **Add view** to copy the active view and its current choices. Then use the version selector in each view's header to choose the page's **Draft**, an available named site version, or **Live site**.
-
-Click a view's header to make it active. Its border is highlighted, and the options panel changes to the groups belonging to that view's version. Each view keeps its own combination. Changing one view's version clears its previous alternative selections.
-
-For example, compare:
-
-| View | Version | Alternatives |
-| --- | --- | --- |
-| 1 | Live site | Current published page |
-| 2 | Autumn services | Clear direction headline, Forest accent |
-| 3 | Autumn services | Room to grow headline, Terracotta accent |
-
-The selectors offer drafts and site versions you can edit. A page draft belongs to its own page; another page's draft is not offered for this comparison. Site versions show the current page within that version.
-
-![Live site compared with two Autumn services combinations, with the third view active and its own choices shown.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/compare-views.webp)
-
-Up to four views are supported. Use **Expand** to inspect one at a larger size, then **Show all views** to return. The × button removes a view from the comparison without deleting its draft or site version.
-
-### Responsive previews and scrolling
-
-The breakpoint buttons use the site's configured Bricks breakpoints. Choosing a width changes every view together. Each page renders at that width and scales down to fit its available space, so a desktop page can remain a desktop preview inside a narrow comparison pane.
-
-Scroll one page view to move the others to the same vertical position. Switching alternative choices keeps the view's scroll position where the new content allows it. Pages with different heights may not line up exactly.
-
-## Apply a combination {#apply}
-
-Select the view containing the combination you want, then click **Apply to draft**. Bricks applies that view's selected choices to its own draft or site version. Groups left on **As drafted** keep their current values. Applying requires the same permissions as editing the affected page, classes, or variables directly.
-
-Applying does not publish the page. Close the view to return to the Builder. If you applied choices to a different site version, select that version in the toolbar to continue editing it. Use the draft or site version's publishing workflow when it is ready.
-
-Shared classes and variables follow the [drafts shared-data rules](https://academy.bricksbuilder.io/builder/interface/drafts/#shared-data): changes affecting live content stay in the draft until publication. Updates that do not affect live content are shared across the site immediately, ready to use on other pages and templates. Applying alternatives uses the same rules.
-
-After applying, **As drafted** shows the updated draft. Selecting it does not undo a combination you already applied. If Bricks reports that the alternatives changed since you opened them, reload the view and review the current choices before applying again.
-
-## Review links {#review-links}
-
-With [review links](https://academy.bricksbuilder.io/builder/interface/review-links/) enabled, you can share a draft or site version with someone who does not have a WordPress login. When it contains alternatives, the review panel includes **Explore alternatives**.
-
-Reviewers can switch options and add views to inspect combinations within the shared version. Their view has no version selector and no **Apply to draft** button. They cannot publish, save a preferred combination, or submit comments through the review link. Ask them to send their feedback separately.
-
-For recovering an earlier saved class, variable, component, or other shared item, use [Global data history](https://academy.bricksbuilder.io/builder/interface/global-data-history/).
-
----
-
-<a id="builder-interface-keyboard-shortcuts"></a>
-
-# Keyboard Shortcuts
-
-Source: https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/
-
-*Customize Bricks keyboard shortcuts, restore defaults, share your settings, and use shortcuts with Builder Interface profiles.*
-
-Keyboard shortcuts let you save, open panels, edit elements, and move through the builder without reaching for the toolbar. In Bricks 2.5, you can change, remove, restore, import, and export those shortcuts.
-
-`CMD` means Command on macOS. Use `CTRL` on Windows and Linux. The shortcuts below show the Bricks defaults; your personal settings or an assigned [Builder Interface profile](https://academy.bricksbuilder.io/builder/interface/builder-interface-customiser-profiles/) can change them.
-
-## Open Keyboard shortcuts
-
-Open **Manage** in the builder toolbar, then click **Keyboard shortcuts**. It is also available from the [Command Palette](https://academy.bricksbuilder.io/builder/interface/command-palette/).
-
-<div className="screenshot screenshot--control-panel">
-
-![The builder settings list with Keyboard shortcuts directly below Filter Manager.](https://academy.bricksbuilder.io/assets/keyboard-shortcuts/keyboard-shortcuts-settings.webp)
-
-</div>
-
-The manager lists commands by category. Search for an action or shortcut, or select a category such as **Workspace**, **Editing**, or **Elements**. Each row shows the action, its context, the source of its shortcut, and the current key combination.
-
-![The Keyboard shortcuts manager with category filters, current bindings, and Remove and Reset controls.](https://academy.bricksbuilder.io/assets/keyboard-shortcuts/keyboard-shortcuts-manager.webp)
-
-Changing your personal shortcuts requires the **Customize builder interface** permission. See [Builder access](https://academy.bricksbuilder.io/builder/interface/builder-access/) for role and user permissions.
-
-## Change a shortcut
-
-For example, to change the Preview shortcut:
-
-1. Search for **Preview**.
-2. Click its current shortcut. The button shows **Press shortcut keys**.
-3. Press your preferred combination, such as `CMD / CTRL + ALT + U`.
-4. Click **Save**.
-
-The new shortcut is saved for your WordPress user account on this site. Reload the builder and press the new combination to toggle Preview.
-
-![Preview remapped to Command, Option, and U.](https://academy.bricksbuilder.io/assets/keyboard-shortcuts/keyboard-shortcuts-remap.webp)
-
-Press `ESC` to stop recording a combination. `TAB` also leaves recording and moves focus to the next control. **Cancel** closes the manager without saving your changes.
-
-### Remove or restore a shortcut
-
-- Click the **Remove** (trash) icon to disable that command's shortcut. The action remains available through its normal builder controls.
-- Click the **Reset** icon beside a command to remove your override and inherit its default again.
-- Click **Reset** in the footer to clear all your shortcut overrides.
-
-Click **Save** to keep removals or resets. Resetting shortcuts does not reset your toolbar or panel layout. If restoring a default would create a conflict, change the other conflicting shortcut first.
-
-### Conflicts and reserved keys
-
-Bricks rejects combinations that would trigger conflicting commands. The message names the conflicting command, and the existing shortcut stays unchanged. Choose a different combination or change the other command first.
-
-![A conflict message explains that the attempted Save shortcut is already used by Command palette.](https://academy.bricksbuilder.io/assets/keyboard-shortcuts/keyboard-shortcuts-conflict.webp)
-
-Some combinations are reserved for browser, operating-system, or accessibility behavior. For example, you cannot assign a global command to `CMD / CTRL + L`, which focuses the browser address bar, or to an unmodified letter. `ESC` and `TAB` keep their built-in behavior.
-
-A warning can appear for combinations used by text editing or browser printing. Read the warning before choosing **Use anyway**. Text and code editors keep their own editing behavior where needed, so a canvas shortcut can behave differently while you are typing in an input or editor. Copy, Paste, Undo, and Redo act on text while a text editor owns the focus.
-
-## Shortcut sources and profiles
-
-Bricks resolves shortcut settings in this order:
-
-1. Bricks defaults.
-2. Site defaults.
-3. Your personal preferences.
-4. An assigned Builder Interface profile.
-
-An assigned profile takes priority for the commands it defines. Those rows show the profile name and are read-only in your personal shortcut manager. Other commands remain customizable when your permissions allow it.
-
-If a profile uses a combination assigned to another command in your preferences, Bricks suppresses the conflicting lower-priority shortcut. Your stored preference is kept. Removing the profile assignment restores it, or you can choose a different personal combination while the profile is assigned.
-
-To include shortcuts in a reusable profile, open **Builder interface → Keyboard shortcuts → Manage**. Edit the shortcuts and click **Save** to return to the Builder Interface draft. Then save or overwrite the profile. Saving a profile does not assign it to users automatically. See [Builder Interface Customiser and Profiles](https://academy.bricksbuilder.io/builder/interface/builder-interface-customiser-profiles/#keyboard-shortcuts).
-
-## Import and export
-
-Click the import/export icon in the manager header.
-
-- **Export** downloads your shortcut customizations as a JSON file, including shortcuts you have disabled. It does not export the full workspace layout or every inherited default.
-- **Import** adds the file's customizations to your current shortcut settings. Click **Save** after a successful import to keep them.
-
-If the file contains conflicting, reserved, unsupported, or profile-managed bindings, Bricks rejects the import without applying part of the file. Export and import a full Builder Interface profile when you want to share both the workspace layout and its shortcuts.
-
-## Default shortcuts
-
-These combinations are customizable in Bricks 2.5. Actions still require the relevant builder permissions and selection or editor context.
-
-| Shortcut | Action |
-| --- | --- |
-| `CMD / CTRL + S` | Save changes |
-| `CMD / CTRL + SHIFT + S` | Force save all data |
-| `CMD / CTRL + K` | Open Command palette |
-| `CMD / CTRL + .` | Toggle Style Manager |
-| `CMD / CTRL + SHIFT + .` | Toggle Builder Browser |
-| `CMD / CTRL + SHIFT + L` | Open Templates in the Builder Browser |
-| `CMD / CTRL + P` | Toggle Preview |
-| `CMD / CTRL + SHIFT + V` | View on frontend |
-| `CMD / CTRL + B` | Go to the next breakpoint |
-| `CMD / CTRL + SHIFT + E` | Open Elements and focus its search |
-| `CMD / CTRL + SHIFT + C` | Open Components |
-| `CMD / CTRL + SHIFT + X` | Toggle Structure |
-| `CMD / CTRL + F` | Focus [Structure search](https://academy.bricksbuilder.io/builder/interface/structure-panel-search/) when outside a text field and there are elements to search |
-| `CMD / CTRL + SHIFT + H` | Open History |
-| `CMD / CTRL + SHIFT + F` | Search element controls |
-| `CMD / CTRL + Z` | Undo a builder change |
-| `CMD / CTRL + SHIFT + Z` | Redo a builder change |
-| `CMD / CTRL + C` | Copy selected elements |
-| `CMD / CTRL + V` | Paste copied elements |
-| `CMD / CTRL + SHIFT + D` | Duplicate selected elements |
-| `CMD / CTRL + Delete` | Delete selected elements and their children |
-| `CMD / CTRL + ENTER` | Toggle classes for the selected element |
-| `CMD / CTRL + SHIFT + P` | Wrap the selection in the configured wrapper element |
-| `CMD / CTRL + SHIFT + ARROW LEFT` | Select the parent element |
-| `CMD / CTRL + SHIFT + ARROW RIGHT` | Select the first child element |
-| `CMD / CTRL + SHIFT + ARROW UP` | Select the previous element at the same level |
-| `CMD / CTRL + SHIFT + ARROW DOWN` | Select the next element at the same level |
-| `CMD / CTRL + ENTER` in the media picker | Insert the selected media |
-| `CMD / CTRL + R` in a focused Code control | Run code, when code execution is allowed |
-
-The same combination can serve different actions in separate contexts. For example, `CMD / CTRL + ENTER` inserts selected media while the media picker is open, and opens the classes UI when an element is selected on the canvas.
-
-## Built-in interaction keys
-
-These keys belong to focused controls, navigation, or direct manipulation and cannot be remapped. Expand **Built-in interaction keys** at the bottom of the manager to see the list.
-
-| Keys | Behavior |
-| --- | --- |
-| `ESC` | Close or dismiss the current popup or editing state |
-| `TAB` / `SHIFT + TAB` | Move keyboard focus |
-| `ENTER` / `SPACE` | Activate a focused control |
-| `ALT / OPTION + T` | Focus the builder toolbar, then use Tab to move through it |
-| `CMD / CTRL + ALT + 1–9` | Open an element-control quick-access group |
-| Number keys in Browser or Style Manager | Switch visible sections or tabs when focus is outside a text field |
-| `CMD / CTRL + ENTER` in Command palette | Insert the element structure from the focused palette |
-| `ENTER` / `SHIFT + ENTER` in Structure search | Select the next / previous match |
-| `CMD / CTRL + G` / `CMD / CTRL + SHIFT + G` in Structure search | Select the next / previous match |
-| `CMD / CTRL` while inserting | Insert outside the active parent element |
-| `SHIFT` while editing on the canvas | Use the existing precision, selection, or direct-edit modifier for that action |
-
-Arrow-key navigation, typing, and native editing shortcuts in text fields, rich-text editors, code editors, and picker lists remain owned by those interfaces.
-
-While typing in a field or editing text inline, Undo and Redo use the text editor's history. Leave the field or finish inline editing to use these shortcuts for builder changes.
-
----
-
-<a id="builder-interface-global-data-history"></a>
-
-# Global Data Revisions
-
-Source: https://academy.bricksbuilder.io/builder/interface/global-data-history/
-
-*Browse and restore earlier versions of individual classes, components, variables, and other shared Bricks data.*
-
-Global data revisions, available since Bricks 2.5, keep earlier versions of shared Builder items. Restore one component or class without replacing newer changes to the rest of your design system. It also lets you recover an item that was deleted.
-
-Revisions are recorded by default. You do not need to enable experimental Drafts to use them.
-
-## Open the revisions
-
-Open **Manage > Global data revisions** in the Builder toolbar. The dialog lists these data types in its sidebar: **Theme styles**, **Classes**, **Variables**, **Colors**, **Components**, **Queries**, and **Query filters**. Type shortcuts 1 to 9 select a type, and Bricks remembers your last type and sort order.
-
-<div className="screenshot screenshot--control-panel">
-
-![The Manage panel with History / Revisions and Global data revisions listed below Theme styles and Page settings.](https://academy.bricksbuilder.io/assets/builder/global-data-revisions/revisions-settings-panel.webp)
-
-</div>
-
-You can also open the revisions of one data type from where you edit it. Each opens the dialog on that type:
-
-- **Style manager**: the revisions icon on the selected **Theme styles**, **Classes**, **Variables**, or **Colors** item.
-- **Class and variable editors**: the **Revisions** button.
-- **Browser**: the revisions icon on **Components**, **Query manager**, or **Filter manager**. A component's own **Revisions** icon in the Browser, or on its row in the Components panel, opens that component directly.
-
-![Style manager with the Classes type selected. A revisions icon appears beside Classes and a Revisions button sits under the selected class.](https://academy.bricksbuilder.io/assets/builder/global-data-revisions/revisions-style-manager-entry.webp)
-
-![The Browser with Components selected. A revisions icon appears beside Components in the sidebar.](https://academy.bricksbuilder.io/assets/builder/global-data-revisions/revisions-browser-entry.webp)
-
-## Browse an item's revisions
-
-1. Select a data type in the sidebar.
-2. Find an item with the search field, which also searches deleted items, or sort the list. Classes, variables, components, queries, and filters also have a categories column, as in their managers.
-3. Select an item. Click it again to deselect it.
-
-Theme styles open directly on the active style. Use the style switcher to pick another one. Colors are listed one by one, and each palette appears as a category. A color's revisions come from the revisions of its palette.
-
-An item's revisions form a timeline of cards, newest first. The newest card opens with the item. Select a card to expand or collapse it, or use **Expand all** and **Collapse all** in the item header. The header shows the number of revisions and when the item last changed.
-
-Each card shows the action, such as **Created**, **Changed**, or **Deleted**, along with tags and when and by whom the change was made. A **Current** tag marks the version the site uses now. Source tags such as **AI agent**, **WP-CLI**, **Import**, **Published draft**, or **From a draft** show where a change came from. A change made by hand in the Builder has no source tag. A **Restored** tag marks a revision created by a restore.
-
-An open card lists its changes, one setting per row. Each row shows the setting name with its section underneath, then the old value, an arrow, and the new value. Empty values read **Not set**, colors appear as swatches, and multi-line values such as custom CSS appear as code blocks with the old value dimmed above the new one. The oldest card lists its values under **Oldest recorded version**, because it has no earlier version to compare with. Labels come from the matching Theme styles and settings controls.
-
-![Revisions of the btn-primary class on a timeline. The newest card compares custom CSS as code blocks and the oldest card lists its values under Oldest recorded version.](https://academy.bricksbuilder.io/assets/builder/global-data-revisions/revisions-class-revisions.webp)
-
-Components also show a rendered preview in each card, and internal component fields are left out of the changes. The preview uses the site's styles. It does not restore the global classes, fonts, or other resources that the component used at that earlier time. Use **Open in new tab** to inspect the preview separately.
-
-![Testimonial card component revisions with a rendered preview and the text change in the newest card.](https://academy.bricksbuilder.io/assets/builder/global-data-revisions/revisions-component-revisions.webp)
-
-Custom fonts, breakpoints, font favorites, pinned elements, and class locks are not included in global data revisions.
-
-## Restore an item
-
-Each card ends with its own restore button. The current revision has none.
-
-1. Expand the revision you want to recover.
-2. Review its values and component preview, if available.
-3. Click **Restore this version**. For a color, the button says **Restore this palette version**. For a deleted item, it says **Bring back**.
-
-If you have unsaved changes to that type of global data, the button reads **Save and restore** (or **Save and bring back**) and saves them first.
-
-Restoring saves the selected item's earlier value and updates the Builder. Other items keep their current values. Each restore is recorded as another revision, so you can return to the previous value through the same dialog.
-
-An item's only revision is its recorded starting point and is titled **Current version**.
-
-### Recover deleted items
-
-An item that was deleted or moved to the trash is listed only under **Deleted**, in its own box below the categories, and not in **All** or its category. Select the item and click **Bring back** to return it to use. The item then appears under **All** again. If you open the dialog on a deleted item, it starts in **Deleted**.
-
-![Deleted classes list with old-banner selected. Its Deleted revision shows the removed name and color and a Bring back button.](https://academy.bricksbuilder.io/assets/builder/global-data-revisions/revisions-deleted-item.webp)
-
-### Restore inside drafts and site versions
-
-When you are editing [a draft](https://academy.bricksbuilder.io/builder/interface/drafts/) or [a site version](https://academy.bricksbuilder.io/builder/interface/site-versions/), the dialog shows a notice that the revisions are the live site's history. The newest revision is tagged **Live** instead of **Current**, and you can restore it into the draft, because a draft does not record its own saves and may hold something else. Restored changes follow the [shared-data rules](https://academy.bricksbuilder.io/builder/interface/drafts/#shared-data). Changes affecting live content stay held until publication. Restored items that do not affect live content are shared across the site immediately. A change held in a draft enters global data revisions when it is published.
-
-Your account needs Builder access and the relevant resource permissions. Restoring a component containing executable code also requires code execution permission.
-
-## Retention and storage
-
-By default, each item keeps its latest **20 versions**, plus all versions recorded in the last **90 days**. An item can therefore have more than 20 revisions. These limits are separate from the number of WordPress revisions kept for a page. Developers can adjust them with [`bricks/global_history/keep_latest`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-global_history-keep_latest/) and [`bricks/global_history/keep_days`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-global_history-keep_days/).
-
-Under **Bricks > Settings > Builder > Global data revisions**, you can:
-
-- Enable **Disable global data revisions** to stop recording new changes.
-- View the storage used by recorded revisions.
-- Use **Delete revisions** to remove the stored revisions. This leaves your current global data in place, but the deleted revisions can no longer be restored.
-
-Revisions cannot recover versions that were never recorded. Keep site backups for a complete recovery of WordPress content, media, settings, and files.
-
-## Undo history, revisions, and drafts
-
-| Tool | Use it for |
-| --- | --- |
-| **History** in Manage > History / Revisions | Undo and redo steps from the current editing session. |
-| [Revisions](https://academy.bricksbuilder.io/builder/interface/revisions/) | Recover earlier page or template elements and page settings. |
-| **Global data revisions** | Recover one recorded shared item, including a deleted item. |
-| [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) and [site versions](https://academy.bricksbuilder.io/builder/interface/site-versions/) | Hold changes affecting visitors until you choose to publish them. |
-
-For agent workflows, the `bricks/list-global-revisions` and `bricks/restore-global-revision` abilities provide the same per-item recovery. Pass `target: "active"` to `bricks/restore-global-revision` to bring a deleted item back into use. See [Bricks AI abilities and skills](https://academy.bricksbuilder.io/builder/features/ai-abilities-and-skills/).
-
----
-
-<a id="builder-interface-page-settings"></a>
-
-# Page Settings
-
-Source: https://academy.bricksbuilder.io/builder/interface/page-settings/
-
-*Use Bricks page settings to control per-page markup, styling, SEO metadata, social sharing output, and custom code.*
-
-Page Settings control output for the page, post, or content template you are currently editing. They are different from global Bricks settings and different from an individual element's controls.
-
-Use Page Settings when a setting should apply to the whole current page, such as body classes, header/footer visibility, page-level scroll snap, SEO metadata, social sharing data, or page-specific code.
-
-## Open Page Settings
-
-Open the builder and click the **Settings** icon in the toolbar. Choose **Page Settings**.
-
-Page Settings are available only when the current user has permission to access them. Some groups can also be hidden by global settings.
-
-Use the **Reset** icon in the panel header to clear all page settings with a single click.
-
-## How Page Settings are applied
-
-Page Settings are stored with the current Bricks document. On the frontend, Bricks reads those settings while rendering the page.
-
-Some settings change markup, such as body classes or disabling the header. Some generate CSS, such as scroll snap and Custom CSS. Some print metadata or scripts into the document head or body. Some settings are visible in the builder immediately, while others should be checked on the frontend.
-
-![](https://academy.bricksbuilder.io/assets/bricks-page-settings.png)
-
-## General settings
-
-The General group contains page-wide output options.
-
-| Setting | What it does |
-| --- | --- |
-| CSS classes (body) | Adds space-separated classes to the page `<body>` tag. Dynamic data can be used when appropriate. |
-| Disable header | Prevents the active Bricks header from rendering on this page. Not shown for header or footer templates. |
-| Disable footer | Prevents the active Bricks footer from rendering on this page. Not shown for header or footer templates. |
-| Disable lazy load | Disables Bricks' built-in lazy loading for images, videos, background images, and background videos on the current page. Background videos honor this setting from Bricks 2.5. |
-| Disable popups | Prevents Bricks popups from rendering on the current page. |
-| Page layout | Overrides the page layout inherited from Theme Styles. |
-| Page background | Overrides the page background inherited from Theme Styles. |
-| Content margin | Overrides the content margin inherited from Theme Styles when available. |
-
-Use these settings for page-specific exceptions. If you need the same behavior on many pages, use global settings, Theme Styles, or templates instead.
-
-For a single background, use the element's **Style > Background > Disable lazy load** control (Bricks 2.5). See [Lazy Loading](https://academy.bricksbuilder.io/builder/features/lazy-loading/) for the available scopes and how they affect the element control.
-
-## Scroll snap
-
-The Scroll snap group configures page-level CSS scroll snapping.
-
-| Setting | What it does |
-| --- | --- |
-| Type | Sets the page scroll-snap type on the `html` element. |
-| Snapping elements selector | Defines which elements should snap. Defaults to Bricks sections when left empty. |
-| Align | Sets the snap alignment of snapping elements. |
-| Margin | Sets scroll margin for snapping elements. |
-| Padding | Sets scroll padding on the `html` element. |
-| Stop | Sets scroll-snap-stop behavior. |
-
-Scroll snap is primarily a frontend behavior. Test it on the frontend, not only in the builder canvas. Layout height, overflow, sticky headers, and browser behavior can affect the result.
-
-If you use a custom selector, make sure the selector matches the elements that should become snap points. If the selector matches nothing, the page can have scroll snap enabled without visible snapping.
-
-## One Page Navigation {#one-page-nav}
-
-If enabled, Bricks adds a vertical dot menu to the right edge of the page in a fixed position, with each dot linking to the page's root element.
-
-![](https://academy.bricksbuilder.io/assets/bricks-one-page-navigation-1024x534.png)
-
-One Page Navigation is shown only where it applies, such as normal pages and content templates. It is not shown for header or footer templates.
-
-The navigation uses the IDs Bricks renders for root elements. Add custom CSS IDs when you need stable, readable anchors or when root elements are generated dynamically.
-
-> **Note**
->
-> If a root element is inside a query loop, use dynamic data in the CSS ID, such as a post ID or slug, so every repeated root element has a unique anchor.
-
-![](https://academy.bricksbuilder.io/assets/one-page-navigation-loop-unique-css-id.png)
-
-The One Page Navigation controls style the dot menu and its active state:
-
-- Spacing
-- Item width and height
-- Item color
-- Border
-- Box shadow
-- Active item width and height
-- Active item color
-- Active border
-- Active box shadow
-
-The active dot changes based on the root element currently in the scroll range.
-
-## SEO
-
-The SEO group controls page-level metadata. This group is hidden when Bricks SEO output is disabled globally.
-
-| Setting | What it does |
-| --- | --- |
-| Permalink | Updates the post slug. Use lowercase words separated by dashes. |
-| Title | Updates the WordPress post title after applying the change. |
-| Document title | Sets the frontend SEO title without changing the WordPress post title. |
-| Meta description | Prints a page-level meta description. |
-| Meta keywords | Prints page-level meta keywords. |
-| Meta robots | Prints robots directives such as `noindex` or `nofollow`. |
-
-Use **Save new title/permalink** after changing the post title or permalink in the SEO group. Other page settings are saved through the normal builder save flow.
-
-If you use a dedicated SEO plugin, decide which tool owns the metadata. Avoid setting competing metadata in multiple places.
-
-## Social media
-
-The Social media group controls Open Graph style sharing data for the current URL. This group is hidden when Bricks Open Graph output is disabled globally.
-
-| Setting | Default when empty |
-| --- | --- |
-| Title | The post/page title. |
-| Description | The post/page excerpt. |
-| Image | The featured image. |
-
-Use this group when a page needs a social title, description, or image that differs from its normal SEO data.
-
-## Custom Code
-
-The Custom Code group adds page-specific CSS and scripts.
-
-| Setting | Output location |
-| --- | --- |
-| Custom CSS | Inline CSS in the document `<head>`. Supports breakpoint-specific values. |
-| Header scripts | Before the closing `</head>` tag. |
-| Body (header) scripts | Immediately after the opening `<body>` tag. |
-| Body (footer) scripts | Before the closing `</body>` tag. |
-
-Script fields are shown only to users who are allowed to add unfiltered HTML. Users without that capability see an informational notice instead.
-
-Use page-level code sparingly. Prefer element settings, classes, Theme Styles, global settings, or properly enqueued code when the behavior should be reused across the site.
-
-## Common mistakes
-
-- **Changing SEO title but not applying it:** Use **Save new title/permalink** for title and slug changes.
-- **Expecting header/footer disable to affect templates globally:** These settings affect only the current page render.
-- **Using duplicate IDs for One Page Navigation:** Give repeated root elements unique IDs, especially inside query loops.
-- **Testing scroll snap only in the builder:** Always test on the frontend.
-- **Adding scripts without the right capability:** Script fields require permission to add unfiltered HTML.
-- **Using page code for reusable behavior:** Page Custom Code is local to the current page. Use global settings or enqueue code for site-wide behavior.
-
----
-
-<a id="builder-interface-responsive-editing"></a>
-
-# Responsive Editing
-
-Source: https://academy.bricksbuilder.io/builder/interface/responsive-editing/
-
-*Edit Bricks designs responsively across breakpoints and adjust layout, spacing, and element settings for smaller screens.*
-
-What looks great on a large desktop screen usually needs some refinement for smaller devices. This typically involves applying smaller font sizes, margins, paddings, column width/stacking, or hiding certain elements on smaller devices.
-
-Bricks provides the following four breakpoints out-of-the-box:
-
-| **Breakpoint** | **@media query** |
-| --- | --- |
-| Desktop | Base breakpoint |
-| Tablet portrait | &lt; 992px |
-| Mobile landscape | &lt; 768px |
-| Mobile portrait | &lt; 478px |
-
-Styles set on the base breakpoint are inherited by all other breakpoints.
-
-Once you've finished styling a page on the base breakpoint (desktop), make sure to view & adjust the styling on the other breakpoints too.
-
-## Background videos at different breakpoints {#responsive-background-video}
-
-Since Bricks 2.5, background videos on **Section**, **Container**, **Block**, and **Div** elements can use different URLs and playback settings at each breakpoint. Open **Style > Background** on the element or its global class.
-
-Set the video on the base breakpoint, then switch to another breakpoint to change only the settings it needs. The URL, aspect ratio, scale, start and end times, **Play once**, poster, and YouTube/Vimeo options inherit through breakpoints. Inherited settings appear as placeholders; entering a value creates a local override. Clear a local value to use the inherited setting again.
-
-Use **Background video** to choose:
-
-- **Enable**: Play the resolved video at this breakpoint.
-- **No video**: Show the element's normal background instead. Set a background image or color if needed.
-
-For example, use a wide video at Desktop, enter a shorter video URL at Tablet portrait, and choose **No video** at Mobile portrait. Bricks loads the matching breakpoint's video and stops the previous video when the breakpoint changes. This applies to uploaded videos, YouTube, and Vimeo.
-
-At Tablet portrait, the video URL is a local override while playback settings such as **Start time (s)** remain inherited:
-
-<div className="screenshot screenshot--control-panel">
-
-![Tablet portrait Background video controls with a local Video URL and an inherited Start time of 0.](https://academy.bricksbuilder.io/assets/builder/release-2.5/video-tablet-panel.webp)
-
-</div>
-
-At Mobile portrait, **No video** leaves the normal background visible:
-
-<div className="screenshot screenshot--control-panel">
-
-![Mobile portrait Background video set to No video.](https://academy.bricksbuilder.io/assets/builder/release-2.5/video-mobile-panel.webp)
-
-</div>
-
-### Existing background videos
-
-Updating Bricks does not activate previously ignored breakpoint-specific video URLs. Existing videos keep their previous output until you intentionally edit a video setting. The first edit switches that element or class to responsive video settings. Bricks uses the previously rendered video and playback behavior as the starting point, then applies your edit.
-
-Older videos may have a **Start play at** restriction. That restriction survives the first edit; changing the legacy video URL alone does not remove it. To allow playback at a restricted breakpoint, explicitly choose **Background video > Enable** there. A poster can still appear below the old playback threshold.
-
-Entering a new URL at another breakpoint also enables video there if it inherited **No video**. Choose **No video** again if you want that breakpoint to keep its normal background.
-
-Class videos are inherited rather than copied into each element. Editing a class video does not switch an element's own untouched legacy video to responsive behavior. Check elements with their own video separately after changing a shared class.
-
-To view & edit the styles for a specific breakpoint simply click on its breakpoint icon located in the center of the builder toolbar. Or use the default [keyboard shortcut](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/) `CMD/CTRL + B`.
-
-![](https://academy.bricksbuilder.io/assets/bricks-1.5.1-in-builder-breakpoint-mobile-landscape-1024x576.jpg)
-
-<figcaption>
-
-Editing in the "Mobile landscape" breakpoint
-
-</figcaption>
-
-Next to the breakpoint icons are inputs for width ("W"), height ("H"), and scale (%).
-
-## Inherited background images {#inherited-background-images}
-
-Since Bricks 2.5, an inherited background image appears as a dimmed preview under **Style > Background**. Its remove button and image-size selector stay hidden until you select an image at the current breakpoint, creating a local override.
-
-## Custom Breakpoints {#custom-breakpoints}
-
-To start using custom breakpoints, you first have to enable them in your WordPress dashboard under `Bricks > Settings > General > Custom breakpoints`:
-
-![](https://academy.bricksbuilder.io/assets/bricks-enable-custom-breakpoints.jpg)
-
-Once enabled, you can access the **breakpoint manager** in the builder by clicking the three-dotted icon in the builder toolbar (next to the first breakpoint icon):
-
-![](https://academy.bricksbuilder.io/assets/bricks-1.5.1-breakpoint-manager-default-breakpoints.jpg)
-
-<figcaption>
-
-Breakpoint Manager (open via the three-dotted icon in the builder toolbar)
-
-</figcaption>
-
-### Editing a breakpoint
-
-Clicking the pencil icon brings up the editing options of the selected breakpoint:
-
-![](https://academy.bricksbuilder.io/assets/bricks-edit-default-breakpoint.jpg)
-
-<figcaption>
-
-Editing the default "Tablet portrait" breakpoint
-
-</figcaption>
-
-You can edit the following breakpoint properties:
-
-| **Property** | **Description** |
-| --- | --- |
-| Label | Used when hovering over the breakpoint icon in the builder toolbar |
-| Width (px) | @media query min-width/max-width value (depending on the base breakpoint) |
-| Width (Builder) | Width is used when switching to the breakpoint in the builder |
-| Icon | Used as the breakpoint icon in the builder toolbar |
-| Base breakpoint | Set breakpoint as base breakpoint |
-| *Key* | *Not customizable (used to store & identify breakpoint settings)* |
-
-The most common action is to customize the widths of the default (mobile) breakpoints. The following screenshot shows you the "Tablet portrait" with a custom width of 1023px:
-
-![](https://academy.bricksbuilder.io/assets/bricks-edit-breakpoint-width.jpg)
-
-That means any styles set on the "Tablet portrait" breakpoint will apply to devices with a width of less than 1024px.
-
-### Creating new breakpoints
-
-You can create as many additional custom breakpoints as you want. Although, it is recommended to customize the widths of the default mobile breakpoints to your liking before utilizing more breakpoints.
-
-You should rarely need more than one or two additional breakpoints on top of the default ones.
-
-Clicking the "+" (plus) icon in the breakpoint manager's header launches the breakpoint creator form.
-
-The following screenshot shows how we created a  new breakpoint named "Large" with a width of 1400px:
-
-![](https://academy.bricksbuilder.io/assets/bricks-create-new-breakpoint.jpg)
-
-<figcaption>
-
-Creating a new breakpoint
-
-</figcaption>
-
-Once you click "Create" your newly created breakpoint should appear in the breakpoint manager (alongside a "CUSTOM" label) & in the builder toolbar like this:
-
-![](https://academy.bricksbuilder.io/assets/bricks-custom-breakpoint-large-created.jpg)
-
-<figcaption>
-
-Breakpoint manager with new custom breakpoint
-
-</figcaption>
-
-As we've set the width of this new breakpoint to 1400px, it shows as the first breakpoint, as it is now the largest of our breakpoints. The Desktop (base breakpoint) has a default width of 1279px.
-
-### Pausing a custom breakpoint
-
-You can pause any of your custom breakpoints by toggling the checkbox at the right-hand side of the breakpoint manager:
-
-![](https://academy.bricksbuilder.io/assets/bricks-pause-custom-breakpoint.jpg)
-
-<figcaption>
-
-Pausing custom breakpoint "Large"
-
-</figcaption>
-
-Pausing a custom breakpoint allows you to skip generating the styles for it on the frontend, while still retaining the styles you've set throughout your site without having to delete them one by one. Which, on a full-built-out site, can go into thousands of settings.
-
-### Resetting a default breakpoint
-
-To restore the default values of a default breakpoint, click on the "reset" icon (next to the pencil) icon.
-
-### Resetting all breakpoints
-
-Clicking the "gear" icon in the breakpoint manager header opens up the "Reset: Breakpoints" action. Clicking this button removes all your breakpoint edits (default & custom breakpoints) from the database.
-
-> **Note**
->
-> **Breakpoint-specific settings performed on an element or the Theme Styles are not deleted. Please choose desktop or mobile-first at the very beginning.**
-
-![](https://academy.bricksbuilder.io/assets/bricks-reset-all-breakpoints.jpg)
-
-### Understanding the base breakpoint
-
-The base breakpoint doesn't have a @media query. So all styles set on the base breakpoint apply to all screen widths.
-
-That is why, by default, any styles set on the "Desktop" breakpoint are visible on any other breakpoint. Unless you specify a style on a specific breakpoint. Then the breakpoint-specific rule precedes the base breakpoint style.
-
-When editing a breakpoint, you can set it as the "Base breakpoint". Then all styles set on this new base breakpoint are inherited up & down the breakpoint chain.
-
-In the following screenshot, you can see that the "Tablet portrait" breakpoint has been set as the base breakpoint.
-
-The yellow dot, lines, and arrows next to the breakpoint icons should help to visualize the style inheritance:
-
-![](https://academy.bricksbuilder.io/assets/bricks-custom-base-breakpoint.jpg)
-
-<figcaption>
-
-Changed base breakpoint to "Tablet portrait"
-
-</figcaption>
-
-### Mobile-first design {#mobile-first}
-
-Styling in Bricks, by default, happens from the largest breakpoint down to "Tablet portrait" > "Mobile landscape" and "Mobile portrait".
-
-Utilise a so-called `**mobile-first**` design approach by setting the smallest breakpoint as the base breakpoint.
-
-The following screenshot shows the "Mobile portrait" (our smallest breakpoint) set as the base breakpoint. We now use the mobile-first approach. Also indicated by the "MOBILE FIRST" label in the breakpoint manager header:
-
-![](https://academy.bricksbuilder.io/assets/bricks-mobile-first.jpg)
-
-<figcaption>
-
-Mobile-first design in Bricks
-
-</figcaption>
-
-You'll also notice that the order of the breakpoints is reversed and now starts at the smallest breakpoint. You can now start to design your pages starting at the smallest breakpoint.
-
-### Regenerating (Bricks) CSS files
-
-Whenever you customize the width of a default breakpoint, Bricks automatically updates any Bricks CSS files (like frontend.min.css, etc.) that contain media queries for this breakpoint.
-
-If you experience that your breakpoint widths on the front end are not correctly applied, please regenerate your Bricks CSS files by clicking the "Regenerate CSS files" button under `Bricks > Settings > General > Custom breakpoints`.
-
-## Breakpoint data attribute {#breakpoint-data-attribute}
-
-Since Bricks 2.5, the **Breakpoint data attribute** setting exposes the active breakpoint key for use in custom CSS and JavaScript. Enable it under **Bricks > Settings > General > Breakpoint data attribute**, then save your settings. It is disabled by default and works with both default and custom breakpoints.
-
-When enabled, Bricks adds `data-brx-breakpoint` to the page's `<body>` element on the frontend and in the Builder canvas. For example:
-
-```html
-<body data-brx-breakpoint="mobile_portrait">
-```
-
-The value updates when the viewport crosses a breakpoint boundary.
-
-### Breakpoint keys and matching
-
-The attribute contains one breakpoint key at a time. It uses the smallest matching `max-width` breakpoint or the largest matching `min-width` breakpoint. The base breakpoint key applies only when no other enabled breakpoint matches. Paused custom breakpoints are excluded.
-
-The default keys are `desktop`, `tablet_portrait`, `mobile_landscape`, and `mobile_portrait`. Custom breakpoints use their own keys. Renaming a breakpoint's label does not change its key or the attribute value. Inspect the page's `<body>` element in your browser's developer tools to check the active key.
-
-This value does not list every breakpoint whose styles apply. For example, `mobile_portrait` can be active while the element still inherits styles from the base and larger breakpoints.
-
-### Target a breakpoint in CSS
-
-Add a rule like this to your [custom CSS](https://academy.bricksbuilder.io/builder/features/custom-code/):
-
-```css
-body[data-brx-breakpoint="mobile_portrait"] .product-card {
-  gap: 0.75rem;
-}
-```
-
-This rule applies only while `mobile_portrait` is the active key. With the default desktop-first configuration, a selector for `tablet_portrait` does not also match the two mobile ranges. Use a media query when a rule should apply across several ranges.
-
-### Read the active key in JavaScript
-
-After Bricks initializes the page, read the current key with:
-
-```js
-const activeBreakpoint = document.body.dataset.brxBreakpoint;
-```
-
-This reads the value at that moment. Read it again when your code needs the current breakpoint.
-
-The attribute requires JavaScript and is added during page initialization. It is absent when the setting is disabled or Bricks' JavaScript has not run. Use media queries for styles that must apply before JavaScript runs or when JavaScript is unavailable.
-
-## Responsive control indicator {#responsive-control-indicator}
-
-In Bricks 1.11.1, we introduced the responsive control indicator which helps you see which controls can have different values at different breakpoints. We provide multiple options for when to show this indicator to suit different preferences. You can adjust these under `Bricks > Settings > Builder > Control panel > Responsive control indicator`:
-
-- **Show if any value exists (Default)**: Displays if a control has any value set across breakpoints.
-- **Show if non-base breakpoint value exists**: Shows only if a control’s value differs from the base breakpoint.
-- **Show on all responsive controls**: Displays on all responsive controls, regardless of values.
-- **Disable**.
-
-![](https://academy.bricksbuilder.io/assets/bricks-responsive-control-indicator.png)
-
----
-
-<a id="builder-interface-review-links"></a>
-
-# Review Links
-
-Source: https://academy.bricksbuilder.io/builder/interface/review-links/
-
-*Share a saved Bricks draft or site version with someone without a WordPress login, set its expiry, and turn access off.*
-
-Review links let a client or teammate view a saved [page draft](https://academy.bricksbuilder.io/builder/interface/drafts/) or [site version](https://academy.bricksbuilder.io/builder/interface/site-versions/) without a WordPress login. They can browse the design, but cannot edit it, publish it, submit forms, or leave comments inside Bricks.
-
-Available since Bricks 2.5. Review links require the experimental Drafts feature and are disabled by default.
-
-## Enable review links {#enable}
-
-In **Bricks > Settings > Builder > Drafts**, enable **Enable drafts**, then **Enable review links**, and save the settings.
-
-To create a link, you must be allowed to edit the draft or site version you are sharing. A link does not give the recipient Builder access.
-
-## Create and copy a link {#create}
-
-1. Open the draft or site version in the Builder and save the changes you want reviewed.
-2. Open the version menu before **Save**, then choose **Review links…**. Bricks opens **Versions** with that version selected. Alternatively, use **Manage versions…** and select it from the list on the left.
-3. In **Review links** on the right, set **Expires after** to **1 day**, **7 days**, **14 days**, or **30 days**. The default is **7 days**.
-4. Click **Create review link**.
-5. Click **Copy** and send the generated link to your reviewer.
-
-Copy the link while it is shown. Bricks displays the full link only once; the list retains its expiry and active/inactive status. If you did not keep the link, create another one.
-
-Anyone who receives the link can use it until it expires or is turned off. Share it only with the people who should see the work.
-
-![Review-link controls with a seven-day expiry and active links that can be turned off.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/review-link-settings.webp)
-
-A link opens the saved version, not unsaved canvas edits. Further saves to that version appear when the reviewer reloads or revisits it. Use a separate named site version if another round of edits must stay separate from the work already under review.
-
-## What the reviewer sees {#reviewer}
-
-The link opens the frontend without the WordPress admin bar. A small **Review** panel shows the version name and **Available until** date. **Hide** collapses it; **Show review panel** opens it again.
-
-The reviewer can follow links on the same site while staying in the review. A page-draft link starts on that page; a site-version link starts at the site's homepage. A page draft can be reviewed before its page is published, but the link does not unlock unrelated private or unpublished posts.
-
-**Leave review** returns to the corresponding live URL. An unpublished page may have no public live page to show.
-
-![An anonymous review showing the Atelier North service cards and the Autumn services Review panel.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/review-frontend.webp)
-
-If the version contains alternatives, the panel offers **Explore alternatives**. The reviewer can inspect different combinations and comparisons, but cannot apply one to the draft or record a preferred choice in Bricks. See [Explore Alternatives and Compare](https://academy.bricksbuilder.io/builder/interface/explore-alternatives/).
-
-Review links are view-only, including when opened by a logged-in editor. They do not provide comments, an approval button, or a “choose this version” submission. Collect feedback through your usual email or project conversation. Forms in a review do not submit.
-
-## Expiry and turning links off {#expiry}
-
-Open **Versions**, select the shared draft or version, then find its **Review links** list. **Active until** shows the expiry. Click **Turn off** to stop a link before that date.
-
-The person who created a link, or an administrator who retains access to its version, can turn it off. Create a new link when you need a later expiry; the existing link is not extended.
-
-A link stops working when:
-
-- Its expiry is reached or it is turned off.
-- The draft or version is discarded.
-- A publish succeeds, including publishing a site version that remains open for further work.
-- Its creator loses permission to edit that draft or version.
-- Drafts or review links are disabled in Bricks settings.
-
-The recipient then sees **Review link unavailable** and can request a new link. After publishing a site version, create a fresh link for the next review so the old one cannot expose later work.
-
----
-
-<a id="builder-interface-revisions"></a>
-
-# Revisions
-
-Source: https://academy.bricksbuilder.io/builder/interface/revisions/
-
-*Review, restore, and manage Bricks revisions so you can safely recover earlier builder states.*
-
-Page and template revisions are recovery copies of saved Bricks elements and page settings. [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) and [Site Versions](https://academy.bricksbuilder.io/builder/interface/site-versions/) hold pending changes before publishing.
-
-When you save builder data changes, Bricks creates a revision/snapshot of the relevant Bricks data and page settings (template, page, etc.) using the official WordPress Revisions API.
-
-[Global Data Revisions](https://academy.bricksbuilder.io/builder/interface/global-data-history/) recovers individual shared items separately from page and template revisions.
-
-Bricks also stores autosaves separately. Autosaves are backup copies from the autosave process, while regular revisions are created when Bricks element data or page settings are included in a manual save. After a regular revision is created, Bricks clears the related autosave.
-
-To browse, preview, and apply revisions, open **Manage > History / Revisions** from the builder toolbar, then select the **Revisions** tab. Access to revisions requires the **Access revisions** builder permission.
-
-The **History** tab lists recent undo and redo steps from your editing session. The **Revisions** tab contains saved versions and available autosaves, so use it to recover work from an earlier session.
-
-Select any revision in this list to preview it. The canvas should automatically update showing you the selected revision.
-
-Click **Apply** to continue editing the selected revision. Click **Discard** to continue editing your current version.
-
-If your builder capability includes **Delete revisions**, you can delete individual revisions or delete all revisions from the Revisions panel.
-
-![](https://academy.bricksbuilder.io/assets/builder-revisions-1024x576.png)
-
-## Manage the number of Bricks revisions {#bricks_max_revisions_to_keep}
-
-In order to limit the number of Bricks revisions, you may define the constant `BRICKS_MAX_REVISIONS_TO_KEEP` like so (insert this code in the Bricks child theme):
+![](https://academy.bricksbuilder.io/assets/custom-css-code-for-animation.png)
 
 ```php
-if ( ! defined( 'BRICKS_MAX_REVISIONS_TO_KEEP' ) ) {
-    define( 'BRICKS_MAX_REVISIONS_TO_KEEP', 10 );
+.brx-animate-myAnim1 {
+  animation-name: my-anim-1;
+}
+
+@keyframes my-anim-1 {
+  0% {
+    animation-timing-function: ease-in;
+    opacity: 0;
+    transform: translateY(-250px);
+  }
+  38% {
+    animation-timing-function: ease-out;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  55% {
+    animation-timing-function: ease-in;
+    transform: translateY(-65px);
+  }
+  72% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+  81% {
+    animation-timing-function: ease-in;
+    transform: translateY(-28px);
+  }
+  90% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+  95% {
+    animation-timing-function: ease-in;
+    transform: translateY(-8px);
+  }
+  100% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
 }
 ```
 
-By default, Bricks sets the maximum to 100 revisions per post for the Bricks templates and enabled post types.
-
-You may set the following values:
-
-- true: unlimited revisions
-- false or 0: do not store any Bricks' revisions
-- value above 0: store up to this number of revisions per post. Old revisions are automatically deleted.
-
----
-
-<a id="builder-interface-save-publish"></a>
-
-# Save & Publish
-
-Source: https://academy.bricksbuilder.io/builder/interface/save-publish/
-
-*Understand how saving and publishing work in Bricks, including drafts, updates, and when frontend changes go live.*
-
-Bricks, by default, automatically creates an autosave every 60 seconds when the current builder area has unsaved element changes.
-
-Autosave creates a backup copy of the elements on the canvas. It does not save global data such as components, classes, or variables. Autosaves can be restored under **Manage > History / Revisions** from the builder toolbar.
-
-To adjust or disable the autosave interval go to **Bricks > Settings > Builder** in your WordPress admin area. The default interval is 60 seconds, and the minimum interval is 15 seconds.
-
-Bricks detects unsaved changes and will show you a prompt to help prevent data loss in case you reload the builder by accident.
-
-To manually save your changes, click the **Save** (disk) icon in the builder toolbar or use the default `CMD/CTRL + S` shortcut. Save writes to the version you are editing: Live, a Bricks page draft, or a named site version. In Bricks 2.5, you can change the shortcut under **Manage → Keyboard shortcuts**. See [Keyboard Shortcuts](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/).
-
-For live page changes, **Bricks creates a revision/snapshot** when changed Bricks data or page settings are saved using the standard WordPress Revisions API ([learn more about revisions](https://academy.bricksbuilder.io/builder/interface/revisions/)). Saving into a Bricks draft keeps pending changes separate from that live-page save.
-
-Customize the save messages with the [bricks/builder/save_messages](https://academy.bricksbuilder.io/developer/hooks/filters/filter-save-messages/) filter.
-
-## Save pending changes without publishing {#drafts}
-
-Bricks 2.5 offers experimental [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/), disabled by default. Enable **Bricks > Settings > Builder > Drafts > Enable drafts**, then open **Live** beside Save and choose **Save page as draft**. The label follows the post type.
-
-While the switcher shows **Draft**, Save continues saving into that draft. Select **Publish** to review its changes before making them live, or **Discard** to remove its pending changes. On narrower screens, these actions appear in the version menu. Save while **Live** is selected still saves directly to the live version.
-
-Changes to shared items already used on live pages stay in the draft until publication. Reusable items that do not affect live content become available across the site immediately, so you can use a new class on other pages and templates while working. Read [what stays in a draft](https://academy.bricksbuilder.io/builder/interface/drafts/#shared-data) for the full rules and examples.
-
-Use a named [site version](https://academy.bricksbuilder.io/builder/interface/site-versions/) for work across several pages, and [review links](https://academy.bricksbuilder.io/builder/interface/review-links/) to let someone without a login preview pending work.
-
-## Saving shared data from multiple Builder sessions {#save-conflicts}
-
-Since Bricks 2.5, conflict-safe saving is always active for shared data such as global classes, components, Theme Styles, variables, palettes, global queries and filters, and custom fonts. There is no setting to enable it.
-
-If two people edit different shared items, Bricks merges those changes when they save. For example, one person can update a button class while another updates a card component. Saving from an older Builder session does not replace the other person's unrelated update.
-
-If both sessions change the same shared item, Bricks pauses the save and asks which version to keep. This can also happen when you have the Builder open in two tabs. Resolve the conflicts before treating the page or shared-data changes as saved.
-
-### Resolving a conflict
-
-1. In the conflict notification, click **Overview changes** to open **Conflict details**.
-2. Select a resource group or expand an item to compare its **Saved version** with **My version**. The saved version is the version currently on the site; your version is the one in this Builder session.
-3. Choose which version to keep for each item. The dialog initially selects **Saved version**. Use **All items** only when you want the same choice for every item in the dialog.
-4. Click **Use selected**. Resolve any other conflict notifications. After the final conflict is resolved, Bricks retries the save automatically.
-
-![Conflict details comparing the demo global class: the saved typography color is white, while My version uses orange.](https://academy.bricksbuilder.io/assets/builder/save-publish/conflict-details-global-class.webp)
-
-The notification also offers **Use saved version** and **Use my version** for applying one choice to its listed conflicts. Choosing your version can replace another person's work on those items. If you need changes from both versions, agree on the version to keep and reapply the remaining changes afterward.
-
-If another session saves again while you are resolving conflicts, Bricks may ask you to review the updated conflicts. Wait for the save to finish before leaving the Builder.
-
-Conflict-safe saving protects shared data such as global classes and components. It does not merge changes made by two people editing the same page at the same time. Legacy global elements are outside this protection. Autosave still backs up canvas elements rather than shared data, so keep your normal site backups.
-
-## Publishing a WordPress draft post
-
-Saving a page or post whose WordPress status is **Draft** does not publish that post. While editing its **Live** version, use the **Publish** action in the toolbar when it is ready to go public.
-
-If you are editing a Bricks page draft, its **Publish** action first reviews and applies the pending Bricks changes. After returning to Live, publish the WordPress post separately if it is still unpublished. See [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) for the distinction.
-
----
-
-<a id="builder-interface-site-versions"></a>
-
-# Site Versions
-
-Source: https://academy.bricksbuilder.io/builder/interface/site-versions/
-
-*Work on several Bricks pages and shared styles in a named version, review the changes, and publish them together.*
-
-A site version holds a named set of changes across several pages, templates, and shared styles. Use one for work such as a new service offering that changes the homepage, service pages, and their shared components.
-
-Site versions are available in Bricks 2.5 through the experimental [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) feature. Enable **Bricks > Settings > Builder > Drafts > Enable drafts** first. It is disabled by default.
-
-You need Builder access and the WordPress permission to edit other users' posts to create and edit site versions. Your permissions for individual pages, templates, and global resources still apply.
-
-## Create a site version {#create}
-
-1. Open a page in the Builder.
-2. Open the version menu just before **Save**. It shows **Live**, **Draft**, or the name of the site version you are editing.
-3. Choose **New site version…**.
-4. Enter a name, such as `Autumn services`.
-5. If you have a draft or site version open, use **Start from** to keep that source or choose **Live**.
-6. Click **Create**. Bricks opens the new site version on the current page.
-
-When starting from the open draft or version, Bricks saves its pending edits before copying its saved changes. Starting from **Live** uses saved live data. It does not include unsaved edits on the live canvas. Save those edits first, or put them in a [page draft](https://academy.bricksbuilder.io/builder/interface/drafts/) and create the site version from that draft.
-
-A new version can start with no changes. It does not copy and freeze the whole site: items you have not changed continue to follow live data.
-
-![Creating Autumn services from the open page draft in the Versions dialog.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/site-version-create.webp)
-
-## Work across pages {#work-across-pages}
-
-The toolbar shows the site's version name while you edit it. **Save** writes changes in that context. Open another page through the Builder's page navigation to continue in the same site version. Pending edits are saved before leaving the current page.
-
-Use the version menu to switch between **Live**, this page's **Draft** when one exists, and the available site versions. The checkmark marks the version open in the Builder. Switching from a draft or version saves pending changes first; switching away from unsaved live edits asks for confirmation.
-
-A page draft belongs to one page and its templates. A site version can hold changes from several pages. See [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) for the shared editing rules.
-
-### What stays in the version
-
-Page and template changes stay in the version until you publish them. Changes to shared items already used by live content, such as a card component or a global class, also stay there. Theme Styles, breakpoints, and Style Manager changes are held for publishing.
-
-Reusable items that do not affect live content become available across the site immediately. For example, a new class is available on other pages and templates as you work, without publishing the version. Changes to a class already used by live pages stay in the version until publication. See the [shared-data rules](https://academy.bricksbuilder.io/builder/interface/drafts/#shared-data) for details, including custom CSS that affects other elements.
-
-Media Library changes and personal Builder preferences remain shared too. Save notices identify items shared immediately; the version's **Changes** list shows work still held for publication.
-
-Untouched items keep following the live site. If someone updates a different component while you work, that update remains visible in your version. Publishing a shared style updates every live page using it, including pages you did not edit in this version.
-
-## Manage versions {#manage}
-
-Open the version menu and choose **Manage versions…**. The **Versions** dialog also lists page drafts that you have permission to edit.
-
-The left side contains the creation form and the version list, with page/shared-change counts. Select a name to inspect it on the right. Selecting a row does not switch the Builder into that version, and does not change the source used by **Start from** when creating another version.
-
-The right side contains the selected version's name, owner, update time, actions, **Changes**, and [Review links](https://academy.bricksbuilder.io/builder/interface/review-links/) when enabled. Save your current work before checking this overview; it lists saved changes.
-
-![The split Versions dialog with drafts and named versions on the left, and saved changes and review-link settings on the right.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/site-versions-manager.webp)
-
-| Action | What it does |
-| --- | --- |
-| **Rename** (pencil) | Edit the selected version's name. Press Enter or leave the field to save; Escape cancels. |
-| **Open** | Edit the selected version. A site version opens on the page currently in the Builder. A page draft for another page opens that page. |
-| **Compare** | Open a comparison with live over the Builder. For the page you're editing, use **Compare with live** in its version menu. |
-| **Preview** | Open the saved version's frontend preview in a new tab. An editor needs permission to view it; use a review link for someone without a login. |
-| **Discard version** (trash) | Confirm deletion of the selected version's unpublished changes. It does not undo changes that already went live. |
-
-**Open** is available when the selected version is not already open in the Builder.
-
-**Changes** groups the work under **Pages and templates** and **Shared styles**. It includes available before/after values, such as color swatches. Longer groups show eight changes initially; use **Show all** to expand them. Items already matching live are omitted.
-
-For comparisons, responsive preview widths, and trying several designs, see [Explore Alternatives and Compare](https://academy.bricksbuilder.io/builder/interface/explore-alternatives/).
-
-## Publish a site version {#publish}
-
-Open the site version you want to publish, then click **Publish** beside the version menu. On narrower screens, choose **Publish version…** from the menu instead.
-
-1. Bricks saves pending changes into the version and opens the publish review.
-2. Review **Pages and templates** and **Shared styles**. Check the reach of shared changes before continuing.
-3. If live content also changed, resolve each conflict with **Your draft** or **The live version**. Page-content conflicts can offer choices for individual elements; independent element changes can be combined.
-4. Click **Publish version** and wait for confirmation.
-
-If the version changes again after you review it, Bricks asks you to review the updated work before publishing.
-
-![Publish version review for Autumn services with Your draft and The live version choices for a changed global class.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/site-version-publish.webp)
-
-After publishing, the Builder returns to **Live**. The named site version remains available for more work; changes that were published or settled by keeping live are removed from it. Open it again from the version menu to continue. Existing review links are turned off when publishing succeeds, so create fresh links for any later review.
-
-### Undo a publish
-
-When a publish changes live content, Bricks creates an undo point. Click **Undo** in the published message, or open **Manage versions… > Undo a publish** and confirm **Undo** for the relevant publish. Save or discard unsaved live edits before undoing.
-
-Undo points are kept for 30 days by default. This cleanup period can be changed with [`bricks/drafts/keep_days`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-drafts-keep_days/). Active editable versions are not removed by that age limit.
-
-Undo points restore the affected live data from before that publish. They are separate from editable site versions. For recovering one shared item without undoing a whole publish, use [Global Data History](https://academy.bricksbuilder.io/builder/interface/global-data-history/).
-
-## Discard a version {#discard}
-
-Open the version and click **Discard**, or select it under **Manage versions…** and use the trash icon. Confirm **Discard version**. If it was open in the Builder, Bricks returns you to Live.
-
-Discarding removes the version's unpublished work and stops its review links. It keeps changes already shared live. When discarding from the toolbar, Bricks can offer **Discard, keep them** or **Discard and delete them** for new shared items that no page, live style, or other open draft uses.
-
----
-
-<a id="builder-interface-structure-panel-search"></a>
-
-# Structure Panel Search and Filters
-
-Source: https://academy.bricksbuilder.io/builder/interface/structure-panel-search/
-
-*Find elements in the Bricks Structure panel by name, text, ID, class, HTML tag, attribute, or dynamic data, and narrow results with filters.*
-
-In Bricks 2.5, search and filters help you find elements in the Structure panel without opening every branch of a large layout. Search for a button's text, find elements using a class, or show elements with conditions or interactions.
-
-## Open the search
-
-<div className="screenshot screenshot--control-panel">
-
-![The Structure search prefix cheat sheet showing searches for element IDs, classes, attributes, HTML tags, and dynamic data.](https://academy.bricksbuilder.io/assets/builder/structure-panel/structure-search-prefixes.webp)
-
-</div>
-
-Use the **Search structure** field at the top of the Structure panel. It appears when the current editing context contains elements.
-
-The default shortcut is `CMD / CTRL + F`. It opens the panel if hidden or minimized and focuses the search. While typing in a field, including the Structure search itself, the same shortcut keeps the browser's normal Find behavior. It also keeps browser Find on an empty page.
-
-You can change or disable **Search structure** under **Manage > Keyboard shortcuts**. See [Keyboard Shortcuts](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/).
-
-## Search by name or text
-
-Type an element label, element type, or text from its content. Searches ignore capitalization and match part of the text. For example:
-
-- `hero` finds elements labelled Hero.
-- `heading` finds Heading elements, including ones you have renamed.
-- `get started` finds that text in a button or another supported text field.
-
-Text search includes fields such as accordion and tab titles, list items, pricing features, and form labels and placeholders. It searches stored text settings, not the resolved output of dynamic data or the contents of code and custom CSS.
-
-Paste a complete Bricks element ID, such as `brxe-abc123` or `abc123`, to find that element. Use the `#` prefix for a partial ID or a custom CSS ID.
-
-## Search prefixes
-
-Start a search with one of these prefixes to choose what to search. These are search shortcuts, not full CSS selectors.
-
-| Prefix | Searches | Example |
-| --- | --- | --- |
-| `#` | Bricks element IDs and custom CSS IDs | `#hero` or `#brxe-abc` |
-| `.` | Assigned global classes and custom CSS classes | `.btn--primary` |
-| `[` | Custom attribute names or values | `[aria-label` or `[data-track=signup` |
-| `<` | HTML tags | `<h2` or `<h` |
-| `{` | Dynamic data tags in element settings | `{post_title` or `{acf_` |
-
-IDs, classes, attributes, and dynamic data tags support partial matches. HTML tag search matches from the start of the tag name: `<h` can find `h1` through `h6`, but can also match another tag starting with `h`, such as `header`.
-
-For attributes, `[data-track=signup` requires both the attribute name and value to match on the same attribute. With no `=`, the search checks either the name or value. The closing `]`, `>`, or `}` is optional for attribute, HTML tag, and dynamic data searches.
-
-Use `{post_title` to find an element using that dynamic data tag, regardless of the title it currently displays. Tags inside code or custom CSS are excluded.
-
-Focus the empty search field to see a prefix cheat sheet. Click a prefix to insert it, or use the arrow keys or Tab to reach a prefix button and Enter to activate it.
-
-Classes and attributes require their prefix. If a plain search finds nothing, **Search instead for** may suggest a prefixed search that has results. Click the suggestion to apply it.
-
-## Read and navigate results
-
-Matching elements are highlighted. Their parents stay visible, dimmed and expanded, so you can see where each match sits in the layout. Other branches are hidden from the Structure panel. This does not hide elements on the frontend.
-
-When a match comes from text, an ID, a class, a tag, or an attribute, an excerpt or value appears below the row. Hover over it to see the match type, such as **Global class**.
-
-<div className="screenshot screenshot--control-panel">
-
-![Three buttons matching .btn--primary, with their Hero, Pricing, and Newsletter parent branches visible in the Structure panel.](https://academy.bricksbuilder.io/assets/builder/structure-panel/structure-search-class-matches.webp)
-
-</div>
-
-Use the previous and next buttons beside the result counter to select matches. While the search input has focus:
-
-| Keys | Action |
-| --- | --- |
-| `Enter` or `CMD / CTRL + G` | Select the next match |
-| `Shift + Enter` or `CMD / CTRL + Shift + G` | Select the previous match |
-| `Esc` | Clear the search text, or dismiss the open cheat sheet |
-
-Navigation wraps from the last match to the first and keeps focus in the search input. The selected element and its parent path stay visible even if it does not match, so a visible row is not necessarily counted as a result.
-
-## Filter elements
-
-Click the funnel button beside the search field to show the filters.
-
-| Filter | Finds |
-| --- | --- |
-| Query loop | Elements with a query loop enabled |
-| Conditions | Elements with display conditions |
-| Interactions | Elements with interactions |
-| Custom CSS | Elements with custom CSS in their element settings, including breakpoint or pseudo-class variants |
-| Hidden | Elements hidden in the builder or on the frontend, or with an element Display setting of `none` at any breakpoint or pseudo-class |
-| Components | Component instances |
-| Dynamic data | Elements with dynamic data tags in their settings, excluding code and custom CSS |
-| Attributes | Elements with custom attributes |
-| Code | Code elements and elements flagged as containing unsigned code |
-
-These filters inspect element settings. **Hidden** does not test computed visibility, and **Custom CSS** does not find every element styled by a global class or stylesheet.
-
-Select multiple filters to find elements matching **any** of them. When you also enter search text, an element must match the text **and** at least one selected filter.
-
-For example, search `.btn--primary` and select **Conditions** and **Interactions** to find buttons using that class that have either conditions or interactions. This helps you locate buttons with behavior to review.
-
-<div className="screenshot screenshot--control-panel">
-
-![Structure search for .btn--primary with Conditions and Interactions selected, showing two matching buttons and the clear-all filters button.](https://academy.bricksbuilder.io/assets/builder/structure-panel/structure-search-filters.webp)
-
-</div>
-
-Click a selected filter to turn it off. The **×** badge on the funnel button clears all filters and keeps the search text. Clearing only the text keeps your filters active. If nothing matches, the **Clear search** button in the empty state clears both.
-
-## Return to the full structure
-
-Clear the search text and all filters to restore the full tree and its previous expanded and collapsed branches. Drag and drop and **Expand/collapse all** are unavailable while search or filters are active.
-
-Search follows the tree for the current editing context. On a page, component instances expose their slots and assigned slot content; open the main component to search its internal elements. Search and filters reset when you enter or leave component editing or navigate to another page in the builder.
-
----
-
-<a id="builder-interface-undo-redo-history"></a>
-
-# Undo, Redo & History
-
-Source: https://academy.bricksbuilder.io/builder/interface/undo-redo-history/
-
-*Preview changes, undo or redo several steps at once, and navigate the History panel in Bricks.*
-
-Use undo and redo to reverse recent edits while working in the builder. The toolbar history menus let you review several changes before applying them. The History panel shows all available steps.
-
-The history menus, feedback messages, and redesigned History panel described here are available in **Bricks 2.5**.
-
-## Undo or redo one change
-
-Click **Undo** or **Redo** in the builder toolbar. Hover over either button to see the next change it will apply, including the element name and action. If no step is available, the tooltip shows **Nothing to undo** or **Nothing to redo**.
-
-The default [keyboard shortcuts](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/) are:
-
-| Action       | macOS             | Windows / Linux    |
-| ------------ | ----------------- | ------------------ |
-| Undo         | `Cmd + Z`         | `Ctrl + Z`         |
-| Redo         | `Cmd + Shift + Z` | `Ctrl + Shift + Z` |
-| Open History | `Cmd + Shift + H` | `Ctrl + Shift + H` |
-
-While typing in a field or editing text inline, undo and redo use the text editor's history. Leave the field or finish inline editing to navigate builder history with these shortcuts.
-
-### Feedback after a change
-
-A brief message identifies the change you undid or redid. Repeated actions in the same direction add to a counter, such as **×3**. The message stays visible while you hover over it and otherwise closes after 2.5 seconds.
-
-The message includes a **Redo** or **Undo** button to reverse one step. This button reverses only one step, even when the counter shows several. Use a history menu to reverse a whole range.
-
-When the affected element is still present, Bricks briefly highlights it on the canvas and in the open Structure panel. An element outside the visible canvas scrolls into view. If the action removed the element, there is no element left to highlight.
-
-## Undo or redo several changes
-
-Click the chevron beside **Undo** or **Redo** to open its history menu. Each menu lists up to 10 available steps in the order they will be applied. Rows show the element or item name, the change, and the elapsed time.
-
-1. Hover over a row to highlight that step and every step above it.
-2. Check **Steps to undo** or **Steps to redo** at the bottom of the menu.
-3. Click the row to apply the entire highlighted range.
-
-For example, click the third row in the Undo menu to undo your three most recent recorded changes. You cannot undo just the third change while keeping the two changes after it.
-
-Hovering over a row outlines its affected element when it is present on the canvas. It does not apply the change.
-
-<div className="screenshot screenshot--control-panel">
-
-![Undo history menu with three highlighted changes and the summary "Steps to undo: 3".](https://academy.bricksbuilder.io/assets/undo-history-range.webp)
-
-</div>
-
-To use the menu with a keyboard, focus the toolbar's Undo or Redo item and press `Arrow Down`. The first row receives focus. Use `Arrow Up` and `Arrow Down` to change the range, then `Enter` to apply it. Press `Escape` to close the menu and return focus to the toolbar item.
-
-## Use the History panel
-
-Choose **Open history panel** at the bottom of either history menu, or use the Open History shortcut above.
-
-The panel separates available steps into **Redo** and **Undo** sections, with the newest changes at the top of each section. Hover over a row to check the highlighted range and step count before clicking:
-
-- **Undo:** Reverses the selected change and every newer applied change.
-- **Redo:** Reapplies the selected change and every earlier change needed to reach it.
-- **Start:** Undoes all currently available undo steps.
-
-Clicking an Undo row reverses that row's change too. It does not restore the state after that change. In the Redo section, the range extends through the older redo steps below the selected row.
-
-<div className="screenshot screenshot--control-panel">
-
-![History panel showing Redo and Undo sections, three selected undo steps, and the Start row.](https://academy.bricksbuilder.io/assets/history-panel-ranges.webp)
-
-</div>
-
-### Make a new edit after undoing
-
-If you undo changes and then make a new recorded edit, Bricks discards the redo steps ahead of your current position. You can undo the new edit, but you cannot use Redo to recover the discarded sequence.
-
-## History and saved revisions
-
-History is for recent editing steps. It is limited, and older steps drop out as you continue editing. **Start** means the earliest state still available in history, which may no longer be the state from when you opened the builder.
-
-Reloading the builder or switching to another document resets editing history. Use [Save & Publish](https://academy.bricksbuilder.io/builder/interface/save-publish/) to save your work and [Revisions](https://academy.bricksbuilder.io/builder/interface/revisions/) to restore a saved version or an available autosave.
-
-The History panel's **Delete** action clears the available undo and redo steps after confirmation. It keeps the current design in place; it does not undo the edits or delete saved revisions.
+Now, you can use this new animation on any element from the "Interactions" panel.
 
 ---
 
@@ -6048,87 +3551,6 @@ Bricks implements the keyboard menu navigation using the [fly-out menu](https://
 > **Note**
 >
 > As accessibility requirements and best practices evolve, so does Bricks. If you spot any potential accessibility improvements, [please let us know](https://bricksbuilder.io/contact/).
-
----
-
-<a id="builder-features-add-custom-animation-to-interaction"></a>
-
-# How to add a custom animation in interaction
-
-Source: https://academy.bricksbuilder.io/builder/features/add-custom-animation-to-interaction/
-
-*Add a custom GSAP animation to a Bricks interaction and connect it to triggers, timelines, and interaction events.*
-
-## Step 1: Add a new option via bricks/setup/control_options hook
-
-Hook documentation: [/developer/hooks/filters/filter-bricks-setup-control_options/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/)
-
-```php
-add_filter( 'bricks/setup/control_options', function( $options ) {
-  // Add custom animation into animationTypes
-  // Note that the key is very important, must be unique
-  $options['animationTypes']['myAnim1'] = esc_html__( 'My animation 1', 'bricks' );
-
-  return $options;
-}, 10 );
-```
-
-![](https://academy.bricksbuilder.io/assets/custom-animation-added.png)
-
-Custom animation added to the interaction "Animation" dropdown
-
-## Step 2: Add animation CSS
-
-When the interaction is set, Bricks will assign a class to the element using your animation key (`myAnim1` in our example), and it will be prefixed with `brx-animate-`.
-
-All you have to do is create a CSS class that sets the animation name for your element, along with the corresponding keyframes for your animation. You can place these CSS inside `Bricks > Settings > Custom Code > Custom CSS`.
-
-![](https://academy.bricksbuilder.io/assets/custom-css-code-for-animation.png)
-
-```php
-.brx-animate-myAnim1 {
-  animation-name: my-anim-1;
-}
-
-@keyframes my-anim-1 {
-  0% {
-    animation-timing-function: ease-in;
-    opacity: 0;
-    transform: translateY(-250px);
-  }
-  38% {
-    animation-timing-function: ease-out;
-    opacity: 1;
-    transform: translateY(0);
-  }
-  55% {
-    animation-timing-function: ease-in;
-    transform: translateY(-65px);
-  }
-  72% {
-    animation-timing-function: ease-out;
-    transform: translateY(0);
-  }
-  81% {
-    animation-timing-function: ease-in;
-    transform: translateY(-28px);
-  }
-  90% {
-    animation-timing-function: ease-out;
-    transform: translateY(0);
-  }
-  95% {
-    animation-timing-function: ease-in;
-    transform: translateY(-8px);
-  }
-  100% {
-    animation-timing-function: ease-out;
-    transform: translateY(0);
-  }
-}
-```
-
-Now, you can use this new animation on any element from the "Interactions" panel.
 
 ---
 
@@ -7029,116 +4451,6 @@ This page was created after a February 2024 vulnerability affecting Bricks versi
 
 ---
 
-<a id="builder-features-code-review"></a>
-
-# Code review
-
-Source: https://academy.bricksbuilder.io/builder/features/code-review/
-
-*Review custom code in Bricks before signing it globally or investigating a security issue.*
-
-The **Code review** screen helps you find and inspect custom code stored in Bricks before you sign code globally or investigate a security issue.
-
-It is a reporting and inspection tool. It does not store an approval state and does not mark code as permanently "reviewed". Use it to inspect code instances, check signature status, and decide what should be fixed, removed, allowlisted, or signed.
-
-> **Note**
->
-> Run a Code review before regenerating code signatures globally. Global signature regeneration signs all eligible code that Bricks finds, so you should review the code first.
-
-## Start a Code review
-
-Go to **Bricks > Settings > Custom code** and click **Start: Code review**.
-
-![](https://academy.bricksbuilder.io/assets/bricks-settings-code-review.png)
-
-<figcaption>
-
-Code review results
-
-</figcaption>
-
-## What Bricks reviews
-
-The Code review screen can show:
-
-- **Code elements** that contain PHP/HTML code. If **Execute code** is enabled, the review also checks the code signature.
-- **SVG elements** where **Source** is set to **Code**.
-- **Query editor** code used in Query loops.
-- **Component query properties** that contain Query editor code.
-- **Global query records** that contain Query editor code.
-- **Dynamic `echo:` tags** found in Bricks element settings.
-
-The review scans Bricks data in pages, templates, components, global elements, and global queries. It groups results by page/template where possible, and groups component and global query results separately.
-
-## Filters and navigation
-
-Use the Code review filter to inspect:
-
-- **All code instances**
-- **Code elements**
-- **SVG elements**
-- **Query editor**
-- **Echo tags**
-
-The review screen includes **Show all**, **Individual**, **Previous**, and **Next** controls so you can inspect code one item at a time or review the full result list.
-
-## Signature statuses
-
-For code types that require signatures, Bricks shows one of these statuses:
-
-- **Valid signature**: The stored signature matches the stored code. The code can run if code execution is enabled and the runtime gate allows it.
-- **Invalid signature**: The stored signature does not match the current code. Bricks blocks execution.
-- **No signature**: No signature is stored. Bricks blocks execution.
-
-When available, Bricks also shows who signed the code and when it was signed.
-
-## Location details
-
-Each review item can include:
-
-- The page, post type, template, component, or global query location.
-- The element label.
-- The element ID.
-- Whether the item is a global element, component, global query, query, echo tag, or executable code item.
-- The stored code in a read-only editor.
-
-If the item belongs to a regular page or template, click the title to open it in the builder and edit the code there.
-
-## Echo tag allowlist helper
-
-Dynamic `echo:` tags can call PHP functions only when those function names pass the [`bricks/code/echo_function_names`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-echo_function_names/) allowlist check.
-
-When the Code review finds `echo:` tags, Bricks collects the function names and shows a starter snippet that you can place in a child theme, custom plugin, or code-management plugin. The helper can also include function names detected in theme styles, global classes, and raw color palette values:
-
-```php
-add_filter( 'bricks/code/echo_function_names', function() {
-  return [
-    'my_allowed_function',
-  ];
-} );
-```
-
-Review the generated list before using it. Remove any functions you do not want Bricks dynamic data to call.
-
-## Advantages of centralized code monitoring
-
-- **Centralized code oversight:** Review Bricks-managed executable code from one settings screen instead of opening each page manually.
-- **Signature visibility:** Find missing and invalid signatures before code fails on the frontend.
-- **Safer global signing:** Inspect code before using the global **Regenerate code signatures** action.
-- **Echo tag hardening:** See which function names are being requested through `echo:` tags and allowlist only the functions you trust.
-
-## Security checklist
-
-Before regenerating code signatures globally:
-
-- Review every Code, SVG, Query editor, component, and global query item.
-- Remove code you do not recognize.
-- Fix invalid signatures by reviewing and signing the intended code again.
-- Do not copy the full `echo:` allowlist snippet without checking each function.
-- Back up the site before global signature regeneration.
-
----
-
 <a id="builder-features-builder-browser"></a>
 
 # Builder Browser
@@ -7331,6 +4643,116 @@ Enable **Import images** before inserting or importing the template. When disabl
 ### Inserted template replaced the page
 
 Check **Replace content**. When enabled, Bricks replaces the current canvas with the inserted template data. When disabled, Bricks inserts the template into the existing content.
+
+---
+
+<a id="builder-features-code-review"></a>
+
+# Code review
+
+Source: https://academy.bricksbuilder.io/builder/features/code-review/
+
+*Review custom code in Bricks before signing it globally or investigating a security issue.*
+
+The **Code review** screen helps you find and inspect custom code stored in Bricks before you sign code globally or investigate a security issue.
+
+It is a reporting and inspection tool. It does not store an approval state and does not mark code as permanently "reviewed". Use it to inspect code instances, check signature status, and decide what should be fixed, removed, allowlisted, or signed.
+
+> **Note**
+>
+> Run a Code review before regenerating code signatures globally. Global signature regeneration signs all eligible code that Bricks finds, so you should review the code first.
+
+## Start a Code review
+
+Go to **Bricks > Settings > Custom code** and click **Start: Code review**.
+
+![](https://academy.bricksbuilder.io/assets/bricks-settings-code-review.png)
+
+<figcaption>
+
+Code review results
+
+</figcaption>
+
+## What Bricks reviews
+
+The Code review screen can show:
+
+- **Code elements** that contain PHP/HTML code. If **Execute code** is enabled, the review also checks the code signature.
+- **SVG elements** where **Source** is set to **Code**.
+- **Query editor** code used in Query loops.
+- **Component query properties** that contain Query editor code.
+- **Global query records** that contain Query editor code.
+- **Dynamic `echo:` tags** found in Bricks element settings.
+
+The review scans Bricks data in pages, templates, components, global elements, and global queries. It groups results by page/template where possible, and groups component and global query results separately.
+
+## Filters and navigation
+
+Use the Code review filter to inspect:
+
+- **All code instances**
+- **Code elements**
+- **SVG elements**
+- **Query editor**
+- **Echo tags**
+
+The review screen includes **Show all**, **Individual**, **Previous**, and **Next** controls so you can inspect code one item at a time or review the full result list.
+
+## Signature statuses
+
+For code types that require signatures, Bricks shows one of these statuses:
+
+- **Valid signature**: The stored signature matches the stored code. The code can run if code execution is enabled and the runtime gate allows it.
+- **Invalid signature**: The stored signature does not match the current code. Bricks blocks execution.
+- **No signature**: No signature is stored. Bricks blocks execution.
+
+When available, Bricks also shows who signed the code and when it was signed.
+
+## Location details
+
+Each review item can include:
+
+- The page, post type, template, component, or global query location.
+- The element label.
+- The element ID.
+- Whether the item is a global element, component, global query, query, echo tag, or executable code item.
+- The stored code in a read-only editor.
+
+If the item belongs to a regular page or template, click the title to open it in the builder and edit the code there.
+
+## Echo tag allowlist helper
+
+Dynamic `echo:` tags can call PHP functions only when those function names pass the [`bricks/code/echo_function_names`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-echo_function_names/) allowlist check.
+
+When the Code review finds `echo:` tags, Bricks collects the function names and shows a starter snippet that you can place in a child theme, custom plugin, or code-management plugin. The helper can also include function names detected in theme styles, global classes, and raw color palette values:
+
+```php
+add_filter( 'bricks/code/echo_function_names', function() {
+  return [
+    'my_allowed_function',
+  ];
+} );
+```
+
+Review the generated list before using it. Remove any functions you do not want Bricks dynamic data to call.
+
+## Advantages of centralized code monitoring
+
+- **Centralized code oversight:** Review Bricks-managed executable code from one settings screen instead of opening each page manually.
+- **Signature visibility:** Find missing and invalid signatures before code fails on the frontend.
+- **Safer global signing:** Inspect code before using the global **Regenerate code signatures** action.
+- **Echo tag hardening:** See which function names are being requested through `echo:` tags and allowlist only the functions you trust.
+
+## Security checklist
+
+Before regenerating code signatures globally:
+
+- Review every Code, SVG, Query editor, component, and global query item.
+- Remove code you do not recognize.
+- Fix invalid signatures by reviewing and signing the intended code again.
+- Do not copy the full `echo:` allowlist snippet without checking each function.
+- Back up the site before global signature regeneration.
 
 ---
 
@@ -8486,6 +5908,292 @@ These details explain how Bricks stores and renders component instances:
 
 ---
 
+<a id="builder-features-create-template"></a>
+
+# Creating Your First Template
+
+Source: https://academy.bricksbuilder.io/builder/features/create-template/
+
+*Create your first Bricks template, choose the right template type, and prepare it for conditions and reusable content.*
+
+Templates let you design parts of your site once and let Bricks render them in the right place. A header template can render above your content, a footer template below it, and a single template can replace the main layout for posts, pages, or custom post types.
+
+This article walks through the first three templates most sites need:
+
+- A site header
+- A site footer
+- A single post layout
+
+The same workflow applies to archive, search, error, popup, password protection, WooCommerce product archive, and WooCommerce single product templates. The important decisions are usually the same: choose the right template type, build the layout, set the preview content, decide where the template should render, then publish and test it on the frontend.
+
+Other WooCommerce route templates, such as cart, checkout, thank-you, and account templates, use the same create-build-publish flow, but Bricks renders them automatically on the matching WooCommerce route. Those route templates do not use the normal Conditions or Populate Content controls.
+
+https://youtu.be/bLZDN9UcUyo
+
+## Create a template
+
+You can create templates from the WordPress dashboard or from inside the builder.
+
+From the WordPress dashboard:
+
+1. Go to **Bricks > Templates**.
+2. Click **Add New Template**.
+3. Enter a clear name, such as "Main Header", "Main Footer", or "Single Post".
+4. Select the **Template type** in the sidebar.
+5. Publish the template.
+6. Click **Edit with Bricks**.
+
+From inside the builder:
+
+1. Open the **Templates** popup from the folder icon in the toolbar.
+2. Open **My Templates**.
+3. Click **New template**.
+4. Enter a title and select the template type.
+5. Create the template, then start editing it.
+
+The template type controls how Bricks treats the template. For example, a **Header** template is stored and rendered as the site header area, while a **Single** template is stored and rendered as the main content area for matching pages.
+
+## Create a header template
+
+Use a header template for the site area that appears before the main content. A normal header usually contains a logo, navigation, call-to-action button, search, account links, or similar site-wide elements.
+
+1. Create a new template named "Main Header".
+2. Set **Template type** to **Header**.
+3. Publish it and open it with Bricks.
+4. Build the header layout on the canvas.
+5. Open **Settings > Template Settings > Populate Content**.
+6. Select content that makes sense for previewing the header, such as a page or single post.
+7. Open **Settings > Template Settings > Conditions**.
+8. Add **Entire website** if the header should appear everywhere.
+9. Save the template and test a normal frontend page.
+
+By default, Bricks can use a published header template even if it has no conditions. This default-template behavior is controlled from **Bricks > Settings > Templates & components > Disable default templates**.
+
+If default templates are enabled and you have a published header without conditions, Bricks can use it as the site header. If default templates are disabled, set template conditions explicitly.
+
+## Header settings
+
+Header templates have an additional **Header** settings group under **Settings > Template Settings**.
+
+Use it to control:
+
+- **Header location:** top, left, or right.
+- **Header width:** available for left and right headers.
+- **Sticky header:** available for top headers.
+- **Sticky on scroll:** keeps the header in normal flow on page load, then makes it sticky after scrolling.
+- **Slide up after:** lets a sticky header hide after a scroll distance.
+- **Scrolling styles:** text color, hover color, background, box shadow, and transition while the sticky header is in its scrolling state.
+
+Left and right headers affect the layout beside the content and footer. Top headers are the usual choice for most websites.
+
+## Create a footer template
+
+Use a footer template for the site area that appears after the main content. A normal footer contains copyright text, footer navigation, contact links, social links, newsletter forms, or legal links.
+
+1. Create a new template named "Main Footer".
+2. Set **Template type** to **Footer**.
+3. Publish it and open it with Bricks.
+4. Build the footer layout.
+5. Use **Populate Content** to preview the footer with a real page or post.
+6. Add a condition, usually **Entire website**.
+7. Save and test the frontend.
+
+Like headers, published footer templates can be used by default when no conditions are set, unless default templates are disabled in Bricks settings.
+
+## Create a single post template
+
+Use a **Single** template when you want Bricks to control the layout for posts, pages, or custom post type entries. For a blog post template, the canvas usually contains elements such as Post Title, Featured Image, Post Content, Author, Date, Terms, Comments, and related content.
+
+1. Create a new template named "Single Post".
+2. Set **Template type** to **Single**.
+3. Publish it and open it with Bricks.
+4. Open **Settings > Template Settings > Populate Content**.
+5. Set **Content type** to **Single (Post/Page/CPT)**.
+6. Select a real post to preview.
+7. Build the post layout using dynamic data and post elements.
+8. Open **Settings > Template Settings > Conditions**.
+9. Add **Post type** and select **Posts**.
+10. Save and test several published posts on the frontend.
+
+The preview post only controls what you see while editing the template. The condition controls where the template is used on the frontend.
+
+## Conditions or default templates?
+
+For production sites, set conditions deliberately. Conditions make the template assignment visible and predictable.
+
+Default templates are useful while getting started because Bricks can automatically use published templates of certain types when no conditions are set. This is most common for headers and footers, but Bricks also supports default behavior for archive, search, error, and supported WooCommerce route templates.
+
+Disable default templates when you want every rendered template to be controlled by explicit conditions. You can do this in **Bricks > Settings > Templates & components > Disable default templates**.
+
+## Disable a header or footer on one page
+
+Landing pages and campaign pages often need no global header or footer.
+
+To disable the header or footer for a specific page:
+
+1. Open the page with Bricks.
+2. Open **Settings > Page Settings > General**.
+3. Enable **Disable header** or **Disable footer**.
+4. Save the page.
+
+This page setting applies to the page being rendered. It does not delete or change the template.
+
+## Preview content vs frontend output
+
+Template editing needs a preview context. For example, a single post template needs one post to show dynamic data on the canvas. An archive template needs an archive context. A header or footer may need a page or post behind it so you can judge spacing and overlap.
+
+Preview content does not assign the template to that content. It only changes the canvas context while editing.
+
+Use conditions to control frontend assignment.
+
+## Common mistakes
+
+**The template is published but not visible:** Check whether it has matching conditions. If default templates are disabled, a template without conditions will not be used automatically.
+
+**The wrong template appears:** Look for a more specific matching template. Individual conditions outrank broad conditions such as Entire website. Exclude conditions can also disqualify a template.
+
+**The canvas looks empty or the dynamic data is wrong:** Set **Populate Content** to a real page, post, archive, or search context that matches the template you are building.
+
+**A header or footer is missing on one page:** Check that page's **Page Settings > General** for **Disable header** or **Disable footer**.
+
+**A Single template does not affect posts:** Make sure the template type is **Single**, the template is published, and the condition targets the correct post type or individual entries.
+
+**A Section template does not update inserted copies:** Section templates are reusable library items. They do not sync inserted content between pages. Use Components for linked reusable structures.
+
+---
+
+<a id="builder-features-custom-authentication-pages"></a>
+
+# Custom Authentication Pages
+
+Source: https://academy.bricksbuilder.io/builder/features/custom-authentication-pages/
+
+*Build custom login, registration, lost-password, and reset-password flows in Bricks instead of relying on default WordPress screens.*
+
+Since Bricks 1.9.2, you can assign custom Bricks-built pages for WordPress authentication flows. This lets you replace the default WordPress screens for login, registration, lost password, and reset password with pages that match your site design.
+
+![Bricks custom authentication settings screen showing options to assign custom pages for login, registration, lost password, and reset password. The "WordPress authentication page access" dropdown is set to "Error page", and the "Disable custom authentication page bypass" toggle is enabled.](https://academy.bricksbuilder.io/assets/bricks-custom-authentication-settings.png)
+
+> **Note**
+>
+> Custom authentication pages change where visitors are sent, but the form actions still use WordPress authentication functions such as login, registration, password reset email generation, and password reset validation.
+
+## How to set custom authentication pages
+
+1. Navigate to the WordPress dashboard
+2. Navigate to **Bricks** > **Settings** > **General**
+3. Scroll down to **Custom authentication pages**
+
+Here, you can choose a custom page for the following processes:
+
+- Login
+- Registration
+- Lost Password
+- Reset Password
+
+If WooCommerce handles the current authentication page, Bricks leaves that page to WooCommerce and skips its custom authentication redirect handling.
+
+## Setting up your custom pages
+
+Each custom page should contain a [Form element](https://academy.bricksbuilder.io/builder/elements/general/form/#actions) with the matching authentication action selected under the Form element's **Actions** control group.
+
+| Page | Required form action | Typical fields |
+| --- | --- | --- |
+| Login | User login | Login, password, optional remember me |
+| Registration | User registration | Email, optional username, optional password, optional first/last name |
+| Lost password | Lost password | Email or username |
+| Reset password | Reset password | New password |
+
+### Login page
+
+Add a form with the **User login** action. Map the login field, password field, and optional remember-me field in the **User Login** control group.
+
+Since Bricks 2.5, you can select the login field under **Content > Fields > Auto-focus field** to request focus on page load. Test the frontend with saved credentials and keyboard submission in the browsers your visitors use. See [Auto-focus field](https://academy.bricksbuilder.io/builder/elements/general/form/#auto-focus-field) for eligible fields and focus behavior.
+
+If your custom login URL receives a `redirect_to` query parameter, Bricks adds it as a hidden field and redirects there after successful login when your form does not already use an explicit Redirect action.
+
+For better privacy and security, set a generic login error message. Otherwise, the default WordPress login error can reveal why the login failed.
+
+### Registration page
+
+Add a form with the **User registration** action. Map at least the email field. Username and password can be auto-generated if they are not mapped or submitted.
+
+The **Role** setting cannot be set to Administrator or Super Admin. If either is selected by data manipulation, Bricks falls back to the site's default role.
+
+If [User activation](https://academy.bricksbuilder.io/builder/features/user-activation/) is enabled, the Form element's **Auto log in user** setting is hidden and registration does not auto-login immediately. Activation controls the post-registration login flow instead.
+
+### Lost password page
+
+Add a form with the **Lost password** action and map the **Email or username** field.
+
+For privacy, Bricks returns a success response even when the submitted account does not exist. If the account exists, WordPress sends the password reset email.
+
+### Reset password page
+
+Add a form with the **Reset password** action and map the new password field.
+
+When a user clicks a WordPress reset link, Bricks redirects the reset URL to your custom reset password page and preserves the reset query parameters. The Form element then renders hidden `key` and `login` fields from the URL so WordPress can validate the reset key on submission.
+
+## WordPress authentication page access {#wp-auth}
+
+As of Bricks 1.11, you have control over what happens when someone visits a default WordPress authentication URL (such as `wp-login.php`), provided custom authentication pages are set.
+
+To manage this:
+
+1. Navigate to **Bricks** > **Settings** > **General** > **Custom authentication pages**.
+2. Under **WordPress authentication page access**, select one of the following options:
+- **Redirect to custom authentication page (default)**: The user will be redirected to the corresponding custom authentication page you have set.
+- **Error page**: Bricks returns the site's 404 error page for matching default auth URLs.
+- **Home URL**: Redirects visitors to the homepage.
+- **Redirect to specific page**: Allows you to choose a specific page on your site to redirect visitors to.
+
+This setting only changes behavior for a default auth URL when the corresponding custom page has been set. For example, the login behavior applies when a custom login page is selected.
+
+If **Redirect to specific page** is selected and no valid published page is selected, Bricks falls back to the home URL.
+
+Bricks preserves query parameters when redirecting from the default auth URL to a custom auth page. This is important for reset-password keys and login redirects.
+
+### Logout behavior
+
+For logged-in users, Bricks lets WordPress process logout first. If WordPress would send the user back to the default login page after logout and you have a valid custom login page, Bricks redirects to the custom login page with `?logged_out=true`.
+
+## Bypassing custom login (since 1.9.4):
+
+By default, when visiting any authentication page on your site, you can access the default WordPress login page by adding `brx_use_wp_login` as a URL parameter, for example:
+
+```text
+https://example.com/wp-login.php?brx_use_wp_login=1
+```
+
+This feature allows site owners to bypass the custom login page if needed.
+
+Adding this parameter sets a bypass cookie for 5 minutes. During that window, Bricks lets the default WordPress authentication page load instead of redirecting to the custom page.
+
+In Bricks settings, you can disable this feature:
+
+1. Navigate to **Bricks > Settings > General > Custom authentication pages**.
+2. Enable **Disable custom authentication page bypass**.
+
+When disabled, the `brx_use_wp_login` URL parameter no longer sets the bypass cookie.
+
+> **Note**
+>
+> Before disabling the bypass and blocking default auth URLs, make sure your custom login page works and that you know its URL. Otherwise you can lock yourself out of the normal login screen.
+
+## Developer filters
+
+Bricks exposes filters for custom redirect logic:
+
+- `bricks/auth/custom_redirect_url`: Override the redirect URL based on the current auth URL path.
+- `bricks/auth/custom_login_redirect`: Change the selected custom login page.
+- `bricks/auth/custom_registration_redirect`: Change the selected custom registration page.
+- `bricks/auth/custom_lost_password_redirect`: Change the selected custom lost password page.
+- `bricks/auth/custom_reset_password_redirect`: Change the selected custom reset password page.
+
+Use these filters when a multilingual, membership, or custom routing setup needs more control than the global page selectors provide.
+
+---
+
 <a id="builder-features-custom-attributes"></a>
 
 # Custom Attributes
@@ -8751,138 +6459,6 @@ Bricks supports many ACF and Meta Box field types out of the box, but every cust
 
 ---
 
-<a id="builder-features-custom-authentication-pages"></a>
-
-# Custom Authentication Pages
-
-Source: https://academy.bricksbuilder.io/builder/features/custom-authentication-pages/
-
-*Build custom login, registration, lost-password, and reset-password flows in Bricks instead of relying on default WordPress screens.*
-
-Since Bricks 1.9.2, you can assign custom Bricks-built pages for WordPress authentication flows. This lets you replace the default WordPress screens for login, registration, lost password, and reset password with pages that match your site design.
-
-![Bricks custom authentication settings screen showing options to assign custom pages for login, registration, lost password, and reset password. The "WordPress authentication page access" dropdown is set to "Error page", and the "Disable custom authentication page bypass" toggle is enabled.](https://academy.bricksbuilder.io/assets/bricks-custom-authentication-settings.png)
-
-> **Note**
->
-> Custom authentication pages change where visitors are sent, but the form actions still use WordPress authentication functions such as login, registration, password reset email generation, and password reset validation.
-
-## How to set custom authentication pages
-
-1. Navigate to the WordPress dashboard
-2. Navigate to **Bricks** > **Settings** > **General**
-3. Scroll down to **Custom authentication pages**
-
-Here, you can choose a custom page for the following processes:
-
-- Login
-- Registration
-- Lost Password
-- Reset Password
-
-If WooCommerce handles the current authentication page, Bricks leaves that page to WooCommerce and skips its custom authentication redirect handling.
-
-## Setting up your custom pages
-
-Each custom page should contain a [Form element](https://academy.bricksbuilder.io/builder/elements/general/form/#actions) with the matching authentication action selected under the Form element's **Actions** control group.
-
-| Page | Required form action | Typical fields |
-| --- | --- | --- |
-| Login | User login | Login, password, optional remember me |
-| Registration | User registration | Email, optional username, optional password, optional first/last name |
-| Lost password | Lost password | Email or username |
-| Reset password | Reset password | New password |
-
-### Login page
-
-Add a form with the **User login** action. Map the login field, password field, and optional remember-me field in the **User Login** control group.
-
-Since Bricks 2.5, you can select the login field under **Content > Fields > Auto-focus field** to request focus on page load. Test the frontend with saved credentials and keyboard submission in the browsers your visitors use. See [Auto-focus field](https://academy.bricksbuilder.io/builder/elements/general/form/#auto-focus-field) for eligible fields and focus behavior.
-
-If your custom login URL receives a `redirect_to` query parameter, Bricks adds it as a hidden field and redirects there after successful login when your form does not already use an explicit Redirect action.
-
-For better privacy and security, set a generic login error message. Otherwise, the default WordPress login error can reveal why the login failed.
-
-### Registration page
-
-Add a form with the **User registration** action. Map at least the email field. Username and password can be auto-generated if they are not mapped or submitted.
-
-The **Role** setting cannot be set to Administrator or Super Admin. If either is selected by data manipulation, Bricks falls back to the site's default role.
-
-If [User activation](https://academy.bricksbuilder.io/builder/features/user-activation/) is enabled, the Form element's **Auto log in user** setting is hidden and registration does not auto-login immediately. Activation controls the post-registration login flow instead.
-
-### Lost password page
-
-Add a form with the **Lost password** action and map the **Email or username** field.
-
-For privacy, Bricks returns a success response even when the submitted account does not exist. If the account exists, WordPress sends the password reset email.
-
-### Reset password page
-
-Add a form with the **Reset password** action and map the new password field.
-
-When a user clicks a WordPress reset link, Bricks redirects the reset URL to your custom reset password page and preserves the reset query parameters. The Form element then renders hidden `key` and `login` fields from the URL so WordPress can validate the reset key on submission.
-
-## WordPress authentication page access {#wp-auth}
-
-As of Bricks 1.11, you have control over what happens when someone visits a default WordPress authentication URL (such as `wp-login.php`), provided custom authentication pages are set.
-
-To manage this:
-
-1. Navigate to **Bricks** > **Settings** > **General** > **Custom authentication pages**.
-2. Under **WordPress authentication page access**, select one of the following options:
-- **Redirect to custom authentication page (default)**: The user will be redirected to the corresponding custom authentication page you have set.
-- **Error page**: Bricks returns the site's 404 error page for matching default auth URLs.
-- **Home URL**: Redirects visitors to the homepage.
-- **Redirect to specific page**: Allows you to choose a specific page on your site to redirect visitors to.
-
-This setting only changes behavior for a default auth URL when the corresponding custom page has been set. For example, the login behavior applies when a custom login page is selected.
-
-If **Redirect to specific page** is selected and no valid published page is selected, Bricks falls back to the home URL.
-
-Bricks preserves query parameters when redirecting from the default auth URL to a custom auth page. This is important for reset-password keys and login redirects.
-
-### Logout behavior
-
-For logged-in users, Bricks lets WordPress process logout first. If WordPress would send the user back to the default login page after logout and you have a valid custom login page, Bricks redirects to the custom login page with `?logged_out=true`.
-
-## Bypassing custom login (since 1.9.4):
-
-By default, when visiting any authentication page on your site, you can access the default WordPress login page by adding `brx_use_wp_login` as a URL parameter, for example:
-
-```text
-https://example.com/wp-login.php?brx_use_wp_login=1
-```
-
-This feature allows site owners to bypass the custom login page if needed.
-
-Adding this parameter sets a bypass cookie for 5 minutes. During that window, Bricks lets the default WordPress authentication page load instead of redirecting to the custom page.
-
-In Bricks settings, you can disable this feature:
-
-1. Navigate to **Bricks > Settings > General > Custom authentication pages**.
-2. Enable **Disable custom authentication page bypass**.
-
-When disabled, the `brx_use_wp_login` URL parameter no longer sets the bypass cookie.
-
-> **Note**
->
-> Before disabling the bypass and blocking default auth URLs, make sure your custom login page works and that you know its URL. Otherwise you can lock yourself out of the normal login screen.
-
-## Developer filters
-
-Bricks exposes filters for custom redirect logic:
-
-- `bricks/auth/custom_redirect_url`: Override the redirect URL based on the current auth URL path.
-- `bricks/auth/custom_login_redirect`: Change the selected custom login page.
-- `bricks/auth/custom_registration_redirect`: Change the selected custom registration page.
-- `bricks/auth/custom_lost_password_redirect`: Change the selected custom lost password page.
-- `bricks/auth/custom_reset_password_redirect`: Change the selected custom reset password page.
-
-Use these filters when a multilingual, membership, or custom routing setup needs more control than the global page selectors provide.
-
----
-
 <a id="builder-features-custom-code"></a>
 
 # Custom Code
@@ -9064,198 +6640,6 @@ You can use abbreviations to generate your HTML structures much faster via a fam
 ```
 
 [https://docs.emmet.io/cheat-sheet/](https://docs.emmet.io/cheat-sheet/)
-
----
-
-<a id="builder-features-create-template"></a>
-
-# Creating Your First Template
-
-Source: https://academy.bricksbuilder.io/builder/features/create-template/
-
-*Create your first Bricks template, choose the right template type, and prepare it for conditions and reusable content.*
-
-Templates let you design parts of your site once and let Bricks render them in the right place. A header template can render above your content, a footer template below it, and a single template can replace the main layout for posts, pages, or custom post types.
-
-This article walks through the first three templates most sites need:
-
-- A site header
-- A site footer
-- A single post layout
-
-The same workflow applies to archive, search, error, popup, password protection, WooCommerce product archive, and WooCommerce single product templates. The important decisions are usually the same: choose the right template type, build the layout, set the preview content, decide where the template should render, then publish and test it on the frontend.
-
-Other WooCommerce route templates, such as cart, checkout, thank-you, and account templates, use the same create-build-publish flow, but Bricks renders them automatically on the matching WooCommerce route. Those route templates do not use the normal Conditions or Populate Content controls.
-
-https://youtu.be/bLZDN9UcUyo
-
-## Create a template
-
-You can create templates from the WordPress dashboard or from inside the builder.
-
-From the WordPress dashboard:
-
-1. Go to **Bricks > Templates**.
-2. Click **Add New Template**.
-3. Enter a clear name, such as "Main Header", "Main Footer", or "Single Post".
-4. Select the **Template type** in the sidebar.
-5. Publish the template.
-6. Click **Edit with Bricks**.
-
-From inside the builder:
-
-1. Open the **Templates** popup from the folder icon in the toolbar.
-2. Open **My Templates**.
-3. Click **New template**.
-4. Enter a title and select the template type.
-5. Create the template, then start editing it.
-
-The template type controls how Bricks treats the template. For example, a **Header** template is stored and rendered as the site header area, while a **Single** template is stored and rendered as the main content area for matching pages.
-
-## Create a header template
-
-Use a header template for the site area that appears before the main content. A normal header usually contains a logo, navigation, call-to-action button, search, account links, or similar site-wide elements.
-
-1. Create a new template named "Main Header".
-2. Set **Template type** to **Header**.
-3. Publish it and open it with Bricks.
-4. Build the header layout on the canvas.
-5. Open **Settings > Template Settings > Populate Content**.
-6. Select content that makes sense for previewing the header, such as a page or single post.
-7. Open **Settings > Template Settings > Conditions**.
-8. Add **Entire website** if the header should appear everywhere.
-9. Save the template and test a normal frontend page.
-
-By default, Bricks can use a published header template even if it has no conditions. This default-template behavior is controlled from **Bricks > Settings > Templates & components > Disable default templates**.
-
-If default templates are enabled and you have a published header without conditions, Bricks can use it as the site header. If default templates are disabled, set template conditions explicitly.
-
-## Header settings
-
-Header templates have an additional **Header** settings group under **Settings > Template Settings**.
-
-Use it to control:
-
-- **Header location:** top, left, or right.
-- **Header width:** available for left and right headers.
-- **Sticky header:** available for top headers.
-- **Sticky on scroll:** keeps the header in normal flow on page load, then makes it sticky after scrolling.
-- **Slide up after:** lets a sticky header hide after a scroll distance.
-- **Scrolling styles:** text color, hover color, background, box shadow, and transition while the sticky header is in its scrolling state.
-
-Left and right headers affect the layout beside the content and footer. Top headers are the usual choice for most websites.
-
-## Create a footer template
-
-Use a footer template for the site area that appears after the main content. A normal footer contains copyright text, footer navigation, contact links, social links, newsletter forms, or legal links.
-
-1. Create a new template named "Main Footer".
-2. Set **Template type** to **Footer**.
-3. Publish it and open it with Bricks.
-4. Build the footer layout.
-5. Use **Populate Content** to preview the footer with a real page or post.
-6. Add a condition, usually **Entire website**.
-7. Save and test the frontend.
-
-Like headers, published footer templates can be used by default when no conditions are set, unless default templates are disabled in Bricks settings.
-
-## Create a single post template
-
-Use a **Single** template when you want Bricks to control the layout for posts, pages, or custom post type entries. For a blog post template, the canvas usually contains elements such as Post Title, Featured Image, Post Content, Author, Date, Terms, Comments, and related content.
-
-1. Create a new template named "Single Post".
-2. Set **Template type** to **Single**.
-3. Publish it and open it with Bricks.
-4. Open **Settings > Template Settings > Populate Content**.
-5. Set **Content type** to **Single (Post/Page/CPT)**.
-6. Select a real post to preview.
-7. Build the post layout using dynamic data and post elements.
-8. Open **Settings > Template Settings > Conditions**.
-9. Add **Post type** and select **Posts**.
-10. Save and test several published posts on the frontend.
-
-The preview post only controls what you see while editing the template. The condition controls where the template is used on the frontend.
-
-## Conditions or default templates?
-
-For production sites, set conditions deliberately. Conditions make the template assignment visible and predictable.
-
-Default templates are useful while getting started because Bricks can automatically use published templates of certain types when no conditions are set. This is most common for headers and footers, but Bricks also supports default behavior for archive, search, error, and supported WooCommerce route templates.
-
-Disable default templates when you want every rendered template to be controlled by explicit conditions. You can do this in **Bricks > Settings > Templates & components > Disable default templates**.
-
-## Disable a header or footer on one page
-
-Landing pages and campaign pages often need no global header or footer.
-
-To disable the header or footer for a specific page:
-
-1. Open the page with Bricks.
-2. Open **Settings > Page Settings > General**.
-3. Enable **Disable header** or **Disable footer**.
-4. Save the page.
-
-This page setting applies to the page being rendered. It does not delete or change the template.
-
-## Preview content vs frontend output
-
-Template editing needs a preview context. For example, a single post template needs one post to show dynamic data on the canvas. An archive template needs an archive context. A header or footer may need a page or post behind it so you can judge spacing and overlap.
-
-Preview content does not assign the template to that content. It only changes the canvas context while editing.
-
-Use conditions to control frontend assignment.
-
-## Common mistakes
-
-**The template is published but not visible:** Check whether it has matching conditions. If default templates are disabled, a template without conditions will not be used automatically.
-
-**The wrong template appears:** Look for a more specific matching template. Individual conditions outrank broad conditions such as Entire website. Exclude conditions can also disqualify a template.
-
-**The canvas looks empty or the dynamic data is wrong:** Set **Populate Content** to a real page, post, archive, or search context that matches the template you are building.
-
-**A header or footer is missing on one page:** Check that page's **Page Settings > General** for **Disable header** or **Disable footer**.
-
-**A Single template does not affect posts:** Make sure the template type is **Single**, the template is published, and the condition targets the correct post type or individual entries.
-
-**A Section template does not update inserted copies:** Section templates are reusable library items. They do not sync inserted content between pages. Use Components for linked reusable structures.
-
----
-
-<a id="builder-features-global-elements"></a>
-
-# Global Elements
-
-Source: https://academy.bricksbuilder.io/builder/features/global-elements/
-
-*Review legacy global elements in Bricks, convert them to components, and understand why new reusable work should use Components instead.*
-
-> **Note**
->
-> **Global elements are deprecated since Bricks 2.0. Use Components for new reusable builder structures, and convert existing global elements as soon as possible.**
-
-Global elements remain visible for sites that already use them, but they are now a legacy feature. New reusable work should be created as [Components](https://academy.bricksbuilder.io/builder/features/components/), not as global elements.
-
-## Review existing global elements
-
-To find existing global element instances:
-
-1. Go to `Bricks > Settings > General`.
-2. Scroll to **Global elements** under the **Convert** section.
-3. Start the global-elements review to retrieve a list of global element instances.
-
-From there, review the affected pages and templates before converting, unlinking, or deleting anything.
-
-## Convert to components
-
-Use the converter under `Bricks > Settings > General > Convert` to convert global elements to components.
-
-Bricks can convert global elements individually or in bulk. Nestable global elements cannot always be converted directly to components; in those cases, unlink them manually in the builder or use the converter flow that unlinks nestable global elements.
-
-After conversion, delete the remaining global elements from the builder's elements panel.
-
-## When to use templates instead
-
-If you need to reuse a larger section or layout pattern without linked shared editing, save it as a template and insert it where needed. For linked reusable structures, use Components.
 
 ---
 
@@ -9652,6 +7036,44 @@ function run_my_custom_condition( $result, $condition_key, $condition ) {
 
 ---
 
+<a id="builder-features-global-elements"></a>
+
+# Global Elements
+
+Source: https://academy.bricksbuilder.io/builder/features/global-elements/
+
+*Review legacy global elements in Bricks, convert them to components, and understand why new reusable work should use Components instead.*
+
+> **Note**
+>
+> **Global elements are deprecated since Bricks 2.0. Use Components for new reusable builder structures, and convert existing global elements as soon as possible.**
+
+Global elements remain visible for sites that already use them, but they are now a legacy feature. New reusable work should be created as [Components](https://academy.bricksbuilder.io/builder/features/components/), not as global elements.
+
+## Review existing global elements
+
+To find existing global element instances:
+
+1. Go to `Bricks > Settings > General`.
+2. Scroll to **Global elements** under the **Convert** section.
+3. Start the global-elements review to retrieve a list of global element instances.
+
+From there, review the affected pages and templates before converting, unlinking, or deleting anything.
+
+## Convert to components
+
+Use the converter under `Bricks > Settings > General > Convert` to convert global elements to components.
+
+Bricks can convert global elements individually or in bulk. Nestable global elements cannot always be converted directly to components; in those cases, unlink them manually in the builder or use the converter flow that unlinks nestable global elements.
+
+After conversion, delete the remaining global elements from the builder's elements panel.
+
+## When to use templates instead
+
+If you need to reuse a larger section or layout pattern without linked shared editing, save it as a template and insert it where needed. For linked reusable structures, use Components.
+
+---
+
 <a id="builder-features-global-import-export"></a>
 
 # Global Import / Export
@@ -10029,116 +7451,6 @@ You can create your own icon sets by uploading a collection of SVG files. Each i
 #### Enable or disable icon sets
 
 To keep your icon selection streamlined, you can disable any icon set, including built-in ones (i.e. FontAwesome). Disabled sets won't appear in the icon picker, but any icons already used on the page will still display and render as expected.
-
----
-
-<a id="builder-features"></a>
-
-# Features
-
-Source: https://academy.bricksbuilder.io/builder/features/
-
-*Explore Bricks features such as components, interactions, popups, templates, custom code, search criteria, and workflow tools.*
-
-Bricks features extend the core page-building workflow with reusable systems, interaction tooling, template workflows, and advanced frontend and content capabilities.
-
-## Featured areas
-
-- [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) and [Site Versions](https://academy.bricksbuilder.io/builder/interface/site-versions/) for pending changes, [Review Links](https://academy.bricksbuilder.io/builder/interface/review-links/), and [Explore and Compare](https://academy.bricksbuilder.io/builder/interface/explore-alternatives/)
-
-- [Lazy Loading](https://academy.bricksbuilder.io/builder/features/lazy-loading/) for background, image, page, and site-level loading controls
-- [Templates](https://academy.bricksbuilder.io/builder/templates/) for the main template workflow and related reference pages
-- [Global Data Revisions](https://academy.bricksbuilder.io/builder/interface/global-data-history/) for recovering recorded shared-item changes
-
-- [Components](https://academy.bricksbuilder.io/builder/features/components/) for reusable structures and nested component workflows
-- [Interactions](https://academy.bricksbuilder.io/builder/features/interactions/) for triggers, animations, and action-based behaviors
-- [Popup Builder](https://academy.bricksbuilder.io/builder/features/popup-builder/) for modal, slide-in, and notification-bar patterns
-- [Custom Code](https://academy.bricksbuilder.io/builder/features/custom-code/) for adding and organizing custom code in Bricks
-- [Search Criteria](https://academy.bricksbuilder.io/builder/features/search-criteria/) for frontend search configuration
-- [Menu Builder](https://academy.bricksbuilder.io/builder/features/menu-builder/) for custom desktop and mobile navigation
-- [Maintenance Mode](https://academy.bricksbuilder.io/builder/features/maintenance-mode/) for maintenance and coming-soon screens
-- [Password Protection](https://academy.bricksbuilder.io/builder/features/password-protection/) for gated frontend content
-- [Nestable Slider](https://academy.bricksbuilder.io/builder/features/nestable-slider-instance/) for per-instance slider customization
-
----
-
-<a id="builder-features-lazy-loading"></a>
-
-# Lazy Loading
-
-Source: https://academy.bricksbuilder.io/builder/features/lazy-loading/
-
-*Control lazy loading for background images and videos, individual images, or an entire Bricks page or site.*
-
-Lazy loading delays loading media until it is needed near the visible part of the page. For a hero background that visitors see as soon as the page opens, disable lazy loading on that element so Bricks does not wait for it to enter the viewport.
-
-Bricks 2.5 adds **Disable lazy load** to the background controls of Section, Container, Block, and Div elements. The setting applies to both background images and background videos. Global and page-level lazy-loading opt-outs also cover background videos in Bricks 2.5.
-
-## Native image loading in Bricks 2.5
-
-On WordPress 6.4 or newer, Bricks 2.5 uses the browser's native image lazy loading by default. Images keep their real `src` and `srcset`; the browser decides when images with `loading="lazy"` are fetched. Bricks preserves explicit loading and fetch-priority decisions, and does not force every leading image to load lazily.
-
-If custom code depends on the previous placeholder images or `data-src` attributes, enable **Bricks > Settings > Performance > Use JavaScript lazy loading for images**. WordPress versions earlier than 6.4 continue using the JavaScript loader automatically. Background images, background videos, and iframes still use JavaScript loading.
-
-**Lazy load offset** applies to HTML images only when the JavaScript image loader is active. It does not change the browser's native loading distance.
-
-## Disable lazy loading for one background
-
-1. Select the **Section**, **Container**, **Block**, or **Div** that has the background.
-2. Open **Style > Background**.
-3. Enable **Disable lazy load**.
-4. Save and check the page on the frontend.
-
-<div className="screenshot screenshot--control-panel">
-
-![Background control group showing Disable lazy load and its description: Load background images and videos immediately.](https://academy.bricksbuilder.io/assets/background-disable-lazy-load.webp)
-
-</div>
-
-The checkbox is off by default. Enabling it bypasses Bricks' lazy loading for that element's background images and starts its background video initialization without waiting for the element to become visible. This includes file-based videos and YouTube or Vimeo backgrounds. Video playback still depends on the browser's autoplay rules and the video provider.
-
-For example, enable it on a hero Section with a background image, while leaving it off on Sections further down the page. Apply the setting to the element that owns the background. It does not disable lazy loading for every image or video inside that element.
-
-### Why is the checkbox missing?
-
-Bricks hides the background checkbox when lazy loading is already disabled globally or for the current page. In that case, the background already bypasses Bricks' lazy loading. Check the settings below before looking for the element control.
-
-## Disable lazy loading for a page or site
-
-| Scope | Setting |
-| --- | --- |
-| Current page | In the builder, open **Page Settings > General > Disable lazy load**. |
-| Entire site | In WordPress, open **Bricks > Settings > Performance > Disable lazy loading**. |
-
-These settings disable Bricks' built-in lazy loading for images, videos, background images, and background videos in their scope. Use the element control when only one background needs to load immediately.
-
-See [Page Settings](https://academy.bricksbuilder.io/builder/interface/page-settings/#general-settings) and [Bricks Settings](https://academy.bricksbuilder.io/builder/setup/settings/#disable-lazy-loading) for the wider settings context.
-
-## Image and Logo elements
-
-The [Image](https://academy.bricksbuilder.io/builder/elements/basic/image/) and [Logo](https://academy.bricksbuilder.io/builder/elements/media/logo/) elements have a separate **Loading** control with `lazy` and `eager` options. Choose `eager` when the image should load without native lazy loading.
-
-These controls set the HTML image's `loading` attribute and remain available when Bricks' global or page-level lazy loading is disabled. CSS background images do not support that native attribute; use **Style > Background > Disable lazy load** for them.
-
-## Preload a background image
-
-Since Bricks 2.5, enable **Preload** beside the selected image under **Style > Background** when an important background is visible as soon as the page opens, such as a hero image. Bricks adds an image preload hint with high fetch priority and uses responsive media conditions for breakpoint-specific backgrounds.
-
-Dynamic background images inside query loops are not preloaded. Use this selectively. Preloading below-the-fold backgrounds competes with resources needed for the initial view. The control is unavailable for pseudo-class states and background contexts that are hidden on initial load, such as popup backgrounds. A viewport background configured for preloading bypasses Bricks' background lazy loader.
-
-<div className="screenshot screenshot--control-panel">
-
-![A Section's Background controls with a selected image and Preload enabled.](https://academy.bricksbuilder.io/assets/builder/release-2.5/background-preload-panel.webp)
-
-</div>
-
-## Check loading on the frontend
-
-Test on the frontend rather than relying on the builder preview. In your browser's developer tools, open the Network panel, disable the cache, and reload at the top of the page. Compare media requests before and after scrolling to the background.
-
-The **Lazy load offset** in **Bricks > Settings > Performance** controls how early Bricks' JavaScript lazy loader starts loading images and background images. Its default is **300px**. This offset does not control native browser image loading or when background videos load.
-
-If a background image loads before you scroll to it, also check its **Preload** option. A background image configured for viewport preloading bypasses background lazy loading. Disabling lazy loading alone does not add an image preload hint.
 
 ---
 
@@ -10915,6 +8227,116 @@ Then add interactions:
 
 ---
 
+<a id="builder-features"></a>
+
+# Features
+
+Source: https://academy.bricksbuilder.io/builder/features/
+
+*Explore Bricks features such as components, interactions, popups, templates, custom code, search criteria, and workflow tools.*
+
+Bricks features extend the core page-building workflow with reusable systems, interaction tooling, template workflows, and advanced frontend and content capabilities.
+
+## Featured areas
+
+- [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) and [Site Versions](https://academy.bricksbuilder.io/builder/interface/site-versions/) for pending changes, [Review Links](https://academy.bricksbuilder.io/builder/interface/review-links/), and [Explore and Compare](https://academy.bricksbuilder.io/builder/interface/explore-alternatives/)
+
+- [Lazy Loading](https://academy.bricksbuilder.io/builder/features/lazy-loading/) for background, image, page, and site-level loading controls
+- [Templates](https://academy.bricksbuilder.io/builder/templates/) for the main template workflow and related reference pages
+- [Global Data Revisions](https://academy.bricksbuilder.io/builder/interface/global-data-history/) for recovering recorded shared-item changes
+
+- [Components](https://academy.bricksbuilder.io/builder/features/components/) for reusable structures and nested component workflows
+- [Interactions](https://academy.bricksbuilder.io/builder/features/interactions/) for triggers, animations, and action-based behaviors
+- [Popup Builder](https://academy.bricksbuilder.io/builder/features/popup-builder/) for modal, slide-in, and notification-bar patterns
+- [Custom Code](https://academy.bricksbuilder.io/builder/features/custom-code/) for adding and organizing custom code in Bricks
+- [Search Criteria](https://academy.bricksbuilder.io/builder/features/search-criteria/) for frontend search configuration
+- [Menu Builder](https://academy.bricksbuilder.io/builder/features/menu-builder/) for custom desktop and mobile navigation
+- [Maintenance Mode](https://academy.bricksbuilder.io/builder/features/maintenance-mode/) for maintenance and coming-soon screens
+- [Password Protection](https://academy.bricksbuilder.io/builder/features/password-protection/) for gated frontend content
+- [Nestable Slider](https://academy.bricksbuilder.io/builder/features/nestable-slider-instance/) for per-instance slider customization
+
+---
+
+<a id="builder-features-lazy-loading"></a>
+
+# Lazy Loading
+
+Source: https://academy.bricksbuilder.io/builder/features/lazy-loading/
+
+*Control lazy loading for background images and videos, individual images, or an entire Bricks page or site.*
+
+Lazy loading delays loading media until it is needed near the visible part of the page. For a hero background that visitors see as soon as the page opens, disable lazy loading on that element so Bricks does not wait for it to enter the viewport.
+
+Bricks 2.5 adds **Disable lazy load** to the background controls of Section, Container, Block, and Div elements. The setting applies to both background images and background videos. Global and page-level lazy-loading opt-outs also cover background videos in Bricks 2.5.
+
+## Native image loading in Bricks 2.5
+
+On WordPress 6.4 or newer, Bricks 2.5 uses the browser's native image lazy loading by default. Images keep their real `src` and `srcset`; the browser decides when images with `loading="lazy"` are fetched. Bricks preserves explicit loading and fetch-priority decisions, and does not force every leading image to load lazily.
+
+If custom code depends on the previous placeholder images or `data-src` attributes, enable **Bricks > Settings > Performance > Use JavaScript lazy loading for images**. WordPress versions earlier than 6.4 continue using the JavaScript loader automatically. Background images, background videos, and iframes still use JavaScript loading.
+
+**Lazy load offset** applies to HTML images only when the JavaScript image loader is active. It does not change the browser's native loading distance.
+
+## Disable lazy loading for one background
+
+1. Select the **Section**, **Container**, **Block**, or **Div** that has the background.
+2. Open **Style > Background**.
+3. Enable **Disable lazy load**.
+4. Save and check the page on the frontend.
+
+<div className="screenshot screenshot--control-panel">
+
+![Background control group showing Disable lazy load and its description: Load background images and videos immediately.](https://academy.bricksbuilder.io/assets/background-disable-lazy-load.webp)
+
+</div>
+
+The checkbox is off by default. Enabling it bypasses Bricks' lazy loading for that element's background images and starts its background video initialization without waiting for the element to become visible. This includes file-based videos and YouTube or Vimeo backgrounds. Video playback still depends on the browser's autoplay rules and the video provider.
+
+For example, enable it on a hero Section with a background image, while leaving it off on Sections further down the page. Apply the setting to the element that owns the background. It does not disable lazy loading for every image or video inside that element.
+
+### Why is the checkbox missing?
+
+Bricks hides the background checkbox when lazy loading is already disabled globally or for the current page. In that case, the background already bypasses Bricks' lazy loading. Check the settings below before looking for the element control.
+
+## Disable lazy loading for a page or site
+
+| Scope | Setting |
+| --- | --- |
+| Current page | In the builder, open **Page Settings > General > Disable lazy load**. |
+| Entire site | In WordPress, open **Bricks > Settings > Performance > Disable lazy loading**. |
+
+These settings disable Bricks' built-in lazy loading for images, videos, background images, and background videos in their scope. Use the element control when only one background needs to load immediately.
+
+See [Page Settings](https://academy.bricksbuilder.io/builder/interface/page-settings/#general-settings) and [Bricks Settings](https://academy.bricksbuilder.io/builder/setup/settings/#disable-lazy-loading) for the wider settings context.
+
+## Image and Logo elements
+
+The [Image](https://academy.bricksbuilder.io/builder/elements/basic/image/) and [Logo](https://academy.bricksbuilder.io/builder/elements/media/logo/) elements have a separate **Loading** control with `lazy` and `eager` options. Choose `eager` when the image should load without native lazy loading.
+
+These controls set the HTML image's `loading` attribute and remain available when Bricks' global or page-level lazy loading is disabled. CSS background images do not support that native attribute; use **Style > Background > Disable lazy load** for them.
+
+## Preload a background image
+
+Since Bricks 2.5, enable **Preload** beside the selected image under **Style > Background** when an important background is visible as soon as the page opens, such as a hero image. Bricks adds an image preload hint with high fetch priority and uses responsive media conditions for breakpoint-specific backgrounds.
+
+Dynamic background images inside query loops are not preloaded. Use this selectively. Preloading below-the-fold backgrounds competes with resources needed for the initial view. The control is unavailable for pseudo-class states and background contexts that are hidden on initial load, such as popup backgrounds. A viewport background configured for preloading bypasses Bricks' background lazy loader.
+
+<div className="screenshot screenshot--control-panel">
+
+![A Section's Background controls with a selected image and Preload enabled.](https://academy.bricksbuilder.io/assets/builder/release-2.5/background-preload-panel.webp)
+
+</div>
+
+## Check loading on the frontend
+
+Test on the frontend rather than relying on the builder preview. In your browser's developer tools, open the Network panel, disable the cache, and reload at the top of the page. Compare media requests before and after scrolling to the background.
+
+The **Lazy load offset** in **Bricks > Settings > Performance** controls how early Bricks' JavaScript lazy loader starts loading images and background images. Its default is **300px**. This offset does not control native browser image loading or when background videos load.
+
+If a background image loads before you scroll to it, also check its **Preload** option. A background image configured for viewport preloading bypasses background lazy loading. Disabling lazy loading alone does not add an image preload hint.
+
+---
+
 <a id="builder-features-maintenance-mode"></a>
 
 # Maintenance Mode
@@ -11543,6 +8965,139 @@ Bonus tip: To prevent the mobile menu from covering your Toggle, which might hap
 
 ---
 
+<a id="builder-features-password-protection"></a>
+
+# Password Protection
+
+Source: https://academy.bricksbuilder.io/builder/features/password-protection/
+
+*Protect Bricks content with password gates, understand how the feature works, and customize the related templates and hooks.*
+
+Bricks 1.11.1 introduces a Bricks-native Password Protection feature, giving you a simple yet powerful way to secure content across your website without needing extra plugins.
+
+Whether you want to lock down individual pages, posts, broader areas like custom post types, or even the entire website, you can create custom templates that control access with ease.
+
+Customize the password entry experience, schedule when protection is active, and manage everything directly within Bricks.
+
+https://youtu.be/PJ5R_XOyfRo
+
+> **Note**
+>
+> Password protection controls Bricks-rendered frontend output. For sensitive data, use stricter security controls such as proper authentication, authorization, and file access rules.
+
+## How to set up password protection
+
+1. Enable this feature under `Bricks > Settings > General > Password Protection` and save. The **Password protection** template type is only available while this setting is on.
+2. **Create a password protection template**
+  - From the WordPress dashboard, navigate to `Bricks > Templates` and create a new template.
+  - Under **Template type**, select **Password protection**.
+  - Bricks fills the empty template with a starting layout: a heading, a line of text, and a form with a password field and an **Unlock** button. The form already uses the **Unlock password protection** action.
+3. **Configure password protection settings**
+  - Click **Edit with Bricks** to customize the template.
+  - To access the password protection settings, go to `Settings > Template settings > Password protection`.
+  - Available settings include:
+    - **Password source:** Select how passwords are managed. Options are **Template password**, **Post password**, or **Template & post password**. See details on each method in the [password source options](#password-source-options) section below.
+    - **Password:** Set the password for template-wide protection. This field is only available if the **Password source** is set to **Template password** or **Template & post password**.
+    - **Disable for logged-in users:** Allow logged-in visitors to bypass the template password.
+    - **Schedule:** Schedule when the template password protection is active.
+      - **Start date:** Set the date and time when protection begins.
+      - **End date:** Set the date and time when protection ends.
+
+The older **Disable header**, **Disable footer**, and **Disable popups** controls are deprecated and should not be treated as ordinary controls for new password-protection templates.
+
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-settings.png)
+
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-settings-group.png)
+
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-settings-1.png)
+
+4. **Set template conditions**
+  - Set [the template conditions](https://academy.bricksbuilder.io/builder/features/template-settings/#template-conditions) under `Settings > Template settings > Conditions` to define where this template applies.
+  - For more dynamic control, use the [`bricks/password_protection/is_active`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-is_active/) filter to customize when the template should be active or bypassed.
+  - Password protection does not restrict direct access to media files, even when the template applies to the entire website. The web server delivers uploaded files without loading WordPress, so anyone with a file URL can open it. Since Bricks 2.4.6, the **Media** post type is no longer offered in password protection template conditions. Existing conditions that already include it are kept.
+
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-template-conditions.png)
+
+5. **Add form element for unlocking**
+  - Add a **Form Element** to the password protection template.
+  - Add an **Unlock password protection** form action. This action will allow users to unlock the protected content by entering the correct password.
+  - Add a password field. In the form action settings, choose that password field. If no field is selected, Bricks uses the first password field in the form.
+  - You can customize the form action error message. The default error is `Incorrect password.`
+
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-form-action.png)
+
+Password protection templates have priority over other matching content templates. When an active password protection template matches the current page, Bricks renders that template as the content template until the visitor unlocks the content or the protection is otherwise bypassed.
+
+With a wrong password, the form shows its error message and the page stays locked. With the correct template password, the form shows its success message, and about a second later the page reloads with the protected content.
+
+## Password source options {#password-source-options}
+
+The behavior of the password protection feature depends on the selected **password source** option. Below are details on how each option works and instructions for setup:
+
+### Template password
+
+Selecting **Template password** applies the password set in the template settings to all pages or posts that meet the template conditions. No further configuration is needed on individual posts. Simply:
+
+- Set the password in `Settings > Template settings > Password protection > Password`.
+- Define the template conditions under `Settings > Template settings > Conditions` to specify where this template will apply.
+
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-template-password.png)
+
+For any content matching these conditions, the password form will be automatically rendered, restricting access to those pages.
+
+When a visitor enters the correct template password, Bricks stores a hashed password cookie named `brx_pp_` plus the WordPress cookie hash. The cookie is checked against the template password, so one unlock covers every page the template protects. The cookie is HTTP-only, uses the current SSL state, and expires after 10 days by default. You can customize the expiry with the [`bricks/password_protection/cookie_expires`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-cookie-expires/) filter.
+
+### Post password
+
+When **Post password** is selected, this template customizes the default WordPress password protection form but requires individual post-level password settings.
+
+To protect content using the **Post password** method:
+
+1. Enable password protection on each post or page through the WordPress editor.
+2. Set a password directly on the individual post or page (or through quick edit).
+3. The template conditions will control where the custom password form appearance applies, but protection is managed at the post level.
+
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-wp-editor.png)
+
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-post-password.png)
+
+For post passwords, Bricks uses the WordPress password-protected post flow. The Bricks form posts to the WordPress `postpass` action, and WordPress decides whether the current post still requires a password. Template password, logged-in bypass, and schedule controls are not used when the source is **Post password**.
+
+### Template & post password
+
+The **Template & post password** option uses the template password by default. However, if an individual post password is set, it will take precedence.
+
+Setup process:
+
+1. Enter a password in **Password protection > Password**.
+2. Define template conditions as needed to apply the password protection across relevant content.
+3. For any posts with an individual password set, that password will override the template password.
+
+![](https://academy.bricksbuilder.io/assets/bricks-password-protection-template-and-post-password.png)
+
+This setup provides flexibility by allowing individual content to have unique passwords while maintaining general protection for all content under the template.
+
+## Scheduling and bypass behavior
+
+The schedule applies to template-password protection. If no schedule is enabled, template-password protection is active whenever the template conditions match. If a start date is set, protection starts after that time. If an end date is set, protection stops after that time. The Start date and End date controls are labeled UTC+0, so enter schedule times in UTC+0.
+
+**Disable for logged-in users** bypasses template-password protection for any logged-in visitor. If the matched post is protected with a WordPress post password and this bypass is enabled through a template-password source, Bricks also skips the WordPress password requirement for logged-in users.
+
+If a password protection template has no template password and the source is not **Post password**, Bricks does not render the template as a password gate.
+
+## Template parts and popups
+
+Password protection templates can hide the normal header, footer, and popups through the deprecated **Disable header**, **Disable footer**, and **Disable popups** settings. These controls are kept for backwards compatibility.
+
+For new templates, prefer designing the password protection template itself as the complete gate the visitor should see. If an older template has those settings enabled, Bricks will remove the matching header/footer/popup template parts while the password protection template is active.
+
+### Password protection filters: {#filters}
+
+- [/developer/hooks/filters/filter-bricks-password_protection-cookie-expires/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-cookie-expires/)
+- [/developer/hooks/filters/filter-bricks-password_protection-is_active/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-is_active/)
+
+---
+
 <a id="builder-features-nestable-slider-instance"></a>
 
 # Nestable Slider: Customization via JavaScript
@@ -11632,138 +9187,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 </script>
 
 ```
-
----
-
-<a id="builder-features-password-protection"></a>
-
-# Password Protection
-
-Source: https://academy.bricksbuilder.io/builder/features/password-protection/
-
-*Protect Bricks content with password gates, understand how the feature works, and customize the related templates and hooks.*
-
-Bricks 1.11.1 introduces a Bricks-native Password Protection feature, giving you a simple yet powerful way to secure content across your website without needing extra plugins.
-
-Whether you want to lock down individual pages, posts, broader areas like custom post types, or even the entire website, you can create custom templates that control access with ease.
-
-Customize the password entry experience, schedule when protection is active, and manage everything directly within Bricks.
-
-https://youtu.be/PJ5R_XOyfRo
-
-> **Note**
->
-> Password protection controls Bricks-rendered frontend output. For sensitive data, use stricter security controls such as proper authentication, authorization, and file access rules.
-
-## How to set up password protection
-
-1. Enable this feature under `Bricks > Settings > General > Password Protection` and save. The **Password protection** template type is only available while this setting is on.
-2. **Create a password protection template**
-  - From the WordPress dashboard, navigate to `Bricks > Templates` and create a new template.
-  - Under **Template type**, select **Password protection**.
-  - Bricks fills the empty template with a starting layout: a heading, a line of text, and a form with a password field and an **Unlock** button. The form already uses the **Unlock password protection** action.
-3. **Configure password protection settings**
-  - Click **Edit with Bricks** to customize the template.
-  - To access the password protection settings, go to `Settings > Template settings > Password protection`.
-  - Available settings include:
-    - **Password source:** Select how passwords are managed. Options are **Template password**, **Post password**, or **Template & post password**. See details on each method in the [password source options](#password-source-options) section below.
-    - **Password:** Set the password for template-wide protection. This field is only available if the **Password source** is set to **Template password** or **Template & post password**.
-    - **Disable for logged-in users:** Allow logged-in visitors to bypass the template password.
-    - **Schedule:** Schedule when the template password protection is active.
-      - **Start date:** Set the date and time when protection begins.
-      - **End date:** Set the date and time when protection ends.
-
-The older **Disable header**, **Disable footer**, and **Disable popups** controls are deprecated and should not be treated as ordinary controls for new password-protection templates.
-
-![](https://academy.bricksbuilder.io/assets/bricks-password-protection-settings.png)
-
-![](https://academy.bricksbuilder.io/assets/bricks-password-protection-settings-group.png)
-
-![](https://academy.bricksbuilder.io/assets/bricks-password-protection-settings-1.png)
-
-4. **Set template conditions**
-  - Set [the template conditions](https://academy.bricksbuilder.io/builder/features/template-settings/#template-conditions) under `Settings > Template settings > Conditions` to define where this template applies.
-  - For more dynamic control, use the [`bricks/password_protection/is_active`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-is_active/) filter to customize when the template should be active or bypassed.
-
-![](https://academy.bricksbuilder.io/assets/bricks-password-protection-template-conditions.png)
-
-5. **Add form element for unlocking**
-  - Add a **Form Element** to the password protection template.
-  - Add an **Unlock password protection** form action. This action will allow users to unlock the protected content by entering the correct password.
-  - Add a password field. In the form action settings, choose that password field. If no field is selected, Bricks uses the first password field in the form.
-  - You can customize the form action error message. The default error is `Incorrect password.`
-
-![](https://academy.bricksbuilder.io/assets/bricks-password-protection-form-action.png)
-
-Password protection templates have priority over other matching content templates. When an active password protection template matches the current page, Bricks renders that template as the content template until the visitor unlocks the content or the protection is otherwise bypassed.
-
-With a wrong password, the form shows its error message and the page stays locked. With the correct template password, the form shows its success message, and about a second later the page reloads with the protected content.
-
-## Password source options {#password-source-options}
-
-The behavior of the password protection feature depends on the selected **password source** option. Below are details on how each option works and instructions for setup:
-
-### Template password
-
-Selecting **Template password** applies the password set in the template settings to all pages or posts that meet the template conditions. No further configuration is needed on individual posts. Simply:
-
-- Set the password in `Settings > Template settings > Password protection > Password`.
-- Define the template conditions under `Settings > Template settings > Conditions` to specify where this template will apply.
-
-![](https://academy.bricksbuilder.io/assets/bricks-password-protection-template-password.png)
-
-For any content matching these conditions, the password form will be automatically rendered, restricting access to those pages.
-
-When a visitor enters the correct template password, Bricks stores a hashed password cookie named `brx_pp_` plus the WordPress cookie hash. The cookie is checked against the template password, so one unlock covers every page the template protects. The cookie is HTTP-only, uses the current SSL state, and expires after 10 days by default. You can customize the expiry with the [`bricks/password_protection/cookie_expires`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-cookie-expires/) filter.
-
-### Post password
-
-When **Post password** is selected, this template customizes the default WordPress password protection form but requires individual post-level password settings.
-
-To protect content using the **Post password** method:
-
-1. Enable password protection on each post or page through the WordPress editor.
-2. Set a password directly on the individual post or page (or through quick edit).
-3. The template conditions will control where the custom password form appearance applies, but protection is managed at the post level.
-
-![](https://academy.bricksbuilder.io/assets/bricks-password-protection-wp-editor.png)
-
-![](https://academy.bricksbuilder.io/assets/bricks-password-protection-post-password.png)
-
-For post passwords, Bricks uses the WordPress password-protected post flow. The Bricks form posts to the WordPress `postpass` action, and WordPress decides whether the current post still requires a password. Template password, logged-in bypass, and schedule controls are not used when the source is **Post password**.
-
-### Template & post password
-
-The **Template & post password** option uses the template password by default. However, if an individual post password is set, it will take precedence.
-
-Setup process:
-
-1. Enter a password in **Password protection > Password**.
-2. Define template conditions as needed to apply the password protection across relevant content.
-3. For any posts with an individual password set, that password will override the template password.
-
-![](https://academy.bricksbuilder.io/assets/bricks-password-protection-template-and-post-password.png)
-
-This setup provides flexibility by allowing individual content to have unique passwords while maintaining general protection for all content under the template.
-
-## Scheduling and bypass behavior
-
-The schedule applies to template-password protection. If no schedule is enabled, template-password protection is active whenever the template conditions match. If a start date is set, protection starts after that time. If an end date is set, protection stops after that time. The Start date and End date controls are labeled UTC+0, so enter schedule times in UTC+0.
-
-**Disable for logged-in users** bypasses template-password protection for any logged-in visitor. If the matched post is protected with a WordPress post password and this bypass is enabled through a template-password source, Bricks also skips the WordPress password requirement for logged-in users.
-
-If a password protection template has no template password and the source is not **Post password**, Bricks does not render the template as a password gate.
-
-## Template parts and popups
-
-Password protection templates can hide the normal header, footer, and popups through the deprecated **Disable header**, **Disable footer**, and **Disable popups** settings. These controls are kept for backwards compatibility.
-
-For new templates, prefer designing the password protection template itself as the complete gate the visitor should see. If an older template has those settings enabled, Bricks will remove the matching header/footer/popup template parts while the password protection template is active.
-
-### Password protection filters: {#filters}
-
-- [/developer/hooks/filters/filter-bricks-password_protection-cookie-expires/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-cookie-expires/)
-- [/developer/hooks/filters/filter-bricks-password_protection-is_active/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-is_active/)
 
 ---
 
@@ -12195,6 +9618,149 @@ You can then use interaction conditions elsewhere to check that key and adjust p
 
 ---
 
+<a id="builder-features-remote-templates"></a>
+
+# Remote Templates
+
+Source: https://academy.bricksbuilder.io/builder/features/remote-templates/
+
+*Connect Bricks sites, browse shared template libraries, and transfer templates with their component dependencies.*
+
+Remote Templates let you browse and insert templates from another Bricks installation without exporting and importing files manually.
+
+The workflow has two sides:
+
+- The **source site** exposes selected templates through its remote library.
+- The **destination site** adds that site under **Remote libraries** and accesses its templates from the Builder Browser.
+
+## 1. Expose Templates on the Source Site
+
+On the site that contains the templates:
+
+1. Go to **Bricks > Settings > Templates & components**.
+2. Under **My templates**, enable **My templates access**.
+3. Use **Exclude templates** to hide any templates that should not be shared.
+4. Configure the shared **Remote access** controls.
+5. Save the settings.
+
+![Bricks Templates and components settings with My templates access enabled and Exclude templates visible](https://academy.bricksbuilder.io/assets/bricks-settings-remote-templates-access.webp)
+
+The **Remote access** settings apply to remote templates and remote components:
+
+- **Whitelist URLs** restricts access to the listed destination sites. Enter one URL per line.
+- **Password protection** requires destination sites to provide the same password.
+
+If both fields are empty, any Bricks site that knows the source URL can request the templates exposed by **My templates access**.
+
+The source site's WordPress permalink structure must not be set to **Plain**.
+
+![](https://academy.bricksbuilder.io/assets/permalink-structure-not-plain-type-for-remote-templates-01.png)
+
+## 2. Add a Remote Site on the Destination Site
+
+On the site where you want to use the templates:
+
+1. Go to **Bricks > Settings > Templates & components**.
+2. Under **Remote libraries**, click **Add**.
+3. Enter the source site's full **URL**.
+4. Optionally enter a **Name**. Bricks shows this instead of the URL in source dropdowns.
+5. Enter the source site's **Remote access** password, if it uses one.
+6. Save the settings.
+
+You can add multiple remote sites. The same entry can provide templates, components, or both.
+
+![Remote libraries settings with Name, URL, and Password fields](https://academy.bricksbuilder.io/assets/bricks-settings-remote-libraries.webp)
+
+## 3. Browse Remote Templates
+
+Open the builder, click the folder icon, and select **Templates** in the [Builder Browser](https://academy.bricksbuilder.io/builder/features/builder-browser/).
+
+Choose the remote site under **Source**. You can search the library, filter its templates, switch between grid and list view, and use **Reload** to request the source again.
+
+The current user needs **Access remote templates** permission to see configured remote sites.
+
+![Builder Browser Templates view with HappyFiles selected as the remote source](https://academy.bricksbuilder.io/assets/bricks-browser-remote-templates.webp)
+
+## Insert a Remote Template
+
+Click **Insert** to add the template to the current canvas. The **Replace content** control decides whether Bricks replaces the current canvas or adds the template to it.
+
+Use **Import images** to download eligible template and component images to the destination Media Library. Leave it disabled to use placeholder images where the normal template import flow supports them.
+
+When the remote template includes related design-system data, Bricks may open additional reviews for theme styles, color palettes, variables, global classes, or Style Manager settings.
+
+Remote code signatures are not trusted. Bricks removes source signatures, and users without code-execution permission do not receive executable Code, SVG, or custom-query settings from the remote template.
+
+### Templates That Use Components
+
+In Bricks 2.4 and later, inserting a remote template also requests the components used by that template. The dependency package includes nested components and their referenced global classes, variable categories and variables, and color palettes.
+
+Bricks remaps the template to the imported local component and design-system IDs before inserting it. Save pending component, class, variable, and color changes before starting the insert.
+
+If a component from this source was imported before and changed remotely, Bricks asks whether to replace the local component before inserting the template. Replacing it updates the existing local component definition and its instances.
+
+If the template depends on a component excluded from remote access on the source site, Bricks blocks the dependency package instead of inserting an incomplete component graph.
+
+## Import to Templates
+
+Click **Import to templates** on a non-local template to save it into **My Templates** instead of inserting it directly onto the current canvas.
+
+For a configured Bricks remote site, Bricks first localizes supported component and design-system dependencies, then passes the template through the regular template import flow. The current user needs **Import/export templates** permission.
+
+## Compatibility With Older Remote Sites
+
+Bricks 2.4 introduces a versioned remote-library package for templates with component dependencies.
+
+When a configured source does not support that package protocol, Bricks falls back to the legacy Remote Templates response. The template can still use the older insertion workflow, but the legacy response does not provide the dependency-complete component package. Update the source site before sharing templates that use components.
+
+## Permissions
+
+Remote template operations use separate builder permissions:
+
+| Task                                                                 | Required permissions                                                                                                     |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| See configured remote sites                                          | **Access remote templates**                                                                                              |
+| Insert a remote template without component dependencies              | **Access remote templates** and **Insert templates**                                                                     |
+| Save a remote template under My Templates                            | **Access remote templates** and **Import/export templates**                                                              |
+| Insert a remote template with component dependencies                 | The insert permissions above, plus **Access remote components**, **Import/export components**, and **Insert components** |
+| Import a remote template with component dependencies to My Templates | The template import permissions above, plus **Access remote components** and **Import/export components**                |
+
+See [Builder Access & Capabilities](https://academy.bricksbuilder.io/builder/interface/builder-access/) for assigning these permissions.
+
+## Fetching and Caching
+
+Bricks keeps fetched template data outside the WordPress database. Remote template data can be cached in the builder browser for up to seven days per source. Use **Reload** when you need the source again before that cache expires.
+
+Remote-library capability checks and component catalogs use shorter server-side caches. In the Component Manager, **Refresh** bypasses those short caches and requests the source again.
+
+## Troubleshooting
+
+### A Remote Site Does Not Appear
+
+- Confirm the remote library row is saved under **Templates & components**.
+- Confirm the current user has **Access remote templates** permission.
+
+### A Remote Site Appears but Does Not Load
+
+Check the source site:
+
+- **My templates access** is enabled.
+- Permalinks are not set to **Plain**.
+- The destination site's URL is included under **Whitelist URLs**, when used.
+- The password saved on the destination matches **Remote access > Password protection**.
+- The expected templates are not selected under **Exclude templates**.
+
+### A Template With Components Cannot Be Inserted
+
+- Save pending component, class, variable, and color changes on the destination.
+- Confirm the user has the required component permissions.
+- Confirm every component dependency is available and not excluded on the source.
+- Update the source to Bricks 2.4 or later if it only supports the legacy template response.
+
+For the template library controls and local template actions, see [Template Library](https://academy.bricksbuilder.io/builder/features/template-library/).
+
+---
+
 <a id="builder-features-remote-components"></a>
 
 # Remote Components
@@ -12394,146 +9960,138 @@ For local component creation, properties, variants, slots, and instance behavior
 
 ---
 
-<a id="builder-features-remote-templates"></a>
+<a id="builder-features-search-criteria"></a>
 
-# Remote Templates
+# Search Criteria
 
-Source: https://academy.bricksbuilder.io/builder/features/remote-templates/
+Source: https://academy.bricksbuilder.io/builder/features/search-criteria/
 
-*Connect Bricks sites, browse shared template libraries, and transfer templates with their component dependencies.*
+*Use Search Criteria in Bricks to control which WordPress fields and meta values are searched for native search and query-filter search inputs.*
 
-Remote Templates let you browse and insert templates from another Bricks installation without exporting and importing files manually.
+Bricks 2.2 introduces a powerful new way to control **how search results are generated**, whether the search is triggered by:
 
-The workflow has two sides:
+- the **native WordPress search** (via the Search element), or
+- the **Filter – Search** element - Query Filters feature.
 
-- The **source site** exposes selected templates through its remote library.
-- The **destination site** adds that site under **Remote libraries** and accesses its templates from the Builder Browser.
+With **Search Criteria**, you can define exactly where Bricks should search: post fields, assigned post terms, term fields, user fields, and custom meta fields. This gives you far more control than the default WordPress `"s"` search and allows fully customized search behaviour across your site.
 
-## 1. Expose Templates on the Source Site
+> **Note**
+>
+> Search Criteria does not build or maintain a separate search index. It searches the selected WordPress database fields at query time, caches the matched IDs briefly, and then passes those IDs into the target query.
 
-On the site that contains the templates:
+## Override Native WordPress Search ("s" parameter)
 
-1. Go to **Bricks > Settings > Templates & components**.
-2. Under **My templates**, enable **My templates access**.
-3. Use **Exclude templates** to hide any templates that should not be shared.
-4. Configure the shared **Remote access** controls.
-5. Save the settings.
+The native WordPress search is usually triggered through the **Search element**, and the results land on the **Search Result template**.
 
-![Bricks Templates and components settings with My templates access enabled and Exclude templates visible](https://academy.bricksbuilder.io/assets/bricks-settings-remote-templates-access.webp)
+By default, WordPress only searches the following post fields:
 
-The **Remote access** settings apply to remote templates and remote components:
+- post_title
+- post_content
+- post_excerpt
 
-- **Whitelist URLs** restricts access to the listed destination sites. Enter one URL per line.
-- **Password protection** requires destination sites to provide the same password.
+If you want to override or extend this behaviour for native search results, configure Search Criteria **inside your Search Result template**.
 
-If both fields are empty, any Bricks site that knows the source URL can request the templates exposed by **My templates access**.
+## Search Criteria in the Search Result Template
 
-The source site's WordPress permalink structure must not be set to **Plain**.
+![](https://academy.bricksbuilder.io/assets/bricks-search-criteria-search-results-template.png)
 
-![](https://academy.bricksbuilder.io/assets/permalink-structure-not-plain-type-for-remote-templates-01.png)
+Inside the builder, open your **Search Result** template → Template Settings → **Search Criteria** section.
 
-## 2. Add a Remote Site on the Destination Site
+**Custom search criteria**: This reveals all available search settings for controlling how the native `s` search behaves.
 
-On the site where you want to use the templates:
+**Use weight score (optional):** When enabled, Bricks will calculate a ranking score based on your defined weight values and order the results accordingly. More about [weight scoring](#weight-score).
 
-1. Go to **Bricks > Settings > Templates & components**.
-2. Under **Remote libraries**, click **Add**.
-3. Enter the source site's full **URL**.
-4. Optionally enter a **Name**. Bricks shows this instead of the URL in source dropdowns.
-5. Enter the source site's **Remote access** password, if it uses one.
-6. Save the settings.
+#### Search Controls
 
-You can add multiple remote sites. The same entry can provide templates, components, or both.
+Search post fields - Enable to define which standard WordPress post fields should be searched. Available fields are Title, Content, and Excerpt.
 
-![Remote libraries settings with Name, URL, and Password fields](https://academy.bricksbuilder.io/assets/bricks-settings-remote-libraries.webp)
+Search post meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
 
-## 3. Browse Remote Templates
+Search post terms - Search assigned terms of selected taxonomies by term name, slug, and description.
 
-Open the builder, click the folder icon, and select **Templates** in the [Builder Browser](https://academy.bricksbuilder.io/builder/features/builder-browser/).
+Search Result templates only provide post-search criteria, because native WordPress search returns posts. Term and user search criteria are available in the **Filter – Search** element when that filter targets a term or user query.
 
-Choose the remote site under **Source**. You can search the library, filter its templates, switch between grid and list view, and use **Reload** to request the source again.
+> **Note**
+>
+> Make sure the **main Query Loop inside the Search Result template** has **"Is main query"** enabled. Otherwise the native search override will not apply.
 
-The current user needs **Access remote templates** permission to see configured remote sites.
+Once configured, perform a search on the frontend and your results will follow the criteria defined in the Search Result template. If **Custom search criteria** is enabled but no post fields, meta fields, or taxonomies are enabled, the search has no custom source to search and will return no matches.
 
-![Builder Browser Templates view with HappyFiles selected as the remote source](https://academy.bricksbuilder.io/assets/bricks-browser-remote-templates.webp)
+## Search Criteria in the "Filter – Search" Element
 
-## Insert a Remote Template
+When [Query Filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/) are enabled in Bricks, you can create advanced filtering systems for any Query Loop on any page.
 
-Click **Insert** to add the template to the current canvas. The **Replace content** control decides whether Bricks replaces the current canvas or adds the template to it.
+Before Bricks 2.2, the **Filter – Search** element always used the default WordPress `"s"` logic. Now, you can define custom search criteria per filter element. Inside the Filter – Search element settings, you will now see a **Search Criteria** section.
 
-Use **Import images** to download eligible template and component images to the destination Media Library. Leave it disabled to use placeholder images where the normal template import flow supports them.
+If the Filter – Search element uses the native WordPress search URL parameter `s`, Bricks expects the search criteria to come from the Search Result template instead of the individual filter element. This keeps the frontend search box, URL parameter, and Search Result template aligned.
 
-When the remote template includes related design-system data, Bricks may open additional reviews for theme styles, color palettes, variables, global classes, or Style Manager settings.
+> **Note**
+>
+> Meta field search: ACF, Meta Box, and JetEngine Post Object, Relationship, and User fields usually store IDs in post meta. **Search Criteria searches the raw meta value** and does not automatically resolve those IDs to related post titles, post content, or user display names. To search those labels, store them in a separate searchable text meta field and include that meta key in Search Criteria.
 
-Remote code signatures are not trusted. Bricks removes source signatures, and users without code-execution permission do not receive executable Code, SVG, or custom-query settings from the remote template.
+#### Post Query
 
-### Templates That Use Components
+Search post fields - Enable to define whether to search in Title, Content, and Excerpt
 
-In Bricks 2.4 and later, inserting a remote template also requests the components used by that template. The dependency package includes nested components and their referenced global classes, variable categories and variables, and color palettes.
+Search post meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
 
-Bricks remaps the template to the imported local component and design-system IDs before inserting it. Save pending component, class, variable, and color changes before starting the insert.
+Search post terms - Search assigned terms of selected taxonomies by term name, slug, and description. Useful for product categories, tags, brands, or other taxonomy-based relationships.
 
-If a component from this source was imported before and changed remotely, Bricks asks whether to replace the local component before inserting the template. Replacing it updates the existing local component definition and its instances.
+#### Term Query
 
-If the template depends on a component excluded from remote access on the source site, Bricks blocks the dependency package instead of inserting an incomplete component graph.
+Search term fields - Enable to define whether to search in Name, Slug, and Description.
 
-## Import to Templates
+Search term meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
 
-Click **Import to templates** on a non-local template to save it into **My Templates** instead of inserting it directly onto the current canvas.
+#### User Query
 
-For a configured Bricks remote site, Bricks first localizes supported component and design-system dependencies, then passes the template through the regular template import flow. The current user needs **Import/export templates** permission.
+Search user fields - Enable to define whether to search in Username, Nicename, Email, URL, and Display name.
 
-## Compatibility With Older Remote Sites
+Search user meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
 
-Bricks 2.4 introduces a versioned remote-library package for templates with component dependencies.
+## How matches are applied
 
-When a configured source does not support that package protocol, Bricks falls back to the legacy Remote Templates response. The template can still use the older insertion workflow, but the legacy response does not provide the dependency-complete component package. Update the source site before sharing templates that use components.
+For post queries, Bricks searches the selected sources and sets the matching post IDs on the query. For term and user queries, Bricks sets the matching term or user IDs on the query. If there are no matches, Bricks passes an impossible ID/slug so the target query returns no results.
 
-## Permissions
+Search Criteria uses partial `LIKE` matching. For post terms, Bricks searches the assigned term name, slug, and description for each selected taxonomy. For custom meta fields, it searches the raw stored `meta_value`.
 
-Remote template operations use separate builder permissions:
+Every enabled field, meta key, or taxonomy adds work to the database query. Use the smallest set of searchable fields that matches the frontend experience you need.
 
-| Task                                                                 | Required permissions                                                                                                     |
-| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| See configured remote sites                                          | **Access remote templates**                                                                                              |
-| Insert a remote template without component dependencies              | **Access remote templates** and **Insert templates**                                                                     |
-| Save a remote template under My Templates                            | **Access remote templates** and **Import/export templates**                                                              |
-| Insert a remote template with component dependencies                 | The insert permissions above, plus **Access remote components**, **Import/export components**, and **Insert components** |
-| Import a remote template with component dependencies to My Templates | The template import permissions above, plus **Access remote components** and **Import/export components**                |
+## What is "Use weight score"? {#weight-score}
 
-See [Builder Access & Capabilities](https://academy.bricksbuilder.io/builder/interface/builder-access/) for assigning these permissions.
+Weight score lets you control the order of your search results. The higher the weight score for a specific search field, the higher the result will appear if that field matches the search term.
 
-## Fetching and Caching
+> **Note**
+>
+> Important Notes:
+> - You must enable **Use weight score** for ranking to take effect.
+> - If a **Sort** filter is active, it will override the weight-score ordering.
 
-Bricks keeps fetched template data outside the WordPress database. Remote template data can be cached in the builder browser for up to seven days per source. Use **Reload** when you need the source again before that cache expires.
+#### Example: How weight scoring works
 
-Remote-library capability checks and component catalogs use shorter server-side caches. In the Component Manager, **Refresh** bypasses those short caches and requests the source again.
+Search Criteria setup:
 
-## Troubleshooting
+Search post fields:
+- Title → **weight 1**
+- Content → **weight 1**
 
-### A Remote Site Does Not Appear
+Search post meta fields:
+- my_field → **weight 3**
 
-- Confirm the remote library row is saved under **Templates & components**.
-- Confirm the current user has **Access remote templates** permission.
+Search term: **car**
 
-### A Remote Site Appears but Does Not Load
+Matched posts:
 
-Check the source site:
+| Post ID | Found in | Weight |
+| --- | --- | --- |
+| 1001 | Title | 1 |
+| 1002 | Title + Content | 1 + 1 = 2 |
+| 1003 | my_field | 3 |
 
-- **My templates access** is enabled.
-- Permalinks are not set to **Plain**.
-- The destination site's URL is included under **Whitelist URLs**, when used.
-- The password saved on the destination matches **Remote access > Password protection**.
-- The expected templates are not selected under **Exclude templates**.
+**Final result order:**
+**1003**, **1002**, **1001**
 
-### A Template With Components Cannot Be Inserted
-
-- Save pending component, class, variable, and color changes on the destination.
-- Confirm the user has the required component permissions.
-- Confirm every component dependency is available and not excluded on the source.
-- Update the source to Bricks 2.4 or later if it only supports the legacy template response.
-
-For the template library controls and local template actions, see [Template Library](https://academy.bricksbuilder.io/builder/features/template-library/).
+Weight scores are integer values with a minimum of 1. Matching scores are added together, so an item that matches multiple low-weight fields can outrank an item that matches one field. Bricks preserves the weighted order by ordering the query by the matched ID list. If a Sort filter is active, that sort order takes precedence.
 
 ---
 
@@ -12704,141 +10262,6 @@ For file fields, the Form Submissions table can link to files saved in the Media
 
 ---
 
-<a id="builder-features-search-criteria"></a>
-
-# Search Criteria
-
-Source: https://academy.bricksbuilder.io/builder/features/search-criteria/
-
-*Use Search Criteria in Bricks to control which WordPress fields and meta values are searched for native search and query-filter search inputs.*
-
-Bricks 2.2 introduces a powerful new way to control **how search results are generated**, whether the search is triggered by:
-
-- the **native WordPress search** (via the Search element), or
-- the **Filter – Search** element - Query Filters feature.
-
-With **Search Criteria**, you can define exactly where Bricks should search: post fields, assigned post terms, term fields, user fields, and custom meta fields. This gives you far more control than the default WordPress `"s"` search and allows fully customized search behaviour across your site.
-
-> **Note**
->
-> Search Criteria does not build or maintain a separate search index. It searches the selected WordPress database fields at query time, caches the matched IDs briefly, and then passes those IDs into the target query.
-
-## Override Native WordPress Search ("s" parameter)
-
-The native WordPress search is usually triggered through the **Search element**, and the results land on the **Search Result template**.
-
-By default, WordPress only searches the following post fields:
-
-- post_title
-- post_content
-- post_excerpt
-
-If you want to override or extend this behaviour for native search results, configure Search Criteria **inside your Search Result template**.
-
-## Search Criteria in the Search Result Template
-
-![](https://academy.bricksbuilder.io/assets/bricks-search-criteria-search-results-template.png)
-
-Inside the builder, open your **Search Result** template → Template Settings → **Search Criteria** section.
-
-**Custom search criteria**: This reveals all available search settings for controlling how the native `s` search behaves.
-
-**Use weight score (optional):** When enabled, Bricks will calculate a ranking score based on your defined weight values and order the results accordingly. More about [weight scoring](#weight-score).
-
-#### Search Controls
-
-Search post fields - Enable to define which standard WordPress post fields should be searched. Available fields are Title, Content, and Excerpt.
-
-Search post meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
-
-Search post terms - Search assigned terms of selected taxonomies by term name, slug, and description.
-
-Search Result templates only provide post-search criteria, because native WordPress search returns posts. Term and user search criteria are available in the **Filter – Search** element when that filter targets a term or user query.
-
-> **Note**
->
-> Make sure the **main Query Loop inside the Search Result template** has **"Is main query"** enabled. Otherwise the native search override will not apply.
-
-Once configured, perform a search on the frontend and your results will follow the criteria defined in the Search Result template. If **Custom search criteria** is enabled but no post fields, meta fields, or taxonomies are enabled, the search has no custom source to search and will return no matches.
-
-## Search Criteria in the "Filter – Search" Element
-
-When [Query Filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/) are enabled in Bricks, you can create advanced filtering systems for any Query Loop on any page.
-
-Before Bricks 2.2, the **Filter – Search** element always used the default WordPress `"s"` logic. Now, you can define custom search criteria per filter element. Inside the Filter – Search element settings, you will now see a **Search Criteria** section.
-
-If the Filter – Search element uses the native WordPress search URL parameter `s`, Bricks expects the search criteria to come from the Search Result template instead of the individual filter element. This keeps the frontend search box, URL parameter, and Search Result template aligned.
-
-> **Note**
->
-> Meta field search: ACF, Meta Box, and JetEngine Post Object, Relationship, and User fields usually store IDs in post meta. **Search Criteria searches the raw meta value** and does not automatically resolve those IDs to related post titles, post content, or user display names. To search those labels, store them in a separate searchable text meta field and include that meta key in Search Criteria.
-
-#### Post Query
-
-Search post fields - Enable to define whether to search in Title, Content, and Excerpt
-
-Search post meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
-
-Search post terms - Search assigned terms of selected taxonomies by term name, slug, and description. Useful for product categories, tags, brands, or other taxonomy-based relationships.
-
-#### Term Query
-
-Search term fields - Enable to define whether to search in Name, Slug, and Description.
-
-Search term meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
-
-#### User Query
-
-Search user fields - Enable to define whether to search in Username, Nicename, Email, URL, and Display name.
-
-Search user meta fields - You can add any meta key here (custom fields) to include them in your search criteria.
-
-## How matches are applied
-
-For post queries, Bricks searches the selected sources and sets the matching post IDs on the query. For term and user queries, Bricks sets the matching term or user IDs on the query. If there are no matches, Bricks passes an impossible ID/slug so the target query returns no results.
-
-Search Criteria uses partial `LIKE` matching. For post terms, Bricks searches the assigned term name, slug, and description for each selected taxonomy. For custom meta fields, it searches the raw stored `meta_value`.
-
-Every enabled field, meta key, or taxonomy adds work to the database query. Use the smallest set of searchable fields that matches the frontend experience you need.
-
-## What is "Use weight score"? {#weight-score}
-
-Weight score lets you control the order of your search results. The higher the weight score for a specific search field, the higher the result will appear if that field matches the search term.
-
-> **Note**
->
-> Important Notes:
-> - You must enable **Use weight score** for ranking to take effect.
-> - If a **Sort** filter is active, it will override the weight-score ordering.
-
-#### Example: How weight scoring works
-
-Search Criteria setup:
-
-Search post fields:
-- Title → **weight 1**
-- Content → **weight 1**
-
-Search post meta fields:
-- my_field → **weight 3**
-
-Search term: **car**
-
-Matched posts:
-
-| Post ID | Found in | Weight |
-| --- | --- | --- |
-| 1001 | Title | 1 |
-| 1002 | Title + Content | 1 + 1 = 2 |
-| 1003 | my_field | 3 |
-
-**Final result order:**
-**1003**, **1002**, **1001**
-
-Weight scores are integer values with a minimum of 1. Matching scores are added together, so an item that matches multiple low-weight fields can outrank an item that matches one field. Bricks preserves the weighted order by ordering the query by the matched ID list. If a Sort filter is active, that sort order takes precedence.
-
----
-
 <a id="builder-features-sidebars"></a>
 
 # Create Your Own Sidebars
@@ -12854,6 +10277,203 @@ All you need to do is give your sidebar a name and description (optional), and c
 Once your custom sidebar is created go to **Appearance > Widgets** and drag and drop the widgets of your choice into your newly created sidebar.
 
 You can now add this newly created sidebar inside the builder by dragging the **Sidebar** element onto the canvas.
+
+---
+
+<a id="builder-features-style-manager"></a>
+
+# Style Manager
+
+Source: https://academy.bricksbuilder.io/builder/features/style-manager/
+
+*Use Bricks Style Manager to manage theme styles, classes, variables, colors, spacing, and other design-system primitives in one place.*
+
+The Style Manager is the central place in Bricks for managing design system primitives and reusable styling tools. It brings together theme styles, classes, variables, colors, scales, and imported CSS into a single interface inside the builder.
+
+Its purpose is to centralize styling decisions so you can change colors, spacing, typography, and layout rules in one place without hunting through different panels.
+
+## What the style manager contains
+
+The Style Manager is organized into eight tabs:
+
+1. Theme styles
+2. Classes
+3. Variables
+4. Colors
+5. Typography
+6. Spacing
+7. Framework
+8. Settings
+
+---
+
+## Theme styles
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.2-style-manager-canvas-preview-fullscreen-scaled.png)
+
+Theme Styles define global default styles for HTML elements and Bricks elements.
+
+Typical use cases include:
+
+- Base typography for headings and body text
+- Default button and form styles
+- Global colors and spacing
+- Responsive defaults
+- Global hover and focus states
+
+Theme Styles are condition-based. You can apply them to the entire site, specific templates, or specific pages. They support breakpoints and pseudo-classes, which makes them suitable for defining interaction behavior centrally.
+
+For more: [/builder/styling/theme-styles/](https://academy.bricksbuilder.io/builder/styling/theme-styles/)
+
+## Classes
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.2-style-manager-class-manager-scaled.png)
+
+The Class Manager is used to create reusable CSS classes that can be applied to any element.
+
+Use classes when:
+
+- A style is reused across multiple elements
+- The style is not a global default
+- You want consistent reuse instead of copying values
+
+Classes can be organized into categories, locked, and filtered by usage and status.
+
+Theme Styles define defaults. Classes opt elements into specific behavior.
+
+For more: [/builder/styling/global-class-manager/](https://academy.bricksbuilder.io/builder/styling/global-class-manager/)
+
+## Variables
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.2-style-manager-variable-manager-scaled.png)
+
+The Variable Manager is where you define CSS custom properties that act as design tokens.
+
+Variables are commonly used for:
+
+- Colors
+- Spacing values
+- Font sizes
+- Layout dimensions
+- Reusable numeric values
+
+Instead of repeating numbers, you reference variables using `var(--variable-name)`. Updating a variable updates every place where it is used.
+
+Variables can be imported from CSS or JSON, grouped into categories, and renamed.
+
+For more: [/builder/styling/global-variables-manager/](https://academy.bricksbuilder.io/builder/styling/global-variables-manager/)
+
+## Colors
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.2-color-manager-scaled.png)
+
+The Color Manager builds structured color systems on top of CSS variables.
+
+Each color is stored as a variable and can optionally:
+
+- Have light and dark mode values
+- Generate shade and transparency variants
+- Generate utility classes
+
+For more: [/builder/features/color-manager/](https://academy.bricksbuilder.io/builder/features/color-manager/)
+
+## Typography
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.2-style-manager-typography-scales-scaled.png)
+
+The Typography tab generates fluid type scales using CSS variables and `clamp()`.
+
+Instead of manually setting font sizes, you define:
+
+- A base size
+- A scale ratio
+- Minimum and maximum viewport widths
+
+From this, Bricks generates a set of variables that scale smoothly between mobile and desktop.
+
+Typography scales are useful when you want:
+
+- Consistent hierarchy
+- Responsive sizing without manual breakpoints
+- Fewer arbitrary font-size decisions
+
+You can use t-shirt sizing, numeric steps, or custom names. Since Bricks 2.5, **Numeric (reverse)** generates descending names such as `--h6` through `--h1`. In automatic mode with ratios greater than 1, smaller numbers correspond to larger generated sizes. Generated variables can be used directly or via utility classes.
+
+Manual mode allows overriding calculated values when precise control is required.
+
+For all scale controls and how to use the variables in a theme style, see [Fluid Typography](https://academy.bricksbuilder.io/builder/styling/fluid-typography/).
+
+## Spacing
+
+![Style Manager Spacing tab with a scale named Spacing: prefix space-, scale type T-shirt, baseline step m, minimum and maximum settings, and steps from space-2xs to space-4xl with their minimum and maximum values.](https://academy.bricksbuilder.io/assets/bricks-style-manager-spacing-scale.webp)
+
+The Spacing tab generates fluid spacing values for margins, padding, and gaps using the same scale-based system as typography.
+
+Each value is a CSS variable with a `clamp()` value that grows smoothly between small and large screens, so one variable can replace a padding value and its breakpoint overrides. Set the variables once in a theme style, for example on every section, to keep the spacing consistent across pages.
+
+You can generate utility classes such as `gap-m` or `p-l`, but only generate what you actually use.
+
+For creating a scale, adding steps and using the variables in a theme style, see [Fluid Spacing](https://academy.bricksbuilder.io/builder/styling/fluid-spacing/).
+
+## Framework
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.2-framework-importer-scaled.png)
+
+The Framework tab imports external CSS and converts it into Bricks classes & variables.
+
+It can:
+
+- Parse class rules
+- Extract variables from `:root`
+- Categorize styles by intent
+- Apply prefixes to avoid conflicts
+
+This is mainly useful for:
+
+- Migrating or importing CSS frameworks
+- Importing existing custom CSS stylesheets
+
+All imports can be manually reviewed before being added.
+
+## Settings
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.2-style-manager-settings-scaled.png)
+
+The Settings tab controls how typography and spacing scales are generated, and which color mode is used by default.
+
+### Color mode
+
+- Light: always start in light mode
+- Dark: always start in dark mode
+- Auto: follow system preference
+
+### Scale configuration
+
+These settings affect typography and spacing:
+
+- HTML font-size for rem calculations
+- Minimum and maximum viewport widths
+
+---
+
+## Interface controls and preview
+
+The Style Manager header includes a full-screen button and a toggle to show or hide the canvas preview per tab.
+
+The canvas preview shows the currently edited page and updates in real time as you make changes. It responds to breakpoint switching and can be resized.
+
+---
+
+## Keyboard shortcuts
+
+You can switch between Style Manager tabs using number keys based on their position.
+
+The default shortcut to open or close Style Manager is:
+
+`CMD + .` (macOS)
+`CTRL + .` (Windows/Linux)
+
+In Bricks 2.5, change this combination under **Manage → Keyboard shortcuts**. Number-key tab navigation remains fixed. See [Keyboard Shortcuts](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/).
 
 ---
 
@@ -13068,203 +10688,6 @@ Now select **Export** from the **Bulk Actions** dropdown, and click **Apply**:
 A ZIP file of your selected templates will be generated and downloaded onto your computer.
 
 This ZIP file contains all templates as individual JSON files. Either unzip it to import individual templates or import the entire ZIP file to bulk import all templates at once.
-
----
-
-<a id="builder-features-style-manager"></a>
-
-# Style Manager
-
-Source: https://academy.bricksbuilder.io/builder/features/style-manager/
-
-*Use Bricks Style Manager to manage theme styles, classes, variables, colors, spacing, and other design-system primitives in one place.*
-
-The Style Manager is the central place in Bricks for managing design system primitives and reusable styling tools. It brings together theme styles, classes, variables, colors, scales, and imported CSS into a single interface inside the builder.
-
-Its purpose is to centralize styling decisions so you can change colors, spacing, typography, and layout rules in one place without hunting through different panels.
-
-## What the style manager contains
-
-The Style Manager is organized into eight tabs:
-
-1. Theme styles
-2. Classes
-3. Variables
-4. Colors
-5. Typography
-6. Spacing
-7. Framework
-8. Settings
-
----
-
-## Theme styles
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.2-style-manager-canvas-preview-fullscreen-scaled.png)
-
-Theme Styles define global default styles for HTML elements and Bricks elements.
-
-Typical use cases include:
-
-- Base typography for headings and body text
-- Default button and form styles
-- Global colors and spacing
-- Responsive defaults
-- Global hover and focus states
-
-Theme Styles are condition-based. You can apply them to the entire site, specific templates, or specific pages. They support breakpoints and pseudo-classes, which makes them suitable for defining interaction behavior centrally.
-
-For more: [/builder/styling/theme-styles/](https://academy.bricksbuilder.io/builder/styling/theme-styles/)
-
-## Classes
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.2-style-manager-class-manager-scaled.png)
-
-The Class Manager is used to create reusable CSS classes that can be applied to any element.
-
-Use classes when:
-
-- A style is reused across multiple elements
-- The style is not a global default
-- You want consistent reuse instead of copying values
-
-Classes can be organized into categories, locked, and filtered by usage and status.
-
-Theme Styles define defaults. Classes opt elements into specific behavior.
-
-For more: [/builder/styling/global-class-manager/](https://academy.bricksbuilder.io/builder/styling/global-class-manager/)
-
-## Variables
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.2-style-manager-variable-manager-scaled.png)
-
-The Variable Manager is where you define CSS custom properties that act as design tokens.
-
-Variables are commonly used for:
-
-- Colors
-- Spacing values
-- Font sizes
-- Layout dimensions
-- Reusable numeric values
-
-Instead of repeating numbers, you reference variables using `var(--variable-name)`. Updating a variable updates every place where it is used.
-
-Variables can be imported from CSS or JSON, grouped into categories, and renamed.
-
-For more: [/builder/styling/global-variables-manager/](https://academy.bricksbuilder.io/builder/styling/global-variables-manager/)
-
-## Colors
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.2-color-manager-scaled.png)
-
-The Color Manager builds structured color systems on top of CSS variables.
-
-Each color is stored as a variable and can optionally:
-
-- Have light and dark mode values
-- Generate shade and transparency variants
-- Generate utility classes
-
-For more: [/builder/features/color-manager/](https://academy.bricksbuilder.io/builder/features/color-manager/)
-
-## Typography
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.2-style-manager-typography-scales-scaled.png)
-
-The Typography tab generates fluid type scales using CSS variables and `clamp()`.
-
-Instead of manually setting font sizes, you define:
-
-- A base size
-- A scale ratio
-- Minimum and maximum viewport widths
-
-From this, Bricks generates a set of variables that scale smoothly between mobile and desktop.
-
-Typography scales are useful when you want:
-
-- Consistent hierarchy
-- Responsive sizing without manual breakpoints
-- Fewer arbitrary font-size decisions
-
-You can use t-shirt sizing, numeric steps, or custom names. Since Bricks 2.5, **Numeric (reverse)** generates descending names such as `--h6` through `--h1`. In automatic mode with ratios greater than 1, smaller numbers correspond to larger generated sizes. Generated variables can be used directly or via utility classes.
-
-Manual mode allows overriding calculated values when precise control is required.
-
-For all scale controls and how to use the variables in a theme style, see [Fluid Typography](https://academy.bricksbuilder.io/builder/styling/fluid-typography/).
-
-## Spacing
-
-![Style Manager Spacing tab with a scale named Spacing: prefix space-, scale type T-shirt, baseline step m, minimum and maximum settings, and steps from space-2xs to space-4xl with their minimum and maximum values.](https://academy.bricksbuilder.io/assets/bricks-style-manager-spacing-scale.webp)
-
-The Spacing tab generates fluid spacing values for margins, padding, and gaps using the same scale-based system as typography.
-
-Each value is a CSS variable with a `clamp()` value that grows smoothly between small and large screens, so one variable can replace a padding value and its breakpoint overrides. Set the variables once in a theme style, for example on every section, to keep the spacing consistent across pages.
-
-You can generate utility classes such as `gap-m` or `p-l`, but only generate what you actually use.
-
-For creating a scale, adding steps and using the variables in a theme style, see [Fluid Spacing](https://academy.bricksbuilder.io/builder/styling/fluid-spacing/).
-
-## Framework
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.2-framework-importer-scaled.png)
-
-The Framework tab imports external CSS and converts it into Bricks classes & variables.
-
-It can:
-
-- Parse class rules
-- Extract variables from `:root`
-- Categorize styles by intent
-- Apply prefixes to avoid conflicts
-
-This is mainly useful for:
-
-- Migrating or importing CSS frameworks
-- Importing existing custom CSS stylesheets
-
-All imports can be manually reviewed before being added.
-
-## Settings
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.2-style-manager-settings-scaled.png)
-
-The Settings tab controls how typography and spacing scales are generated, and which color mode is used by default.
-
-### Color mode
-
-- Light: always start in light mode
-- Dark: always start in dark mode
-- Auto: follow system preference
-
-### Scale configuration
-
-These settings affect typography and spacing:
-
-- HTML font-size for rem calculations
-- Minimum and maximum viewport widths
-
----
-
-## Interface controls and preview
-
-The Style Manager header includes a full-screen button and a toggle to show or hide the canvas preview per tab.
-
-The canvas preview shows the currently edited page and updates in real time as you make changes. It responds to breakpoint switching and can be resized.
-
----
-
-## Keyboard shortcuts
-
-You can switch between Style Manager tabs using number keys based on their position.
-
-The default shortcut to open or close Style Manager is:
-
-`CMD + .` (macOS)
-`CTRL + .` (Windows/Linux)
-
-In Bricks 2.5, change this combination under **Manage → Keyboard shortcuts**. Number-key tab navigation remains fixed. See [Keyboard Shortcuts](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/).
 
 ---
 
@@ -13773,319 +11196,181 @@ Move or resize those items to fit within the desired grid, then reduce the count
 
 ---
 
-<a id="builder-elements"></a>
-
-# Elements
-
-Source: https://academy.bricksbuilder.io/builder/elements/
-
-*Browse the built-in Bricks elements across layout, content, WordPress, WooCommerce, media, filters, and query-related use cases.*
-
-These are the elements that Bricks comes with:
-
-## Layout
-
-- [Container](https://academy.bricksbuilder.io/builder/elements/layout/container/)
-- [Block](https://academy.bricksbuilder.io/builder/elements/layout/block/)
-- [Section](https://academy.bricksbuilder.io/builder/elements/layout/section/)
-- [Div](https://academy.bricksbuilder.io/builder/elements/layout/div/)
-- [Divider](https://academy.bricksbuilder.io/builder/elements/layout/divider/)
-- [List](https://academy.bricksbuilder.io/builder/elements/layout/list/)
-
-## Basic
-
-- [Heading](https://academy.bricksbuilder.io/builder/elements/basic/heading/)
-- [Text Basic](https://academy.bricksbuilder.io/builder/elements/basic/text-basic/)
-- [Rich Text](https://academy.bricksbuilder.io/builder/elements/basic/text/)
-- [Text Link](https://academy.bricksbuilder.io/builder/elements/basic/text-link/)
-- [Button](https://academy.bricksbuilder.io/builder/elements/basic/button/)
-- [Icon](https://academy.bricksbuilder.io/builder/elements/basic/icon/)
-- [Image](https://academy.bricksbuilder.io/builder/elements/basic/image/)
-- [Video](https://academy.bricksbuilder.io/builder/elements/basic/video/)
-
-## General
-
-- [Icon Box](https://academy.bricksbuilder.io/builder/elements/general/icon-box/)
-- [Icon List](https://academy.bricksbuilder.io/builder/elements/general/icon-list/)
-- [Accordion](https://academy.bricksbuilder.io/builder/elements/general/accordion/)
-- [Accordion (Nestable)](https://academy.bricksbuilder.io/builder/elements/general/accordion-nested/)
-- [Tabs](https://academy.bricksbuilder.io/builder/elements/general/tabs/)
-- [Tabs (Nestable)](https://academy.bricksbuilder.io/builder/elements/general/tabs-nested/)
-- [Form](https://academy.bricksbuilder.io/builder/elements/general/form/)
-- [Map](https://academy.bricksbuilder.io/builder/elements/general/map/)
-- [Map (Leaflet)](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/)
-- [Map Connector](https://academy.bricksbuilder.io/builder/elements/general/map-connector/)
-- [Alert](https://academy.bricksbuilder.io/builder/elements/general/alert/)
-- [Animated Typing](https://academy.bricksbuilder.io/builder/elements/general/animated-typing/)
-- [Breadcrumbs](https://academy.bricksbuilder.io/builder/elements/general/breadcrumbs/)
-- [Code](https://academy.bricksbuilder.io/builder/elements/general/code/)
-- [HTML](https://academy.bricksbuilder.io/builder/elements/general/html/)
-- [Countdown](https://academy.bricksbuilder.io/builder/elements/general/countdown/)
-- [Counter](https://academy.bricksbuilder.io/builder/elements/general/counter/)
-- [Pricing Tables](https://academy.bricksbuilder.io/builder/elements/general/pricing-tables/)
-- [Progress Bar](https://academy.bricksbuilder.io/builder/elements/general/progress-bar/)
-- [Rating](https://academy.bricksbuilder.io/builder/elements/general/rating/)
-- [Pie Chart](https://academy.bricksbuilder.io/builder/elements/general/pie-chart/)
-- [Team Members](https://academy.bricksbuilder.io/builder/elements/general/team-members/)
-- [Testimonials](https://academy.bricksbuilder.io/builder/elements/general/testimonials/)
-- [Nav (Nestable)](https://academy.bricksbuilder.io/builder/elements/general/nav-nested/)
-- [Dropdown](https://academy.bricksbuilder.io/builder/elements/general/dropdown/)
-- [Offcanvas](https://academy.bricksbuilder.io/builder/elements/general/offcanvas/)
-- [Toggle](https://academy.bricksbuilder.io/builder/elements/general/toggle/)
-- [Toggle - Mode](https://academy.bricksbuilder.io/builder/elements/general/toggle-mode/)
-- [Back to Top](https://academy.bricksbuilder.io/builder/elements/general/back-to-top/)
-- [Template](https://academy.bricksbuilder.io/builder/elements/general/template/)
-- [Slot](https://academy.bricksbuilder.io/builder/elements/general/slot/)
-- [Facebook Page](https://academy.bricksbuilder.io/builder/elements/general/facebook-page/)
-
-## Media
-
-- [Image Gallery](https://academy.bricksbuilder.io/builder/elements/media/image-gallery/)
-- [Instagram feed](https://academy.bricksbuilder.io/builder/elements/media/instagram-feed/)
-- [Audio](https://academy.bricksbuilder.io/builder/elements/media/audio/)
-- [Carousel](https://academy.bricksbuilder.io/builder/elements/media/carousel/)
-- [Logo](https://academy.bricksbuilder.io/builder/elements/media/logo/)
-- [Slider](https://academy.bricksbuilder.io/builder/elements/media/slider/)
-- [Slider (Nestable)](https://academy.bricksbuilder.io/builder/elements/media/slider-nested/)
-- [SVG](https://academy.bricksbuilder.io/builder/elements/media/svg/)
-
-## WordPress
-
-- [WordPress](https://academy.bricksbuilder.io/builder/elements/wordpress/wordpress/)
-- [Posts](https://academy.bricksbuilder.io/builder/elements/wordpress/posts/)
-- [Pagination](https://academy.bricksbuilder.io/builder/elements/wordpress/pagination/)
-- [Nav Menu](https://academy.bricksbuilder.io/builder/elements/wordpress/nav-menu/)
-- [Sidebar](https://academy.bricksbuilder.io/builder/elements/wordpress/sidebar/)
-- [Search](https://academy.bricksbuilder.io/builder/elements/wordpress/search/)
-- [Shortcode](https://academy.bricksbuilder.io/builder/elements/wordpress/shortcode/)
-
-## Single
-
-- [Post Title](https://academy.bricksbuilder.io/builder/elements/single/post-title/)
-- [Excerpt](https://academy.bricksbuilder.io/builder/elements/single/excerpt/)
-- [Meta Data](https://academy.bricksbuilder.io/builder/elements/single/meta-data/)
-- [Post Content](https://academy.bricksbuilder.io/builder/elements/single/post-content/)
-- [Social Sharing](https://academy.bricksbuilder.io/builder/elements/single/social-sharing/)
-- [Related Posts](https://academy.bricksbuilder.io/builder/elements/single/related-posts/)
-- [Author](https://academy.bricksbuilder.io/builder/elements/single/author/)
-- [Comments](https://academy.bricksbuilder.io/builder/elements/single/comments/)
-- [Taxonomy](https://academy.bricksbuilder.io/builder/elements/single/taxonomy/)
-- [Post Navigation](https://academy.bricksbuilder.io/builder/elements/single/post-navigation/)
-- [Post Reading Progress Bar](https://academy.bricksbuilder.io/builder/elements/single/post-reading-progress-bar/)
-- [Post Reading Time](https://academy.bricksbuilder.io/builder/elements/single/post-reading-time/)
-- [Post Table of Contents](https://academy.bricksbuilder.io/builder/elements/single/post-toc/)
-
-## Query
-
-- [Query Results Summary](https://academy.bricksbuilder.io/builder/elements/query/query-results-summary/)
-
-## Filter
+<a id="builder-interface-builder-access"></a>
 
-- [Filter Active Filters](https://academy.bricksbuilder.io/builder/elements/filter/filter-active-filters/)
-- [Filter Checkbox](https://academy.bricksbuilder.io/builder/elements/filter/filter-checkbox/)
-- [Filter Datepicker](https://academy.bricksbuilder.io/builder/elements/filter/filter-datepicker/)
-- [Filter Radio](https://academy.bricksbuilder.io/builder/elements/filter/filter-radio/)
-- [Filter Range](https://academy.bricksbuilder.io/builder/elements/filter/filter-range/)
-- [Filter Search](https://academy.bricksbuilder.io/builder/elements/filter/filter-search/)
-- [Filter Select](https://academy.bricksbuilder.io/builder/elements/filter/filter-select/)
-- [Filter Submit](https://academy.bricksbuilder.io/builder/elements/filter/filter-submit/)
+# Builder Access & Capabilities
 
-## WooCommerce
+Source: https://academy.bricksbuilder.io/builder/interface/builder-access/
 
-- [WooCommerce Breadcrumbs](https://academy.bricksbuilder.io/builder/elements/woocommerce/breadcrumbs/)
-- [Mini Cart](https://academy.bricksbuilder.io/builder/elements/woocommerce/mini-cart/)
-- [Notice](https://academy.bricksbuilder.io/builder/elements/woocommerce/notice/)
-- [Template Hook](https://academy.bricksbuilder.io/builder/elements/woocommerce/template-hook/)
-- [Products](https://academy.bricksbuilder.io/builder/elements/woocommerce/products/)
-- [Products Pagination](https://academy.bricksbuilder.io/builder/elements/woocommerce/products-pagination/)
-- [Products Orderby](https://academy.bricksbuilder.io/builder/elements/woocommerce/products-orderby/)
-- [Products Total Results](https://academy.bricksbuilder.io/builder/elements/woocommerce/products-total-results/)
-- [Products Filter](https://academy.bricksbuilder.io/builder/elements/woocommerce/products-filter/)
-- [Products Archive Description](https://academy.bricksbuilder.io/builder/elements/woocommerce/products-archive-description/)
-- [Cart Items](https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-items/)
-- [Cart Coupon](https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-coupon/)
-- [Cart Collaterals](https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-collaterals/)
-- [Checkout Login](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-login/)
-- [Checkout Coupon](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-coupon/)
-- [Checkout Customer Details](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-customer-details/)
-- [Checkout Order Review](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-order-review/)
-- [Checkout Order Payment](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-order-payment/)
-- [Checkout Order Table](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-order-table/)
-- [Checkout Thankyou](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-thankyou/)
-- [Account Page](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page/)
-- [Account Orders](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-orders/)
-- [Account Downloads](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-downloads/)
-- [Account Addresses](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-addresses/)
-- [Account Payment Methods](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-payment-methods/)
-- [Account Add Payment Method](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-add-payment-method/)
-- [Account View Order](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-view-order/)
-- [Account Form Login](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-login/)
-- [Account Form Register](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-register/)
-- [Account Form Lost Password](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-lost-password/)
-- [Account Form Reset Password](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-reset-password/)
-- [Account Form Edit Account](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-edit-account/)
-- [Account Form Edit Address](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-edit-address/)
+*Control who can access Bricks and which builder capabilities are available for different WordPress roles.*
 
-## Product
+Bricks gives you full control over who can access the builder, and what actions they're allowed to perform. You can either assign a **predefined capability**, or create your own **custom capability** that allows only the specific permissions you enable for it.
 
-- [Product Title](https://academy.bricksbuilder.io/builder/elements/product/product-title/)
-- [Product Gallery](https://academy.bricksbuilder.io/builder/elements/product/product-gallery/)
-- [Product Short Description](https://academy.bricksbuilder.io/builder/elements/product/product-short-description/)
-- [Product Price](https://academy.bricksbuilder.io/builder/elements/product/product-price/)
-- [Product Stock](https://academy.bricksbuilder.io/builder/elements/product/product-stock/)
-- [Product Meta](https://academy.bricksbuilder.io/builder/elements/product/product-meta/)
-- [Product Rating](https://academy.bricksbuilder.io/builder/elements/product/product-rating/)
-- [Product Content](https://academy.bricksbuilder.io/builder/elements/product/product-content/)
-- [Add to Cart](https://academy.bricksbuilder.io/builder/elements/product/product-add-to-cart/)
-- [Related Products](https://academy.bricksbuilder.io/builder/elements/product/product-related/)
-- [Product Additional Information](https://academy.bricksbuilder.io/builder/elements/product/product-additional-information/)
-- [Product Tabs](https://academy.bricksbuilder.io/builder/elements/product/product-tabs/)
-- [Product Reviews](https://academy.bricksbuilder.io/builder/elements/product/product-reviews/)
-- [Product Up/Cross-sells](https://academy.bricksbuilder.io/builder/elements/product/product-upsells/)
+This gives you complete freedom and control to tailor the builder experience to any roles (i.e. content editor, designer, client, etc.) depending on what they should be able to do.
 
----
+![](https://academy.bricksbuilder.io/assets/bricks-settings-builder-access.png)
 
-<a id="builder-license-restrict-license-key-usage"></a>
+## Access levels
 
-# Restrict License Key Usage
+There are two ways to manage builder access:
 
-Source: https://academy.bricksbuilder.io/builder/license/restrict-license-key-usage/
+1. Use one of the predefined capabilities: **Full access**, **Edit content**, or **No access**
+2. Create your own custom builder capability with detailed permission control
 
-*Restrict where a Bricks license key can be used so updates stay available only on approved production, staging, or local sites.*
+### Predefined capabilities
 
-By default, you can activate your Bricks license key on any website that runs the Bricks theme. That is, if you have not already reached the site limit of your purchased license ([https://bricksbuilder.io/pricing/](https://bricksbuilder.io/pricing/)).
+- **Full access**: Grants access to all features and permissions in the Bricks builder.
+- **Edit content**: Limits the user to content editing only. Layout, styling, and structural controls are disabled. More specifically, this includes the following permissions:
+  - Access revisions
+  - Set component properties (instance)
+  - Access content (HTML) settings
+  - Edit all elements
+  - Edit all Bricks-enabled post types
+- **No access**: Blocks access to the Bricks builder entirely.
 
-To restrict on which WordPress sites your license can be activated, navigate to the "Sites" tab of your Bricks account at [https://my.bricksbuilder.io/#sites](https://my.bricksbuilder.io/#sites) and scroll to the "Whitelist/blacklist URL" section at the bottom:
+## Creating a custom capability {#custom}
 
-![](https://academy.bricksbuilder.io/assets/bricks-account-sites-whitelist-blacklist-urls.png)
+If you need precise control over the actions a user or role should be able to perform, you can create your very own custom builder capability, following the steps outlines below.
 
-There, you can add the URLs of the WordPress sites that you want to allow your license key to be activated at (= whitelist) or disallow your license key to be activated at (= blacklist).
+1. Go to **Bricks > Settings > Builder access**
+2. Under **Builder capabilities**, click **Add new capability**
 
-These restrictions are enforced by the Bricks account/licensing service. The Bricks theme does not store or apply the whitelist/blacklist locally; during activation and deactivation requests, it sends the current site URL to the licensing service.
+![](https://academy.bricksbuilder.io/assets/bricks-builder-access-add-custom-capability.png)
 
-**NOTE:** Removing an activated site from the list of sites at https://my.bricksbuilder.io/#sites is not enough to stop it from reappearing. Please make sure to remove the site, and add it to either the white- or blacklist.
+Inside the capability popup, you can:
 
-### Using the correct site URL
+- Give the capability a name & a description
+- Enable exactly the permissions you want to grant
 
-To make sure you are adding the correct URL to the list, navigate the the WordPress dashboard of the site you want to exclude, and copy the URL under `Settings > General > Site Address`.
+![](https://academy.bricksbuilder.io/assets/bricks-builder-access-permissions.png)
 
-![](https://academy.bricksbuilder.io/assets/bricks-account-whitelist-site-address.png)
+Once created, you can assign this capability to specific users or user roles.
 
-If you don't have access to the backend of the site, use the home page URL of the site, but without any trailing slash at the end.
+## Assigning capabilities
 
----
+You can assign any builder capability, whether predefined or custom:
 
-<a id="builder-license-license-and-updates"></a>
+- To a **user role**, under **Bricks > Settings > Builder access > Builder access**
 
-# License, updates, and your account
+![](https://academy.bricksbuilder.io/assets/bricks-builder-access-custom-capabilities.png)
 
-Source: https://academy.bricksbuilder.io/builder/license/license-and-updates/
+- To a **specific user**, by editing their WordPress user profile
 
-*Update Bricks safely, manage your license and sites, and understand staging and local URLs.*
+![](https://academy.bricksbuilder.io/assets/bricks-builder-edit-user-profile.png)
 
-For first-time installation and activation, follow [Installation and setup](https://academy.bricksbuilder.io/getting-started/installation-setup/).
+![](https://academy.bricksbuilder.io/assets/bricks-builder-access-user-settings.png)
 
-This article covers **automatic updates**, **staging and safe updates**, **which URLs count toward your license**, and **managing activations** in your Bricks account.
+This gives you flexibility to apply permissions globally or individually.
 
-Your Bricks account and downloads live at [my.bricksbuilder.io](https://my.bricksbuilder.io/) (same destination the theme uses for remote services).
+## Drafts and site versions {#drafts-and-versions}
 
-## Define the license key in wp-config.php {#constant}
+With [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) enabled, users need WordPress permission to edit the page and Bricks access for that page's post type to open its page draft. A page draft can be opened by other users with the same required access; it is not private to its creator.
 
-Starting with Bricks 2.4, you can define your Bricks license key as a PHP constant in `wp-config.php`:
+[Site versions](https://academy.bricksbuilder.io/builder/interface/site-versions/) span multiple pages. Opening or creating them requires Builder access and WordPress permission to edit other users' posts (`edit_others_posts`). Existing Builder permissions still control the actions available inside either kind of draft.
 
-```php
-define( 'BRICKS_LICENSE_KEY', 'your-license-key' );
-```
+Publishing checks the rights required for all included changes, including page and template settings, shared data, and code execution. Having access to a draft does not grant permission to publish every change someone else added to it.
 
-Add the constant above the line that says `/* That's all, stop editing! Happy publishing. */`.
+[Review links](https://academy.bricksbuilder.io/builder/interface/review-links/) provide a separate, view-only preview for people without an editor login. They do not give reviewers Builder access or permission to edit or publish.
 
-Use this when you manage WordPress sites from a blueprint, clone sites for development, or prefer to keep the raw license key out of the WordPress options table.
+## Available permissions
 
-When `BRICKS_LICENSE_KEY` is defined, Bricks uses it as the active license key. The license screen at **Bricks > License** shows that the key is defined by the constant and provides a **Re-validate license** button.
+When editing a capability, the following permissions are available and grouped by category:
 
-If a license key is also saved in the database, Bricks keeps using `BRICKS_LICENSE_KEY` while the constant is active. The license screen shows a notice and a **Remove saved database key** button. This removes the local `bricks_license_key` option only. It does not remotely deactivate the license.
+### Post types {#post-types}
 
-To use a different key, update the constant value and re-validate the license. To return to a database-stored key, remove the constant and activate the license from **Bricks > License**.
+Choose which post types can be edited using Bricks.
 
-## How to update Bricks {#how-to-update}
+### General {#general}
 
-If you have activated your Bricks license key on your site, you'll automatically receive update notifications in your WordPress dashboard. You can then perform the update to the latest version of Bricks with one click from your WordPress dashboard.
+- Access breakpoints manager
+- Access page settings
+- Access template settings
+- Access revisions
+- Delete revisions
+- Access font manager
+- Access icon manager
+- Access query manager
+- Access filter manager (Bricks 2.5)
+- Customize builder interface
+- Manage builder interface profiles
+- Manage global elements (only if legacy Global Elements exist)
 
-![](https://academy.bricksbuilder.io/assets/bricks-wp-dashboard-how-to-update.png)
+**Access filter manager** permits creating, editing, organizing, deleting, importing, and exporting [global filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#global-filters). This includes editing shared controls on linked elements. Users without it can select an existing compatible global filter and edit local settings such as the target query and presentation.
 
-You can also always manually download the latest version from your Bricks account at [https://my.bricksbuilder.io/](https://my.bricksbuilder.io/) as a ZIP file.
-
-### Test on staging & read the changelog
-
-We recommend to perform updating a mission-critical software like Bricks first on a staging server. Especially if your website is live, receives a lot of traffic, you are running marketing campaigns, offers, etc. Once you confirmed that everything is working as expected you can update your live site.
-
-Every noticeable host offers, mostly free of charge, an easy one-click staging solution. Please reach out to your host if you are not sure how this works.
-
-Every update is accompanied by an in-depth release changelog. Please take the time to go over it at [https://bricksbuilder.io/changelog/](https://bricksbuilder.io/changelog/) before you perform the update.
-
-This way you know exactly what changed, if any adjustments or steps need to be performed on your end, which new features are available, and so on.
-
-### Local, staging & intranet installations don't count against your license limit {#local}
-
-These rules are enforced by the Bricks account/licensing service. During license activation, validation, and update checks, the Bricks theme sends the current site/license data, including the site URL/domain and Bricks version, to the licensing service. The service then decides whether a URL counts toward your license limit.
-
-Bricks classifies sites matching the following URL patterns as local, staging, or intranet installations for licensing purposes. These installations do not count against your license activation limit. This classification does not necessarily describe how a site is used.
-
-**Local URLs:**
-
-- `192.168.x.x`
-- `127.0.0.1`
-- `localhost` (includes)
-- `.local` (top-level domain)
-- `.test` (top-level domain)
-- `.wip` (top-level domain)
-
-<span id="staging"></span>
-
-**Staging URLs:**
-
-- Staging subdomains (dev, staging, test)
-  - `dev.yoursite.com`
-  - `staging.yoursite.com`
-  - `test.yoursite.com`
-- BlogVault: `.wpstage.net`
-- Cloudways: `.cloudwaysapps.com` & `.cloudwayssites.com`
-- DreamHost / DreamPress: `.stage.site` & `.dream.press`
-- Flywheel: `.mysites.io` & `.flywheelsites.com`
-- GoDaddy: `.myftpupload.com`
-- Hostinger: `.hostingersite.com`
-- InstaWP: `.instawp.site` & `.instawp.xyz` & `instawp.com` & `.instawp.co` & `.instawp.link`
-- Kinsta: `.kinsta.cloud`
-- Lando Pantheon: `.lndo.site`
-- Nexcess: `.nxcli.net` & `.nxcli.io`
-- Pantheon: `.pantheonsite.io`
-- Plesk: `.plesk.page`
-- Raidboxes: `.myrdbx.io`
-- Rocket.net: `.onrocket.site` & `.wpdns.site`
-- Runcloud: `.temp-site.link`
-- SiteGround: `.sg-host.com`
-- SpinupWP: `.spinupwp.site`
-- TasteWP: `.tastewp.com`
-- WP Engine: `.wpenginepowered.com` & `.wpengine.com`
-- WP Stagecoach: `.wpstagecoach.com` & `.wpsc.site`
-- wp-space.de: `.wpspace.partners`
-- xCloud: `1wp.site`, `.wp1.site`, `wp1.sh`, `wp1.host`
-- ZipWP: `.zipwp.link`
-
-<span id="intranet"></span>
-
-**Intranet (top-level domains):**
-
-- `.intranet`
-- `.internal`
-- `.private`
-- `.corp`
-- `.home`
-- `.lan`
-
-**With a Bricks Starter license (1 active site limit), you can build your site locally with Bricks & use your Starter license on your live site simultaneously.**
-
-You can deactivate the license key from your site from your WP dashboard under `Bricks > License`, and activate it on another site or remove the site from your Bricks account under the "Sites" tab. We monitor any potential misusage (attempts to avoid purchasing a sufficient plan) and reserve the right to limit further license activations.
+### Templates {#templates}
+
+- Create templates
+- Edit templates
+- Delete templates
+- Insert templates
+- Access remote templates
+- Import/export templates
+
+### Global styles & settings {#styles-setting}
+
+- Access theme styles
+- Access color manager
+- Access variable manager
+- Access class manager
+- Create global classes
+- Edit global classes
+- Assign/unassign global classes
+- Delete global classes
+- Lock/unlock global classes
+- Copy/paste global class styles
+- Access pseudos & selectors
+
+### Components {#components}
+
+- Access remote components
+- Insert components
+- Edit properties (instance)
+- Edit components
+- Create components
+- Delete components
+- Import/export components
+
+Remote workflows combine these permissions instead of using one broad access flag:
+
+| Workflow | Required permissions |
+| --- | --- |
+| Browse a configured remote component library | **Access remote components** |
+| Import a remote component | **Access remote components** and **Import/export components** |
+| Insert an imported component | **Insert components** |
+| Insert a remote template without components | **Access remote templates** and **Insert templates** |
+| Insert a remote template with component dependencies | **Access remote templates**, **Insert templates**, **Access remote components**, **Import/export components**, and **Insert components** |
+| Save a remote template to My Templates | **Access remote templates** and **Import/export templates** |
+| Save a remote template with component dependencies to My Templates | The template import permissions above, plus **Access remote components** and **Import/export components** |
+
+See [Remote Templates](https://academy.bricksbuilder.io/builder/features/remote-templates/) for the corresponding template setup.
+
+### Element editing & styling {#element-edit-style}
+
+- Access content (HTML) settings
+- Access style (CSS) settings
+- Access query loop builder
+- Access element hide
+- Access element conditions
+- Access element interactions
+- Duplicate elements
+- Delete elements
+- Move elements
+- Copy/paste elements
+- Copy/paste element styles
+- Copy/paste element conditions
+- Copy/paste element interactions
+- Copy/paste element attributes
+- Pin/unpin elements
+
+### Edit elements {#edit-elements}
+
+Controls general editing of existing elements.
+
+_Note: Requires access to content and/or style settings._
+
+### Add elements {#add-elements}
+
+Define which elements can be inserted.
 
 ---
 
@@ -14456,94 +11741,2719 @@ Happy wireframing!
 
 ---
 
-<a id="builder-setup-requirements"></a>
+<a id="builder-interface-builder-interface-customiser-profiles"></a>
 
-# Requirements
+# Builder Interface Customiser and Profiles
 
-Source: https://academy.bricksbuilder.io/builder/setup/requirements/
+Source: https://academy.bricksbuilder.io/builder/interface/builder-interface-customiser-profiles/
 
-*PHP, memory, upload size, browser, and troubleshooting for Bricks.*
+*Customize the Bricks builder workspace, save reusable interface profiles, and assign layouts to roles or users.*
 
-This article covers the recommended server limits and browser compatibility for Bricks, plus how to fix common limits. The [Installation and setup](https://academy.bricksbuilder.io/getting-started/installation-setup/) guide links here when you need the full checklist or troubleshooting.
+The Builder Interface Customiser lets you adjust the Bricks builder workspace to match the way you work.
 
-To provide you with a cutting-edge site builder for WordPress Bricks uses the most modern technology stack (VueJS 3, etc.) while keeping sufficient backward compatibility.
+You can add, hide and move toolbar items, dock the Control panel and Structure, place Pinned controls in the bottom dock, and save layouts as profiles for different users or roles.
 
-Below are the baseline server limits and compatibility recommendations for running Bricks smoothly:
+This changes the builder workspace only. It does not change frontend output, templates, elements, or page data.
 
-- PHP 5.4+
-- WordPress memory limit: min. 64 MB (recommended: 512 MB)
-- Max file upload size: min. 64 MB
-- Modern browser: Use a current version of Chrome, Firefox, Safari, or Microsoft Edge when editing your website with Bricks. Older browsers (e.g. Internet Explorer) lack support for some of the more advanced builder features.
+https://www.youtube.com/watch?v=iIUmLZQp_CY
+
+## Requirements
+
+Builder interface customization is available in Bricks 2.4.
+
+The Builder interface entry appears when the current user can customize the builder interface or manage builder interface profiles. Administrators with full builder access can use both by default.
+
+Use [Builder access](https://academy.bricksbuilder.io/builder/interface/builder-access/) to grant these permissions to other roles:
+
+- **Customize builder interface**: Lets the user save and reset their own builder interface preferences.
+- **Manage builder interface profiles**: Lets the user create, load, rename, overwrite, delete, import, and export builder interface profiles.
+
+Site admins can disable the customiser globally under `Bricks -> Settings -> Builder -> Builder interface` by enabling **Disable builder interface customiser**.
+
+## Open the Builder interface
+
+Open the builder, then use either of these entry points:
+
+- Open the builder settings panel and click **Builder interface**.
+- Open the [Command Palette](https://academy.bricksbuilder.io/builder/interface/command-palette/) and choose **Builder interface** from the Builder scope.
+
+![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-popup.webp)
+
+## Workspace layout
+
+The Builder interface popup controls the main workspace areas.
+
+### Control panel and Structure
+
+Use the **Control panel** and **Structure** settings to dock each panel to the **Left**, **Right**, or **Bottom**.
+
+When the Control panel and Structure are assigned to the same side dock, Bricks displays them next to each other instead of stacking both panels in the same area.
+
+![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-control-structure-panels.webp)
+
+### Pinned controls
+
+Pinned controls can stay inside the control panel or move to the bottom dock.
+
+When **Pinned controls** is set to **Bottom**, the popup shows a **Pinned controls layout** section. Use it to set the number of columns and optional column widths. Bricks supports up to six pinned-control columns.
+
+![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-pinned-controls.webp)
+
+### Bottom dock
+
+The bottom dock can contain:
+
+- Control panel
+- Structure
+- Pinned controls
+
+Items in the bottom dock appear as tabs. You can reorder those tabs while editing the builder interface.
+
+When more than one item is assigned to the bottom dock, the popup shows a **Bottom dock layout** section. Use it to set the number of bottom dock columns and optional CSS widths for each column. The maximum number of columns matches the number of items currently assigned to the bottom dock.
+
+![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-bottom-dock.webp)
+
+## Toolbar layout
+
+The toolbar can be placed on the **Top**, **Right**, **Bottom**, or **Left** edge of the builder.
+
+Each toolbar edge has three groups:
+
+- **Start**
+- **Center**
+- **End**
+
+Drag toolbar items between these groups to change their order and placement. Bricks keeps the breakpoint controls together as one locked cluster.
+
+### Toolbar items
+
+The **Toolbar items** section contains optional items you can drag into the toolbar. This includes repeatable toolbar dividers and custom **Insert element** shortcuts.
+
+An Insert element shortcut can insert a selected element or component directly from the toolbar.
+
+![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-toolbar-items.webp)
+
+### Hidden items
+
+Drag optional toolbar items into **Hidden items** to remove them from the visible toolbar. Use the restore button on a hidden item to bring it back.
+
+Required toolbar items cannot be hidden. In Bricks 2.4, **Elements**, **Structure**, **Preview**, and **Save** are required.
+
+## Keyboard shortcuts
+
+In Bricks 2.5, the **Keyboard shortcuts** section lets you include shortcut customizations with the current Builder Interface settings or profile.
+
+1. Click **Manage** in the Keyboard shortcuts section.
+2. Change the combinations you want to include, then click **Save** to return to the Builder Interface popup.
+3. Click **Save** to keep the current interface settings for your account, or use **Save as** / **Overwrite** in Profiles to save them with a reusable profile.
+
+![The Keyboard shortcuts section in Builder Interface with its Manage button.](https://academy.bricksbuilder.io/assets/keyboard-shortcuts/builder-interface-keyboard-shortcuts.webp)
+
+Shortcuts saved in an assigned profile take priority over personal shortcut preferences. The profile controls only the commands it defines; those bindings show the profile name and are read-only in the personal shortcut manager. Personal combinations for other commands remain available, unless they conflict with a managed command. Removing the profile restores the retained personal preferences.
+
+Use **Manage → Keyboard shortcuts** from the toolbar when you only want to change your personal shortcuts. See [Keyboard Shortcuts](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/) for remapping, conflicts, import/export, and the default combinations.
+
+## Save or reset your layout
+
+Click **Save** to store the current builder interface for your user account.
+
+Click **Reset** to remove your saved builder interface preferences and return to the resolved default layout. In Bricks 2.5, this also clears your personal keyboard shortcut overrides. The reset keeps pinned control groups where possible, so frequently used pinned groups are not lost just because the workspace layout was reset.
+
+If the popup shows an unsaved-changes message, save before closing the popup if you want to keep the layout.
+
+## Profiles
+
+Builder interface profiles save a complete builder interface layout that can be reused.
+
+In the **Profiles** section, you can:
+
+- **Load** an existing profile into the current popup.
+- **Save as** a new profile from the current layout.
+- **Overwrite** the selected profile.
+- **Rename** the selected profile.
+- **Delete** the selected profile.
+
+Profiles are useful when different people need different builder workspaces. For example, a designer might use a wide control panel and visible Structure panel, while a content editor might use fewer toolbar items and a simplified bottom dock.
 
 > **Note**
 >
-> *Bricks is a self-hosted solution that you download & install on your own WordPress website!*
+> Bricks applies profiles after personal builder interface preferences. If a setting exists in both places, the assigned profile wins. Use profile assignments when you want a role or user to consistently receive a specific builder workspace.
 
-## How To Increase WP Memory Limit {#wp-memory-limit}
+Saving a profile does not assign it automatically. Assign profiles under Builder access after creating them.
 
-You can define **WP_MEMORY_LIMIT** by adding the following code to your **wp-config.php** file, above the line that says "That's all, stop editing!":
+## Assign profiles to roles or users
+
+After creating profiles, assign them under `Bricks -> Settings -> Builder access -> Builder interface profile`.
+
+Each WordPress role can use:
+
+- **Default**
+- Any saved builder interface profile
+
+You can override the role assignment for a specific person by editing that user's WordPress profile and selecting a **Builder interface profile**.
+
+![](https://academy.bricksbuilder.io/assets/builder-interface-profiles-user-roles.webp)
+
+If a user has multiple roles with different profile assignments, Bricks uses the first matching role assignment from the user's role list.
+
+Deleting a profile removes any role and user assignments that pointed to that profile.
+
+![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-profiles.webp)
+
+## Import and export
+
+Open the import/export icon in the Builder interface popup to move layouts between sites or browsers.
+
+![](https://academy.bricksbuilder.io/assets/bricks-builder-interface-import-export.webp)
+
+You can export or import:
+
+- Current builder interface settings
+- The selected profile
+- All profiles
+
+Importing builder interface settings overrides the current builder interface settings. Importing profiles does not import role or user assignments.
+
+When imported profiles conflict with existing profile IDs, Bricks lets you overwrite, import as a copy, or skip each profile. Conflicting profiles are skipped by default until you choose another option.
+
+## Reset another user's preferences
+
+Admins can reset another user's saved builder interface preferences from that user's WordPress profile.
+
+In the user's WordPress profile, find **Builder interface** and click **Reset builder interface**. This removes that user's custom builder interface preferences, including personal keyboard shortcuts in Bricks 2.5, and restores the default or assigned profile settings on the next builder load.
+
+## Troubleshooting
+
+- **The Builder interface entry is missing:** Check that the user has **Customize builder interface** or **Manage builder interface profiles**, and that **Disable builder interface customiser** is not enabled.
+- **A user's saved layout does not appear after reload:** Check whether a builder interface profile is assigned to the user's role or user account. Assigned profiles override personal preferences.
+- **A toolbar item will not hide:** Required toolbar items cannot be hidden.
+- **A profile is missing after deletion:** Deleting a profile also removes role and user assignments for that profile.
+- **Profile assignments did not move during import:** Importing profiles does not import role or user assignments. Assign the profiles again under **Builder access**.
+
+---
+
+<a id="builder-interface-builder-mode"></a>
+
+# Builder Mode (Custom)
+
+Source: https://academy.bricksbuilder.io/builder/interface/builder-mode/
+
+*Customize the Bricks builder color scheme with custom builder-mode CSS variables.*
+
+Starting with Bricks 1.3.7 you can customize the builder mode (color scheme) to your liking by tweaking a few CSS variables.
+
+You first have to set the "Builder Mode" under Bricks → Settings → Builder to "Custom" and save your settings.
+
+The following new setting called "Builder Mode (Custom)" should now appear:
+
+![Builder Mode: Custom](https://academy.bricksbuilder.io/assets/bricks-setting-builder-mode-custom-1024x721.png)
+
+Below you can find a starter CSS snippet with commonly customized builder CSS variables. Bricks 2.x defines additional variables for classes, components, status colors, muted colors, and the canvas scrollbar, so use this as a starting point and override any extra variables your custom mode needs.
 
 ```php
-define( 'WP_MEMORY_LIMIT', '512M' );
-/* That's all, stop editing! Happy publishing. */
+[data-builder-mode=custom] {
+  --builder-bg: #f6f4f2;
+  --builder-bg-2: #efebe6;
+  --builder-bg-3: #e7e1da;
+  --builder-bg-4: #dbd2c8;
+  --builder-bg-accent: #EED8FD;
+
+  --builder-color: #2e271e;
+  --builder-color-description: #76634c;
+  --builder-color-accent: #7209B7;
+  --builder-color-accent-inverse: #fff;
+
+  --builder-color-knob: #c8baaa;
+  --builder-border-color: #d8cec2;
+  --builder-placeholder-opacity: .33;
+
+  --builder-color-class: #2b6cb0;
+  --builder-bg-class: #d8e8f6;
+  --builder-color-component: #6b46c1;
+  --builder-bg-component: #eadcf8;
+  --builder-color-info: #006c9c;
+  --builder-bg-info: #d9f1ff;
+  --builder-color-danger: #b42318;
+  --builder-bg-danger: #ffe4e2;
+  --builder-color-success: #027a48;
+  --builder-bg-success: #dcfae6;
+  --builder-color-muted: #7a6f63;
+  --builder-bg-muted: #e2ddd6;
+
+  --builder-canvas-scrollbar-thumb: #c8baaa;
+  --builder-canvas-scrollbar-thumb_hover: #76634c;
+  --builder-canvas-scrollbar-track: #efebe6;
+
+  --bricks-tooltip-bg:   #16130f;
+  --bricks-tooltip-text: #f6f4f2;
+}
 ```
 
-Some web hosts set the PHP memory limit to as low as 8 MB. In that case, you might consider upgrading to a more powerful hosting plan. If your host does not allow you to config this setting by yourself, please get in touch with them.
+If you copy the CSS above, paste it into your "Builder Mode (Custom)" setting, and save your settings, your builder should look like this:
 
-## How To Increase Max File Upload Size {#max-file-upload-size}
+![](https://academy.bricksbuilder.io/assets/bricks-screenshot-builder-mode-custom-1024x576.png)
 
-If you encounter problems uploading larger files to your site (or when downloading high-resolution images from Bricks' Unsplash integration) there are a few ways to increase the maximum upload file size.
+<figcaption>
 
-A maximum upload size should be 64 MB or more. Log into your hosting account and change the following two **PHP server settings** to:
+Bricks builder with a custom color scheme (mode)
 
-- post_max_size: 64M
-- upload_max_filesize: 64M
+</figcaption>
 
-If you have access to your **php.ini** file, located in the root directory of your WordPress installation, open it, and modify the following settings:
+### Resources
+
+- Color palettes: [https://coolors.co/palettes/trending](https://coolors.co/palettes/trending)
+- Color palettes: [https://colorhunt.co](https://colorhunt.co)
+- Generate color shades & tints: [https://www.colorhexa.com](https://www.colorhexa.com)
+
+Note: In custom builder mode, Code element's background color changes to a light color scheme.
+
+---
+
+<a id="builder-interface-command-palette"></a>
+
+# Command Palette
+
+Source: https://academy.bricksbuilder.io/builder/interface/command-palette/
+
+*Use the Bricks Command Palette to run common actions, navigate faster, and insert element structures with keyboard-driven workflows.*
+
+The **Command Palette**, introduced in Bricks 2.0, lets you open Builder tools, find content, and insert element structures from the keyboard.
+
+https://youtu.be/gOVNlRvsYc8
+
+## How to launch it
+
+Click the command `⌘` icon in the builder toolbar or use the default `CMD/CTRL + K` keyboard shortcut to open the Command Palette, which appears as an overlay, allowing you to type and filter commands across four scopes. In Bricks 2.5, you can change the opening shortcut under **Manage → Keyboard shortcuts**. The navigation and insertion keys inside the palette remain fixed. See [Keyboard Shortcuts](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/).
+
+## Scope: Builder {#builder}
+
+Navigate to key parts of the builder from a growing list of targets such as classes, variables, templates, theme styles, settings, etc.
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-builder.png)
+
+## Scope: Post Types {#post-types}
+
+This scope lets you browse the registered post types your builder capability can access, create new posts when your user can edit posts, or duplicate existing posts.
+
+Besides "All" and "Template (Bricks)", a post type gets its own tab only when Bricks is enabled for it under **Bricks > Settings > General > Post types** and your role can access it in the builder. "All" searches every public post type.
+
+To create a post, select the post type tab, type the title, and click "Create". Bricks adds the post as a draft. Click a result to open it in the builder. `CMD/CTRL` + click opens it in a new browser tab. Posts of a type that is not enabled for Bricks open in the WordPress editor in a new tab.
+
+The scope auto-selects the post type that you are currently editing. So if you are editing a Bricks template the "Template (Bricks)" post type will be selected. If you edit a "Page", then "Page" is selected and so on.
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-post-types.png)
+
+## Scope: Components {#components}
+
+Type `*` at the start of the search to switch to Components. Search for a component and select it to insert it into the current page, when your builder permissions allow component insertion.
+
+## Scope: Elements {#elements}
+
+Use the **Elements** scope to insert one element or a nested structure in a single action. Save structures you use repeatedly so you can insert them again without retyping the expression.
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-scope-elements.png)
+
+### Insert single element
+
+To insert a single element simply type its name, such as "Section", then `ARROW`-navigate to it in the elements list, and insert it by pressing `ENTER` or just click on the element name.
+
+### Insert element structure
+
+Each element starts with an **@** symbol.
+
+The element name that the command bar requires is displayed in square brackets in the results list:
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-element-name.png)
+
+<figcaption>
+
+Text link element command: `@text-link`
+
+</figcaption>
+
+### Supported operators
+
+Use the following operators to define nested structure, siblings, a multiplier, or to move back up one nesting level.
+
+| Symbol | Meaning |
+| --- | --- |
+| `@` | Bricks element name (e.g. `@heading`) |
+| `>` | Nest inside |
+| `+` | Insert element as sibling |
+| `*` | How often to insert the element |
+| `^` | Move one level up before inserting the next element |
+| `.class-name` | Assign a global class to the preceding element (since 2.5) |
+| `#custom-id` | Set a custom CSS ID on the preceding element (since 2.5) |
+
+### Add classes and custom IDs {#classes-and-ids}
+
+Since Bricks 2.5, append class names and a custom ID directly to an element name, without spaces:
+
+```text
+@section#contact > @container.card-grid > @block#card.card * 2
+```
+
+This inserts a Section with custom ID `contact`, a child Container using the global class `card-grid`, and two Blocks using the global class `card`. The Blocks receive custom IDs `card` and `card-2`. Because the expression supplies a Container directly below the Section, Bricks does not insert an extra automatic Container. A Section expression without that explicit Container keeps its normal automatic Container.
+
+The shorter expression `@block#card.card * 2` creates two Blocks with the same global class and distinct custom IDs:
+
+![The Command Palette Elements scope with @block#card.card * 2 entered and Insert available.](https://academy.bricksbuilder.io/assets/builder/release-2.5/palette-expression.webp)
+
+<div className="screenshot screenshot--control-panel">
+
+![The second Block selected with custom ID card-2 and the card global class assigned.](https://academy.bricksbuilder.io/assets/builder/release-2.5/palette-class-result.webp)
+
+</div>
+
+For each `.class-name`, Bricks reuses the global class with that exact name. If it does not exist, Bricks creates an empty global class when your user has permission to create classes. A name such as `card-grid` does not generate a grid layout by itself; define that class's styles or reuse an existing styled class.
+
+Assigning classes requires **Assign/unassign global classes** permission. Creating missing classes also requires **Create global classes** permission. Without assignment permission, class suffixes are not applied. With assignment permission but no creation permission, existing classes can be used and missing ones are skipped. If a matching class is in the trash, restore it in the Class Manager before trying to create it again.
+
+Combine classes as `@block.card.featured`, or combine an ID and classes as `@block#contact-card.card.featured`. These are native global-class assignments, not entries in the **Style > CSS > CSS classes** text field. See [Global CSS Classes](https://academy.bricksbuilder.io/builder/styling/global-css-classes/) for editing them.
+
+When an ID repeats within the same insertion command, Bricks adds numeric suffixes such as `-2` and `-3`. This numbering does not check IDs already on the page or IDs inserted by a separate command. Keep custom IDs unique when reusing saved structures.
+
+### Element structure example
+
+`@section * 2 > @heading + @text + @button`
+This creates the following structure *(two times because of the multiplier: `* 2`)*:
+
+- `Section`
+ └ `Container`
+   ├ `Heading`
+   ├ `Text`
+   └ `Button`
+
+Bricks adds the Container inside every Section automatically, so you don't type `@container` after `@section`.
+
+### Quick element insertion
+
+> **Note**
+>
+> After selecting an element from the search results, its name is added to your query with the `@` prefix, allowing you to quickly build complex queries:
+
+1. Type `@` to activate insertion mode
+2. Select an element (e.g., "section")
+3. Type `>` for a child element
+4. Continue building your structure
+5. Insert your element structure
+  - Click the "Insert" button that appears next to your query
+  - Press `CMD/CTRL + ENTER`
+
+If no element is selected, Bricks adds the structure at the end of the page or template.
+
+### Save element structures
+
+Instead of typing out your favorite structures by hand every time, you can save them by clicking the "Save" button next to the command bar. Your structures are stored in this browser's `localStorage`, so they are local to that browser/profile and are not synced between users or devices.
+
+![](https://academy.bricksbuilder.io/assets/bricks-2.0-command-palette-saved-element-structures.png)
+
+<figcaption>
+
+List of saved element structures
+
+</figcaption>
+
+To insert a saved structure, open the "Select element structure" dropdown in the Elements scope and pick it. To delete a structure, mouseover the structure item in the list, and click the "Delete" icon.
+
+## Scope: Components {#components}
+
+This scope lists the components on your site. Select a component to insert an instance of it, the same way you insert a single element. The scope is available when your role can insert components.
+
+## Keyboard shortcuts
+
+| **Keyboard shortcut** | **Action** |
+| --- | --- |
+| `CMD/CTRL + K` | Open/close the command palette |
+| `ESC` | Close the command palette |
+| `TAB > ENTER` (to enter selected scope) | Navigate between search and scopes |
+| `#` (as the first character in the search input) | Enter scope “Builder” |
+| `/` (as the first character in the search input) | Enter scope “Post Types” |
+| `+` or `@` (as the first character in the search input) | Enter scope “Elements” |
+| `*` (as the first character in the search input) | Enter scope “Components” |
+| `CMD/CTRL + ENTER` | Insert the element structure typed in scope “Elements” |
+| `/` followed by a post-type index | Navigate to a specific post type |
+| `ARROW UP/DOWN` + ENTER | Navigate to a search result and open it |
+
+## Notes
+
+Bricks remembers your last selected scope, even after builder reload (stored in your localStorage).
+
+The "Pages" panel remains available from the builder toolbar. The Command Palette is an additional fast way to browse, create, duplicate, and open posts.
+
+The docs entry is also accessible from the "Builder" scope.
+
+---
+
+<a id="builder-interface-context-menu"></a>
+
+# Context Menu
+
+Source: https://academy.bricksbuilder.io/builder/interface/context-menu/
+
+*Use the Bricks context menu for quick element actions such as edit, clone, delete, structure moves, and style copy and paste.*
+
+The Bricks context menu gives you quick access to actions for the selected element. It is especially useful for copying, pasting, duplicating, deleting, hiding, wrapping, converting, and saving reusable layout pieces.
+
+To open it, right-click an element on the canvas or in the Structure panel.
+
+https://youtu.be/7HpRF6jRSlc
+
+## How the context menu selects an element
+
+Right-clicking an element makes that element active and opens the Element panel.
+
+The Bricks context menu is hidden in Preview mode. It also does not open from the Elements library panel, because that panel is for inserting new elements, not editing existing ones.
+
+## Action availability
+
+The context menu is dynamic. It changes based on:
+
+- The current user's builder permissions.
+- Whether one element or multiple elements are selected.
+- Whether the selected element is nestable.
+- Whether the selected element is cloneable or deletable.
+- Whether the selected element is a Component instance or Component root.
+- Whether the selected element is a legacy Global Element.
+- Whether the clipboard currently contains Bricks data that can be pasted.
+
+If an action is missing, it is usually because the current selection, permissions, or clipboard state does not support it.
+
+## Main actions
+
+| Action | What it does | Important limits |
+| --- | --- | --- |
+| Copy | Copies the selected element or selected elements. | Requires copy/paste element permission. |
+| Paste | Pastes copied Bricks elements when the clipboard contains element data. | Requires copy/paste element permission. |
+| Duplicate | Clones the active element. | Hidden for active Component roots and unavailable for elements marked as not cloneable. |
+| Delete | Deletes the active element. In bulk mode, deletes the selected elements. | Hidden for active Component roots and unavailable for elements marked as not deletable. |
+| Hide element | Toggles hide settings for builder, frontend, or both. | Requires access to element hide. |
+| Insert | Inserts a Container, Block, or Div inside the selected layout element. Hold Cmd/Ctrl to switch to **Insert after**. | Available for nestable elements. |
+| Wrap | Wraps the selected element or selected sibling elements in the configured wrapper type (Block by default). Use the adjacent icons to choose another type. Section is offered only for top-level elements. | In bulk mode, selected elements must share the same parent. |
+| Unwrap | Removes a selected nestable wrapper and moves its children up to the wrapper's parent. | Requires a nestable element with children. |
+| Convert | Converts Section, Container, Block, and Div layout elements to another layout type where allowed. | Only applies to layout elements. |
+| Save as Component | Opens the Components workflow for the selected element. | Hidden in bulk mode, while editing Components, or for Component/legacy Global Element selections. Shown but disabled for Template and Filter elements. |
+| Save as Template | Saves a nestable element as a Template. | Not available in bulk mode or while editing Components. |
+| Edit Component | Opens a Component instance for editing. | Requires Component permissions. |
+| Unlink Component | Converts a Component instance into regular local elements after confirmation. | Requires Component permissions. |
+| Unlink Global Element | Unlinks a legacy Global Element when one exists. | Requires legacy Global Element access. |
+
+## Copy sub-actions
+
+The Copy row can show extra icons for more specific data:
+
+| Copy icon/action | Copied data |
+| --- | --- |
+| CSS ID | The element's rendered CSS ID, including `#`. |
+| Bricks ID | The internal Bricks element ID. |
+| Query ID | The query ID for a selected query loop element. In Component loop contexts, this can include the instance ID. |
+| Styles | Element ID styles, or active global class styles if a class is active. |
+| Conditions | Element conditions. |
+| Interactions | Element interactions. |
+| Classes | Assigned global classes. |
+| Attributes | Custom attributes. |
+
+These actions are permission-gated. For example, copying attributes requires copy/paste element attributes permission, while copying conditions requires copy/paste element conditions permission.
+
+## Paste sub-actions
+
+The Paste row changes based on the clipboard data. Bricks shows only paste actions that match the current clipboard source.
+
+| Paste action | Behavior |
+| --- | --- |
+| Styles | Pastes copied element styles or global class styles to the selected target. |
+| Conditions | Appends copied conditions to the existing element conditions and generates new condition IDs. |
+| Interactions | Appends copied interactions to the existing element interactions and generates new interaction IDs. |
+| Attributes | Replaces the target element's copied custom attributes and generates new attribute IDs. |
+| Classes | Merges copied global classes into the target element's existing classes without duplicates. |
+
+Pasting styles can target one selected element or multiple selected elements. When multiple elements are selected, Bricks applies the paste operation to the selected elements.
+
+## Bulk editing behavior
+
+The context menu supports bulk editing, but not every action is available for multiple selected elements.
+
+Bulk editing works best for:
+
+- Copying selected elements.
+- Deleting selected elements.
+- Hiding selected elements.
+- Wrapping selected sibling elements with the same parent.
+- Pasting shared styles.
+- Applying copied classes, conditions, interactions, or attributes where supported.
+
+Bulk editing has important limits:
+
+- Save as Component and Save as Template are not shown in bulk mode.
+- Some copy sub-actions are disabled in bulk mode.
+- Wrap requires all selected elements to share the same parent.
+- Unwrap only works when the selected nestable elements contain children and the selected set does not include those children.
+
+## Insert, wrap, unwrap, and convert
+
+The context menu can create or reshape layout structure without dragging from the Elements panel.
+
+### Insert
+
+Insert adds a Container, Block, or Div inside the selected layout element, as its last child. The default insert type can be controlled by builder settings. Hold Cmd (macOS) or Ctrl (Windows) while the menu is open and the action changes to **Insert after**, which adds the new element after the selection instead.
+
+### Wrap
+
+Wrap places the selected element, or selected sibling elements, inside a new wrapper. Clicking **Wrap** uses the wrapper type selected in builder settings (Block by default). Use the icons next to it to choose another wrapper type. Section is only offered when the selected elements sit at the top level of the page.
+
+Use wrap when you already built content but need an additional layout layer.
+
+### Unwrap
+
+Unwrap removes a selected nestable wrapper and moves its children to the wrapper's parent. It preserves child order as much as the current hierarchy allows.
+
+Use unwrap carefully. It changes structure, not only styling.
+
+### Convert
+
+Convert changes one layout wrapper type into another, such as Container to Block or Div to Container. It is available for Section, Container, Block, and Div when the selected structure can be converted.
+
+Section conversion is restricted to root-level contexts because sections are top-level layout wrappers.
+
+## Components, templates, and legacy Global Elements
+
+Use **Save as Component** when the selected element should become reusable and editable through the Components system.
+
+Use **Save as Template** when the selected nestable element should become a reusable template that can be inserted later.
+
+Legacy [Global Elements](https://academy.bricksbuilder.io/builder/features/global-elements/) can still be unlinked from the context menu when they exist. For new reusable content, use [Components](https://academy.bricksbuilder.io/builder/features/components/) or Templates.
+
+## Permission notes
+
+Context menu actions follow the same Builder Access permission model as the rest of the builder. A user might be able to open the context menu but not see specific actions.
+
+Common permission-gated actions include:
+
+- Copy/paste elements
+- Copy/paste styles
+- Copy/paste conditions
+- Copy/paste interactions
+- Copy/paste attributes
+- Hide element
+- Duplicate elements
+- Delete elements
+- Create Components
+- Edit Components
+- Create Templates
+- Manage legacy Global Elements
+
+Review [Builder Access](https://academy.bricksbuilder.io/builder/interface/builder-access/) when a user reports that a context-menu action is missing.
+
+## Troubleshooting
+
+- **The Bricks context menu does not open:** Make sure you are not in Preview mode and that you are right-clicking an existing canvas or Structure element.
+- **Paste action is missing:** Copy the matching Bricks data first. The paste menu only shows actions that match the clipboard data.
+- **Copy/paste behaves differently in Safari:** Safari can be stricter about clipboard access, so perform copy and paste from direct user gestures.
+- **Save as Component is missing or disabled:** Check permissions and make sure you are not bulk editing, editing an active Component, selecting a Component or legacy Global Element, or selecting a Template or Filter element.
+- **Wrap is missing or disabled:** Confirm the selected elements share the same parent and can be wrapped in the current hierarchy.
+
+---
+
+<a id="builder-interface-drafts"></a>
+
+# Drafts
+
+Source: https://academy.bricksbuilder.io/builder/interface/drafts/
+
+*Save pending changes to a Bricks page, preview them against the live site, and review them before publishing.*
+
+Bricks 2.5 drafts let you save changes to an existing page and its templates before making them live. Use a page draft for one page, or a named [site version](https://academy.bricksbuilder.io/builder/interface/site-versions/) when work spans several pages.
+
+Drafts are **experimental** and disabled by default.
+
+> **Shared items and live pages**
+>
+> Reusable items that do not affect live content become available across the site immediately. Changes that affect live content stay in the draft until you publish. See [what stays in the draft](#shared-data) for examples and the rules for shared styles.
+
+## Enable drafts
+
+1. In WordPress, open **Bricks > Settings > Builder**.
+2. Under **Drafts**, select **Enable drafts** and save the settings.
+3. Reload the Builder.
+
+![Experimental Drafts settings with Enable drafts and Enable review links checked.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/drafts-settings.webp)
+
+A version switcher appears just before **Save** in the toolbar. It shows **Live** when you are editing the live version, **Draft** for a page draft, or the name of an open site version.
+
+## Save a page as a draft {#save-as-draft}
+
+1. Open the page in Bricks. You can make your edits before creating the draft.
+2. Open the **Live** menu next to Save.
+3. Select **Save page as draft**. The label follows the post type, such as **Save post as draft** or **Save template as draft**.
+4. Bricks switches to **Draft** and saves your unsaved changes into it. Continue editing and use **Save** as usual.
+
+There is one active page draft per page. If the page already has a draft, select **Draft** in the version menu to continue working on it.
+
+![The Atelier North page open in Draft, with Discard, Publish, and the unchanged Save control in the toolbar.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/draft-builder.webp)
+
+### What Save does
+
+| Current version | Save behavior |
+| --- | --- |
+| **Live** | Saves directly to the page and shared data, using the normal conflict checks. Changes to a published page can appear to visitors immediately. |
+| **Draft** | Saves the page's pending changes into its Bricks draft, subject to the shared-data rules below. |
+| A named **site version** | Saves into that version, which can include several pages. |
+
+Enabling drafts does not change Live saves into draft saves. Check the version switcher before saving.
+
+A **Bricks page draft** is separate from a **WordPress draft post**. The former holds pending Bricks changes; the latter is a post whose publication status is Draft. Creating a Bricks draft does not change the WordPress post's status.
+
+## What stays in the draft {#shared-data}
+
+When you create a new class in a draft using the style controls, it becomes available immediately in the site's class library. You can use it on other pages and templates as you work. Adding the class to the library does not apply it to existing live pages.
+
+For example, create a `.service-card` class for a card in your page draft. You can immediately assign it to a card on another page or template, without publishing the first page's draft.
+
+If you edit a class that live pages already use, its changes stay in the draft until you publish. Saving those changes directly to the shared class would also change the pages visitors see. Your draft shows the edited class; live pages keep its published styles.
+
+Bricks checks whether an item affects live content. Edits to an existing class that no live content uses are shared immediately too.
+
+| Change | Behavior |
+| --- | --- |
+| Page content, page settings, and templates edited within the draft | Held until you publish the draft. Publishing a template change affects every page where that template applies. |
+| Theme Styles, breakpoints, and Style Manager settings | Held until you publish, because these can affect the site without an individual page reference. |
+| Classes, components, variables, palettes, queries, filters, icons, or fonts already used on the live site | Changes are held until you publish. |
+| Reusable items that do not affect live content, including new classes and components | Saved immediately to the site's shared library, ready to use on other pages and templates. |
+
+Classes containing custom CSS that targets elements outside the class stay in the draft even when the class is new or unused. That CSS could change live pages without the class being assigned to them.
+
+If Bricks cannot establish that sharing an item is safe, it keeps the change in the draft. Private and scheduled content also counts when checking usage. The save notice tells you which items were shared immediately and which stayed in the draft.
+
+A draft keeps the changes you make, rather than freezing the whole site. Items you have not changed continue to follow the live site. A later live update can therefore appear in your draft preview.
+
+### Boundaries
+
+Drafts cover supported Bricks design changes. They are not a copy of the WordPress installation or database:
+
+- Media uploads and changes to the Media Library are shared. Uploading a file while working in a draft does not make that file private.
+- New WordPress posts and changes made outside the draft's Bricks workflow are not staged by the page draft. This includes block editor edits, plugin settings, and external systems.
+- Builder preferences, such as pinned elements and favorite fonts, are not pending design changes.
+- An action that Bricks cannot support in a draft is refused with a message asking you to open the live version.
+
+## Preview and compare
+
+Save the draft, then open its version menu and choose **Compare with live**. This opens the draft and live page together. See [Explore and compare](https://academy.bricksbuilder.io/builder/interface/explore-alternatives/) for comparison controls and alternatives.
+
+A normal draft preview requires a logged-in user with permission to edit that draft. To show it to someone without a login, enable and create a [review link](https://academy.bricksbuilder.io/builder/interface/review-links/). Copying the Builder or preview URL alone does not grant access.
+
+## Publish a draft {#publish}
+
+1. While editing **Draft**, click **Publish** beside the version switcher.
+2. Review **Pages and templates** and **Shared styles**. Bricks saves any remaining unsaved draft edits before loading this review.
+3. Resolve any conflicts, then click **Publish draft**.
+4. Wait for confirmation. The Builder returns to **Live** and the page draft closes.
+
+On narrower screens, **Publish draft…** and **Discard draft…** move into the version menu. At smaller widths, the switcher shows a version icon instead of its text label; its tooltip still identifies the current context.
+
+![Publish draft review listing the Services page and the service-card class used on a live page.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/draft-publish.webp)
+
+Shared styles can affect more than the page you are editing. Review them before publishing: a component, class, or Theme Style may be used throughout the site.
+
+### If live changed while you worked
+
+Bricks compares the pending changes with the current live site. When both sides changed an item differently, choose **Your draft** or **The live version** for that conflict. When page content can be combined, the dialog asks only about conflicting elements and combines the other changes.
+
+Publishing stays blocked until the conflicts have choices. If the draft or live data changes again during review, Bricks can require another review. Keeping the live version leaves that item as it is on the live site.
+
+These publish decisions are separate from [conflicts while saving shared data](https://academy.bricksbuilder.io/builder/interface/save-publish/#save-conflicts) between open Builder sessions.
+
+### Undo a publish
+
+When a publish changes live data, Bricks keeps the values it replaced. Click **Undo** in the published confirmation, or open **Manage versions…** and find the recent entry under **Undo a publish**.
+
+Undo restores those replaced values; it is not a restore of the entire site. If someone changed those values again, undo can stop with a conflict instead of replacing their later work. Save or discard any unsaved Live edits before undoing.
+
+For one class, variable, component, or another supported shared item, [Global data history](https://academy.bricksbuilder.io/builder/interface/global-data-history/) offers a separate way to restore an earlier value.
+
+## Discard a draft
+
+Click **Discard** beside the version switcher and confirm. Bricks removes the draft's pending changes and opens the live page.
+
+If the draft created shared items that are still unused, Bricks offers **Discard, keep them** or **Discard and delete them**. It checks for usage before deleting them, including references from other open drafts.
+
+Discarding does not undo edits to existing unused shared items that were already saved live. Those changes were outside the draft's pending changes.
+
+## Return later or move to another page
+
+Opening a page with an active page draft automatically opens that draft for users who can edit it. Select **Live** in the version menu when you deliberately want to work on the live page. That explicit choice is kept when the Builder reloads the same live context.
+
+A page draft stays with its page and the templates you edit within it. Navigating to an unrelated page leaves that page draft; the destination opens in its own context, including its own draft if present. Use a [site version](https://academy.bricksbuilder.io/builder/interface/site-versions/) when those pages need to share the same pending changes.
+
+Before switching versions or navigating away, Bricks saves unsaved draft edits and stops the switch if saving fails. Switching from Live with unsaved changes asks for confirmation before replacing them, so save those edits first if you need them.
+
+## Access and availability
+
+A page draft is not restricted to its creator. Other logged-in users who can edit the page and use Bricks on it can open the same draft. Their existing Builder permissions still control which changes they may make.
+
+Publishing also checks the permissions needed for every included change, such as page settings, templates, shared styles, and executable code. If the draft contains changes you cannot publish, ask someone with those permissions to publish it. See [Builder access](https://academy.bricksbuilder.io/builder/interface/builder-access/#drafts-and-versions).
+
+Active drafts remain available until published or discarded. Finished draft records and publish undo points are removed after 30 days by default, measured from their last update. Developers can adjust this period with [`bricks/drafts/keep_days`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-drafts-keep_days/).
+
+Turning off **Enable drafts** makes draft contexts unavailable; a save from an already open draft is refused instead of becoming a Live save. Open Live to continue, or re-enable drafts to resume the pending work.
+
+---
+
+<a id="builder-interface-editing-elements"></a>
+
+# Adding & Editing Elements
+
+Source: https://academy.bricksbuilder.io/builder/interface/editing-elements/
+
+*Add elements to the canvas, edit their settings, and understand the main element editing workflow in Bricks.*
+
+Elements are the building blocks of a Bricks layout. This article explains how elements are added, selected, nested, styled, reset, copied, and edited in single-element and bulk-edit workflows.
+
+## Element mental model
+
+A Bricks layout is an element tree. Every element has:
+
+- A type, such as Section, Heading, Image, Button, or Form.
+- A unique Bricks ID.
+- Optional children if the element can contain other elements.
+- A parent, unless it is a root element.
+- Settings, which store content, styles, classes, conditions, interactions, custom attributes, and other element-level data.
+
+Root elements sit at the top of the page content. Nested elements sit inside another element. The canvas shows the visual result; the Structure panel shows the actual hierarchy.
+
+## Add an element
+
+Open the Elements panel, then drag an element onto the canvas or into the Structure panel.
+
+Where the element lands depends on the current drop target:
+
+- Drop onto a nestable element to place the new element inside it.
+- Drop between siblings to place the new element at that position.
+- Drop at root level to create a top-level element.
+
+You can also add layout elements from the [Context Menu](https://academy.bricksbuilder.io/builder/interface/context-menu/) when an existing nestable element is selected.
+
+## Layout elements
+
+The current layout elements are **Section**, **Container**, **Block**, and **Div**.
+
+Use them as structural wrappers:
+
+- **Section**: Common top-level page section.
+- **Container**: Common content-width wrapper.
+- **Block**: Generic block-level wrapper.
+- **Div**: Generic wrapper with fewer layout assumptions.
+
+Not every element can contain children. Elements that can contain children are nestable. Non-nestable elements, such as many content elements, can be moved, styled, copied, or deleted, but they cannot be used as parents.
+
+## Select and edit an element
+
+Click an element on the canvas or in the Structure panel to select it. The panel switches to the selected element and shows its controls.
+
+> **Note**
+>
+> You can edit text directly on the canvas by clicking on it and typing. Select text portions with your mouse to reveal the text formatting toolbar with styling options such as bold, italic, and links.
+
+The panel header shows the selected element label. You can rename the label to make the Structure panel easier to scan. The label is for builder organization and does not change the HTML tag or frontend text by itself.
+
+The panel can also show quick actions for hide settings, conditions, interactions, Components, and legacy Global Elements depending on the selected element and your permissions.
+
+## Content controls
+
+Content controls affect the element's markup, data, and behavior. Examples include an Image element's image source, a Button element's link, a Heading element's text, or a Form element's fields and actions.
+
+The screenshot below shows Content controls for the Image element:
+
+![Panel: Content (Tab)](https://academy.bricksbuilder.io/assets/bricks-academy-panel-content-tab-1024x576.png)
+
+<figcaption>
+
+Element Image: Content Tab
+
+</figcaption>
+
+Content controls are not only for visible text. They can also control semantic tags, attributes, query settings, form behavior, media sources, links, and dynamic data.
+
+## Style controls
+
+Style controls affect the CSS Bricks generates for the selected element, active class, active selector, active pseudo state, and active breakpoint.
+
+Style controls are commonly grouped into:
+
+- Layout
+- Typography
+- Background
+- Border / Box Shadow
+- Gradient / Overlay
+- Shape Dividers
+- Transform
+- CSS
+
+![Panel: Style (Tab)](https://academy.bricksbuilder.io/assets/bricks-academy-panel-style-tab-1024x576.png)
+
+<figcaption>
+
+Element Image: Style Tab
+
+</figcaption>
+
+Before changing styles, check which selector is active at the top of the panel:
+
+- If the element ID is active, styles apply only to that element.
+- If a global class is active, styles apply to that class everywhere it is used.
+- If a pseudo selector is active, styles apply to that selector state.
+- If a breakpoint is active, responsive style values are stored for that breakpoint.
+
+This is the most important styling habit in Bricks: select the target first, then change the control.
+
+## Classes, selectors, and responsive edits
+
+The selector area above the Content/Style tabs controls whether you are styling the element ID, a global class, or a selector/pseudo state.
+
+Use global classes for reusable styling. Use the element ID for one-off styling. Use selectors and pseudo classes when styling states or child selectors.
+
+Responsive edits are controlled by the active breakpoint in the toolbar. A control indicator can show when a control has a value at the active breakpoint or another breakpoint, depending on your builder settings.
+
+## Bulk editing
+
+You can select multiple elements with Cmd/Ctrl or Shift selection. Bulk editing is useful for shared style changes, class assignment, moving, hiding, deleting, and some context-menu actions.
+
+Bulk editing has limits:
+
+- Bricks calculates the settings shared by the selected elements.
+- If selected elements have different values, the shared control can appear empty.
+- Editing a shared setting applies that change to the selected elements.
+- If different element types are selected, Bricks shows only the Style tab.
+- Some actions are disabled in bulk mode, such as saving as a Component or Template.
+- Bulk wrapping only works when selected elements share the same parent.
+
+Use bulk editing for broad, predictable operations. For content-heavy edits, edit one element type at a time.
+
+## Hide, conditions, and interactions
+
+Element-level hide settings, conditions, and interactions are opened from the element panel header when available.
+
+- **Hide element** can hide an element in the builder, on the frontend, or both.
+- **Conditions** control whether the element should render for the current request.
+- **Interactions** attach frontend behavior to triggers and actions.
+
+These panels are permission-gated. If you cannot see them, check [Builder Access](https://academy.bricksbuilder.io/builder/interface/builder-access/).
+
+## Components and locked editing states
+
+When you select a Component instance, Bricks shows instance controls and exposed properties instead of treating every nested element as local page content. To edit the Component definition, enter Component editing mode.
+
+Some elements may also be disabled through the Element Manager or unavailable because their element type no longer exists. In those cases, Bricks shows a notice instead of normal controls.
+
+Legacy Global Elements can still appear on existing sites. Bricks marks them as deprecated and recommends Components for new reusable content.
+
+## How To Reset Controls
+
+Controls that have a stored value show a small indicator next to the control label or group label. Hover the indicator to reveal the reset action.
+
+You can reset:
+
+- A single control.
+- A control group, such as Typography.
+- Element ID styles.
+- Active class styles, if you are styling a class and it is not locked.
+
+Resetting style controls removes the stored style values for the current target. It does not remove content such as text, links, form fields, or image selections.
+
+When styling a global class, resetting styles affects that class, not only the selected element.
+
+## Copy & Paste Styles
+
+To copy and paste element styles, right-click an element on the canvas or in the Structure panel to reveal the context menu. Use **Copy Styles**, then select the target element and use **Paste Styles**.
+
+Style paste respects the copied style data and the current target:
+
+- Pasting element styles applies copied style settings to the target element.
+- Pasting global class styles applies copied class style settings when a class is the active target.
+- Shape dividers, custom CSS, and other complex style controls are handled as style data when supported.
+
+For more copy and paste actions, including classes, conditions, interactions, and attributes, use the [Context Menu](https://academy.bricksbuilder.io/builder/interface/context-menu/).
+
+## Practical editing checklist
+
+Before making a change, confirm:
+
+- The correct element is selected.
+- The correct selector is active: element ID, class, or pseudo selector.
+- The correct breakpoint is active.
+- You are editing Content for markup/data changes or Style for CSS changes.
+- You are not accidentally editing a Component definition when you meant to edit an instance.
+- You have saved before testing frontend behavior.
+
+---
+
+<a id="builder-interface-editing-with-bricks"></a>
+
+# Start Editing With Bricks
+
+Source: https://academy.bricksbuilder.io/builder/interface/editing-with-bricks/
+
+*Start editing with Bricks by understanding the builder layout, canvas behavior, and the basic flow for working on a page.*
+
+This article explains how to open the Bricks builder, what each main area of the interface does, and how editing with Bricks relates to rendering the page on the frontend.
+
+## Before you open the builder
+
+Bricks shows builder entry points when the current post can be edited with Bricks:
+
+- The current user has permission to use the builder.
+- The post type is enabled for Bricks.
+- The post can be edited by the current user.
+
+Bricks checks the license when the builder opens. If the license is not valid, Bricks redirects to the [license screen](https://academy.bricksbuilder.io/builder/license/license-and-updates/) instead of loading the builder.
+
+Go to **Bricks -> Settings** and select the post types you want to edit with Bricks:
+
+![](https://academy.bricksbuilder.io/assets/bricks-settings-post-types.png)
+
+> **Note**
+>
+> While you can enable Bricks for blog posts, most sites work better when posts are written in the WordPress editor and displayed through a Bricks template. Use Bricks for the layout, and use WordPress for the editorial content.
+
+## Open the builder
+
+You can open the builder from several places in WordPress.
+
+### Posts list
+
+Hover over a supported post, page, or custom post type in the WordPress dashboard and click **Edit with Bricks**:
+
+![](https://academy.bricksbuilder.io/assets/docs-edit-with-bricks-button.png)
+
+### Post edit screen
+
+When editing an existing post or creating a new one, click **Edit with Bricks** in the Bricks editor area:
+
+![](https://academy.bricksbuilder.io/assets/bricks-post-edit-screen-1024x576.png)
+
+### Frontend admin bar
+
+When you are logged in and viewing the page on the frontend, use the WordPress admin bar. The Bricks menu can open the current page, the active header template, the active content template, the active footer template, or the Templates screen when those links apply to the current page.
+
+If the **Edit with Bricks** link is missing, check the current user's builder permissions and make sure the post type is enabled under **Bricks -> Settings**.
+
+## Edit with Bricks vs render with Bricks
+
+Editing with Bricks opens the visual builder. Rendering with Bricks controls which content source the frontend uses.
+
+A post can have WordPress editor content, Bricks data, or both. The **Render with Bricks** / **Render with WordPress** option in the admin bar switches the editor mode for the current post. If a post is set to render with WordPress, its Bricks data remains stored, but the frontend uses the WordPress content instead.
+
+Bricks templates are different. Templates are Bricks documents by definition, so the editor mode toggle does not apply to them.
+
+Use the render mode deliberately:
+
+- Choose **Render with Bricks** when the page itself is built in Bricks.
+- Choose **Render with WordPress** when the page should use normal WordPress content, usually with a Bricks template controlling the surrounding layout.
+- Do not use the render toggle as a content backup system. It only chooses the frontend render source.
+
+If a page is rendered with Bricks, the post list shows a **- Bricks** status after the title:
+
+![](https://academy.bricksbuilder.io/assets/bricks-post-screen-post-status.png)
+
+<figcaption>
+
+Post status "Bricks" shows you that a page is rendered with Bricks
+
+</figcaption>
+
+## Delete Bricks data
+
+The admin bar and post edit screen can show a **Delete Bricks data** button when this option is enabled in **Bricks -> Settings**.
+
+This removes Bricks-generated data from the current post, including page content, page settings, header/footer data, editor mode, and template type metadata. Treat it as destructive. Use it only when you want the post to stop using its stored Bricks layout data.
+
+## Builder anatomy
+
+The builder is made of four main working areas.
+
+### Toolbar
+
+The toolbar runs across the top of the builder. It gives you access to global builder actions and mode switches, including:
+
+- Style Manager
+- Pages panel
+- Templates
+- Settings
+- Command Palette
+- Elements and Components
+- Breakpoints
+- Preview width, height, and scale
+- Reload canvas
+- Undo and redo
+- Preview and save actions
+
+Which buttons you see depends on your permissions and global builder settings. For example, template actions require template permissions, and the breakpoints manager requires breakpoint access.
+
+### Panel
+
+The left panel changes depending on what you are doing. It can show the element library, the selected element controls, page/template settings, revisions, pages, or other manager views.
+
+The panel can be resized and minimized. When an element is selected, the panel shows the element label, element actions, class/selector controls, and the relevant Content and Style controls.
+
+### Finding another page {#pages-panel}
+
+Open **Pages** from the builder toolbar and choose the post type you want to browse. Since Bricks 2.5, results load in batches as you scroll. Use the search field to find a title anywhere in the available results, including pages that have not loaded into the list yet.
+
+Use the star beside a result to add or remove a favorite. Favorites are kept separately for each post type and saved in your browser. They can include pages outside the first batch of results. The current search also applies to the favorites list.
+
+Save your current changes before opening another page. If loading fails, use the panel's retry control.
+
+### Canvas
+
+The canvas is the live visual preview of the current page. It renders the Bricks layout in an iframe, so selecting and editing elements feels close to editing the frontend output.
+
+The canvas can be reloaded from the toolbar. Reloading is useful after changing settings that need a fresh render, or when external scripts, query data, or dynamic content affect the preview.
+
+### Structure panel
+
+The Structure panel shows the element tree. It is the safest place to understand nesting, select hard-to-click elements, move elements, and work with deeply nested layouts.
+
+Use the Structure panel whenever the canvas view is visually crowded, an element is hidden, or you need to confirm parent-child relationships.
+
+In Bricks 2.5, use **Search structure** to find elements by name, text, ID, class, and more. The funnel button filters elements by features such as query loops, conditions, and interactions. Clear the search and filters before dragging elements in the panel. See [Structure Panel Search and Filters](https://academy.bricksbuilder.io/builder/interface/structure-panel-search/).
+
+Since Bricks 2.5, the Structure panel can show HTML tags beside element labels. Choose **Icons**, **HTML tags**, or **Icons and HTML tags** under **Bricks > Settings > Builder > Structure panel > Element display** and save the settings. This helps you distinguish, for example, a heading rendered as `h2` from a wrapper rendered as `div`.
+
+The displayed tag follows the root rendered on the canvas. If no rendered root is available, Bricks falls back to the element icon. Component and slot indicators remain available.
+
+<div className="screenshot screenshot--control-panel">
+
+![Structure panel showing icons and HTML tags for a Section, a div Container, an h3 Heading, and a Basic Text paragraph.](https://academy.bricksbuilder.io/assets/builder/structure-panel/structure-panel-icons-html-tags.webp)
+
+</div>
+
+## First successful edit workflow
+
+Use this workflow when creating or editing a normal page:
+
+1. Enable the page post type under **Bricks -> Settings**.
+2. Create or open the page in WordPress.
+3. Click **Edit with Bricks**.
+4. Open the Elements panel and add a layout element, such as a Section or Container.
+5. Add content elements inside the layout.
+6. Select an element on the canvas or in the Structure panel.
+7. Edit its Content controls for markup and data.
+8. Edit its Style controls for design.
+9. Switch breakpoints and adjust responsive styles where needed.
+10. Save the builder.
+11. Preview the page and confirm it is rendered with Bricks.
+
+## Common builder states
+
+### Preview mode
+
+Preview mode hides the normal editing controls so you can inspect the layout. While previewing, builder editing actions such as the custom context menu are disabled.
+
+### Unsaved changes
+
+The builder tracks history and unsaved changes. Use save before leaving the builder, switching important context, or testing frontend-only behavior.
+
+### Unsupported post type
+
+If a post type is not enabled for Bricks, Bricks redirects you back to WordPress admin instead of opening the builder. Enable the post type under **Bricks -> Settings** or use a Bricks template for that content type.
+
+### Missing permissions
+
+Users can have full access, content-editing access, or custom permission sets. Missing permissions can hide toolbar buttons, element categories, manager popups, settings panels, and editing controls. Review [Builder Access](https://academy.bricksbuilder.io/builder/interface/builder-access/) if a user can open the builder but cannot see or edit a specific area.
+
+### Login or license redirects
+
+If the builder detects that the current browser session is no longer logged in, it redirects to the login page. If the license is not valid, Bricks redirects to the [license screen](https://academy.bricksbuilder.io/builder/license/license-and-updates/).
+
+## Troubleshooting checklist
+
+- **No Edit with Bricks button:** Check post type support, user permissions, and whether the current user can edit the post.
+- **The page opens in WordPress instead of Bricks:** Confirm the page has Bricks data or switch the admin bar render mode to **Render with Bricks**.
+- **Builder opens but controls are missing:** Check builder permissions and whether the selected element is disabled.
+- **Canvas looks stale:** Reload the canvas from the toolbar.
+- **Page looks different on the frontend:** Save the builder, confirm render mode, and test outside preview mode.
+
+---
+
+<a id="builder-interface-explore-alternatives"></a>
+
+# Explore Alternatives and Compare
+
+Source: https://academy.bricksbuilder.io/builder/interface/explore-alternatives/
+
+*Preview alternative copy and styles, compare drafts with the live site, and apply a chosen combination before publishing.*
+
+Explore lets you try prepared alternatives, such as two headlines or several accent colors, on a draft. Compare shows up to four views of the same page so you can inspect different combinations, [page drafts](https://academy.bricksbuilder.io/builder/interface/drafts/), [site versions](https://academy.bricksbuilder.io/builder/interface/site-versions/), or the live site together.
+
+## Requirements
+
+Explore and Compare are available in Bricks 2.5 with **Enable drafts** turned on under **Bricks → Settings → Builder**. Drafts are experimental and disabled by default.
+
+You need an active draft or site version that your account can edit. The **Explore alternatives** entry appears only when that version already contains alternatives. **Compare with live** works without alternatives.
+
+Alternative groups are currently created through [Bricks abilities](https://academy.bricksbuilder.io/builder/features/ai-abilities-and-skills/), for example by a connected AI assistant using `bricks/create-alternatives`. The Builder provides the interface for previewing and applying those groups; it does not have controls for creating groups or writing their choices manually.
+
+## Prepare alternatives
+
+Each **group** represents one decision, such as Headline or Accent color. Each **choice** contains proposed changes to existing element settings, global class settings, or variable values. You can select one choice per group and combine choices from different groups.
+
+For example, ask a connected assistant:
+
+> In the page's draft, prepare two headline alternatives and two accent-color alternatives. Keep the existing elements. Put headlines and colors in separate groups so I can mix them, and give me the Explore and Compare links.
+
+The assistant can use an existing page draft, create one if needed, or work in a specified site version. Preparing alternatives saves the options for review without applying their proposed changes.
+
+## Open Explore or Compare
+
+While editing a draft or site version, open the version menu beside Save:
+
+- Choose **Explore alternatives** to preview its groups in one view.
+- Choose **Compare with live** to open the version and live page together.
+
+These views open over the Builder. If the current draft has unsaved edits, Bricks saves them into the draft before opening the view. Click **Close** to return to editing.
+
+In **Manage versions**, select a version and click **Compare**. An editor can also open an Explore or Compare link returned by the connected assistant. These editor links require a login and permission to edit the version; use a [review link](#review-links) for someone without an account.
+
+<div className="screenshot screenshot--control-panel">
+
+![The compact draft menu with Publish, Discard, Compare with live, and Explore alternatives.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/draft-menu.webp)
+
+</div>
+
+## Try a combination
+
+The options panel shows the active view's groups. Select a choice under each group you want to change. Choose **As drafted** to show that group's current saved draft values without an alternative applied.
+
+For example, select the second Headline and the first Accent color. The page preview shows that combination. Switching choices previews their effect without saving those choices to the draft or publishing them.
+
+![Explore showing independent Headline and Accent color groups with Room to grow and Terracotta selected.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/explore-alternatives.webp)
+
+If a view has no alternative groups, the options panel is hidden. You can still compare its page with another view.
+
+## Compare views {#compare}
+
+Click **Add view** to copy the active view and its current choices. Then use the version selector in each view's header to choose the page's **Draft**, an available named site version, or **Live site**.
+
+Click a view's header to make it active. Its border is highlighted, and the options panel changes to the groups belonging to that view's version. Each view keeps its own combination. Changing one view's version clears its previous alternative selections.
+
+For example, compare:
+
+| View | Version | Alternatives |
+| --- | --- | --- |
+| 1 | Live site | Current published page |
+| 2 | Autumn services | Clear direction headline, Forest accent |
+| 3 | Autumn services | Room to grow headline, Terracotta accent |
+
+The selectors offer drafts and site versions you can edit. A page draft belongs to its own page; another page's draft is not offered for this comparison. Site versions show the current page within that version.
+
+![Live site compared with two Autumn services combinations, with the third view active and its own choices shown.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/compare-views.webp)
+
+Up to four views are supported. Use **Expand** to inspect one at a larger size, then **Show all views** to return. The × button removes a view from the comparison without deleting its draft or site version.
+
+### Responsive previews and scrolling
+
+The breakpoint buttons use the site's configured Bricks breakpoints. Choosing a width changes every view together. Each page renders at that width and scales down to fit its available space, so a desktop page can remain a desktop preview inside a narrow comparison pane.
+
+Scroll one page view to move the others to the same vertical position. Switching alternative choices keeps the view's scroll position where the new content allows it. Pages with different heights may not line up exactly.
+
+## Apply a combination {#apply}
+
+Select the view containing the combination you want, then click **Apply to draft**. Bricks applies that view's selected choices to its own draft or site version. Groups left on **As drafted** keep their current values. Applying requires the same permissions as editing the affected page, classes, or variables directly.
+
+Applying does not publish the page. Close the view to return to the Builder. If you applied choices to a different site version, select that version in the toolbar to continue editing it. Use the draft or site version's publishing workflow when it is ready.
+
+Shared classes and variables follow the [drafts shared-data rules](https://academy.bricksbuilder.io/builder/interface/drafts/#shared-data): changes affecting live content stay in the draft until publication. Updates that do not affect live content are shared across the site immediately, ready to use on other pages and templates. Applying alternatives uses the same rules.
+
+After applying, **As drafted** shows the updated draft. Selecting it does not undo a combination you already applied. If Bricks reports that the alternatives changed since you opened them, reload the view and review the current choices before applying again.
+
+## Review links {#review-links}
+
+With [review links](https://academy.bricksbuilder.io/builder/interface/review-links/) enabled, you can share a draft or site version with someone who does not have a WordPress login. When it contains alternatives, the review panel includes **Explore alternatives**.
+
+Reviewers can switch options and add views to inspect combinations within the shared version. Their view has no version selector and no **Apply to draft** button. They cannot publish, save a preferred combination, or submit comments through the review link. Ask them to send their feedback separately.
+
+For recovering an earlier saved class, variable, component, or other shared item, use [Global data history](https://academy.bricksbuilder.io/builder/interface/global-data-history/).
+
+---
+
+<a id="builder-interface-global-data-history"></a>
+
+# Global Data Revisions
+
+Source: https://academy.bricksbuilder.io/builder/interface/global-data-history/
+
+*Browse and restore earlier versions of individual classes, components, variables, and other shared Bricks data.*
+
+Global data revisions, available since Bricks 2.5, keep earlier versions of shared Builder items. Restore one component or class without replacing newer changes to the rest of your design system. It also lets you recover an item that was deleted.
+
+Revisions are recorded by default. You do not need to enable experimental Drafts to use them.
+
+## Open the revisions
+
+Open **Manage > Global data revisions** in the Builder toolbar. The dialog lists these data types in its sidebar: **Theme styles**, **Classes**, **Variables**, **Colors**, **Components**, **Queries**, and **Query filters**. Type shortcuts 1 to 9 select a type, and Bricks remembers your last type and sort order.
+
+<div className="screenshot screenshot--control-panel">
+
+![The Manage panel with History / Revisions and Global data revisions listed below Theme styles and Page settings.](https://academy.bricksbuilder.io/assets/builder/global-data-revisions/revisions-settings-panel.webp)
+
+</div>
+
+You can also open the revisions of one data type from where you edit it. Each opens the dialog on that type:
+
+- **Style manager**: the revisions icon on the selected **Theme styles**, **Classes**, **Variables**, or **Colors** item.
+- **Class and variable editors**: the **Revisions** button.
+- **Browser**: the revisions icon on **Components**, **Query manager**, or **Filter manager**. A component's own **Revisions** icon in the Browser, or on its row in the Components panel, opens that component directly.
+
+![Style manager with the Classes type selected. A revisions icon appears beside Classes and a Revisions button sits under the selected class.](https://academy.bricksbuilder.io/assets/builder/global-data-revisions/revisions-style-manager-entry.webp)
+
+![The Browser with Components selected. A revisions icon appears beside Components in the sidebar.](https://academy.bricksbuilder.io/assets/builder/global-data-revisions/revisions-browser-entry.webp)
+
+## Browse an item's revisions
+
+1. Select a data type in the sidebar.
+2. Find an item with the search field, which also searches deleted items, or sort the list. Classes, variables, components, queries, and filters also have a categories column, as in their managers.
+3. Select an item. Click it again to deselect it.
+
+Theme styles open directly on the active style. Use the style switcher to pick another one. Colors are listed one by one, and each palette appears as a category. A color's revisions come from the revisions of its palette.
+
+An item's revisions form a timeline of cards, newest first. The newest card opens with the item. Select a card to expand or collapse it, or use **Expand all** and **Collapse all** in the item header. The header shows the number of revisions and when the item last changed.
+
+Each card shows the action, such as **Created**, **Changed**, or **Deleted**, along with tags and when and by whom the change was made. A **Current** tag marks the version the site uses now. Source tags such as **AI agent**, **WP-CLI**, **Import**, **Published draft**, or **From a draft** show where a change came from. A change made by hand in the Builder has no source tag. A **Restored** tag marks a revision created by a restore.
+
+An open card lists its changes, one setting per row. Each row shows the setting name with its section underneath, then the old value, an arrow, and the new value. Empty values read **Not set**, colors appear as swatches, and multi-line values such as custom CSS appear as code blocks with the old value dimmed above the new one. The oldest card lists its values under **Oldest recorded version**, because it has no earlier version to compare with. Labels come from the matching Theme styles and settings controls.
+
+![Revisions of the btn-primary class on a timeline. The newest card compares custom CSS as code blocks and the oldest card lists its values under Oldest recorded version.](https://academy.bricksbuilder.io/assets/builder/global-data-revisions/revisions-class-revisions.webp)
+
+Components also show a rendered preview in each card, and internal component fields are left out of the changes. The preview uses the site's styles. It does not restore the global classes, fonts, or other resources that the component used at that earlier time. Use **Open in new tab** to inspect the preview separately.
+
+![Testimonial card component revisions with a rendered preview and the text change in the newest card.](https://academy.bricksbuilder.io/assets/builder/global-data-revisions/revisions-component-revisions.webp)
+
+Custom fonts, breakpoints, font favorites, pinned elements, and class locks are not included in global data revisions.
+
+## Restore an item
+
+Each card ends with its own restore button. The current revision has none.
+
+1. Expand the revision you want to recover.
+2. Review its values and component preview, if available.
+3. Click **Restore this version**. For a color, the button says **Restore this palette version**. For a deleted item, it says **Bring back**.
+
+If you have unsaved changes to that type of global data, the button reads **Save and restore** (or **Save and bring back**) and saves them first.
+
+Restoring saves the selected item's earlier value and updates the Builder. Other items keep their current values. Each restore is recorded as another revision, so you can return to the previous value through the same dialog.
+
+An item's only revision is its recorded starting point and is titled **Current version**.
+
+### Recover deleted items
+
+An item that was deleted or moved to the trash is listed only under **Deleted**, in its own box below the categories, and not in **All** or its category. Select the item and click **Bring back** to return it to use. The item then appears under **All** again. If you open the dialog on a deleted item, it starts in **Deleted**.
+
+![Deleted classes list with old-banner selected. Its Deleted revision shows the removed name and color and a Bring back button.](https://academy.bricksbuilder.io/assets/builder/global-data-revisions/revisions-deleted-item.webp)
+
+### Restore inside drafts and site versions
+
+When you are editing [a draft](https://academy.bricksbuilder.io/builder/interface/drafts/) or [a site version](https://academy.bricksbuilder.io/builder/interface/site-versions/), the dialog shows a notice that the revisions are the live site's history. The newest revision is tagged **Live** instead of **Current**, and you can restore it into the draft, because a draft does not record its own saves and may hold something else. Restored changes follow the [shared-data rules](https://academy.bricksbuilder.io/builder/interface/drafts/#shared-data). Changes affecting live content stay held until publication. Restored items that do not affect live content are shared across the site immediately. A change held in a draft enters global data revisions when it is published.
+
+Your account needs Builder access and the relevant resource permissions. Restoring a component containing executable code also requires code execution permission.
+
+## Retention and storage
+
+By default, each item keeps its latest **20 versions**, plus all versions recorded in the last **90 days**. An item can therefore have more than 20 revisions. These limits are separate from the number of WordPress revisions kept for a page. Developers can adjust them with [`bricks/global_history/keep_latest`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-global_history-keep_latest/) and [`bricks/global_history/keep_days`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-global_history-keep_days/).
+
+Under **Bricks > Settings > Builder > Global data revisions**, you can:
+
+- Enable **Disable global data revisions** to stop recording new changes.
+- View the storage used by recorded revisions.
+- Use **Delete revisions** to remove the stored revisions. This leaves your current global data in place, but the deleted revisions can no longer be restored.
+
+Revisions cannot recover versions that were never recorded. Keep site backups for a complete recovery of WordPress content, media, settings, and files.
+
+## Undo history, revisions, and drafts
+
+| Tool | Use it for |
+| --- | --- |
+| **History** in Manage > History / Revisions | Undo and redo steps from the current editing session. |
+| [Revisions](https://academy.bricksbuilder.io/builder/interface/revisions/) | Recover earlier page or template elements and page settings. |
+| **Global data revisions** | Recover one recorded shared item, including a deleted item. |
+| [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) and [site versions](https://academy.bricksbuilder.io/builder/interface/site-versions/) | Hold changes affecting visitors until you choose to publish them. |
+
+For agent workflows, the `bricks/list-global-revisions` and `bricks/restore-global-revision` abilities provide the same per-item recovery. Pass `target: "active"` to `bricks/restore-global-revision` to bring a deleted item back into use. See [Bricks AI abilities and skills](https://academy.bricksbuilder.io/builder/features/ai-abilities-and-skills/).
+
+---
+
+<a id="builder-interface-keyboard-shortcuts"></a>
+
+# Keyboard Shortcuts
+
+Source: https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/
+
+*Customize Bricks keyboard shortcuts, restore defaults, share your settings, and use shortcuts with Builder Interface profiles.*
+
+Keyboard shortcuts let you save, open panels, edit elements, and move through the builder without reaching for the toolbar. In Bricks 2.5, you can change, remove, restore, import, and export those shortcuts.
+
+`CMD` means Command on macOS. Use `CTRL` on Windows and Linux. The shortcuts below show the Bricks defaults; your personal settings or an assigned [Builder Interface profile](https://academy.bricksbuilder.io/builder/interface/builder-interface-customiser-profiles/) can change them.
+
+## Open Keyboard shortcuts
+
+Open **Manage** in the builder toolbar, then click **Keyboard shortcuts**. It is also available from the [Command Palette](https://academy.bricksbuilder.io/builder/interface/command-palette/).
+
+<div className="screenshot screenshot--control-panel">
+
+![The builder settings list with Keyboard shortcuts directly below Filter Manager.](https://academy.bricksbuilder.io/assets/keyboard-shortcuts/keyboard-shortcuts-settings.webp)
+
+</div>
+
+The manager lists commands by category. Search for an action or shortcut, or select a category such as **Workspace**, **Editing**, or **Elements**. Each row shows the action, its context, the source of its shortcut, and the current key combination.
+
+![The Keyboard shortcuts manager with category filters, current bindings, and Remove and Reset controls.](https://academy.bricksbuilder.io/assets/keyboard-shortcuts/keyboard-shortcuts-manager.webp)
+
+Changing your personal shortcuts requires the **Customize builder interface** permission. See [Builder access](https://academy.bricksbuilder.io/builder/interface/builder-access/) for role and user permissions.
+
+## Change a shortcut
+
+For example, to change the Preview shortcut:
+
+1. Search for **Preview**.
+2. Click its current shortcut. The button shows **Press shortcut keys**.
+3. Press your preferred combination, such as `CMD / CTRL + ALT + U`.
+4. Click **Save**.
+
+The new shortcut is saved for your WordPress user account on this site. Reload the builder and press the new combination to toggle Preview.
+
+![Preview remapped to Command, Option, and U.](https://academy.bricksbuilder.io/assets/keyboard-shortcuts/keyboard-shortcuts-remap.webp)
+
+Press `ESC` to stop recording a combination. `TAB` also leaves recording and moves focus to the next control. **Cancel** closes the manager without saving your changes.
+
+### Remove or restore a shortcut
+
+- Click the **Remove** (trash) icon to disable that command's shortcut. The action remains available through its normal builder controls.
+- Click the **Reset** icon beside a command to remove your override and inherit its default again.
+- Click **Reset** in the footer to clear all your shortcut overrides.
+
+Click **Save** to keep removals or resets. Resetting shortcuts does not reset your toolbar or panel layout. If restoring a default would create a conflict, change the other conflicting shortcut first.
+
+### Conflicts and reserved keys
+
+Bricks rejects combinations that would trigger conflicting commands. The message names the conflicting command, and the existing shortcut stays unchanged. Choose a different combination or change the other command first.
+
+![A conflict message explains that the attempted Save shortcut is already used by Command palette.](https://academy.bricksbuilder.io/assets/keyboard-shortcuts/keyboard-shortcuts-conflict.webp)
+
+Some combinations are reserved for browser, operating-system, or accessibility behavior. For example, you cannot assign a global command to `CMD / CTRL + L`, which focuses the browser address bar, or to an unmodified letter. `ESC` and `TAB` keep their built-in behavior.
+
+A warning can appear for combinations used by text editing or browser printing. Read the warning before choosing **Use anyway**. Text and code editors keep their own editing behavior where needed, so a canvas shortcut can behave differently while you are typing in an input or editor. Copy, Paste, Undo, and Redo act on text while a text editor owns the focus.
+
+## Shortcut sources and profiles
+
+Bricks resolves shortcut settings in this order:
+
+1. Bricks defaults.
+2. Site defaults.
+3. Your personal preferences.
+4. An assigned Builder Interface profile.
+
+An assigned profile takes priority for the commands it defines. Those rows show the profile name and are read-only in your personal shortcut manager. Other commands remain customizable when your permissions allow it.
+
+If a profile uses a combination assigned to another command in your preferences, Bricks suppresses the conflicting lower-priority shortcut. Your stored preference is kept. Removing the profile assignment restores it, or you can choose a different personal combination while the profile is assigned.
+
+To include shortcuts in a reusable profile, open **Builder interface → Keyboard shortcuts → Manage**. Edit the shortcuts and click **Save** to return to the Builder Interface draft. Then save or overwrite the profile. Saving a profile does not assign it to users automatically. See [Builder Interface Customiser and Profiles](https://academy.bricksbuilder.io/builder/interface/builder-interface-customiser-profiles/#keyboard-shortcuts).
+
+## Import and export
+
+Click the import/export icon in the manager header.
+
+- **Export** downloads your shortcut customizations as a JSON file, including shortcuts you have disabled. It does not export the full workspace layout or every inherited default.
+- **Import** adds the file's customizations to your current shortcut settings. Click **Save** after a successful import to keep them.
+
+If the file contains conflicting, reserved, unsupported, or profile-managed bindings, Bricks rejects the import without applying part of the file. Export and import a full Builder Interface profile when you want to share both the workspace layout and its shortcuts.
+
+## Default shortcuts
+
+These combinations are customizable in Bricks 2.5. Actions still require the relevant builder permissions and selection or editor context.
+
+| Shortcut | Action |
+| --- | --- |
+| `CMD / CTRL + S` | Save changes |
+| `CMD / CTRL + SHIFT + S` | Force save all data |
+| `CMD / CTRL + K` | Open Command palette |
+| `CMD / CTRL + .` | Toggle Style Manager |
+| `CMD / CTRL + SHIFT + .` | Toggle Builder Browser |
+| `CMD / CTRL + SHIFT + L` | Open Templates in the Builder Browser |
+| `CMD / CTRL + P` | Toggle Preview |
+| `CMD / CTRL + SHIFT + V` | View on frontend |
+| `CMD / CTRL + B` | Go to the next breakpoint |
+| `CMD / CTRL + SHIFT + E` | Open Elements and focus its search |
+| `CMD / CTRL + SHIFT + C` | Open Components |
+| `CMD / CTRL + SHIFT + X` | Toggle Structure |
+| `CMD / CTRL + F` | Focus [Structure search](https://academy.bricksbuilder.io/builder/interface/structure-panel-search/) when outside a text field and there are elements to search |
+| `CMD / CTRL + SHIFT + H` | Open History |
+| `CMD / CTRL + SHIFT + F` | Search element controls |
+| `CMD / CTRL + Z` | Undo a builder change |
+| `CMD / CTRL + SHIFT + Z` | Redo a builder change |
+| `CMD / CTRL + C` | Copy selected elements |
+| `CMD / CTRL + V` | Paste copied elements |
+| `CMD / CTRL + SHIFT + D` | Duplicate selected elements |
+| `CMD / CTRL + Delete` | Delete selected elements and their children |
+| `CMD / CTRL + ENTER` | Toggle classes for the selected element |
+| `CMD / CTRL + SHIFT + P` | Wrap the selection in the configured wrapper element |
+| `CMD / CTRL + SHIFT + ARROW LEFT` | Select the parent element |
+| `CMD / CTRL + SHIFT + ARROW RIGHT` | Select the first child element |
+| `CMD / CTRL + SHIFT + ARROW UP` | Select the previous element at the same level |
+| `CMD / CTRL + SHIFT + ARROW DOWN` | Select the next element at the same level |
+| `CMD / CTRL + ENTER` in the media picker | Insert the selected media |
+| `CMD / CTRL + R` in a focused Code control | Run code, when code execution is allowed |
+
+The same combination can serve different actions in separate contexts. For example, `CMD / CTRL + ENTER` inserts selected media while the media picker is open, and opens the classes UI when an element is selected on the canvas.
+
+## Built-in interaction keys
+
+These keys belong to focused controls, navigation, or direct manipulation and cannot be remapped. Expand **Built-in interaction keys** at the bottom of the manager to see the list.
+
+| Keys | Behavior |
+| --- | --- |
+| `ESC` | Close or dismiss the current popup or editing state |
+| `TAB` / `SHIFT + TAB` | Move keyboard focus |
+| `ENTER` / `SPACE` | Activate a focused control |
+| `ALT / OPTION + T` | Focus the builder toolbar, then use Tab to move through it |
+| `CMD / CTRL + ALT + 1–9` | Open an element-control quick-access group |
+| Number keys in Browser or Style Manager | Switch visible sections or tabs when focus is outside a text field |
+| `CMD / CTRL + ENTER` in Command palette | Insert the element structure from the focused palette |
+| `ENTER` / `SHIFT + ENTER` in Structure search | Select the next / previous match |
+| `CMD / CTRL + G` / `CMD / CTRL + SHIFT + G` in Structure search | Select the next / previous match |
+| `CMD / CTRL` while inserting | Insert outside the active parent element |
+| `SHIFT` while editing on the canvas | Use the existing precision, selection, or direct-edit modifier for that action |
+
+Arrow-key navigation, typing, and native editing shortcuts in text fields, rich-text editors, code editors, and picker lists remain owned by those interfaces.
+
+While typing in a field or editing text inline, Undo and Redo use the text editor's history. Leave the field or finish inline editing to use these shortcuts for builder changes.
+
+---
+
+<a id="builder-interface-page-settings"></a>
+
+# Page Settings
+
+Source: https://academy.bricksbuilder.io/builder/interface/page-settings/
+
+*Use Bricks page settings to control per-page markup, styling, SEO metadata, social sharing output, and custom code.*
+
+Page Settings control output for the page, post, or content template you are currently editing. They are different from global Bricks settings and different from an individual element's controls.
+
+Use Page Settings when a setting should apply to the whole current page, such as body classes, header/footer visibility, page-level scroll snap, SEO metadata, social sharing data, or page-specific code.
+
+## Open Page Settings
+
+Open the builder and click the **Settings** icon in the toolbar. Choose **Page Settings**.
+
+Page Settings are available only when the current user has permission to access them. Some groups can also be hidden by global settings.
+
+Use the **Reset** icon in the panel header to clear all page settings with a single click.
+
+## How Page Settings are applied
+
+Page Settings are stored with the current Bricks document. On the frontend, Bricks reads those settings while rendering the page.
+
+Some settings change markup, such as body classes or disabling the header. Some generate CSS, such as scroll snap and Custom CSS. Some print metadata or scripts into the document head or body. Some settings are visible in the builder immediately, while others should be checked on the frontend.
+
+![](https://academy.bricksbuilder.io/assets/bricks-page-settings.png)
+
+## General settings
+
+The General group contains page-wide output options.
+
+| Setting | What it does |
+| --- | --- |
+| CSS classes (body) | Adds space-separated classes to the page `<body>` tag. Dynamic data can be used when appropriate. |
+| Disable header | Prevents the active Bricks header from rendering on this page. Not shown for header or footer templates. |
+| Disable footer | Prevents the active Bricks footer from rendering on this page. Not shown for header or footer templates. |
+| Disable lazy load | Disables Bricks' built-in lazy loading for images, videos, background images, and background videos on the current page. Background videos honor this setting from Bricks 2.5. |
+| Disable popups | Prevents Bricks popups from rendering on the current page. |
+| Page layout | Overrides the page layout inherited from Theme Styles. |
+| Page background | Overrides the page background inherited from Theme Styles. |
+| Content margin | Overrides the content margin inherited from Theme Styles when available. |
+
+Use these settings for page-specific exceptions. If you need the same behavior on many pages, use global settings, Theme Styles, or templates instead.
+
+For a single background, use the element's **Style > Background > Disable lazy load** control (Bricks 2.5). See [Lazy Loading](https://academy.bricksbuilder.io/builder/features/lazy-loading/) for the available scopes and how they affect the element control.
+
+## Scroll snap
+
+The Scroll snap group configures page-level CSS scroll snapping.
+
+| Setting | What it does |
+| --- | --- |
+| Type | Sets the page scroll-snap type on the `html` element. |
+| Snapping elements selector | Defines which elements should snap. Defaults to Bricks sections when left empty. |
+| Align | Sets the snap alignment of snapping elements. |
+| Margin | Sets scroll margin for snapping elements. |
+| Padding | Sets scroll padding on the `html` element. |
+| Stop | Sets scroll-snap-stop behavior. |
+
+Scroll snap is primarily a frontend behavior. Test it on the frontend, not only in the builder canvas. Layout height, overflow, sticky headers, and browser behavior can affect the result.
+
+If you use a custom selector, make sure the selector matches the elements that should become snap points. If the selector matches nothing, the page can have scroll snap enabled without visible snapping.
+
+## One Page Navigation {#one-page-nav}
+
+If enabled, Bricks adds a vertical dot menu to the right edge of the page in a fixed position, with each dot linking to the page's root element.
+
+![](https://academy.bricksbuilder.io/assets/bricks-one-page-navigation-1024x534.png)
+
+One Page Navigation is shown only where it applies, such as normal pages and content templates. It is not shown for header or footer templates.
+
+The navigation uses the IDs Bricks renders for root elements. Add custom CSS IDs when you need stable, readable anchors or when root elements are generated dynamically.
+
+> **Note**
+>
+> If a root element is inside a query loop, use dynamic data in the CSS ID, such as a post ID or slug, so every repeated root element has a unique anchor.
+
+![](https://academy.bricksbuilder.io/assets/one-page-navigation-loop-unique-css-id.png)
+
+The One Page Navigation controls style the dot menu and its active state:
+
+- Spacing
+- Item width and height
+- Item color
+- Border
+- Box shadow
+- Active item width and height
+- Active item color
+- Active border
+- Active box shadow
+
+The active dot changes based on the root element currently in the scroll range.
+
+## SEO
+
+The SEO group controls page-level metadata. This group is hidden when Bricks SEO output is disabled globally.
+
+| Setting | What it does |
+| --- | --- |
+| Permalink | Updates the post slug. Use lowercase words separated by dashes. |
+| Title | Updates the WordPress post title after applying the change. |
+| Document title | Sets the frontend SEO title without changing the WordPress post title. |
+| Meta description | Prints a page-level meta description. |
+| Meta keywords | Prints page-level meta keywords. |
+| Meta robots | Prints robots directives such as `noindex` or `nofollow`. |
+
+Use **Save new title/permalink** after changing the post title or permalink in the SEO group. Other page settings are saved through the normal builder save flow.
+
+If you use a dedicated SEO plugin, decide which tool owns the metadata. Avoid setting competing metadata in multiple places.
+
+## Social media
+
+The Social media group controls Open Graph style sharing data for the current URL. This group is hidden when Bricks Open Graph output is disabled globally.
+
+| Setting | Default when empty |
+| --- | --- |
+| Title | The post/page title. |
+| Description | The post/page excerpt. |
+| Image | The featured image. |
+
+Use this group when a page needs a social title, description, or image that differs from its normal SEO data.
+
+## Custom Code
+
+The Custom Code group adds page-specific CSS and scripts.
+
+| Setting | Output location |
+| --- | --- |
+| Custom CSS | Inline CSS in the document `<head>`. Supports breakpoint-specific values. |
+| Header scripts | Before the closing `</head>` tag. |
+| Body (header) scripts | Immediately after the opening `<body>` tag. |
+| Body (footer) scripts | Before the closing `</body>` tag. |
+
+Script fields are shown only to users who are allowed to add unfiltered HTML. Users without that capability see an informational notice instead.
+
+Use page-level code sparingly. Prefer element settings, classes, Theme Styles, global settings, or properly enqueued code when the behavior should be reused across the site.
+
+## Common mistakes
+
+- **Changing SEO title but not applying it:** Use **Save new title/permalink** for title and slug changes.
+- **Expecting header/footer disable to affect templates globally:** These settings affect only the current page render.
+- **Using duplicate IDs for One Page Navigation:** Give repeated root elements unique IDs, especially inside query loops.
+- **Testing scroll snap only in the builder:** Always test on the frontend.
+- **Adding scripts without the right capability:** Script fields require permission to add unfiltered HTML.
+- **Using page code for reusable behavior:** Page Custom Code is local to the current page. Use global settings or enqueue code for site-wide behavior.
+
+---
+
+<a id="builder-interface-responsive-editing"></a>
+
+# Responsive Editing
+
+Source: https://academy.bricksbuilder.io/builder/interface/responsive-editing/
+
+*Edit Bricks designs responsively across breakpoints and adjust layout, spacing, and element settings for smaller screens.*
+
+What looks great on a large desktop screen usually needs some refinement for smaller devices. This typically involves applying smaller font sizes, margins, paddings, column width/stacking, or hiding certain elements on smaller devices.
+
+Bricks provides the following four breakpoints out-of-the-box:
+
+| **Breakpoint** | **@media query** |
+| --- | --- |
+| Desktop | Base breakpoint |
+| Tablet portrait | &lt; 992px |
+| Mobile landscape | &lt; 768px |
+| Mobile portrait | &lt; 478px |
+
+Styles set on the base breakpoint are inherited by all other breakpoints.
+
+Once you've finished styling a page on the base breakpoint (desktop), make sure to view & adjust the styling on the other breakpoints too.
+
+## Background videos at different breakpoints {#responsive-background-video}
+
+Since Bricks 2.5, background videos on **Section**, **Container**, **Block**, and **Div** elements can use different URLs and playback settings at each breakpoint. Open **Style > Background** on the element or its global class.
+
+Set the video on the base breakpoint, then switch to another breakpoint to change only the settings it needs. The URL, aspect ratio, scale, start and end times, **Play once**, poster, and YouTube/Vimeo options inherit through breakpoints. Inherited settings appear as placeholders; entering a value creates a local override. Clear a local value to use the inherited setting again.
+
+Use **Background video** to choose:
+
+- **Enable**: Play the resolved video at this breakpoint.
+- **No video**: Show the element's normal background instead. Set a background image or color if needed.
+
+For example, use a wide video at Desktop, enter a shorter video URL at Tablet portrait, and choose **No video** at Mobile portrait. Bricks loads the matching breakpoint's video and stops the previous video when the breakpoint changes. This applies to uploaded videos, YouTube, and Vimeo.
+
+At Tablet portrait, the video URL is a local override while playback settings such as **Start time (s)** remain inherited:
+
+<div className="screenshot screenshot--control-panel">
+
+![Tablet portrait Background video controls with a local Video URL and an inherited Start time of 0.](https://academy.bricksbuilder.io/assets/builder/release-2.5/video-tablet-panel.webp)
+
+</div>
+
+At Mobile portrait, **No video** leaves the normal background visible:
+
+<div className="screenshot screenshot--control-panel">
+
+![Mobile portrait Background video set to No video.](https://academy.bricksbuilder.io/assets/builder/release-2.5/video-mobile-panel.webp)
+
+</div>
+
+### Existing background videos
+
+Updating Bricks does not activate previously ignored breakpoint-specific video URLs. Existing videos keep their previous output until you intentionally edit a video setting. The first edit switches that element or class to responsive video settings. Bricks uses the previously rendered video and playback behavior as the starting point, then applies your edit.
+
+Older videos may have a **Start play at** restriction. That restriction survives the first edit; changing the legacy video URL alone does not remove it. To allow playback at a restricted breakpoint, explicitly choose **Background video > Enable** there. A poster can still appear below the old playback threshold.
+
+Entering a new URL at another breakpoint also enables video there if it inherited **No video**. Choose **No video** again if you want that breakpoint to keep its normal background.
+
+Class videos are inherited rather than copied into each element. Editing a class video does not switch an element's own untouched legacy video to responsive behavior. Check elements with their own video separately after changing a shared class.
+
+To view & edit the styles for a specific breakpoint simply click on its breakpoint icon located in the center of the builder toolbar. Or use the default [keyboard shortcut](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/) `CMD/CTRL + B`.
+
+![](https://academy.bricksbuilder.io/assets/bricks-1.5.1-in-builder-breakpoint-mobile-landscape-1024x576.jpg)
+
+<figcaption>
+
+Editing in the "Mobile landscape" breakpoint
+
+</figcaption>
+
+Next to the breakpoint icons are inputs for width ("W"), height ("H"), and scale (%).
+
+## Inherited background images {#inherited-background-images}
+
+Since Bricks 2.5, an inherited background image appears as a dimmed preview under **Style > Background**. Its remove button and image-size selector stay hidden until you select an image at the current breakpoint, creating a local override.
+
+## Custom Breakpoints {#custom-breakpoints}
+
+To start using custom breakpoints, you first have to enable them in your WordPress dashboard under `Bricks > Settings > General > Custom breakpoints`:
+
+![](https://academy.bricksbuilder.io/assets/bricks-enable-custom-breakpoints.jpg)
+
+Once enabled, you can access the **breakpoint manager** in the builder by clicking the three-dotted icon in the builder toolbar (next to the first breakpoint icon):
+
+![](https://academy.bricksbuilder.io/assets/bricks-1.5.1-breakpoint-manager-default-breakpoints.jpg)
+
+<figcaption>
+
+Breakpoint Manager (open via the three-dotted icon in the builder toolbar)
+
+</figcaption>
+
+### Editing a breakpoint
+
+Clicking the pencil icon brings up the editing options of the selected breakpoint:
+
+![](https://academy.bricksbuilder.io/assets/bricks-edit-default-breakpoint.jpg)
+
+<figcaption>
+
+Editing the default "Tablet portrait" breakpoint
+
+</figcaption>
+
+You can edit the following breakpoint properties:
+
+| **Property** | **Description** |
+| --- | --- |
+| Label | Used when hovering over the breakpoint icon in the builder toolbar |
+| Width (px) | @media query min-width/max-width value (depending on the base breakpoint) |
+| Width (Builder) | Width is used when switching to the breakpoint in the builder |
+| Icon | Used as the breakpoint icon in the builder toolbar |
+| Base breakpoint | Set breakpoint as base breakpoint |
+| *Key* | *Not customizable (used to store & identify breakpoint settings)* |
+
+The most common action is to customize the widths of the default (mobile) breakpoints. The following screenshot shows you the "Tablet portrait" with a custom width of 1023px:
+
+![](https://academy.bricksbuilder.io/assets/bricks-edit-breakpoint-width.jpg)
+
+That means any styles set on the "Tablet portrait" breakpoint will apply to devices with a width of less than 1024px.
+
+### Creating new breakpoints
+
+You can create as many additional custom breakpoints as you want. Although, it is recommended to customize the widths of the default mobile breakpoints to your liking before utilizing more breakpoints.
+
+You should rarely need more than one or two additional breakpoints on top of the default ones.
+
+Clicking the "+" (plus) icon in the breakpoint manager's header launches the breakpoint creator form.
+
+The following screenshot shows how we created a  new breakpoint named "Large" with a width of 1400px:
+
+![](https://academy.bricksbuilder.io/assets/bricks-create-new-breakpoint.jpg)
+
+<figcaption>
+
+Creating a new breakpoint
+
+</figcaption>
+
+Once you click "Create" your newly created breakpoint should appear in the breakpoint manager (alongside a "CUSTOM" label) & in the builder toolbar like this:
+
+![](https://academy.bricksbuilder.io/assets/bricks-custom-breakpoint-large-created.jpg)
+
+<figcaption>
+
+Breakpoint manager with new custom breakpoint
+
+</figcaption>
+
+As we've set the width of this new breakpoint to 1400px, it shows as the first breakpoint, as it is now the largest of our breakpoints. The Desktop (base breakpoint) has a default width of 1279px.
+
+### Pausing a custom breakpoint
+
+You can pause any of your custom breakpoints by toggling the checkbox at the right-hand side of the breakpoint manager:
+
+![](https://academy.bricksbuilder.io/assets/bricks-pause-custom-breakpoint.jpg)
+
+<figcaption>
+
+Pausing custom breakpoint "Large"
+
+</figcaption>
+
+Pausing a custom breakpoint allows you to skip generating the styles for it on the frontend, while still retaining the styles you've set throughout your site without having to delete them one by one. Which, on a full-built-out site, can go into thousands of settings.
+
+### Resetting a default breakpoint
+
+To restore the default values of a default breakpoint, click on the "reset" icon (next to the pencil) icon.
+
+### Resetting all breakpoints
+
+Clicking the "gear" icon in the breakpoint manager header opens up the "Reset: Breakpoints" action. Clicking this button removes all your breakpoint edits (default & custom breakpoints) from the database.
+
+> **Note**
+>
+> **Breakpoint-specific settings performed on an element or the Theme Styles are not deleted. Please choose desktop or mobile-first at the very beginning.**
+
+![](https://academy.bricksbuilder.io/assets/bricks-reset-all-breakpoints.jpg)
+
+### Understanding the base breakpoint
+
+The base breakpoint doesn't have a @media query. So all styles set on the base breakpoint apply to all screen widths.
+
+That is why, by default, any styles set on the "Desktop" breakpoint are visible on any other breakpoint. Unless you specify a style on a specific breakpoint. Then the breakpoint-specific rule precedes the base breakpoint style.
+
+When editing a breakpoint, you can set it as the "Base breakpoint". Then all styles set on this new base breakpoint are inherited up & down the breakpoint chain.
+
+In the following screenshot, you can see that the "Tablet portrait" breakpoint has been set as the base breakpoint.
+
+The yellow dot, lines, and arrows next to the breakpoint icons should help to visualize the style inheritance:
+
+![](https://academy.bricksbuilder.io/assets/bricks-custom-base-breakpoint.jpg)
+
+<figcaption>
+
+Changed base breakpoint to "Tablet portrait"
+
+</figcaption>
+
+### Mobile-first design {#mobile-first}
+
+Styling in Bricks, by default, happens from the largest breakpoint down to "Tablet portrait" > "Mobile landscape" and "Mobile portrait".
+
+Utilise a so-called `**mobile-first**` design approach by setting the smallest breakpoint as the base breakpoint.
+
+The following screenshot shows the "Mobile portrait" (our smallest breakpoint) set as the base breakpoint. We now use the mobile-first approach. Also indicated by the "MOBILE FIRST" label in the breakpoint manager header:
+
+![](https://academy.bricksbuilder.io/assets/bricks-mobile-first.jpg)
+
+<figcaption>
+
+Mobile-first design in Bricks
+
+</figcaption>
+
+You'll also notice that the order of the breakpoints is reversed and now starts at the smallest breakpoint. You can now start to design your pages starting at the smallest breakpoint.
+
+### Regenerating (Bricks) CSS files
+
+Whenever you customize the width of a default breakpoint, Bricks automatically updates any Bricks CSS files (like frontend.min.css, etc.) that contain media queries for this breakpoint.
+
+If you experience that your breakpoint widths on the front end are not correctly applied, please regenerate your Bricks CSS files by clicking the "Regenerate CSS files" button under `Bricks > Settings > General > Custom breakpoints`.
+
+## Breakpoint data attribute {#breakpoint-data-attribute}
+
+Since Bricks 2.5, the **Breakpoint data attribute** setting exposes the active breakpoint key for use in custom CSS and JavaScript. Enable it under **Bricks > Settings > General > Breakpoint data attribute**, then save your settings. It is disabled by default and works with both default and custom breakpoints.
+
+When enabled, Bricks adds `data-brx-breakpoint` to the page's `<body>` element on the frontend and in the Builder canvas. For example:
+
+```html
+<body data-brx-breakpoint="mobile_portrait">
+```
+
+The value updates when the viewport crosses a breakpoint boundary.
+
+### Breakpoint keys and matching
+
+The attribute contains one breakpoint key at a time. It uses the smallest matching `max-width` breakpoint or the largest matching `min-width` breakpoint. The base breakpoint key applies only when no other enabled breakpoint matches. Paused custom breakpoints are excluded.
+
+The default keys are `desktop`, `tablet_portrait`, `mobile_landscape`, and `mobile_portrait`. Custom breakpoints use their own keys. Renaming a breakpoint's label does not change its key or the attribute value. Inspect the page's `<body>` element in your browser's developer tools to check the active key.
+
+This value does not list every breakpoint whose styles apply. For example, `mobile_portrait` can be active while the element still inherits styles from the base and larger breakpoints.
+
+### Target a breakpoint in CSS
+
+Add a rule like this to your [custom CSS](https://academy.bricksbuilder.io/builder/features/custom-code/):
+
+```css
+body[data-brx-breakpoint="mobile_portrait"] .product-card {
+  gap: 0.75rem;
+}
+```
+
+This rule applies only while `mobile_portrait` is the active key. With the default desktop-first configuration, a selector for `tablet_portrait` does not also match the two mobile ranges. Use a media query when a rule should apply across several ranges.
+
+### Read the active key in JavaScript
+
+After Bricks initializes the page, read the current key with:
+
+```js
+const activeBreakpoint = document.body.dataset.brxBreakpoint;
+```
+
+This reads the value at that moment. Read it again when your code needs the current breakpoint.
+
+The attribute requires JavaScript and is added during page initialization. It is absent when the setting is disabled or Bricks' JavaScript has not run. Use media queries for styles that must apply before JavaScript runs or when JavaScript is unavailable.
+
+## Responsive control indicator {#responsive-control-indicator}
+
+In Bricks 1.11.1, we introduced the responsive control indicator which helps you see which controls can have different values at different breakpoints. We provide multiple options for when to show this indicator to suit different preferences. You can adjust these under `Bricks > Settings > Builder > Control panel > Responsive control indicator`:
+
+- **Show if any value exists (Default)**: Displays if a control has any value set across breakpoints.
+- **Show if non-base breakpoint value exists**: Shows only if a control’s value differs from the base breakpoint.
+- **Show on all responsive controls**: Displays on all responsive controls, regardless of values.
+- **Disable**.
+
+![](https://academy.bricksbuilder.io/assets/bricks-responsive-control-indicator.png)
+
+---
+
+<a id="builder-interface-review-links"></a>
+
+# Review Links
+
+Source: https://academy.bricksbuilder.io/builder/interface/review-links/
+
+*Share a saved Bricks draft or site version with someone without a WordPress login, set its expiry, and turn access off.*
+
+Review links let a client or teammate view a saved [page draft](https://academy.bricksbuilder.io/builder/interface/drafts/) or [site version](https://academy.bricksbuilder.io/builder/interface/site-versions/) without a WordPress login. They can browse the design, but cannot edit it, publish it, submit forms, or leave comments inside Bricks.
+
+Available since Bricks 2.5. Review links require the experimental Drafts feature and are disabled by default.
+
+## Enable review links {#enable}
+
+In **Bricks > Settings > Builder > Drafts**, enable **Enable drafts**, then **Enable review links**, and save the settings.
+
+To create a link, you must be allowed to edit the draft or site version you are sharing. A link does not give the recipient Builder access.
+
+## Create and copy a link {#create}
+
+1. Open the draft or site version in the Builder and save the changes you want reviewed.
+2. Open the version menu before **Save**, then choose **Review links…**. Bricks opens **Versions** with that version selected. Alternatively, use **Manage versions…** and select it from the list on the left.
+3. In **Review links** on the right, set **Expires after** to **1 day**, **7 days**, **14 days**, or **30 days**. The default is **7 days**.
+4. Click **Create review link**.
+5. Click **Copy** and send the generated link to your reviewer.
+
+Copy the link while it is shown. Bricks displays the full link only once; the list retains its expiry and active/inactive status. If you did not keep the link, create another one.
+
+Anyone who receives the link can use it until it expires or is turned off. Share it only with the people who should see the work.
+
+![Review-link controls with a seven-day expiry and active links that can be turned off.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/review-link-settings.webp)
+
+A link opens the saved version, not unsaved canvas edits. Further saves to that version appear when the reviewer reloads or revisits it. Use a separate named site version if another round of edits must stay separate from the work already under review.
+
+## What the reviewer sees {#reviewer}
+
+The link opens the frontend without the WordPress admin bar. A small **Review** panel shows the version name and **Available until** date. **Hide** collapses it; **Show review panel** opens it again.
+
+The reviewer can follow links on the same site while staying in the review. A page-draft link starts on that page; a site-version link starts at the site's homepage. A page draft can be reviewed before its page is published, but the link does not unlock unrelated private or unpublished posts.
+
+**Leave review** returns to the corresponding live URL. An unpublished page may have no public live page to show.
+
+![An anonymous review showing the Atelier North service cards and the Autumn services Review panel.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/review-frontend.webp)
+
+If the version contains alternatives, the panel offers **Explore alternatives**. The reviewer can inspect different combinations and comparisons, but cannot apply one to the draft or record a preferred choice in Bricks. See [Explore Alternatives and Compare](https://academy.bricksbuilder.io/builder/interface/explore-alternatives/).
+
+Review links are view-only, including when opened by a logged-in editor. They do not provide comments, an approval button, or a “choose this version” submission. Collect feedback through your usual email or project conversation. Forms in a review do not submit.
+
+## Expiry and turning links off {#expiry}
+
+Open **Versions**, select the shared draft or version, then find its **Review links** list. **Active until** shows the expiry. Click **Turn off** to stop a link before that date.
+
+The person who created a link, or an administrator who retains access to its version, can turn it off. Create a new link when you need a later expiry; the existing link is not extended.
+
+A link stops working when:
+
+- Its expiry is reached or it is turned off.
+- The draft or version is discarded.
+- A publish succeeds, including publishing a site version that remains open for further work.
+- Its creator loses permission to edit that draft or version.
+- Drafts or review links are disabled in Bricks settings.
+
+The recipient then sees **Review link unavailable** and can request a new link. After publishing a site version, create a fresh link for the next review so the old one cannot expose later work.
+
+---
+
+<a id="builder-interface-revisions"></a>
+
+# Revisions
+
+Source: https://academy.bricksbuilder.io/builder/interface/revisions/
+
+*Review, restore, and manage Bricks revisions so you can safely recover earlier builder states.*
+
+Page and template revisions are recovery copies of saved Bricks elements and page settings. [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) and [Site Versions](https://academy.bricksbuilder.io/builder/interface/site-versions/) hold pending changes before publishing.
+
+When you save builder data changes, Bricks creates a revision/snapshot of the relevant Bricks data and page settings (template, page, etc.) using the official WordPress Revisions API.
+
+[Global Data Revisions](https://academy.bricksbuilder.io/builder/interface/global-data-history/) recovers individual shared items separately from page and template revisions.
+
+Bricks also stores autosaves separately. Autosaves are backup copies from the autosave process, while regular revisions are created when Bricks element data or page settings are included in a manual save. After a regular revision is created, Bricks clears the related autosave.
+
+To browse, preview, and apply revisions, open **Manage > History / Revisions** from the builder toolbar, then select the **Revisions** tab. Access to revisions requires the **Access revisions** builder permission.
+
+The **History** tab lists recent undo and redo steps from your editing session. The **Revisions** tab contains saved versions and available autosaves, so use it to recover work from an earlier session.
+
+Select any revision in this list to preview it. The canvas should automatically update showing you the selected revision.
+
+Click **Apply** to continue editing the selected revision. Click **Discard** to continue editing your current version.
+
+If your builder capability includes **Delete revisions**, you can delete individual revisions or delete all revisions from the Revisions panel.
+
+![](https://academy.bricksbuilder.io/assets/builder-revisions-1024x576.png)
+
+## Manage the number of Bricks revisions {#bricks_max_revisions_to_keep}
+
+In order to limit the number of Bricks revisions, you may define the constant `BRICKS_MAX_REVISIONS_TO_KEEP` like so (insert this code in the Bricks child theme):
 
 ```php
-upload_max_filesize = 64M
-post_max_size = 64M
+if ( ! defined( 'BRICKS_MAX_REVISIONS_TO_KEEP' ) ) {
+    define( 'BRICKS_MAX_REVISIONS_TO_KEEP', 10 );
+}
 ```
 
-You can also add the following code to your **.htaccess** file, but make sure to backup your existing .htaccess file beforehand:
+By default, Bricks sets the maximum to 100 revisions per post for the Bricks templates and enabled post types.
+
+You may set the following values:
+
+- true: unlimited revisions
+- false or 0: do not store any Bricks' revisions
+- value above 0: store up to this number of revisions per post. Old revisions are automatically deleted.
+
+---
+
+<a id="builder-interface-save-publish"></a>
+
+# Save & Publish
+
+Source: https://academy.bricksbuilder.io/builder/interface/save-publish/
+
+*Understand how saving and publishing work in Bricks, including drafts, updates, and when frontend changes go live.*
+
+Bricks, by default, automatically creates an autosave every 60 seconds when the current builder area has unsaved element changes.
+
+Autosave creates a backup copy of the elements on the canvas. It does not save global data such as components, classes, or variables. Autosaves can be restored under **Manage > History / Revisions** from the builder toolbar.
+
+To adjust or disable the autosave interval go to **Bricks > Settings > Builder** in your WordPress admin area. The default interval is 60 seconds, and the minimum interval is 15 seconds.
+
+Bricks detects unsaved changes and will show you a prompt to help prevent data loss in case you reload the builder by accident.
+
+To manually save your changes, click the **Save** (disk) icon in the builder toolbar or use the default `CMD/CTRL + S` shortcut. Save writes to the version you are editing: Live, a Bricks page draft, or a named site version. In Bricks 2.5, you can change the shortcut under **Manage → Keyboard shortcuts**. See [Keyboard Shortcuts](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/).
+
+For live page changes, **Bricks creates a revision/snapshot** when changed Bricks data or page settings are saved using the standard WordPress Revisions API ([learn more about revisions](https://academy.bricksbuilder.io/builder/interface/revisions/)). Saving into a Bricks draft keeps pending changes separate from that live-page save.
+
+Customize the save messages with the [bricks/builder/save_messages](https://academy.bricksbuilder.io/developer/hooks/filters/filter-save-messages/) filter.
+
+## Save pending changes without publishing {#drafts}
+
+Bricks 2.5 offers experimental [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/), disabled by default. Enable **Bricks > Settings > Builder > Drafts > Enable drafts**, then open **Live** beside Save and choose **Save page as draft**. The label follows the post type.
+
+While the switcher shows **Draft**, Save continues saving into that draft. Select **Publish** to review its changes before making them live, or **Discard** to remove its pending changes. On narrower screens, these actions appear in the version menu. Save while **Live** is selected still saves directly to the live version.
+
+Changes to shared items already used on live pages stay in the draft until publication. Reusable items that do not affect live content become available across the site immediately, so you can use a new class on other pages and templates while working. Read [what stays in a draft](https://academy.bricksbuilder.io/builder/interface/drafts/#shared-data) for the full rules and examples.
+
+Use a named [site version](https://academy.bricksbuilder.io/builder/interface/site-versions/) for work across several pages, and [review links](https://academy.bricksbuilder.io/builder/interface/review-links/) to let someone without a login preview pending work.
+
+## Saving shared data from multiple Builder sessions {#save-conflicts}
+
+Since Bricks 2.5, conflict-safe saving is always active for shared data such as global classes, components, Theme Styles, variables, palettes, global queries and filters, and custom fonts. There is no setting to enable it.
+
+If two people edit different shared items, Bricks merges those changes when they save. For example, one person can update a button class while another updates a card component. Saving from an older Builder session does not replace the other person's unrelated update.
+
+If both sessions change the same shared item, Bricks pauses the save and asks which version to keep. This can also happen when you have the Builder open in two tabs. Resolve the conflicts before treating the page or shared-data changes as saved.
+
+### Resolving a conflict
+
+1. In the conflict notification, click **Overview changes** to open **Conflict details**.
+2. Select a resource group or expand an item to compare its **Saved version** with **My version**. The saved version is the version currently on the site; your version is the one in this Builder session.
+3. Choose which version to keep for each item. The dialog initially selects **Saved version**. Use **All items** only when you want the same choice for every item in the dialog.
+4. Click **Use selected**. Resolve any other conflict notifications. After the final conflict is resolved, Bricks retries the save automatically.
+
+![Conflict details comparing the demo global class: the saved typography color is white, while My version uses orange.](https://academy.bricksbuilder.io/assets/builder/save-publish/conflict-details-global-class.webp)
+
+The notification also offers **Use saved version** and **Use my version** for applying one choice to its listed conflicts. Choosing your version can replace another person's work on those items. If you need changes from both versions, agree on the version to keep and reapply the remaining changes afterward.
+
+If another session saves again while you are resolving conflicts, Bricks may ask you to review the updated conflicts. Wait for the save to finish before leaving the Builder.
+
+Conflict-safe saving protects shared data such as global classes and components. It does not merge changes made by two people editing the same page at the same time. Legacy global elements are outside this protection. Autosave still backs up canvas elements rather than shared data, so keep your normal site backups.
+
+## Publishing a WordPress draft post
+
+Saving a page or post whose WordPress status is **Draft** does not publish that post. While editing its **Live** version, use the **Publish** action in the toolbar when it is ready to go public.
+
+If you are editing a Bricks page draft, its **Publish** action first reviews and applies the pending Bricks changes. After returning to Live, publish the WordPress post separately if it is still unpublished. See [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) for the distinction.
+
+---
+
+<a id="builder-interface-site-versions"></a>
+
+# Site Versions
+
+Source: https://academy.bricksbuilder.io/builder/interface/site-versions/
+
+*Work on several Bricks pages and shared styles in a named version, review the changes, and publish them together.*
+
+A site version holds a named set of changes across several pages, templates, and shared styles. Use one for work such as a new service offering that changes the homepage, service pages, and their shared components.
+
+Site versions are available in Bricks 2.5 through the experimental [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) feature. Enable **Bricks > Settings > Builder > Drafts > Enable drafts** first. It is disabled by default.
+
+You need Builder access and the WordPress permission to edit other users' posts to create and edit site versions. Your permissions for individual pages, templates, and global resources still apply.
+
+## Create a site version {#create}
+
+1. Open a page in the Builder.
+2. Open the version menu just before **Save**. It shows **Live**, **Draft**, or the name of the site version you are editing.
+3. Choose **New site version…**.
+4. Enter a name, such as `Autumn services`.
+5. If you have a draft or site version open, use **Start from** to keep that source or choose **Live**.
+6. Click **Create**. Bricks opens the new site version on the current page.
+
+When starting from the open draft or version, Bricks saves its pending edits before copying its saved changes. Starting from **Live** uses saved live data. It does not include unsaved edits on the live canvas. Save those edits first, or put them in a [page draft](https://academy.bricksbuilder.io/builder/interface/drafts/) and create the site version from that draft.
+
+A new version can start with no changes. It does not copy and freeze the whole site: items you have not changed continue to follow live data.
+
+![Creating Autumn services from the open page draft in the Versions dialog.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/site-version-create.webp)
+
+## Work across pages {#work-across-pages}
+
+The toolbar shows the site's version name while you edit it. **Save** writes changes in that context. Open another page through the Builder's page navigation to continue in the same site version. Pending edits are saved before leaving the current page.
+
+Use the version menu to switch between **Live**, this page's **Draft** when one exists, and the available site versions. The checkmark marks the version open in the Builder. Switching from a draft or version saves pending changes first; switching away from unsaved live edits asks for confirmation.
+
+A page draft belongs to one page and its templates. A site version can hold changes from several pages. See [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) for the shared editing rules.
+
+### What stays in the version
+
+Page and template changes stay in the version until you publish them. Changes to shared items already used by live content, such as a card component or a global class, also stay there. Theme Styles, breakpoints, and Style Manager changes are held for publishing.
+
+Reusable items that do not affect live content become available across the site immediately. For example, a new class is available on other pages and templates as you work, without publishing the version. Changes to a class already used by live pages stay in the version until publication. See the [shared-data rules](https://academy.bricksbuilder.io/builder/interface/drafts/#shared-data) for details, including custom CSS that affects other elements.
+
+Media Library changes and personal Builder preferences remain shared too. Save notices identify items shared immediately; the version's **Changes** list shows work still held for publication.
+
+Untouched items keep following the live site. If someone updates a different component while you work, that update remains visible in your version. Publishing a shared style updates every live page using it, including pages you did not edit in this version.
+
+## Manage versions {#manage}
+
+Open the version menu and choose **Manage versions…**. The **Versions** dialog also lists page drafts that you have permission to edit.
+
+The left side contains the creation form and the version list, with page/shared-change counts. Select a name to inspect it on the right. Selecting a row does not switch the Builder into that version, and does not change the source used by **Start from** when creating another version.
+
+The right side contains the selected version's name, owner, update time, actions, **Changes**, and [Review links](https://academy.bricksbuilder.io/builder/interface/review-links/) when enabled. Save your current work before checking this overview; it lists saved changes.
+
+![The split Versions dialog with drafts and named versions on the left, and saved changes and review-link settings on the right.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/site-versions-manager.webp)
+
+| Action | What it does |
+| --- | --- |
+| **Rename** (pencil) | Edit the selected version's name. Press Enter or leave the field to save; Escape cancels. |
+| **Open** | Edit the selected version. A site version opens on the page currently in the Builder. A page draft for another page opens that page. |
+| **Compare** | Open a comparison with live over the Builder. For the page you're editing, use **Compare with live** in its version menu. |
+| **Preview** | Open the saved version's frontend preview in a new tab. An editor needs permission to view it; use a review link for someone without a login. |
+| **Discard version** (trash) | Confirm deletion of the selected version's unpublished changes. It does not undo changes that already went live. |
+
+**Open** is available when the selected version is not already open in the Builder.
+
+**Changes** groups the work under **Pages and templates** and **Shared styles**. It includes available before/after values, such as color swatches. Longer groups show eight changes initially; use **Show all** to expand them. Items already matching live are omitted.
+
+For comparisons, responsive preview widths, and trying several designs, see [Explore Alternatives and Compare](https://academy.bricksbuilder.io/builder/interface/explore-alternatives/).
+
+## Publish a site version {#publish}
+
+Open the site version you want to publish, then click **Publish** beside the version menu. On narrower screens, choose **Publish version…** from the menu instead.
+
+1. Bricks saves pending changes into the version and opens the publish review.
+2. Review **Pages and templates** and **Shared styles**. Check the reach of shared changes before continuing.
+3. If live content also changed, resolve each conflict with **Your draft** or **The live version**. Page-content conflicts can offer choices for individual elements; independent element changes can be combined.
+4. Click **Publish version** and wait for confirmation.
+
+If the version changes again after you review it, Bricks asks you to review the updated work before publishing.
+
+![Publish version review for Autumn services with Your draft and The live version choices for a changed global class.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/site-version-publish.webp)
+
+After publishing, the Builder returns to **Live**. The named site version remains available for more work; changes that were published or settled by keeping live are removed from it. Open it again from the version menu to continue. Existing review links are turned off when publishing succeeds, so create fresh links for any later review.
+
+### Undo a publish
+
+When a publish changes live content, Bricks creates an undo point. Click **Undo** in the published message, or open **Manage versions… > Undo a publish** and confirm **Undo** for the relevant publish. Save or discard unsaved live edits before undoing.
+
+Undo points are kept for 30 days by default. This cleanup period can be changed with [`bricks/drafts/keep_days`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-drafts-keep_days/). Active editable versions are not removed by that age limit.
+
+Undo points restore the affected live data from before that publish. They are separate from editable site versions. For recovering one shared item without undoing a whole publish, use [Global Data History](https://academy.bricksbuilder.io/builder/interface/global-data-history/).
+
+## Discard a version {#discard}
+
+Open the version and click **Discard**, or select it under **Manage versions…** and use the trash icon. Confirm **Discard version**. If it was open in the Builder, Bricks returns you to Live.
+
+Discarding removes the version's unpublished work and stops its review links. It keeps changes already shared live. When discarding from the toolbar, Bricks can offer **Discard, keep them** or **Discard and delete them** for new shared items that no page, live style, or other open draft uses.
+
+---
+
+<a id="builder-interface-structure-panel-search"></a>
+
+# Structure Panel Search and Filters
+
+Source: https://academy.bricksbuilder.io/builder/interface/structure-panel-search/
+
+*Find elements in the Bricks Structure panel by name, text, ID, class, HTML tag, attribute, or dynamic data, and narrow results with filters.*
+
+In Bricks 2.5, search and filters help you find elements in the Structure panel without opening every branch of a large layout. Search for a button's text, find elements using a class, or show elements with conditions or interactions.
+
+## Open the search
+
+<div className="screenshot screenshot--control-panel">
+
+![The Structure search prefix cheat sheet showing searches for element IDs, classes, attributes, HTML tags, and dynamic data.](https://academy.bricksbuilder.io/assets/builder/structure-panel/structure-search-prefixes.webp)
+
+</div>
+
+Use the **Search structure** field at the top of the Structure panel. It appears when the current editing context contains elements.
+
+The default shortcut is `CMD / CTRL + F`. It opens the panel if hidden or minimized and focuses the search. While typing in a field, including the Structure search itself, the same shortcut keeps the browser's normal Find behavior. It also keeps browser Find on an empty page.
+
+You can change or disable **Search structure** under **Manage > Keyboard shortcuts**. See [Keyboard Shortcuts](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/).
+
+## Search by name or text
+
+Type an element label, element type, or text from its content. Searches ignore capitalization and match part of the text. For example:
+
+- `hero` finds elements labelled Hero.
+- `heading` finds Heading elements, including ones you have renamed.
+- `get started` finds that text in a button or another supported text field.
+
+Text search includes fields such as accordion and tab titles, list items, pricing features, and form labels and placeholders. It searches stored text settings, not the resolved output of dynamic data or the contents of code and custom CSS.
+
+Paste a complete Bricks element ID, such as `brxe-abc123` or `abc123`, to find that element. Use the `#` prefix for a partial ID or a custom CSS ID.
+
+## Search prefixes
+
+Start a search with one of these prefixes to choose what to search. These are search shortcuts, not full CSS selectors.
+
+| Prefix | Searches | Example |
+| --- | --- | --- |
+| `#` | Bricks element IDs and custom CSS IDs | `#hero` or `#brxe-abc` |
+| `.` | Assigned global classes and custom CSS classes | `.btn--primary` |
+| `[` | Custom attribute names or values | `[aria-label` or `[data-track=signup` |
+| `<` | HTML tags | `<h2` or `<h` |
+| `{` | Dynamic data tags in element settings | `{post_title` or `{acf_` |
+
+IDs, classes, attributes, and dynamic data tags support partial matches. HTML tag search matches from the start of the tag name: `<h` can find `h1` through `h6`, but can also match another tag starting with `h`, such as `header`.
+
+For attributes, `[data-track=signup` requires both the attribute name and value to match on the same attribute. With no `=`, the search checks either the name or value. The closing `]`, `>`, or `}` is optional for attribute, HTML tag, and dynamic data searches.
+
+Use `{post_title` to find an element using that dynamic data tag, regardless of the title it currently displays. Tags inside code or custom CSS are excluded.
+
+Focus the empty search field to see a prefix cheat sheet. Click a prefix to insert it, or use the arrow keys or Tab to reach a prefix button and Enter to activate it.
+
+Classes and attributes require their prefix. If a plain search finds nothing, **Search instead for** may suggest a prefixed search that has results. Click the suggestion to apply it.
+
+## Read and navigate results
+
+Matching elements are highlighted. Their parents stay visible, dimmed and expanded, so you can see where each match sits in the layout. Other branches are hidden from the Structure panel. This does not hide elements on the frontend.
+
+When a match comes from text, an ID, a class, a tag, or an attribute, an excerpt or value appears below the row. Hover over it to see the match type, such as **Global class**.
+
+<div className="screenshot screenshot--control-panel">
+
+![Three buttons matching .btn--primary, with their Hero, Pricing, and Newsletter parent branches visible in the Structure panel.](https://academy.bricksbuilder.io/assets/builder/structure-panel/structure-search-class-matches.webp)
+
+</div>
+
+Use the previous and next buttons beside the result counter to select matches. While the search input has focus:
+
+| Keys | Action |
+| --- | --- |
+| `Enter` or `CMD / CTRL + G` | Select the next match |
+| `Shift + Enter` or `CMD / CTRL + Shift + G` | Select the previous match |
+| `Esc` | Clear the search text, or dismiss the open cheat sheet |
+
+Navigation wraps from the last match to the first and keeps focus in the search input. The selected element and its parent path stay visible even if it does not match, so a visible row is not necessarily counted as a result.
+
+## Filter elements
+
+Click the funnel button beside the search field to show the filters.
+
+| Filter | Finds |
+| --- | --- |
+| Query loop | Elements with a query loop enabled |
+| Conditions | Elements with display conditions |
+| Interactions | Elements with interactions |
+| Custom CSS | Elements with custom CSS in their element settings, including breakpoint or pseudo-class variants |
+| Hidden | Elements hidden in the builder or on the frontend, or with an element Display setting of `none` at any breakpoint or pseudo-class |
+| Components | Component instances |
+| Dynamic data | Elements with dynamic data tags in their settings, excluding code and custom CSS |
+| Attributes | Elements with custom attributes |
+| Code | Code elements and elements flagged as containing unsigned code |
+
+These filters inspect element settings. **Hidden** does not test computed visibility, and **Custom CSS** does not find every element styled by a global class or stylesheet.
+
+Select multiple filters to find elements matching **any** of them. When you also enter search text, an element must match the text **and** at least one selected filter.
+
+For example, search `.btn--primary` and select **Conditions** and **Interactions** to find buttons using that class that have either conditions or interactions. This helps you locate buttons with behavior to review.
+
+<div className="screenshot screenshot--control-panel">
+
+![Structure search for .btn--primary with Conditions and Interactions selected, showing two matching buttons and the clear-all filters button.](https://academy.bricksbuilder.io/assets/builder/structure-panel/structure-search-filters.webp)
+
+</div>
+
+Click a selected filter to turn it off. The **×** badge on the funnel button clears all filters and keeps the search text. Clearing only the text keeps your filters active. If nothing matches, the **Clear search** button in the empty state clears both.
+
+## Return to the full structure
+
+Clear the search text and all filters to restore the full tree and its previous expanded and collapsed branches. Drag and drop and **Expand/collapse all** are unavailable while search or filters are active.
+
+Search follows the tree for the current editing context. On a page, component instances expose their slots and assigned slot content; open the main component to search its internal elements. Search and filters reset when you enter or leave component editing or navigate to another page in the builder.
+
+---
+
+<a id="builder-interface-undo-redo-history"></a>
+
+# Undo, Redo & History
+
+Source: https://academy.bricksbuilder.io/builder/interface/undo-redo-history/
+
+*Preview changes, undo or redo several steps at once, and navigate the History panel in Bricks.*
+
+Use undo and redo to reverse recent edits while working in the builder. The toolbar history menus let you review several changes before applying them. The History panel shows all available steps.
+
+The history menus, feedback messages, and redesigned History panel described here are available in **Bricks 2.5**.
+
+## Undo or redo one change
+
+Click **Undo** or **Redo** in the builder toolbar. Hover over either button to see the next change it will apply, including the element name and action. If no step is available, the tooltip shows **Nothing to undo** or **Nothing to redo**.
+
+The default [keyboard shortcuts](https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/) are:
+
+| Action       | macOS             | Windows / Linux    |
+| ------------ | ----------------- | ------------------ |
+| Undo         | `Cmd + Z`         | `Ctrl + Z`         |
+| Redo         | `Cmd + Shift + Z` | `Ctrl + Shift + Z` |
+| Open History | `Cmd + Shift + H` | `Ctrl + Shift + H` |
+
+While typing in a field or editing text inline, undo and redo use the text editor's history. Leave the field or finish inline editing to navigate builder history with these shortcuts.
+
+### Feedback after a change
+
+A brief message identifies the change you undid or redid. Repeated actions in the same direction add to a counter, such as **×3**. The message stays visible while you hover over it and otherwise closes after 2.5 seconds.
+
+The message includes a **Redo** or **Undo** button to reverse one step. This button reverses only one step, even when the counter shows several. Use a history menu to reverse a whole range.
+
+When the affected element is still present, Bricks briefly highlights it on the canvas and in the open Structure panel. An element outside the visible canvas scrolls into view. If the action removed the element, there is no element left to highlight.
+
+## Undo or redo several changes
+
+Click the chevron beside **Undo** or **Redo** to open its history menu. Each menu lists up to 10 available steps in the order they will be applied. Rows show the element or item name, the change, and the elapsed time.
+
+1. Hover over a row to highlight that step and every step above it.
+2. Check **Steps to undo** or **Steps to redo** at the bottom of the menu.
+3. Click the row to apply the entire highlighted range.
+
+For example, click the third row in the Undo menu to undo your three most recent recorded changes. You cannot undo just the third change while keeping the two changes after it.
+
+Hovering over a row outlines its affected element when it is present on the canvas. It does not apply the change.
+
+<div className="screenshot screenshot--control-panel">
+
+![Undo history menu with three highlighted changes and the summary "Steps to undo: 3".](https://academy.bricksbuilder.io/assets/undo-history-range.webp)
+
+</div>
+
+To use the menu with a keyboard, focus the toolbar's Undo or Redo item and press `Arrow Down`. The first row receives focus. Use `Arrow Up` and `Arrow Down` to change the range, then `Enter` to apply it. Press `Escape` to close the menu and return focus to the toolbar item.
+
+## Use the History panel
+
+Choose **Open history panel** at the bottom of either history menu, or use the Open History shortcut above.
+
+The panel separates available steps into **Redo** and **Undo** sections, with the newest changes at the top of each section. Hover over a row to check the highlighted range and step count before clicking:
+
+- **Undo:** Reverses the selected change and every newer applied change.
+- **Redo:** Reapplies the selected change and every earlier change needed to reach it.
+- **Start:** Undoes all currently available undo steps.
+
+Clicking an Undo row reverses that row's change too. It does not restore the state after that change. In the Redo section, the range extends through the older redo steps below the selected row.
+
+<div className="screenshot screenshot--control-panel">
+
+![History panel showing Redo and Undo sections, three selected undo steps, and the Start row.](https://academy.bricksbuilder.io/assets/history-panel-ranges.webp)
+
+</div>
+
+### Make a new edit after undoing
+
+If you undo changes and then make a new recorded edit, Bricks discards the redo steps ahead of your current position. You can undo the new edit, but you cannot use Redo to recover the discarded sequence.
+
+## History and saved revisions
+
+History is for recent editing steps. It is limited, and older steps drop out as you continue editing. **Start** means the earliest state still available in history, which may no longer be the state from when you opened the builder.
+
+Reloading the builder or switching to another document resets editing history. Use [Save & Publish](https://academy.bricksbuilder.io/builder/interface/save-publish/) to save your work and [Revisions](https://academy.bricksbuilder.io/builder/interface/revisions/) to restore a saved version or an available autosave.
+
+The History panel's **Delete** action clears the available undo and redo steps after confirmation. It keeps the current design in place; it does not undo the edits or delete saved revisions.
+
+---
+
+<a id="builder-license-license-and-updates"></a>
+
+# License, updates, and your account
+
+Source: https://academy.bricksbuilder.io/builder/license/license-and-updates/
+
+*Update Bricks safely, manage your license and sites, and understand staging and local URLs.*
+
+For first-time installation and activation, follow [Installation and setup](https://academy.bricksbuilder.io/getting-started/installation-setup/).
+
+This article covers **automatic updates**, **staging and safe updates**, **which URLs count toward your license**, and **managing activations** in your Bricks account.
+
+Your Bricks account and downloads live at [my.bricksbuilder.io](https://my.bricksbuilder.io/) (same destination the theme uses for remote services).
+
+## Define the license key in wp-config.php {#constant}
+
+Starting with Bricks 2.4, you can define your Bricks license key as a PHP constant in `wp-config.php`:
 
 ```php
-php_value upload_max_filesize 64M
-php_value post_max_size 64M
+define( 'BRICKS_LICENSE_KEY', 'your-license-key' );
 ```
 
-If all above fails, you can try adding the following code to your wp-config.php:
+Add the constant above the line that says `/* That's all, stop editing! Happy publishing. */`.
 
-```php
-@ini_set( 'upload_max_size' , '64M' );
-@ini_set( 'post_max_size', '64M');
-```
+Use this when you manage WordPress sites from a blueprint, clone sites for development, or prefer to keep the raw license key out of the WordPress options table.
 
-To confirm that your maximum upload file size has been updated successfully, go to **Media > Add New**. On the bottom of this page, you should see your maximum upload file size.
+When `BRICKS_LICENSE_KEY` is defined, Bricks uses it as the active license key. The license screen at **Bricks > License** shows that the key is defined by the constant and provides a **Re-validate license** button.
 
-## How To Increase Maximum Execution Time {#max-execution-time}
+If a license key is also saved in the database, Bricks keeps using `BRICKS_LICENSE_KEY` while the constant is active. The license screen shows a notice and a **Remove saved database key** button. This removes the local `bricks_license_key` option only. It does not remotely deactivate the license.
 
-When you start seeing a message like "Maximum execution time of 30 seconds exceeded" you have to increase the execution time of your website by using one of the following three solutions:
+To use a different key, update the constant value and re-validate the license. To return to a database-stored key, remove the constant and activate the license from **Bricks > License**.
 
-**#1: Add the following code to your wp-config.php file (above the "That's all, stop editing!" line):**
+## How to update Bricks {#how-to-update}
 
-```php
-set_time_limit(180);
-/* That's all, stop editing! Happy publishing. */
-```
+If you have activated your Bricks license key on your site, you'll automatically receive update notifications in your WordPress dashboard. You can then perform the update to the latest version of Bricks with one click from your WordPress dashboard.
 
-**#2: Backup your .htaccess file and add the following code to it:**
+![](https://academy.bricksbuilder.io/assets/bricks-wp-dashboard-how-to-update.png)
 
-```php
-php_value max_execution_time 180
-```
+You can also always manually download the latest version from your Bricks account at [https://my.bricksbuilder.io/](https://my.bricksbuilder.io/) as a ZIP file.
 
-**#3: Add the following code to your php.ini file:**
+### Test on staging & read the changelog
 
-```php
-max_execution_time = 180
-```
+We recommend to perform updating a mission-critical software like Bricks first on a staging server. Especially if your website is live, receives a lot of traffic, you are running marketing campaigns, offers, etc. Once you confirmed that everything is working as expected you can update your live site.
+
+Every noticeable host offers, mostly free of charge, an easy one-click staging solution. Please reach out to your host if you are not sure how this works.
+
+Every update is accompanied by an in-depth release changelog. Please take the time to go over it at [https://bricksbuilder.io/changelog/](https://bricksbuilder.io/changelog/) before you perform the update.
+
+This way you know exactly what changed, if any adjustments or steps need to be performed on your end, which new features are available, and so on.
+
+### Local, staging & intranet installations don't count against your license limit {#local}
+
+These rules are enforced by the Bricks account/licensing service. During license activation, validation, and update checks, the Bricks theme sends the current site/license data, including the site URL/domain and Bricks version, to the licensing service. The service then decides whether a URL counts toward your license limit.
+
+Bricks classifies sites matching the following URL patterns as local, staging, or intranet installations for licensing purposes. These installations do not count against your license activation limit. This classification does not necessarily describe how a site is used.
+
+**Local URLs:**
+
+- `192.168.x.x`
+- `127.0.0.1`
+- `localhost` (includes)
+- `.local` (top-level domain)
+- `.test` (top-level domain)
+- `.wip` (top-level domain)
+
+<span id="staging"></span>
+
+**Staging URLs:**
+
+- Staging subdomains (dev, staging, test)
+  - `dev.yoursite.com`
+  - `staging.yoursite.com`
+  - `test.yoursite.com`
+- BlogVault: `.wpstage.net`
+- Cloudways: `.cloudwaysapps.com` & `.cloudwayssites.com`
+- DreamHost / DreamPress: `.stage.site` & `.dream.press`
+- Flywheel: `.mysites.io` & `.flywheelsites.com`
+- GoDaddy: `.myftpupload.com`
+- Hostinger: `.hostingersite.com`
+- InstaWP: `.instawp.site` & `.instawp.xyz` & `instawp.com` & `.instawp.co` & `.instawp.link`
+- Kinsta: `.kinsta.cloud`
+- Lando Pantheon: `.lndo.site`
+- Nexcess: `.nxcli.net` & `.nxcli.io`
+- Pantheon: `.pantheonsite.io`
+- Plesk: `.plesk.page`
+- Raidboxes: `.myrdbx.io`
+- Rocket.net: `.onrocket.site` & `.wpdns.site`
+- Runcloud: `.temp-site.link`
+- SiteGround: `.sg-host.com`
+- SpinupWP: `.spinupwp.site`
+- TasteWP: `.tastewp.com`
+- WP Engine: `.wpenginepowered.com` & `.wpengine.com`
+- WP Stagecoach: `.wpstagecoach.com` & `.wpsc.site`
+- wp-space.de: `.wpspace.partners`
+- xCloud: `1wp.site`, `.wp1.site`, `wp1.sh`, `wp1.host`
+- ZipWP: `.zipwp.link`
+
+<span id="intranet"></span>
+
+**Intranet (top-level domains):**
+
+- `.intranet`
+- `.internal`
+- `.private`
+- `.corp`
+- `.home`
+- `.lan`
+
+**With a Bricks Starter license (1 active site limit), you can build your site locally with Bricks & use your Starter license on your live site simultaneously.**
+
+You can deactivate the license key from your site from your WP dashboard under `Bricks > License`, and activate it on another site or remove the site from your Bricks account under the "Sites" tab. We monitor any potential misusage (attempts to avoid purchasing a sufficient plan) and reserve the right to limit further license activations.
+
+---
+
+<a id="builder-elements"></a>
+
+# Elements
+
+Source: https://academy.bricksbuilder.io/builder/elements/
+
+*Browse the built-in Bricks elements across layout, content, WordPress, WooCommerce, media, filters, and query-related use cases.*
+
+These are the elements that Bricks comes with:
+
+## Layout
+
+- [Container](https://academy.bricksbuilder.io/builder/elements/layout/container/)
+- [Block](https://academy.bricksbuilder.io/builder/elements/layout/block/)
+- [Section](https://academy.bricksbuilder.io/builder/elements/layout/section/)
+- [Div](https://academy.bricksbuilder.io/builder/elements/layout/div/)
+- [Divider](https://academy.bricksbuilder.io/builder/elements/layout/divider/)
+- [List](https://academy.bricksbuilder.io/builder/elements/layout/list/)
+
+## Basic
+
+- [Heading](https://academy.bricksbuilder.io/builder/elements/basic/heading/)
+- [Text Basic](https://academy.bricksbuilder.io/builder/elements/basic/text-basic/)
+- [Rich Text](https://academy.bricksbuilder.io/builder/elements/basic/text/)
+- [Text Link](https://academy.bricksbuilder.io/builder/elements/basic/text-link/)
+- [Button](https://academy.bricksbuilder.io/builder/elements/basic/button/)
+- [Icon](https://academy.bricksbuilder.io/builder/elements/basic/icon/)
+- [Image](https://academy.bricksbuilder.io/builder/elements/basic/image/)
+- [Video](https://academy.bricksbuilder.io/builder/elements/basic/video/)
+
+## General
+
+- [Icon Box](https://academy.bricksbuilder.io/builder/elements/general/icon-box/)
+- [Icon List](https://academy.bricksbuilder.io/builder/elements/general/icon-list/)
+- [Accordion](https://academy.bricksbuilder.io/builder/elements/general/accordion/)
+- [Accordion (Nestable)](https://academy.bricksbuilder.io/builder/elements/general/accordion-nested/)
+- [Tabs](https://academy.bricksbuilder.io/builder/elements/general/tabs/)
+- [Tabs (Nestable)](https://academy.bricksbuilder.io/builder/elements/general/tabs-nested/)
+- [Form](https://academy.bricksbuilder.io/builder/elements/general/form/)
+- [Map](https://academy.bricksbuilder.io/builder/elements/general/map/)
+- [Map (Leaflet)](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/)
+- [Map Connector](https://academy.bricksbuilder.io/builder/elements/general/map-connector/)
+- [Alert](https://academy.bricksbuilder.io/builder/elements/general/alert/)
+- [Animated Typing](https://academy.bricksbuilder.io/builder/elements/general/animated-typing/)
+- [Breadcrumbs](https://academy.bricksbuilder.io/builder/elements/general/breadcrumbs/)
+- [Code](https://academy.bricksbuilder.io/builder/elements/general/code/)
+- [HTML](https://academy.bricksbuilder.io/builder/elements/general/html/)
+- [Countdown](https://academy.bricksbuilder.io/builder/elements/general/countdown/)
+- [Counter](https://academy.bricksbuilder.io/builder/elements/general/counter/)
+- [Pricing Tables](https://academy.bricksbuilder.io/builder/elements/general/pricing-tables/)
+- [Progress Bar](https://academy.bricksbuilder.io/builder/elements/general/progress-bar/)
+- [Rating](https://academy.bricksbuilder.io/builder/elements/general/rating/)
+- [Pie Chart](https://academy.bricksbuilder.io/builder/elements/general/pie-chart/)
+- [Team Members](https://academy.bricksbuilder.io/builder/elements/general/team-members/)
+- [Testimonials](https://academy.bricksbuilder.io/builder/elements/general/testimonials/)
+- [Nav (Nestable)](https://academy.bricksbuilder.io/builder/elements/general/nav-nested/)
+- [Dropdown](https://academy.bricksbuilder.io/builder/elements/general/dropdown/)
+- [Offcanvas](https://academy.bricksbuilder.io/builder/elements/general/offcanvas/)
+- [Toggle](https://academy.bricksbuilder.io/builder/elements/general/toggle/)
+- [Toggle - Mode](https://academy.bricksbuilder.io/builder/elements/general/toggle-mode/)
+- [Back to Top](https://academy.bricksbuilder.io/builder/elements/general/back-to-top/)
+- [Template](https://academy.bricksbuilder.io/builder/elements/general/template/)
+- [Slot](https://academy.bricksbuilder.io/builder/elements/general/slot/)
+- [Facebook Page](https://academy.bricksbuilder.io/builder/elements/general/facebook-page/)
+
+## Media
+
+- [Image Gallery](https://academy.bricksbuilder.io/builder/elements/media/image-gallery/)
+- [Instagram feed](https://academy.bricksbuilder.io/builder/elements/media/instagram-feed/)
+- [Audio](https://academy.bricksbuilder.io/builder/elements/media/audio/)
+- [Carousel](https://academy.bricksbuilder.io/builder/elements/media/carousel/)
+- [Logo](https://academy.bricksbuilder.io/builder/elements/media/logo/)
+- [Slider](https://academy.bricksbuilder.io/builder/elements/media/slider/)
+- [Slider (Nestable)](https://academy.bricksbuilder.io/builder/elements/media/slider-nested/)
+- [SVG](https://academy.bricksbuilder.io/builder/elements/media/svg/)
+
+## WordPress
+
+- [WordPress](https://academy.bricksbuilder.io/builder/elements/wordpress/wordpress/)
+- [Posts](https://academy.bricksbuilder.io/builder/elements/wordpress/posts/)
+- [Pagination](https://academy.bricksbuilder.io/builder/elements/wordpress/pagination/)
+- [Nav Menu](https://academy.bricksbuilder.io/builder/elements/wordpress/nav-menu/)
+- [Sidebar](https://academy.bricksbuilder.io/builder/elements/wordpress/sidebar/)
+- [Search](https://academy.bricksbuilder.io/builder/elements/wordpress/search/)
+- [Shortcode](https://academy.bricksbuilder.io/builder/elements/wordpress/shortcode/)
+
+## Single
+
+- [Post Title](https://academy.bricksbuilder.io/builder/elements/single/post-title/)
+- [Excerpt](https://academy.bricksbuilder.io/builder/elements/single/excerpt/)
+- [Meta Data](https://academy.bricksbuilder.io/builder/elements/single/meta-data/)
+- [Post Content](https://academy.bricksbuilder.io/builder/elements/single/post-content/)
+- [Social Sharing](https://academy.bricksbuilder.io/builder/elements/single/social-sharing/)
+- [Related Posts](https://academy.bricksbuilder.io/builder/elements/single/related-posts/)
+- [Author](https://academy.bricksbuilder.io/builder/elements/single/author/)
+- [Comments](https://academy.bricksbuilder.io/builder/elements/single/comments/)
+- [Taxonomy](https://academy.bricksbuilder.io/builder/elements/single/taxonomy/)
+- [Post Navigation](https://academy.bricksbuilder.io/builder/elements/single/post-navigation/)
+- [Post Reading Progress Bar](https://academy.bricksbuilder.io/builder/elements/single/post-reading-progress-bar/)
+- [Post Reading Time](https://academy.bricksbuilder.io/builder/elements/single/post-reading-time/)
+- [Post Table of Contents](https://academy.bricksbuilder.io/builder/elements/single/post-toc/)
+
+## Query
+
+- [Query Results Summary](https://academy.bricksbuilder.io/builder/elements/query/query-results-summary/)
+
+## Filter
+
+- [Filter Active Filters](https://academy.bricksbuilder.io/builder/elements/filter/filter-active-filters/)
+- [Filter Checkbox](https://academy.bricksbuilder.io/builder/elements/filter/filter-checkbox/)
+- [Filter Datepicker](https://academy.bricksbuilder.io/builder/elements/filter/filter-datepicker/)
+- [Filter Radio](https://academy.bricksbuilder.io/builder/elements/filter/filter-radio/)
+- [Filter Range](https://academy.bricksbuilder.io/builder/elements/filter/filter-range/)
+- [Filter Search](https://academy.bricksbuilder.io/builder/elements/filter/filter-search/)
+- [Filter Select](https://academy.bricksbuilder.io/builder/elements/filter/filter-select/)
+- [Filter Submit](https://academy.bricksbuilder.io/builder/elements/filter/filter-submit/)
+
+## WooCommerce
+
+- [WooCommerce Breadcrumbs](https://academy.bricksbuilder.io/builder/elements/woocommerce/breadcrumbs/)
+- [Mini Cart](https://academy.bricksbuilder.io/builder/elements/woocommerce/mini-cart/)
+- [Notice](https://academy.bricksbuilder.io/builder/elements/woocommerce/notice/)
+- [Template Hook](https://academy.bricksbuilder.io/builder/elements/woocommerce/template-hook/)
+- [Products](https://academy.bricksbuilder.io/builder/elements/woocommerce/products/)
+- [Products Pagination](https://academy.bricksbuilder.io/builder/elements/woocommerce/products-pagination/)
+- [Products Orderby](https://academy.bricksbuilder.io/builder/elements/woocommerce/products-orderby/)
+- [Products Total Results](https://academy.bricksbuilder.io/builder/elements/woocommerce/products-total-results/)
+- [Products Filter](https://academy.bricksbuilder.io/builder/elements/woocommerce/products-filter/)
+- [Products Archive Description](https://academy.bricksbuilder.io/builder/elements/woocommerce/products-archive-description/)
+- [Cart Items](https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-items/)
+- [Cart Coupon](https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-coupon/)
+- [Cart Collaterals](https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-collaterals/)
+- [Checkout Login](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-login/)
+- [Checkout Coupon](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-coupon/)
+- [Checkout Customer Details](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-customer-details/)
+- [Checkout Order Review](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-order-review/)
+- [Checkout Order Payment](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-order-payment/)
+- [Checkout Order Table](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-order-table/)
+- [Checkout Thankyou](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-thankyou/)
+- [Account Page](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page/)
+- [Account Orders](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-orders/)
+- [Account Downloads](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-downloads/)
+- [Account Addresses](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-addresses/)
+- [Account Payment Methods](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-payment-methods/)
+- [Account Add Payment Method](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-add-payment-method/)
+- [Account View Order](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-view-order/)
+- [Account Form Login](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-login/)
+- [Account Form Register](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-register/)
+- [Account Form Lost Password](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-lost-password/)
+- [Account Form Reset Password](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-reset-password/)
+- [Account Form Edit Account](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-edit-account/)
+- [Account Form Edit Address](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-edit-address/)
+
+## Product
+
+- [Product Title](https://academy.bricksbuilder.io/builder/elements/product/product-title/)
+- [Product Gallery](https://academy.bricksbuilder.io/builder/elements/product/product-gallery/)
+- [Product Short Description](https://academy.bricksbuilder.io/builder/elements/product/product-short-description/)
+- [Product Price](https://academy.bricksbuilder.io/builder/elements/product/product-price/)
+- [Product Stock](https://academy.bricksbuilder.io/builder/elements/product/product-stock/)
+- [Product Meta](https://academy.bricksbuilder.io/builder/elements/product/product-meta/)
+- [Product Rating](https://academy.bricksbuilder.io/builder/elements/product/product-rating/)
+- [Product Content](https://academy.bricksbuilder.io/builder/elements/product/product-content/)
+- [Add to Cart](https://academy.bricksbuilder.io/builder/elements/product/product-add-to-cart/)
+- [Related Products](https://academy.bricksbuilder.io/builder/elements/product/product-related/)
+- [Product Additional Information](https://academy.bricksbuilder.io/builder/elements/product/product-additional-information/)
+- [Product Tabs](https://academy.bricksbuilder.io/builder/elements/product/product-tabs/)
+- [Product Reviews](https://academy.bricksbuilder.io/builder/elements/product/product-reviews/)
+- [Product Up/Cross-sells](https://academy.bricksbuilder.io/builder/elements/product/product-upsells/)
+
+---
+
+<a id="builder-license-restrict-license-key-usage"></a>
+
+# Restrict License Key Usage
+
+Source: https://academy.bricksbuilder.io/builder/license/restrict-license-key-usage/
+
+*Restrict where a Bricks license key can be used so updates stay available only on approved production, staging, or local sites.*
+
+By default, you can activate your Bricks license key on any website that runs the Bricks theme. That is, if you have not already reached the site limit of your purchased license ([https://bricksbuilder.io/pricing/](https://bricksbuilder.io/pricing/)).
+
+To restrict on which WordPress sites your license can be activated, navigate to the "Sites" tab of your Bricks account at [https://my.bricksbuilder.io/#sites](https://my.bricksbuilder.io/#sites) and scroll to the "Whitelist/blacklist URL" section at the bottom:
+
+![](https://academy.bricksbuilder.io/assets/bricks-account-sites-whitelist-blacklist-urls.png)
+
+There, you can add the URLs of the WordPress sites that you want to allow your license key to be activated at (= whitelist) or disallow your license key to be activated at (= blacklist).
+
+These restrictions are enforced by the Bricks account/licensing service. The Bricks theme does not store or apply the whitelist/blacklist locally; during activation and deactivation requests, it sends the current site URL to the licensing service.
+
+**NOTE:** Removing an activated site from the list of sites at https://my.bricksbuilder.io/#sites is not enough to stop it from reappearing. Please make sure to remove the site, and add it to either the white- or blacklist.
+
+### Using the correct site URL
+
+To make sure you are adding the correct URL to the list, navigate the the WordPress dashboard of the site you want to exclude, and copy the URL under `Settings > General > Site Address`.
+
+![](https://academy.bricksbuilder.io/assets/bricks-account-whitelist-site-address.png)
+
+If you don't have access to the backend of the site, use the home page URL of the site, but without any trailing slash at the end.
 
 ---
 
@@ -14834,6 +14744,177 @@ You can also scan your entire site for orphaned elements from **Bricks Settings 
 If no issues are found, you’ll see the message “No orphaned elements found”. If orphaned elements are detected, you’ll have the option to click **“Clean up all orphaned elements”**, which will remove them across all affected posts.
 
 We recommend taking a backup before running the cleanup, just in case. Once confirmed, Bricks will proceed to delete the orphaned elements from each listed post.
+
+---
+
+<a id="builder-setup-requirements"></a>
+
+# Requirements
+
+Source: https://academy.bricksbuilder.io/builder/setup/requirements/
+
+*PHP, memory, upload size, browser, and troubleshooting for Bricks.*
+
+This article covers the recommended server limits and browser compatibility for Bricks, plus how to fix common limits. The [Installation and setup](https://academy.bricksbuilder.io/getting-started/installation-setup/) guide links here when you need the full checklist or troubleshooting.
+
+To provide you with a cutting-edge site builder for WordPress Bricks uses the most modern technology stack (VueJS 3, etc.) while keeping sufficient backward compatibility.
+
+Below are the baseline server limits and compatibility recommendations for running Bricks smoothly:
+
+- PHP 5.4+
+- WordPress memory limit: min. 64 MB (recommended: 512 MB)
+- Max file upload size: min. 64 MB
+- Modern browser: Use a current version of Chrome, Firefox, Safari, or Microsoft Edge when editing your website with Bricks. Older browsers (e.g. Internet Explorer) lack support for some of the more advanced builder features.
+
+> **Note**
+>
+> *Bricks is a self-hosted solution that you download & install on your own WordPress website!*
+
+## How To Increase WP Memory Limit {#wp-memory-limit}
+
+You can define **WP_MEMORY_LIMIT** by adding the following code to your **wp-config.php** file, above the line that says "That's all, stop editing!":
+
+```php
+define( 'WP_MEMORY_LIMIT', '512M' );
+/* That's all, stop editing! Happy publishing. */
+```
+
+Some web hosts set the PHP memory limit to as low as 8 MB. In that case, you might consider upgrading to a more powerful hosting plan. If your host does not allow you to config this setting by yourself, please get in touch with them.
+
+## How To Increase Max File Upload Size {#max-file-upload-size}
+
+If you encounter problems uploading larger files to your site (or when downloading high-resolution images from Bricks' Unsplash integration) there are a few ways to increase the maximum upload file size.
+
+A maximum upload size should be 64 MB or more. Log into your hosting account and change the following two **PHP server settings** to:
+
+- post_max_size: 64M
+- upload_max_filesize: 64M
+
+If you have access to your **php.ini** file, located in the root directory of your WordPress installation, open it, and modify the following settings:
+
+```php
+upload_max_filesize = 64M
+post_max_size = 64M
+```
+
+You can also add the following code to your **.htaccess** file, but make sure to backup your existing .htaccess file beforehand:
+
+```php
+php_value upload_max_filesize 64M
+php_value post_max_size 64M
+```
+
+If all above fails, you can try adding the following code to your wp-config.php:
+
+```php
+@ini_set( 'upload_max_size' , '64M' );
+@ini_set( 'post_max_size', '64M');
+```
+
+To confirm that your maximum upload file size has been updated successfully, go to **Media > Add New**. On the bottom of this page, you should see your maximum upload file size.
+
+## How To Increase Maximum Execution Time {#max-execution-time}
+
+When you start seeing a message like "Maximum execution time of 30 seconds exceeded" you have to increase the execution time of your website by using one of the following three solutions:
+
+**#1: Add the following code to your wp-config.php file (above the "That's all, stop editing!" line):**
+
+```php
+set_time_limit(180);
+/* That's all, stop editing! Happy publishing. */
+```
+
+**#2: Backup your .htaccess file and add the following code to it:**
+
+```php
+php_value max_execution_time 180
+```
+
+**#3: Add the following code to your php.ini file:**
+
+```php
+max_execution_time = 180
+```
+
+---
+
+<a id="builder-styling-adobe-fonts"></a>
+
+# Integration: Adobe Fonts
+
+Source: https://academy.bricksbuilder.io/builder/styling/adobe-fonts/
+
+*Connect Adobe Fonts to Bricks so your project can use synced Typekit fonts inside the builder and on the frontend.*
+
+## How to use Adobe Fonts with Bricks
+
+All you need to do is provide Bricks with your Adobe Fonts "Project ID".
+
+First, visit the "web projects" section inside your Adobe Fonts account: [https://fonts.adobe.com/my_fonts#web_projects-section](https://fonts.adobe.com/my_fonts#web_projects-section)
+
+Each of your web projects contains a unique "Project ID".
+
+Copy the project ID of the web project whose fonts you want to use on your Bricks site.
+
+![](https://academy.bricksbuilder.io/assets/bricks-adobe-fonts-web-project-id.png)
+
+<figcaption>
+
+Copy the project ID into your clipboard
+
+</figcaption>
+
+Next, inside your WordPress dashboard, go to `Bricks > Settings > API keys` and paste the project ID into the "Adobe fonts (Project ID)" input field. Then save your settings.
+
+![](https://academy.bricksbuilder.io/assets/bricks-adobe-fonts-project-id-saved.png)
+
+<figcaption>
+
+Click "Sync fonts" to fetch all fonts of this project
+
+</figcaption>
+
+Next to the project ID input, a "Sync fonts" button should now be visible. Click it to fetch the Adobe fonts of this project. A success message should appear & the "Published Adobe fonts" counter should reflect the number of published fonts.
+
+![](https://academy.bricksbuilder.io/assets/bricks-adobe-fonts-synced.png)
+
+<figcaption>
+
+Fonts are now synced & available in the builder
+
+</figcaption>
+
+Those fonts are now available inside the builder in any `font-family` dropdown:
+
+![](https://academy.bricksbuilder.io/assets/bricks-adobe-fonts-in-bricks.png)
+
+Syncing an Adobe Fonts project only makes its fonts available in Bricks typography controls. To apply and load an Adobe font on the frontend, select it in a typography setting, such as an element, global class, Theme Style, page setting, or template setting.
+
+Bricks loads the Adobe Fonts project CSS only when an Adobe font from the synced project is detected in the generated page CSS.
+
+> **Note**
+>
+> NOTE: Bricks recognizes when you use an Adobe font that is also available as a Google font. Bricks will load only the Adobe font to prevent loading this font from Google as well.
+
+## Variable fonts {#font-variation-settings}
+
+Bricks also provides a new `font-variation-settings`. This CSS property allows you to control the four-letter axis names of a variable Adobe font. Such as the `wght`, `wdth`, `slnt`, and `ital`.
+
+For more information about the specifics please visit [https://developer.mozilla.org/en-US/docs/Web/CSS/font-variation-settings](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variation-settings)
+
+![](https://academy.bricksbuilder.io/assets/bricks-adobe-fonts-variable-font-variation-settings.png)
+
+<figcaption>
+
+Variable Adobe font with a custom font-weight (axis: "wght") of 535
+
+</figcaption>
+
+You can view available variable Adobe fonts by selecting "Variable Fonts" under "Font technology on [https://fonts.adobe.com/fonts](https://fonts.adobe.com/fonts).
+
+> **Note**
+>
+> NOTE: This new `font-variation-settings` is also available for [custom fonts](https://academy.bricksbuilder.io/builder/styling/custom-fonts/). For Google Fonts, Bricks can collect multiple variation axes from the selected font and your typography settings; the available axes depend on the font and the Google Fonts API.
 
 ---
 
@@ -15831,83 +15912,172 @@ Remove passwords, cookies, nonces, license keys, API keys, personal data, and da
 
 ---
 
-<a id="builder-styling-adobe-fonts"></a>
+<a id="builder-styling-build-a-design-system"></a>
 
-# Integration: Adobe Fonts
+# Build a Design System in Bricks
 
-Source: https://academy.bricksbuilder.io/builder/styling/adobe-fonts/
+Source: https://academy.bricksbuilder.io/builder/styling/build-a-design-system/
 
-*Connect Adobe Fonts to Bricks so your project can use synced Typekit fonts inside the builder and on the frontend.*
+*Build a design system in Bricks from an unstyled page: color palette and shades, fluid type and spacing scales, variables, a theme style, classes, and components.*
 
-## How to use Adobe Fonts with Bricks
+A design system is a set of decisions you make once and reuse everywhere: your colors, font sizes, spacing, the default look of plain elements, and the patterns and blocks that repeat. In Bricks, those decisions live in the Style Manager, in a theme style, in global classes, and in components. Once they are in place, a new page needs no new styles, and changing one value updates every page that uses it.
 
-All you need to do is provide Bricks with your Adobe Fonts "Project ID".
+This article builds a design system for a small coffee roaster's website, starting from a page with content and no styling. It follows the same steps as the video.
 
-First, visit the "web projects" section inside your Adobe Fonts account: [https://fonts.adobe.com/my_fonts#web_projects-section](https://fonts.adobe.com/my_fonts#web_projects-section)
+https://youtu.be/lo2L313Cpko
 
-Each of your web projects contains a unique "Project ID".
+## The four layers
 
-Copy the project ID of the web project whose fonts you want to use on your Bricks site.
+Each layer builds on the one below it:
 
-![](https://academy.bricksbuilder.io/assets/bricks-adobe-fonts-web-project-id.png)
+| Layer | In Bricks | Example |
+| --- | --- | --- |
+| Values | Colors and variables in the [Style Manager](https://academy.bricksbuilder.io/builder/features/style-manager/) | `var(--brand)`, `var(--heading-xl)`, `var(--space-m)` |
+| Rules | A [theme style](https://academy.bricksbuilder.io/builder/styling/theme-styles/) | Body text, headings, buttons, section padding |
+| Classes | [Global classes](https://academy.bricksbuilder.io/builder/styling/global-css-classes/) | `.eyebrow` for the small label above a heading |
+| Components | [Components](https://academy.bricksbuilder.io/builder/features/components/) | A product card |
 
-<figcaption>
+A component uses classes, and classes use variables. When a value changes, everything above it follows.
 
-Copy the project ID into your clipboard
+## Starting point
 
-</figcaption>
+The example starts with a header template, a footer template, and a home page with its content in place. Nothing is styled yet: default fonts, default colors, no spacing.
 
-Next, inside your WordPress dashboard, go to `Bricks > Settings > API keys` and paste the project ID into the "Adobe fonts (Project ID)" input field. Then save your settings.
+You could style this page element by element. A second page would then mean doing it all again and keeping both pages in sync by hand. The steps below put every decision in one place first.
 
-![](https://academy.bricksbuilder.io/assets/bricks-adobe-fonts-project-id-saved.png)
+{/* screenshot: The unstyled home page in the Builder: header and footer templates, hero, product cards and panels with Bricks default styles. */}
 
-<figcaption>
+## 1. Colors
 
-Click "Sync fonts" to fetch all fonts of this project
+Open the Style Manager and select **Colors**. See [Color Manager](https://academy.bricksbuilder.io/builder/features/color-manager/) for every setting.
 
-</figcaption>
+1. Create a palette for the site.
+2. Add the brand color and name it `brand`, not `orange`. If the brand color changes later, the name is still correct.
+3. Enable **Light shades** and **Dark shades**. Bricks generates ten steps of each from the base color and names them after it: `brand-d-1` is one step darker than `brand`, `brand-l-9` is a soft tint for backgrounds.
+4. Add the neutrals: `ink` for text, `ink-muted` for quieter text, and `paper` for the page background.
+5. Add the colors that only serve one purpose. The example uses six pastels for the product cards (`blush`, `butter`, `lilac`, `mint`, `sky`, `clay`).
+6. For the pastels, enable the `background-color` utility class. Bricks then creates a global class for each color, such as `bg-butter`.
 
-Next to the project ID input, a "Sync fonts" button should now be visible. Click it to fetch the Adobe fonts of this project. A success message should appear & the "Published Adobe fonts" counter should reflect the number of published fonts.
+Only enable utility classes for colors you will apply as classes. Each one adds a global class per shade.
 
-![](https://academy.bricksbuilder.io/assets/bricks-adobe-fonts-synced.png)
+{/* screenshot: Color Manager with the brand color expanded, light and dark shades enabled and the generated shade strips visible. */}
 
-<figcaption>
+## 2. Typography and spacing scales
 
-Fonts are now synced & available in the builder
+Open **Typography** in the Style Manager and create a scale for headings:
 
-</figcaption>
+1. Give the scale the prefix `heading-`.
+2. Set a base size and a ratio for the minimum (mobile) and another pair for the maximum (desktop). The example uses 20 px at 1.25 for mobile and 24 px at 1.5 for desktop.
+3. Generate the variables.
 
-Those fonts are now available inside the builder in any `font-family` dropdown:
+Bricks turns every step into a `clamp()` value, from `--heading-2xs` to `--heading-2xl`. A heading grows with the screen instead of jumping at breakpoints. See [Fluid Typography](https://academy.bricksbuilder.io/builder/styling/fluid-typography/) for how the values are calculated.
 
-![](https://academy.bricksbuilder.io/assets/bricks-adobe-fonts-in-bricks.png)
+Create a second scale with the prefix `text-` for body sizes.
 
-Syncing an Adobe Fonts project only makes its fonts available in Bricks typography controls. To apply and load an Adobe font on the frontend, select it in a typography setting, such as an element, global class, Theme Style, page setting, or template setting.
+Spacing works the same way. Open **Spacing** and create a scale with the prefix `space-`, from `--space-2xs` to `--space-2xl`.
 
-Bricks loads the Adobe Fonts project CSS only when an Adobe font from the synced project is detected in the generated page CSS.
+{/* screenshot: Typography scale "Headings" with prefix heading-, minimum and maximum values and the generated preview rows. */}
 
-> **Note**
->
-> NOTE: Bricks recognizes when you use an Adobe font that is also available as a Google font. Bricks will load only the Adobe font to prevent loading this font from Google as well.
+## 3. Variables and categories
 
-## Variable fonts {#font-variation-settings}
+A few values are not part of a scale. Add them in **Variables** and give each group its own category:
 
-Bricks also provides a new `font-variation-settings`. This CSS property allows you to control the four-letter axis names of a variable Adobe font. Such as the `wght`, `wdth`, `slnt`, and `ital`.
+| Category | Variable | Value |
+| --- | --- | --- |
+| Layout | `container` | `1240px` |
+| Shape | `radius-s` | `10px` (buttons) |
+| Shape | `radius-m` | `24px` (cards) |
 
-For more information about the specifics please visit [https://developer.mozilla.org/en-US/docs/Web/CSS/font-variation-settings](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variation-settings)
+The scales already sit in their own categories, so the variable picker stays readable as the list grows. See [Global Variables Manager](https://academy.bricksbuilder.io/builder/styling/global-variables-manager/).
 
-![](https://academy.bricksbuilder.io/assets/bricks-adobe-fonts-variable-font-variation-settings.png)
+Name variables by role or step, like `radius-s` and `radius-m`. A name like `radius-24` is wrong the moment you change the value.
 
-<figcaption>
+Values do nothing until something uses them. The page still looks the same after this step.
 
-Variable Adobe font with a custom font-weight (axis: "wght") of 535
+## 4. Theme style
 
-</figcaption>
+The theme style sets the defaults for every element, so plain headings, text and buttons never need their own settings.
 
-You can view available variable Adobe fonts by selecting "Variable Fonts" under "Font technology on [https://fonts.adobe.com/fonts](https://fonts.adobe.com/fonts).
+Create a theme style. A new theme style applies to the entire website by default. Then set:
 
-> **Note**
->
-> NOTE: This new `font-variation-settings` is also available for [custom fonts](https://academy.bricksbuilder.io/builder/styling/custom-fonts/). For Google Fonts, Bricks can collect multiple variation axes from the selected font and your typography settings; the available axes depend on the font and the Google Fonts API.
+| Group | Setting | Value |
+| --- | --- | --- |
+| Typography | Body | Figtree, `var(--text-m)`, `var(--ink)` |
+| Typography | Headings | Fraunces, `var(--brand)` |
+| Typography | H1 / H2 / H3 | `var(--heading-2xl)` / `var(--heading-l)` / `var(--heading-m)` |
+| Elements > Button | Background, text color, border radius | `var(--brand)`, `var(--brand-d-8)`, `var(--radius-s)` |
+| Elements > Section | Padding | `var(--space-2xl)` top and bottom, `var(--space-m)` left and right |
+| Elements > Container | Width | `var(--container)` |
+| Elements > Container and Block | Row gap | `var(--space-s)` |
+
+The row gap on Container and Block gives stacked headings and text even space without a single margin.
+
+Save, and the whole page changes, including the header and footer templates. Switch to the mobile breakpoint: headings and section padding shrink with the screen, without any breakpoint-specific setting.
+
+{/* screenshot: Theme style Typography group with Body and Headings set, live preview of the styled home page on the right. */}
+
+## 5. Classes
+
+A theme style styles headings, text and buttons. It does not know the small label above a heading or the quieter line under a title. Those are patterns, and patterns need [global classes](https://academy.bricksbuilder.io/builder/styling/global-css-classes/).
+
+1. Select the label above the hero heading and add a class named `eyebrow`.
+2. Style it once: `var(--text-s)`, uppercase, a little letter spacing, and `var(--brand-d-4)`.
+3. Add the same class to the other labels.
+4. Add `text-l` for intro paragraphs and `text-muted` for quieter text.
+
+Name classes by purpose, in lowercase with hyphens. `text-muted` still makes sense when the color changes; `grey-text` does not.
+
+In the [Global Class Manager](https://academy.bricksbuilder.io/builder/styling/global-class-manager/), put the three classes into a category called **Typography**. Layout classes such as `card-grid` (below) go into a second category, **Layout**.
+
+## 6. Components
+
+The coffee card repeats eight times on the home page. That makes it a component.
+
+1. Style one card first: `var(--space-m)` as padding and `var(--radius-m)` as border radius. In the variable picker, open the **Shape** category to find the radius quickly.
+2. Give the origin the `eyebrow` class, the tasting notes `text-muted`, and the name a darker brand shade.
+3. Right-click the card in the Structure panel, choose **Save as component**, and name it `Coffee card`.
+4. Add a property for everything that changes from card to card (image, origin, name, notes, price) and connect each one to its element. See [Property types](https://academy.bricksbuilder.io/builder/features/components/#property-types).
+
+A component has no color property type, but it has a [global classes property](https://academy.bricksbuilder.io/builder/features/components/#global-classes). Create one named `Color`, add an option for each pastel, assign each option its `bg-*` class, and connect the property to the card's root element. Each instance now only asks for its content and a color.
+
+Give the row of cards a class too:
+
+```css
+/* card-grid: as many columns as fit, four on a desktop */
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+gap: var(--space-m);
+```
+
+The numbered section headings and the café panel become components the same way: `Section head`, and `Feature panel` with a `Style` option (global classes property) for a soft or a bold background.
+
+{/* screenshot: Coffee card component with its properties in the panel, the Color property dropdown open with the pastel options. */}
+
+## 7. Build a new page
+
+On a new page, the header and footer are already there because they are templates.
+
+1. Add a heading and an intro. They pick up the theme style without a single setting.
+2. Insert a `Section head`, then a Block with the `card-grid` class and `Coffee card` instances. Fill in the content and pick a color.
+3. Add a `Feature panel` with its own image and text.
+
+The page has no new styles. Everything on it comes from the system.
+
+{/* screenshot: The finished shop page on the frontend, built only from components, classes and the theme style. */}
+
+## Change the brand color
+
+Open the Color Manager and change `brand` to a new color. Bricks regenerates the shades from it, and headings, buttons, labels and panels follow on every page, in the header and in the footer.
+
+## Related
+
+- [Style Manager](https://academy.bricksbuilder.io/builder/features/style-manager/)
+- [Color Manager](https://academy.bricksbuilder.io/builder/features/color-manager/)
+- [Fluid Typography](https://academy.bricksbuilder.io/builder/styling/fluid-typography/)
+- [Global Variables Manager](https://academy.bricksbuilder.io/builder/styling/global-variables-manager/)
+- [Theme Styles](https://academy.bricksbuilder.io/builder/styling/theme-styles/)
+- [Global Class Manager](https://academy.bricksbuilder.io/builder/styling/global-class-manager/)
+- [Components](https://academy.bricksbuilder.io/builder/features/components/)
 
 ---
 
@@ -16188,175 +16358,6 @@ To unify the layout:
 ![](https://academy.bricksbuilder.io/assets/bricks-contextual-spacing-apply-to-utility-class-scaled.png)
 
 **Result**: All elements within that wrapper now follow your contextual spacing rules.
-
----
-
-<a id="builder-styling-build-a-design-system"></a>
-
-# Build a Design System in Bricks
-
-Source: https://academy.bricksbuilder.io/builder/styling/build-a-design-system/
-
-*Build a design system in Bricks from an unstyled page: color palette and shades, fluid type and spacing scales, variables, a theme style, classes, and components.*
-
-A design system is a set of decisions you make once and reuse everywhere: your colors, font sizes, spacing, the default look of plain elements, and the patterns and blocks that repeat. In Bricks, those decisions live in the Style Manager, in a theme style, in global classes, and in components. Once they are in place, a new page needs no new styles, and changing one value updates every page that uses it.
-
-This article builds a design system for a small coffee roaster's website, starting from a page with content and no styling. It follows the same steps as the video.
-
-https://youtu.be/lo2L313Cpko
-
-## The four layers
-
-Each layer builds on the one below it:
-
-| Layer | In Bricks | Example |
-| --- | --- | --- |
-| Values | Colors and variables in the [Style Manager](https://academy.bricksbuilder.io/builder/features/style-manager/) | `var(--brand)`, `var(--heading-xl)`, `var(--space-m)` |
-| Rules | A [theme style](https://academy.bricksbuilder.io/builder/styling/theme-styles/) | Body text, headings, buttons, section padding |
-| Classes | [Global classes](https://academy.bricksbuilder.io/builder/styling/global-css-classes/) | `.eyebrow` for the small label above a heading |
-| Components | [Components](https://academy.bricksbuilder.io/builder/features/components/) | A product card |
-
-A component uses classes, and classes use variables. When a value changes, everything above it follows.
-
-## Starting point
-
-The example starts with a header template, a footer template, and a home page with its content in place. Nothing is styled yet: default fonts, default colors, no spacing.
-
-You could style this page element by element. A second page would then mean doing it all again and keeping both pages in sync by hand. The steps below put every decision in one place first.
-
-{/* screenshot: The unstyled home page in the Builder: header and footer templates, hero, product cards and panels with Bricks default styles. */}
-
-## 1. Colors
-
-Open the Style Manager and select **Colors**. See [Color Manager](https://academy.bricksbuilder.io/builder/features/color-manager/) for every setting.
-
-1. Create a palette for the site.
-2. Add the brand color and name it `brand`, not `orange`. If the brand color changes later, the name is still correct.
-3. Enable **Light shades** and **Dark shades**. Bricks generates ten steps of each from the base color and names them after it: `brand-d-1` is one step darker than `brand`, `brand-l-9` is a soft tint for backgrounds.
-4. Add the neutrals: `ink` for text, `ink-muted` for quieter text, and `paper` for the page background.
-5. Add the colors that only serve one purpose. The example uses six pastels for the product cards (`blush`, `butter`, `lilac`, `mint`, `sky`, `clay`).
-6. For the pastels, enable the `background-color` utility class. Bricks then creates a global class for each color, such as `bg-butter`.
-
-Only enable utility classes for colors you will apply as classes. Each one adds a global class per shade.
-
-{/* screenshot: Color Manager with the brand color expanded, light and dark shades enabled and the generated shade strips visible. */}
-
-## 2. Typography and spacing scales
-
-Open **Typography** in the Style Manager and create a scale for headings:
-
-1. Give the scale the prefix `heading-`.
-2. Set a base size and a ratio for the minimum (mobile) and another pair for the maximum (desktop). The example uses 20 px at 1.25 for mobile and 24 px at 1.5 for desktop.
-3. Generate the variables.
-
-Bricks turns every step into a `clamp()` value, from `--heading-2xs` to `--heading-2xl`. A heading grows with the screen instead of jumping at breakpoints. See [Fluid Typography](https://academy.bricksbuilder.io/builder/styling/fluid-typography/) for how the values are calculated.
-
-Create a second scale with the prefix `text-` for body sizes.
-
-Spacing works the same way. Open **Spacing** and create a scale with the prefix `space-`, from `--space-2xs` to `--space-2xl`.
-
-{/* screenshot: Typography scale "Headings" with prefix heading-, minimum and maximum values and the generated preview rows. */}
-
-## 3. Variables and categories
-
-A few values are not part of a scale. Add them in **Variables** and give each group its own category:
-
-| Category | Variable | Value |
-| --- | --- | --- |
-| Layout | `container` | `1240px` |
-| Shape | `radius-s` | `10px` (buttons) |
-| Shape | `radius-m` | `24px` (cards) |
-
-The scales already sit in their own categories, so the variable picker stays readable as the list grows. See [Global Variables Manager](https://academy.bricksbuilder.io/builder/styling/global-variables-manager/).
-
-Name variables by role or step, like `radius-s` and `radius-m`. A name like `radius-24` is wrong the moment you change the value.
-
-Values do nothing until something uses them. The page still looks the same after this step.
-
-## 4. Theme style
-
-The theme style sets the defaults for every element, so plain headings, text and buttons never need their own settings.
-
-Create a theme style. A new theme style applies to the entire website by default. Then set:
-
-| Group | Setting | Value |
-| --- | --- | --- |
-| Typography | Body | Figtree, `var(--text-m)`, `var(--ink)` |
-| Typography | Headings | Fraunces, `var(--brand)` |
-| Typography | H1 / H2 / H3 | `var(--heading-2xl)` / `var(--heading-l)` / `var(--heading-m)` |
-| Elements > Button | Background, text color, border radius | `var(--brand)`, `var(--brand-d-8)`, `var(--radius-s)` |
-| Elements > Section | Padding | `var(--space-2xl)` top and bottom, `var(--space-m)` left and right |
-| Elements > Container | Width | `var(--container)` |
-| Elements > Container and Block | Row gap | `var(--space-s)` |
-
-The row gap on Container and Block gives stacked headings and text even space without a single margin.
-
-Save, and the whole page changes, including the header and footer templates. Switch to the mobile breakpoint: headings and section padding shrink with the screen, without any breakpoint-specific setting.
-
-{/* screenshot: Theme style Typography group with Body and Headings set, live preview of the styled home page on the right. */}
-
-## 5. Classes
-
-A theme style styles headings, text and buttons. It does not know the small label above a heading or the quieter line under a title. Those are patterns, and patterns need [global classes](https://academy.bricksbuilder.io/builder/styling/global-css-classes/).
-
-1. Select the label above the hero heading and add a class named `eyebrow`.
-2. Style it once: `var(--text-s)`, uppercase, a little letter spacing, and `var(--brand-d-4)`.
-3. Add the same class to the other labels.
-4. Add `text-l` for intro paragraphs and `text-muted` for quieter text.
-
-Name classes by purpose, in lowercase with hyphens. `text-muted` still makes sense when the color changes; `grey-text` does not.
-
-In the [Global Class Manager](https://academy.bricksbuilder.io/builder/styling/global-class-manager/), put the three classes into a category called **Typography**. Layout classes such as `card-grid` (below) go into a second category, **Layout**.
-
-## 6. Components
-
-The coffee card repeats eight times on the home page. That makes it a component.
-
-1. Style one card first: `var(--space-m)` as padding and `var(--radius-m)` as border radius. In the variable picker, open the **Shape** category to find the radius quickly.
-2. Give the origin the `eyebrow` class, the tasting notes `text-muted`, and the name a darker brand shade.
-3. Right-click the card in the Structure panel, choose **Save as component**, and name it `Coffee card`.
-4. Add a property for everything that changes from card to card (image, origin, name, notes, price) and connect each one to its element. See [Property types](https://academy.bricksbuilder.io/builder/features/components/#property-types).
-
-A component has no color property type, but it has a [global classes property](https://academy.bricksbuilder.io/builder/features/components/#global-classes). Create one named `Color`, add an option for each pastel, assign each option its `bg-*` class, and connect the property to the card's root element. Each instance now only asks for its content and a color.
-
-Give the row of cards a class too:
-
-```css
-/* card-grid: as many columns as fit, four on a desktop */
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
-gap: var(--space-m);
-```
-
-The numbered section headings and the café panel become components the same way: `Section head`, and `Feature panel` with a `Style` option (global classes property) for a soft or a bold background.
-
-{/* screenshot: Coffee card component with its properties in the panel, the Color property dropdown open with the pastel options. */}
-
-## 7. Build a new page
-
-On a new page, the header and footer are already there because they are templates.
-
-1. Add a heading and an intro. They pick up the theme style without a single setting.
-2. Insert a `Section head`, then a Block with the `card-grid` class and `Coffee card` instances. Fill in the content and pick a color.
-3. Add a `Feature panel` with its own image and text.
-
-The page has no new styles. Everything on it comes from the system.
-
-{/* screenshot: The finished shop page on the frontend, built only from components, classes and the theme style. */}
-
-## Change the brand color
-
-Open the Color Manager and change `brand` to a new color. Bricks regenerates the shades from it, and headings, buttons, labels and panels follow on every page, in the header and in the footer.
-
-## Related
-
-- [Style Manager](https://academy.bricksbuilder.io/builder/features/style-manager/)
-- [Color Manager](https://academy.bricksbuilder.io/builder/features/color-manager/)
-- [Fluid Typography](https://academy.bricksbuilder.io/builder/styling/fluid-typography/)
-- [Global Variables Manager](https://academy.bricksbuilder.io/builder/styling/global-variables-manager/)
-- [Theme Styles](https://academy.bricksbuilder.io/builder/styling/theme-styles/)
-- [Global Class Manager](https://academy.bricksbuilder.io/builder/styling/global-class-manager/)
-- [Components](https://academy.bricksbuilder.io/builder/features/components/)
 
 ---
 
@@ -18547,6 +18548,27 @@ https://youtu.be/rXhgQ5fsKDc
 
 ---
 
+<a id="builder-templates"></a>
+
+# Templates
+
+Source: https://academy.bricksbuilder.io/builder/templates/
+
+*Learn how Bricks templates work, including template types, conditions, settings, the template library, remote templates, and wireframes.*
+
+Templates are central to how Bricks handles repeated layouts across headers, footers, archives, single posts, popups, and other site areas.
+
+## Template workflow
+
+- [An Intro to Templates](https://academy.bricksbuilder.io/builder/features/an-intro-to-templates/) for the core concepts
+- [Create Template](https://academy.bricksbuilder.io/builder/features/create-template/) for creating new templates and choosing types
+- [Template Settings](https://academy.bricksbuilder.io/builder/features/template-settings/) for conditions and configuration
+- [Template Library](https://academy.bricksbuilder.io/builder/features/template-library/) for importing and reusing templates
+- [Remote Templates](https://academy.bricksbuilder.io/builder/features/remote-templates/) for external template sources
+- [Wireframe Templates](https://academy.bricksbuilder.io/builder/features/wireframe-templates/) for structure-first starting points
+
+---
+
 <a id="builder-styling-theme-styles"></a>
 
 # Theme Styles
@@ -18799,27 +18821,6 @@ Theme Style groups depend on registered elements and integrations. If an element
 ### Custom CSS in the Stylesheet group is not responsive
 
 The Stylesheet group is plain CSS. Add your own media queries if the CSS needs breakpoint-specific behavior.
-
----
-
-<a id="builder-templates"></a>
-
-# Templates
-
-Source: https://academy.bricksbuilder.io/builder/templates/
-
-*Learn how Bricks templates work, including template types, conditions, settings, the template library, remote templates, and wireframes.*
-
-Templates are central to how Bricks handles repeated layouts across headers, footers, archives, single posts, popups, and other site areas.
-
-## Template workflow
-
-- [An Intro to Templates](https://academy.bricksbuilder.io/builder/features/an-intro-to-templates/) for the core concepts
-- [Create Template](https://academy.bricksbuilder.io/builder/features/create-template/) for creating new templates and choosing types
-- [Template Settings](https://academy.bricksbuilder.io/builder/features/template-settings/) for conditions and configuration
-- [Template Library](https://academy.bricksbuilder.io/builder/features/template-library/) for importing and reusing templates
-- [Remote Templates](https://academy.bricksbuilder.io/builder/features/remote-templates/) for external template sources
-- [Wireframe Templates](https://academy.bricksbuilder.io/builder/features/wireframe-templates/) for structure-first starting points
 
 ---
 
@@ -19375,877 +19376,6 @@ Enabling the "YouTube Preview Thumbnails" setting of the Perfmatters plugin migh
 
 ---
 
-<a id="builder-elements-filter-filter-active-filters"></a>
-
-# Filter active filters
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-active-filters/
-
-*Display selected query filters as removable buttons and exclude filters from the active list.*
-
-Displays the currently active or selected filters, allowing users to easily remove a filter with a single click for faster navigation. This element shows all active filters from the connected target query and provides quick access to clear individual filters.
-
-**Tip:** Use this element alongside other filter elements to give users clear visibility of their current filter selections and easy ways to modify their search criteria.
-
-## Settings
-
-- **Target query** (query-list) - Select the query whose active filters should be displayed.
-- **Global filter** (Bricks 2.5) - Reuse the shared behavior of another Active Filters configuration. The target query and styling remain local.
-- **Exclude filter IDs** (text) - Enter filter element IDs, separated by commas, to exclude from the active filters list. From Bricks 2.5, accepts global filter IDs too. A linked element's ID excludes its shared filter for the target query.
-- **Button** - Settings for the remove filter buttons.
-  - **Padding** (spacing) - Padding for filter remove buttons.
-  - **Gap** (number) - Gap between filter buttons.
-  - **Size** (select) - Button size preset. Options: Default, Small, Medium, Large, Extra Large.
-  - **Style** (select) - Button style. Options: None, Primary, Secondary, Success, Info, Warning, Danger, Dark, Light.
-  - **Circle** (checkbox) - Make buttons circular.
-  - **Outline** (checkbox) - Use outline button style.
-  - **Background color** (color) - Custom background color for buttons.
-  - **Border** (border) - Border styling for buttons.
-  - **Typography** (typography) - Typography settings for button text.
-- **Icon** - Settings for filter remove icons.
-  - **Icon** (icon) - Icon to display on filter buttons.
-  - **Color** (color) - Icon color.
-  - **Size** (number) - Icon size.
-  - **Gap** (number) - Gap between icon and text.
-  - **Position** (select) - Icon position. Options: Left, Right. Default: Right.
-- **Active filter** - Settings for active filter display.
-  - **Prefix** (text) - Text to display before filter value.
-  - **Suffix** (text) - Text to display after filter value.
-  - **Title** (text) - Custom title attribute for filter links.
-
-## Default selections
-
-Starting with Bricks 2.5, [configured default values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) appear as active selections on the first page load. Visitors can remove them like other selections. Removing a default does not immediately reapply it; a fresh visit or reload without filter parameters applies it again. Display exclusions still apply.
-
-## Excluding a Global Filter
-
-Starting with Bricks 2.5, use a [global filter](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#global-filters) ID or any linked element's ID in **Exclude filter IDs**. For example, exclude a shared results-per-page filter to keep it out of the active-filter list across desktop and mobile copies. This hides the entry without clearing its selection or changing the query.
-
-Copy a definition ID from Filter manager, or use the Bricks ID from a linked element's panel. Do not use a target query ID or URL parameter name. This display exclusion is separate from a Reset button's exclusions, which preserve values when resetting.
-
-> **Developer reference**
->
-> See the [Filter - Active Filters Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-active-filters/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-filter-filter-checkbox"></a>
-
-# Filter checkbox
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-checkbox/
-
-*Filter query results with multiple selections, include child-term counts, and show collapsible taxonomy branches with Show more/less controls.*
-
-Creates a checkbox filter interface for AJAX-powered content filtering. Users can select multiple options to narrow down query results. Supports taxonomy terms, WordPress fields, and custom fields as filter sources.
-
-For initial setup, see [Query Filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#setup).
-
-## Settings
-
-- **Target query** (query-list) - Select the post, term, or user query this filter should target. Available sources depend on the query type.
-- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
-- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
-- **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
-- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
-- **Field** (select) - Specific field to filter by (varies based on field type).
-- **Taxonomy** (select) - Taxonomy to use for filtering when source is taxonomy.
-- **Order by** (select) - How to order taxonomy terms. Options: Name, Slug, Term ID, Description, Parent, Count, Include, Menu Order, Meta Value, Meta Value Num.
-- **Order meta key** (text) - Meta key for ordering when using meta value ordering.
-- **Order** (select) - Sort direction. Options: ASC, DESC. Default: ASC.
-- **Terms: Include** (select) - Specific taxonomy terms to include in filter options.
-- **Terms: Exclude** (select) - Specific taxonomy terms to exclude from filter options.
-- **Top level terms only** (checkbox) - Display only top-level terms (parent = 0) when source is taxonomy.
-- **Hide count** (checkbox) - Hide the result count for each option.
-- **Count: Include children** (checkbox, Bricks 2.5) - Include descendant-term posts in parent taxonomy counts. Off by default. Requires a target query and a selected taxonomy. See [taxonomy child counts](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#taxonomy-child-counts).
-- **Hide empty** (checkbox) - Hide options with zero results.
-- **Hide count bracket** (checkbox) - Remove brackets around count values. Style count via .brx-option-count.
-- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
-- **Meta key** (text) - Custom field key for filtering.
-- **Compare** (select) - Comparison operator for filtering. Options: IN, NOT IN, BETWEEN, NOT BETWEEN.
-- **Mode** (select) - Display mode for checkboxes. Options: Default (traditional checkboxes), Button (modern button style).
-- **Active filter** - Settings for active filter display.
-  - **Prefix** (text) - Text to display before filter value.
-  - **Suffix** (text) - Text to display after filter value.
-  - **Title** (text) - Custom title attribute for filter links.
-
-## Collapsible Taxonomy Branches {#collapsible-hierarchy}
-
-Starting with **Bricks 2.5**, visitors can expand and collapse child branches in a hierarchical taxonomy Checkbox filter. This is useful for category lists where showing every nested term would make the filter too long.
-
-1. Set **Target query**, choose **Taxonomy** as the source, and select a taxonomy with parent and child terms.
-2. Open the **Hierarchy** control group and enable **Hierarchical**.
-3. Turn on **Enable expand/collapse**.
-4. Leave **Show expanded** off to start with branches collapsed, or enable it to show all branches expanded initially.
-5. Save and check the frontend. Parent terms with visible children have a separate expand/collapse button beside the checkbox.
-
-| Hierarchy setting | Behavior |
-| --- | --- |
-| Hierarchical | Arrange taxonomy terms under their parents. |
-| Auto toggle child terms | Toggle child checkboxes when a parent checkbox changes. This is separate from expanding a branch. |
-| Enable expand/collapse | Add buttons to open and close child branches. Off by default. |
-| Show expanded | Expand all branches initially. Off by default. |
-| Expand icon / Collapse icon | Choose the disclosure icons. Defaults are plus and minus. |
-| Icon typography / Icon gap | Set the icon appearance and spacing. |
-| Indent: Prefix / Indent: Gap | Set child-term indentation in the default display mode. |
-
-The disclosure button opens or closes a branch without selecting its checkbox. Visitors can focus the button and use Enter or Space to toggle it. Selected child terms open their ancestor branches on page load, including selections loaded from URL parameters. Bricks preserves each element's expanded branches through AJAX updates and opens the path to selected terms when needed.
-
-Only terms present in the filter's options can appear in a branch. **Top level terms only**, term exclusions, and **Hide empty** can remove child options. If a parent has no visible children, it has no expand/collapse button. Use [Count: Include children](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#taxonomy-child-counts) if parent counts should include posts assigned to descendants.
-
-<div className="screenshot screenshot--control-panel">
-
-![Hierarchy settings with expand/collapse enabled, Show expanded off, and plus and minus icons selected.](https://academy.bricksbuilder.io/assets/filter-checkbox-hierarchy-settings.webp)
-
-</div>
-
-### Show More/Less With Branches {#show-more-less}
-
-In the **Show more / Show less** control group, set **Visible options limit** to limit the initial list. Leave it empty to show all options.
-
-When **Enable expand/collapse** is on, this limit counts whole root branches, not individual child terms. For example, a limit of three shows the first three root branches. Expanding one of them reveals its children without using up another place in the limit. **Show more** reveals the remaining root branches; **Show less** returns to the initial limit.
-
-A branch containing a selected term stays visible even beyond the limit, so the list can show more than the configured number of roots. **Show more: Text** accepts `%number%` for the number of hidden root branches. In the collapsed list, the Show more button is hidden when no additional branches remain hidden. Without expand/collapse, the limit counts individual options.
-
-![The Hoodies child term remains visible under Clothing beyond the two-branch limit, with Show 1 more available and three matching products.](https://academy.bricksbuilder.io/assets/filter-checkbox-collapsible-branches.webp)
-
-### Linked Desktop and Mobile Filters {#linked-hierarchies}
-
-When using a [global filter](https://academy.bricksbuilder.io/builder/dynamic-content/global-filters-filter-manager/), **Hierarchical**, **Auto toggle child terms**, and **Count: Include children** are shared settings. Expand/collapse, Show expanded, icons, indentation, and Show more/less limits stay on each element.
-
-Linked elements targeting the same query synchronize their checkbox selections. Each copy keeps its own expanded branches and Show more/less state, so a mobile filter can start collapsed while the desktop copy starts expanded.
-
-## Default selection {#default-selection}
-
-Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. Use **Default value** to preselect exact option values, separated by commas, such as `cotton, wool`. Use taxonomy slugs or raw stored values rather than display labels. Wrap a value containing a comma in double quotes. Dynamic data is supported.
-
-<div className="screenshot screenshot--control-panel">
-
-![A Checkbox filter's Default value set to cotton, wool.](https://academy.bricksbuilder.io/assets/query-filter-default-values.webp)
-
-</div>
-
-The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
-
-> **Developer reference**
->
-> See the [Filter - Checkbox Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-checkbox/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-filter-filter-datepicker"></a>
-
-# Filter datepicker
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-datepicker/
-
-*Filter query results by a single date or date range, including events stored with separate start and end date fields.*
-
-Use Filter - Datepicker to filter a Query Loop by post dates, user registration dates, or custom date fields. Visitors can select a single date or a date range, with optional time selection.
-
-Enable [Query Filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#enable), add the element, and select its **Target query**. Starting with **Bricks 2.5**, date ranges can use separate start and end custom fields on posts, terms, or users, including supported ACF, Meta Box, and JetEngine fields.
-
-## Settings
-
-- **Target query** (query-list) - Select the Posts, Terms, or Users query this filter should target.
-- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
-- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
-- **Source** (select) - Data source for filter options. Options: WordPress field, Custom field.
-- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
-- **Field** (select) - Specific date field to filter by (post date, modified date, user registered date).
-- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
-- **Meta key** (text) - Custom field containing date values. For separate start and end fields, this is the start field. Enter a native meta key or use the selected provider's field picker.
-- **End date meta key** (text, Bricks 2.5) - Optional separate end-date field from the same provider and object type as **Meta key**. Leave empty to compare both selected dates against **Meta key**. See [separate start and end fields](#separate-date-fields).
-- **Enable time** (checkbox) - Add time selection capability to the date picker.
-- **Date range** (checkbox) - Enable selection of date ranges instead of single dates.
-- **Min/max date** (checkbox) - Use minimum and maximum dates from the index table for date picker limits.
-- **Compare** (select) - Comparison operator for single-date filtering. Options: == (is), < (before), > (after).
-- **Input** - Settings for the date input field.
-  - **Placeholder** (text) - Placeholder text for the input field. Default: Date.
-  - **Placeholder typography** (typography) - Typography for placeholder text.
-  - **Language** (text) - Language code for date picker localization (de, es, fr, etc.).
-  - **Datepicker format** (text) - Display format, defaulting to `Y-m-d`. **Enable time** appends `H:i`. This does not change how dates are stored in the database.
-- **Active filter** - Settings for active filter display.
-  - **Prefix** (text) - Text to display before filter value.
-  - **Suffix** (text) - Text to display after filter value.
-  - **Title** (text) - Custom title attribute for filter links.
-
-## Separate start and end fields {#separate-date-fields}
-
-Use **End date meta key** when each item in a Posts, Terms, or Users query stores its start and end dates in separate custom fields.
-
-1. Set **Target query** to the results loop.
-2. Set **Source** to **Custom field** and **Field type** to the objects in that loop: **Post**, **Term**, or **User**.
-3. For native metadata, leave **Provider** at **WordPress**. For ACF, Meta Box, or JetEngine, enable [Custom fields integration](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#custom-fields-integration) and select the provider.
-4. In **Meta key**, enter the native start field's key, such as `event_start`, or select the provider field using the dynamic data picker.
-5. Enable **Date range**.
-6. In **End date meta key**, enter the native end field's key, such as `event_end`, or use its picker to select the provider field.
-7. Optionally enable **Min/max date** to limit the calendar to the indexed date bounds.
-8. Save the builder and allow indexing to finish before testing the frontend.
-
-For native metadata, enter literal keys without dynamic data braces. For provider fields, use the picker on each control. Bricks reads the selected field's definition; these references are not frontend dynamic data output. Both fields must belong to the same provider and object type, with compatible post type or taxonomy locations.
-
-<div className="screenshot screenshot--control-panel">
-
-![Datepicker controls using Post fields and ACF, with departure_date as the start field, return_date as the end field, and Date range and Min/max date enabled.](https://academy.bricksbuilder.io/assets/datepicker-acf-separate-date-fields.webp)
-
-</div>
-
-### Supported fields and storage {#supported-date-fields}
-
-Each field must store one date or datetime value per object. These sources support field pairs on posts, terms, and users:
-
-| Source | Supported date fields |
-| --- | --- |
-| WordPress metadata | Date strings such as `2027-03-09` or `20270309`, and ISO datetime strings such as `2027-03-09 10:00:00`. |
-| ACF | Date Picker and Date Time Picker, including scalar fields inside ordinary Group fields. |
-| Meta Box | Date and Datetime fields stored in native WordPress metadata, including numeric save formats such as `d/m/Y H:i:s` and timestamp storage. User and term fields require the corresponding Meta Box extensions. |
-| JetEngine | Date and Datetime fields stored in native WordPress metadata, as strings or timestamps. |
-
-Bricks resolves each field's storage separately. The start and end fields can use different supported formats or timestamp settings. ACF's Date Picker stores `Ymd` values; changing its return format or **Datepicker format** does not change how Bricks compares the stored dates.
-
-Time-only fields, repeating or cloneable fields, serialized groups, and custom-table storage are not supported for separate start and end fields. The provider pickers limit choices to compatible date fields. ACF Group fields are supported only where each date is stored as its own metadata value, rather than inside a repeated or serialized structure.
-
-If a provider is unavailable or a selected field is deleted or incompatible, Bricks reports a configuration error. Select a compatible replacement or clear **End date meta key** to return to one-field behavior. An invalid pair does not silently compare the start field twice.
-
-### Example: ACF dates on taxonomy terms
-
-If each term in an event taxonomy has ACF `event_start` and `event_end` Date Picker fields, target the **Terms** loop and set **Field type** to **Term** and **Provider** to **ACF**. Select `event_start` in **Meta key**, enable **Date range**, and select `event_end` in **End date meta key**. Both ACF fields must be available on the taxonomy being queried.
-
-### Which events match?
-
-Both conditions must be met:
-
-- The event starts on or after the selected start date.
-- The event ends on or before the selected end date.
-
-For a selected range of **March 8–10, 2027**, with **Enable time** off:
-
-| Event dates | Included? |
-| --- | --- |
-| March 8–10 | Yes, both boundaries are included. |
-| March 9 | Yes, the event fits within the range. |
-| March 9–12 | No, it ends after March 10. |
-| March 7–9 | No, it starts before March 8. |
-
-An event must fit entirely within the selection. An event that overlaps only part of the range is excluded. Both date fields must contain valid values, and the stored start must not be later than the stored end. Items with missing, empty, invalid, or reversed dates are excluded from filtered results and calendar bounds.
-
-With **Enable time** off, the selection covers complete days, including the whole final day. With it on, the selected hours and minutes are part of the comparisons, and the final minute includes seconds through `:59`. A stored end field containing only a date represents the end of that day.
-
-Select both endpoints to apply a range; selecting only the first date does not filter the query. Choose the same day for both endpoints to filter a single day. The range narrows the query's existing restrictions, including groups of conditions joined by **OR**.
-
-Leave **End date meta key** empty to filter one field between the selected dates. Turning off **Date range** uses **Meta key** and the **Compare** setting; the separate end field is ignored.
-
-Changing **Source**, **Provider**, or **Field type** clears the retained end-field selection. Select a compatible end field again after the change. The **WordPress field** source, such as Post date or User registered date, keeps its existing single-field behavior.
-
-### Calendar limits and indexing
-
-With a separate end field configured, Bricks indexes both dates from complete, valid intervals. **Min/max date** uses those indexed values, so a multi-day event's end date can extend the calendar's upper limit. It does not disable individual days without events inside those limits or select a particular opening month.
-
-Adding, updating, or deleting either date field refreshes the affected post, term, or user's complete interval through the normal queue. If either value is removed or becomes invalid, neither date from that item contributes to the bounds. Upgrades and changes to the selected field definitions can queue an index rebuild. If the calendar limits appear stale, check the [filter indexing tools](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-index) and allow pending jobs to finish.
-
-### Shared Datepicker settings
-
-When using a [Global Filter](https://academy.bricksbuilder.io/builder/dynamic-content/global-filters-filter-manager/), the provider, field type, and both field selections belong to the shared configuration. Linked Datepickers use those fields and one shared index while keeping their own target queries and styling. Linking to a global filter without an end key uses one-field behavior, even if the element previously had a local end key.
-
-## Default selection {#default-selection}
-
-Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. For a single date, enter **Default value** in `YYYY-MM-DD` format. With **Date range** enabled, provide both **Start date** and **End date** in that format, with the start no later than the end. These fields support dynamic data, which must return the same format regardless of the display or stored field format.
-
-The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
-
-> **Developer reference**
->
-> See the [Filter - Datepicker Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-datepicker/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-filter-filter-geolocation"></a>
-
-# Filter Geolocation
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-geolocation/
-
-*Filter posts, terms, or users by distance from an address, device location, or map center, and show nearby results on Google Maps or Leaflet.*
-
-The **Filter - Geolocation** element, available in **Bricks 2.5**, finds results within a radius of a selected location. Use it for store locators, property listings, or directories where visitors need to find nearby places.
-
-Visitors can search from an address, their device location, or the center of a connected map. A map is optional. The filter supports native **Posts**, **Terms**, and **Users** query loops.
-
-Distance is measured along the earth's surface in a straight line, not along roads. It does not represent driving distance or travel time.
-
-## Basic setup {#setup}
-
-1. Enable **Enable query sort / filter / live search** under **Bricks > Settings > Query filters**.
-2. Create a [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/) for your listing.
-3. Add **Filter - Geolocation** from the **Filter** element group.
-4. Set **Target query** to the listing's loop.
-5. Under **Data source**, set **Object type** to **Post**, **Term**, or **User** to match the listing, then configure its [coordinate fields](#coordinates).
-6. Enable **Search by address**, **Search by device location**, or both. Both are off by default.
-7. Set the radius and distance unit. Enable **Radius dropdown** if visitors should choose the radius.
-8. Save the builder and let indexing finish. Test the search on the frontend.
-
-For example, a store directory can use a Posts query with `store_latitude` and `store_longitude` custom fields. Enable device-location search and offer 5, 10, 25, and 50 km radii. A visitor selects their location and 25 km, and the listing shows stores within that distance.
-
-![A 25 km device-location search around Johor Bahru, with a removable active-filter label, a result showing its distance, and a Leaflet map showing the origin and radius.](https://academy.bricksbuilder.io/assets/academy-filter-geolocation-leaflet.webp)
-
-## Coordinate fields {#coordinates}
-
-Every result needs saved latitude and longitude values. Bricks indexes these coordinates for distance searches. It does not convert saved street addresses into coordinates during indexing.
-
-### WordPress meta fields
-
-Use the **WordPress** provider, or the native coordinate controls when custom-field integration is disabled.
-
-| Coordinate format | Settings | Example saved values |
-| --- | --- | --- |
-| **Separate fields** (default) | **Latitude meta key** and **Longitude meta key** | `store_latitude`: `1.4927`; `store_longitude`: `103.7414` |
-| **Combined field** | **Coordinates meta key** | `store_coordinates`: `1.4927,103.7414` |
-
-Enter the meta key names, not dynamic data tags. For combined fields, latitude comes first. Bricks reads post, term, or user metadata according to **Object type**.
-
-Latitude must be between -90 and 90, and longitude between -180 and 180. Missing or invalid coordinates are excluded from location searches. An item can appear in the unfiltered listing and disappear when a radius search is applied if its coordinates are missing.
-
-### ACF and Meta Box map fields
-
-1. Enable **Custom fields integration** under **Bricks > Settings > Query filters**.
-2. Set **Provider** to **ACF** or **Meta Box** on the Geolocation filter.
-3. Open the dynamic data picker in **Location field** and select an **ACF Google Map** or **Meta Box Map** field.
-
-These integrations read the saved coordinates from the map field. The provider choices for this element are limited to ACF and Meta Box, even when other query-filter integrations are active.
-
-After importing locations or changing the coordinate source, use **Regenerate filter index** under **Bricks > Settings > Query filters** if results are missing or outdated. See [Filter Index](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-index) for background indexing controls.
-
-### Coordinates from a custom storage format {#custom-coordinate-storage}
-
-For integrations that store coordinates in another format, use the `bricks/query_filters/geolocation/coordinates` PHP filter. It runs while Bricks indexes each object, after the normal coordinate lookup, rather than on every visitor search.
-
-The callback receives five arguments:
-
-| Argument | Value |
-| --- | --- |
-| `$coordinates` | The resolved `['lat' => ..., 'lng' => ...]` array, or `false` when no valid coordinates were found. |
-| `$object_id` | The post, term, or user ID being indexed. |
-| `$object_type` | `post`, `term`, or `user`. |
-| `$settings` | The Geolocation filter settings used for indexing. |
-| `$filter_id` | The filter ID that owns the coordinate index. |
-
-For example, suppose a `store` post type saves an array under `_directory_location`, with `latitude` and `longitude` keys. Configure the Geolocation filter with **Object type > Post**, **Combined field**, and **Coordinates meta key** set to `_directory_location`. Add this callback to your child theme or a custom plugin:
-
-```php
-add_filter( 'bricks/query_filters/geolocation/coordinates', function ( $coordinates, $object_id, $object_type, $settings, $filter_id ) {
-    if (
-        $object_type !== 'post' ||
-        get_post_type( $object_id ) !== 'store' ||
-        ( $settings['geoCoordinateSource'] ?? 'separate' ) !== 'combined' ||
-        ( $settings['geoCoordinatesKey'] ?? '' ) !== '_directory_location'
-    ) {
-        return $coordinates;
-    }
-
-    $location = get_post_meta( $object_id, '_directory_location', true );
-
-    if ( ! is_array( $location ) ) {
-        return false;
-    }
-
-    return [
-        'lat' => $location['latitude'] ?? null,
-        'lng' => $location['longitude'] ?? null,
-    ];
-}, 20, 5 );
-```
-
-The scope checks preserve other filters and object types. Return the incoming value when your integration does not apply, or `false` to exclude that object's coordinates. Bricks validates the returned array again: latitude and longitude must be finite numbers within the ranges above. An invalid result is not indexed, and stale coordinates for that object are removed during reindexing.
-
-After adding the callback or changing its stored data, [regenerate the filter index](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-index) to update existing results. Integrations can also [request a rebuild from PHP](https://academy.bricksbuilder.io/developer/hooks/actions/bricks-query_filters-reindex/#request).
-
-## Search methods {#search-methods}
-
-### Address search
-
-Enable **Search by address** to display an address field and Search button. Save a Google Maps API key under **Bricks > Settings > API keys**. The key needs access to **Maps JavaScript API** and **Geocoding API**, with billing and website restrictions configured for your site. Saving a key does not verify access to those services.
-
-**Address autocomplete** adds suggestions while typing and additionally requires **Places API (New)**. If suggestions fail, visitors can still type an address and use Search. See [Google Maps API key setup](https://academy.bricksbuilder.io/integrations/how-to-set-up-your-google-maps-api-key/#geolocation).
-
-- **Country codes** limits suggestions to up to 15 two-letter country codes, separated by commas or spaces. Leave it empty for all countries.
-- **Autocomplete map area** can **Prefer map area** (default), **Limit to map area**, or **Ignore map area** when a map is connected.
-- **Hide label** hides the address label visually while retaining its accessible name.
-- **Hide search button** leaves Enter available to run a search.
-
-Autocomplete restrictions affect address suggestions. The selected origin and radius determine which listing items match.
-
-### Device-location search
-
-Enable **Search by device location** to display a location button. Choose text, an icon, or both, and configure the enabled and clear states under **Device location button**.
-
-Bricks requests location permission only after the visitor activates the button. The browser must support geolocation and permit it on the site, normally over HTTPS. If permission is denied or the location cannot be retrieved, the previous applied search remains in place.
-
-Device-location search does not need a Google Maps API key. It works with a listing alone or a connected Leaflet map without Google services. Enabling address search still requires the Google APIs, including when the connected map uses Leaflet.
-
-## Default location {#default-location}
-
-Enable **Use default location** to apply a radius search before the first query runs. This works with Google Maps, Leaflet, or a listing without a map.
-
-1. Set **Target query** and enable at least one visitor search method: **Search by address** or **Search by device location**.
-2. Under **Default location**, enable **Use default location**.
-3. Enter **Latitude** and **Longitude**, for example `3.1390` and `101.6869` for Kuala Lumpur.
-4. Optionally enter a **Location label**, such as "Kuala Lumpur". An empty label displays "Default location".
-5. Set **Default radius** and **Distance unit**, for example 25 km, then save and test a URL without filter parameters.
-
-<div className="screenshot screenshot--control-panel">
-
-![Use default location enabled with latitude 3.1390, longitude 101.6869, and Kuala Lumpur as the location label.](https://academy.bricksbuilder.io/assets/query-filter-default-location.webp)
-
-</div>
-
-Latitude, longitude, and label support dynamic data from the original page or template preview context. Coordinates must resolve to valid numbers. The label is display text, not an address that Bricks needs to geocode. It appears in Active Filters and the address input when address search is enabled. Submitting the unchanged label uses the existing coordinates.
-
-The default applies immediately, including with **Apply on** set to **On submit**. It uses the configured radius and unit, does not derive coordinates from the map center, and does not request the visitor's device location. Device access still requires the visitor to activate its button.
-
-Use one default location per target query. Duplicate desktop and mobile controls can share a default through one [global filter](https://academy.bricksbuilder.io/builder/dynamic-content/global-filters-filter-manager/). If independent Geolocation filters targeting the same query each define a valid default location, Bricks skips those defaults and shows a warning in the builder preview. Invalid or incomplete coordinates are also skipped.
-
-Recognized filter URL parameters take precedence over defaults. **Reset** clears the location; a fresh visit or reload without filter parameters applies it again. Defaults are not reapplied during AJAX updates, pagination, or browser Back/Forward. Coordinates enter the URL only when **Save location in URL** is enabled. See [default filter state](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-state).
-
-## Radius and sorting {#radius}
-
-| Setting | Behavior |
-| --- | --- |
-| **Default radius** | Uses 5 by default. With a radius dropdown, choose a value from **Radius options**; otherwise Bricks uses the first valid option. Without a dropdown, this is the fixed search radius. |
-| **Distance unit** | **Kilometres (km)** by default, or **Miles (mi)**. |
-| **Radius dropdown** | Off by default. Lets visitors select one configured radius. Default presets are 5, 10, 25, and 50. Each row has a numeric **Radius** and an **Option label**. |
-| **Unit label format** | **Abbreviated (km/mi)** by default, **Full text**, or **Disable**. Applies to the radius options and Active Filters label. Disable it when your option labels already contain their units. |
-| **Sort results by distance** | On by default. Shows nearest matches first while the filter is active. An active Sort filter takes precedence without removing the radius constraint. |
-
-Radius changes need an origin before they can filter results. Existing taxonomy, custom-field, search, and other query restrictions still apply. Pagination totals reflect the filtered results.
-
-Under **Radius dropdown**, enable **Enhanced radius dropdown** for Choices.js styling. It remains a single-selection control with a valid radius required.
-
-### Let visitors choose the distance order {#distance-sorting}
-
-Add a [Select](https://academy.bricksbuilder.io/builder/elements/filter/filter-select/) or [Radio](https://academy.bricksbuilder.io/builder/elements/filter/filter-radio/) filter targeting the same query and set **Action** to **Sort**. In **Sort options**, set **Source** to **Distance** and choose **Ascending** for nearest first or **Descending** for farthest first. Give each option a label visitors can recognize.
-
-Distance uses the Geolocation search, including a configured default location. It retains the radius when visitors change sort options and works even when this element's **Sort results by distance** is off. A farthest-first 25 km search still excludes results outside 25 km.
-
-On the frontend, Distance options stay visible but disabled without a valid location for the same query. A valid location enables them even when no results match. Choosing a sort option never requests device location; visitors obtain their location through this element's search controls.
-
-See [Distance sorting setup](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#distance-sorting) for the complete configuration.
-
-## When a search applies {#apply-mode}
-
-The Geolocation filter uses **Immediately** and **On submit** labels under **Apply on**.
-
-| Action | Immediately (default) | On submit |
-| --- | --- | --- |
-| Select an address suggestion or resolve device location | Applies the selected location | Stages the location until a search is submitted |
-| Change the radius or pan a map with map search enabled | Applies the change | Stages the change |
-| Use the address Search button or press Enter to search | Resolves and applies this location alongside already applied filters | Resolves and applies this location alongside already applied filters |
-| Activate a Filter - Submit targeting the same query | Applies all pending filters | Applies all pending filters |
-
-When Enter selects an autocomplete suggestion, that keypress only selects it. Press Enter again to search. In **Immediately** mode, selecting the suggestion can already trigger the update.
-
-In **On submit** mode, device-only setups need a [Filter - Submit](https://academy.bricksbuilder.io/builder/elements/filter/filter-submit/) element targeting the same query. Keep status messages visible so visitors can tell when a location is waiting to be applied.
-
-To apply a pending location and Distance sorting together, set the Select or Radio sort filter's **Apply on** to **Submit** too. A resolved pending location enables its Distance options before submission. Clearing the pending location disables them and clears the pending Distance choice. Use Filter - Submit to apply both changes together.
-
-While a new location is pending, the visible results, distances, active-filter label, and map radius still describe the applied search. They update when the matching results arrive. Failed lookups or requests preserve the previous applied location and results.
-
-## Connect a map {#map}
-
-1. Add a [Map Connector](https://academy.bricksbuilder.io/builder/elements/general/map-connector/) inside the results loop and give it location data for each item. Use coordinates matching the filter's indexed location.
-2. Add a [Google Map](https://academy.bricksbuilder.io/builder/elements/general/map/#3-sync-with-query) in JavaScript API render mode, or [Map (Leaflet)](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/#sync-with-query).
-3. Set the map's **Sync with query** to the same results loop targeted by the filter.
-4. If exactly one Geolocation filter and one matching map use that query, Bricks connects them automatically. Otherwise, select the intended map under **Map (Optional)** on the filter.
-
-Each Geolocation filter connects to at most one map, and each map to at most one Geolocation filter. Static maps and a map's internal query are not supported filter targets. Leaflet Map Connectors require latitude and longitude.
-
-The map shows the search origin and radius, with markers for the current results. The applied origin and radius stay visible when no results match. Under **Map appearance**, customize the circle's fill and border, origin marker color, or a custom origin marker image.
-
-### Search on map drag
-
-Enable **Search on map drag** on the filter and allow dragging on the connected map. The map center becomes the search origin after the visitor stops panning.
-
-- **Visitor controlled** (default) shows a **Search as I move the map** checkbox. Configure its label, corner position, and **Checked by default** state.
-- **Automatic** searches after every qualifying drag without displaying the checkbox.
-- **Search delay (ms)** waits after the map settles, using 400 ms by default.
-
-Zooming alone and programmatic map movements do not start a search. **Apply on** still controls whether map changes apply immediately or wait for submission.
-
-## Show the distance in each result {#distance}
-
-Place the following tag in a text element inside the filtered Posts, Terms, or Users loop:
-
-```text
-{filter_geo_distance}
-```
-
-It shows the current item's distance from the applied origin, using the filter's unit and unit-label format with one decimal place by default. It also works in AJAX-rendered map Info Boxes for those results.
-
-| Argument | Use |
-| --- | --- |
-| `@to:'km'` or `@to:'mi'` | Convert the displayed distance without changing the search radius. |
-| `@decimals:'0'` through `@decimals:'6'` | Set the number of decimal places. |
-| `@output:'value'` | Return the rounded numeric value only. |
-| `@output:'unit'` | Return the unit label only. |
-| `@fallback:'Select a location'` | Show fallback text when no distance is available. |
-
-For example:
-
-```text
-{filter_geo_distance @to:'mi' @decimals:'2'}
-{filter_geo_distance @fallback:'Select a location'}
-```
-
-Without a fallback, the tag returns nothing before a location search is applied or outside a supported filtered loop. API, Array, and provider-specific query loops do not support this tag or Geolocation filtering.
-
-## Active filters and URL state {#state}
-
-An [Active Filters](https://academy.bricksbuilder.io/builder/elements/filter/filter-active-filters/) element shows the location and radius as one removable item. Clear, Reset, and removing that item clear the location search. Applying another independent Geolocation filter to the same query replaces the previous location constraint.
-
-Clearing the location also clears a selected Distance sort and restores the query's normal ordering. Results and URL history update together after the request succeeds. Failed or cancelled requests preserve the last applied results and ordering. Distance options remain configured so they can be enabled for another valid location.
-
-**Save location in URL** is off by default. Enable it if searches should survive a reload or be shareable. It writes the selected coordinates to the page URL and browser history. **URL parameter** changes the parameter name. Browser Back and Forward can restore saved searches.
-
-Geolocation filters support [Global Filters](https://academy.bricksbuilder.io/builder/dynamic-content/global-filters-filter-manager/). Shared behavior includes the coordinate source, search methods, default location, radius, and apply mode. Target query, map connection, and presentation remain local to each linked element.
-
-## Styling and status messages {#styling}
-
-The element has separate control groups for **Layout**, **Label**, **Address**, **Search button**, **Radius dropdown**, **Device location button**, and **Status**. Use these to style the controls at each breakpoint.
-
-Under **Status**, override the pending, loading, success, and error messages. Empty values retain the translated defaults. **Hide status messages** hides them visually while keeping screen reader announcements. It does not hide the separate address-autocomplete fallback notice.
-
-## Troubleshooting {#troubleshooting}
-
-- **No controls appear:** Enable an address or device-location search method. Both are off on a new element.
-- **Known locations are missing:** Check the object type, meta keys or provider field, coordinate order and ranges, and filter-index progress. Address-only values cannot be indexed as coordinates.
-- **Address search fails:** Check the saved Google key, billing, enabled APIs, and website/API restrictions. Autocomplete needs Places API (New) in addition to the manual-search APIs.
-- **Location selected but results have not changed:** Check **Apply on**. Use Search, Enter, or a Filter Submit in **On submit** mode.
-- **Map does not connect:** Target the results loop, set the map's **Sync with query** to it, and select the map explicitly if the layout contains multiple filters or maps.
-- **Dragging does not search:** Enable map dragging and **Search on map drag**, then check the visitor checkbox and apply mode.
-
----
-
-<a id="builder-elements-filter-filter-radio"></a>
-
-# Filter radio
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-radio/
-
-*Use radio buttons for single-selection query filters, sorting, or results per page, with optional child-term counts for taxonomy filters.*
-
-Creates a radio button filter interface for single-selection filtering. Users can select one option at a time to filter query results. Supports taxonomy terms, WordPress fields, custom fields, and can also function as a sorting or results-per-page control.
-
-Use radio buttons when visitors should select only one option. Set **Action** to **Sort** or **Results per page** when the control should change ordering or page size.
-
-## Settings
-
-- **Target query** (query-list) - Select the post, term, or user query this filter should target. Available sources depend on the query type.
-- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
-- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
-- **Action** (select) - Filter behavior. Options: Filter (traditional filtering), Sort (sorting control), Results per page (pagination control).
-- **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
-- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
-- **Field** (select) - Specific field to filter/sort by (varies based on field type and action).
-- **Taxonomy** (select) - Taxonomy to use for filtering when source is taxonomy.
-- **Order by** (select) - How to order taxonomy terms. Options: Name, Slug, Term ID, Description, Parent, Count, Include, Menu Order, Meta Value, Meta Value Num.
-- **Order meta key** (text) - Meta key for ordering when using meta value ordering.
-- **Order** (select) - Sort direction. Options: ASC, DESC. Default: ASC.
-- **Terms: Include** (select) - Specific taxonomy terms to include in filter options.
-- **Terms: Exclude** (select) - Specific taxonomy terms to exclude from filter options.
-- **Top level terms only** (checkbox) - Display only top-level terms (parent = 0) when source is taxonomy.
-- **Hide count** (checkbox) - Hide the result count for each option.
-- **Count: Include children** (checkbox, Bricks 2.5) - Include descendant-term posts in parent taxonomy counts. Off by default. Available with Action set to Filter, a target query, and a selected taxonomy.
-- **Hide empty** (checkbox) - Hide options with zero results.
-- **Hide count bracket** (checkbox) - Remove brackets around count values. Style count via .brx-option-count.
-- **Hierarchical** (checkbox) - Display taxonomy terms in hierarchical structure.
-- **Indent: Prefix** (text) - Prefix text for hierarchical indentation. Default: —.
-- **Indent: Gap** (number) - Gap spacing for hierarchical indentation.
-- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
-- **Meta key** (text) - Custom field key for filtering.
-- **Compare** (select) - Comparison operator for filtering. Default: Equal.
-- **Mode** (select) - Display mode for radio buttons. Options: Default (traditional radio buttons), Button (modern button style).
-- **Sort options** (repeater) - Configure sorting options when Action is set to Sort.
-  - **Source** (select) - Sort field, including **Distance** in Bricks 2.5.
-  - **Label** (text) - Display label for the sort option.
-  - **Order** (select) - Ascending or Descending. For Distance, nearest first or farthest first.
-  - **Meta key** (text) - Meta key for meta-based sorting.
-- **Results per page options** (text) - Comma-separated list of results per page options when Action is set to Results per page. Default: 10, 20, 50, 100.
-- **Active filter** - Settings for active filter display.
-  - **Prefix** (text) - Text to display before filter value.
-  - **Suffix** (text) - Text to display after filter value.
-  - **Title** (text) - Custom title attribute for filter links.
-
-## Parent-Term Counts {#parent-term-counts}
-
-Enable **Count: Include children** when a parent option should count posts assigned to its child terms and deeper descendants. Posts assigned to both a parent and a descendant count once for the parent. The setting works independently of **Hierarchical** display and is shared when the element uses a global filter. See [taxonomy child counts](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#taxonomy-child-counts) for setup, indexing, and an example.
-
-## Default selection {#default-selection}
-
-Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. Use **Default value** for one exact option value. For the Sort action, enter a configured sort value such as `title_ASC` or `distance_ASC`; for Results per page, enter a configured page size such as `20`. Dynamic data is supported.
-
-A Distance default such as `distance_ASC` also requires a valid location from a Geolocation filter targeting the same query. Without one, Bricks clears the Distance selection and uses the query's normal order.
-
-The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
-
-## Distance sorting {#distance-sorting}
-
-Starting with **Bricks 2.5**, set **Action** to **Sort** and add **Distance** as a sort option's **Source**. Set **Order** to **Ascending** for nearest first or **Descending** for farthest first, and give the option a descriptive **Label**.
-
-A [Geolocation filter](https://academy.bricksbuilder.io/builder/elements/filter/filter-geolocation/) must target the same query and provide a valid location, including a default location. Sorting keeps its radius constraint.
-
-Distance options remain visible but disabled without a valid location. A valid location enables them even when no results match. Clearing the location also clears a selected Distance sort and restores the query's normal order. Choosing a sort option never requests device location.
-
-With this filter set to **Submit** and Geolocation set to **On submit**, a resolved pending location enables Distance before submission so visitors can apply both together. See [Distance sorting setup](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#distance-sorting) for apply modes, URL behavior, and failed requests.
-
-> **Developer reference**
->
-> See the [Filter - Radio Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-radio/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-filter-filter-range"></a>
-
-# Filter range
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-range/
-
-*Filter query results by numeric ranges using sliders or input fields, with optional default minimum and maximum values.*
-
-Creates a range slider or input interface for filtering content by numeric ranges. Perfect for price filtering, numeric custom fields, or any data that has minimum and maximum values. Supports both slider and input field display modes.
-
-**Tip:** Essential for e-commerce price filtering or any scenario where users need to filter by numeric ranges.
-
-## Settings
-
-- **Target query** (query-list) - Select the Posts, Terms, or Users query this filter should target.
-- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
-- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
-- **Source** (select) - Data source for filter options. Currently limited to Custom field.
-- **Field type** (select) - Type of field when using custom field source. Options: Post, Term, User.
-- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
-- **Meta key** (text) - Custom field key containing numeric values for range filtering.
-- **Disable auto min/max value** (checkbox) - Manually set min/max values instead of auto-detecting from query results.
-- **Mode** (select) - Display mode for the range filter. Options: Slider (visual slider), Input (text inputs).
-- **Step** (number) - Increment step for range values. Default: 1.
-- **Decimal places** (number) - Number of decimal places to display. Default: 0.
-- **Thousand separator** (checkbox) - Add thousand separators to displayed values.
-- **Separator** (text) - Thousand separator character. Default: ,.
-- **Label** - Settings for range value labels.
-  - **Min** (text) - Label for minimum value.
-  - **Max** (text) - Label for maximum value.
-  - **Direction** (direction) - Layout direction for min/max labels (row/column).
-  - **Gap** (number) - Spacing between min/max labels.
-- **Input** - Settings for input field mode.
-  - **Placeholder** (text) - Placeholder text for input fields.
-  - **Typography** (typography) - Typography for input field text.
-- **Slider** - Settings for slider mode.
-  - **Track color** (color) - Color of the slider track.
-  - **Range color** (color) - Color of the selected range on the slider.
-  - **Handle color** (color) - Color of the slider handles.
-  - **Handle size** (number) - Size of the slider handles.
-  - **Track height** (number) - Height of the slider track.
-- **Active filter** - Settings for active filter display.
-  - **Prefix** (text) - Text to display before filter value.
-  - **Suffix** (text) - Text to display after filter value.
-  - **Title** (text) - Custom title attribute for filter links.
-
-## Default selection {#default-selection}
-
-Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. Under **Default value**, enter numeric **Minimum** and **Maximum** values. Leave one endpoint empty to use the original range boundary. Defaults are limited to the original available range and support dynamic data.
-
-The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
-
-> **Developer reference**
->
-> See the [Filter - Range Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-range/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-filter-filter-search"></a>
-
-# Filter search
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-search/
-
-*Search query results without a page reload, configure initial search text, and choose AJAX or redirect behavior for Enter.*
-
-Provides a live AJAX search input for real-time content filtering. Searches through post content, titles, and custom fields without page refresh. Features debouncing, minimum character requirements, and optional clear functionality.
-
-**Tip:** Perfect for creating instant search experiences. Use the debounce setting to control API call frequency, and minimum characters to improve performance.
-
-## Settings
-
-- **Target query** (query-list) - Select the Posts, Terms, or Users query this filter should target.
-- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
-- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (button click or Enter). Default: Input.
-- **Debounce (ms)** (number) - Delay before triggering search after typing stops. Default: 500ms.
-- **Min. characters** (number) - Minimum characters required to trigger search. Default: 3.
-- **Enter action** (select, Bricks 2.4) - Choose **AJAX search** (default) or **Redirect to URL**. Requires a target query.
-- **Trigger Filter Submit interactions** (checkbox, Bricks 2.4) - Run the target query's Filter Submit start/end interactions when Enter triggers an AJAX search. Disabled by default and available when Enter action is AJAX search.
-- **Redirect to** (text, Bricks 2.4) - Destination URL when Enter action is Redirect to URL. Active filters for the same query are appended as URL parameters.
-- **Open in new tab** (checkbox, Bricks 2.4) - Open the Enter-key redirect in a new tab. Available when a redirect URL is set.
-- **Input** - Settings for the search input field.
-  - **Placeholder** (text) - Placeholder text for the search input. Default: Search.
-  - **Placeholder typography** (typography) - Typography for placeholder text.
-  - **Label** (text) - Optional label text above the input field.
-  - **Label typography** (typography) - Typography for the label text.
-- **Icon (Clear)** - Settings for the clear/reset icon.
-  - **Icon** (icon) - Icon to display for clearing the search.
-  - **Icon color** (color) - Color of the clear icon.
-  - **Icon size** (number) - Size of the clear icon.
-- **Active filter** - Settings for active filter display.
-  - **Prefix** (text) - Text to display before filter value.
-  - **Suffix** (text) - Text to display after filter value.
-  - **Title** (text) - Custom title attribute for filter links.
-
-## Search with Enter
-
-Pressing Enter runs the configured action immediately, including when **Apply on** is set to **Submit**. Enter bypasses the typing debounce and minimum character threshold.
-
-For a search field that takes visitors to another results page, select a **Target query**, set **Enter action** to **Redirect to URL**, and enter the destination under **Redirect to**. Configure the destination's filters to recognize the same URL parameter names. Leave **Open in new tab** off to navigate in the current tab. An empty redirect URL falls back to an AJAX search.
-
-For an AJAX search that should close an Offcanvas after submission, enable **Trigger Filter Submit interactions** and use the [Filter Submit interaction triggers](https://academy.bricksbuilder.io/builder/features/interactions/#filter-submit-triggers). Ordinary typing does not trigger these submit interactions. The redirect action does not run them.
-
-## Default selection {#default-selection}
-
-Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. Use **Default value** to set initial search text. The field supports dynamic data and treats commas as part of the search text.
-
-The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
-
-> **Developer reference**
->
-> See the [Filter - Search Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-search/) for the schema snapshot and Bricks 2.4 settings reference.
-
----
-
-<a id="builder-elements-filter-filter-select"></a>
-
-# Filter select
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-select/
-
-*Use dropdown query filters for single or multiple selections, sorting, and results per page, with optional child-term counts for taxonomy filters.*
-
-Creates a dropdown select filter interface for single or multiple selection filtering. Supports taxonomy terms, WordPress fields, and custom fields. Can also function as a sorting or results-per-page control.
-
-## Settings
-
-- **Target query** (query-list) - Select the post, term, or user query this filter should target. Available sources depend on the query type.
-- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
-- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
-- **Action** (select) - Filter behavior. Options: Filter (traditional filtering), Sort (sorting control), Results per page (pagination control).
-- **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
-- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
-- **Field** (select) - Specific field to filter/sort by (varies based on field type and action).
-- **Taxonomy** (select) - Taxonomy to use for filtering when source is taxonomy.
-- **Order by** (select) - How to order taxonomy terms. Options: Name, Slug, Term ID, Description, Parent, Count, Include, Menu Order, Meta Value, Meta Value Num.
-- **Order meta key** (text) - Meta key for ordering when using meta value ordering.
-- **Order** (select) - Sort direction. Options: ASC, DESC. Default: ASC.
-- **Terms: Include** (select) - Specific taxonomy terms to include in filter options.
-- **Terms: Exclude** (select) - Specific taxonomy terms to exclude from filter options.
-- **Top level terms only** (checkbox) - Display only top-level terms (parent = 0) when source is taxonomy.
-- **Hide count** (checkbox) - Hide the result count for each option.
-- **Count: Include children** (checkbox, Bricks 2.5) - Include descendant-term posts in parent taxonomy counts. Off by default. Available with Action set to Filter, a target query, and a selected taxonomy.
-- **Hide empty** (checkbox) - Hide options with zero results.
-- **Hierarchical** (checkbox) - Display taxonomy terms in hierarchical structure.
-- **Indent: Prefix** (text) - Prefix text for hierarchical indentation. Default: —.
-- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
-- **Meta key** (text) - Custom field key for filtering.
-- **Compare** (select) - Comparison operator for filtering. Default: Equal.
-- **Input** - Settings for the select dropdown.
-  - **Placeholder** (text) - Placeholder text for the select dropdown.
-- **Sort options** (repeater) - Configure sorting options when Action is set to Sort.
-  - **Source** (select) - Sort field, including **Distance** in Bricks 2.5.
-  - **Label** (text) - Display label for the sort option.
-  - **Order** (select) - Ascending or Descending. For Distance, nearest first or farthest first.
-  - **Meta key** (text) - Meta key for meta-based sorting.
-- **Results per page options** (text) - Comma-separated list of results per page options when Action is set to Results per page. Default: 10, 20, 50, 100.
-- **Active filter** - Settings for active filter display.
-  - **Prefix** (text) - Text to display before filter value.
-  - **Suffix** (text) - Text to display after filter value.
-  - **Title** (text) - Custom title attribute for filter links.
-
-## Parent-Term Counts {#parent-term-counts}
-
-Enable **Count: Include children** when a parent option should count posts assigned to its child terms and deeper descendants. Posts assigned to both a parent and a descendant count once for the parent. The setting works independently of **Hierarchical** display and is shared when the element uses a global filter. See [taxonomy child counts](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#taxonomy-child-counts) for setup, indexing, and an example.
-
-## Default selection {#default-selection}
-
-Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. Use **Default value** for one exact option value. With Choices.js and multiple selection enabled, separate values with commas, such as `cotton, wool`, and wrap values containing commas in double quotes. For Sort, enter a configured sort value such as `title_ASC` or `distance_ASC`; for Results per page, enter a configured page size such as `20`. Dynamic data is supported.
-
-A Distance default such as `distance_ASC` also requires a valid location from a Geolocation filter targeting the same query. Without one, Bricks clears the Distance selection and uses the query's normal order.
-
-The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
-
-## Distance sorting {#distance-sorting}
-
-Starting with **Bricks 2.5**, set **Action** to **Sort** and add **Distance** as a sort option's **Source**. Set **Order** to **Ascending** for nearest first or **Descending** for farthest first, and give the option a descriptive **Label**.
-
-<div className="screenshot screenshot--control-panel">
-
-![Sort options with Nearest first configured to use Distance in Ascending order, and Farthest first available as a second option.](https://academy.bricksbuilder.io/assets/query-filter-distance-sort-options.webp)
-
-</div>
-
-A [Geolocation filter](https://academy.bricksbuilder.io/builder/elements/filter/filter-geolocation/) must target the same query and provide a valid location, including a default location. Sorting keeps its radius constraint.
-
-Distance options remain visible but disabled without a valid location, in both native and Choices.js dropdowns. A valid location enables them even when no results match. Clearing the location also clears a selected Distance sort and restores the query's normal order. Choosing a sort option never requests device location.
-
-With this filter set to **Submit** and Geolocation set to **On submit**, a resolved pending location enables Distance before submission so visitors can apply both together. See [Distance sorting setup](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#distance-sorting) for apply modes, URL behavior, and failed requests.
-
-> **Developer reference**
->
-> See the [Filter - Select Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-select/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-filter-filter-submit"></a>
-
-# Filter submit
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-submit/
-
-*Apply or reset query filters, redirect submissions, and preserve selected filters when resetting.*
-
-Creates submit/reset buttons for filter forms. Provides control over when filters are applied - either as a submit button to apply all filters at once, or as a reset button to clear all active filters. Supports redirection to specific URLs after submission.
-
-## Settings
-
-- **Target query** (query-list) - Select the query this button should submit or reset.
-- **Global filter** (Bricks 2.5) - Reuse shared Submit/Reset behavior, including reset exclusions. The target query and button presentation remain local.
-- **Action** (select) - Button behavior. Options: Submit (apply filters), Reset (clear filters).
-- **Redirect to** (text) - URL to redirect to after applying filters (Submit action only).
-- **Open in new tab** (checkbox) - Open redirect URL in new tab (Submit action only).
-- **Exclude filter IDs** (text, Bricks 2.4) - Comma-separated filter IDs to preserve when resetting (Reset action only). From Bricks 2.5, accepts global filter IDs as well as Bricks element IDs.
-- **Hide if no active filter** (checkbox) - Hide the reset button when no filters it can reset are active. Excluded filters do not keep the button visible. Adds .brx-no-active-filter class for styling (Reset action only).
-- **Button** - Settings for the submit/reset button.
-  - **Text** (text) - Button text. Default: Filter.
-  - **Size** (select) - Button size preset. Options: Default, Small, Medium, Large, Extra Large.
-  - **Style** (select) - Button style. Options: None, Primary, Secondary, Success, Info, Warning, Danger, Dark, Light. Default: Primary.
-  - **Circle** (checkbox) - Make button circular.
-  - **Outline** (checkbox) - Use outline button style.
-  - **Icon** (icon) - Icon to display on the button.
-  - **Icon color** (color) - Color of the button icon.
-  - **Icon size** (number) - Size of the button icon.
-
-## Preserve a search while resetting refinements
-
-Set **Action** to **Reset**, then enter the Search filter's Bricks element ID in **Exclude filter IDs**. For example, enter `q1w2e3,mn9456` to preserve two filters. Use filter IDs, not the target query ID or URL parameter names.
-
-From Bricks 2.5, enter a [global filter](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#global-filters) ID or any element ID linked to it to preserve that shared selection for the target query. Copy the definition ID from Filter manager, or copy the element's Bricks ID from its element panel.
-
-Reset clears the other filters for the target query while keeping the excluded values, such as the visitor's search term. With **Hide if no active filter** enabled, the reset button hides once only excluded filters remain active.
-
-Starting with Bricks 2.5, Reset also clears [configured default selections](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) and their URL parameters, unless excluded. It does not restore the defaults. A fresh visit or reload without filter parameters applies them again.
-
-This setting is separate from the exclusion list on the Active Filters element, which controls which filters appear in that element.
-
-> **Developer reference**
->
-> See the [Filter - Submit / Reset Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-submit/) for the schema snapshot and Bricks 2.4 settings reference.
-
----
-
 <a id="builder-elements-general-accordion-nested"></a>
 
 # Accordion (nestable)
@@ -20305,6 +19435,30 @@ The Nestable Accordion element allows creating hierarchical collapsible content 
 > **Developer reference**
 >
 > See the [Accordion (Nestable) Schema](https://academy.bricksbuilder.io/developer/schema/elements/accordion-nested/) for the full JSON schema of this element's settings and controls.
+
+---
+
+<a id="builder-elements-general-alert"></a>
+
+# Alert
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/alert/
+
+*The Alert element displays informational messages with different types and optional dismiss functionality.*
+
+The Alert element displays informational messages with different types and optional dismiss functionality.
+
+## Settings
+
+- **Content** (rich text) - The alert message content. Supports dynamic data and rich text.
+
+- **Type** (select) - The alert style type. Options: `info`, `success`, `warning`, `danger`, `muted`. Default: `info`.
+
+- **Dismissable** (checkbox) - Adds a close button to allow users to dismiss the alert.
+
+> **Developer reference**
+>
+> See the [Alert Schema](https://academy.bricksbuilder.io/developer/schema/elements/alert/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -20385,30 +19539,6 @@ The Accordion element creates collapsible content sections with titles and expan
 > **Developer reference**
 >
 > See the [Accordion Schema](https://academy.bricksbuilder.io/developer/schema/elements/accordion/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-general-alert"></a>
-
-# Alert
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/alert/
-
-*The Alert element displays informational messages with different types and optional dismiss functionality.*
-
-The Alert element displays informational messages with different types and optional dismiss functionality.
-
-## Settings
-
-- **Content** (rich text) - The alert message content. Supports dynamic data and rich text.
-
-- **Type** (select) - The alert style type. Options: `info`, `success`, `warning`, `danger`, `muted`. Default: `info`.
-
-- **Dismissable** (checkbox) - Adds a close button to allow users to dismiss the alert.
-
-> **Developer reference**
->
-> See the [Alert Schema](https://academy.bricksbuilder.io/developer/schema/elements/alert/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -20628,6 +19758,59 @@ Use these settings to style the last item in the breadcrumb trail, which represe
 
 ---
 
+<a id="builder-elements-general-countdown"></a>
+
+# Countdown
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/countdown/
+
+*The Countdown element displays a countdown timer to a specified date with customizable fields and actions.*
+
+The Countdown element displays a countdown timer to a specified date with customizable fields and actions.
+
+## Settings
+
+- **Date** (datepicker) - The target date and time for the countdown.
+
+- **Time zone** (select) - The time zone for the countdown calculation. Options include various UTC offsets. Default: UTC+00:00.
+
+- **Date Reached** (select) - Action when the countdown reaches zero. Options: `countdown` (show countdown), `hide` (hide element), `text` (show custom text). Default: `countdown`.
+
+- **Date Reached: Custom text** (text) - Custom text to display when the date is reached. Only shown when "Date Reached" is set to "text".
+
+### Fields
+
+- **Fields** (repeater) - Configure the countdown display fields. Each field has:
+  - **Prefix** (text) - Text before the field value.
+  - **Format** (text) - Format string using %D (days), %H (hours), %M (minutes), %S (seconds). Lowercase removes leading zeros. Default: "%D days", "%H hours", "%M minutes", "%S seconds".
+  - **Suffix** (text) - Text after the field value.
+
+- **Direction** (direction) - Flex direction for the fields container.
+
+- **Align main axis** (justify-content) - Justify content alignment for fields.
+
+- **Align cross axis** (align-items) - Align items for fields.
+
+### Field
+
+- **Direction** (direction) - Flex direction for individual fields.
+
+- **Margin** (spacing) - Margin around individual fields. Default: 0 5px 0 0.
+
+## Dynamic target dates
+
+The Date control accepts a date returned by dynamic data. Bricks supports common date strings such as `YYYY-MM-DD HH:MM`, `YYYY-MM-DD`, and ISO 8601, plus Unix timestamps in seconds or milliseconds.
+
+The dynamic tag must resolve to a plain date or timestamp. Place the Countdown inside a query loop or template to let each post or product resolve its own target date.
+
+For a WooCommerce sale countdown, use the sale end date as the target. The Countdown tracks one date, so use element conditions when it should appear only after a sale starts or while a product is on sale. Bricks does not provide dedicated WooCommerce sale start and end date tags. Store the target in a custom field or provide it through a custom dynamic tag or helper that returns one of the supported formats.
+
+> **Developer reference**
+>
+> See the [Countdown Schema](https://academy.bricksbuilder.io/developer/schema/elements/countdown/) for the full JSON schema of this element's settings and controls.
+
+---
+
 <a id="builder-elements-general-code"></a>
 
 # Code
@@ -20710,56 +19893,47 @@ The PHP accessor requires **Execute code** and the usual code permissions and si
 
 ---
 
-<a id="builder-elements-general-countdown"></a>
+<a id="builder-elements-general-counter"></a>
 
-# Countdown
+# Counter
 
-Source: https://academy.bricksbuilder.io/builder/elements/general/countdown/
+Source: https://academy.bricksbuilder.io/builder/elements/general/counter/
 
-*The Countdown element displays a countdown timer to a specified date with customizable fields and actions.*
+*The Counter element animates a number from a starting value to an ending value with customizable prefix, suffix, and formatting.*
 
-The Countdown element displays a countdown timer to a specified date with customizable fields and actions.
+The Counter element animates a number from a starting value to an ending value with customizable prefix, suffix, and formatting.
 
 ## Settings
 
-- **Date** (datepicker) - The target date and time for the countdown.
+- **Count from** (text) - The starting number for the animation. Default: 0.
 
-- **Time zone** (select) - The time zone for the countdown calculation. Options include various UTC offsets. Default: UTC+00:00.
+- **Count to** (text) - The ending number for the animation. Default: 1000.
 
-- **Date Reached** (select) - Action when the countdown reaches zero. Options: `countdown` (show countdown), `hide` (hide element), `text` (show custom text). Default: `countdown`.
+- **Animation in ms** (number) - Duration of the counting animation in milliseconds. Default: 1000.
 
-- **Date Reached: Custom text** (text) - Custom text to display when the date is reached. Only shown when "Date Reached" is set to "text".
+- **Typography** (typography) - Font settings for the counter number.
 
-### Fields
+### Prefix
 
-- **Fields** (repeater) - Configure the countdown display fields. Each field has:
-  - **Prefix** (text) - Text before the field value.
-  - **Format** (text) - Format string using %D (days), %H (hours), %M (minutes), %S (seconds). Lowercase removes leading zeros. Default: "%D days", "%H hours", "%M minutes", "%S seconds".
-  - **Suffix** (text) - Text after the field value.
+- **Prefix** (text) - Text displayed before the counter number.
 
-- **Direction** (direction) - Flex direction for the fields container.
+- **Typography** (typography) - Font settings for the prefix text.
 
-- **Align main axis** (justify-content) - Justify content alignment for fields.
+### Suffix
 
-- **Align cross axis** (align-items) - Align items for fields.
+- **Suffix** (text) - Text displayed after the counter number.
 
-### Field
+- **Typography** (typography) - Font settings for the suffix text.
 
-- **Direction** (direction) - Flex direction for individual fields.
+### Separator
 
-- **Margin** (spacing) - Margin around individual fields. Default: 0 5px 0 0.
+- **Thousand separator** (checkbox) - Add thousand separators to the number.
 
-## Dynamic target dates
-
-The Date control accepts a date returned by dynamic data. Bricks supports common date strings such as `YYYY-MM-DD HH:MM`, `YYYY-MM-DD`, and ISO 8601, plus Unix timestamps in seconds or milliseconds.
-
-The dynamic tag must resolve to a plain date or timestamp. Place the Countdown inside a query loop or template to let each post or product resolve its own target date.
-
-For a WooCommerce sale countdown, use the sale end date as the target. The Countdown tracks one date, so use element conditions when it should appear only after a sale starts or while a product is on sale. Bricks does not provide dedicated WooCommerce sale start and end date tags. Store the target in a custom field or provide it through a custom dynamic tag or helper that returns one of the supported formats.
+- **Separator** (text) - Character used as the thousand separator. Default: ",". Only shown when "Thousand separator" is enabled.
 
 > **Developer reference**
 >
-> See the [Countdown Schema](https://academy.bricksbuilder.io/developer/schema/elements/countdown/) for the full JSON schema of this element's settings and controls.
+> See the [Counter Schema](https://academy.bricksbuilder.io/developer/schema/elements/counter/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -20868,50 +20042,6 @@ Width and alignment support responsive breakpoint values. See [Set a custom mega
 > **Developer reference**
 >
 > See the [Dropdown Schema](https://academy.bricksbuilder.io/developer/schema/elements/dropdown/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-general-counter"></a>
-
-# Counter
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/counter/
-
-*The Counter element animates a number from a starting value to an ending value with customizable prefix, suffix, and formatting.*
-
-The Counter element animates a number from a starting value to an ending value with customizable prefix, suffix, and formatting.
-
-## Settings
-
-- **Count from** (text) - The starting number for the animation. Default: 0.
-
-- **Count to** (text) - The ending number for the animation. Default: 1000.
-
-- **Animation in ms** (number) - Duration of the counting animation in milliseconds. Default: 1000.
-
-- **Typography** (typography) - Font settings for the counter number.
-
-### Prefix
-
-- **Prefix** (text) - Text displayed before the counter number.
-
-- **Typography** (typography) - Font settings for the prefix text.
-
-### Suffix
-
-- **Suffix** (text) - Text displayed after the counter number.
-
-- **Typography** (typography) - Font settings for the suffix text.
-
-### Separator
-
-- **Thousand separator** (checkbox) - Add thousand separators to the number.
-
-- **Separator** (text) - Character used as the thousand separator. Default: ",". Only shown when "Thousand separator" is enabled.
-
-> **Developer reference**
->
-> See the [Counter Schema](https://academy.bricksbuilder.io/developer/schema/elements/counter/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -22137,6 +21267,354 @@ Use the connector to set values for each loop item. Set global marker typography
 
 ---
 
+<a id="builder-elements-general-map-leaflet"></a>
+
+# Map (Leaflet)
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/
+
+*Display tile-based maps, populate markers from a query, or sync them with a filterable listing using Map Connectors.*
+
+**Map (Leaflet)** displays maps using tile layers such as OpenStreetMap. Configure the tile provider under **Layers**, add locations under **Markers**, and set the center, zoom, and interactions under **Map**. It does not require a Google Maps API key. Tile providers may have their own access and attribution requirements.
+
+Starting with **Bricks 2.5**, the element supports query-generated markers, **Sync with query**, clustering, text and image markers with active styles, and custom Info Boxes.
+
+## Layers
+
+Add a row to **Layers** for each tile source visitors should be able to select. Each row has:
+
+- **Name**: Label in the layer switcher.
+- **URL**: Tile URL template, such as `https://tile.openstreetmap.org/{z}/{x}/{y}.png`.
+- **Min Zoom** and **Max Zoom**: Zoom levels supported by the tile provider.
+- **Error Tile URL**: Fallback image for failed tiles.
+- **Attribution**: Credits required by the provider.
+
+The default layer uses OpenStreetMap. See the [Leaflet integration guide](https://academy.bricksbuilder.io/integrations/map-leaflet/#layers) for tile URL placeholders and provider examples.
+
+## Choose the marker source {#marker-source}
+
+| Mode | Use it for | Location data comes from |
+| --- | --- | --- |
+| Static | A fixed set of locations | Rows in the **Markers** repeater |
+| Query loop | Markers generated from posts, terms, or other query results | Dynamic data in the first marker row |
+| Sync with query | A map beside a listing that changes through filters, AJAX pagination, or Load More | Map Connectors inside a separate query loop |
+
+Leaflet requires latitude and longitude. It does not convert street addresses into coordinates. Address-only Map Connectors are ignored.
+
+### Static markers {#static-markers}
+
+Add a row under **Markers** for each location. Enter **Coordinates** as `latitude, longitude`, for example `52.5164, 13.3776`. Dynamic data is supported. Static and query markers with missing, nonnumeric, or out-of-range coordinates are skipped.
+
+Use **Label** to distinguish rows in the builder. It is separate from the screen reader **Label** in the marker settings. Add **Popup (Text)** for content shown when the marker is clicked. Each row can override the map's text or image marker defaults.
+
+### Query loop {#query-loop}
+
+Use the map's own query when you need markers without a separate visible results listing.
+
+1. Under **Markers**, enable **Query loop**.
+2. Open **Query** and choose the content to retrieve.
+3. In the first marker row, use dynamic data for **Coordinates** and any marker text, images, or **Popup (Text)** that should change for each result.
+4. For a custom popup design, select an **Info Box: Template (Popup)**. See [Info Boxes](#info-boxes).
+
+Bricks uses the first marker row as the template for every query result. The screenshots below use a Publisher terms query with an ACF Google Map field named `map_location`. Its **Coordinates** value is:
+
+```text
+{acf_map_location:array_value|lat}, {acf_map_location:array_value|lng}
+```
+
+<div className="screenshot screenshot--control-panel">
+
+![The first Leaflet marker row uses dynamic latitude and longitude from an ACF map field.](https://academy.bricksbuilder.io/assets/leaflet-query-marker-coordinates-2x.webp)
+
+</div>
+
+<div className="screenshot screenshot--control-panel">
+
+![Leaflet Query loop enabled with a Terms query targeting the Publishers taxonomy.](https://academy.bricksbuilder.io/assets/leaflet-query-source-settings-2x.webp)
+
+</div>
+
+To update markers through filters, pagination, or Load More, create a separate results loop and use [Sync with query](#sync-with-query).
+
+### Sync with query {#sync-with-query}
+
+Use this mode to keep markers connected to a visible listing, such as property cards beside a map.
+
+1. Create a [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/) on a layout element, such as a Block or Div.
+2. Place one [Map Connector](https://academy.bricksbuilder.io/builder/elements/general/map-connector/) inside the repeated item.
+3. Set the connector's **Latitude** and **Longitude** using dynamic data from each result. Add marker overrides or an Info Box template if needed.
+4. On Map (Leaflet), leave **Query loop** off. Under **Markers > Sync with query**, select the results loop.
+5. Point filters, AJAX Pagination, Load More, and any Query Results Summary at that same results loop.
+6. Enable **Map > Fit map on markers change** if the map should adjust its view after the results change.
+
+Markers refresh when the connected loop changes on the frontend. Set **Text: No results** under **Markers** to customize the message when there are no locations. The default is `No locations found`. **No results typography** styles the message, and **No results position** places it at the top, bottom, or center of the map.
+
+![Publisher cards beside Leaflet markers populated from the same Terms query.](https://academy.bricksbuilder.io/assets/leaflet-synced-publisher-list-2x.webp)
+
+The builder previews the connected loop's markers. Test visitor filtering, pagination, and Load More on the frontend.
+
+### Geolocation filtering {#geolocation-filtering}
+
+Starting with **Bricks 2.5**, a [Filter - Geolocation](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-geolocation-element) can limit the connected Posts, Terms, or Users listing to a radius around a location. Set its **Target query** to the results loop containing the Map Connectors, then select that same loop under the map's **Sync with query** control. The map's own query and static markers are not filter targets.
+
+The filter connects automatically when exactly one Geolocation filter and one matching map use the query. For multiple filters or maps, select **Map (Optional)** on the filter. Each filter connects to one map, and each map can be controlled by one filter.
+
+Device-location searches and **Search on map drag** work without Google APIs. Optional address search uses Google Maps JavaScript API and Geocoding API, and autocomplete additionally requires Places API (New). These services are separate from Leaflet's tile provider.
+
+The map shows the applied search origin and radius, including when no locations match. Configure their appearance on the filter. Enable **Search on map drag** on the filter to search around the map center after a visitor finishes panning. Dragging must be enabled on the map. In **Visitor controlled** mode, visitors choose whether to search using a **Search as I move the map** checkbox; **Automatic** mode searches after every qualifying drag. Zooming alone does not trigger a search. **Apply on: On submit** stages the new location until submitted.
+
+### Scroll the active item into view {#scroll-active-item}
+
+In Sync mode, enable **Scroll active item into view** under **Markers** to scroll to a marker's connected result when the marker is clicked or selected through an **Open address (Map)** interaction. This works even when the marker has no Info Box. It is off by default.
+
+- **Scroll behavior**: **Follow site setting** (default), **Smooth**, or **Instant**.
+- **Scroll position**: **Nearest** (default), **Start**, or **Center**.
+
+Bricks finds the result's nearest vertically scrollable parent, or scrolls the page when there is none. **Nearest** leaves an already visible item in place. No scroll-container selector is needed.
+
+The selected result's Map Connector also receives `map-marker-active`, including when no Info Box is configured. Use this class to [style the connected card](https://academy.bricksbuilder.io/builder/elements/general/map-connector/#active-marker-state).
+
+<div className="screenshot screenshot--control-panel">
+
+![Leaflet synced to Publishers (Terms), with Scroll active item into view enabled, Smooth behavior, and Center positioning.](https://academy.bricksbuilder.io/assets/leaflet-sync-query-settings-2x.webp)
+
+</div>
+
+## Marker appearance {#marker-appearance}
+
+Under **Markers > Marker**, choose **Type: Image** (default) or **Text**. Settings on individual marker rows or Map Connectors override the map's defaults.
+
+### Text markers
+
+Set the marker text and its active text, then style typography, background, border, box shadow, and padding for each state. **Max. width** limits the text marker's width. Dynamic data can display a property's price or a location's name.
+
+### Image markers
+
+Choose the normal and active marker images. Each state has height, width, border, and box shadow controls. Existing Leaflet **Icon** and **Marker (Default)** settings remain supported for saved maps.
+
+Use the marker's screen reader **Label** to describe its location or purpose.
+
+### Clustering
+
+Enable **Cluster: Markers** to group nearby markers. Set **Cluster: Background color** and **Cluster: Text color** to style the cluster icons. The clustering library loads only when clustering is enabled.
+
+![Publisher-name text markers and purple clusters showing marker counts on a Leaflet map.](https://academy.bricksbuilder.io/assets/leaflet-text-markers-clustering-2x.webp)
+
+## Info Boxes and interactions {#info-boxes}
+
+Static markers use **Popup (Text)**. Query and Sync modes support custom Bricks popup templates:
+
+1. Create a Popup template and enable **Template Settings > Popup > Info Box (Map)**.
+2. Design and publish the template. Use dynamic data for the current query result.
+3. In Query mode, select it under **Markers > Info Box: Template (Popup)** on the map. In Sync mode, select it on the Map Connector instead.
+
+Info Box templates support **Fetch content via AJAX** and its loader animation. See the [Info Box template guide](https://academy.bricksbuilder.io/builder/elements/general/map/#info-box-popup-template) for template setup.
+
+Use **Open address (Map)** on an element inside the connected result to select its marker and open its Info Box. Use **Close address (Map)** on a button or icon inside the Info Box to close it. These actions are available under [Interactions](https://academy.bricksbuilder.io/builder/features/interactions/#action).
+
+![A custom publisher Info Box showing Hachette Book Group, Saint Joseph, MO, a View publisher link, and a close button.](https://academy.bricksbuilder.io/assets/leaflet-custom-infobox-detail.webp)
+
+## Map view and behavior {#map-view}
+
+| Setting | Behavior |
+| --- | --- |
+| Height | Map height. The placeholder is `300px`. |
+| Map center | Center coordinates as `latitude, longitude`. |
+| Disable initial fit map | Keep the configured center and zoom on page load. Off by default. |
+| Fit map on markers change | Adjust the view after synced query results change. Off by default. |
+| Zoom level (Initial) | Starting zoom. Defaults to `13`. Used when centering a single marker automatically. |
+| Zoom level (Min) / (Max) | Constrain how far the map can zoom. |
+
+By default, the initial view centers a single marker at the configured zoom or fits multiple markers.
+
+**Disable initial fit map** and **Fit map on markers change** are independent. Enable the first to preserve the view on page load, and the second if later query updates should fit the current markers.
+
+An active Geolocation search keeps its origin and radius visible instead of fitting the view to the result markers. A successful search with no matching locations retains the search area.
+
+> **Existing Leaflet maps**
+>
+> Starting with Bricks 2.5, existing static Leaflet maps also use automatic initial fitting. To retain a manually configured center and zoom, enable **Map > Disable initial fit map**, including for maps with one marker.
+
+<div className="screenshot screenshot--control-panel">
+
+![Leaflet Map settings with Disable initial fit map enabled, Fit map on markers change disabled, and the center and zoom controls visible.](https://academy.bricksbuilder.io/assets/leaflet-initial-fit-settings-2x.webp)
+
+</div>
+
+The Map group also includes zoom snapping and increments, double-click and scroll wheel zoom, box zoom, zoom and attribution controls, closing popups on map clicks, dragging, and resize tracking. See [Leaflet's map options](https://leafletjs.com/reference.html#map) for the underlying behavior.
+
+> **Developer reference**
+>
+> See the [Map (Leaflet) Schema](https://academy.bricksbuilder.io/developer/schema/elements/map-leaflet/) for the element's settings and controls.
+
+---
+
+<a id="builder-elements-general-nav-nested"></a>
+
+# Nav (Nestable)
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/nav-nested/
+
+*The Nav (Nestable) element creates hierarchical navigation menus with dropdown functionality, multilevel support, and mobile-responsive behavior. It supports.*
+
+The Nav (Nestable) element creates hierarchical navigation menus with dropdown functionality, multilevel support, and mobile-responsive behavior. It supports nested menu structures and can be used to build complex navigation systems.
+
+## Settings
+
+### HTML Tag & Accessibility
+
+- **HTML tag** (text) - HTML tag for the navigation element. Supports dynamic data. Default placeholder: `nav`. Validates HTML tag format.
+
+- **aria-label** (text) - Accessibility label for the navigation. Supports dynamic data. Default placeholder: "Menu".
+
+### Top Level (Item)
+
+- **Gap** (number with units) - Gap between top-level navigation items. Controls `gap` property for `.brx-nav-nested-items` selector.
+
+- **Justify content** (justify-content) - Horizontal alignment of top-level items. Deprecated since version 1.10. Description suggests using "Align items" under "Mobile menu" instead. Direction: row. Excludes space options.
+
+- **Padding** (spacing) - Padding for top-level navigation items. Controls `padding` property for multiple selectors including `.brx-nav-nested-items > li > a`, text links, icons, SVG elements, and submenu toggles.
+
+- **Background color** (color) - Background color for top-level items. Controls `background-color` property for links, text links, icons, SVG elements, and submenu toggles.
+
+- **Border** (border) - Border styling for top-level items. Controls `border` property for links, text links, icons, SVG elements, and submenu toggles.
+
+- **Typography** (typography) - Typography settings for top-level items. Controls `font` property for links, text links, icons, SVG elements, and submenu toggles.
+
+- **Transform** (transform) - Transform settings for top-level items. Controls `transform` property for links, text links, icons, SVG elements, and submenu toggles.
+
+- **Transition** (text) - Transition settings for top-level items. Supports dynamic data. Controls `transition` property for list items, links, text links, icons, SVG elements, submenu toggles, and submenu toggle children.
+
+#### Active State
+
+- **Active** (separator) - Visual separator for active state controls.
+
+- **Background color** (color) - Background color for active/current page items. Controls `background-color` property for `[aria-current="page"]` and `.brx-submenu-toggle.aria-current` selectors.
+
+- **Border** (border) - Border styling for active items. Controls `border` property for `[aria-current="page"]` and `.brx-submenu-toggle.aria-current` selectors.
+
+- **Typography** (typography) - Typography settings for active items. Controls `font` property for `[aria-current="page"]` and `.brx-submenu-toggle.aria-current > *` selectors.
+
+#### Dropdown (Top Level Only)
+
+- **Dropdown** (separator) - Separator for top-level dropdown controls. Description: "Only applies to top level dropdown elements."
+
+- **Text padding** (spacing) - Padding for dropdown text. Controls `padding` property for `.brx-nav-nested-items > li > .brx-submenu-toggle > span` selector.
+
+- **Icon padding** (spacing) - Padding for dropdown icons. Controls `padding` property for `.brx-nav-nested-items > li > .brx-submenu-toggle button` selector.
+
+- **Gap** (number with units) - Gap between text and icon in dropdown toggles. Controls `gap` property for `.brx-nav-nested-items > li > .brx-submenu-toggle` selector.
+
+### Dropdown
+
+#### Text
+
+- **Text** (separator) - Separator for dropdown text controls. Description: "Control dropdown element text."
+
+- **Text padding** (spacing) - Padding for dropdown text. Controls `padding` property for `.brx-submenu-toggle span` selector (applies to all dropdowns).
+
+#### Icon
+
+- **Icon** (separator) - Separator for dropdown icon controls. Description: "Edit dropdown to set icon individually."
+
+- **Icon padding** (spacing) - Padding for dropdown icons. Controls `padding` property for `.brx-submenu-toggle button` selector.
+
+- **Gap** (number with units) - Gap between text and icon in dropdown toggles. Controls `gap` property for `.brx-submenu-toggle` selector.
+
+- **Icon position** (select) - Position of the dropdown icon. Options from icon position control options. Default placeholder: "Right". Controls `flex-direction` property for `.brx-submenu-toggle` selector (sets to `row-reverse` when left).
+
+- **Icon size** (number with units) - Size of the dropdown icon. Controls `font-size` property for `.brx-submenu-toggle button` selector.
+
+- **Icon color** (color) - Color of the dropdown icon. Controls `color` property for `.brx-submenu-toggle button` selector.
+
+- **Icon transform** (transform) - Transform settings for dropdown icons. Controls `transform` property for `.brx-submenu-toggle button > *` selector (targets icon only).
+
+- **Icon transform (Open)** (transform) - Transform settings for dropdown icons when open. Controls `transform` property for `.brx-submenu-toggle button[aria-expanded="true"] > *` selector (targets icon only).
+
+- **Icon transition** (text) - Transition settings for dropdown icons. Supports dynamic data. Controls `transition` property for `.brx-submenu-toggle button[aria-expanded] > *` selector (targets icon only). Uses `!important` to override other transitions.
+
+#### Content
+
+- **Content** (separator) - Separator for dropdown content controls. Description: "Sub menu, mega menu, or multilevel area."
+
+- **Min. width** (number with units) - Minimum width for dropdown content. Controls `min-width` property for `.brx-dropdown-content` selector. Triggers re-render.
+
+- **Background color** (color) - Background color for dropdown content. Controls `background-color` property for `.brx-dropdown-content` selector.
+
+- **Border** (border) - Border styling for dropdown content. Controls `border` property for `.brx-dropdown-content` selector.
+
+- **Box shadow** (box-shadow) - Box shadow for dropdown content. Controls `box-shadow` property for `.brx-dropdown-content` selector.
+
+- **Typography** (typography) - Typography settings for dropdown content. Controls `font` property for `.brx-dropdown-content` selector.
+
+- **Transform** (transform) - Transform settings for dropdown content. Controls `transform` property for `.brx-nav-nested-items > .brxe-dropdown > .brx-dropdown-content` selector.
+
+- **Transform (Open)** (transform) - Transform settings for dropdown content when open. Controls `transform` property for `.brx-nav-nested-items > .brxe-dropdown.open > .brx-dropdown-content` selector.
+
+- **Transition** (text) - Transition settings for dropdown content. Supports dynamic data. Controls `transition` property for `.brx-dropdown-content` selector.
+
+- **Z-index** (number) - Z-index for dropdown elements. Controls `z-index` property for `.brxe-dropdown` selector. Default placeholder: 1001.
+
+#### Item
+
+- **Item** (separator) - Separator for dropdown item controls.
+
+- **Padding** (spacing) - Padding for dropdown items. Controls `padding` property for `.brx-dropdown-content > li > a` and `.brx-dropdown-content :where(.brx-submenu-toggle > *)` selectors.
+
+- **Background** (color) - Background color for dropdown items. Controls `background-color` property for `.brx-dropdown-content > li` and `.brx-dropdown-content .brx-submenu-toggle` selectors.
+
+- **Border** (border) - Border styling for dropdown items. Controls `border` property for `.brx-dropdown-content > li:not(.brxe-dropdown)` and `.brx-dropdown-content .brx-submenu-toggle` selectors.
+
+- **Typography** (typography) - Typography settings for dropdown items. Controls `font` property for `.brx-dropdown-content > li > a` and `.brx-dropdown-content .brx-submenu-toggle > *` selectors.
+
+- **Transition** (text) - Transition settings for dropdown items. Supports dynamic data. Controls `transition` property for dropdown content items, links, submenu toggles, and megamenu elements.
+
+#### Multilevel
+
+- **Multilevel** (separator) - Separator for multilevel controls. Description: "Show only active dropdown. Toggle on click. Inner dropdowns inherit multilevel."
+
+- **Enable** (checkbox) - Enable multilevel dropdown functionality.
+
+- **Back: Text** (text) - Text for the back button in multilevel navigation. Only available when multilevel is enabled.
+
+- **Back: Typography** (typography) - Typography settings for the back button. Only available when multilevel is enabled. Controls `font` property for `.brx-multilevel-back` selector.
+
+- **Back: Background** (color) - Background color for the back button. Only available when multilevel is enabled. Controls `background-color` property for `.brx-multilevel-back` selector.
+
+### Mobile Menu
+
+- **Mobile menu** (separator) - Separator for mobile menu controls. Description: "Insert "Toggle" element after "Nav items" to show/hide your mobile menu."
+
+- **Keep open while styling** (checkbox) - Keep mobile menu open during styling in the builder. Adds `brx-open` class. Not saved as setting.
+
+- **Hide at breakpoint** / **Show at breakpoint** (select) - Breakpoint at which to show/hide mobile menu. Options include all breakpoints plus "Always" and "Never". Default placeholder: "Mobile landscape". Triggers re-render.
+
+- **Width** (number with units) - Width of the mobile menu. Controls `width` property for `&.brx-open .brx-nav-nested-items` selector.
+
+- **Height** (number with units) - Height of the mobile menu. Controls `height` property for `&.brx-open .brx-nav-nested-items` selector.
+
+- **Padding (Dropdown)** (spacing) - Padding for dropdown content in mobile view. Controls padding for `&.brx-open .brx-dropdown-content > *` selector. Description: "Used to create visual hierarchy between nested dropdowns."
+
+- **Align items** (align-items) - Vertical alignment of mobile menu items. Controls `align-items` property for `&.brx-open .brx-nav-nested-items` selector.
+
+- **Justify content** (justify-content) - Horizontal alignment of mobile menu items. Controls `justify-content` property for `&.brx-open .brx-nav-nested-items` selector.
+
+- **Position** (dimensions) - Position settings for the mobile menu. Controls multiple position properties.
+
+- **Background color** (color) - Background color for the mobile menu. Controls `background-color` property for mobile menu selectors.
+
+#### Item
+
+- **Item** (separator) - Separator for mobile menu item controls.
+
+- **Align items** (align-items) - Vertical alignment of mobile menu items. Excludes `stretch` option. Controls `align-items` property for various mobile menu item selectors.
+
+> **Developer reference**
+>
+> See the [Nav (Nestable) Schema](https://academy.bricksbuilder.io/developer/schema/elements/nav-nested/) for the full JSON schema of this element's settings and controls.
+
+---
+
 <a id="builder-elements-general-map"></a>
 
 # Map
@@ -22478,188 +21956,6 @@ When no Google Maps API key is configured, the element falls back to Google Maps
 
 ---
 
-<a id="builder-elements-general-map-leaflet"></a>
-
-# Map (Leaflet)
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/
-
-*Display tile-based maps, populate markers from a query, or sync them with a filterable listing using Map Connectors.*
-
-**Map (Leaflet)** displays maps using tile layers such as OpenStreetMap. Configure the tile provider under **Layers**, add locations under **Markers**, and set the center, zoom, and interactions under **Map**. It does not require a Google Maps API key. Tile providers may have their own access and attribution requirements.
-
-Starting with **Bricks 2.5**, the element supports query-generated markers, **Sync with query**, clustering, text and image markers with active styles, and custom Info Boxes.
-
-## Layers
-
-Add a row to **Layers** for each tile source visitors should be able to select. Each row has:
-
-- **Name**: Label in the layer switcher.
-- **URL**: Tile URL template, such as `https://tile.openstreetmap.org/{z}/{x}/{y}.png`.
-- **Min Zoom** and **Max Zoom**: Zoom levels supported by the tile provider.
-- **Error Tile URL**: Fallback image for failed tiles.
-- **Attribution**: Credits required by the provider.
-
-The default layer uses OpenStreetMap. See the [Leaflet integration guide](https://academy.bricksbuilder.io/integrations/map-leaflet/#layers) for tile URL placeholders and provider examples.
-
-## Choose the marker source {#marker-source}
-
-| Mode | Use it for | Location data comes from |
-| --- | --- | --- |
-| Static | A fixed set of locations | Rows in the **Markers** repeater |
-| Query loop | Markers generated from posts, terms, or other query results | Dynamic data in the first marker row |
-| Sync with query | A map beside a listing that changes through filters, AJAX pagination, or Load More | Map Connectors inside a separate query loop |
-
-Leaflet requires latitude and longitude. It does not convert street addresses into coordinates. Address-only Map Connectors are ignored.
-
-### Static markers {#static-markers}
-
-Add a row under **Markers** for each location. Enter **Coordinates** as `latitude, longitude`, for example `52.5164, 13.3776`. Dynamic data is supported. Static and query markers with missing, nonnumeric, or out-of-range coordinates are skipped.
-
-Use **Label** to distinguish rows in the builder. It is separate from the screen reader **Label** in the marker settings. Add **Popup (Text)** for content shown when the marker is clicked. Each row can override the map's text or image marker defaults.
-
-### Query loop {#query-loop}
-
-Use the map's own query when you need markers without a separate visible results listing.
-
-1. Under **Markers**, enable **Query loop**.
-2. Open **Query** and choose the content to retrieve.
-3. In the first marker row, use dynamic data for **Coordinates** and any marker text, images, or **Popup (Text)** that should change for each result.
-4. For a custom popup design, select an **Info Box: Template (Popup)**. See [Info Boxes](#info-boxes).
-
-Bricks uses the first marker row as the template for every query result. The screenshots below use a Publisher terms query with an ACF Google Map field named `map_location`. Its **Coordinates** value is:
-
-```text
-{acf_map_location:array_value|lat}, {acf_map_location:array_value|lng}
-```
-
-<div className="screenshot screenshot--control-panel">
-
-![The first Leaflet marker row uses dynamic latitude and longitude from an ACF map field.](https://academy.bricksbuilder.io/assets/leaflet-query-marker-coordinates-2x.webp)
-
-</div>
-
-<div className="screenshot screenshot--control-panel">
-
-![Leaflet Query loop enabled with a Terms query targeting the Publishers taxonomy.](https://academy.bricksbuilder.io/assets/leaflet-query-source-settings-2x.webp)
-
-</div>
-
-To update markers through filters, pagination, or Load More, create a separate results loop and use [Sync with query](#sync-with-query).
-
-### Sync with query {#sync-with-query}
-
-Use this mode to keep markers connected to a visible listing, such as property cards beside a map.
-
-1. Create a [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/) on a layout element, such as a Block or Div.
-2. Place one [Map Connector](https://academy.bricksbuilder.io/builder/elements/general/map-connector/) inside the repeated item.
-3. Set the connector's **Latitude** and **Longitude** using dynamic data from each result. Add marker overrides or an Info Box template if needed.
-4. On Map (Leaflet), leave **Query loop** off. Under **Markers > Sync with query**, select the results loop.
-5. Point filters, AJAX Pagination, Load More, and any Query Results Summary at that same results loop.
-6. Enable **Map > Fit map on markers change** if the map should adjust its view after the results change.
-
-Markers refresh when the connected loop changes on the frontend. Set **Text: No results** under **Markers** to customize the message when there are no locations. The default is `No locations found`. **No results typography** styles the message, and **No results position** places it at the top, bottom, or center of the map.
-
-![Publisher cards beside Leaflet markers populated from the same Terms query.](https://academy.bricksbuilder.io/assets/leaflet-synced-publisher-list-2x.webp)
-
-The builder previews the connected loop's markers. Test visitor filtering, pagination, and Load More on the frontend.
-
-### Geolocation filtering {#geolocation-filtering}
-
-Starting with **Bricks 2.5**, a [Filter - Geolocation](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-geolocation-element) can limit the connected Posts, Terms, or Users listing to a radius around a location. Set its **Target query** to the results loop containing the Map Connectors, then select that same loop under the map's **Sync with query** control. The map's own query and static markers are not filter targets.
-
-The filter connects automatically when exactly one Geolocation filter and one matching map use the query. For multiple filters or maps, select **Map (Optional)** on the filter. Each filter connects to one map, and each map can be controlled by one filter.
-
-Device-location searches and **Search on map drag** work without Google APIs. Optional address search uses Google Maps JavaScript API and Geocoding API, and autocomplete additionally requires Places API (New). These services are separate from Leaflet's tile provider.
-
-The map shows the applied search origin and radius, including when no locations match. Configure their appearance on the filter. Enable **Search on map drag** on the filter to search around the map center after a visitor finishes panning. Dragging must be enabled on the map. In **Visitor controlled** mode, visitors choose whether to search using a **Search as I move the map** checkbox; **Automatic** mode searches after every qualifying drag. Zooming alone does not trigger a search. **Apply on: On submit** stages the new location until submitted.
-
-### Scroll the active item into view {#scroll-active-item}
-
-In Sync mode, enable **Scroll active item into view** under **Markers** to scroll to a marker's connected result when the marker is clicked or selected through an **Open address (Map)** interaction. This works even when the marker has no Info Box. It is off by default.
-
-- **Scroll behavior**: **Follow site setting** (default), **Smooth**, or **Instant**.
-- **Scroll position**: **Nearest** (default), **Start**, or **Center**.
-
-Bricks finds the result's nearest vertically scrollable parent, or scrolls the page when there is none. **Nearest** leaves an already visible item in place. No scroll-container selector is needed.
-
-The selected result's Map Connector also receives `map-marker-active`, including when no Info Box is configured. Use this class to [style the connected card](https://academy.bricksbuilder.io/builder/elements/general/map-connector/#active-marker-state).
-
-<div className="screenshot screenshot--control-panel">
-
-![Leaflet synced to Publishers (Terms), with Scroll active item into view enabled, Smooth behavior, and Center positioning.](https://academy.bricksbuilder.io/assets/leaflet-sync-query-settings-2x.webp)
-
-</div>
-
-## Marker appearance {#marker-appearance}
-
-Under **Markers > Marker**, choose **Type: Image** (default) or **Text**. Settings on individual marker rows or Map Connectors override the map's defaults.
-
-### Text markers
-
-Set the marker text and its active text, then style typography, background, border, box shadow, and padding for each state. **Max. width** limits the text marker's width. Dynamic data can display a property's price or a location's name.
-
-### Image markers
-
-Choose the normal and active marker images. Each state has height, width, border, and box shadow controls. Existing Leaflet **Icon** and **Marker (Default)** settings remain supported for saved maps.
-
-Use the marker's screen reader **Label** to describe its location or purpose.
-
-### Clustering
-
-Enable **Cluster: Markers** to group nearby markers. Set **Cluster: Background color** and **Cluster: Text color** to style the cluster icons. The clustering library loads only when clustering is enabled.
-
-![Publisher-name text markers and purple clusters showing marker counts on a Leaflet map.](https://academy.bricksbuilder.io/assets/leaflet-text-markers-clustering-2x.webp)
-
-## Info Boxes and interactions {#info-boxes}
-
-Static markers use **Popup (Text)**. Query and Sync modes support custom Bricks popup templates:
-
-1. Create a Popup template and enable **Template Settings > Popup > Info Box (Map)**.
-2. Design and publish the template. Use dynamic data for the current query result.
-3. In Query mode, select it under **Markers > Info Box: Template (Popup)** on the map. In Sync mode, select it on the Map Connector instead.
-
-Info Box templates support **Fetch content via AJAX** and its loader animation. See the [Info Box template guide](https://academy.bricksbuilder.io/builder/elements/general/map/#info-box-popup-template) for template setup.
-
-Use **Open address (Map)** on an element inside the connected result to select its marker and open its Info Box. Use **Close address (Map)** on a button or icon inside the Info Box to close it. These actions are available under [Interactions](https://academy.bricksbuilder.io/builder/features/interactions/#action).
-
-![A custom publisher Info Box showing Hachette Book Group, Saint Joseph, MO, a View publisher link, and a close button.](https://academy.bricksbuilder.io/assets/leaflet-custom-infobox-detail.webp)
-
-## Map view and behavior {#map-view}
-
-| Setting | Behavior |
-| --- | --- |
-| Height | Map height. The placeholder is `300px`. |
-| Map center | Center coordinates as `latitude, longitude`. |
-| Disable initial fit map | Keep the configured center and zoom on page load. Off by default. |
-| Fit map on markers change | Adjust the view after synced query results change. Off by default. |
-| Zoom level (Initial) | Starting zoom. Defaults to `13`. Used when centering a single marker automatically. |
-| Zoom level (Min) / (Max) | Constrain how far the map can zoom. |
-
-By default, the initial view centers a single marker at the configured zoom or fits multiple markers.
-
-**Disable initial fit map** and **Fit map on markers change** are independent. Enable the first to preserve the view on page load, and the second if later query updates should fit the current markers.
-
-An active Geolocation search keeps its origin and radius visible instead of fitting the view to the result markers. A successful search with no matching locations retains the search area.
-
-> **Existing Leaflet maps**
->
-> Starting with Bricks 2.5, existing static Leaflet maps also use automatic initial fitting. To retain a manually configured center and zoom, enable **Map > Disable initial fit map**, including for maps with one marker.
-
-<div className="screenshot screenshot--control-panel">
-
-![Leaflet Map settings with Disable initial fit map enabled, Fit map on markers change disabled, and the center and zoom controls visible.](https://academy.bricksbuilder.io/assets/leaflet-initial-fit-settings-2x.webp)
-
-</div>
-
-The Map group also includes zoom snapping and increments, double-click and scroll wheel zoom, box zoom, zoom and attribution controls, closing popups on map clicks, dragging, and resize tracking. See [Leaflet's map options](https://leafletjs.com/reference.html#map) for the underlying behavior.
-
-> **Developer reference**
->
-> See the [Map (Leaflet) Schema](https://academy.bricksbuilder.io/developer/schema/elements/map-leaflet/) for the element's settings and controls.
-
----
-
 <a id="builder-elements-general-offcanvas"></a>
 
 # Offcanvas
@@ -22778,172 +22074,6 @@ The Pie Chart element displays a circular progress chart with customizable perce
 > **Developer reference**
 >
 > See the [Pie Chart Schema](https://academy.bricksbuilder.io/developer/schema/elements/pie-chart/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-general-nav-nested"></a>
-
-# Nav (Nestable)
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/nav-nested/
-
-*The Nav (Nestable) element creates hierarchical navigation menus with dropdown functionality, multilevel support, and mobile-responsive behavior. It supports.*
-
-The Nav (Nestable) element creates hierarchical navigation menus with dropdown functionality, multilevel support, and mobile-responsive behavior. It supports nested menu structures and can be used to build complex navigation systems.
-
-## Settings
-
-### HTML Tag & Accessibility
-
-- **HTML tag** (text) - HTML tag for the navigation element. Supports dynamic data. Default placeholder: `nav`. Validates HTML tag format.
-
-- **aria-label** (text) - Accessibility label for the navigation. Supports dynamic data. Default placeholder: "Menu".
-
-### Top Level (Item)
-
-- **Gap** (number with units) - Gap between top-level navigation items. Controls `gap` property for `.brx-nav-nested-items` selector.
-
-- **Justify content** (justify-content) - Horizontal alignment of top-level items. Deprecated since version 1.10. Description suggests using "Align items" under "Mobile menu" instead. Direction: row. Excludes space options.
-
-- **Padding** (spacing) - Padding for top-level navigation items. Controls `padding` property for multiple selectors including `.brx-nav-nested-items > li > a`, text links, icons, SVG elements, and submenu toggles.
-
-- **Background color** (color) - Background color for top-level items. Controls `background-color` property for links, text links, icons, SVG elements, and submenu toggles.
-
-- **Border** (border) - Border styling for top-level items. Controls `border` property for links, text links, icons, SVG elements, and submenu toggles.
-
-- **Typography** (typography) - Typography settings for top-level items. Controls `font` property for links, text links, icons, SVG elements, and submenu toggles.
-
-- **Transform** (transform) - Transform settings for top-level items. Controls `transform` property for links, text links, icons, SVG elements, and submenu toggles.
-
-- **Transition** (text) - Transition settings for top-level items. Supports dynamic data. Controls `transition` property for list items, links, text links, icons, SVG elements, submenu toggles, and submenu toggle children.
-
-#### Active State
-
-- **Active** (separator) - Visual separator for active state controls.
-
-- **Background color** (color) - Background color for active/current page items. Controls `background-color` property for `[aria-current="page"]` and `.brx-submenu-toggle.aria-current` selectors.
-
-- **Border** (border) - Border styling for active items. Controls `border` property for `[aria-current="page"]` and `.brx-submenu-toggle.aria-current` selectors.
-
-- **Typography** (typography) - Typography settings for active items. Controls `font` property for `[aria-current="page"]` and `.brx-submenu-toggle.aria-current > *` selectors.
-
-#### Dropdown (Top Level Only)
-
-- **Dropdown** (separator) - Separator for top-level dropdown controls. Description: "Only applies to top level dropdown elements."
-
-- **Text padding** (spacing) - Padding for dropdown text. Controls `padding` property for `.brx-nav-nested-items > li > .brx-submenu-toggle > span` selector.
-
-- **Icon padding** (spacing) - Padding for dropdown icons. Controls `padding` property for `.brx-nav-nested-items > li > .brx-submenu-toggle button` selector.
-
-- **Gap** (number with units) - Gap between text and icon in dropdown toggles. Controls `gap` property for `.brx-nav-nested-items > li > .brx-submenu-toggle` selector.
-
-### Dropdown
-
-#### Text
-
-- **Text** (separator) - Separator for dropdown text controls. Description: "Control dropdown element text."
-
-- **Text padding** (spacing) - Padding for dropdown text. Controls `padding` property for `.brx-submenu-toggle span` selector (applies to all dropdowns).
-
-#### Icon
-
-- **Icon** (separator) - Separator for dropdown icon controls. Description: "Edit dropdown to set icon individually."
-
-- **Icon padding** (spacing) - Padding for dropdown icons. Controls `padding` property for `.brx-submenu-toggle button` selector.
-
-- **Gap** (number with units) - Gap between text and icon in dropdown toggles. Controls `gap` property for `.brx-submenu-toggle` selector.
-
-- **Icon position** (select) - Position of the dropdown icon. Options from icon position control options. Default placeholder: "Right". Controls `flex-direction` property for `.brx-submenu-toggle` selector (sets to `row-reverse` when left).
-
-- **Icon size** (number with units) - Size of the dropdown icon. Controls `font-size` property for `.brx-submenu-toggle button` selector.
-
-- **Icon color** (color) - Color of the dropdown icon. Controls `color` property for `.brx-submenu-toggle button` selector.
-
-- **Icon transform** (transform) - Transform settings for dropdown icons. Controls `transform` property for `.brx-submenu-toggle button > *` selector (targets icon only).
-
-- **Icon transform (Open)** (transform) - Transform settings for dropdown icons when open. Controls `transform` property for `.brx-submenu-toggle button[aria-expanded="true"] > *` selector (targets icon only).
-
-- **Icon transition** (text) - Transition settings for dropdown icons. Supports dynamic data. Controls `transition` property for `.brx-submenu-toggle button[aria-expanded] > *` selector (targets icon only). Uses `!important` to override other transitions.
-
-#### Content
-
-- **Content** (separator) - Separator for dropdown content controls. Description: "Sub menu, mega menu, or multilevel area."
-
-- **Min. width** (number with units) - Minimum width for dropdown content. Controls `min-width` property for `.brx-dropdown-content` selector. Triggers re-render.
-
-- **Background color** (color) - Background color for dropdown content. Controls `background-color` property for `.brx-dropdown-content` selector.
-
-- **Border** (border) - Border styling for dropdown content. Controls `border` property for `.brx-dropdown-content` selector.
-
-- **Box shadow** (box-shadow) - Box shadow for dropdown content. Controls `box-shadow` property for `.brx-dropdown-content` selector.
-
-- **Typography** (typography) - Typography settings for dropdown content. Controls `font` property for `.brx-dropdown-content` selector.
-
-- **Transform** (transform) - Transform settings for dropdown content. Controls `transform` property for `.brx-nav-nested-items > .brxe-dropdown > .brx-dropdown-content` selector.
-
-- **Transform (Open)** (transform) - Transform settings for dropdown content when open. Controls `transform` property for `.brx-nav-nested-items > .brxe-dropdown.open > .brx-dropdown-content` selector.
-
-- **Transition** (text) - Transition settings for dropdown content. Supports dynamic data. Controls `transition` property for `.brx-dropdown-content` selector.
-
-- **Z-index** (number) - Z-index for dropdown elements. Controls `z-index` property for `.brxe-dropdown` selector. Default placeholder: 1001.
-
-#### Item
-
-- **Item** (separator) - Separator for dropdown item controls.
-
-- **Padding** (spacing) - Padding for dropdown items. Controls `padding` property for `.brx-dropdown-content > li > a` and `.brx-dropdown-content :where(.brx-submenu-toggle > *)` selectors.
-
-- **Background** (color) - Background color for dropdown items. Controls `background-color` property for `.brx-dropdown-content > li` and `.brx-dropdown-content .brx-submenu-toggle` selectors.
-
-- **Border** (border) - Border styling for dropdown items. Controls `border` property for `.brx-dropdown-content > li:not(.brxe-dropdown)` and `.brx-dropdown-content .brx-submenu-toggle` selectors.
-
-- **Typography** (typography) - Typography settings for dropdown items. Controls `font` property for `.brx-dropdown-content > li > a` and `.brx-dropdown-content .brx-submenu-toggle > *` selectors.
-
-- **Transition** (text) - Transition settings for dropdown items. Supports dynamic data. Controls `transition` property for dropdown content items, links, submenu toggles, and megamenu elements.
-
-#### Multilevel
-
-- **Multilevel** (separator) - Separator for multilevel controls. Description: "Show only active dropdown. Toggle on click. Inner dropdowns inherit multilevel."
-
-- **Enable** (checkbox) - Enable multilevel dropdown functionality.
-
-- **Back: Text** (text) - Text for the back button in multilevel navigation. Only available when multilevel is enabled.
-
-- **Back: Typography** (typography) - Typography settings for the back button. Only available when multilevel is enabled. Controls `font` property for `.brx-multilevel-back` selector.
-
-- **Back: Background** (color) - Background color for the back button. Only available when multilevel is enabled. Controls `background-color` property for `.brx-multilevel-back` selector.
-
-### Mobile Menu
-
-- **Mobile menu** (separator) - Separator for mobile menu controls. Description: "Insert "Toggle" element after "Nav items" to show/hide your mobile menu."
-
-- **Keep open while styling** (checkbox) - Keep mobile menu open during styling in the builder. Adds `brx-open` class. Not saved as setting.
-
-- **Hide at breakpoint** / **Show at breakpoint** (select) - Breakpoint at which to show/hide mobile menu. Options include all breakpoints plus "Always" and "Never". Default placeholder: "Mobile landscape". Triggers re-render.
-
-- **Width** (number with units) - Width of the mobile menu. Controls `width` property for `&.brx-open .brx-nav-nested-items` selector.
-
-- **Height** (number with units) - Height of the mobile menu. Controls `height` property for `&.brx-open .brx-nav-nested-items` selector.
-
-- **Padding (Dropdown)** (spacing) - Padding for dropdown content in mobile view. Controls padding for `&.brx-open .brx-dropdown-content > *` selector. Description: "Used to create visual hierarchy between nested dropdowns."
-
-- **Align items** (align-items) - Vertical alignment of mobile menu items. Controls `align-items` property for `&.brx-open .brx-nav-nested-items` selector.
-
-- **Justify content** (justify-content) - Horizontal alignment of mobile menu items. Controls `justify-content` property for `&.brx-open .brx-nav-nested-items` selector.
-
-- **Position** (dimensions) - Position settings for the mobile menu. Controls multiple position properties.
-
-- **Background color** (color) - Background color for the mobile menu. Controls `background-color` property for mobile menu selectors.
-
-#### Item
-
-- **Item** (separator) - Separator for mobile menu item controls.
-
-- **Align items** (align-items) - Vertical alignment of mobile menu items. Excludes `stretch` option. Controls `align-items` property for various mobile menu item selectors.
-
-> **Developer reference**
->
-> See the [Nav (Nestable) Schema](https://academy.bricksbuilder.io/developer/schema/elements/nav-nested/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -23397,6 +22527,28 @@ The Tabs element creates tabbed content with horizontal or vertical layouts and 
 
 ---
 
+<a id="builder-elements-general-template"></a>
+
+# Template
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/template/
+
+*The Template element allows including reusable Bricks templates (sections, content, or popups) within a page.*
+
+The Template element allows including reusable Bricks templates (sections, content, or popups) within a page.
+
+## Settings
+
+- **Template** (select) - Select a published Bricks template to include. Options include section, content, and popup templates.
+
+- **Render without wrapper** (checkbox) - Render the template content directly without the outer div wrapper. Note: Style settings won't apply when this is enabled.
+
+> **Developer reference**
+>
+> See the [Template Schema](https://academy.bricksbuilder.io/developer/schema/elements/template/) for the full JSON schema of this element's settings and controls.
+
+---
+
 <a id="builder-elements-general-team-members"></a>
 
 # Team members
@@ -23458,28 +22610,6 @@ The Team Members element displays a responsive grid of team member profiles with
 > **Developer reference**
 >
 > See the [Team Members Schema](https://academy.bricksbuilder.io/developer/schema/elements/team-members/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-general-template"></a>
-
-# Template
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/template/
-
-*The Template element allows including reusable Bricks templates (sections, content, or popups) within a page.*
-
-The Template element allows including reusable Bricks templates (sections, content, or popups) within a page.
-
-## Settings
-
-- **Template** (select) - Select a published Bricks template to include. Options include section, content, and popup templates.
-
-- **Render without wrapper** (checkbox) - Render the template content directly without the outer div wrapper. Note: Style settings won't apply when this is enabled.
-
-> **Developer reference**
->
-> See the [Template Schema](https://academy.bricksbuilder.io/developer/schema/elements/template/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -23685,6 +22815,877 @@ If you add an **Icon**, the bar animation is hidden and the icon is used instead
 > **Developer reference**
 >
 > See the [Toggle Schema](https://academy.bricksbuilder.io/developer/schema/elements/toggle/) for the full JSON schema of this element's settings and controls.
+
+---
+
+<a id="builder-elements-filter-filter-checkbox"></a>
+
+# Filter checkbox
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-checkbox/
+
+*Filter query results with multiple selections, include child-term counts, and show collapsible taxonomy branches with Show more/less controls.*
+
+Creates a checkbox filter interface for AJAX-powered content filtering. Users can select multiple options to narrow down query results. Supports taxonomy terms, WordPress fields, and custom fields as filter sources.
+
+For initial setup, see [Query Filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#setup).
+
+## Settings
+
+- **Target query** (query-list) - Select the post, term, or user query this filter should target. Available sources depend on the query type.
+- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
+- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
+- **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
+- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
+- **Field** (select) - Specific field to filter by (varies based on field type).
+- **Taxonomy** (select) - Taxonomy to use for filtering when source is taxonomy.
+- **Order by** (select) - How to order taxonomy terms. Options: Name, Slug, Term ID, Description, Parent, Count, Include, Menu Order, Meta Value, Meta Value Num.
+- **Order meta key** (text) - Meta key for ordering when using meta value ordering.
+- **Order** (select) - Sort direction. Options: ASC, DESC. Default: ASC.
+- **Terms: Include** (select) - Specific taxonomy terms to include in filter options.
+- **Terms: Exclude** (select) - Specific taxonomy terms to exclude from filter options.
+- **Top level terms only** (checkbox) - Display only top-level terms (parent = 0) when source is taxonomy.
+- **Hide count** (checkbox) - Hide the result count for each option.
+- **Count: Include children** (checkbox, Bricks 2.5) - Include descendant-term posts in parent taxonomy counts. Off by default. Requires a target query and a selected taxonomy. See [taxonomy child counts](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#taxonomy-child-counts).
+- **Hide empty** (checkbox) - Hide options with zero results.
+- **Hide count bracket** (checkbox) - Remove brackets around count values. Style count via .brx-option-count.
+- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
+- **Meta key** (text) - Custom field key for filtering.
+- **Compare** (select) - Comparison operator for filtering. Options: IN, NOT IN, BETWEEN, NOT BETWEEN.
+- **Mode** (select) - Display mode for checkboxes. Options: Default (traditional checkboxes), Button (modern button style).
+- **Active filter** - Settings for active filter display.
+  - **Prefix** (text) - Text to display before filter value.
+  - **Suffix** (text) - Text to display after filter value.
+  - **Title** (text) - Custom title attribute for filter links.
+
+## Collapsible Taxonomy Branches {#collapsible-hierarchy}
+
+Starting with **Bricks 2.5**, visitors can expand and collapse child branches in a hierarchical taxonomy Checkbox filter. This is useful for category lists where showing every nested term would make the filter too long.
+
+1. Set **Target query**, choose **Taxonomy** as the source, and select a taxonomy with parent and child terms.
+2. Open the **Hierarchy** control group and enable **Hierarchical**.
+3. Turn on **Enable expand/collapse**.
+4. Leave **Show expanded** off to start with branches collapsed, or enable it to show all branches expanded initially.
+5. Save and check the frontend. Parent terms with visible children have a separate expand/collapse button beside the checkbox.
+
+| Hierarchy setting | Behavior |
+| --- | --- |
+| Hierarchical | Arrange taxonomy terms under their parents. |
+| Auto toggle child terms | Toggle child checkboxes when a parent checkbox changes. This is separate from expanding a branch. |
+| Enable expand/collapse | Add buttons to open and close child branches. Off by default. |
+| Show expanded | Expand all branches initially. Off by default. |
+| Expand icon / Collapse icon | Choose the disclosure icons. Defaults are plus and minus. |
+| Icon typography / Icon gap | Set the icon appearance and spacing. |
+| Indent: Prefix / Indent: Gap | Set child-term indentation in the default display mode. |
+
+The disclosure button opens or closes a branch without selecting its checkbox. Visitors can focus the button and use Enter or Space to toggle it. Selected child terms open their ancestor branches on page load, including selections loaded from URL parameters. Bricks preserves each element's expanded branches through AJAX updates and opens the path to selected terms when needed.
+
+Only terms present in the filter's options can appear in a branch. **Top level terms only**, term exclusions, and **Hide empty** can remove child options. If a parent has no visible children, it has no expand/collapse button. Use [Count: Include children](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#taxonomy-child-counts) if parent counts should include posts assigned to descendants.
+
+<div className="screenshot screenshot--control-panel">
+
+![Hierarchy settings with expand/collapse enabled, Show expanded off, and plus and minus icons selected.](https://academy.bricksbuilder.io/assets/filter-checkbox-hierarchy-settings.webp)
+
+</div>
+
+### Show More/Less With Branches {#show-more-less}
+
+In the **Show more / Show less** control group, set **Visible options limit** to limit the initial list. Leave it empty to show all options.
+
+When **Enable expand/collapse** is on, this limit counts whole root branches, not individual child terms. For example, a limit of three shows the first three root branches. Expanding one of them reveals its children without using up another place in the limit. **Show more** reveals the remaining root branches; **Show less** returns to the initial limit.
+
+A branch containing a selected term stays visible even beyond the limit, so the list can show more than the configured number of roots. **Show more: Text** accepts `%number%` for the number of hidden root branches. In the collapsed list, the Show more button is hidden when no additional branches remain hidden. Without expand/collapse, the limit counts individual options.
+
+![The Hoodies child term remains visible under Clothing beyond the two-branch limit, with Show 1 more available and three matching products.](https://academy.bricksbuilder.io/assets/filter-checkbox-collapsible-branches.webp)
+
+### Linked Desktop and Mobile Filters {#linked-hierarchies}
+
+When using a [global filter](https://academy.bricksbuilder.io/builder/dynamic-content/global-filters-filter-manager/), **Hierarchical**, **Auto toggle child terms**, and **Count: Include children** are shared settings. Expand/collapse, Show expanded, icons, indentation, and Show more/less limits stay on each element.
+
+Linked elements targeting the same query synchronize their checkbox selections. Each copy keeps its own expanded branches and Show more/less state, so a mobile filter can start collapsed while the desktop copy starts expanded.
+
+## Default selection {#default-selection}
+
+Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. Use **Default value** to preselect exact option values, separated by commas, such as `cotton, wool`. Use taxonomy slugs or raw stored values rather than display labels. Wrap a value containing a comma in double quotes. Dynamic data is supported.
+
+<div className="screenshot screenshot--control-panel">
+
+![A Checkbox filter's Default value set to cotton, wool.](https://academy.bricksbuilder.io/assets/query-filter-default-values.webp)
+
+</div>
+
+The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
+
+> **Developer reference**
+>
+> See the [Filter - Checkbox Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-checkbox/) for the full JSON schema of this element's settings and controls.
+
+---
+
+<a id="builder-elements-filter-filter-active-filters"></a>
+
+# Filter active filters
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-active-filters/
+
+*Display selected query filters as removable buttons and exclude filters from the active list.*
+
+Displays the currently active or selected filters, allowing users to easily remove a filter with a single click for faster navigation. This element shows all active filters from the connected target query and provides quick access to clear individual filters.
+
+**Tip:** Use this element alongside other filter elements to give users clear visibility of their current filter selections and easy ways to modify their search criteria.
+
+## Settings
+
+- **Target query** (query-list) - Select the query whose active filters should be displayed.
+- **Global filter** (Bricks 2.5) - Reuse the shared behavior of another Active Filters configuration. The target query and styling remain local.
+- **Exclude filter IDs** (text) - Enter filter element IDs, separated by commas, to exclude from the active filters list. From Bricks 2.5, accepts global filter IDs too. A linked element's ID excludes its shared filter for the target query.
+- **Button** - Settings for the remove filter buttons.
+  - **Padding** (spacing) - Padding for filter remove buttons.
+  - **Gap** (number) - Gap between filter buttons.
+  - **Size** (select) - Button size preset. Options: Default, Small, Medium, Large, Extra Large.
+  - **Style** (select) - Button style. Options: None, Primary, Secondary, Success, Info, Warning, Danger, Dark, Light.
+  - **Circle** (checkbox) - Make buttons circular.
+  - **Outline** (checkbox) - Use outline button style.
+  - **Background color** (color) - Custom background color for buttons.
+  - **Border** (border) - Border styling for buttons.
+  - **Typography** (typography) - Typography settings for button text.
+- **Icon** - Settings for filter remove icons.
+  - **Icon** (icon) - Icon to display on filter buttons.
+  - **Color** (color) - Icon color.
+  - **Size** (number) - Icon size.
+  - **Gap** (number) - Gap between icon and text.
+  - **Position** (select) - Icon position. Options: Left, Right. Default: Right.
+- **Active filter** - Settings for active filter display.
+  - **Prefix** (text) - Text to display before filter value.
+  - **Suffix** (text) - Text to display after filter value.
+  - **Title** (text) - Custom title attribute for filter links.
+
+## Default selections
+
+Starting with Bricks 2.5, [configured default values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) appear as active selections on the first page load. Visitors can remove them like other selections. Removing a default does not immediately reapply it; a fresh visit or reload without filter parameters applies it again. Display exclusions still apply.
+
+## Excluding a Global Filter
+
+Starting with Bricks 2.5, use a [global filter](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#global-filters) ID or any linked element's ID in **Exclude filter IDs**. For example, exclude a shared results-per-page filter to keep it out of the active-filter list across desktop and mobile copies. This hides the entry without clearing its selection or changing the query.
+
+Copy a definition ID from Filter manager, or use the Bricks ID from a linked element's panel. Do not use a target query ID or URL parameter name. This display exclusion is separate from a Reset button's exclusions, which preserve values when resetting.
+
+> **Developer reference**
+>
+> See the [Filter - Active Filters Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-active-filters/) for the full JSON schema of this element's settings and controls.
+
+---
+
+<a id="builder-elements-filter-filter-datepicker"></a>
+
+# Filter datepicker
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-datepicker/
+
+*Filter query results by a single date or date range, including events stored with separate start and end date fields.*
+
+Use Filter - Datepicker to filter a Query Loop by post dates, user registration dates, or custom date fields. Visitors can select a single date or a date range, with optional time selection.
+
+Enable [Query Filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#enable), add the element, and select its **Target query**. Starting with **Bricks 2.5**, date ranges can use separate start and end custom fields on posts, terms, or users, including supported ACF, Meta Box, and JetEngine fields.
+
+## Settings
+
+- **Target query** (query-list) - Select the Posts, Terms, or Users query this filter should target.
+- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
+- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
+- **Source** (select) - Data source for filter options. Options: WordPress field, Custom field.
+- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
+- **Field** (select) - Specific date field to filter by (post date, modified date, user registered date).
+- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
+- **Meta key** (text) - Custom field containing date values. For separate start and end fields, this is the start field. Enter a native meta key or use the selected provider's field picker.
+- **End date meta key** (text, Bricks 2.5) - Optional separate end-date field from the same provider and object type as **Meta key**. Leave empty to compare both selected dates against **Meta key**. See [separate start and end fields](#separate-date-fields).
+- **Enable time** (checkbox) - Add time selection capability to the date picker.
+- **Date range** (checkbox) - Enable selection of date ranges instead of single dates.
+- **Min/max date** (checkbox) - Use minimum and maximum dates from the index table for date picker limits.
+- **Compare** (select) - Comparison operator for single-date filtering. Options: == (is), < (before), > (after).
+- **Input** - Settings for the date input field.
+  - **Placeholder** (text) - Placeholder text for the input field. Default: Date.
+  - **Placeholder typography** (typography) - Typography for placeholder text.
+  - **Language** (text) - Language code for date picker localization (de, es, fr, etc.).
+  - **Datepicker format** (text) - Display format, defaulting to `Y-m-d`. **Enable time** appends `H:i`. This does not change how dates are stored in the database.
+- **Active filter** - Settings for active filter display.
+  - **Prefix** (text) - Text to display before filter value.
+  - **Suffix** (text) - Text to display after filter value.
+  - **Title** (text) - Custom title attribute for filter links.
+
+## Separate start and end fields {#separate-date-fields}
+
+Use **End date meta key** when each item in a Posts, Terms, or Users query stores its start and end dates in separate custom fields.
+
+1. Set **Target query** to the results loop.
+2. Set **Source** to **Custom field** and **Field type** to the objects in that loop: **Post**, **Term**, or **User**.
+3. For native metadata, leave **Provider** at **WordPress**. For ACF, Meta Box, or JetEngine, enable [Custom fields integration](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#custom-fields-integration) and select the provider.
+4. In **Meta key**, enter the native start field's key, such as `event_start`, or select the provider field using the dynamic data picker.
+5. Enable **Date range**.
+6. In **End date meta key**, enter the native end field's key, such as `event_end`, or use its picker to select the provider field.
+7. Optionally enable **Min/max date** to limit the calendar to the indexed date bounds.
+8. Save the builder and allow indexing to finish before testing the frontend.
+
+For native metadata, enter literal keys without dynamic data braces. For provider fields, use the picker on each control. Bricks reads the selected field's definition; these references are not frontend dynamic data output. Both fields must belong to the same provider and object type, with compatible post type or taxonomy locations.
+
+<div className="screenshot screenshot--control-panel">
+
+![Datepicker controls using Post fields and ACF, with departure_date as the start field, return_date as the end field, and Date range and Min/max date enabled.](https://academy.bricksbuilder.io/assets/datepicker-acf-separate-date-fields.webp)
+
+</div>
+
+### Supported fields and storage {#supported-date-fields}
+
+Each field must store one date or datetime value per object. These sources support field pairs on posts, terms, and users:
+
+| Source | Supported date fields |
+| --- | --- |
+| WordPress metadata | Date strings such as `2027-03-09` or `20270309`, and ISO datetime strings such as `2027-03-09 10:00:00`. |
+| ACF | Date Picker and Date Time Picker, including scalar fields inside ordinary Group fields. |
+| Meta Box | Date and Datetime fields stored in native WordPress metadata, including numeric save formats such as `d/m/Y H:i:s` and timestamp storage. User and term fields require the corresponding Meta Box extensions. |
+| JetEngine | Date and Datetime fields stored in native WordPress metadata, as strings or timestamps. |
+
+Bricks resolves each field's storage separately. The start and end fields can use different supported formats or timestamp settings. ACF's Date Picker stores `Ymd` values; changing its return format or **Datepicker format** does not change how Bricks compares the stored dates.
+
+Time-only fields, repeating or cloneable fields, serialized groups, and custom-table storage are not supported for separate start and end fields. The provider pickers limit choices to compatible date fields. ACF Group fields are supported only where each date is stored as its own metadata value, rather than inside a repeated or serialized structure.
+
+If a provider is unavailable or a selected field is deleted or incompatible, Bricks reports a configuration error. Select a compatible replacement or clear **End date meta key** to return to one-field behavior. An invalid pair does not silently compare the start field twice.
+
+### Example: ACF dates on taxonomy terms
+
+If each term in an event taxonomy has ACF `event_start` and `event_end` Date Picker fields, target the **Terms** loop and set **Field type** to **Term** and **Provider** to **ACF**. Select `event_start` in **Meta key**, enable **Date range**, and select `event_end` in **End date meta key**. Both ACF fields must be available on the taxonomy being queried.
+
+### Which events match?
+
+Both conditions must be met:
+
+- The event starts on or after the selected start date.
+- The event ends on or before the selected end date.
+
+For a selected range of **March 8–10, 2027**, with **Enable time** off:
+
+| Event dates | Included? |
+| --- | --- |
+| March 8–10 | Yes, both boundaries are included. |
+| March 9 | Yes, the event fits within the range. |
+| March 9–12 | No, it ends after March 10. |
+| March 7–9 | No, it starts before March 8. |
+
+An event must fit entirely within the selection. An event that overlaps only part of the range is excluded. Both date fields must contain valid values, and the stored start must not be later than the stored end. Items with missing, empty, invalid, or reversed dates are excluded from filtered results and calendar bounds.
+
+With **Enable time** off, the selection covers complete days, including the whole final day. With it on, the selected hours and minutes are part of the comparisons, and the final minute includes seconds through `:59`. A stored end field containing only a date represents the end of that day.
+
+Select both endpoints to apply a range; selecting only the first date does not filter the query. Choose the same day for both endpoints to filter a single day. The range narrows the query's existing restrictions, including groups of conditions joined by **OR**.
+
+Leave **End date meta key** empty to filter one field between the selected dates. Turning off **Date range** uses **Meta key** and the **Compare** setting; the separate end field is ignored.
+
+Changing **Source**, **Provider**, or **Field type** clears the retained end-field selection. Select a compatible end field again after the change. The **WordPress field** source, such as Post date or User registered date, keeps its existing single-field behavior.
+
+### Calendar limits and indexing
+
+With a separate end field configured, Bricks indexes both dates from complete, valid intervals. **Min/max date** uses those indexed values, so a multi-day event's end date can extend the calendar's upper limit. It does not disable individual days without events inside those limits or select a particular opening month.
+
+Adding, updating, or deleting either date field refreshes the affected post, term, or user's complete interval through the normal queue. If either value is removed or becomes invalid, neither date from that item contributes to the bounds. Upgrades and changes to the selected field definitions can queue an index rebuild. If the calendar limits appear stale, check the [filter indexing tools](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-index) and allow pending jobs to finish.
+
+### Shared Datepicker settings
+
+When using a [Global Filter](https://academy.bricksbuilder.io/builder/dynamic-content/global-filters-filter-manager/), the provider, field type, and both field selections belong to the shared configuration. Linked Datepickers use those fields and one shared index while keeping their own target queries and styling. Linking to a global filter without an end key uses one-field behavior, even if the element previously had a local end key.
+
+## Default selection {#default-selection}
+
+Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. For a single date, enter **Default value** in `YYYY-MM-DD` format. With **Date range** enabled, provide both **Start date** and **End date** in that format, with the start no later than the end. These fields support dynamic data, which must return the same format regardless of the display or stored field format.
+
+The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
+
+> **Developer reference**
+>
+> See the [Filter - Datepicker Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-datepicker/) for the full JSON schema of this element's settings and controls.
+
+---
+
+<a id="builder-elements-filter-filter-geolocation"></a>
+
+# Filter Geolocation
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-geolocation/
+
+*Filter posts, terms, or users by distance from an address, device location, or map center, and show nearby results on Google Maps or Leaflet.*
+
+The **Filter - Geolocation** element, available in **Bricks 2.5**, finds results within a radius of a selected location. Use it for store locators, property listings, or directories where visitors need to find nearby places.
+
+Visitors can search from an address, their device location, or the center of a connected map. A map is optional. The filter supports native **Posts**, **Terms**, and **Users** query loops.
+
+Distance is measured along the earth's surface in a straight line, not along roads. It does not represent driving distance or travel time.
+
+## Basic setup {#setup}
+
+1. Enable **Enable query sort / filter / live search** under **Bricks > Settings > Query filters**.
+2. Create a [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/) for your listing.
+3. Add **Filter - Geolocation** from the **Filter** element group.
+4. Set **Target query** to the listing's loop.
+5. Under **Data source**, set **Object type** to **Post**, **Term**, or **User** to match the listing, then configure its [coordinate fields](#coordinates).
+6. Enable **Search by address**, **Search by device location**, or both. Both are off by default.
+7. Set the radius and distance unit. Enable **Radius dropdown** if visitors should choose the radius.
+8. Save the builder and let indexing finish. Test the search on the frontend.
+
+For example, a store directory can use a Posts query with `store_latitude` and `store_longitude` custom fields. Enable device-location search and offer 5, 10, 25, and 50 km radii. A visitor selects their location and 25 km, and the listing shows stores within that distance.
+
+![A 25 km device-location search around Johor Bahru, with a removable active-filter label, a result showing its distance, and a Leaflet map showing the origin and radius.](https://academy.bricksbuilder.io/assets/academy-filter-geolocation-leaflet.webp)
+
+## Coordinate fields {#coordinates}
+
+Every result needs saved latitude and longitude values. Bricks indexes these coordinates for distance searches. It does not convert saved street addresses into coordinates during indexing.
+
+### WordPress meta fields
+
+Use the **WordPress** provider, or the native coordinate controls when custom-field integration is disabled.
+
+| Coordinate format | Settings | Example saved values |
+| --- | --- | --- |
+| **Separate fields** (default) | **Latitude meta key** and **Longitude meta key** | `store_latitude`: `1.4927`; `store_longitude`: `103.7414` |
+| **Combined field** | **Coordinates meta key** | `store_coordinates`: `1.4927,103.7414` |
+
+Enter the meta key names, not dynamic data tags. For combined fields, latitude comes first. Bricks reads post, term, or user metadata according to **Object type**.
+
+Latitude must be between -90 and 90, and longitude between -180 and 180. Missing or invalid coordinates are excluded from location searches. An item can appear in the unfiltered listing and disappear when a radius search is applied if its coordinates are missing.
+
+### ACF and Meta Box map fields
+
+1. Enable **Custom fields integration** under **Bricks > Settings > Query filters**.
+2. Set **Provider** to **ACF** or **Meta Box** on the Geolocation filter.
+3. Open the dynamic data picker in **Location field** and select an **ACF Google Map** or **Meta Box Map** field.
+
+These integrations read the saved coordinates from the map field. The provider choices for this element are limited to ACF and Meta Box, even when other query-filter integrations are active.
+
+After importing locations or changing the coordinate source, use **Regenerate filter index** under **Bricks > Settings > Query filters** if results are missing or outdated. See [Filter Index](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-index) for background indexing controls.
+
+### Coordinates from a custom storage format {#custom-coordinate-storage}
+
+For integrations that store coordinates in another format, use the `bricks/query_filters/geolocation/coordinates` PHP filter. It runs while Bricks indexes each object, after the normal coordinate lookup, rather than on every visitor search.
+
+The callback receives five arguments:
+
+| Argument | Value |
+| --- | --- |
+| `$coordinates` | The resolved `['lat' => ..., 'lng' => ...]` array, or `false` when no valid coordinates were found. |
+| `$object_id` | The post, term, or user ID being indexed. |
+| `$object_type` | `post`, `term`, or `user`. |
+| `$settings` | The Geolocation filter settings used for indexing. |
+| `$filter_id` | The filter ID that owns the coordinate index. |
+
+For example, suppose a `store` post type saves an array under `_directory_location`, with `latitude` and `longitude` keys. Configure the Geolocation filter with **Object type > Post**, **Combined field**, and **Coordinates meta key** set to `_directory_location`. Add this callback to your child theme or a custom plugin:
+
+```php
+add_filter( 'bricks/query_filters/geolocation/coordinates', function ( $coordinates, $object_id, $object_type, $settings, $filter_id ) {
+    if (
+        $object_type !== 'post' ||
+        get_post_type( $object_id ) !== 'store' ||
+        ( $settings['geoCoordinateSource'] ?? 'separate' ) !== 'combined' ||
+        ( $settings['geoCoordinatesKey'] ?? '' ) !== '_directory_location'
+    ) {
+        return $coordinates;
+    }
+
+    $location = get_post_meta( $object_id, '_directory_location', true );
+
+    if ( ! is_array( $location ) ) {
+        return false;
+    }
+
+    return [
+        'lat' => $location['latitude'] ?? null,
+        'lng' => $location['longitude'] ?? null,
+    ];
+}, 20, 5 );
+```
+
+The scope checks preserve other filters and object types. Return the incoming value when your integration does not apply, or `false` to exclude that object's coordinates. Bricks validates the returned array again: latitude and longitude must be finite numbers within the ranges above. An invalid result is not indexed, and stale coordinates for that object are removed during reindexing.
+
+After adding the callback or changing its stored data, [regenerate the filter index](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-index) to update existing results. Integrations can also [request a rebuild from PHP](https://academy.bricksbuilder.io/developer/hooks/actions/bricks-query_filters-reindex/#request).
+
+## Search methods {#search-methods}
+
+### Address search
+
+Enable **Search by address** to display an address field and Search button. Save a Google Maps API key under **Bricks > Settings > API keys**. The key needs access to **Maps JavaScript API** and **Geocoding API**, with billing and website restrictions configured for your site. Saving a key does not verify access to those services.
+
+**Address autocomplete** adds suggestions while typing and additionally requires **Places API (New)**. If suggestions fail, visitors can still type an address and use Search. See [Google Maps API key setup](https://academy.bricksbuilder.io/integrations/how-to-set-up-your-google-maps-api-key/#geolocation).
+
+- **Country codes** limits suggestions to up to 15 two-letter country codes, separated by commas or spaces. Leave it empty for all countries.
+- **Autocomplete map area** can **Prefer map area** (default), **Limit to map area**, or **Ignore map area** when a map is connected.
+- **Hide label** hides the address label visually while retaining its accessible name.
+- **Hide search button** leaves Enter available to run a search.
+
+Autocomplete restrictions affect address suggestions. The selected origin and radius determine which listing items match.
+
+### Device-location search
+
+Enable **Search by device location** to display a location button. Choose text, an icon, or both, and configure the enabled and clear states under **Device location button**.
+
+Bricks requests location permission only after the visitor activates the button. The browser must support geolocation and permit it on the site, normally over HTTPS. If permission is denied or the location cannot be retrieved, the previous applied search remains in place.
+
+Device-location search does not need a Google Maps API key. It works with a listing alone or a connected Leaflet map without Google services. Enabling address search still requires the Google APIs, including when the connected map uses Leaflet.
+
+## Default location {#default-location}
+
+Enable **Use default location** to apply a radius search before the first query runs. This works with Google Maps, Leaflet, or a listing without a map.
+
+1. Set **Target query** and enable at least one visitor search method: **Search by address** or **Search by device location**.
+2. Under **Default location**, enable **Use default location**.
+3. Enter **Latitude** and **Longitude**, for example `3.1390` and `101.6869` for Kuala Lumpur.
+4. Optionally enter a **Location label**, such as "Kuala Lumpur". An empty label displays "Default location".
+5. Set **Default radius** and **Distance unit**, for example 25 km, then save and test a URL without filter parameters.
+
+<div className="screenshot screenshot--control-panel">
+
+![Use default location enabled with latitude 3.1390, longitude 101.6869, and Kuala Lumpur as the location label.](https://academy.bricksbuilder.io/assets/query-filter-default-location.webp)
+
+</div>
+
+Latitude, longitude, and label support dynamic data from the original page or template preview context. Coordinates must resolve to valid numbers. The label is display text, not an address that Bricks needs to geocode. It appears in Active Filters and the address input when address search is enabled. Submitting the unchanged label uses the existing coordinates.
+
+The default applies immediately, including with **Apply on** set to **On submit**. It uses the configured radius and unit, does not derive coordinates from the map center, and does not request the visitor's device location. Device access still requires the visitor to activate its button.
+
+Use one default location per target query. Duplicate desktop and mobile controls can share a default through one [global filter](https://academy.bricksbuilder.io/builder/dynamic-content/global-filters-filter-manager/). If independent Geolocation filters targeting the same query each define a valid default location, Bricks skips those defaults and shows a warning in the builder preview. Invalid or incomplete coordinates are also skipped.
+
+Recognized filter URL parameters take precedence over defaults. **Reset** clears the location; a fresh visit or reload without filter parameters applies it again. Defaults are not reapplied during AJAX updates, pagination, or browser Back/Forward. Coordinates enter the URL only when **Save location in URL** is enabled. See [default filter state](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-state).
+
+## Radius and sorting {#radius}
+
+| Setting | Behavior |
+| --- | --- |
+| **Default radius** | Uses 5 by default. With a radius dropdown, choose a value from **Radius options**; otherwise Bricks uses the first valid option. Without a dropdown, this is the fixed search radius. |
+| **Distance unit** | **Kilometres (km)** by default, or **Miles (mi)**. |
+| **Radius dropdown** | Off by default. Lets visitors select one configured radius. Default presets are 5, 10, 25, and 50. Each row has a numeric **Radius** and an **Option label**. |
+| **Unit label format** | **Abbreviated (km/mi)** by default, **Full text**, or **Disable**. Applies to the radius options and Active Filters label. Disable it when your option labels already contain their units. |
+| **Sort results by distance** | On by default. Shows nearest matches first while the filter is active. An active Sort filter takes precedence without removing the radius constraint. |
+
+Radius changes need an origin before they can filter results. Existing taxonomy, custom-field, search, and other query restrictions still apply. Pagination totals reflect the filtered results.
+
+Under **Radius dropdown**, enable **Enhanced radius dropdown** for Choices.js styling. It remains a single-selection control with a valid radius required.
+
+### Let visitors choose the distance order {#distance-sorting}
+
+Add a [Select](https://academy.bricksbuilder.io/builder/elements/filter/filter-select/) or [Radio](https://academy.bricksbuilder.io/builder/elements/filter/filter-radio/) filter targeting the same query and set **Action** to **Sort**. In **Sort options**, set **Source** to **Distance** and choose **Ascending** for nearest first or **Descending** for farthest first. Give each option a label visitors can recognize.
+
+Distance uses the Geolocation search, including a configured default location. It retains the radius when visitors change sort options and works even when this element's **Sort results by distance** is off. A farthest-first 25 km search still excludes results outside 25 km.
+
+On the frontend, Distance options stay visible but disabled without a valid location for the same query. A valid location enables them even when no results match. Choosing a sort option never requests device location; visitors obtain their location through this element's search controls.
+
+See [Distance sorting setup](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#distance-sorting) for the complete configuration.
+
+## When a search applies {#apply-mode}
+
+The Geolocation filter uses **Immediately** and **On submit** labels under **Apply on**.
+
+| Action | Immediately (default) | On submit |
+| --- | --- | --- |
+| Select an address suggestion or resolve device location | Applies the selected location | Stages the location until a search is submitted |
+| Change the radius or pan a map with map search enabled | Applies the change | Stages the change |
+| Use the address Search button or press Enter to search | Resolves and applies this location alongside already applied filters | Resolves and applies this location alongside already applied filters |
+| Activate a Filter - Submit targeting the same query | Applies all pending filters | Applies all pending filters |
+
+When Enter selects an autocomplete suggestion, that keypress only selects it. Press Enter again to search. In **Immediately** mode, selecting the suggestion can already trigger the update.
+
+In **On submit** mode, device-only setups need a [Filter - Submit](https://academy.bricksbuilder.io/builder/elements/filter/filter-submit/) element targeting the same query. Keep status messages visible so visitors can tell when a location is waiting to be applied.
+
+To apply a pending location and Distance sorting together, set the Select or Radio sort filter's **Apply on** to **Submit** too. A resolved pending location enables its Distance options before submission. Clearing the pending location disables them and clears the pending Distance choice. Use Filter - Submit to apply both changes together.
+
+While a new location is pending, the visible results, distances, active-filter label, and map radius still describe the applied search. They update when the matching results arrive. Failed lookups or requests preserve the previous applied location and results.
+
+## Connect a map {#map}
+
+1. Add a [Map Connector](https://academy.bricksbuilder.io/builder/elements/general/map-connector/) inside the results loop and give it location data for each item. Use coordinates matching the filter's indexed location.
+2. Add a [Google Map](https://academy.bricksbuilder.io/builder/elements/general/map/#3-sync-with-query) in JavaScript API render mode, or [Map (Leaflet)](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/#sync-with-query).
+3. Set the map's **Sync with query** to the same results loop targeted by the filter.
+4. If exactly one Geolocation filter and one matching map use that query, Bricks connects them automatically. Otherwise, select the intended map under **Map (Optional)** on the filter.
+
+Each Geolocation filter connects to at most one map, and each map to at most one Geolocation filter. Static maps and a map's internal query are not supported filter targets. Leaflet Map Connectors require latitude and longitude.
+
+The map shows the search origin and radius, with markers for the current results. The applied origin and radius stay visible when no results match. Under **Map appearance**, customize the circle's fill and border, origin marker color, or a custom origin marker image.
+
+### Search on map drag
+
+Enable **Search on map drag** on the filter and allow dragging on the connected map. The map center becomes the search origin after the visitor stops panning.
+
+- **Visitor controlled** (default) shows a **Search as I move the map** checkbox. Configure its label, corner position, and **Checked by default** state.
+- **Automatic** searches after every qualifying drag without displaying the checkbox.
+- **Search delay (ms)** waits after the map settles, using 400 ms by default.
+
+Zooming alone and programmatic map movements do not start a search. **Apply on** still controls whether map changes apply immediately or wait for submission.
+
+## Show the distance in each result {#distance}
+
+Place the following tag in a text element inside the filtered Posts, Terms, or Users loop:
+
+```text
+{filter_geo_distance}
+```
+
+It shows the current item's distance from the applied origin, using the filter's unit and unit-label format with one decimal place by default. It also works in AJAX-rendered map Info Boxes for those results.
+
+| Argument | Use |
+| --- | --- |
+| `@to:'km'` or `@to:'mi'` | Convert the displayed distance without changing the search radius. |
+| `@decimals:'0'` through `@decimals:'6'` | Set the number of decimal places. |
+| `@output:'value'` | Return the rounded numeric value only. |
+| `@output:'unit'` | Return the unit label only. |
+| `@fallback:'Select a location'` | Show fallback text when no distance is available. |
+
+For example:
+
+```text
+{filter_geo_distance @to:'mi' @decimals:'2'}
+{filter_geo_distance @fallback:'Select a location'}
+```
+
+Without a fallback, the tag returns nothing before a location search is applied or outside a supported filtered loop. API, Array, and provider-specific query loops do not support this tag or Geolocation filtering.
+
+## Active filters and URL state {#state}
+
+An [Active Filters](https://academy.bricksbuilder.io/builder/elements/filter/filter-active-filters/) element shows the location and radius as one removable item. Clear, Reset, and removing that item clear the location search. Applying another independent Geolocation filter to the same query replaces the previous location constraint.
+
+Clearing the location also clears a selected Distance sort and restores the query's normal ordering. Results and URL history update together after the request succeeds. Failed or cancelled requests preserve the last applied results and ordering. Distance options remain configured so they can be enabled for another valid location.
+
+**Save location in URL** is off by default. Enable it if searches should survive a reload or be shareable. It writes the selected coordinates to the page URL and browser history. **URL parameter** changes the parameter name. Browser Back and Forward can restore saved searches.
+
+Geolocation filters support [Global Filters](https://academy.bricksbuilder.io/builder/dynamic-content/global-filters-filter-manager/). Shared behavior includes the coordinate source, search methods, default location, radius, and apply mode. Target query, map connection, and presentation remain local to each linked element.
+
+## Styling and status messages {#styling}
+
+The element has separate control groups for **Layout**, **Label**, **Address**, **Search button**, **Radius dropdown**, **Device location button**, and **Status**. Use these to style the controls at each breakpoint.
+
+Under **Status**, override the pending, loading, success, and error messages. Empty values retain the translated defaults. **Hide status messages** hides them visually while keeping screen reader announcements. It does not hide the separate address-autocomplete fallback notice.
+
+## Troubleshooting {#troubleshooting}
+
+- **No controls appear:** Enable an address or device-location search method. Both are off on a new element.
+- **Known locations are missing:** Check the object type, meta keys or provider field, coordinate order and ranges, and filter-index progress. Address-only values cannot be indexed as coordinates.
+- **Address search fails:** Check the saved Google key, billing, enabled APIs, and website/API restrictions. Autocomplete needs Places API (New) in addition to the manual-search APIs.
+- **Location selected but results have not changed:** Check **Apply on**. Use Search, Enter, or a Filter Submit in **On submit** mode.
+- **Map does not connect:** Target the results loop, set the map's **Sync with query** to it, and select the map explicitly if the layout contains multiple filters or maps.
+- **Dragging does not search:** Enable map dragging and **Search on map drag**, then check the visitor checkbox and apply mode.
+
+---
+
+<a id="builder-elements-filter-filter-radio"></a>
+
+# Filter radio
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-radio/
+
+*Use radio buttons for single-selection query filters, sorting, or results per page, with optional child-term counts for taxonomy filters.*
+
+Creates a radio button filter interface for single-selection filtering. Users can select one option at a time to filter query results. Supports taxonomy terms, WordPress fields, custom fields, and can also function as a sorting or results-per-page control.
+
+Use radio buttons when visitors should select only one option. Set **Action** to **Sort** or **Results per page** when the control should change ordering or page size.
+
+## Settings
+
+- **Target query** (query-list) - Select the post, term, or user query this filter should target. Available sources depend on the query type.
+- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
+- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
+- **Action** (select) - Filter behavior. Options: Filter (traditional filtering), Sort (sorting control), Results per page (pagination control).
+- **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
+- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
+- **Field** (select) - Specific field to filter/sort by (varies based on field type and action).
+- **Taxonomy** (select) - Taxonomy to use for filtering when source is taxonomy.
+- **Order by** (select) - How to order taxonomy terms. Options: Name, Slug, Term ID, Description, Parent, Count, Include, Menu Order, Meta Value, Meta Value Num.
+- **Order meta key** (text) - Meta key for ordering when using meta value ordering.
+- **Order** (select) - Sort direction. Options: ASC, DESC. Default: ASC.
+- **Terms: Include** (select) - Specific taxonomy terms to include in filter options.
+- **Terms: Exclude** (select) - Specific taxonomy terms to exclude from filter options.
+- **Top level terms only** (checkbox) - Display only top-level terms (parent = 0) when source is taxonomy.
+- **Hide count** (checkbox) - Hide the result count for each option.
+- **Count: Include children** (checkbox, Bricks 2.5) - Include descendant-term posts in parent taxonomy counts. Off by default. Available with Action set to Filter, a target query, and a selected taxonomy.
+- **Hide empty** (checkbox) - Hide options with zero results.
+- **Hide count bracket** (checkbox) - Remove brackets around count values. Style count via .brx-option-count.
+- **Hierarchical** (checkbox) - Display taxonomy terms in hierarchical structure.
+- **Indent: Prefix** (text) - Prefix text for hierarchical indentation. Default: —.
+- **Indent: Gap** (number) - Gap spacing for hierarchical indentation.
+- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
+- **Meta key** (text) - Custom field key for filtering.
+- **Compare** (select) - Comparison operator for filtering. Default: Equal.
+- **Mode** (select) - Display mode for radio buttons. Options: Default (traditional radio buttons), Button (modern button style).
+- **Sort options** (repeater) - Configure sorting options when Action is set to Sort.
+  - **Source** (select) - Sort field, including **Distance** in Bricks 2.5.
+  - **Label** (text) - Display label for the sort option.
+  - **Order** (select) - Ascending or Descending. For Distance, nearest first or farthest first.
+  - **Meta key** (text) - Meta key for meta-based sorting.
+- **Results per page options** (text) - Comma-separated list of results per page options when Action is set to Results per page. Default: 10, 20, 50, 100.
+- **Active filter** - Settings for active filter display.
+  - **Prefix** (text) - Text to display before filter value.
+  - **Suffix** (text) - Text to display after filter value.
+  - **Title** (text) - Custom title attribute for filter links.
+
+## Parent-Term Counts {#parent-term-counts}
+
+Enable **Count: Include children** when a parent option should count posts assigned to its child terms and deeper descendants. Posts assigned to both a parent and a descendant count once for the parent. The setting works independently of **Hierarchical** display and is shared when the element uses a global filter. See [taxonomy child counts](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#taxonomy-child-counts) for setup, indexing, and an example.
+
+## Default selection {#default-selection}
+
+Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. Use **Default value** for one exact option value. For the Sort action, enter a configured sort value such as `title_ASC` or `distance_ASC`; for Results per page, enter a configured page size such as `20`. Dynamic data is supported.
+
+A Distance default such as `distance_ASC` also requires a valid location from a Geolocation filter targeting the same query. Without one, Bricks clears the Distance selection and uses the query's normal order.
+
+The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
+
+## Distance sorting {#distance-sorting}
+
+Starting with **Bricks 2.5**, set **Action** to **Sort** and add **Distance** as a sort option's **Source**. Set **Order** to **Ascending** for nearest first or **Descending** for farthest first, and give the option a descriptive **Label**.
+
+A [Geolocation filter](https://academy.bricksbuilder.io/builder/elements/filter/filter-geolocation/) must target the same query and provide a valid location, including a default location. Sorting keeps its radius constraint.
+
+Distance options remain visible but disabled without a valid location. A valid location enables them even when no results match. Clearing the location also clears a selected Distance sort and restores the query's normal order. Choosing a sort option never requests device location.
+
+With this filter set to **Submit** and Geolocation set to **On submit**, a resolved pending location enables Distance before submission so visitors can apply both together. See [Distance sorting setup](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#distance-sorting) for apply modes, URL behavior, and failed requests.
+
+> **Developer reference**
+>
+> See the [Filter - Radio Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-radio/) for the full JSON schema of this element's settings and controls.
+
+---
+
+<a id="builder-elements-filter-filter-search"></a>
+
+# Filter search
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-search/
+
+*Search query results without a page reload, configure initial search text, and choose AJAX or redirect behavior for Enter.*
+
+Provides a live AJAX search input for real-time content filtering. Searches through post content, titles, and custom fields without page refresh. Features debouncing, minimum character requirements, and optional clear functionality.
+
+**Tip:** Perfect for creating instant search experiences. Use the debounce setting to control API call frequency, and minimum characters to improve performance.
+
+## Settings
+
+- **Target query** (query-list) - Select the Posts, Terms, or Users query this filter should target.
+- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
+- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (button click or Enter). Default: Input.
+- **Debounce (ms)** (number) - Delay before triggering search after typing stops. Default: 500ms.
+- **Min. characters** (number) - Minimum characters required to trigger search. Default: 3.
+- **Enter action** (select, Bricks 2.4) - Choose **AJAX search** (default) or **Redirect to URL**. Requires a target query.
+- **Trigger Filter Submit interactions** (checkbox, Bricks 2.4) - Run the target query's Filter Submit start/end interactions when Enter triggers an AJAX search. Disabled by default and available when Enter action is AJAX search.
+- **Redirect to** (text, Bricks 2.4) - Destination URL when Enter action is Redirect to URL. Active filters for the same query are appended as URL parameters.
+- **Open in new tab** (checkbox, Bricks 2.4) - Open the Enter-key redirect in a new tab. Available when a redirect URL is set.
+- **Input** - Settings for the search input field.
+  - **Placeholder** (text) - Placeholder text for the search input. Default: Search.
+  - **Placeholder typography** (typography) - Typography for placeholder text.
+  - **Label** (text) - Optional label text above the input field.
+  - **Label typography** (typography) - Typography for the label text.
+- **Icon (Clear)** - Settings for the clear/reset icon.
+  - **Icon** (icon) - Icon to display for clearing the search.
+  - **Icon color** (color) - Color of the clear icon.
+  - **Icon size** (number) - Size of the clear icon.
+- **Active filter** - Settings for active filter display.
+  - **Prefix** (text) - Text to display before filter value.
+  - **Suffix** (text) - Text to display after filter value.
+  - **Title** (text) - Custom title attribute for filter links.
+
+## Search with Enter
+
+Pressing Enter runs the configured action immediately, including when **Apply on** is set to **Submit**. Enter bypasses the typing debounce and minimum character threshold.
+
+For a search field that takes visitors to another results page, select a **Target query**, set **Enter action** to **Redirect to URL**, and enter the destination under **Redirect to**. Configure the destination's filters to recognize the same URL parameter names. Leave **Open in new tab** off to navigate in the current tab. An empty redirect URL falls back to an AJAX search.
+
+For an AJAX search that should close an Offcanvas after submission, enable **Trigger Filter Submit interactions** and use the [Filter Submit interaction triggers](https://academy.bricksbuilder.io/builder/features/interactions/#filter-submit-triggers). Ordinary typing does not trigger these submit interactions. The redirect action does not run them.
+
+## Default selection {#default-selection}
+
+Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. Use **Default value** to set initial search text. The field supports dynamic data and treats commas as part of the search text.
+
+The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
+
+> **Developer reference**
+>
+> See the [Filter - Search Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-search/) for the schema snapshot and Bricks 2.4 settings reference.
+
+---
+
+<a id="builder-elements-filter-filter-range"></a>
+
+# Filter range
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-range/
+
+*Filter query results by numeric ranges using sliders or input fields, with optional default minimum and maximum values.*
+
+Creates a range slider or input interface for filtering content by numeric ranges. Perfect for price filtering, numeric custom fields, or any data that has minimum and maximum values. Supports both slider and input field display modes.
+
+**Tip:** Essential for e-commerce price filtering or any scenario where users need to filter by numeric ranges.
+
+## Settings
+
+- **Target query** (query-list) - Select the Posts, Terms, or Users query this filter should target.
+- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
+- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
+- **Source** (select) - Data source for filter options. Currently limited to Custom field.
+- **Field type** (select) - Type of field when using custom field source. Options: Post, Term, User.
+- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
+- **Meta key** (text) - Custom field key containing numeric values for range filtering.
+- **Disable auto min/max value** (checkbox) - Manually set min/max values instead of auto-detecting from query results.
+- **Mode** (select) - Display mode for the range filter. Options: Slider (visual slider), Input (text inputs).
+- **Step** (number) - Increment step for range values. Default: 1.
+- **Decimal places** (number) - Number of decimal places to display. Default: 0.
+- **Thousand separator** (checkbox) - Add thousand separators to displayed values.
+- **Separator** (text) - Thousand separator character. Default: ,.
+- **Label** - Settings for range value labels.
+  - **Min** (text) - Label for minimum value.
+  - **Max** (text) - Label for maximum value.
+  - **Direction** (direction) - Layout direction for min/max labels (row/column).
+  - **Gap** (number) - Spacing between min/max labels.
+- **Input** - Settings for input field mode.
+  - **Placeholder** (text) - Placeholder text for input fields.
+  - **Typography** (typography) - Typography for input field text.
+- **Slider** - Settings for slider mode.
+  - **Track color** (color) - Color of the slider track.
+  - **Range color** (color) - Color of the selected range on the slider.
+  - **Handle color** (color) - Color of the slider handles.
+  - **Handle size** (number) - Size of the slider handles.
+  - **Track height** (number) - Height of the slider track.
+- **Active filter** - Settings for active filter display.
+  - **Prefix** (text) - Text to display before filter value.
+  - **Suffix** (text) - Text to display after filter value.
+  - **Title** (text) - Custom title attribute for filter links.
+
+## Default selection {#default-selection}
+
+Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. Under **Default value**, enter numeric **Minimum** and **Maximum** values. Leave one endpoint empty to use the original range boundary. Defaults are limited to the original available range and support dynamic data.
+
+The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
+
+> **Developer reference**
+>
+> See the [Filter - Range Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-range/) for the full JSON schema of this element's settings and controls.
+
+---
+
+<a id="builder-elements-filter-filter-select"></a>
+
+# Filter select
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-select/
+
+*Use dropdown query filters for single or multiple selections, sorting, and results per page, with optional child-term counts for taxonomy filters.*
+
+Creates a dropdown select filter interface for single or multiple selection filtering. Supports taxonomy terms, WordPress fields, and custom fields. Can also function as a sorting or results-per-page control.
+
+## Settings
+
+- **Target query** (query-list) - Select the post, term, or user query this filter should target. Available sources depend on the query type.
+- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
+- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
+- **Action** (select) - Filter behavior. Options: Filter (traditional filtering), Sort (sorting control), Results per page (pagination control).
+- **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
+- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
+- **Field** (select) - Specific field to filter/sort by (varies based on field type and action).
+- **Taxonomy** (select) - Taxonomy to use for filtering when source is taxonomy.
+- **Order by** (select) - How to order taxonomy terms. Options: Name, Slug, Term ID, Description, Parent, Count, Include, Menu Order, Meta Value, Meta Value Num.
+- **Order meta key** (text) - Meta key for ordering when using meta value ordering.
+- **Order** (select) - Sort direction. Options: ASC, DESC. Default: ASC.
+- **Terms: Include** (select) - Specific taxonomy terms to include in filter options.
+- **Terms: Exclude** (select) - Specific taxonomy terms to exclude from filter options.
+- **Top level terms only** (checkbox) - Display only top-level terms (parent = 0) when source is taxonomy.
+- **Hide count** (checkbox) - Hide the result count for each option.
+- **Count: Include children** (checkbox, Bricks 2.5) - Include descendant-term posts in parent taxonomy counts. Off by default. Available with Action set to Filter, a target query, and a selected taxonomy.
+- **Hide empty** (checkbox) - Hide options with zero results.
+- **Hierarchical** (checkbox) - Display taxonomy terms in hierarchical structure.
+- **Indent: Prefix** (text) - Prefix text for hierarchical indentation. Default: —.
+- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
+- **Meta key** (text) - Custom field key for filtering.
+- **Compare** (select) - Comparison operator for filtering. Default: Equal.
+- **Input** - Settings for the select dropdown.
+  - **Placeholder** (text) - Placeholder text for the select dropdown.
+- **Sort options** (repeater) - Configure sorting options when Action is set to Sort.
+  - **Source** (select) - Sort field, including **Distance** in Bricks 2.5.
+  - **Label** (text) - Display label for the sort option.
+  - **Order** (select) - Ascending or Descending. For Distance, nearest first or farthest first.
+  - **Meta key** (text) - Meta key for meta-based sorting.
+- **Results per page options** (text) - Comma-separated list of results per page options when Action is set to Results per page. Default: 10, 20, 50, 100.
+- **Active filter** - Settings for active filter display.
+  - **Prefix** (text) - Text to display before filter value.
+  - **Suffix** (text) - Text to display after filter value.
+  - **Title** (text) - Custom title attribute for filter links.
+
+## Parent-Term Counts {#parent-term-counts}
+
+Enable **Count: Include children** when a parent option should count posts assigned to its child terms and deeper descendants. Posts assigned to both a parent and a descendant count once for the parent. The setting works independently of **Hierarchical** display and is shared when the element uses a global filter. See [taxonomy child counts](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#taxonomy-child-counts) for setup, indexing, and an example.
+
+## Default selection {#default-selection}
+
+Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. Use **Default value** for one exact option value. With Choices.js and multiple selection enabled, separate values with commas, such as `cotton, wool`, and wrap values containing commas in double quotes. For Sort, enter a configured sort value such as `title_ASC` or `distance_ASC`; for Results per page, enter a configured page size such as `20`. Dynamic data is supported.
+
+A Distance default such as `distance_ASC` also requires a valid location from a Geolocation filter targeting the same query. Without one, Bricks clears the Distance selection and uses the query's normal order.
+
+The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
+
+## Distance sorting {#distance-sorting}
+
+Starting with **Bricks 2.5**, set **Action** to **Sort** and add **Distance** as a sort option's **Source**. Set **Order** to **Ascending** for nearest first or **Descending** for farthest first, and give the option a descriptive **Label**.
+
+<div className="screenshot screenshot--control-panel">
+
+![Sort options with Nearest first configured to use Distance in Ascending order, and Farthest first available as a second option.](https://academy.bricksbuilder.io/assets/query-filter-distance-sort-options.webp)
+
+</div>
+
+A [Geolocation filter](https://academy.bricksbuilder.io/builder/elements/filter/filter-geolocation/) must target the same query and provide a valid location, including a default location. Sorting keeps its radius constraint.
+
+Distance options remain visible but disabled without a valid location, in both native and Choices.js dropdowns. A valid location enables them even when no results match. Clearing the location also clears a selected Distance sort and restores the query's normal order. Choosing a sort option never requests device location.
+
+With this filter set to **Submit** and Geolocation set to **On submit**, a resolved pending location enables Distance before submission so visitors can apply both together. See [Distance sorting setup](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#distance-sorting) for apply modes, URL behavior, and failed requests.
+
+> **Developer reference**
+>
+> See the [Filter - Select Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-select/) for the full JSON schema of this element's settings and controls.
+
+---
+
+<a id="builder-elements-filter-filter-submit"></a>
+
+# Filter submit
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-submit/
+
+*Apply or reset query filters, redirect submissions, and preserve selected filters when resetting.*
+
+Creates submit/reset buttons for filter forms. Provides control over when filters are applied - either as a submit button to apply all filters at once, or as a reset button to clear all active filters. Supports redirection to specific URLs after submission.
+
+## Settings
+
+- **Target query** (query-list) - Select the query this button should submit or reset.
+- **Global filter** (Bricks 2.5) - Reuse shared Submit/Reset behavior, including reset exclusions. The target query and button presentation remain local.
+- **Action** (select) - Button behavior. Options: Submit (apply filters), Reset (clear filters).
+- **Redirect to** (text) - URL to redirect to after applying filters (Submit action only).
+- **Open in new tab** (checkbox) - Open redirect URL in new tab (Submit action only).
+- **Exclude filter IDs** (text, Bricks 2.4) - Comma-separated filter IDs to preserve when resetting (Reset action only). From Bricks 2.5, accepts global filter IDs as well as Bricks element IDs.
+- **Hide if no active filter** (checkbox) - Hide the reset button when no filters it can reset are active. Excluded filters do not keep the button visible. Adds .brx-no-active-filter class for styling (Reset action only).
+- **Button** - Settings for the submit/reset button.
+  - **Text** (text) - Button text. Default: Filter.
+  - **Size** (select) - Button size preset. Options: Default, Small, Medium, Large, Extra Large.
+  - **Style** (select) - Button style. Options: None, Primary, Secondary, Success, Info, Warning, Danger, Dark, Light. Default: Primary.
+  - **Circle** (checkbox) - Make button circular.
+  - **Outline** (checkbox) - Use outline button style.
+  - **Icon** (icon) - Icon to display on the button.
+  - **Icon color** (color) - Color of the button icon.
+  - **Icon size** (number) - Size of the button icon.
+
+## Preserve a search while resetting refinements
+
+Set **Action** to **Reset**, then enter the Search filter's Bricks element ID in **Exclude filter IDs**. For example, enter `q1w2e3,mn9456` to preserve two filters. Use filter IDs, not the target query ID or URL parameter names.
+
+From Bricks 2.5, enter a [global filter](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#global-filters) ID or any element ID linked to it to preserve that shared selection for the target query. Copy the definition ID from Filter manager, or copy the element's Bricks ID from its element panel.
+
+Reset clears the other filters for the target query while keeping the excluded values, such as the visitor's search term. With **Hide if no active filter** enabled, the reset button hides once only excluded filters remain active.
+
+Starting with Bricks 2.5, Reset also clears [configured default selections](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) and their URL parameters, unless excluded. It does not restore the defaults. A fresh visit or reload without filter parameters applies them again.
+
+This setting is separate from the exclusion list on the Active Filters element, which controls which filters appear in that element.
+
+> **Developer reference**
+>
+> See the [Filter - Submit / Reset Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-submit/) for the schema snapshot and Bricks 2.4 settings reference.
 
 ---
 
@@ -24011,62 +24012,6 @@ Non-PDF files do not receive an inline preview. They use the linked file name an
 
 ---
 
-<a id="builder-elements-media-image-gallery"></a>
-
-# Image gallery
-
-Source: https://academy.bricksbuilder.io/builder/elements/media/image-gallery/
-
-*The Image Gallery element displays a collection of images in various layouts with optional lightbox functionality.*
-
-The Image Gallery element displays a collection of images in various layouts with optional lightbox functionality.
-
-## Settings
-
-- **Images** (image-gallery) - Select and upload images for the gallery. Since Bricks 2.5, drop local images onto this control to append them, or hold **Shift** while dropping to replace the selection. See [Drop images onto an Image Gallery](https://academy.bricksbuilder.io/builder/features/media-browser/#drop-images-onto-an-image-gallery).
-
-- **Layout** (select) - Gallery layout type. Options: `grid`, `masonry`, `metro`. Default: `grid`.
-
-- **Columns** (number) - Number of columns in the grid. Minimum: 2. Default: 3. Not available for metro layout.
-
-- **Spacing** (number with units) - Gap between images. Default: 0.
-
-- **Image height** (number with units) - Fixed height for images. Not available for masonry or metro layouts.
-
-- **Image ratio** (text) - Aspect ratio for images (e.g., 4/3, 16/9, 1/1). Not available for masonry or metro layouts.
-
-- **Image caption** (checkbox) - Display image captions.
-
-- **Link to** (select) - Link behavior for images. Options: `lightbox`, `attachment page`, `media file`, `custom URL`.
-
-- **Custom links** (repeater) - Define custom URLs for each image. Only shown when "Link to" is set to "custom URL".
-
-### Lightbox
-
-- **Image size** (select) - Size of images in lightbox. Default: Full.
-
-- **Image click action** (select) - Action when clicking images. Options: `zoom`, `zoom or close`, `toggle controls`, `next`, `close`. Default: `zoom`.
-
-- **Animation** (select) - Lightbox transition animation.
-
-- **Caption** (checkbox) - Show image captions in lightbox.
-
-- **Thumbnail navigation** (checkbox) - Enable thumbnail navigation.
-
-- **Thumbnail size** (number with units) - Size of thumbnails. Default: 60px.
-
-- **Padding (px)** (dimensions) - Padding around the lightbox.
-
-- **Lightbox: ID** (text) - Group images with the same ID together in the same lightbox.
-
-- **Fetch priority** (select) - Image loading priority. Options: `high`, `low`, `auto`.
-
-> **Developer reference**
->
-> See the [Image Gallery Schema](https://academy.bricksbuilder.io/developer/schema/elements/image-gallery/) for the full JSON schema of this element's settings and controls.
-
----
-
 <a id="builder-elements-media-instagram-feed"></a>
 
 # Instagram feed
@@ -24140,6 +24085,62 @@ Optional “Follow us” row linking to `instagram.com/{username}`:
 > **Developer reference**
 >
 > See the [Instagram feed Schema](https://academy.bricksbuilder.io/developer/schema/elements/instagram-feed/) for the full JSON schema of this element's settings and controls.
+
+---
+
+<a id="builder-elements-media-image-gallery"></a>
+
+# Image gallery
+
+Source: https://academy.bricksbuilder.io/builder/elements/media/image-gallery/
+
+*The Image Gallery element displays a collection of images in various layouts with optional lightbox functionality.*
+
+The Image Gallery element displays a collection of images in various layouts with optional lightbox functionality.
+
+## Settings
+
+- **Images** (image-gallery) - Select and upload images for the gallery. Since Bricks 2.5, drop local images onto this control to append them, or hold **Shift** while dropping to replace the selection. See [Drop images onto an Image Gallery](https://academy.bricksbuilder.io/builder/features/media-browser/#drop-images-onto-an-image-gallery).
+
+- **Layout** (select) - Gallery layout type. Options: `grid`, `masonry`, `metro`. Default: `grid`.
+
+- **Columns** (number) - Number of columns in the grid. Minimum: 2. Default: 3. Not available for metro layout.
+
+- **Spacing** (number with units) - Gap between images. Default: 0.
+
+- **Image height** (number with units) - Fixed height for images. Not available for masonry or metro layouts.
+
+- **Image ratio** (text) - Aspect ratio for images (e.g., 4/3, 16/9, 1/1). Not available for masonry or metro layouts.
+
+- **Image caption** (checkbox) - Display image captions.
+
+- **Link to** (select) - Link behavior for images. Options: `lightbox`, `attachment page`, `media file`, `custom URL`.
+
+- **Custom links** (repeater) - Define custom URLs for each image. Only shown when "Link to" is set to "custom URL".
+
+### Lightbox
+
+- **Image size** (select) - Size of images in lightbox. Default: Full.
+
+- **Image click action** (select) - Action when clicking images. Options: `zoom`, `zoom or close`, `toggle controls`, `next`, `close`. Default: `zoom`.
+
+- **Animation** (select) - Lightbox transition animation.
+
+- **Caption** (checkbox) - Show image captions in lightbox.
+
+- **Thumbnail navigation** (checkbox) - Enable thumbnail navigation.
+
+- **Thumbnail size** (number with units) - Size of thumbnails. Default: 60px.
+
+- **Padding (px)** (dimensions) - Padding around the lightbox.
+
+- **Lightbox: ID** (text) - Group images with the same ID together in the same lightbox.
+
+- **Fetch priority** (select) - Image loading priority. Options: `high`, `low`, `auto`.
+
+> **Developer reference**
+>
+> See the [Image Gallery Schema](https://academy.bricksbuilder.io/developer/schema/elements/image-gallery/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -24719,476 +24720,6 @@ The SVG element displays SVG graphics from files, dynamic data, custom code, or 
 > **Developer reference**
 >
 > See the [SVG Schema](https://academy.bricksbuilder.io/developer/schema/elements/svg/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-query-query-results-summary"></a>
-
-# Query results summary
-
-Source: https://academy.bricksbuilder.io/builder/elements/query/query-results-summary/
-
-*Display a query's reported starting position, ending position, and total result count, with updates for pagination, Load More, Infinite Scroll, and Query Filters.*
-
-The Query Results Summary element, introduced in version 1.12.2, allows you to display a dynamic count of results within a query, helping users understand which items they are currently viewing in relation to the total number of results. This is particularly useful for search results, archive pages, and paginated lists where users navigate through multiple pages of content. It can be found in the elements panel under the "Query" category.
-
-**Note:** If a third-party plugin disables Bricks Query history via the [`bricks/query/force_run`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-force_run/) hook, the results summary may display incorrect information.
-
-## Compatibility
-
-The **Query Results Summary** element updates with Bricks' native AJAX actions, including:
-
-- AJAX Pagination
-- Load More
-- Infinite Scroll
-- Query Filters
-
-This ensures that the summary updates dynamically as users interact with query-based elements on the page.
-
-Example:
-
-![](https://academy.bricksbuilder.io/assets/query-results-summary-element-example.png)
-
-## Settings
-
-![](https://academy.bricksbuilder.io/assets/query-results-summary-element-controls.png)
-
-### Query
-
-Select the **target query** for which the summary should be displayed.
-
-For a listing with synced map markers, select the results loop containing [Map Connectors](https://academy.bricksbuilder.io/builder/elements/general/map-connector/). The summary describes that loop's results. See [map queries and interactive listings](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/#map-queries).
-
-### Format
-
-Customize the summary text using placeholders:
-
-- `%start%`: The numeric starting position reported by the query.
-- `%end%`: The numeric ending position reported by the query.
-- `%total%`: The total number of results.
-
-Default format: `Results: %start% - %end% of %total% posts`
-
-Example output: Results: 1 - 5 of 14 posts
-
-Native post, term, and user queries normally report one-based positions. A query without a populated range, including a provider-backed ACF loop, can report `0` for the start or end position.
-
-Developers can override the reported positions with [`bricks/query/result_start`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-result_start/) and [`bricks/query/result_end`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-result_end/). These filters change summary metadata only. They do not skip or limit items, change the total count, or fetch another page.
-
-### Text: One Result
-
-Define a custom message when the query returns exactly **one** result to handle singular/plural differences.
-
-Default text: One post found
-
-### Text: No Results
-
-Specify a custom message when the query returns **zero** results.
-
-Default text: No posts found
-
-> **Developer reference**
->
-> See the [Query Results Summary Schema](https://academy.bricksbuilder.io/developer/schema/elements/query-results-summary/) for the full JSON schema of this element's settings and controls.
-
----
-
-<a id="builder-elements-product-product-add-to-cart"></a>
-
-# Add to cart
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-add-to-cart/
-
-*Displays the Add to cart form for the current product, including quantity and variation handling for variable products.*
-
-Displays the Add to cart form for the current product, including quantity and variation handling for variable products.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- **Typography** (typography)
-- **Background color** (color)
-- **Border** (border)
-- **Margin** (spacing)
-- **Padding** (spacing)
-- **Description typography** (typography)
-- **Price typography** (typography)
-- **Regular price typography** (typography)
-- **Sale price typography** (typography)
-- **Wrap** (select)
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
-
----
-
-<a id="builder-elements-product-product-additional-information"></a>
-
-# Product additional information
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-additional-information/
-
-*Displays the product attributes table shown in WooCommerce under Additional information.*
-
-Displays the product attributes table shown in WooCommerce under Additional information.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- **Heading** (text)
-- **Typography** (typography)
-- **Width** (number)
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
-
----
-
-<a id="builder-elements-product-product-content"></a>
-
-# Product content
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-content/
-
-*Displays the full product description (main content) from the product editor.*
-
-Displays the full product description (main content) from the product editor.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- This element uses standard WooCommerce output and inherited style controls.
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
-
----
-
-<a id="builder-elements-product-product-meta"></a>
-
-# Product meta
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-meta/
-
-*Displays product meta details such as SKU, categories, and tags.*
-
-Displays product meta details such as SKU, categories, and tags.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- **Direction** (direction)
-- **Spacing** (number)
-- **Separator** (text)
-- **Separator color** (color)
-- **Typography** (typography)
-- **Fields** (repeater)
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
-
----
-
-<a id="builder-elements-product-product-gallery"></a>
-
-# Product gallery
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-gallery/
-
-*Displays the WooCommerce product gallery with main product image and thumbnail navigation.*
-
-Displays the WooCommerce product gallery with main product image and thumbnail navigation.
-
-## Settings
-
-- **Product image size** (select) - Image size for the main product image. Default: woocommerce_single.
-- **Thumbnail image size** (select) - Image size for thumbnail images. Default: woocommerce_gallery_thumbnail.
-- **Lightbox image size** (select) - Image size for lightbox/fullscreen view. Default: woocommerce_single.
-- **Thumbnail position** (select) - Position of thumbnail navigation relative to main image. Options: bottom, top, left, right. Default: bottom.
-- **Thumbnail width** (number) - Width of thumbnail images in pixels.
-- **Thumbnail height** (number) - Height of thumbnail images in pixels.
-- **Thumbnail border** (border) - Border styling for thumbnail images.
-- **Thumbnail border (Active)** (border) - Border styling for active/selected thumbnail image.
-- **Slider** (checkbox) - Enable thumbnail slider functionality.
-- **Slider: Height (px)** (number) - Maximum height of thumbnail slider when positioned left/right.
-- **Slider: Gap (px)** (number) - Gap between thumbnail images in slider. Default: 30.
-- **Max. items** (number) - Maximum number of thumbnail items shown in horizontal slider. Default: 4.
-- **Prev arrow** (icon) - Icon for previous arrow navigation. Default: ti-angle-left.
-- **Next arrow** (icon) - Icon for next arrow navigation. Default: ti-angle-right.
-- **Background** (color) - Background color for navigation arrows.
-- **Border** (border) - Border styling for navigation arrows.
-- **Color** (color) - Icon color for navigation arrows.
-- **Size** (number) - Font size for navigation arrow icons.
-- **Height** (number) - Height of navigation arrow buttons.
-- **Width** (number) - Width of navigation arrow buttons.
-
----
-
-<a id="builder-elements-product-product-price"></a>
-
-# Product price
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-price/
-
-*Displays the WooCommerce product price, including regular price, sale price, and price range for variable products.*
-
-Displays the WooCommerce product price, including regular price, sale price, and price range for variable products.
-
-## Selected variation price (since 2.5) {#variation-price}
-
-On a variable product, the Product price element updates to the selected variation's price as soon as a customer picks a variation. Clearing the selection shows the original price or price range again. This also works for products inside query loops and quick views.
-
-If all variations have the same price, WooCommerce doesn't provide a separate variation price, so the element keeps showing the original price.
-
-## Settings
-
-- **Hide regular price** (checkbox) - Hide the regular price when a sale price is active.
-- **Regular price typography** (typography) - Typography settings for the regular price text.
-- **Sale price typography** (typography) - Typography settings for the sale price text.
-
----
-
-<a id="builder-elements-product-product-rating"></a>
-
-# Product rating
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-rating/
-
-*Displays the product star rating and review count for the current product.*
-
-Displays the product star rating and review count for the current product.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- **Star color** (color)
-- **Empty star color** (color)
-- **Hide reviews link** (checkbox)
-- **Reviews link** (separator)
-- **Text** (text)
-- **No ratings** (separator)
-- **Show empty stars** (checkbox)
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
-
----
-
-<a id="builder-elements-product-product-related"></a>
-
-# Related products
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-related/
-
-*Displays related products based on the current product context.*
-
-Displays related products based on the current product context.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- **Heading** (text)
-- **Heading typography** (typography)
-- **Max. products** (number)
-- **Columns** (number)
-- **Order by** (select)
-- **Order** (select)
-- **Gap** (number)
-- **Align** (text-align)
-- **Image height** (number)
-- **Padding** (spacing)
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
-
----
-
-<a id="builder-elements-product-product-reviews"></a>
-
-# Product reviews
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-reviews/
-
-*Displays the WooCommerce reviews section for the current product.*
-
-Displays the WooCommerce reviews section for the current product.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- **Title** (typography)
-- **Label** (typography)
-- **Textarea** (select)
-- **Author** (typography)
-- **Date** (typography)
-- **Description** (typography)
-- **Size** (number)
-- **Background color** (color)
-- **Fill color** (color)
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
-
----
-
-<a id="builder-elements-product-product-short-description"></a>
-
-# Product short description
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-short-description/
-
-*Displays the WooCommerce product short description (excerpt) on single product pages.*
-
-Displays the WooCommerce product short description (excerpt) on single product pages.
-
----
-
-<a id="builder-elements-product-product-stock"></a>
-
-# Product stock
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-stock/
-
-*Displays the WooCommerce product stock status and quantity information.*
-
-Displays the WooCommerce product stock status and quantity information.
-
-## Settings
-
-### In stock
-- **Custom text** (text) - Custom text to display when product is in stock.
-- **Typography** (typography) - Typography settings for in stock text.
-- **Background color** (color) - Background color for in stock status.
-
-### Low stock / On backorder
-- **Custom text** (text) - Custom text to display when product has low stock or is on backorder.
-- **Typography** (typography) - Typography settings for low stock/backorder text.
-- **Background color** (color) - Background color for low stock/backorder status.
-
-### Out of stock
-- **Custom text** (text) - Custom text to display when product is out of stock.
-- **Typography** (typography) - Typography settings for out of stock text.
-- **Background color** (color) - Background color for out of stock status.
-
----
-
-<a id="builder-elements-product-product-tabs"></a>
-
-# Product tabs
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-tabs/
-
-*Displays WooCommerce product tabs such as description, additional information, and reviews.*
-
-Displays WooCommerce product tabs such as description, additional information, and reviews.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- **Direction** (direction)
-- **Alignment** (justify-content)
-- **Padding** (spacing)
-- **Typography** (typography)
-- **Background color** (color)
-- **Border** (border)
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
-
----
-
-<a id="builder-elements-product-product-title"></a>
-
-# Product title
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-title/
-
-*Displays the title of the current WooCommerce product.*
-
-Displays the title of the current WooCommerce product.
-
-## Settings
-
-- **HTML tag** (select) - HTML tag for the title. Options: h1, h2, h3, h4, h5, h6. Default: h1.
-- **Prefix** (text) - Text to display before the title.
-- **Prefix block** (checkbox) - Display prefix as block element.
-- **Suffix** (text) - Text to display after the title.
-- **Suffix block** (checkbox) - Display suffix as block element.
-- **Link to product** (checkbox) - Make the title a link to the product.
-
----
-
-<a id="builder-elements-product-product-upsells"></a>
-
-# Product up/cross-sells
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-upsells/
-
-*Displays up-sell and cross-sell products linked to the current product.*
-
-Displays up-sell and cross-sell products linked to the current product.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- **Type** (select)
-- **Heading** (text)
-- **Heading typography** (typography)
-- **Max. products** (number)
-- **Columns** (number)
-- **Gap** (number)
-- **Order by** (select)
-- **Order** (select)
-- **Padding** (spacing)
-- **Background color** (color)
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
 
 ---
 
@@ -25888,6 +25419,476 @@ See [Lazy Loading](https://academy.bricksbuilder.io/builder/features/lazy-loadin
 
 ---
 
+<a id="builder-elements-product-product-add-to-cart"></a>
+
+# Add to cart
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-add-to-cart/
+
+*Displays the Add to cart form for the current product, including quantity and variation handling for variable products.*
+
+Displays the Add to cart form for the current product, including quantity and variation handling for variable products.
+
+## Where this element works
+
+Single Product templates (or product preview context).
+
+## Key settings
+
+- **Typography** (typography)
+- **Background color** (color)
+- **Border** (border)
+- **Margin** (spacing)
+- **Padding** (spacing)
+- **Description typography** (typography)
+- **Price typography** (typography)
+- **Regular price typography** (typography)
+- **Sale price typography** (typography)
+- **Wrap** (select)
+
+## Usage tips
+
+- Use this element inside a Single Product template to guarantee a valid product context.
+- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
+
+---
+
+<a id="builder-elements-product-product-additional-information"></a>
+
+# Product additional information
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-additional-information/
+
+*Displays the product attributes table shown in WooCommerce under Additional information.*
+
+Displays the product attributes table shown in WooCommerce under Additional information.
+
+## Where this element works
+
+Single Product templates (or product preview context).
+
+## Key settings
+
+- **Heading** (text)
+- **Typography** (typography)
+- **Width** (number)
+
+## Usage tips
+
+- Use this element inside a Single Product template to guarantee a valid product context.
+- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
+
+---
+
+<a id="builder-elements-product-product-content"></a>
+
+# Product content
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-content/
+
+*Displays the full product description (main content) from the product editor.*
+
+Displays the full product description (main content) from the product editor.
+
+## Where this element works
+
+Single Product templates (or product preview context).
+
+## Key settings
+
+- This element uses standard WooCommerce output and inherited style controls.
+
+## Usage tips
+
+- Use this element inside a Single Product template to guarantee a valid product context.
+- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
+
+---
+
+<a id="builder-elements-product-product-gallery"></a>
+
+# Product gallery
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-gallery/
+
+*Displays the WooCommerce product gallery with main product image and thumbnail navigation.*
+
+Displays the WooCommerce product gallery with main product image and thumbnail navigation.
+
+## Settings
+
+- **Product image size** (select) - Image size for the main product image. Default: woocommerce_single.
+- **Thumbnail image size** (select) - Image size for thumbnail images. Default: woocommerce_gallery_thumbnail.
+- **Lightbox image size** (select) - Image size for lightbox/fullscreen view. Default: woocommerce_single.
+- **Thumbnail position** (select) - Position of thumbnail navigation relative to main image. Options: bottom, top, left, right. Default: bottom.
+- **Thumbnail width** (number) - Width of thumbnail images in pixels.
+- **Thumbnail height** (number) - Height of thumbnail images in pixels.
+- **Thumbnail border** (border) - Border styling for thumbnail images.
+- **Thumbnail border (Active)** (border) - Border styling for active/selected thumbnail image.
+- **Slider** (checkbox) - Enable thumbnail slider functionality.
+- **Slider: Height (px)** (number) - Maximum height of thumbnail slider when positioned left/right.
+- **Slider: Gap (px)** (number) - Gap between thumbnail images in slider. Default: 30.
+- **Max. items** (number) - Maximum number of thumbnail items shown in horizontal slider. Default: 4.
+- **Prev arrow** (icon) - Icon for previous arrow navigation. Default: ti-angle-left.
+- **Next arrow** (icon) - Icon for next arrow navigation. Default: ti-angle-right.
+- **Background** (color) - Background color for navigation arrows.
+- **Border** (border) - Border styling for navigation arrows.
+- **Color** (color) - Icon color for navigation arrows.
+- **Size** (number) - Font size for navigation arrow icons.
+- **Height** (number) - Height of navigation arrow buttons.
+- **Width** (number) - Width of navigation arrow buttons.
+
+---
+
+<a id="builder-elements-product-product-meta"></a>
+
+# Product meta
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-meta/
+
+*Displays product meta details such as SKU, categories, and tags.*
+
+Displays product meta details such as SKU, categories, and tags.
+
+## Where this element works
+
+Single Product templates (or product preview context).
+
+## Key settings
+
+- **Direction** (direction)
+- **Spacing** (number)
+- **Separator** (text)
+- **Separator color** (color)
+- **Typography** (typography)
+- **Fields** (repeater)
+
+## Usage tips
+
+- Use this element inside a Single Product template to guarantee a valid product context.
+- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
+
+---
+
+<a id="builder-elements-product-product-price"></a>
+
+# Product price
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-price/
+
+*Displays the WooCommerce product price, including regular price, sale price, and price range for variable products.*
+
+Displays the WooCommerce product price, including regular price, sale price, and price range for variable products.
+
+## Selected variation price (since 2.5) {#variation-price}
+
+On a variable product, the Product price element updates to the selected variation's price as soon as a customer picks a variation. Clearing the selection shows the original price or price range again. This also works for products inside query loops and quick views.
+
+If all variations have the same price, WooCommerce doesn't provide a separate variation price, so the element keeps showing the original price.
+
+## Settings
+
+- **Hide regular price** (checkbox) - Hide the regular price when a sale price is active.
+- **Regular price typography** (typography) - Typography settings for the regular price text.
+- **Sale price typography** (typography) - Typography settings for the sale price text.
+
+---
+
+<a id="builder-elements-product-product-rating"></a>
+
+# Product rating
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-rating/
+
+*Displays the product star rating and review count for the current product.*
+
+Displays the product star rating and review count for the current product.
+
+## Where this element works
+
+Single Product templates (or product preview context).
+
+## Key settings
+
+- **Star color** (color)
+- **Empty star color** (color)
+- **Hide reviews link** (checkbox)
+- **Reviews link** (separator)
+- **Text** (text)
+- **No ratings** (separator)
+- **Show empty stars** (checkbox)
+
+## Usage tips
+
+- Use this element inside a Single Product template to guarantee a valid product context.
+- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
+
+---
+
+<a id="builder-elements-product-product-related"></a>
+
+# Related products
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-related/
+
+*Displays related products based on the current product context.*
+
+Displays related products based on the current product context.
+
+## Where this element works
+
+Single Product templates (or product preview context).
+
+## Key settings
+
+- **Heading** (text)
+- **Heading typography** (typography)
+- **Max. products** (number)
+- **Columns** (number)
+- **Order by** (select)
+- **Order** (select)
+- **Gap** (number)
+- **Align** (text-align)
+- **Image height** (number)
+- **Padding** (spacing)
+
+## Usage tips
+
+- Use this element inside a Single Product template to guarantee a valid product context.
+- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
+
+---
+
+<a id="builder-elements-product-product-reviews"></a>
+
+# Product reviews
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-reviews/
+
+*Displays the WooCommerce reviews section for the current product.*
+
+Displays the WooCommerce reviews section for the current product.
+
+## Where this element works
+
+Single Product templates (or product preview context).
+
+## Key settings
+
+- **Title** (typography)
+- **Label** (typography)
+- **Textarea** (select)
+- **Author** (typography)
+- **Date** (typography)
+- **Description** (typography)
+- **Size** (number)
+- **Background color** (color)
+- **Fill color** (color)
+
+## Usage tips
+
+- Use this element inside a Single Product template to guarantee a valid product context.
+- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
+
+---
+
+<a id="builder-elements-product-product-short-description"></a>
+
+# Product short description
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-short-description/
+
+*Displays the WooCommerce product short description (excerpt) on single product pages.*
+
+Displays the WooCommerce product short description (excerpt) on single product pages.
+
+---
+
+<a id="builder-elements-product-product-stock"></a>
+
+# Product stock
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-stock/
+
+*Displays the WooCommerce product stock status and quantity information.*
+
+Displays the WooCommerce product stock status and quantity information.
+
+## Settings
+
+### In stock
+- **Custom text** (text) - Custom text to display when product is in stock.
+- **Typography** (typography) - Typography settings for in stock text.
+- **Background color** (color) - Background color for in stock status.
+
+### Low stock / On backorder
+- **Custom text** (text) - Custom text to display when product has low stock or is on backorder.
+- **Typography** (typography) - Typography settings for low stock/backorder text.
+- **Background color** (color) - Background color for low stock/backorder status.
+
+### Out of stock
+- **Custom text** (text) - Custom text to display when product is out of stock.
+- **Typography** (typography) - Typography settings for out of stock text.
+- **Background color** (color) - Background color for out of stock status.
+
+---
+
+<a id="builder-elements-product-product-tabs"></a>
+
+# Product tabs
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-tabs/
+
+*Displays WooCommerce product tabs such as description, additional information, and reviews.*
+
+Displays WooCommerce product tabs such as description, additional information, and reviews.
+
+## Where this element works
+
+Single Product templates (or product preview context).
+
+## Key settings
+
+- **Direction** (direction)
+- **Alignment** (justify-content)
+- **Padding** (spacing)
+- **Typography** (typography)
+- **Background color** (color)
+- **Border** (border)
+
+## Usage tips
+
+- Use this element inside a Single Product template to guarantee a valid product context.
+- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
+
+---
+
+<a id="builder-elements-product-product-title"></a>
+
+# Product title
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-title/
+
+*Displays the title of the current WooCommerce product.*
+
+Displays the title of the current WooCommerce product.
+
+## Settings
+
+- **HTML tag** (select) - HTML tag for the title. Options: h1, h2, h3, h4, h5, h6. Default: h1.
+- **Prefix** (text) - Text to display before the title.
+- **Prefix block** (checkbox) - Display prefix as block element.
+- **Suffix** (text) - Text to display after the title.
+- **Suffix block** (checkbox) - Display suffix as block element.
+- **Link to product** (checkbox) - Make the title a link to the product.
+
+---
+
+<a id="builder-elements-product-product-upsells"></a>
+
+# Product up/cross-sells
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-upsells/
+
+*Displays up-sell and cross-sell products linked to the current product.*
+
+Displays up-sell and cross-sell products linked to the current product.
+
+## Where this element works
+
+Single Product templates (or product preview context).
+
+## Key settings
+
+- **Type** (select)
+- **Heading** (text)
+- **Heading typography** (typography)
+- **Max. products** (number)
+- **Columns** (number)
+- **Gap** (number)
+- **Order by** (select)
+- **Order** (select)
+- **Padding** (spacing)
+- **Background color** (color)
+
+## Usage tips
+
+- Use this element inside a Single Product template to guarantee a valid product context.
+- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
+
+---
+
+<a id="builder-elements-query-query-results-summary"></a>
+
+# Query results summary
+
+Source: https://academy.bricksbuilder.io/builder/elements/query/query-results-summary/
+
+*Display a query's reported starting position, ending position, and total result count, with updates for pagination, Load More, Infinite Scroll, and Query Filters.*
+
+The Query Results Summary element, introduced in version 1.12.2, allows you to display a dynamic count of results within a query, helping users understand which items they are currently viewing in relation to the total number of results. This is particularly useful for search results, archive pages, and paginated lists where users navigate through multiple pages of content. It can be found in the elements panel under the "Query" category.
+
+**Note:** If a third-party plugin disables Bricks Query history via the [`bricks/query/force_run`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-force_run/) hook, the results summary may display incorrect information.
+
+## Compatibility
+
+The **Query Results Summary** element updates with Bricks' native AJAX actions, including:
+
+- AJAX Pagination
+- Load More
+- Infinite Scroll
+- Query Filters
+
+This ensures that the summary updates dynamically as users interact with query-based elements on the page.
+
+Example:
+
+![](https://academy.bricksbuilder.io/assets/query-results-summary-element-example.png)
+
+## Settings
+
+![](https://academy.bricksbuilder.io/assets/query-results-summary-element-controls.png)
+
+### Query
+
+Select the **target query** for which the summary should be displayed.
+
+For a listing with synced map markers, select the results loop containing [Map Connectors](https://academy.bricksbuilder.io/builder/elements/general/map-connector/). The summary describes that loop's results. See [map queries and interactive listings](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/#map-queries).
+
+### Format
+
+Customize the summary text using placeholders:
+
+- `%start%`: The numeric starting position reported by the query.
+- `%end%`: The numeric ending position reported by the query.
+- `%total%`: The total number of results.
+
+Default format: `Results: %start% - %end% of %total% posts`
+
+Example output: Results: 1 - 5 of 14 posts
+
+Native post, term, and user queries normally report one-based positions. A query without a populated range, including a provider-backed ACF loop, can report `0` for the start or end position.
+
+Developers can override the reported positions with [`bricks/query/result_start`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-result_start/) and [`bricks/query/result_end`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-result_end/). These filters change summary metadata only. They do not skip or limit items, change the total count, or fetch another page.
+
+### Text: One Result
+
+Define a custom message when the query returns exactly **one** result to handle singular/plural differences.
+
+Default text: One post found
+
+### Text: No Results
+
+Specify a custom message when the query returns **zero** results.
+
+Default text: No posts found
+
+> **Developer reference**
+>
+> See the [Query Results Summary Schema](https://academy.bricksbuilder.io/developer/schema/elements/query-results-summary/) for the full JSON schema of this element's settings and controls.
+
+---
+
 <a id="builder-elements-single-author"></a>
 
 # Author
@@ -26181,31 +26182,6 @@ Bricks Page Template using a Post Content element to fetch page bricks data
 
 ---
 
-<a id="builder-elements-single-post-reading-progress-bar"></a>
-
-# Post reading progress bar
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/post-reading-progress-bar/
-
-*Shows a progress bar indicating how much of the post has been read.*
-
-Shows a progress bar indicating how much of the post has been read.
-
-## Settings
-
-- **Content** (select) - Choose the content to track reading progress for. Options: post_content, post_excerpt, custom_content. Default: post_content.
-- **Position** (select) - Position of the progress bar. Options: top, bottom. Default: top.
-- **Height** (number) - Height of the progress bar in pixels. Default: 4.
-- **Background color** (color) - Background color of the progress bar.
-- **Progress color** (color) - Color of the progress indicator.
-- **Show percentage** (checkbox) - Display the reading percentage as text.
-
-> **Developer reference**
->
-> See the [Reading Progress Bar Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-reading-progress-bar/) for the full JSON schema of this element's settings and controls.
-
----
-
 <a id="builder-elements-single-post-navigation"></a>
 
 # Post navigation
@@ -26256,6 +26232,31 @@ You can change the labels and arrows to match the wording used by your design. T
 > **Developer reference**
 >
 > See the [Post Navigation Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-navigation/) for the full JSON schema of this element's settings and controls.
+
+---
+
+<a id="builder-elements-single-post-reading-progress-bar"></a>
+
+# Post reading progress bar
+
+Source: https://academy.bricksbuilder.io/builder/elements/single/post-reading-progress-bar/
+
+*Shows a progress bar indicating how much of the post has been read.*
+
+Shows a progress bar indicating how much of the post has been read.
+
+## Settings
+
+- **Content** (select) - Choose the content to track reading progress for. Options: post_content, post_excerpt, custom_content. Default: post_content.
+- **Position** (select) - Position of the progress bar. Options: top, bottom. Default: top.
+- **Height** (number) - Height of the progress bar in pixels. Default: 4.
+- **Background color** (color) - Background color of the progress bar.
+- **Progress color** (color) - Color of the progress indicator.
+- **Show percentage** (checkbox) - Display the reading percentage as text.
+
+> **Developer reference**
+>
+> See the [Reading Progress Bar Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-reading-progress-bar/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -26727,92 +26728,6 @@ The Nav Menu element displays WordPress navigation menus with customizable styli
 
 ---
 
-<a id="builder-elements-wordpress-pagination"></a>
-
-# Pagination
-
-Source: https://academy.bricksbuilder.io/builder/elements/wordpress/pagination/
-
-*The Pagination element displays page navigation for query results with customizable styling.*
-
-The Pagination element displays page navigation for query results with customizable styling.
-
-To paginate a listing and its map markers, select the results loop containing [Map Connectors](https://academy.bricksbuilder.io/builder/elements/general/map-connector/), enable **AJAX**, and select the same loop under the map's **Sync with query** setting. See [map queries and interactive listings](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/#map-queries).
-
-## Settings
-
-- **Query** (query-list) - Select which query this pagination controls.
-
-- **Enable AJAX** (checkbox) - Refresh the target query without a full page reload. Enable this when using Pagination with [Query Filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#pagination-element).
-
-- **Alignment** (justify-content) - Horizontal alignment of pagination links.
-
-- **Height** (number with units) - Height of pagination buttons.
-
-- **Width** (number with units) - Width of pagination buttons.
-
-- **Spacing** (number with units) - Gap between pagination buttons. Default: 20px.
-
-- **Background** (color) - Background color of pagination buttons.
-
-- **Border** (border) - Border styling for pagination buttons.
-
-- **Typography** (typography) - Font settings for pagination buttons.
-
-### Current
-
-- **Background** (color) - Background color of the current page button.
-
-- **Border** (border) - Border styling for the current page button.
-
-- **Typography** (typography) - Font settings for the current page button.
-
-### Icons
-
-- **Previous Icon** (icon) - Icon for the previous page button.
-
-- **Next Icon** (icon) - Icon for the next page button.
-
-### Miscellaneous
-
-- **End Size** (number) - Number of page numbers shown at the start and end. Default: 1.
-
-- **Mid Size** (number) - Number of page numbers shown on each side of current page. Default: 2.
-
-## AJAX pagination and browser history
-
-In Bricks 2.5, **Enable AJAX** also lets a standalone Pagination element restore its query results and active page when visitors use the browser's Back and Forward buttons. No Query Filter element is required. For example, after visiting pages 1, 2 and 3, Back returns both the URL and results to page 2.
-
-This uses the existing AJAX setting; there is no separate history or scroll-restoration control. Bricks retains the browser's native scroll restoration. Review any **Pagination completed** interactions that scroll the page, since they can also run during standalone history restoration. Developers can use the [pagination history event](https://academy.bricksbuilder.io/developer/guides/custom-javascript-events-in-bricks/#bricks-ajax-pagination-history-code) after the asynchronous results have been restored.
-
-Queries with Query Filter elements use the filter history workflow. The standalone history event does not signal completion of those filtered queries. Restoring accumulated **Load more** or **Infinite scroll** results is outside this Pagination workflow. If a standalone history request fails, Bricks loads the target URL to recover the matching results.
-
-## Multiple Pagination Elements {#multiple-queries}
-
-Several Pagination elements can target the same query, such as navigation above and below a product listing. They stay on the same page while keeping their own icons and display settings.
-
-Starting with **Bricks 2.5**, Pagination elements targeting different queries on the same page keep independent page numbers. Bricks adds query-specific parameters for custom queries automatically:
-
-```text
-?brx_page_querya=2&brx_page_queryb=3
-```
-
-Here, `querya` and `queryb` represent the rendered target query IDs. Returning one listing to page one removes only its page parameter. Other queries retain their page and committed filter selections.
-
-This URL format applies when Pagination elements target more than one distinct query on the page. Multiple loops alone do not activate it. Two Pagination elements targeting one query retain the existing URL format.
-
-The main WordPress archive query keeps its normal `/page/N/` or `?paged=N` route. Secondary queries use their own parameters. Bricks chooses an unused suffixed parameter if a filter already uses the expected name. Custom pagination base/format hooks still apply.
-
-Independent pagination works with or without Query Filters enabled. Test the links, reload, and browser back/forward when a page contains several listings.
-
-![Two product listings with independent pagination: Newest arrivals is on page 2 and Products A–Z is on page 3. The address bar includes a separate brx_page parameter for each query.](https://academy.bricksbuilder.io/assets/independent-query-pagination.webp)
-
-> **Developer reference**
->
-> See the [Pagination Schema](https://academy.bricksbuilder.io/developer/schema/elements/pagination/) for the full JSON schema of this element's settings and controls.
-
----
-
 <a id="builder-elements-wordpress-posts"></a>
 
 # Posts
@@ -26896,6 +26811,92 @@ The Posts element displays a list or grid of posts with customizable query, layo
 > **Developer reference**
 >
 > See the [Posts Schema](https://academy.bricksbuilder.io/developer/schema/elements/posts/) for the full JSON schema of this element's settings and controls.
+
+---
+
+<a id="builder-elements-wordpress-pagination"></a>
+
+# Pagination
+
+Source: https://academy.bricksbuilder.io/builder/elements/wordpress/pagination/
+
+*The Pagination element displays page navigation for query results with customizable styling.*
+
+The Pagination element displays page navigation for query results with customizable styling.
+
+To paginate a listing and its map markers, select the results loop containing [Map Connectors](https://academy.bricksbuilder.io/builder/elements/general/map-connector/), enable **AJAX**, and select the same loop under the map's **Sync with query** setting. See [map queries and interactive listings](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/#map-queries).
+
+## Settings
+
+- **Query** (query-list) - Select which query this pagination controls.
+
+- **Enable AJAX** (checkbox) - Refresh the target query without a full page reload. Enable this when using Pagination with [Query Filters](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#pagination-element).
+
+- **Alignment** (justify-content) - Horizontal alignment of pagination links.
+
+- **Height** (number with units) - Height of pagination buttons.
+
+- **Width** (number with units) - Width of pagination buttons.
+
+- **Spacing** (number with units) - Gap between pagination buttons. Default: 20px.
+
+- **Background** (color) - Background color of pagination buttons.
+
+- **Border** (border) - Border styling for pagination buttons.
+
+- **Typography** (typography) - Font settings for pagination buttons.
+
+### Current
+
+- **Background** (color) - Background color of the current page button.
+
+- **Border** (border) - Border styling for the current page button.
+
+- **Typography** (typography) - Font settings for the current page button.
+
+### Icons
+
+- **Previous Icon** (icon) - Icon for the previous page button.
+
+- **Next Icon** (icon) - Icon for the next page button.
+
+### Miscellaneous
+
+- **End Size** (number) - Number of page numbers shown at the start and end. Default: 1.
+
+- **Mid Size** (number) - Number of page numbers shown on each side of current page. Default: 2.
+
+## AJAX pagination and browser history
+
+In Bricks 2.5, **Enable AJAX** also lets a standalone Pagination element restore its query results and active page when visitors use the browser's Back and Forward buttons. No Query Filter element is required. For example, after visiting pages 1, 2 and 3, Back returns both the URL and results to page 2.
+
+This uses the existing AJAX setting; there is no separate history or scroll-restoration control. Bricks retains the browser's native scroll restoration. Review any **Pagination completed** interactions that scroll the page, since they can also run during standalone history restoration. Developers can use the [pagination history event](https://academy.bricksbuilder.io/developer/guides/custom-javascript-events-in-bricks/#bricks-ajax-pagination-history-code) after the asynchronous results have been restored.
+
+Queries with Query Filter elements use the filter history workflow. The standalone history event does not signal completion of those filtered queries. Restoring accumulated **Load more** or **Infinite scroll** results is outside this Pagination workflow. If a standalone history request fails, Bricks loads the target URL to recover the matching results.
+
+## Multiple Pagination Elements {#multiple-queries}
+
+Several Pagination elements can target the same query, such as navigation above and below a product listing. They stay on the same page while keeping their own icons and display settings.
+
+Starting with **Bricks 2.5**, Pagination elements targeting different queries on the same page keep independent page numbers. Bricks adds query-specific parameters for custom queries automatically:
+
+```text
+?brx_page_querya=2&brx_page_queryb=3
+```
+
+Here, `querya` and `queryb` represent the rendered target query IDs. Returning one listing to page one removes only its page parameter. Other queries retain their page and committed filter selections.
+
+This URL format applies when Pagination elements target more than one distinct query on the page. Multiple loops alone do not activate it. Two Pagination elements targeting one query retain the existing URL format.
+
+The main WordPress archive query keeps its normal `/page/N/` or `?paged=N` route. Secondary queries use their own parameters. Bricks chooses an unused suffixed parameter if a filter already uses the expected name. Custom pagination base/format hooks still apply.
+
+Independent pagination works with or without Query Filters enabled. Test the links, reload, and browser back/forward when a page contains several listings.
+
+![Two product listings with independent pagination: Newest arrivals is on page 2 and Products A–Z is on page 3. The address bar includes a separate brx_page parameter for each query.](https://academy.bricksbuilder.io/assets/independent-query-pagination.webp)
+
+> **Developer reference**
+>
+> See the [Pagination Schema](https://academy.bricksbuilder.io/developer/schema/elements/pagination/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -27187,6 +27188,39 @@ My Account templates and My Account endpoint views.
 
 ---
 
+<a id="builder-elements-woocommerce-account-form-edit-account"></a>
+
+# Account - Edit account
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-edit-account/
+
+*Displays the Edit account form inside My Account.*
+
+Displays the Edit account form inside My Account.
+
+## Where this element works
+
+My Account templates and My Account endpoint views.
+
+## Key settings
+
+- **Label typography** (typography)
+- **Margin** (spacing)
+- **Padding** (spacing)
+- **Background color** (color)
+- **Border** (border)
+- **Box shadow** (box-shadow)
+- **Typography** (typography)
+- **Width** (number)
+- **Gap** (number)
+
+## Usage tips
+
+- Use these elements in My Account templates or endpoint-specific templates.
+- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
+
+---
+
 <a id="builder-elements-woocommerce-account-form-edit-address"></a>
 
 # Account - Edit address
@@ -27247,39 +27281,6 @@ My Account templates and My Account endpoint views.
 - **Margin** (spacing)
 - **Padding** (spacing)
 - **Background color** (color)
-
-## Usage tips
-
-- Use these elements in My Account templates or endpoint-specific templates.
-- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
-
----
-
-<a id="builder-elements-woocommerce-account-form-edit-account"></a>
-
-# Account - Edit account
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-edit-account/
-
-*Displays the Edit account form inside My Account.*
-
-Displays the Edit account form inside My Account.
-
-## Where this element works
-
-My Account templates and My Account endpoint views.
-
-## Key settings
-
-- **Label typography** (typography)
-- **Margin** (spacing)
-- **Padding** (spacing)
-- **Background color** (color)
-- **Border** (border)
-- **Box shadow** (box-shadow)
-- **Typography** (typography)
-- **Width** (number)
-- **Gap** (number)
 
 ## Usage tips
 
@@ -27600,74 +27601,6 @@ See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.
 
 ---
 
-<a id="builder-elements-woocommerce-account-view-order"></a>
-
-# Account - View order
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-view-order/
-
-*Displays order details for a selected order in My Account.*
-
-Displays order details for a selected order in My Account.
-
-## Where this element works
-
-My Account templates and My Account endpoint views.
-
-## Key settings
-
-- **Preview order ID** (number)
-- **Hide** (checkbox)
-- **Typography** (typography)
-- **Mark** (separator)
-- **Padding** (spacing)
-- **Background color** (color)
-- **Title** (separator)
-- **Meta** (separator)
-- **Description** (separator)
-- **Table** (separator)
-
-## Usage tips
-
-- Use these elements in My Account templates or endpoint-specific templates.
-- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
-
----
-
-<a id="builder-elements-woocommerce-cart-collaterals"></a>
-
-# Cart totals
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-collaterals/
-
-*Displays cart totals and related collateral content from the Cart page.*
-
-Displays cart totals and related collateral content from the Cart page.
-
-## Where this element works
-
-Cart page templates.
-
-## Key settings
-
-- **Disable cross sells** (checkbox)
-- **Hide title** (checkbox)
-- **Title** (typography)
-- **Subtotal** (typography)
-- **Total** (typography)
-- **Table** (separator)
-- **Margin** (spacing)
-- **Padding** (spacing)
-- **Border** (border)
-- **Button** (separator)
-
-## Usage tips
-
-- Place cart elements in a dedicated Cart template to avoid empty output on non-cart pages.
-- Keep spacing and table styling consistent across cart rows, totals, and coupon sections for better usability.
-
----
-
 <a id="builder-elements-woocommerce-account-payment-methods"></a>
 
 # Account - Payment methods
@@ -27694,6 +27627,40 @@ My Account templates and My Account endpoint views.
 - **Box shadow** (box-shadow)
 - **Typography** (typography)
 - **Padding** (spacing)
+
+## Usage tips
+
+- Use these elements in My Account templates or endpoint-specific templates.
+- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
+
+---
+
+<a id="builder-elements-woocommerce-account-view-order"></a>
+
+# Account - View order
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-view-order/
+
+*Displays order details for a selected order in My Account.*
+
+Displays order details for a selected order in My Account.
+
+## Where this element works
+
+My Account templates and My Account endpoint views.
+
+## Key settings
+
+- **Preview order ID** (number)
+- **Hide** (checkbox)
+- **Typography** (typography)
+- **Mark** (separator)
+- **Padding** (spacing)
+- **Background color** (color)
+- **Title** (separator)
+- **Meta** (separator)
+- **Description** (separator)
+- **Table** (separator)
 
 ## Usage tips
 
@@ -27745,6 +27712,40 @@ Displays WooCommerce breadcrumb navigation.
 - **Gap** (number with units) - Gap between breadcrumb items.
 
 - **Margin** (spacing) - Margin around separators.
+
+---
+
+<a id="builder-elements-woocommerce-cart-collaterals"></a>
+
+# Cart totals
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-collaterals/
+
+*Displays cart totals and related collateral content from the Cart page.*
+
+Displays cart totals and related collateral content from the Cart page.
+
+## Where this element works
+
+Cart page templates.
+
+## Key settings
+
+- **Disable cross sells** (checkbox)
+- **Hide title** (checkbox)
+- **Title** (typography)
+- **Subtotal** (typography)
+- **Total** (typography)
+- **Table** (separator)
+- **Margin** (spacing)
+- **Padding** (spacing)
+- **Border** (border)
+- **Button** (separator)
+
+## Usage tips
+
+- Place cart elements in a dedicated Cart template to avoid empty output on non-cart pages.
+- Keep spacing and table styling consistent across cart rows, totals, and coupon sections for better usability.
 
 ---
 
@@ -27969,15 +27970,15 @@ Checkout templates (and order-received context for thank-you flows).
 
 ---
 
-<a id="builder-elements-woocommerce-checkout-order-review"></a>
+<a id="builder-elements-woocommerce-checkout-login"></a>
 
-# Checkout order review
+# Checkout login
 
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-order-review/
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-login/
 
-*Displays the order review section on Checkout.*
+*Displays the returning customer login prompt on Checkout.*
 
-Displays the order review section on Checkout.
+Displays the returning customer login prompt on Checkout.
 
 ## Where this element works
 
@@ -27985,16 +27986,19 @@ Checkout templates (and order-received context for thank-you flows).
 
 ## Key settings
 
-- **Hide title** (checkbox)
-- **Title** (text)
-- **Title typography** (typography)
-- **Subtitles typography** (typography)
-- **Items** (separator)
-- **Typography** (typography)
-- **Padding** (spacing)
-- **Border** (border)
-- **Margin** (spacing)
-- **Background** (color)
+- **Location** (select)
+- **Toggleable form** (checkbox)
+- **Text** (text)
+- **Justify content** (justify-content)
+- **Gap** (number)
+- **Button** (separator)
+- **Disable text** (checkbox)
+- **Icon** (icon)
+- **Icon typography** (typography)
+- **Icon expanded** (icon, since 2.5) - Alternate icon while the toggleable form is open.
+- **Icon expanded typography** (typography, since 2.5) - Styling for the expanded icon.
+- **Transition (ms)** (number, since 2.5) - Opening and closing duration when **Toggleable form** is enabled. Set `0` for an immediate change.
+- **Disable login message** (checkbox)
 
 ## Usage tips
 
@@ -28029,6 +28033,40 @@ Checkout templates (and order-received context for thank-you flows).
 - **Typography** (typography)
 - **Privacy** (separator)
 - **Button** (separator)
+
+## Usage tips
+
+- Use checkout elements only in Checkout templates so forms and order data render correctly.
+- Test logged-in and guest checkout flows after styling changes to ensure all states remain usable.
+
+---
+
+<a id="builder-elements-woocommerce-checkout-order-review"></a>
+
+# Checkout order review
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-order-review/
+
+*Displays the order review section on Checkout.*
+
+Displays the order review section on Checkout.
+
+## Where this element works
+
+Checkout templates (and order-received context for thank-you flows).
+
+## Key settings
+
+- **Hide title** (checkbox)
+- **Title** (text)
+- **Title typography** (typography)
+- **Subtitles typography** (typography)
+- **Items** (separator)
+- **Typography** (typography)
+- **Padding** (spacing)
+- **Border** (border)
+- **Margin** (spacing)
+- **Background** (color)
 
 ## Usage tips
 
@@ -28092,43 +28130,6 @@ Checkout templates (and order-received context for thank-you flows).
 - **Label typography** (typography)
 - **Action buttons** (separator)
 - **Gap** (number)
-
-## Usage tips
-
-- Use checkout elements only in Checkout templates so forms and order data render correctly.
-- Test logged-in and guest checkout flows after styling changes to ensure all states remain usable.
-
----
-
-<a id="builder-elements-woocommerce-checkout-login"></a>
-
-# Checkout login
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-login/
-
-*Displays the returning customer login prompt on Checkout.*
-
-Displays the returning customer login prompt on Checkout.
-
-## Where this element works
-
-Checkout templates (and order-received context for thank-you flows).
-
-## Key settings
-
-- **Location** (select)
-- **Toggleable form** (checkbox)
-- **Text** (text)
-- **Justify content** (justify-content)
-- **Gap** (number)
-- **Button** (separator)
-- **Disable text** (checkbox)
-- **Icon** (icon)
-- **Icon typography** (typography)
-- **Icon expanded** (icon, since 2.5) - Alternate icon while the toggleable form is open.
-- **Icon expanded typography** (typography, since 2.5) - Styling for the expanded icon.
-- **Transition (ms)** (number, since 2.5) - Opening and closing duration when **Toggleable form** is enabled. Set `0` for an immediate change.
-- **Disable login message** (checkbox)
 
 ## Usage tips
 
@@ -28562,66 +28563,6 @@ Since Bricks 2.5, use a Notice element in a non-AJAX popup with the [Coupon erro
 
 ---
 
-<a id="builder-elements-woocommerce-products-archive-description"></a>
-
-# Products archive description
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-archive-description/
-
-*Displays the description for WooCommerce product archives (shop page, categories, tags).*
-
-Displays the description for WooCommerce product archives (shop page, categories, tags).
-
----
-
-<a id="builder-elements-woocommerce-products-orderby"></a>
-
-# Products orderby
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-orderby/
-
-*Displays a dropdown to sort WooCommerce products.*
-
-Displays a dropdown to sort WooCommerce products.
-
-## Settings
-
-- **Order by** (select) - Available sorting options. Multiple selection. Leave empty to use WooCommerce default list.
-
----
-
-<a id="builder-elements-woocommerce-products-pagination"></a>
-
-# Products pagination
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-pagination/
-
-*Displays pagination for WooCommerce product listings.*
-
-Displays pagination for WooCommerce product listings.
-
-## Settings
-
-- **Alignment** (align-items) - Pagination alignment.
-- **Previous Icon** (icon) - Icon for previous page link.
-- **Next Icon** (icon) - Icon for next page link.
-- **End Size** (number) - How many numbers on either the start and the end list edges. Minimum: 1.
-- **Mid Size** (number) - How many numbers to either side of the current page. Minimum: 1.
-
----
-
-<a id="builder-elements-woocommerce-products-total-results"></a>
-
-# Products total results
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-total-results/
-
-*Displays the total number of products found and current result range.*
-
-Displays the total number of products found and current result range.
-
----
-
 <a id="builder-elements-woocommerce-products-filter"></a>
 
 # Products filter
@@ -28654,6 +28595,46 @@ Displays product filters for WooCommerce product listings.
 
 ---
 
+<a id="builder-elements-woocommerce-products-archive-description"></a>
+
+# Products archive description
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-archive-description/
+
+*Displays the description for WooCommerce product archives (shop page, categories, tags).*
+
+Displays the description for WooCommerce product archives (shop page, categories, tags).
+
+---
+
+<a id="builder-elements-woocommerce-products-orderby"></a>
+
+# Products orderby
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-orderby/
+
+*Displays a dropdown to sort WooCommerce products.*
+
+Displays a dropdown to sort WooCommerce products.
+
+## Settings
+
+- **Order by** (select) - Available sorting options. Multiple selection. Leave empty to use WooCommerce default list.
+
+---
+
+<a id="builder-elements-woocommerce-products-total-results"></a>
+
+# Products total results
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-total-results/
+
+*Displays the total number of products found and current result range.*
+
+Displays the total number of products found and current result range.
+
+---
+
 <a id="builder-elements-woocommerce-products"></a>
 
 # Products
@@ -28680,6 +28661,26 @@ Displays WooCommerce products in a grid layout with customizable fields and widg
 - **Show Before Grid** (select) - Widgets to show before products grid. Options: Pagination, Result Count, Order by. Multiple selection.
 - **Show After Grid** (select) - Widgets to show after products grid. Options: Pagination, Result Count, Order by. Multiple selection.
 - **Sort by options** (select) - Available sorting options. Default: Default sorting. Multiple selection.
+
+---
+
+<a id="builder-elements-woocommerce-products-pagination"></a>
+
+# Products pagination
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-pagination/
+
+*Displays pagination for WooCommerce product listings.*
+
+Displays pagination for WooCommerce product listings.
+
+## Settings
+
+- **Alignment** (align-items) - Pagination alignment.
+- **Previous Icon** (icon) - Icon for previous page link.
+- **Next Icon** (icon) - Icon for next page link.
+- **End Size** (number) - How many numbers on either the start and the end list edges. Minimum: 1.
+- **Mid Size** (number) - How many numbers to either side of the current page. Minimum: 1.
 
 ---
 

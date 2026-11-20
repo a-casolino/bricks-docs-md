@@ -383,169 +383,6 @@ Bricks 2.4 adds additional order tags and order-aware query loops for v2 layouts
 
 ---
 
-# Create a custom mini cart with Dynamic fragment
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/create-custom-mini-cart-dynamic-fragment/
-
-*Build a WooCommerce mini cart that refreshes after cart changes using Dynamic fragment, the Cart contents query loop, and cart dynamic tags.*
-
-Use the Dynamic fragment element when you need cart-dependent content outside the main Cart page, such as a custom mini cart in a header Offcanvas, dropdown, or popup.
-
-Dynamic fragment re-renders itself and its children after WooCommerce cart changes. For a mini cart, place the cart item loop and cart totals inside the fragment so product rows, quantities, subtotal, and buttons stay current after add-to-cart, remove, and quantity changes.
-
-https://youtu.be/ExpIHVe2tho
-
-> **Note**
->
-> Dynamic fragment requires **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
-
-The classic [Mini cart element](https://academy.bricksbuilder.io/builder/elements/woocommerce/mini-cart/) shows WooCommerce's own mini cart list. You can style it, but not change its structure. Use Dynamic fragment when you want to build the cart rows, totals, and buttons from Bricks elements.
-
-## Common setup
-
-Mini carts are usually added to a header template and shown in an Offcanvas:
-
-- The header contains the cart icon and cart count.
-- The cart icon toggles the Offcanvas.
-- The Offcanvas contains the generated mini cart structure.
-
-Place the generated mini cart in a dropdown or popup for smaller layouts. Use an Offcanvas when you want more room for product rows, quantity controls, totals, and checkout actions.
-
-## Create the Offcanvas mini cart
-
-1. Open the header template or page where the mini cart should appear.
-2. Add an **Offcanvas** element.
-3. Inside the Offcanvas content area, add a **Dynamic fragment** element.
-4. In the Dynamic fragment controls, go to **Insert a structure**.
-5. Select **Mini cart**.
-6. Click **Generate**.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart.png)
-
-Bricks appends the generated structure inside the Dynamic fragment. It does not replace existing child elements.
-
-## What Bricks generates
-
-The generated Mini cart structure already includes the cart item layout, totals, and buttons. You do not need to add these manually unless you want to change the design or content.
-
-Inside the Dynamic fragment, Bricks creates:
-
-- A **Details wrapper** that contains the mini cart content.
-- A **Cart loop** using the **Cart contents** query type.
-- A cart row inside the loop with product image, product title, product price, product excerpt, item data, quantity control, remove icon, and line subtotal.
-- An empty-cart message from the Cart contents query loop. Change it in the Cart loop's query settings under **No results** > **Text**.
-- A separate block after the Cart loop for the subtotal and action buttons.
-- A condition on that subtotal/actions block so it only shows when the Cart loop has more than `0` results.
-- **View Cart** and **Checkout** buttons using WooCommerce URL dynamic data.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-mini-cart-structure-example.png)
-
-## What the generated structure uses
-
-The generated cart row uses WooCommerce cart tags inside the **Cart contents** loop.
-
-Common row tags:
-
-| Tag or element | Use |
-| --- | --- |
-| `{featured_image}` | Product image. |
-| `{woo_cart_product_title:plain}` | Product title as plain text, without variation metadata. |
-| **Cart item data** | Variation attributes and compatible extension-provided item data. |
-| **Cart quantity** | Quantity input with plus and minus buttons. |
-| `{woo_cart_quantity:value}` | Quantity number as text. |
-| `{woo_cart_subtotal}` | Line subtotal. |
-| `{woo_cart_remove_link:url}` | Remove URL for a link or icon. |
-
-For a custom row, use `{woo_cart_item_price}` when you need the formatted unit price with sale-price markup. `{woo_cart_item_save}` returns the quantity-aware product savings and can be used in a condition through `{woo_cart_item_save:value}`.
-
-The subtotal and buttons are outside the Cart contents loop, but still inside the Dynamic fragment. The generated structure uses:
-
-| Element              | Dynamic data                |
-| -------------------- | --------------------------- |
-| Subtotal amount      | `{woo_cart_order_subtotal}` |
-| View Cart button URL | `{woo_url:cart}`            |
-| Checkout button URL  | `{woo_url:checkout}`        |
-
-The generated remove icon uses `{woo_cart_remove_link:url}` as its link URL. Keep the `product-remove` CSS class on the remove element so WooCommerce cart behavior can target it.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-subtotal-condition.png)
-
-## Add a header cart icon
-
-In the header template, add a second Dynamic fragment near the navigation for the cart icon and count. This fragment only needs to contain the small cart trigger, not the full mini cart.
-
-Inside that header Dynamic fragment:
-
-1. Add an Icon element and choose a cart icon.
-2. Add a Text Basic element for the cart count.
-3. Set the count text to `{woo_cart_items_count}`.
-4. Position the count as a small badge on the cart icon.
-5. Add an element condition to the count so it only shows when `{woo_cart_items_count}` is greater than `0`.
-6. Add an interaction to the cart icon:
-   - **Trigger**: Click
-   - **Action**: Toggle offcanvas
-   - **Offcanvas: CSS selector**: the target Offcanvas element ID, such as `#brxe-evudao`
-
-Because the icon and count are inside Dynamic fragment, the count updates after cart changes. Keep the rest of the header outside the Dynamic fragment unless it also depends on cart data.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-header-mini-cart-trigger.png)
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-header-mini-cart-trigger-interaction.png)
-
-## Open the Offcanvas after add to cart
-
-You can open the mini cart Offcanvas when a product is added through AJAX.
-
-On the Offcanvas element, add an interaction:
-
-- **Trigger**: Added to cart
-- **Action**: Toggle offcanvas
-- **Offcanvas: CSS selector**: the Offcanvas element ID
-
-Add a condition to the Offcanvas if you do not want this behavior on checkout. For example, show the Offcanvas only when the current URL does not contain `{woo_url:checkout}`.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-interaction.png)
-
-**Added to cart** also runs for WooCommerce's own add to cart buttons on shop and category pages when **WooCommerce > Settings > Products > Enable AJAX add to cart buttons on archives** is on (the WooCommerce default).
-
-Keep **Added to cart** for this interaction if the Offcanvas should toggle only after an addition. The [Bricks cart contents changed](https://academy.bricksbuilder.io/builder/features/interactions/#cart-contents-changed) trigger, available since Bricks 2.4, also runs after successful AJAX quantity changes and removals. Using it with **Toggle offcanvas** would toggle the mini cart during those updates too.
-
-## Preview the refresh behavior
-
-Dynamic fragment refreshes on the frontend after WooCommerce cart events such as add to cart, remove from cart, cart emptied, cart totals updated, checkout updated, and coupon apply/remove events.
-
-In the Builder, the cart loop previews your own cart, or sample products when your cart is empty. **Cart item data** shows a placeholder for products without item data, such as simple products. The frontend renders each visitor's real cart.
-
-The **Bricks dynamic fragments refreshed** interaction signals that fragment content has been replaced. It can run during initial synchronization or checkout recalculation without a cart item change. To show a custom “Cart updated” confirmation, use **Bricks cart contents changed**, which waits for a confirmed item change and the related UI updates to finish.
-
-To test the mini cart:
-
-1. Open the frontend page that contains the mini cart.
-2. Add a product to the cart.
-3. Confirm the mini cart updates without reloading the page.
-4. Confirm the header cart count updates.
-5. Click the cart icon and confirm the Offcanvas opens.
-6. Remove the item or change quantity if your layout includes quantity controls.
-7. Confirm the row count, subtotal, and buttons still render correctly.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-frontend-added-to-cart.png)
-
-## Limits
-
-- Dynamic fragment is frontend-only.
-- Keep the Dynamic fragment wrapper outside other query loops. The Cart contents loop can be inside the fragment.
-- Component instances are not supported.
-- The fragment must render from the header, content, or footer area.
-- Keep the fragment focused on cart-dependent content. Static header, menu, or layout elements do not need to be inside it.
-
-## Related
-
-- [Dynamic fragment element](https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/)
-- [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/)
-- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/)
-
----
-
 # WooCommerce advanced modular elements
 
 Source: https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/
@@ -740,40 +577,166 @@ Classic templates and v2 page states can coexist on the same site, but each WooC
 
 ---
 
-# Element: Checkout Coupon
+# Create a custom mini cart with Dynamic fragment
 
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/create-custom-mini-cart-dynamic-fragment/
 
-*Use the Bricks Checkout Coupon element inside WooCommerce checkout templates to render and style the coupon form.*
+*Build a WooCommerce mini cart that refreshes after cart changes using Dynamic fragment, the Cart contents query loop, and cart dynamic tags.*
 
-This Checkout coupon element, available @since 1.11.1, allows you to display the coupon field in various locations on the checkout page, making it easy for customers to apply discount codes during their purchase.
+Use the Dynamic fragment element when you need cart-dependent content outside the main Cart page, such as a custom mini cart in a header Offcanvas, dropdown, or popup.
 
-In previous versions, you couldn’t control the location of the checkout coupon. Additionally, styling options were limited, and adjustments required custom CSS. With this new, dedicated checkout coupon element you now have greater control over placement and design.
+Dynamic fragment re-renders itself and its children after WooCommerce cart changes. For a mini cart, place the cart item loop and cart totals inside the fragment so product rows, quantities, subtotal, and buttons stay current after add-to-cart, remove, and quantity changes.
 
-To use this element, first enable it under **`Bricks > Settings > WooCommerce`** by turning on **`Enable Bricks WooCommerce "Checkout coupon" element`**.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-setting.png)
+https://youtu.be/ExpIHVe2tho
 
 > **Note**
 >
-> WooCommerce **`Enable the use of coupon codes`** must also be active under **WooCommerce > Settings > General**. When the Bricks Checkout Coupon element is enabled, the native WooCommerce checkout coupon form is removed, so add this element where you want the coupon form to appear.
+> Dynamic fragment requires **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
 
-> **Note**
->
-> **Note:** This element is specifically designed for the Checkout page and will only work when placed on the **Checkout template** or the Checkout page itself, depending on your design requirements.
+The classic [Mini cart element](https://academy.bricksbuilder.io/builder/elements/woocommerce/mini-cart/) shows WooCommerce's own mini cart list. You can style it, but not change its structure. Use Dynamic fragment when you want to build the cart rows, totals, and buttons from Bricks elements.
 
-**Key Controls**
+## Common setup
 
-**Location:**
+Mini carts are usually added to a header template and shown in an Offcanvas:
 
-- By default, the **Checkout Coupon** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment
-- Custom location settings only apply on the actual frontend (Checkout page). To ensure correct placement, add this element at the top of your Checkout template.
+- The header contains the cart icon and cart count.
+- The cart icon toggles the Offcanvas.
+- The Offcanvas contains the generated mini cart structure.
 
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-element-controls.png)
+Place the generated mini cart in a dropdown or popup for smaller layouts. Use an Offcanvas when you want more room for product rows, quantity controls, totals, and checkout actions.
 
-![](https://academy.bricksbuilder.io/assets/element-location-example.png)
+## Create the Offcanvas mini cart
 
-Enable **Toggleable form** to hide the form until its prompt is clicked. For the expanded icon and transition controls added in Bricks 2.5, see the [Checkout Coupon settings](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-coupon/#settings).
+1. Open the header template or page where the mini cart should appear.
+2. Add an **Offcanvas** element.
+3. Inside the Offcanvas content area, add a **Dynamic fragment** element.
+4. In the Dynamic fragment controls, go to **Insert a structure**.
+5. Select **Mini cart**.
+6. Click **Generate**.
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart.png)
+
+Bricks appends the generated structure inside the Dynamic fragment. It does not replace existing child elements.
+
+## What Bricks generates
+
+The generated Mini cart structure already includes the cart item layout, totals, and buttons. You do not need to add these manually unless you want to change the design or content.
+
+Inside the Dynamic fragment, Bricks creates:
+
+- A **Details wrapper** that contains the mini cart content.
+- A **Cart loop** using the **Cart contents** query type.
+- A cart row inside the loop with product image, product title, product price, product excerpt, item data, quantity control, remove icon, and line subtotal.
+- An empty-cart message from the Cart contents query loop. Change it in the Cart loop's query settings under **No results** > **Text**.
+- A separate block after the Cart loop for the subtotal and action buttons.
+- A condition on that subtotal/actions block so it only shows when the Cart loop has more than `0` results.
+- **View Cart** and **Checkout** buttons using WooCommerce URL dynamic data.
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-mini-cart-structure-example.png)
+
+## What the generated structure uses
+
+The generated cart row uses WooCommerce cart tags inside the **Cart contents** loop.
+
+Common row tags:
+
+| Tag or element | Use |
+| --- | --- |
+| `{featured_image}` | Product image. |
+| `{woo_cart_product_title:plain}` | Product title as plain text, without variation metadata. |
+| **Cart item data** | Variation attributes and compatible extension-provided item data. |
+| **Cart quantity** | Quantity input with plus and minus buttons. |
+| `{woo_cart_quantity:value}` | Quantity number as text. |
+| `{woo_cart_subtotal}` | Line subtotal. |
+| `{woo_cart_remove_link:url}` | Remove URL for a link or icon. |
+
+For a custom row, use `{woo_cart_item_price}` when you need the formatted unit price with sale-price markup. `{woo_cart_item_save}` returns the quantity-aware product savings and can be used in a condition through `{woo_cart_item_save:value}`.
+
+The subtotal and buttons are outside the Cart contents loop, but still inside the Dynamic fragment. The generated structure uses:
+
+| Element              | Dynamic data                |
+| -------------------- | --------------------------- |
+| Subtotal amount      | `{woo_cart_order_subtotal}` |
+| View Cart button URL | `{woo_url:cart}`            |
+| Checkout button URL  | `{woo_url:checkout}`        |
+
+The generated remove icon uses `{woo_cart_remove_link:url}` as its link URL. Keep the `product-remove` CSS class on the remove element so WooCommerce cart behavior can target it.
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-subtotal-condition.png)
+
+## Add a header cart icon
+
+In the header template, add a second Dynamic fragment near the navigation for the cart icon and count. This fragment only needs to contain the small cart trigger, not the full mini cart.
+
+Inside that header Dynamic fragment:
+
+1. Add an Icon element and choose a cart icon.
+2. Add a Text Basic element for the cart count.
+3. Set the count text to `{woo_cart_items_count}`.
+4. Position the count as a small badge on the cart icon.
+5. Add an element condition to the count so it only shows when `{woo_cart_items_count}` is greater than `0`.
+6. Add an interaction to the cart icon:
+   - **Trigger**: Click
+   - **Action**: Toggle offcanvas
+   - **Offcanvas: CSS selector**: the target Offcanvas element ID, such as `#brxe-evudao`
+
+Because the icon and count are inside Dynamic fragment, the count updates after cart changes. Keep the rest of the header outside the Dynamic fragment unless it also depends on cart data.
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-header-mini-cart-trigger.png)
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-header-mini-cart-trigger-interaction.png)
+
+## Open the Offcanvas after add to cart
+
+You can open the mini cart Offcanvas when a product is added through AJAX.
+
+On the Offcanvas element, add an interaction:
+
+- **Trigger**: Added to cart
+- **Action**: Toggle offcanvas
+- **Offcanvas: CSS selector**: the Offcanvas element ID
+
+Add a condition to the Offcanvas if you do not want this behavior on checkout. For example, show the Offcanvas only when the current URL does not contain `{woo_url:checkout}`.
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-interaction.png)
+
+**Added to cart** also runs for WooCommerce's own add to cart buttons on shop and category pages when **WooCommerce > Settings > Products > Enable AJAX add to cart buttons on archives** is on (the WooCommerce default).
+
+Keep **Added to cart** for this interaction if the Offcanvas should toggle only after an addition. The [Bricks cart contents changed](https://academy.bricksbuilder.io/builder/features/interactions/#cart-contents-changed) trigger, available since Bricks 2.4, also runs after successful AJAX quantity changes and removals. Using it with **Toggle offcanvas** would toggle the mini cart during those updates too.
+
+## Preview the refresh behavior
+
+Dynamic fragment refreshes on the frontend after WooCommerce cart events such as add to cart, remove from cart, cart emptied, cart totals updated, checkout updated, and coupon apply/remove events.
+
+In the Builder, the cart loop previews your own cart, or sample products when your cart is empty. **Cart item data** shows a placeholder for products without item data, such as simple products. The frontend renders each visitor's real cart.
+
+The **Bricks dynamic fragments refreshed** interaction signals that fragment content has been replaced. It can run during initial synchronization or checkout recalculation without a cart item change. To show a custom “Cart updated” confirmation, use **Bricks cart contents changed**, which waits for a confirmed item change and the related UI updates to finish.
+
+To test the mini cart:
+
+1. Open the frontend page that contains the mini cart.
+2. Add a product to the cart.
+3. Confirm the mini cart updates without reloading the page.
+4. Confirm the header cart count updates.
+5. Click the cart icon and confirm the Offcanvas opens.
+6. Remove the item or change quantity if your layout includes quantity controls.
+7. Confirm the row count, subtotal, and buttons still render correctly.
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-offcanvas-mini-cart-frontend-added-to-cart.png)
+
+## Limits
+
+- Dynamic fragment is frontend-only.
+- Keep the Dynamic fragment wrapper outside other query loops. The Cart contents loop can be inside the fragment.
+- Component instances are not supported.
+- The fragment must render from the header, content, or footer area.
+- Keep the fragment focused on cart-dependent content. Static header, menu, or layout elements do not need to be inside it.
+
+## Related
+
+- [Dynamic fragment element](https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/)
+- [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/)
+- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/)
 
 ---
 
@@ -920,6 +883,43 @@ Now, your shop page and product category pages should be able to work as expecte
 Custom WooCommerce Archive Template
 
 </figcaption>
+
+---
+
+# Element: Checkout Coupon
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/
+
+*Use the Bricks Checkout Coupon element inside WooCommerce checkout templates to render and style the coupon form.*
+
+This Checkout coupon element, available @since 1.11.1, allows you to display the coupon field in various locations on the checkout page, making it easy for customers to apply discount codes during their purchase.
+
+In previous versions, you couldn’t control the location of the checkout coupon. Additionally, styling options were limited, and adjustments required custom CSS. With this new, dedicated checkout coupon element you now have greater control over placement and design.
+
+To use this element, first enable it under **`Bricks > Settings > WooCommerce`** by turning on **`Enable Bricks WooCommerce "Checkout coupon" element`**.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-setting.png)
+
+> **Note**
+>
+> WooCommerce **`Enable the use of coupon codes`** must also be active under **WooCommerce > Settings > General**. When the Bricks Checkout Coupon element is enabled, the native WooCommerce checkout coupon form is removed, so add this element where you want the coupon form to appear.
+
+> **Note**
+>
+> **Note:** This element is specifically designed for the Checkout page and will only work when placed on the **Checkout template** or the Checkout page itself, depending on your design requirements.
+
+**Key Controls**
+
+**Location:**
+
+- By default, the **Checkout Coupon** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment
+- Custom location settings only apply on the actual frontend (Checkout page). To ensure correct placement, add this element at the top of your Checkout template.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-element-controls.png)
+
+![](https://academy.bricksbuilder.io/assets/element-location-example.png)
+
+Enable **Toggleable form** to hide the form until its prompt is clicked. For the expanded icon and transition controls added in Bricks 2.5, see the [Checkout Coupon settings](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-coupon/#settings).
 
 ---
 

@@ -41,6 +41,7 @@ The older **Disable header**, **Disable footer**, and **Disable popups** control
 4. **Set template conditions**
   - Set [the template conditions](https://academy.bricksbuilder.io/builder/features/template-settings/#template-conditions) under `Settings > Template settings > Conditions` to define where this template applies.
   - For more dynamic control, use the [`bricks/password_protection/is_active`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-is_active/) filter to customize when the template should be active or bypassed.
+  - Password protection does not restrict direct access to media files, even when the template applies to the entire website. The web server delivers uploaded files without loading WordPress, so anyone with a file URL can open it. Since Bricks 2.4.6, the **Media** post type is no longer offered in password protection template conditions. Existing conditions that already include it are kept.
 
 ![](https://academy.bricksbuilder.io/assets/bricks-password-protection-template-conditions.png)
 

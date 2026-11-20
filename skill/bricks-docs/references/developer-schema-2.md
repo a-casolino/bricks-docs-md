@@ -1,1730 +1,1099 @@
-# Counter Schema
+# Theme Styles Schema
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/counter/
+Source: https://academy.bricksbuilder.io/developer/schema/global/theme-styles/
 
-*Schema for Bricks Counter element*
+*Full schema for Bricks theme styles: per-section controls, types, CSS properties, and selectors.*
 
-| Property | Value |
-|---|---|
-| `name` | counter |
-| `category` | general |
-| `tag` | div |
-| `nestable` | false |
+Theme styles define global CSS defaults for element types (buttons, headings, typography, etc.) and site-wide settings (colors, links, spacing). They are stored in the `bricks_theme_styles` WordPress option.
 
-## Controls
+## Data structure
 
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `countFrom` | text | Count from | — |
-| `countTo` | text | Count to | — |
-| `duration` | number | Animation in ms | — |
-| `countTypography` | typography | Typography | `font` on `.count` |
-| `prefix` | text | Prefix | — |
-| `prefixTypography` | typography | Typography | `font` on `.prefix` |
-| `suffix` | text | Suffix | — |
-| `suffixTypography` | typography | Typography | `font` on `.suffix` |
-| `thousandSeparator` | checkbox | Thousand separator | — |
-| `separatorText` | text | Separator | — |
+Each theme style has a `label` and a `settings` object. The settings object is keyed by section name, and each section contains controls that map to CSS properties.
 
-## Inherited CSS controls
+## Storage
 
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+| Data | Option name | PHP constant |
+|---|---|---|
+| Theme styles | `bricks_theme_styles` | `BRICKS_DB_THEME_STYLES` |
 
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_columns` | text | Columns | `columns` |
-| `_columnGap` | number | Column gap | `column-gap` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+The option value is an associative array keyed by theme style ID (e.g. `"flavor"`), with each entry being a `themeStyle` object.
 
----
+## Responsive and state variants
 
-# Div Schema
+Theme style control keys support the same colon syntax as element settings for breakpoint and pseudo-class variants:
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/div/
+```
+typography                          → base breakpoint
+typography:tablet_portrait          → tablet portrait
+typography:mobile_portrait:hover    → mobile + hover
+```
 
-*Schema for Bricks Div element*
+## Sections
 
-| Property | Value |
-|---|---|
-| `name` | div |
-| `category` | layout |
-| `tag` | div |
-| `nestable` | true |
+### Accordion
 
-## Controls
+Section key: `accordion`
+
+Theme style controls for the "accordion" section. Default CSS selector: .brxe-accordion
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `disableLazyLoad` | checkbox | Disable lazy load | — |
-| `link` | link | Link | — |
+| `accordionIcon` | icon | Icon | — |
+| `accordionIconExpanded` | icon | Icon expanded | — |
+| `titleTypography` | typography | Title typography | `font` on `.accordion-title .title` |
+| `subtitleTypography` | typography | Subtitle typography | `font` on `.accordion-subtitle` |
+| `contentTypography` | typography | Content typography | `font` on `.accordion-content-wrapper` |
+
+### Alert
+
+Section key: `alert`
+
+Theme style controls for the "alert" section. Default CSS selector: .brxe-alert
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `padding` | spacing | Padding | `padding` |
+| `typography` | typography | Typography | `font` |
+| `border` | border | Border | `border` |
+| `infoColor` | color | Text color | `color` on `&.info` |
+| `infoBackground` | color | Background color | `background-color` on `&.info` |
+| `infoBorder` | border | Border | `border` on `&.info` |
+| `successColor` | color | Text color | `color` on `&.success` |
+| `successBackground` | color | Background color | `background-color` on `&.success` |
+| `successBorder` | border | Border | `border` on `&.success` |
+| `warningColor` | color | Text color | `color` on `&.warning` |
+| `warningBackground` | color | Background color | `background-color` on `&.warning` |
+| `warningBorder` | border | Border | `border` on `&.warning` |
+| `dangerColor` | color | Text color | `color` on `&.danger` |
+| `dangerBackground` | color | Background color | `background-color` on `&.danger` |
+| `dangerBorder` | border | Border | `border` on `&.danger` |
+| `mutedColor` | color | Text color | `color` on `&.muted` |
+| `mutedBackground` | color | Background color | `background-color` on `&.muted` |
+| `mutedBorder` | border | Border | `border` on `&.muted` |
+
+### Block
+
+Section key: `block`
+
+Theme style controls for the "block" section. Default CSS selector: .brxe-block
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `_display` | select | Display | `display` on `.brxe-block:where(:not(.accordion-content-wrapper):not(.accordion-title-wrapper))`, `align-items` on `.brxe-block:where(:not(.accordion-content-wrapper):not(.accordion-title-wrapper))` |
+| `_gridGap` | number | Gap | `gap` on `.brxe-block:where(:not(.accordion-content-wrapper):not(.accordion-title-wrapper))` |
+| `_columnGap` | number | Column gap | `column-gap` on `.brxe-block` |
+| `_rowGap` | number | Row gap | `row-gap` on `.brxe-block` |
+| `_gridTemplateColumns` | text | Grid template columns | `grid-template-columns` on `.brxe-block:where(:not(.accordion-content-wrapper):not(.accordion-title-wrapper))` |
+| `_gridTemplateRows` | text | Grid template rows | `grid-template-rows` on `.brxe-block:where(:not(.accordion-content-wrapper):not(.accordion-title-wrapper))` |
+| `_gridAutoColumns` | text | Grid auto columns | `grid-auto-columns` on `.brxe-block:where(:not(.accordion-content-wrapper):not(.accordion-title-wrapper))` |
+| `_gridAutoRows` | text | Grid auto rows | `grid-auto-rows` on `.brxe-block:where(:not(.accordion-content-wrapper):not(.accordion-title-wrapper))` |
+| `_gridAutoFlow` | select | Grid auto flow | `grid-auto-flow` on `.brxe-block:where(:not(.accordion-content-wrapper):not(.accordion-title-wrapper))` |
+| `_justifyItemsGrid` | justify-content | Justify items | `justify-items` on `.brxe-block:where(:not(.accordion-content-wrapper):not(.accordion-title-wrapper))` |
+| `_alignItemsGrid` | align-items | Align items | `align-items` on `.brxe-block:where(:not(.accordion-content-wrapper):not(.accordion-title-wrapper))` |
+| `_justifyContentGrid` | justify-content | Justify content | `justify-content` on `.brxe-block:where(:not(.accordion-content-wrapper):not(.accordion-title-wrapper))` |
+| `_alignContentGrid` | align-items | Align content | `align-content` on `.brxe-block:where(:not(.accordion-content-wrapper):not(.accordion-title-wrapper))` |
+| `_direction` | direction | Direction | `flex-direction` on `.brxe-block` |
+| `_justifyContent` | justify-content | Align main axis | `justify-content` on `.brxe-block` |
+| `_alignItems` | align-items | Align cross axis | `align-items` on `.brxe-block` |
+| `width` | number | Width | `width` on `.brxe-block` |
+| `widthMin` | number | Min. width | `min-width` on `.brxe-block` |
+| `widthMax` | number | Max. width | `max-width` on `.brxe-block` |
+| `margin` | spacing | Margin | `margin` on `.brxe-block` |
+| `padding` | spacing | Padding | `padding` on `.brxe-block` |
+
+### Button
+
+Section key: `button`
+
+Theme style controls for the "button" section.
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `typography` | typography | Typography | `font` on `.bricks-button` |
+| `background` | color | Background color | `background-color` on `.bricks-button:where(:not([class*="bricks-background-"]):not([class*="bricks-color-"]):not(.outline))` |
+| `border` | border | Border | `border` on `.bricks-button` |
+| `boxShadow` | box-shadow | Box shadow | `box-shadow` on `.bricks-button` |
+| `transition` | text | Transition | `transition` on `.bricks-button` |
+| `outlineTypography` | typography | Outline | `font` on `.bricks-button:where(.outline)` |
+| `outlineBackground` | color | Outline | `background-color` on `.bricks-button:where(.outline)` |
+| `outlineBorder` | border | Outline | `border` on `.bricks-button:where(.outline)` |
+| `outlineBoxShadow` | box-shadow | Outline | `box-shadow` on `.bricks-button:where(.outline)` |
+| `primaryTypography` | typography | Typography | `font` |
+| `primaryBackground` | color | Background color | `background-color` |
+| `primaryBorder` | border | Border | `border` |
+| `primaryBoxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `primaryOutlineTypography` | typography | Outline | `font` |
+| `primaryOutlineBackground` | color | Outline | `background-color` |
+| `primaryOutlineBorder` | border | Outline | `border` |
+| `primaryOutlineBoxShadow` | box-shadow | Outline | `box-shadow` |
+| `secondaryTypography` | typography | Typography | `font` |
+| `secondaryBackground` | color | Background color | `background-color` |
+| `secondaryBorder` | border | Border | `border` |
+| `secondaryBoxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `secondaryOutlineTypography` | typography | Outline | `font` |
+| `secondaryOutlineBackground` | color | Outline | `background-color` |
+| `secondaryOutlineBorder` | border | Outline | `border` |
+| `secondaryOutlineBoxShadow` | box-shadow | Outline | `box-shadow` |
+| `lightTypography` | typography | Typography | `font` |
+| `lightBackground` | color | Background color | `background-color` |
+| `lightBorder` | border | Border | `border` |
+| `lightBoxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `lightOutlineTypography` | typography | Outline | `font` |
+| `lightOutlineBackground` | color | Outline | `background-color` |
+| `lightOutlineBorder` | border | Outline | `border` |
+| `lightOutlineBoxShadow` | box-shadow | Outline | `box-shadow` |
+| `darkTypography` | typography | Typography | `font` |
+| `darkBackground` | color | Background color | `background-color` |
+| `darkBorder` | border | Border | `border` |
+| `darkBoxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `darkOutlineTypography` | typography | Outline | `font` |
+| `darkOutlineBackground` | color | Outline | `background-color` |
+| `darkOutlineBorder` | border | Outline | `border` |
+| `darkOutlineBoxShadow` | box-shadow | Outline | `box-shadow` |
+| `mutedTypography` | typography | Typography | `font` |
+| `mutedBackground` | color | Background color | `background-color` |
+| `mutedBorder` | border | Border | `border` |
+| `mutedBoxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `mutedOutlineTypography` | typography | Outline | `font` |
+| `mutedOutlineBackground` | color | Outline | `background-color` |
+| `mutedOutlineBorder` | border | Outline | `border` |
+| `mutedOutlineBoxShadow` | box-shadow | Outline | `box-shadow` |
+| `infoTypography` | typography | Typography | `font` |
+| `infoBackground` | color | Background color | `background-color` |
+| `infoBorder` | border | Border | `border` |
+| `infoBoxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `infoOutlineTypography` | typography | Outline | `font` |
+| `infoOutlineBackground` | color | Outline | `background-color` |
+| `infoOutlineBorder` | border | Outline | `border` |
+| `infoOutlineBoxShadow` | box-shadow | Outline | `box-shadow` |
+| `successTypography` | typography | Typography | `font` |
+| `successBackground` | color | Background color | `background-color` |
+| `successBorder` | border | Border | `border` |
+| `successBoxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `successOutlineTypography` | typography | Outline | `font` |
+| `successOutlineBackground` | color | Outline | `background-color` |
+| `successOutlineBorder` | border | Outline | `border` |
+| `successOutlineBoxShadow` | box-shadow | Outline | `box-shadow` |
+| `warningTypography` | typography | Typography | `font` |
+| `warningBackground` | color | Background color | `background-color` |
+| `warningBorder` | border | Border | `border` |
+| `warningBoxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `warningOutlineTypography` | typography | Outline | `font` |
+| `warningOutlineBackground` | color | Outline | `background-color` |
+| `warningOutlineBorder` | border | Outline | `border` |
+| `warningOutlineBoxShadow` | box-shadow | Outline | `box-shadow` |
+| `dangerTypography` | typography | Typography | `font` |
+| `dangerBackground` | color | Background color | `background-color` |
+| `dangerBorder` | border | Border | `border` |
+| `dangerBoxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `dangerOutlineTypography` | typography | Outline | `font` |
+| `dangerOutlineBackground` | color | Outline | `background-color` |
+| `dangerOutlineBorder` | border | Outline | `border` |
+| `dangerOutlineBoxShadow` | box-shadow | Outline | `box-shadow` |
+| `sizeDefaultPadding` | spacing | Padding | `padding` on `.bricks-button` |
+| `sizeSmPadding` | spacing | Padding | `padding` on `.bricks-button:where(.sm)` |
+| `sizeSmTypography` | typography | Typography | `font` on `.bricks-button:where(.sm)` |
+| `sizeMdPadding` | spacing | Padding | `padding` on `.bricks-button:where(.md)` |
+| `sizeMdTypography` | typography | Typography | `font` on `.bricks-button:where(.md)` |
+| `sizeLgPadding` | spacing | Padding | `padding` on `.bricks-button:where(.lg)` |
+| `sizeLgTypography` | typography | Typography | `font` on `.bricks-button:where(.lg)` |
+| `sizeXlPadding` | spacing | Padding | `padding` on `.bricks-button:where(.xl)` |
+| `sizeXlTypography` | typography | Typography | `font` on `.bricks-button:where(.xl)` |
+
+### Carousel
+
+Section key: `carousel`
+
+Theme style controls for the "carousel" section. Default CSS selector: .brxe-carousel
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `arrowHeight` | number | Height | `height` on `.swiper-button` |
+| `arrowWidth` | number | Width | `width` on `.swiper-button` |
+| `arrowBackground` | color | Background | `background-color` on `.swiper-button` |
+| `arrowBorder` | border | Border | `border` on `.swiper-button` |
+| `arrowTypography` | typography | Typography | `font` on `.swiper-button` |
+| `prevArrow` | icon | Prev arrow | `—` on `.bricks-swiper-button-prev > *` |
+| `prevArrowTop` | number | Top | `top` on `.bricks-swiper-button-prev` |
+| `prevArrowRight` | number | Right | `right` on `.bricks-swiper-button-prev` |
+| `prevArrowBottom` | number | Bottom | `bottom` on `.bricks-swiper-button-prev` |
+| `prevArrowLeft` | number | Left | `left` on `.bricks-swiper-button-prev` |
+| `nextArrow` | icon | Next arrow | `—` on `.bricks-swiper-button-next > *` |
+| `nextArrowTop` | number | Top | `top` on `.bricks-swiper-button-next` |
+| `nextArrowRight` | number | Right | `right` on `.bricks-swiper-button-next` |
+| `nextArrowBottom` | number | Bottom | `bottom` on `.bricks-swiper-button-next` |
+| `nextArrowLeft` | number | Left | `left` on `.bricks-swiper-button-next` |
+| `dotsHeight` | number | Height | `height` on `.swiper-pagination-bullet` |
+| `dotsWidth` | number | Width | `width` on `.swiper-pagination-bullet` |
+| `dotsTop` | number | Top | `top` on `.bricks-swiper-container + .swiper-pagination-bullets` |
+| `dotsRight` | number | Right | `right` on `.bricks-swiper-container + .swiper-pagination-bullets`, `left` on `.bricks-swiper-container + .swiper-pagination-bullets`, `transform` on `.bricks-swiper-container + .swiper-pagination-bullets` |
+| `dotsBottom` | number | Bottom | `bottom` on `.bricks-swiper-container + .swiper-pagination-bullets` |
+| `dotsLeft` | number | Left | `left` on `.bricks-swiper-container + .swiper-pagination-bullets`, `transform` on `.bricks-swiper-container + .swiper-pagination-bullets` |
+| `dotsBorder` | border | Border | `border` on `.swiper-pagination-bullet` |
+| `dotsColor` | color | Color | `background-color` on `.swiper-pagination-bullet`, `color` on `.swiper-pagination-bullet` |
+| `dotsActiveColor` | color | Active color | `background-color` on `.swiper-pagination-bullet-active`, `color` on `.swiper-pagination-bullet-active` |
+| `dotsSpacing` | spacing | Margin | `margin` on `.swiper-pagination-bullet` |
+
+### Code
+
+Section key: `code`
+
+Theme style controls for the "code" section.
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `prettify` | select | Theme | — |
+
+### Colors
+
+Section key: `colors`
+
+Theme style controls for the "colors" section. Default CSS selector: :where(:root)
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `colorPrimary` | color | Primary color | `color` on `.bricks-color-primary`, `background-color` on `.bricks-background-primary` |
+| `colorSecondary` | color | Secondary color | `color` on `.bricks-color-secondary`, `background-color` on `.bricks-background-secondary` |
+| `colorLight` | color | Light color | `color` on `.bricks-color-light`, `background-color` on `.bricks-background-light` |
+| `colorDark` | color | Dark color | `color` on `.bricks-color-dark`, `background-color` on `.bricks-background-dark` |
+| `colorMuted` | color | Muted color | `color` on `.bricks-color-muted`, `background-color` on `.bricks-background-muted` |
+| `colorBorder` | color | Border color | `border-color` on `*` |
+| `colorInfo` | color | Info color | `color` on `.bricks-color-info`, `background-color` on `.bricks-background-info` |
+| `colorSuccess` | color | Success color | `color` on `.bricks-color-success`, `background-color` on `.bricks-background-success` |
+| `colorWarning` | color | Warning color | `color` on `.bricks-color-warning`, `background-color` on `.bricks-background-warning` |
+| `colorDanger` | color | Danger color | `color` on `.bricks-color-danger`, `background-color` on `.bricks-background-danger` |
+
+### Conditions
+
+Section key: `conditions`
+
+Theme style controls for the "conditions" section.
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `conditions` | repeater | Style conditions | — |
+
+### Container
+
+Section key: `container`
+
+Theme style controls for the "container" section.
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `_display` | select | Display | `display` on `.brxe-container`, `align-items` on `.brxe-container` |
+| `_gridGap` | number | Gap | `gap` on `.brxe-container` |
+| `_columnGap` | number | Column gap | `column-gap` on `.brxe-container` |
+| `_rowGap` | number | Row gap | `row-gap` on `.brxe-container` |
+| `_gridTemplateColumns` | text | Grid template columns | `grid-template-columns` on `.brxe-container` |
+| `_gridTemplateRows` | text | Grid template rows | `grid-template-rows` on `.brxe-container` |
+| `_gridAutoColumns` | text | Grid auto columns | `grid-auto-columns` on `.brxe-container` |
+| `_gridAutoRows` | text | Grid auto rows | `grid-auto-rows` on `.brxe-container` |
+| `_gridAutoFlow` | select | Grid auto flow | `grid-auto-flow` on `.brxe-container` |
+| `_justifyItemsGrid` | justify-content | Justify items | `justify-items` on `.brxe-container` |
+| `_alignItemsGrid` | align-items | Align items | `align-items` on `.brxe-container` |
+| `_justifyContentGrid` | justify-content | Justify content | `justify-content` on `.brxe-container` |
+| `_alignContentGrid` | align-items | Align content | `align-content` on `.brxe-container` |
+| `_direction` | direction | Direction | `flex-direction` on `.brxe-container` |
+| `_justifyContent` | justify-content | Align main axis | `justify-content` on `.brxe-container` |
+| `_alignItems` | align-items | Align cross axis | `align-items` on `.brxe-container` |
+| `width` | number | Width | `width` on `.brxe-container`, `width` on `.woocommerce main.site-main`, `width` on `#brx-content.wordpress` |
+| `widthMin` | number | Min. width | `min-width` on `.brxe-container`, `min-width` on `#brx-content.wordpress` |
+| `widthMax` | number | Max. width | `max-width` on `.brxe-container`, `max-width` on `#brx-content.wordpress` |
+| `margin` | spacing | Margin | `margin` on `.brxe-container` |
+| `padding` | spacing | Padding | `padding` on `.brxe-container` |
+
+### Content
+
+Section key: `content`
+
+Theme style controls for the "content" section.
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `contentMargin` | spacing | Margin | `margin` on `#brx-content`, `margin` on `.content-area` |
+| `contentBlockquoteMargin` | spacing | Margin | `margin` on `blockquote` |
+| `contentBlockquotePadding` | spacing | Padding | `padding` on `blockquote` |
+| `contentBlockquoteBorder` | border | Border | `border` on `blockquote` |
+| `contentBlockquoteTypography` | typography | Typography | `font` on `blockquote` |
+
+### Contextual Spacing
+
+Section key: `contextualSpacing`
+
+Theme style controls for the "contextualSpacing" section.
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `contextualSpacingRemoveDefaultMargins` | select | Remove default margins | — |
+| `contextualSpacingRemoveDefaultPadding` | select | Remove default padding | — |
+| `contextualSpacingHeading` | number | Heading | `margin-block-start` |
+| `contextualSpacingParagraph` | number | Paragraph | `margin-block-start` |
+| `contextualSpacingFallback` | number | Fallback spacing | `margin-block-start` |
+| `contextualSpacingCustomTarget` | repeater | Selector | `margin-block-start` |
+| `contextualSpacingApplyTo` | text | contextualSpacingApplyTo | — |
+
+### Counter
+
+Section key: `counter`
+
+Theme style controls for the "counter" section. Default CSS selector: .brxe-counter
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `typography` | typography | Typography | `font` |
+
+### Css
+
+Section key: `css`
+
+Theme style controls for the "css" section.
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `stylesheet` | code | Custom CSS | — |
+
+### Div
+
+Section key: `div`
+
+Theme style controls for the "div" section.
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `_display` | select | Display | `display` on `.brxe-div:where(:not(.brx-dropdown-content))`, `align-items` on `.brxe-div:where(:not(.brx-dropdown-content))` |
+| `_gridGap` | number | Gap | `gap` on `.brxe-div:where(:not(.brx-dropdown-content))` |
+| `_columnGap` | number | Column gap | `column-gap` on `.brxe-div` |
+| `_rowGap` | number | Row gap | `row-gap` on `.brxe-div` |
+| `_gridTemplateColumns` | text | Grid template columns | `grid-template-columns` on `.brxe-div:where(:not(.brx-dropdown-content))` |
+| `_gridTemplateRows` | text | Grid template rows | `grid-template-rows` on `.brxe-div:where(:not(.brx-dropdown-content))` |
+| `_gridAutoColumns` | text | Grid auto columns | `grid-auto-columns` on `.brxe-div:where(:not(.brx-dropdown-content))` |
+| `_gridAutoRows` | text | Grid auto rows | `grid-auto-rows` on `.brxe-div:where(:not(.brx-dropdown-content))` |
+| `_gridAutoFlow` | select | Grid auto flow | `grid-auto-flow` on `.brxe-div:where(:not(.brx-dropdown-content))` |
+| `_justifyItemsGrid` | justify-content | Justify items | `justify-items` on `.brxe-div:where(:not(.brx-dropdown-content))` |
+| `_alignItemsGrid` | align-items | Align items | `align-items` on `.brxe-div:where(:not(.brx-dropdown-content))` |
+| `_justifyContentGrid` | justify-content | Justify content | `justify-content` on `.brxe-div:where(:not(.brx-dropdown-content))` |
+| `_alignContentGrid` | align-items | Align content | `align-content` on `.brxe-div:where(:not(.brx-dropdown-content))` |
+| `_direction` | direction | Direction | `flex-direction` on `.brxe-div` |
+| `_justifyContent` | justify-content | Align main axis | `justify-content` on `.brxe-div` |
+| `_alignItems` | align-items | Align cross axis | `align-items` on `.brxe-div` |
+| `width` | number | Width | `width` on `.brxe-div` |
+| `widthMin` | number | Min. width | `min-width` on `.brxe-div` |
+| `widthMax` | number | Max. width | `max-width` on `.brxe-div` |
+| `margin` | spacing | Margin | `margin` on `.brxe-div` |
+| `padding` | spacing | Padding | `padding` on `.brxe-div` |
+
+### Divider
+
+Section key: `divider`
+
+Theme style controls for the "divider" section. Default CSS selector: .brxe-divider
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `height` | number | Height | `border-top-width` on `.line` |
+| `color` | color | Color | `border-top-color` on `&.horizontal .line`, `border-right-color` on `&.vertical .line`, `color` on `.icon i` |
+
+### Elements
+
+Section key: `elements`
+
+No typed controls extracted for this section. It uses the generic theme style control map.
+
+### Form
+
+Section key: `form`
+
+Theme style controls for the "form" section. Default CSS selector: .brxe-form
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `labelTypography` | typography | Label typography | `font` on `.form-group label`, `font` on `.form-group .label` |
+| `placeholderTypography` | typography | Placeholder typography | `font` on `::placeholder`, `font` on `select` |
+| `fieldTypography` | typography | Typography | `font` on `.form-group input`, `font` on `select`, `font` on `textarea` |
+| `fieldBackgroundColor` | color | Background color | `background-color` on `.form-group input`, `background-color` on `.flatpickr`, `background-color` on `select`, `background-color` on `textarea`, `background-color` on `.form-field-richtext + .tox-tinymce` |
+| `fieldBorder` | border | Border | `border` on `.form-group input`, `border` on `.flatpickr`, `border` on `select`, `border` on `textarea`, `border` on `.form-field-richtext + .tox-tinymce`, `border` on `.bricks-button`, `border` on `.choose-files` |
+| `fieldMargin` | spacing | Spacing | `padding` on `.form-group` |
+| `fieldPadding` | spacing | Padding | `padding` on `.form-group input`, `padding` on `.flatpickr`, `padding` on `select`, `padding` on `textarea`, `padding` on `.form-field-richtext + .tox-tinymce .tox-edit-area__iframe` |
+| `submitButtonPadding` | spacing | Padding | `padding` on `.bricks-button` |
+| `submitButtonTypography` | typography | Typography | `font` on `.bricks-button` |
+| `submitButtonBackgroundColor` | color | Background color | `background-color` on `.bricks-button` |
+| `submitButtonBorder` | border | Border | `border` on `.bricks-button` |
+
+### General
+
+Section key: `general`
+
+Theme style controls for the "general" section.
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `siteLayout` | select | Site layout | — |
+| `siteLayoutBoxedMaxWidth` | number | Boxed max. width | `max-width` on `.brx-boxed`, `max-width` on `.brx-boxed #brx-header.brx-sticky`, `margin-left` on `.brx-boxed #brx-header.brx-sticky`, `margin-right` on `.brx-boxed #brx-header.brx-sticky` |
+| `contentBoxShadow` | box-shadow | Content box shadow | `box-shadow` on `.brx-boxed` |
+| `contentBackground` | background | Content background | `background` on `.brx-boxed` |
+| `siteBackground` | background | Site background | `background` on `html`, `background` on `body` |
+| `siteBorder` | border | Site border | `border` on `.brx-boxed` |
+| `elementMargin` | spacing | Element margin | `margin` on `[class*="brxe-"]:not(.brxe-section):not(.brxe-container):not(.brxe-div)` |
+| `sectionMargin` | spacing | Root container margin | `margin` on `.brxe-container.root` |
+| `sectionPadding` | spacing | Root container padding | `padding` on `.brxe-container.root:not(.stretch)`, `padding` on `.brxe-container.root.stretch > .brxe-container`, `padding` on `.brxe-container.root.stretch > .brxe-div` |
+| `containerMaxWidth` | number | Root container width | `width` on `.brxe-container.root`, `width` on `.brxe-container.root.stretch > .brxe-container`, `width` on `.brxe-container.root.stretch > .brxe-div`, `width` on `.woocommerce main.site-main`, `width` on `#brx-content.wordpress` |
+| `lightboxBackground` | background | Background | `background` on `.pswp .pswp__bg` |
+| `lightboxCloseColor` | color | Close color | `color` on `.pswp.brx .pswp__top-bar button.pswp__button--close svg` |
+| `lightboxCloseSize` | number | Close size | `width` on `.pswp.brx .pswp__top-bar button.pswp__button svg`, `height` on `.pswp.brx .pswp__top-bar button.pswp__button svg` |
+| `lightboxWidth` | number | Width | — |
+| `lightboxHeight` | number | Height | — |
+
+### Heading
+
+Section key: `heading`
+
+Theme style controls for the "heading" section.
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
 | `tag` | select | HTML tag | — |
-| `customTag` | text | Custom tag | — |
+| `separator` | select | Separator | — |
+| `separatorWidth` | number | Width | `width` on `.brxe-heading .separator`, `flex-grow` on `.brxe-heading .separator` |
+| `separatorHeight` | number | Height | `border-top-width` on `.brxe-heading .separator` |
+| `separatorSpacing` | number | Spacing | `gap` on `.brxe-heading.has-separator` |
+| `separatorAlignItems` | align-items | Align | `align-items` on `.brxe-heading.has-separator` |
+| `separatorStyle` | select | Style | `border-top-style` on `.brxe-heading .separator` |
+| `separatorColor` | color | Color | `border-top-color` on `.brxe-heading .separator` |
+| `separatorMargin` | spacing | Margin | `margin` on `.brxe-heading .separator` |
 
-## Inherited CSS controls
+### Icon-box
 
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+Section key: `icon-box`
 
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_gridItemColumnSpan` | text | Grid column | `grid-column` |
-| `_gridItemRowSpan` | text | Grid row | `grid-row` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_gridGap` | number | Gap | `gap` |
-| `_columnGap` | number | Column gap | `column-gap` |
-| `_rowGap` | number | Row gap | `row-gap` |
-| `_gridTemplateColumns` | text | Grid template columns | `grid-template-columns` |
-| `_gridTemplateRows` | text | Grid template rows | `grid-template-rows` |
-| `_gridAutoColumns` | text | Grid auto columns | `grid-auto-columns` |
-| `_gridAutoRows` | text | Grid auto rows | `grid-auto-rows` |
-| `_gridAutoFlow` | select | Grid auto flow | `grid-auto-flow` |
-| `_justifyItemsGrid` | justify-content | Justify items | `justify-items` |
-| `_alignItemsGrid` | align-items | Align items | `align-items` |
-| `_justifyContentGrid` | justify-content | Justify content | `justify-content` |
-| `_alignContentGrid` | align-items | Align content | `align-content` |
-| `_flexWrap` | select | Flex wrap | `flex-wrap` |
-| `_direction` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_order` | number | _order | `order` |
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_columns` | text | Columns | `columns` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_gap` | number | Gap | `gap` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
-# Divider Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/divider/
-
-*Schema for Bricks Divider element*
-
-| Property | Value |
-|---|---|
-| `name` | divider |
-| `category` | general |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
+Theme style controls for the "icon-box" section. Default CSS selector: .brxe-icon-box
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `height` | number | Height | `height` on `.line`, `border-top-width` on `&.horizontal .line` |
-| `width` | number | Width | `width` on `&.horizontal .line`, `border-right-width` on `&.vertical .line` |
-| `style` | select | Style | `border-top-style` on `&.horizontal .line`, `border-right-style` on `&.vertical .line` |
-| `direction` | select | Direction | — |
-| `justifyContent` | justify-content | Align | `justify-content` on `&.horizontal`, `align-self` on `&.vertical` |
-| `color` | color | Color | `border-top-color` on `&.horizontal .line`, `border-right-color` on `&.vertical .line`, `color` on `.icon` |
-| `icon` | icon | Icon | — |
-| `iconTypography` | typography | Typography | `font` on `.icon` |
-| `iconAlignItems` | align-items | Align | `align-items` |
-| `iconPosition` | select | Position | — |
-| `iconSpacing` | number | Spacing | `gap` |
-| `link` | link | Link | — |
+| `verticalAlign` | align-items | Icon align | `align-self` on `.icon` |
+| `iconMargin` | spacing | Icon margin | `margin` on `.icon` |
+| `iconPadding` | spacing | Icon padding | `padding` on `.icon` |
+| `textAlign` | text-align | Text align | `text-align`, `align-self` on `.icon` |
+| `iconSize` | number | Icon size | `font-size` on `.icon i` |
+| `iconHeight` | number | Icon height | `height` on `.icon`, `line-height` on `.icon` |
+| `iconWidth` | number | Icon width | `min-width` on `.icon` |
+| `iconColor` | color | Icon color | `color` on `.icon`, `color` on `.icon a` |
+| `iconBackgroundColor` | color | Icon background | `background-color` on `.icon` |
+| `iconBorder` | border | Icon border | `border` on `.icon` |
+| `iconBoxShadow` | box-shadow | Icon box shadow | `box-shadow` on `.icon` |
+| `typographyHeading` | typography | Heading typography | `font` on `h1`, `font` on `h2`, `font` on `h3`, `font` on `h4`, `font` on `h5`, `font` on `h6` |
+| `typographyBody` | typography | Body typography | `font` on `.content` |
+| `contentBackgroundColor` | color | Content background | `background-color` on `.content` |
+| `contentBorder` | border | Content border | `border` on `.content` |
+| `contentBoxShadow` | box-shadow | Content box shadow | `box-shadow` on `.content` |
+| `contentMargin` | spacing | Content margin | `margin` on `.content` |
+| `contentPadding` | spacing | Content padding | `padding` on `.content` |
 
-## Inherited CSS controls
+### Image
 
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+Section key: `image`
 
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_columns` | text | Columns | `columns` |
-| `_columnGap` | number | Column gap | `column-gap` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
-# Dropdown Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/dropdown/
-
-*Schema for Bricks Dropdown element*
-
-| Property | Value |
-|---|---|
-| `name` | dropdown |
-| `category` | general |
-| `tag` | li |
-| `nestable` | true |
-
-## Controls
+Theme style controls for the "image" section. Default CSS selector: .brxe-image
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `tag` | text | HTML tag | — |
-| `text` | text | Text | — |
-| `link` | link | Link to | — |
-| `ariaLabel` | text | Attribute | — |
-| `icon` | icon | Icon | `—` on `.brx-submenu-toggle button > svg` |
-| `iconPadding` | spacing | Icon padding | `padding` on `.brx-submenu-toggle button` |
-| `gap` | number | Gap | `gap` on `.brx-submenu-toggle` |
-| `iconPosition` | select | Icon position | `flex-direction` on `.brx-submenu-toggle`, `flex-direction` on `.brx-submenu-toggle` |
-| `iconSize` | number | Icon size | `font-size` on `.brx-submenu-toggle button` |
-| `iconColor` | color | Icon color | `color` on `.brx-submenu-toggle button` |
-| `iconTransform` | transform | Icon transform | `transform` on `.brx-submenu-toggle button` |
-| `iconTransformOpen` | transform | Icon transform | `transform` on `.brx-submenu-toggle button[aria-expanded="true"]` |
-| `iconTransition` | text | Icon transition | `transition` on `.brx-submenu-toggle button` |
-| `caretSize` | number | Size | `border-width` on `> .brx-dropdown-content::before` |
-| `caretColor` | color | Color | `border-bottom-color` on `> .brx-dropdown-content::before` |
-| `caretTransform` | transform | Transform | `transform` on `> .brx-dropdown-content::before` |
-| `caretPosition` | dimensions | Position | `—` on `> .brx-dropdown-content::before` |
-| `static` | checkbox | Position | — |
-| `toggleOn` | select | Toggle on | — |
-| `contentWidth` | number | Min. width | `min-width` on `.brx-dropdown-content` |
-| `contentTransition` | text | Transition | `transition` on `> .brx-dropdown-content` |
-| `contentTransform` | transform | Transform | `transform` on `> .brx-dropdown-content` |
-| `contentTransformOpen` | transform | Transform | `transform` on `&.open > .brx-dropdown-content` |
-| `contentBackground` | background | Background | `background` on `.brx-dropdown-content` |
-| `contentBorder` | border | Border | `border` on `.brx-dropdown-content` |
-| `contentBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.brx-dropdown-content` |
-| `contentTypography` | typography | Typography | `font` on `.brx-dropdown-content` |
-| `contentItemJustifyContent` | justify-content | Justify content | `justify-content` on `.brx-dropdown-content > li > a`, `justify-content` on `.brx-submenu-toggle`, `width` on `.brx-dropdown-content > li > a`, `width` on `.brx-submenu-toggle a` |
-| `contentItemPadding` | spacing | Padding | `padding` on `.brx-dropdown-content > li > a`, `padding` on `.brx-dropdown-content .brx-submenu-toggle > *`, `padding` on `&.brx-has-megamenu .brx-dropdown-content > *` |
-| `contentItemBackground` | color | Background | `background-color` on `.brx-dropdown-content > li > a`, `background-color` on `.brx-dropdown-content .brx-submenu-toggle`, `background-color` on `&.brx-has-megamenu .brx-dropdown-content > *` |
-| `contentItemBorder` | border | Border | `border` on `.brx-dropdown-content > li > a`, `border` on `.brx-dropdown-content .brx-submenu-toggle`, `border` on `&.brx-has-megamenu .brx-dropdown-content > *` |
-| `contentItemTypography` | typography | Typography | `font` on `.brx-dropdown-content > li > a`, `font` on `.brx-dropdown-content .brx-submenu-toggle > *`, `font` on `&.brx-has-megamenu .brx-dropdown-content > *` |
-| `contentItemTransition` | text | Transition | `transition` on `.brx-dropdown-content > li`, `transition` on `.brx-dropdown-content > li > a`, `transition` on `.brx-dropdown-content .brx-submenu-toggle`, `transition` on `&.brx-has-megamenu .brx-dropdown-content > *` |
-| `contentItemBackgroundActive` | color | Background | `background-color` on `.brx-dropdown-content > li [aria-current="page"]`, `background-color` on `.brx-dropdown-content > li .aria-current`, `background-color` on `&.brx-has-megamenu .brx-dropdown-content [aria-current="page"]` |
-| `contentItemBorderActive` | border | Border | `border` on `.brx-dropdown-content > li [aria-current="page"]`, `border` on `.brx-dropdown-content > li .aria-current`, `border` on `&.brx-has-megamenu .brx-dropdown-content [aria-current="page"]` |
-| `contentItemTypographyActive` | typography | Typography | `font` on `.brx-dropdown-content > li [aria-current="page"]`, `font` on `.brx-dropdown-content > li .aria-current`, `font` on `&.brx-has-megamenu .brx-dropdown-content [aria-current="page"]` |
-| `megaMenu` | checkbox | Enable | — |
-| `megaMenuWidth` | number | Width | `--brx-mega-menu-width` |
-| `megaMenuAlignment` | select | Alignment | `--brx-mega-menu-align` |
-| `megaMenuSelector` | text | CSS selector | — |
-| `megaMenuSelectorVertical` | text | CSS selector | — |
-| `multiLevel` | checkbox | Enable | — |
-| `multiLevelBackText` | text | Back | — |
-| `multiLevelBackTypography` | typography | Back | `font` on `.brx-multilevel-back` |
-| `multiLevelBackBackground` | color | Back | `background-color` on `.brx-multilevel-back` |
+| `popupIcon` | icon | Icon | — |
+| `popupIconBackgroundColor` | color | Icon background color | `background-color` on `.brxe-image .icon` |
+| `popupIconBorder` | border | Icon border | `border` on `.brxe-image .icon` |
+| `popupIconBoxShadow` | box-shadow | Icon box shadow | `box-shadow` on `.brxe-image .icon` |
+| `popupIconHeight` | number | Icon height | `line-height` on `.brxe-image .icon` |
+| `popupIconWidth` | number | Icon width | `width` on `.brxe-image .icon` |
+| `popupIconTypography` | typography | Icon typography | `font` on `.brxe-image .icon` |
+| `caption` | select | Caption type | — |
+| `captionCustomStyles` | checkbox | Custom styles | — |
+| `captionMargin` | spacing | Margin | `margin` on `.brxe-image .bricks-image-caption-custom, .wp-element-caption:not(.wp-block-gallery *)` |
+| `captionPadding` | spacing | Padding | `padding` on `.brxe-image .bricks-image-caption-custom, .wp-element-caption:not(.wp-block-gallery *)` |
+| `captionPosition` | select | Position | `position` on `.brxe-image .bricks-image-caption-custom, .wp-element-caption:not(.wp-block-gallery *)`, `position` on `.wp-block-image:has(.wp-element-caption:not(.wp-block-gallery *))` |
+| `captionPositions` | dimensions | Position | `—` on `.brxe-image .bricks-image-caption-custom, .wp-element-caption:not(.wp-block-gallery *)` |
+| `captionBackgroundColor` | color | Background color | `background` on `.brxe-image .bricks-image-caption-custom, .wp-element-caption:not(.wp-block-gallery *)`, `text-shadow` on `.brxe-image .bricks-image-caption-custom, .wp-element-caption:not(.wp-block-gallery *)` |
+| `captionBorder` | border | Border | `border` on `.brxe-image .bricks-image-caption-custom, .wp-element-caption:not(.wp-block-gallery *)` |
+| `captionBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.brxe-image .bricks-image-caption-custom, .wp-element-caption:not(.wp-block-gallery *)` |
+| `captionTypography` | typography | Typography | `font` on `.brxe-image .bricks-image-caption-custom, .wp-element-caption:not(.wp-block-gallery *)` |
 
-## Inherited CSS controls
+### Image-gallery
 
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+Section key: `image-gallery`
+
+Theme style controls for the "image-gallery" section.
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_columns` | text | Columns | `columns` |
-| `_columnGap` | number | Column gap | `column-gap` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+| `layout` | select | Layout | — |
+| `imageRatio` | text | Image ratio | `aspect-ratio` on `.image` |
+| `columns` | number | Columns | — |
+| `imageHeight` | number | Image height | `padding-top` on `.brxe-image-gallery .image` |
+| `gutter` | number | Spacing | `--gutter` on `.brxe-image-gallery` |
+| `captionMargin` | spacing | Margin | `margin` on `.brxe-image-gallery .bricks-image-caption, .wp-block-gallery.has-nested-images figure.wp-block-image figcaption.wp-element-caption` |
+| `captionPadding` | spacing | Padding | `padding` on `.brxe-image-gallery .bricks-image-caption, .wp-block-gallery.has-nested-images figure.wp-block-image figcaption.wp-element-caption` |
+| `captionPosition` | select | Position | `position` on `.brxe-image-gallery .bricks-image-caption, .wp-block-gallery.has-nested-images figure.wp-block-image figcaption.wp-element-caption`, `flex` on `.wp-block-gallery.has-nested-images figure.wp-block-image figcaption.wp-element-caption`, `display` on `.wp-block-gallery.has-nested-images figure.wp-block-image:has(figcaption):before` |
+| `captionPositions` | dimensions | Position | `—` on `.brxe-image-gallery .bricks-image-caption, .wp-block-gallery.has-nested-images figure.wp-block-image figcaption.wp-element-caption`, `width` on `.brxe-image-gallery .bricks-image-caption, .wp-block-gallery.has-nested-images figure.wp-block-image figcaption.wp-element-caption` |
+| `captionBackgroundColor` | color | Background color | `background` on `.brxe-image-gallery .bricks-image-caption, .wp-block-gallery.has-nested-images figure.wp-block-image figcaption.wp-element-caption`, `text-shadow` on `.brxe-image-gallery .bricks-image-caption, .wp-block-gallery.has-nested-images figure.wp-block-image figcaption.wp-element-caption` |
+| `captionBorder` | border | Border | `border` on `.brxe-image-gallery .bricks-image-caption, .wp-block-gallery.has-nested-images figure.wp-block-image figcaption.wp-element-caption` |
+| `captionBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.brxe-image-gallery .bricks-image-caption, .wp-block-gallery.has-nested-images figure.wp-block-image figcaption.wp-element-caption` |
+| `captionTypography` | typography | Typography | `font` on `.brxe-image-gallery .bricks-image-caption, .wp-block-gallery.has-nested-images figure.wp-block-image figcaption.wp-element-caption` |
 
----
+### Links
 
-# File Schema
+Section key: `links`
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/file/
-
-*Schema for Bricks File element*
-
-| Property | Value |
-|---|---|
-| `name` | file |
-| `category` | media |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
+Theme style controls for the "links" section.
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `source` | select | Source | — |
-| `file` | file | file | — |
-| `external` | text | external | — |
-| `useDynamicData` | text | useDynamicData | — |
-| `hideFileName` | checkbox | Hide file name | — |
-| `customFileName` | text | Custom file name | — |
-| `openInNewTab` | checkbox | Open in new tab | — |
-| `hideDownloadButton` | checkbox | Hide download button | — |
-| `downloadButtonText` | text | Text | — |
-| `buttonSize` | select | Size | — |
-| `buttonStyle` | select | Style | — |
-| `buttonCircle` | checkbox | Circle | — |
-| `buttonOutline` | checkbox | Outline | — |
-| `hidePdfPreview` | checkbox | Hide PDF preview | — |
-| `previewTitle` | text | Preview title | — |
-| `previewHeight` | number | Height | `height` on `.file-preview-wrap` |
-| `previewDisplay` | select | Display | — |
-| `previewHideBreakpoint` | select | Hide at breakpoint | — |
-| `previewLoadOnInteraction` | checkbox | Load PDF on click | — |
-| `previewImage` | image | Preview image | — |
+| `cssSelectors` | textarea | Link | — |
+| `typography` | typography | Typography | `font` |
+| `background` | background | Background | `background` |
+| `border` | border | Border | `border` |
+| `padding` | spacing | Padding | `padding` |
+| `textDecoration` | text-decoration | Text decoration | `text-decoration` |
+| `transition` | text | Transition | `transition` |
 
-## Inherited CSS controls
+### List
 
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+Section key: `list`
+
+Theme style controls for the "list" section. Default CSS selector: .brxe-list
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_columns` | text | Columns | `columns` |
-| `_columnGap` | number | Column gap | `column-gap` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+| `itemMargin` | spacing | Margin | `margin` on `li` |
+| `itemPadding` | spacing | Padding | `padding` on `li` |
+| `itemOddBackground` | color | Odd background | `background-color` on `li:nth-child(odd)` |
+| `itemEvenBackground` | color | Even background | `background-color` on `li:nth-child(even)` |
+| `itemBorder` | border | Border | `border` on `li` |
+| `itemAutoWidth` | checkbox | Auto width | `justify-content` on `.content`, `flex-grow` on `.separator` |
+| `highlightBlock` | checkbox | Block | `display` on `li[data-highlight]::before` |
+| `highlightLabelPadding` | spacing | Padding | `padding` on `li[data-highlight]::before` |
+| `highlightLabelBackground` | color | Background | `background-color` on `li[data-highlight]::before` |
+| `highlightLabelBorder` | border | Border | `border` on `li[data-highlight]::before` |
+| `highlightLabelTypography` | typography | Typography | `font` on `li[data-highlight]::before` |
+| `highlightContentPadding` | spacing | Padding | `padding` on `li[data-highlight] + div` |
+| `highlightContentBackground` | color | Background | `background-color` on `li[data-highlight] + div` |
+| `highlightContentBorder` | border | Border | `border` on `li[data-highlight] + div` |
+| `highlightContentColor` | color | Text color | `color` on `li[data-highlight] + div .title`, `color` on `li[data-highlight] + div .meta`, `color` on `li[data-highlight] + div .description` |
+| `titleMargin` | spacing | Margin | `margin` on `.title` |
+| `titleTypography` | typography | Typography | `font` on `.title` |
+| `metaMargin` | spacing | Margin | `margin` on `.meta` |
+| `metaTypography` | typography | Typography | `font` on `.meta` |
+| `descriptionTypography` | typography | Typography | `font` on `.description` |
+| `separatorDisable` | checkbox | Disable | `display` on `.separator` |
+| `separatorStyle` | select | Style | `border-top-style` on `.separator` |
+| `separatorWidth` | number | Width | `flex-basis` on `.separator` |
+| `separatorHeight` | number | Height | `border-top-width` on `.separator` |
+| `separatorColor` | color | Color | `border-top-color` on `.separator` |
 
----
+### Nav-menu
 
-# Facebook Page Schema
+Section key: `nav-menu`
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/facebook-page/
-
-*Schema for Bricks Facebook Page element*
-
-| Property | Value |
-|---|---|
-| `name` | facebook-page |
-| `category` | general |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
+Theme style controls for the "nav-menu" section. Default CSS selector: .brxe-nav-menu
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `href` | text | Facebook page URL | — |
-| `height` | number | Height | — |
-| `width` | number | Width | — |
-| `tabs` | select | Tabs | — |
-| `hideCover` | checkbox | Hide cover | — |
-| `profilePhotos` | checkbox | Show friends\ | — |
-| `hideCta` | checkbox | Hide CTA button | — |
-| `smallHeader` | checkbox | Small header | — |
+| `menuMargin` | spacing | Margin | `margin` on `.bricks-nav-menu > li` |
+| `menuPadding` | spacing | Padding | `padding` on `.bricks-nav-menu > li > a`, `padding` on `.bricks-nav-menu > li > .brx-submenu-toggle > *` |
+| `menuAlignment` | direction | Alignment | `flex-direction` on `.bricks-nav-menu` |
+| `menuTypography` | typography | Typography | `font` on `.bricks-nav-menu > li > a`, `font` on `.bricks-nav-menu > li > .brx-submenu-toggle` |
+| `menuActiveTypography` | typography | Active typography | `font` on `.bricks-nav-menu .current-menu-item > a`, `font` on `.bricks-nav-menu .current-menu-item > .brx-submenu-toggle` |
+| `menuActiveBorder` | border | Active border | `border` on `.bricks-nav-menu .current-menu-item > a`, `border` on `.bricks-nav-menu .current-menu-item > .brx-submenu-toggle` |
+| `subMenuPadding` | spacing | Padding | `padding` on `.bricks-nav-menu .sub-menu a`, `padding` on `.bricks-nav-menu .sub-menu button` |
+| `subMenuTypography` | typography | Typography | `font` on `.bricks-nav-menu .sub-menu > li` |
+| `subMenuActiveTypography` | typography | Active typography | `font` on `.bricks-nav-menu .sub-menu > .current-menu-item > a`, `font` on `.bricks-nav-menu .sub-menu > .current-menu-item > .brx-submenu-toggle` |
+| `subMenuBackground` | background | Background | `background` on `.bricks-nav-menu .sub-menu .menu-item` |
+| `subMenuBorder` | border | Border | `border` on `.bricks-nav-menu .sub-menu` |
+| `subMenuBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.bricks-nav-menu .sub-menu` |
 
-## Inherited CSS controls
+### Popup
 
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+Section key: `popup`
 
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_columns` | text | Columns | `columns` |
-| `_columnGap` | number | Column gap | `column-gap` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+No typed controls extracted for this section. It uses the generic theme style control map.
 
----
+### Post-content
 
-# Filter - Active Filters Schema
+Section key: `post-content`
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/filter-active-filters/
-
-*Schema for Bricks Filter - Active filters element*
-
-| Property | Value |
-|---|---|
-| `name` | filter-active-filters |
-| `category` | general |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
+Theme style controls for the "post-content" section.
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `filterQueryId` | query-list | Target query | — |
-| `filterDefinitionId` | filter-definition-manager | Global filter | — |
-| `excludeIds` | text | Exclude filter IDs | — |
-| `buttonPadding` | spacing | Padding | `padding` on `.bricks-button` |
-| `buttonGap` | number | Gap | `gap` |
-| `buttonSize` | select | Size | — |
-| `buttonStyle` | select | Style | — |
-| `buttonCircle` | checkbox | Circle | — |
-| `buttonOutline` | checkbox | Outline | — |
-| `buttonBackgroundColor` | color | Background color | `background-color` on `.bricks-button` |
-| `buttonBorder` | border | Border | `border-color` on `.bricks-button` |
-| `buttonTypography` | typography | Typography | `font` on `.bricks-button` |
-| `icon` | icon | Icon | — |
-| `iconColor` | color | Color | `color` on `.bricks-button i`, `fill` on `.bricks-button svg path` |
-| `iconSize` | number | Size | `font-size` on `.bricks-button .icon` |
-| `iconGap` | number | Gap | `gap` on `.bricks-button` |
-| `iconPosition` | select | Position | — |
+| `typography` | typography | Typography | `font` on `.brxe-post-content` |
 
-## Inherited CSS controls
+### Post-meta
 
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+Section key: `post-meta`
+
+Theme style controls for the "post-meta" section. Default CSS selector: .brxe-post-meta
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_columns` | text | Columns | `columns` |
-| `_columnGap` | number | Column gap | `column-gap` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+| `padding` | spacing | Padding | `padding` on `.item` |
+| `gutter` | number | Gap | `width` on `.separator` |
+| `background` | color | Background | `background-color` on `.item` |
+| `border` | border | Border | `border` on `.item` |
+| `typography` | typography | Typography | `font` on `.item` |
 
----
+### Post-navigation
 
-# Filter - Checkbox Schema
+Section key: `post-navigation`
 
-Source: https://academy.bricksbuilder.io/developer/schema/elements/filter-checkbox/
-
-*Schema for Bricks Filter - Checkbox element*
-
-| Property | Value |
-|---|---|
-| `name` | filter-checkbox |
-| `category` | general |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
+Theme style controls for the "post-navigation" section. Default CSS selector: .brxe-post-navigation
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `filterQueryId` | query-list | Target query | — |
-| `filterDefinitionId` | filter-definition-manager | Global filter | — |
-| `filterNiceName` | text | URL parameter | — |
-| `filterApplyOn` | select | Apply on | — |
-| `filterSource` | select | Source | — |
-| `sourceFieldType` | select | Field type | — |
-| `fieldProvider` | select | Provider | — |
-| `customFieldKey` | text | Meta key | — |
-| `fieldCompareOperator` | select | Compare | — |
-| `fieldCompareType` | select | Compare type | — |
-| `wpPostField` | select | Field | — |
-| `wpUserField` | select | Field | — |
-| `wpTermField` | select | Field | — |
-| `filterTaxonomy` | select | Taxonomy | — |
-| `filterTaxonomyOrderBy` | select | Order by | — |
-| `filterTaxonomyOrderMetaKey` | text | Order meta key | — |
-| `filterTaxonomyOrder` | select | filterTaxonomyOrder | — |
-| `filterTermInclude` | select | filterTermInclude | — |
-| `filterTermExclude` | select | filterTermExclude | — |
-| `filterTermTopLevel` | checkbox | Top level terms only | — |
-| `filterIncludeChildrenCount` | checkbox | Count | — |
-| `filterHierarchical` | checkbox | Hierarchical | — |
-| `filterAutoCheckChildren` | checkbox | Auto toggle child terms | — |
-| `filterHierarchyCollapsible` | checkbox | Enable expand/collapse | — |
-| `filterHierarchyShowExpanded` | checkbox | Show expanded | — |
-| `filterHierarchyExpandIcon` | icon | Expand icon | — |
-| `filterHierarchyCollapseIcon` | icon | Collapse icon | — |
-| `filterHierarchyIconTypography` | typography | Icon typography | `font` on `.brx-hierarchy-toggle, .brx-hierarchy-toggle-spacer` |
-| `filterHierarchyIconGap` | number | Icon gap | `--brx-hierarchy-toggle-gap` |
-| `filterChildIndentation` | text | Indent | — |
-| `filterChildIndentationGap` | number | Indent | `margin-inline-start` on `[class*="depth-"]:not([class*="depth-0"])` |
-| `filterMultiLogic` | select | Multiple options | — |
-| `filterGroupLabel` | text | Group label | — |
-| `filterHideEmpty` | checkbox | Hide empty | — |
-| `filterHideCount` | checkbox | Hide count | — |
-| `filterCountNoBracket` | checkbox | Hide count bracket | — |
-| `labelMapping` | select | Label | — |
-| `customLabelMapping` | repeater | Label | — |
-| `populatedOptionsOrderBy` | select | Order by | — |
-| `populatedOptionsOrder` | select | populatedOptionsOrder | — |
-| `displayMode` | select | Mode | — |
-| `optionsGap` | number | Option | `--brx-options-gap` |
-| `buttonOptionsGap` | number | Option | `--brx-btn-options-gap` |
-| `optionsTypography` | typography | Option | `font` on `.brx-option-text` |
-| `countAlignEnd` | checkbox | Count | — |
-| `countTypography` | typography | Count | `font` on `.brx-option-count` |
-| `buttonSize` | select | Size | — |
-| `buttonStyle` | select | Style | — |
-| `buttonCircle` | checkbox | Circle | — |
-| `buttonOutline` | checkbox | Outline | — |
-| `buttonBackgroundColor` | color | Background color | `background-color` on `&[data-mode="button"] .bricks-button` |
-| `buttonBorder` | border | Border | `border-color` on `&[data-mode="button"] .bricks-button` |
-| `buttonTypography` | typography | Typography | `font` on `&[data-mode="button"] .bricks-button` |
-| `buttonActiveBackgroundColor` | color | Background color | `background-color` on `&[data-mode="button"] .bricks-button.brx-option-active` |
-| `buttonActiveBorder` | border | Border | `border-color` on `&[data-mode="button"] .bricks-button.brx-option-active` |
-| `buttonActiveTypography` | typography | Typography | `font` on `&[data-mode="button"] .bricks-button.brx-option-active` |
-| `filterActivePrefix` | text | Prefix | — |
-| `filterActiveSuffix` | text | Suffix | — |
-| `filterActiveTitle` | text | Title | — |
-| `limitOptions` | number | Visible options limit | — |
-| `showMoreText` | text | Show more | — |
-| `showLessText` | text | Show less | — |
-| `showMoreButtonSize` | select | Size | — |
-| `showMoreButtonStyle` | select | Style | — |
-| `showMoreButtonCircle` | checkbox | Circle | — |
-| `showMoreButtonOutline` | checkbox | Outline | — |
-| `showMoreButtonBackgroundColor` | color | Background color | `background-color` on `.brx-show-more-less-button` |
-| `showMoreButtonBorder` | border | Border | `border-color` on `.brx-show-more-less-button` |
-| `showMoreButtonTypography` | typography | Typography | `font` on `.bricks-button.brx-show-more-less-button` |
-| `filterDefaultValue` | text | Default value | — |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_columns` | text | Columns | `columns` |
-| `_columnGap` | number | Column gap | `column-gap` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
-# Filter - Geolocation Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/filter-geolocation/
-
-*Schema for Bricks Filter - Geolocation element*
-
-| Property | Value |
-|---|---|
-| `name` | filter-geolocation |
-| `category` | general |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `sourceFieldType` | select | Object type | — |
-| `fieldProvider` | select | Provider | — |
-| `customFieldKey` | text | Location field | — |
-| `geoCoordinateSource` | select | Coordinate format | — |
-| `geoLatitudeKey` | text | Latitude meta key | — |
-| `geoLongitudeKey` | text | Longitude meta key | — |
-| `geoCoordinatesKey` | text | Coordinates meta key | — |
-| `geoOrderByDistance` | checkbox | Sort results by distance | — |
-| `geoPersistUrl` | checkbox | Save location in URL | — |
-| `geoUseDefaultLocation` | checkbox | Use default location | — |
-| `geoSearchByAddress` | checkbox | Search by address | — |
-| `geoLabel` | text | Label | — |
-| `geoHideLabel` | checkbox | Hide label | — |
-| `geoAddressPlaceholder` | text | Address placeholder | — |
-| `geoAddressAutocomplete` | checkbox | Address autocomplete | — |
-| `geoAutocompleteCountryCodes` | text | Country codes | — |
-| `geoAutocompleteAreaMode` | select | Autocomplete map area | — |
-| `geoHideSearchButton` | checkbox | Hide search button | — |
-| `geoSearchButtonText` | text | Search button text | — |
-| `geoSearchByDeviceLocation` | checkbox | Search by device location | — |
-| `geoLocateButtonDisplay` | select | Button content | — |
-| `geoLocateButtonText` | text | Button text | — |
-| `geoLocateClearText` | text | Clear button text | — |
-| `geoLocateButtonIcon` | icon | Location icon | — |
-| `geoLocateClearIcon` | icon | Clear icon | — |
-| `geoLocateIconPosition` | select | Icon position | — |
-| `geoDefaultRadius` | number | Default radius | — |
-| `geoUnit` | select | Distance unit | — |
-| `geoUnitLabelFormat` | select | Unit label format | — |
-| `geoEnableRadiusSelect` | checkbox | Radius dropdown | — |
-| `geoRadiusLabel` | text | Radius label | — |
-| `geoHideRadiusLabel` | checkbox | Hide radius label | — |
-| `geoRadiusOptions` | repeater | Radius options | — |
-| `choicesJs` | checkbox | Enhanced radius dropdown | — |
-| `choicesPosition` | select | Dropdown position | — |
-| `geoMapId` | query-list | Map | — |
-| `geoSearchOnDrag` | checkbox | Search on map drag | — |
-| `geoSearchOnDragMode` | select | Map search behavior | — |
-| `geoSearchOnDragDefault` | checkbox | Checked by default | — |
-| `geoSearchOnDragLabel` | text | Checkbox label | — |
-| `geoSearchOnDragPosition` | select | Checkbox position | — |
-| `geoSearchOnDragDelay` | number | Search delay | — |
-| `geoRadiusFillColor` | color | Radius fill color | `--brx-geo-radius-fill-color` |
-| `geoRadiusStrokeColor` | color | Radius border color | `--brx-geo-radius-stroke-color` |
-| `geoMarkerColor` | color | Origin marker color | `--brx-geo-marker-color` |
-| `geoMarkerImage` | image | Origin marker image | — |
-| `geoMarkerWidth` | number | Marker width | — |
-| `geoMarkerHeight` | number | Marker height | — |
-| `geoControlsDirection` | direction | Direction | `flex-direction` on `.brx-filter-geolocation__controls` |
-| `geoControlsWrap` | select | Wrap | `flex-wrap` on `.brx-filter-geolocation__controls` |
-| `geoControlsAlignItems` | align-items | Align items | `align-items` on `.brx-filter-geolocation__controls` |
-| `geoGap` | number | Gap | `gap` on `.brx-filter-geolocation__controls` |
-| `geoLabelTypography` | typography | Typography | `font` on `.brx-filter-geolocation__label` |
-| `geoLabelSpacing` | number | Spacing | `margin-bottom` on `.brx-filter-geolocation__label` |
-| `geoAddressWidth` | number | Width | `width` on `.brx-filter-geolocation__address-wrap` |
-| `geoAddressMinHeight` | number | Min. height | `min-height` |
-| `geoAddressPadding` | dimensions | Padding | `padding` on `.brx-filter-geolocation__address`, `padding` on `.brx-filter-geolocation__autocomplete::part(input)` |
-| `geoAddressBackground` | background | Background | `background` |
-| `geoAddressBorder` | border | Border | `border` |
-| `geoAddressBoxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `geoAddressTypography` | typography | Typography | `font`, `font` on `.brx-filter-geolocation__autocomplete::part(input)` |
-| `geoAddressPlaceholderTypography` | typography | Placeholder typography | `font` on `.brx-filter-geolocation__address::placeholder, .brx-filter-geolocation__autocomplete::part(input)::placeholder` |
-| `geoClearIcon` | icon | Icon | — |
-| `geoClearIconColor` | color | Icon color | `color` on `.brx-filter-geolocation__clear-icon` |
-| `geoClearIconSize` | number | Icon size | `font-size` on `.brx-filter-geolocation__clear-icon` |
-| `geoClearIconInset` | number | Icon inset | `inset-inline-end` on `.brx-filter-geolocation__clear-icon` |
-| `geoSearchWidth` | number | Width | `width` on `.brx-filter-geolocation__search` |
-| `geoSearchPadding` | dimensions | Padding | `padding` on `.brx-filter-geolocation__search` |
-| `geoSearchBackground` | background | Background | `background` on `.brx-filter-geolocation__search` |
-| `geoSearchBorder` | border | Border | `border` on `.brx-filter-geolocation__search` |
-| `geoSearchBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.brx-filter-geolocation__search` |
-| `geoSearchTypography` | typography | Typography | `font` on `.brx-filter-geolocation__search` |
-| `geoRadiusWidth` | number | Width | `width` on `.brx-filter-geolocation__radius-wrap` |
-| `geoRadiusPadding` | dimensions | Padding | `padding` on `.brx-filter-geolocation__radius` |
-| `geoRadiusBackground` | background | Background | `background` on `.brx-filter-geolocation__radius` |
-| `geoRadiusBorder` | border | Border | `border` on `.brx-filter-geolocation__radius` |
-| `geoRadiusBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.brx-filter-geolocation__radius` |
-| `geoRadiusTypography` | typography | Typography | `font` on `.brx-filter-geolocation__radius` |
-| `geoLocateWidth` | number | Width | `width` on `.brx-filter-geolocation__locate` |
-| `geoLocatePadding` | dimensions | Padding | `padding` on `.brx-filter-geolocation__locate` |
-| `geoLocateBackground` | background | Background | `background` on `.brx-filter-geolocation__locate` |
-| `geoLocateBorder` | border | Border | `border` on `.brx-filter-geolocation__locate` |
-| `geoLocateBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.brx-filter-geolocation__locate` |
-| `geoLocateTypography` | typography | Typography | `font` on `.brx-filter-geolocation__locate` |
-| `geoLocateIconColor` | color | Icon color | `color` on `.brx-filter-geolocation__locate .icon` |
-| `geoLocateIconSize` | number | Icon size | `font-size` on `.brx-filter-geolocation__locate .icon` |
-| `geoLocateIconGap` | number | Icon gap | `gap` on `.brx-filter-geolocation__locate` |
-| `geoDisableStatusMessages` | checkbox | Hide status messages | — |
-| `geoStatusTypography` | typography | Typography | `font` on `.brx-filter-geolocation__status` |
-| `geoStatusMargin` | spacing | Margin | `margin` on `.brx-filter-geolocation__status:not(:empty):not(.screen-reader-text)` |
-| `geoStatusPadding` | spacing | Padding | `padding` on `.brx-filter-geolocation__status:not(:empty):not(.screen-reader-text)` |
-| `choicesPadding` | text | Padding | `--choices-inner-padding` on `.brx-filter-geolocation__radius-wrap` |
-| `choicesBackgroundColor` | color | Background | `--choices-bg-color` on `.brx-filter-geolocation__radius-wrap` |
-| `choicesBorderBase` | text | Border (Base) | `--choices-base-border` on `.brx-filter-geolocation__radius-wrap` |
-| `choicesBorderColor` | color | Border color | `--choices-keyline-color` on `.brx-filter-geolocation__radius-wrap`, `border-color` on `.bricks-choices__inner, .bricks-choices__list--dropdown`, `border-color` on `.bricks-choices.is-focused .bricks-choices__inner, .bricks-choices.is-open .bricks-choices__inner, .bricks-choices.is-open .bricks-choices__list--dropdown` |
-| `choicesBorderRadius` | number | Border radius | `--choices-border-radius` on `.brx-filter-geolocation__radius-wrap` |
-| `choicesFontSize` | number | Font size | `--choices-font-size` on `.brx-filter-geolocation__radius-wrap` |
-| `choicesTextColor` | color | Text color | `--choices-brx-text-color` on `.brx-filter-geolocation__radius-wrap` |
-| `choicesArrowColor` | color | Arrow color | `--choices-text-color` on `.brx-filter-geolocation__radius-wrap` |
-| `choicesItemPadding` | text | Padding | `--choices-dropdown-item-padding` on `.brx-filter-geolocation__radius-wrap` |
-| `choicesDropdownBackground` | color | Background | `--choices-bg-color-dropdown` on `.brx-filter-geolocation__radius-wrap` |
-| `choicesHighlightBackground` | color | Highlight: Background | `--choices-highlighted-color` on `.brx-filter-geolocation__radius-wrap` |
-| `choicesHighlightTextColor` | color | Highlight: Text color | `--choices-brx-highlighted-text-color` on `.brx-filter-geolocation__radius-wrap` |
-| `choicesDisabledBackground` | color | Disabled: Background | `--choices-brx-bg-color-disabled` on `.brx-filter-geolocation__radius-wrap` |
-| `choicesDisabledTextColor` | color | Disabled: Text color | `--choices-brx-text-color-disabled` on `.brx-filter-geolocation__radius-wrap` |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_columns` | text | Columns | `columns` |
-| `_columnGap` | number | Column gap | `column-gap` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
-# Filter - Datepicker Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/filter-datepicker/
-
-*Schema for Bricks Filter - Datepicker element*
-
-| Property | Value |
-|---|---|
-| `name` | filter-datepicker |
-| `category` | general |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `filterQueryId` | query-list | Target query | — |
-| `filterDefinitionId` | filter-definition-manager | Global filter | — |
-| `filterNiceName` | text | URL parameter | — |
-| `filterApplyOn` | select | Apply on | — |
-| `filterSource` | select | Source | — |
-| `sourceFieldType` | select | Field type | — |
-| `fieldProvider` | select | Provider | — |
-| `customFieldKey` | text | Meta key | — |
-| `fieldCompareOperator` | select | Compare | — |
-| `wpPostField` | select | Field | — |
-| `wpUserField` | select | Field | — |
-| `wpTermField` | select | Field | — |
-| `filterTaxonomyOrderBy` | select | Order by | — |
-| `filterTaxonomyOrderMetaKey` | text | Order meta key | — |
-| `filterTaxonomyOrder` | select | filterTaxonomyOrder | — |
-| `filterTermInclude` | select | filterTermInclude | — |
-| `filterTermExclude` | select | filterTermExclude | — |
-| `filterTermTopLevel` | checkbox | Top level terms only | — |
-| `filterActivePrefix` | text | Prefix | — |
-| `filterActiveSuffix` | text | Suffix | — |
-| `filterActiveTitle` | text | Title | — |
-| `filterDefaultValue` | text | Default value | — |
-| `filterDefaultMin` | text | Start date | — |
-| `filterDefaultMax` | text | End date | — |
-| `enableTime` | checkbox | Enable time | — |
-| `isDateRange` | checkbox | Date range | — |
-| `customFieldEndKey` | text | End date meta key | — |
-| `useMinMax` | checkbox | Min/max date | — |
-| `placeholder` | text | Placeholder | — |
-| `placeholderTypography` | typography | Placeholder typography | `font` on `input::placeholder` |
-| `l10n` | text | Language | — |
-| `dateFormat` | text | Datepicker format | — |
-| `icon` | icon | Icon | — |
-| `iconColor` | color | Icon color | `color` on `.icon` |
-| `iconSize` | number | Icon size | `font-size` on `.icon` |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_columns` | text | Columns | `columns` |
-| `_columnGap` | number | Column gap | `column-gap` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
-# Filter - Radio Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/filter-radio/
-
-*Schema for Bricks Filter - Radio element*
-
-| Property | Value |
-|---|---|
-| `name` | filter-radio |
-| `category` | general |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `filterQueryId` | query-list | Target query | — |
-| `filterDefinitionId` | filter-definition-manager | Global filter | — |
-| `filterNiceName` | text | URL parameter | — |
-| `filterApplyOn` | select | Apply on | — |
-| `filterAction` | select | Action | — |
-| `filterSource` | select | Source | — |
-| `sourceFieldType` | select | Field type | — |
-| `fieldProvider` | select | Provider | — |
-| `customFieldKey` | text | Meta key | — |
-| `fieldCompareOperator` | select | Compare | — |
-| `fieldCompareType` | select | Compare type | — |
-| `wpPostField` | select | Field | — |
-| `wpUserField` | select | Field | — |
-| `wpTermField` | select | Field | — |
-| `filterTaxonomy` | select | Taxonomy | — |
-| `filterTaxonomyOrderBy` | select | Order by | — |
-| `filterTaxonomyOrderMetaKey` | text | Order meta key | — |
-| `filterTaxonomyOrder` | select | filterTaxonomyOrder | — |
-| `filterTermInclude` | select | filterTermInclude | — |
-| `filterTermExclude` | select | filterTermExclude | — |
-| `filterTermTopLevel` | checkbox | Top level terms only | — |
-| `filterIncludeChildrenCount` | checkbox | Count | — |
-| `filterHierarchical` | checkbox | Hierarchical | — |
-| `filterChildIndentation` | text | Indent | — |
-| `filterChildIndentationGap` | number | Indent | `margin-inline-start` on `[class*="depth-"]:not([class*="depth-0"])` |
-| `filterGroupLabel` | text | Group label | — |
-| `filterHideEmpty` | checkbox | Hide empty | — |
-| `filterHideCount` | checkbox | Hide count | — |
-| `filterCountNoBracket` | checkbox | Hide count bracket | — |
-| `filterHideAllOption` | checkbox | Hide "All" option | — |
-| `filterLabelAll` | text | Label | — |
-| `labelMapping` | select | Label | — |
-| `customLabelMapping` | repeater | Label | — |
-| `populatedOptionsOrderBy` | select | Order by | — |
-| `populatedOptionsOrder` | select | populatedOptionsOrder | — |
-| `sortOptions` | repeater | Sort options | — |
-| `perPageOptions` | text | Options | — |
-| `displayMode` | select | Mode | — |
-| `optionsGap` | number | Option | `--brx-options-gap` |
-| `buttonOptionsGap` | number | Option | `--brx-btn-options-gap` |
-| `optionsTypography` | typography | Option | `font` on `.brx-option-text` |
-| `countAlignEnd` | checkbox | Count | — |
-| `countTypography` | typography | Count | `font` on `.brx-option-count` |
-| `buttonSize` | select | Size | — |
-| `buttonStyle` | select | Style | — |
-| `buttonCircle` | checkbox | Circle | — |
-| `buttonOutline` | checkbox | Outline | — |
-| `buttonBackgroundColor` | color | Background color | `background-color` on `&[data-mode="button"] .bricks-button` |
-| `buttonBorder` | border | Border | `border-color` on `&[data-mode="button"] .bricks-button` |
-| `buttonTypography` | typography | Typography | `font` on `&[data-mode="button"] .bricks-button` |
-| `buttonActiveBackgroundColor` | color | Background color | `background-color` on `&[data-mode="button"] .bricks-button.brx-option-active` |
-| `buttonActiveBorder` | border | Border | `border-color` on `&[data-mode="button"] .bricks-button.brx-option-active` |
-| `buttonActiveTypography` | typography | Typography | `font` on `&[data-mode="button"] .bricks-button.brx-option-active` |
-| `filterActivePrefix` | text | Prefix | — |
-| `filterActiveSuffix` | text | Suffix | — |
-| `filterActiveTitle` | text | Title | — |
-| `limitOptions` | number | Visible options limit | — |
-| `showMoreText` | text | Show more | — |
-| `showLessText` | text | Show less | — |
-| `showMoreButtonSize` | select | Size | — |
-| `showMoreButtonStyle` | select | Style | — |
-| `showMoreButtonCircle` | checkbox | Circle | — |
-| `showMoreButtonOutline` | checkbox | Outline | — |
-| `showMoreButtonBackgroundColor` | color | Background color | `background-color` on `.brx-show-more-less-button` |
-| `showMoreButtonBorder` | border | Border | `border-color` on `.brx-show-more-less-button` |
-| `showMoreButtonTypography` | typography | Typography | `font` on `.bricks-button.brx-show-more-less-button` |
-| `filterDefaultValue` | text | Default value | — |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_columns` | text | Columns | `columns` |
-| `_columnGap` | number | Column gap | `column-gap` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
-# Filter - Range Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/filter-range/
-
-*Schema for Bricks Filter - Range element*
-
-| Property | Value |
-|---|---|
-| `name` | filter-range |
-| `category` | general |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `filterQueryId` | query-list | Target query | — |
-| `filterDefinitionId` | filter-definition-manager | Global filter | — |
-| `filterNiceName` | text | URL parameter | — |
-| `filterApplyOn` | select | Apply on | — |
-| `filterSource` | select | Source | — |
-| `sourceFieldType` | select | Field type | — |
-| `fieldProvider` | select | Provider | — |
-| `customFieldKey` | text | Meta key | — |
-| `wpPostField` | select | Field | — |
-| `wpUserField` | select | Field | — |
-| `wpTermField` | select | Field | — |
-| `filterTaxonomyOrderBy` | select | Order by | — |
-| `filterTaxonomyOrderMetaKey` | text | Order meta key | — |
-| `filterTaxonomyOrder` | select | filterTaxonomyOrder | — |
-| `filterTermInclude` | select | filterTermInclude | — |
-| `filterTermExclude` | select | filterTermExclude | — |
-| `filterTermTopLevel` | checkbox | Top level terms only | — |
-| `filterActivePrefix` | text | Prefix | — |
-| `filterActiveSuffix` | text | Suffix | — |
-| `filterActiveTitle` | text | Title | — |
-| `filterDefaultMin` | text | Minimum | — |
-| `filterDefaultMax` | text | Maximum | — |
-| `disableAutoMinMax` | checkbox | Disable auto min/max value | — |
-| `displayMode` | select | Mode | — |
-| `step` | number | step | — |
-| `decimalPlaces` | number | Decimal places | — |
-| `labelThousandSeparator` | checkbox | Thousand separator | — |
-| `labelSeparatorText` | text | Separator | — |
-| `labelMin` | text | Min | — |
-| `labelMax` | text | Max | — |
-| `labelDirection` | direction | Direction | `flex-direction` on `.min-max-wrap > *, .value-wrap > *` |
-| `labelGap` | number | Gap | `gap` on `.value-wrap > span`, `gap` on `.min-max-wrap > div` |
-| `labelTypography` | typography | Typography | `font` on `.label` |
-| `placeholderMin` | text | Placeholder | — |
-| `placeholderMax` | text | Placeholder | — |
-| `inputBackgroundColor` | color | Background color | `background-color` on `.min-max-wrap input` |
-| `inputBorder` | border | Border | `border` on `.min-max-wrap input` |
-| `inputTypography` | typography | Typography | `font` on `.min-max-wrap input` |
-| `inputWidth` | number | Width | `width` on `.min-max-wrap input` |
-| `inputUseCustomStepper` | checkbox | Custom stepper | — |
-| `inputCustomStepperButtonGap` | number | Gap | `gap` on `.min-max-wrap.has-custom-stepper .brx-stepper` |
-| `inputCustomStepperInputGap` | number | Gap | `margin-inline-start` on `.min-max-wrap.has-custom-stepper .brx-stepper` |
-| `inputCustomStepperButtonBackgroundColor` | color | Button | `background-color` on `.min-max-wrap.has-custom-stepper .brx-stepper-button` |
-| `inputCustomStepperButtonBorder` | border | Button | `border` on `.min-max-wrap.has-custom-stepper .brx-stepper-button` |
-| `inputCustomStepperButtonTypography` | typography | Button | `font` on `.min-max-wrap.has-custom-stepper .brx-stepper-button` |
-| `sliderSpacing` | number | Spacing | `padding-top` on `.double-slider-wrap`, `margin-top` on `.double-slider-wrap .value-wrap` |
-| `sliderBarHeight` | number | Bar | `border-width` on `.double-slider-wrap .slider-wrap .slider-base`, `border-width` on `.double-slider-wrap .slider-wrap .slider-track` |
-| `sliderBarColor` | color | Bar | `border-color` on `.double-slider-wrap .slider-wrap .slider-base` |
-| `sliderBarColorActive` | color | Bar | `border-color` on `.double-slider-wrap .slider-wrap .slider-track`, `border-color` on `.double-slider-wrap input[type="range"]::-moz-range-thumb`, `border-color` on `.double-slider-wrap input[type="range"]::-webkit-slider-thumb` |
-| `sliderThumbSize` | number | Thumb | `width` on `.double-slider-wrap input[type="range"]::-moz-range-thumb`, `width` on `.double-slider-wrap input[type="range"]::-webkit-slider-thumb`, `height` on `.double-slider-wrap input[type="range"]::-moz-range-thumb`, `height` on `.double-slider-wrap input[type="range"]::-webkit-slider-thumb`, `border-radius` on `:scope > .double-slider-wrap input[type="range"]::-moz-range-thumb`, `border-radius` on `:scope > .double-slider-wrap input[type="range"]::-webkit-slider-thumb` |
-| `sliderThumbBackgroundColor` | color | Thumb | `background-color` on `.double-slider-wrap input[type="range"]::-moz-range-thumb`, `background-color` on `.double-slider-wrap input[type="range"]::-webkit-slider-thumb` |
-| `sliderThumbBorderFull` | border | Thumb | `border` on `.double-slider-wrap input[type="range"]::-moz-range-thumb`, `border` on `.double-slider-wrap input[type="range"]::-webkit-slider-thumb` |
-| `sliderThumbBoxShadow` | box-shadow | Thumb | `box-shadow` on `.double-slider-wrap input[type="range"]::-moz-range-thumb`, `box-shadow` on `.double-slider-wrap input[type="range"]::-webkit-slider-thumb` |
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_columns` | text | Columns | `columns` |
-| `_columnGap` | number | Column gap | `column-gap` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
-
----
-
-# Filter - Search Schema
-
-Source: https://academy.bricksbuilder.io/developer/schema/elements/filter-search/
-
-*Schema for Bricks Filter - Search element*
-
-| Property | Value |
-|---|---|
-| `name` | filter-search |
-| `category` | general |
-| `tag` | div |
-| `nestable` | false |
-
-## Controls
-
-| Key | Type | Label | CSS |
-|---|---|---|---|
-| `filterQueryId` | query-list | Target query | — |
-| `filterDefinitionId` | filter-definition-manager | Global filter | — |
-| `filterNiceName` | text | URL parameter | — |
-| `filterApplyOn` | select | Apply on | — |
-| `filterActivePrefix` | text | Prefix | — |
-| `filterActiveSuffix` | text | Suffix | — |
-| `filterActiveTitle` | text | Title | — |
-| `filterDefaultValue` | text | Default value | — |
-| `filterInputDebounce` | number | Debounce | — |
-| `filterMinChars` | number | Min. characters | — |
-| `filterEnterAction` | select | Enter action | — |
-| `filterEnterTriggerSubmit` | checkbox | Trigger Filter Submit interactions | — |
-| `redirectTo` | text | Redirect to | — |
-| `newTab` | checkbox | Open in new tab | — |
-| `searchCriteriaCustom` | checkbox | Custom search criteria | — |
-| `useWeightScore` | checkbox | Use weight score | — |
-| `searchPostFields` | checkbox | Search post fields | — |
-| `searchPostQuery` | repeater | Post fields | — |
-| `searchPostMeta` | checkbox | Search post meta fields | — |
-| `searchPostMetaKeys` | repeater | Post meta keys | — |
-| `searchPostTerms` | checkbox | Search post terms | — |
-| `searchPostTaxonomies` | repeater | Taxonomies | — |
-| `searchTermFields` | checkbox | Search term fields | — |
-| `searchTermQuery` | repeater | Term fields | — |
-| `searchTermMeta` | checkbox | Search term meta fields | — |
-| `searchTermMetaKeys` | repeater | Term meta keys | — |
-| `searchUserFields` | checkbox | Search user fields | — |
-| `searchUserQuery` | repeater | User fields | — |
-| `searchUserMeta` | checkbox | Search user meta fields | — |
-| `searchUserMetaKeys` | repeater | User meta keys | — |
-| `placeholder` | text | Placeholder | — |
-| `placeholderTypography` | typography | Placeholder typography | `font` on `input::placeholder` |
-| `label` | text | Label | — |
+| `titleTypography` | typography | Title typography | `font` on `.title` |
 | `labelTypography` | typography | Label typography | `font` on `label` |
-| `icon` | icon | Icon | — |
-| `iconColor` | color | Icon color | `color` on `.icon` |
-| `iconSize` | number | Icon size | `font-size` on `.icon` |
+| `imageBorder` | border | Image border | `border` on `.image` |
 
-## Bricks 2.4 search submission settings
+### Post-taxonomy
 
-These query-filter settings are available when Query Filters are enabled. Use the controls above to configure the Enter-key behavior below.
+Section key: `post-taxonomy`
 
-| Key | Type | Values and behavior |
-| --- | --- | --- |
-| `filterEnterAction` | string | `default` for AJAX search, or `redirect` for Redirect to URL. Omitted values use AJAX search. Requires `filterQueryId`. |
-| `filterEnterTriggerSubmit` | boolean | Opt into Filter Submit start/end interactions for an Enter-key AJAX search. Default: `false`. |
-| `redirectTo` | string | Destination URL for `filterEnterAction: "redirect"`. Active filters for the target query become URL parameters. Empty values fall back to AJAX search. |
-| `newTab` | boolean | Open the configured redirect in a new tab. Default: `false`. |
-
-See [Filter Search](https://academy.bricksbuilder.io/builder/elements/filter/filter-search/#search-with-enter) for setup and Enter-key behavior.
-
-## Inherited CSS controls
-
-Shared CSS controls available on all elements. Keys are prefixed with `_` and support responsive/pseudo-class variants via colon syntax (e.g. `_typography:tablet_portrait:hover`).
+Theme style controls for the "post-taxonomy" section. Default CSS selector: .brxe-post-taxonomy
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
-| `_content` | text | Content | `content` |
-| `_margin` | spacing | Margin | `margin` |
-| `_padding` | spacing | Padding | `padding` |
-| `_width` | number | Width | `width` |
-| `_widthMin` | number | Min. width | `min-width` |
-| `_widthMax` | number | Max. width | `max-width` |
-| `_height` | number | Height | `height` |
-| `_heightMin` | number | Min. height | `min-height` |
-| `_heightMax` | number | Max. height | `max-height` |
-| `_aspectRatio` | text | Aspect ratio | `aspect-ratio` |
-| `_position` | select | Position | `position` |
-| `_top` | number | _top | `top` |
-| `_right` | number | Right | `right` |
-| `_bottom` | number | Bottom | `bottom` |
-| `_left` | number | Left | `left` |
-| `_zIndex` | number | Z-index | `z-index` |
-| `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
-| `_columns` | text | Columns | `columns` |
-| `_columnGap` | number | Column gap | `column-gap` |
-| `_visibility` | select | Visibility | `visibility` |
-| `_overflow` | text | Overflow | `overflow` |
-| `_opacity` | number | Opacity | `opacity` |
-| `_cursor` | select | Cursor | `cursor` |
-| `_isolation` | select | Isolation | `isolation` |
-| `_mixBlendMode` | select | Mix blend mode | `mix-blend-mode` |
-| `_pointerEvents` | text | Pointer events | `pointer-events` |
-| `_perspective` | number | Perspective | `perspective` |
-| `_perspectiveOrigin` | text | Perspective origin | `perspective-origin` |
-| `_gridItemJustifySelf` | align-items | Justify self | `justify-self` |
-| `_flexDirection` | direction | Direction | `flex-direction` |
-| `_alignSelf` | align-items | Align self | `align-self` |
-| `_justifyContent` | justify-content | Align main axis | `justify-content` |
-| `_alignItems` | align-items | Align cross axis | `align-items` |
-| `_gap` | number | Gap | `gap` |
-| `_flexGrow` | number | Flex grow | `flex-grow` |
-| `_flexShrink` | number | Flex shrink | `flex-shrink` |
-| `_flexBasis` | text | Flex basis | `flex-basis` |
-| `_useMasonry` | checkbox | %s layout | — |
-| `_masonryColumn` | number | Columns | `--columns` |
-| `_masonryGutter` | number | Spacing | `--gutter` |
-| `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
-| `_masonryTransitionDuration` | number | Transition | — |
-| `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
-| `_background` | background | _background | `background` |
-| `_shapeDividers` | repeater | Custom shape | — |
-| `_gradient` | gradient | _gradient | `background-image` |
-| `_border` | border | Border | `border` |
-| `_boxShadow` | box-shadow | Box shadow | `box-shadow` |
-| `_transform` | transform | Transform | `transform` |
-| `_transformOrigin` | text | Transform origin | `transform-origin` |
-| `_motionElementParallax` | checkbox | Element parallax | — |
-| `_motionElementParallaxSpeedX` | number | Horizontal speed | `--brx-motion-parallax-speed-x` |
-| `_motionElementParallaxSpeedY` | number | Vertical speed | `--brx-motion-parallax-speed-y` |
-| `_motionBackgroundParallax` | checkbox | Background parallax | — |
-| `_motionBackgroundParallaxSpeed` | number | Background speed | `--brx-motion-background-speed` |
-| `_motionStartVisiblePercent` | number | Parallax start point | — |
-| `_cssCustom` | code | Custom CSS | — |
-| `_cssClasses` | text | CSS classes | — |
-| `_cssId` | text | CSS ID | — |
-| `_cssFilters` | filters | CSS Filters | `filter` |
-| `_cssTransition` | text | Transition | `transition` |
-| `_attributes` | repeater | Name | — |
-| `_scrollSnapType` | select | Type | `scroll-snap-type` on `html`, `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapAlign` | select | Align | `scroll-snap-align` on `.brxe-section` |
-| `_scrollSnapStop` | select | Stop | `scroll-snap-stop` on `.brxe-section` |
+| `margin` | spacing | Margin | `margin` on `.bricks-button` |
+| `padding` | spacing | Padding | `padding` on `.bricks-button` |
+| `background` | color | Background | `background-color` on `.bricks-button` |
+| `border` | border | Border | `border` on `.bricks-button` |
+| `typography` | typography | Typography | `font` on `.bricks-button` |
+
+### Post-title
+
+Section key: `post-title`
+
+Theme style controls for the "post-title" section. Default CSS selector: .brxe-post-title
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `typography` | typography | Typography | `font` |
+
+### Pricing-tables
+
+Section key: `pricing-tables`
+
+Theme style controls for the "pricing-tables" section. Default CSS selector: .brxe-pricing-tables
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `background` | background | Table background | `background` on `.pricing-table` |
+| `headerPadding` | spacing | Padding | `padding` on `.pricing-table-header` |
+| `headerBackgroundColor` | color | Background color | `background-color` on `.pricing-table-header` |
+| `headerBorder` | border | Border | `border` on `.pricing-table-header` |
+| `headerTitleTypography` | typography | Title typography | `font` on `.pricing-table-title` |
+| `headerSubtitleTypography` | typography | Subtitle typography | `font` on `.pricing-table-subtitle` |
+| `pricePadding` | spacing | Padding | `padding` on `.pricing-table-pricing` |
+| `priceBackgroundColor` | color | Background color | `background-color` on `.pricing-table-pricing` |
+| `priceBorder` | border | Border | `Border` on `.pricing-table-pricing` |
+| `priceTypography` | typography | Price typography | `font` on `.pricing-table-price-prefix`, `font` on `.pricing-table-price`, `font` on `.pricing-table-price-suffix` |
+| `priceMetaTypography` | typography | Meta typography | `font` on `.pricing-table-price-meta` |
+| `priceOriginalTypography` | typography | Original price typography | `font` on `.pricing-table-original-price` |
+| `featuresPadding` | spacing | Padding | `padding` on `.pricing-table-feature` |
+| `featuresIconColor` | color | Icon color | `color` on `.pricing-table-feature i` |
+| `featuresBackgroundColor` | color | Background color | `background-color` on `.pricing-table-feature` |
+| `featuresBorder` | border | Border | `border` on `.pricing-table-feature` |
+| `featuresTypography` | typography | Features typography | `font` on `.pricing-table-feature` |
+| `footerPadding` | spacing | Padding | `padding` on `.pricing-table-footer` |
+| `footerBackgroundColor` | color | Background color | `background-color` on `.pricing-table-footer` |
+| `footerBorder` | border | Border | `border` on `.pricing-table-footer` |
+| `buttonBackgroundColor` | color | Background color | `background-color` on `.bricks-button` |
+| `buttonBorder` | border | Border | `border` on `.bricks-button` |
+| `buttonTypography` | typography | Typography | `font` on `.bricks-button` |
+| `additionalInfoTypography` | typography | Typography | `font` on `.pricing-table-additional-info` |
+| `ribbonTextColor` | color | Text color | `color` on `.pricing-table-ribbon-title` |
+| `ribbonBackgroundColor` | color | Background color | `background-color` on `.pricing-table-ribbon-title` |
+
+### Progress-bar
+
+Section key: `progress-bar`
+
+Theme style controls for the "progress-bar" section. Default CSS selector: .brxe-progress-bar
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `height` | number | Height | `height` on `.bar` |
+| `barColor` | color | Bar color | `background-color` on `.bar span` |
+| `barBackgroundColor` | color | Bar background color | `background-color` on `.bar` |
+| `barBorder` | border | Bar border | `border` on `.bar` |
+| `labelTypography` | typography | Label typography | `font` on `.label` |
+| `percentageTypography` | typography | Percentage typography | `font` on `.percentage` |
+
+### Related-posts
+
+Section key: `related-posts`
+
+Theme style controls for the "related-posts" section. Default CSS selector: .brxe-related-posts
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `contentBackground` | color | Content background | `background-color` on `.post-content` |
+| `contentPadding` | spacing | Content padding | `padding` on `.post-content` |
+
+### Search
+
+Section key: `search`
+
+Theme style controls for the "search" section. Default CSS selector: .brxe-search
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `inputBackgroundColor` | color | Input background | `background-color` on `input[type=search]` |
+| `inputBorder` | border | Input border | `border` on `input[type=search]` |
+| `iconBackgroundColor` | color | Icon background | `background-color` on `button` |
+| `iconTypography` | typography | Icon typography | `font` on `button` |
+| `iconWidth` | number | Icon width | `width` on `button` |
+
+### Section
+
+Section key: `section`
+
+Theme style controls for the "section" section.
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `_display` | select | Display | `display` on `.brxe-section`, `align-items` on `.brxe-section` |
+| `_gridGap` | number | Gap | `gap` on `.brxe-section` |
+| `_columnGap` | number | Column gap | `column-gap` on `.brxe-section` |
+| `_rowGap` | number | Row gap | `row-gap` on `.brxe-section` |
+| `_gridTemplateColumns` | text | Grid template columns | `grid-template-columns` on `.brxe-section` |
+| `_gridTemplateRows` | text | Grid template rows | `grid-template-rows` on `.brxe-section` |
+| `_gridAutoColumns` | text | Grid auto columns | `grid-auto-columns` on `.brxe-section` |
+| `_gridAutoRows` | text | Grid auto rows | `grid-auto-rows` on `.brxe-section` |
+| `_gridAutoFlow` | select | Grid auto flow | `grid-auto-flow` on `.brxe-section` |
+| `_justifyItemsGrid` | justify-content | Justify items | `justify-items` on `.brxe-section` |
+| `_alignItemsGrid` | align-items | Align items | `align-items` on `.brxe-section` |
+| `_justifyContentGrid` | justify-content | Justify content | `justify-content` on `.brxe-section` |
+| `_alignContentGrid` | align-items | Align content | `align-content` on `.brxe-section` |
+| `_direction` | direction | Direction | `flex-direction` on `.brxe-section` |
+| `_justifyContent` | justify-content | Align main axis | `justify-content` on `.brxe-section` |
+| `_alignItems` | align-items | Align cross axis | `align-items` on `.brxe-section` |
+| `width` | number | Width | `width` on `.brxe-section` |
+| `widthMin` | number | Min. width | `min-width` on `.brxe-section` |
+| `widthMax` | number | Max. width | `max-width` on `.brxe-section` |
+| `margin` | spacing | Margin | `margin` on `.brxe-section` |
+| `padding` | spacing | Padding | `padding` on `.brxe-section` |
+
+### Sidebar
+
+Section key: `sidebar`
+
+Theme style controls for the "sidebar" section. Default CSS selector: .brxe-sidebar
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `margin` | spacing | Widget margin | `margin` on `.bricks-widget-wrapper` |
+| `titleTypography` | typography | Widget title | `font` on `.bricks-widget-title`, `font` on `h1`, `font` on `h2`, `font` on `h3`, `font` on `h4`, `font` on `h5`, `font` on `h6` |
+| `contentTypography` | typography | Content typography | `font` |
+| `searchBackground` | color | Search background color | `background-color` on `input[type=search]` |
+
+### Slider
+
+Section key: `slider`
+
+Theme style controls for the "slider" section. Default CSS selector: .brxe-slider
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `titleMargin` | spacing | Title margin | `margin` on `.title` |
+| `titleTypography` | typography | Title typography | `font` on `.title` |
+| `contentWidth` | number | Content width | `width` on `.slider-content` |
+| `contentBackgroundColor` | color | Content background | `background-color` on `.slider-content` |
+| `contentMargin` | spacing | Content margin | `margin` on `.slider-content` |
+| `contentPadding` | spacing | Content padding | `padding` on `.slider-content` |
+| `contentAlignHorizontal` | select | Content align horizontal | `justify-content` on `.swiper-slide` |
+| `contentAlignVertical` | align-items | Content align vertical | `align-items` on `.swiper-slide` |
+| `contentTextAlign` | text-align | Content text align | `text-align` on `.slider-content` |
+| `contentTypography` | typography | Content typography | `font` on `.content` |
+| `buttonStyle` | select | Style | — |
+| `buttonSize` | select | Size | — |
+| `buttonBackground` | color | Background | `background-color` on `.bricks-button` |
+| `buttonBorder` | border | Border | `border` on `.bricks-button` |
+| `buttonBoxshadow` | box-shadow | Box shadow | `box-shadow` on `.bricks-button` |
+| `buttonTypography` | typography | Button typography | `color` on `.bricks-button` |
+| `backgroundFilters` | filters | CSS Filters | `filter` on `.css-filter` |
+| `backgroundPositionTop` | number | backgroundPositionTop | `top` on `.image` |
+| `backgroundPositionRight` | number | Right | `right` on `.image` |
+| `backgroundPositionBottom` | number | Bottom | `bottom` on `.image` |
+| `backgroundPositionLeft` | number | Left | `left` on `.image` |
+| `arrows` | checkbox | Show arrows | — |
+| `arrowHeight` | number | Height | `height` on `.swiper-button` |
+| `arrowWidth` | number | Width | `width` on `.swiper-button` |
+| `arrowBackground` | color | Background | `background-color` on `.swiper-button` |
+| `arrowBorder` | border | Border | `border` on `.swiper-button` |
+| `arrowTypography` | typography | Typography | `font` on `.swiper-button` |
+| `prevArrow` | icon | Prev arrow | `—` on `.bricks-swiper-button-prev > *` |
+| `prevArrowTop` | number | Top | `top` on `.bricks-swiper-button-prev` |
+| `prevArrowRight` | number | Right | `right` on `.bricks-swiper-button-prev` |
+| `prevArrowBottom` | number | Bottom | `bottom` on `.bricks-swiper-button-prev` |
+| `prevArrowLeft` | number | Left | `left` on `.bricks-swiper-button-prev` |
+| `nextArrow` | icon | Next arrow | `—` on `.bricks-swiper-button-next > *` |
+| `nextArrowTop` | number | Top | `top` on `.bricks-swiper-button-next` |
+| `nextArrowRight` | number | Right | `right` on `.bricks-swiper-button-next` |
+| `nextArrowBottom` | number | Bottom | `bottom` on `.bricks-swiper-button-next` |
+| `nextArrowLeft` | number | Left | `left` on `.bricks-swiper-button-next` |
+| `dots` | checkbox | Show dots | — |
+| `dotsVertical` | checkbox | Vertical | `flex-direction` on `.swiper-pagination-bullets` |
+| `dotsHeight` | number | Height | `height` on `.swiper-pagination-bullet` |
+| `dotsWidth` | number | Width | `width` on `.swiper-pagination-bullet` |
+| `dotsTop` | number | Top | `top` on `.bricks-swiper-container + .swiper-pagination-bullets` |
+| `dotsRight` | number | Right | `right` on `.bricks-swiper-container + .swiper-pagination-bullets`, `left` on `.bricks-swiper-container + .swiper-pagination-bullets`, `transform` on `.bricks-swiper-container + .swiper-pagination-bullets` |
+| `dotsBottom` | number | Bottom | `bottom` on `.bricks-swiper-container + .swiper-pagination-bullets` |
+| `dotsLeft` | number | Left | `left` on `.bricks-swiper-container + .swiper-pagination-bullets`, `transform` on `.bricks-swiper-container + .swiper-pagination-bullets` |
+| `dotsBorder` | border | Border | `border` on `.swiper-pagination-bullet` |
+| `dotsColor` | color | Color | `background-color` on `.swiper-pagination-bullet`, `color` on `.swiper-pagination-bullet` |
+| `dotsActiveColor` | color | Active color | `background-color` on `.swiper-pagination-bullet-active`, `color` on `.swiper-pagination-bullet-active` |
+| `dotsSpacing` | spacing | Margin | `margin` on `.swiper-pagination-bullet` |
+
+### Social-icons
+
+Section key: `social-icons`
+
+Theme style controls for the "social-icons" section. Default CSS selector: .brxe-social-icons
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `margin` | spacing | Margin | `margin` on `li` |
+| `padding` | spacing | Padding | `padding` on `li` |
+| `backgroundColor` | color | Background color | `background-color` on `li` |
+| `border` | border | Border | `border` on `li` |
+| `typography` | typography | Typography | `font` on `li` |
+
+### Svg
+
+Section key: `svg`
+
+Theme style controls for the "svg" section. Default CSS selector: .brxe-svg
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `height` | number | Height | `height` |
+| `width` | number | Width | `width` |
+| `strokeWidth` | number | Stroke width | `stroke-width` on `*` |
+| `stroke` | color | Stroke color | `stroke` on `*` |
+| `fill` | color | Fill | `fill` on `*` |
+
+### Tabs
+
+Section key: `tabs`
+
+Theme style controls for the "tabs" section. Default CSS selector: .brxe-tabs
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `titlePadding` | spacing | Padding | `padding` on `.tab-title` |
+| `titleTypography` | typography | Typography | `font` on `.tab-title` |
+| `titleBackgroundColor` | color | Background | `background-color` on `.tab-title` |
+| `titleBorder` | border | Border | `border` on `.tab-title` |
+| `titleActiveTypography` | typography | Active typography | `font` on `.tab-title.brx-open` |
+| `titleActiveBackgroundColor` | color | Active background | `background-color` on `.tab-title.brx-open` |
+| `titleActiveBorder` | border | Active border | `border` on `.tab-title.brx-open` |
+| `contentPadding` | spacing | Padding | `padding` on `.tab-content` |
+| `contentTextAlign` | select | Text align | `text-align` on `.tab-content` |
+| `contentColor` | color | Text color | `color` on `.tab-content` |
+| `contentBackgroundColor` | color | Background color | `background-color` on `.tab-content` |
+| `contentBorder` | border | Border | `border` on `.tab-content` |
+
+### Team-members
+
+Section key: `team-members`
+
+Theme style controls for the "team-members" section. Default CSS selector: .brxe-team-members
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `memberGutter` | number | Gap | `gap` |
+| `memberBorder` | border | Border | `border` on `.member` |
+| `memberBoxShadow` | box-shadow | Box shadow | `box-shadow` on `.member` |
+| `memberTitleTypography` | typography | Title typography | `font` on `.title` |
+| `memberSubtitleTypography` | typography | Subtitle typography | `font` on `.subtitle` |
+| `memberDescriptionTypography` | typography | Description typography | `font` on `.description` |
+| `imageBorder` | border | Image border | `border` on `.image` |
+| `contentPadding` | spacing | Padding | `padding` on `.content` |
+| `contentAlign` | select | Text align | `text-align` on `.content` |
+| `contentBackgroundColor` | color | Background | `background-color` on `.member` |
+
+### Testimonials
+
+Section key: `testimonials`
+
+Theme style controls for the "testimonials" section. Default CSS selector: .brxe-testimonials
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `imageAlign` | select | Image align | `align-items` on `.repeater-item` |
+| `imageSize` | number | Image size | `width` on `.image`, `height` on `.image` |
+| `imageBorder` | border | Image border | `border` on `.image` |
+| `typographyContent` | typography | Testimonial | `font` on `.testimonial-content-wrapper` |
+| `typographyName` | typography | Name | `font` on `.testimonial-name` |
+| `typographyTitle` | typography | Title | `font` on `.testimonial-title` |
+
+### Text
+
+Section key: `text`
+
+Theme style controls for the "text" section.
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `typography` | typography | Typography | `font` on `.brxe-text`, `font` on `.brxe-text-basic` |
+
+### Text-basic
+
+Section key: `text-basic`
+
+Theme style controls for the "text-basic" section.
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `tag` | select | HTML tag | — |
+
+### Typography
+
+Section key: `typography`
+
+Theme style controls for the "typography" section.
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `typographyHtml` | number | HTML: font-size | `font-size` on `html` |
+| `typographyBody` | typography | Body | `font` on `body` |
+| `typographyHeadings` | typography | All headings | `font` on `h1, h2, h3, h4, h5, h6` |
+| `typographyHeadingH1` | typography | Typography | `font` on `h1` |
+| `h1Margin` | spacing | Margin | `margin` on `h1` |
+| `typographyHeadingH2` | typography | Typography | `font` on `h2` |
+| `h2Margin` | spacing | Margin | `margin` on `h2` |
+| `typographyHeadingH3` | typography | Typography | `font` on `h3` |
+| `h3Margin` | spacing | Margin | `margin` on `h3` |
+| `typographyHeadingH4` | typography | Typography | `font` on `h4` |
+| `h4Margin` | spacing | Margin | `margin` on `h4` |
+| `typographyHeadingH5` | typography | Typography | `font` on `h5` |
+| `h5Margin` | spacing | Margin | `margin` on `h5` |
+| `typographyHeadingH6` | typography | Typography | `font` on `h6` |
+| `h6Margin` | spacing | Margin | `margin` on `h6` |
+| `typographyHero` | typography | Hero | `font` on `.bricks-type-hero` |
+| `typographyLead` | typography | Lead | `font` on `.bricks-type-lead` |
+| `focusOutline` | text | Focus outline | `outline` on `body.bricks-is-frontend :focus-visible`, `outline` on `@supports not selector(:focus-visible) { body.bricks-is-frontend :focus` |
+| `blockquoteMargin` | spacing | Blockquote margin | `margin` on `blockquote` |
+| `blockquotePadding` | spacing | Blockquote padding | `padding` on `blockquote` |
+| `blockquoteBorder` | border | Blockquote border | `border` on `blockquote` |
+| `blockquoteTypography` | typography | Blockquote typography | `font` on `blockquote` |
+
+### Video
+
+Section key: `video`
+
+Theme style controls for the "video" section. Default CSS selector: .brxe-video
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `previewImageFallback` | image | Fallback preview image | — |
+| `boxShadow` | box-shadow | Box shadow | `box-shadow` |
+| `overlay` | background | Overlay | `background` on `.bricks-video-overlay` |
+| `overlayIcon` | icon | Icon | `—` on `.bricks-video-overlay-icon` |
+| `overlayIconTypography` | typography | Icon typography | `font` on `.bricks-video-overlay-icon` |
+| `customPlayer` | checkbox | Custom video player | — |
+| `fileRestart` | checkbox | Restart | — |
+| `fileRewind` | checkbox | Rewind | — |
+| `fileFastForward` | checkbox | Fast forward | — |
+| `fileSpeed` | checkbox | Speed | — |
+| `filePip` | checkbox | Picture in picture | — |
+
+### Woocommerce Form Fields
+
+Section key: `woocommerceFormFields`
+
+Theme style controls for the "woocommerceFormFields" section.
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `fieldTypography` | typography | Typography | `font` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(input, select, textarea):not([type=submit], [type=button], [type=reset], [type=hidden], [type=file], [type=range], [type=color], [type=checkbox], [type=radio], .qty, .select2-hidden-accessible, .brx-a11y-hidden):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `font` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(input, select, textarea):not([type=submit], [type=button], [type=reset], [type=hidden], [type=file], [type=range], [type=color], [type=checkbox], [type=radio], .qty, .select2-hidden-accessible, .brx-a11y-hidden):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `font` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) .select2-selection.select2-selection--single:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `font` on `:where(:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) .select2-selection.select2-selection--single:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)))`, `font` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) .select2-selection.select2-selection--single:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)) .select2-selection__rendered`, `font` on `:where(:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) .select2-selection.select2-selection--single:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)) .select2-selection__rendered)` |
+| `fieldPadding` | spacing | Padding | `padding` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(input, select, textarea):not([type=submit], [type=button], [type=reset], [type=hidden], [type=file], [type=range], [type=color], [type=checkbox], [type=radio], .qty, .select2-hidden-accessible, .brx-a11y-hidden):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:not(.bricks-floating-label .brxe-woocommerce-form-field *))`, `padding` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(input, select, textarea):not([type=submit], [type=button], [type=reset], [type=hidden], [type=file], [type=range], [type=color], [type=checkbox], [type=radio], .qty, .select2-hidden-accessible, .brx-a11y-hidden):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `padding` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) .select2-selection.select2-selection--single:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:not(.bricks-floating-label .brxe-woocommerce-form-field *))`, `padding` on `:where(:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) .select2-selection.select2-selection--single:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)))` |
+| `fieldBackgroundColor` | color | Background color | `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(input, select, textarea):not([type=submit], [type=button], [type=reset], [type=hidden], [type=file], [type=range], [type=color], [type=checkbox], [type=radio], .qty, .select2-hidden-accessible, .brx-a11y-hidden):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(input, select, textarea):not([type=submit], [type=button], [type=reset], [type=hidden], [type=file], [type=range], [type=color], [type=checkbox], [type=radio], .qty, .select2-hidden-accessible, .brx-a11y-hidden):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) .select2-selection.select2-selection--single:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) .select2-selection.select2-selection--single:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)))` |
+| `fieldBorder` | border | Border | `border` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(input, select, textarea):not([type=submit], [type=button], [type=reset], [type=hidden], [type=file], [type=range], [type=color], [type=checkbox], [type=radio], .qty, .select2-hidden-accessible, .brx-a11y-hidden):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(input, select, textarea):not([type=submit], [type=button], [type=reset], [type=hidden], [type=file], [type=range], [type=color], [type=checkbox], [type=radio], .qty, .select2-hidden-accessible, .brx-a11y-hidden):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) .select2-selection.select2-selection--single:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border` on `:where(:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) .select2-selection.select2-selection--single:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)))` |
+| `placeholderColor` | color | Placeholder color | `color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(input, select, textarea):not([type=submit], [type=button], [type=reset], [type=hidden], [type=file], [type=range], [type=color], [type=checkbox], [type=radio], .qty, .select2-hidden-accessible, .brx-a11y-hidden):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:not(.bricks-floating-label .brxe-woocommerce-form-field .input-text:not(textarea)))::placeholder`, `color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(input, select, textarea):not([type=submit], [type=button], [type=reset], [type=hidden], [type=file], [type=range], [type=color], [type=checkbox], [type=radio], .qty, .select2-hidden-accessible, .brx-a11y-hidden):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:not(.bricks-floating-label .brxe-woocommerce-form-field .input-text:not(textarea)))::placeholder`, `color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) .select2-selection.select2-selection--single:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)) .select2-selection__placeholder`, `color` on `:where(:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) .select2-selection.select2-selection--single:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)) .select2-selection__placeholder)` |
+| `select2DropdownTypography` | typography | Dropdown: Typography | `font` on `.select2-container:where(.bricks-woo-form-select2) .select2-dropdown`, `font` on `:where(.select2-container:where(.bricks-woo-form-select2) .select2-dropdown)` |
+| `select2DropdownBackgroundColor` | color | Dropdown: Background color | `background-color` on `.select2-container:where(.bricks-woo-form-select2) .select2-dropdown`, `background-color` on `:where(.select2-container:where(.bricks-woo-form-select2) .select2-dropdown)` |
+| `select2DropdownBorder` | border | Dropdown: Border | `border` on `.select2-container:where(.bricks-woo-form-select2) .select2-dropdown`, `border` on `:where(.select2-container:where(.bricks-woo-form-select2) .select2-dropdown)` |
+| `select2OptionPadding` | spacing | Option: Padding | `padding` on `.select2-container:where(.bricks-woo-form-select2) .select2-results__option` |
+| `select2OptionSelectedColor` | color | Selected option color | `color` on `.select2-container:where(.bricks-woo-form-select2) .select2-results__option:is([data-selected=true], [aria-selected=true]:where(:not([data-selected]))):where(:not([aria-disabled=true]))` |
+| `select2OptionSelectedBackgroundColor` | color | Selected option background color | `background-color` on `.select2-container:where(.bricks-woo-form-select2) .select2-results__option:is([data-selected=true], [aria-selected=true]:where(:not([data-selected]))):where(:not([aria-disabled=true]))` |
+| `select2OptionHighlightColor` | color | Highlight option color | `color` on `.select2-container:where(.bricks-woo-form-select2) .select2-results__option--highlighted:is([aria-selected], [data-selected]):where(:not([aria-disabled=true]))` |
+| `select2OptionHighlightBackgroundColor` | color | Highlight option background color | `background-color` on `.select2-container:where(.bricks-woo-form-select2) .select2-results__option--highlighted:is([aria-selected], [data-selected]):where(:not([aria-disabled=true]))` |
+| `select2SearchTypography` | typography | Typography | `font` on `.select2-container:where(.bricks-woo-form-select2) .select2-search--dropdown .select2-search__field`, `font` on `:where(.select2-container:where(.bricks-woo-form-select2) .select2-search--dropdown .select2-search__field)` |
+| `select2SearchPadding` | spacing | Padding | `padding` on `.select2-container:where(.bricks-woo-form-select2) .select2-search--dropdown .select2-search__field:where(:not(.bricks-floating-label .brxe-woocommerce-form-field *))`, `padding` on `:where(.select2-container:where(.bricks-woo-form-select2) .select2-search--dropdown .select2-search__field)` |
+| `select2SearchBackgroundColor` | color | Background color | `background-color` on `.select2-container:where(.bricks-woo-form-select2) .select2-search--dropdown .select2-search__field`, `background-color` on `:where(.select2-container:where(.bricks-woo-form-select2) .select2-search--dropdown .select2-search__field)` |
+| `select2SearchBorder` | border | Border | `border` on `.select2-container:where(.bricks-woo-form-select2) .select2-search--dropdown .select2-search__field`, `border` on `:where(.select2-container:where(.bricks-woo-form-select2) .select2-search--dropdown .select2-search__field)` |
+| `focusTypography` | typography | Typography | `font` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(input, select, textarea):not([type=submit], [type=button], [type=reset], [type=hidden], [type=file], [type=range], [type=color], [type=checkbox], [type=radio], .qty, .select2-hidden-accessible, .brx-a11y-hidden):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:focus)`, `font` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(input, select, textarea):not([type=submit], [type=button], [type=reset], [type=hidden], [type=file], [type=range], [type=color], [type=checkbox], [type=radio], .qty, .select2-hidden-accessible, .brx-a11y-hidden):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:focus)`, `font` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) .select2-selection.select2-selection--single:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:focus, .select2-container--focus .select2-selection, .select2-container--open .select2-selection)`, `font` on `:where(:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) .select2-selection.select2-selection--single:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:focus, .select2-container--focus .select2-selection, .select2-container--open .select2-selection))`, `font` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) .select2-selection.select2-selection--single:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:focus, .select2-container--focus .select2-selection, .select2-container--open .select2-selection) .select2-selection__rendered`, `font` on `:where(:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) .select2-selection.select2-selection--single:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:focus, .select2-container--focus .select2-selection, .select2-container--open .select2-selection) .select2-selection__rendered)` |
+| `focusBackgroundColor` | color | Background color | `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(input, select, textarea):not([type=submit], [type=button], [type=reset], [type=hidden], [type=file], [type=range], [type=color], [type=checkbox], [type=radio], .qty, .select2-hidden-accessible, .brx-a11y-hidden):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:focus)`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(input, select, textarea):not([type=submit], [type=button], [type=reset], [type=hidden], [type=file], [type=range], [type=color], [type=checkbox], [type=radio], .qty, .select2-hidden-accessible, .brx-a11y-hidden):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:focus)`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) .select2-selection.select2-selection--single:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:focus, .select2-container--focus .select2-selection, .select2-container--open .select2-selection)`, `background-color` on `:where(:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) .select2-selection.select2-selection--single:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:focus, .select2-container--focus .select2-selection, .select2-container--open .select2-selection))` |
+| `focusBorder` | border | Border | `border` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(input, select, textarea):not([type=submit], [type=button], [type=reset], [type=hidden], [type=file], [type=range], [type=color], [type=checkbox], [type=radio], .qty, .select2-hidden-accessible, .brx-a11y-hidden):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:focus)`, `border` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(input, select, textarea):not([type=submit], [type=button], [type=reset], [type=hidden], [type=file], [type=range], [type=color], [type=checkbox], [type=radio], .qty, .select2-hidden-accessible, .brx-a11y-hidden):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:focus)`, `border` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) .select2-selection.select2-selection--single:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:focus, .select2-container--focus .select2-selection, .select2-container--open .select2-selection)`, `border` on `:where(:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) .select2-selection.select2-selection--single:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:focus, .select2-container--focus .select2-selection, .select2-container--open .select2-selection))` |
+| `focusBoxShadow` | box-shadow | Box shadow | `box-shadow` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(input, select, textarea):not([type=submit], [type=button], [type=reset], [type=hidden], [type=file], [type=range], [type=color], [type=checkbox], [type=radio], .qty, .select2-hidden-accessible, .brx-a11y-hidden):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:focus)`, `box-shadow` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(input, select, textarea):not([type=submit], [type=button], [type=reset], [type=hidden], [type=file], [type=range], [type=color], [type=checkbox], [type=radio], .qty, .select2-hidden-accessible, .brx-a11y-hidden):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:focus)`, `box-shadow` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) .select2-selection.select2-selection--single:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:focus, .select2-container--focus .select2-selection, .select2-container--open .select2-selection)`, `box-shadow` on `:where(:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) .select2-selection.select2-selection--single:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:focus, .select2-container--focus .select2-selection, .select2-container--open .select2-selection))` |
+| `labelTypography` | typography | Typography | `font` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(label, .label, legend):where(:not(.brx-shipping-options__option)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `font` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(label, .label, legend):where(:not(.brx-shipping-options__option)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+| `labelMargin` | spacing | Spacing | `margin` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(label, .label, legend):where(:not(.brx-shipping-options__option)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:not(.bricks-floating-label .brxe-woocommerce-form-field > label, .brx-payment-options__label))`, `margin` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(label, .label, legend):where(:not(.brx-shipping-options__option)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:not(.bricks-floating-label .brxe-woocommerce-form-field > label, .brx-payment-options__label))` |
+| `requiredMarkerColor` | color | Required marker / Color | `color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(.required):where(:not(label, .label)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :is(.required):where(:not(label, .label)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+| `optionMargin` | spacing | Margin | `margin` on `:is(.brx-payment-options__option, .brx-shipping-options__option)`, `margin` on `:where(:is(.brx-payment-options__option, .brx-shipping-options__option))` |
+| `optionPadding` | spacing | Padding | `padding` on `:is(.brx-payment-options__option, .brx-shipping-options__option)`, `padding` on `:where(:is(.brx-payment-options__option, .brx-shipping-options__option))` |
+| `optionBackgroundColor` | color | Background color | `background-color` on `:is(.brx-payment-options__option, .brx-shipping-options__option)`, `background-color` on `:where(:is(.brx-payment-options__option, .brx-shipping-options__option))` |
+| `optionBorder` | border | Border | `border` on `:is(.brx-payment-options__option, .brx-shipping-options__option)`, `border` on `:where(:is(.brx-payment-options__option, .brx-shipping-options__option))` |
+| `optionBoxShadow` | box-shadow | Box shadow | `box-shadow` on `:is(.brx-payment-options__option, .brx-shipping-options__option)`, `box-shadow` on `:where(:is(.brx-payment-options__option, .brx-shipping-options__option))` |
+| `optionListGap` | number | Gap between options | `gap` on `:is(.brx-payment-options__control, .brx-shipping-options__control)`, `gap` on `:where(:is(.brx-payment-options__control, .brx-shipping-options__control))` |
+| `optionLabelGap` | number | Gap between labels | `gap` on `:is(.brx-payment-options__label-group, .brx-shipping-options__label-group)`, `gap` on `:where(:is(.brx-payment-options__label-group, .brx-shipping-options__label-group))` |
+| `optionLabelTypography` | typography | Label: Typography | `font` on `:is(.brx-payment-options__label, .brx-shipping-options__label)`, `font` on `:where(:is(.brx-payment-options__label, .brx-shipping-options__label))` |
+| `optionSecondaryTypography` | typography | Secondary label: Typography | `font` on `:is(.brx-payment-options__secondary-label, .brx-shipping-options__secondary-label)`, `font` on `:where(:is(.brx-payment-options__secondary-label, .brx-shipping-options__secondary-label))` |
+| `optionHoverBackgroundColor` | color | Hover background color | `background-color` on `:is(.brx-payment-options__option, .brx-shipping-options__option):where(:hover)`, `background-color` on `:where(:is(.brx-payment-options__option, .brx-shipping-options__option):where(:hover))` |
+| `optionCheckedBackgroundColor` | color | Background color | `background-color` on `:is(.brx-payment-options__option, .brx-shipping-options__option):where(:has(> input[type="radio"]:checked), .brx-shipping-options__option--checked)`, `background-color` on `:where(:is(.brx-payment-options__option, .brx-shipping-options__option):where(:has(> input[type="radio"]:checked), .brx-shipping-options__option--checked))` |
+| `optionCheckedBorder` | border | Border | `border` on `:is(.brx-payment-options__option, .brx-shipping-options__option):where(:has(> input[type="radio"]:checked), .brx-shipping-options__option--checked)`, `border` on `:where(:is(.brx-payment-options__option, .brx-shipping-options__option):where(:has(> input[type="radio"]:checked), .brx-shipping-options__option--checked))` |
+| `optionCheckedBoxShadow` | box-shadow | Box shadow | `box-shadow` on `:is(.brx-payment-options__option, .brx-shipping-options__option):where(:has(> input[type="radio"]:checked), .brx-shipping-options__option--checked)`, `box-shadow` on `:where(:is(.brx-payment-options__option, .brx-shipping-options__option):where(:has(> input[type="radio"]:checked), .brx-shipping-options__option--checked))` |
+| `optionCheckedLabelTypography` | typography | Label: Typography | `font` on `:where(:is(.brx-payment-options__option, .brx-shipping-options__option):where(:has(> input[type="radio"]:checked), .brx-shipping-options__option--checked)) :is(.brx-payment-options__label, .brx-shipping-options__label)`, `font` on `:where(:where(:is(.brx-payment-options__option, .brx-shipping-options__option):where(:has(> input[type="radio"]:checked), .brx-shipping-options__option--checked)) :is(.brx-payment-options__label, .brx-shipping-options__label))` |
+| `optionCheckedSecondaryTypography` | typography | Secondary label: Typography | `font` on `:where(:is(.brx-payment-options__option, .brx-shipping-options__option):where(:has(> input[type="radio"]:checked), .brx-shipping-options__option--checked)) :is(.brx-payment-options__secondary-label, .brx-shipping-options__secondary-label)`, `font` on `:where(:where(:is(.brx-payment-options__option, .brx-shipping-options__option):where(:has(> input[type="radio"]:checked), .brx-shipping-options__option--checked)) :is(.brx-payment-options__secondary-label, .brx-shipping-options__secondary-label))` |
+| `checkboxIndicatorGap` | number | Gap | `--brx-woo-form-checkbox-indicator-gap` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)), :where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.brxe-form-checkbox, .woocommerce-form__label-for-checkbox, .brx-payment-options__option, .brx-shipping-options__option, .woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-native-indicator-gap` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `margin-inline-end` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+| `checkboxIndicatorSize` | number | Size | `--brx-woo-form-checkbox-indicator-size` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)), :where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.brxe-form-checkbox, .woocommerce-form__label-for-checkbox, .brx-payment-options__option, .brx-shipping-options__option, .woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `appearance` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `position` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-native-indicator-size` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `height` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `aspect-ratio` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `padding` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-style` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-radius` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `opacity` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:disabled)`, `--brx-woo-native-indicator-content` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline-offset` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+| `checkboxIndicatorBorderWidth` | number | Border width | `--brx-woo-form-checkbox-indicator-border-width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)), :where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.brxe-form-checkbox, .woocommerce-form__label-for-checkbox, .brx-payment-options__option, .brx-shipping-options__option, .woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `appearance` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `position` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-native-indicator-size` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `height` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `aspect-ratio` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `padding` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-style` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-radius` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `opacity` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:disabled)`, `--brx-woo-native-indicator-content` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline-offset` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+| `checkboxIndicatorBorderStyle` | text | Border style | `--brx-woo-form-checkbox-indicator-border-style` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)), :where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.brxe-form-checkbox, .woocommerce-form__label-for-checkbox, .brx-payment-options__option, .brx-shipping-options__option, .woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `appearance` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `position` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-native-indicator-size` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `height` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `aspect-ratio` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `padding` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-style` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-radius` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `opacity` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:disabled)`, `--brx-woo-native-indicator-content` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline-offset` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+| `checkboxIndicatorBorderColor` | color | Border color | `--brx-woo-form-checkbox-indicator-border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)), :where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.brxe-form-checkbox, .woocommerce-form__label-for-checkbox, .brx-payment-options__option, .brx-shipping-options__option, .woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `appearance` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `position` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-native-indicator-size` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `height` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `aspect-ratio` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `padding` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-style` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-radius` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `opacity` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:disabled)`, `--brx-woo-native-indicator-content` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline-offset` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+| `checkboxIndicatorBorderRadius` | number | Border radius | `--brx-woo-form-checkbox-indicator-border-radius` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)), :where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.brxe-form-checkbox, .woocommerce-form__label-for-checkbox, .brx-payment-options__option, .brx-shipping-options__option, .woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `appearance` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `position` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-native-indicator-size` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `height` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `aspect-ratio` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `padding` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-style` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-radius` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `opacity` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:disabled)`, `--brx-woo-native-indicator-content` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline-offset` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+| `checkboxIndicatorBackgroundColor` | color | Background color | `--brx-woo-form-checkbox-indicator-bg` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)), :where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.brxe-form-checkbox, .woocommerce-form__label-for-checkbox, .brx-payment-options__option, .brx-shipping-options__option, .woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `appearance` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `position` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-native-indicator-size` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `height` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `aspect-ratio` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `padding` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-style` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-radius` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `opacity` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:disabled)`, `--brx-woo-native-indicator-content` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline-offset` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+| `checkboxIndicatorFocusColor` | color | Focus ring color | `--brx-woo-form-checkbox-indicator-focus-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)), :where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.brxe-form-checkbox, .woocommerce-form__label-for-checkbox, .brx-payment-options__option, .brx-shipping-options__option, .woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline-offset` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+| `checkboxIndicatorCheckedColor` | color | Checkmark color | `--brx-woo-form-checkbox-indicator-check-color-checked` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)), :where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.brxe-form-checkbox, .woocommerce-form__label-for-checkbox, .brx-payment-options__option, .brx-shipping-options__option, .woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `appearance` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `position` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-native-indicator-size` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `height` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `aspect-ratio` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `padding` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-style` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-radius` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `opacity` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:disabled)`, `--brx-woo-native-indicator-content` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline-offset` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+| `checkboxIndicatorCheckedBackgroundColor` | color | Background color | `--brx-woo-form-checkbox-indicator-bg-checked` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)), :where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.brxe-form-checkbox, .woocommerce-form__label-for-checkbox, .brx-payment-options__option, .brx-shipping-options__option, .woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `appearance` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `position` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-native-indicator-size` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `height` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `aspect-ratio` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `padding` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-style` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-radius` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `opacity` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:disabled)`, `--brx-woo-native-indicator-content` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline-offset` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+| `checkboxIndicatorCheckedBorderColor` | color | Border color | `--brx-woo-form-checkbox-indicator-border-color-checked` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)), :where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.brxe-form-checkbox, .woocommerce-form__label-for-checkbox, .brx-payment-options__option, .brx-shipping-options__option, .woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `appearance` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `position` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-native-indicator-size` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `height` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `aspect-ratio` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `padding` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-style` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-radius` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `opacity` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:disabled)`, `--brx-woo-native-indicator-content` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline-offset` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=checkbox]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+| `radioIndicatorGap` | number | Gap | `--brx-woo-form-radio-indicator-gap` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)), :where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.brxe-form-checkbox, .woocommerce-form__label-for-checkbox, .brx-payment-options__option, .brx-shipping-options__option, .woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-native-indicator-gap` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `margin-inline-end` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+| `radioIndicatorSize` | number | Size | `--brx-woo-form-radio-indicator-size` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)), :where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.brxe-form-checkbox, .woocommerce-form__label-for-checkbox, .brx-payment-options__option, .brx-shipping-options__option, .woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-bg` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-shadow` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-gradient` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `appearance` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `position` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-native-indicator-size` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `height` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `aspect-ratio` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `padding` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-style` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-radius` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `opacity` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:disabled)`, `--brx-woo-native-indicator-content` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-outline` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline-offset` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+| `radioIndicatorBorderWidth` | number | Border width | `--brx-woo-form-radio-indicator-border-width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)), :where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.brxe-form-checkbox, .woocommerce-form__label-for-checkbox, .brx-payment-options__option, .brx-shipping-options__option, .woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-bg` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-shadow` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-gradient` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `appearance` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `position` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-native-indicator-size` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `height` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `aspect-ratio` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `padding` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-style` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-radius` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `opacity` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:disabled)`, `--brx-woo-native-indicator-content` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-outline` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline-offset` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+| `radioIndicatorBorderStyle` | text | Border style | `--brx-woo-form-radio-indicator-border-style` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)), :where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.brxe-form-checkbox, .woocommerce-form__label-for-checkbox, .brx-payment-options__option, .brx-shipping-options__option, .woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-bg` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-shadow` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-gradient` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `appearance` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `position` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-native-indicator-size` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `height` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `aspect-ratio` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `padding` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-style` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-radius` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `opacity` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:disabled)`, `--brx-woo-native-indicator-content` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-outline` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline-offset` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+| `radioIndicatorBorderColor` | color | Border color | `--brx-woo-form-radio-indicator-border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)), :where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.brxe-form-checkbox, .woocommerce-form__label-for-checkbox, .brx-payment-options__option, .brx-shipping-options__option, .woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-bg` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-shadow` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-gradient` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `appearance` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `position` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-native-indicator-size` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `height` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `aspect-ratio` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `padding` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-style` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-radius` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `opacity` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:disabled)`, `--brx-woo-native-indicator-content` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-outline` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline-offset` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+| `radioIndicatorBackgroundColor` | color | Background color | `--brx-woo-form-radio-indicator-bg` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)), :where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.brxe-form-checkbox, .woocommerce-form__label-for-checkbox, .brx-payment-options__option, .brx-shipping-options__option, .woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-bg` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-shadow` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-gradient` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `appearance` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `position` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-native-indicator-size` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `height` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `aspect-ratio` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `padding` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-style` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-radius` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `opacity` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:disabled)`, `--brx-woo-native-indicator-content` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-outline` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline-offset` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+| `radioIndicatorFocusColor` | color | Focus ring color | `--brx-woo-form-radio-indicator-focus-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)), :where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.brxe-form-checkbox, .woocommerce-form__label-for-checkbox, .brx-payment-options__option, .brx-shipping-options__option, .woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-outline` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline-offset` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+| `radioIndicatorCheckedColor` | color | Dot color | `--brx-woo-form-radio-indicator-check-color-checked` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)), :where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.brxe-form-checkbox, .woocommerce-form__label-for-checkbox, .brx-payment-options__option, .brx-shipping-options__option, .woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-bg` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-shadow` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-gradient` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `appearance` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `position` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-native-indicator-size` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `height` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `aspect-ratio` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `padding` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-style` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-radius` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `opacity` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:disabled)`, `--brx-woo-native-indicator-content` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-outline` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline-offset` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+| `radioIndicatorCheckedBackgroundColor` | color | Background color | `--brx-woo-form-radio-indicator-bg-checked` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)), :where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.brxe-form-checkbox, .woocommerce-form__label-for-checkbox, .brx-payment-options__option, .brx-shipping-options__option, .woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-bg` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-shadow` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-gradient` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `appearance` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `position` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-native-indicator-size` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `height` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `aspect-ratio` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `padding` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-style` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-radius` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `opacity` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:disabled)`, `--brx-woo-native-indicator-content` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-outline` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline-offset` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+| `radioIndicatorCheckedBorderColor` | color | Border color | `--brx-woo-form-radio-indicator-border-color-checked` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)), :where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.brxe-form-checkbox, .woocommerce-form__label-for-checkbox, .brx-payment-options__option, .brx-shipping-options__option, .woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-bg` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-shadow` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-gradient` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `appearance` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `position` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-native-indicator-size` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `height` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `aspect-ratio` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `padding` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-width` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-style` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `border-radius` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `background-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `border-color` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:checked)`, `opacity` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *)):where(:disabled)`, `--brx-woo-native-indicator-content` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `--brx-woo-legacy-radio-outline` on `:where(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) :where(.woocommerce-PaymentMethod):where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))`, `outline-offset` on `:is(.woocommerce-checkout:not(body), .woocommerce-cart-form, .woocommerce-form-login, .woocommerce-form-register, .woocommerce-ResetPassword, .woocommerce-EditAccountForm, .woocommerce-address-fields, .woocommerce-shipping-calculator, [class*="brxe-woocommerce-checkout-"], [class*="brxe-woocommerce-account-"], [class*="brxe-woocommerce-cart-"], .brxe-woocommerce-form-field, .brxe-woocommerce-payment-options, .brxe-woocommerce-shipping-options) input:where([type=radio]):not(.brx-a11y-hidden):where(:not(.woocommerce-PaymentMethod input.input-radio)):focus-visible:where(:not(.brxe-form *, .brxe-post-comments *, .bricks-search-form *, .quantity *, .brxe-woocommerce-cart-quantity *))` |
+
+### Wordpress
+
+Section key: `wordpress`
+
+Theme style controls for the "wordpress" section. Default CSS selector: .brxe-wordpress
+
+| Key | Type | Label | CSS |
+|---|---|---|---|
+| `titleBorder` | border | Widget title border | `border` on `.bricks-widget-title` |
+| `titleTypography` | typography | Widget title typography | `font` on `.bricks-widget-title` |
+| `contentTypography` | typography | Content typography | `font` on `ul` |
+| `postsTitleTypography` | typography | Post title typography | `font` on `.post-title` |
+| `postsMetaTypography` | typography | Post meta typography | `font` on `.post-meta` |
+
+## Bricks 2.4.3 contextual spacing fields
+
+Each `contextualSpacingCustomTarget` entry contains a `selector` and the spacing fields below. These fields use number controls with CSS units and variable support; they become available after a selector is set. The generated repeater schema leaves these nested entry fields generic.
+
+| Entry key | CSS property |
+|---|---|
+| `marginStart` | `margin-block-start` |
+| `marginEnd` | `margin-block-end` |
+| `paddingStart` | `padding-inline-start` |
+| `paddingEnd` | `padding-inline-end` |
