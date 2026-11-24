@@ -40,8 +40,11 @@ Elements where custom attributes are added to the following specific HTML tags:
 | Text | `<div>` |
 | Button | `<button>` or `<a>` depending if there is a link |
 | Image | `<img>` |
+| SVG | `<svg>`, including when linked |
 | Video | `<div>` |
 | Form | `<form>` |
+
+For a linked SVG, custom attributes apply to the `<svg>`, not its surrounding `<a>`. To label the link directly, use the SVG element's **Link > aria-label** field. See [Label a linked SVG](https://academy.bricksbuilder.io/builder/elements/media/svg/#label-a-linked-svg) for a File-source example linking to the homepage.
 
 ### How To Add Tooltips {#tooltips}
 

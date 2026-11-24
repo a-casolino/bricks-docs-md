@@ -11,6 +11,8 @@
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
+| `detailsDirection` | direction | Direction | `flex-direction` on `#customer_details` |
+| `detailsGap` | number | Gap | `gap` on `#customer_details` |
 | `removeBillingFields` | select | Remove billing fields | — |
 | `removeShippingFields` | select | Remove shipping fields | — |
 | `hideTitle` | checkbox | Hide | `display` on `.woocommerce-billing-fields h3` |
@@ -18,6 +20,8 @@
 | `hideLabels` | checkbox | Hide | `display` on `.woocommerce-billing-fields__field-wrapper label, .woocommerce-shipping-fields__field-wrapper label` |
 | `labelTypography` | typography | Typography | `font` on `.woocommerce-billing-fields__field-wrapper label, .woocommerce-shipping-fields__field-wrapper label` |
 | `labelMargin` | spacing | Margin | `margin` on `.woocommerce-billing-fields__field-wrapper label, .woocommerce-shipping-fields__field-wrapper label` |
+| `fieldMargin` | spacing | Margin | `margin` on `.form-row` |
+| `fieldPadding` | spacing | Padding | `padding` on `.input-text, select, .select2-selection` |
 | `fieldTypography` | typography | Typography | `font` on `input:not([type=submit])`, `font` on `select`, `font` on `.select2-selection__rendered`, `font` on `textarea` |
 | `placeholderTypography` | typography | Placeholder typography | `font` on `::placeholder` |
 | `hideAdditionalInformation` | checkbox | Hide additional information | `display` on `.woocommerce-additional-fields` |

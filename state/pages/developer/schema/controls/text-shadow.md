@@ -4,4 +4,5 @@
 
 | Property | Type | Description |
 |---|---|---|
-| `values` | array | — |
+| `values` | object | — |
+| `color` | any | Color value in various formats |

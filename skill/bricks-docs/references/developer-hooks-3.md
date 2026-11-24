@@ -1,24 +1,27 @@
-# Filter: bricks/support_masonry_element
+# Filter: bricks/security_check_before_save/new_elements
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-support_masonry_element/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-security_check_before_save-new_elements/
 
-*Filters the list of element names that support the Masonry layout option. By default, this includes section, container, block, and div.*
+*Filters the array of new elements before they are saved to the database, specifically during the security check process (e.g., when validating {echo:} tags)..*
 
-Filters the list of element names that support the Masonry layout option. By default, this includes `section`, `container`, `block`, and `div`.
+Filters the array of new elements before they are saved to the database, specifically during the security check process (e.g., when validating `{echo:}` tags). This allows you to inspect or modify the element data before it persists.
 
 ## Parameters
 
-- `$element_names` (*array*): Array of element names (slugs) that support Masonry.
+- `$new_elements` (*array*): Array of new element data structures.
+- `$old_elements_indexed` (*array*): Array of existing elements, indexed by their ID, for comparison.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/support_masonry_element', function( $element_names ) {
-    // Enable Masonry support for a custom element
-    $element_names[] = 'my-custom-grid';
+add_filter( 'bricks/security_check_before_save/new_elements', function( $new_elements, $old_elements_indexed ) {
+    // Example: Loop through new elements and log changes
+    foreach ( $new_elements as $element ) {
+        // Custom logic here
+    }
 
-    return $element_names;
-} );
+    return $new_elements;
+}, 10, 2 );
 ```
 
 ---
@@ -73,6 +76,31 @@ add_filter( 'bricks/svg/allowed_tags', function( $tags ) {
 
 ---
 
+# Filter: bricks/template_preview/supported_content_types
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-template_preview-supported_content_types/
+
+*Filters the list of content types available for selection in the \"Populate Content\" (Template Preview) setting. This allows you to add custom preview contexts.*
+
+Filters the list of content types available for selection in the "Populate Content" (Template Preview) setting. This allows you to add custom preview contexts.
+
+## Parameters
+
+- `$types` (*array*): Associative array where keys are the content type IDs and values are their labels.
+
+## Example usage
+
+```php
+add_filter( 'bricks/template_preview/supported_content_types', function( $types ) {
+    // Example: Add a custom preview type
+    $types['my_custom_preview'] = esc_html__( 'My Custom Preview', 'my-plugin' );
+
+    return $types;
+} );
+```
+
+---
+
 # Filter: bricks/svg/bypass_sanitization
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-svg-bypass_sanitization/
@@ -97,31 +125,6 @@ add_filter( 'bricks/svg/bypass_sanitization', function( $bypass, $file ) {
 
     return $bypass;
 }, 10, 2 );
-```
-
----
-
-# Filter: bricks/template_preview/supported_content_types
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-template_preview-supported_content_types/
-
-*Filters the list of content types available for selection in the \"Populate Content\" (Template Preview) setting. This allows you to add custom preview contexts.*
-
-Filters the list of content types available for selection in the "Populate Content" (Template Preview) setting. This allows you to add custom preview contexts.
-
-## Parameters
-
-- `$types` (*array*): Associative array where keys are the content type IDs and values are their labels.
-
-## Example usage
-
-```php
-add_filter( 'bricks/template_preview/supported_content_types', function( $types ) {
-    // Example: Add a custom preview type
-    $types['my_custom_preview'] = esc_html__( 'My Custom Preview', 'my-plugin' );
-
-    return $types;
-} );
 ```
 
 ---
@@ -236,29 +239,6 @@ add_filter( 'bricks/theme_styles', function( $styles ) {
 
 ---
 
-# Filter: bricks/user_activation_email/content
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-user_activation_email-content/
-
-*Filters the content for Bricks user activation emails.*
-
-Filters the content for Bricks user activation emails.
-
-## Parameters
-
-- `$content` (string): The email content.
-- `$user_id` (int): The user ID receiving the activation email.
-
-## Example usage
-
-```php
-add_filter( 'bricks/user_activation_email/content', function( $content, $user_id ) {
-    return $content;
-}, 10, 2 );
-```
-
----
-
 # Filter: bricks/user_activation_email/from_name
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-user_activation_email-from_name/
@@ -277,6 +257,29 @@ Filters the sender name for Bricks user activation emails.
 ```php
 add_filter( 'bricks/user_activation_email/from_name', function( $from_name, $user_id ) {
     return get_bloginfo( 'name' );
+}, 10, 2 );
+```
+
+---
+
+# Filter: bricks/user_activation_email/content
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-user_activation_email-content/
+
+*Filters the content for Bricks user activation emails.*
+
+Filters the content for Bricks user activation emails.
+
+## Parameters
+
+- `$content` (string): The email content.
+- `$user_id` (int): The user ID receiving the activation email.
+
+## Example usage
+
+```php
+add_filter( 'bricks/user_activation_email/content', function( $content, $user_id ) {
+    return $content;
 }, 10, 2 );
 ```
 
@@ -422,6 +425,28 @@ add_filter( 'bricks/woocommerce/dynamic_fragments/fragments', function( $fragmen
 
 ---
 
+# Filter: bricks/woocommerce/dynamic_fragments/targets
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-dynamic_fragments-targets/
+
+*Filters WooCommerce dynamic fragment targets before rendering.*
+
+Filters WooCommerce dynamic fragment targets before Bricks renders the fragments.
+
+## Parameters
+
+- `$targets` (array): Mounted fragment targets from the current page.
+
+## Example usage
+
+```php
+add_filter( 'bricks/woocommerce/dynamic_fragments/targets', function( $targets ) {
+    return $targets;
+} );
+```
+
+---
+
 # Filter: bricks/woocommerce/dynamic_fragments/html
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-dynamic_fragments-html/
@@ -446,23 +471,23 @@ add_filter( 'bricks/woocommerce/dynamic_fragments/html', function( $html, $targe
 
 ---
 
-# Filter: bricks/woocommerce/dynamic_fragments/targets
+# Filter: bricks/woocommerce/predefined_elements/local_presets
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-dynamic_fragments-targets/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-local_presets/
 
-*Filters WooCommerce dynamic fragment targets before rendering.*
+*Filters local WooCommerce predefined element presets.*
 
-Filters WooCommerce dynamic fragment targets before Bricks renders the fragments.
+Filters local WooCommerce predefined element presets after Bricks loads JSON presets.
 
 ## Parameters
 
-- `$targets` (array): Mounted fragment targets from the current page.
+- `$presets` (array): Local preset payloads.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/woocommerce/dynamic_fragments/targets', function( $targets ) {
-    return $targets;
+add_filter( 'bricks/woocommerce/predefined_elements/local_presets', function( $presets ) {
+    return $presets;
 } );
 ```
 
@@ -492,28 +517,6 @@ add_filter( 'bricks/woocommerce/predefined_elements/generated_payload', function
 
 ---
 
-# Filter: bricks/woocommerce/predefined_elements/local_presets
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-local_presets/
-
-*Filters local WooCommerce predefined element presets.*
-
-Filters local WooCommerce predefined element presets after Bricks loads JSON presets.
-
-## Parameters
-
-- `$presets` (array): Local preset payloads.
-
-## Example usage
-
-```php
-add_filter( 'bricks/woocommerce/predefined_elements/local_presets', function( $presets ) {
-    return $presets;
-} );
-```
-
----
-
 # Filter: bricks/woocommerce/predefined_elements/remote_payload
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-remote_payload/
@@ -531,30 +534,6 @@ Filters the remote WooCommerce predefined elements payload after Bricks decodes 
 ```php
 add_filter( 'bricks/woocommerce/predefined_elements/remote_payload', function( $remote_payload ) {
     return $remote_payload;
-} );
-```
-
----
-
-# Filter: bricks/woocommerce/predefined_elements/remote_url
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-remote_url/
-
-*Filters the remote URL for WooCommerce predefined element presets.*
-
-Filters the remote URL Bricks uses to fetch WooCommerce predefined element presets. Return an empty string to keep remote fetching disabled.
-
-When a URL is returned, Bricks appends `schemaVersion`, `site`, and `time` query arguments before making the request.
-
-## Parameters
-
-- `$remote_url` (string): The remote preset endpoint URL.
-
-## Example usage
-
-```php
-add_filter( 'bricks/woocommerce/predefined_elements/remote_url', function( $remote_url ) {
-    return 'https://example.com/bricks-woo-presets.json';
 } );
 ```
 
@@ -585,6 +564,54 @@ add_filter( 'bricks/woocommerce/products_filters/options', function( $options, $
 
     return $options;
 }, 10, 2 );
+```
+
+---
+
+# Filter: bricks/woocommerce/predefined_elements/remote_url
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-remote_url/
+
+*Filters the remote URL for WooCommerce predefined element presets.*
+
+Filters the remote URL Bricks uses to fetch WooCommerce predefined element presets. Return an empty string to keep remote fetching disabled.
+
+When a URL is returned, Bricks appends `schemaVersion`, `site`, and `time` query arguments before making the request.
+
+## Parameters
+
+- `$remote_url` (string): The remote preset endpoint URL.
+
+## Example usage
+
+```php
+add_filter( 'bricks/woocommerce/predefined_elements/remote_url', function( $remote_url ) {
+    return 'https://example.com/bricks-woo-presets.json';
+} );
+```
+
+---
+
+# Filter: bricks/woocommerce/products_orderby_options
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-products_orderby_options/
+
+*Filters WooCommerce product order-by options used by Bricks.*
+
+Filters WooCommerce product order-by options used by Bricks controls.
+
+## Parameters
+
+- `$options` (array): Order-by option keys and labels.
+
+## Example usage
+
+```php
+add_filter( 'bricks/woocommerce/products_orderby_options', function( $options ) {
+    $options['title'] = esc_html__( 'Sort by title', 'my-plugin' );
+
+    return $options;
+} );
 ```
 
 ---
@@ -630,30 +657,6 @@ add_filter( 'bricks/woocommerce/shipping_options/primary_label', function( $labe
 ```
 
 Returning the original `$label` for other methods preserves their existing names and any customized full labels.
-
----
-
-# Filter: bricks/woocommerce/products_orderby_options
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-products_orderby_options/
-
-*Filters WooCommerce product order-by options used by Bricks.*
-
-Filters WooCommerce product order-by options used by Bricks controls.
-
-## Parameters
-
-- `$options` (array): Order-by option keys and labels.
-
-## Example usage
-
-```php
-add_filter( 'bricks/woocommerce/products_orderby_options', function( $options ) {
-    $options['title'] = esc_html__( 'Sort by title', 'my-plugin' );
-
-    return $options;
-} );
-```
 
 ---
 
@@ -975,6 +978,59 @@ add_filter( 'bricks/allowed_html_tags', function( $allowed_html_tags ) {
 
 ---
 
+# Filter: bricks/auth/custom_login_redirect
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_login_redirect/
+
+*This filter allows customization of the redirect page ID for the login page.*
+
+This filter allows customization of the redirect page ID for the login page.
+
+## Example Usage:
+
+```php
+add_filter( 'bricks/auth/custom_login_redirect', function( $selected_login_page_id ) {
+    return /* New login page ID */;
+});
+```
+
+**Parameters:**
+
+- `$selected_login_page_id` (int|false): The ID of the custom login page if set; otherwise, `false`.
+
+**Return:**
+
+- (int|false): The custom page ID for login redirection, or `false` if no custom page is designated.
+
+---
+
+# Filter: bricks//assets/load_webfonts
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-load_webfonts/
+
+*Bricks 1.4 introduces the possibility to \"Disable Google Fonts\". Either via the Bricks settings under \"Performance\" or programmatically using the filter as.*
+
+Bricks 1.4 introduces the possibility to "Disable Google Fonts". Either via the Bricks settings under "Performance" or programmatically using the filter as explained below:
+
+![](https://academy.bricksbuilder.io/assets/bricks-1.4-disable-google-fonts-setting-1024x944.png)
+
+<figcaption>
+
+Bricks > Settings > Performance: Disable Google Fonts
+
+</figcaption>
+
+With the filter `bricks/assets/load_webfonts` you'll be able to prevent Google Fonts to load in the frontend by returning `false`:
+
+```php
+// Prevent Google Fonts loading
+add_filter( 'bricks/assets/load_webfonts', '__return_false' );
+```
+
+If you use this filter to remove the embed of Google Fonts but you still like to use Google Fonts, just head to the [Google Fonts website](https://fonts.google.com/) and download the fonts you need. Then, add them manually to your website, using the [Custom Fonts](https://academy.bricksbuilder.io/builder/styling/custom-fonts/) screen.
+
+---
+
 # Filter: bricks/assets/generate_css_from_element
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-generate_css_from_element/
@@ -1003,29 +1059,29 @@ add_filter( 'bricks/assets/generate_css_from_element', function( $element_names,
 
 ---
 
-# Filter: bricks/auth/custom_login_redirect
+# Filter: bricks/auth/custom_lost_password_redirect
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_login_redirect/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_lost_password_redirect/
 
-*This filter allows customization of the redirect page ID for the login page.*
+*This filter enables the modification of the redirect page ID for the lost password page.*
 
-This filter allows customization of the redirect page ID for the login page.
+This filter enables the modification of the redirect page ID for the lost password page.
 
 ## Example Usage:
 
 ```php
-add_filter( 'bricks/auth/custom_login_redirect', function( $selected_login_page_id ) {
-    return /* New login page ID */;
+add_filter( 'bricks/auth/custom_lost_password_redirect', function( $selected_lost_password_page_id ) {
+    return /* New lost password page ID */;
 });
 ```
 
 **Parameters:**
 
-- `$selected_login_page_id` (int|false): The ID of the custom login page if set; otherwise, `false`.
+- `$selected_lost_password_page_id` (int|false): The ID of the custom lost password page if set, otherwise `false`.
 
 **Return:**
 
-- (int|false): The custom page ID for login redirection, or `false` if no custom page is designated.
+- (int|false): The new custom lost password page ID or `false` to indicate no custom page is set.
 
 ---
 
@@ -1065,29 +1121,29 @@ In this example, the redirection URL changes based on the current URL path, allo
 
 ---
 
-# Filter: bricks/auth/custom_lost_password_redirect
+# Filter: bricks/auth/custom_registration_redirect
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_lost_password_redirect/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_registration_redirect/
 
-*This filter enables the modification of the redirect page ID for the lost password page.*
+*This filter allows for the customization of the redirect page ID for the registration page.*
 
-This filter enables the modification of the redirect page ID for the lost password page.
+This filter allows for the customization of the redirect page ID for the registration page.
 
 ## Example Usage:
 
 ```php
-add_filter( 'bricks/auth/custom_lost_password_redirect', function( $selected_lost_password_page_id ) {
-    return /* New lost password page ID */;
+add_filter( 'bricks/auth/custom_registration_redirect', function( $selected_registration_page_id ) {
+    return /* New registration page ID */;
 });
 ```
 
 **Parameters:**
 
-- `$selected_lost_password_page_id` (int|false): The ID of the custom lost password page if set, otherwise `false`.
+- `$selected_registration_page_id` (int|false): The ID of the custom registration page if set; otherwise, `false`.
 
 **Return:**
 
-- (int|false): The new custom lost password page ID or `false` to indicate no custom page is set.
+- (int|false): The custom page ID for registration redirection, or `false` if no custom page is set.
 
 ---
 
@@ -1117,59 +1173,6 @@ add_filter( 'bricks/auth/custom_reset_password_redirect', function( $selected_re
 
 ---
 
-# Filter: bricks/auth/custom_registration_redirect
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_registration_redirect/
-
-*This filter allows for the customization of the redirect page ID for the registration page.*
-
-This filter allows for the customization of the redirect page ID for the registration page.
-
-## Example Usage:
-
-```php
-add_filter( 'bricks/auth/custom_registration_redirect', function( $selected_registration_page_id ) {
-    return /* New registration page ID */;
-});
-```
-
-**Parameters:**
-
-- `$selected_registration_page_id` (int|false): The ID of the custom registration page if set; otherwise, `false`.
-
-**Return:**
-
-- (int|false): The custom page ID for registration redirection, or `false` if no custom page is set.
-
----
-
-# Filter: bricks//assets/load_webfonts
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-load_webfonts/
-
-*Bricks 1.4 introduces the possibility to \"Disable Google Fonts\". Either via the Bricks settings under \"Performance\" or programmatically using the filter as.*
-
-Bricks 1.4 introduces the possibility to "Disable Google Fonts". Either via the Bricks settings under "Performance" or programmatically using the filter as explained below:
-
-![](https://academy.bricksbuilder.io/assets/bricks-1.4-disable-google-fonts-setting-1024x944.png)
-
-<figcaption>
-
-Bricks > Settings > Performance: Disable Google Fonts
-
-</figcaption>
-
-With the filter `bricks/assets/load_webfonts` you'll be able to prevent Google Fonts to load in the frontend by returning `false`:
-
-```php
-// Prevent Google Fonts loading
-add_filter( 'bricks/assets/load_webfonts', '__return_false' );
-```
-
-If you use this filter to remove the embed of Google Fonts but you still like to use Google Fonts, just head to the [Google Fonts website](https://fonts.google.com/) and download the fonts you need. Then, add them manually to your website, using the [Custom Fonts](https://academy.bricksbuilder.io/builder/styling/custom-fonts/) screen.
-
----
-
 # Filter: bricks/body/attributes
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-body-attributes/
@@ -1185,34 +1188,6 @@ add_filter( 'bricks/body/attributes', function( $attributes ) {
 
   return $attributes;
 } );
-```
-
----
-
-# Filter: bricks/builder/image_size_options
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-image_size_options/
-
-*The bricks/builder/imagesizes hook gives developers the ability to customize image size options in the builder.*
-
-The `bricks/builder/image_sizes` hook gives developers the ability to customize image size options in the builder.
-
-By default, when working within a query loop and using dynamic data for image sources, Bricks Builder displays all the registered WordPress image sizes.
-
-This hook allows you to modify this list if you know that certain sizes are not being used, helping you streamline your image size options to fit your needs.
-
-```php
-/**
- * $image_sizes Multidimensional array (key: image size name)
- */
-add_filter( 'bricks/builder/image_size_options', function( $image_sizes ) {
-  // Unset thumbnail, 1536x1536, 2048x2048
-  unset( $image_sizes['thumbnail'] );
-  unset( $image_sizes['1536x1536'] );
-  unset( $image_sizes['2048x2048'] );
-
-  return $image_sizes;
-});
 ```
 
 ---
@@ -1279,6 +1254,53 @@ add_filter( 'bricks/builder/elements', function( $elements ) {
 
 ---
 
+# Filter: bricks/builder/image_size_options
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-image_size_options/
+
+*The bricks/builder/imagesizes hook gives developers the ability to customize image size options in the builder.*
+
+The `bricks/builder/image_sizes` hook gives developers the ability to customize image size options in the builder.
+
+By default, when working within a query loop and using dynamic data for image sources, Bricks Builder displays all the registered WordPress image sizes.
+
+This hook allows you to modify this list if you know that certain sizes are not being used, helping you streamline your image size options to fit your needs.
+
+```php
+/**
+ * $image_sizes Multidimensional array (key: image size name)
+ */
+add_filter( 'bricks/builder/image_size_options', function( $image_sizes ) {
+  // Unset thumbnail, 1536x1536, 2048x2048
+  unset( $image_sizes['thumbnail'] );
+  unset( $image_sizes['1536x1536'] );
+  unset( $image_sizes['2048x2048'] );
+
+  return $image_sizes;
+});
+```
+
+---
+
+# Filter: bricks/code/allow_execution
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-allow_execution/
+
+*An alternative to the Disable code execution setting under Bricks > Settings > Builder Access. You can use this PHP filter to disable/enable code execution.*
+
+An alternative to the **Disable code execution** setting under `Bricks > Settings > Builder Access`. You can use this PHP filter to disable/enable code execution programmatically.
+
+![](https://academy.bricksbuilder.io/assets/disallow-code-execution-hook.png)
+
+```php
+add_filter( 'bricks/code/allow_execution', function( $allow ) {
+  // Only allows to return false to disable code execution programmatically
+  return false;
+} );
+```
+
+---
+
 # Filter: bricks/builder/map_styles
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-mapstyles/
@@ -1307,25 +1329,6 @@ add_filter( 'bricks/builder/map_styles', function( $map_styles ) {
 
 ---
 
-# Filter: bricks/code/allow_execution
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-allow_execution/
-
-*An alternative to the Disable code execution setting under Bricks > Settings > Builder Access. You can use this PHP filter to disable/enable code execution.*
-
-An alternative to the **Disable code execution** setting under `Bricks > Settings > Builder Access`. You can use this PHP filter to disable/enable code execution programmatically.
-
-![](https://academy.bricksbuilder.io/assets/disallow-code-execution-hook.png)
-
-```php
-add_filter( 'bricks/code/allow_execution', function( $allow ) {
-  // Only allows to return false to disable code execution programmatically
-  return false;
-} );
-```
-
----
-
 # Filter: bricks/code/disable_execution
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-disable_execution/
@@ -1344,26 +1347,6 @@ add_filter( 'bricks/code/disable_execution', function( $disable ) {
 ```
 
 Use this filter to enforce stricter security by disabling code execution, regardless of other configurations on your site.
-
----
-
-# Filter: bricks/code/disallow_keywords
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-disallow_keywords/
-
-*This filter introduces another level of security when using the Code element to run code.*
-
-This filter introduces another level of security when using the Code element to run code.
-
-With the filter `bricks/code/disallow_keywords` you'll be able to prevent the code execution if specific keywords are found in the code, thus reducing the risk of using this element. To add keywords to this check, use the following example:
-
-```php
-add_filter( 'bricks/code/disallow_keywords', function( $keywords ) {
-  $</meta>keywords[] = 'wpdb';
-
-  return $</meta>keywords;
-} );
-```
 
 ---
 
@@ -1460,6 +1443,26 @@ add_filter( 'bricks/code/echo_function_names', function($function_name) {
 
 ---
 
+# Filter: bricks/code/disallow_keywords
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-disallow_keywords/
+
+*This filter introduces another level of security when using the Code element to run code.*
+
+This filter introduces another level of security when using the Code element to run code.
+
+With the filter `bricks/code/disallow_keywords` you'll be able to prevent the code execution if specific keywords are found in the code, thus reducing the risk of using this element. To add keywords to this check, use the following example:
+
+```php
+add_filter( 'bricks/code/disallow_keywords', function( $keywords ) {
+  $</meta>keywords[] = 'wpdb';
+
+  return $</meta>keywords;
+} );
+```
+
+---
+
 # Filter: bricks/comments/timestamp
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-comments-timestamp/
@@ -1527,32 +1530,27 @@ add_filter( 'bricks/content/html_after_begin', function( $html_after_begin, $bri
 
 ---
 
-# Filter: bricks/content/tag
+# Filter: bricks/content/html_before_end
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-tag/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-html_before_end/
 
-*Filter which HTML tag Bricks uses for the #brx-content wrapper around rendered page content.*
+*Available since version 1.6, this filter allows you to customize or insert HTML strings before closing main tag.*
 
-The `bricks/content/tag` (@since 1.11.1) filter lets you set the HTML tag for the `#brx-content` node that your Bricks content data is wrapped in.
-
-Make sure the HTML tag you return is an [allowed HTML tag](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-allowed_html_tags/).
-
-## Example Usage:
+Available since version 1.6, this filter allows you to customize or insert HTML strings before closing `main` tag.
 
 ```php
-add_filter( 'bricks/content/tag', function( $tag ) {
-    // Set #brx-content tag to 'div' (default: main)
-    return 'div';
-} );
+add_filter( 'bricks/content/html_before_end', function( $html_after_begin, $bricks_data, $attributes, $tag ) {
+
+    if ( $tag !== 'main' ) {
+      return $html_after_begin;
+    }
+
+    // Insert custom popup HTML
+    $my_popup_html = '<div class="my_popup">This is my popup</div>';
+
+    return $html_after_begin . $my_popup_html;
+}, 10, 4 );
 ```
-
-**Parameters:**
-
-- `$tag` (string): The default HTML tag, which is `main`.
-
-**Return:**
-
-- (string): The HTML tag you want to render instead of the default.
 
 ---
 
@@ -1579,30 +1577,6 @@ add_filter( 'bricks/default_page_title', function( $title, $post_id ) {
 
 ---
 
-# Filter: bricks/content/html_before_end
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-html_before_end/
-
-*Available since version 1.6, this filter allows you to customize or insert HTML strings before closing main tag.*
-
-Available since version 1.6, this filter allows you to customize or insert HTML strings before closing `main` tag.
-
-```php
-add_filter( 'bricks/content/html_before_end', function( $html_after_begin, $bricks_data, $attributes, $tag ) {
-
-    if ( $tag !== 'main' ) {
-      return $html_after_begin;
-    }
-
-    // Insert custom popup HTML
-    $my_popup_html = '<div class="my_popup">This is my popup</div>';
-
-    return $html_after_begin . $my_popup_html;
-}, 10, 4 );
-```
-
----
-
 # Filter: bricks/dynamic_data/exclude_tags
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-dynamic_data-exclude_tags/
@@ -1623,6 +1597,35 @@ add_filter( 'bricks/dynamic_data/exclude_tags', function( $tags ) {
 ```
 
 Adding this code to your child theme will prevent Bricks from replacing these tags with an empty string.
+
+---
+
+# Filter: bricks/content/tag
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-tag/
+
+*Filter which HTML tag Bricks uses for the #brx-content wrapper around rendered page content.*
+
+The `bricks/content/tag` (@since 1.11.1) filter lets you set the HTML tag for the `#brx-content` node that your Bricks content data is wrapped in.
+
+Make sure the HTML tag you return is an [allowed HTML tag](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-allowed_html_tags/).
+
+## Example Usage:
+
+```php
+add_filter( 'bricks/content/tag', function( $tag ) {
+    // Set #brx-content tag to 'div' (default: main)
+    return 'div';
+} );
+```
+
+**Parameters:**
+
+- `$tag` (string): The default HTML tag, which is `main`.
+
+**Return:**
+
+- (string): The HTML tag you want to render instead of the default.
 
 ---
 
@@ -1973,6 +1976,29 @@ add_filter('bricks/element/settings', function( $settings, $element ) {
 
 ---
 
+# Filter: bricks/elements/{element_name}/control_groups
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-elements-element_name-control_groups/
+
+*Since Bricks 1.4 it is possible to add custom control groups to a specific element like so:*
+
+Since Bricks 1.4 it is possible to add custom control groups to a specific element like so:
+
+```php
+add_filter( 'bricks/elements/heading/control_groups', function( $control_groups ) {
+    $control_groups['custom_controls'] = [
+        'tab'      => 'content', // or 'style'
+        'title'    => esc_html__( 'Custom controls', 'my_plugin' ),
+    ];
+
+    return $control_groups;
+} );
+```
+
+Note: the above example adds a new control group with the title "**Custom controls**" to the **heading** element, using the filter `bricks/elements/**heading**/control_groups`. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
+
+---
+
 # Filter: bricks/elements/&#123;element_name&#125;/controls
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-elements-element_name-controls/
@@ -2059,29 +2085,6 @@ add_filter( 'bricks/footer/attributes', function( $attributes ) {
 
 - [/developer/hooks/filters/filter-bricks-header-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-header-attributes/)
 - [/developer/hooks/filters/filter-bricks-content-attributes/](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-attributes/)
-
----
-
-# Filter: bricks/elements/{element_name}/control_groups
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-elements-element_name-control_groups/
-
-*Since Bricks 1.4 it is possible to add custom control groups to a specific element like so:*
-
-Since Bricks 1.4 it is possible to add custom control groups to a specific element like so:
-
-```php
-add_filter( 'bricks/elements/heading/control_groups', function( $control_groups ) {
-    $control_groups['custom_controls'] = [
-        'tab'      => 'content', // or 'style'
-        'title'    => esc_html__( 'Custom controls', 'my_plugin' ),
-    ];
-
-    return $control_groups;
-} );
-```
-
-Note: the above example adds a new control group with the title "**Custom controls**" to the **heading** element, using the filter `bricks/elements/**heading**/control_groups`. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
 
 ---
 

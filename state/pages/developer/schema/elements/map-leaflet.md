@@ -45,7 +45,7 @@
 | `zoomControl` | checkbox | Zoom Control | — |
 | `attributionControl` | checkbox | Attribution Control | — |
 | `closePopupOnClick` | checkbox | Close popup on click | — |
-| `dragging` | checkbox | Dragging | — |
+| `dragging` | select | Dragging | — |
 | `trackResize` | checkbox | Track resize | — |
 
 ## Inherited CSS controls

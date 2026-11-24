@@ -22,8 +22,12 @@
 | `navigationBackgroundActive` | color | Background | `background` on `.bricks-pagination ul .page-numbers.current` |
 | `navigationBorderActive` | border | Border | `border` on `.bricks-pagination ul .page-numbers.current` |
 | `navigationTypographyActive` | typography | Typography | `font` on `.bricks-pagination ul .page-numbers.current` |
+| `prevText` | text | Previous text | — |
 | `prevIcon` | icon | Previous icon | — |
+| `nextText` | text | Next text | — |
 | `nextIcon` | icon | Next icon | — |
+| `firstText` | text | First page text | — |
+| `lastText` | text | Last page text | — |
 | `endSize` | number | End Size | — |
 | `midSize` | number | Mid Size | — |
 | `ajax` | checkbox | Enable AJAX | — |

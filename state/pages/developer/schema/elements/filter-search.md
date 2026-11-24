@@ -27,6 +27,7 @@
 | `newTab` | checkbox | Open in new tab | — |
 | `searchCriteriaCustom` | checkbox | Custom search criteria | — |
 | `useWeightScore` | checkbox | Use weight score | — |
+| `searchPostMatchAnyWord` | checkbox | Match any word | — |
 | `searchPostFields` | checkbox | Search post fields | — |
 | `searchPostQuery` | repeater | Post fields | — |
 | `searchPostMeta` | checkbox | Search post meta fields | — |

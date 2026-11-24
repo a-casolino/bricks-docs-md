@@ -264,6 +264,36 @@ add_filter( 'bricks/posts/query_vars', function( $query_vars, $settings, $elemen
 
 ---
 
+# Filter: bricks/query/init_loop_index
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-init_loop_index/
+
+*Filter the initial Bricks loop index so paginated, infinite-scroll, or custom queries keep their loop-based output aligned.*
+
+The `bricks/query/init_loop_index` filter, available `@since 1.11`, allows you to modify the initial loop index when using various query types in Bricks Builder. This filter is especially useful in cases such as infinite scroll or paginated queries, where setting the correct loop index is crucial for displaying content seamlessly across multiple pages especially when using dynamic backgound images or colors. Without this hook, the generated dynamic CSS might be applied on the incorrect element when performing infinite scroll or paginate actions.
+
+### When to Use
+
+This filter is particularly useful when creating a custom query type using the [bricks/setup/control_options](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-nav_menu-menu/) hook. You can implement your own logic for handling pagination and adjust the initial loop index accordingly.
+
+```php
+add_filter( 'bricks/query/init_loop_index', function ( $initial_index, $object_type, $query ) {
+  // Check if the object type is 'my_custom_query'
+  if ( $object_type !== 'my_custom_query' ) {
+    return $initial_index;
+  }
+
+  // Add your custom logic to modify the initial loop index
+  // Example: Calculate based on custom logic
+  // $initial_index = custom_logic_to_calculate_index();
+
+  return $initial_index;
+}, 10, 3 );
+
+```
+
+---
+
 # Filter: bricks/query/force_run
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-force_run/
@@ -304,36 +334,6 @@ add_filter( 'bricks/query/force_run', function( $force_run, $query ) {
 Since 1.9.2, you can define `$query_vars['bricks_force_run'] = true` to achieve the same result as well. This will be handy if you are using the Bricks Query Editor or PHP filters like `bricks/posts/query_vars`  etc.
 
 ![](https://academy.bricksbuilder.io/assets/bricks-query-force-run-query-vars.png)
-
----
-
-# Filter: bricks/query/init_loop_index
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-init_loop_index/
-
-*Filter the initial Bricks loop index so paginated, infinite-scroll, or custom queries keep their loop-based output aligned.*
-
-The `bricks/query/init_loop_index` filter, available `@since 1.11`, allows you to modify the initial loop index when using various query types in Bricks Builder. This filter is especially useful in cases such as infinite scroll or paginated queries, where setting the correct loop index is crucial for displaying content seamlessly across multiple pages especially when using dynamic backgound images or colors. Without this hook, the generated dynamic CSS might be applied on the incorrect element when performing infinite scroll or paginate actions.
-
-### When to Use
-
-This filter is particularly useful when creating a custom query type using the [bricks/setup/control_options](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-nav_menu-menu/) hook. You can implement your own logic for handling pagination and adjust the initial loop index accordingly.
-
-```php
-add_filter( 'bricks/query/init_loop_index', function ( $initial_index, $object_type, $query ) {
-  // Check if the object type is 'my_custom_query'
-  if ( $object_type !== 'my_custom_query' ) {
-    return $initial_index;
-  }
-
-  // Add your custom logic to modify the initial loop index
-  // Example: Calculate based on custom logic
-  // $initial_index = custom_logic_to_calculate_index();
-
-  return $initial_index;
-}, 10, 3 );
-
-```
 
 ---
 
@@ -427,29 +427,6 @@ add_filter( 'bricks/query/loop_object_type', function( $object_type, $object, $q
 
 ---
 
-# Filter: bricks/query/no_results_content
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-no_results_content/
-
-*You can programmatically change the query loop \"no results content\" using this filter.*
-
-You can programmatically change the query loop "no results content" using this filter.
-
-```php
-add_filter( 'bricks/query/no_results_content', function( $content, $settings, $element_id ) {
-
-  // Check if the query element id is the one you want
-  if( $element_id !== 'srixvr' ) return $content;
-
-  // Use a bricks section template as the no results content
-  $content = do_shortcode('[bricks_template id="3981"]');
-
-  return $content;
-}, 10, 3 );
-```
-
----
-
 # Filter: bricks/query/result
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result/
@@ -508,26 +485,25 @@ For native query limits and offsets, use the [Query Loop controls](https://acade
 
 ---
 
-# Filter: bricks/query/result_count
+# Filter: bricks/query/no_results_content
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_count/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-no_results_content/
 
-*Filter the result count Bricks reports for a query object before pagination or related UI uses that total.*
+*You can programmatically change the query loop \"no results content\" using this filter.*
 
-This filter allows you to modify the query result count (@since 1.8).
+You can programmatically change the query loop "no results content" using this filter.
 
 ```php
-add_filter( 'bricks/query/result_count', function( $result_count, $query_obj ) {
-  // Return: Element ID is not "lbsijo", nor is it a post query
-  if( $query_obj->element_id !== 'lbsijo' || $query_obj->object_type !== 'post' ) {
-    return $result_count;
-  }
+add_filter( 'bricks/query/no_results_content', function( $content, $settings, $element_id ) {
 
-  // Perform your logic here
-  // Use $query_obj->query_result to access the query result
-  $new_count = 123;
-  return $new_count;
-}, 10, 2 );
+  // Check if the query element id is the one you want
+  if( $element_id !== 'srixvr' ) return $content;
+
+  // Use a bricks section template as the no results content
+  $content = do_shortcode('[bricks_template id="3981"]');
+
+  return $content;
+}, 10, 3 );
 ```
 
 ---
@@ -556,50 +532,27 @@ add_filter( 'bricks/query/result_max_num_pages', function( $max_num_pages, $quer
 
 ---
 
-# Filter: bricks/registered_post_types_args
+# Filter: bricks/query/result_count
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-registered_post_types_args/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_count/
 
-*Available since version 1.6, this filter allows you to customise the post type args that are used to query the post type as shown in the Bricks settings & the.*
+*Filter the result count Bricks reports for a query object before pagination or related UI uses that total.*
 
-Available since version 1.6, this filter allows you to customise the post type args that are used to query the post type as shown in the Bricks settings & the builder (e.g. Query control post types, etc.)
-
-```php
-add_filter( 'bricks/registered_post_types_args', function( $args ) {
-  // Default: Return only public post types
-  // $args['public'] = true;
-
-  // Custom: Return all registered post types
-  unset( $args['public'] );
-
-  // Available arguments: https://developer.wordpress.org/reference/functions/get_post_types/#comment-2184
-  return $args;
-} );
-```
-
----
-
-# Filter: bricks/related_posts/query_vars
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-related_posts-query_vars/
-
-*Since Bricks 1.3.5 you may manipulate the related posts element query vars before the query is performed like so:*
-
-Since Bricks 1.3.5 you may manipulate the **related posts** element query vars before the query is performed like so:
+This filter allows you to modify the query result count (@since 1.8).
 
 ```php
-add_filter( 'bricks/related_posts/query_vars', function( $query_vars, $settings, $element_id ) {
-    $query_vars['post_type'] = [ 'post', 'project' ];
+add_filter( 'bricks/query/result_count', function( $result_count, $query_obj ) {
+  // Return: Element ID is not "lbsijo", nor is it a post query
+  if( $query_obj->element_id !== 'lbsijo' || $query_obj->object_type !== 'post' ) {
+    return $result_count;
+  }
 
-    return $query_vars;
-}, 10, 3 );
+  // Perform your logic here
+  // Use $query_obj->query_result to access the query result
+  $new_count = 123;
+  return $new_count;
+}, 10, 2 );
 ```
-
-The filter callback receives two arguments:
-
-- `$query_vars` is an associative array used to feed the [WP_Query](https://developer.wordpress.org/reference/classes/wp_query/) class
-- `$settings` is an associative array containing the element settings set in the builder
-- `$element_id` is a string containing the element ID
 
 ---
 
@@ -639,6 +592,53 @@ Related hooks:
 
 - To add a query type to the Query control use [`bricks/setup/control_options`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/)
 - To manage the object on every loop iteration use [`bricks/query/loop_object`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object/)
+
+---
+
+# Filter: bricks/related_posts/query_vars
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-related_posts-query_vars/
+
+*Since Bricks 1.3.5 you may manipulate the related posts element query vars before the query is performed like so:*
+
+Since Bricks 1.3.5 you may manipulate the **related posts** element query vars before the query is performed like so:
+
+```php
+add_filter( 'bricks/related_posts/query_vars', function( $query_vars, $settings, $element_id ) {
+    $query_vars['post_type'] = [ 'post', 'project' ];
+
+    return $query_vars;
+}, 10, 3 );
+```
+
+The filter callback receives two arguments:
+
+- `$query_vars` is an associative array used to feed the [WP_Query](https://developer.wordpress.org/reference/classes/wp_query/) class
+- `$settings` is an associative array containing the element settings set in the builder
+- `$element_id` is a string containing the element ID
+
+---
+
+# Filter: bricks/registered_post_types_args
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-registered_post_types_args/
+
+*Available since version 1.6, this filter allows you to customise the post type args that are used to query the post type as shown in the Bricks settings & the.*
+
+Available since version 1.6, this filter allows you to customise the post type args that are used to query the post type as shown in the Bricks settings & the builder (e.g. Query control post types, etc.)
+
+```php
+add_filter( 'bricks/registered_post_types_args', function( $args ) {
+  // Default: Return only public post types
+  // $args['public'] = true;
+
+  // Custom: Return all registered post types
+  unset( $args['public'] );
+
+  // Available arguments: https://developer.wordpress.org/reference/functions/get_post_types/#comment-2184
+  return $args;
+} );
+```
 
 ---
 

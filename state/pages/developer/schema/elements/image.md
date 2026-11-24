@@ -28,6 +28,7 @@
 | `lightboxHeight` | number | Height | — |
 | `lightboxAnimationType` | select | Animation | — |
 | `lightboxCaption` | checkbox | Caption | — |
+| `lightboxCaptionPosition` | select | Caption position | — |
 | `lightboxId` | text | ID | — |
 | `lightboxCropped` | checkbox | Cropped | — |
 | `lightboxPadding` | dimensions | Padding | — |

@@ -1,7 +1,7 @@
 # Bricks Builder Documentation: Getting Started
 
-<!-- content-sha256: 292609d5051d5da7db7074b64c5cca27354738b3c3f08d2ef816148b7bdb69c5 -->
-<!-- content last changed: 2026-11-20 08:29 UTC -->
+<!-- content-sha256: 7f9bf1cac073249315fe6f7bb71ae70aa09fca2dd84e78b5bf8b55e5ca43eeac -->
+<!-- content last changed: 2026-11-24 10:59 UTC -->
 
 Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricksbuilder.io/), refreshed daily. Content © Bricks. 13 pages.
 
@@ -9,14 +9,14 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
 
   - [Blog post template](#getting-started-blog-post-template)
   - [Start your first page](#getting-started-building-your-first-page)
-  - [Global classes](#getting-started-global-classes)
   - [Building a header template](#getting-started-header-template)
+  - [Global classes](#getting-started-global-classes)
 - [Getting Started](#getting-started)
   - [Installation and setup](#getting-started-installation-setup)
-  - [Next steps](#getting-started-next-steps)
   - [Interface tour](#getting-started-interface-tour)
-  - [Query loops and dynamic data](#getting-started-query-loops-dynamic-data)
   - [Responsive basics](#getting-started-responsive-basics)
+  - [Query loops and dynamic data](#getting-started-query-loops-dynamic-data)
+  - [Next steps](#getting-started-next-steps)
   - [Settings and defaults](#getting-started-settings-defaults)
   - [An intro to templates](#getting-started-templates-intro)
   - [Theme styles](#getting-started-theme-styles)
@@ -408,6 +408,75 @@ Let's do that in the next article.
 
 ---
 
+<a id="getting-started-header-template"></a>
+
+# Building a header template
+
+Source: https://academy.bricksbuilder.io/getting-started/header-template/
+
+*Build a reusable Bricks header template with site branding, navigation, and the template settings needed to apply it across your site.*
+
+https://youtu.be/CL-viLFWjDg
+
+Let's build a global header with a logo and menu.
+
+## Create the template
+
+1. Go to **Bricks > Templates**
+2. Add New: "Header"
+3. Edit with Bricks
+
+## Settings
+
+1. **Settings (gear) > Template Settings**
+2. **Type**: Header
+3. **Conditions**: Entire Website
+
+## Build the structure
+
+1. Add a **Section**
+2. Inside the **Container**:
+   - Add a **Logo** element (or Image/Text)
+   - Add a **Nav Menu** element (we'll use the standard WordPress menu)
+
+## Style the layout
+
+**Container:**
+1. **Direction**: `Row` (horizontal)
+2. **Justify content**: `Space between` (pushes logo and menu apart)
+3. **Align items**: `Center` (vertically aligned)
+
+**Section:**
+1. **Background color**: Pick a light gray or your brand color
+2. **Padding**: `12` top/bottom (this intentionally overrides our global 80px for this specific section)
+
+Your header is part of the site chrome, not page content. It usually needs tighter spacing than regular sections, so it is a good place to make a deliberate exception to your global section padding.
+
+## Create a WordPress menu (if you do not have one yet)
+
+The Nav Menu element uses a normal WordPress menu. If **Appearance > Menus** is empty or you have never built a menu:
+
+1. From the WordPress dashboard, go to **Appearance > Menus**
+2. Enter a **Menu name** (for example `Main`) and click **Create Menu**
+3. Add a few items from the left (**Pages**, **Custom links**, and so on), then click **Save Menu**
+
+Then return to this template in the builder.
+
+## Configure the menu
+
+1. Select the **Nav Menu** element
+2. Under **Menu**, choose the WordPress menu you created (for example **Main**)
+
+## Save and verify
+
+1. Save the template
+2. Go to your **Pages** panel (top bar) -> **Home**
+3. You should see your new header sitting perfectly atop your hero section!
+
+![](https://academy.bricksbuilder.io/assets/header-template.png)
+
+---
+
 <a id="getting-started-global-classes"></a>
 
 # Global classes
@@ -694,75 +763,6 @@ Global classes are how you build sites that scale. They transform your workflow 
 
 ---
 
-<a id="getting-started-header-template"></a>
-
-# Building a header template
-
-Source: https://academy.bricksbuilder.io/getting-started/header-template/
-
-*Build a reusable Bricks header template with site branding, navigation, and the template settings needed to apply it across your site.*
-
-https://youtu.be/CL-viLFWjDg
-
-Let's build a global header with a logo and menu.
-
-## Create the template
-
-1. Go to **Bricks > Templates**
-2. Add New: "Header"
-3. Edit with Bricks
-
-## Settings
-
-1. **Settings (gear) > Template Settings**
-2. **Type**: Header
-3. **Conditions**: Entire Website
-
-## Build the structure
-
-1. Add a **Section**
-2. Inside the **Container**:
-   - Add a **Logo** element (or Image/Text)
-   - Add a **Nav Menu** element (we'll use the standard WordPress menu)
-
-## Style the layout
-
-**Container:**
-1. **Direction**: `Row` (horizontal)
-2. **Justify content**: `Space between` (pushes logo and menu apart)
-3. **Align items**: `Center` (vertically aligned)
-
-**Section:**
-1. **Background color**: Pick a light gray or your brand color
-2. **Padding**: `12` top/bottom (this intentionally overrides our global 80px for this specific section)
-
-Your header is part of the site chrome, not page content. It usually needs tighter spacing than regular sections, so it is a good place to make a deliberate exception to your global section padding.
-
-## Create a WordPress menu (if you do not have one yet)
-
-The Nav Menu element uses a normal WordPress menu. If **Appearance > Menus** is empty or you have never built a menu:
-
-1. From the WordPress dashboard, go to **Appearance > Menus**
-2. Enter a **Menu name** (for example `Main`) and click **Create Menu**
-3. Add a few items from the left (**Pages**, **Custom links**, and so on), then click **Save Menu**
-
-Then return to this template in the builder.
-
-## Configure the menu
-
-1. Select the **Nav Menu** element
-2. Under **Menu**, choose the WordPress menu you created (for example **Main**)
-
-## Save and verify
-
-1. Save the template
-2. Go to your **Pages** panel (top bar) -> **Home**
-3. You should see your new header sitting perfectly atop your hero section!
-
-![](https://academy.bricksbuilder.io/assets/header-template.png)
-
----
-
 <a id="getting-started"></a>
 
 # Getting Started
@@ -883,6 +883,382 @@ For license limits, staging URLs, managing activations, automatic updates, and u
 ## What you've accomplished
 
 You now have Bricks installed and licensed.
+
+---
+
+<a id="getting-started-interface-tour"></a>
+
+# Interface tour
+
+Source: https://academy.bricksbuilder.io/getting-started/interface-tour/
+
+*Tour the Bricks builder interface, learn what each main panel does, and understand the core editing workflow before you start building.*
+
+https://youtu.be/zOaFPlcgSeg
+
+Before you start building, let's get oriented. This quick tour shows you where everything is in the Bricks builder interface.
+
+## Open the builder
+
+Let's create a Home page so you can follow along:
+
+1. In your WordPress dashboard, go to **Pages > Add New**
+2. Give it a title: "Home"
+3. Click **Edit with Bricks**
+
+![](https://academy.bricksbuilder.io/assets/admin-edit-with-bricks-button.png)
+
+The builder opens. This is where you'll build your site.
+
+![](https://academy.bricksbuilder.io/assets/builder-empty-canvas.png)
+
+## The interface
+
+The builder has four main areas: Toolbar (top), Settings Panel (left), Canvas (center), and Structure Panel (right).
+
+A simple mental map:
+
+- **Toolbar** = global tools and actions
+- **Settings Panel** = what you can add or how you style what is selected
+- **Canvas** = what you are currently designing (page or template)
+- **Structure Panel** = the outline of your HTML structure
+
+### Toolbar
+
+The toolbar at the top is always visible. Here's what the main icons do:
+
+![](https://academy.bricksbuilder.io/assets/builder-toolbar-styles-icon.png)
+
+- **Bricks logo** - Open the link configured in Bricks settings (defaults to the WordPress dashboard; you can change this later)
+- **Styles** - Open the Style Manager, where you manage classes, variables, colors, typography scales, and spacing scales (default shortcut: `Cmd/Ctrl + .`)
+- **Pages** - Switch between pages while staying in the builder
+- **Templates** - Open the template library and your saved templates
+- **Manage** - Access builder-related settings and tools
+- **Command palette** - Search for elements and actions (default shortcut: `Cmd/Ctrl + K`)
+- **Elements / Components** - Toggle the elements and components panel
+- **Reload canvas** - Reload the preview if something looks out of sync
+- **Breakpoints and preview size** - Switch between desktop, tablet, and mobile editing and adjust the preview width
+- **Undo / Redo** - Step backward or forward through changes
+- **Structure** - Toggle the Structure Panel on the right
+- **Edit in WordPress** - Jump back to the WordPress editor for this page
+- **View on front end** - Open the current page on the front end in a new tab
+- **Preview mode** - Hide builder overlays so you can see a cleaner preview
+- **Save** - Save your work
+
+### Settings panel (left)
+
+This panel changes based on what you're doing.
+
+**By default**: Shows all available elements you can add (Layout, Basic, Media, WordPress, etc.)
+
+**When element selected**: Shows that element's controls (typography, colors, spacing, etc.)
+
+**When Theme Styles clicked**: Shows global design settings
+
+**When Page settings clicked**: Shows page-specific settings
+
+### Canvas (center)
+
+Your visual workspace. This is where you build your page or template.
+
+- Drag elements from the Settings Panel onto the canvas
+- Click elements to select them
+- Selected elements show a blue outline
+- Changes update in real-time
+- Right-click for quick actions (duplicate, delete, etc.)
+
+**Important**: The canvas shows your design accurately, but always preview on the front end to see the final result.
+
+### Structure panel (right)
+
+Shows the hierarchy of everything on your current page as a nested tree.
+
+```
+Section
+  └─ Container
+      ├─ Heading
+      ├─ Text
+      └─ Button
+```
+
+**Why this is useful:**
+- Click elements here instead of hunting for them on the canvas
+- Drag to reorder elements or change hierarchy
+- See your page structure at a glance
+
+You can toggle it on/off with the tree icon in the toolbar, but most people keep it visible.
+
+## What you've learned
+
+You now know:
+- Where the toolbar, settings panel, canvas, and structure panel are
+- What each area shows
+
+> **Help improve this lesson**
+>
+> Bricks Academy is new. If anything in this lesson felt unclear or missing, use the feedback box in the right sidebar and leave us a quick note.
+
+---
+
+<a id="getting-started-responsive-basics"></a>
+
+# Responsive basics
+
+Source: https://academy.bricksbuilder.io/getting-started/responsive-basics/
+
+*Learn the Bricks responsive workflow, including breakpoints, direction changes, spacing adjustments, and mobile-first cleanup.*
+
+https://youtu.be/oRHy8hRMP94
+
+Earlier in the series we focused on building on desktop first, without worrying about smaller screens. Now it is time to take that same page and make it work everywhere.
+
+Over half your visitors use phones or tablets. Responsive design means your layouts adjust gracefully to any screen size. This article covers how Bricks handles that.
+
+## Understanding breakpoints
+
+Breakpoints are screen width thresholds where your design adapts. Bricks includes four defaults:
+
+| Breakpoint | Screen width | What it targets |
+| --- | --- | --- |
+| Desktop | Base (no limit) | Laptops, large monitors |
+| Tablet portrait | < 992px | iPads, tablets |
+| Mobile landscape | < 768px | Phones in landscape |
+| Mobile portrait | < 478px | Phones in portrait |
+
+Click the device icons in the toolbar to switch between breakpoints. The canvas resizes to show you what users on that screen size will see.
+
+**How inheritance works:** Styles you set on Desktop apply to all breakpoints automatically. When you switch to a smaller breakpoint and change a value, that change applies to that breakpoint and anything smaller. You only override what needs to change — you do not redefine everything from scratch.
+
+For example: set a Container's direction to `Row` on Desktop. Switch to Mobile landscape and change it to `Column`. Desktop and Tablet stay side-by-side. Mobile landscape and portrait stack vertically.
+
+Bricks uses desktop-first by default (design large, refine smaller). Most users stick with this since it is easier to think "scale down" than "scale up."
+
+## The responsive workflow
+
+Let's make the hero section we built earlier responsive.
+
+### 1. Check tablet
+
+Click the **Tablet portrait** icon in the toolbar and look at your design. Common things to check:
+
+- Does the two-column layout still feel comfortable, or does it feel cramped?
+- Is the padding still proportional to the screen size?
+
+### 2. Adjust spacing
+
+Your Section has 80px padding. On tablets that is a lot of vertical space.
+
+1. Select the Section
+2. Make sure you are on the **Tablet portrait** breakpoint
+3. Change **Padding** top/bottom to `60`
+
+Desktop keeps 80px. Tablet and smaller use 60px.
+
+### 3. Switch to mobile and stack the columns
+
+On a phone, the two-column hero (text left, image right) is too cramped. Let's stack it.
+
+1. Click **Mobile landscape** in the toolbar
+2. Select the **Container** inside the hero section
+3. Under **Layout**, change **Direction** from `Row` to `Column`
+
+The text and image now stack vertically on mobile. Desktop and tablet stay side-by-side. This is the most common responsive technique: horizontal on large screens, vertical on small.
+
+### 4. Check mobile portrait
+
+Click **Mobile portrait** for the smallest view. Reduce padding a bit further if needed (around `32`). Check that buttons are large enough to tap comfortably.
+
+## Hiding elements on specific breakpoints
+
+Sometimes you want an element visible on desktop but hidden on mobile.
+
+1. Select the element
+2. Switch to the breakpoint where it should disappear
+3. Under **Layout**, set **Display** to `None`
+
+The element hides at that breakpoint and smaller, stays visible everywhere else.
+
+## Two approaches to handling values across screen sizes
+
+So far we have been manually setting a value (like `60px` padding) at each breakpoint. This works well for layout decisions like stacking columns or adjusting spacing.
+
+But there is a second approach, especially useful for things like font sizes and spacing scales: instead of picking specific values at each breakpoint, you define a minimum and a maximum and let the browser smoothly calculate everything in between based on screen width. No breakpoints needed for those values at all.
+
+For example: a heading that is always at least 24px on the smallest screen and never more than 48px on the widest. Between those two extremes, it scales automatically.
+
+Bricks has this built in. The **Style Manager** (the same popup you used for Theme Styles) has dedicated **Typography** and **Spacing** tabs where you can generate these fluid scales as CSS variables. You set up the scale once, apply the variables to your elements, and responsiveness for those values is handled automatically.
+
+This is a more advanced topic and not something you need right now. But it is worth knowing the two approaches exist:
+
+- **Hard values at each breakpoint** — explicit, manual, great for layout
+- **Fluid scaling** — define a range, let the browser do the math, great for typography and spacing
+
+For a deeper look: [Fluid Typography](https://academy.bricksbuilder.io/builder/styling/fluid-typography)
+
+## Testing your design
+
+The builder canvas gives you a preview, but always test on real devices or browser dev tools.
+
+**In the builder:** Use the breakpoint switcher. You can also drag the canvas edges to check intermediate widths.
+
+**In the browser:**
+1. Click **Preview** in the toolbar to open the front end
+2. Open browser dev tools (`F12` or `Cmd/Ctrl + Shift + I`)
+3. Enable **Responsive Design Mode**
+4. Test at various widths
+
+Real device testing reveals things emulation misses — touch target size, actual font legibility, performance on slower phones.
+
+## Custom breakpoints
+
+Bricks' four defaults cover most sites. If you need a breakpoint at a specific width (say, a wide desktop at 1440px), you can add one.
+
+Go to **Bricks > Settings > General**, enable **Custom breakpoints**, then add them from the breakpoint manager in the builder.
+
+## Troubleshooting
+
+**Changes on mobile are not showing on the front end.**
+Save the page, then hard-refresh the browser (`Cmd/Ctrl + Shift + R`).
+
+**Styles I set on desktop are changing when I switch breakpoints.**
+You likely overrode them on a smaller breakpoint earlier. Inheritance goes downward only — changes on mobile do not affect desktop.
+
+**Layout breaks at a width between two breakpoints.**
+Test widths like 850px (between Tablet 992px and Mobile landscape 768px). If something breaks there, either adjust your layout to be more flexible or add a custom breakpoint.
+
+## What you've learned
+
+- How breakpoints work and how styles inherit downward
+- How to adjust spacing and stack columns on smaller screens
+- How to hide elements on specific breakpoints
+- The two approaches to responsive values: hard breakpoint overrides vs. fluid scaling
+- How to test your design across screen sizes
+
+---
+
+<a id="getting-started-query-loops-dynamic-data"></a>
+
+# Query loops and dynamic data
+
+Source: https://academy.bricksbuilder.io/getting-started/query-loops-dynamic-data/
+
+*Use query loops and dynamic data in Bricks to render posts, fields, and other WordPress content inside reusable layouts.*
+
+https://youtu.be/3WCyZaPtmpA
+
+We're back on the homepage. Let's add a "Latest Posts" section below the hero.
+
+## Before you begin: sample posts
+
+This section needs **at least three published blog posts** so the query loop has something to show. If you skip this, the grid can look empty or broken even when you did everything right in Bricks.
+
+**Create 3 test posts first:**
+
+1. In the WordPress dashboard, go to **Posts > Add New**
+2. Give each post a **title** and a short **excerpt** (use the excerpt field if your screen shows it, or add a couple of lines in the content and let WordPress generate one)
+3. Set a **featured image** for each post (**Featured image** in the sidebar)
+4. Click **Publish** and repeat until you have at least **3 published posts**
+
+You can use the same steps later in the [Blog post template](https://academy.bricksbuilder.io/getting-started/blog-post-template/) article; the posts you create here are what that template will display.
+
+Before we start clicking, we need two core ideas: **query loops** and **dynamic data**.
+
+## What is a query loop?
+
+In WordPress, a "query" is just a question like:
+
+- "Give me the 3 latest posts"
+- "Give me all posts in this category"
+
+A **query loop** takes the answer to that question (the list of posts) and repeats a design once for each item.
+
+You design a single **card** (image, title, excerpt, button). The loop runs through the posts and outputs one card per post. Change the query rules, and the same design shows different posts.
+
+## What is dynamic data?
+
+Until now, when you added a Heading or Text element, you typed the content manually. That is **static** text.
+
+With **dynamic data**, you connect an element to a WordPress field instead:
+
+- Heading pulls the **post title**
+- Image pulls the **featured image**
+- Text pulls the **post excerpt**
+
+In a loop, each card shows the field values for the current post in the list.
+
+You will see this as options like `{post_title}` or `{featured_image}` in Bricks. They are just visual placeholders for real WordPress fields.
+
+## Prepare content
+
+You should already have at least **3 published posts**, each with a **featured image** (see **Before you begin** above). Quick check: **Posts > All Posts** — you should see three or more posts with **Published** status.
+
+## Build the section
+
+1. Add a new **Section**
+2. Inside the Container, add a **Heading** ("Latest Posts")
+3. Add a **Block** element below the heading
+
+## Configure the Grid
+
+We want a 3-column grid for our posts.
+
+Earlier in the series you used flexbox for a simple row layout (text on the left, image on the right). **CSS Grid** is the other famous layout system. It is ideal for two dimensional layouts where you care about rows and columns at the same time, like a grid of cards.
+
+When you set a Block to use Grid, you tell the browser to place its children on a grid.
+
+- The **Grid template columns** control describes how many columns you want and how wide they should be.  
+  - `1fr 1fr 1fr` means “three equal columns”, each taking one fraction of the available width.
+- The **Gap** control sets the space between both columns and rows, so your cards are evenly spaced in all directions.
+
+As you add more cards, Grid automatically flows them into these columns, then wraps onto new rows as needed. You do not have to manually position each card.
+
+1. Select the **Block**
+2. **Display**: `Grid`
+3. **Grid template columns**: `1fr 1fr 1fr` (three equal columns)
+4. **Gap**: `24`
+
+## Create the card (Loop item)
+
+Inside the Grid Block, add another **Block** (this will be our repeating card).
+
+Inside this Card Block, add:
+1. **Image** (Featured Image)
+2. **Heading** (Post Title, H3)
+3. **Basic Text** (Post Excerpt)
+4. **Text Link** ("Read more")
+
+## Enable Query Loop
+
+1. Select the **Card Block** (the inner one)
+2. Toggle **Use query loop**
+3. **Query settings**:
+   - Post type: Posts
+   - Posts per page: 3
+
+You should now see 3 post cards!
+
+## Connect dynamic data
+
+1. **Image**: Select dynamic data -> `Featured Image`
+
+![](https://academy.bricksbuilder.io/assets/dynamic-data-featured-image.png)
+
+2. **Heading**: Select dynamic data -> `Post Title`. Link to -> `Post URL`
+
+![](https://academy.bricksbuilder.io/assets/dynamic-data-post-title.png)
+
+3. **Excerpt**: Select dynamic data -> `Post Excerpt`
+4. **Read more**: Link to -> `Post URL`
+
+![](https://academy.bricksbuilder.io/assets/query-loop.png)
+
+## Responsive check
+
+1. Switch to **Mobile Landscape**
+2. Select the **Grid Block**
+3. Change **Grid template columns** to `1fr` (stacks cards vertically)
+
+Done! You have a dynamic post grid.
 
 ---
 
@@ -1212,382 +1588,6 @@ But mastery doesn't come from reading. It comes from building, breaking, fixing,
 Welcome to the Bricks community. We're excited to see what you build.
 
 Now go make something great.
-
----
-
-<a id="getting-started-interface-tour"></a>
-
-# Interface tour
-
-Source: https://academy.bricksbuilder.io/getting-started/interface-tour/
-
-*Tour the Bricks builder interface, learn what each main panel does, and understand the core editing workflow before you start building.*
-
-https://youtu.be/zOaFPlcgSeg
-
-Before you start building, let's get oriented. This quick tour shows you where everything is in the Bricks builder interface.
-
-## Open the builder
-
-Let's create a Home page so you can follow along:
-
-1. In your WordPress dashboard, go to **Pages > Add New**
-2. Give it a title: "Home"
-3. Click **Edit with Bricks**
-
-![](https://academy.bricksbuilder.io/assets/admin-edit-with-bricks-button.png)
-
-The builder opens. This is where you'll build your site.
-
-![](https://academy.bricksbuilder.io/assets/builder-empty-canvas.png)
-
-## The interface
-
-The builder has four main areas: Toolbar (top), Settings Panel (left), Canvas (center), and Structure Panel (right).
-
-A simple mental map:
-
-- **Toolbar** = global tools and actions
-- **Settings Panel** = what you can add or how you style what is selected
-- **Canvas** = what you are currently designing (page or template)
-- **Structure Panel** = the outline of your HTML structure
-
-### Toolbar
-
-The toolbar at the top is always visible. Here's what the main icons do:
-
-![](https://academy.bricksbuilder.io/assets/builder-toolbar-styles-icon.png)
-
-- **Bricks logo** - Open the link configured in Bricks settings (defaults to the WordPress dashboard; you can change this later)
-- **Styles** - Open the Style Manager, where you manage classes, variables, colors, typography scales, and spacing scales (default shortcut: `Cmd/Ctrl + .`)
-- **Pages** - Switch between pages while staying in the builder
-- **Templates** - Open the template library and your saved templates
-- **Manage** - Access builder-related settings and tools
-- **Command palette** - Search for elements and actions (default shortcut: `Cmd/Ctrl + K`)
-- **Elements / Components** - Toggle the elements and components panel
-- **Reload canvas** - Reload the preview if something looks out of sync
-- **Breakpoints and preview size** - Switch between desktop, tablet, and mobile editing and adjust the preview width
-- **Undo / Redo** - Step backward or forward through changes
-- **Structure** - Toggle the Structure Panel on the right
-- **Edit in WordPress** - Jump back to the WordPress editor for this page
-- **View on front end** - Open the current page on the front end in a new tab
-- **Preview mode** - Hide builder overlays so you can see a cleaner preview
-- **Save** - Save your work
-
-### Settings panel (left)
-
-This panel changes based on what you're doing.
-
-**By default**: Shows all available elements you can add (Layout, Basic, Media, WordPress, etc.)
-
-**When element selected**: Shows that element's controls (typography, colors, spacing, etc.)
-
-**When Theme Styles clicked**: Shows global design settings
-
-**When Page settings clicked**: Shows page-specific settings
-
-### Canvas (center)
-
-Your visual workspace. This is where you build your page or template.
-
-- Drag elements from the Settings Panel onto the canvas
-- Click elements to select them
-- Selected elements show a blue outline
-- Changes update in real-time
-- Right-click for quick actions (duplicate, delete, etc.)
-
-**Important**: The canvas shows your design accurately, but always preview on the front end to see the final result.
-
-### Structure panel (right)
-
-Shows the hierarchy of everything on your current page as a nested tree.
-
-```
-Section
-  └─ Container
-      ├─ Heading
-      ├─ Text
-      └─ Button
-```
-
-**Why this is useful:**
-- Click elements here instead of hunting for them on the canvas
-- Drag to reorder elements or change hierarchy
-- See your page structure at a glance
-
-You can toggle it on/off with the tree icon in the toolbar, but most people keep it visible.
-
-## What you've learned
-
-You now know:
-- Where the toolbar, settings panel, canvas, and structure panel are
-- What each area shows
-
-> **Help improve this lesson**
->
-> Bricks Academy is new. If anything in this lesson felt unclear or missing, use the feedback box in the right sidebar and leave us a quick note.
-
----
-
-<a id="getting-started-query-loops-dynamic-data"></a>
-
-# Query loops and dynamic data
-
-Source: https://academy.bricksbuilder.io/getting-started/query-loops-dynamic-data/
-
-*Use query loops and dynamic data in Bricks to render posts, fields, and other WordPress content inside reusable layouts.*
-
-https://youtu.be/3WCyZaPtmpA
-
-We're back on the homepage. Let's add a "Latest Posts" section below the hero.
-
-## Before you begin: sample posts
-
-This section needs **at least three published blog posts** so the query loop has something to show. If you skip this, the grid can look empty or broken even when you did everything right in Bricks.
-
-**Create 3 test posts first:**
-
-1. In the WordPress dashboard, go to **Posts > Add New**
-2. Give each post a **title** and a short **excerpt** (use the excerpt field if your screen shows it, or add a couple of lines in the content and let WordPress generate one)
-3. Set a **featured image** for each post (**Featured image** in the sidebar)
-4. Click **Publish** and repeat until you have at least **3 published posts**
-
-You can use the same steps later in the [Blog post template](https://academy.bricksbuilder.io/getting-started/blog-post-template/) article; the posts you create here are what that template will display.
-
-Before we start clicking, we need two core ideas: **query loops** and **dynamic data**.
-
-## What is a query loop?
-
-In WordPress, a "query" is just a question like:
-
-- "Give me the 3 latest posts"
-- "Give me all posts in this category"
-
-A **query loop** takes the answer to that question (the list of posts) and repeats a design once for each item.
-
-You design a single **card** (image, title, excerpt, button). The loop runs through the posts and outputs one card per post. Change the query rules, and the same design shows different posts.
-
-## What is dynamic data?
-
-Until now, when you added a Heading or Text element, you typed the content manually. That is **static** text.
-
-With **dynamic data**, you connect an element to a WordPress field instead:
-
-- Heading pulls the **post title**
-- Image pulls the **featured image**
-- Text pulls the **post excerpt**
-
-In a loop, each card shows the field values for the current post in the list.
-
-You will see this as options like `{post_title}` or `{featured_image}` in Bricks. They are just visual placeholders for real WordPress fields.
-
-## Prepare content
-
-You should already have at least **3 published posts**, each with a **featured image** (see **Before you begin** above). Quick check: **Posts > All Posts** — you should see three or more posts with **Published** status.
-
-## Build the section
-
-1. Add a new **Section**
-2. Inside the Container, add a **Heading** ("Latest Posts")
-3. Add a **Block** element below the heading
-
-## Configure the Grid
-
-We want a 3-column grid for our posts.
-
-Earlier in the series you used flexbox for a simple row layout (text on the left, image on the right). **CSS Grid** is the other famous layout system. It is ideal for two dimensional layouts where you care about rows and columns at the same time, like a grid of cards.
-
-When you set a Block to use Grid, you tell the browser to place its children on a grid.
-
-- The **Grid template columns** control describes how many columns you want and how wide they should be.  
-  - `1fr 1fr 1fr` means “three equal columns”, each taking one fraction of the available width.
-- The **Gap** control sets the space between both columns and rows, so your cards are evenly spaced in all directions.
-
-As you add more cards, Grid automatically flows them into these columns, then wraps onto new rows as needed. You do not have to manually position each card.
-
-1. Select the **Block**
-2. **Display**: `Grid`
-3. **Grid template columns**: `1fr 1fr 1fr` (three equal columns)
-4. **Gap**: `24`
-
-## Create the card (Loop item)
-
-Inside the Grid Block, add another **Block** (this will be our repeating card).
-
-Inside this Card Block, add:
-1. **Image** (Featured Image)
-2. **Heading** (Post Title, H3)
-3. **Basic Text** (Post Excerpt)
-4. **Text Link** ("Read more")
-
-## Enable Query Loop
-
-1. Select the **Card Block** (the inner one)
-2. Toggle **Use query loop**
-3. **Query settings**:
-   - Post type: Posts
-   - Posts per page: 3
-
-You should now see 3 post cards!
-
-## Connect dynamic data
-
-1. **Image**: Select dynamic data -> `Featured Image`
-
-![](https://academy.bricksbuilder.io/assets/dynamic-data-featured-image.png)
-
-2. **Heading**: Select dynamic data -> `Post Title`. Link to -> `Post URL`
-
-![](https://academy.bricksbuilder.io/assets/dynamic-data-post-title.png)
-
-3. **Excerpt**: Select dynamic data -> `Post Excerpt`
-4. **Read more**: Link to -> `Post URL`
-
-![](https://academy.bricksbuilder.io/assets/query-loop.png)
-
-## Responsive check
-
-1. Switch to **Mobile Landscape**
-2. Select the **Grid Block**
-3. Change **Grid template columns** to `1fr` (stacks cards vertically)
-
-Done! You have a dynamic post grid.
-
----
-
-<a id="getting-started-responsive-basics"></a>
-
-# Responsive basics
-
-Source: https://academy.bricksbuilder.io/getting-started/responsive-basics/
-
-*Learn the Bricks responsive workflow, including breakpoints, direction changes, spacing adjustments, and mobile-first cleanup.*
-
-https://youtu.be/oRHy8hRMP94
-
-Earlier in the series we focused on building on desktop first, without worrying about smaller screens. Now it is time to take that same page and make it work everywhere.
-
-Over half your visitors use phones or tablets. Responsive design means your layouts adjust gracefully to any screen size. This article covers how Bricks handles that.
-
-## Understanding breakpoints
-
-Breakpoints are screen width thresholds where your design adapts. Bricks includes four defaults:
-
-| Breakpoint | Screen width | What it targets |
-| --- | --- | --- |
-| Desktop | Base (no limit) | Laptops, large monitors |
-| Tablet portrait | < 992px | iPads, tablets |
-| Mobile landscape | < 768px | Phones in landscape |
-| Mobile portrait | < 478px | Phones in portrait |
-
-Click the device icons in the toolbar to switch between breakpoints. The canvas resizes to show you what users on that screen size will see.
-
-**How inheritance works:** Styles you set on Desktop apply to all breakpoints automatically. When you switch to a smaller breakpoint and change a value, that change applies to that breakpoint and anything smaller. You only override what needs to change — you do not redefine everything from scratch.
-
-For example: set a Container's direction to `Row` on Desktop. Switch to Mobile landscape and change it to `Column`. Desktop and Tablet stay side-by-side. Mobile landscape and portrait stack vertically.
-
-Bricks uses desktop-first by default (design large, refine smaller). Most users stick with this since it is easier to think "scale down" than "scale up."
-
-## The responsive workflow
-
-Let's make the hero section we built earlier responsive.
-
-### 1. Check tablet
-
-Click the **Tablet portrait** icon in the toolbar and look at your design. Common things to check:
-
-- Does the two-column layout still feel comfortable, or does it feel cramped?
-- Is the padding still proportional to the screen size?
-
-### 2. Adjust spacing
-
-Your Section has 80px padding. On tablets that is a lot of vertical space.
-
-1. Select the Section
-2. Make sure you are on the **Tablet portrait** breakpoint
-3. Change **Padding** top/bottom to `60`
-
-Desktop keeps 80px. Tablet and smaller use 60px.
-
-### 3. Switch to mobile and stack the columns
-
-On a phone, the two-column hero (text left, image right) is too cramped. Let's stack it.
-
-1. Click **Mobile landscape** in the toolbar
-2. Select the **Container** inside the hero section
-3. Under **Layout**, change **Direction** from `Row` to `Column`
-
-The text and image now stack vertically on mobile. Desktop and tablet stay side-by-side. This is the most common responsive technique: horizontal on large screens, vertical on small.
-
-### 4. Check mobile portrait
-
-Click **Mobile portrait** for the smallest view. Reduce padding a bit further if needed (around `32`). Check that buttons are large enough to tap comfortably.
-
-## Hiding elements on specific breakpoints
-
-Sometimes you want an element visible on desktop but hidden on mobile.
-
-1. Select the element
-2. Switch to the breakpoint where it should disappear
-3. Under **Layout**, set **Display** to `None`
-
-The element hides at that breakpoint and smaller, stays visible everywhere else.
-
-## Two approaches to handling values across screen sizes
-
-So far we have been manually setting a value (like `60px` padding) at each breakpoint. This works well for layout decisions like stacking columns or adjusting spacing.
-
-But there is a second approach, especially useful for things like font sizes and spacing scales: instead of picking specific values at each breakpoint, you define a minimum and a maximum and let the browser smoothly calculate everything in between based on screen width. No breakpoints needed for those values at all.
-
-For example: a heading that is always at least 24px on the smallest screen and never more than 48px on the widest. Between those two extremes, it scales automatically.
-
-Bricks has this built in. The **Style Manager** (the same popup you used for Theme Styles) has dedicated **Typography** and **Spacing** tabs where you can generate these fluid scales as CSS variables. You set up the scale once, apply the variables to your elements, and responsiveness for those values is handled automatically.
-
-This is a more advanced topic and not something you need right now. But it is worth knowing the two approaches exist:
-
-- **Hard values at each breakpoint** — explicit, manual, great for layout
-- **Fluid scaling** — define a range, let the browser do the math, great for typography and spacing
-
-For a deeper look: [Fluid Typography](https://academy.bricksbuilder.io/builder/styling/fluid-typography)
-
-## Testing your design
-
-The builder canvas gives you a preview, but always test on real devices or browser dev tools.
-
-**In the builder:** Use the breakpoint switcher. You can also drag the canvas edges to check intermediate widths.
-
-**In the browser:**
-1. Click **Preview** in the toolbar to open the front end
-2. Open browser dev tools (`F12` or `Cmd/Ctrl + Shift + I`)
-3. Enable **Responsive Design Mode**
-4. Test at various widths
-
-Real device testing reveals things emulation misses — touch target size, actual font legibility, performance on slower phones.
-
-## Custom breakpoints
-
-Bricks' four defaults cover most sites. If you need a breakpoint at a specific width (say, a wide desktop at 1440px), you can add one.
-
-Go to **Bricks > Settings > General**, enable **Custom breakpoints**, then add them from the breakpoint manager in the builder.
-
-## Troubleshooting
-
-**Changes on mobile are not showing on the front end.**
-Save the page, then hard-refresh the browser (`Cmd/Ctrl + Shift + R`).
-
-**Styles I set on desktop are changing when I switch breakpoints.**
-You likely overrode them on a smaller breakpoint earlier. Inheritance goes downward only — changes on mobile do not affect desktop.
-
-**Layout breaks at a width between two breakpoints.**
-Test widths like 850px (between Tablet 992px and Mobile landscape 768px). If something breaks there, either adjust your layout to be more flexible or add a custom breakpoint.
-
-## What you've learned
-
-- How breakpoints work and how styles inherit downward
-- How to adjust spacing and stack columns on smaller screens
-- How to hide elements on specific breakpoints
-- The two approaches to responsive values: hard breakpoint overrides vs. fluid scaling
-- How to test your design across screen sizes
 
 ---
 

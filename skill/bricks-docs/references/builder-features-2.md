@@ -252,6 +252,158 @@ Review variable names, duplicate naming conventions, dark-mode values, shade gro
 
 ---
 
+# Creating Your First Template
+
+Source: https://academy.bricksbuilder.io/builder/features/create-template/
+
+*Create your first Bricks template, choose the right template type, and prepare it for conditions and reusable content.*
+
+Templates let you design parts of your site once and let Bricks render them in the right place. A header template can render above your content, a footer template below it, and a single template can replace the main layout for posts, pages, or custom post types.
+
+This article walks through the first three templates most sites need:
+
+- A site header
+- A site footer
+- A single post layout
+
+The same workflow applies to archive, search, error, popup, password protection, WooCommerce product archive, and WooCommerce single product templates. The important decisions are usually the same: choose the right template type, build the layout, set the preview content, decide where the template should render, then publish and test it on the frontend.
+
+Other WooCommerce route templates, such as cart, checkout, thank-you, and account templates, use the same create-build-publish flow, but Bricks renders them automatically on the matching WooCommerce route. Those route templates do not use the normal Conditions or Populate Content controls.
+
+https://youtu.be/bLZDN9UcUyo
+
+## Create a template
+
+You can create templates from the WordPress dashboard or from inside the builder.
+
+From the WordPress dashboard:
+
+1. Go to **Bricks > Templates**.
+2. Click **Add New Template**.
+3. Enter a clear name, such as "Main Header", "Main Footer", or "Single Post".
+4. Select the **Template type** in the sidebar.
+5. Publish the template.
+6. Click **Edit with Bricks**.
+
+From inside the builder:
+
+1. Open the **Templates** popup from the folder icon in the toolbar.
+2. Open **My Templates**.
+3. Click **New template**.
+4. Enter a title and select the template type.
+5. Create the template, then start editing it.
+
+The template type controls how Bricks treats the template. For example, a **Header** template is stored and rendered as the site header area, while a **Single** template is stored and rendered as the main content area for matching pages.
+
+## Create a header template
+
+Use a header template for the site area that appears before the main content. A normal header usually contains a logo, navigation, call-to-action button, search, account links, or similar site-wide elements.
+
+1. Create a new template named "Main Header".
+2. Set **Template type** to **Header**.
+3. Publish it and open it with Bricks.
+4. Build the header layout on the canvas.
+5. Open **Settings > Template Settings > Populate Content**.
+6. Select content that makes sense for previewing the header, such as a page or single post.
+7. Open **Settings > Template Settings > Conditions**.
+8. Add **Entire website** if the header should appear everywhere.
+9. Save the template and test a normal frontend page.
+
+By default, Bricks can use a published header template even if it has no conditions. This default-template behavior is controlled from **Bricks > Settings > Templates & components > Disable default templates**.
+
+If default templates are enabled and you have a published header without conditions, Bricks can use it as the site header. If default templates are disabled, set template conditions explicitly.
+
+## Header settings
+
+Header templates have an additional **Header** settings group under **Settings > Template Settings**.
+
+Use it to control:
+
+- **Header location:** top, left, or right.
+- **Header width:** available for left and right headers.
+- **Sticky header:** available for top headers.
+- **Sticky on scroll:** keeps the header in normal flow on page load, then makes it sticky after scrolling.
+- **Slide up after:** lets a sticky header hide after a scroll distance.
+- **Scrolling styles:** text color, hover color, background, box shadow, and transition while the sticky header is in its scrolling state.
+
+Left and right headers affect the layout beside the content and footer. Top headers are the usual choice for most websites.
+
+## Create a footer template
+
+Use a footer template for the site area that appears after the main content. A normal footer contains copyright text, footer navigation, contact links, social links, newsletter forms, or legal links.
+
+1. Create a new template named "Main Footer".
+2. Set **Template type** to **Footer**.
+3. Publish it and open it with Bricks.
+4. Build the footer layout.
+5. Use **Populate Content** to preview the footer with a real page or post.
+6. Add a condition, usually **Entire website**.
+7. Save and test the frontend.
+
+Like headers, published footer templates can be used by default when no conditions are set, unless default templates are disabled in Bricks settings.
+
+## Create a single post template
+
+Use a **Single** template when you want Bricks to control the layout for posts, pages, or custom post type entries. For a blog post template, the canvas usually contains elements such as Post Title, Featured Image, Post Content, Author, Date, Terms, Comments, and related content.
+
+1. Create a new template named "Single Post".
+2. Set **Template type** to **Single**.
+3. Publish it and open it with Bricks.
+4. Open **Settings > Template Settings > Populate Content**.
+5. Set **Content type** to **Single (Post/Page/CPT)**.
+6. Select a real post to preview.
+7. Build the post layout using dynamic data and post elements.
+8. Open **Settings > Template Settings > Conditions**.
+9. Add **Post type** and select **Posts**.
+10. Save and test several published posts on the frontend.
+
+The preview post only controls what you see while editing the template. The condition controls where the template is used on the frontend.
+
+## Conditions or default templates?
+
+For production sites, set conditions deliberately. Conditions make the template assignment visible and predictable.
+
+Default templates are useful while getting started because Bricks can automatically use published templates of certain types when no conditions are set. This is most common for headers and footers, but Bricks also supports default behavior for archive, search, error, and supported WooCommerce route templates.
+
+Disable default templates when you want every rendered template to be controlled by explicit conditions. You can do this in **Bricks > Settings > Templates & components > Disable default templates**.
+
+## Disable a header or footer on one page
+
+Landing pages and campaign pages often need no global header or footer.
+
+To disable the header or footer for a specific page:
+
+1. Open the page with Bricks.
+2. Open **Settings > Page Settings > General**.
+3. Enable **Disable header** or **Disable footer**.
+4. Save the page.
+
+This page setting applies to the page being rendered. It does not delete or change the template.
+
+## Preview content vs frontend output
+
+Template editing needs a preview context. For example, a single post template needs one post to show dynamic data on the canvas. An archive template needs an archive context. A header or footer may need a page or post behind it so you can judge spacing and overlap.
+
+Preview content does not assign the template to that content. It only changes the canvas context while editing.
+
+Use conditions to control frontend assignment.
+
+## Common mistakes
+
+**The template is published but not visible:** Check whether it has matching conditions. If default templates are disabled, a template without conditions will not be used automatically.
+
+**The wrong template appears:** Look for a more specific matching template. Individual conditions outrank broad conditions such as Entire website. Exclude conditions can also disqualify a template.
+
+**The canvas looks empty or the dynamic data is wrong:** Set **Populate Content** to a real page, post, archive, or search context that matches the template you are building.
+
+**A header or footer is missing on one page:** Check that page's **Page Settings > General** for **Disable header** or **Disable footer**.
+
+**A Single template does not affect posts:** Make sure the template type is **Single**, the template is published, and the condition targets the correct post type or individual entries.
+
+**A Section template does not update inserted copies:** Section templates are reusable library items. They do not sync inserted content between pages. Use Components for linked reusable structures.
+
+---
+
 # Components
 
 Source: https://academy.bricksbuilder.io/builder/features/components/
@@ -959,360 +1111,6 @@ These details explain how Bricks stores and renders component instances:
 
 ---
 
-# Creating Your First Template
-
-Source: https://academy.bricksbuilder.io/builder/features/create-template/
-
-*Create your first Bricks template, choose the right template type, and prepare it for conditions and reusable content.*
-
-Templates let you design parts of your site once and let Bricks render them in the right place. A header template can render above your content, a footer template below it, and a single template can replace the main layout for posts, pages, or custom post types.
-
-This article walks through the first three templates most sites need:
-
-- A site header
-- A site footer
-- A single post layout
-
-The same workflow applies to archive, search, error, popup, password protection, WooCommerce product archive, and WooCommerce single product templates. The important decisions are usually the same: choose the right template type, build the layout, set the preview content, decide where the template should render, then publish and test it on the frontend.
-
-Other WooCommerce route templates, such as cart, checkout, thank-you, and account templates, use the same create-build-publish flow, but Bricks renders them automatically on the matching WooCommerce route. Those route templates do not use the normal Conditions or Populate Content controls.
-
-https://youtu.be/bLZDN9UcUyo
-
-## Create a template
-
-You can create templates from the WordPress dashboard or from inside the builder.
-
-From the WordPress dashboard:
-
-1. Go to **Bricks > Templates**.
-2. Click **Add New Template**.
-3. Enter a clear name, such as "Main Header", "Main Footer", or "Single Post".
-4. Select the **Template type** in the sidebar.
-5. Publish the template.
-6. Click **Edit with Bricks**.
-
-From inside the builder:
-
-1. Open the **Templates** popup from the folder icon in the toolbar.
-2. Open **My Templates**.
-3. Click **New template**.
-4. Enter a title and select the template type.
-5. Create the template, then start editing it.
-
-The template type controls how Bricks treats the template. For example, a **Header** template is stored and rendered as the site header area, while a **Single** template is stored and rendered as the main content area for matching pages.
-
-## Create a header template
-
-Use a header template for the site area that appears before the main content. A normal header usually contains a logo, navigation, call-to-action button, search, account links, or similar site-wide elements.
-
-1. Create a new template named "Main Header".
-2. Set **Template type** to **Header**.
-3. Publish it and open it with Bricks.
-4. Build the header layout on the canvas.
-5. Open **Settings > Template Settings > Populate Content**.
-6. Select content that makes sense for previewing the header, such as a page or single post.
-7. Open **Settings > Template Settings > Conditions**.
-8. Add **Entire website** if the header should appear everywhere.
-9. Save the template and test a normal frontend page.
-
-By default, Bricks can use a published header template even if it has no conditions. This default-template behavior is controlled from **Bricks > Settings > Templates & components > Disable default templates**.
-
-If default templates are enabled and you have a published header without conditions, Bricks can use it as the site header. If default templates are disabled, set template conditions explicitly.
-
-## Header settings
-
-Header templates have an additional **Header** settings group under **Settings > Template Settings**.
-
-Use it to control:
-
-- **Header location:** top, left, or right.
-- **Header width:** available for left and right headers.
-- **Sticky header:** available for top headers.
-- **Sticky on scroll:** keeps the header in normal flow on page load, then makes it sticky after scrolling.
-- **Slide up after:** lets a sticky header hide after a scroll distance.
-- **Scrolling styles:** text color, hover color, background, box shadow, and transition while the sticky header is in its scrolling state.
-
-Left and right headers affect the layout beside the content and footer. Top headers are the usual choice for most websites.
-
-## Create a footer template
-
-Use a footer template for the site area that appears after the main content. A normal footer contains copyright text, footer navigation, contact links, social links, newsletter forms, or legal links.
-
-1. Create a new template named "Main Footer".
-2. Set **Template type** to **Footer**.
-3. Publish it and open it with Bricks.
-4. Build the footer layout.
-5. Use **Populate Content** to preview the footer with a real page or post.
-6. Add a condition, usually **Entire website**.
-7. Save and test the frontend.
-
-Like headers, published footer templates can be used by default when no conditions are set, unless default templates are disabled in Bricks settings.
-
-## Create a single post template
-
-Use a **Single** template when you want Bricks to control the layout for posts, pages, or custom post type entries. For a blog post template, the canvas usually contains elements such as Post Title, Featured Image, Post Content, Author, Date, Terms, Comments, and related content.
-
-1. Create a new template named "Single Post".
-2. Set **Template type** to **Single**.
-3. Publish it and open it with Bricks.
-4. Open **Settings > Template Settings > Populate Content**.
-5. Set **Content type** to **Single (Post/Page/CPT)**.
-6. Select a real post to preview.
-7. Build the post layout using dynamic data and post elements.
-8. Open **Settings > Template Settings > Conditions**.
-9. Add **Post type** and select **Posts**.
-10. Save and test several published posts on the frontend.
-
-The preview post only controls what you see while editing the template. The condition controls where the template is used on the frontend.
-
-## Conditions or default templates?
-
-For production sites, set conditions deliberately. Conditions make the template assignment visible and predictable.
-
-Default templates are useful while getting started because Bricks can automatically use published templates of certain types when no conditions are set. This is most common for headers and footers, but Bricks also supports default behavior for archive, search, error, and supported WooCommerce route templates.
-
-Disable default templates when you want every rendered template to be controlled by explicit conditions. You can do this in **Bricks > Settings > Templates & components > Disable default templates**.
-
-## Disable a header or footer on one page
-
-Landing pages and campaign pages often need no global header or footer.
-
-To disable the header or footer for a specific page:
-
-1. Open the page with Bricks.
-2. Open **Settings > Page Settings > General**.
-3. Enable **Disable header** or **Disable footer**.
-4. Save the page.
-
-This page setting applies to the page being rendered. It does not delete or change the template.
-
-## Preview content vs frontend output
-
-Template editing needs a preview context. For example, a single post template needs one post to show dynamic data on the canvas. An archive template needs an archive context. A header or footer may need a page or post behind it so you can judge spacing and overlap.
-
-Preview content does not assign the template to that content. It only changes the canvas context while editing.
-
-Use conditions to control frontend assignment.
-
-## Common mistakes
-
-**The template is published but not visible:** Check whether it has matching conditions. If default templates are disabled, a template without conditions will not be used automatically.
-
-**The wrong template appears:** Look for a more specific matching template. Individual conditions outrank broad conditions such as Entire website. Exclude conditions can also disqualify a template.
-
-**The canvas looks empty or the dynamic data is wrong:** Set **Populate Content** to a real page, post, archive, or search context that matches the template you are building.
-
-**A header or footer is missing on one page:** Check that page's **Page Settings > General** for **Disable header** or **Disable footer**.
-
-**A Single template does not affect posts:** Make sure the template type is **Single**, the template is published, and the condition targets the correct post type or individual entries.
-
-**A Section template does not update inserted copies:** Section templates are reusable library items. They do not sync inserted content between pages. Use Components for linked reusable structures.
-
----
-
-# Custom Authentication Pages
-
-Source: https://academy.bricksbuilder.io/builder/features/custom-authentication-pages/
-
-*Build custom login, registration, lost-password, and reset-password flows in Bricks instead of relying on default WordPress screens.*
-
-Since Bricks 1.9.2, you can assign custom Bricks-built pages for WordPress authentication flows. This lets you replace the default WordPress screens for login, registration, lost password, and reset password with pages that match your site design.
-
-![Bricks custom authentication settings screen showing options to assign custom pages for login, registration, lost password, and reset password. The "WordPress authentication page access" dropdown is set to "Error page", and the "Disable custom authentication page bypass" toggle is enabled.](https://academy.bricksbuilder.io/assets/bricks-custom-authentication-settings.png)
-
-> **Note**
->
-> Custom authentication pages change where visitors are sent, but the form actions still use WordPress authentication functions such as login, registration, password reset email generation, and password reset validation.
-
-## How to set custom authentication pages
-
-1. Navigate to the WordPress dashboard
-2. Navigate to **Bricks** > **Settings** > **General**
-3. Scroll down to **Custom authentication pages**
-
-Here, you can choose a custom page for the following processes:
-
-- Login
-- Registration
-- Lost Password
-- Reset Password
-
-If WooCommerce handles the current authentication page, Bricks leaves that page to WooCommerce and skips its custom authentication redirect handling.
-
-## Setting up your custom pages
-
-Each custom page should contain a [Form element](https://academy.bricksbuilder.io/builder/elements/general/form/#actions) with the matching authentication action selected under the Form element's **Actions** control group.
-
-| Page | Required form action | Typical fields |
-| --- | --- | --- |
-| Login | User login | Login, password, optional remember me |
-| Registration | User registration | Email, optional username, optional password, optional first/last name |
-| Lost password | Lost password | Email or username |
-| Reset password | Reset password | New password |
-
-### Login page
-
-Add a form with the **User login** action. Map the login field, password field, and optional remember-me field in the **User Login** control group.
-
-Since Bricks 2.5, you can select the login field under **Content > Fields > Auto-focus field** to request focus on page load. Test the frontend with saved credentials and keyboard submission in the browsers your visitors use. See [Auto-focus field](https://academy.bricksbuilder.io/builder/elements/general/form/#auto-focus-field) for eligible fields and focus behavior.
-
-If your custom login URL receives a `redirect_to` query parameter, Bricks adds it as a hidden field and redirects there after successful login when your form does not already use an explicit Redirect action.
-
-For better privacy and security, set a generic login error message. Otherwise, the default WordPress login error can reveal why the login failed.
-
-### Registration page
-
-Add a form with the **User registration** action. Map at least the email field. Username and password can be auto-generated if they are not mapped or submitted.
-
-The **Role** setting cannot be set to Administrator or Super Admin. If either is selected by data manipulation, Bricks falls back to the site's default role.
-
-If [User activation](https://academy.bricksbuilder.io/builder/features/user-activation/) is enabled, the Form element's **Auto log in user** setting is hidden and registration does not auto-login immediately. Activation controls the post-registration login flow instead.
-
-### Lost password page
-
-Add a form with the **Lost password** action and map the **Email or username** field.
-
-For privacy, Bricks returns a success response even when the submitted account does not exist. If the account exists, WordPress sends the password reset email.
-
-### Reset password page
-
-Add a form with the **Reset password** action and map the new password field.
-
-When a user clicks a WordPress reset link, Bricks redirects the reset URL to your custom reset password page and preserves the reset query parameters. The Form element then renders hidden `key` and `login` fields from the URL so WordPress can validate the reset key on submission.
-
-## WordPress authentication page access {#wp-auth}
-
-As of Bricks 1.11, you have control over what happens when someone visits a default WordPress authentication URL (such as `wp-login.php`), provided custom authentication pages are set.
-
-To manage this:
-
-1. Navigate to **Bricks** > **Settings** > **General** > **Custom authentication pages**.
-2. Under **WordPress authentication page access**, select one of the following options:
-- **Redirect to custom authentication page (default)**: The user will be redirected to the corresponding custom authentication page you have set.
-- **Error page**: Bricks returns the site's 404 error page for matching default auth URLs.
-- **Home URL**: Redirects visitors to the homepage.
-- **Redirect to specific page**: Allows you to choose a specific page on your site to redirect visitors to.
-
-This setting only changes behavior for a default auth URL when the corresponding custom page has been set. For example, the login behavior applies when a custom login page is selected.
-
-If **Redirect to specific page** is selected and no valid published page is selected, Bricks falls back to the home URL.
-
-Bricks preserves query parameters when redirecting from the default auth URL to a custom auth page. This is important for reset-password keys and login redirects.
-
-### Logout behavior
-
-For logged-in users, Bricks lets WordPress process logout first. If WordPress would send the user back to the default login page after logout and you have a valid custom login page, Bricks redirects to the custom login page with `?logged_out=true`.
-
-## Bypassing custom login (since 1.9.4):
-
-By default, when visiting any authentication page on your site, you can access the default WordPress login page by adding `brx_use_wp_login` as a URL parameter, for example:
-
-```text
-https://example.com/wp-login.php?brx_use_wp_login=1
-```
-
-This feature allows site owners to bypass the custom login page if needed.
-
-Adding this parameter sets a bypass cookie for 5 minutes. During that window, Bricks lets the default WordPress authentication page load instead of redirecting to the custom page.
-
-In Bricks settings, you can disable this feature:
-
-1. Navigate to **Bricks > Settings > General > Custom authentication pages**.
-2. Enable **Disable custom authentication page bypass**.
-
-When disabled, the `brx_use_wp_login` URL parameter no longer sets the bypass cookie.
-
-> **Note**
->
-> Before disabling the bypass and blocking default auth URLs, make sure your custom login page works and that you know its URL. Otherwise you can lock yourself out of the normal login screen.
-
-## Developer filters
-
-Bricks exposes filters for custom redirect logic:
-
-- `bricks/auth/custom_redirect_url`: Override the redirect URL based on the current auth URL path.
-- `bricks/auth/custom_login_redirect`: Change the selected custom login page.
-- `bricks/auth/custom_registration_redirect`: Change the selected custom registration page.
-- `bricks/auth/custom_lost_password_redirect`: Change the selected custom lost password page.
-- `bricks/auth/custom_reset_password_redirect`: Change the selected custom reset password page.
-
-Use these filters when a multilingual, membership, or custom routing setup needs more control than the global page selectors provide.
-
----
-
-# Custom Attributes
-
-Source: https://academy.bricksbuilder.io/builder/features/custom-attributes/
-
-*Add custom HTML attributes in Bricks for integrations, JavaScript hooks, accessibility, and advanced frontend behavior.*
-
-Bricks 1.3 introduces the possibility to add your own custom HTML attributes to any element.
-
-You can add custom attributes under "Style > Attributes". Set a "Name" and a "Value" and your attribute(s) will be added to the elements' most relevant node. By default, your attributes are added to the element root node. Besides manually entered values you can populate custom attribute values with dynamic data, too.
-
-In there you'll be able to insert multiple attributes (name and value). Dynamic Data is rendered for attribute values on the frontend.
-
-![](https://academy.bricksbuilder.io/assets/feature-custom-attributes.png)
-
-<figcaption>
-
-Container: Custom Attributes
-
-</figcaption>
-
-Let's say you want to add an ARIA **role** and **label** to a container that contains multiple images that should be [considered as a single image](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Role_Img). You'd add the following two attributes when editing your container:
-
-- Attribute #1 name: **role**
-- Attribute #1 value: **img**
-- Attribute #2 name: **aria-label**
-- Attribute #2 value: **Description of the overall image**
-
-This results in the following container HTML:
-
-```html
-<div id="brxe-sfglik" class="brxe-sfglik brxe-container" role="img" aria-label="Description of the overall image">
-... Container elements ...
-</div>
-```
-
-Custom attributes take precedence over default attributes. So if you set a custom **alt** attribute when editing your image, this custom attribute will be used instead of the default image **alt** attribute.
-
-Elements where custom attributes are added to the following specific HTML tags:
-
-| **Bricks Element** | **HTML tag** |
-| --- | --- |
-| Nav Menu | `<nav>` |
-| Heading | `<h1>` or any other heading tag |
-| Text | `<div>` |
-| Button | `<button>` or `<a>` depending if there is a link |
-| Image | `<img>` |
-| Video | `<div>` |
-| Form | `<form>` |
-
-### How To Add Tooltips {#tooltips}
-
-Bricks comes with built-in (CSS-only) tooltips that you can set via custom attributes.
-
-Make sure to set the attribute "Name" to `data-balloon` and the value to whatever you want your tooltip text to be. You also have to set a second HTML attribute named `data-balloon-pos` and then set the value to whatever you want your tooltip to be positioned like:
-
-- top | top-right | top-left
-- right
-- bottom | bottom-right | bottom-left
-- left
-
-For a full list of all available tooltip HTML attributes please visit the official website of the Balloon.css library Bricks uses for its tooltips: [https://kazzkiq.github.io/balloon.css/](https://kazzkiq.github.io/balloon.css/)
-
-> **Note**
->
-> If you are planning to add tooltips on the Icon element, please wrap the Icon element in a Div element and set the attribute on the Div element. Otherwise, balloon library CSS will overwrite the Icon element's CSS and cause it invisible in the frontend.
-
-#### Resources:
-
-- HTML attribute reference: [https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes)
-
----
-
 # Create & Update Posts on the Frontend
 
 Source: https://academy.bricksbuilder.io/builder/features/create-update-posts-on-the-frontend/
@@ -1499,3 +1297,208 @@ Bricks supports many ACF and Meta Box field types out of the box, but every cust
 
 - [`bricks/form/create_post/meta_value`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-create_post-meta_value/)
 - [`bricks/form/update_post/meta_value`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-update_post-meta_value/)
+
+---
+
+# Custom Attributes
+
+Source: https://academy.bricksbuilder.io/builder/features/custom-attributes/
+
+*Add custom HTML attributes in Bricks for integrations, JavaScript hooks, accessibility, and advanced frontend behavior.*
+
+Bricks 1.3 introduces the possibility to add your own custom HTML attributes to any element.
+
+You can add custom attributes under "Style > Attributes". Set a "Name" and a "Value" and your attribute(s) will be added to the elements' most relevant node. By default, your attributes are added to the element root node. Besides manually entered values you can populate custom attribute values with dynamic data, too.
+
+In there you'll be able to insert multiple attributes (name and value). Dynamic Data is rendered for attribute values on the frontend.
+
+![](https://academy.bricksbuilder.io/assets/feature-custom-attributes.png)
+
+<figcaption>
+
+Container: Custom Attributes
+
+</figcaption>
+
+Let's say you want to add an ARIA **role** and **label** to a container that contains multiple images that should be [considered as a single image](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Role_Img). You'd add the following two attributes when editing your container:
+
+- Attribute #1 name: **role**
+- Attribute #1 value: **img**
+- Attribute #2 name: **aria-label**
+- Attribute #2 value: **Description of the overall image**
+
+This results in the following container HTML:
+
+```html
+<div id="brxe-sfglik" class="brxe-sfglik brxe-container" role="img" aria-label="Description of the overall image">
+... Container elements ...
+</div>
+```
+
+Custom attributes take precedence over default attributes. So if you set a custom **alt** attribute when editing your image, this custom attribute will be used instead of the default image **alt** attribute.
+
+Elements where custom attributes are added to the following specific HTML tags:
+
+| **Bricks Element** | **HTML tag** |
+| --- | --- |
+| Nav Menu | `<nav>` |
+| Heading | `<h1>` or any other heading tag |
+| Text | `<div>` |
+| Button | `<button>` or `<a>` depending if there is a link |
+| Image | `<img>` |
+| SVG | `<svg>`, including when linked |
+| Video | `<div>` |
+| Form | `<form>` |
+
+For a linked SVG, custom attributes apply to the `<svg>`, not its surrounding `<a>`. To label the link directly, use the SVG element's **Link > aria-label** field. See [Label a linked SVG](https://academy.bricksbuilder.io/builder/elements/media/svg/#label-a-linked-svg) for a File-source example linking to the homepage.
+
+### How To Add Tooltips {#tooltips}
+
+Bricks comes with built-in (CSS-only) tooltips that you can set via custom attributes.
+
+Make sure to set the attribute "Name" to `data-balloon` and the value to whatever you want your tooltip text to be. You also have to set a second HTML attribute named `data-balloon-pos` and then set the value to whatever you want your tooltip to be positioned like:
+
+- top | top-right | top-left
+- right
+- bottom | bottom-right | bottom-left
+- left
+
+For a full list of all available tooltip HTML attributes please visit the official website of the Balloon.css library Bricks uses for its tooltips: [https://kazzkiq.github.io/balloon.css/](https://kazzkiq.github.io/balloon.css/)
+
+> **Note**
+>
+> If you are planning to add tooltips on the Icon element, please wrap the Icon element in a Div element and set the attribute on the Div element. Otherwise, balloon library CSS will overwrite the Icon element's CSS and cause it invisible in the frontend.
+
+#### Resources:
+
+- HTML attribute reference: [https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes)
+
+---
+
+# Custom Authentication Pages
+
+Source: https://academy.bricksbuilder.io/builder/features/custom-authentication-pages/
+
+*Build custom login, registration, lost-password, and reset-password flows in Bricks instead of relying on default WordPress screens.*
+
+Since Bricks 1.9.2, you can assign custom Bricks-built pages for WordPress authentication flows. This lets you replace the default WordPress screens for login, registration, lost password, and reset password with pages that match your site design.
+
+![Bricks custom authentication settings screen showing options to assign custom pages for login, registration, lost password, and reset password. The "WordPress authentication page access" dropdown is set to "Error page", and the "Disable custom authentication page bypass" toggle is enabled.](https://academy.bricksbuilder.io/assets/bricks-custom-authentication-settings.png)
+
+> **Note**
+>
+> Custom authentication pages change where visitors are sent, but the form actions still use WordPress authentication functions such as login, registration, password reset email generation, and password reset validation.
+
+## How to set custom authentication pages
+
+1. Navigate to the WordPress dashboard
+2. Navigate to **Bricks** > **Settings** > **General**
+3. Scroll down to **Custom authentication pages**
+
+Here, you can choose a custom page for the following processes:
+
+- Login
+- Registration
+- Lost Password
+- Reset Password
+
+If WooCommerce handles the current authentication page, Bricks leaves that page to WooCommerce and skips its custom authentication redirect handling.
+
+## Setting up your custom pages
+
+Each custom page should contain a [Form element](https://academy.bricksbuilder.io/builder/elements/general/form/#actions) with the matching authentication action selected under the Form element's **Actions** control group.
+
+| Page | Required form action | Typical fields |
+| --- | --- | --- |
+| Login | User login | Login, password, optional remember me |
+| Registration | User registration | Email, optional username, optional password, optional first/last name |
+| Lost password | Lost password | Email or username |
+| Reset password | Reset password | New password |
+
+### Login page
+
+Add a form with the **User login** action. Map the login field, password field, and optional remember-me field in the **User Login** control group.
+
+Since Bricks 2.5, you can select the login field under **Content > Fields > Auto-focus field** to request focus on page load. Test the frontend with saved credentials and keyboard submission in the browsers your visitors use. See [Auto-focus field](https://academy.bricksbuilder.io/builder/elements/general/form/#auto-focus-field) for eligible fields and focus behavior.
+
+If your custom login URL receives a `redirect_to` query parameter, Bricks adds it as a hidden field and redirects there after successful login when your form does not already use an explicit Redirect action.
+
+For better privacy and security, set a generic login error message. Otherwise, the default WordPress login error can reveal why the login failed.
+
+### Registration page
+
+Add a form with the **User registration** action. Map at least the email field. Username and password can be auto-generated if they are not mapped or submitted.
+
+The **Role** setting cannot be set to Administrator or Super Admin. If either is selected by data manipulation, Bricks falls back to the site's default role.
+
+If [User activation](https://academy.bricksbuilder.io/builder/features/user-activation/) is enabled, the Form element's **Auto log in user** setting is hidden and registration does not auto-login immediately. Activation controls the post-registration login flow instead.
+
+### Lost password page
+
+Add a form with the **Lost password** action and map the **Email or username** field.
+
+For privacy, Bricks returns a success response even when the submitted account does not exist. If the account exists, WordPress sends the password reset email.
+
+### Reset password page
+
+Add a form with the **Reset password** action and map the new password field.
+
+When a user clicks a WordPress reset link, Bricks redirects the reset URL to your custom reset password page and preserves the reset query parameters. The Form element then renders hidden `key` and `login` fields from the URL so WordPress can validate the reset key on submission.
+
+## WordPress authentication page access {#wp-auth}
+
+As of Bricks 1.11, you have control over what happens when someone visits a default WordPress authentication URL (such as `wp-login.php`), provided custom authentication pages are set.
+
+To manage this:
+
+1. Navigate to **Bricks** > **Settings** > **General** > **Custom authentication pages**.
+2. Under **WordPress authentication page access**, select one of the following options:
+- **Redirect to custom authentication page (default)**: The user will be redirected to the corresponding custom authentication page you have set.
+- **Error page**: Bricks returns the site's 404 error page for matching default auth URLs.
+- **Home URL**: Redirects visitors to the homepage.
+- **Redirect to specific page**: Allows you to choose a specific page on your site to redirect visitors to.
+
+This setting only changes behavior for a default auth URL when the corresponding custom page has been set. For example, the login behavior applies when a custom login page is selected.
+
+If **Redirect to specific page** is selected and no valid published page is selected, Bricks falls back to the home URL.
+
+Bricks preserves query parameters when redirecting from the default auth URL to a custom auth page. This is important for reset-password keys and login redirects.
+
+### Logout behavior
+
+For logged-in users, Bricks lets WordPress process logout first. If WordPress would send the user back to the default login page after logout and you have a valid custom login page, Bricks redirects to the custom login page with `?logged_out=true`.
+
+## Bypassing custom login (since 1.9.4):
+
+By default, when visiting any authentication page on your site, you can access the default WordPress login page by adding `brx_use_wp_login` as a URL parameter, for example:
+
+```text
+https://example.com/wp-login.php?brx_use_wp_login=1
+```
+
+This feature allows site owners to bypass the custom login page if needed.
+
+Adding this parameter sets a bypass cookie for 5 minutes. During that window, Bricks lets the default WordPress authentication page load instead of redirecting to the custom page.
+
+In Bricks settings, you can disable this feature:
+
+1. Navigate to **Bricks > Settings > General > Custom authentication pages**.
+2. Enable **Disable custom authentication page bypass**.
+
+When disabled, the `brx_use_wp_login` URL parameter no longer sets the bypass cookie.
+
+> **Note**
+>
+> Before disabling the bypass and blocking default auth URLs, make sure your custom login page works and that you know its URL. Otherwise you can lock yourself out of the normal login screen.
+
+## Developer filters
+
+Bricks exposes filters for custom redirect logic:
+
+- `bricks/auth/custom_redirect_url`: Override the redirect URL based on the current auth URL path.
+- `bricks/auth/custom_login_redirect`: Change the selected custom login page.
+- `bricks/auth/custom_registration_redirect`: Change the selected custom registration page.
+- `bricks/auth/custom_lost_password_redirect`: Change the selected custom lost password page.
+- `bricks/auth/custom_reset_password_redirect`: Change the selected custom reset password page.
+
+Use these filters when a multilingual, membership, or custom routing setup needs more control than the global page selectors provide.

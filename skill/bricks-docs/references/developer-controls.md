@@ -1,22 +1,3 @@
-# Apply Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/apply-control/
-
-*Reference for the Bricks Apply control, including its options, CSS mapping, and usage in custom elements.*
-
-The `apply` control saves your settings. You can set the `reload` control property to **true** in order to trigger a builder reload after the "Apply" button has been clicked. We use it in the builder for settings like the template "Populate Content" or the "SEO" page settings.
-
-```php
-$this->controls['apply'] = [
-  'group' => 'template-preview',
-  'type' => 'apply',
-  'reload' => true,
-  'label' => esc_html__( 'Apply preview', 'bricks' ),
-];
-```
-
----
-
 # Align Items Control (Flexbox)
 
 Source: https://academy.bricksbuilder.io/developer/controls/align-items-control/
@@ -50,6 +31,25 @@ public function set_controls() {
     // ],
   ];
 }
+```
+
+---
+
+# Apply Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/apply-control/
+
+*Reference for the Bricks Apply control, including its options, CSS mapping, and usage in custom elements.*
+
+The `apply` control saves your settings. You can set the `reload` control property to **true** in order to trigger a builder reload after the "Apply" button has been clicked. We use it in the builder for settings like the template "Populate Content" or the "SEO" page settings.
+
+```php
+$this->controls['apply'] = [
+  'group' => 'template-preview',
+  'type' => 'apply',
+  'reload' => true,
+  'label' => esc_html__( 'Apply preview', 'bricks' ),
+];
 ```
 
 ---
@@ -178,6 +178,66 @@ class Prefix_Element_Background extends \Bricks\Element {
 
 ---
 
+# Box Shadow Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/box-shadow-control/
+
+*Reference for the Bricks Box Shadow control, including its options, CSS mapping, and usage in custom elements.*
+
+The box-shadow control is a CSS control and you can set the following properties:
+
+- Offset X
+- Offset Y
+- Spread
+- Blur
+- Color
+- Inset
+
+```php
+class Prefix_Element_Box_Shadow extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleBoxShadow'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'BoxShadow', 'bricks' ),
+      'type' => 'box-shadow',
+      'css' => [
+        [
+          'property' => 'box-shadow',
+          'selector' => '.prefix-box-shadow-wrapper',
+        ],
+      ],
+      'inline' => true,
+      'small' => true,
+      'default' => [
+        'values' => [
+          'offsetX' => 0,
+          'offsetY' => 0,
+          'blur' => 2,
+          'spread' => 0,
+        ],
+        'color' => [
+          'rgb' => 'rgba(0, 0, 0, .1)',
+        ],
+      ],
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    echo '<div class="prefix-box-shadow-wrapper">';
+    echo get_bloginfo( 'name' );
+    echo '</div>';
+  }
+}
+```
+
+### Resources
+
+[https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow)
+
+---
+
 # Border Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/border-control/
@@ -265,66 +325,6 @@ class Prefix_Element_Checkbox extends \Bricks\Element {
   }
 }
 ```
-
----
-
-# Box Shadow Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/box-shadow-control/
-
-*Reference for the Bricks Box Shadow control, including its options, CSS mapping, and usage in custom elements.*
-
-The box-shadow control is a CSS control and you can set the following properties:
-
-- Offset X
-- Offset Y
-- Spread
-- Blur
-- Color
-- Inset
-
-```php
-class Prefix_Element_Box_Shadow extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleBoxShadow'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'BoxShadow', 'bricks' ),
-      'type' => 'box-shadow',
-      'css' => [
-        [
-          'property' => 'box-shadow',
-          'selector' => '.prefix-box-shadow-wrapper',
-        ],
-      ],
-      'inline' => true,
-      'small' => true,
-      'default' => [
-        'values' => [
-          'offsetX' => 0,
-          'offsetY' => 0,
-          'blur' => 2,
-          'spread' => 0,
-        ],
-        'color' => [
-          'rgb' => 'rgba(0, 0, 0, .1)',
-        ],
-      ],
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    echo '<div class="prefix-box-shadow-wrapper">';
-    echo get_bloginfo( 'name' );
-    echo '</div>';
-  }
-}
-```
-
-### Resources
-
-[https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow)
 
 ---
 
@@ -778,6 +778,41 @@ The following control parameters are available for all control types. To dive de
 
 ---
 
+# Gradient Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/gradient-control/
+
+*Reference for the Bricks Gradient control, including its options, CSS mapping, and usage in custom elements.*
+
+The gradient control lets you define an unlimited number of gradients that you can apply to text, background, and as an overlay.
+
+For generated gradients, you can set the CSS selector, adjust the angle between 0 and 360°, and set a color stop for each color. Since Bricks 2.5, the **Custom** type accepts complete gradient values and CSS variable references. See [Custom gradients](https://academy.bricksbuilder.io/builder/styling/gradients-overlays/#custom-gradients) for the Builder workflow.
+
+```php
+class Prefix_Element_Gradient extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleGradient'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Gradient', 'bricks' ),
+      'type' => 'gradient',
+      'css' => [
+        [
+          'property' => 'background-image',
+        ],
+      ],
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    echo get_bloginfo( 'name' );
+  }
+}
+```
+
+---
+
 # Filters Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/filters-control/
@@ -856,41 +891,6 @@ class Prefix_Element_Filters extends \Bricks\Element {
 
 ---
 
-# Gradient Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/gradient-control/
-
-*Reference for the Bricks Gradient control, including its options, CSS mapping, and usage in custom elements.*
-
-The gradient control lets you define an unlimited number of gradients that you can apply to text, background, and as an overlay.
-
-For generated gradients, you can set the CSS selector, adjust the angle between 0 and 360°, and set a color stop for each color. Since Bricks 2.5, the **Custom** type accepts complete gradient values and CSS variable references. See [Custom gradients](https://academy.bricksbuilder.io/builder/styling/gradients-overlays/#custom-gradients) for the Builder workflow.
-
-```php
-class Prefix_Element_Gradient extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleGradient'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Gradient', 'bricks' ),
-      'type' => 'gradient',
-      'css' => [
-        [
-          'property' => 'background-image',
-        ],
-      ],
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    echo get_bloginfo( 'name' );
-  }
-}
-```
-
----
-
 # Icon Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/icon-control/
@@ -930,55 +930,6 @@ class Prefix_Element_Icon extends \Bricks\Element {
     // Set icon 'class' attribute
     if ( isset( $this->settings['exampleIcon'] ) ) {
       Helpers::render_control_icon( $settings['exampleIcon'], ['test-class', 'test-class-2'] );
-    }
-  }
-}
-```
-
----
-
-# Image Gallery Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/image-gallery-control/
-
-*Reference for the Bricks Image Gallery control, including its options, CSS mapping, and usage in custom elements.*
-
-The image gallery control lets you select multiple images from your media library. Once images have been selected you can choose the image size.
-
-Your selected images are stored in an array, which you have to loop through (see code example below). Use the `id` and `size`  of each image to render it on your page.
-
-> **Note**
->
-> **Tip #1:** Hold down the *SHIFT* key in order to select multiple image in your media library.
-
-> **Note**
->
-> **Tip #2:** Select the smallest possible image size in which the image still looks crisp. This helps to reduce the loading time of your website and is great for SEO, as loading times are an important ranking factor for search engines.
-
-```php
-class Prefix_Element_Image extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleImageGallery'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Image gallery', 'bricks' ),
-      'type' => 'image-gallery',
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    if ( isset( $this->settings['exampleImageGallery'] ) ) {
-      foreach( $this->settings['exampleImageGallery'] as $index => $image ) {
-        echo wp_get_attachment_image(
-          $image['id'],
-          $image['size'],
-          false,
-          ['class' => 'css-filter']
-        );
-      }
-    } else {
-      esc_html_e( 'No image(s) selected.', 'bricks' );
     }
   }
 }
@@ -1041,6 +992,55 @@ class Prefix_Element_Image extends \Bricks\Element {
 
 ---
 
+# Image Gallery Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/image-gallery-control/
+
+*Reference for the Bricks Image Gallery control, including its options, CSS mapping, and usage in custom elements.*
+
+The image gallery control lets you select multiple images from your media library. Once images have been selected you can choose the image size.
+
+Your selected images are stored in an array, which you have to loop through (see code example below). Use the `id` and `size`  of each image to render it on your page.
+
+> **Note**
+>
+> **Tip #1:** Hold down the *SHIFT* key in order to select multiple image in your media library.
+
+> **Note**
+>
+> **Tip #2:** Select the smallest possible image size in which the image still looks crisp. This helps to reduce the loading time of your website and is great for SEO, as loading times are an important ranking factor for search engines.
+
+```php
+class Prefix_Element_Image extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleImageGallery'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Image gallery', 'bricks' ),
+      'type' => 'image-gallery',
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    if ( isset( $this->settings['exampleImageGallery'] ) ) {
+      foreach( $this->settings['exampleImageGallery'] as $index => $image ) {
+        echo wp_get_attachment_image(
+          $image['id'],
+          $image['size'],
+          false,
+          ['class' => 'css-filter']
+        );
+      }
+    } else {
+      esc_html_e( 'No image(s) selected.', 'bricks' );
+    }
+  }
+}
+```
+
+---
+
 # Controls
 
 Source: https://academy.bricksbuilder.io/developer/controls/
@@ -1056,6 +1056,87 @@ Bricks controls define how users edit custom element settings inside the builder
 - [Styling Controls](https://academy.bricksbuilder.io/developer/controls/color-control/) for visual styling fields such as color, typography, border, and shadow
 - [Media Controls](https://academy.bricksbuilder.io/developer/controls/image-control/) for images, galleries, icons, SVG, and audio
 - [Advanced Controls](https://academy.bricksbuilder.io/developer/controls/query-control/) for query, repeater, code, filters, and apply workflows
+
+---
+
+# Justify Content Control (Flexbox)
+
+Source: https://academy.bricksbuilder.io/developer/controls/justify-content-control/
+
+*Reference for the Bricks Justify Content Control (Flexbox) control, including its options, CSS mapping, and usage in custom elements.*
+
+Use the justify-content control to allow users to set the `justify-content` CSS property (alignment along the [main-axis](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)) of your CSS flexbox layout.
+
+There is also a [`align-items`](https://academy.bricksbuilder.io/developer/controls/align-items-control/) control to allow users to set the alignment along the cross axis of your CSS flexbox layout:
+
+```php
+public function set_controls() {
+  $this->controls['justifyContent'] = [
+    'tab'   => 'content',
+    'label' => esc_html__( 'Justify content', 'bricks' ),
+    'type'  => 'justify-content',
+    'css'   => [
+      [
+        'property' => 'justify-content',
+        'selector' => '.flexbox-wrapper',
+      ],
+    ],
+    // 'isHorizontal' => false,
+    // 'exclude' => [
+      // 'flex-start',
+      // 'center',
+      // 'flex-end',
+      // 'space-between',
+      // 'space-around',
+      // 'space-evenly',
+    // ],
+  ];
+}
+```
+
+---
+
+# Info Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/info-control/
+
+*Reference for the Bricks Info control, including its options, CSS mapping, and usage in custom elements.*
+
+The info control does not affect the HTML or CSS on the frontend. It serves as a builder-only helper controls to provide additional information.
+
+Example below: the **Alert** element displays an info control when the *Type* is set to *Custom*.
+
+```php
+class Prefix_Element_Info extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['type'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Type', 'bricks' ),
+      'type' => 'select',
+      'options' => [
+        'info' => esc_html__( 'Info', 'bricks' ),
+        'success' => esc_html__( 'Success', 'bricks' ),
+        'warning' => esc_html__( 'Warning', 'bricks' ),
+        'danger' => esc_html__( 'Danger', 'bricks' ),
+        'muted' => esc_html__( 'Muted', 'bricks' ),
+        'custom' => esc_html__( 'Custom', 'bricks' ),
+      ],
+      'inline' => true,
+      'clearable' => false,
+      'pasteStyles' => false,
+      'default' => 'info',
+    ];
+
+    $this->controls['typeInfo'] = [
+      'tab' => 'content',
+      'content' => esc_html__( 'Customize alert in STYLE tab.', 'bricks' ),
+      'type' => 'info',
+      'required' => ['type', '=', 'custom'], // Show info control if 'type' = 'custom'
+    ];
+  }
+}
+```
 
 ---
 
@@ -1161,43 +1242,6 @@ class Prefix_Element_Number extends \Bricks\Element {
 
 ---
 
-# Justify Content Control (Flexbox)
-
-Source: https://academy.bricksbuilder.io/developer/controls/justify-content-control/
-
-*Reference for the Bricks Justify Content Control (Flexbox) control, including its options, CSS mapping, and usage in custom elements.*
-
-Use the justify-content control to allow users to set the `justify-content` CSS property (alignment along the [main-axis](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)) of your CSS flexbox layout.
-
-There is also a [`align-items`](https://academy.bricksbuilder.io/developer/controls/align-items-control/) control to allow users to set the alignment along the cross axis of your CSS flexbox layout:
-
-```php
-public function set_controls() {
-  $this->controls['justifyContent'] = [
-    'tab'   => 'content',
-    'label' => esc_html__( 'Justify content', 'bricks' ),
-    'type'  => 'justify-content',
-    'css'   => [
-      [
-        'property' => 'justify-content',
-        'selector' => '.flexbox-wrapper',
-      ],
-    ],
-    // 'isHorizontal' => false,
-    // 'exclude' => [
-      // 'flex-start',
-      // 'center',
-      // 'flex-end',
-      // 'space-between',
-      // 'space-around',
-      // 'space-evenly',
-    // ],
-  ];
-}
-```
-
----
-
 # Query Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/query-control/
@@ -1245,50 +1289,6 @@ class Prefix_Element_Posts extends \Bricks\Element {
 ### Resources
 
 - [https://codex.wordpress.org/Class_Reference/WP_Query#Parameters](https://codex.wordpress.org/Class_Reference/WP_Query#Parameters)
-
----
-
-# Info Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/info-control/
-
-*Reference for the Bricks Info control, including its options, CSS mapping, and usage in custom elements.*
-
-The info control does not affect the HTML or CSS on the frontend. It serves as a builder-only helper controls to provide additional information.
-
-Example below: the **Alert** element displays an info control when the *Type* is set to *Custom*.
-
-```php
-class Prefix_Element_Info extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['type'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Type', 'bricks' ),
-      'type' => 'select',
-      'options' => [
-        'info' => esc_html__( 'Info', 'bricks' ),
-        'success' => esc_html__( 'Success', 'bricks' ),
-        'warning' => esc_html__( 'Warning', 'bricks' ),
-        'danger' => esc_html__( 'Danger', 'bricks' ),
-        'muted' => esc_html__( 'Muted', 'bricks' ),
-        'custom' => esc_html__( 'Custom', 'bricks' ),
-      ],
-      'inline' => true,
-      'clearable' => false,
-      'pasteStyles' => false,
-      'default' => 'info',
-    ];
-
-    $this->controls['typeInfo'] = [
-      'tab' => 'content',
-      'content' => esc_html__( 'Customize alert in STYLE tab.', 'bricks' ),
-      'type' => 'info',
-      'required' => ['type', '=', 'custom'], // Show info control if 'type' = 'custom'
-    ];
-  }
-}
-```
 
 ---
 
@@ -1349,6 +1349,71 @@ class Prefix_Element_Posts extends \Bricks\Element {
     } else {
       esc_html_e( 'No items defined.', 'bricks' );
     }
+  }
+}
+```
+
+---
+
+# Select Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/select-control/
+
+*Reference for the Bricks Select control, including its options, CSS mapping, and usage in custom elements.*
+
+The select control lets you select an option from a dropdown. It can be used to render content or CSS styling. Use the options array to populate the dropdown with your own options. The option key should be all lowercase, with no spaces.
+
+```php
+class Prefix_Element_Posts extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    // Example content
+    $this->controls['exampleSelectTitleTag'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Title tag', 'bricks' ),
+      'type' => 'select',
+      'options' => [
+        'h1' => 'H1',
+        'h2' => 'H2',
+        'h3' => 'H3',
+        'h4' => 'H4',
+        'h5' => 'H5',
+        'h6' => 'H6',
+      ],
+      'inline' => true,
+      'placeholder' => esc_html__( 'Select tag', 'bricks' ),
+      'multiple' => true,
+      'searchable' => true,
+      'clearable' => true,
+      'default' => 'h3',
+    ];
+
+    // Example CSS
+    $this->controls['exampleSelectTextAlign'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Text align', 'bricks' ),
+      'type' => 'select',
+      'options' => [
+        'right' => esc_html__( 'Right', 'bricks' ),
+        'center' => esc_html__( 'Center', 'bricks' ),
+        'left' => esc_html__( 'Left', 'bricks' ),
+      ],
+      'inline' => true,
+      'css' => [
+        [
+          'property' => 'text-align',
+          'selector' => '.prefix-title',
+        ],
+      ],
+      'placeholder' => esc_html__( 'Select', 'bricks' ),
+      'default' => 'center', // Option key
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    $title_tag = isset( $this->settings['exampleSelectTitleTag'] ) ? $this->settings['exampleSelectTitleTag'] : 'h5';
+    echo '<' . $title_tag . ' class="prefix-title">' . get_bloginfo( 'name' ) . '</' . $title_tag . '>';
   }
 }
 ```
@@ -1448,71 +1513,6 @@ class Prefix_Element_Svg extends \Bricks\Element {
 
 - [https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg)
 - [https://css-tricks.com/using-svg/](https://css-tricks.com/using-svg/)
-
----
-
-# Select Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/select-control/
-
-*Reference for the Bricks Select control, including its options, CSS mapping, and usage in custom elements.*
-
-The select control lets you select an option from a dropdown. It can be used to render content or CSS styling. Use the options array to populate the dropdown with your own options. The option key should be all lowercase, with no spaces.
-
-```php
-class Prefix_Element_Posts extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    // Example content
-    $this->controls['exampleSelectTitleTag'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Title tag', 'bricks' ),
-      'type' => 'select',
-      'options' => [
-        'h1' => 'H1',
-        'h2' => 'H2',
-        'h3' => 'H3',
-        'h4' => 'H4',
-        'h5' => 'H5',
-        'h6' => 'H6',
-      ],
-      'inline' => true,
-      'placeholder' => esc_html__( 'Select tag', 'bricks' ),
-      'multiple' => true,
-      'searchable' => true,
-      'clearable' => true,
-      'default' => 'h3',
-    ];
-
-    // Example CSS
-    $this->controls['exampleSelectTextAlign'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Text align', 'bricks' ),
-      'type' => 'select',
-      'options' => [
-        'right' => esc_html__( 'Right', 'bricks' ),
-        'center' => esc_html__( 'Center', 'bricks' ),
-        'left' => esc_html__( 'Left', 'bricks' ),
-      ],
-      'inline' => true,
-      'css' => [
-        [
-          'property' => 'text-align',
-          'selector' => '.prefix-title',
-        ],
-      ],
-      'placeholder' => esc_html__( 'Select', 'bricks' ),
-      'default' => 'center', // Option key
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    $title_tag = isset( $this->settings['exampleSelectTitleTag'] ) ? $this->settings['exampleSelectTitleTag'] : 'h5';
-    echo '<' . $title_tag . ' class="prefix-title">' . get_bloginfo( 'name' ) . '</' . $title_tag . '>';
-  }
-}
-```
 
 ---
 
@@ -1652,6 +1652,32 @@ class Prefix_Element_Textarea extends \Bricks\Element {
 
 ---
 
+# Text Transform Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/text-transform-control/
+
+*Reference for the Bricks Text Transform control, including its options, CSS mapping, and usage in custom elements.*
+
+Use the **text-transform** control to allow users to set the text-transform CSS property like so:
+
+```php
+public function set_controls() {
+  $this->controls['textTransform'] = [ // Setting key
+    'tab' => 'content',
+    'label' => esc_html__( 'Text transform', 'bricks' ),
+    'type' => 'text-transform',
+    'css' => [
+      [
+        'property' => 'text-transform',
+        'selector' => '.text-wrapper',
+      ],
+    ],
+  ];
+}
+```
+
+---
+
 # Textarea Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/textarea-control/
@@ -1689,32 +1715,6 @@ class Prefix_Element_Textarea extends \Bricks\Element {
       esc_html_e( 'No text provided.', 'bricks' );
     }
   }
-}
-```
-
----
-
-# Text Transform Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/text-transform-control/
-
-*Reference for the Bricks Text Transform control, including its options, CSS mapping, and usage in custom elements.*
-
-Use the **text-transform** control to allow users to set the text-transform CSS property like so:
-
-```php
-public function set_controls() {
-  $this->controls['textTransform'] = [ // Setting key
-    'tab' => 'content',
-    'label' => esc_html__( 'Text transform', 'bricks' ),
-    'type' => 'text-transform',
-    'css' => [
-      [
-        'property' => 'text-transform',
-        'selector' => '.text-wrapper',
-      ],
-    ],
-  ];
 }
 ```
 

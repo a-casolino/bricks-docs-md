@@ -23,6 +23,7 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
+| `_typography` | typography | _typography | `font` |
 | `_content` | text | Content | `content` |
 | `_margin` | spacing | Margin | `margin` |
 | `_padding` | spacing | Padding | `padding` |
@@ -67,7 +68,6 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_masonryHorizontalOrder` | checkbox | Horizontal order | — |
 | `_masonryTransitionDuration` | number | Transition | — |
 | `_masonryTransitionMode` | select | Reveal animation | — |
-| `_typography` | typography | _typography | `font` |
 | `_background` | background | _background | `background` |
 | `_shapeDividers` | repeater | Custom shape | — |
 | `_gradient` | gradient | _gradient | `background-image` |

@@ -26,6 +26,7 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 
 | Key | Type | Label | CSS |
 |---|---|---|---|
+| `_display` | select | Display | `display`, `align-items` |
 | `_content` | text | Content | `content` |
 | `_margin` | spacing | Margin | `margin` |
 | `_padding` | spacing | Padding | `padding` |
@@ -43,7 +44,6 @@ Shared CSS controls available on all elements. Keys are prefixed with `_` and su
 | `_left` | number | Left | `left` |
 | `_zIndex` | number | Z-index | `z-index` |
 | `_order` | number | _order | `order` |
-| `_display` | select | Display | `display`, `align-items` |
 | `_columns` | text | Columns | `columns` |
 | `_columnGap` | number | Column gap | `column-gap` |
 | `_visibility` | select | Visibility | `visibility` |

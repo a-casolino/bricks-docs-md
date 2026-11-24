@@ -14,8 +14,11 @@
 | `previewOrderId` | number | Preview order ID | — |
 | `orderInfoHide` | checkbox | Hide | `display` on `> p:first-child` |
 | `orderInfoTypography` | typography | Typography | `font` on `> p:first-child` |
+| `orderMarkMarginRight` | number | Margin right | `margin-right` on `mark:not(:last-of-type)` |
+| `orderMarkMargin` | dimensions | Margin | `margin` on `mark` |
 | `orderMarkPadding` | spacing | Padding | `padding` on `mark` |
 | `orderMarkBackgroundColor` | color | Background color | `background-color` on `mark` |
+| `orderMarkBorder` | border | Border | `border` on `mark` |
 | `orderMarkTypography` | typography | Typography | `font` on `mark` |
 | `notesTitleHide` | checkbox | Hide | `display` on `> h2` |
 | `orderDetailsTfootHeadingTypography` | typography | Typography | `typography` on `.woocommerce-order-details tfoot th` |
@@ -90,6 +93,7 @@
 | `orderDetailsTfootBackgroundColor` | color | Background color | `background-color` on `.woocommerce-order-details tfoot` |
 | `orderDetailsTfootBorder` | border | Border | `border` on `.woocommerce-order-details tfoot` |
 | `orderDetailsTfootTypography` | typography | Typography | `font` on `.woocommerce-order-details tfoot` |
+| `orderDetailsTfootCellBorder` | border | Border | `border` on `.woocommerce-order-details tfoot tr > *` |
 | `orderAgainButtonMargin` | spacing | Margin | `margin` on `.order-again a.button` |
 | `orderAgainButtonPadding` | spacing | Padding | `padding` on `.order-again a.button` |
 | `orderAgainButtonBackgroundColor` | color | Background color | `background-color` on `.order-again a.button` |

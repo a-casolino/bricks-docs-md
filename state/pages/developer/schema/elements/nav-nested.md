@@ -14,7 +14,7 @@
 | `tag` | text | HTML tag | — |
 | `ariaLabel` | text | aria-label | — |
 | `gap` | number | Gap | `gap` on `:where(.brx-nav-nested-items)` |
-| `itemPadding` | spacing | Padding | `padding` on `:where(.brx-nav-nested-items > li > a)`, `padding` on `:where(.brx-nav-nested-items > li > .brxe-text-link:not(a))`, `padding` on `:where(.brx-nav-nested-items > li > .brxe-icon)`, `padding` on `:where(.brx-nav-nested-items > li\{pseudo\}:has( > .brxe-svg))`, `padding` on `:where(.brx-nav-nested-items > li > .brx-submenu-toggle > *)`, `padding` on `&.brx-open :where(.brx-nav-nested-items > li > button.brx-toggle-div)` |
+| `itemPadding` | spacing | Padding | `padding` on `:where(.brx-nav-nested-items > li > a)`, `padding` on `:where(.brx-nav-nested-items > li > .brxe-text-link:not(a))`, `padding` on `:where(.brx-nav-nested-items > li > .brxe-icon)`, `padding` on `:where(.brx-nav-nested-items > li\{pseudo\}:has( > .brxe-svg))`, `padding` on `:where(.brx-nav-nested-items > li\{pseudo\} > .brx-submenu-toggle)`, `padding` on `&.brx-open :where(.brx-nav-nested-items > li > button.brx-toggle-div)` |
 | `itemBackgroundColor` | color | Background color | `background-color` on `:where(.brx-nav-nested-items > li\{pseudo\} > a)`, `background-color` on `:where(.brx-nav-nested-items > li\{pseudo\} > .brxe-text-link:not(a))`, `background-color` on `:where(.brx-nav-nested-items > li\{pseudo\} > .brxe-icon)`, `background-color` on `:where(.brx-nav-nested-items > li\{pseudo\}:has( > .brxe-svg))`, `background-color` on `:where(.brx-nav-nested-items > li\{pseudo\} > .brx-submenu-toggle)` |
 | `itemBorder` | border | Border | `border` on `:where(.brx-nav-nested-items > li\{pseudo\} > a)`, `border` on `:where(.brx-nav-nested-items > li\{pseudo\} > .brxe-text-link:not(a))`, `border` on `:where(.brx-nav-nested-items > li\{pseudo\} > .brxe-icon)`, `border` on `:where(.brx-nav-nested-items > li\{pseudo\}:has( > .brxe-svg))`, `border` on `:where(.brx-nav-nested-items > li\{pseudo\} > .brx-submenu-toggle)` |
 | `itemTypography` | typography | Typography | `font` on `:where(.brx-nav-nested-items > li\{pseudo\} > a)`, `font` on `:where(.brx-nav-nested-items > li\{pseudo\} > .brxe-text-link:not(a))`, `font` on `:where(.brx-nav-nested-items > li\{pseudo\} > .brxe-icon)`, `font` on `:where(.brx-nav-nested-items > li\{pseudo\}:has( > .brxe-svg))`, `font` on `:where(.brx-nav-nested-items > li\{pseudo\} > .brx-submenu-toggle > *)` |
@@ -37,17 +37,17 @@
 | `iconTransition` | text | Icon transition | `transition` on `:where(.brx-submenu-toggle button)[aria-expanded] > *` |
 | `dropdownContentWidth` | number | Min. width | `min-width` on `:where(.brx-dropdown-content)` |
 | `dropdownBackgroundColor` | color | Background color | `background-color` on `:where(.brx-dropdown-content)` |
-| `dropdownBorder` | border | Border | `border` on `:where(.brx-dropdown-content)` |
+| `dropdownBorder` | border | Border | `border` on `:where(.brx-dropdown-content:not(.brx-has-multilevel.open:not(.active) > .brx-dropdown-content):not(.brx-has-multilevel .brxe-dropdown.open:not(.active) > .brx-dropdown-content))` |
 | `dropdownBoxShadow` | box-shadow | Box shadow | `box-shadow` on `:where(.brx-dropdown-content)` |
 | `dropdownTypography` | typography | Typography | `font` on `:where(.brx-dropdown-content)` |
 | `dropdownTransform` | transform | Transform | `transform` on `:where(.brx-nav-nested-items > .brxe-dropdown > .brx-dropdown-content)` |
 | `dropdownTransformOpen` | transform | Transform | `transform` on `:where(.brx-nav-nested-items > .brxe-dropdown).open > :where(.brx-dropdown-content)` |
 | `dropdownTransition` | text | Transition | `transition` on `:where(.brx-dropdown-content)` |
 | `dropdownZindex` | number | Z-index | `z-index` on `:where(.brxe-dropdown)` |
-| `dropdownPadding` | spacing | Padding | `padding` on `:where(.brx-dropdown-content > li) > a`, `padding` on `:where(.brx-dropdown-content .brx-submenu-toggle > *)` |
+| `dropdownPadding` | spacing | Padding | `padding` on `:where(.brx-dropdown-content > li) > a`, `padding` on `:where(.brx-dropdown-content > li\{pseudo\} > .brx-submenu-toggle)` |
 | `dropdownItemBackground` | color | Background | `background-color` on `:where(.brx-dropdown-content) > li`, `background-color` on `:where(.brx-dropdown-content) .brx-submenu-toggle` |
 | `dropdownItemBorder` | border | Border | `border` on `:where(.brx-dropdown-content > li:not(.brxe-dropdown))`, `border` on `:where(.brx-dropdown-content .brx-submenu-toggle)` |
-| `dropdownItemTypography` | typography | Typography | `font` on `:where(.brx-dropdown-content > li) > a`, `font` on `:where(.brx-dropdown-content .brx-submenu-toggle > *)` |
+| `dropdownItemTypography` | typography | Typography | `font` on `:where(.brx-dropdown-content > li\{pseudo\}) > a`, `font` on `:where(.brx-dropdown-content > li\{pseudo\} > .brx-submenu-toggle > *)` |
 | `dropdownItemTransition` | text | Transition | `transition` on `:where(.brx-dropdown-content > li)`, `transition` on `:where(.brx-dropdown-content > li) > a`, `transition` on `:where(.brx-dropdown-content) .brx-submenu-toggle`, `transition` on `&.brx-has-megamenu :where(.brx-dropdown-content > *)` |
 | `multiLevel` | checkbox | Enable | — |
 | `multiLevelBackText` | text | Back | — |

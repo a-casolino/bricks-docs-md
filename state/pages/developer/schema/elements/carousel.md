@@ -37,6 +37,7 @@
 | `lightboxImageClick` | select | Image click action | — |
 | `lightboxAnimationType` | select | Animation | — |
 | `lightboxCaption` | checkbox | Caption | — |
+| `lightboxCaptionPosition` | select | Caption position | — |
 | `lightboxThumbnails` | checkbox | Thumbnail navigation | — |
 | `lightboxThumbnailSize` | number | Thumbnail size | — |
 | `lightboxPadding` | dimensions | Padding | — |

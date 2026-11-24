@@ -58,6 +58,14 @@
 | `popupShowAt` | select | popupShowAt |
 | `popupShowOn` | select | popupShowOn |
 | `popupZindex` | number | Z-index |
+| `searchCriteriaCustom` | checkbox | Custom search criteria |
+| `searchPostFields` | checkbox | Search post fields |
+| `searchPostMatchAnyWord` | checkbox | Match any word |
+| `searchPostMeta` | checkbox | Search post meta fields |
+| `searchPostMetaKeys` | repeater | Post meta keys |
+| `searchPostQuery` | repeater | Post fields |
+| `searchPostTaxonomies` | repeater | Taxonomies |
+| `searchPostTerms` | checkbox | Search post terms |
 | `templateConditions` | repeater | Archive type |
 | `templatePreviewAuthor` | select | Author |
 | `templatePreviewPostId` | select | Single |
@@ -66,3 +74,4 @@
 | `templatePreviewTerm` | select | Term |
 | `templatePreviewType` | select | Content type |
 | `template_interactions` | repeater | Interactions |
+| `useWeightScore` | checkbox | Use weight score |

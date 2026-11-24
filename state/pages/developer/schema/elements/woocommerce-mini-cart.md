@@ -13,6 +13,7 @@
 |---|---|---|---|
 | `icon` | icon | Icon | — |
 | `iconTypography` | typography | Icon typography | `font` on `.mini-cart-link i` |
+| `ariaLabel` | text | Attribute | — |
 | `openMiniCartOnAddedToCart` | checkbox | Open on add to cart (AJAX) | — |
 | `hideEmptyCart` | checkbox | Hide if empty | — |
 | `cartCount` | select | Visibility | `display` on `.cart-count` |

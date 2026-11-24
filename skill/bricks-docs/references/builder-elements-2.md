@@ -1,1728 +1,2114 @@
-# Form
+# Filter submit
 
-Source: https://academy.bricksbuilder.io/builder/elements/general/form/
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-submit/
 
-*Build forms, validate submissions, and run email, integration, authentication, post, and custom actions with the Form element.*
+*Apply or reset query filters, redirect submissions, and preserve selected filters when resetting.*
 
-The Form element lets you build custom forms with the following form field types:
-
-- Email
-- Text
-- Textarea
-- Rich text
-- Telephone
-- Number
-- URL
-- Image (Media library)
-- Gallery (Media library)
-- Checkbox
-- Select
-- Radio
-- Files
-- Datepicker
-- Password
-- Remember me
-- HTML
-- Hidden
-
-You can define **actions** triggered by form submissions like sending an email notification, redirecting to a certain page, communicating to SendGrid or Mailchimp servers, or user login/registration. If this is not enough, you can also develop your own actions.
-
-The form element also integrates with [Google reCaptcha V3](#spam), [hCaptcha](https://www.hcaptcha.com/), and [Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile/) to protect your sites from fraudulent activities, spam, and abuse. Supports dynamic data, and [form validation](#form-validation) through a new action hook.
-
-https://youtu.be/UoNv7OECMvw
-
-## How the Form element is structured {#structure}
-
-A new Form element starts with three fields: **Name** (Text), **Email** (required), and **Message** (Textarea, required), plus a **Send** button. Labels are hidden by default and only the placeholders show. Enable **Show labels** under **Fields** to display them.
-
-The settings are split into control groups:
-
-- **Fields**: The form fields and their validation settings. Each field shows its unique six-character **ID** at the end of its settings.
-- **Submit button**: Text, style, and icon of the submit button.
-- **Actions**: What happens after a valid submission, the **Success message**, and optional action conditions.
-- **Notices**: When and how success and error messages close.
-- One group for each selected action, for example **Email**, **Confirmation email**, or **Save submission**.
-- **Spam protection**: reCAPTCHA, hCaptcha, Turnstile, and honeypot information.
-
-An action's control group only appears once the action is selected under **Actions**. A new form has **Email** selected, so the **Email** and **Confirmation email** groups are visible right away.
-
-> **Note**
->
-> Form submissions only run on the frontend. Submitting a form inside the builder does nothing, so test your form on the live page.
-
-## Select fields {#select-fields}
-
-The **Select** field is a dropdown for choosing one option. It has no built-in multiple-selection setting. Use a **Checkbox** field when visitors need to choose several options without custom code.
-
-Starting with Bricks 2.5-beta, a Select field rejects submissions containing more than one value. Custom code or plugins that turn a Select field into a multi-select must explicitly allow multiple values for the intended form and field through the `bricks/form/select/allow_multiple` PHP filter. Adding a `multiple` attribute or a `name[]` suffix alone is insufficient.
-
-Bricks checks this before custom form validation and form actions. Normal single selections continue to work.
-
-## Auto-focus field (since 2.5) {#auto-focus-field}
-
-Use **Auto-focus field** to focus a field when the frontend page loads, so visitors can start typing without clicking it first.
-
-1. Select the Form element.
-2. Open **Content > Fields** and add the fields you need.
-3. In **Auto-focus field**, select the field to focus.
-4. Save the page and reload it on the frontend to check the focus.
-
-Leave the setting at **None** to keep the form from requesting initial focus. The dropdown includes **Email**, **Text**, **Textarea**, **Telephone**, **Number**, **URL**, **Select**, and **Password** fields. Honeypots and other field types are excluded.
-
-<div className="screenshot screenshot--control-panel">
-
-![Form Fields settings with Auto-focus field set to Username or email.](https://academy.bricksbuilder.io/assets/form-auto-focus-field.webp)
-
-</div>
-
-Bricks adds the native HTML `autofocus` attribute to the selected field on the frontend. It suppresses the attribute in Builder renders so the form does not take focus from the canvas or settings panel. If you delete the selected field or change it to an unsupported type or a honeypot, it no longer receives autofocus.
-
-For a [login form](#login-registration), select the username or email field. When that field has focus, pressing Enter can submit the form through the browser's normal form behavior. Test this on the frontend with your browser's saved credentials; autofill and Enter behavior can vary between browsers and field types. Autofocus does not change the form's action mapping or validation.
-
-> **Note**
->
-> Use autofocus on only one field per page, including pages with multiple forms or repeated form instances. It can scroll the page to the field and open an on-screen keyboard on touch devices. For screen reader users, it can move focus past introductory content. See the [HTML autofocus reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/autofocus) before enabling it on a page where the form is not the main task.
-
-## Field descriptions {#field-descriptions}
-
-Since Bricks 2.5, you can add a **Description** to each form field. Use it for instructions that visitors need while filling out the form, such as an accepted file format or an explanation of how you will use their email address.
-
-### Add a description
-
-1. Select the Form element and open **Content > Fields**.
-2. Expand the field you want to describe.
-3. Enter your instructions in **Description**.
-4. Save the page and check the description on the frontend.
-
-For example, add "Include your country code, such as +44." to a Telephone field. The instructions appear below the input and remain visible while the visitor types.
-
-<div className="screenshot screenshot--control-panel">
-
-![Telephone field settings with the label Telephone number and the description Include your country code, such as +44.](https://academy.bricksbuilder.io/assets/form-field-description.webp)
-
-</div>
-
-Descriptions appear after the field control. For Checkbox and Radio fields, one description appears below the whole list of options. The setting is available for all interactive field types, including Rich text, Datepicker, Files, Image, and Gallery. Hidden fields, HTML fields, and honeypots do not support descriptions.
-
-### Style descriptions
-
-Under **Content > Fields**, below the field list, find the **Description** styling section. These settings apply to all field descriptions in that Form element.
-
-Descriptions take up the full width of their field. Bricks does not add description-specific font sizes, colors, or spacing by default, so configure these to suit your form.
-
-### Dynamic data and HTML
-
-The **Description** field supports [dynamic data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/) and HTML, such as links or emphasis. Bricks resolves dynamic data when rendering the field and sanitizes the HTML using WordPress's allowed post-content markup.
-
-If the description is empty, or has no text after dynamic data is resolved and HTML is sanitized, Bricks outputs no description or accessibility association.
-
-### Accessibility
-
-Bricks automatically connects each field to its description using `aria-describedby`, making the instructions available to assistive technology. You do not need to create an ID or add the attribute manually.
-
-For Checkbox and Radio fields, each option is connected to the shared description. Image and Gallery descriptions are connected to the media picker button. Datepicker display inputs and Rich text editors retain the association when initialized on the frontend.
-
-Keep a clear field label as well. The label names the field; the description provides extra instructions. Descriptions do not replace [validation messages](#form-validation) or enforce requirements such as file types or a password length.
-
-## Actions {#actions}
-
-Form actions run after the form has been submitted successfully.
-
-You may set one or multiple actions for your form. Actions run in the sequence they have been selected, except for the "Redirect" action, which always runs at the very end.
-
-For each selected action, a separate control group appears.
-
-The **Success message** setting in the **Actions** group sets the text visitors see after a successful submission. Bricks shows it below the submit button and resets the form fields.
-
-![Bricks Form element - email action settings](https://academy.bricksbuilder.io/assets/form-mail-action.jpg)
-
-<figcaption>
-
-Form element: email action settings
-
-</figcaption>
-
-### Conditional actions (@since 2.4) {#conditional-actions}
-
-Use **Action conditions** to run a selected action only when submitted form data matches your rules. An action without an action rule always runs after a successful submission.
-
-To add a rule:
-
-1. Select every action the form may run under **Actions after successful form submit**.
-2. Under **Action conditions**, click **Add action rule**.
-3. Choose the **Action** to control. The list only includes actions selected for the current form.
-4. Under **Run action if**, choose a form **Field** and a **Compare** operator.
-5. Enter a **Value** when the selected operator requires one.
-6. Add more conditions if needed, then set **Relation** to **And** or **Or**.
-
-<div className="screenshot screenshot--control-panel">
-
-![](https://academy.bricksbuilder.io/assets/form-action-conditions.webp)
-
-</div>
-
-The available comparison operators are:
-
-| Operator             | The condition matches when                    |
-| -------------------- | --------------------------------------------- |
-| **is**               | A submitted value exactly matches **Value**.  |
-| **is not**           | No submitted value exactly matches **Value**. |
-| **contains**         | A submitted value contains **Value**.         |
-| **does not contain** | No submitted value contains **Value**.        |
-| **is empty**         | The field has no submitted value.             |
-| **is not empty**     | The field has a submitted value.              |
-
-For fields that can submit multiple values, such as checkboxes, Bricks checks each submitted value. Use **is empty** or **is not empty** when the presence of a selection matters more than its exact value.
-
-#### Example: Subscribe only after consent
-
-A contact form can always send an enquiry email while subscribing only people who select a marketing consent checkbox:
-
-1. Add a checkbox field for marketing consent. Do not make it required if visitors must be able to submit the enquiry without subscribing.
-2. Select both **Email** and **Mailchimp** under **Actions after successful form submit**.
-3. Add an action rule and select **Mailchimp** as the action.
-4. Under **Run action if**, select the consent checkbox and set **Compare** to **is not empty**.
-
-The **Email** action has no rule, so it runs for every successful submission. **Mailchimp** runs only when the checkbox has a submitted value.
-
-> **Note**
->
-> Within one action rule, **And** requires every condition to match, while **Or** requires at least one condition to match. If you add multiple action rules for the same action, every rule must pass.
-
-HTML fields are not available as condition fields because they do not submit values. File-field conditions include newly uploaded files and verified files retained by an **Update post** form. An incomplete rule, such as a missing field or required comparison value, does not run the action.
-
-### Email {#email}
-
-The email form action sends one email on form submission. By default, it is configured to send the email to the site administrator email containing all the form fields content.
-
-You may customize the form email action with the following settings:
-
-- **Subject**: The email subject
-- **Send to email address**: Fill in the email recipients. You may choose to send the email to the website administrator or to a custom email address (it accepts multiple email addresses, separated by a comma)
-- **BCC email address**: Additional recipients who receive a blind copy.
-- **From email address**: The email address that shows as the sender
-- **From name**: The name that shows as the sender. It is only used when **From email address** is set.
-- **Reply to email address**: In case the recipient replies to the email, this email will be used instead of the "From email address". If empty, Bricks uses the first email address from the submitted form.
-- **Email content**: In case you want to personalize the email content message. Leave this field empty to send all submitted fields, followed by the URL of the page the form was sent from.
-- **Error message**: The message that will be presented to the site's user if the email fails for some reason.
-- **HTML email**: Enabled by default. Disable it to send a plain text email.
-
-### Confirmation email {#confirmation-email}
-
-Let the person who submitted a form know that you have received their email by automatically sending out a custom confirmation email whenever the form is submitted.
-
-The **Confirmation email** group belongs to the **Email** action, so it is only available while **Email** is selected. The confirmation email is only sent when its **Email content** is filled in. By default it goes to the email address entered in the form.
-
-We highly recommend properly setting up SMTP to ensure the best possible email delivery from your website. There are plenty of free WordPress plugins available that let you configure this within a few minutes. A search for "WordPress SMTP" should bring up countless articles & plugins for it.
-
-If the "From name" & "From email address" you have set under the "Confirmation Email" settings inside the Form element aren't used, you have to check if any plugin and/or custom code is overwriting/forcing another name & email address.
-
-### Form dynamic fields {#dynamic-fields}
-
-![](https://academy.bricksbuilder.io/assets/form-fields-ids.jpg)
-
-<figcaption>
-
-Field ID
-
-</figcaption>
-
-In certain scenarios, it could be useful to get some of the submitted form fields' content to populate the email action settings.
-
-To use the submitted data in your form settings, you have copy & paste the unique field ID (which you'll find at the end of every form field) and wrap it in two curly brackets like this: `{{form_field_id}}`
-
-Use those dynamic fields in the "Subject", "Email address", "Email content", "From name", and "From email" settings.
-
-Regular Bricks dynamic data works in these settings as well. For example, a subject like `Enquiry: {post_title}` in a single post template includes the title of the post the form was submitted on.
-
-Use the `{{referrer_url}}` in the above fields to insert the URL of the page where the form was submitted.
-
-To render all submitted fields in the "Email content" use the `{{all_fields}}` placeholder.
-
-### User Login, Registration, Lost Password, and Reset Password {#login-registration}
-
-These four actions allow you to build custom authentication forms without coding.
-
-When selecting one of these actions, you have to map the form fields appropriately:
-
-- **User login**: Map the form fields to "Login", "Password", and optionally the new "Remember me" checkbox.
-- **User registration**: Map the form fields to "Email", "Password", "Username", and optionally "First/Last name". If you want to customize the default WordPress emails sent to the admin or new user upon registration, use the following hooks:
-  - [`wp_new_user_notification_email`](https://developer.wordpress.org/reference/hooks/wp_new_user_notification_email/): Modify the email sent to the user.
-  - [`wp_new_user_notification_email_admin`](https://developer.wordpress.org/reference/hooks/wp_new_user_notification_email_admin/): Modify the email sent to the site admin.
-- **Lost password**: Map the form field to "Email" or "Username" to send reset instructions. If you want to customize the email content for password reset instructions, use the [`retrieve_password_message`](https://developer.wordpress.org/reference/hooks/retrieve_password_message/) filter.
-- **Reset password**: Map the form field "password".
-
-> **Note**
->
-> When using **Lost password** or **Reset password** actions, you **do not need to configure an Email Action**. WordPress automatically handles sending the necessary emails using its default methods.
-
-For detailed instructions on configuring custom authentication pages using the Form element, please visit the [Authentication Pages](https://academy.bricksbuilder.io/builder/features/custom-authentication-pages/) article.
-
-#### Confirm a password
-
-Since Bricks 2.4, a Password field can check that its value matches another Password field in the same form. Use this for registration or password reset forms:
-
-1. Add two **Password** fields, labeled **Password** and **Confirm password**.
-2. Copy the field ID shown at the end of the main Password field's settings.
-3. Open the Confirm password field and enable **Mark as confirmation password**.
-4. Paste the main field's ID into **Main password field ID**, without curly brackets or a `form-field-` prefix.
-5. Set **Password mismatch error message** if you want to replace the default "Passwords do not match" message.
-6. Map the authentication action's Password setting to the main field.
-
-Bricks checks the values when the form is submitted. A mismatch prevents the form actions from running. Leaving **Main password field ID** empty skips the comparison, so always link the confirmation field to the correct field ID.
-
-Matching and required-field validation are separate. Two empty optional fields pass the comparison. Enable **Required** on both fields when visitors must enter a password.
-
-### Redirect {#redirect}
-
-This form action redirects the user from the form page to a different page on your site. You may set the redirection to the admin area or to a custom URL and set the redirection to happen only after a specific period of time.
-
-The Redirect form action is only triggered after all the other actions run successfully.
-
-Since 1.10, Custom redirect URL field is supporting [Form dynamic field](#dynamic-fields) tag.
-
-### Unlock password protection {#unlock-password-protection}
-
-This form action is used to grant access to content protected by Bricks' password protection feature. You can map the relevant form field to “Password”, but if no field is mapped, the first password field in the form will be used by default.
-
-For more detailed instructions on setting up password protection with forms, please refer to the [Password Protection article](https://academy.bricksbuilder.io/builder/features/password-protection/).
-
-### Webhook (@since 2.0) {#webhook}
-
-The **Webhook** form action, available since version 2.0, sends submitted form data to one or more external URLs.
-
-Typical use cases include:
-
-- Sending leads to CRMs like **Zoho**, **Hubspot**, or **Salesforce**
-- Triggering **Zapier** or **Make** scenarios
-- Storing form data in **Google Sheets** or external databases
-- Notifying internal tools via a **custom API or Slack bot**
-
-A webhook is simply an HTTP request sent when the form is submitted. You can control what data is sent, how it’s formatted, and whether errors should stop the form.
-
-#### Setting: Endpoints
-
-You can set up multiple webhook endpoints. Each has these options:
-
-- **Name**: Label for this webhook (for your reference only)
-- **Endpoint URL**: The URL to send form data to
-- **Data format**: Choose how the data is sent:
-  `JSON` or `Form data` (x-www-form-urlencoded)
-- **Data**: Optional payload template using dynamic field tags
-  Leave empty to send all form fields. Example:
-
-```php
-{ "name": "{{43f295}}", "email": "{{a5c626}}" }
-```
-
-**Headers**: Optional custom headers in JSON format. Example:
-
-```php
-{ "Authorization": "Bearer token" }
-```
-
-#### Setting: Max payload size (KB)
-
-Set the max size of the request payload.
-Default: `1024` (1 MB)
-
-#### Setting: Rate limiting
-
-- **Rate limiting**
-  Enable to limit requests per hour
-- **Max requests per hour**
-  Set the limit (default: `60`)
-
-#### Setting: Error handling
-
-- **Continue on error**
-  If enabled, form submission succeeds even if the webhook fails
-- **Error message**
-  Message shown if the webhook fails and "Continue on error" is off
-
-**Example: Zapier**
-
-To trigger a Zap from a form submission, follow these steps:
-
-1. In [Zapier](https://zapier.com/), create a new Zap
-2. Choose **Webhooks by Zapier** as the trigger
-3. Select **Catch Hook**
-4. Copy the webhook URL Zapier gives you
-
-![](https://academy.bricksbuilder.io/assets/zapier-webhook-url.png)
-
-1. In Bricks, edit your form and add a **Webhook** action
-2. Paste the Zapier URL into the **Endpoint URL** field
-
-![](https://academy.bricksbuilder.io/assets/bricks-webhook-zapier-url.png)
-
-1. Set the **Data format** to `JSON` (recommended)
-2. Optionally define the payload or leave it empty to send all fields
-3. Save and test your form
-
-For full setup instructions, see [Zapier’s webhook guide](https://help.zapier.com/hc/en-us/articles/8496288690317-Trigger-Zaps-from-webhooks).
-
-### Create & update posts (@since 2.1)
-
-It is also possible to create powerful frontend forms with Bricks using the "Create post" and "Update post" actions.
-
-More information and examples can be found at [/builder/features/create-update-posts-on-the-frontend/](https://academy.bricksbuilder.io/builder/features/create-update-posts-on-the-frontend/)
-
-### Custom {#custom-action}
-
-The custom action will allow you to hook into the action `bricks/form/custom_action` and run your custom code.
-
-Please ensure you have included the **Custom** in the "Actions after successful form submit" field on your form element when using this hook.
-
-![](https://academy.bricksbuilder.io/assets/custom-action-form-element.png)
-
-The action callback will receive the `$form` object which exposes the following methods to get the form settings, the form fields, and the form uploaded files (if needed):
-
-**Settings**: `**$form->get_settings()**`
-
-This method exposes an associative array with the form settings (fields and actions settings) similar to this:
-
-```php
-Array
-(
-    [fields] => Array
-        (
-            [0] => Array
-                (
-                    [type] => text
-                    [label] => Name
-                    [placeholder] => Your Name
-                    [id] => 15bc57
-                )
-
-            [1] => Array
-                (
-                    [type] => email
-                    [label] => Email
-                    [placeholder] => Your Email
-                    [required] => 1
-                    [id] => 3db633
-                )
-
-            [2] => Array
-                (
-                    [type] => textarea
-                    [label] => Message
-                    [placeholder] => Your Message
-                    [required] => 1
-                    [id] => f65f2c
-                )
-            ...
-
-        )
-
-    [submitButtonStyle] => primary
-    [actions] => Array
-        (
-            [0] => email
-            ...
-        )
-
-    [successMessage] => Message successfully sent. We will get back to you as soon as possible.
-    [emailSubject] => Contact form request
-    [emailTo] => admin_email
-    [fromName] => bricks
-    [emailErrorMessage] => Submission failed. Please reload the page and try to submit the form again.
-    [htmlEmail] => 1
-    [mailchimpPendingMessage] => Please check your email to confirm your subscription.
-    [mailchimpErrorMessage] => Sorry, but we could not subscribe you.
-    [sendgridErrorMessage] => Sorry, but we could not subscribe you.
-    ...
-)
-
-```
-
-**Fields values**: `**$form->get_fields()**`
-
-This method exposes an associative array with the submitted values for each form field, together with the post Id and the form Id:
-
-```php
-Array
-(
-    [form-field-15bc57] => John Doe
-    [form-field-3db633] => john.doe@example.com
-    [form-field-f65f2c] => Thank you for using Bricks!
-    ...
-    [postId] => 167
-    [formId] => yrnkmt
-    ...
-    [referrer] => https://example.com/contact
-)
-```
-
-**Submitted files**: `**$form->get_uploaded_files()**`
-
-This method exposes an associative array with the properties of the submitted files, grouped by the form field Id:
-
-> **Note**
->
-> ['file'] => Physical saved location
-> ['url'] => Might not be accessible if not save to media or save to custom directory.
-
-```php
-Array
-(
-    [form-field-sajbjc] => Array
-        (
-            [0] => Array
-                (
-                    [file] => /.../public/wp-content/uploads/2022/03/my-uploaded-file.png
-                    [url] => https://example.com/wp-content/uploads/2022/03/my-uploaded-file.png
-                    [type] => image/png
-                )
-
-            [1] => Array
-                (
-                    [file] => /.../public/wp-content/uploads/2022/03/my-other-file.png
-                    [url] => https://example.com/wp-content/uploads/2022/03/my-other-file.png
-                    [type] => image/png
-                )
-            ...
-
-        )
-
-)
-```
-
-**Example #1** Basic setup
-
-```php
-<?php
-function my_form_custom_action( $form ) {
-  // $fields = $form->get_fields();
-  // $formId = $fields['formId'];
-  // $postId = $fields['postId'];
-  // $settings = $form->get_settings();
-  // $files = $form->get_uploaded_files();
-
-  // Perform some logic here...
-
-  // Set result in case it fails
-  $form->set_result([
-    'action' => 'my_custom_action',
-    'type'    => 'success', // or 'error' or 'info'
-    'message' => esc_html__('Oh my custom action failed', 'bricks'),
-  ]);
-}
-add_action( 'bricks/form/custom_action', 'my_form_custom_action', 10, 1 );
-```
-
-**Example #2** Trigger a second email after the form is submitted.
-
-With the current Bricks version, you can only set one email notification. With this code snippet, you may trigger a second one.
-
-```php
-<?php
-function my_form_custom_action_sending_email( $form ) {
-  $fields = $form->get_fields();
-  // $formId = $fields['formId'];
-  // $postId = $fields['postId'];
-  $settings = $form->get_settings();
-  // $files = $form->get_uploaded_files();
-
-  $to = 'recipient@example.com'; // Replace this
-  $from = 'sender@example.com'; // Replace this
-  $subject = 'Your Subject'; // Replace this
-
-  if ( ! empty( $settings['emailContent'] ) ) {
-    $message = $form->render_data( $settings['emailContent'] );
-    $message = isset( $settings['htmlEmail'] ) ? nl2br( $message ) : $message;
-  } else {
-    $email = new Bricks\Integrations\Form\Actions\Email('email');
-    $message = $email->get_default_message( $settings, $fields );
-  }
-
-  $headers[] = 'From: Your Name <'.$from.'>';
-  $headers[] = 'Reply-to: '. $from;
-  if ( isset( $settings['htmlEmail'] ) ) {
-    $headers[] = 'Content-Type: text/html; charset=UTF-8' . "\r\n";
-  }
-
-  $result = wp_mail( $to, $subject, $message, $headers );
-
-  // $form->set_result([
-  //  'action' => 'my_custom_action',
-  //  'type'    => 'success', // or 'error' or 'info'
-  //  'message' => esc_html__('Oh my custom action failed', 'bricks'),
-  // ]);
-}
-add_action( 'bricks/form/custom_action', 'my_form_custom_action_sending_email', 10, 1 );
-```
-
-<span id="custom-redirect-to-hidden-field"></span>
-
-**Example #3** Custom redirect to a hidden field URL
-
-In certain cases, you would like to redirect user to a page based on certain URL parameter values. In such scenario, you are not able to use `{url_parameter:key}` on the Custom redirect URL field. This is because the form was submitted in AJAX and the current page URL param will not be sent along the AJAX call.
-
-**Method 1**
-Since 1.10, Ridirect action is supporting dynamic form field. You can choose Redirect action and configure like this.
-
-![](https://academy.bricksbuilder.io/assets/form-redirect-support-dynamic-field-tag.png)
-
-**Method 2**
-You can use Custom action with some PHP code for more complicated logic. You can first place the url parameter into a hidden field.
-
-![](https://academy.bricksbuilder.io/assets/store-url-param-into-hidden-field.png)
-
-<figcaption>
-
-Store url parameter into hidden key, and choose Custom action
-
-</figcaption>
-
-Then choose Custom action, and follow below code as an example
-
-```php
-<?php
-add_action( 'bricks/form/custom_action', 'redirect_to_my_key', 10, 1 );
-
-function redirect_to_my_key( $form ) {
-  $form_fields   = $form->get_fields();
-  $form_id       = $form_fields['formId'];
-
-  // Check if the form id is the one you want
-  if( $form_id !== 'cyrozb' ) return;
-
-  // oeckxw is the hidden field Id where I placed the {url_parameter:my_key}
-  $my_key = isset( $form_fields['form-field-oecdxz'] ) ? $form_fields['form-field-oecdxz'] : '';
-
-  if( $my_key ) {
-    // Now you get the hidden field value and redirect to the page you want, for example:
-    $redirect_to = get_site_url() . '/?key=' . $my_key;
-
-    // If the hidden field value is a URL, just redirect to it instead of following my code
-    // $redirect_to = $my_key;
-
-    $form->set_result(
-      [
-        'action'          => 'my_custom_redirect', // This is the action name, you can set it to anything you want
-        'type'            => 'redirect', // Must be set to 'redirect'
-        'redirectTo'      => $redirect_to,
-        'redirectTimeout' => 0 // Need to delay ? Set a timeout in milliseconds
-      ]
-    );
-  }
-}
-```
-
-### Custom form actions {#custom-form-actions}
-
-Since Bricks 1.12.2, you can extend the functionality of Bricks forms by adding multiple **custom form actions**. This allows seamless integration with external services like CRMs, email marketing providers, notification systems, or any custom workflows you require.
-
-To create custom actions, you use three key filters:
-
-- **[`bricks/elements/{element_name}/controls`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-elements-element_name-controls/)**: Add new actions and their settings to the form builder.
-- **[`bricks/elements/{element_name}/control_groups`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-elements-element_name-control_groups/)**: Group settings for better organization in the builder.
-- **[`bricks/form/action/{form_action}`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-action-form_action/)**: Handle the logic for the custom action when the form is submitted.
-
-These filters give you complete control over how custom actions are configured and executed.
-
-#### Example: Creating a custom Slack notification action
-
-**1 - Add the action to form actions setting:**
-
-```php
-add_filter(
-    'bricks/elements/form/controls',
-    function( $controls ) {
-        $controls['actions']['options']['slack-notification'] = esc_html__( 'Send to Slack', 'bricks' );
-
-        $controls['slackFields'] = [
-            'group'       => 'slack',
-            'label'       => esc_html__( 'Fields to include', 'bricks' ),
-            'type'        => 'select',
-            'multiple'    => true,
-            'options'     => [], // Auto-populated with form fields with 'map_fields' => true
-            'map_fields'  => true,
-            'description' => esc_html__( 'Select which form fields to include in the Slack notification', 'bricks' ),
-        ];
-
-        return $controls;
-    }
-);
-```
-
-**2 - Add a new control group:**
-
-```php
-add_filter(
-    'bricks/elements/form/control_groups',
-    function( $control_groups ) {
-        $control_groups['slack'] = [
-            'title' => esc_html__( 'Slack notification', 'bricks' ),
-            'required' => [ 'actions', '=', 'slack-notification' ],
-        ];
-
-        return $control_groups;
-    }
-);
-```
-
-1.
-
-**3 - Handle the action logic on form submission:**
-
-```php
-add_action(
-    'bricks/form/action/slack-notification',
-    function ( $form ) {
-        $settings = $form->get_settings();
-        $fields   = $form->get_fields();
-
-        // Custom Slack notification implementation
-    }
-);
-```
-
-## Form validation {#form-validation}
-
-Bricks 1.7.1 provides a new filter named `bricks/form/validate` that allows you to validate every form submission and return error messages if your custom validation fails. The first `$errors` param is an array with each item being an error message. And the second `$form` param is the instance of the form that has been submitted.
-
-The following code example validates the submitted email address for the form field ID `7e30aa`.
-
-If no user account with this email address exists on this site, the validation fails, an error message is displayed, and no email will be sent.
-
-```php
-add_filter( 'bricks/form/validate', function( $errors, $form ) {
-  $form_settings = $form->get_settings();
-  $form_fields   = $form->get_fields();
-  $form_id       = $form_fields['formId'];
-
-  // Skip validation: Form ID is not 'kfbqso'
-  if ( $form_id !== 'kfbqso' ) {
-    // Early return the $errors array if it's not target form
-    return $errors;
-  }
-
-  // Get submitted field value of form field ID '7e30aa'
-  $email_address = $form->get_field_value( '7e30aa' );
-
-  // Error: Email from registered user (show error message, and don't send email)
-  if ( ! email_exists( $email_address ) ) {
-    // Add error message to the $errors message array
-    $errors[] = esc_html__( 'This email address is not in our system, sorry.', 'bricks' );
-  }
-
-  // Make sure to always return the $errors array
-  return $errors;
-}, 10, 2 );.
-```
-
-## Immediate input validation {#input-validation}
-
-![](https://academy.bricksbuilder.io/assets/form-error-message-582x1024.png)
-
-<figcaption>
-
-Form field: Error message
-
-</figcaption>
-
-Bricks can show an error message directly below a field while the visitor types and when the field loses focus.
-
-To utilize this feature:
-
-1. Add an "Error Message" to a specific form field.
-2. On input and when the field loses focus, the form will evaluate the user input to determine if the "Error Message" should be displayed based on the following criteria:
-
-- **Required:** Checks if mandatory fields have data.
-- **Min/Max number:** Ensures entered numbers fall within a defined range.
-- **Email:** Confirms the correctness of the email format.
-- **URL:** Validates the structure of inputted URLs.
-
-Fields without an "Error Message" do not show this inline message. The browser's own validation message appears on submit instead, unless **Don't use browser validation** is enabled under **Fields**.
-
-### Disabling immediate input validation
-
-Sometimes, we don’t want error messages to appear immediately. Instead, we may want to display them only on specific events. This is now possible (@since 1.12) with the new **"Disable Form Validation"** control.
-
-You can choose to disable validation on input, on blur, or both. However, the form will still be validated upon submission.
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2024-12-17-at-11.38.32@2x.png)
-
-## Pattern attribute validation {#pattern-validation}
-
-With the new `pattern` attribute (`@since 2.0.2`), you can now validate form input natively before submission. Combined with the `title` attribute (also `@since 2.0.2`), you can display custom error messages directly from the browser. Make sure the "Don't use browser validation" toggle it not enabled.
-
-The `pattern` attribute works with the following field types: `text`, `tel`, `email`, `url`, and `password`.
-
-**Example:**
-To require a simple phone number in the `###-###-###` format, you can use the pattern `^\d{3}-\d{3}-\d{3}$`.
-Additionally, you can use the `title` attribute to guide users or show a helpful message if the input doesn’t match the pattern:
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-07-30-at-15.38.08@2x.png)
-
-## Spam protection (Google reCaptcha V3) {#spam}
-
-The Bricks form element supports the latest [Google reCaptcha V3](https://developers.google.com/recaptcha/docs/v3) mechanism. To enable it, first, [create](https://g.co/recaptcha/v3) a site key and a site secret key and then add both in your admin area under "Bricks > Settings > API keys".
-
-After adding the keys, enable the reCaptcha setting when editing the Form element in the builder under the "Spam Protection" control group.
-
-The reCAPTCHA, hCaptcha, and Turnstile settings only appear once their keys are saved. Until then, the **Spam protection** group shows a note that links to **Bricks > Settings > API keys**. A [honeypot field](#honeypot) needs no keys.
-
-If you still get a lot of spam, you might need to tweak the score threshold level. The threshold is configured to 0.5 by default. Google reCaptcha V3 API returns a value between 0.0 and 1.0, where 0.0 is very likely a bot, and 1.0 is very likely a human interaction. To increase the Bricks threshold, please use the following PHP snippet:
-
-```php
-add_filter( 'bricks/form/recaptcha_score_threshold', function( $score ) {
-    // Bricks default is 0.5
-    $score = 0.8;
-    return $score;
-}, 10, 1 );
-```
-
-Setting the threshold to 0.8 means Bricks will only accept form submissions with higher scores (more likely to be human interactions).
-
-## Spam protection (hCaptcha) {#hcaptcha}
-
-Bricks integrates with hCaptcha. To utilize it, add your hCaptcha Sitekey and hCaptcha Secret Key under "Bricks > Settings > API keys".
-
-After adding the keys, enable the hCaptcha setting when editing the Form element in the builder under the "Spam Protection" control group. You'll find options to select either "Invisible" or "Visible" hCaptcha. For the "Visible" hCaptcha:
-
-- **Theme:** Choose between a `dark` or `light` theme.
-- **Size:** Pick from `compact` or `normal`.
-
-For detailed setup instructions, refer to the [hCaptcha documentation](https://docs.hcaptcha.com/switch/#get-your-hcaptcha-sitekey-and-secret-key).
-
-### Automated form testing
-
-For automated tests on a staging or test site, use [hCaptcha's test keys](https://docs.hcaptcha.com/#integration-testing-test-keys). Test keys do not provide anti-bot protection and must not be used on a production form.
-
-Keep production monitoring separate from the public form, for example by testing the same setup on staging or using a dedicated protected monitoring form.
-
-## Spam Protection (Cloudflare Turnstile) {#turnstile}
-
-Beginning with version 1.9.2, Bricks has introduced support for Cloudflare Turnstile. To leverage its capabilities, first, add your Cloudflare Turnstile site key & secret key under "Bricks > Settings > API keys".
-
-After registering the necessary details, go to the Form element in the builder and look for the “Spam Protection” control group. Here, you can toggle the Cloudflare Turnstile setting on or off.
-
-Once enabled, you will have the ability to customize the following:
-
-- **Theme:** Select between a "dark", "light", or the default "auto" theme.
-- **Size:** Opt for either "compact" or "normal".
-
-For more details about getting your site key and secret key, refer to the [Cloudflare Turnstile documentation](https://developers.cloudflare.com/turnstile/get-started/).
-
-## Honeypot {#honeypot}
-
-![](https://academy.bricksbuilder.io/assets/bricks-1.12.2-form-field-honeypot.png)
-
-Another spam protection layer, available since Bricks 1.12.2 is the ability to turn any form field (except "Files", "Remember me", "HTML" and "Hidden") into a honeypot field. This won't affect or interrupt actual website visitors, but it'll prevent bot form submissions if they fill out any of your honeypot fields.
-
-## Date and time picker fields {#datepicker}
-
-Use a **Datepicker** field to let visitors select a date, a date with a time, or a time on its own. Bricks 2.5 adds **Disable calendar** for time-only selection and **24-hour time** to control the hour display in the picker.
-
-Select the Form element, open a field under **Fields**, and set **Type** to **Datepicker**.
-
-| Selection | Field settings |
-| --- | --- |
-| Date only | Leave **Enable time** off. |
-| Date and time | Turn **Enable time** on and leave **Disable calendar** off. |
-| Time only (Bricks 2.5) | Turn both **Enable time** and **Disable calendar** on. |
-
-Existing datepicker fields keep their date selection behavior unless you enable **Disable calendar**.
-
-### Time-only selection (@since 2.5) {#timepicker}
-
-To collect an appointment time separately from its date:
-
-1. Add a **Datepicker** field and give it a label such as `Appointment time`.
-2. Turn on **Enable time**.
-3. Turn on **Disable calendar**. This setting appears after you enable time.
-4. Set **24-hour time** to **Enabled** if you want hours from `00` to `23` without an AM/PM selector.
-5. Optionally enter **Min. time** and **Max. time**, such as `09:00` and `17:00`, to limit the times visitors can select in the picker.
-
-<div className="screenshot screenshot--control-panel">
-
-![Datepicker settings with Enable time and Disable calendar on, 24-hour time enabled, and time limits of 09:00 and 17:00.](https://academy.bricksbuilder.io/assets/form-timepicker-settings.webp)
-
-</div>
-
-<figcaption>
-
-Time-only field settings with 24-hour selection and time limits of 09:00 to 17:00.
-
-</figcaption>
-
-<div className="screenshot screenshot--control-panel">
-
-![Frontend appointment field showing 14:30 with a time picker open and no calendar.](https://academy.bricksbuilder.io/assets/form-timepicker-frontend.webp)
-
-</div>
-
-On the frontend, this field opens a time picker without a calendar. To collect the appointment date, add a second **Datepicker** field and leave **Enable time** off. Each field has its own value and field ID.
-
-### 24-hour time (@since 2.5) {#24-hour-time}
-
-The **24-hour time** setting appears when **Enable time** is on. It applies to both date-and-time and time-only pickers.
-
-| Setting | Picker behavior |
-| --- | --- |
-| **Default** | Uses the WordPress time format under **Settings > General** to choose the hour display. |
-| **Enabled** | Uses 24-hour selection without an AM/PM selector. |
-| **Disabled** | Uses 12-hour selection with an AM/PM selector. |
-
-This setting changes the controls inside the picker, not the format of the value shown in the form field or submitted with the form. A time-only field uses `H:i` (24-hour hours and minutes), so selecting `2:30 PM` still fills and submits `14:30`. A date-and-time field uses the WordPress date format followed by `H:i`.
-
-These are the built-in formats. Custom code using the [datepicker options filter](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-element-form-datepicker_options/) can override them.
-
-### Saving time values to post meta
-
-When mapping a time-only field through **Create post** or **Update post**, set **Sanitization method** to **Text (sanitize_text_field)** to preserve a value such as `14:30`. Integer or float sanitization will not preserve the full time string.
-
-With **Update post**, time-only fields bypass the date conversion used for datepicker fields that include a calendar. Those calendar fields still use the existing `Ymd` conversion when saving mapped post meta. For example, a date-only selection of October 15, 2026 is saved as `20261015`.
-
-See [Create & Update Posts on the Frontend](https://academy.bricksbuilder.io/builder/features/create-update-posts-on-the-frontend/#date-and-time-meta) for a mapping example and custom-field integration details.
-
-### Customize the picker options {#datepicker-options}
-
-Bricks uses the [Flatpickr](https://flatpickr.js.org/) JavaScript library for date and time selection. Extend or customize the picker using its [available options](https://flatpickr.js.org/options/).
-
-To change the library initialization options, use the `bricks/element/form/datepicker_options` filter, like so:
-
-```php
-add_filter( 'bricks/element/form/datepicker_options', function( $options, $element ) {
-    $options['locale'] = [
-        'firstDayOfWeek' => 1 // Set Monday as the first week day
-    ];
-
-    return $options;
-}, 10, 2 );
-```
-
-The filter callback function accepts two arguments:
-
-- $options - an array of [Flatpickr options](https://flatpickr.js.org/options/)
-- $element - the Bricks element object
-
-### Localize the date picker strings {#datepicker-l10n}
-
-Flatpickr supports [l10n](https://flatpickr.js.org/localization/) for a variety of languages. You would need to load the language package by placing the following instructions into the Bricks Settings > Custom Code > Body (footer) scripts:
-
-```php
-<script src="https://npmcdn.com/flatpickr/dist/l10n/XX.js"></script>
-
-<script>
-   window.flatpickr.localize(window.flatpickr.l10ns.XX)
-</script>
-```
-
-Replace the XX with the language code you need (e.g. **de** for German, **pt** for Portuguese, ...).
-
-If you need to adjust the language on a specific form, you would need to load the language package as explained in the first line of the code above but then you may use the Bricks filter to load the language for a specific form element
-
-```php
-add_filter( 'bricks/element/form/datepicker_options', function( $options, $element ) {
-    if ( $element->id === 'abcdef' ) {
-      // localize the form "abcdef" element
-      $options['locale'] = 'XX';
-    }
-
-    return $options;
-}, 10, 2 );
-```
-
-## Define options value & label {#options}
-
-Starting at Bricks 1.10.2 you can define the value & label for the checkbox, radio, and select field types by separating the option through a colon (:) like this:
-
-![](https://academy.bricksbuilder.io/assets/bricks-form-options-value-label.png)
-
-## Integrations {#integrations}
-
-The Form element integrates with Mailchimp & Sendgrid. Allowing you to add new contacts to your email lists. Make sure you've added your Mailchimp/Sendgrid API keys as described below.
-
-When editing your form element, you have to select Mailchimp or Sendgrid under "Actions" so the form knows to add the submitted email address to your list.
-
-Once you've selected the proper action, a new "Mailchimp" or "Sendgrid" control group should appear. There you have to select the list you want to add this new contact to and the "Email field" of your form that contains the email address.
-
-### Mailchimp {#mailchimp}
-
-The Mailchimp form action allows you to automatically communicate your form data (email, first name, and last name) to a Mailchimp list and group.
-
-To use the Mailchimp action, you need to create a Mailchimp account and then [get an API key](https://mailchimp.com/help/about-api-keys/).
-
-To use this form action, add the API key under "Bricks > Settings > API keys > Mailchimp API key".
-
-### SendGrid {#sendgrid}
-
-The SendGrid form action allows you to automatically communicate your form data (email, first name, and last name) to a SendGrid list.
-
-To use the SendGrid action, you need to create a SendGrid account and then [get an API key](https://docs.sendgrid.com/ui/account-and-settings/api-keys#creating-an-api-key).
-
-To use this form action, add the API key under "Bricks > Settings > API keys > SendGrid API key".
-
-## How to create a multi-column form {#multi-column}
-
-To create a multi-column form, we first need to set the "Width" of the form fields in percentage.
-
-**Example: Two-column layout**
-
-Creating a two-column form is as simple as setting the width of the individual form fields to 50%.
-
-To add some spacing between our form fields, let's set the "Width" of the first two form fields in our example to 49%. Those fields now take up 98% of the horizontal width. Creating a 2% gap between our columns. Set the bottom "Spacing" value to "2%" to apply the same spacing in all directions.
-
-Lastly, set the "Alignment" to "space-between" to ensure our fields horizontally align with the outer edges of our form.
-
-![](https://academy.bricksbuilder.io/assets/form-element-multi-column-layout-1024x539.png)
-
-<figcaption>
-
-Two-column form layout
-
-</figcaption>
-
----
-
-# Map Connector
-
-Source: https://academy.bricksbuilder.io/builder/elements/general/map-connector/
-
-*Connect query-loop items to Google or Leaflet map markers using coordinates, per-item marker settings, and Info Box templates.*
-
-The **Map Connector** works with the Google [Map](https://academy.bricksbuilder.io/builder/elements/general/map/) element and, starting with **Bricks 2.5**, [Map (Leaflet)](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/) when **Sync with query** is enabled. Place **one Map Connector inside each item** of the query loop that should produce a marker.
-
-It renders an invisible **`<template>`** node that stores latitude, longitude, and/or address plus optional **Info Box** popup template data and **per-item marker overrides**. The Map reads these nodes to build markers when the query updates (pagination, filters, load more, etc.).
-
-See [Google Map: Sync with query](https://academy.bricksbuilder.io/builder/elements/general/map/#3-sync-with-query) or [Leaflet: Sync with query](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/#sync-with-query) for setup. External controls target the results loop containing the connectors, rather than the map itself.
-
-Leaflet requires both **Latitude** and **Longitude**. It ignores address-only connectors. Google Maps can geocode an **Address** when coordinates are not supplied.
-
-For [Geolocation filtering](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-geolocation-element), the filter's data source must contain saved coordinates. Geocoding a connector's Address for a Google marker does not create coordinates in the filter index. Use the same location fields for the filter and connector so the radius search and markers agree.
-
-Both map types preview the connected loop's markers in the builder. Test filters and pagination on the frontend.
-
-## Active Marker State {#active-marker-state}
-
-Starting with **Bricks 2.5**, a connector synced to a **Google Map** or **Map (Leaflet)** receives `map-marker-active` when its marker is selected by a click or an **Open address (Map)** interaction. This works without an Info Box. The class is removed when another marker is selected or the marker state is reset.
-
-The connector itself is invisible. To highlight a card, assign a class such as `property-card` to the repeated item and use `.property-card:has(.map-marker-active)` in your CSS. See the [active connected item example](https://academy.bricksbuilder.io/builder/elements/general/map/#active-connected-item).
-
-Both Google Map and Map (Leaflet) support **Scroll active item into view** in Sync mode. Bricks finds the loop item and scroll container automatically. See the [Google Map scroll settings](https://academy.bricksbuilder.io/builder/elements/general/map/#scroll-active-item) or [Leaflet scroll settings](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/#scroll-active-item).
-
-The `infobox-opened` class on interaction elements follows the Info Box's open/close state. Use `map-marker-active` on the connector to style the selected result independently of whether it has an Info Box.
+Creates submit/reset buttons for filter forms. Provides control over when filters are applied - either as a submit button to apply all filters at once, or as a reset button to clear all active filters. Supports redirection to specific URLs after submission.
 
 ## Settings
 
-- **Latitude** (text) - Use dynamic data from the looped post (placeholder shows Berlin-area example).
+- **Target query** (query-list) - Select the query this button should submit or reset.
+- **Global filter** (Bricks 2.5) - Reuse shared Submit/Reset behavior, including reset exclusions. The target query and button presentation remain local.
+- **Action** (select) - Button behavior. Options: Submit (apply filters), Reset (clear filters).
+- **Redirect to** (text) - URL to redirect to after applying filters (Submit action only).
+- **Open in new tab** (checkbox) - Open redirect URL in new tab (Submit action only).
+- **Exclude filter IDs** (text, Bricks 2.4) - Comma-separated filter IDs to preserve when resetting (Reset action only). From Bricks 2.5, accepts global filter IDs as well as Bricks element IDs.
+- **Hide if no active filter** (checkbox) - Hide the reset button when no filters it can reset are active. Excluded filters do not keep the button visible. Adds .brx-no-active-filter class for styling (Reset action only).
+- **Button** - Settings for the submit/reset button.
+  - **Text** (text) - Button text. Default: Filter.
+  - **Size** (select) - Button size preset. Options: Default, Small, Medium, Large, Extra Large.
+  - **Style** (select) - Button style. Options: None, Primary, Secondary, Success, Info, Warning, Danger, Dark, Light. Default: Primary.
+  - **Circle** (checkbox) - Make button circular.
+  - **Outline** (checkbox) - Use outline button style.
+  - **Icon** (icon) - Icon to display on the button.
+  - **Icon color** (color) - Color of the button icon.
+  - **Icon size** (number) - Size of the button icon.
 
-- **Longitude** (text).
+## Preserve a search while resetting refinements
 
-- **Address** (text) - Google Maps only: alternative to coordinates, resolved through geocoding. Leaflet requires latitude and longitude.
+Set **Action** to **Reset**, then enter the Search filter's Bricks element ID in **Exclude filter IDs**. For example, enter `q1w2e3,mn9456` to preserve two filters. Use filter IDs, not the target query ID or URL parameter names.
 
-An error notice appears when all three fields are empty. For Leaflet, fill in both coordinate fields even if an Address is already set.
+From Bricks 2.5, enter a [global filter](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#global-filters) ID or any element ID linked to it to preserve that shared selection for the target query. Copy the definition ID from Filter manager, or copy the element's Bricks ID from its element panel.
 
-### Info Box (Popup)
+Reset clears the other filters for the target query while keeping the excluded values, such as the visitor's search term. With **Hide if no active filter** enabled, the reset button hides once only excluded filters remain active.
 
-- **Info Box: Template (Popup)** (select) - Popup template with **Template Settings > Popup > Info Box (Map)** enabled.
+Starting with Bricks 2.5, Reset also clears [configured default selections](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) and their URL parameters, unless excluded. It does not restore the defaults. A fresh visit or reload without filter parameters applies them again.
 
-- **Info** - Reminds you to enable the Info Box option on the popup template.
-
-### Markers
-
-An **info** control notes that **Marker: Type** (text vs image) is configured on the connected map element, while fields here **override** that map’s defaults for **this** loop item.
-
-Use the connector to set values for each loop item. Set global marker typography and image dimensions on the connected map element.
-
-- **Label** (text) - Screen reader label (`aria-label`) for the marker.
-
-- **Marker: Text** - Text for the default text marker.
-
-- **Marker: Text (Active)** - Text for the active text marker.
-
-- **Marker: Image** - Image for the default image marker.
-
-- **Marker: Image (Active)** - Image for the active image marker.
+This setting is separate from the exclusion list on the Active Filters element, which controls which filters appear in that element.
 
 > **Developer reference**
 >
-> See the [Map Connector Schema](https://academy.bricksbuilder.io/developer/schema/elements/map-connector/) for the full JSON schema of this element's settings and controls.
+> See the [Filter - Submit / Reset Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-submit/) for the schema snapshot and Bricks 2.4 settings reference.
 
 ---
 
-# Map (Leaflet)
+# Filter search
 
-Source: https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-search/
 
-*Display tile-based maps, populate markers from a query, or sync them with a filterable listing using Map Connectors.*
+*Search query results without a page reload, configure initial search text, and choose AJAX or redirect behavior for Enter.*
 
-**Map (Leaflet)** displays maps using tile layers such as OpenStreetMap. Configure the tile provider under **Layers**, add locations under **Markers**, and set the center, zoom, and interactions under **Map**. It does not require a Google Maps API key. Tile providers may have their own access and attribution requirements.
+Provides a live AJAX search input for real-time content filtering. Searches through post content, titles, and custom fields without page refresh. Features debouncing, minimum character requirements, and optional clear functionality.
 
-Starting with **Bricks 2.5**, the element supports query-generated markers, **Sync with query**, clustering, text and image markers with active styles, and custom Info Boxes.
+**Tip:** Perfect for creating instant search experiences. Use the debounce setting to control API call frequency, and minimum characters to improve performance.
 
-## Layers
+## Settings
 
-Add a row to **Layers** for each tile source visitors should be able to select. Each row has:
+- **Target query** (query-list) - Select the Posts, Terms, or Users query this filter should target.
+- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
+- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (button click or Enter). Default: Input.
+- **Debounce (ms)** (number) - Delay before triggering search after typing stops. Default: 500ms.
+- **Min. characters** (number) - Minimum characters required to trigger search. Default: 3.
+- **Enter action** (select, Bricks 2.4) - Choose **AJAX search** (default) or **Redirect to URL**. Requires a target query.
+- **Trigger Filter Submit interactions** (checkbox, Bricks 2.4) - Run the target query's Filter Submit start/end interactions when Enter triggers an AJAX search. Disabled by default and available when Enter action is AJAX search.
+- **Redirect to** (text, Bricks 2.4) - Destination URL when Enter action is Redirect to URL. Active filters for the same query are appended as URL parameters.
+- **Open in new tab** (checkbox, Bricks 2.4) - Open the Enter-key redirect in a new tab. Available when a redirect URL is set.
+- **Input** - Settings for the search input field.
+  - **Placeholder** (text) - Placeholder text for the search input. Default: Search.
+  - **Placeholder typography** (typography) - Typography for placeholder text.
+  - **Label** (text) - Optional label text above the input field.
+  - **Label typography** (typography) - Typography for the label text.
+- **Icon (Clear)** - Settings for the clear/reset icon.
+  - **Icon** (icon) - Icon to display for clearing the search.
+  - **Icon color** (color) - Color of the clear icon.
+  - **Icon size** (number) - Size of the clear icon.
+- **Active filter** - Settings for active filter display.
+  - **Prefix** (text) - Text to display before filter value.
+  - **Suffix** (text) - Text to display after filter value.
+  - **Title** (text) - Custom title attribute for filter links.
 
-- **Name**: Label in the layer switcher.
-- **URL**: Tile URL template, such as `https://tile.openstreetmap.org/{z}/{x}/{y}.png`.
-- **Min Zoom** and **Max Zoom**: Zoom levels supported by the tile provider.
-- **Error Tile URL**: Fallback image for failed tiles.
-- **Attribution**: Credits required by the provider.
+## Search with Enter
 
-The default layer uses OpenStreetMap. See the [Leaflet integration guide](https://academy.bricksbuilder.io/integrations/map-leaflet/#layers) for tile URL placeholders and provider examples.
+Pressing Enter runs the configured action immediately, including when **Apply on** is set to **Submit**. Enter bypasses the typing debounce and minimum character threshold.
 
-## Choose the marker source {#marker-source}
+For a search field that takes visitors to another results page, select a **Target query**, set **Enter action** to **Redirect to URL**, and enter the destination under **Redirect to**. Configure the destination's filters to recognize the same URL parameter names. Leave **Open in new tab** off to navigate in the current tab. An empty redirect URL falls back to an AJAX search.
 
-| Mode | Use it for | Location data comes from |
+For an AJAX search that should close an Offcanvas after submission, enable **Trigger Filter Submit interactions** and use the [Filter Submit interaction triggers](https://academy.bricksbuilder.io/builder/features/interactions/#filter-submit-triggers). Ordinary typing does not trigger these submit interactions. The redirect action does not run them.
+
+## Default selection {#default-selection}
+
+Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. Use **Default value** to set initial search text. The field supports dynamic data and treats commas as part of the search text.
+
+The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
+
+> **Developer reference**
+>
+> See the [Filter - Search Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-search/) for the schema snapshot and Bricks 2.4 settings reference.
+
+---
+
+# Block
+
+Source: https://academy.bricksbuilder.io/builder/elements/layout/block/
+
+*The Block element is one of the four layout elements in Bricks (1.5+).*
+
+The Block element is one of the four [layout elements](https://academy.bricksbuilder.io/builder/styling/layout/) in Bricks (1.5+).
+
+Introduced together with the Section & Div element, it provides the same powerful layout controls as the Container but uses a default width of 100% instead of the Container's fixed 1100px width.
+
+This makes it the perfect element to use inside of a Container (e.g. column/row based layout). Or wherever you need to span the entire available width, plus quick access to direction & alignment settings. As the Block element uses `flex` by default.
+
+Use blocks to create multi-column layouts, sidebars, or any layout where you want full-width flexbox behavior without the Container's width constraints. If you want your layout element to only take up the space of its content, use the Div element instead.
+
+**Tip:** Blocks are ideal for creating column-based layouts. When you need multiple equal-width columns, insert blocks inside a container and set the direction to horizontal - they'll automatically distribute the available space equally.
+
+## Settings
+
+- **Grid column** (text) - CSS grid column span when parent uses grid layout. Controls `grid-column` property.
+
+- **Grid row** (text) - CSS grid row span when parent uses grid layout. Controls `grid-row` property.
+
+- **Query loop** - Enable query loop functionality for dynamic content. Available for Container, Block, Div, and Section elements.
+
+- **Link** (link) - Link settings when using anchor tag. Required when HTML tag is set to 'a'.
+
+- **HTML tag** (select) - HTML tag for the block element. Options: div, section, a [Link], article, nav, ol, ul, li, aside, address, figure, custom. Default: div.
+
+- **Custom tag** (text) - Custom HTML tag when "custom" is selected. Without attributes. Required when HTML tag is 'custom'.
+
+- **Display** (select) - CSS display property. Options: flex, grid, block, inline-block, inline, none. Default: flex.
+
+### Grid Layout (when Display is grid)
+
+- **Gap** (number with units) - Gap between grid items. Controls `grid-gap` property.
+
+- **Grid template columns** (text) - CSS grid template columns. Supports dynamic data and variables.
+
+- **Grid template rows** (text) - CSS grid template rows. Supports dynamic data and variables.
+
+- **Grid auto columns** (text) - Grid auto columns size. Supports dynamic data and variables.
+
+- **Grid auto rows** (text) - Grid auto rows size. Supports dynamic data and variables.
+
+- **Grid auto flow** (select) - Grid auto flow direction. Options: row, column, dense.
+
+- **Justify items** (justify-content) - Grid justify items alignment.
+
+- **Align items** (align-items) - Grid align items alignment.
+
+- **Justify content** (justify-content) - Grid justify content alignment.
+
+- **Align content** (align-items) - Grid align content alignment.
+
+### Flex Layout (when Display is flex)
+
+- **Flex wrap** (select) - Flexbox wrapping behavior. Options: No wrap, Wrap, Wrap reverse.
+
+- **Direction** (direction) - Flexbox direction (row/column). Controls `flex-direction` property.
+
+- **Align self** (align-items) - Align self for this flex item. Controls `align-self` property with `!important`.
+
+- **Align main axis** (justify-content) - Justify content alignment. Controls `justify-content` property.
+
+- **Align cross axis** (align-items) - Align items alignment. Controls `align-items` property.
+
+- **Column gap** (number with units) - Gap between flex columns. Controls `column-gap` property.
+
+- **Row gap** (number with units) - Gap between flex rows. Controls `row-gap` property.
+
+- **Flex grow** (number) - Flex grow factor. Minimum: 0. Controls `flex-grow` property. Default placeholder: 0.
+
+- **Flex shrink** (number) - Flex shrink factor. Minimum: 0. Controls `flex-shrink` property. Default placeholder: 1.
+
+- **Flex basis** (text) - Flex basis value. Supports dynamic data and variables. Controls `flex-basis` property. Default placeholder: auto.
+
+### Order
+
+- **Order** (number) - Flexbox order. Minimum: -999. Controls `order` property. Default placeholder: 0. Available when display is not 'none'.
+
+## Style
+
+These controls can be accessed under the **Style** tab in the element settings.
+
+### Masonry
+
+- **Masonry layout** (checkbox) - Enable masonry layout for child elements.
+- **Columns** (number) - Number of masonry columns. Default: 3. Controls `--columns` CSS property.
+- **Spacing** (number with units) - Spacing between masonry items. Default: 10px. Controls `--gutter` CSS property.
+- **Horizontal order** (checkbox) - Enable horizontal ordering in masonry layout.
+- **Transition: Duration** (number with units) - Animation duration for masonry transitions. Default: 0.4s. Set to "0" to disable default animations.
+- **Reveal animation** (select) - Animation type for masonry items. Options: Scale, Fade, Slide from left, Slide from right, Skew. Default: Scale. Only applies to new items added to the DOM.
+
+## Theme Style: Element – Block
+
+You can change the following Block default settings in your theme styles under "Element – Block":
+
+- `width`
+- `min-width`
+- `max-width`
+- `margin`
+- `padding`
+
+## Background lazy loading
+
+From Bricks 2.5, enable **Style > Background > Disable lazy load** to load this element's background images and videos without waiting for them to become visible. The checkbox is hidden when lazy loading is already disabled globally or for the page.
+
+See [Lazy Loading](https://academy.bricksbuilder.io/builder/features/lazy-loading/) for setup steps and how this differs from the Image and Logo elements' Loading controls.
+
+> **Developer reference**
+>
+> See the [Block Schema](https://academy.bricksbuilder.io/developer/schema/elements/block/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Container
+
+Source: https://academy.bricksbuilder.io/builder/elements/layout/container/
+
+*The Container element used to be the only layout element in Bricks until version 1.5. It has now been extended by the Section, Block, and Div element to provide.*
+
+The Container element used to be the only layout element in Bricks until version 1.5. It has now been extended by the Section, Block, and Div element to provide a more maintainable & streamlined layout creation process.
+
+The [Understanding the Layout](https://academy.bricksbuilder.io/builder/styling/layout/) article covers in more detail how to best use the layout elements in Bricks.
+
+## How To Use The Container
+
+The Container has a default width of 1100px, is centered, and uses the **flexbox** layout model. This provides various settings to easily direct, align, and space out the elements inside a Container.
+
+We recommend using the Container at the root level or inside a Section.
+
+When editing the Container, you can click the "column" layout icon on the canvas to quickly insert a pre-designed column-based layout:
+
+![](https://academy.bricksbuilder.io/assets/bricks-insert-layout-tool-1024x293.jpg)
+
+Let's explore the container capabilities and go over a few container layout examples in the video below:
+
+https://www.youtube.com/watch?v=_dhKJdNNxLI
+
+## Convert your pre-1.2 Bricks layout to Containers
+
+If you've built your site prior to version 1.2 using the "old" section, row, and column layout, you first need to convert your data to the new container layout.
+
+Bricks comes with a built-in **container migrator** that migrates your existing Bricks data to the new container layout with one-click. So you don't have to re-create your entire site from scratch.
+
+As the new container layout is fully flexible and does NOT have a pre-defined concept of "sections", "rows" or "columns" you most likely have to make some manual adjustments after running the migrator.
+
+After updating to Bricks 1.2 your old data will still be rendered on the frontend, but it's not a 100% accurate representation of your existing section layout.
+
+Once you've updated to Bricks 1.2+, please convert your existing Bricks data as soon as possible as outlined in the step-by-step migration guide below.  
+  
+We highly recommend migrating your pages one by one, to ensure you don't miss reviewing any of your migrated pages.  
+  
+As an extra precaution, you can also clone your existing site or editing it on a staging server first, and perform the migration there (rather than on any live site).  
+  
+**The migrator does NOT delete any of your existing (section) Bricks data. If you feel Bricks 1.2 and the migrator are not ready for your site yet, you can always download a previous version of Bricks (like 1.1.3) from your Bricks account to roll back and continue using the section, row, column layout for now.**
+
+https://youtu.be/3MrLHRQssrg
+
+### STEP #1: View your un-migrated data on the post type screen
+
+All un-migrated posts/pages/templates, etc. all marked as such by the "**(not migrated)**" label behind the title. As you can see in the screenshot below, we need to migrate a page named "Blank":
+
+<figure>
+
+![](https://academy.bricksbuilder.io/assets/bricks-container-migrator-step-1.png)
+
+<figcaption>
+
+Page "Blank" needs to be migrated
+
+</figcaption>
+
+</figure>
+
+### STEP #2: Select your page and run the migrator
+
+Now select the page you want to migrate, click on the "Bulk actions" dropdown. Select "Migrate Bricks Data" and click "Apply" to run the migrator:
+
+<figure>
+
+![](https://academy.bricksbuilder.io/assets/bricks-container-migrator-step-2.png)
+
+<figcaption>
+
+Select and apply the "Migrate Bricks Data" bulk action
+
+</figcaption>
+
+</figure>
+
+### STEP #3: Review the migration result
+
+To inspect the results of the one-click migrator, edit your migrated page with Bricks, and perform any necessary adjustments inside the builder. Then preview your changes on the frontend as well, to ensure your layout matches your expectations.
+
+### Migration tips:
+
+- Restore the default section margin-bottom of 30px under: Theme Styles > General > Root Container Margin
+- Restore the default element margin-bottom of 15px under: Theme Styles > General > Element Margin
+
+![](https://academy.bricksbuilder.io/assets/bricks-container-migrator-tips-1024x429.png)
+
+## Settings
+
+- **Grid column** (text) - CSS grid column span when parent uses grid layout. Controls `grid-column` property.
+
+- **Grid row** (text) - CSS grid row span when parent uses grid layout. Controls `grid-row` property.
+
+- **Query loop** - Enable query loop functionality for dynamic content. Available for Container, Block, Div, and Section elements.
+
+- **Link** (link) - Link settings when using anchor tag. Required when HTML tag is set to 'a'.
+
+- **HTML tag** (select) - HTML tag for the container element. Options: div, section, a [Link], article, nav, ol, ul, li, aside, address, figure, custom. Default: div.
+
+- **Custom tag** (text) - Custom HTML tag when "custom" is selected. Without attributes. Required when HTML tag is 'custom'.
+
+- **Display** (select) - CSS display property. Options: flex, grid, block, inline-block, inline, none. Default: flex.
+
+### Grid Layout (when Display is grid)
+
+- **Gap** (number with units) - Gap between grid items. Controls `grid-gap` property.
+
+- **Grid template columns** (text) - CSS grid template columns. Supports dynamic data and variables.
+
+- **Grid template rows** (text) - CSS grid template rows. Supports dynamic data and variables.
+
+- **Grid auto columns** (text) - Grid auto columns size. Supports dynamic data and variables.
+
+- **Grid auto rows** (text) - Grid auto rows size. Supports dynamic data and variables.
+
+- **Grid auto flow** (select) - Grid auto flow direction. Options: row, column, dense.
+
+- **Justify items** (justify-content) - Grid justify items alignment.
+
+- **Align items** (align-items) - Grid align items alignment.
+
+- **Justify content** (justify-content) - Grid justify content alignment.
+
+- **Align content** (align-items) - Grid align content alignment.
+
+### Flex Layout (when Display is flex)
+
+- **Flex wrap** (select) - Flexbox wrapping behavior. Options: No wrap, Wrap, Wrap reverse.
+
+- **Direction** (direction) - Flexbox direction (row/column). Controls `flex-direction` property.
+
+- **Align self** (align-items) - Align self for this flex item. Controls `align-self` property with `!important`.
+
+- **Align main axis** (justify-content) - Justify content alignment. Controls `justify-content` property.
+
+- **Align cross axis** (align-items) - Align items alignment. Controls `align-items` property.
+
+- **Column gap** (number with units) - Gap between flex columns. Controls `column-gap` property.
+
+- **Row gap** (number with units) - Gap between flex rows. Controls `row-gap` property.
+
+- **Flex grow** (number) - Flex grow factor. Minimum: 0. Controls `flex-grow` property. Default placeholder: 0.
+
+- **Flex shrink** (number) - Flex shrink factor. Minimum: 0. Controls `flex-shrink` property. Default placeholder: 1.
+
+- **Flex basis** (text) - Flex basis value. Supports dynamic data and variables. Controls `flex-basis` property. Default placeholder: auto.
+
+### Order
+
+- **Order** (number) - Flexbox order. Minimum: -999. Controls `order` property. Default placeholder: 0. Available when display is not 'none'.
+
+## Style
+
+These controls can be accessed under the **Style** tab in the element settings.
+
+### Masonry
+
+- **Masonry layout** (checkbox) - Enable masonry layout for child elements.
+- **Columns** (number) - Number of masonry columns. Default: 3. Controls `--columns` CSS property.
+- **Spacing** (number with units) - Spacing between masonry items. Default: 10px. Controls `--gutter` CSS property.
+- **Horizontal order** (checkbox) - Enable horizontal ordering in masonry layout.
+- **Transition: Duration** (number with units) - Animation duration for masonry transitions. Default: 0.4s. Set to "0" to disable default animations.
+- **Reveal animation** (select) - Animation type for masonry items. Options: Scale, Fade, Slide from left, Slide from right, Skew. Default: Scale. Only applies to new items added to the DOM.
+
+## Background lazy loading
+
+From Bricks 2.5, enable **Style > Background > Disable lazy load** to load this element's background images and videos without waiting for them to become visible. The checkbox is hidden when lazy loading is already disabled globally or for the page.
+
+See [Lazy Loading](https://academy.bricksbuilder.io/builder/features/lazy-loading/) for setup steps and how this differs from the Image and Logo elements' Loading controls.
+
+> **Developer reference**
+>
+> See the [Container Schema](https://academy.bricksbuilder.io/developer/schema/elements/container/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Div
+
+Source: https://academy.bricksbuilder.io/builder/elements/layout/div/
+
+*The Div element is one of the four layout elements in Bricks (1.5+).*
+
+The Div element is one of the four [layout elements](https://academy.bricksbuilder.io/builder/styling/layout/) in Bricks (1.5+).
+
+Introduced together with the Section & Block element, it allows you to create flexible layouts in record time. The Div element in Bricks is a plain, unstyled div. It's the most generic element to group and lay out your content.
+
+While you use the **Container** to "contain" other elements inside a preset width of 1100px, and the **Block** element with a 100% width, the **Div** element has no presets at all.
+
+This makes it perfect to use inside other layout elements as it grows & shrinks according to its content, or to build Div-only class-based layouts. Use the Div element for grouping content, creating custom layouts, or when you need complete control over styling without any predefined properties.
+
+**Tip:** The Div element's HTML tag setting allows you to transform it into any semantic HTML element (article, nav, ul, li, a (link), etc.) while keeping all the powerful layout and styling controls. This flexibility makes it a versatile building block that can adapt to different content structures and semantic requirements.
+
+## Settings
+
+- **Grid column** (text) - CSS grid column span when parent uses grid layout. Controls `grid-column` property.
+
+- **Grid row** (text) - CSS grid row span when parent uses grid layout. Controls `grid-row` property.
+
+- **Query loop** - Enable query loop functionality for dynamic content. Available for Container, Block, Div, and Section elements.
+
+- **Link** (link) - Link settings when using anchor tag. Required when HTML tag is set to 'a'.
+
+- **HTML tag** (select) - HTML tag for the div element. Options: div, section, a [Link], article, nav, ol, ul, li, aside, address, figure, custom. Default: div.
+
+- **Custom tag** (text) - Custom HTML tag when "custom" is selected. Without attributes. Required when HTML tag is 'custom'.
+
+- **Display** (select) - CSS display property. Options: flex, grid, block, inline-block, inline, none. Default: block.
+
+### Grid Layout (when Display is grid)
+
+- **Gap** (number with units) - Gap between grid items. Controls `grid-gap` property.
+
+- **Grid template columns** (text) - CSS grid template columns. Supports dynamic data and variables.
+
+- **Grid template rows** (text) - CSS grid template rows. Supports dynamic data and variables.
+
+- **Grid auto columns** (text) - Grid auto columns size. Supports dynamic data and variables.
+
+- **Grid auto rows** (text) - Grid auto rows size. Supports dynamic data and variables.
+
+- **Grid auto flow** (select) - Grid auto flow direction. Options: row, column, dense.
+
+- **Justify items** (justify-content) - Grid justify items alignment.
+
+- **Align items** (align-items) - Grid align items alignment.
+
+- **Justify content** (justify-content) - Grid justify content alignment.
+
+- **Align content** (align-items) - Grid align content alignment.
+
+### Flex Layout (when Display is flex)
+
+- **Flex wrap** (select) - Flexbox wrapping behavior. Options: No wrap, Wrap, Wrap reverse.
+
+- **Direction** (direction) - Flexbox direction (row/column). Controls `flex-direction` property.
+
+- **Align self** (align-items) - Align self for this flex item. Controls `align-self` property with `!important`.
+
+- **Align main axis** (justify-content) - Justify content alignment. Controls `justify-content` property.
+
+- **Align cross axis** (align-items) - Align items alignment. Controls `align-items` property.
+
+- **Column gap** (number with units) - Gap between flex columns. Controls `column-gap` property.
+
+- **Row gap** (number with units) - Gap between flex rows. Controls `row-gap` property.
+
+- **Flex grow** (number) - Flex grow factor. Minimum: 0. Controls `flex-grow` property. Default placeholder: 0.
+
+- **Flex shrink** (number) - Flex shrink factor. Minimum: 0. Controls `flex-shrink` property. Default placeholder: 1.
+
+- **Flex basis** (text) - Flex basis value. Supports dynamic data and variables. Controls `flex-basis` property. Default placeholder: auto.
+
+### Order
+
+- **Order** (number) - Flexbox order. Minimum: -999. Controls `order` property. Default placeholder: 0. Available when display is not 'none'.
+
+## Style
+
+These controls can be accessed under the **Style** tab in the element settings.
+
+### Masonry
+
+- **Masonry layout** (checkbox) - Enable masonry layout for child elements.
+- **Columns** (number) - Number of masonry columns. Default: 3. Controls `--columns` CSS property.
+- **Spacing** (number with units) - Spacing between masonry items. Default: 10px. Controls `--gutter` CSS property.
+- **Horizontal order** (checkbox) - Enable horizontal ordering in masonry layout.
+- **Transition: Duration** (number with units) - Animation duration for masonry transitions. Default: 0.4s. Set to "0" to disable default animations.
+- **Reveal animation** (select) - Animation type for masonry items. Options: Scale, Fade, Slide from left, Slide from right, Skew. Default: Scale. Only applies to new items added to the DOM.
+
+## Theme Style: Element – Div
+
+You can change the defaults of the Div element in your theme styles under "Element – Div":
+
+- `display`
+- `flex-direction` (if display set to "flex")
+- `justify-content` (if display set to "flex")
+- `align-items` (if display set to "flex")
+- `width`
+- `min-width`
+- `max-width`
+- `margin`
+- `padding`
+
+## Background lazy loading
+
+From Bricks 2.5, enable **Style > Background > Disable lazy load** to load this element's background images and videos without waiting for them to become visible. The checkbox is hidden when lazy loading is already disabled globally or for the page.
+
+See [Lazy Loading](https://academy.bricksbuilder.io/builder/features/lazy-loading/) for setup steps and how this differs from the Image and Logo elements' Loading controls.
+
+> **Developer reference**
+>
+> See the [Div Schema](https://academy.bricksbuilder.io/developer/schema/elements/div/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Divider
+
+Source: https://academy.bricksbuilder.io/builder/elements/layout/divider/
+
+*The Divider element creates horizontal or vertical separator lines with optional icons.*
+
+The Divider element creates horizontal or vertical separator lines with optional icons.
+
+## Settings
+
+- **Height** (number with units) - The height/thickness of the divider line. Default: 1.
+
+- **Width** (number with units) - The width/length of the divider line.
+
+- **Style** (select) - The line style. Options: `solid`, `dashed`, `dotted`, `double`, `groove`, `ridge`, `inset`, `outset`. Default: `solid`.
+
+- **Direction** (select) - Orientation of the divider. Options: `horizontal`, `vertical`. Default: `horizontal`.
+
+- **Align** (justify-content) - Alignment of the divider within its container. Options: `flex-start`, `center`, `flex-end`.
+
+- **Color** (color) - Color of the divider line and icon.
+
+### Icon
+
+- **Icon** (icon) - Add an icon that appears on the divider line.
+
+- **Typography** (typography) - Style settings for the icon (size, font properties). Only available when an icon is selected.
+
+> **Developer reference**
+>
+> See the [Divider Schema](https://academy.bricksbuilder.io/developer/schema/elements/divider/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# List
+
+Source: https://academy.bricksbuilder.io/builder/elements/layout/list/
+
+*The List element creates customizable lists with icons, titles, meta information, descriptions, and optional highlight labels.*
+
+The List element creates customizable lists with icons, titles, meta information, descriptions, and optional highlight labels.
+
+## Settings
+
+### List Items
+
+- **List items** (repeater) - Add and configure list items. Each item has:
+  - **Icon** (icon) - Optional icon for the list item
+  - **Title** (text) - Main title text
+  - **Link title** (link) - Make the title clickable
+  - **Meta** (text) - Additional meta information (e.g., price, date)
+  - **Description** (textarea) - Longer description text
+  - **Highlight** (checkbox) - Mark this item as highlighted
+  - **Highlight label** (text) - Custom label text for highlighted items. Only available when highlight is enabled.
+
+### List Item
+
+- **Justify content** (justify-content) - Horizontal alignment of list item content. Controls `justify-content` property for `.content` and `.description` selectors.
+
+- **Align items** (align-items) - Vertical alignment of list item content. Options: `flex-start`, `center`, `flex-end`, `baseline`. Controls `align-items` property for `.content` and `.description` selectors. Excludes `stretch` option.
+
+- **Margin** (spacing) - Margin around each list item. Controls `margin` property for `li` selector.
+
+- **Padding** (spacing) - Padding inside each list item. Controls `padding` property for `li` selector.
+
+- **Odd background** (color) - Background color for odd-numbered list items. Controls `background-color` property for `li:nth-child(odd)` selector.
+
+- **Even background** (color) - Background color for even-numbered list items. Controls `background-color` property for `li:nth-child(even)` selector.
+
+- **Border** (border) - Border styling for list items. Controls `border` property for `li` selector.
+
+- **Auto width** (checkbox) - Enable automatic width for list items. Sets `justify-content` to `initial` for `.content` selector and `flex-grow` to `0` for `.separator` selector.
+
+### Highlight
+
+- **Block** (checkbox) - Display highlight label as block element. Controls `display` property for `li[data-highlight]::before` selector.
+
+- **Padding** (spacing) - Padding for highlight label. Controls `padding` property for `li[data-highlight]::before` selector.
+
+- **Background** (color) - Background color for highlight label. Controls `background-color` property for `li[data-highlight]::before` selector.
+
+- **Border** (border) - Border styling for highlight label. Controls `border` property for `li[data-highlight]::before` selector.
+
+- **Typography** (typography) - Typography settings for highlight label. Controls `font` property for `li[data-highlight]::before` selector.
+
+- **Content** (separator) - Visual separator in the control panel.
+
+- **Padding** (spacing) - Padding for highlighted item content. Controls `padding` property for `li[data-highlight] .content` selector.
+
+- **Background** (color) - Background color for highlighted item content. Controls `background-color` property for `li[data-highlight] .content` selector.
+
+- **Border** (border) - Border styling for highlighted item content. Controls `border` property for `li[data-highlight] .content` selector.
+
+- **Text color** (color) - Text color for highlighted item content. Controls `color` property for `li[data-highlight] .content .title`, `li[data-highlight] .content .meta`, and `li[data-highlight] .content .description` selectors.
+
+### Icon
+
+- **Icon** (icon) - Default icon for all list items.
+
+- **After title** (checkbox) - Position icon after the title instead of before.
+
+- **Width** (number with units) - Width of the icon. Controls `width` property for `.icon` selector.
+
+- **Height** (number with units) - Height of the icon. Controls `height` property for `.icon` selector.
+
+- **Size** (number with units) - Font size of the icon. Controls `font-size` property for `.icon` selector, and `height`/`width` properties for `.icon svg` selector.
+
+- **Color** (color) - Color of the icon. Controls `color` property for `.icon` selector.
+
+- **Background color** (color) - Background color of the icon. Controls `background-color` property for `.icon` selector.
+
+- **Border** (border) - Border styling for the icon. Controls `border` property for `.icon` selector.
+
+- **Box shadow** (box-shadow) - Box shadow for the icon. Controls `box-shadow` property for `.icon` selector.
+
+### Title
+
+- **Margin** (spacing) - Margin around the title. Controls `margin` property for `.title` selector.
+
+- **HTML tag** (text) - HTML tag for the title. Supports dynamic data. Default placeholder: `span`. Validates HTML tag format.
+
+- **Typography** (typography) - Typography settings for the title. Controls `font` property for `.title` selector.
+
+### Meta
+
+- **Margin** (spacing) - Margin around the meta text. Controls `margin` property for `.meta` selector.
+
+- **Typography** (typography) - Typography settings for the meta text. Controls `font` property for `.meta` selector.
+
+### Description
+
+- **Typography** (typography) - Typography settings for the description. Controls `font` property for `.description` selector.
+
+### Separator
+
+- **Disable** (checkbox) - Disable the separator line between items. Controls `display` property for `.separator` selector (sets to `none`). Triggers re-render.
+
+- **Style** (select) - Border style for the separator. Options from border style control options. Controls `border-top-style` property for `.separator` selector. Only available when separator is not disabled.
+
+- **Width** (number with units) - Width of the separator. Controls `flex-basis` property for `.separator` selector and sets `flex-grow` to `0`. Only available when separator is not disabled.
+
+- **Height** (number with units) - Height/thickness of the separator. Controls `border-top-width` property for `.separator` selector. Only available when separator is not disabled.
+
+- **Color** (color) - Color of the separator. Controls `border-top-color` property for `.separator` selector. Only available when separator is not disabled.
+
+> **Developer reference**
+>
+> See the [List Schema](https://academy.bricksbuilder.io/developer/schema/elements/list/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Section
+
+Source: https://academy.bricksbuilder.io/builder/elements/layout/section/
+
+*The Section element allows you to structure/divide your page into self-containing areas (think: one topic per section).*
+
+The Section element allows you to structure/divide your page into self-containing areas (think: one topic per section).
+
+The [Understanding the Layout](https://academy.bricksbuilder.io/builder/styling/layout/) article covers in more detail how to best use the layout elements in Bricks.
+
+The Section element is the outermost building block for structuring and dividing your page. Use sections to separate and space out individual parts of your page, such as hero sections, content areas, or footers.
+
+The Section element has a default width of 100%, uses the `section` tag, and flexbox. Sections take up 100% of the available width and adjust in height according to their content. They are stacked vertically on top of each other.
+
+It should be used at the root level to structure your page into self-containing areas. When adding a Section to the canvas, a Container element is added inside of the Section automatically. You can delete this Container if not needed. It's just the default behaviour to speed up your site creation process.
+
+<figure>
+
+![](https://academy.bricksbuilder.io/assets/bricks-1.5-section-element-1024x484.jpg)
+
+<figcaption>
+
+Example: Section > Container > Heading
+
+</figcaption>
+
+</figure>
+
+**Tip:** Use sections as the root level elements in your page structure. They work great for creating distinct page sections with different backgrounds, spacing, and layouts.
+
+## Settings
+
+- **Grid column** (text) - CSS grid column span when parent uses grid layout. Controls `grid-column` property.
+
+- **Grid row** (text) - CSS grid row span when parent uses grid layout. Controls `grid-row` property.
+
+- **Query loop** - Enable query loop functionality for dynamic content. Available for Container, Block, Div, and Section elements.
+
+- **Link** (link) - Link settings when using anchor tag. Required when HTML tag is set to 'a'.
+
+- **HTML tag** (select) - HTML tag for the section element. Options: div, section, a [Link], article, nav, ol, ul, li, aside, address, figure, custom. Default: section.
+
+- **Custom tag** (text) - Custom HTML tag when "custom" is selected. Without attributes. Required when HTML tag is 'custom'.
+
+- **Display** (select) - CSS display property. Options: flex, grid, block, inline-block, inline, none. Default: flex.
+
+### Grid Layout (when Display is grid)
+
+- **Gap** (number with units) - Gap between grid items. Controls `grid-gap` property.
+
+- **Grid template columns** (text) - CSS grid template columns. Supports dynamic data and variables.
+
+- **Grid template rows** (text) - CSS grid template rows. Supports dynamic data and variables.
+
+- **Grid auto columns** (text) - Grid auto columns size. Supports dynamic data and variables.
+
+- **Grid auto rows** (text) - Grid auto rows size. Supports dynamic data and variables.
+
+- **Grid auto flow** (select) - Grid auto flow direction. Options: row, column, dense.
+
+- **Justify items** (justify-content) - Grid justify items alignment.
+
+- **Align items** (align-items) - Grid align items alignment.
+
+- **Justify content** (justify-content) - Grid justify content alignment.
+
+- **Align content** (align-items) - Grid align content alignment.
+
+### Flex Layout (when Display is flex)
+
+- **Flex wrap** (select) - Flexbox wrapping behavior. Options: No wrap, Wrap, Wrap reverse.
+
+- **Direction** (direction) - Flexbox direction (row/column). Controls `flex-direction` property.
+
+- **Align self** (align-items) - Align self for this flex item. Controls `align-self` property with `!important`.
+
+- **Align main axis** (justify-content) - Justify content alignment. Controls `justify-content` property.
+
+- **Align cross axis** (align-items) - Align items alignment. Controls `align-items` property.
+
+- **Column gap** (number with units) - Gap between flex columns. Controls `column-gap` property.
+
+- **Row gap** (number with units) - Gap between flex rows. Controls `row-gap` property.
+
+- **Flex grow** (number) - Flex grow factor. Minimum: 0. Controls `flex-grow` property. Default placeholder: 0.
+
+- **Flex shrink** (number) - Flex shrink factor. Minimum: 0. Controls `flex-shrink` property. Default placeholder: 1.
+
+- **Flex basis** (text) - Flex basis value. Supports dynamic data and variables. Controls `flex-basis` property. Default placeholder: auto.
+
+### Order
+
+- **Order** (number) - Flexbox order. Minimum: -999. Controls `order` property. Default placeholder: 0. Available when display is not 'none'.
+
+### Style
+
+These controls can be accessed under the **Style** tab in the element settings.
+
+### Masonry
+
+- **Masonry layout** (checkbox) - Enable masonry layout for child elements.
+- **Columns** (number) - Number of masonry columns. Default: 3. Controls `--columns` CSS property.
+- **Spacing** (number with units) - Spacing between masonry items. Default: 10px. Controls `--gutter` CSS property.
+- **Horizontal order** (checkbox) - Enable horizontal ordering in masonry layout.
+- **Transition: Duration** (number with units) - Animation duration for masonry transitions. Default: 0.4s. Set to "0" to disable default animations.
+- **Reveal animation** (select) - Animation type for masonry items. Options: Scale, Fade, Slide from left, Slide from right, Skew. Default: Scale. Only applies to new items added to the DOM.
+
+## Theme Style: Element – Section
+
+You can change the section `width`, `min-width`, `max-width`, `margin`, and `padding` in your theme styles under the "Elements > Section" group.
+
+## Background lazy loading
+
+From Bricks 2.5, enable **Style > Background > Disable lazy load** to load this element's background images and videos without waiting for them to become visible. The checkbox is hidden when lazy loading is already disabled globally or for the page.
+
+See [Lazy Loading](https://academy.bricksbuilder.io/builder/features/lazy-loading/) for setup steps and how this differs from the Image and Logo elements' Loading controls.
+
+> **Developer reference**
+>
+> See the [Section Schema](https://academy.bricksbuilder.io/developer/schema/elements/section/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Audio
+
+Source: https://academy.bricksbuilder.io/builder/elements/media/audio/
+
+*The Audio element embeds audio files with a customizable player interface.*
+
+The Audio element embeds audio files with a customizable player interface.
+
+## Settings
+
+- **Source** (select) - The audio source type. Options: `file` (media library), `external` (external URL), `dynamic` (dynamic data). Default: `file`.
+
+- **File** (audio) - Select an audio file from the media library. Available when source is "file".
+
+- **External URL** (text) - Enter an external audio file URL. Available when source is "external".
+
+- **Dynamic Data** (text with dynamic data) - Select audio from dynamic data source. Available when source is "dynamic".
+
+- **Custom title** (text) - Override the audio title. Not available for external sources.
+
+- **Show artist** (checkbox) - Display the artist name from audio metadata. Not available for external sources or when custom title is set.
+
+- **Show title** (checkbox) - Display the audio title from metadata. Not available for external sources or when custom title is set.
+
+- **Autoplay** (checkbox) - Automatically play the audio on page load. Note: Autoplay is blocked in most modern browsers.
+
+- **Loop** (checkbox) - Loop the audio playback.
+
+- **Tag** (select) - HTML tag for the audio title. Options: `p`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`. Default: `p`.
+
+- **Preload** (select) - Audio preload behavior. Options: `none`, `metadata`, `auto`. Default: `none`.
+
+- **Theme** (select) - Audio player color theme. Options: `light`, `dark`. Default: `light`.
+
+> **Developer reference**
+>
+> See the [Audio Schema](https://academy.bricksbuilder.io/developer/schema/elements/audio/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# File
+
+Source: https://academy.bricksbuilder.io/builder/elements/media/file/
+
+*Add downloadable files and links in Bricks from the Media Library, external URLs, or dynamic data, with optional inline PDF previews.*
+
+The File element displays a document as a linked file name, a download button, or both. PDF files can also appear in a browser-native inline preview.
+
+The element is available in Bricks 2.4. Find it under **Elements > Media > File**.
+
+![File element selected in the Bricks builder with the Source control and the File name, Download button, and PDF preview groups visible.](https://academy.bricksbuilder.io/assets/bricks-file-element-controls.webp)
+
+## Choose the file source
+
+Use the **Source** control to choose where the file comes from:
+
+- **File**: Select a file from the WordPress Media Library. This is the default source.
+- **External URL**: Enter the direct URL of a file hosted on this site or another site.
+- **Dynamic data**: Select a file or media value from [dynamic data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/). In a template, each post can supply its own document through a custom field.
+
+If a dynamic field returns more than one media item, the File element uses the first item.
+
+## File name
+
+The file name is shown as a link by default. It opens the file instead of forcing a download.
+
+The **File name** group contains these controls:
+
+- **Hide file name**: Removes the linked file name.
+- **Custom file name**: Replaces the name from the Media Library or file URL. This control supports dynamic data.
+- **Open in new tab**: Opens the file-name link in a new browser tab. It also applies to the fallback link inside a PDF preview.
+
+When no custom name is set, Bricks uses the Media Library filename or extracts the filename from the URL.
+
+## Download button
+
+The download button is shown by default. Use the **Download button** group to change its label, size, style, outline, and circle settings, or enable **Hide download button**.
+
+The filename link and download button have different purposes: the filename link opens the file, while the button uses the browser's download behavior. A browser or external file host can still open the file instead of downloading it.
+
+## PDF preview
+
+Bricks displays the preview when it recognizes the source as a PDF. A Media Library file is identified by its `application/pdf` MIME type. External and dynamic URLs are identified by a `.pdf` extension in the URL path.
+
+An external URL without `.pdf` in its path is not treated as a PDF, even if the server returns PDF content.
+
+The preview fills the element width and is 600px high by default. Its controls are in the **PDF preview** group:
+
+- **Hide PDF preview**: Removes the inline preview. The file name and download button remain available unless you hide them separately.
+- **Preview title**: Sets the accessible label for the embedded PDF. When left empty, Bricks generates a label from the file name.
+- **Height**: Sets the preview height. Use [responsive editing](https://academy.bricksbuilder.io/builder/interface/responsive-editing/) to adjust it at different breakpoints.
+- **Display**: Keep the preview inline at every viewport width, or use **Inline on desktop, hidden on mobile**.
+- **Hide at breakpoint**: Chooses the viewport width at which the preview is hidden. This appears when **Inline on desktop, hidden on mobile** is selected. If you do not choose a breakpoint, Bricks uses the Mobile landscape breakpoint, with 767px as the fallback width.
+- **Load PDF on click**: Delays loading the PDF until the visitor activates the preview placeholder.
+- **Preview image**: Sets the image shown before a click. This appears when **Load PDF on click** is enabled.
+
+With **Load PDF on click** enabled, Bricks uses the custom preview image first. If none is set, it uses a preview generated for the Media Library attachment when WordPress has one. Otherwise, the placeholder shows a PDF icon and the file name.
+
+![File element showing the generated PDF preview image before the PDF loads.](https://academy.bricksbuilder.io/assets/bricks-file-element-load-pdf-before.webp)
+
+![File element after loading the PDF in the browser-native inline viewer.](https://academy.bricksbuilder.io/assets/bricks-file-element-load-pdf-after.webp)
+
+> **Keep a file link available**
+>
+> If the PDF preview is hidden at a breakpoint, its internal fallback link is hidden with it. Keep the file name or download button visible so visitors can still reach the document at that breakpoint.
+
+## Example: A PDF from a custom field
+
+Suppose each property post has a PDF brochure stored in a file field:
+
+1. Add the File element to the property template.
+2. Set **Source** to **Dynamic data**.
+3. Select the brochure file field.
+4. Enter a **Custom file name**, such as `{post_title} brochure`.
+5. Enable **Load PDF on click** if you do not want the browser to request the PDF when the page first loads.
+6. Add a **Preview image**, or let Bricks use the attachment preview when one is available.
+7. Keep the file name or download button visible as the non-preview way to reach the brochure.
+
+Open two property posts on the frontend. Each one displays the PDF stored on that post while keeping the same template layout.
+
+## Browser behavior and document access
+
+The File element uses the browser's built-in PDF support. The PDF toolbar, rendering, and print or download options can differ between browsers and devices.
+
+Hiding a download button or browser controls does not secure the PDF. The visitor's browser still receives the file URL and file contents. Protect restricted documents at the server or application level before using them in the File element.
+
+Non-PDF files do not receive an inline preview. They use the linked file name and download button.
+
+---
+
+# Carousel
+
+Source: https://academy.bricksbuilder.io/builder/elements/media/carousel/
+
+*The Carousel element displays images or posts in a swipeable carousel with customizable navigation and effects, using the Swiper library.*
+
+The Carousel element displays images or posts in a swipeable carousel with customizable navigation and effects, using the Swiper library.
+
+## Settings
+
+- **Type** (select) - Content type. Options: `media`, `posts`. Default: `media`.
+
+- **Images** (image-gallery) - Select images for the carousel. Only shown for media type.
+
+- **Query** (query) - Configure which posts to display. Only shown for posts type.
+
+### Settings
+
+- **Adaptive height** (checkbox) - Adjust height to content.
+
+- **Height** (number with units) - Fixed carousel height. Default: 300px. Not available when adaptive height is enabled.
+
+- **Spacing** (number) - Spacing between slides in pixels. Default: 0.
+
+- **Initial slide** (number) - Starting slide index. Default: 0.
+
+- **Items to show** (number) - Number of slides visible at once. Default: 2. Supports breakpoints.
+
+- **Items to scroll** (number) - Number of slides to advance per swipe. Default: 1. Supports breakpoints.
+
+- **Effect** (select) - Transition effect. Options: `slide`, `fade`, `cube`, `coverflow`, `flip`. Default: `slide`.
+
+- **Align items** (align-items) - Vertical alignment of slides. Only shown when adaptive height is enabled.
+
+- **Loop** (checkbox) - Enable infinite loop. Default: true.
+
+- **Center mode** (checkbox) - Center the active slide.
+
+- **Disable lazy load** (checkbox) - Load all images immediately.
+
+- **Autoplay** (checkbox) - Enable automatic sliding.
+
+- **Pause on hover** (checkbox) - Pause autoplay on hover.
+
+- **Stop on last slide** (checkbox) - Stop autoplay on last slide.
+
+- **Autoplay delay in ms** (number) - Delay between slides in milliseconds. Default: 3000.
+
+- **Animation speed in ms** (number) - Transition speed in milliseconds. Default: 300.
+
+### Image
+
+- **Hide image** (checkbox) - Hide images in post carousels.
+
+- **Image size** (select) - Size of images.
+
+- **Link to lightbox** (checkbox) - Open images in lightbox. Only for media type.
+
+- **Image size** (select) - Size of images in lightbox.
+
+- **Image click action** (select) - Action when clicking images. Options: `zoom`, `zoom-or-close`, `toggle-controls`, `next`, `close`. Default: `zoom`.
+
+- **Animation** (select) - Lightbox animation type. Default: `zoom`.
+
+- **Caption** (checkbox) - Show image captions in lightbox.
+
+- **Thumbnail navigation** (checkbox) - Show thumbnail navigation in lightbox.
+
+- **Thumbnail size** (number with units) - Size of thumbnails. Default: 60px.
+
+- **Padding** (dimensions) - Lightbox padding in pixels.
+
+- **Lightbox: ID** (text, since 2.5) - Group this media Carousel's images with other Carousels, Image Galleries, or Image elements that use the same lightbox ID. Enable **Link to lightbox** first. Leave the ID empty to keep the Carousel's own lightbox group.
+
+### Fields
+
+- **Fields** (repeater) - Configure which post fields to display. Each field has:
+  - **Dynamic data** (text) - Dynamic data tag (e.g., `{post_title:link}`, `{post_excerpt:20}`).
+  - **HTML tag** (select) - HTML tag for the field. Options: `div`, `p`, `h1`-`h6`. Default: `div`.
+  - **Width** (number with units) - Field width.
+  - **Margin** (spacing) - Field margin.
+  - **Padding** (spacing) - Field padding.
+  - **Background color** (color) - Field background color.
+  - **Border** (border) - Field border styling.
+  - **Typography** (typography) - Field text styling.
+  - **Overlay** (checkbox) - Show field as overlay.
+
+### Content
+
+- **Alignment** (select) - Content alignment. Options: `top left`, `top center`, `top right`, `middle left`, `middle center`, `middle right`, `bottom left`, `bottom center`, `bottom right`.
+
+- **Min. height** (number with units) - Minimum content height.
+
+- **Margin** (spacing) - Content wrapper margin.
+
+- **Padding** (spacing) - Content wrapper padding.
+
+- **Background color** (color) - Content wrapper background color.
+
+### Overlay
+
+- **Show on hover** (checkbox) - Show overlay only on hover.
+
+- **Fade in animation** (select) - Overlay animation. Options: `fade-in-up`, `fade-in-right`, `fade-in-down`, `fade-in-left`, `zoom-in`, `zoom-out`.
+
+- **Alignment** (select) - Overlay alignment. Options: `top left`, `top center`, `top right`, `middle left`, `middle center`, `middle right`, `bottom left`, `bottom center`, `bottom right`.
+
+- **Margin** (spacing) - Overlay margin.
+
+- **Padding** (spacing) - Overlay padding.
+
+- **Background color** (color) - Overlay background color.
+
+- **Inner background color** (color) - Inner overlay background color.
+
+## Arrows
+
+- **Show arrows** (checkbox) - Display navigation arrows. Default: true.
+
+- **Height** (number with units) - Arrow button height. Default: 50px.
+
+- **Width** (number with units) - Arrow button width. Default: 50px.
+
+- **Background** (color) - Arrow button background color.
+
+- **Border** (border) - Arrow button border styling.
+
+- **Typography** (typography) - Arrow button text styling.
+
+### Prev arrow
+
+- **Prev arrow** (icon) - Previous arrow icon. Default: `ion-ios-arrow-back`.
+
+- **Top** (number with units) - Previous arrow top position. Default: 50%.
+
+- **Right** (number with units) - Previous arrow right position.
+
+- **Bottom** (number with units) - Previous arrow bottom position.
+
+- **Left** (number with units) - Previous arrow left position. Default: 50px.
+
+### Next arrow
+
+- **Next arrow** (icon) - Next arrow icon. Default: `ion-ios-arrow-forward`.
+
+- **Top** (number with units) - Next arrow top position.
+
+- **Right** (number with units) - Next arrow right position.
+
+- **Bottom** (number with units) - Next arrow bottom position.
+
+- **Left** (number with units) - Next arrow left position.
+
+## Dots
+
+- **Show dots** (checkbox) - Display pagination dots.
+
+- **Dynamic dots** (checkbox) - Enable dynamic bullet pagination.
+
+- **Vertical** (checkbox) - Display dots vertically.
+
+- **Height** (number with units) - Dot height.
+
+- **Width** (number with units) - Dot width.
+
+- **Top** (number with units) - Dots container top position.
+
+- **Right** (number with units) - Dots container right position.
+
+- **Bottom** (number with units) - Dots container bottom position.
+
+- **Left** (number with units) - Dots container left position.
+
+- **Border** (border) - Dot border styling.
+
+- **Color** (color) - Inactive dot color.
+
+- **Active color** (color) - Active dot color.
+
+- **Margin** (spacing) - Margin around individual dots. Default: 0px top, 5px right, 0px bottom, 0px left.
+
+> **Developer reference**
+>
+> See the [Carousel Schema](https://academy.bricksbuilder.io/developer/schema/elements/carousel/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Image gallery
+
+Source: https://academy.bricksbuilder.io/builder/elements/media/image-gallery/
+
+*The Image Gallery element displays a collection of images in various layouts with optional lightbox functionality.*
+
+The Image Gallery element displays a collection of images in various layouts with optional lightbox functionality.
+
+## Settings
+
+- **Images** (image-gallery) - Select and upload images for the gallery. Since Bricks 2.5, drop local images onto this control to append them, or hold **Shift** while dropping to replace the selection. See [Drop images onto an Image Gallery](https://academy.bricksbuilder.io/builder/features/media-browser/#drop-images-onto-an-image-gallery).
+
+- **Layout** (select) - Gallery layout type. Options: `grid`, `masonry`, `metro`. Default: `grid`.
+
+- **Columns** (number) - Number of columns in the grid. Minimum: 2. Default: 3. Not available for metro layout.
+
+- **Spacing** (number with units) - Gap between images. Default: 0.
+
+- **Image height** (number with units) - Fixed height for images. Not available for masonry or metro layouts.
+
+- **Image ratio** (text) - Aspect ratio for images (e.g., 4/3, 16/9, 1/1). Not available for masonry or metro layouts.
+
+- **Image caption** (checkbox) - Display image captions.
+
+- **Link to** (select) - Link behavior for images. Options: `lightbox`, `attachment page`, `media file`, `custom URL`.
+
+- **Custom links** (repeater) - Define custom URLs for each image. Only shown when "Link to" is set to "custom URL".
+
+### Lightbox
+
+- **Image size** (select) - Size of images in lightbox. Default: Full.
+
+- **Image click action** (select) - Action when clicking images. Options: `zoom`, `zoom or close`, `toggle controls`, `next`, `close`. Default: `zoom`.
+
+- **Animation** (select) - Lightbox transition animation.
+
+- **Caption** (checkbox) - Show image captions in lightbox.
+
+- **Thumbnail navigation** (checkbox) - Enable thumbnail navigation.
+
+- **Thumbnail size** (number with units) - Size of thumbnails. Default: 60px.
+
+- **Padding (px)** (dimensions) - Padding around the lightbox.
+
+- **Lightbox: ID** (text) - Group images with the same ID together in the same lightbox.
+
+- **Fetch priority** (select) - Image loading priority. Options: `high`, `low`, `auto`.
+
+> **Developer reference**
+>
+> See the [Image Gallery Schema](https://academy.bricksbuilder.io/developer/schema/elements/image-gallery/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Instagram feed
+
+Source: https://academy.bricksbuilder.io/builder/elements/media/instagram-feed/
+
+*The Instagram feed element loads media from the Instagram Graph API using an access token saved in Bricks → Settings → API keys (instagramAccessToken). Without.*
+
+The **Instagram feed** element loads media from the **Instagram Graph API** using an **access token** saved in **Bricks → Settings → API keys** (`instagramAccessToken`). Without a token, the element shows a placeholder asking you to connect the account.
+
+Responses are **cached** in a transient to limit API calls; cache length is configurable.
+
+## Requirements
+
+Add a valid **Instagram access token** under **Bricks → Settings → API keys**. The element’s info message links there when the global token is missing.
+
+## Layout
+
+- **Columns** (number) — CSS grid columns for the list (`ul`). Placeholder: `3`. Valid range on the front end: `1–6`.
+
+- **Posts** (number) — How many posts to request (min `1`, max `100`). Placeholder: `9`.
+
+## Image
+
+- **Object fit** (select) — Applied to `img`.
+
+- **Aspect ratio** (text).
+
+- **Height**, **Width** (number with units).
+
+- **Gap** (number with units) — Gap on the `ul` grid.
+
+- **Border** (border) — Image border.
+
+- **Link** (checkbox) — Wrap each image in a link to the Instagram permalink.
+
+## Carousel
+
+Optional styling for the **carousel** badge on **CAROUSEL_ALBUM** items:
+
+- **Icon** (icon), **Icon color** (color), **Icon size** (number with units), **Icon position** (dimensions).
+
+## Video
+
+Optional styling for the **video** play overlay on **VIDEO** items:
+
+- **Icon** (icon), **Icon color** (color), **Icon size** (number with units), **Icon position** (dimensions).
+
+## Caption
+
+- **Enable** (checkbox) — Show the post caption below the image.
+
+When enabled: **Background color**, **Border**, **Typography** on `.caption`.
+
+## Follow
+
+Optional “Follow us” row linking to `instagram.com/{username}`:
+
+- **Text** (text) — Default mentions `@yourhandle`; replace with your copy or dynamic data.
+
+- **Position** (select) — `top` or `bottom`.
+
+- **Icon** (icon) — Default Instagram logo.
+
+- **Typography** — `.follow` text.
+
+## Cache
+
+- **Duration** (select) — `30 minutes`, `1 hour`, `1 day`, or `1 week` (stored as seconds: `1800`, `3600`, `86400`, `604800`). Default placeholder: 1 hour.
+
+> **Developer reference**
+>
+> See the [Instagram feed Schema](https://academy.bricksbuilder.io/developer/schema/elements/instagram-feed/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Logo
+
+Source: https://academy.bricksbuilder.io/builder/elements/media/logo/
+
+*The Logo element displays your site logo with support for regular, inverse, and dark-mode logo variants, custom dimensions, and fallback text.*
+
+The Logo element displays your site logo and can switch between logo variants for dark mode and sticky headers.
+
+## Settings
+
+- **Logo** (image) - Select the main logo image from the media library. Minimum dimension should be twice the logo height/width for proper retina display. For SVG logos, set height and width in px values.
+
+- **Logo inverse** (image) - Alternative logo image for sticky scrolling headers. Only available when the main logo is set.
+
+- **Logo dark mode** (image) - Alternative logo image used when dark mode is active. Only available when the main logo is set.
+
+- **Height** (number with units) - Logo height. Maximum: 400. Default: `auto`. Only available when logo is set.
+
+- **Width** (number with units) - Logo width. Maximum: 999. Default: `auto`. Only available when logo is set.
+
+- **Text** (text) - Fallback text displayed if logo image isn't set or available. Default: Site name from WordPress settings.
+
+- **Loading** (select) - Image loading behavior. Options: `eager`, `lazy`. Default: `eager`.
+
+- **Link to** (link) - Configure where the logo links. Default: Site home page.
+
+## Logo variants
+
+Logo variants are available starting in Bricks 2.4. Add them in the Logo element settings under **Logo variants**.
+
+When [dark mode](https://academy.bricksbuilder.io/builder/features/color-manager/#using-dark-mode) is active and **Logo dark mode** is configured, Bricks swaps the main logo image for the dark-mode logo. If no dark-mode logo is configured, the main logo stays visible.
+
+If the Logo element is inside a sticky header and **Logo inverse** is configured, the inverse logo is used while the header is scrolling. This takes priority over the dark-mode logo during the sticky scrolling state.
+
+> **Developer reference**
+>
+> See the [Logo Schema](https://academy.bricksbuilder.io/developer/schema/elements/logo/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Lottie
+
+Source: https://academy.bricksbuilder.io/builder/elements/media/lottie/
+
+*Add Lottie JSON or .lottie animations and control playback on load, visibility, hover, click, scroll, or through interactions.*
+
+The **Lottie** element, available in Bricks 2.5, displays vector animations from Lottie JSON or `.lottie` files. Use it for an animated illustration or a small interaction such as an icon that plays when a card receives hover or keyboard focus.
+
+## Add an animation
+
+1. Add a **Lottie** element from the **Media** elements.
+2. Choose a **Source**:
+   - **File**: Select a Lottie JSON or `.lottie` attachment.
+   - **External URL**: Enter a public animation URL. The server must allow cross-origin requests. Leaving the URL empty shows the bundled sample animation.
+   - **Dynamic data**: Select media supplied by a dynamic-data tag.
+3. Set **Width** and **Height** if the animation needs a specific size.
+4. Choose when it should play, then save and check the frontend.
+
+For a `.lottie` file containing several animations, enter the manifest's **Animation ID**. Leave it empty to use the first animation. The setting has no effect on JSON files.
+
+Bricks enables JSON and `.lottie` uploads for users who can upload files in WordPress and have permission to add the Lottie element. Other site upload restrictions still apply. If an upload is rejected, check those permissions and the site’s allowed file types.
+
+A remote URL must return the animation file itself, rather than a web page containing a player.
+
+<div className="screenshot screenshot--control-panel">
+
+![Lottie settings with External URL selected, the empty URL showing the Sample animation placeholder, and Play set to None (Interactions).](https://academy.bricksbuilder.io/assets/builder/release-2.5/lottie-source-panel.webp)
+
+</div>
+
+## Choose when to play
+
+Use **Play** to choose the trigger:
+
+| Play setting            | Behavior                                                                                                                                  |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| **On page load**        | Start after the animation loads.                                                                                                          |
+| **When visible**        | Play when the element enters the viewport. Choose **Reset and replay** or **Pause and resume** under **On leaving viewport**.             |
+| **On hover or focus**   | Play when the trigger receives pointer hover or keyboard focus. **On mouse leave** can reset, pause, reverse, or finish the current play. |
+| **On click**            | Choose **Play and pause**, **Play from start**, or **Play forward, then reverse**.                                                        |
+| **Sync with scroll**    | Advance through the animation as the element moves through the viewport.                                                                  |
+| **None (Interactions)** | Control playback through Bricks interactions.                                                                                             |
+
+**Delay (ms)** postpones playback for **On page load** and **When visible**. The default is `0`. With **Pause and resume**, the delay applies to the initial start, not resuming playback. Use **Delay between loops** to pause between repeats.
+
+For **When visible**, enable **Play once** to disable looping and automatic replay after completion until the page reloads.
+
+For hover and click, **Trigger element** can be **Self**, **Parent**, or **CSS selector**. A custom selector uses the closest matching ancestor first, then the first matching element on the page. Use **Parent** when an illustration should respond to its containing card.
+
+### Sync with scroll
+
+**Start (%)** controls where the element's top edge starts playback, measured from the bottom of the viewport (`0`) to the top (`100`). **End (%)** controls where its bottom edge finishes playback. The defaults are `0` and `100`.
+
+Scroll playback follows scroll progress. Loop, loop count, loop delay, and speed controls do not apply in this mode.
+
+## Playback settings
+
+- **Loop**: Repeat playback. Enabled by default.
+- **Loop count**: Number of plays. Leave empty for continuous looping.
+- **Delay between loops (ms)**: Pause between repeats.
+- **Speed**: Playback multiplier, from `0.1` to `10`. The default is `1`.
+- **Direction**: Play forward or in reverse.
+- **Start frame** and **End frame**: Limit playback to a section of the animation. Leave empty to use its full length.
+- **Frame when stopped**: Show the first or last frame before playback and after a reset.
+- **Lazy load**: Load the animation near the viewport. Enabled by default. Global or page-level **Disable lazy load** settings override it.
+
+## Control playback with interactions
+
+To play an animation from a separate Button:
+
+1. Set the Lottie element's **Play** to **None (Interactions)**.
+2. Add a **Click** interaction to the Button.
+3. Choose **Lottie: Playback** as the action.
+4. Choose **Play**, **Pause**, **Play and pause**, **Stop**, or **Play from start**.
+5. Target the Lottie element, or a wrapper containing it, through the interaction target controls.
+6. Save and test the Button on the frontend.
+
+Use separate play and pause controls if visitors need to control a repeating animation. See [Interactions](https://academy.bricksbuilder.io/builder/features/interactions/) for trigger and target setup.
+
+<div className="screenshot screenshot--control-panel">
+
+![Button Click interaction using Lottie: Playback, Play and pause, and a CSS selector that targets the Lottie element.](https://academy.bricksbuilder.io/assets/builder/release-2.5/lottie-playback-panel.webp)
+
+</div>
+
+## Accessibility and reduced motion
+
+Add a **Text alternative** when the animation conveys information. Leave it empty for decorative animations. A Lottie element that uses itself as a hover or click trigger is keyboard focusable; give it a meaningful text alternative so its purpose is clear.
+
+When a visitor prefers reduced motion, Bricks shows the selected **Frame when stopped** instead of playing the animation. Keep essential text and actions outside the animation so they remain available in that state.
+
+## Troubleshooting
+
+- **Animation could not be loaded**: Check that the URL returns a supported JSON or `.lottie` file and that a remote host permits cross-origin requests.
+- **Wrong animation in a .lottie file**: Check **Animation ID** against the file's manifest.
+- **Animation starts only after scrolling**: Check **Lazy load** and the selected **Play** trigger.
+- **A card does not trigger playback**: Check **Trigger element** and the custom CSS selector. For a keyboard-triggered card, the card itself must be focusable.
+
+---
+
+# Slider (nestable)
+
+Source: https://academy.bricksbuilder.io/builder/elements/media/slider-nested/
+
+*Build sliders with nested content, continuous auto scroll, and accessible pause and play controls.*
+
+The Slider (nestable) element lets you build slides from editable Bricks elements. It uses Splide for slide navigation, autoplay, and, since Bricks 2.5, continuous auto scroll.
+
+## Settings
+
+- **Children** (nestable) - Drag and drop elements to create slider slides.
+
+### Options
+
+- **Options type** (select) - Use default settings or provide custom JSON options. Options: `default`, `custom`.
+
+- **Custom options** (code) - A [Splide options](https://splidejs.com/guides/options/) object in JSON format. Shown when Options type is **Custom**. This replaces the options generated by the default controls, so include any autoplay or auto scroll settings you need in that object.
+
+- **Type** (select) - Slider behavior. Options: `loop`, `slide`, `fade`. Default: `loop`.
+
+- **Direction** (select) - Slide direction. Options: `left to right`, `right to left`, `vertical`. Supports breakpoints.
+
+- **Keyboard** (select) - Keyboard navigation. Options: `off`, `focused`, `global`. Default: `global`. Supports breakpoints.
+
+- **Auto height** (checkbox) - Adjust height to content. May cause layout shift. Using "Auto height" might lead to CLS (Cumulative Layout Shift).
+
+- **Height** (number with units) - Fixed slider height. Default: 50vh. Not available when auto height is enabled. Supports breakpoints.
+
+- **Spacing** (number with units) - Gap between slides. Default: 0. Supports breakpoints.
+
+- **Start index** (number) - Initial slide index. Default: 0.
+
+- **Items to show** (number) - Number of slides visible at once. Default: 1. Supports breakpoints. Not available for fade type.
+
+- **Items to scroll** (number) - Number of slides to scroll at once. Default: 1. Supports breakpoints. Not available for fade type.
+
+- **Speed in ms** (number) - Transition speed. Default: 400. Supports breakpoints.
+
+- **Focus** (number) - Determines which slide should be active if the carousel has multiple slides in a page. Number/"center". Supports breakpoints.
+
+#### Autoplay
+
+- **Autoplay** (checkbox) - Enable automatic slide progression.
+
+- **Pause on hover** (checkbox) - Pause autoplay when hovering over slider.
+
+- **Pause on focus** (checkbox) - Pause autoplay when slider is focused.
+
+- **Interval in ms** (number) - Time between slides. Default: 3000.
+
+#### Auto scroll {#auto-scroll}
+
+Auto scroll moves slides continuously. Autoplay advances from one slide to the next after an interval. For a continuous row of reviews or logos, use **Auto scroll** with **Type → Loop** and leave Autoplay disabled.
+
+Auto scroll controls appear under **Options** when **Options type** is **Default**.
+
+| Setting | Behavior | Default |
 | --- | --- | --- |
-| Static | A fixed set of locations | Rows in the **Markers** repeater |
-| Query loop | Markers generated from posts, terms, or other query results | Dynamic data in the first marker row |
-| Sync with query | A map beside a listing that changes through filters, AJAX pagination, or Load More | Map Connectors inside a separate query loop |
-
-Leaflet requires latitude and longitude. It does not convert street addresses into coordinates. Address-only Map Connectors are ignored.
-
-### Static markers {#static-markers}
-
-Add a row under **Markers** for each location. Enter **Coordinates** as `latitude, longitude`, for example `52.5164, 13.3776`. Dynamic data is supported. Static and query markers with missing, nonnumeric, or out-of-range coordinates are skipped.
-
-Use **Label** to distinguish rows in the builder. It is separate from the screen reader **Label** in the marker settings. Add **Popup (Text)** for content shown when the marker is clicked. Each row can override the map's text or image marker defaults.
-
-### Query loop {#query-loop}
-
-Use the map's own query when you need markers without a separate visible results listing.
-
-1. Under **Markers**, enable **Query loop**.
-2. Open **Query** and choose the content to retrieve.
-3. In the first marker row, use dynamic data for **Coordinates** and any marker text, images, or **Popup (Text)** that should change for each result.
-4. For a custom popup design, select an **Info Box: Template (Popup)**. See [Info Boxes](#info-boxes).
-
-Bricks uses the first marker row as the template for every query result. The screenshots below use a Publisher terms query with an ACF Google Map field named `map_location`. Its **Coordinates** value is:
-
-```text
-{acf_map_location:array_value|lat}, {acf_map_location:array_value|lng}
-```
+| **Auto scroll** | Enable continuous slide movement. | Disabled |
+| **Speed** | Movement speed, adjustable in steps of `0.1`. Positive and negative values move in opposite directions; `0` stops movement. This is separate from **Speed in ms**, which controls slide transitions. | `1` |
+| **Pause on hover** | Pause while the pointer is over the slider. | Disabled |
+| **Pause on focus** | Pause while focus is inside the slider. | Disabled |
 
 <div className="screenshot screenshot--control-panel">
 
-![The first Leaflet marker row uses dynamic latitude and longitude from an ACF map field.](https://academy.bricksbuilder.io/assets/leaflet-query-marker-coordinates-2x.webp)
+![Auto scroll enabled with speed -0.6 and pause on hover and focus.](https://academy.bricksbuilder.io/assets/builder/release-2.5/slider-auto-scroll-settings.webp)
 
 </div>
+
+The slider's **Direction** setting selects the horizontal or vertical layout. **Fade** does not support auto scroll. The Auto scroll controls apply across screen sizes; they do not have separate breakpoint values. Custom JSON options can define breakpoint-specific behavior.
+
+Autoplay and auto scroll stay off in the Builder so you can select and edit slide content. Save the page and view the frontend to check movement. This also applies when you use Custom options.
+
+Add a [Playback control](#playback-control) so visitors can pause the slider. Pause on hover or focus alone does not provide a pause control for everyone.
+
+#### Rewind
+
+Available when type is not "loop":
+
+- **Rewind** (checkbox) - Enable rewind functionality.
+
+- **Rewind by drag** (checkbox) - Allow rewinding by dragging.
+
+- **Speed in ms** (number) - Rewind transition speed.
+
+### Playback control {#playback-control}
+
+Since Bricks 2.5, **Playback control → Show playback control** adds a native pause/play button for autoplay and auto scroll. It is disabled by default. The button sits outside the moving slides and changes its label between **Pause** and **Play**.
+
+Set your own labels in the **Pause** and **Play** fields. Use the controls in the same group to set typography, background, border, padding, and position.
 
 <div className="screenshot screenshot--control-panel">
 
-![Leaflet Query loop enabled with a Terms query targeting the Publishers taxonomy.](https://academy.bricksbuilder.io/assets/leaflet-query-source-settings-2x.webp)
+![Playback control enabled with Pause reviews and Play reviews labels.](https://academy.bricksbuilder.io/assets/builder/release-2.5/slider-playback-settings.webp)
 
 </div>
 
-To update markers through filters, pagination, or Load More, create a separate results loop and use [Sync with query](#sync-with-query).
+![A continuous review slider with its native Pause reviews button outside the cards.](https://academy.bricksbuilder.io/assets/builder/release-2.5/slider-reviews.webp)
 
-### Sync with query {#sync-with-query}
+With the native control enabled, keyboard focus entering the slider pauses playback until the visitor chooses **Play**. A deliberate pause remains in place after hovering, resizing, or updating the slider. Hover pauses are temporary when **Pause on hover** is enabled.
 
-Use this mode to keep markers connected to a visible listing, such as property cards beside a map.
+Bricks stops automatic movement when the visitor requests reduced motion and hides the native button when playback is unavailable. A Play action does not override the reduced-motion preference.
 
-1. Create a [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/) on a layout element, such as a Block or Div.
-2. Place one [Map Connector](https://academy.bricksbuilder.io/builder/elements/general/map-connector/) inside the repeated item.
-3. Set the connector's **Latitude** and **Longitude** using dynamic data from each result. Add marker overrides or an Info Box template if needed.
-4. On Map (Leaflet), leave **Query loop** off. Under **Markers > Sync with query**, select the results loop.
-5. Point filters, AJAX Pagination, Load More, and any Query Results Summary at that same results loop.
-6. Enable **Map > Fit map on markers change** if the map should adjust its view after the results change.
+To use your own button, add a [Slider playback interaction](https://academy.bricksbuilder.io/builder/features/interactions/#slider-playback) and target the slider. This can pause, resume, or toggle both autoplay and auto scroll.
 
-Markers refresh when the connected loop changes on the frontend. Set **Text: No results** under **Markers** to customize the message when there are no locations. The default is `No locations found`. **No results typography** styles the message, and **No results position** places it at the top, bottom, or center of the map.
+### Slide
 
-![Publisher cards beside Leaflet markers populated from the same Terms query.](https://academy.bricksbuilder.io/assets/leaflet-synced-publisher-list-2x.webp)
+- **Padding** (spacing) - Padding inside slides.
 
-The builder previews the connected loop's markers. Test visitor filtering, pagination, and Load More on the frontend.
+- **Align horizontal** (align-items) - Horizontal alignment of slide content. Options: `flex-start`, `center`, `flex-end`.
 
-### Geolocation filtering {#geolocation-filtering}
+- **Align vertical** (justify-content) - Vertical alignment of slide content. Options: `flex-start`, `center`, `flex-end`, `space-between`, `space-around`.
 
-Starting with **Bricks 2.5**, a [Filter - Geolocation](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-geolocation-element) can limit the connected Posts, Terms, or Users listing to a radius around a location. Set its **Target query** to the results loop containing the Map Connectors, then select that same loop under the map's **Sync with query** control. The map's own query and static markers are not filter targets.
+- **Background** (background) - Background styling for slides.
 
-The filter connects automatically when exactly one Geolocation filter and one matching map use the query. For multiple filters or maps, select **Map (Optional)** on the filter. Each filter connects to one map, and each map can be controlled by one filter.
+- **Border** (border) - Border styling for slides.
 
-Device-location searches and **Search on map drag** work without Google APIs. Optional address search uses Google Maps JavaScript API and Geocoding API, and autocomplete additionally requires Places API (New). These services are separate from Leaflet's tile provider.
+### Arrows
 
-The map shows the applied search origin and radius, including when no locations match. Configure their appearance on the filter. Enable **Search on map drag** on the filter to search around the map center after a visitor finishes panning. Dragging must be enabled on the map. In **Visitor controlled** mode, visitors choose whether to search using a **Search as I move the map** checkbox; **Automatic** mode searches after every qualifying drag. Zooming alone does not trigger a search. **Apply on: On submit** stages the new location until submitted.
+- **Show** (checkbox) - Display navigation arrows.
 
-### Scroll the active item into view {#scroll-active-item}
+- **Height** (number with units) - Arrow button height. Default: 50px.
 
-In Sync mode, enable **Scroll active item into view** under **Markers** to scroll to a marker's connected result when the marker is clicked or selected through an **Open address (Map)** interaction. This works even when the marker has no Info Box. It is off by default.
+- **Width** (number with units) - Arrow button width. Default: 50px.
 
-- **Scroll behavior**: **Follow site setting** (default), **Smooth**, or **Instant**.
-- **Scroll position**: **Nearest** (default), **Start**, or **Center**.
+- **Background** (color) - Arrow button background color.
 
-Bricks finds the result's nearest vertically scrollable parent, or scrolls the page when there is none. **Nearest** leaves an already visible item in place. No scroll-container selector is needed.
+- **Border** (border) - Arrow button border styling.
 
-The selected result's Map Connector also receives `map-marker-active`, including when no Info Box is configured. Use this class to [style the connected card](https://academy.bricksbuilder.io/builder/elements/general/map-connector/#active-marker-state).
+- **Color** (color) - Arrow icon color.
 
-<div className="screenshot screenshot--control-panel">
+- **Size** (number with units) - Arrow icon size.
 
-![Leaflet synced to Publishers (Terms), with Scroll active item into view enabled, Smooth behavior, and Center positioning.](https://academy.bricksbuilder.io/assets/leaflet-sync-query-settings-2x.webp)
+- **Text shadow** (text-shadow) - Text shadow for arrow icons.
 
-</div>
+#### Disabled
 
-## Marker appearance {#marker-appearance}
+- **Background** (color) - Background color for disabled arrows.
 
-Under **Markers > Marker**, choose **Type: Image** (default) or **Text**. Settings on individual marker rows or Map Connectors override the map's defaults.
+- **Border** (border) - Border styling for disabled arrows.
 
-### Text markers
+- **Color** (color) - Icon color for disabled arrows.
 
-Set the marker text and its active text, then style typography, background, border, box shadow, and padding for each state. **Max. width** limits the text marker's width. Dynamic data can display a property's price or a location's name.
+- **Opacity** (number) - Opacity for disabled arrows (0-1).
 
-### Image markers
+#### Prev arrow
 
-Choose the normal and active marker images. Each state has height, width, border, and box shadow controls. Existing Leaflet **Icon** and **Marker (Default)** settings remain supported for saved maps.
+- **Prev arrow** (icon) - Custom icon for previous arrow.
 
-Use the marker's screen reader **Label** to describe its location or purpose.
+- **Top** (number with units) - Top position. Default: 50%.
 
-### Clustering
+- **Right** (number with units) - Right position.
 
-Enable **Cluster: Markers** to group nearby markers. Set **Cluster: Background color** and **Cluster: Text color** to style the cluster icons. The clustering library loads only when clustering is enabled.
+- **Bottom** (number with units) - Bottom position.
 
-![Publisher-name text markers and purple clusters showing marker counts on a Leaflet map.](https://academy.bricksbuilder.io/assets/leaflet-text-markers-clustering-2x.webp)
+- **Left** (number with units) - Left position.
 
-## Info Boxes and interactions {#info-boxes}
+- **Transform** (transform) - CSS transform for previous arrow.
 
-Static markers use **Popup (Text)**. Query and Sync modes support custom Bricks popup templates:
+#### Next arrow
 
-1. Create a Popup template and enable **Template Settings > Popup > Info Box (Map)**.
-2. Design and publish the template. Use dynamic data for the current query result.
-3. In Query mode, select it under **Markers > Info Box: Template (Popup)** on the map. In Sync mode, select it on the Map Connector instead.
+- **Next arrow** (icon) - Custom icon for next arrow.
 
-Info Box templates support **Fetch content via AJAX** and its loader animation. See the [Info Box template guide](https://academy.bricksbuilder.io/builder/elements/general/map/#info-box-popup-template) for template setup.
+- **Top** (number with units) - Top position. Default: 50%.
 
-Use **Open address (Map)** on an element inside the connected result to select its marker and open its Info Box. Use **Close address (Map)** on a button or icon inside the Info Box to close it. These actions are available under [Interactions](https://academy.bricksbuilder.io/builder/features/interactions/#action).
+- **Right** (number with units) - Right position.
 
-![A custom publisher Info Box showing Hachette Book Group, Saint Joseph, MO, a View publisher link, and a close button.](https://academy.bricksbuilder.io/assets/leaflet-custom-infobox-detail.webp)
+- **Bottom** (number with units) - Bottom position.
 
-## Map view and behavior {#map-view}
+- **Left** (number with units) - Left position.
 
-| Setting | Behavior |
-| --- | --- |
-| Height | Map height. The placeholder is `300px`. |
-| Map center | Center coordinates as `latitude, longitude`. |
-| Disable initial fit map | Keep the configured center and zoom on page load. Off by default. |
-| Fit map on markers change | Adjust the view after synced query results change. Off by default. |
-| Zoom level (Initial) | Starting zoom. Defaults to `13`. Used when centering a single marker automatically. |
-| Zoom level (Min) / (Max) | Constrain how far the map can zoom. |
+- **Transform** (transform) - CSS transform for next arrow.
 
-By default, the initial view centers a single marker at the configured zoom or fits multiple markers.
+### Pagination
 
-**Disable initial fit map** and **Fit map on markers change** are independent. Enable the first to preserve the view on page load, and the second if later query updates should fit the current markers.
+- **Show** (checkbox) - Display pagination dots. Default: enabled.
 
-An active Geolocation search keeps its origin and radius visible instead of fitting the view to the result markers. A successful search with no matching locations retains the search area.
+- **Margin** (spacing) - Margin around pagination dots. Default: 5px on all sides.
 
-> **Existing Leaflet maps**
->
-> Starting with Bricks 2.5, existing static Leaflet maps also use automatic initial fitting. To retain a manually configured center and zoom, enable **Map > Disable initial fit map**, including for maps with one marker.
+- **Height** (number with units) - Dot height. Default: 10px.
 
-<div className="screenshot screenshot--control-panel">
+- **Width** (number with units) - Dot width. Default: 10px.
 
-![Leaflet Map settings with Disable initial fit map enabled, Fit map on markers change disabled, and the center and zoom controls visible.](https://academy.bricksbuilder.io/assets/leaflet-initial-fit-settings-2x.webp)
+- **Color** (color) - Dot color and background color.
 
-</div>
+- **Border** (border) - Border styling for dots.
 
-The Map group also includes zoom snapping and increments, double-click and scroll wheel zoom, box zoom, zoom and attribution controls, closing popups on map clicks, dragging, and resize tracking. See [Leaflet's map options](https://leafletjs.com/reference.html#map) for the underlying behavior.
+#### Active
+
+- **Height** (number with units) - Height for active dot.
+
+- **Width** (number with units) - Width for active dot.
+
+- **Color** (color) - Color for active dot.
+
+- **Border** (border) - Border styling for active dot.
 
 > **Developer reference**
 >
-> See the [Map (Leaflet) Schema](https://academy.bricksbuilder.io/developer/schema/elements/map-leaflet/) for the element's settings and controls.
+> See the [Slider (Nestable) Schema](https://academy.bricksbuilder.io/developer/schema/elements/slider-nested/) for the full JSON schema of this element's settings and controls.
 
 ---
 
-# Nav (Nestable)
+# SVG
 
-Source: https://academy.bricksbuilder.io/builder/elements/general/nav-nested/
+Source: https://academy.bricksbuilder.io/builder/elements/media/svg/
 
-*The Nav (Nestable) element creates hierarchical navigation menus with dropdown functionality, multilevel support, and mobile-responsive behavior. It supports.*
+*The SVG element displays SVG graphics from files, dynamic data, custom code, or icon sets.*
 
-The Nav (Nestable) element creates hierarchical navigation menus with dropdown functionality, multilevel support, and mobile-responsive behavior. It supports nested menu structures and can be used to build complex navigation systems.
+The SVG element displays SVG graphics from files, dynamic data, custom code, or icon sets.
 
 ## Settings
 
-### HTML Tag & Accessibility
+- **Source** (select) - SVG source type. Options: `file` (default), `dynamicData`, `code`, `iconSet`.
 
-- **HTML tag** (text) - HTML tag for the navigation element. Supports dynamic data. Default placeholder: `nav`. Validates HTML tag format.
+- **File** (svg upload) - Upload an SVG file from your computer. Available when source is "file".
 
-- **aria-label** (text) - Accessibility label for the navigation. Supports dynamic data. Default placeholder: "Menu".
+- **Icon set** (icon) - Select an SVG from custom icon libraries. Available when source is "iconSet".
 
-### Top Level (Item)
+- **Dynamic data** (text with dynamic data) - Load SVG from dynamic data. Supported field types: File, Image, SVG code, URL. Available when source is "dynamicData".
 
-- **Gap** (number with units) - Gap between top-level navigation items. Controls `gap` property for `.brx-nav-nested-items` selector.
+- **Code** (code editor) - Paste SVG code directly. Only available to users with code execution permissions. Ensure SVG code is safe and doesn't contain malicious code. Consider using an SVG cleaner like svgomg.net. Available when source is "code".
 
-- **Justify content** (justify-content) - Horizontal alignment of top-level items. Deprecated since version 1.10. Description suggests using "Align items" under "Mobile menu" instead. Direction: row. Excludes space options.
+### Styling
 
-- **Padding** (spacing) - Padding for top-level navigation items. Controls `padding` property for multiple selectors including `.brx-nav-nested-items > li > a`, text links, icons, SVG elements, and submenu toggles.
+- **Height** (number with units) - SVG height.
 
-- **Background color** (color) - Background color for top-level items. Controls `background-color` property for links, text links, icons, SVG elements, and submenu toggles.
+- **Width** (number with units) - SVG width.
 
-- **Border** (border) - Border styling for top-level items. Controls `border` property for links, text links, icons, SVG elements, and submenu toggles.
+- **Stroke width** (number) - Width of SVG stroke lines. Minimum: 1.
 
-- **Typography** (typography) - Typography settings for top-level items. Controls `font` property for links, text links, icons, SVG elements, and submenu toggles.
+- **Stroke color** (color) - Color of SVG stroke elements (excludes elements with `stroke="none"`).
 
-- **Transform** (transform) - Transform settings for top-level items. Controls `transform` property for links, text links, icons, SVG elements, and submenu toggles.
+- **Fill** (color) - Fill color for SVG shapes (excludes elements with `fill="none"`).
 
-- **Transition** (text) - Transition settings for top-level items. Supports dynamic data. Controls `transition` property for list items, links, text links, icons, SVG elements, submenu toggles, and submenu toggle children.
+- **Link** (link) - Make the SVG clickable by adding a link.
 
-#### Active State
+## Label a linked SVG
 
-- **Active** (separator) - Visual separator for active state controls.
+To give a linked SVG a link label without custom code:
 
-- **Background color** (color) - Background color for active/current page items. Controls `background-color` property for `[aria-current="page"]` and `.brx-submenu-toggle.aria-current` selectors.
+1. Add an SVG element, set **Source** to **File**, and select your SVG file.
+2. Open **Link**, select **Custom URL**, and enter your homepage URL.
+3. In the Link control's **aria-label** field, enter `Site home`.
 
-- **Border** (border) - Border styling for active items. Controls `border` property for `[aria-current="page"]` and `.brx-submenu-toggle.aria-current` selectors.
+Bricks adds `aria-label="Site home"` to the surrounding `<a>` element.
 
-- **Typography** (typography) - Typography settings for active items. Controls `font` property for `[aria-current="page"]` and `.brx-submenu-toggle.aria-current > *` selectors.
+[Custom attributes](https://academy.bricksbuilder.io/builder/features/custom-attributes/) added under **Style > Attributes** apply to the `<svg>` element, including when it has a link. Use **Link > aria-label** to set the label directly on the link.
 
-#### Dropdown (Top Level Only)
+For example, if you also add a custom attribute named `data-icon` with the value `home`, the relevant HTML is:
 
-- **Dropdown** (separator) - Separator for top-level dropdown controls. Description: "Only applies to top level dropdown elements."
+```html
+<a href="https://academy.bricksbuilder.io/" class="bricks-link-wrapper" aria-label="Site home">
+  <svg data-icon="home" viewBox="0 0 24 24">
+    <!-- SVG shapes -->
+  </svg>
+</a>
+```
 
-- **Text padding** (spacing) - Padding for dropdown text. Controls `padding` property for `.brx-nav-nested-items > li > .brx-submenu-toggle > span` selector.
-
-- **Icon padding** (spacing) - Padding for dropdown icons. Controls `padding` property for `.brx-nav-nested-items > li > .brx-submenu-toggle button` selector.
-
-- **Gap** (number with units) - Gap between text and icon in dropdown toggles. Controls `gap` property for `.brx-nav-nested-items > li > .brx-submenu-toggle` selector.
-
-### Dropdown
-
-#### Text
-
-- **Text** (separator) - Separator for dropdown text controls. Description: "Control dropdown element text."
-
-- **Text padding** (spacing) - Padding for dropdown text. Controls `padding` property for `.brx-submenu-toggle span` selector (applies to all dropdowns).
-
-#### Icon
-
-- **Icon** (separator) - Separator for dropdown icon controls. Description: "Edit dropdown to set icon individually."
-
-- **Icon padding** (spacing) - Padding for dropdown icons. Controls `padding` property for `.brx-submenu-toggle button` selector.
-
-- **Gap** (number with units) - Gap between text and icon in dropdown toggles. Controls `gap` property for `.brx-submenu-toggle` selector.
-
-- **Icon position** (select) - Position of the dropdown icon. Options from icon position control options. Default placeholder: "Right". Controls `flex-direction` property for `.brx-submenu-toggle` selector (sets to `row-reverse` when left).
-
-- **Icon size** (number with units) - Size of the dropdown icon. Controls `font-size` property for `.brx-submenu-toggle button` selector.
-
-- **Icon color** (color) - Color of the dropdown icon. Controls `color` property for `.brx-submenu-toggle button` selector.
-
-- **Icon transform** (transform) - Transform settings for dropdown icons. Controls `transform` property for `.brx-submenu-toggle button > *` selector (targets icon only).
-
-- **Icon transform (Open)** (transform) - Transform settings for dropdown icons when open. Controls `transform` property for `.brx-submenu-toggle button[aria-expanded="true"] > *` selector (targets icon only).
-
-- **Icon transition** (text) - Transition settings for dropdown icons. Supports dynamic data. Controls `transition` property for `.brx-submenu-toggle button[aria-expanded] > *` selector (targets icon only). Uses `!important` to override other transitions.
-
-#### Content
-
-- **Content** (separator) - Separator for dropdown content controls. Description: "Sub menu, mega menu, or multilevel area."
-
-- **Min. width** (number with units) - Minimum width for dropdown content. Controls `min-width` property for `.brx-dropdown-content` selector. Triggers re-render.
-
-- **Background color** (color) - Background color for dropdown content. Controls `background-color` property for `.brx-dropdown-content` selector.
-
-- **Border** (border) - Border styling for dropdown content. Controls `border` property for `.brx-dropdown-content` selector.
-
-- **Box shadow** (box-shadow) - Box shadow for dropdown content. Controls `box-shadow` property for `.brx-dropdown-content` selector.
-
-- **Typography** (typography) - Typography settings for dropdown content. Controls `font` property for `.brx-dropdown-content` selector.
-
-- **Transform** (transform) - Transform settings for dropdown content. Controls `transform` property for `.brx-nav-nested-items > .brxe-dropdown > .brx-dropdown-content` selector.
-
-- **Transform (Open)** (transform) - Transform settings for dropdown content when open. Controls `transform` property for `.brx-nav-nested-items > .brxe-dropdown.open > .brx-dropdown-content` selector.
-
-- **Transition** (text) - Transition settings for dropdown content. Supports dynamic data. Controls `transition` property for `.brx-dropdown-content` selector.
-
-- **Z-index** (number) - Z-index for dropdown elements. Controls `z-index` property for `.brxe-dropdown` selector. Default placeholder: 1001.
-
-#### Item
-
-- **Item** (separator) - Separator for dropdown item controls.
-
-- **Padding** (spacing) - Padding for dropdown items. Controls `padding` property for `.brx-dropdown-content > li > a` and `.brx-dropdown-content :where(.brx-submenu-toggle > *)` selectors.
-
-- **Background** (color) - Background color for dropdown items. Controls `background-color` property for `.brx-dropdown-content > li` and `.brx-dropdown-content .brx-submenu-toggle` selectors.
-
-- **Border** (border) - Border styling for dropdown items. Controls `border` property for `.brx-dropdown-content > li:not(.brxe-dropdown)` and `.brx-dropdown-content .brx-submenu-toggle` selectors.
-
-- **Typography** (typography) - Typography settings for dropdown items. Controls `font` property for `.brx-dropdown-content > li > a` and `.brx-dropdown-content .brx-submenu-toggle > *` selectors.
-
-- **Transition** (text) - Transition settings for dropdown items. Supports dynamic data. Controls `transition` property for dropdown content items, links, submenu toggles, and megamenu elements.
-
-#### Multilevel
-
-- **Multilevel** (separator) - Separator for multilevel controls. Description: "Show only active dropdown. Toggle on click. Inner dropdowns inherit multilevel."
-
-- **Enable** (checkbox) - Enable multilevel dropdown functionality.
-
-- **Back: Text** (text) - Text for the back button in multilevel navigation. Only available when multilevel is enabled.
-
-- **Back: Typography** (typography) - Typography settings for the back button. Only available when multilevel is enabled. Controls `font` property for `.brx-multilevel-back` selector.
-
-- **Back: Background** (color) - Background color for the back button. Only available when multilevel is enabled. Controls `background-color` property for `.brx-multilevel-back` selector.
-
-### Mobile Menu
-
-- **Mobile menu** (separator) - Separator for mobile menu controls. Description: "Insert "Toggle" element after "Nav items" to show/hide your mobile menu."
-
-- **Keep open while styling** (checkbox) - Keep mobile menu open during styling in the builder. Adds `brx-open` class. Not saved as setting.
-
-- **Hide at breakpoint** / **Show at breakpoint** (select) - Breakpoint at which to show/hide mobile menu. Options include all breakpoints plus "Always" and "Never". Default placeholder: "Mobile landscape". Triggers re-render.
-
-- **Width** (number with units) - Width of the mobile menu. Controls `width` property for `&.brx-open .brx-nav-nested-items` selector.
-
-- **Height** (number with units) - Height of the mobile menu. Controls `height` property for `&.brx-open .brx-nav-nested-items` selector.
-
-- **Padding (Dropdown)** (spacing) - Padding for dropdown content in mobile view. Controls padding for `&.brx-open .brx-dropdown-content > *` selector. Description: "Used to create visual hierarchy between nested dropdowns."
-
-- **Align items** (align-items) - Vertical alignment of mobile menu items. Controls `align-items` property for `&.brx-open .brx-nav-nested-items` selector.
-
-- **Justify content** (justify-content) - Horizontal alignment of mobile menu items. Controls `justify-content` property for `&.brx-open .brx-nav-nested-items` selector.
-
-- **Position** (dimensions) - Position settings for the mobile menu. Controls multiple position properties.
-
-- **Background color** (color) - Background color for the mobile menu. Controls `background-color` property for mobile menu selectors.
-
-#### Item
-
-- **Item** (separator) - Separator for mobile menu item controls.
-
-- **Align items** (align-items) - Vertical alignment of mobile menu items. Excludes `stretch` option. Controls `align-items` property for various mobile menu item selectors.
+This example uses `/` as the homepage URL and omits generated SVG IDs and classes.
 
 > **Developer reference**
 >
-> See the [Nav (Nestable) Schema](https://academy.bricksbuilder.io/developer/schema/elements/nav-nested/) for the full JSON schema of this element's settings and controls.
+> See the [SVG Schema](https://academy.bricksbuilder.io/developer/schema/elements/svg/) for the full JSON schema of this element's settings and controls.
 
 ---
 
-# Map
+# Slider
 
-Source: https://academy.bricksbuilder.io/builder/elements/general/map/
+Source: https://academy.bricksbuilder.io/builder/elements/media/slider/
 
-*Display Google Maps, sync markers with a query loop, style the connected active item, and scroll it into view when a marker is selected.*
+*The Slider element creates a full-width image slider with customizable slides containing titles, content, and buttons, using the Swiper library.*
 
-The **Map** element in Bricks allows you to display Google Maps with a range of capabilities, from showing a single location to dynamically rendering multiple markers based on queries.
+The Slider element creates a full-width image slider with customizable slides containing titles, content, and buttons, using the Swiper library.
 
-You can get started quickly by adding a Google Maps API key. Follow this guide to set it up: [How to set up your Google Maps API key](https://academy.bricksbuilder.io/integrations/how-to-set-up-your-google-maps-api-key/).
+## Security scanner reports
 
-Without an API key, the Map element is still functional but limited to displaying **a single marker** only.
+Bricks 2.4 patches the legacy Swiper build used by the classic Slider element. The bundled asset is a Bricks-patched vendored Swiper 8 legacy build with the CVE-2026-27212 / GHSA-hmx5-qpq5-p643 mitigation backported.
 
-![](https://academy.bricksbuilder.io/assets/map-without-google-maps-api.png)
+Bricks keeps the Swiper 8 runtime behavior so existing sliders continue to behave as before, including loop configurations that depend on Swiper 8 duplicate slides. The public `bricks-swiper` script version is `bricks-cve-2026-27212-p1`, and the bundled file no longer reports stock `Swiper 8.4.4` in its header.
 
-To ensure a marker is shown, simply enter a pair of coordinates (latitude and longitude, separated by a comma) in the **Address** field.
-
-## Choose how the map renders
-
-With an API key saved, **Render mode** lets you choose **Google Maps JavaScript API** (the default) or **Iframe embed**. Use Iframe embed when the map only needs a single address and you do not need API-only features such as multiple markers, clustering, query syncing, or custom Info Boxes. The iframe mode does not load the Google Maps JavaScript API for that map. Set its **Loading** option to `lazy` (the default) or `eager`.
-
-Without an API key, the map uses the single-address iframe mode automatically. The Render mode selector appears only when an API key is saved.
-
-## Displaying multiple addresses
-
-To unlock advanced features such as multiple locations, clustering, and custom Info Boxes, save a valid **Google Maps API key** and use the **Google Maps JavaScript API** render mode. You will then see more controls on the element.
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-map-addresses.png)
-
-Bricks supports three address input modes:
-
-### 1) Static
-
-Manually define multiple locations using the "Addresses" **Repeater** control of the Map element. This mode supports only the default Google Maps Info Box.
-
-### 2) Query loop
-
-Use this mode to populate map markers with addresses or coordinates from a query.
-
-For example, if you have a **custom post type** like "Properties" where each property contains an address, enabling the Query loop allows you to show markers of all property addresses on the map. `(@since 2.0)`
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-map-query-loop.png)
-
-You can also define a [custom Info Box](#info-box-popup-template) using a popup template.
-
-In our example above, we selected the custom post type `property`, where each address is stored in a custom field (ACF). Providing the latitude & longitude coordinates will be more accurate than a physical address.
-
-The map's own query only populates markers. To update markers through filters, pagination, or Load More, use a separate results loop containing [Map Connectors](#map-connector-element) and sync the map to it.
-
-### 3) Sync with query
-
-Ideal for use cases where the map is shown alongside a dynamic query loop such as a directory, Sync with query allows the map to update live with the query as users interact via **AJAX Pagination**, **Load More**, or **Query Filters**.
-
-This mode requires adding a [Map Connector](#map-connector-element) element inside the target query loop. Point filters, pagination, Load More, and any results summary at that loop.
-
-The builder previews the connected loop's markers. Test filtering and pagination on the frontend. [Map (Leaflet)](https://academy.bricksbuilder.io/builder/elements/general/map-leaflet/#sync-with-query) also supports this workflow.
-
-It also supports [custom Info Boxes](#info-box-popup-template) using popup templates.
-
-**Example setup:** You want to display a query loop on the same page as your map and connect the two. If this query loop uses **AJAX Pagination**, **Query Filters**, or **Load More**, enabling Sync with query allows the map markers to update dynamically in real-time as users interact with those features.
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-map-sync-with-query.png)
-
-**Map markers update according to query results**:
-
-![](https://academy.bricksbuilder.io/assets/bricks-2.0-map-sync-with-query-filters.png)
-
-### Geolocation filtering {#geolocation-filtering}
-
-Starting with **Bricks 2.5**, use a [Filter - Geolocation](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#filter-geolocation-element) to search the connected listing within a radius of an address, device location, or map center. Target a Posts, Terms, or Users results loop containing Map Connectors, and select the same loop under **Addresses > Sync with query**. The map must use **Google Maps JavaScript API** rendering. Static maps and the map's own query are not filter targets.
-
-The filter reads saved coordinates from its configured data source. It does not geocode stored street addresses during indexing. Use matching location fields on the Map Connectors.
-
-One matching Geolocation filter and one synchronized map connect automatically. If several filters or maps use the query, select **Map (Optional)** on the filter. Each filter connects to one map, and each map can be controlled by one filter.
-
-The map shows the applied search origin and radius, including searches with no matching locations. Configure the origin marker and circle on the filter. Address search requires Maps JavaScript API and Geocoding API; autocomplete additionally requires Places API (New).
-
-Enable **Search on map drag** on the filter to use the map center after the visitor finishes panning. Dragging must be enabled on the map. **Visitor controlled** mode displays a **Search as I move the map** checkbox; **Automatic** mode searches after every qualifying drag. Zooming alone does not trigger a search. **Apply on: On submit** stages the new location until submitted.
-
-Under **Addresses**, use **No results text**, **No results typography**, and **No results position** to configure the empty-state message. Position it at the top or bottom to keep the origin marker visible.
-
-### Scroll the Active Item Into View {#scroll-active-item}
-
-Starting with **Bricks 2.5**, selecting a marker can scroll its connected query-loop item into view. This works when clicking a marker or selecting it through an **Open address (Map)** interaction, including markers without an Info Box.
-
-1. Save a Google Maps API key and use **Google Maps JavaScript API** render mode.
-2. Add a [Map Connector](https://academy.bricksbuilder.io/builder/elements/general/map-connector/) inside the target query loop and configure its location data.
-3. On the Map element, select the loop under **Addresses > Sync with query**.
-4. Enable **Scroll active item into view**. It is off by default.
-5. Choose the scrolling behavior and position, then save and test the frontend.
-
-| Setting | Options |
-| --- | --- |
-| Scroll behavior | **Follow site setting** (default) uses the scroll container's or page's CSS scroll behavior. **Smooth** animates scrolling. **Instant** scrolls immediately. |
-| Scroll position | **Nearest** (default) moves only as far as needed to bring the item into view. **Start** aligns its top with the scroll area. **Center** centers it vertically. |
-
-Bricks finds the connected loop item automatically and scrolls its nearest vertically scrollable parent. If there is no such parent, it scrolls the page. You do not need an interaction on each result, a target selector, or a scroll-container selector. With **Nearest**, an item already visible, or an oversized item spanning the scroll area, stays in place.
-
-<div className="screenshot screenshot--control-panel">
-
-![Map settings targeting the Publisher card query, with Scroll active item into view enabled, Smooth behavior, and Center positioning.](https://academy.bricksbuilder.io/assets/map-scroll-active-item-settings.webp)
-
-</div>
-
-## Markers
-
-![](https://academy.bricksbuilder.io/assets/markers-control.png)
-
-### Cluster markers
-
-Enable this option to automatically group nearby markers into a cluster. `(@since 2.0)`
-
-![](https://academy.bricksbuilder.io/assets/cluster-markers.png)
-
-## General Settings
-
-### Map ID
-
-![](https://academy.bricksbuilder.io/assets/map_id-control.png)
-
-Enter your **Google Maps ID** (available in your Google Cloud Console) to enable the latest Maps features `(@since 2.0)`  
-When set:
-
-- Bricks uses Google's modern `AdvancedMarker` API.
-- Map styles are managed via your Google Console (style settings in Bricks are disabled).
-- Deprecated browser console warnings are avoided.
-
-### Map Center
-
-![](https://academy.bricksbuilder.io/assets/map-center-control.png)
-
-Set the default center point of the map. With **Sync with query**, AJAX updates preserve the current view unless **Fit map on markers change** is enabled. When fitting is enabled and no locations remain, the map returns to its configured center and zoom. An active Geolocation search preserves its search origin and radius when there are no results.
-
-### Initial view and marker updates {#map-fitting}
-
-By default, the initial view centers a single marker at the configured zoom or fits multiple markers. Enable **Disable initial fit map** to retain the configured center and zoom on page load.
-
-**Fit map on markers change** separately controls whether the view adjusts after synced-query updates. It is off by default.
-
-### Others
-
-![](https://academy.bricksbuilder.io/assets/general-settings.png)
-
-## Map Connector (element)
-
-**The Map Connector element `(@since 2.0)` is required when using Sync with query.**
-
-Place it inside the target query loop that you want to sync with your map. It generates an invisible `<template>` node containing location data, which is then read by the map to dynamically render the markers.
-
-**Note:** It's strongly recommended to provide **latitude and longitude** values whenever available. If you rely solely on addresses and require geocoding every time markers are rendered, you may incur charges from the Google Maps Platform Geocoding API.
-
-![](https://academy.bricksbuilder.io/assets/map-connector.png)
-
-You can also define the Info Box (popup template) that should show when a marker is clicked. Make sure the selected popup template has the **"Info Box (Map)"** option enabled in its settings.
-
-## Info Box (Popup template)
-
-Introduced in version 2.0, the **Info Box (Map)** option is available in Popup template settings.
-
-![](https://academy.bricksbuilder.io/assets/infobox-popup.png)
-
-- Once enabled, the popup will display with a default width of 300px in the builder and remove the backdrop for preview.
-- You can customize the design of the Info Box in the builder.
-- Supports **Fetch content via AJAX**.
-- Supports **AJAX loader** animation when loading dynamically.
-- It is recommended to set **Populate Content** to the post or term being looped so dynamic data displays correctly in the builder.
-
-![](https://academy.bricksbuilder.io/assets/infobox-popup-preview.png)
-
-## Map Interactions
-
-Two new map interaction actions are introduced in Bricks 2.0:
-
-- Open address (Map)
-- Close address (Map)
-
-![](https://academy.bricksbuilder.io/assets/interaction.png)
-
-Use cases:
-
-- Use a button or element inside the query loop to **open** the Info Box for the corresponding marker.
-- Add a close icon inside the Info Box popup to allow users to manually **close** it.
-
-These interactions provide greater control and flexibility over how Info Boxes behave in dynamic mapping scenarios.
-
-When an Info Box opens, Bricks adds the `infobox-opened` class to the interaction elements associated with that marker. The class is removed when the Info Box closes. You can use this class to style the open state or a parent element that contains the interaction element:
-
-```css
-.looping-div:has(.infobox-opened) {
-  background-color: blue;
-}
-```
-
-### Style the Active Connected Item {#active-connected-item}
-
-Starting with **Bricks 2.5**, Bricks adds `map-marker-active` to the **Map Connector** associated with the selected marker. The class updates when a marker is clicked or selected through **Open address (Map)**, even if the marker has no Info Box. Bricks removes it when another marker is selected or the marker state is reset, including when query updates rebuild the markers.
-
-Because the connector is an invisible `<template>` node, style the visible loop item that contains it. For example, assign the `property-card` class to the repeated card and add:
-
-```css
-.property-card:has(.map-marker-active) {
-  outline: 2px solid currentColor;
-  outline-offset: 4px;
-}
-```
-
-The active connector class and **Scroll active item into view** work independently. Use `map-marker-active` to style the selected location's card. Continue using `infobox-opened` on interaction elements for the Info Box's open/close state.
-
-![Selecting a map marker scrolls the publisher list to Penguin Random House and outlines its connected card.](https://academy.bricksbuilder.io/assets/map-active-connected-item.webp)
-
-## Resolving Google Maps Script Conflicts with Other Plugins
-
-Starting with **Bricks 2.5**, Bricks reuses a Google Maps API runtime that another integration has loaded or is loading. It preserves that integration's key, language, and callbacks. A manual script-dequeue workaround is usually unnecessary.
-
-If the map or address search fails, check that the key used by the shared Google loader permits the APIs your page needs. A key configured by another plugin can have different service or website restrictions from the key saved in Bricks. Consent tools and script optimizers can also control when Google becomes available.
-
-After upgrading, review custom code that deregisters `bricks-google-maps` or starts the map on a fixed timer. Test the map and address search together on the frontend before removing an existing workaround.
+Some security scanners may still fingerprint the underlying minified Swiper 8 code and flag it. Use this VEX or exception note: `Bricks-patched vendored Swiper 8 legacy build with CVE-2026-27212 backport.`
 
 ## Settings
 
-### Addresses
+- **Slides** (repeater) - Add slider slides. Each slide has:
+  - **Title** (text) - Slide title.
+  - **Title Tag** (select) - HTML tag for title. Options: `h1`-`h6`. Default: `h3`.
+  - **Content** (rich text) - Slide content.
+  - **Button text** (text) - Call-to-action button text.
+  - **Button style** (select) - Button style. Default: `light`.
+  - **Button size** (select) - Button size.
+  - **Button width** (number with units) - Button width.
+  - **Button link** (link) - Button destination.
+  - **Button background** (color) - Button background color.
+  - **Button border** (border) - Button border styling.
+  - **Button box shadow** (box-shadow) - Button shadow.
+  - **Button typography** (typography) - Button text styling.
+  - **Background** (background) - Slide background (color, image, gradient).
+  - **Overlay** (color) - Overlay color over the background.
 
-- **Addresses** (repeater) - Add map locations. Each address has:
-  - **Latitude** (text) - Latitude coordinate. Placeholder: `52.5164154966524`.
-  - **Longitude** (text) - Longitude coordinate. Placeholder: `13.377643715349544`.
-  - **Address** (text) - Address for geocoding (alternative to coordinates). Placeholder: `Berlin, Germany`.
-  - **Info Box template** (select) - Template for infobox popup.
-  - **Title** (text) - Infobox title.
-  - **Subtitle** (text) - Infobox subtitle.
-  - **Content** (textarea) - Infobox content.
-  - **Images** (image-gallery) - Images for infobox.
-  - **Width** (number) - Infobox width. Placeholder: `300`.
-  - **Label** (text) - Screen reader label for accessibility.
-  - **Marker: Text** (text) - Text marker content. Placeholder: `Marker`.
-  - **Marker: Text (Active)** (text) - Active text marker content. Placeholder: `Marker`.
-  - **Marker: Image** (image) - Image marker.
-  - **Marker: Image (Active)** (image) - Active image marker.
+- **Slides to show** (number) - Number of slides visible at once. Default: 1.
 
-### Query loop
+- **Slides to scroll** (number) - Number of slides to advance per transition. Default: 1.
 
-- **Has loop** (checkbox) - Enable query loop for dynamic addresses.
-- **Query** (query) - Configure which posts to display.
-- **Info Box: Template** (select) - Template for infobox popup in query loop.
+- **Spacing** (number) - Spacing between slides in pixels. Default: 0.
 
-### Sync with query
+- **Height** (number with units) - Slider height. Default: 300px.
 
-- **Sync with query** (query-list) - Connect to existing query loop for dynamic markers.
-- **Text: No results** (text) - Message when no locations found. Placeholder: `No locations found`.
-- **Scroll active item into view** (checkbox, Bricks 2.5) - Scroll to the connected loop item when its marker is selected. Off by default. Requires a selected query and JavaScript API rendering.
-- **Scroll behavior** (select) - Follow site setting (default), Smooth, or Instant. Available when scrolling is enabled.
-- **Scroll position** (select) - Nearest (default), Start, or Center. Available when scrolling is enabled.
+- **Effect** (select) - Transition effect. Options: `slide`, `fade`, `cube`, `coverflow`, `flip`. Default: `slide`.
 
-### Markers
+- **Loop** (select) - Enable infinite loop. Options: `enable`, `disable`. Default: `enable`.
 
-- **Cluster: Markers** (checkbox) - Enable marker clustering.
-- **Cluster: Background color** (color) - Cluster background color.
-- **Cluster: Text color** (color) - Cluster text color.
+- **Center mode** (checkbox) - Center the active slide.
 
-- **Marker** (separator) - Global marker settings.
-- **Type** (select) - Marker type. Options: `image`, `text`. Default: `image`.
+- **Disable lazy load** (checkbox) - Load all images immediately.
 
-#### Marker: Text
+- **Autoplay** (checkbox) - Enable automatic sliding.
 
-- **Max. width** (number with units) - Maximum text marker width.
-- **Typography** (typography) - Text marker font settings.
-- **Background color** (color) - Text marker background.
-- **Border** (border) - Text marker border styling.
-- **Box shadow** (box-shadow) - Text marker shadow.
-- **Padding** (spacing) - Text marker padding.
+- **Pause on hover** (checkbox) - Pause autoplay on hover.
 
-#### Marker: Text (Active)
+- **Stop on last slide** (checkbox) - Stop autoplay on the last slide.
 
-- **Typography** (typography) - Active text marker font settings.
-- **Background color** (color) - Active text marker background.
-- **Border** (border) - Active text marker border styling.
-- **Box shadow** (box-shadow) - Active text marker shadow.
-- **Padding** (spacing) - Active text marker padding.
+- **Autoplay delay in ms** (number) - Delay between slides in milliseconds. Default: 3000.
 
-#### Marker: Image
+- **Animation speed in ms** (number) - Transition speed in milliseconds. Default: 300.
 
-- **Marker** (image) - Default marker image.
-- **Height** (number) - Marker height in pixels. Placeholder: `40`.
-- **Width** (number) - Marker width in pixels. Placeholder: `40`.
-- **Border** (border) - Marker border styling.
-- **Box shadow** (box-shadow) - Marker shadow.
+### Title
 
-#### Marker: Image (Active)
+- **Title margin** (spacing) - Margin around slide titles.
 
-- **Marker (Active)** (image) - Active marker image.
-- **Height** (number) - Active marker height in pixels. Placeholder: `40`.
-- **Width** (number) - Active marker width in pixels. Placeholder: `40`.
-- **Border** (border) - Active marker border styling.
-- **Box shadow** (box-shadow) - Active marker shadow.
+- **Title typography** (typography) - Font settings for slide titles.
 
-### Map
+### Content
 
-- **Map ID** (text) - Google Maps ID from Cloud Console for advanced features.
-- **Render mode** (select) - With an API key saved, choose Google Maps JavaScript API or Iframe embed. Default: Google Maps JavaScript API.
-- **Loading** (select) - For iframe rendering, choose `lazy` or `eager`. Default: `lazy`.
+- **Content width** (number with units) - Maximum width of slide content.
 
-#### Map center
+- **Content background** (color) - Background color for slide content.
 
-- **Latitude (Center)** (text) - Map center latitude. Placeholder: `52.5164154966524`.
-- **Longitude (Center)** (text) - Map center longitude. Placeholder: `13.377643715349544`.
-- **Address (Center)** (text) - Map center address. Placeholder: `Berlin, Germany`.
+- **Content typography** (typography) - Font settings for slide content.
 
-#### General settings
+- **Content margin** (spacing) - Margin around slide content.
 
-- **Height** (number with units) - Map container height. Placeholder: `300px`.
-- **Zoom level** (number) - Initial map zoom level. Range: 0-20. Placeholder: `12`.
-- **Map type** (select) - Map style. Options: `roadmap`, `satellite`, `hybrid`, `terrain`. Default: `roadmap`.
-- **Map style** (select) - Predefined map styles. Requires roadmap type.
-- **Custom map style** (code) - JSON code for custom styling from Snazzy Maps.
-- **Apply: Custom map style** (apply) - Apply custom style changes.
-- **Disable initial fit map** (checkbox) - Preserve the configured center and zoom on page load. Off by default.
-- **Fit map on markers change** (checkbox) - Adjust the view after synced query results change. Off by default.
-- **Scroll** (checkbox) - Enable scroll wheel zooming. Default: true.
-- **Draggable** (checkbox) - Enable map dragging. Default: true.
-- **Fullscreen Control** (checkbox) - Show fullscreen button.
-- **Map Type Control** (checkbox) - Show map type selector.
-- **Street View Control** (checkbox) - Show street view button. Default: true.
-- **Disable Default UI** (checkbox) - Hide all default controls.
-- **Disable clickable POI** (checkbox) - Disable clicking on points of interest.
-- **Zoom Control** (checkbox) - Show zoom controls. Default: true.
-- **Zoom level (Min)** (number) - Minimum zoom level.
-- **Zoom level (Max)** (number) - Maximum zoom level.
+- **Content padding** (spacing) - Padding inside slide content. Default: 30px top, 60px right, 30px bottom, 60px left.
 
-### No API Key Mode
+- **Content align horizontal** (justify-content) - Horizontal alignment of content within slides.
 
-When no Google Maps API key is configured, the element falls back to Google Maps Embed API with limited functionality:
+- **Content align vertical** (align-items) - Vertical alignment of content within slides.
 
-- **Address** (text) - Single address for embedded map. Placeholder: `Berlin, Germany`.
-- **Loading** (select) - Loading behavior. Options: `eager`, `lazy`. Default: `lazy`.
+- **Content text align** (text-align) - Text alignment within slide content.
+
+### Button
+
+- **Button style** (select) - Global button style. Default: `light`.
+
+- **Button size** (select) - Global button size.
+
+- **Button width** (number with units) - Global button width.
+
+- **Background** (color) - Global button background color.
+
+- **Border** (border) - Global button border styling.
+
+- **Box shadow** (box-shadow) - Global button shadow.
+
+- **Typography** (typography) - Global button text styling.
+
+### Background
+
+- **Top** (number with units) - Background image top position.
+
+- **Right** (number with units) - Background image right position.
+
+- **Bottom** (number with units) - Background image bottom position.
+
+- **Left** (number with units) - Background image left position.
+
+## Arrows
+
+- **Show arrows** (checkbox) - Display navigation arrows. Default: true.
+
+- **Height** (number with units) - Arrow button height. Default: 50px.
+
+- **Width** (number with units) - Arrow button width. Default: 50px.
+
+- **Background** (color) - Arrow button background color.
+
+- **Border** (border) - Arrow button border styling.
+
+- **Typography** (typography) - Arrow button text styling.
+
+### Prev arrow
+
+- **Prev arrow** (icon) - Previous arrow icon. Default: `ion-ios-arrow-back`.
+
+- **Top** (number with units) - Previous arrow top position. Default: 50%.
+
+- **Right** (number with units) - Previous arrow right position.
+
+- **Bottom** (number with units) - Previous arrow bottom position.
+
+- **Left** (number with units) - Previous arrow left position. Default: 50px.
+
+- **Transform** (transform) - Previous arrow transformations.
+
+### Next arrow
+
+- **Next arrow** (icon) - Next arrow icon. Default: `ion-ios-arrow-forward`.
+
+- **Top** (number with units) - Next arrow top position.
+
+- **Right** (number with units) - Next arrow right position.
+
+- **Bottom** (number with units) - Next arrow bottom position.
+
+- **Left** (number with units) - Next arrow left position.
+
+- **Transform** (transform) - Next arrow transformations.
+
+## Dots
+
+- **Show dots** (checkbox) - Display pagination dots.
+
+- **Dynamic dots** (checkbox) - Enable dynamic bullet pagination.
+
+- **Vertical** (checkbox) - Display dots vertically.
+
+- **Height** (number with units) - Dot height.
+
+- **Width** (number with units) - Dot width.
+
+- **Top** (number with units) - Dots container top position.
+
+- **Right** (number with units) - Dots container right position.
+
+- **Bottom** (number with units) - Dots container bottom position.
+
+- **Left** (number with units) - Dots container left position.
+
+- **Border** (border) - Dot border styling.
+
+- **Color** (color) - Inactive dot color.
+
+- **Active color** (color) - Active dot color.
+
+- **Margin** (spacing) - Margin around individual dots.
 
 > **Developer reference**
 >
-> See the [Map (Google) Schema](https://academy.bricksbuilder.io/developer/schema/elements/map/) for the full JSON schema of this element's settings and controls.
+> See the [Slider Schema](https://academy.bricksbuilder.io/developer/schema/elements/slider/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Add to cart
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-add-to-cart/
+
+*Displays the Add to cart form for the current product, including quantity and variation handling for variable products.*
+
+Displays the Add to cart form for the current product, including quantity and variation handling for variable products.
+
+## Where this element works
+
+Single Product templates (or product preview context).
+
+## Key settings
+
+- **Typography** (typography)
+- **Background color** (color)
+- **Border** (border)
+- **Margin** (spacing)
+- **Padding** (spacing)
+- **Description typography** (typography)
+- **Price typography** (typography)
+- **Regular price typography** (typography)
+- **Sale price typography** (typography)
+- **Wrap** (select)
+
+## Usage tips
+
+- Use this element inside a Single Product template to guarantee a valid product context.
+- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
+
+---
+
+# Query results summary
+
+Source: https://academy.bricksbuilder.io/builder/elements/query/query-results-summary/
+
+*Display a query's reported starting position, ending position, and total result count, with updates for pagination, Load More, Infinite Scroll, and Query Filters.*
+
+The Query Results Summary element, introduced in version 1.12.2, allows you to display a dynamic count of results within a query, helping users understand which items they are currently viewing in relation to the total number of results. This is particularly useful for search results, archive pages, and paginated lists where users navigate through multiple pages of content. It can be found in the elements panel under the "Query" category.
+
+**Note:** If a third-party plugin disables Bricks Query history via the [`bricks/query/force_run`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-force_run/) hook, the results summary may display incorrect information.
+
+## Compatibility
+
+The **Query Results Summary** element updates with Bricks' native AJAX actions, including:
+
+- AJAX Pagination
+- Load More
+- Infinite Scroll
+- Query Filters
+
+This ensures that the summary updates dynamically as users interact with query-based elements on the page.
+
+Example:
+
+![](https://academy.bricksbuilder.io/assets/query-results-summary-element-example.png)
+
+## Settings
+
+![](https://academy.bricksbuilder.io/assets/query-results-summary-element-controls.png)
+
+### Query
+
+Select the **target query** for which the summary should be displayed.
+
+For a listing with synced map markers, select the results loop containing [Map Connectors](https://academy.bricksbuilder.io/builder/elements/general/map-connector/). The summary describes that loop's results. See [map queries and interactive listings](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/#map-queries).
+
+### Format
+
+Customize the summary text using placeholders:
+
+- `%start%`: The numeric starting position reported by the query.
+- `%end%`: The numeric ending position reported by the query.
+- `%total%`: The total number of results.
+
+Default format: `Results: %start% - %end% of %total% posts`
+
+Example output: Results: 1 - 5 of 14 posts
+
+Native post, term, and user queries normally report one-based positions. A query without a populated range, including a provider-backed ACF loop, can report `0` for the start or end position.
+
+Developers can override the reported positions with [`bricks/query/result_start`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-result_start/) and [`bricks/query/result_end`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-result_end/). These filters change summary metadata only. They do not skip or limit items, change the total count, or fetch another page.
+
+### Text: One Result
+
+Define a custom message when the query returns exactly **one** result to handle singular/plural differences.
+
+Default text: One post found
+
+### Text: No Results
+
+Specify a custom message when the query returns **zero** results.
+
+Default text: No posts found
+
+> **Developer reference**
+>
+> See the [Query Results Summary Schema](https://academy.bricksbuilder.io/developer/schema/elements/query-results-summary/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Product additional information
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-additional-information/
+
+*Displays the product attributes table shown in WooCommerce under Additional information.*
+
+Displays the product attributes table shown in WooCommerce under Additional information.
+
+## Where this element works
+
+Single Product templates (or product preview context).
+
+## Key settings
+
+- **Heading** (text)
+- **Typography** (typography)
+- **Width** (number)
+
+## Usage tips
+
+- Use this element inside a Single Product template to guarantee a valid product context.
+- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
+
+---
+
+# Product content
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-content/
+
+*Displays the full product description (main content) from the product editor.*
+
+Displays the full product description (main content) from the product editor.
+
+## Where this element works
+
+Single Product templates (or product preview context).
+
+## Key settings
+
+- This element uses standard WooCommerce output and inherited style controls.
+
+## Usage tips
+
+- Use this element inside a Single Product template to guarantee a valid product context.
+- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
+
+---
+
+# Product gallery
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-gallery/
+
+*Displays the WooCommerce product gallery with main product image and thumbnail navigation.*
+
+Displays the WooCommerce product gallery with main product image and thumbnail navigation.
+
+## Settings
+
+- **Product image size** (select) - Image size for the main product image. Default: woocommerce_single.
+- **Thumbnail image size** (select) - Image size for thumbnail images. Default: woocommerce_gallery_thumbnail.
+- **Lightbox image size** (select) - Image size for lightbox/fullscreen view. Default: woocommerce_single.
+- **Thumbnail position** (select) - Position of thumbnail navigation relative to main image. Options: bottom, top, left, right. Default: bottom.
+- **Thumbnail width** (number) - Width of thumbnail images in pixels.
+- **Thumbnail height** (number) - Height of thumbnail images in pixels.
+- **Thumbnail border** (border) - Border styling for thumbnail images.
+- **Thumbnail border (Active)** (border) - Border styling for active/selected thumbnail image.
+- **Slider** (checkbox) - Enable thumbnail slider functionality.
+- **Slider: Height (px)** (number) - Maximum height of thumbnail slider when positioned left/right.
+- **Slider: Gap (px)** (number) - Gap between thumbnail images in slider. Default: 30.
+- **Max. items** (number) - Maximum number of thumbnail items shown in horizontal slider. Default: 4.
+- **Prev arrow** (icon) - Icon for previous arrow navigation. Default: ti-angle-left.
+- **Next arrow** (icon) - Icon for next arrow navigation. Default: ti-angle-right.
+- **Background** (color) - Background color for navigation arrows.
+- **Border** (border) - Border styling for navigation arrows.
+- **Color** (color) - Icon color for navigation arrows.
+- **Size** (number) - Font size for navigation arrow icons.
+- **Height** (number) - Height of navigation arrow buttons.
+- **Width** (number) - Width of navigation arrow buttons.
+
+---
+
+# Product meta
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-meta/
+
+*Displays product meta details such as SKU, categories, and tags.*
+
+Displays product meta details such as SKU, categories, and tags.
+
+## Where this element works
+
+Single Product templates (or product preview context).
+
+## Key settings
+
+- **Direction** (direction)
+- **Spacing** (number)
+- **Separator** (text)
+- **Separator color** (color)
+- **Typography** (typography)
+- **Fields** (repeater)
+
+## Usage tips
+
+- Use this element inside a Single Product template to guarantee a valid product context.
+- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
+
+---
+
+# Product price
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-price/
+
+*Displays the WooCommerce product price, including regular price, sale price, and price range for variable products.*
+
+Displays the WooCommerce product price, including regular price, sale price, and price range for variable products.
+
+## Selected variation price (since 2.5) {#variation-price}
+
+On a variable product, the Product price element updates to the selected variation's price as soon as a customer picks a variation. Clearing the selection shows the original price or price range again. This also works for products inside query loops and quick views.
+
+If all variations have the same price, WooCommerce doesn't provide a separate variation price, so the element keeps showing the original price.
+
+## Settings
+
+- **Hide regular price** (checkbox) - Hide the regular price when a sale price is active.
+- **Regular price typography** (typography) - Typography settings for the regular price text.
+- **Sale price typography** (typography) - Typography settings for the sale price text.
+
+---
+
+# Related products
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-related/
+
+*Displays related products based on the current product context.*
+
+Displays related products based on the current product context.
+
+## Where this element works
+
+Single Product templates (or product preview context).
+
+## Key settings
+
+- **Heading** (text)
+- **Heading typography** (typography)
+- **Max. products** (number)
+- **Columns** (number)
+- **Order by** (select)
+- **Order** (select)
+- **Gap** (number)
+- **Align** (text-align)
+- **Image height** (number)
+- **Padding** (spacing)
+
+## Usage tips
+
+- Use this element inside a Single Product template to guarantee a valid product context.
+- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
+
+---
+
+# Product reviews
+
+Source: https://academy.bricksbuilder.io/builder/elements/product/product-reviews/
+
+*Displays the WooCommerce reviews section for the current product.*
+
+Displays the WooCommerce reviews section for the current product.
+
+## Where this element works
+
+Single Product templates (or product preview context).
+
+## Key settings
+
+- **Title** (typography)
+- **Label** (typography)
+- **Textarea** (select)
+- **Author** (typography)
+- **Date** (typography)
+- **Description** (typography)
+- **Size** (number)
+- **Background color** (color)
+- **Fill color** (color)
+
+## Usage tips
+
+- Use this element inside a Single Product template to guarantee a valid product context.
+- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.

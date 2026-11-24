@@ -13,6 +13,7 @@
 |---|---|---|---|
 | `items` | image-gallery | Images | — |
 | `layout` | select | Layout | — |
+| `random` | checkbox | Random order | — |
 | `columns` | number | Columns | `--columns` |
 | `gutter` | number | Spacing | `--gutter` |
 | `imageHeight` | number | Image height | `height` on `.image` |
@@ -24,6 +25,7 @@
 | `lightboxImageClick` | select | Image click action | — |
 | `lightboxAnimationType` | select | Animation | — |
 | `lightboxCaption` | checkbox | Caption | — |
+| `lightboxCaptionPosition` | select | Caption position | — |
 | `lightboxThumbnails` | checkbox | Thumbnail navigation | — |
 | `lightboxThumbnailSize` | number | Thumbnail size | — |
 | `lightboxPadding` | dimensions | Padding | — |

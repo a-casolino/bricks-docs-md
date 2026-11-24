@@ -28,6 +28,30 @@ The SVG element displays SVG graphics from files, dynamic data, custom code, or 
 
 - **Link** (link) - Make the SVG clickable by adding a link.
 
+## Label a linked SVG
+
+To give a linked SVG a link label without custom code:
+
+1. Add an SVG element, set **Source** to **File**, and select your SVG file.
+2. Open **Link**, select **Custom URL**, and enter your homepage URL.
+3. In the Link control's **aria-label** field, enter `Site home`.
+
+Bricks adds `aria-label="Site home"` to the surrounding `<a>` element.
+
+[Custom attributes](https://academy.bricksbuilder.io/builder/features/custom-attributes/) added under **Style > Attributes** apply to the `<svg>` element, including when it has a link. Use **Link > aria-label** to set the label directly on the link.
+
+For example, if you also add a custom attribute named `data-icon` with the value `home`, the relevant HTML is:
+
+```html
+<a href="https://academy.bricksbuilder.io/" class="bricks-link-wrapper" aria-label="Site home">
+  <svg data-icon="home" viewBox="0 0 24 24">
+    <!-- SVG shapes -->
+  </svg>
+</a>
+```
+
+This example uses `/` as the homepage URL and omits generated SVG IDs and classes.
+
 > **Developer reference**
 >
 > See the [SVG Schema](https://academy.bricksbuilder.io/developer/schema/elements/svg/) for the full JSON schema of this element's settings and controls.
