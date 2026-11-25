@@ -1,90 +1,3 @@
-# Social sharing
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/social-sharing/
-
-*Displays social media sharing buttons for the current post.*
-
-Displays social media sharing buttons for the current post.
-
-## Settings
-
-- **Share via** (repeater) - Social media services to include. Default includes: Facebook, X, LinkedIn, WhatsApp, Pinterest, Telegram, VKontakte, Bluesky, Viber (since Bricks 2.5), Email.
-  - **Service** (select) - Social media platform.
-  - **Excerpt** (checkbox) - Include post excerpt in share (WhatsApp only).
-  - **Icon** (icon) - Custom icon for the service.
-  - **Background** (color) - Button background color.
-  - **Color** (color) - Button text/icon color.
-- **Use brand colors** (checkbox) - Apply default brand colors to buttons. Default: true.
-- **Direction** (direction) - Layout direction for sharing buttons.
-- **Open in new tab** (checkbox) - Open sharing links in new tabs.
-- **Rel attribute** (text) - Link rel attribute. Default: "nofollow".
-
-> **Developer reference**
->
-> See the [Social Sharing Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-sharing/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Related posts
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/related-posts/
-
-*Displays posts related to the current post based on shared taxonomies.*
-
-Displays posts related to the current post based on shared taxonomies.
-
-## Settings
-
-### Title
-- **Title** (text) - Section title text.
-- **HTML tag** (select) - HTML tag for title. Options: h2, h3, h4, h5, h6. Default: h2.
-- **Margin** (spacing) - Title margin.
-- **Typography** (typography) - Title typography.
-
-### Query
-- **Post type** (select) - Post type to query.
-- **Max. related posts** (number) - Maximum number of related posts. Default: 3.
-- **Order** (select) - Sort order. Default: Descending.
-- **Order by** (select) - Sort criteria. Default: Random.
-- **Common taxonomies** (select) - Taxonomies posts must share. Default: category, post_tag.
-
-### Layout
-- **Gap** (number) - Spacing between posts. Default: 30px.
-- **Posts per row** (number) - Number of posts per row. Default: 3.
-
-### Fields
-- **Content** (repeater) - Dynamic data fields to display. Default includes: `{post_title:link}`, `{post_date}`, `{post_excerpt:20}`.
-  - **Dynamic data** (text) - Dynamic data expression.
-  - **HTML tag** (select) - HTML tag for field. Default: div.
-  - **Margin** (spacing) - Field margin.
-  - **Padding** (spacing) - Field padding.
-  - **Background color** (color) - Field background color.
-  - **Border** (border) - Field border.
-  - **Typography** (typography) - Field typography.
-
-### Image
-- **Disable** (checkbox) - Hide post images.
-- **Aspect ratio** (text) - Image aspect ratio.
-- **Image size** (select) - WordPress image size.
-- **Position** (select) - Image position. Options: Top, Right, Bottom, Left. Default: Top.
-- **Height** (number) - Image height.
-- **Width** (number) - Image width.
-- **Margin** (spacing) - Image margin.
-
-### Content
-- **Width** (number) - Content area width.
-- **Padding** (spacing) - Content area padding.
-- **Background color** (color) - Content area background color.
-- **Overlay content** (checkbox) - Overlay content on image.
-- **Horizontal alignment** (align-items) - Content horizontal alignment (overlay mode).
-- **Vertical alignment** (justify-content) - Content vertical alignment (overlay mode).
-
-> **Developer reference**
->
-> See the [Related Posts Schema](https://academy.bricksbuilder.io/developer/schema/elements/related-posts/) for the full JSON schema of this element's settings and controls.
-
----
-
 # Taxonomy
 
 Source: https://academy.bricksbuilder.io/builder/elements/single/taxonomy/
@@ -715,6 +628,70 @@ The WordPress element displays various WordPress widgets with customizable styli
 
 ---
 
+# Account - Add payment method
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-add-payment-method/
+
+*Displays the Add payment method endpoint content inside My Account templates.*
+
+Displays the Add payment method endpoint content inside My Account templates.
+
+## Where this element works
+
+My Account templates and My Account endpoint views.
+
+## Key settings
+
+- **Wrapper** (separator)
+- **Payment Methods List** (separator)
+- **Payment Method Item** (separator)
+- **Label** (separator)
+- **Custom Radio (Checked)** (separator)
+- **Color** (color)
+- **Payment Box** (separator)
+- **Add Payment Method Button** (separator)
+- **Margin** (spacing)
+- **Padding** (spacing)
+
+## Usage tips
+
+- Use these elements in My Account templates or endpoint-specific templates.
+- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
+
+---
+
+# Account - Downloads
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-downloads/
+
+*Displays customer downloadable products inside My Account.*
+
+Displays customer downloadable products inside My Account.
+
+## Where this element works
+
+My Account templates and My Account endpoint views.
+
+## Key settings
+
+- **Table** (separator)
+- **Head** (separator)
+- **Body** (separator)
+- **Links** (separator)
+- **Button** (separator)
+- **Background color** (color)
+- **Border** (border)
+- **Box shadow** (box-shadow)
+- **Typography** (typography)
+- **Padding** (spacing)
+
+## Usage tips
+
+- Use these elements in My Account templates or endpoint-specific templates.
+- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
+
+---
+
 # Account - Addresses
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-addresses/
@@ -778,38 +755,6 @@ My Account templates and My Account endpoint views.
 
 ---
 
-# Account - Downloads
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-downloads/
-
-*Displays customer downloadable products inside My Account.*
-
-Displays customer downloadable products inside My Account.
-
-## Where this element works
-
-My Account templates and My Account endpoint views.
-
-## Key settings
-
-- **Table** (separator)
-- **Head** (separator)
-- **Body** (separator)
-- **Links** (separator)
-- **Button** (separator)
-- **Background color** (color)
-- **Border** (border)
-- **Box shadow** (box-shadow)
-- **Typography** (typography)
-- **Padding** (spacing)
-
-## Usage tips
-
-- Use these elements in My Account templates or endpoint-specific templates.
-- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
-
----
-
 # Account - Edit address
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-form-edit-address/
@@ -834,38 +779,6 @@ My Account templates and My Account endpoint views.
 - **Label typography** (typography)
 - **Placeholder typography** (typography)
 - **Field** (separator)
-
-## Usage tips
-
-- Use these elements in My Account templates or endpoint-specific templates.
-- Verify each endpoint (orders, downloads, addresses, payment methods) so navigation and forms stay consistent.
-
----
-
-# Account - Add payment method
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/account-add-payment-method/
-
-*Displays the Add payment method endpoint content inside My Account templates.*
-
-Displays the Add payment method endpoint content inside My Account templates.
-
-## Where this element works
-
-My Account templates and My Account endpoint views.
-
-## Key settings
-
-- **Wrapper** (separator)
-- **Payment Methods List** (separator)
-- **Payment Method Item** (separator)
-- **Label** (separator)
-- **Custom Radio (Checked)** (separator)
-- **Color** (color)
-- **Payment Box** (separator)
-- **Add Payment Method Button** (separator)
-- **Margin** (spacing)
-- **Padding** (spacing)
 
 ## Usage tips
 
@@ -1346,38 +1259,6 @@ Cart page templates.
 
 ---
 
-# Cart coupon
-
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-coupon/
-
-*Displays the coupon input section for the Cart page.*
-
-Displays the coupon input section for the Cart page.
-
-## Where this element works
-
-Cart page templates.
-
-## Key settings
-
-- **General** (separator)
-- **Update cart via AJAX** (checkbox)
-- **Direction** (direction)
-- **Input** (separator)
-- **Placeholder** (text)
-- **Width** (number)
-- **Background color** (color)
-- **Border** (border)
-- **Placeholder typography** (typography)
-- **Button** (text)
-
-## Usage tips
-
-- Place cart elements in a dedicated Cart template to avoid empty output on non-cart pages.
-- Keep spacing and table styling consistent across cart rows, totals, and coupon sections for better usability.
-
----
-
 # Cart items
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-items/
@@ -1402,6 +1283,38 @@ Cart page templates.
 - **Image** (separator)
 - **Disable** (checkbox)
 - **Width** (number)
+
+## Usage tips
+
+- Place cart elements in a dedicated Cart template to avoid empty output on non-cart pages.
+- Keep spacing and table styling consistent across cart rows, totals, and coupon sections for better usability.
+
+---
+
+# Cart coupon
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/cart-coupon/
+
+*Displays the coupon input section for the Cart page.*
+
+Displays the coupon input section for the Cart page.
+
+## Where this element works
+
+Cart page templates.
+
+## Key settings
+
+- **General** (separator)
+- **Update cart via AJAX** (checkbox)
+- **Direction** (direction)
+- **Input** (separator)
+- **Placeholder** (text)
+- **Width** (number)
+- **Background color** (color)
+- **Border** (border)
+- **Placeholder typography** (typography)
+- **Button** (text)
 
 ## Usage tips
 
@@ -1715,6 +1628,89 @@ Checkout templates (and order-received context for thank-you flows).
 
 ---
 
+# Dynamic fragment
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/
+
+*Re-renders WooCommerce cart-dependent content after cart changes.*
+
+Re-renders WooCommerce cart-dependent content after cart changes.
+
+https://youtu.be/Q6wYRAvVN0Y
+
+> **Note**
+>
+> This element requires **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
+
+## Where this element works
+
+WooCommerce-aware Bricks layouts, such as page content, headers, and footers that need to update after cart changes.
+
+## Key settings
+
+- **Insert a structure** (select) - Choose a generated starter structure.
+- **Generate** (button) - Adds the selected structure to the element.
+
+## Generated structures
+
+- **Mini cart**
+- **Free shipping progress**
+
+Generated structures are appended to the current content and do not overwrite existing content.
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-states.png)
+
+## Usage tips
+
+- Use Dynamic fragment for cart-dependent content outside the main Cart page, such as a [custom mini cart](https://academy.bricksbuilder.io/integrations/woocommerce/create-custom-mini-cart-dynamic-fragment/), free shipping progress, or cart totals.
+- Keep the fragment focused on content that needs to refresh after add-to-cart, remove-from-cart, or quantity changes.
+- Keep the Dynamic fragment wrapper outside other query loops. A cart loop can be placed inside the fragment.
+
+## Free shipping progress
+
+The **Free shipping progress** structure adds a Progress Bar that shows how much more the cart needs for free shipping. Place the Dynamic fragment where shoppers see it on every page, for example a bar at the top of the header template, so it updates as products are added.
+
+- **Minimum amount:** Bricks reads it from WooCommerce. It is the **Minimum order amount** of the **Free shipping** method in the shipping zone that matches the cart, with **Free shipping requires** set to a minimum order amount (alone or combined with a coupon). Change it in **WooCommerce > Settings > Shipping**, not in Bricks. If several free shipping methods match, Bricks uses the one with the smallest remaining amount.
+- **Cart amount:** the cart subtotal minus coupon discounts, unless **Apply minimum order rule before coupon discount** is enabled on the free shipping method.
+- **Label:** `Add {woo_free_shipping_remaining} more for free shipping`.
+- **Value:** `{woo_free_shipping_progress:value}`, a number from 0 to 100 (the percentage of the minimum the cart has reached).
+- **Conditions:** the bar only renders while a minimum exists (`{woo_free_shipping_min_amount:value}` is not 0) and the cart is below it (`{woo_free_shipping_progress:value}` is less than 100).
+
+Once the cart reaches the minimum, the bar is hidden. The structure has no message for that state. To show one, add an element such as Basic Text inside the same Dynamic fragment and give it the condition **Dynamic data** `{woo_free_shipping_progress:value}` `==` `100`.
+
+![Builder showing a Dynamic fragment in the header template with the generated Free shipping progress bar and a Basic Text "Your order ships free" with a condition that shows it when the free shipping progress equals 100.](https://academy.bricksbuilder.io/assets/dynamic-fragment-free-shipping-reached-condition.webp)
+
+The Builder canvas previews a sample cart, so the bar can show "Add $0.00 more" and the conditions are not applied there. Check the real amounts on the frontend with products in the cart.
+
+## Custom mini cart
+
+For a mini cart, add a Dynamic fragment inside an Offcanvas in the header template and generate the **Mini cart** structure. A second Dynamic fragment in the header holds the cart icon and item count, so the count updates too. [Create a custom mini cart with Dynamic fragment](https://academy.bricksbuilder.io/integrations/woocommerce/create-custom-mini-cart-dynamic-fragment/) walks through the full setup, including the interactions that open the panel.
+
+See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/) for the cart tags you can use inside the fragment.
+
+## Refresh behavior
+
+Dynamic fragment refreshes after WooCommerce cart, coupon, and checkout events such as add to cart, remove from cart, cart emptied, cart totals updated, checkout updated, and coupon apply/remove events.
+
+After a refresh, Bricks reruns frontend functions and dispatches:
+
+```js
+document.body.addEventListener('bricks/woocommerce/fragments/refreshed', (event) => {
+  console.log(event.detail.fragments)
+})
+```
+
+This refresh event also covers initial synchronization and checkout recalculations that do not change cart items. For a custom success notice or popup, use the [Bricks cart contents changed](https://academy.bricksbuilder.io/builder/features/interactions/#cart-contents-changed) interaction trigger, available since Bricks 2.4. It runs after a confirmed AJAX addition, removal, or quantity change and the related UI updates finish.
+
+## Limitations
+
+- Dynamic fragment is frontend-only.
+- Do not place the Dynamic fragment wrapper inside a query loop.
+- Component instances are not supported.
+- The source area must be header, content, or footer.
+
+---
+
 # Checkout v2
 
 Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/
@@ -1930,83 +1926,129 @@ See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.
 
 ---
 
-# Dynamic fragment
+# Mini cart
 
-Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/mini-cart/
 
-*Re-renders WooCommerce cart-dependent content after cart changes.*
+*Displays a mini cart icon with cart count and dropdown cart details.*
 
-Re-renders WooCommerce cart-dependent content after cart changes.
+Displays a mini cart icon with cart count and dropdown cart details.
 
-https://youtu.be/Q6wYRAvVN0Y
+## Settings
 
-> **Note**
->
-> This element requires **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
+- **Icon** (icon) - Cart icon. Default: ti-shopping-cart.
+- **Icon typography** (typography) - Typography for cart icon. Only available when Icon is set.
+- **Open on add to cart (AJAX)** (checkbox) - Open mini cart when products are added via AJAX.
+
+### Hide an empty cart (since 2.5)
+
+Enable **Hide if empty** to hide the entire Mini cart element on the frontend when the cart has no products. It remains visible in the Builder so you can edit it. This is separate from **Cart count > Visibility**, which only controls the count badge. The element updates after AJAX cart changes.
+
+### Cart count
+
+- **Visibility** (select) - Show/hide cart count. Options: Hide (Always), Show (Always). Default: Hide if empty.
+- **Background color** (color) - Cart count background color. Only available when Visibility is not Hide (Always).
+- **Border** (border) - Cart count border settings. Only available when Visibility is not Hide (Always).
+- **Typography** (typography) - Cart count typography. Only available when Visibility is not Hide (Always).
+- **Transform** (transform) - Cart count transform. Only available when Visibility is not Hide (Always) and Off-Canvas is not Top or Bottom.
+- **Height** (number with units) - Cart count height. Only available when Visibility is not Hide (Always).
+- **Width** (number with units) - Cart count width. Only available when Visibility is not Hide (Always).
+- **Top** (number with units) - Cart count top position. Only available when Visibility is not Hide (Always).
+- **Right** (number with units) - Cart count right position. Only available when Visibility is not Hide (Always).
+- **Bottom** (number with units) - Cart count bottom position. Only available when Visibility is not Hide (Always).
+- **Left** (number with units) - Cart count left position. Only available when Visibility is not Hide (Always).
+
+### Cart subtotal
+
+- **Position** (select) - Subtotal position. Options: Right, Left.
+- **Gap** (number with units) - Gap between icon and subtotal. Only available when Position is set.
+- **Typography** (typography) - Subtotal typography. Only available when Position is set.
+
+### Custom empty cart template (since 2.5)
+
+To show a custom empty state in the cart details instead:
+
+1. Create and publish a **Section** template containing the empty-cart message or layout.
+2. Select the Mini cart and open **Content > Cart details**.
+3. Leave **Hide** off and select the Section under **Empty cart template**.
+4. Enable **Preview empty state** to inspect the template in the Builder. This preview setting does not change the visitor's cart.
+5. Save and test the frontend with an empty cart, then add and remove a product.
+
+Leave **Hide if empty** off if visitors should be able to open this empty state. An unpublished, empty, or non-Section template cannot be used. Avoid placing the Mini cart inside the same Section template selected as its empty state.
+
+<div className="screenshot screenshot--control-panel">
+
+![Mini cart controls with Hide if empty off, an Empty cart template selected, and Preview empty state enabled.](https://academy.bricksbuilder.io/assets/builder/release-2.5/mini-cart-empty-panel.webp)
+
+</div>
+
+The selected Section replaces the default empty-cart message:
+
+![An empty Mini cart displays a custom message and an Explore the collection button.](https://academy.bricksbuilder.io/assets/builder/release-2.5/mini-cart-empty-result.webp)
+
+### Cart details
+
+- **Hide** (checkbox) - Hide cart details dropdown.
+- **Don't close on click outside mini cart** (checkbox) - Prevent auto-close on outside clicks. Only available when Hide is not checked.
+- **Off-Canvas** (select) - Off-canvas position. Options: Top, Right, Bottom, Left. Only available when Hide is not checked.
+- **Height** (number with units) - Cart details height. Only available when Hide is not checked and Off-Canvas is not Top or Bottom.
+- **Width** (number with units) - Cart details width. Default: 400px. Only available when Hide is not checked and Off-Canvas is not Top or Bottom.
+- **Image width** (number with units) - Product image width. Default: 60px. Only available when Hide is not checked.
+- **Padding** (spacing) - Cart details padding. Only available when Hide is not checked.
+- **Position** (dimensions) - Cart details position. Only available when Hide is not checked and Off-Canvas is Disabled.
+- **Transform** (transform) - Cart details transform. Only available when Hide is not checked and Off-Canvas is not Top or Bottom.
+- **Background** (color) - Cart details background color. Only available when Hide is not checked.
+- **Border** (border) - Cart details border settings. Only available when Hide is not checked.
+- **Box shadow** (box-shadow) - Cart details box shadow. Only available when Hide is not checked.
+- **Typography (Title)** (typography) - Title typography. Only available when Hide is not checked.
+- **Typography (Quantity)** (typography) - Quantity typography. Only available when Hide is not checked.
+
+#### Buttons
+
+- **Background color** (color) - Button background color. Only available when Hide is not checked.
+- **Border** (border) - Button border settings. Only available when Hide is not checked.
+- **Typography** (typography) - Button typography. Only available when Hide is not checked.
+
+#### Close
+
+- **Icon** (icon) - Close icon. Only available when Hide is not checked.
+- **Typography** (typography) - Close typography. Only available when Hide is not checked and Icon is set. Excludes: font-family, font-weight, font-style, text-align, text-decoration, text-transform, line-height, letter-spacing.
+- **Position** (dimensions) - Close position. Only available when Hide is not checked and Icon is set.
+- **Padding** (spacing) - Close padding. Only available when Hide is not checked and Icon is set.
+- **Background color** (color) - Close background color. Only available when Hide is not checked and Icon is set.
+- **Border** (border) - Close border settings. Only available when Hide is not checked and Icon is set.
+
+---
+
+# Notice
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/notice/
+
+*Displays WooCommerce system notices (success, info, and error messages).*
+
+Displays WooCommerce system notices (success, info, and error messages).
 
 ## Where this element works
 
-WooCommerce-aware Bricks layouts, such as page content, headers, and footers that need to update after cart changes.
+Shop/archive templates and WooCommerce pages where the related data exists.
 
 ## Key settings
 
-- **Insert a structure** (select) - Choose a generated starter structure.
-- **Generate** (button) - Adds the selected structure to the element.
-
-## Generated structures
-
-- **Mini cart**
-- **Free shipping progress**
-
-Generated structures are appended to the current content and do not overwrite existing content.
-
-![](https://academy.bricksbuilder.io/assets/dynamic-fragment-states.png)
+- **Preview notice type** (select)
 
 ## Usage tips
 
-- Use Dynamic fragment for cart-dependent content outside the main Cart page, such as a [custom mini cart](https://academy.bricksbuilder.io/integrations/woocommerce/create-custom-mini-cart-dynamic-fragment/), free shipping progress, or cart totals.
-- Keep the fragment focused on content that needs to refresh after add-to-cart, remove-from-cart, or quantity changes.
-- Keep the Dynamic fragment wrapper outside other query loops. A cart loop can be placed inside the fragment.
+- Keep notice styles highly readable so customers can quickly understand errors and confirmation messages.
+- Check all notice types (success, info, error) in real cart and checkout scenarios.
 
-## Free shipping progress
+Since Bricks 2.5, use a Notice element in a non-AJAX popup with the [Coupon error interaction](https://academy.bricksbuilder.io/builder/features/interactions/#coupon-error) to show the returned coupon error. Follow the [WooCommerce Notice setup](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-notices/#woocommerce-notice-element) before placing the element.
 
-The **Free shipping progress** structure adds a Progress Bar that shows how much more the cart needs for free shipping. Place the Dynamic fragment where shoppers see it on every page, for example a bar at the top of the header template, so it updates as products are added.
+---
 
-- **Minimum amount:** Bricks reads it from WooCommerce. It is the **Minimum order amount** of the **Free shipping** method in the shipping zone that matches the cart, with **Free shipping requires** set to a minimum order amount (alone or combined with a coupon). Change it in **WooCommerce > Settings > Shipping**, not in Bricks. If several free shipping methods match, Bricks uses the one with the smallest remaining amount.
-- **Cart amount:** the cart subtotal minus coupon discounts, unless **Apply minimum order rule before coupon discount** is enabled on the free shipping method.
-- **Label:** `Add {woo_free_shipping_remaining} more for free shipping`.
-- **Value:** `{woo_free_shipping_progress:value}`, a number from 0 to 100 (the percentage of the minimum the cart has reached).
-- **Conditions:** the bar only renders while a minimum exists (`{woo_free_shipping_min_amount:value}` is not 0) and the cart is below it (`{woo_free_shipping_progress:value}` is less than 100).
+# Products archive description
 
-Once the cart reaches the minimum, the bar is hidden. The structure has no message for that state. To show one, add an element such as Basic Text inside the same Dynamic fragment and give it the condition **Dynamic data** `{woo_free_shipping_progress:value}` `==` `100`.
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-archive-description/
 
-![Builder showing a Dynamic fragment in the header template with the generated Free shipping progress bar and a Basic Text "Your order ships free" with a condition that shows it when the free shipping progress equals 100.](https://academy.bricksbuilder.io/assets/dynamic-fragment-free-shipping-reached-condition.webp)
+*Displays the description for WooCommerce product archives (shop page, categories, tags).*
 
-The Builder canvas previews a sample cart, so the bar can show "Add $0.00 more" and the conditions are not applied there. Check the real amounts on the frontend with products in the cart.
-
-## Custom mini cart
-
-For a mini cart, add a Dynamic fragment inside an Offcanvas in the header template and generate the **Mini cart** structure. A second Dynamic fragment in the header holds the cart icon and item count, so the count updates too. [Create a custom mini cart with Dynamic fragment](https://academy.bricksbuilder.io/integrations/woocommerce/create-custom-mini-cart-dynamic-fragment/) walks through the full setup, including the interactions that open the panel.
-
-See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/) for the cart tags you can use inside the fragment.
-
-## Refresh behavior
-
-Dynamic fragment refreshes after WooCommerce cart, coupon, and checkout events such as add to cart, remove from cart, cart emptied, cart totals updated, checkout updated, and coupon apply/remove events.
-
-After a refresh, Bricks reruns frontend functions and dispatches:
-
-```js
-document.body.addEventListener('bricks/woocommerce/fragments/refreshed', (event) => {
-  console.log(event.detail.fragments)
-})
-```
-
-This refresh event also covers initial synchronization and checkout recalculations that do not change cart items. For a custom success notice or popup, use the [Bricks cart contents changed](https://academy.bricksbuilder.io/builder/features/interactions/#cart-contents-changed) interaction trigger, available since Bricks 2.4. It runs after a confirmed AJAX addition, removal, or quantity change and the related UI updates finish.
-
-## Limitations
-
-- Dynamic fragment is frontend-only.
-- Do not place the Dynamic fragment wrapper inside a query loop.
-- Component instances are not supported.
-- The source area must be header, content, or footer.
+Displays the description for WooCommerce product archives (shop page, categories, tags).

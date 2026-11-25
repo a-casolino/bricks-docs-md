@@ -1,40 +1,3 @@
-# Filter: bricks/posts/merge_query
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-merge_query/
-
-*Since Bricks 1.3.7 you'll be able to decide if a certain element query should be merged with the WordPress main query, in the archive or search templates, using.*
-
-Since Bricks 1.3.7 you'll be able to decide if a certain element query should be merged with the WordPress main query, in the archive or search templates, using the following filter:
-
-```php
-add_filter( 'bricks/posts/merge_query', function( $merge, $element_id ) {
-  if ( $element_id === 'wghgco' ) {
-    return false;
-  }
-
-  return $merge;
-}, 10, 2 );
-```
-
-The filter callback receives two arguments:
-
-- `$merge` is a boolean variable indicating whether the query should be merged or not (default: true)
-- `$element_id` is a string containing the element ID
-
-This is triggered for all the Bricks elements containing one internal WP_Query query like the Posts and the Carousel element, or any other element where the Query Loop is enabled (Container, Slider, Accordion).
-
-> **Note**
->
-> Starting from Bricks 1.7, you can achieve the same result by utilizing the "Disable Query Merge" option in the [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/#posts-query), without the need for a PHP filter. Use this filter for more advanced situations.
-
-## How to find the element ID? {#find-element-id}
-
-Each element in Bricks has a unique ID. You may find the element ID when editing the element and looking into the Global CSS classes input. By default, it shows the element HTML ID (e.g. `#bricks-element-wghgco`). For the purpose of this filter, we only need the last portion of the string, the six-character long element ID (e.g. `wghgco`).
-
-![](https://academy.bricksbuilder.io/assets/Screenshot-2021-12-29-at-09.19.37.png)
-
----
-
 # Filter: bricks/posts/query_vars
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-query_vars/
@@ -264,6 +227,43 @@ add_filter( 'bricks/posts/query_vars', function( $query_vars, $settings, $elemen
 
 ---
 
+# Filter: bricks/posts/merge_query
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-merge_query/
+
+*Since Bricks 1.3.7 you'll be able to decide if a certain element query should be merged with the WordPress main query, in the archive or search templates, using.*
+
+Since Bricks 1.3.7 you'll be able to decide if a certain element query should be merged with the WordPress main query, in the archive or search templates, using the following filter:
+
+```php
+add_filter( 'bricks/posts/merge_query', function( $merge, $element_id ) {
+  if ( $element_id === 'wghgco' ) {
+    return false;
+  }
+
+  return $merge;
+}, 10, 2 );
+```
+
+The filter callback receives two arguments:
+
+- `$merge` is a boolean variable indicating whether the query should be merged or not (default: true)
+- `$element_id` is a string containing the element ID
+
+This is triggered for all the Bricks elements containing one internal WP_Query query like the Posts and the Carousel element, or any other element where the Query Loop is enabled (Container, Slider, Accordion).
+
+> **Note**
+>
+> Starting from Bricks 1.7, you can achieve the same result by utilizing the "Disable Query Merge" option in the [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/#posts-query), without the need for a PHP filter. Use this filter for more advanced situations.
+
+## How to find the element ID? {#find-element-id}
+
+Each element in Bricks has a unique ID. You may find the element ID when editing the element and looking into the Global CSS classes input. By default, it shows the element HTML ID (e.g. `#bricks-element-wghgco`). For the purpose of this filter, we only need the last portion of the string, the six-character long element ID (e.g. `wghgco`).
+
+![](https://academy.bricksbuilder.io/assets/Screenshot-2021-12-29-at-09.19.37.png)
+
+---
+
 # Filter: bricks/query/init_loop_index
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-init_loop_index/
@@ -291,6 +291,42 @@ add_filter( 'bricks/query/init_loop_index', function ( $initial_index, $object_t
 }, 10, 3 );
 
 ```
+
+---
+
+# Filter: bricks/query/loop_object
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object/
+
+*The Bricks Query Loop supports 3 types of queries by default (Posts, Terms, and Users). But it can be extended to support any other query. While iterating.*
+
+The Bricks [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/) supports 3 types of queries by default (Posts, Terms, and Users). But it can be extended to support [any other query](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-run/). While iterating through the query results, the iteration object could be manipulated using the `bricks/query/loop_object` like so:
+
+```php
+add_filter( 'bricks/query/loop_object', function( $loop_object, $loop_key, $query_obj ) {
+    if ( $query_obj->object_type !== 'my_query_type' ) {
+	return $loop_object;
+    }
+
+    // Perform some logic, for example:
+    // global $post;
+    // $post = get_post( $loop_object );
+    // setup_postdata( $post );
+
+    return $loop_object;
+}, 10, 3 );
+```
+
+The filter callback receives two arguments:
+
+- `$loop_object` is the current loop iteration value (from the results array)
+- `$loop_key` is the current loop iteration key (from the results array)
+- `$query_obj` is an instance of the `\Bricks\Query` class object
+
+Related hooks:
+
+- To add a query type to the Query control use [`bricks/setup/control_options`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/)
+- To perform the custom query type and output the results use [`bricks/query/run`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-run/)
 
 ---
 
@@ -337,42 +373,6 @@ Since 1.9.2, you can define `$query_vars['bricks_force_run'] = true` to achieve 
 
 ---
 
-# Filter: bricks/query/loop_object
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object/
-
-*The Bricks Query Loop supports 3 types of queries by default (Posts, Terms, and Users). But it can be extended to support any other query. While iterating.*
-
-The Bricks [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/) supports 3 types of queries by default (Posts, Terms, and Users). But it can be extended to support [any other query](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-run/). While iterating through the query results, the iteration object could be manipulated using the `bricks/query/loop_object` like so:
-
-```php
-add_filter( 'bricks/query/loop_object', function( $loop_object, $loop_key, $query_obj ) {
-    if ( $query_obj->object_type !== 'my_query_type' ) {
-	return $loop_object;
-    }
-
-    // Perform some logic, for example:
-    // global $post;
-    // $post = get_post( $loop_object );
-    // setup_postdata( $post );
-
-    return $loop_object;
-}, 10, 3 );
-```
-
-The filter callback receives two arguments:
-
-- `$loop_object` is the current loop iteration value (from the results array)
-- `$loop_key` is the current loop iteration key (from the results array)
-- `$query_obj` is an instance of the `\Bricks\Query` class object
-
-Related hooks:
-
-- To add a query type to the Query control use [`bricks/setup/control_options`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/)
-- To perform the custom query type and output the results use [`bricks/query/run`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-run/)
-
----
-
 # Filter: bricks/query/loop_object_id
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object_id/
@@ -404,6 +404,29 @@ add_filter( 'bricks/query/loop_object_id', function( $object_id, $object, $query
 
 ---
 
+# Filter: bricks/query/no_results_content
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-no_results_content/
+
+*You can programmatically change the query loop \"no results content\" using this filter.*
+
+You can programmatically change the query loop "no results content" using this filter.
+
+```php
+add_filter( 'bricks/query/no_results_content', function( $content, $settings, $element_id ) {
+
+  // Check if the query element id is the one you want
+  if( $element_id !== 'srixvr' ) return $content;
+
+  // Use a bricks section template as the no results content
+  $content = do_shortcode('[bricks_template id="3981"]');
+
+  return $content;
+}, 10, 3 );
+```
+
+---
+
 # Filter: bricks/query/loop_object_type
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object_type/
@@ -424,6 +447,93 @@ add_filter( 'bricks/query/loop_object_type', function( $object_type, $object, $q
     return 'post';
 }, 10, 3 );
 ```
+
+---
+
+# Filter: bricks/query/result_count
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_count/
+
+*Filter the result count Bricks reports for a query object before pagination or related UI uses that total.*
+
+This filter allows you to modify the query result count (@since 1.8).
+
+```php
+add_filter( 'bricks/query/result_count', function( $result_count, $query_obj ) {
+  // Return: Element ID is not "lbsijo", nor is it a post query
+  if( $query_obj->element_id !== 'lbsijo' || $query_obj->object_type !== 'post' ) {
+    return $result_count;
+  }
+
+  // Perform your logic here
+  // Use $query_obj->query_result to access the query result
+  $new_count = 123;
+  return $new_count;
+}, 10, 2 );
+```
+
+---
+
+# Filter: bricks/query/result_max_num_pages
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_max_num_pages/
+
+*Filter the maximum number of pages Bricks reports for a query object, including the value used by Pagination.*
+
+This filter allows you to modify the query result maximum number of pages (@since 1.9.1). This value is used for the Pagination element as well.
+
+```php
+add_filter( 'bricks/query/result_max_num_pages', function( $max_num_pages, $query_obj ) {
+  // Return: Element ID is not "lbsijo", nor is it a post query
+  if( $query_obj->element_id !== 'lbsijo' || $query_obj->object_type !== 'post' ) {
+    return $max_num_pages;
+  }
+
+  // Perform your logic here
+  // Use $query_obj->query_result to access the query result
+  $max_num_pages = 3;
+  return $max_num_pages;
+}, 10, 2 );
+```
+
+---
+
+# Filter: bricks/query/run
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-run/
+
+*The Bricks Query Loop supports 3 types of queries by default (Posts, Terms and Users). But it can be extended to support any other query. To return a custom.*
+
+The Bricks [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/) supports 3 types of queries by default (Posts, Terms and Users). But it can be extended to support any other query. To return a custom query result, Bricks can be extended using the WP filter `bricks/query/run` like so:
+
+```php
+add_filter( 'bricks/query/run', function( $results, $query_obj ) {
+    if ( $query_obj->object_type !== 'my_query_type' ) {
+	return $results;
+    }
+
+    // Perform the query
+    // Assign the results to $results (array)
+
+    return $results;
+}, 10, 2 );
+```
+
+The filter callback receives two arguments:
+
+- `$results` is the results array (empty by default). The loop will iterate through this array.
+- `$query_obj` is an instance of the `\Bricks\Query` class object
+
+Note: This hook should be used to add different types of query results. If you want to alter the posts, terms, or users query, use the following hooks:
+
+- **Posts**: [`bricks/posts/query_vars`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-query_vars/)
+- **Terms**: [bricks/terms/query_vars](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-terms-query_vars/)
+- **Users**: [bricks/users/query_vars](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-users-query_vars/)
+
+Related hooks:
+
+- To add a query type to the Query control use [`bricks/setup/control_options`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/)
+- To manage the object on every loop iteration use [`bricks/query/loop_object`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object/)
 
 ---
 
@@ -485,113 +595,26 @@ For native query limits and offsets, use the [Query Loop controls](https://acade
 
 ---
 
-# Filter: bricks/query/no_results_content
+# Filter: bricks/registered_post_types_args
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-no_results_content/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-registered_post_types_args/
 
-*You can programmatically change the query loop \"no results content\" using this filter.*
+*Available since version 1.6, this filter allows you to customise the post type args that are used to query the post type as shown in the Bricks settings & the.*
 
-You can programmatically change the query loop "no results content" using this filter.
-
-```php
-add_filter( 'bricks/query/no_results_content', function( $content, $settings, $element_id ) {
-
-  // Check if the query element id is the one you want
-  if( $element_id !== 'srixvr' ) return $content;
-
-  // Use a bricks section template as the no results content
-  $content = do_shortcode('[bricks_template id="3981"]');
-
-  return $content;
-}, 10, 3 );
-```
-
----
-
-# Filter: bricks/query/result_max_num_pages
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_max_num_pages/
-
-*Filter the maximum number of pages Bricks reports for a query object, including the value used by Pagination.*
-
-This filter allows you to modify the query result maximum number of pages (@since 1.9.1). This value is used for the Pagination element as well.
+Available since version 1.6, this filter allows you to customise the post type args that are used to query the post type as shown in the Bricks settings & the builder (e.g. Query control post types, etc.)
 
 ```php
-add_filter( 'bricks/query/result_max_num_pages', function( $max_num_pages, $query_obj ) {
-  // Return: Element ID is not "lbsijo", nor is it a post query
-  if( $query_obj->element_id !== 'lbsijo' || $query_obj->object_type !== 'post' ) {
-    return $max_num_pages;
-  }
+add_filter( 'bricks/registered_post_types_args', function( $args ) {
+  // Default: Return only public post types
+  // $args['public'] = true;
 
-  // Perform your logic here
-  // Use $query_obj->query_result to access the query result
-  $max_num_pages = 3;
-  return $max_num_pages;
-}, 10, 2 );
+  // Custom: Return all registered post types
+  unset( $args['public'] );
+
+  // Available arguments: https://developer.wordpress.org/reference/functions/get_post_types/#comment-2184
+  return $args;
+} );
 ```
-
----
-
-# Filter: bricks/query/result_count
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_count/
-
-*Filter the result count Bricks reports for a query object before pagination or related UI uses that total.*
-
-This filter allows you to modify the query result count (@since 1.8).
-
-```php
-add_filter( 'bricks/query/result_count', function( $result_count, $query_obj ) {
-  // Return: Element ID is not "lbsijo", nor is it a post query
-  if( $query_obj->element_id !== 'lbsijo' || $query_obj->object_type !== 'post' ) {
-    return $result_count;
-  }
-
-  // Perform your logic here
-  // Use $query_obj->query_result to access the query result
-  $new_count = 123;
-  return $new_count;
-}, 10, 2 );
-```
-
----
-
-# Filter: bricks/query/run
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-run/
-
-*The Bricks Query Loop supports 3 types of queries by default (Posts, Terms and Users). But it can be extended to support any other query. To return a custom.*
-
-The Bricks [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/) supports 3 types of queries by default (Posts, Terms and Users). But it can be extended to support any other query. To return a custom query result, Bricks can be extended using the WP filter `bricks/query/run` like so:
-
-```php
-add_filter( 'bricks/query/run', function( $results, $query_obj ) {
-    if ( $query_obj->object_type !== 'my_query_type' ) {
-	return $results;
-    }
-
-    // Perform the query
-    // Assign the results to $results (array)
-
-    return $results;
-}, 10, 2 );
-```
-
-The filter callback receives two arguments:
-
-- `$results` is the results array (empty by default). The loop will iterate through this array.
-- `$query_obj` is an instance of the `\Bricks\Query` class object
-
-Note: This hook should be used to add different types of query results. If you want to alter the posts, terms, or users query, use the following hooks:
-
-- **Posts**: [`bricks/posts/query_vars`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-query_vars/)
-- **Terms**: [bricks/terms/query_vars](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-terms-query_vars/)
-- **Users**: [bricks/users/query_vars](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-users-query_vars/)
-
-Related hooks:
-
-- To add a query type to the Query control use [`bricks/setup/control_options`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/)
-- To manage the object on every loop iteration use [`bricks/query/loop_object`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object/)
 
 ---
 
@@ -616,29 +639,6 @@ The filter callback receives two arguments:
 - `$query_vars` is an associative array used to feed the [WP_Query](https://developer.wordpress.org/reference/classes/wp_query/) class
 - `$settings` is an associative array containing the element settings set in the builder
 - `$element_id` is a string containing the element ID
-
----
-
-# Filter: bricks/registered_post_types_args
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-registered_post_types_args/
-
-*Available since version 1.6, this filter allows you to customise the post type args that are used to query the post type as shown in the Bricks settings & the.*
-
-Available since version 1.6, this filter allows you to customise the post type args that are used to query the post type as shown in the Bricks settings & the builder (e.g. Query control post types, etc.)
-
-```php
-add_filter( 'bricks/registered_post_types_args', function( $args ) {
-  // Default: Return only public post types
-  // $args['public'] = true;
-
-  // Custom: Return all registered post types
-  unset( $args['public'] );
-
-  // Available arguments: https://developer.wordpress.org/reference/functions/get_post_types/#comment-2184
-  return $args;
-} );
-```
 
 ---
 

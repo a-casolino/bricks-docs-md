@@ -4,6 +4,8 @@ Bricks gives you full control over who can access the builder, and what actions 
 
 This gives you complete freedom and control to tailor the builder experience to any roles (i.e. content editor, designer, client, etc.) depending on what they should be able to do.
 
+https://youtu.be/5C52ddR5f54
+
 ![](https://academy.bricksbuilder.io/assets/bricks-settings-builder-access.png)
 
 ## Access levels
@@ -24,6 +26,8 @@ There are two ways to manage builder access:
   - Edit all Bricks-enabled post types
 - **No access**: Blocks access to the Bricks builder entirely.
 
+Every role except Administrator starts with **No access**. Administrators always have full access, and their setting can't be changed.
+
 ## Creating a custom capability {#custom}
 
 If you need precise control over the actions a user or role should be able to perform, you can create your very own custom builder capability, following the steps outlines below.
@@ -39,6 +43,8 @@ Inside the capability popup, you can:
 - Enable exactly the permissions you want to grant
 
 ![](https://academy.bricksbuilder.io/assets/bricks-builder-access-permissions.png)
+
+Close the popup and click **Save Settings**. The new capability is only stored once the settings are saved.
 
 Once created, you can assign this capability to specific users or user roles.
 
@@ -57,6 +63,32 @@ You can assign any builder capability, whether predefined or custom:
 ![](https://academy.bricksbuilder.io/assets/bricks-builder-access-user-settings.png)
 
 This gives you flexibility to apply permissions globally or individually.
+
+A capability set on a user's profile overrides the one assigned to their role. The first option in the user's **Builder access** dropdown shows the role's capability marked **(Default)**. Select it to let the user follow their role again.
+
+Builder access works on top of the user's WordPress role. Bricks only opens a page in the builder if the user's role can also edit that page in WordPress. For example, an Editor can edit all pages, while an Author can't edit pages at all, whatever builder capability they have.
+
+## Example: let a client edit text and images {#client-example}
+
+A common setup is a client who keeps names, job titles, and photos up to date without changing the design, in a builder that only shows what she needs. Two settings do this: a builder capability decides what she is allowed to do, and a [builder interface profile](https://academy.bricksbuilder.io/builder/interface/builder-interface-customiser-profiles/) decides what she sees.
+
+1. Create a custom capability, for example "Client editor".
+2. Under **Post types**, enable **Pages**.
+3. Under **Element editing & styling**, enable **Access content (HTML) settings**. Leave **Access style (CSS) settings** off.
+4. Under **Edit elements**, click **Enable all**, so the client can edit the content of every element.
+5. Leave everything else off, close the popup, and click **Save Settings**.
+6. In the builder, open **Builder interface**. Set **Structure** to **Hidden** and **Element quick access** to **Hide**, remove the toolbar items the client doesn't need, and save the layout as a profile, for example "Client". Both options are available since Bricks 2.5. In earlier versions, minimize the Structure panel with the arrow on its edge instead; the element quick access bar can't be hidden through a profile there.
+7. Open the client's WordPress user profile. Under **Builder access**, choose **Client editor**. Under **Builder interface profile**, choose **Client**. Click **Update User**.
+
+![The Bricks section of the client's user profile: Builder access set to Client editor and Builder interface profile set to Client.](https://academy.bricksbuilder.io/assets/bricks-builder-access-user-profile-client.webp)
+
+To give the same setup to every editor instead, choose the capability and the profile for the **Editor** role under **Bricks > Settings > Builder access**.
+
+In the builder, the client sees only the content settings of the selected element. There is nothing to add in the Elements panel, the Structure panel and the element quick access bar are hidden, and the toolbar only shows what the profile keeps.
+
+![The client's builder: a heading selected with only its content settings, no Structure panel or element quick access bar, and a toolbar with only the Bricks logo on the left.](https://academy.bricksbuilder.io/assets/bricks-builder-access-client-builder.webp)
+
+A profile only arranges the workspace. It doesn't restrict anything: a command palette hidden from the toolbar, for example, still opens with its keyboard shortcut. What a user can change is always set by their builder capability.
 
 ## Drafts and site versions {#drafts-and-versions}
 
@@ -115,6 +147,8 @@ Choose which post types can be edited using Bricks.
 - Lock/unlock global classes
 - Copy/paste global class styles
 - Access pseudos & selectors
+
+To keep a user away from global classes, leave the class permissions off. Since Bricks 2.5, this replaces the deprecated **Disable global classes (interface)** builder setting.
 
 ### Components {#components}
 

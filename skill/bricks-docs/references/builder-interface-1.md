@@ -8,6 +8,8 @@ Bricks gives you full control over who can access the builder, and what actions 
 
 This gives you complete freedom and control to tailor the builder experience to any roles (i.e. content editor, designer, client, etc.) depending on what they should be able to do.
 
+https://youtu.be/5C52ddR5f54
+
 ![](https://academy.bricksbuilder.io/assets/bricks-settings-builder-access.png)
 
 ## Access levels
@@ -28,6 +30,8 @@ There are two ways to manage builder access:
   - Edit all Bricks-enabled post types
 - **No access**: Blocks access to the Bricks builder entirely.
 
+Every role except Administrator starts with **No access**. Administrators always have full access, and their setting can't be changed.
+
 ## Creating a custom capability {#custom}
 
 If you need precise control over the actions a user or role should be able to perform, you can create your very own custom builder capability, following the steps outlines below.
@@ -43,6 +47,8 @@ Inside the capability popup, you can:
 - Enable exactly the permissions you want to grant
 
 ![](https://academy.bricksbuilder.io/assets/bricks-builder-access-permissions.png)
+
+Close the popup and click **Save Settings**. The new capability is only stored once the settings are saved.
 
 Once created, you can assign this capability to specific users or user roles.
 
@@ -61,6 +67,32 @@ You can assign any builder capability, whether predefined or custom:
 ![](https://academy.bricksbuilder.io/assets/bricks-builder-access-user-settings.png)
 
 This gives you flexibility to apply permissions globally or individually.
+
+A capability set on a user's profile overrides the one assigned to their role. The first option in the user's **Builder access** dropdown shows the role's capability marked **(Default)**. Select it to let the user follow their role again.
+
+Builder access works on top of the user's WordPress role. Bricks only opens a page in the builder if the user's role can also edit that page in WordPress. For example, an Editor can edit all pages, while an Author can't edit pages at all, whatever builder capability they have.
+
+## Example: let a client edit text and images {#client-example}
+
+A common setup is a client who keeps names, job titles, and photos up to date without changing the design, in a builder that only shows what she needs. Two settings do this: a builder capability decides what she is allowed to do, and a [builder interface profile](https://academy.bricksbuilder.io/builder/interface/builder-interface-customiser-profiles/) decides what she sees.
+
+1. Create a custom capability, for example "Client editor".
+2. Under **Post types**, enable **Pages**.
+3. Under **Element editing & styling**, enable **Access content (HTML) settings**. Leave **Access style (CSS) settings** off.
+4. Under **Edit elements**, click **Enable all**, so the client can edit the content of every element.
+5. Leave everything else off, close the popup, and click **Save Settings**.
+6. In the builder, open **Builder interface**. Set **Structure** to **Hidden** and **Element quick access** to **Hide**, remove the toolbar items the client doesn't need, and save the layout as a profile, for example "Client". Both options are available since Bricks 2.5. In earlier versions, minimize the Structure panel with the arrow on its edge instead; the element quick access bar can't be hidden through a profile there.
+7. Open the client's WordPress user profile. Under **Builder access**, choose **Client editor**. Under **Builder interface profile**, choose **Client**. Click **Update User**.
+
+![The Bricks section of the client's user profile: Builder access set to Client editor and Builder interface profile set to Client.](https://academy.bricksbuilder.io/assets/bricks-builder-access-user-profile-client.webp)
+
+To give the same setup to every editor instead, choose the capability and the profile for the **Editor** role under **Bricks > Settings > Builder access**.
+
+In the builder, the client sees only the content settings of the selected element. There is nothing to add in the Elements panel, the Structure panel and the element quick access bar are hidden, and the toolbar only shows what the profile keeps.
+
+![The client's builder: a heading selected with only its content settings, no Structure panel or element quick access bar, and a toolbar with only the Bricks logo on the left.](https://academy.bricksbuilder.io/assets/bricks-builder-access-client-builder.webp)
+
+A profile only arranges the workspace. It doesn't restrict anything: a command palette hidden from the toolbar, for example, still opens with its keyboard shortcut. What a user can change is always set by their builder capability.
 
 ## Drafts and site versions {#drafts-and-versions}
 
@@ -119,6 +151,8 @@ Choose which post types can be edited using Bricks.
 - Lock/unlock global classes
 - Copy/paste global class styles
 - Access pseudos & selectors
+
+To keep a user away from global classes, leave the class permissions off. Since Bricks 2.5, this replaces the deprecated **Disable global classes (interface)** builder setting.
 
 ### Components {#components}
 
@@ -1392,6 +1426,109 @@ For recovering an earlier saved class, variable, component, or other shared item
 
 ---
 
+# Global Data Revisions
+
+Source: https://academy.bricksbuilder.io/builder/interface/global-data-history/
+
+*Browse and restore earlier versions of individual classes, components, variables, and other shared Bricks data.*
+
+Global data revisions, available since Bricks 2.5, keep earlier versions of shared Builder items. Restore one component or class without replacing newer changes to the rest of your design system. It also lets you recover an item that was deleted.
+
+Revisions are recorded by default. You do not need to enable experimental Drafts to use them.
+
+## Open the revisions
+
+Open **Manage > Global data revisions** in the Builder toolbar. The dialog lists these data types in its sidebar: **Theme styles**, **Classes**, **Variables**, **Colors**, **Components**, **Queries**, and **Query filters**. Type shortcuts 1 to 9 select a type, and Bricks remembers your last type and sort order.
+
+<div className="screenshot screenshot--control-panel">
+
+![The Manage panel with History / Revisions and Global data revisions listed below Theme styles and Page settings.](https://academy.bricksbuilder.io/assets/builder/global-data-revisions/revisions-settings-panel.webp)
+
+</div>
+
+You can also open the revisions of one data type from where you edit it. Each opens the dialog on that type:
+
+- **Style manager**: the revisions icon on the selected **Theme styles**, **Classes**, **Variables**, or **Colors** item.
+- **Class and variable editors**: the **Revisions** button.
+- **Browser**: the revisions icon on **Components**, **Query manager**, or **Filter manager**. A component's own **Revisions** icon in the Browser, or on its row in the Components panel, opens that component directly.
+
+![Style manager with the Classes type selected. A revisions icon appears beside Classes and a Revisions button sits under the selected class.](https://academy.bricksbuilder.io/assets/builder/global-data-revisions/revisions-style-manager-entry.webp)
+
+![The Browser with Components selected. A revisions icon appears beside Components in the sidebar.](https://academy.bricksbuilder.io/assets/builder/global-data-revisions/revisions-browser-entry.webp)
+
+## Browse an item's revisions
+
+1. Select a data type in the sidebar.
+2. Find an item with the search field, which also searches deleted items, or sort the list. Classes, variables, components, queries, and filters also have a categories column, as in their managers.
+3. Select an item. Click it again to deselect it.
+
+Theme styles open directly on the active style. Use the style switcher to pick another one. Colors are listed one by one, and each palette appears as a category. A color's revisions come from the revisions of its palette.
+
+An item's revisions form a timeline of cards, newest first. The newest card opens with the item. Select a card to expand or collapse it, or use **Expand all** and **Collapse all** in the item header. The header shows the number of revisions and when the item last changed.
+
+Each card shows the action, such as **Created**, **Changed**, or **Deleted**, along with tags and when and by whom the change was made. A **Current** tag marks the version the site uses now. Source tags such as **AI agent**, **WP-CLI**, **Import**, **Published draft**, or **From a draft** show where a change came from. A change made by hand in the Builder has no source tag. A **Restored** tag marks a revision created by a restore.
+
+An open card lists its changes, one setting per row. Each row shows the setting name with its section underneath, then the old value, an arrow, and the new value. Empty values read **Not set**, colors appear as swatches, and multi-line values such as custom CSS appear as code blocks with the old value dimmed above the new one. The oldest card lists its values under **Oldest recorded version**, because it has no earlier version to compare with. Labels come from the matching Theme styles and settings controls.
+
+![Revisions of the btn-primary class on a timeline. The newest card compares custom CSS as code blocks and the oldest card lists its values under Oldest recorded version.](https://academy.bricksbuilder.io/assets/builder/global-data-revisions/revisions-class-revisions.webp)
+
+Components also show a rendered preview in each card, and internal component fields are left out of the changes. The preview uses the site's styles. It does not restore the global classes, fonts, or other resources that the component used at that earlier time. Use **Open in new tab** to inspect the preview separately.
+
+![Testimonial card component revisions with a rendered preview and the text change in the newest card.](https://academy.bricksbuilder.io/assets/builder/global-data-revisions/revisions-component-revisions.webp)
+
+Custom fonts, breakpoints, font favorites, pinned elements, and class locks are not included in global data revisions.
+
+## Restore an item
+
+Each card ends with its own restore button. The current revision has none.
+
+1. Expand the revision you want to recover.
+2. Review its values and component preview, if available.
+3. Click **Restore this version**. For a color, the button says **Restore this palette version**. For a deleted item, it says **Bring back**.
+
+If you have unsaved changes to that type of global data, the button reads **Save and restore** (or **Save and bring back**) and saves them first.
+
+Restoring saves the selected item's earlier value and updates the Builder. Other items keep their current values. Each restore is recorded as another revision, so you can return to the previous value through the same dialog.
+
+An item's only revision is its recorded starting point and is titled **Current version**.
+
+### Recover deleted items
+
+An item that was deleted or moved to the trash is listed only under **Deleted**, in its own box below the categories, and not in **All** or its category. Select the item and click **Bring back** to return it to use. The item then appears under **All** again. If you open the dialog on a deleted item, it starts in **Deleted**.
+
+![Deleted classes list with old-banner selected. Its Deleted revision shows the removed name and color and a Bring back button.](https://academy.bricksbuilder.io/assets/builder/global-data-revisions/revisions-deleted-item.webp)
+
+### Restore inside drafts and site versions
+
+When you are editing [a draft](https://academy.bricksbuilder.io/builder/interface/drafts/) or [a site version](https://academy.bricksbuilder.io/builder/interface/site-versions/), the dialog shows a notice that the revisions are the live site's history. The newest revision is tagged **Live** instead of **Current**, and you can restore it into the draft, because a draft does not record its own saves and may hold something else. Restored changes follow the [shared-data rules](https://academy.bricksbuilder.io/builder/interface/drafts/#shared-data). Changes affecting live content stay held until publication. Restored items that do not affect live content are shared across the site immediately. A change held in a draft enters global data revisions when it is published.
+
+Your account needs Builder access and the relevant resource permissions. Restoring a component containing executable code also requires code execution permission.
+
+## Retention and storage
+
+By default, each item keeps its latest **20 versions**, plus all versions recorded in the last **90 days**. An item can therefore have more than 20 revisions. These limits are separate from the number of WordPress revisions kept for a page. Developers can adjust them with [`bricks/global_history/keep_latest`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-global_history-keep_latest/) and [`bricks/global_history/keep_days`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-global_history-keep_days/).
+
+Under **Bricks > Settings > Builder > Global data revisions**, you can:
+
+- Enable **Disable global data revisions** to stop recording new changes.
+- View the storage used by recorded revisions.
+- Use **Delete revisions** to remove the stored revisions. This leaves your current global data in place, but the deleted revisions can no longer be restored.
+
+Revisions cannot recover versions that were never recorded. Keep site backups for a complete recovery of WordPress content, media, settings, and files.
+
+## Undo history, revisions, and drafts
+
+| Tool | Use it for |
+| --- | --- |
+| **History** in Manage > History / Revisions | Undo and redo steps from the current editing session. |
+| [Revisions](https://academy.bricksbuilder.io/builder/interface/revisions/) | Recover earlier page or template elements and page settings. |
+| **Global data revisions** | Recover one recorded shared item, including a deleted item. |
+| [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) and [site versions](https://academy.bricksbuilder.io/builder/interface/site-versions/) | Hold changes affecting visitors until you choose to publish them. |
+
+For agent workflows, the `bricks/list-global-revisions` and `bricks/restore-global-revision` abilities provide the same per-item recovery. Pass `target: "active"` to `bricks/restore-global-revision` to bring a deleted item back into use. See [Bricks AI abilities and skills](https://academy.bricksbuilder.io/builder/features/ai-abilities-and-skills/).
+
+---
+
 # Keyboard Shortcuts
 
 Source: https://academy.bricksbuilder.io/builder/interface/keyboard-shortcuts/
@@ -1534,150 +1671,3 @@ These keys belong to focused controls, navigation, or direct manipulation and ca
 Arrow-key navigation, typing, and native editing shortcuts in text fields, rich-text editors, code editors, and picker lists remain owned by those interfaces.
 
 While typing in a field or editing text inline, Undo and Redo use the text editor's history. Leave the field or finish inline editing to use these shortcuts for builder changes.
-
----
-
-# Page Settings
-
-Source: https://academy.bricksbuilder.io/builder/interface/page-settings/
-
-*Use Bricks page settings to control per-page markup, styling, SEO metadata, social sharing output, and custom code.*
-
-Page Settings control output for the page, post, or content template you are currently editing. They are different from global Bricks settings and different from an individual element's controls.
-
-Use Page Settings when a setting should apply to the whole current page, such as body classes, header/footer visibility, page-level scroll snap, SEO metadata, social sharing data, or page-specific code.
-
-## Open Page Settings
-
-Open the builder and click the **Settings** icon in the toolbar. Choose **Page Settings**.
-
-Page Settings are available only when the current user has permission to access them. Some groups can also be hidden by global settings.
-
-Use the **Reset** icon in the panel header to clear all page settings with a single click.
-
-## How Page Settings are applied
-
-Page Settings are stored with the current Bricks document. On the frontend, Bricks reads those settings while rendering the page.
-
-Some settings change markup, such as body classes or disabling the header. Some generate CSS, such as scroll snap and Custom CSS. Some print metadata or scripts into the document head or body. Some settings are visible in the builder immediately, while others should be checked on the frontend.
-
-![](https://academy.bricksbuilder.io/assets/bricks-page-settings.png)
-
-## General settings
-
-The General group contains page-wide output options.
-
-| Setting | What it does |
-| --- | --- |
-| CSS classes (body) | Adds space-separated classes to the page `<body>` tag. Dynamic data can be used when appropriate. |
-| Disable header | Prevents the active Bricks header from rendering on this page. Not shown for header or footer templates. |
-| Disable footer | Prevents the active Bricks footer from rendering on this page. Not shown for header or footer templates. |
-| Disable lazy load | Disables Bricks' built-in lazy loading for images, videos, background images, and background videos on the current page. Background videos honor this setting from Bricks 2.5. |
-| Disable popups | Prevents Bricks popups from rendering on the current page. |
-| Page layout | Overrides the page layout inherited from Theme Styles. |
-| Page background | Overrides the page background inherited from Theme Styles. |
-| Content margin | Overrides the content margin inherited from Theme Styles when available. |
-
-Use these settings for page-specific exceptions. If you need the same behavior on many pages, use global settings, Theme Styles, or templates instead.
-
-For a single background, use the element's **Style > Background > Disable lazy load** control (Bricks 2.5). See [Lazy Loading](https://academy.bricksbuilder.io/builder/features/lazy-loading/) for the available scopes and how they affect the element control.
-
-## Scroll snap
-
-The Scroll snap group configures page-level CSS scroll snapping.
-
-| Setting | What it does |
-| --- | --- |
-| Type | Sets the page scroll-snap type on the `html` element. |
-| Snapping elements selector | Defines which elements should snap. Defaults to Bricks sections when left empty. |
-| Align | Sets the snap alignment of snapping elements. |
-| Margin | Sets scroll margin for snapping elements. |
-| Padding | Sets scroll padding on the `html` element. |
-| Stop | Sets scroll-snap-stop behavior. |
-
-Scroll snap is primarily a frontend behavior. Test it on the frontend, not only in the builder canvas. Layout height, overflow, sticky headers, and browser behavior can affect the result.
-
-If you use a custom selector, make sure the selector matches the elements that should become snap points. If the selector matches nothing, the page can have scroll snap enabled without visible snapping.
-
-## One Page Navigation {#one-page-nav}
-
-If enabled, Bricks adds a vertical dot menu to the right edge of the page in a fixed position, with each dot linking to the page's root element.
-
-![](https://academy.bricksbuilder.io/assets/bricks-one-page-navigation-1024x534.png)
-
-One Page Navigation is shown only where it applies, such as normal pages and content templates. It is not shown for header or footer templates.
-
-The navigation uses the IDs Bricks renders for root elements. Add custom CSS IDs when you need stable, readable anchors or when root elements are generated dynamically.
-
-> **Note**
->
-> If a root element is inside a query loop, use dynamic data in the CSS ID, such as a post ID or slug, so every repeated root element has a unique anchor.
-
-![](https://academy.bricksbuilder.io/assets/one-page-navigation-loop-unique-css-id.png)
-
-The One Page Navigation controls style the dot menu and its active state:
-
-- Spacing
-- Item width and height
-- Item color
-- Border
-- Box shadow
-- Active item width and height
-- Active item color
-- Active border
-- Active box shadow
-
-The active dot changes based on the root element currently in the scroll range.
-
-## SEO
-
-The SEO group controls page-level metadata. This group is hidden when Bricks SEO output is disabled globally.
-
-| Setting | What it does |
-| --- | --- |
-| Permalink | Updates the post slug. Use lowercase words separated by dashes. |
-| Title | Updates the WordPress post title after applying the change. |
-| Document title | Sets the frontend SEO title without changing the WordPress post title. |
-| Meta description | Prints a page-level meta description. |
-| Meta keywords | Prints page-level meta keywords. |
-| Meta robots | Prints robots directives such as `noindex` or `nofollow`. |
-
-Use **Save new title/permalink** after changing the post title or permalink in the SEO group. Other page settings are saved through the normal builder save flow.
-
-If you use a dedicated SEO plugin, decide which tool owns the metadata. Avoid setting competing metadata in multiple places.
-
-## Social media
-
-The Social media group controls Open Graph style sharing data for the current URL. This group is hidden when Bricks Open Graph output is disabled globally.
-
-| Setting | Default when empty |
-| --- | --- |
-| Title | The post/page title. |
-| Description | The post/page excerpt. |
-| Image | The featured image. |
-
-Use this group when a page needs a social title, description, or image that differs from its normal SEO data.
-
-## Custom Code
-
-The Custom Code group adds page-specific CSS and scripts.
-
-| Setting | Output location |
-| --- | --- |
-| Custom CSS | Inline CSS in the document `<head>`. Supports breakpoint-specific values. |
-| Header scripts | Before the closing `</head>` tag. |
-| Body (header) scripts | Immediately after the opening `<body>` tag. |
-| Body (footer) scripts | Before the closing `</body>` tag. |
-
-Script fields are shown only to users who are allowed to add unfiltered HTML. Users without that capability see an informational notice instead.
-
-Use page-level code sparingly. Prefer element settings, classes, Theme Styles, global settings, or properly enqueued code when the behavior should be reused across the site.
-
-## Common mistakes
-
-- **Changing SEO title but not applying it:** Use **Save new title/permalink** for title and slug changes.
-- **Expecting header/footer disable to affect templates globally:** These settings affect only the current page render.
-- **Using duplicate IDs for One Page Navigation:** Give repeated root elements unique IDs, especially inside query loops.
-- **Testing scroll snap only in the builder:** Always test on the frontend.
-- **Adding scripts without the right capability:** Script fields require permission to add unfiltered HTML.
-- **Using page code for reusable behavior:** Page Custom Code is local to the current page. Use global settings or enqueue code for site-wide behavior.

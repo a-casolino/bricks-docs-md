@@ -1,32 +1,3 @@
-# Filter: bricks/fix_filter_element_db
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-fix_filter_element_db/
-
-*Allows plugins to intercept and handle the database update process for filter elements on a per-post basis. If the filter returns true, Bricks will skip its.*
-
-Allows plugins to intercept and handle the database update process for filter elements on a per-post basis. If the filter returns `true`, Bricks will skip its default update logic for that post.
-
-## Parameters
-
-- `$handled` (*bool*): Whether the update has been handled. Default is `false`.
-- `$post_id` (*int*): The ID of the post being processed.
-- `$template_type` (*string*): The template type of the post.
-
-## Example usage
-
-```php
-add_filter( 'bricks/fix_filter_element_db', function( $handled, $post_id, $template_type ) {
-    // Example: Skip processing for a specific post ID
-    if ( $post_id === 1234 ) {
-        return true;
-    }
-
-    return $handled;
-}, 10, 3 );
-```
-
----
-
 # Filter: bricks/form/file_directory
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-file_directory/
@@ -67,25 +38,30 @@ add_filter( 'bricks/form/file_directory', function( $directory_path, $form, $inp
 
 ---
 
-# Filter: bricks/form/recaptcha_score_threshold
+# Filter: bricks/filter_element/filtered_source
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-recaptcha_score_threshold/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter_element-filtered_source/
 
-*Filters the minimum score required for Google reCAPTCHA v3 validation in Bricks forms. Scores range from 0.0 (likely a bot) to 1.0 (likely a human).*
+*Filters the data retrieved from the index representing the available filter options and their counts based on the current query results.*
 
-Filters the minimum score required for Google reCAPTCHA v3 validation in Bricks forms. Scores range from 0.0 (likely a bot) to 1.0 (likely a human).
+Filters the data retrieved from the index representing the available filter options and their counts based on the current query results.
 
 ## Parameters
 
-- `$score` (*float*): The minimum score threshold. Default is `0.5`.
+- `$filtered_source` (*array*): Associative array where keys are filter values and values are their respective counts (based on the current filtered query).
+- `$element` (*object*): The filter element instance.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/form/recaptcha_score_threshold', function( $score ) {
-    // Increase threshold to 0.8 for stricter validation
-    return 0.8;
-} );
+add_filter( 'bricks/filter_element/filtered_source', function( $filtered_source, $element ) {
+    // Example: Ensure a specific value is always present with a count of 0 if missing
+    if ( ! isset( $filtered_source['some_value'] ) ) {
+        $filtered_source['some_value'] = 0;
+    }
+
+    return $filtered_source;
+}, 10, 2 );
 ```
 
 ---
@@ -160,6 +136,29 @@ add_filter( 'bricks/form/save-submission/form_data', function( $form_data, $form
 
 - This filter affects **save submissions only**. It does not change what is sent via email actions or other integrations unless those also use the stored submission data.
 - For sensitive fields, consider disabling save submission entirely if you don’t need it, or mask/remove values using this filter.
+
+---
+
+# Filter: bricks/form/recaptcha_score_threshold
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-recaptcha_score_threshold/
+
+*Filters the minimum score required for Google reCAPTCHA v3 validation in Bricks forms. Scores range from 0.0 (likely a bot) to 1.0 (likely a human).*
+
+Filters the minimum score required for Google reCAPTCHA v3 validation in Bricks forms. Scores range from 0.0 (likely a bot) to 1.0 (likely a human).
+
+## Parameters
+
+- `$score` (*float*): The minimum score threshold. Default is `0.5`.
+
+## Example usage
+
+```php
+add_filter( 'bricks/form/recaptcha_score_threshold', function( $score ) {
+    // Increase threshold to 0.8 for stricter validation
+    return 0.8;
+} );
+```
 
 ---
 
@@ -333,6 +332,30 @@ add_filter( 'bricks/frontend/render_loop', function( $output, $element, $contain
 
 ---
 
+# Filter: bricks/get_builder_edit_link
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_builder_edit_link/
+
+*Filters the \"Edit with Bricks\" URL generated for a post. This allows you to append custom query parameters or modify the link structure.*
+
+Filters the "Edit with Bricks" URL generated for a post. This allows you to append custom query parameters or modify the link structure.
+
+## Parameters
+
+- `$url` (*string*): The "Edit with Bricks" URL.
+- `$post_id` (*int*): The ID of the post.
+
+## Example usage
+
+```php
+add_filter( 'bricks/get_builder_edit_link', function( $url, $post_id ) {
+    // Example: Append a custom parameter to the builder URL
+    return add_query_arg( 'my_param', 'value', $url );
+}, 10, 2 );
+```
+
+---
+
 # Filter: bricks/get_remote_templates_data
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_remote_templates_data/
@@ -360,30 +383,6 @@ add_filter( 'bricks/get_remote_templates_data', function( $remote_templates ) {
 
     return $remote_templates;
 } );
-```
-
----
-
-# Filter: bricks/get_builder_edit_link
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_builder_edit_link/
-
-*Filters the \"Edit with Bricks\" URL generated for a post. This allows you to append custom query parameters or modify the link structure.*
-
-Filters the "Edit with Bricks" URL generated for a post. This allows you to append custom query parameters or modify the link structure.
-
-## Parameters
-
-- `$url` (*string*): The "Edit with Bricks" URL.
-- `$post_id` (*int*): The ID of the post.
-
-## Example usage
-
-```php
-add_filter( 'bricks/get_builder_edit_link', function( $url, $post_id ) {
-    // Example: Append a custom parameter to the builder URL
-    return add_query_arg( 'my_param', 'value', $url );
-}, 10, 2 );
 ```
 
 ---
@@ -664,6 +663,29 @@ This filter does not control page revisions or draft undo points. For finished d
 
 ---
 
+# Filter: bricks/handle_no_results_children_elements
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-handle_no_results_children_elements/
+
+*Determines whether Bricks should run logic to handle children elements displayed when a query loop returns no results (e.g., ensuring scripts/styles are.*
+
+Determines whether Bricks should run logic to handle children elements displayed when a query loop returns no results (e.g., ensuring scripts/styles are enqueued for "No results" content).
+
+## Parameters
+
+- `$run` (*bool*): Whether to handle "No results" children logic. Defaults to `true` if Query Filters are enabled.
+
+## Example usage
+
+```php
+add_filter( 'bricks/handle_no_results_children_elements', function( $run ) {
+    // Example: Always enable this logic, even if native Query Filters are disabled
+    return true;
+} );
+```
+
+---
+
 # Filter: bricks/global_history/keep_latest
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-global_history-keep_latest/
@@ -696,29 +718,6 @@ Bricks also keeps every entry within the period set by [`bricks/global_history/k
 With the example above, an item can keep more than 40 entries if they are recent. It can also keep 40 entries older than 90 days when those are its latest entries. The count is a minimum retained per item, not a storage cap.
 
 The filter is read during the scheduled daily cleanup. Changing it does not prune records immediately or recover records already removed. WP-Cron must run for scheduled cleanup to take place.
-
----
-
-# Filter: bricks/handle_no_results_children_elements
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-handle_no_results_children_elements/
-
-*Determines whether Bricks should run logic to handle children elements displayed when a query loop returns no results (e.g., ensuring scripts/styles are.*
-
-Determines whether Bricks should run logic to handle children elements displayed when a query loop returns no results (e.g., ensuring scripts/styles are enqueued for "No results" content).
-
-## Parameters
-
-- `$run` (*bool*): Whether to handle "No results" children logic. Defaults to `true` if Query Filters are enabled.
-
-## Example usage
-
-```php
-add_filter( 'bricks/handle_no_results_children_elements', function( $run ) {
-    // Example: Always enable this logic, even if native Query Filters are disabled
-    return true;
-} );
-```
 
 ---
 
@@ -983,40 +982,6 @@ add_filter( 'bricks/posts/query_vars', function( $query_vars, $settings, $elemen
 
 ---
 
-# Filter: bricks/pagination/custom_logic
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-pagination-custom_logic/
-
-*Enable custom pagination logic in Bricks when your query type needs custom current-page and total-page handling.*
-
-The `bricks/pagination/custom_logic` filter allows you to implement custom pagination logic in Bricks Builder based on specific query settings. `@since 2.2`
-
-In this example, we'll demonstrate how to apply custom pagination logic to a custom loop.
-
-Next, you will need to use the following 2 filters to amend the current page and total page arguments when generating HTML for the pagination:
-
-- `bricks/pagination/current_page`
-- `bricks/pagination/total_pages`
-
-```php
-// Return true if want to use custom logic, default is false
-add_filter( 'bricks/pagination/custom_logic', function( $custom_logic, $query_settings, $element ) {
-  $query_object_type = $query_settings['query']['objectType'] ?? false;
-
-  // If not my custom loop, return original value
-  if( $query_object_type !== 'my_custom_loop' ) {
-    return $custom_logic;
-  }
-
-  // You can access the element settings via $element->settings
-
-  return true;
-}, 10, 3);
-
-```
-
----
-
 # Filter: bricks/paginate_links_args
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-paginate_links_args/
@@ -1090,6 +1055,65 @@ add_filter( 'bricks/pagination/current_page', function( $current_page, $query_se
 
 ---
 
+# Filter: bricks/pagination/custom_logic
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-pagination-custom_logic/
+
+*Enable custom pagination logic in Bricks when your query type needs custom current-page and total-page handling.*
+
+The `bricks/pagination/custom_logic` filter allows you to implement custom pagination logic in Bricks Builder based on specific query settings. `@since 2.2`
+
+In this example, we'll demonstrate how to apply custom pagination logic to a custom loop.
+
+Next, you will need to use the following 2 filters to amend the current page and total page arguments when generating HTML for the pagination:
+
+- `bricks/pagination/current_page`
+- `bricks/pagination/total_pages`
+
+```php
+// Return true if want to use custom logic, default is false
+add_filter( 'bricks/pagination/custom_logic', function( $custom_logic, $query_settings, $element ) {
+  $query_object_type = $query_settings['query']['objectType'] ?? false;
+
+  // If not my custom loop, return original value
+  if( $query_object_type !== 'my_custom_loop' ) {
+    return $custom_logic;
+  }
+
+  // You can access the element settings via $element->settings
+
+  return true;
+}, 10, 3);
+
+```
+
+---
+
+# Filter: bricks/polylang/builder_ajax_params
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-polylang-builder_ajax_params/
+
+*Filters the Polylang AJAX parameters injected into builder media requests.*
+
+Filters the Polylang AJAX parameters injected into builder media requests. Use it to add or adjust language-aware parameters for the media library in the builder.
+
+## Parameters
+
+- `$params` (array): Parameters added to media AJAX requests.
+- `$post_id` (int): The current builder post ID.
+
+## Example usage
+
+```php
+add_filter( 'bricks/polylang/builder_ajax_params', function( $params, $post_id ) {
+    $params['lang'] = pll_current_language();
+
+    return $params;
+}, 10, 2 );
+```
+
+---
+
 # Filter: bricks/pagination/total_pages
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-pagination-total_pages/
@@ -1126,31 +1150,6 @@ add_filter( 'bricks/pagination/total_pages', function( $total_page, $query_setti
 
   return ceil( count( $my_custom_loop_results ) / $post_per_page );
 }, 10, 3);
-```
-
----
-
-# Filter: bricks/polylang/builder_ajax_params
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-polylang-builder_ajax_params/
-
-*Filters the Polylang AJAX parameters injected into builder media requests.*
-
-Filters the Polylang AJAX parameters injected into builder media requests. Use it to add or adjust language-aware parameters for the media library in the builder.
-
-## Parameters
-
-- `$params` (array): Parameters added to media AJAX requests.
-- `$post_id` (int): The current builder post ID.
-
-## Example usage
-
-```php
-add_filter( 'bricks/polylang/builder_ajax_params', function( $params, $post_id ) {
-    $params['lang'] = pll_current_language();
-
-    return $params;
-}, 10, 2 );
 ```
 
 ---
@@ -1261,33 +1260,6 @@ add_filter( 'bricks/query/archive_query_supported_object_types', function( $obje
 
 ---
 
-# Filter: bricks/query/cache_key
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-cache_key/
-
-*Filters the cache key used for a Bricks query loop.*
-
-Filters the cache key used for a Bricks query loop. Use it when external context, such as language, should split query cache entries.
-
-## Parameters
-
-- `$cache_key` (string): The generated query cache key.
-- `$query` (Bricks\Query): The Bricks query instance.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query/cache_key', function( $cache_key, $query ) {
-    if ( function_exists( 'pll_current_language' ) ) {
-        $cache_key .= '_' . pll_current_language();
-    }
-
-    return $cache_key;
-}, 10, 2 );
-```
-
----
-
 # Filter: bricks/query/fake_result
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-fake_result/
@@ -1316,25 +1288,29 @@ add_filter( 'bricks/query/fake_result', function( $results, $query ) {
 
 ---
 
-# Filter: bricks/query/force_loop_index
+# Filter: bricks/query/cache_key
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-force_loop_index/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-cache_key/
 
-*Forces Bricks\\Query::getloopindex() to return a specific value. This is useful for AJAX contexts (like popups) where you need to simulate a specific loop.*
+*Filters the cache key used for a Bricks query loop.*
 
-Forces `Bricks\Query::get_loop_index()` to return a specific value. This is useful for AJAX contexts (like popups) where you need to simulate a specific loop iteration to render correct data or styles.
+Filters the cache key used for a Bricks query loop. Use it when external context, such as language, should split query cache entries.
 
 ## Parameters
 
-- `$index` (*string|int*): The forced loop index. Default is `''` (empty string), meaning no override.
+- `$cache_key` (string): The generated query cache key.
+- `$query` (Bricks\Query): The Bricks query instance.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/query/force_loop_index', function( $index ) {
-    // Example: Force loop index to 0
-    return 0;
-} );
+add_filter( 'bricks/query/cache_key', function( $cache_key, $query ) {
+    if ( function_exists( 'pll_current_language' ) ) {
+        $cache_key .= '_' . pll_current_language();
+    }
+
+    return $cache_key;
+}, 10, 2 );
 ```
 
 ---
@@ -1392,6 +1368,29 @@ add_filter( 'bricks/query/prepare_query_vars_from_settings', function( $settings
 
     return $settings;
 }, 10, 2 );
+```
+
+---
+
+# Filter: bricks/query/force_loop_index
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-force_loop_index/
+
+*Forces Bricks\\Query::getloopindex() to return a specific value. This is useful for AJAX contexts (like popups) where you need to simulate a specific loop.*
+
+Forces `Bricks\Query::get_loop_index()` to return a specific value. This is useful for AJAX contexts (like popups) where you need to simulate a specific loop iteration to render correct data or styles.
+
+## Parameters
+
+- `$index` (*string|int*): The forced loop index. Default is `''` (empty string), meaning no override.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query/force_loop_index', function( $index ) {
+    // Example: Force loop index to 0
+    return 0;
+} );
 ```
 
 ---
@@ -1509,58 +1508,6 @@ add_filter( 'bricks/query/run_fake', function( $results, $query ) {
 
 ---
 
-# Filter: bricks/query_api/body
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-body/
-
-*Filters the body used by a Query API element request.*
-
-Filters the body data used by a Query API element request before Bricks adds it to the HTTP request.
-
-Bricks only builds a body for request methods that support one in the Query API implementation, currently `POST`.
-
-## Parameters
-
-- `$body_data` (string|array|null): The request body data Bricks has built.
-- `$element_id` (string): The Query API element ID.
-- `$query_api` (object): The Query API integration instance.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_api/body', function( $body_data, $element_id, $query_api ) {
-    return $body_data;
-}, 10, 3 );
-```
-
----
-
-# Filter: bricks/query_api/headers
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-headers/
-
-*Filters the headers used by a Query API element request.*
-
-Filters the headers used by a Query API element request before Bricks sends it.
-
-## Parameters
-
-- `$headers` (array): HTTP request headers.
-- `$element_id` (string): The Query API element ID.
-- `$query_api` (object): The Query API integration instance.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_api/headers', function( $headers, $element_id, $query_api ) {
-    $headers['X-Client'] = 'my-site';
-
-    return $headers;
-}, 10, 3 );
-```
-
----
-
 # Filter: bricks/query/supress_render_content
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-supress_render_content/
@@ -1589,6 +1536,32 @@ add_filter( 'bricks/query/supress_render_content', function( $suppress, $query )
 
 ---
 
+# Filter: bricks/query_api/body
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-body/
+
+*Filters the body used by a Query API element request.*
+
+Filters the body data used by a Query API element request before Bricks adds it to the HTTP request.
+
+Bricks only builds a body for request methods that support one in the Query API implementation, currently `POST`.
+
+## Parameters
+
+- `$body_data` (string|array|null): The request body data Bricks has built.
+- `$element_id` (string): The Query API element ID.
+- `$query_api` (object): The Query API integration instance.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_api/body', function( $body_data, $element_id, $query_api ) {
+    return $body_data;
+}, 10, 3 );
+```
+
+---
+
 # Filter: bricks/query_api/request_args
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-request_args/
@@ -1610,6 +1583,32 @@ add_filter( 'bricks/query_api/request_args', function( $args, $element_id, $quer
     $args['timeout'] = 20;
 
     return $args;
+}, 10, 3 );
+```
+
+---
+
+# Filter: bricks/query_api/headers
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-headers/
+
+*Filters the headers used by a Query API element request.*
+
+Filters the headers used by a Query API element request before Bricks sends it.
+
+## Parameters
+
+- `$headers` (array): HTTP request headers.
+- `$element_id` (string): The Query API element ID.
+- `$query_api` (object): The Query API integration instance.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_api/headers', function( $headers, $element_id, $query_api ) {
+    $headers['X-Client'] = 'my-site';
+
+    return $headers;
 }, 10, 3 );
 ```
 
@@ -1864,6 +1863,31 @@ add_filter( 'bricks/query_filters/element_data', function( $element_data, $eleme
 
 ---
 
+# Filter: bricks/query_filters/get_filter_object_ids
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-get_filter_object_ids/
+
+*Filters the object IDs used to build query filter counts.*
+
+Filters the object IDs used to build query filter counts. Use it when an integration needs to supply or alter the base object IDs for a query/filter source.
+
+## Parameters
+
+- `$all_object_ids` (array): The object IDs Bricks has collected.
+- `$query_id` (string): The query element ID.
+- `$query_type` (string): The query type being processed.
+- `$source` (string): The filter source.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_filters/get_filter_object_ids', function( $all_object_ids, $query_id, $query_type, $source ) {
+    return $all_object_ids;
+}, 10, 4 );
+```
+
+---
+
 # Filter: bricks/query_filters/filter_query_vars
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-filter_query_vars/
@@ -1889,31 +1913,6 @@ add_filter( 'bricks/query_filters/filter_query_vars', function( $query_vars, $fi
     }
 
     return $query_vars;
-}, 10, 4 );
-```
-
----
-
-# Filter: bricks/query_filters/get_filter_object_ids
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-get_filter_object_ids/
-
-*Filters the object IDs used to build query filter counts.*
-
-Filters the object IDs used to build query filter counts. Use it when an integration needs to supply or alter the base object IDs for a query/filter source.
-
-## Parameters
-
-- `$all_object_ids` (array): The object IDs Bricks has collected.
-- `$query_id` (string): The query element ID.
-- `$query_type` (string): The query type being processed.
-- `$source` (string): The filter source.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_filters/get_filter_object_ids', function( $all_object_ids, $query_id, $query_type, $source ) {
-    return $all_object_ids;
 }, 10, 4 );
 ```
 
@@ -1980,6 +1979,49 @@ add_filter( 'bricks/query_filters/index_post/meta_exists', function( $exists, $p
 
 ---
 
+# Filter: bricks/query_filters/index_post/{source}
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-index_post-source/
+
+*Filters index rows generated for a post when the filter source is unknown or provided by an integration.*
+
+Filters the index rows generated for a post when the filter source is unknown or handled by a third-party provider. The `{$source}` portion of the hook name corresponds to the filter source (e.g., `wcField` or a custom source).
+
+## Parameters
+
+- `$rows` (*array*): Array of index rows to be inserted into the database. Default is `[]`.
+- `$post_id` (*int*): The ID of the post being indexed.
+- `$elements` (*array*): Array of filter elements targeting this post.
+
+Each row must include `filter_id`, `object_id`, `object_type`, `filter_value`, `filter_value_display`, `filter_value_id`, and `filter_value_parent`.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_filters/index_post/my_custom_source', function( $rows, $post_id, $elements ) {
+    foreach ( $elements as $element ) {
+        // Calculate filter value for this post
+        $value = get_post_meta( $post_id, 'my_custom_field', true );
+
+        if ( $value ) {
+            $rows[] = [
+                'filter_id'            => $element['filter_id'],
+                'object_id'            => $post_id,
+                'object_type'          => 'post',
+                'filter_value'         => $value,
+                'filter_value_display' => $value,
+                'filter_value_id'      => 0,
+                'filter_value_parent'  => 0,
+            ];
+        }
+    }
+
+    return $rows;
+}, 10, 3 );
+```
+
+---
+
 # Filter: bricks/query_filters/index_post/wcField
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-index_post-wcfield/
@@ -2040,49 +2082,6 @@ add_filter( 'bricks/query_filters/index_user/meta_exists', function( $exists, $u
 
     return $exists;
 }, 10, 4 );
-```
-
----
-
-# Filter: bricks/query_filters/index_post/{source}
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-index_post-source/
-
-*Filters index rows generated for a post when the filter source is unknown or provided by an integration.*
-
-Filters the index rows generated for a post when the filter source is unknown or handled by a third-party provider. The `{$source}` portion of the hook name corresponds to the filter source (e.g., `wcField` or a custom source).
-
-## Parameters
-
-- `$rows` (*array*): Array of index rows to be inserted into the database. Default is `[]`.
-- `$post_id` (*int*): The ID of the post being indexed.
-- `$elements` (*array*): Array of filter elements targeting this post.
-
-Each row must include `filter_id`, `object_id`, `object_type`, `filter_value`, `filter_value_display`, `filter_value_id`, and `filter_value_parent`.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_filters/index_post/my_custom_source', function( $rows, $post_id, $elements ) {
-    foreach ( $elements as $element ) {
-        // Calculate filter value for this post
-        $value = get_post_meta( $post_id, 'my_custom_field', true );
-
-        if ( $value ) {
-            $rows[] = [
-                'filter_id'            => $element['filter_id'],
-                'object_id'            => $post_id,
-                'object_type'          => 'post',
-                'filter_value'         => $value,
-                'filter_value_display' => $value,
-                'filter_value_id'      => 0,
-                'filter_value_parent'  => 0,
-            ];
-        }
-    }
-
-    return $rows;
-}, 10, 3 );
 ```
 
 ---
@@ -2175,6 +2174,69 @@ add_filter( 'bricks/query_filters_cf_integration/register_providers', function( 
 
 ---
 
+# Filter: bricks/query_filters_indexer/post/wcField
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters_indexer-post-wcfield/
+
+*A specialized hook for the Query Filters Indexer to generate index rows for WooCommerce product fields (like price, stock status, rating) when processing a.*
+
+A specialized hook for the Query Filters Indexer to generate index rows for WooCommerce product fields (like price, stock status, rating) when processing a filter job.
+
+## Parameters
+
+- `$rows` (*array*): Array of index rows to be inserted. Default is `[]`.
+- `$post` (*WP_Post|int*): The product object or ID being indexed.
+- `$filter_id` (*string*): The ID of the filter element.
+- `$filter_settings` (*array*): The settings of the filter element.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_filters_indexer/post/wcField', function( $rows, $post, $filter_id, $filter_settings ) {
+    // This filter is typically used internally by Bricks to handle WooCommerce fields.
+    // However, you could hook into it to index custom WooCommerce product data via the 'wcField' source.
+    
+    // Check if indexing a specific custom WC field
+    if ( isset( $filter_settings['sourceFieldType'] ) && $filter_settings['sourceFieldType'] === 'my_custom_wc_field' ) {
+        // ... generate and return rows ...
+    }
+
+    return $rows;
+}, 10, 4 );
+```
+
+---
+
+# Filter: bricks/query_filters_indexer/validate_job_settings
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters_indexer-validate_job_settings/
+
+*Validates the settings of a filter job before the Query Filters Indexer processes it. This is used for unknown or custom filter sources to ensure they have the.*
+
+Validates the settings of a filter job before the Query Filters Indexer processes it. This is used for unknown or custom filter sources to ensure they have the necessary configuration.
+
+## Parameters
+
+- `$validate` (*bool*): Whether the settings are valid. Default is `false` for unknown sources.
+- `$filter_source` (*string*): The source of the filter data (e.g., `wcField`, `customSource`).
+- `$filter_settings` (*array*): The settings of the filter element.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_filters_indexer/validate_job_settings', function( $validate, $filter_source, $filter_settings ) {
+    // Validate settings for a custom source
+    if ( $filter_source === 'my_custom_source' ) {
+        // Check if required 'my_key' setting is present
+        return ! empty( $filter_settings['my_key'] );
+    }
+
+    return $validate;
+}, 10, 3 );
+```
+
+---
+
 # Filter: bricks/query_filters_indexer/post/{filter_source}
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters_indexer-post-filter_source/
@@ -2217,39 +2279,6 @@ add_filter( 'bricks/query_filters_indexer/post/my_custom_source', function( $row
 
 ---
 
-# Filter: bricks/query_filters_indexer/post/wcField
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters_indexer-post-wcfield/
-
-*A specialized hook for the Query Filters Indexer to generate index rows for WooCommerce product fields (like price, stock status, rating) when processing a.*
-
-A specialized hook for the Query Filters Indexer to generate index rows for WooCommerce product fields (like price, stock status, rating) when processing a filter job.
-
-## Parameters
-
-- `$rows` (*array*): Array of index rows to be inserted. Default is `[]`.
-- `$post` (*WP_Post|int*): The product object or ID being indexed.
-- `$filter_id` (*string*): The ID of the filter element.
-- `$filter_settings` (*array*): The settings of the filter element.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_filters_indexer/post/wcField', function( $rows, $post, $filter_id, $filter_settings ) {
-    // This filter is typically used internally by Bricks to handle WooCommerce fields.
-    // However, you could hook into it to index custom WooCommerce product data via the 'wcField' source.
-    
-    // Check if indexing a specific custom WC field
-    if ( isset( $filter_settings['sourceFieldType'] ) && $filter_settings['sourceFieldType'] === 'my_custom_wc_field' ) {
-        // ... generate and return rows ...
-    }
-
-    return $rows;
-}, 10, 4 );
-```
-
----
-
 # Filter: bricks/remote_get
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-remote_get/
@@ -2274,36 +2303,6 @@ add_filter( 'bricks/remote_get', function( $args, $url ) {
 
     return $args;
 }, 10, 2 );
-```
-
----
-
-# Filter: bricks/query_filters_indexer/validate_job_settings
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters_indexer-validate_job_settings/
-
-*Validates the settings of a filter job before the Query Filters Indexer processes it. This is used for unknown or custom filter sources to ensure they have the.*
-
-Validates the settings of a filter job before the Query Filters Indexer processes it. This is used for unknown or custom filter sources to ensure they have the necessary configuration.
-
-## Parameters
-
-- `$validate` (*bool*): Whether the settings are valid. Default is `false` for unknown sources.
-- `$filter_source` (*string*): The source of the filter data (e.g., `wcField`, `customSource`).
-- `$filter_settings` (*array*): The settings of the filter element.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_filters_indexer/validate_job_settings', function( $validate, $filter_source, $filter_settings ) {
-    // Validate settings for a custom source
-    if ( $filter_source === 'my_custom_source' ) {
-        // Check if required 'my_key' setting is present
-        return ! empty( $filter_settings['my_key'] );
-    }
-
-    return $validate;
-}, 10, 3 );
 ```
 
 ---
@@ -2336,29 +2335,6 @@ add_filter( 'bricks/remote_post', function( $args, $url ) {
 
 ---
 
-# Filter: bricks/render_footer
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-render_footer/
-
-*Filters the rendered HTML of the Bricks footer template. This allows you to wrap the footer in custom markup or modify its output before it is echoed to the.*
-
-Filters the rendered HTML of the Bricks footer template. This allows you to wrap the footer in custom markup or modify its output before it is echoed to the page.
-
-## Parameters
-
-- `$footer_html` (*string*): The rendered HTML of the footer.
-
-## Example usage
-
-```php
-add_filter( 'bricks/render_footer', function( $footer_html ) {
-    // Example: Wrap the footer in a custom container
-    return '<div class="custom-footer-wrapper">' . $footer_html . '</div>';
-} );
-```
-
----
-
 # Filter: bricks/render_header
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-render_header/
@@ -2379,6 +2355,29 @@ add_filter( 'bricks/render_header', function( $header_html ) {
     $notification = '<div class="notification-bar">Welcome!</div>';
     
     return $notification . $header_html;
+} );
+```
+
+---
+
+# Filter: bricks/render_footer
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-render_footer/
+
+*Filters the rendered HTML of the Bricks footer template. This allows you to wrap the footer in custom markup or modify its output before it is echoed to the.*
+
+Filters the rendered HTML of the Bricks footer template. This allows you to wrap the footer in custom markup or modify its output before it is echoed to the page.
+
+## Parameters
+
+- `$footer_html` (*string*): The rendered HTML of the footer.
+
+## Example usage
+
+```php
+add_filter( 'bricks/render_footer', function( $footer_html ) {
+    // Example: Wrap the footer in a custom container
+    return '<div class="custom-footer-wrapper">' . $footer_html . '</div>';
 } );
 ```
 
@@ -2431,31 +2430,6 @@ Bricks casts the filtered value with `absint()`. If the filtered value is empty 
 ```php
 add_filter( 'bricks/resolve_attachment_id', function( $attachment_id ) {
     return $attachment_id;
-} );
-```
-
----
-
-# Filter: bricks/rtl_languages
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-rtl_languages/
-
-*Filters the list of language codes that Bricks considers right-to-left (RTL). This affects the layout direction of the builder interface when a specific locale.*
-
-Filters the list of language codes that Bricks considers right-to-left (RTL). This affects the layout direction of the builder interface when a specific locale is active.
-
-## Parameters
-
-- `$languages` (*array*): Array of RTL language codes (e.g., `['ar', 'he', 'fa']`).
-
-## Example usage
-
-```php
-add_filter( 'bricks/rtl_languages', function( $languages ) {
-    // Add a custom RTL language code
-    $languages[] = 'abc';
-
-    return $languages;
 } );
 ```
 
@@ -2534,25 +2508,53 @@ Section hook assignments use a separate condition evaluator from template scorin
 
 ---
 
-# Filter: bricks/support_masonry_element
+# Filter: bricks/rtl_languages
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-support_masonry_element/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-rtl_languages/
 
-*Filters the list of element names that support the Masonry layout option. By default, this includes section, container, block, and div.*
+*Filters the list of language codes that Bricks considers right-to-left (RTL). This affects the layout direction of the builder interface when a specific locale.*
 
-Filters the list of element names that support the Masonry layout option. By default, this includes `section`, `container`, `block`, and `div`.
+Filters the list of language codes that Bricks considers right-to-left (RTL). This affects the layout direction of the builder interface when a specific locale is active.
 
 ## Parameters
 
-- `$element_names` (*array*): Array of element names (slugs) that support Masonry.
+- `$languages` (*array*): Array of RTL language codes (e.g., `['ar', 'he', 'fa']`).
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/support_masonry_element', function( $element_names ) {
-    // Enable Masonry support for a custom element
-    $element_names[] = 'my-custom-grid';
+add_filter( 'bricks/rtl_languages', function( $languages ) {
+    // Add a custom RTL language code
+    $languages[] = 'abc';
 
-    return $element_names;
+    return $languages;
 } );
+```
+
+---
+
+# Filter: bricks/security_check_before_save/new_elements
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-security_check_before_save-new_elements/
+
+*Filters the array of new elements before they are saved to the database, specifically during the security check process (e.g., when validating {echo:} tags)..*
+
+Filters the array of new elements before they are saved to the database, specifically during the security check process (e.g., when validating `{echo:}` tags). This allows you to inspect or modify the element data before it persists.
+
+## Parameters
+
+- `$new_elements` (*array*): Array of new element data structures.
+- `$old_elements_indexed` (*array*): Array of existing elements, indexed by their ID, for comparison.
+
+## Example usage
+
+```php
+add_filter( 'bricks/security_check_before_save/new_elements', function( $new_elements, $old_elements_indexed ) {
+    // Example: Loop through new elements and log changes
+    foreach ( $new_elements as $element ) {
+        // Custom logic here
+    }
+
+    return $new_elements;
+}, 10, 2 );
 ```

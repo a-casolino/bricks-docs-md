@@ -704,58 +704,6 @@ Enabling the "YouTube Preview Thumbnails" setting of the Perfmatters plugin migh
 
 ---
 
-# Filter active filters
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-active-filters/
-
-*Display selected query filters as removable buttons and exclude filters from the active list.*
-
-Displays the currently active or selected filters, allowing users to easily remove a filter with a single click for faster navigation. This element shows all active filters from the connected target query and provides quick access to clear individual filters.
-
-**Tip:** Use this element alongside other filter elements to give users clear visibility of their current filter selections and easy ways to modify their search criteria.
-
-## Settings
-
-- **Target query** (query-list) - Select the query whose active filters should be displayed.
-- **Global filter** (Bricks 2.5) - Reuse the shared behavior of another Active Filters configuration. The target query and styling remain local.
-- **Exclude filter IDs** (text) - Enter filter element IDs, separated by commas, to exclude from the active filters list. From Bricks 2.5, accepts global filter IDs too. A linked element's ID excludes its shared filter for the target query.
-- **Button** - Settings for the remove filter buttons.
-  - **Padding** (spacing) - Padding for filter remove buttons.
-  - **Gap** (number) - Gap between filter buttons.
-  - **Size** (select) - Button size preset. Options: Default, Small, Medium, Large, Extra Large.
-  - **Style** (select) - Button style. Options: None, Primary, Secondary, Success, Info, Warning, Danger, Dark, Light.
-  - **Circle** (checkbox) - Make buttons circular.
-  - **Outline** (checkbox) - Use outline button style.
-  - **Background color** (color) - Custom background color for buttons.
-  - **Border** (border) - Border styling for buttons.
-  - **Typography** (typography) - Typography settings for button text.
-- **Icon** - Settings for filter remove icons.
-  - **Icon** (icon) - Icon to display on filter buttons.
-  - **Color** (color) - Icon color.
-  - **Size** (number) - Icon size.
-  - **Gap** (number) - Gap between icon and text.
-  - **Position** (select) - Icon position. Options: Left, Right. Default: Right.
-- **Active filter** - Settings for active filter display.
-  - **Prefix** (text) - Text to display before filter value.
-  - **Suffix** (text) - Text to display after filter value.
-  - **Title** (text) - Custom title attribute for filter links.
-
-## Default selections
-
-Starting with Bricks 2.5, [configured default values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) appear as active selections on the first page load. Visitors can remove them like other selections. Removing a default does not immediately reapply it; a fresh visit or reload without filter parameters applies it again. Display exclusions still apply.
-
-## Excluding a Global Filter
-
-Starting with Bricks 2.5, use a [global filter](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#global-filters) ID or any linked element's ID in **Exclude filter IDs**. For example, exclude a shared results-per-page filter to keep it out of the active-filter list across desktop and mobile copies. This hides the entry without clearing its selection or changing the query.
-
-Copy a definition ID from Filter manager, or use the Bricks ID from a linked element's panel. Do not use a target query ID or URL parameter name. This display exclusion is separate from a Reset button's exclusions, which preserve values when resetting.
-
-> **Developer reference**
->
-> See the [Filter - Active Filters Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-active-filters/) for the full JSON schema of this element's settings and controls.
-
----
-
 # Filter checkbox
 
 Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-checkbox/
@@ -855,6 +803,58 @@ The default applies even with **Apply on** set to **Submit**. Filter URL selecti
 > **Developer reference**
 >
 > See the [Filter - Checkbox Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-checkbox/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Filter active filters
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-active-filters/
+
+*Display selected query filters as removable buttons and exclude filters from the active list.*
+
+Displays the currently active or selected filters, allowing users to easily remove a filter with a single click for faster navigation. This element shows all active filters from the connected target query and provides quick access to clear individual filters.
+
+**Tip:** Use this element alongside other filter elements to give users clear visibility of their current filter selections and easy ways to modify their search criteria.
+
+## Settings
+
+- **Target query** (query-list) - Select the query whose active filters should be displayed.
+- **Global filter** (Bricks 2.5) - Reuse the shared behavior of another Active Filters configuration. The target query and styling remain local.
+- **Exclude filter IDs** (text) - Enter filter element IDs, separated by commas, to exclude from the active filters list. From Bricks 2.5, accepts global filter IDs too. A linked element's ID excludes its shared filter for the target query.
+- **Button** - Settings for the remove filter buttons.
+  - **Padding** (spacing) - Padding for filter remove buttons.
+  - **Gap** (number) - Gap between filter buttons.
+  - **Size** (select) - Button size preset. Options: Default, Small, Medium, Large, Extra Large.
+  - **Style** (select) - Button style. Options: None, Primary, Secondary, Success, Info, Warning, Danger, Dark, Light.
+  - **Circle** (checkbox) - Make buttons circular.
+  - **Outline** (checkbox) - Use outline button style.
+  - **Background color** (color) - Custom background color for buttons.
+  - **Border** (border) - Border styling for buttons.
+  - **Typography** (typography) - Typography settings for button text.
+- **Icon** - Settings for filter remove icons.
+  - **Icon** (icon) - Icon to display on filter buttons.
+  - **Color** (color) - Icon color.
+  - **Size** (number) - Icon size.
+  - **Gap** (number) - Gap between icon and text.
+  - **Position** (select) - Icon position. Options: Left, Right. Default: Right.
+- **Active filter** - Settings for active filter display.
+  - **Prefix** (text) - Text to display before filter value.
+  - **Suffix** (text) - Text to display after filter value.
+  - **Title** (text) - Custom title attribute for filter links.
+
+## Default selections
+
+Starting with Bricks 2.5, [configured default values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) appear as active selections on the first page load. Visitors can remove them like other selections. Removing a default does not immediately reapply it; a fresh visit or reload without filter parameters applies it again. Display exclusions still apply.
+
+## Excluding a Global Filter
+
+Starting with Bricks 2.5, use a [global filter](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#global-filters) ID or any linked element's ID in **Exclude filter IDs**. For example, exclude a shared results-per-page filter to keep it out of the active-filter list across desktop and mobile copies. This hides the entry without clearing its selection or changing the query.
+
+Copy a definition ID from Filter manager, or use the Bricks ID from a linked element's panel. Do not use a target query ID or URL parameter name. This display exclusion is separate from a Reset button's exclusions, which preserve values when resetting.
+
+> **Developer reference**
+>
+> See the [Filter - Active Filters Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-active-filters/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -980,6 +980,82 @@ The default applies even with **Apply on** set to **Submit**. Filter URL selecti
 > **Developer reference**
 >
 > See the [Filter - Datepicker Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-datepicker/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Filter radio
+
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-radio/
+
+*Use radio buttons for single-selection query filters, sorting, or results per page, with optional child-term counts for taxonomy filters.*
+
+Creates a radio button filter interface for single-selection filtering. Users can select one option at a time to filter query results. Supports taxonomy terms, WordPress fields, custom fields, and can also function as a sorting or results-per-page control.
+
+Use radio buttons when visitors should select only one option. Set **Action** to **Sort** or **Results per page** when the control should change ordering or page size.
+
+## Settings
+
+- **Target query** (query-list) - Select the post, term, or user query this filter should target. Available sources depend on the query type.
+- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
+- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
+- **Action** (select) - Filter behavior. Options: Filter (traditional filtering), Sort (sorting control), Results per page (pagination control).
+- **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
+- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
+- **Field** (select) - Specific field to filter/sort by (varies based on field type and action).
+- **Taxonomy** (select) - Taxonomy to use for filtering when source is taxonomy.
+- **Order by** (select) - How to order taxonomy terms. Options: Name, Slug, Term ID, Description, Parent, Count, Include, Menu Order, Meta Value, Meta Value Num.
+- **Order meta key** (text) - Meta key for ordering when using meta value ordering.
+- **Order** (select) - Sort direction. Options: ASC, DESC. Default: ASC.
+- **Terms: Include** (select) - Specific taxonomy terms to include in filter options.
+- **Terms: Exclude** (select) - Specific taxonomy terms to exclude from filter options.
+- **Top level terms only** (checkbox) - Display only top-level terms (parent = 0) when source is taxonomy.
+- **Hide count** (checkbox) - Hide the result count for each option.
+- **Count: Include children** (checkbox, Bricks 2.5) - Include descendant-term posts in parent taxonomy counts. Off by default. Available with Action set to Filter, a target query, and a selected taxonomy.
+- **Hide empty** (checkbox) - Hide options with zero results.
+- **Hide count bracket** (checkbox) - Remove brackets around count values. Style count via .brx-option-count.
+- **Hierarchical** (checkbox) - Display taxonomy terms in hierarchical structure.
+- **Indent: Prefix** (text) - Prefix text for hierarchical indentation. Default: —.
+- **Indent: Gap** (number) - Gap spacing for hierarchical indentation.
+- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
+- **Meta key** (text) - Custom field key for filtering.
+- **Compare** (select) - Comparison operator for filtering. Default: Equal.
+- **Mode** (select) - Display mode for radio buttons. Options: Default (traditional radio buttons), Button (modern button style).
+- **Sort options** (repeater) - Configure sorting options when Action is set to Sort.
+  - **Source** (select) - Sort field, including **Distance** in Bricks 2.5.
+  - **Label** (text) - Display label for the sort option.
+  - **Order** (select) - Ascending or Descending. For Distance, nearest first or farthest first.
+  - **Meta key** (text) - Meta key for meta-based sorting.
+- **Results per page options** (text) - Comma-separated list of results per page options when Action is set to Results per page. Default: 10, 20, 50, 100.
+- **Active filter** - Settings for active filter display.
+  - **Prefix** (text) - Text to display before filter value.
+  - **Suffix** (text) - Text to display after filter value.
+  - **Title** (text) - Custom title attribute for filter links.
+
+## Parent-Term Counts {#parent-term-counts}
+
+Enable **Count: Include children** when a parent option should count posts assigned to its child terms and deeper descendants. Posts assigned to both a parent and a descendant count once for the parent. The setting works independently of **Hierarchical** display and is shared when the element uses a global filter. See [taxonomy child counts](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#taxonomy-child-counts) for setup, indexing, and an example.
+
+## Default selection {#default-selection}
+
+Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. Use **Default value** for one exact option value. For the Sort action, enter a configured sort value such as `title_ASC` or `distance_ASC`; for Results per page, enter a configured page size such as `20`. Dynamic data is supported.
+
+A Distance default such as `distance_ASC` also requires a valid location from a Geolocation filter targeting the same query. Without one, Bricks clears the Distance selection and uses the query's normal order.
+
+The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
+
+## Distance sorting {#distance-sorting}
+
+Starting with **Bricks 2.5**, set **Action** to **Sort** and add **Distance** as a sort option's **Source**. Set **Order** to **Ascending** for nearest first or **Descending** for farthest first, and give the option a descriptive **Label**.
+
+A [Geolocation filter](https://academy.bricksbuilder.io/builder/elements/filter/filter-geolocation/) must target the same query and provide a valid location, including a default location. Sorting keeps its radius constraint.
+
+Distance options remain visible but disabled without a valid location. A valid location enables them even when no results match. Clearing the location also clears a selected Distance sort and restores the query's normal order. Choosing a sort option never requests device location.
+
+With this filter set to **Submit** and Geolocation set to **On submit**, a resolved pending location enables Distance before submission so visitors can apply both together. See [Distance sorting setup](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#distance-sorting) for apply modes, URL behavior, and failed requests.
+
+> **Developer reference**
+>
+> See the [Filter - Radio Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-radio/) for the full JSON schema of this element's settings and controls.
 
 ---
 
@@ -1246,82 +1322,6 @@ Under **Status**, override the pending, loading, success, and error messages. Em
 
 ---
 
-# Filter radio
-
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-radio/
-
-*Use radio buttons for single-selection query filters, sorting, or results per page, with optional child-term counts for taxonomy filters.*
-
-Creates a radio button filter interface for single-selection filtering. Users can select one option at a time to filter query results. Supports taxonomy terms, WordPress fields, custom fields, and can also function as a sorting or results-per-page control.
-
-Use radio buttons when visitors should select only one option. Set **Action** to **Sort** or **Results per page** when the control should change ordering or page size.
-
-## Settings
-
-- **Target query** (query-list) - Select the post, term, or user query this filter should target. Available sources depend on the query type.
-- **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
-- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
-- **Action** (select) - Filter behavior. Options: Filter (traditional filtering), Sort (sorting control), Results per page (pagination control).
-- **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
-- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
-- **Field** (select) - Specific field to filter/sort by (varies based on field type and action).
-- **Taxonomy** (select) - Taxonomy to use for filtering when source is taxonomy.
-- **Order by** (select) - How to order taxonomy terms. Options: Name, Slug, Term ID, Description, Parent, Count, Include, Menu Order, Meta Value, Meta Value Num.
-- **Order meta key** (text) - Meta key for ordering when using meta value ordering.
-- **Order** (select) - Sort direction. Options: ASC, DESC. Default: ASC.
-- **Terms: Include** (select) - Specific taxonomy terms to include in filter options.
-- **Terms: Exclude** (select) - Specific taxonomy terms to exclude from filter options.
-- **Top level terms only** (checkbox) - Display only top-level terms (parent = 0) when source is taxonomy.
-- **Hide count** (checkbox) - Hide the result count for each option.
-- **Count: Include children** (checkbox, Bricks 2.5) - Include descendant-term posts in parent taxonomy counts. Off by default. Available with Action set to Filter, a target query, and a selected taxonomy.
-- **Hide empty** (checkbox) - Hide options with zero results.
-- **Hide count bracket** (checkbox) - Remove brackets around count values. Style count via .brx-option-count.
-- **Hierarchical** (checkbox) - Display taxonomy terms in hierarchical structure.
-- **Indent: Prefix** (text) - Prefix text for hierarchical indentation. Default: —.
-- **Indent: Gap** (number) - Gap spacing for hierarchical indentation.
-- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
-- **Meta key** (text) - Custom field key for filtering.
-- **Compare** (select) - Comparison operator for filtering. Default: Equal.
-- **Mode** (select) - Display mode for radio buttons. Options: Default (traditional radio buttons), Button (modern button style).
-- **Sort options** (repeater) - Configure sorting options when Action is set to Sort.
-  - **Source** (select) - Sort field, including **Distance** in Bricks 2.5.
-  - **Label** (text) - Display label for the sort option.
-  - **Order** (select) - Ascending or Descending. For Distance, nearest first or farthest first.
-  - **Meta key** (text) - Meta key for meta-based sorting.
-- **Results per page options** (text) - Comma-separated list of results per page options when Action is set to Results per page. Default: 10, 20, 50, 100.
-- **Active filter** - Settings for active filter display.
-  - **Prefix** (text) - Text to display before filter value.
-  - **Suffix** (text) - Text to display after filter value.
-  - **Title** (text) - Custom title attribute for filter links.
-
-## Parent-Term Counts {#parent-term-counts}
-
-Enable **Count: Include children** when a parent option should count posts assigned to its child terms and deeper descendants. Posts assigned to both a parent and a descendant count once for the parent. The setting works independently of **Hierarchical** display and is shared when the element uses a global filter. See [taxonomy child counts](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#taxonomy-child-counts) for setup, indexing, and an example.
-
-## Default selection {#default-selection}
-
-Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. Use **Default value** for one exact option value. For the Sort action, enter a configured sort value such as `title_ASC` or `distance_ASC`; for Results per page, enter a configured page size such as `20`. Dynamic data is supported.
-
-A Distance default such as `distance_ASC` also requires a valid location from a Geolocation filter targeting the same query. Without one, Bricks clears the Distance selection and uses the query's normal order.
-
-The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
-
-## Distance sorting {#distance-sorting}
-
-Starting with **Bricks 2.5**, set **Action** to **Sort** and add **Distance** as a sort option's **Source**. Set **Order** to **Ascending** for nearest first or **Descending** for farthest first, and give the option a descriptive **Label**.
-
-A [Geolocation filter](https://academy.bricksbuilder.io/builder/elements/filter/filter-geolocation/) must target the same query and provide a valid location, including a default location. Sorting keeps its radius constraint.
-
-Distance options remain visible but disabled without a valid location. A valid location enables them even when no results match. Clearing the location also clears a selected Distance sort and restores the query's normal order. Choosing a sort option never requests device location.
-
-With this filter set to **Submit** and Geolocation set to **On submit**, a resolved pending location enables Distance before submission so visitors can apply both together. See [Distance sorting setup](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#distance-sorting) for apply modes, URL behavior, and failed requests.
-
-> **Developer reference**
->
-> See the [Filter - Radio Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-radio/) for the full JSON schema of this element's settings and controls.
-
----
-
 # Filter range
 
 Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-range/
@@ -1378,79 +1378,55 @@ The default applies even with **Apply on** set to **Submit**. Filter URL selecti
 
 ---
 
-# Filter select
+# Filter search
 
-Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-select/
+Source: https://academy.bricksbuilder.io/builder/elements/filter/filter-search/
 
-*Use dropdown query filters for single or multiple selections, sorting, and results per page, with optional child-term counts for taxonomy filters.*
+*Search query results without a page reload, configure initial search text, and choose AJAX or redirect behavior for Enter.*
 
-Creates a dropdown select filter interface for single or multiple selection filtering. Supports taxonomy terms, WordPress fields, and custom fields. Can also function as a sorting or results-per-page control.
+Provides a live AJAX search input for real-time content filtering. Searches through post content, titles, and custom fields without page refresh. Features debouncing, minimum character requirements, and optional clear functionality.
+
+**Tip:** Perfect for creating instant search experiences. Use the debounce setting to control API call frequency, and minimum characters to improve performance.
 
 ## Settings
 
-- **Target query** (query-list) - Select the post, term, or user query this filter should target. Available sources depend on the query type.
+- **Target query** (query-list) - Select the Posts, Terms, or Users query this filter should target.
 - **URL parameter** (text) - Define a unique, more readable URL parameter name for this filter.
-- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (requires button click). Default: Input.
-- **Action** (select) - Filter behavior. Options: Filter (traditional filtering), Sort (sorting control), Results per page (pagination control).
-- **Source** (select) - Data source for filter options. Options: Taxonomy, WordPress field, Custom field.
-- **Field type** (select) - Type of field when using WordPress field or custom field source. Options: Post, Term, User.
-- **Field** (select) - Specific field to filter/sort by (varies based on field type and action).
-- **Taxonomy** (select) - Taxonomy to use for filtering when source is taxonomy.
-- **Order by** (select) - How to order taxonomy terms. Options: Name, Slug, Term ID, Description, Parent, Count, Include, Menu Order, Meta Value, Meta Value Num.
-- **Order meta key** (text) - Meta key for ordering when using meta value ordering.
-- **Order** (select) - Sort direction. Options: ASC, DESC. Default: ASC.
-- **Terms: Include** (select) - Specific taxonomy terms to include in filter options.
-- **Terms: Exclude** (select) - Specific taxonomy terms to exclude from filter options.
-- **Top level terms only** (checkbox) - Display only top-level terms (parent = 0) when source is taxonomy.
-- **Hide count** (checkbox) - Hide the result count for each option.
-- **Count: Include children** (checkbox, Bricks 2.5) - Include descendant-term posts in parent taxonomy counts. Off by default. Available with Action set to Filter, a target query, and a selected taxonomy.
-- **Hide empty** (checkbox) - Hide options with zero results.
-- **Hierarchical** (checkbox) - Display taxonomy terms in hierarchical structure.
-- **Indent: Prefix** (text) - Prefix text for hierarchical indentation. Default: —.
-- **Provider** (select) - Custom field provider for integration (ACF, Meta Box, etc.).
-- **Meta key** (text) - Custom field key for filtering.
-- **Compare** (select) - Comparison operator for filtering. Default: Equal.
-- **Input** - Settings for the select dropdown.
-  - **Placeholder** (text) - Placeholder text for the select dropdown.
-- **Sort options** (repeater) - Configure sorting options when Action is set to Sort.
-  - **Source** (select) - Sort field, including **Distance** in Bricks 2.5.
-  - **Label** (text) - Display label for the sort option.
-  - **Order** (select) - Ascending or Descending. For Distance, nearest first or farthest first.
-  - **Meta key** (text) - Meta key for meta-based sorting.
-- **Results per page options** (text) - Comma-separated list of results per page options when Action is set to Results per page. Default: 10, 20, 50, 100.
+- **Apply on** (select) - Choose when to apply the filter. Options: Input (immediate), Submit (button click or Enter). Default: Input.
+- **Debounce (ms)** (number) - Delay before triggering search after typing stops. Default: 500ms.
+- **Min. characters** (number) - Minimum characters required to trigger search. Default: 3.
+- **Enter action** (select, Bricks 2.4) - Choose **AJAX search** (default) or **Redirect to URL**. Requires a target query.
+- **Trigger Filter Submit interactions** (checkbox, Bricks 2.4) - Run the target query's Filter Submit start/end interactions when Enter triggers an AJAX search. Disabled by default and available when Enter action is AJAX search.
+- **Redirect to** (text, Bricks 2.4) - Destination URL when Enter action is Redirect to URL. Active filters for the same query are appended as URL parameters.
+- **Open in new tab** (checkbox, Bricks 2.4) - Open the Enter-key redirect in a new tab. Available when a redirect URL is set.
+- **Input** - Settings for the search input field.
+  - **Placeholder** (text) - Placeholder text for the search input. Default: Search.
+  - **Placeholder typography** (typography) - Typography for placeholder text.
+  - **Label** (text) - Optional label text above the input field.
+  - **Label typography** (typography) - Typography for the label text.
+- **Icon (Clear)** - Settings for the clear/reset icon.
+  - **Icon** (icon) - Icon to display for clearing the search.
+  - **Icon color** (color) - Color of the clear icon.
+  - **Icon size** (number) - Size of the clear icon.
 - **Active filter** - Settings for active filter display.
   - **Prefix** (text) - Text to display before filter value.
   - **Suffix** (text) - Text to display after filter value.
   - **Title** (text) - Custom title attribute for filter links.
 
-## Parent-Term Counts {#parent-term-counts}
+## Search with Enter
 
-Enable **Count: Include children** when a parent option should count posts assigned to its child terms and deeper descendants. Posts assigned to both a parent and a descendant count once for the parent. The setting works independently of **Hierarchical** display and is shared when the element uses a global filter. See [taxonomy child counts](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#taxonomy-child-counts) for setup, indexing, and an example.
+Pressing Enter runs the configured action immediately, including when **Apply on** is set to **Submit**. Enter bypasses the typing debounce and minimum character threshold.
+
+For a search field that takes visitors to another results page, select a **Target query**, set **Enter action** to **Redirect to URL**, and enter the destination under **Redirect to**. Configure the destination's filters to recognize the same URL parameter names. Leave **Open in new tab** off to navigate in the current tab. An empty redirect URL falls back to an AJAX search.
+
+For an AJAX search that should close an Offcanvas after submission, enable **Trigger Filter Submit interactions** and use the [Filter Submit interaction triggers](https://academy.bricksbuilder.io/builder/features/interactions/#filter-submit-triggers). Ordinary typing does not trigger these submit interactions. The redirect action does not run them.
 
 ## Default selection {#default-selection}
 
-Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. Use **Default value** for one exact option value. With Choices.js and multiple selection enabled, separate values with commas, such as `cotton, wool`, and wrap values containing commas in double quotes. For Sort, enter a configured sort value such as `title_ASC` or `distance_ASC`; for Results per page, enter a configured page size such as `20`. Dynamic data is supported.
-
-A Distance default such as `distance_ASC` also requires a valid location from a Geolocation filter targeting the same query. Without one, Bricks clears the Distance selection and uses the query's normal order.
+Starting with **Bricks 2.5**, this filter can apply a selection before the first query runs. Use **Default value** to set initial search text. The field supports dynamic data and treats commas as part of the search text.
 
 The default applies even with **Apply on** set to **Submit**. Filter URL selections take precedence, and **Reset** clears the selection instead of restoring the default. A fresh visit or reload without filter parameters applies it again. See [default filter values](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#default-values) for shared defaults, validation, and URL behavior.
 
-## Distance sorting {#distance-sorting}
-
-Starting with **Bricks 2.5**, set **Action** to **Sort** and add **Distance** as a sort option's **Source**. Set **Order** to **Ascending** for nearest first or **Descending** for farthest first, and give the option a descriptive **Label**.
-
-<div className="screenshot screenshot--control-panel">
-
-![Sort options with Nearest first configured to use Distance in Ascending order, and Farthest first available as a second option.](https://academy.bricksbuilder.io/assets/query-filter-distance-sort-options.webp)
-
-</div>
-
-A [Geolocation filter](https://academy.bricksbuilder.io/builder/elements/filter/filter-geolocation/) must target the same query and provide a valid location, including a default location. Sorting keeps its radius constraint.
-
-Distance options remain visible but disabled without a valid location, in both native and Choices.js dropdowns. A valid location enables them even when no results match. Clearing the location also clears a selected Distance sort and restores the query's normal order. Choosing a sort option never requests device location.
-
-With this filter set to **Submit** and Geolocation set to **On submit**, a resolved pending location enables Distance before submission so visitors can apply both together. See [Distance sorting setup](https://academy.bricksbuilder.io/builder/dynamic-content/query-filters/#distance-sorting) for apply modes, URL behavior, and failed requests.
-
 > **Developer reference**
 >
-> See the [Filter - Select Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-select/) for the full JSON schema of this element's settings and controls.
+> See the [Filter - Search Schema](https://academy.bricksbuilder.io/developer/schema/elements/filter-search/) for the schema snapshot and Bricks 2.4 settings reference.

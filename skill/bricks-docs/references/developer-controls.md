@@ -1,40 +1,3 @@
-# Align Items Control (Flexbox)
-
-Source: https://academy.bricksbuilder.io/developer/controls/align-items-control/
-
-*Reference for the Bricks Align Items Control (Flexbox) control, including its options, CSS mapping, and usage in custom elements.*
-
-Use the align-items control to allow users to set the `align-items` CSS property (alignment along the [cross-axis](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items)) of your CSS flexbox layout.
-
-There is also a [`justify-content`](https://academy.bricksbuilder.io/developer/controls/justify-content-control/) control to allow users to set the alignment along the main axis of your CSS flexbox layout:
-
-```php
-public function set_controls() {
-  $this->controls['alignItems'] = [ // Setting key
-    'tab'   => 'content',
-    'label' => esc_html__( 'Align items', 'bricks' ),
-    'type'  => 'align-items',
-    'css'   => [
-      [
-        'property' => 'align-items',
-        'selector' => '.flexbox-wrapper',
-      ],
-    ],
-    // 'isHorizontal' => false,
-    // 'exclude' => [
-      // 'flex-start',
-      // 'center',
-      // 'flex-end',
-      // 'space-between',
-      // 'space-around',
-      // 'space-evenly',
-    // ],
-  ];
-}
-```
-
----
-
 # Apply Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/apply-control/
@@ -92,6 +55,43 @@ class Prefix_Element_Audio extends \Bricks\Element {
 ### Resources
 
 [https://codex.wordpress.org/Function_Reference/wp_audio_shortcode](https://codex.wordpress.org/Function_Reference/wp_audio_shortcode)
+
+---
+
+# Align Items Control (Flexbox)
+
+Source: https://academy.bricksbuilder.io/developer/controls/align-items-control/
+
+*Reference for the Bricks Align Items Control (Flexbox) control, including its options, CSS mapping, and usage in custom elements.*
+
+Use the align-items control to allow users to set the `align-items` CSS property (alignment along the [cross-axis](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items)) of your CSS flexbox layout.
+
+There is also a [`justify-content`](https://academy.bricksbuilder.io/developer/controls/justify-content-control/) control to allow users to set the alignment along the main axis of your CSS flexbox layout:
+
+```php
+public function set_controls() {
+  $this->controls['alignItems'] = [ // Setting key
+    'tab'   => 'content',
+    'label' => esc_html__( 'Align items', 'bricks' ),
+    'type'  => 'align-items',
+    'css'   => [
+      [
+        'property' => 'align-items',
+        'selector' => '.flexbox-wrapper',
+      ],
+    ],
+    // 'isHorizontal' => false,
+    // 'exclude' => [
+      // 'flex-start',
+      // 'center',
+      // 'flex-end',
+      // 'space-between',
+      // 'space-around',
+      // 'space-evenly',
+    // ],
+  ];
+}
+```
 
 ---
 
@@ -178,6 +178,130 @@ class Prefix_Element_Background extends \Bricks\Element {
 
 ---
 
+# Border Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/border-control/
+
+*Reference for the Bricks Border control, including its options, CSS mapping, and usage in custom elements.*
+
+The border control lets you set the following border properties:
+
+- Border width (top/right/bottom/left)
+- Background style (top/right/bottom/left)
+- Background color (none/solid/double/dotted/dashed)
+- Border radius (top/right/bottom/left)
+
+The example below illustrates how to apply a border via the `css` parameter and how to set border defaults.
+
+```php
+class Builder_Element_Prefix_Test extends \Bricks\Element {
+  public function set_controls() {
+    $this->controls['titleBorder'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Title border', 'bricks' ),
+      'type' => 'border',
+      'css' => [
+        [
+          'property' => 'border',
+          'selector' => '.prefix-test-title',
+        ],
+      ],
+      'inline' => true,
+      'small' => true,
+      'default' => [
+        'width' => [
+          'top' => 1,
+          'right' => 0,
+          'bottom' => 0,
+          'left' => 0,
+        ],
+        'style' => 'solid',
+        'color' => [
+          'hex' => '#ffff00',
+        ],
+        'radius' => [
+          'top' => 1,
+          'right' => 1,
+          'bottom' => 1,
+          'left' => 1,
+        ],
+      ],
+
+    ];
+  }
+}
+```
+
+---
+
+# Code Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/code-control/
+
+*Reference for the Bricks Code control, including its options, CSS mapping, and usage in custom elements.*
+
+The code control embeds a code editor utilizing the amazing CodeMirror library. Users for which you've enabled "**Code Execution**" in the Bricks settings, will be able to execute PHP, HTML, CSS, and JavaScript.
+
+```php
+class Prefix_Element_Code extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleHtml'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'HTML', 'bricks' ),
+      'type' => 'code',
+      'mode' => 'php',
+      'default' => '<h4>Example H4 HTML title</h4>',
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    echo isset( $this->settings['exampleHtml'] ) ? $this->settings['exampleHtml'] : esc_html__( 'No HTML provided.', 'bricks' );
+  }
+}
+```
+
+> **Note**
+>
+> You don't need to define your own element CSS and JS controls. Those are already available when editing the element under the Style tab "CSS" control group.
+
+---
+
+# Checkbox Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/checkbox-control/
+
+*Reference for the Bricks Checkbox control, including its options, CSS mapping, and usage in custom elements.*
+
+The checkbox control is a simple on/off switch. If enabled it outputs a boolean value of `true`. Disabled it returns `false`. You can use it to conditionally show/hide other content settings as we illustrate in the following code example:
+
+```php
+class Prefix_Element_Checkbox extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleCheckbox'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Show site title', 'bricks' ),
+      'type' => 'checkbox',
+      'inline' => true,
+      'small' => true,
+      'default' => true, // Default: false
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    // Show site title if setting checkbox 'exampleCheckbox' is checked
+    if ( isset( $this->settings['exampleCheckbox'] ) ) {
+      echo get_bloginfo( 'name' );
+    }
+  }
+}
+```
+
+---
+
 # Box Shadow Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/box-shadow-control/
@@ -235,130 +359,6 @@ class Prefix_Element_Box_Shadow extends \Bricks\Element {
 ### Resources
 
 [https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow)
-
----
-
-# Border Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/border-control/
-
-*Reference for the Bricks Border control, including its options, CSS mapping, and usage in custom elements.*
-
-The border control lets you set the following border properties:
-
-- Border width (top/right/bottom/left)
-- Background style (top/right/bottom/left)
-- Background color (none/solid/double/dotted/dashed)
-- Border radius (top/right/bottom/left)
-
-The example below illustrates how to apply a border via the `css` parameter and how to set border defaults.
-
-```php
-class Builder_Element_Prefix_Test extends \Bricks\Element {
-  public function set_controls() {
-    $this->controls['titleBorder'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Title border', 'bricks' ),
-      'type' => 'border',
-      'css' => [
-        [
-          'property' => 'border',
-          'selector' => '.prefix-test-title',
-        ],
-      ],
-      'inline' => true,
-      'small' => true,
-      'default' => [
-        'width' => [
-          'top' => 1,
-          'right' => 0,
-          'bottom' => 0,
-          'left' => 0,
-        ],
-        'style' => 'solid',
-        'color' => [
-          'hex' => '#ffff00',
-        ],
-        'radius' => [
-          'top' => 1,
-          'right' => 1,
-          'bottom' => 1,
-          'left' => 1,
-        ],
-      ],
-
-    ];
-  }
-}
-```
-
----
-
-# Checkbox Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/checkbox-control/
-
-*Reference for the Bricks Checkbox control, including its options, CSS mapping, and usage in custom elements.*
-
-The checkbox control is a simple on/off switch. If enabled it outputs a boolean value of `true`. Disabled it returns `false`. You can use it to conditionally show/hide other content settings as we illustrate in the following code example:
-
-```php
-class Prefix_Element_Checkbox extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleCheckbox'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Show site title', 'bricks' ),
-      'type' => 'checkbox',
-      'inline' => true,
-      'small' => true,
-      'default' => true, // Default: false
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    // Show site title if setting checkbox 'exampleCheckbox' is checked
-    if ( isset( $this->settings['exampleCheckbox'] ) ) {
-      echo get_bloginfo( 'name' );
-    }
-  }
-}
-```
-
----
-
-# Code Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/code-control/
-
-*Reference for the Bricks Code control, including its options, CSS mapping, and usage in custom elements.*
-
-The code control embeds a code editor utilizing the amazing CodeMirror library. Users for which you've enabled "**Code Execution**" in the Bricks settings, will be able to execute PHP, HTML, CSS, and JavaScript.
-
-```php
-class Prefix_Element_Code extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleHtml'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'HTML', 'bricks' ),
-      'type' => 'code',
-      'mode' => 'php',
-      'default' => '<h4>Example H4 HTML title</h4>',
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    echo isset( $this->settings['exampleHtml'] ) ? $this->settings['exampleHtml'] : esc_html__( 'No HTML provided.', 'bricks' );
-  }
-}
-```
-
-> **Note**
->
-> You don't need to define your own element CSS and JS controls. Those are already available when editing the element under the Style tab "CSS" control group.
 
 ---
 
@@ -455,6 +455,81 @@ add_filter( 'bricks/builder/color_palette', function( $colors ) {
 > **Note**
 >
 > If you have saved any custom colors with the builder you need to reset your global settings in order for your new default colors to take effect.
+
+---
+
+# Direction Control (Flexbox)
+
+Source: https://academy.bricksbuilder.io/developer/controls/direction-control/
+
+*Reference for the Bricks Direction Control (Flexbox) control, including its options, CSS mapping, and usage in custom elements.*
+
+Use the direction control to allow users to set the `flex-direction` CSS property of your CSS flexbox layout.
+
+```php
+public function set_controls() {
+  $this->controls['direction'] = [ // Setting key
+    'tab'   => 'content',
+    'label' => esc_html__( 'Direction', 'bricks' ),
+    'type'  => 'direction',
+    'css'   => [
+      [
+        'property' => 'flex-direction',
+        'selector' => '.flexbox-wrapper',
+        // 'id'       => '', // Leave 'id' empty to apply to .flexbox-wrapper directly (@since 1.5.6)
+      ],
+    ],
+  ];
+}
+```
+
+---
+
+# Dimensions Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/dimensions-control/
+
+*Reference for the Bricks Dimensions control, including its options, CSS mapping, and usage in custom elements.*
+
+The dimensions control is perfect for adding multi-directional CSS properties such as margin and padding (top/right/bottom/left). You can set the directions to anything you want via the `directions` property.
+
+```php
+class Prefix_Element_Dimensions extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleDimensions'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Title padding', 'bricks' ),
+      'type' => 'dimensions',
+      'css' => [
+        [
+          'property' => 'padding',
+          'selector' => '.prefix-element-dimensions-title',
+        ]
+      ],
+      'default' => [
+        'top' => '30px',
+        'right' => 0,
+        'bottom' => '10em',
+        'left' => 0,
+      ],
+      // 'unitless' => false, // false by default
+      // Custom directions
+      // 'directions' => [
+        // 'offsetX' => esc_html__( 'Offset X', 'bricks' ),
+        // 'offsetY' => esc_html__( 'Offset Y', 'bricks' ),
+        // 'spread'  => esc_html__( 'Spread', 'bricks' ),
+        // 'blur'    => esc_html__( 'Offset Y', 'bricks' ),
+      // ],
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    echo '<h5 class="prefix-element-dimensions-title">' . get_bloginfo( 'name' ) . '</h5>';
+  }
+}
+```
 
 ---
 
@@ -565,81 +640,6 @@ class Prefix_Element_Countdown extends \Bricks\Element {
       echo '<div ' . $this->render_attributes( 'wrapper' ) . '></div>';
     }
   }
-}
-```
-
----
-
-# Dimensions Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/dimensions-control/
-
-*Reference for the Bricks Dimensions control, including its options, CSS mapping, and usage in custom elements.*
-
-The dimensions control is perfect for adding multi-directional CSS properties such as margin and padding (top/right/bottom/left). You can set the directions to anything you want via the `directions` property.
-
-```php
-class Prefix_Element_Dimensions extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleDimensions'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Title padding', 'bricks' ),
-      'type' => 'dimensions',
-      'css' => [
-        [
-          'property' => 'padding',
-          'selector' => '.prefix-element-dimensions-title',
-        ]
-      ],
-      'default' => [
-        'top' => '30px',
-        'right' => 0,
-        'bottom' => '10em',
-        'left' => 0,
-      ],
-      // 'unitless' => false, // false by default
-      // Custom directions
-      // 'directions' => [
-        // 'offsetX' => esc_html__( 'Offset X', 'bricks' ),
-        // 'offsetY' => esc_html__( 'Offset Y', 'bricks' ),
-        // 'spread'  => esc_html__( 'Spread', 'bricks' ),
-        // 'blur'    => esc_html__( 'Offset Y', 'bricks' ),
-      // ],
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    echo '<h5 class="prefix-element-dimensions-title">' . get_bloginfo( 'name' ) . '</h5>';
-  }
-}
-```
-
----
-
-# Direction Control (Flexbox)
-
-Source: https://academy.bricksbuilder.io/developer/controls/direction-control/
-
-*Reference for the Bricks Direction Control (Flexbox) control, including its options, CSS mapping, and usage in custom elements.*
-
-Use the direction control to allow users to set the `flex-direction` CSS property of your CSS flexbox layout.
-
-```php
-public function set_controls() {
-  $this->controls['direction'] = [ // Setting key
-    'tab'   => 'content',
-    'label' => esc_html__( 'Direction', 'bricks' ),
-    'type'  => 'direction',
-    'css'   => [
-      [
-        'property' => 'flex-direction',
-        'selector' => '.flexbox-wrapper',
-        // 'id'       => '', // Leave 'id' empty to apply to .flexbox-wrapper directly (@since 1.5.6)
-      ],
-    ],
-  ];
 }
 ```
 
@@ -778,41 +778,6 @@ The following control parameters are available for all control types. To dive de
 
 ---
 
-# Gradient Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/gradient-control/
-
-*Reference for the Bricks Gradient control, including its options, CSS mapping, and usage in custom elements.*
-
-The gradient control lets you define an unlimited number of gradients that you can apply to text, background, and as an overlay.
-
-For generated gradients, you can set the CSS selector, adjust the angle between 0 and 360°, and set a color stop for each color. Since Bricks 2.5, the **Custom** type accepts complete gradient values and CSS variable references. See [Custom gradients](https://academy.bricksbuilder.io/builder/styling/gradients-overlays/#custom-gradients) for the Builder workflow.
-
-```php
-class Prefix_Element_Gradient extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleGradient'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Gradient', 'bricks' ),
-      'type' => 'gradient',
-      'css' => [
-        [
-          'property' => 'background-image',
-        ],
-      ],
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    echo get_bloginfo( 'name' );
-  }
-}
-```
-
----
-
 # Filters Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/filters-control/
@@ -888,6 +853,41 @@ class Prefix_Element_Filters extends \Bricks\Element {
 > **Note**
 >
 > Elements already have a **CSS Filters** control under **Style > CSS**. Add a custom control when you need to target a specific part of your element.
+
+---
+
+# Gradient Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/gradient-control/
+
+*Reference for the Bricks Gradient control, including its options, CSS mapping, and usage in custom elements.*
+
+The gradient control lets you define an unlimited number of gradients that you can apply to text, background, and as an overlay.
+
+For generated gradients, you can set the CSS selector, adjust the angle between 0 and 360°, and set a color stop for each color. Since Bricks 2.5, the **Custom** type accepts complete gradient values and CSS variable references. See [Custom gradients](https://academy.bricksbuilder.io/builder/styling/gradients-overlays/#custom-gradients) for the Builder workflow.
+
+```php
+class Prefix_Element_Gradient extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleGradient'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Gradient', 'bricks' ),
+      'type' => 'gradient',
+      'css' => [
+        [
+          'property' => 'background-image',
+        ],
+      ],
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    echo get_bloginfo( 'name' );
+  }
+}
+```
 
 ---
 
@@ -1242,56 +1242,6 @@ class Prefix_Element_Number extends \Bricks\Element {
 
 ---
 
-# Query Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/query-control/
-
-*Reference for the Bricks Query control, including its options, CSS mapping, and usage in custom elements.*
-
-The query control lets you set query arguments to retrieve items of any post type. Use the returned value to set up a custom `WP_Query` to render the matching posts in any way you want.
-
-```php
-class Prefix_Element_Posts extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleQueryArgs'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Posts', 'bricks' ),
-      'type' => 'query',
-      // Default required for query to populate
-      'default' => [
-        'post_type' => 'post',
-      ],
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    $query_args = $this->settings['exampleQueryArgs'];
-    $posts_query = new WP_Query( $query_args );
-
-    // Standard WordPress loop
-    if ( $posts_query->have_posts() ) :
-      while ( $posts_query->have_posts() ) : $posts_query->the_post();
-        // Render post title and thumbnail
-        the_title( '<h5>', '</h5>' );
-        the_post_thumbnail( 'thumbnail' );
-      endwhile;
-
-      wp_reset_postdata();
-    else :
-     esc_html_e( 'No posts matched your criteria.', 'bricks' );
-    endif;
-  }
-}
-```
-
-### Resources
-
-- [https://codex.wordpress.org/Class_Reference/WP_Query#Parameters](https://codex.wordpress.org/Class_Reference/WP_Query#Parameters)
-
----
-
 # Repeater Control
 
 Source: https://academy.bricksbuilder.io/developer/controls/repeater-control/
@@ -1352,6 +1302,110 @@ class Prefix_Element_Posts extends \Bricks\Element {
   }
 }
 ```
+
+---
+
+# Slider Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/slider-control/
+
+*Reference for the Bricks Slider control, including its options, CSS mapping, and usage in custom elements.*
+
+The slider control shows a draggable range input field. Default units are `px`, `em` and `rem`. You can set the following control parameters:
+
+- units (array with custom units and `min`, `max`, `step` attributes)
+- unitless (set to `false` for plain number)
+
+```php
+class Prefix_Element_Slider extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleSliderFontSize'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Font size', 'bricks' ),
+      'type' => 'slider',
+      'css' => [
+        [
+          'property' => 'font-size',
+        ],
+      ],
+      'units' => [
+        'px' => [
+          'min' => 1,
+          'max' => 50,
+          'step' => 1,
+        ],
+        'em' => [
+          'min' => 1,
+          'max' => 20,
+          'step' => 0.1,
+        ],
+      ],
+      'default' => '30px',
+      'description' => esc_html__( 'Slider adjusts font size via CSS.', 'bricks' ),
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    echo '<h3>' . get_bloginfo( 'name' ) . '</h3>';
+  }
+}
+```
+
+### Resources
+
+- [https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range)
+
+---
+
+# Query Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/query-control/
+
+*Reference for the Bricks Query control, including its options, CSS mapping, and usage in custom elements.*
+
+The query control lets you set query arguments to retrieve items of any post type. Use the returned value to set up a custom `WP_Query` to render the matching posts in any way you want.
+
+```php
+class Prefix_Element_Posts extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleQueryArgs'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Posts', 'bricks' ),
+      'type' => 'query',
+      // Default required for query to populate
+      'default' => [
+        'post_type' => 'post',
+      ],
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    $query_args = $this->settings['exampleQueryArgs'];
+    $posts_query = new WP_Query( $query_args );
+
+    // Standard WordPress loop
+    if ( $posts_query->have_posts() ) :
+      while ( $posts_query->have_posts() ) : $posts_query->the_post();
+        // Render post title and thumbnail
+        the_title( '<h5>', '</h5>' );
+        the_post_thumbnail( 'thumbnail' );
+      endwhile;
+
+      wp_reset_postdata();
+    else :
+     esc_html_e( 'No posts matched your criteria.', 'bricks' );
+    endif;
+  }
+}
+```
+
+### Resources
+
+- [https://codex.wordpress.org/Class_Reference/WP_Query#Parameters](https://codex.wordpress.org/Class_Reference/WP_Query#Parameters)
 
 ---
 
@@ -1417,60 +1471,6 @@ class Prefix_Element_Posts extends \Bricks\Element {
   }
 }
 ```
-
----
-
-# Slider Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/slider-control/
-
-*Reference for the Bricks Slider control, including its options, CSS mapping, and usage in custom elements.*
-
-The slider control shows a draggable range input field. Default units are `px`, `em` and `rem`. You can set the following control parameters:
-
-- units (array with custom units and `min`, `max`, `step` attributes)
-- unitless (set to `false` for plain number)
-
-```php
-class Prefix_Element_Slider extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleSliderFontSize'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Font size', 'bricks' ),
-      'type' => 'slider',
-      'css' => [
-        [
-          'property' => 'font-size',
-        ],
-      ],
-      'units' => [
-        'px' => [
-          'min' => 1,
-          'max' => 50,
-          'step' => 1,
-        ],
-        'em' => [
-          'min' => 1,
-          'max' => 20,
-          'step' => 0.1,
-        ],
-      ],
-      'default' => '30px',
-      'description' => esc_html__( 'Slider adjusts font size via CSS.', 'bricks' ),
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    echo '<h3>' . get_bloginfo( 'name' ) . '</h3>';
-  }
-}
-```
-
-### Resources
-
-- [https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range)
 
 ---
 

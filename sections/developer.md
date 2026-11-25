@@ -1,32 +1,29 @@
 # Bricks Builder Documentation: Developer
 
-<!-- content-sha256: 64be495f5184df5832429318235144a8e1e6c081df219daaa9f68a54e87bedd5 -->
-<!-- content last changed: 2026-11-24 10:59 UTC -->
+<!-- content-sha256: 8a7daa27e930623523cd5692c4ab05ff6c083219f10833a8baa79f86a10bab76 -->
+<!-- content last changed: 2026-11-25 09:55 UTC -->
 
 Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricksbuilder.io/), refreshed daily. Content © Bricks. 341 pages.
 
 ## Table of contents
 
 - [Developer](#developer)
-    - [Create Your Own Dynamic Data Tag](#developer-dynamic-data-create-your-own-dynamic-data-tag)
-    - [Create Your Own Elements](#developer-elements-create-your-own-elements)
-    - [Nestable Elements (API)](#developer-elements-nestable-elements)
-    - [Align Items Control (Flexbox)](#developer-controls-align-items-control)
     - [Apply Control](#developer-controls-apply-control)
     - [Audio Control](#developer-controls-audio-control)
+    - [Align Items Control (Flexbox)](#developer-controls-align-items-control)
     - [Background Control](#developer-controls-background-control)
-    - [Box Shadow Control](#developer-controls-box-shadow-control)
     - [Border Control](#developer-controls-border-control)
-    - [Checkbox Control](#developer-controls-checkbox-control)
     - [Code Control](#developer-controls-code-control)
+    - [Checkbox Control](#developer-controls-checkbox-control)
+    - [Box Shadow Control](#developer-controls-box-shadow-control)
     - [Color Control](#developer-controls-color-control)
-    - [Datepicker Control](#developer-controls-datepicker-control)
-    - [Dimensions Control](#developer-controls-dimensions-control)
     - [Direction Control (Flexbox)](#developer-controls-direction-control)
+    - [Dimensions Control](#developer-controls-dimensions-control)
+    - [Datepicker Control](#developer-controls-datepicker-control)
     - [Editor Control](#developer-controls-editor-control)
     - [Element Controls](#developer-controls-element-controls)
-    - [Gradient Control](#developer-controls-gradient-control)
     - [Filters Control](#developer-controls-filters-control)
+    - [Gradient Control](#developer-controls-gradient-control)
     - [Icon Control](#developer-controls-icon-control)
     - [Image Control](#developer-controls-image-control)
     - [Image Gallery Control](#developer-controls-image-gallery-control)
@@ -35,10 +32,10 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
     - [Info Control](#developer-controls-info-control)
     - [Link Control](#developer-controls-link-control)
     - [Number Control](#developer-controls-number-control)
-    - [Query Control](#developer-controls-query-control)
     - [Repeater Control](#developer-controls-repeater-control)
-    - [Select Control](#developer-controls-select-control)
     - [Slider Control](#developer-controls-slider-control)
+    - [Query Control](#developer-controls-query-control)
+    - [Select Control](#developer-controls-select-control)
     - [SVG Control](#developer-controls-svg-control)
     - [Text Align Control](#developer-controls-text-align-control)
     - [Text Control](#developer-controls-text-control)
@@ -46,28 +43,31 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
     - [Text Shadow Control](#developer-controls-text-shadow-control)
     - [Text Transform Control](#developer-controls-text-transform-control)
     - [Textarea Control](#developer-controls-textarea-control)
+    - [Create Your Own Dynamic Data Tag](#developer-dynamic-data-create-your-own-dynamic-data-tag)
+    - [Nestable Elements (API)](#developer-elements-nestable-elements)
     - [Typography Control](#developer-controls-typography-control)
+    - [Create Your Own Elements](#developer-elements-create-your-own-elements)
     - [Function: bricks_render_dynamic_data](#developer-functions-function-bricks-render-dynamic-data)
     - [Asset Loading Optimization](#developer-guides-asset-loading)
     - [Best Practices](#developer-guides-best-practices)
+    - [Bricks CSS: Compatibility guidelines](#developer-guides-bricks-css-compatibility-guidelines)
     - [Bricks CLI](#developer-guides-bricks-cli)
     - [Child Theme](#developer-guides-child-theme)
-    - [Bricks CSS: Compatibility guidelines](#developer-guides-bricks-css-compatibility-guidelines)
     - [Converter](#developer-guides-converter)
     - [Custom JavaScript events in Bricks](#developer-guides-custom-javascript-events-in-bricks)
   - [Hooks](#developer-hooks)
-      - [Action: bricks/generate_css_file](#developer-hooks-actions-action-bricks-generate-css-file)
       - [Action: bricks/query/after_loop](#developer-hooks-actions-action-bricks-query-after-loop)
+      - [Action: bricks/generate_css_file](#developer-hooks-actions-action-bricks-generate-css-file)
       - [Action: bricks/query/before_loop](#developer-hooks-actions-action-bricks-query-before-loop)
       - [Action: bricks_after_footer](#developer-hooks-actions-bricks-after-footer)
       - [Action: bricks_after_header](#developer-hooks-actions-bricks-after-header)
       - [Action: bricks_after_site_wrapper](#developer-hooks-actions-bricks-after-site-wrapper)
-      - [Action: bricks/archive_product/after](#developer-hooks-actions-bricks-archive-product-after)
       - [Action: bricks/archive_product/before](#developer-hooks-actions-bricks-archive-product-before)
       - [Action: bricks_before_footer](#developer-hooks-actions-bricks-before-footer)
+      - [Action: bricks/archive_product/after](#developer-hooks-actions-bricks-archive-product-after)
       - [Action: bricks_before_header](#developer-hooks-actions-bricks-before-header)
-      - [Action: bricks_before_site_wrapper](#developer-hooks-actions-bricks-before-site-wrapper)
       - [Action: bricks_body](#developer-hooks-actions-bricks-body)
+      - [Action: bricks_before_site_wrapper](#developer-hooks-actions-bricks-before-site-wrapper)
       - [Action: bricks/builder/switch_locale](#developer-hooks-actions-bricks-builder-switch-locale)
       - [Action: bricks/database/get_all_templates_by_type/after_query](#developer-hooks-actions-bricks-database-get-all-templates-by-type-after-query)
       - [Action: bricks/dynamic_data/after_do_action](#developer-hooks-actions-bricks-dynamic-data-after-do-action)
@@ -79,38 +79,38 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Action: bricks/form/custom_action](#developer-hooks-actions-bricks-form-custom-action)
       - [Action: bricks/frontend/after_render_data](#developer-hooks-actions-bricks-frontend-after-render-data)
       - [Action: bricks/frontend/before_render_data](#developer-hooks-actions-bricks-frontend-before-render-data)
-      - [Action: bricks_indexer](#developer-hooks-actions-bricks-indexer)
       - [Action: bricks/get_templates/query_after](#developer-hooks-actions-bricks-get-templates-query-after)
+      - [Action: bricks_indexer](#developer-hooks-actions-bricks-indexer)
       - [Action: bricks/load_elements/after](#developer-hooks-actions-bricks-load-elements-after)
       - [Action: bricks/load_elements/before](#developer-hooks-actions-bricks-load-elements-before)
-      - [Action: bricks/query/query_api_response](#developer-hooks-actions-bricks-query-query-api-response)
       - [Action: bricks_meta_tags](#developer-hooks-actions-bricks-meta-tags)
+      - [Action: bricks/query/query_api_response](#developer-hooks-actions-bricks-query-query-api-response)
       - [Action: bricks/query_filters/index_post/before](#developer-hooks-actions-bricks-query-filters-index-post-before)
+      - [Action: bricks/query_filters/reindex](#developer-hooks-actions-bricks-query-filters-reindex)
       - [Action: bricks/query_filters/index_user/before](#developer-hooks-actions-bricks-query-filters-index-user-before)
       - [Action: bricks/render_popup_content/start](#developer-hooks-actions-bricks-render-popup-content-start)
-      - [Action: bricks/query_filters/reindex](#developer-hooks-actions-bricks-query-filters-reindex)
       - [Action: bricks/render_query_page/start](#developer-hooks-actions-bricks-render-query-page-start)
       - [Action: bricks/render_query_result/start](#developer-hooks-actions-bricks-render-query-result-start)
-      - [Action: bricks_sendgrid_double_opt_in_handler](#developer-hooks-actions-bricks-sendgrid-double-opt-in-handler)
-    - [Action Hooks](#developer-hooks-actions)
-      - [Action: render_footer](#developer-hooks-actions-render-footer)
       - [Action: render_header](#developer-hooks-actions-render-header)
+    - [Action Hooks](#developer-hooks-actions)
+      - [Action: bricks_sendgrid_double_opt_in_handler](#developer-hooks-actions-bricks-sendgrid-double-opt-in-handler)
+      - [Action: render_footer](#developer-hooks-actions-render-footer)
       - [Filter: bricks/acf/filter_field_groups](#developer-hooks-filters-bricks-acf-filter-field-groups)
       - [Filter: bricks/acf/google_map/address_parts](#developer-hooks-filters-bricks-acf-google-map-address-parts)
+      - [Filter: bricks/acf/google_map/text_output](#developer-hooks-filters-bricks-acf-google-map-text-output)
       - [Filter: bricks/acf/google_map/show_as_address](#developer-hooks-filters-bricks-acf-google-map-show-as-address)
       - [Filter: bricks/acf/taxonomy/show_as_link](#developer-hooks-filters-bricks-acf-taxonomy-show-as-link)
-      - [Filter: bricks/acf/google_map/text_output](#developer-hooks-filters-bricks-acf-google-map-text-output)
       - [Filter: bricks/active_templates](#developer-hooks-filters-bricks-active-templates)
-      - [Filter: bricks/allowed_html_tags](#developer-hooks-filters-bricks-allowed-html-tags)
       - [Filter: bricks/ajax/get_pages_args](#developer-hooks-filters-bricks-ajax-get-pages-args)
+      - [Filter: bricks/allowed_html_tags](#developer-hooks-filters-bricks-allowed-html-tags)
       - [Filter: bricks/api/get_templates_data](#developer-hooks-filters-bricks-api-get-templates-data)
       - [Filter: bricks/breadcrumbs/items](#developer-hooks-filters-bricks-breadcrumbs-items)
-      - [Filter: bricks/breadcrumbs/home_label](#developer-hooks-filters-bricks-breadcrumbs-home-label)
       - [Filter: bricks/breadcrumbs/separator](#developer-hooks-filters-bricks-breadcrumbs-separator)
+      - [Filter: bricks/breadcrumbs/home_label](#developer-hooks-filters-bricks-breadcrumbs-home-label)
       - [Filter: bricks/builder/current_page_type](#developer-hooks-filters-bricks-builder-current-page-type)
       - [Filter: bricks/builder/data_post_id](#developer-hooks-filters-bricks-builder-data-post-id)
-      - [Filter: bricks/builder/first_element_category](#developer-hooks-filters-bricks-builder-first-element-category)
       - [Filter: bricks/builder/dynamic_wrapper](#developer-hooks-filters-bricks-builder-dynamic-wrapper)
+      - [Filter: bricks/builder/first_element_category](#developer-hooks-filters-bricks-builder-first-element-category)
       - [Filter: bricks/builder/post_title](#developer-hooks-filters-bricks-builder-post-title)
       - [Filter: bricks/builder/state_group_definitions](#developer-hooks-filters-bricks-builder-state-group-definitions)
       - [Filter: bricks/builder/supported_post_types](#developer-hooks-filters-bricks-builder-supported-post-types)
@@ -121,37 +121,37 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Filter: bricks/combined_search/term_ids](#developer-hooks-filters-bricks-combined-search-term-ids)
       - [Filter: bricks/combined_search/user_ids](#developer-hooks-filters-bricks-combined-search-user-ids)
       - [Filter: bricks/conditions/groups](#developer-hooks-filters-bricks-conditions-groups)
-      - [Filter: bricks/conditions/options](#developer-hooks-filters-bricks-conditions-options)
-      - [Filter: bricks/content_analysis/full_post_content_id](#developer-hooks-filters-bricks-content-analysis-full-post-content-id)
-      - [Filter: bricks/conditions/result](#developer-hooks-filters-bricks-conditions-result)
-      - [Filter: bricks/custom_fonts/mime_types](#developer-hooks-filters-bricks-custom-fonts-mime-types)
       - [Filter: bricks/comments/author_tag](#developer-hooks-filters-bricks-comments-author-tag)
+      - [Filter: bricks/conditions/options](#developer-hooks-filters-bricks-conditions-options)
+      - [Filter: bricks/conditions/result](#developer-hooks-filters-bricks-conditions-result)
+      - [Filter: bricks/content_analysis/full_post_content_id](#developer-hooks-filters-bricks-content-analysis-full-post-content-id)
+      - [Filter: bricks/custom_fonts/mime_types](#developer-hooks-filters-bricks-custom-fonts-mime-types)
       - [Filter: bricks/database/bricks_get_all_templates_by_type_args](#developer-hooks-filters-bricks-database-bricks-get-all-templates-by-type-args)
       - [Filter: bricks/database/content_type](#developer-hooks-filters-bricks-database-content-type)
       - [Filter: bricks/database/get_all_templates_cache_key](#developer-hooks-filters-bricks-database-get-all-templates-cache-key)
+      - [Filter: bricks/dynamic_data/allowed_keys](#developer-hooks-filters-bricks-dynamic-data-allowed-keys)
       - [Filter: bricks/drafts/keep_days](#developer-hooks-filters-bricks-drafts-keep-days)
       - [Filter: bricks/dynamic_data/author_value](#developer-hooks-filters-bricks-dynamic-data-author-value)
-      - [Filter: bricks/dynamic_data/allowed_keys](#developer-hooks-filters-bricks-dynamic-data-allowed-keys)
       - [Filter: bricks/dynamic_data/do_action_context](#developer-hooks-filters-bricks-dynamic-data-do-action-context)
       - [Filter: bricks/dynamic_data/format_value](#developer-hooks-filters-bricks-dynamic-data-format-value)
       - [Filter: bricks/dynamic_data/meta_value/{meta_key}](#developer-hooks-filters-bricks-dynamic-data-meta-value-meta-key)
-      - [Filter: bricks/dynamic_data/register_hook](#developer-hooks-filters-bricks-dynamic-data-register-hook)
       - [Filter: bricks/dynamic_data/register_providers](#developer-hooks-filters-bricks-dynamic-data-register-providers)
+      - [Filter: bricks/dynamic_data/register_hook](#developer-hooks-filters-bricks-dynamic-data-register-hook)
       - [Filter: bricks/dynamic_data/render_content](#developer-hooks-filters-bricks-dynamic-data-render-content)
-      - [Filter: bricks/dynamic_data/render_tag](#developer-hooks-filters-bricks-dynamic-data-render-tag)
       - [Filter: bricks/dynamic_data/text_separator](#developer-hooks-filters-bricks-dynamic-data-text-separator)
+      - [Filter: bricks/dynamic_data/render_tag](#developer-hooks-filters-bricks-dynamic-data-render-tag)
       - [Filter: bricks/dynamic_data/user_value](#developer-hooks-filters-bricks-dynamic-data-user-value)
       - [Filter: bricks/dynamic_tags_list](#developer-hooks-filters-bricks-dynamic-tags-list)
       - [Filter: bricks/element/builder_setup_query](#developer-hooks-filters-bricks-element-builder-setup-query)
       - [Filter: bricks/element/form/datepicker_options](#developer-hooks-filters-bricks-element-form-datepicker-options)
+      - [Filter: bricks/elements/{element_name}/scripts](#developer-hooks-filters-bricks-elements-element-name-scripts)
       - [Filter: bricks/element/form/honeypot/result](#developer-hooks-filters-bricks-element-form-honeypot-result)
       - [Filter: bricks/element/maybe_set_aria_current_page](#developer-hooks-filters-bricks-element-maybe-set-aria-current-page)
-      - [Filter: bricks/elements/{element_name}/scripts](#developer-hooks-filters-bricks-elements-element-name-scripts)
-      - [Filter: bricks/elements/nav_menu/menus](#developer-hooks-filters-bricks-elements-nav-menu-menus)
       - [Filter: bricks/elements/nav_menu/name](#developer-hooks-filters-bricks-elements-nav-menu-name)
-      - [Filter: bricks/filter-element/datepicker_options](#developer-hooks-filters-bricks-filter-element-datepicker-options)
       - [Filter: bricks/export_template_args](#developer-hooks-filters-bricks-export-template-args)
       - [Filter: bricks/filter/taxonomy_args](#developer-hooks-filters-bricks-filter-taxonomy-args)
+      - [Filter: bricks/elements/nav_menu/menus](#developer-hooks-filters-bricks-elements-nav-menu-menus)
+      - [Filter: bricks/filter-element/datepicker_options](#developer-hooks-filters-bricks-filter-element-datepicker-options)
       - [Filter: bricks/filter_element/controls](#developer-hooks-filters-bricks-filter-element-controls)
       - [Filter: bricks/filter_element/count_source_{filter_source}](#developer-hooks-filters-bricks-filter-element-count-source-filter-source)
       - [Filter: bricks/filter_element/count_source_wcField](#developer-hooks-filters-bricks-filter-element-count-source-wcfield)
@@ -159,20 +159,20 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Filter: bricks/filter_element/data_source_wcField](#developer-hooks-filters-bricks-filter-element-data-source-wcfield)
       - [Filter: bricks/filter_element/datepicker_date_format](#developer-hooks-filters-bricks-filter-element-datepicker-date-format)
       - [Filter: bricks/filter_element/datepicker_db_date_format](#developer-hooks-filters-bricks-filter-element-datepicker-db-date-format)
-      - [Filter: bricks/filter_element/filtered_source](#developer-hooks-filters-bricks-filter-element-filtered-source)
       - [Filter: bricks/fix_filter_element_db](#developer-hooks-filters-bricks-fix-filter-element-db)
       - [Filter: bricks/form/file_directory](#developer-hooks-filters-bricks-form-file-directory)
-      - [Filter: bricks/form/recaptcha_score_threshold](#developer-hooks-filters-bricks-form-recaptcha-score-threshold)
+      - [Filter: bricks/filter_element/filtered_source](#developer-hooks-filters-bricks-filter-element-filtered-source)
       - [Filter: bricks/form/response](#developer-hooks-filters-bricks-form-response)
       - [Filter: bricks/form/save-submission/form_data](#developer-hooks-filters-bricks-form-save-submission-form-data)
+      - [Filter: bricks/form/recaptcha_score_threshold](#developer-hooks-filters-bricks-form-recaptcha-score-threshold)
       - [Filter: bricks/form/submission-table/file_url](#developer-hooks-filters-bricks-form-submission-table-file-url)
       - [Filter: bricks/form/tinymce_settings](#developer-hooks-filters-bricks-form-tinymce-settings)
       - [Filter: bricks/form/validate](#developer-hooks-filters-bricks-form-validate)
       - [Filter: bricks/frontend/disable_opengraph](#developer-hooks-filters-bricks-frontend-disable-opengraph)
       - [Filter: bricks/frontend/disable_seo](#developer-hooks-filters-bricks-frontend-disable-seo)
       - [Filter: bricks/frontend/render_loop](#developer-hooks-filters-bricks-frontend-render-loop)
-      - [Filter: bricks/get_remote_templates_data](#developer-hooks-filters-bricks-get-remote-templates-data)
       - [Filter: bricks/get_builder_edit_link](#developer-hooks-filters-bricks-get-builder-edit-link)
+      - [Filter: bricks/get_remote_templates_data](#developer-hooks-filters-bricks-get-remote-templates-data)
       - [Filter: bricks/get_template_authors](#developer-hooks-filters-bricks-get-template-authors)
       - [Filter: bricks/get_template_bundles](#developer-hooks-filters-bricks-get-template-bundles)
       - [Filter: bricks/get_template_tags](#developer-hooks-filters-bricks-get-template-tags)
@@ -183,98 +183,98 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Filter: bricks/get_terms_options/excluded_taxonomies](#developer-hooks-filters-bricks-get-terms-options-excluded-taxonomies)
       - [Filter: bricks/get_the_title](#developer-hooks-filters-bricks-get-the-title)
       - [Filter: bricks/global_history/keep_days](#developer-hooks-filters-bricks-global-history-keep-days)
-      - [Filter: bricks/global_history/keep_latest](#developer-hooks-filters-bricks-global-history-keep-latest)
       - [Filter: bricks/handle_no_results_children_elements](#developer-hooks-filters-bricks-handle-no-results-children-elements)
+      - [Filter: bricks/global_history/keep_latest](#developer-hooks-filters-bricks-global-history-keep-latest)
       - [Filter: bricks/helpers/get_posts_args](#developer-hooks-filters-bricks-helpers-get-posts-args)
       - [Filter: bricks/media_browser/health/file_status](#developer-hooks-filters-bricks-media-browser-health-file-status)
       - [Filter: bricks/metabox/checkbox_value](#developer-hooks-filters-bricks-metabox-checkbox-value)
       - [Filter: bricks/metabox/show_as_map](#developer-hooks-filters-bricks-metabox-show-as-map)
       - [Filter: bricks/metabox/taxonomy/show_as_link](#developer-hooks-filters-bricks-metabox-taxonomy-show-as-link)
       - [Filter: bricks/{object_type}s/query_vars](#developer-hooks-filters-bricks-object-types-query-vars)
-      - [Filter: bricks/pagination/custom_logic](#developer-hooks-filters-bricks-pagination-custom-logic)
       - [Filter: bricks/paginate_links_args](#developer-hooks-filters-bricks-paginate-links-args)
       - [Filter: bricks/pagination/current_page](#developer-hooks-filters-bricks-pagination-current-page)
-      - [Filter: bricks/pagination/total_pages](#developer-hooks-filters-bricks-pagination-total-pages)
+      - [Filter: bricks/pagination/custom_logic](#developer-hooks-filters-bricks-pagination-custom-logic)
       - [Filter: bricks/polylang/builder_ajax_params](#developer-hooks-filters-bricks-polylang-builder-ajax-params)
+      - [Filter: bricks/pagination/total_pages](#developer-hooks-filters-bricks-pagination-total-pages)
       - [Filter: bricks/polylang/exclude_controls_from_translation](#developer-hooks-filters-bricks-polylang-exclude-controls-from-translation)
       - [Filter: bricks/popup/attributes](#developer-hooks-filters-bricks-popup-attributes)
       - [Filter: bricks/query/archive_query_arguments](#developer-hooks-filters-bricks-query-archive-query-arguments)
       - [Filter: bricks/query/archive_query_supported_object_types](#developer-hooks-filters-bricks-query-archive-query-supported-object-types)
-      - [Filter: bricks/query/cache_key](#developer-hooks-filters-bricks-query-cache-key)
       - [Filter: bricks/query/fake_result](#developer-hooks-filters-bricks-query-fake-result)
-      - [Filter: bricks/query/force_loop_index](#developer-hooks-filters-bricks-query-force-loop-index)
+      - [Filter: bricks/query/cache_key](#developer-hooks-filters-bricks-query-cache-key)
       - [Filter: bricks/query/force_is_looping](#developer-hooks-filters-bricks-query-force-is-looping)
       - [Filter: bricks/query/prepare_query_vars_from_settings](#developer-hooks-filters-bricks-query-prepare-query-vars-from-settings)
+      - [Filter: bricks/query/force_loop_index](#developer-hooks-filters-bricks-query-force-loop-index)
       - [Filter: bricks/query/result_end](#developer-hooks-filters-bricks-query-result-end)
       - [Filter: bricks/query/result_start](#developer-hooks-filters-bricks-query-result-start)
       - [Filter: bricks/query/run_fake](#developer-hooks-filters-bricks-query-run-fake)
-      - [Filter: bricks/query_api/body](#developer-hooks-filters-bricks-query-api-body)
-      - [Filter: bricks/query_api/headers](#developer-hooks-filters-bricks-query-api-headers)
       - [Filter: bricks/query/supress_render_content](#developer-hooks-filters-bricks-query-supress-render-content)
+      - [Filter: bricks/query_api/body](#developer-hooks-filters-bricks-query-api-body)
       - [Filter: bricks/query_api/request_args](#developer-hooks-filters-bricks-query-api-request-args)
+      - [Filter: bricks/query_api/headers](#developer-hooks-filters-bricks-query-api-headers)
       - [Filter: bricks/query_api/total_pages](#developer-hooks-filters-bricks-query-api-total-pages)
       - [Filter: bricks/query_filters/custom_field_index_rows](#developer-hooks-filters-bricks-query-filters-custom-field-index-rows)
       - [Filter: bricks/query_filters/custom_field_meta_query](#developer-hooks-filters-bricks-query-filters-custom-field-meta-query)
       - [Filter: bricks/query_filters/datepicker_custom_field_meta_query](#developer-hooks-filters-bricks-query-filters-datepicker-custom-field-meta-query)
       - [Filter: bricks/query_filters/default_value](#developer-hooks-filters-bricks-query-filters-default-value)
       - [Filter: bricks/query_filters/element_data](#developer-hooks-filters-bricks-query-filters-element-data)
-      - [Filter: bricks/query_filters/filter_query_vars](#developer-hooks-filters-bricks-query-filters-filter-query-vars)
       - [Filter: bricks/query_filters/get_filter_object_ids](#developer-hooks-filters-bricks-query-filters-get-filter-object-ids)
+      - [Filter: bricks/query_filters/filter_query_vars](#developer-hooks-filters-bricks-query-filters-filter-query-vars)
       - [Filter: bricks/query_filters/index_args](#developer-hooks-filters-bricks-query-filters-index-args)
       - [Filter: bricks/query_filters/index_post/meta_exists](#developer-hooks-filters-bricks-query-filters-index-post-meta-exists)
+      - [Filter: bricks/query_filters/index_post/{source}](#developer-hooks-filters-bricks-query-filters-index-post-source)
       - [Filter: bricks/query_filters/index_post/wcField](#developer-hooks-filters-bricks-query-filters-index-post-wcfield)
       - [Filter: bricks/query_filters/index_user/meta_exists](#developer-hooks-filters-bricks-query-filters-index-user-meta-exists)
-      - [Filter: bricks/query_filters/index_post/{source}](#developer-hooks-filters-bricks-query-filters-index-post-source)
       - [Filter: bricks/query_filters/range_custom_field_meta_query](#developer-hooks-filters-bricks-query-filters-range-custom-field-meta-query)
       - [Filter: bricks/query_filters/sort_query_vars](#developer-hooks-filters-bricks-query-filters-sort-query-vars)
       - [Filter: bricks/query_filters_cf_integration/register_providers](#developer-hooks-filters-bricks-query-filters-cf-integration-register-providers)
-      - [Filter: bricks/query_filters_indexer/post/{filter_source}](#developer-hooks-filters-bricks-query-filters-indexer-post-filter-source)
       - [Filter: bricks/query_filters_indexer/post/wcField](#developer-hooks-filters-bricks-query-filters-indexer-post-wcfield)
-      - [Filter: bricks/remote_get](#developer-hooks-filters-bricks-remote-get)
       - [Filter: bricks/query_filters_indexer/validate_job_settings](#developer-hooks-filters-bricks-query-filters-indexer-validate-job-settings)
+      - [Filter: bricks/query_filters_indexer/post/{filter_source}](#developer-hooks-filters-bricks-query-filters-indexer-post-filter-source)
+      - [Filter: bricks/remote_get](#developer-hooks-filters-bricks-remote-get)
       - [Filter: bricks/remote_post](#developer-hooks-filters-bricks-remote-post)
-      - [Filter: bricks/render_footer](#developer-hooks-filters-bricks-render-footer)
       - [Filter: bricks/render_header](#developer-hooks-filters-bricks-render-header)
+      - [Filter: bricks/render_footer](#developer-hooks-filters-bricks-render-footer)
       - [Filter: bricks/render_with_bricks](#developer-hooks-filters-bricks-render-with-bricks)
       - [Filter: bricks/resolve_attachment_id](#developer-hooks-filters-bricks-resolve-attachment-id)
-      - [Filter: bricks/rtl_languages](#developer-hooks-filters-bricks-rtl-languages)
       - [Filter: bricks/section_template/run_on_hook](#developer-hooks-filters-bricks-section-template-run-on-hook)
-      - [Filter: bricks/support_masonry_element](#developer-hooks-filters-bricks-support-masonry-element)
+      - [Filter: bricks/rtl_languages](#developer-hooks-filters-bricks-rtl-languages)
       - [Filter: bricks/security_check_before_save/new_elements](#developer-hooks-filters-bricks-security-check-before-save-new-elements)
+      - [Filter: bricks/support_masonry_element](#developer-hooks-filters-bricks-support-masonry-element)
       - [Filter: bricks/svg/allowed_attributes](#developer-hooks-filters-bricks-svg-allowed-attributes)
       - [Filter: bricks/svg/allowed_tags](#developer-hooks-filters-bricks-svg-allowed-tags)
-      - [Filter: bricks/template_preview/supported_content_types](#developer-hooks-filters-bricks-template-preview-supported-content-types)
       - [Filter: bricks/svg/bypass_sanitization](#developer-hooks-filters-bricks-svg-bypass-sanitization)
+      - [Filter: bricks/template_preview/supported_content_types](#developer-hooks-filters-bricks-template-preview-supported-content-types)
       - [Filter: bricks/theme_style_name](#developer-hooks-filters-bricks-theme-style-name)
       - [Filter: bricks/theme_styles/control_groups](#developer-hooks-filters-bricks-theme-styles-control-groups)
       - [Filter: bricks/theme_styles/controls](#developer-hooks-filters-bricks-theme-styles-controls)
       - [Filter: bricks/theme_styles](#developer-hooks-filters-bricks-theme-styles)
-      - [Filter: bricks/user_activation_email/from_name](#developer-hooks-filters-bricks-user-activation-email-from-name)
       - [Filter: bricks/user_activation_email/content](#developer-hooks-filters-bricks-user-activation-email-content)
+      - [Filter: bricks/user_activation_email/from_name](#developer-hooks-filters-bricks-user-activation-email-from-name)
       - [Filter: bricks/user_activation_email/subject](#developer-hooks-filters-bricks-user-activation-email-subject)
-      - [Filter: bricks/webhook/timeout](#developer-hooks-filters-bricks-webhook-timeout)
       - [Filter: bricks/woo_setup_wizard/register_presets](#developer-hooks-filters-bricks-woo-setup-wizard-register-presets)
       - [Filter: bricks/woocommerce/ajax_render_post_id](#developer-hooks-filters-bricks-woocommerce-ajax-render-post-id)
+      - [Filter: bricks/webhook/timeout](#developer-hooks-filters-bricks-webhook-timeout)
       - [Filter: bricks/woocommerce/cart_proceed_label](#developer-hooks-filters-bricks-woocommerce-cart-proceed-label)
+      - [Filter: bricks/woocommerce/dynamic_fragments/html](#developer-hooks-filters-bricks-woocommerce-dynamic-fragments-html)
       - [Filter: bricks/woocommerce/dynamic_fragments/fragments](#developer-hooks-filters-bricks-woocommerce-dynamic-fragments-fragments)
       - [Filter: bricks/woocommerce/dynamic_fragments/targets](#developer-hooks-filters-bricks-woocommerce-dynamic-fragments-targets)
-      - [Filter: bricks/woocommerce/dynamic_fragments/html](#developer-hooks-filters-bricks-woocommerce-dynamic-fragments-html)
-      - [Filter: bricks/woocommerce/predefined_elements/local_presets](#developer-hooks-filters-bricks-woocommerce-predefined-elements-local-presets)
       - [Filter: bricks/woocommerce/predefined_elements/generated_payload](#developer-hooks-filters-bricks-woocommerce-predefined-elements-generated-payload)
+      - [Filter: bricks/woocommerce/predefined_elements/local_presets](#developer-hooks-filters-bricks-woocommerce-predefined-elements-local-presets)
       - [Filter: bricks/woocommerce/predefined_elements/remote_payload](#developer-hooks-filters-bricks-woocommerce-predefined-elements-remote-payload)
-      - [Filter: bricks/woocommerce/products_filters/options](#developer-hooks-filters-bricks-woocommerce-products-filters-options)
       - [Filter: bricks/woocommerce/predefined_elements/remote_url](#developer-hooks-filters-bricks-woocommerce-predefined-elements-remote-url)
+      - [Filter: bricks/woocommerce/products_filters/options](#developer-hooks-filters-bricks-woocommerce-products-filters-options)
       - [Filter: bricks/woocommerce/products_orderby_options](#developer-hooks-filters-bricks-woocommerce-products-orderby-options)
       - [Filter: bricks/woocommerce/shipping_options/primary_label](#developer-hooks-filters-bricks-woocommerce-shipping-options-primary-label)
       - [Filter: bricks/woocommerce/shipping_options/secondary_label](#developer-hooks-filters-bricks-woocommerce-shipping-options-secondary-label)
       - [Filter: bricks/wpml/exclude_controls_from_translation](#developer-hooks-filters-bricks-wpml-exclude-controls-from-translation)
-      - [Filter: bricks/wpml/translatable_control_types](#developer-hooks-filters-bricks-wpml-translatable-control-types)
       - [Filter: bricks_query_max_items_in_builder](#developer-hooks-filters-bricks-query-max-items-in-builder)
+      - [Filter: bricks/wpml/translatable_control_types](#developer-hooks-filters-bricks-wpml-translatable-control-types)
       - [Filter: bricks/active_templates](#developer-hooks-filters-filter-bricks-active-templates)
       - [Filter: bricks/allowed_html_tags](#developer-hooks-filters-filter-bricks-allowed-html-tags)
-      - [Filter: bricks/auth/custom_login_redirect](#developer-hooks-filters-filter-bricks-auth-custom-login-redirect)
-      - [Filter: bricks//assets/load_webfonts](#developer-hooks-filters-filter-bricks-assets-load-webfonts)
       - [Filter: bricks/assets/generate_css_from_element](#developer-hooks-filters-filter-bricks-assets-generate-css-from-element)
+      - [Filter: bricks//assets/load_webfonts](#developer-hooks-filters-filter-bricks-assets-load-webfonts)
+      - [Filter: bricks/auth/custom_login_redirect](#developer-hooks-filters-filter-bricks-auth-custom-login-redirect)
       - [Filter: bricks/auth/custom_lost_password_redirect](#developer-hooks-filters-filter-bricks-auth-custom-lost-password-redirect)
       - [Filter: bricks/auth/custom_redirect_url](#developer-hooks-filters-filter-bricks-auth-custom-redirect-url)
       - [Filter: bricks/auth/custom_registration_redirect](#developer-hooks-filters-filter-bricks-auth-custom-registration-redirect)
@@ -283,58 +283,58 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
       - [Filter: bricks/builder/codemirror_config](#developer-hooks-filters-filter-bricks-builder-codemirror-config)
       - [Filter: bricks/builder/elements](#developer-hooks-filters-filter-bricks-builder-elements)
       - [Filter: bricks/builder/image_size_options](#developer-hooks-filters-filter-bricks-builder-image-size-options)
-      - [Filter: bricks/code/allow_execution](#developer-hooks-filters-filter-bricks-code-allow-execution)
       - [Filter: bricks/builder/map_styles](#developer-hooks-filters-filter-bricks-builder-mapstyles)
       - [Filter: bricks/code/disable_execution](#developer-hooks-filters-filter-bricks-code-disable-execution)
+      - [Filter: bricks/code/allow_execution](#developer-hooks-filters-filter-bricks-code-allow-execution)
       - [Filter: bricks/code/echo_function_names](#developer-hooks-filters-filter-bricks-code-echo-function-names)
-      - [Filter: bricks/code/disallow_keywords](#developer-hooks-filters-filter-bricks-code-disallow-keywords)
       - [Filter: bricks/comments/timestamp](#developer-hooks-filters-filter-bricks-comments-timestamp)
       - [Filter: bricks/content/attributes](#developer-hooks-filters-filter-bricks-content-attributes)
       - [Filter: bricks/content/html_after_begin](#developer-hooks-filters-filter-bricks-content-html-after-begin)
+      - [Filter: bricks/code/disallow_keywords](#developer-hooks-filters-filter-bricks-code-disallow-keywords)
       - [Filter: bricks/content/html_before_end](#developer-hooks-filters-filter-bricks-content-html-before-end)
+      - [Filter: bricks/content/tag](#developer-hooks-filters-filter-bricks-content-tag)
       - [Filter: bricks/default_page_title](#developer-hooks-filters-filter-bricks-default-page-title)
       - [Filter: bricks/dynamic_data/exclude_tags](#developer-hooks-filters-filter-bricks-dynamic-data-exclude-tags)
-      - [Filter: bricks/content/tag](#developer-hooks-filters-filter-bricks-content-tag)
       - [Filter: bricks/dynamic_data/post_terms_links](#developer-hooks-filters-filter-bricks-dynamic-data-post-terms-links)
       - [Filter: bricks/dynamic_data/post_terms_separator](#developer-hooks-filters-filter-bricks-dynamic-data-post-terms-separator)
       - [Filter: bricks/dynamic_data/read_more](#developer-hooks-filters-filter-bricks-dynamic-data-read-more)
       - [Filter: bricks/dynamic_data/replace_nonexistent_tags](#developer-hooks-filters-filter-bricks-dynamic-data-replace-nonexistent-tags)
       - [Filter: bricks/element/render](#developer-hooks-filters-filter-bricks-element-render)
       - [Filter: bricks/element/render_attributes](#developer-hooks-filters-filter-bricks-element-render-attributes)
+      - [Filter: bricks/elements/&#123;element_name&#125;/controls](#developer-hooks-filters-filter-bricks-elements-element-name-controls)
       - [Filter: bricks/element/settings](#developer-hooks-filters-filter-bricks-element-settings)
       - [Filter: bricks/elements/{element_name}/control_groups](#developer-hooks-filters-filter-bricks-elements-element-name-control-groups)
-      - [Filter: bricks/elements/&#123;element_name&#125;/controls](#developer-hooks-filters-filter-bricks-elements-element-name-controls)
       - [Filter: bricks/filter_element/populated_options](#developer-hooks-filters-filter-bricks-filter-element-populated-options)
       - [Filter: bricks/footer/attributes](#developer-hooks-filters-filter-bricks-footer-attributes)
       - [Filter: bricks/form/action/{form_action}](#developer-hooks-filters-filter-bricks-form-action-form-action)
       - [Filter: bricks/form/create_post/meta_value](#developer-hooks-filters-filter-bricks-form-create-post-meta-value)
       - [Filter: bricks/form/update_post/meta_value](#developer-hooks-filters-filter-bricks-form-update-post-meta-value)
-      - [Filter: bricks/frontend/render_data](#developer-hooks-filters-filter-bricks-frontend-render-data)
       - [Filter: bricks/frontend/render_element](#developer-hooks-filters-filter-bricks-frontend-render-element)
+      - [Filter: bricks/frontend/render_data](#developer-hooks-filters-filter-bricks-frontend-render-data)
       - [Filter: bricks/get_element_data/maybe_from_post_id](#developer-hooks-filters-filter-bricks-get-element-data-maybe-from-post-id)
       - [Filter: bricks/header/attributes](#developer-hooks-filters-filter-bricks-header-attributes)
       - [Filter: bricks/builder/i18n](#developer-hooks-filters-filter-bricks-i18n)
       - [Filter: bricks/is_layout_element](#developer-hooks-filters-filter-bricks-is-layout-element)
       - [Filter: bricks/link_css_selectors](#developer-hooks-filters-filter-bricks-link-css-selectors)
-      - [Filter: bricks/maintenance/should_apply](#developer-hooks-filters-filter-bricks-maintenance-should-apply)
       - [Filter: bricks/nav_menu/menu](#developer-hooks-filters-filter-bricks-nav-menu-menu)
-      - [Filter: bricks/password_protection/cookie_expires](#developer-hooks-filters-filter-bricks-password-protection-cookie-expires)
       - [Filter: bricks/password_protection/is_active](#developer-hooks-filters-filter-bricks-password-protection-is-active)
       - [Filter: bricks/placeholder_image](#developer-hooks-filters-filter-bricks-placeholder-image)
-      - [Filter: bricks/posts/merge_query](#developer-hooks-filters-filter-bricks-posts-merge-query)
+      - [Filter: bricks/maintenance/should_apply](#developer-hooks-filters-filter-bricks-maintenance-should-apply)
+      - [Filter: bricks/password_protection/cookie_expires](#developer-hooks-filters-filter-bricks-password-protection-cookie-expires)
       - [Filter: bricks/posts/query_vars](#developer-hooks-filters-filter-bricks-posts-query-vars)
+      - [Filter: bricks/posts/merge_query](#developer-hooks-filters-filter-bricks-posts-merge-query)
       - [Filter: bricks/query/init_loop_index](#developer-hooks-filters-filter-bricks-query-init-loop-index)
-      - [Filter: bricks/query/force_run](#developer-hooks-filters-filter-bricks-query-force-run)
       - [Filter: bricks/query/loop_object](#developer-hooks-filters-filter-bricks-query-loop-object)
+      - [Filter: bricks/query/force_run](#developer-hooks-filters-filter-bricks-query-force-run)
       - [Filter: bricks/query/loop_object_id](#developer-hooks-filters-filter-bricks-query-loop-object-id)
-      - [Filter: bricks/query/loop_object_type](#developer-hooks-filters-filter-bricks-query-loop-object-type)
-      - [Filter: bricks/query/result](#developer-hooks-filters-filter-bricks-query-result)
       - [Filter: bricks/query/no_results_content](#developer-hooks-filters-filter-bricks-query-no-results-content)
-      - [Filter: bricks/query/result_max_num_pages](#developer-hooks-filters-filter-bricks-query-result-max-num-pages)
+      - [Filter: bricks/query/loop_object_type](#developer-hooks-filters-filter-bricks-query-loop-object-type)
       - [Filter: bricks/query/result_count](#developer-hooks-filters-filter-bricks-query-result-count)
+      - [Filter: bricks/query/result_max_num_pages](#developer-hooks-filters-filter-bricks-query-result-max-num-pages)
       - [Filter: bricks/query/run](#developer-hooks-filters-filter-bricks-query-run)
-      - [Filter: bricks/related_posts/query_vars](#developer-hooks-filters-filter-bricks-related-posts-query-vars)
+      - [Filter: bricks/query/result](#developer-hooks-filters-filter-bricks-query-result)
       - [Filter: bricks/registered_post_types_args](#developer-hooks-filters-filter-bricks-registered-post-types-args)
+      - [Filter: bricks/related_posts/query_vars](#developer-hooks-filters-filter-bricks-related-posts-query-vars)
       - [Filter: bricks/render_query_loop_trail](#developer-hooks-filters-filter-bricks-render-query-loop-trail)
       - [Filter: bricks/screen_conditions/scores](#developer-hooks-filters-filter-bricks-screen-conditions-scores)
       - [Filter: bricks/search_form/home_url](#developer-hooks-filters-filter-bricks-search-form-home-url)
@@ -370,577 +370,6 @@ The Developer section covers the extension points and data structures behind Bri
 - [Functions](https://academy.bricksbuilder.io/developer/functions/function-bricks_render_dynamic_data/) for documented helper functions
 - [Dynamic Data](https://academy.bricksbuilder.io/developer/dynamic-data/create-your-own-dynamic-data-tag/) for custom data tags
 - [Schema](https://academy.bricksbuilder.io/developer/schema/) for the underlying Bricks data model
-
----
-
-<a id="developer-dynamic-data-create-your-own-dynamic-data-tag"></a>
-
-# Create Your Own Dynamic Data Tag
-
-Source: https://academy.bricksbuilder.io/developer/dynamic-data/create-your-own-dynamic-data-tag/
-
-*Create custom dynamic data tags in Bricks so your own values can be inserted into text, media, links, and other supported contexts.*
-
-This article is intended for developers who wish to create a custom dynamic data tag within the builder.
-
-The desired outcome should resemble the following example:
-
-![](https://academy.bricksbuilder.io/assets/bricks-custom-dynamic-tag.png)
-
-<figcaption>
-
-A custom dynamic tag labeled "My Dynamic Data"
-
-</figcaption>
-
-## Step 1: Register a tag through filter: bricks/dynamic_tags_list
-
-Use the `bricks/dynamic_tags_list` filter to render your custom dynamic data tag in the builder.
-
-```php
-add_filter( 'bricks/dynamic_tags_list', 'add_my_tag_to_builder' );
-function add_my_tag_to_builder( $tags ) {
-  // Ensure your tag is unique (best to prefix it)
-  $tags[] = [
-    'name'  => '{my_dd_tag}',
-    'label' => 'My Dynamic Data',
-    'group' => 'My Dynamic Data Group',
-  ];
-
-  return $tags;
-}
-```
-
-## Step 2: Hook on several filters
-
-#### 1) bricks/dynamic_data/render_tag
-
-This will be used when `\Bricks\Integrations\Dynamic_Data\Providers::render_tag()` is called to parse a specific tag.
-
-```php
-add_filter( 'bricks/dynamic_data/render_tag', 'get_my_tag_value', 20, 3 );
-function get_my_tag_value( $tag, $post, $context = 'text' ) {
-  if( ! is_string( $tag ) ) {
-    return $tag;
-  }
-  // $tag is the tag name without the outer curly braces
-  $clean_tag = str_replace( [ '{', '}' ], '', $tag );
-
-  // Only look for dynamic tag my_dd_tag
-  if ( $clean_tag !== 'my_dd_tag' ) {
-    return $tag;
-  }
-
-  // Do your custom logic here, you should define run_my_dd_tag_logic() function
-  $value = run_my_dd_tag_logic();
-
-  return $value;
-}
-
-function run_my_dd_tag_logic() {
-  // Do your custom logic here
-  $my_value = 'My dynamic data value:';
-
-  return $my_value;
-}
-```
-
-If you intend to accept an argument such as "`my_dd_tag:arg1`", you may need to adjust the logic accordingly. Here is a basic example using PHP logic. For more complex scenarios, you can adapt the logic as needed:
-
-```php
-add_filter( 'bricks/dynamic_data/render_tag', 'get_my_tag_value', 20, 3 );
-function get_my_tag_value( $tag, $post, $context = 'text' ) {
-  if( ! is_string( $tag ) ) {
-    return $tag;
-  }
-
-  // $tag is the tag name without the outer curly braces
-  $clean_tag = str_replace( [ '{', '}' ], '', $tag );
-
-  // Only look for dynamic tag starts with my_dd_tag:
-  if ( strpos( $clean_tag, 'my_dd_tag:' ) !== 0 ) {
-    return $tag;
-  }
-
-  // Get argument
-  $argument = str_replace( 'my_dd_tag:', '', $clean_tag );
-
-  // Do your custom logic here, you should define run_my_dd_tag_logic() function
-  $value = run_my_dd_tag_logic( $argument );
-
-  return $value;
-}
-
-function run_my_dd_tag_logic($argument) {
-  // Do your custom logic here
-  $my_value = 'My dynamic data value: ' . $argument ;
-
-  return $my_value;
-}
-```
-
-#### 2) bricks/dynamic_data/render_content and bricks/frontend/render_data
-
-These will be used when `\Bricks\Integrations\Dynamic_Data\Providers::render_content()` is invoked to parse strings that may contain various dynamic tags within the content. One of the functions that perform this action is `bricks_render_dynamic_data()`.
-
-> **Note**
->
-> It is crucial to exercise extra caution while working on this aspect, as any mishandling may disrupt the dynamic tag functionality across the entire website.
-
-```php
-add_filter( 'bricks/dynamic_data/render_content', 'render_my_tag', 20, 3 );
-add_filter( 'bricks/frontend/render_data', 'render_my_tag', 20, 2 );
-function render_my_tag( $content, $post, $context = 'text' ) {
-
-  // $content might consists of HTML and other dynamic tags
-  // Only look for dynamic tag {my_dd_tag}
-  if ( strpos( $content, '{my_dd_tag}' ) === false ) {
-    return $content;
-  }
-
-  // Do your custom logic here, you should define run_my_dd_tag_logic() function
-  $my_value = run_my_dd_tag_logic();
-
-  // Replace the tag with the value you want to display
-  $content = str_replace( '{my_dd_tag}', $my_value, $content );
-
-  return $content;
-}
-
-```
-
-If your dynamic tag accepts an argument, consider the following example:
-
-```php
-add_filter( 'bricks/dynamic_data/render_content', 'render_my_tag', 20, 3 );
-add_filter( 'bricks/frontend/render_data', 'render_my_tag', 20, 2 );
-function render_my_tag( $content, $post, $context = 'text' ) {
-
-  // $content is the content of the element, including other dynamic tags, HTML, etc.
-  // Only look for content starts with {my_dd_tag:
-  if ( strpos( $content, '{my_dd_tag:' ) === false ) {
-    return $content;
-  }
-
-  // Regex to match my_dd_tag: tag
-  preg_match_all( '/{(my_dd_tag:[^}]+)}/', $content, $matches );
-
-  // Nothing grouped in the regex, return the original content
-  if ( empty( $matches[0] ) ) {
-    return $content;
-  }
-
-  foreach ( $matches[1] as $key => $match ) {
-    $tag = $matches[0][ $key ];
-
-    // Get the dynamic data value, $match is the tag name without the curly brackets
-    // Can reuse the get_my_tag_value function created earlier
-    $value   = get_my_tag_value( $match, $post, $context );
-
-    // Replace the tag with the transformed value
-    $content = str_replace( $tag, $value, $content );
-  }
-
-  return $content;
-}
-```
-
-> **Note**
->
-> Note: If your dynamic tag is used in an image context, return an array whose first item is an attachment ID or image URL. Use an attachment ID when Bricks needs image size and srcset metadata. Please refer to the example in our forum threads: [Dynamic data not rendered correctly on image element](https://forum.bricksbuilder.io/t/dynamic-data-not-rendered-correctly-on-image-element/22641/2?u=itchycode)
-
----
-
-<a id="developer-elements-create-your-own-elements"></a>
-
-# Create Your Own Elements
-
-Source: https://academy.bricksbuilder.io/developer/elements/create-your-own-elements/
-
-*Create custom Bricks elements by extending the element API, registering controls, and rendering frontend output.*
-
-The Bricks [child theme](https://academy.bricksbuilder.io/developer/guides/child-theme/), which you can download from your [Bricks account](https://my.bricksbuilder.io/) includes a simple custom element for demonstration purposes. The article below explains in more detail how to create your own elements programmatically.
-
-Creating your own elements with Bricks follows a pattern similar to how you create WordPress widgets. You start by extending the `Bricks\Element` class and populate the required properties and methods for your element.
-
-First, create a new file `element-test.php` in the root folder of your Bricks child theme.
-
-## Blank element class {#builder}
-
-```php
-<?php
-// element-test.php
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-
-class Prefix_Element_Test extends \Bricks\Element {
-  // Element properties
-  public $category     = '';
-  public $name         = '';
-  public $icon         = '';
-  public $css_selector = '';
-  public $scripts      = [];
-  public $nestable     = false; // true || @since 1.5
-
-  // Methods: Builder-specific
-  public function get_label() {}
-  public function get_keywords() {}
-  public function set_control_groups() {}
-  public function set_controls() {}
-
-  // Methods: Frontend-specific
-  public function enqueue_scripts() {}
-  public function render() {}
-}
-```
-
-Let's walk through the element builder properties and methods:
-
-| **$category** required | Category name (all lowercase, no spaces). Use any of the predefined element categories (e.g. `general`, `media`, etc.) or assign your own category name.<br /><br />When setting your own category make sure to provide a translatable category string for the builder using the filter: [bricks/builder/i18n](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-i18n/) |
-| --- | --- |
-| **$name** required | Unique element identifier (all lowercase, no spaces). To avoid any conflicts with other elements please prefix your element name, e.g.: `prefix-element-test`. |
-| **$icon** | Icon font CSS class. Bricks includes the following icon fonts. Use any icon font CSS class to represent your element in the builder panel:  [Fontawesome 6](https://fontawesome.com/icons?d=gallery&m=free) (i.e. "fas fa-anchor") [Ionicons 4](https://ionicons.com/v4/cheatsheet.html) (i.e. "ion-md-alarm") [Themify Icons](https://themify.me/themify-icons) (i.e. "ti-bolt-alt") |
-| **$css_selector** | By default all CSS control settings are applied to the element wrapper:  `.bricks-element-wrapper`. If you want the default CSS selector to target a child HTML element, set this selector here. |
-| **$nestable** | Omit for plain elements. Set to `true` to create a [nestable element](https://academy.bricksbuilder.io/developer/elements/nestable-elements/). |
-| **$scripts** | An array of JavaScript scripts that run when an element is rendered on the frontend or updated in the builder. The Counter element, for example, uses a script named "bricksCounter" (defined in *frontend.min.js*).<br /><br />To load this script we use: `public $scripts = ['bricksCounter'];`<br /><br />Please prefix all your scripts. E.g.: `prefixElementTest` |
-| **get_label()** required | Return localised element label. |
-| **get_keywords()** | Array of strings that when matched during the element search display the element in the search results. |
-| **set_control_groups()** | By default, all element controls show ungrouped in the builder panel under the "Content" tab. Define custom control groups for your element controls by setting the following properties for each control group: **title** — Localized control group title. **tab** — Set to either "content" or "style". |
-| **set_controls()** required | Define element controls. For an overview of all available controls and their settings visit: [Element Controls](https://academy.bricksbuilder.io/developer/controls/element-controls/) |
-| **enqueue_scripts()** | Load element-specific scripts and styles. Those are loaded only on pages where this element is used. Results in better performance. Example: `wp_enqueue_script( 'prefix-element-test', get_template_directory_uri() . '/js/custom.js', ['jquery'], '1.0', true );` |
-| **render()** required | Renders element HTML. Define HTML attributes via `$this->set_attribute()` and output them via `$this->render_attribute()` |
-| **`set_attribute( $key, $attribute, $value )`** | Helper function to set HTML attributes for any HTML tag. `$key` serves as the unique identifier for this HTML tag. `$attribute` is the HTML attribute name. `$value` is a string or array which holds the attribute value(s). |
-| **`render_attributes( $key )`** | Helper function to render HTML attributes defined via `$this->set_attribute()`. `$key` serves as the unique identifier for this HTML tag. |
-| **`render_dynamic_data_tag( $tag, $context, $args )`** | Helper function to render dynamic data tags inside the render function using `$this->render_dynamic_data_tag(...)`. An example of a `$tag` is the `{post_title}`. Using this helper function sets the correct post Id depending on the environment where the element is being rendered. |
-| **`render_dynamic_data( $content )`** | Helper function to render content (string) that could contain dynamic data tags. Use this helper function inside the render function calling `$this->render_dynamic_data(...)`. Using this helper function sets the correct post Id depending on the environment where the element is being rendered. |
-
-Let's populate our element properties and methods with some data:
-
-```php
-<?php
-// element-test.php
-
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-
-class Prefix_Element_Test extends \Bricks\Element {
-  // Element properties
-  public $category     = 'general'; // Use predefined element category 'general'
-  public $name         = 'prefix-test'; // Make sure to prefix your elements
-  public $icon         = 'ti-bolt-alt'; // Themify icon font class
-  public $css_selector = '.prefix-test-wrapper'; // Default CSS selector
-  public $scripts      = ['prefixElementTest']; // Script(s) run when element is rendered on frontend or updated in builder
-
-  // Return localised element label
-  public function get_label() {
-    return esc_html__( 'Test element', 'bricks' );
-  }
-
-  // Set builder control groups
-  public function set_control_groups() {
-    $this->control_groups['text'] = [ // Unique group identifier (lowercase, no spaces)
-      'title' => esc_html__( 'Text', 'bricks' ), // Localized control group title
-      'tab' => 'content', // Set to either "content" or "style"
-    ];
-
-    $this->control_groups['settings'] = [
-      'title' => esc_html__( 'Settings', 'bricks' ),
-      'tab' => 'content',
-    ];
-  }
-
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['content'] = [ // Unique control identifier (lowercase, no spaces)
-      'tab' => 'content', // Control tab: content/style
-      'group' => 'text', // Show under control group
-      'label' => esc_html__( 'Content', 'bricks' ), // Control label
-      'type' => 'text', // Control type
-      'default' => esc_html__( 'Content goes here ..', 'bricks' ), // Default setting
-    ];
-
-    $this->controls['type'] = [
-      'tab' => 'content',
-      'group' => 'settings',
-      'label' => esc_html__( 'Type', 'bricks' ),
-      'type' => 'select',
-      'options' => [
-        'info' => esc_html__( 'Info', 'bricks' ),
-        'success' => esc_html__( 'Success', 'bricks' ),
-        'warning' => esc_html__( 'Warning', 'bricks' ),
-        'danger' => esc_html__( 'Danger', 'bricks' ),
-        'muted' => esc_html__( 'Muted', 'bricks' ),
-      ],
-      'inline' => true,
-      'clearable' => false,
-      'pasteStyles' => false,
-      'default' => 'info',
-    ];
-  }
-
-  // Enqueue element styles and scripts
-  public function enqueue_scripts() {
-    wp_enqueue_script( 'prefix-test-script' );
-  }
-
-  // Render element HTML
-  public function render() {
-    // Set element attributes
-    $root_classes[] = 'prefix-test-wrapper';
-
-    if ( ! empty( $this->settings['type'] ) ) {
-      $root_classes[] = "color-{$this->settings['type']}";
-    }
-
-    // Add 'class' attribute to element root tag
-    $this->set_attribute( '_root', 'class', $root_classes );
-
-    // Render element HTML
-    // '_root' attribute is required (contains element ID, class, etc.)
-    echo "<div {$this->render_attributes( '_root' )}>"; // Element root attributes
-      if ( ! empty( $this->settings['content'] ) ) {
-        echo "<div>{$this->settings['content']}</div>";
-      }
-    echo '</div>';
-  }
-}
-```
-
-You can browse the documented Bricks controls at: [/developer/controls/](https://academy.bricksbuilder.io/developer/controls/)
-
-> **Note**
->
-> All element settings are stored in `$this->settings`. To view of element settings you can print them on the screen like so: `var_dump( $this->settings );` in the `render()` function.
-
-## Load and register your element {#register}
-
-After creating your custom element you need to load and register your element. Open up `functions.php` of your Bricks child theme and copy & paste the following code:
-
-```php
-/**
- * Register custom elements
- */
-add_action( 'init', function() {
-  $element_files = [
-    __DIR__ . '/element-test.php',
-  ];
-
-  foreach ( $element_files as $file ) {
-    \Bricks\Elements::register_element( $file );
-  }
-}, 11 );
-```
-
-The `register_element` method accepts 3 arguments:
-
-- `$file` (required): The full path to the custom element PHP file in the server
-- `$name` (optional): A string containing the name of the custom element (e.g.: `prefix-element-test`)
-- `$element_class` (optional): A string containing the class name of the element (e.g.: `Prefix_Element_Test`) which should derive from the Bricks element class (`\Bricks\Element`)
-
-> **Note**
->
-> **Note:** Using the `$name` and `$element_class` arguments will improve the loading performance.
-
----
-
-<a id="developer-elements-nestable-elements"></a>
-
-# Nestable Elements (API)
-
-Source: https://academy.bricksbuilder.io/developer/elements/nestable-elements/
-
-*Understand the Bricks API for nestable elements, including how parents, children, and allowed structures are defined.*
-
-Bricks 1.5 introduces **Nestable Elements**. Plus an API that allows you to programmatically define your own custom elements that can contain other elements. In exactly the structure you want.
-
-Prior to Bricks 1.5 every element in Bricks was "flat". Meaning even though an element contained a deep HTML structure (like the Slider, etc.) you couldn't click on an inner part of this element to edit it directly (e.g. contents of slide 3), or change the inner structure of it to your liking via Drag & Drop, as you could do inside a layout element.
-
-Making it often impossible to properly customise more complex elements like the Icon Box, Pricing Table, List, etc.
-
-Complex elements such as the Accordion, Slider, and Tabs weren't properly customisable at all.
-
-## Full Access & Control Over Individual Element Structure
-
-Starting at version 1.5, Bricks provides three nestable elements:
-
-- Accordion (Nestable)
-- Slider (Nestable)
-- Tabs (Nestable)
-
-Those elements were notoriously hard to properly customise due to their complex structure, and the limits of their "flat" element structure.
-
-Now that you can populate every slide with the elements you want, purpose-specific slider-like elements such as the "Carousel" & "Team Members" are not really needed.
-
-![](https://academy.bricksbuilder.io/assets/bricks-1.5-nestable-accordion-1024x398.jpg)
-
-<figcaption>
-
-Accordion - Nestable
-
-</figcaption>
-
-> **Note**
->
-> Nestable elements are going to exist alongside their flat origin elements for the foreseeable future until we have collected enough feedback & fixed any major bugs in order to fully make the switch to nestable elements.
-
-> **Note**
->
-> Certain interactive nestable elements that are heavily JavaScript-driven (such as the Accordion, Slider, and Tabs) might prevent the Drag & drop from working 100% on the canvas. If you encounter this behavior you can always add & order elements by using the Structure panel too.
-
-> **Note**
->
-> **Nestable tabs**: If you need to change the `display` property of the tab "pane", please do so by adding another "Block" element inside the panel and setting the `display` setting there. The pane itself uses `display: none` in order to hide all non-active panes. If you change the display setting there, all tab panes will always be visible.
-
-So you can start playing around with those new nestable elements, and slowly transition away from the old plain elements.
-
-Over time we'll convert more and more `flat` elements into nestable elements, so that you'll be able to properly customize most elements in Bricks once their nestable equivalent becomes available.
-
-## Nestable Elements API {#api}
-
-The rest of this article shows how to programmatically create your own nestable elements.
-
-A good starting point to learn about the new nestable elements syntax is to inspect the Bricks source code of the following nestable element files:
-
-- accordion-nested.php
-- slider-nested.php
-- tabs-nested.php
-
-### Define Your Custom Element As "nestable"
-
-First make sure to set the [`$nestable`](https://academy.bricksbuilder.io/developer/elements/create-your-own-elements/#builder) property of your custom element class to `true`.
-
-This is required so Bricks knows to render this custom element using the nestable render function in the builder, and to enable drag & drop inside the builder for this custom element.
-
-### Nestable Element Template
-
-You can define the structure of your custom element via the `get_nestable_children` function. It expects to return an array of element definitions.
-
-This is best illustrated by having a look at the Nestable Slider elements' `get_nestable_children` function:
-
-```php
-public function get_nestable_children() {
-  return [
-      [
-        'name'     => 'block',
-        'label'    => esc_html__( 'Slide', 'bricks' ) . ' {item_index}',
-        'settings' => [
-          '_hidden' => [
-            '_cssClasses' => 'hidden-class', // CSS class not visible in builder UI
-          ],
-        ],
-        'children' => [
-            [
-              'name'     => 'heading',
-              'settings' => [
-                'text' => esc_html__( 'Slide', 'bricks' ) . ' {item_index}',
-              ],
-            ],
-            [
-              'name'     => 'button',
-              'settings' => [
-                'text'  => esc_html__( 'I am a button', 'bricks' ),
-                'size'  => 'lg',
-                'style' => 'primary',
-              ],
-            ],
-          ],
-      ],
-  ];
-}
-```
-
-The code above adds a "Slide" block inside the nestable slider, which then contains a "Heading" & "Button" element.
-
-The `children` property, if set, accepts an array of further nested elements. Specify the `settings` array to populate individual elements inside your nestable element as needed.
-
-### Nestable Render Function (PHP) {#php}
-
-The only new function you need to add to your PHP `render()` function is called `render_children` and it requires the element instance `$this` to be passed as the first parameter:
-
-```php
-public function render() {
-  $output = "<div {$this->render_attributes( '_root' )}>";
-
-  // Render children elements (= individual items)
-  $output .= Frontend::render_children( $this );
-
-  $output .= '</div>';
-
-  echo $output;
-}
-```
-
-### Nestable Render Function (Vue x-template) {#x-template}
-
-To render elements inside your nestable element in your custom x-template, simply add the `` component plus `element` props as shown in the following code snippet:
-
-```php
-public function render_builder() {
-  <script type="text/x-template" id="tmpl-bricks-element-custom-nestable">
-    <component :is="tag">
-      <h2>Title before nestable children</h2>
-      <bricks-element-children :element="element"/>
-      <p>Text node after nestable children</p>
-    </component>
-  </script>
-}
-```
-
-### Nestable Element Items (in panel)
-
-If your nestable element structure is based on items on the same level (such as our Accordion above), then you can add a Repeater (see builder panel in screenshot above) by adding a `repeater` control with the `items` property set to `children`:
-
-```php
-public function set_controls() {
-  // Array of nestable element.children (@since 1.5)
-  $this->controls['_children'] = [
-    'type'          => 'repeater',
-    'titleProperty' => 'label',
-    'items'         => 'children',
-  ];
-];
-```
-
-> **Note**
->
-> If you are start using and/or experimenting with the new Nestable Elements API for your custom elements, [we'd love to hear your feedback](https://bricksbuilder.io/contact/). Does this API miss any features, did you encounter any bugs?
-
----
-
-<a id="developer-controls-align-items-control"></a>
-
-# Align Items Control (Flexbox)
-
-Source: https://academy.bricksbuilder.io/developer/controls/align-items-control/
-
-*Reference for the Bricks Align Items Control (Flexbox) control, including its options, CSS mapping, and usage in custom elements.*
-
-Use the align-items control to allow users to set the `align-items` CSS property (alignment along the [cross-axis](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items)) of your CSS flexbox layout.
-
-There is also a [`justify-content`](https://academy.bricksbuilder.io/developer/controls/justify-content-control/) control to allow users to set the alignment along the main axis of your CSS flexbox layout:
-
-```php
-public function set_controls() {
-  $this->controls['alignItems'] = [ // Setting key
-    'tab'   => 'content',
-    'label' => esc_html__( 'Align items', 'bricks' ),
-    'type'  => 'align-items',
-    'css'   => [
-      [
-        'property' => 'align-items',
-        'selector' => '.flexbox-wrapper',
-      ],
-    ],
-    // 'isHorizontal' => false,
-    // 'exclude' => [
-      // 'flex-start',
-      // 'center',
-      // 'flex-end',
-      // 'space-between',
-      // 'space-around',
-      // 'space-evenly',
-    // ],
-  ];
-}
-```
 
 ---
 
@@ -1005,6 +434,45 @@ class Prefix_Element_Audio extends \Bricks\Element {
 ### Resources
 
 [https://codex.wordpress.org/Function_Reference/wp_audio_shortcode](https://codex.wordpress.org/Function_Reference/wp_audio_shortcode)
+
+---
+
+<a id="developer-controls-align-items-control"></a>
+
+# Align Items Control (Flexbox)
+
+Source: https://academy.bricksbuilder.io/developer/controls/align-items-control/
+
+*Reference for the Bricks Align Items Control (Flexbox) control, including its options, CSS mapping, and usage in custom elements.*
+
+Use the align-items control to allow users to set the `align-items` CSS property (alignment along the [cross-axis](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items)) of your CSS flexbox layout.
+
+There is also a [`justify-content`](https://academy.bricksbuilder.io/developer/controls/justify-content-control/) control to allow users to set the alignment along the main axis of your CSS flexbox layout:
+
+```php
+public function set_controls() {
+  $this->controls['alignItems'] = [ // Setting key
+    'tab'   => 'content',
+    'label' => esc_html__( 'Align items', 'bricks' ),
+    'type'  => 'align-items',
+    'css'   => [
+      [
+        'property' => 'align-items',
+        'selector' => '.flexbox-wrapper',
+      ],
+    ],
+    // 'isHorizontal' => false,
+    // 'exclude' => [
+      // 'flex-start',
+      // 'center',
+      // 'flex-end',
+      // 'space-between',
+      // 'space-around',
+      // 'space-evenly',
+    // ],
+  ];
+}
+```
 
 ---
 
@@ -1093,6 +561,136 @@ class Prefix_Element_Background extends \Bricks\Element {
 
 ---
 
+<a id="developer-controls-border-control"></a>
+
+# Border Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/border-control/
+
+*Reference for the Bricks Border control, including its options, CSS mapping, and usage in custom elements.*
+
+The border control lets you set the following border properties:
+
+- Border width (top/right/bottom/left)
+- Background style (top/right/bottom/left)
+- Background color (none/solid/double/dotted/dashed)
+- Border radius (top/right/bottom/left)
+
+The example below illustrates how to apply a border via the `css` parameter and how to set border defaults.
+
+```php
+class Builder_Element_Prefix_Test extends \Bricks\Element {
+  public function set_controls() {
+    $this->controls['titleBorder'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Title border', 'bricks' ),
+      'type' => 'border',
+      'css' => [
+        [
+          'property' => 'border',
+          'selector' => '.prefix-test-title',
+        ],
+      ],
+      'inline' => true,
+      'small' => true,
+      'default' => [
+        'width' => [
+          'top' => 1,
+          'right' => 0,
+          'bottom' => 0,
+          'left' => 0,
+        ],
+        'style' => 'solid',
+        'color' => [
+          'hex' => '#ffff00',
+        ],
+        'radius' => [
+          'top' => 1,
+          'right' => 1,
+          'bottom' => 1,
+          'left' => 1,
+        ],
+      ],
+
+    ];
+  }
+}
+```
+
+---
+
+<a id="developer-controls-code-control"></a>
+
+# Code Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/code-control/
+
+*Reference for the Bricks Code control, including its options, CSS mapping, and usage in custom elements.*
+
+The code control embeds a code editor utilizing the amazing CodeMirror library. Users for which you've enabled "**Code Execution**" in the Bricks settings, will be able to execute PHP, HTML, CSS, and JavaScript.
+
+```php
+class Prefix_Element_Code extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleHtml'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'HTML', 'bricks' ),
+      'type' => 'code',
+      'mode' => 'php',
+      'default' => '<h4>Example H4 HTML title</h4>',
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    echo isset( $this->settings['exampleHtml'] ) ? $this->settings['exampleHtml'] : esc_html__( 'No HTML provided.', 'bricks' );
+  }
+}
+```
+
+> **Note**
+>
+> You don't need to define your own element CSS and JS controls. Those are already available when editing the element under the Style tab "CSS" control group.
+
+---
+
+<a id="developer-controls-checkbox-control"></a>
+
+# Checkbox Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/checkbox-control/
+
+*Reference for the Bricks Checkbox control, including its options, CSS mapping, and usage in custom elements.*
+
+The checkbox control is a simple on/off switch. If enabled it outputs a boolean value of `true`. Disabled it returns `false`. You can use it to conditionally show/hide other content settings as we illustrate in the following code example:
+
+```php
+class Prefix_Element_Checkbox extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleCheckbox'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Show site title', 'bricks' ),
+      'type' => 'checkbox',
+      'inline' => true,
+      'small' => true,
+      'default' => true, // Default: false
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    // Show site title if setting checkbox 'exampleCheckbox' is checked
+    if ( isset( $this->settings['exampleCheckbox'] ) ) {
+      echo get_bloginfo( 'name' );
+    }
+  }
+}
+```
+
+---
+
 <a id="developer-controls-box-shadow-control"></a>
 
 # Box Shadow Control
@@ -1152,136 +750,6 @@ class Prefix_Element_Box_Shadow extends \Bricks\Element {
 ### Resources
 
 [https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow)
-
----
-
-<a id="developer-controls-border-control"></a>
-
-# Border Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/border-control/
-
-*Reference for the Bricks Border control, including its options, CSS mapping, and usage in custom elements.*
-
-The border control lets you set the following border properties:
-
-- Border width (top/right/bottom/left)
-- Background style (top/right/bottom/left)
-- Background color (none/solid/double/dotted/dashed)
-- Border radius (top/right/bottom/left)
-
-The example below illustrates how to apply a border via the `css` parameter and how to set border defaults.
-
-```php
-class Builder_Element_Prefix_Test extends \Bricks\Element {
-  public function set_controls() {
-    $this->controls['titleBorder'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Title border', 'bricks' ),
-      'type' => 'border',
-      'css' => [
-        [
-          'property' => 'border',
-          'selector' => '.prefix-test-title',
-        ],
-      ],
-      'inline' => true,
-      'small' => true,
-      'default' => [
-        'width' => [
-          'top' => 1,
-          'right' => 0,
-          'bottom' => 0,
-          'left' => 0,
-        ],
-        'style' => 'solid',
-        'color' => [
-          'hex' => '#ffff00',
-        ],
-        'radius' => [
-          'top' => 1,
-          'right' => 1,
-          'bottom' => 1,
-          'left' => 1,
-        ],
-      ],
-
-    ];
-  }
-}
-```
-
----
-
-<a id="developer-controls-checkbox-control"></a>
-
-# Checkbox Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/checkbox-control/
-
-*Reference for the Bricks Checkbox control, including its options, CSS mapping, and usage in custom elements.*
-
-The checkbox control is a simple on/off switch. If enabled it outputs a boolean value of `true`. Disabled it returns `false`. You can use it to conditionally show/hide other content settings as we illustrate in the following code example:
-
-```php
-class Prefix_Element_Checkbox extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleCheckbox'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Show site title', 'bricks' ),
-      'type' => 'checkbox',
-      'inline' => true,
-      'small' => true,
-      'default' => true, // Default: false
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    // Show site title if setting checkbox 'exampleCheckbox' is checked
-    if ( isset( $this->settings['exampleCheckbox'] ) ) {
-      echo get_bloginfo( 'name' );
-    }
-  }
-}
-```
-
----
-
-<a id="developer-controls-code-control"></a>
-
-# Code Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/code-control/
-
-*Reference for the Bricks Code control, including its options, CSS mapping, and usage in custom elements.*
-
-The code control embeds a code editor utilizing the amazing CodeMirror library. Users for which you've enabled "**Code Execution**" in the Bricks settings, will be able to execute PHP, HTML, CSS, and JavaScript.
-
-```php
-class Prefix_Element_Code extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleHtml'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'HTML', 'bricks' ),
-      'type' => 'code',
-      'mode' => 'php',
-      'default' => '<h4>Example H4 HTML title</h4>',
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    echo isset( $this->settings['exampleHtml'] ) ? $this->settings['exampleHtml'] : esc_html__( 'No HTML provided.', 'bricks' );
-  }
-}
-```
-
-> **Note**
->
-> You don't need to define your own element CSS and JS controls. Those are already available when editing the element under the Style tab "CSS" control group.
 
 ---
 
@@ -1380,6 +848,85 @@ add_filter( 'bricks/builder/color_palette', function( $colors ) {
 > **Note**
 >
 > If you have saved any custom colors with the builder you need to reset your global settings in order for your new default colors to take effect.
+
+---
+
+<a id="developer-controls-direction-control"></a>
+
+# Direction Control (Flexbox)
+
+Source: https://academy.bricksbuilder.io/developer/controls/direction-control/
+
+*Reference for the Bricks Direction Control (Flexbox) control, including its options, CSS mapping, and usage in custom elements.*
+
+Use the direction control to allow users to set the `flex-direction` CSS property of your CSS flexbox layout.
+
+```php
+public function set_controls() {
+  $this->controls['direction'] = [ // Setting key
+    'tab'   => 'content',
+    'label' => esc_html__( 'Direction', 'bricks' ),
+    'type'  => 'direction',
+    'css'   => [
+      [
+        'property' => 'flex-direction',
+        'selector' => '.flexbox-wrapper',
+        // 'id'       => '', // Leave 'id' empty to apply to .flexbox-wrapper directly (@since 1.5.6)
+      ],
+    ],
+  ];
+}
+```
+
+---
+
+<a id="developer-controls-dimensions-control"></a>
+
+# Dimensions Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/dimensions-control/
+
+*Reference for the Bricks Dimensions control, including its options, CSS mapping, and usage in custom elements.*
+
+The dimensions control is perfect for adding multi-directional CSS properties such as margin and padding (top/right/bottom/left). You can set the directions to anything you want via the `directions` property.
+
+```php
+class Prefix_Element_Dimensions extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleDimensions'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Title padding', 'bricks' ),
+      'type' => 'dimensions',
+      'css' => [
+        [
+          'property' => 'padding',
+          'selector' => '.prefix-element-dimensions-title',
+        ]
+      ],
+      'default' => [
+        'top' => '30px',
+        'right' => 0,
+        'bottom' => '10em',
+        'left' => 0,
+      ],
+      // 'unitless' => false, // false by default
+      // Custom directions
+      // 'directions' => [
+        // 'offsetX' => esc_html__( 'Offset X', 'bricks' ),
+        // 'offsetY' => esc_html__( 'Offset Y', 'bricks' ),
+        // 'spread'  => esc_html__( 'Spread', 'bricks' ),
+        // 'blur'    => esc_html__( 'Offset Y', 'bricks' ),
+      // ],
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    echo '<h5 class="prefix-element-dimensions-title">' . get_bloginfo( 'name' ) . '</h5>';
+  }
+}
+```
 
 ---
 
@@ -1492,85 +1039,6 @@ class Prefix_Element_Countdown extends \Bricks\Element {
       echo '<div ' . $this->render_attributes( 'wrapper' ) . '></div>';
     }
   }
-}
-```
-
----
-
-<a id="developer-controls-dimensions-control"></a>
-
-# Dimensions Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/dimensions-control/
-
-*Reference for the Bricks Dimensions control, including its options, CSS mapping, and usage in custom elements.*
-
-The dimensions control is perfect for adding multi-directional CSS properties such as margin and padding (top/right/bottom/left). You can set the directions to anything you want via the `directions` property.
-
-```php
-class Prefix_Element_Dimensions extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleDimensions'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Title padding', 'bricks' ),
-      'type' => 'dimensions',
-      'css' => [
-        [
-          'property' => 'padding',
-          'selector' => '.prefix-element-dimensions-title',
-        ]
-      ],
-      'default' => [
-        'top' => '30px',
-        'right' => 0,
-        'bottom' => '10em',
-        'left' => 0,
-      ],
-      // 'unitless' => false, // false by default
-      // Custom directions
-      // 'directions' => [
-        // 'offsetX' => esc_html__( 'Offset X', 'bricks' ),
-        // 'offsetY' => esc_html__( 'Offset Y', 'bricks' ),
-        // 'spread'  => esc_html__( 'Spread', 'bricks' ),
-        // 'blur'    => esc_html__( 'Offset Y', 'bricks' ),
-      // ],
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    echo '<h5 class="prefix-element-dimensions-title">' . get_bloginfo( 'name' ) . '</h5>';
-  }
-}
-```
-
----
-
-<a id="developer-controls-direction-control"></a>
-
-# Direction Control (Flexbox)
-
-Source: https://academy.bricksbuilder.io/developer/controls/direction-control/
-
-*Reference for the Bricks Direction Control (Flexbox) control, including its options, CSS mapping, and usage in custom elements.*
-
-Use the direction control to allow users to set the `flex-direction` CSS property of your CSS flexbox layout.
-
-```php
-public function set_controls() {
-  $this->controls['direction'] = [ // Setting key
-    'tab'   => 'content',
-    'label' => esc_html__( 'Direction', 'bricks' ),
-    'type'  => 'direction',
-    'css'   => [
-      [
-        'property' => 'flex-direction',
-        'selector' => '.flexbox-wrapper',
-        // 'id'       => '', // Leave 'id' empty to apply to .flexbox-wrapper directly (@since 1.5.6)
-      ],
-    ],
-  ];
 }
 ```
 
@@ -1713,43 +1181,6 @@ The following control parameters are available for all control types. To dive de
 
 ---
 
-<a id="developer-controls-gradient-control"></a>
-
-# Gradient Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/gradient-control/
-
-*Reference for the Bricks Gradient control, including its options, CSS mapping, and usage in custom elements.*
-
-The gradient control lets you define an unlimited number of gradients that you can apply to text, background, and as an overlay.
-
-For generated gradients, you can set the CSS selector, adjust the angle between 0 and 360°, and set a color stop for each color. Since Bricks 2.5, the **Custom** type accepts complete gradient values and CSS variable references. See [Custom gradients](https://academy.bricksbuilder.io/builder/styling/gradients-overlays/#custom-gradients) for the Builder workflow.
-
-```php
-class Prefix_Element_Gradient extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleGradient'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Gradient', 'bricks' ),
-      'type' => 'gradient',
-      'css' => [
-        [
-          'property' => 'background-image',
-        ],
-      ],
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    echo get_bloginfo( 'name' );
-  }
-}
-```
-
----
-
 <a id="developer-controls-filters-control"></a>
 
 # Filters Control
@@ -1827,6 +1258,43 @@ class Prefix_Element_Filters extends \Bricks\Element {
 > **Note**
 >
 > Elements already have a **CSS Filters** control under **Style > CSS**. Add a custom control when you need to target a specific part of your element.
+
+---
+
+<a id="developer-controls-gradient-control"></a>
+
+# Gradient Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/gradient-control/
+
+*Reference for the Bricks Gradient control, including its options, CSS mapping, and usage in custom elements.*
+
+The gradient control lets you define an unlimited number of gradients that you can apply to text, background, and as an overlay.
+
+For generated gradients, you can set the CSS selector, adjust the angle between 0 and 360°, and set a color stop for each color. Since Bricks 2.5, the **Custom** type accepts complete gradient values and CSS variable references. See [Custom gradients](https://academy.bricksbuilder.io/builder/styling/gradients-overlays/#custom-gradients) for the Builder workflow.
+
+```php
+class Prefix_Element_Gradient extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleGradient'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Gradient', 'bricks' ),
+      'type' => 'gradient',
+      'css' => [
+        [
+          'property' => 'background-image',
+        ],
+      ],
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    echo get_bloginfo( 'name' );
+  }
+}
+```
 
 ---
 
@@ -2197,58 +1665,6 @@ class Prefix_Element_Number extends \Bricks\Element {
 
 ---
 
-<a id="developer-controls-query-control"></a>
-
-# Query Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/query-control/
-
-*Reference for the Bricks Query control, including its options, CSS mapping, and usage in custom elements.*
-
-The query control lets you set query arguments to retrieve items of any post type. Use the returned value to set up a custom `WP_Query` to render the matching posts in any way you want.
-
-```php
-class Prefix_Element_Posts extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleQueryArgs'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Posts', 'bricks' ),
-      'type' => 'query',
-      // Default required for query to populate
-      'default' => [
-        'post_type' => 'post',
-      ],
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    $query_args = $this->settings['exampleQueryArgs'];
-    $posts_query = new WP_Query( $query_args );
-
-    // Standard WordPress loop
-    if ( $posts_query->have_posts() ) :
-      while ( $posts_query->have_posts() ) : $posts_query->the_post();
-        // Render post title and thumbnail
-        the_title( '<h5>', '</h5>' );
-        the_post_thumbnail( 'thumbnail' );
-      endwhile;
-
-      wp_reset_postdata();
-    else :
-     esc_html_e( 'No posts matched your criteria.', 'bricks' );
-    endif;
-  }
-}
-```
-
-### Resources
-
-- [https://codex.wordpress.org/Class_Reference/WP_Query#Parameters](https://codex.wordpress.org/Class_Reference/WP_Query#Parameters)
-
----
-
 <a id="developer-controls-repeater-control"></a>
 
 # Repeater Control
@@ -2311,6 +1727,114 @@ class Prefix_Element_Posts extends \Bricks\Element {
   }
 }
 ```
+
+---
+
+<a id="developer-controls-slider-control"></a>
+
+# Slider Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/slider-control/
+
+*Reference for the Bricks Slider control, including its options, CSS mapping, and usage in custom elements.*
+
+The slider control shows a draggable range input field. Default units are `px`, `em` and `rem`. You can set the following control parameters:
+
+- units (array with custom units and `min`, `max`, `step` attributes)
+- unitless (set to `false` for plain number)
+
+```php
+class Prefix_Element_Slider extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleSliderFontSize'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Font size', 'bricks' ),
+      'type' => 'slider',
+      'css' => [
+        [
+          'property' => 'font-size',
+        ],
+      ],
+      'units' => [
+        'px' => [
+          'min' => 1,
+          'max' => 50,
+          'step' => 1,
+        ],
+        'em' => [
+          'min' => 1,
+          'max' => 20,
+          'step' => 0.1,
+        ],
+      ],
+      'default' => '30px',
+      'description' => esc_html__( 'Slider adjusts font size via CSS.', 'bricks' ),
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    echo '<h3>' . get_bloginfo( 'name' ) . '</h3>';
+  }
+}
+```
+
+### Resources
+
+- [https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range)
+
+---
+
+<a id="developer-controls-query-control"></a>
+
+# Query Control
+
+Source: https://academy.bricksbuilder.io/developer/controls/query-control/
+
+*Reference for the Bricks Query control, including its options, CSS mapping, and usage in custom elements.*
+
+The query control lets you set query arguments to retrieve items of any post type. Use the returned value to set up a custom `WP_Query` to render the matching posts in any way you want.
+
+```php
+class Prefix_Element_Posts extends \Bricks\Element {
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['exampleQueryArgs'] = [
+      'tab' => 'content',
+      'label' => esc_html__( 'Posts', 'bricks' ),
+      'type' => 'query',
+      // Default required for query to populate
+      'default' => [
+        'post_type' => 'post',
+      ],
+    ];
+  }
+
+  // Render element HTML
+  public function render() {
+    $query_args = $this->settings['exampleQueryArgs'];
+    $posts_query = new WP_Query( $query_args );
+
+    // Standard WordPress loop
+    if ( $posts_query->have_posts() ) :
+      while ( $posts_query->have_posts() ) : $posts_query->the_post();
+        // Render post title and thumbnail
+        the_title( '<h5>', '</h5>' );
+        the_post_thumbnail( 'thumbnail' );
+      endwhile;
+
+      wp_reset_postdata();
+    else :
+     esc_html_e( 'No posts matched your criteria.', 'bricks' );
+    endif;
+  }
+}
+```
+
+### Resources
+
+- [https://codex.wordpress.org/Class_Reference/WP_Query#Parameters](https://codex.wordpress.org/Class_Reference/WP_Query#Parameters)
 
 ---
 
@@ -2378,62 +1902,6 @@ class Prefix_Element_Posts extends \Bricks\Element {
   }
 }
 ```
-
----
-
-<a id="developer-controls-slider-control"></a>
-
-# Slider Control
-
-Source: https://academy.bricksbuilder.io/developer/controls/slider-control/
-
-*Reference for the Bricks Slider control, including its options, CSS mapping, and usage in custom elements.*
-
-The slider control shows a draggable range input field. Default units are `px`, `em` and `rem`. You can set the following control parameters:
-
-- units (array with custom units and `min`, `max`, `step` attributes)
-- unitless (set to `false` for plain number)
-
-```php
-class Prefix_Element_Slider extends \Bricks\Element {
-  // Set builder controls
-  public function set_controls() {
-    $this->controls['exampleSliderFontSize'] = [
-      'tab' => 'content',
-      'label' => esc_html__( 'Font size', 'bricks' ),
-      'type' => 'slider',
-      'css' => [
-        [
-          'property' => 'font-size',
-        ],
-      ],
-      'units' => [
-        'px' => [
-          'min' => 1,
-          'max' => 50,
-          'step' => 1,
-        ],
-        'em' => [
-          'min' => 1,
-          'max' => 20,
-          'step' => 0.1,
-        ],
-      ],
-      'default' => '30px',
-      'description' => esc_html__( 'Slider adjusts font size via CSS.', 'bricks' ),
-    ];
-  }
-
-  // Render element HTML
-  public function render() {
-    echo '<h3>' . get_bloginfo( 'name' ) . '</h3>';
-  }
-}
-```
-
-### Resources
-
-- [https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range)
 
 ---
 
@@ -2697,6 +2165,348 @@ class Prefix_Element_Textarea extends \Bricks\Element {
 
 ---
 
+<a id="developer-dynamic-data-create-your-own-dynamic-data-tag"></a>
+
+# Create Your Own Dynamic Data Tag
+
+Source: https://academy.bricksbuilder.io/developer/dynamic-data/create-your-own-dynamic-data-tag/
+
+*Create custom dynamic data tags in Bricks so your own values can be inserted into text, media, links, and other supported contexts.*
+
+This article is intended for developers who wish to create a custom dynamic data tag within the builder.
+
+The desired outcome should resemble the following example:
+
+![](https://academy.bricksbuilder.io/assets/bricks-custom-dynamic-tag.png)
+
+<figcaption>
+
+A custom dynamic tag labeled "My Dynamic Data"
+
+</figcaption>
+
+## Step 1: Register a tag through filter: bricks/dynamic_tags_list
+
+Use the `bricks/dynamic_tags_list` filter to render your custom dynamic data tag in the builder.
+
+```php
+add_filter( 'bricks/dynamic_tags_list', 'add_my_tag_to_builder' );
+function add_my_tag_to_builder( $tags ) {
+  // Ensure your tag is unique (best to prefix it)
+  $tags[] = [
+    'name'  => '{my_dd_tag}',
+    'label' => 'My Dynamic Data',
+    'group' => 'My Dynamic Data Group',
+  ];
+
+  return $tags;
+}
+```
+
+## Step 2: Hook on several filters
+
+#### 1) bricks/dynamic_data/render_tag
+
+This will be used when `\Bricks\Integrations\Dynamic_Data\Providers::render_tag()` is called to parse a specific tag.
+
+```php
+add_filter( 'bricks/dynamic_data/render_tag', 'get_my_tag_value', 20, 3 );
+function get_my_tag_value( $tag, $post, $context = 'text' ) {
+  if( ! is_string( $tag ) ) {
+    return $tag;
+  }
+  // $tag is the tag name without the outer curly braces
+  $clean_tag = str_replace( [ '{', '}' ], '', $tag );
+
+  // Only look for dynamic tag my_dd_tag
+  if ( $clean_tag !== 'my_dd_tag' ) {
+    return $tag;
+  }
+
+  // Do your custom logic here, you should define run_my_dd_tag_logic() function
+  $value = run_my_dd_tag_logic();
+
+  return $value;
+}
+
+function run_my_dd_tag_logic() {
+  // Do your custom logic here
+  $my_value = 'My dynamic data value:';
+
+  return $my_value;
+}
+```
+
+If you intend to accept an argument such as "`my_dd_tag:arg1`", you may need to adjust the logic accordingly. Here is a basic example using PHP logic. For more complex scenarios, you can adapt the logic as needed:
+
+```php
+add_filter( 'bricks/dynamic_data/render_tag', 'get_my_tag_value', 20, 3 );
+function get_my_tag_value( $tag, $post, $context = 'text' ) {
+  if( ! is_string( $tag ) ) {
+    return $tag;
+  }
+
+  // $tag is the tag name without the outer curly braces
+  $clean_tag = str_replace( [ '{', '}' ], '', $tag );
+
+  // Only look for dynamic tag starts with my_dd_tag:
+  if ( strpos( $clean_tag, 'my_dd_tag:' ) !== 0 ) {
+    return $tag;
+  }
+
+  // Get argument
+  $argument = str_replace( 'my_dd_tag:', '', $clean_tag );
+
+  // Do your custom logic here, you should define run_my_dd_tag_logic() function
+  $value = run_my_dd_tag_logic( $argument );
+
+  return $value;
+}
+
+function run_my_dd_tag_logic($argument) {
+  // Do your custom logic here
+  $my_value = 'My dynamic data value: ' . $argument ;
+
+  return $my_value;
+}
+```
+
+#### 2) bricks/dynamic_data/render_content and bricks/frontend/render_data
+
+These will be used when `\Bricks\Integrations\Dynamic_Data\Providers::render_content()` is invoked to parse strings that may contain various dynamic tags within the content. One of the functions that perform this action is `bricks_render_dynamic_data()`.
+
+> **Note**
+>
+> It is crucial to exercise extra caution while working on this aspect, as any mishandling may disrupt the dynamic tag functionality across the entire website.
+
+```php
+add_filter( 'bricks/dynamic_data/render_content', 'render_my_tag', 20, 3 );
+add_filter( 'bricks/frontend/render_data', 'render_my_tag', 20, 2 );
+function render_my_tag( $content, $post, $context = 'text' ) {
+
+  // $content might consists of HTML and other dynamic tags
+  // Only look for dynamic tag {my_dd_tag}
+  if ( strpos( $content, '{my_dd_tag}' ) === false ) {
+    return $content;
+  }
+
+  // Do your custom logic here, you should define run_my_dd_tag_logic() function
+  $my_value = run_my_dd_tag_logic();
+
+  // Replace the tag with the value you want to display
+  $content = str_replace( '{my_dd_tag}', $my_value, $content );
+
+  return $content;
+}
+
+```
+
+If your dynamic tag accepts an argument, consider the following example:
+
+```php
+add_filter( 'bricks/dynamic_data/render_content', 'render_my_tag', 20, 3 );
+add_filter( 'bricks/frontend/render_data', 'render_my_tag', 20, 2 );
+function render_my_tag( $content, $post, $context = 'text' ) {
+
+  // $content is the content of the element, including other dynamic tags, HTML, etc.
+  // Only look for content starts with {my_dd_tag:
+  if ( strpos( $content, '{my_dd_tag:' ) === false ) {
+    return $content;
+  }
+
+  // Regex to match my_dd_tag: tag
+  preg_match_all( '/{(my_dd_tag:[^}]+)}/', $content, $matches );
+
+  // Nothing grouped in the regex, return the original content
+  if ( empty( $matches[0] ) ) {
+    return $content;
+  }
+
+  foreach ( $matches[1] as $key => $match ) {
+    $tag = $matches[0][ $key ];
+
+    // Get the dynamic data value, $match is the tag name without the curly brackets
+    // Can reuse the get_my_tag_value function created earlier
+    $value   = get_my_tag_value( $match, $post, $context );
+
+    // Replace the tag with the transformed value
+    $content = str_replace( $tag, $value, $content );
+  }
+
+  return $content;
+}
+```
+
+> **Note**
+>
+> Note: If your dynamic tag is used in an image context, return an array whose first item is an attachment ID or image URL. Use an attachment ID when Bricks needs image size and srcset metadata. Please refer to the example in our forum threads: [Dynamic data not rendered correctly on image element](https://forum.bricksbuilder.io/t/dynamic-data-not-rendered-correctly-on-image-element/22641/2?u=itchycode)
+
+---
+
+<a id="developer-elements-nestable-elements"></a>
+
+# Nestable Elements (API)
+
+Source: https://academy.bricksbuilder.io/developer/elements/nestable-elements/
+
+*Understand the Bricks API for nestable elements, including how parents, children, and allowed structures are defined.*
+
+Bricks 1.5 introduces **Nestable Elements**. Plus an API that allows you to programmatically define your own custom elements that can contain other elements. In exactly the structure you want.
+
+Prior to Bricks 1.5 every element in Bricks was "flat". Meaning even though an element contained a deep HTML structure (like the Slider, etc.) you couldn't click on an inner part of this element to edit it directly (e.g. contents of slide 3), or change the inner structure of it to your liking via Drag & Drop, as you could do inside a layout element.
+
+Making it often impossible to properly customise more complex elements like the Icon Box, Pricing Table, List, etc.
+
+Complex elements such as the Accordion, Slider, and Tabs weren't properly customisable at all.
+
+## Full Access & Control Over Individual Element Structure
+
+Starting at version 1.5, Bricks provides three nestable elements:
+
+- Accordion (Nestable)
+- Slider (Nestable)
+- Tabs (Nestable)
+
+Those elements were notoriously hard to properly customise due to their complex structure, and the limits of their "flat" element structure.
+
+Now that you can populate every slide with the elements you want, purpose-specific slider-like elements such as the "Carousel" & "Team Members" are not really needed.
+
+![](https://academy.bricksbuilder.io/assets/bricks-1.5-nestable-accordion-1024x398.jpg)
+
+<figcaption>
+
+Accordion - Nestable
+
+</figcaption>
+
+> **Note**
+>
+> Nestable elements are going to exist alongside their flat origin elements for the foreseeable future until we have collected enough feedback & fixed any major bugs in order to fully make the switch to nestable elements.
+
+> **Note**
+>
+> Certain interactive nestable elements that are heavily JavaScript-driven (such as the Accordion, Slider, and Tabs) might prevent the Drag & drop from working 100% on the canvas. If you encounter this behavior you can always add & order elements by using the Structure panel too.
+
+> **Note**
+>
+> **Nestable tabs**: If you need to change the `display` property of the tab "pane", please do so by adding another "Block" element inside the panel and setting the `display` setting there. The pane itself uses `display: none` in order to hide all non-active panes. If you change the display setting there, all tab panes will always be visible.
+
+So you can start playing around with those new nestable elements, and slowly transition away from the old plain elements.
+
+Over time we'll convert more and more `flat` elements into nestable elements, so that you'll be able to properly customize most elements in Bricks once their nestable equivalent becomes available.
+
+## Nestable Elements API {#api}
+
+The rest of this article shows how to programmatically create your own nestable elements.
+
+A good starting point to learn about the new nestable elements syntax is to inspect the Bricks source code of the following nestable element files:
+
+- accordion-nested.php
+- slider-nested.php
+- tabs-nested.php
+
+### Define Your Custom Element As "nestable"
+
+First make sure to set the [`$nestable`](https://academy.bricksbuilder.io/developer/elements/create-your-own-elements/#builder) property of your custom element class to `true`.
+
+This is required so Bricks knows to render this custom element using the nestable render function in the builder, and to enable drag & drop inside the builder for this custom element.
+
+### Nestable Element Template
+
+You can define the structure of your custom element via the `get_nestable_children` function. It expects to return an array of element definitions.
+
+This is best illustrated by having a look at the Nestable Slider elements' `get_nestable_children` function:
+
+```php
+public function get_nestable_children() {
+  return [
+      [
+        'name'     => 'block',
+        'label'    => esc_html__( 'Slide', 'bricks' ) . ' {item_index}',
+        'settings' => [
+          '_hidden' => [
+            '_cssClasses' => 'hidden-class', // CSS class not visible in builder UI
+          ],
+        ],
+        'children' => [
+            [
+              'name'     => 'heading',
+              'settings' => [
+                'text' => esc_html__( 'Slide', 'bricks' ) . ' {item_index}',
+              ],
+            ],
+            [
+              'name'     => 'button',
+              'settings' => [
+                'text'  => esc_html__( 'I am a button', 'bricks' ),
+                'size'  => 'lg',
+                'style' => 'primary',
+              ],
+            ],
+          ],
+      ],
+  ];
+}
+```
+
+The code above adds a "Slide" block inside the nestable slider, which then contains a "Heading" & "Button" element.
+
+The `children` property, if set, accepts an array of further nested elements. Specify the `settings` array to populate individual elements inside your nestable element as needed.
+
+### Nestable Render Function (PHP) {#php}
+
+The only new function you need to add to your PHP `render()` function is called `render_children` and it requires the element instance `$this` to be passed as the first parameter:
+
+```php
+public function render() {
+  $output = "<div {$this->render_attributes( '_root' )}>";
+
+  // Render children elements (= individual items)
+  $output .= Frontend::render_children( $this );
+
+  $output .= '</div>';
+
+  echo $output;
+}
+```
+
+### Nestable Render Function (Vue x-template) {#x-template}
+
+To render elements inside your nestable element in your custom x-template, simply add the `` component plus `element` props as shown in the following code snippet:
+
+```php
+public function render_builder() {
+  <script type="text/x-template" id="tmpl-bricks-element-custom-nestable">
+    <component :is="tag">
+      <h2>Title before nestable children</h2>
+      <bricks-element-children :element="element"/>
+      <p>Text node after nestable children</p>
+    </component>
+  </script>
+}
+```
+
+### Nestable Element Items (in panel)
+
+If your nestable element structure is based on items on the same level (such as our Accordion above), then you can add a Repeater (see builder panel in screenshot above) by adding a `repeater` control with the `items` property set to `children`:
+
+```php
+public function set_controls() {
+  // Array of nestable element.children (@since 1.5)
+  $this->controls['_children'] = [
+    'type'          => 'repeater',
+    'titleProperty' => 'label',
+    'items'         => 'children',
+  ];
+];
+```
+
+> **Note**
+>
+> If you are start using and/or experimenting with the new Nestable Elements API for your custom elements, [we'd love to hear your feedback](https://bricksbuilder.io/contact/). Does this API miss any features, did you encounter any bugs?
+
+---
+
 <a id="developer-controls-typography-control"></a>
 
 # Typography Control
@@ -2757,6 +2567,196 @@ class Prefix_Element_Typography extends \Bricks\Element {
   }
 }
 ```
+
+---
+
+<a id="developer-elements-create-your-own-elements"></a>
+
+# Create Your Own Elements
+
+Source: https://academy.bricksbuilder.io/developer/elements/create-your-own-elements/
+
+*Create custom Bricks elements by extending the element API, registering controls, and rendering frontend output.*
+
+The Bricks [child theme](https://academy.bricksbuilder.io/developer/guides/child-theme/), which you can download from your [Bricks account](https://my.bricksbuilder.io/) includes a simple custom element for demonstration purposes. The article below explains in more detail how to create your own elements programmatically.
+
+Creating your own elements with Bricks follows a pattern similar to how you create WordPress widgets. You start by extending the `Bricks\Element` class and populate the required properties and methods for your element.
+
+First, create a new file `element-test.php` in the root folder of your Bricks child theme.
+
+## Blank element class {#builder}
+
+```php
+<?php
+// element-test.php
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+class Prefix_Element_Test extends \Bricks\Element {
+  // Element properties
+  public $category     = '';
+  public $name         = '';
+  public $icon         = '';
+  public $css_selector = '';
+  public $scripts      = [];
+  public $nestable     = false; // true || @since 1.5
+
+  // Methods: Builder-specific
+  public function get_label() {}
+  public function get_keywords() {}
+  public function set_control_groups() {}
+  public function set_controls() {}
+
+  // Methods: Frontend-specific
+  public function enqueue_scripts() {}
+  public function render() {}
+}
+```
+
+Let's walk through the element builder properties and methods:
+
+| **$category** required | Category name (all lowercase, no spaces). Use any of the predefined element categories (e.g. `general`, `media`, etc.) or assign your own category name.<br /><br />When setting your own category make sure to provide a translatable category string for the builder using the filter: [bricks/builder/i18n](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-i18n/) |
+| --- | --- |
+| **$name** required | Unique element identifier (all lowercase, no spaces). To avoid any conflicts with other elements please prefix your element name, e.g.: `prefix-element-test`. |
+| **$icon** | Icon font CSS class. Bricks includes the following icon fonts. Use any icon font CSS class to represent your element in the builder panel:  [Fontawesome 6](https://fontawesome.com/icons?d=gallery&m=free) (i.e. "fas fa-anchor") [Ionicons 4](https://ionicons.com/v4/cheatsheet.html) (i.e. "ion-md-alarm") [Themify Icons](https://themify.me/themify-icons) (i.e. "ti-bolt-alt") |
+| **$css_selector** | By default all CSS control settings are applied to the element wrapper:  `.bricks-element-wrapper`. If you want the default CSS selector to target a child HTML element, set this selector here. |
+| **$nestable** | Omit for plain elements. Set to `true` to create a [nestable element](https://academy.bricksbuilder.io/developer/elements/nestable-elements/). |
+| **$scripts** | An array of JavaScript scripts that run when an element is rendered on the frontend or updated in the builder. The Counter element, for example, uses a script named "bricksCounter" (defined in *frontend.min.js*).<br /><br />To load this script we use: `public $scripts = ['bricksCounter'];`<br /><br />Please prefix all your scripts. E.g.: `prefixElementTest` |
+| **get_label()** required | Return localised element label. |
+| **get_keywords()** | Array of strings that when matched during the element search display the element in the search results. |
+| **set_control_groups()** | By default, all element controls show ungrouped in the builder panel under the "Content" tab. Define custom control groups for your element controls by setting the following properties for each control group: **title** — Localized control group title. **tab** — Set to either "content" or "style". |
+| **set_controls()** required | Define element controls. For an overview of all available controls and their settings visit: [Element Controls](https://academy.bricksbuilder.io/developer/controls/element-controls/) |
+| **enqueue_scripts()** | Load element-specific scripts and styles. Those are loaded only on pages where this element is used. Results in better performance. Example: `wp_enqueue_script( 'prefix-element-test', get_template_directory_uri() . '/js/custom.js', ['jquery'], '1.0', true );` |
+| **render()** required | Renders element HTML. Define HTML attributes via `$this->set_attribute()` and output them via `$this->render_attribute()` |
+| **`set_attribute( $key, $attribute, $value )`** | Helper function to set HTML attributes for any HTML tag. `$key` serves as the unique identifier for this HTML tag. `$attribute` is the HTML attribute name. `$value` is a string or array which holds the attribute value(s). |
+| **`render_attributes( $key )`** | Helper function to render HTML attributes defined via `$this->set_attribute()`. `$key` serves as the unique identifier for this HTML tag. |
+| **`render_dynamic_data_tag( $tag, $context, $args )`** | Helper function to render dynamic data tags inside the render function using `$this->render_dynamic_data_tag(...)`. An example of a `$tag` is the `{post_title}`. Using this helper function sets the correct post Id depending on the environment where the element is being rendered. |
+| **`render_dynamic_data( $content )`** | Helper function to render content (string) that could contain dynamic data tags. Use this helper function inside the render function calling `$this->render_dynamic_data(...)`. Using this helper function sets the correct post Id depending on the environment where the element is being rendered. |
+
+Let's populate our element properties and methods with some data:
+
+```php
+<?php
+// element-test.php
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+class Prefix_Element_Test extends \Bricks\Element {
+  // Element properties
+  public $category     = 'general'; // Use predefined element category 'general'
+  public $name         = 'prefix-test'; // Make sure to prefix your elements
+  public $icon         = 'ti-bolt-alt'; // Themify icon font class
+  public $css_selector = '.prefix-test-wrapper'; // Default CSS selector
+  public $scripts      = ['prefixElementTest']; // Script(s) run when element is rendered on frontend or updated in builder
+
+  // Return localised element label
+  public function get_label() {
+    return esc_html__( 'Test element', 'bricks' );
+  }
+
+  // Set builder control groups
+  public function set_control_groups() {
+    $this->control_groups['text'] = [ // Unique group identifier (lowercase, no spaces)
+      'title' => esc_html__( 'Text', 'bricks' ), // Localized control group title
+      'tab' => 'content', // Set to either "content" or "style"
+    ];
+
+    $this->control_groups['settings'] = [
+      'title' => esc_html__( 'Settings', 'bricks' ),
+      'tab' => 'content',
+    ];
+  }
+
+  // Set builder controls
+  public function set_controls() {
+    $this->controls['content'] = [ // Unique control identifier (lowercase, no spaces)
+      'tab' => 'content', // Control tab: content/style
+      'group' => 'text', // Show under control group
+      'label' => esc_html__( 'Content', 'bricks' ), // Control label
+      'type' => 'text', // Control type
+      'default' => esc_html__( 'Content goes here ..', 'bricks' ), // Default setting
+    ];
+
+    $this->controls['type'] = [
+      'tab' => 'content',
+      'group' => 'settings',
+      'label' => esc_html__( 'Type', 'bricks' ),
+      'type' => 'select',
+      'options' => [
+        'info' => esc_html__( 'Info', 'bricks' ),
+        'success' => esc_html__( 'Success', 'bricks' ),
+        'warning' => esc_html__( 'Warning', 'bricks' ),
+        'danger' => esc_html__( 'Danger', 'bricks' ),
+        'muted' => esc_html__( 'Muted', 'bricks' ),
+      ],
+      'inline' => true,
+      'clearable' => false,
+      'pasteStyles' => false,
+      'default' => 'info',
+    ];
+  }
+
+  // Enqueue element styles and scripts
+  public function enqueue_scripts() {
+    wp_enqueue_script( 'prefix-test-script' );
+  }
+
+  // Render element HTML
+  public function render() {
+    // Set element attributes
+    $root_classes[] = 'prefix-test-wrapper';
+
+    if ( ! empty( $this->settings['type'] ) ) {
+      $root_classes[] = "color-{$this->settings['type']}";
+    }
+
+    // Add 'class' attribute to element root tag
+    $this->set_attribute( '_root', 'class', $root_classes );
+
+    // Render element HTML
+    // '_root' attribute is required (contains element ID, class, etc.)
+    echo "<div {$this->render_attributes( '_root' )}>"; // Element root attributes
+      if ( ! empty( $this->settings['content'] ) ) {
+        echo "<div>{$this->settings['content']}</div>";
+      }
+    echo '</div>';
+  }
+}
+```
+
+You can browse the documented Bricks controls at: [/developer/controls/](https://academy.bricksbuilder.io/developer/controls/)
+
+> **Note**
+>
+> All element settings are stored in `$this->settings`. To view of element settings you can print them on the screen like so: `var_dump( $this->settings );` in the `render()` function.
+
+## Load and register your element {#register}
+
+After creating your custom element you need to load and register your element. Open up `functions.php` of your Bricks child theme and copy & paste the following code:
+
+```php
+/**
+ * Register custom elements
+ */
+add_action( 'init', function() {
+  $element_files = [
+    __DIR__ . '/element-test.php',
+  ];
+
+  foreach ( $element_files as $file ) {
+    \Bricks\Elements::register_element( $file );
+  }
+}, 11 );
+```
+
+The `register_element` method accepts 3 arguments:
+
+- `$file` (required): The full path to the custom element PHP file in the server
+- `$name` (optional): A string containing the name of the custom element (e.g.: `prefix-element-test`)
+- `$element_class` (optional): A string containing the class name of the element (e.g.: `Prefix_Element_Test`) which should derive from the Bricks element class (`\Bricks\Element`)
+
+> **Note**
+>
+> **Note:** Using the `$name` and `$element_class` arguments will improve the loading performance.
 
 ---
 
@@ -2912,6 +2912,51 @@ Please keep the points below in mind when working with Bricks:
 | --- | --- |
 | **Min. Image Dimensions** | Upload images with a minimum width of 600 pixels. Ideally 1600 pixels in width or more.<br /><br />If you already have images in your media library and start working with Bricks make sure to [Regenerate Thumbnails](https://wordpress.org/plugins/regenerate-thumbnails/) so all Bricks-specific image sizes are generated properly. |
 | **Never Edit Theme Code Directly** | **Do not edit any of the Bricks theme core files directly!**<br /><br />As all your changes will be lost/overwritten when updating the theme. Use the [Bricks child theme](https://academy.bricksbuilder.io/developer/guides/child-theme/) or a code snippet plugin to extend Bricks with your custom code. |
+
+---
+
+<a id="developer-guides-bricks-css-compatibility-guidelines"></a>
+
+# Bricks CSS: Compatibility guidelines
+
+Source: https://academy.bricksbuilder.io/developer/guides/bricks-css-compatibility-guidelines/
+
+*Follow Bricks CSS compatibility guidelines so custom CSS keeps working across builder output, theme updates, and integrations.*
+
+Bricks aims to use CSS features that are broadly supported in modern browsers and avoid fallbacks that add weight for uncommon older browsers. We use [Baseline](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) as a practical reference when evaluating CSS support in Bricks output.
+
+## What is Baseline?
+
+Baseline is a compatibility model that tracks when web platform features become widely interoperable across all major browsers. It defines two key stages:
+
+- **Newly Available**: Feature works across all major browsers (desktop and mobile).
+- **Widely Available**: Reached ~30 months after “Newly Available”; safe to use in production for most users globally (~95% support).
+
+Baseline considers support in the following browsers:
+
+- Apple Safari (iOS)
+- Apple Safari (macOS)
+- Google Chrome (Android)
+- Google Chrome (desktop)
+- Microsoft Edge (desktop)
+- Mozilla Firefox (Android)
+- Mozilla Firefox (desktop)
+
+## Which CSS features does Bricks use?
+
+Bricks output already includes modern CSS such as the [`:where` pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:where) and [@layer CSS at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer). Both are listed by MDN as **Widely Available**, which is the kind of broad support we look for before relying on a CSS feature in Bricks output.
+
+![](https://academy.bricksbuilder.io/assets/mdn-baseline.png)
+
+## What happens on much older or less common browsers?
+
+We aim to strike the right balance: adopting modern standards when they’re stable and broadly supported, while avoiding unnecessary technical debt or regressions for the majority of users. Adding fallbacks for edge-case devices below the Baseline threshold would compromise code quality and performance for everyone else.
+
+## Does this affect user-added CSS?
+
+No. This only applies to the CSS generated by Bricks.
+
+You can continue writing your own CSS however you like, including fallbacks or feature checks for legacy devices. Bricks just won't include those fallbacks automatically in its own output.
 
 ---
 
@@ -3075,51 +3120,6 @@ add_action( 'wp_enqueue_scripts', function() {
 You can learn more about how a Child Theme works by visiting the official WordPress Codex: [https://developer.wordpress.org/themes/advanced-topics/child-themes/](https://developer.wordpress.org/themes/advanced-topics/child-themes/)
 
 The `functions.php` file of a child theme, unlike `style.css`, does not override the `functions.php` file of the parent theme. Instead, it is loaded in addition to the parent theme's `functions.php`, right before the parent file.
-
----
-
-<a id="developer-guides-bricks-css-compatibility-guidelines"></a>
-
-# Bricks CSS: Compatibility guidelines
-
-Source: https://academy.bricksbuilder.io/developer/guides/bricks-css-compatibility-guidelines/
-
-*Follow Bricks CSS compatibility guidelines so custom CSS keeps working across builder output, theme updates, and integrations.*
-
-Bricks aims to use CSS features that are broadly supported in modern browsers and avoid fallbacks that add weight for uncommon older browsers. We use [Baseline](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) as a practical reference when evaluating CSS support in Bricks output.
-
-## What is Baseline?
-
-Baseline is a compatibility model that tracks when web platform features become widely interoperable across all major browsers. It defines two key stages:
-
-- **Newly Available**: Feature works across all major browsers (desktop and mobile).
-- **Widely Available**: Reached ~30 months after “Newly Available”; safe to use in production for most users globally (~95% support).
-
-Baseline considers support in the following browsers:
-
-- Apple Safari (iOS)
-- Apple Safari (macOS)
-- Google Chrome (Android)
-- Google Chrome (desktop)
-- Microsoft Edge (desktop)
-- Mozilla Firefox (Android)
-- Mozilla Firefox (desktop)
-
-## Which CSS features does Bricks use?
-
-Bricks output already includes modern CSS such as the [`:where` pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:where) and [@layer CSS at-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer). Both are listed by MDN as **Widely Available**, which is the kind of broad support we look for before relying on a CSS feature in Bricks output.
-
-![](https://academy.bricksbuilder.io/assets/mdn-baseline.png)
-
-## What happens on much older or less common browsers?
-
-We aim to strike the right balance: adopting modern standards when they’re stable and broadly supported, while avoiding unnecessary technical debt or regressions for the majority of users. Adding fallbacks for edge-case devices below the Baseline threshold would compromise code quality and performance for everyone else.
-
-## Does this affect user-added CSS?
-
-No. This only applies to the CSS generated by Bricks.
-
-You can continue writing your own CSS however you like, including fallbacks or feature checks for legacy devices. Bricks just won't include those fallbacks automatically in its own output.
 
 ---
 
@@ -3529,6 +3529,30 @@ These are all documented Bricks hooks:
 
 ---
 
+<a id="developer-hooks-actions-action-bricks-query-after-loop"></a>
+
+# Action: bricks/query/after_loop
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/action-bricks-query-after_loop/
+
+*If you are creating a custom query loop or a custom plugin, you might want to perform some additional tasks like setting/resetting specific data after the loop.*
+
+If you are creating a custom query loop or a custom plugin, you might want to perform some additional tasks like setting/resetting specific data after the loop runs. (`@since 1.7.2`)
+
+```php
+// Perform certain action after the loop of query element oklvcq
+add_action( 'bricks/query/after_loop', function( $query, $args ) {
+  if ( $query->element_id !== 'oklvcq' ) {
+    return;
+  }
+  // $args is an array of the element settings
+  // Perform your own logic here
+
+}, 10, 2 );
+```
+
+---
+
 <a id="developer-hooks-actions-action-bricks-generate-css-file"></a>
 
 # Action: bricks/generate_css_file
@@ -3553,30 +3577,6 @@ add_action( 'bricks/generate_css_file', function( $type, $file_name ) {
 
 - `$type` (string): Possible strings `global-color-palettes` `global-elements` `theme-styles` `global-custom-css` `post`
 - `$file_name` (string): The generated CSS file name
-
----
-
-<a id="developer-hooks-actions-action-bricks-query-after-loop"></a>
-
-# Action: bricks/query/after_loop
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/action-bricks-query-after_loop/
-
-*If you are creating a custom query loop or a custom plugin, you might want to perform some additional tasks like setting/resetting specific data after the loop.*
-
-If you are creating a custom query loop or a custom plugin, you might want to perform some additional tasks like setting/resetting specific data after the loop runs. (`@since 1.7.2`)
-
-```php
-// Perform certain action after the loop of query element oklvcq
-add_action( 'bricks/query/after_loop', function( $query, $args ) {
-  if ( $query->element_id !== 'oklvcq' ) {
-    return;
-  }
-  // $args is an array of the element settings
-  // Perform your own logic here
-
-}, 10, 2 );
-```
 
 ---
 
@@ -3666,32 +3666,6 @@ add_action( 'bricks_after_site_wrapper', function() {
 
 ---
 
-<a id="developer-hooks-actions-bricks-archive-product-after"></a>
-
-# Action: bricks/archive_product/after
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-archive_product-after/
-
-*Runs after the Bricks content is rendered on a WooCommerce product archive page when a Bricks template is used. This action is specific to WooCommerce archives.*
-
-Runs after the Bricks content is rendered on a WooCommerce product archive page when a Bricks template is used. This action is specific to WooCommerce archives rendered by Bricks.
-
-## Parameters
-
-- `$bricks_data` (*array*): The Bricks data for the template being rendered.
-- `$post_id` (*int*): The ID of the post/archive being rendered.
-
-## Example usage
-
-```php
-add_action( 'bricks/archive_product/after', function( $bricks_data, $post_id ) {
-    // Output custom content after the product archive
-    echo '<div class="custom-archive-footer">End of product list</div>';
-} );
-```
-
----
-
 <a id="developer-hooks-actions-bricks-archive-product-before"></a>
 
 # Action: bricks/archive_product/before
@@ -3738,6 +3712,32 @@ add_action( 'bricks_before_footer', function() {
 
 ---
 
+<a id="developer-hooks-actions-bricks-archive-product-after"></a>
+
+# Action: bricks/archive_product/after
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-archive_product-after/
+
+*Runs after the Bricks content is rendered on a WooCommerce product archive page when a Bricks template is used. This action is specific to WooCommerce archives.*
+
+Runs after the Bricks content is rendered on a WooCommerce product archive page when a Bricks template is used. This action is specific to WooCommerce archives rendered by Bricks.
+
+## Parameters
+
+- `$bricks_data` (*array*): The Bricks data for the template being rendered.
+- `$post_id` (*int*): The ID of the post/archive being rendered.
+
+## Example usage
+
+```php
+add_action( 'bricks/archive_product/after', function( $bricks_data, $post_id ) {
+    // Output custom content after the product archive
+    echo '<div class="custom-archive-footer">End of product list</div>';
+} );
+```
+
+---
+
 <a id="developer-hooks-actions-bricks-before-header"></a>
 
 # Action: bricks_before_header
@@ -3753,28 +3753,6 @@ Runs before Bricks renders the header template. Use it to output markup or run l
 ```php
 add_action( 'bricks_before_header', function() {
     echo '<div class="top-strip">Free shipping this week</div>';
-} );
-```
-
----
-
-<a id="developer-hooks-actions-bricks-before-site-wrapper"></a>
-
-# Action: bricks_before_site_wrapper
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-before_site_wrapper/
-
-*Runs in header.php before the header render action. Bricks uses it to open the builder wrapper.*
-
-Runs in `header.php` after `bricks_body` and before `bricks_before_header`.
-
-In the builder, Bricks uses this hook to open the `.brx-body` wrapper around the builder frame. On the frontend, it is a general position before the header render flow.
-
-## Example usage
-
-```php
-add_action( 'bricks_before_site_wrapper', function() {
-    echo '<div class="before-site-wrapper">';
 } );
 ```
 
@@ -3797,6 +3775,28 @@ Bricks attaches its opening `<body>` tag callback to this hook at priority `1`. 
 ```php
 add_action( 'bricks_body', function() {
     echo '<div id="body-integration-root"></div>';
+} );
+```
+
+---
+
+<a id="developer-hooks-actions-bricks-before-site-wrapper"></a>
+
+# Action: bricks_before_site_wrapper
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-before_site_wrapper/
+
+*Runs in header.php before the header render action. Bricks uses it to open the builder wrapper.*
+
+Runs in `header.php` after `bricks_body` and before `bricks_before_header`.
+
+In the builder, Bricks uses this hook to open the `.brx-body` wrapper around the builder frame. On the frontend, it is a general position before the header render flow.
+
+## Example usage
+
+```php
+add_action( 'bricks_before_site_wrapper', function() {
+    echo '<div class="before-site-wrapper">';
 } );
 ```
 
@@ -4121,30 +4121,6 @@ add_action( 'bricks/frontend/before_render_data', function( $elements, $area ) {
 
 ---
 
-<a id="developer-hooks-actions-bricks-indexer"></a>
-
-# Action: bricks_indexer
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-indexer/
-
-*Triggers the Bricks query filter indexer job runner.*
-
-Triggers the Bricks query filter indexer job runner. Bricks schedules this action with WP-Cron every five minutes and also triggers it from the background indexing AJAX endpoint.
-
-The core callback processes pending jobs until the queue is empty or server resource limits are reached. From Bricks 2.5, workers and full-reindex requests share a database lock. The worker exits when another index operation holds that lock.
-
-This action continues existing jobs. To request a full rebuild, use [`bricks/query_filters/reindex`](https://academy.bricksbuilder.io/developer/hooks/actions/bricks-query_filters-reindex/) (Bricks 2.5). Running `bricks_indexer` with an empty queue does not create new indexing work.
-
-## Example usage
-
-```php
-add_action( 'my_plugin_run_bricks_indexer', function() {
-    do_action( 'bricks_indexer' );
-} );
-```
-
----
-
 <a id="developer-hooks-actions-bricks-get-templates-query-after"></a>
 
 # Action: bricks/get_templates/query_after
@@ -4168,6 +4144,30 @@ This action does not run when Bricks returns the template query from object cach
 add_action( 'bricks/get_templates/query_after', function( $query, $merged_args ) {
     // Restore custom query context after template lookup.
 }, 10, 2 );
+```
+
+---
+
+<a id="developer-hooks-actions-bricks-indexer"></a>
+
+# Action: bricks_indexer
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-indexer/
+
+*Triggers the Bricks query filter indexer job runner.*
+
+Triggers the Bricks query filter indexer job runner. Bricks schedules this action with WP-Cron every five minutes and also triggers it from the background indexing AJAX endpoint.
+
+The core callback processes pending jobs until the queue is empty or server resource limits are reached. From Bricks 2.5, workers and full-reindex requests share a database lock. The worker exits when another index operation holds that lock.
+
+This action continues existing jobs. To request a full rebuild, use [`bricks/query_filters/reindex`](https://academy.bricksbuilder.io/developer/hooks/actions/bricks-query_filters-reindex/) (Bricks 2.5). Running `bricks_indexer` with an empty queue does not create new indexing work.
+
+## Example usage
+
+```php
+add_action( 'my_plugin_run_bricks_indexer', function() {
+    do_action( 'bricks_indexer' );
+} );
 ```
 
 ---
@@ -4212,6 +4212,26 @@ add_action( 'bricks/load_elements/before', function() {
 
 ---
 
+<a id="developer-hooks-actions-bricks-meta-tags"></a>
+
+# Action: bricks_meta_tags
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-meta_tags/
+
+*Runs in the document head before wp_head().*
+
+Runs in the document head before `wp_head()`. Use it to output meta tags that should be controlled through the Bricks header template flow.
+
+## Example usage
+
+```php
+add_action( 'bricks_meta_tags', function() {
+    echo '<meta name="theme-color" content="#111111">';
+} );
+```
+
+---
+
 <a id="developer-hooks-actions-bricks-query-query-api-response"></a>
 
 # Action: bricks/query/query_api_response
@@ -4244,26 +4264,6 @@ add_action( 'bricks/query/query_api_response', function( $response, $element_id 
 
 ---
 
-<a id="developer-hooks-actions-bricks-meta-tags"></a>
-
-# Action: bricks_meta_tags
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-meta_tags/
-
-*Runs in the document head before wp_head().*
-
-Runs in the document head before `wp_head()`. Use it to output meta tags that should be controlled through the Bricks header template flow.
-
-## Example usage
-
-```php
-add_action( 'bricks_meta_tags', function() {
-    echo '<meta name="theme-color" content="#111111">';
-} );
-```
-
----
-
 <a id="developer-hooks-actions-bricks-query-filters-index-post-before"></a>
 
 # Action: bricks/query_filters/index_post/before
@@ -4286,63 +4286,6 @@ add_action( 'bricks/query_filters/index_post/before', function( $post_id ) {
     // error_log( "Starting indexing for post ID: $post_id" );
     
     // Maybe register custom dynamic data providers if needed for indexing
-} );
-```
-
----
-
-<a id="developer-hooks-actions-bricks-query-filters-index-user-before"></a>
-
-# Action: bricks/query_filters/index_user/before
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-query_filters-index_user-before/
-
-*Runs before a user is indexed for Query Filters. This action is triggered during the indexing process for a specific user.*
-
-Runs before a user is indexed for Query Filters. This action is triggered during the indexing process for a specific user.
-
-## Parameters
-
-- `$user_id` (*int*): The ID of the user being indexed.
-
-## Example usage
-
-```php
-add_action( 'bricks/query_filters/index_user/before', function( $user_id ) {
-    // Perform actions before indexing a user
-    // error_log( "Starting indexing for user ID: $user_id" );
-    
-    // Maybe register custom dynamic data providers if needed for indexing
-} );
-```
-
----
-
-<a id="developer-hooks-actions-bricks-render-popup-content-start"></a>
-
-# Action: bricks/render_popup_content/start
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-render_popup_content-start/
-
-*Runs at the start of the AJAX popup content rendering process (loadpopupcontent endpoint). This action allows you to execute custom logic before the popup.*
-
-Runs at the start of the AJAX popup content rendering process (`load_popup_content` endpoint). This action allows you to execute custom logic before the popup content is generated and returned.
-
-## Parameters
-
-- `$request_data` (*array*): The request data parameters (e.g., postId, popupId, etc.).
-
-## Example usage
-
-```php
-add_action( 'bricks/render_popup_content/start', function( $request_data ) {
-    // Access request data
-    // $post_id = $request_data['postId'] ?? 0;
-    
-    // Example: Switch language for multilingual plugins (Polylang/WPML integration uses this)
-    // if ( isset( $request_data['lang'] ) ) {
-    //     // Switch language logic
-    // }
 } );
 ```
 
@@ -4475,6 +4418,63 @@ The existing `bricks/reindex-filters` ability uses the same reindex method and s
 
 ---
 
+<a id="developer-hooks-actions-bricks-query-filters-index-user-before"></a>
+
+# Action: bricks/query_filters/index_user/before
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-query_filters-index_user-before/
+
+*Runs before a user is indexed for Query Filters. This action is triggered during the indexing process for a specific user.*
+
+Runs before a user is indexed for Query Filters. This action is triggered during the indexing process for a specific user.
+
+## Parameters
+
+- `$user_id` (*int*): The ID of the user being indexed.
+
+## Example usage
+
+```php
+add_action( 'bricks/query_filters/index_user/before', function( $user_id ) {
+    // Perform actions before indexing a user
+    // error_log( "Starting indexing for user ID: $user_id" );
+    
+    // Maybe register custom dynamic data providers if needed for indexing
+} );
+```
+
+---
+
+<a id="developer-hooks-actions-bricks-render-popup-content-start"></a>
+
+# Action: bricks/render_popup_content/start
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/bricks-render_popup_content-start/
+
+*Runs at the start of the AJAX popup content rendering process (loadpopupcontent endpoint). This action allows you to execute custom logic before the popup.*
+
+Runs at the start of the AJAX popup content rendering process (`load_popup_content` endpoint). This action allows you to execute custom logic before the popup content is generated and returned.
+
+## Parameters
+
+- `$request_data` (*array*): The request data parameters (e.g., postId, popupId, etc.).
+
+## Example usage
+
+```php
+add_action( 'bricks/render_popup_content/start', function( $request_data ) {
+    // Access request data
+    // $post_id = $request_data['postId'] ?? 0;
+    
+    // Example: Switch language for multilingual plugins (Polylang/WPML integration uses this)
+    // if ( isset( $request_data['lang'] ) ) {
+    //     // Switch language logic
+    // }
+} );
+```
+
+---
+
 <a id="developer-hooks-actions-bricks-render-query-page-start"></a>
 
 # Action: bricks/render_query_page/start
@@ -4535,6 +4535,40 @@ add_action( 'bricks/render_query_result/start', function( $request_data ) {
 
 ---
 
+<a id="developer-hooks-actions-render-header"></a>
+
+# Action: render_header
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/render_header/
+
+*Runs at the header render position. Bricks attaches its default header renderer to this action.*
+
+Runs in `header.php` between `bricks_before_header` and `bricks_after_header`.
+
+Bricks attaches its frontend header renderer to this action by default. Use this hook only when you need to add low-level output at the header render position. To modify the generated header HTML, use the `bricks/render_header` filter instead.
+
+## Example usage
+
+```php
+add_action( 'render_header', function() {
+    echo '<div class="after-render-header"></div>';
+}, 20 );
+```
+
+---
+
+<a id="developer-hooks-actions"></a>
+
+# Action Hooks
+
+Source: https://academy.bricksbuilder.io/developer/hooks/actions/
+
+*Documented Bricks action hooks for running custom code at specific points in the builder and frontend lifecycle.*
+
+These are all documented Bricks action hooks:
+
+---
+
 <a id="developer-hooks-actions-bricks-sendgrid-double-opt-in-handler"></a>
 
 # Action: bricks_sendgrid_double_opt_in_handler
@@ -4559,18 +4593,6 @@ add_action( 'bricks_sendgrid_double_opt_in_handler', function( $new_subscriber_d
 
 ---
 
-<a id="developer-hooks-actions"></a>
-
-# Action Hooks
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/
-
-*Documented Bricks action hooks for running custom code at specific points in the builder and frontend lifecycle.*
-
-These are all documented Bricks action hooks:
-
----
-
 <a id="developer-hooks-actions-render-footer"></a>
 
 # Action: render_footer
@@ -4588,28 +4610,6 @@ Bricks attaches its frontend footer renderer to this action by default. Use this
 ```php
 add_action( 'render_footer', function() {
     echo '<div class="after-render-footer"></div>';
-}, 20 );
-```
-
----
-
-<a id="developer-hooks-actions-render-header"></a>
-
-# Action: render_header
-
-Source: https://academy.bricksbuilder.io/developer/hooks/actions/render_header/
-
-*Runs at the header render position. Bricks attaches its default header renderer to this action.*
-
-Runs in `header.php` between `bricks_before_header` and `bricks_after_header`.
-
-Bricks attaches its frontend header renderer to this action by default. Use this hook only when you need to add low-level output at the header render position. To modify the generated header HTML, use the `bricks/render_header` filter instead.
-
-## Example usage
-
-```php
-add_action( 'render_header', function() {
-    echo '<div class="after-render-header"></div>';
 }, 20 );
 ```
 
@@ -4674,6 +4674,33 @@ add_filter( 'bricks/acf/google_map/address_parts', function( $address_parts, $va
 
 ---
 
+<a id="developer-hooks-filters-bricks-acf-google-map-text-output"></a>
+
+# Filter: bricks/acf/google_map/text_output
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-acf-google_map-text_output/
+
+*Filters the final HTML output of the ACF Google Map field dynamic data. This runs after the address parts or coordinates have been formatted.*
+
+Filters the final HTML output of the ACF Google Map field dynamic data. This runs after the address parts or coordinates have been formatted.
+
+## Parameters
+
+- `$output` (*string*): The rendered HTML output string.
+- `$value` (*array*): The raw value of the ACF Google Map field.
+- `$field` (*array*): The ACF field settings.
+
+## Example usage
+
+```php
+add_filter( 'bricks/acf/google_map/text_output', function( $output, $value, $field ) {
+    // Example: Strip HTML tags to get plain text
+    return wp_strip_all_tags( $output );
+}, 10, 3 );
+```
+
+---
+
 <a id="developer-hooks-filters-bricks-acf-google-map-show-as-address"></a>
 
 # Filter: bricks/acf/google_map/show_as_address
@@ -4728,33 +4755,6 @@ add_filter( 'bricks/acf/taxonomy/show_as_link', function( $show_as_link, $value,
 
 ---
 
-<a id="developer-hooks-filters-bricks-acf-google-map-text-output"></a>
-
-# Filter: bricks/acf/google_map/text_output
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-acf-google_map-text_output/
-
-*Filters the final HTML output of the ACF Google Map field dynamic data. This runs after the address parts or coordinates have been formatted.*
-
-Filters the final HTML output of the ACF Google Map field dynamic data. This runs after the address parts or coordinates have been formatted.
-
-## Parameters
-
-- `$output` (*string*): The rendered HTML output string.
-- `$value` (*array*): The raw value of the ACF Google Map field.
-- `$field` (*array*): The ACF field settings.
-
-## Example usage
-
-```php
-add_filter( 'bricks/acf/google_map/text_output', function( $output, $value, $field ) {
-    // Example: Strip HTML tags to get plain text
-    return wp_strip_all_tags( $output );
-}, 10, 3 );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-active-templates"></a>
 
 # Filter: bricks/active_templates
@@ -4786,33 +4786,6 @@ add_filter( 'bricks/active_templates', function( $active_templates, $post_id, $c
 
 ---
 
-<a id="developer-hooks-filters-bricks-allowed-html-tags"></a>
-
-# Filter: bricks/allowed_html_tags
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-allowed_html_tags/
-
-*Filters the list of allowed HTML tags that can be used when selecting a \"Custom\" HTML tag in element settings. This ensures that custom tags are sanitized.*
-
-Filters the list of allowed HTML tags that can be used when selecting a "Custom" HTML tag in element settings. This ensures that custom tags are sanitized correctly.
-
-## Parameters
-
-- `$allowed_html_tags` (*array*): Array of allowed HTML tag names.
-
-## Example usage
-
-```php
-add_filter( 'bricks/allowed_html_tags', function( $allowed_html_tags ) {
-    // Add 'marquee' to the list of allowed tags
-    $allowed_html_tags[] = 'marquee';
-
-    return $allowed_html_tags;
-} );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-ajax-get-pages-args"></a>
 
 # Filter: bricks/ajax/get_pages_args
@@ -4835,6 +4808,33 @@ add_filter( 'bricks/ajax/get_pages_args', function( $query_args ) {
     $query_args['post__not_in'] = [ 12, 34, 56 ];
 
     return $query_args;
+} );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-allowed-html-tags"></a>
+
+# Filter: bricks/allowed_html_tags
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-allowed_html_tags/
+
+*Filters the list of allowed HTML tags that can be used when selecting a \"Custom\" HTML tag in element settings. This ensures that custom tags are sanitized.*
+
+Filters the list of allowed HTML tags that can be used when selecting a "Custom" HTML tag in element settings. This ensures that custom tags are sanitized correctly.
+
+## Parameters
+
+- `$allowed_html_tags` (*array*): Array of allowed HTML tag names.
+
+## Example usage
+
+```php
+add_filter( 'bricks/allowed_html_tags', function( $allowed_html_tags ) {
+    // Add 'marquee' to the list of allowed tags
+    $allowed_html_tags[] = 'marquee';
+
+    return $allowed_html_tags;
 } );
 ```
 
@@ -4910,30 +4910,6 @@ add_filter( 'bricks/breadcrumbs/items', function( $breadcrumb_items ) {
 
 ---
 
-<a id="developer-hooks-filters-bricks-breadcrumbs-home-label"></a>
-
-# Filter: bricks/breadcrumbs/home_label
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-breadcrumbs-home_label/
-
-*Filters the label text used for the \"Home\" link in the Breadcrumbs element.*
-
-Filters the label text used for the "Home" link in the Breadcrumbs element.
-
-## Parameters
-
-- `$home_label` (*string*): The home label text (may include HTML if an icon is used).
-
-## Example usage
-
-```php
-add_filter( 'bricks/breadcrumbs/home_label', function( $home_label ) {
-    return 'Start';
-} );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-breadcrumbs-separator"></a>
 
 # Filter: bricks/breadcrumbs/separator
@@ -4954,6 +4930,30 @@ Filters the separator HTML displayed between items in the Breadcrumbs element.
 add_filter( 'bricks/breadcrumbs/separator', function( $separator ) {
     // Change separator to a custom character
     return '<span class="bricks-breadcrumbs-separator"> &raquo; </span>';
+} );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-breadcrumbs-home-label"></a>
+
+# Filter: bricks/breadcrumbs/home_label
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-breadcrumbs-home_label/
+
+*Filters the label text used for the \"Home\" link in the Breadcrumbs element.*
+
+Filters the label text used for the "Home" link in the Breadcrumbs element.
+
+## Parameters
+
+- `$home_label` (*string*): The home label text (may include HTML if an icon is used).
+
+## Example usage
+
+```php
+add_filter( 'bricks/breadcrumbs/home_label', function( $home_label ) {
+    return 'Start';
 } );
 ```
 
@@ -5017,37 +5017,6 @@ add_filter( 'bricks/builder/data_post_id', function( $post_id ) {
 
 ---
 
-<a id="developer-hooks-filters-bricks-builder-first-element-category"></a>
-
-# Filter: bricks/builder/first_element_category
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-builder-first_element_category/
-
-*Filters the default expanded element category in the Bricks builder panel. This allows you to prioritize specific element categories based on the post type or.*
-
-Filters the default expanded element category in the Bricks builder panel. This allows you to prioritize specific element categories based on the post type or ID being edited.
-
-## Parameters
-
-- `$category` (*string|bool*): The category name to expand by default (e.g., `layout`, `basic`, `single`). Default is `false`.
-- `$post_id` (*int*): The ID of the post being edited.
-- `$post_type` (*string*): The post type of the post being edited.
-
-## Example usage
-
-```php
-add_filter( 'bricks/builder/first_element_category', function( $category, $post_id, $post_type ) {
-    // Example: Expand 'woocommerce' category for product templates
-    if ( $post_type === 'product' ) {
-        return 'woocommerce';
-    }
-
-    return $category;
-}, 10, 3 );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-builder-dynamic-wrapper"></a>
 
 # Filter: bricks/builder/dynamic_wrapper
@@ -5078,6 +5047,37 @@ add_filter( 'bricks/builder/dynamic_wrapper', function( $dynamic_wrapper ) {
 
     return $dynamic_wrapper;
 } );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-builder-first-element-category"></a>
+
+# Filter: bricks/builder/first_element_category
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-builder-first_element_category/
+
+*Filters the default expanded element category in the Bricks builder panel. This allows you to prioritize specific element categories based on the post type or.*
+
+Filters the default expanded element category in the Bricks builder panel. This allows you to prioritize specific element categories based on the post type or ID being edited.
+
+## Parameters
+
+- `$category` (*string|bool*): The category name to expand by default (e.g., `layout`, `basic`, `single`). Default is `false`.
+- `$post_id` (*int*): The ID of the post being edited.
+- `$post_type` (*string*): The post type of the post being edited.
+
+## Example usage
+
+```php
+add_filter( 'bricks/builder/first_element_category', function( $category, $post_id, $post_type ) {
+    // Example: Expand 'woocommerce' category for product templates
+    if ( $post_type === 'product' ) {
+        return 'woocommerce';
+    }
+
+    return $category;
+}, 10, 3 );
 ```
 
 ---
@@ -5383,6 +5383,31 @@ add_filter( 'bricks/conditions/groups', function( $groups ) {
 
 ---
 
+<a id="developer-hooks-filters-bricks-comments-author-tag"></a>
+
+# Filter: bricks/comments/author_tag
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-comments-author_tag/
+
+*Filters the HTML tag used to wrap the comment author's name in the comments list.*
+
+Filters the HTML tag used to wrap the comment author's name in the comments list.
+
+## Parameters
+
+- `$tag` (*string*): The HTML tag name. Defaults to `h5`.
+
+## Example usage
+
+```php
+add_filter( 'bricks/comments/author_tag', function( $tag ) {
+    // Change author name tag to 'span'
+    return 'span';
+} );
+```
+
+---
+
 <a id="developer-hooks-filters-bricks-conditions-options"></a>
 
 # Filter: bricks/conditions/options
@@ -5427,30 +5452,6 @@ add_filter( 'bricks/conditions/options', function( $options ) {
 
 ---
 
-<a id="developer-hooks-filters-bricks-content-analysis-full-post-content-id"></a>
-
-# Filter: bricks/content_analysis/full_post_content_id
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-content_analysis-full_post_content_id/
-
-*Filters the post ID Bricks treats as the full-content target during content analysis.*
-
-Filters the post ID Bricks treats as the full-content target during content analysis. Return a post ID to let Bricks remove the More block only for that target post.
-
-## Parameters
-
-- `$post_id` (int): The content analysis target post ID. Defaults to 0.
-
-## Example usage
-
-```php
-add_filter( 'bricks/content_analysis/full_post_content_id', function( $post_id ) {
-    return defined( 'MY_CONTENT_ANALYSIS_POST_ID' ) ? MY_CONTENT_ANALYSIS_POST_ID : $post_id;
-} );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-conditions-result"></a>
 
 # Filter: bricks/conditions/result
@@ -5490,6 +5491,30 @@ add_filter( 'bricks/conditions/result', function( $result, $condition_key, $cond
 
 ---
 
+<a id="developer-hooks-filters-bricks-content-analysis-full-post-content-id"></a>
+
+# Filter: bricks/content_analysis/full_post_content_id
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-content_analysis-full_post_content_id/
+
+*Filters the post ID Bricks treats as the full-content target during content analysis.*
+
+Filters the post ID Bricks treats as the full-content target during content analysis. Return a post ID to let Bricks remove the More block only for that target post.
+
+## Parameters
+
+- `$post_id` (int): The content analysis target post ID. Defaults to 0.
+
+## Example usage
+
+```php
+add_filter( 'bricks/content_analysis/full_post_content_id', function( $post_id ) {
+    return defined( 'MY_CONTENT_ANALYSIS_POST_ID' ) ? MY_CONTENT_ANALYSIS_POST_ID : $post_id;
+} );
+```
+
+---
+
 <a id="developer-hooks-filters-bricks-custom-fonts-mime-types"></a>
 
 # Filter: bricks/custom_fonts/mime_types
@@ -5512,31 +5537,6 @@ add_filter( 'bricks/custom_fonts/mime_types', function( $mime_types ) {
     $mime_types['otf'] = 'font/otf';
 
     return $mime_types;
-} );
-```
-
----
-
-<a id="developer-hooks-filters-bricks-comments-author-tag"></a>
-
-# Filter: bricks/comments/author_tag
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-comments-author_tag/
-
-*Filters the HTML tag used to wrap the comment author's name in the comments list.*
-
-Filters the HTML tag used to wrap the comment author's name in the comments list.
-
-## Parameters
-
-- `$tag` (*string*): The HTML tag name. Defaults to `h5`.
-
-## Example usage
-
-```php
-add_filter( 'bricks/comments/author_tag', function( $tag ) {
-    // Change author name tag to 'span'
-    return 'span';
 } );
 ```
 
@@ -5628,6 +5628,33 @@ add_filter( 'bricks/database/get_all_templates_cache_key', function( $cache_key 
 
 ---
 
+<a id="developer-hooks-filters-bricks-dynamic-data-allowed-keys"></a>
+
+# Filter: bricks/dynamic_data/allowed_keys
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-dynamic_data-allowed_keys/
+
+*Filter which argument keys Bricks accepts inside dynamic data tags, so you can support custom modifiers and parsing behavior.*
+
+Filters the allowed argument keys (modifiers) that can be parsed in dynamic data tags (e.g., `{post_title:my_key}`). This allows you to introduce custom arguments for your dynamic tags.
+
+## Parameters
+
+- `$allowed_keys` (*array*): Array of allowed argument keys. Defaults include `fallback`, `fallback-image`, `sanitize`, `exclude`, `start-at`, `pad`, `key`, `is-array`, `date`, `from`, `to`.
+
+## Example usage
+
+```php
+add_filter( 'bricks/dynamic_data/allowed_keys', function( $allowed_keys ) {
+    // Add 'limit' as an allowed argument key
+    $allowed_keys[] = 'limit';
+
+    return $allowed_keys;
+} );
+```
+
+---
+
 <a id="developer-hooks-filters-bricks-drafts-keep-days"></a>
 
 # Filter: bricks/drafts/keep_days
@@ -5699,33 +5726,6 @@ add_filter( 'bricks/dynamic_data/author_value', function( $value, $field_type, $
 
     return $value;
 }, 10, 3 );
-```
-
----
-
-<a id="developer-hooks-filters-bricks-dynamic-data-allowed-keys"></a>
-
-# Filter: bricks/dynamic_data/allowed_keys
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-dynamic_data-allowed_keys/
-
-*Filter which argument keys Bricks accepts inside dynamic data tags, so you can support custom modifiers and parsing behavior.*
-
-Filters the allowed argument keys (modifiers) that can be parsed in dynamic data tags (e.g., `{post_title:my_key}`). This allows you to introduce custom arguments for your dynamic tags.
-
-## Parameters
-
-- `$allowed_keys` (*array*): Array of allowed argument keys. Defaults include `fallback`, `fallback-image`, `sanitize`, `exclude`, `start-at`, `pad`, `key`, `is-array`, `date`, `from`, `to`.
-
-## Example usage
-
-```php
-add_filter( 'bricks/dynamic_data/allowed_keys', function( $allowed_keys ) {
-    // Add 'limit' as an allowed argument key
-    $allowed_keys[] = 'limit';
-
-    return $allowed_keys;
-} );
 ```
 
 ---
@@ -5822,31 +5822,6 @@ add_filter( 'bricks/dynamic_data/meta_value/my_price_field', function( $value, $
 
 ---
 
-<a id="developer-hooks-filters-bricks-dynamic-data-register-hook"></a>
-
-# Filter: bricks/dynamic_data/register_hook
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-dynamic_data-register_hook/
-
-*Filters the WordPress action hook used to register Bricks dynamic data providers and tags.*
-
-Filters the WordPress action hook used to register Bricks dynamic data providers and tags.
-
-## Parameters
-
-- `$hook` (*string*): The action hook name. Defaults to `init`.
-
-## Example usage
-
-```php
-add_filter( 'bricks/dynamic_data/register_hook', function( $hook ) {
-    // Register dynamic data on 'wp_loaded' instead of 'init'
-    return 'wp_loaded';
-} );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-dynamic-data-register-providers"></a>
 
 # Filter: bricks/dynamic_data/register_providers
@@ -5868,6 +5843,31 @@ add_filter( 'bricks/dynamic_data/register_providers', function( $providers ) {
     $providers[] = 'my_provider';
 
     return $providers;
+} );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-dynamic-data-register-hook"></a>
+
+# Filter: bricks/dynamic_data/register_hook
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-dynamic_data-register_hook/
+
+*Filters the WordPress action hook used to register Bricks dynamic data providers and tags.*
+
+Filters the WordPress action hook used to register Bricks dynamic data providers and tags.
+
+## Parameters
+
+- `$hook` (*string*): The action hook name. Defaults to `init`.
+
+## Example usage
+
+```php
+add_filter( 'bricks/dynamic_data/register_hook', function( $hook ) {
+    // Register dynamic data on 'wp_loaded' instead of 'init'
+    return 'wp_loaded';
 } );
 ```
 
@@ -5907,37 +5907,6 @@ echo $parsed_content;
 
 ---
 
-<a id="developer-hooks-filters-bricks-dynamic-data-render-tag"></a>
-
-# Filter: bricks/dynamic_data/render_tag
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-dynamic_data-render_tag/
-
-*Filters the logic to resolve a single dynamic data tag to its value. This filter is called for each individual tag found in the content.*
-
-Filters the logic to resolve a single dynamic data tag to its value. This filter is called for each individual tag found in the content.
-
-## Parameters
-
-- `$tag` (*string*): The dynamic data tag string (without curly braces, e.g., `post_title:fallback`).
-- `$post` (*WP_Post*): The post context.
-- `$context` (*string*): The context where the tag is being rendered.
-
-## Example usage
-
-```php
-add_filter( 'bricks/dynamic_data/render_tag', function( $tag, $post, $context ) {
-    // Implement a custom tag '{my_custom_tag}'
-    if ( $tag === 'my_custom_tag' ) {
-        return 'My Custom Value';
-    }
-
-    return $tag; // Return original tag to let other providers handle it
-}, 10, 3 );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-dynamic-data-text-separator"></a>
 
 # Filter: bricks/dynamic_data/text_separator
@@ -5966,6 +5935,37 @@ add_filter( 'bricks/dynamic_data/text_separator', function( $sep, $tag, $post_id
 
     return $sep;
 }, 10, 4 );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-dynamic-data-render-tag"></a>
+
+# Filter: bricks/dynamic_data/render_tag
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-dynamic_data-render_tag/
+
+*Filters the logic to resolve a single dynamic data tag to its value. This filter is called for each individual tag found in the content.*
+
+Filters the logic to resolve a single dynamic data tag to its value. This filter is called for each individual tag found in the content.
+
+## Parameters
+
+- `$tag` (*string*): The dynamic data tag string (without curly braces, e.g., `post_title:fallback`).
+- `$post` (*WP_Post*): The post context.
+- `$context` (*string*): The context where the tag is being rendered.
+
+## Example usage
+
+```php
+add_filter( 'bricks/dynamic_data/render_tag', function( $tag, $post, $context ) {
+    // Implement a custom tag '{my_custom_tag}'
+    if ( $tag === 'my_custom_tag' ) {
+        return 'My Custom Value';
+    }
+
+    return $tag; // Return original tag to let other providers handle it
+}, 10, 3 );
 ```
 
 ---
@@ -6098,6 +6098,34 @@ add_filter( 'bricks/element/form/datepicker_options', function( $datepicker_opti
 
 ---
 
+<a id="developer-hooks-filters-bricks-elements-element-name-scripts"></a>
+
+# Filter: bricks/elements/{element_name}/scripts
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-elements-element_name-scripts/
+
+*Filters the script handles registered for a specific element. Replace {element_name} with the element name.*
+
+Filters the list of script handles to be loaded for a specific element. The `{$element_name}` portion of the hook name should be replaced with the element's name (e.g., `slider`, `accordion`, `my_custom_element`).
+
+## Parameters
+
+- `$scripts` (*array*): Array of script handles registered via `wp_register_script`.
+
+## Example usage
+
+```php
+// Filter scripts for the 'slider' element
+add_filter( 'bricks/elements/slider/scripts', function( $scripts ) {
+    // Add a custom script dependency
+    $scripts[] = 'my-custom-slider-script';
+
+    return $scripts;
+} );
+```
+
+---
+
 <a id="developer-hooks-filters-bricks-element-form-honeypot-result"></a>
 
 # Filter: bricks/element/form/honeypot/result
@@ -6157,58 +6185,6 @@ add_filter( 'bricks/element/maybe_set_aria_current_page', function( $set_aria_cu
 
 ---
 
-<a id="developer-hooks-filters-bricks-elements-element-name-scripts"></a>
-
-# Filter: bricks/elements/{element_name}/scripts
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-elements-element_name-scripts/
-
-*Filters the script handles registered for a specific element. Replace {element_name} with the element name.*
-
-Filters the list of script handles to be loaded for a specific element. The `{$element_name}` portion of the hook name should be replaced with the element's name (e.g., `slider`, `accordion`, `my_custom_element`).
-
-## Parameters
-
-- `$scripts` (*array*): Array of script handles registered via `wp_register_script`.
-
-## Example usage
-
-```php
-// Filter scripts for the 'slider' element
-add_filter( 'bricks/elements/slider/scripts', function( $scripts ) {
-    // Add a custom script dependency
-    $scripts[] = 'my-custom-slider-script';
-
-    return $scripts;
-} );
-```
-
----
-
-<a id="developer-hooks-filters-bricks-elements-nav-menu-menus"></a>
-
-# Filter: bricks/elements/nav_menu/menus
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-elements-nav_menu-menus/
-
-*Filters the nav menus shown in the Nav Menu element while in the builder.*
-
-Filters the nav menus shown in the Nav Menu element while in the builder. Return an array of menu objects to override the menus Bricks loads from WordPress.
-
-## Parameters
-
-- `$menus` (array|null): Menus to use in the builder. Return null to let Bricks fall back to wp_get_nav_menus().
-
-## Example usage
-
-```php
-add_filter( 'bricks/elements/nav_menu/menus', function( $menus ) {
-    return wp_get_nav_menus();
-} );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-elements-nav-menu-name"></a>
 
 # Filter: bricks/elements/nav_menu/name
@@ -6229,37 +6205,6 @@ Filters a nav menu label shown in the Nav Menu element. Use it to adjust menu na
 ```php
 add_filter( 'bricks/elements/nav_menu/name', function( $name, $menu ) {
     return $name . ' (' . $menu->term_id . ')';
-}, 10, 2 );
-```
-
----
-
-<a id="developer-hooks-filters-bricks-filter-element-datepicker-options"></a>
-
-# Filter: bricks/filter-element/datepicker_options
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter-element-datepicker_options/
-
-*Filters the Flatpickr options used by the Filter: Datepicker element. This allows you to customize the behavior of the date picker within query filters.*
-
-Filters the Flatpickr options used by the Filter: Datepicker element. This allows you to customize the behavior of the date picker within query filters.
-
-## Parameters
-
-- `$datepicker_options` (*array*): Array of Flatpickr options.
-- `$element` (*object*): The Filter: Datepicker element instance.
-
-## Example usage
-
-```php
-add_filter( 'bricks/filter-element/datepicker_options', function( $datepicker_options, $element ) {
-    // Example: Change the date format
-    $datepicker_options['dateFormat'] = 'Y-m-d';
-
-    // Example: Disable specific dates
-    $datepicker_options['disable'] = [ '2023-12-25', '2024-01-01' ];
-
-    return $datepicker_options;
 }, 10, 2 );
 ```
 
@@ -6316,6 +6261,61 @@ add_filter( 'bricks/filter/taxonomy_args', function( $args, $element ) {
     $args['exclude'] = [ 1, 2, 3 ];
 
     return $args;
+}, 10, 2 );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-elements-nav-menu-menus"></a>
+
+# Filter: bricks/elements/nav_menu/menus
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-elements-nav_menu-menus/
+
+*Filters the nav menus shown in the Nav Menu element while in the builder.*
+
+Filters the nav menus shown in the Nav Menu element while in the builder. Return an array of menu objects to override the menus Bricks loads from WordPress.
+
+## Parameters
+
+- `$menus` (array|null): Menus to use in the builder. Return null to let Bricks fall back to wp_get_nav_menus().
+
+## Example usage
+
+```php
+add_filter( 'bricks/elements/nav_menu/menus', function( $menus ) {
+    return wp_get_nav_menus();
+} );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-filter-element-datepicker-options"></a>
+
+# Filter: bricks/filter-element/datepicker_options
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter-element-datepicker_options/
+
+*Filters the Flatpickr options used by the Filter: Datepicker element. This allows you to customize the behavior of the date picker within query filters.*
+
+Filters the Flatpickr options used by the Filter: Datepicker element. This allows you to customize the behavior of the date picker within query filters.
+
+## Parameters
+
+- `$datepicker_options` (*array*): Array of Flatpickr options.
+- `$element` (*object*): The Filter: Datepicker element instance.
+
+## Example usage
+
+```php
+add_filter( 'bricks/filter-element/datepicker_options', function( $datepicker_options, $element ) {
+    // Example: Change the date format
+    $datepicker_options['dateFormat'] = 'Y-m-d';
+
+    // Example: Disable specific dates
+    $datepicker_options['disable'] = [ '2023-12-25', '2024-01-01' ];
+
+    return $datepicker_options;
 }, 10, 2 );
 ```
 
@@ -6545,36 +6545,6 @@ add_filter( 'bricks/filter_element/datepicker_db_date_format', function( $db_for
 
 ---
 
-<a id="developer-hooks-filters-bricks-filter-element-filtered-source"></a>
-
-# Filter: bricks/filter_element/filtered_source
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter_element-filtered_source/
-
-*Filters the data retrieved from the index representing the available filter options and their counts based on the current query results.*
-
-Filters the data retrieved from the index representing the available filter options and their counts based on the current query results.
-
-## Parameters
-
-- `$filtered_source` (*array*): Associative array where keys are filter values and values are their respective counts (based on the current filtered query).
-- `$element` (*object*): The filter element instance.
-
-## Example usage
-
-```php
-add_filter( 'bricks/filter_element/filtered_source', function( $filtered_source, $element ) {
-    // Example: Ensure a specific value is always present with a count of 0 if missing
-    if ( ! isset( $filtered_source['some_value'] ) ) {
-        $filtered_source['some_value'] = 0;
-    }
-
-    return $filtered_source;
-}, 10, 2 );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-fix-filter-element-db"></a>
 
 # Filter: bricks/fix_filter_element_db
@@ -6648,27 +6618,32 @@ add_filter( 'bricks/form/file_directory', function( $directory_path, $form, $inp
 
 ---
 
-<a id="developer-hooks-filters-bricks-form-recaptcha-score-threshold"></a>
+<a id="developer-hooks-filters-bricks-filter-element-filtered-source"></a>
 
-# Filter: bricks/form/recaptcha_score_threshold
+# Filter: bricks/filter_element/filtered_source
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-recaptcha_score_threshold/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-filter_element-filtered_source/
 
-*Filters the minimum score required for Google reCAPTCHA v3 validation in Bricks forms. Scores range from 0.0 (likely a bot) to 1.0 (likely a human).*
+*Filters the data retrieved from the index representing the available filter options and their counts based on the current query results.*
 
-Filters the minimum score required for Google reCAPTCHA v3 validation in Bricks forms. Scores range from 0.0 (likely a bot) to 1.0 (likely a human).
+Filters the data retrieved from the index representing the available filter options and their counts based on the current query results.
 
 ## Parameters
 
-- `$score` (*float*): The minimum score threshold. Default is `0.5`.
+- `$filtered_source` (*array*): Associative array where keys are filter values and values are their respective counts (based on the current filtered query).
+- `$element` (*object*): The filter element instance.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/form/recaptcha_score_threshold', function( $score ) {
-    // Increase threshold to 0.8 for stricter validation
-    return 0.8;
-} );
+add_filter( 'bricks/filter_element/filtered_source', function( $filtered_source, $element ) {
+    // Example: Ensure a specific value is always present with a count of 0 if missing
+    if ( ! isset( $filtered_source['some_value'] ) ) {
+        $filtered_source['some_value'] = 0;
+    }
+
+    return $filtered_source;
+}, 10, 2 );
 ```
 
 ---
@@ -6747,6 +6722,31 @@ add_filter( 'bricks/form/save-submission/form_data', function( $form_data, $form
 
 - This filter affects **save submissions only**. It does not change what is sent via email actions or other integrations unless those also use the stored submission data.
 - For sensitive fields, consider disabling save submission entirely if you don’t need it, or mask/remove values using this filter.
+
+---
+
+<a id="developer-hooks-filters-bricks-form-recaptcha-score-threshold"></a>
+
+# Filter: bricks/form/recaptcha_score_threshold
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-form-recaptcha_score_threshold/
+
+*Filters the minimum score required for Google reCAPTCHA v3 validation in Bricks forms. Scores range from 0.0 (likely a bot) to 1.0 (likely a human).*
+
+Filters the minimum score required for Google reCAPTCHA v3 validation in Bricks forms. Scores range from 0.0 (likely a bot) to 1.0 (likely a human).
+
+## Parameters
+
+- `$score` (*float*): The minimum score threshold. Default is `0.5`.
+
+## Example usage
+
+```php
+add_filter( 'bricks/form/recaptcha_score_threshold', function( $score ) {
+    // Increase threshold to 0.8 for stricter validation
+    return 0.8;
+} );
+```
 
 ---
 
@@ -6932,6 +6932,32 @@ add_filter( 'bricks/frontend/render_loop', function( $output, $element, $contain
 
 ---
 
+<a id="developer-hooks-filters-bricks-get-builder-edit-link"></a>
+
+# Filter: bricks/get_builder_edit_link
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_builder_edit_link/
+
+*Filters the \"Edit with Bricks\" URL generated for a post. This allows you to append custom query parameters or modify the link structure.*
+
+Filters the "Edit with Bricks" URL generated for a post. This allows you to append custom query parameters or modify the link structure.
+
+## Parameters
+
+- `$url` (*string*): The "Edit with Bricks" URL.
+- `$post_id` (*int*): The ID of the post.
+
+## Example usage
+
+```php
+add_filter( 'bricks/get_builder_edit_link', function( $url, $post_id ) {
+    // Example: Append a custom parameter to the builder URL
+    return add_query_arg( 'my_param', 'value', $url );
+}, 10, 2 );
+```
+
+---
+
 <a id="developer-hooks-filters-bricks-get-remote-templates-data"></a>
 
 # Filter: bricks/get_remote_templates_data
@@ -6961,32 +6987,6 @@ add_filter( 'bricks/get_remote_templates_data', function( $remote_templates ) {
 
     return $remote_templates;
 } );
-```
-
----
-
-<a id="developer-hooks-filters-bricks-get-builder-edit-link"></a>
-
-# Filter: bricks/get_builder_edit_link
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-get_builder_edit_link/
-
-*Filters the \"Edit with Bricks\" URL generated for a post. This allows you to append custom query parameters or modify the link structure.*
-
-Filters the "Edit with Bricks" URL generated for a post. This allows you to append custom query parameters or modify the link structure.
-
-## Parameters
-
-- `$url` (*string*): The "Edit with Bricks" URL.
-- `$post_id` (*int*): The ID of the post.
-
-## Example usage
-
-```php
-add_filter( 'bricks/get_builder_edit_link', function( $url, $post_id ) {
-    // Example: Append a custom parameter to the builder URL
-    return add_query_arg( 'my_param', 'value', $url );
-}, 10, 2 );
 ```
 
 ---
@@ -7287,6 +7287,31 @@ This filter does not control page revisions or draft undo points. For finished d
 
 ---
 
+<a id="developer-hooks-filters-bricks-handle-no-results-children-elements"></a>
+
+# Filter: bricks/handle_no_results_children_elements
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-handle_no_results_children_elements/
+
+*Determines whether Bricks should run logic to handle children elements displayed when a query loop returns no results (e.g., ensuring scripts/styles are.*
+
+Determines whether Bricks should run logic to handle children elements displayed when a query loop returns no results (e.g., ensuring scripts/styles are enqueued for "No results" content).
+
+## Parameters
+
+- `$run` (*bool*): Whether to handle "No results" children logic. Defaults to `true` if Query Filters are enabled.
+
+## Example usage
+
+```php
+add_filter( 'bricks/handle_no_results_children_elements', function( $run ) {
+    // Example: Always enable this logic, even if native Query Filters are disabled
+    return true;
+} );
+```
+
+---
+
 <a id="developer-hooks-filters-bricks-global-history-keep-latest"></a>
 
 # Filter: bricks/global_history/keep_latest
@@ -7321,31 +7346,6 @@ Bricks also keeps every entry within the period set by [`bricks/global_history/k
 With the example above, an item can keep more than 40 entries if they are recent. It can also keep 40 entries older than 90 days when those are its latest entries. The count is a minimum retained per item, not a storage cap.
 
 The filter is read during the scheduled daily cleanup. Changing it does not prune records immediately or recover records already removed. WP-Cron must run for scheduled cleanup to take place.
-
----
-
-<a id="developer-hooks-filters-bricks-handle-no-results-children-elements"></a>
-
-# Filter: bricks/handle_no_results_children_elements
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-handle_no_results_children_elements/
-
-*Determines whether Bricks should run logic to handle children elements displayed when a query loop returns no results (e.g., ensuring scripts/styles are.*
-
-Determines whether Bricks should run logic to handle children elements displayed when a query loop returns no results (e.g., ensuring scripts/styles are enqueued for "No results" content).
-
-## Parameters
-
-- `$run` (*bool*): Whether to handle "No results" children logic. Defaults to `true` if Query Filters are enabled.
-
-## Example usage
-
-```php
-add_filter( 'bricks/handle_no_results_children_elements', function( $run ) {
-    // Example: Always enable this logic, even if native Query Filters are disabled
-    return true;
-} );
-```
 
 ---
 
@@ -7622,42 +7622,6 @@ add_filter( 'bricks/posts/query_vars', function( $query_vars, $settings, $elemen
 
 ---
 
-<a id="developer-hooks-filters-bricks-pagination-custom-logic"></a>
-
-# Filter: bricks/pagination/custom_logic
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-pagination-custom_logic/
-
-*Enable custom pagination logic in Bricks when your query type needs custom current-page and total-page handling.*
-
-The `bricks/pagination/custom_logic` filter allows you to implement custom pagination logic in Bricks Builder based on specific query settings. `@since 2.2`
-
-In this example, we'll demonstrate how to apply custom pagination logic to a custom loop.
-
-Next, you will need to use the following 2 filters to amend the current page and total page arguments when generating HTML for the pagination:
-
-- `bricks/pagination/current_page`
-- `bricks/pagination/total_pages`
-
-```php
-// Return true if want to use custom logic, default is false
-add_filter( 'bricks/pagination/custom_logic', function( $custom_logic, $query_settings, $element ) {
-  $query_object_type = $query_settings['query']['objectType'] ?? false;
-
-  // If not my custom loop, return original value
-  if( $query_object_type !== 'my_custom_loop' ) {
-    return $custom_logic;
-  }
-
-  // You can access the element settings via $element->settings
-
-  return true;
-}, 10, 3);
-
-```
-
----
-
 <a id="developer-hooks-filters-bricks-paginate-links-args"></a>
 
 # Filter: bricks/paginate_links_args
@@ -7735,6 +7699,69 @@ add_filter( 'bricks/pagination/current_page', function( $current_page, $query_se
 
 ---
 
+<a id="developer-hooks-filters-bricks-pagination-custom-logic"></a>
+
+# Filter: bricks/pagination/custom_logic
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-pagination-custom_logic/
+
+*Enable custom pagination logic in Bricks when your query type needs custom current-page and total-page handling.*
+
+The `bricks/pagination/custom_logic` filter allows you to implement custom pagination logic in Bricks Builder based on specific query settings. `@since 2.2`
+
+In this example, we'll demonstrate how to apply custom pagination logic to a custom loop.
+
+Next, you will need to use the following 2 filters to amend the current page and total page arguments when generating HTML for the pagination:
+
+- `bricks/pagination/current_page`
+- `bricks/pagination/total_pages`
+
+```php
+// Return true if want to use custom logic, default is false
+add_filter( 'bricks/pagination/custom_logic', function( $custom_logic, $query_settings, $element ) {
+  $query_object_type = $query_settings['query']['objectType'] ?? false;
+
+  // If not my custom loop, return original value
+  if( $query_object_type !== 'my_custom_loop' ) {
+    return $custom_logic;
+  }
+
+  // You can access the element settings via $element->settings
+
+  return true;
+}, 10, 3);
+
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-polylang-builder-ajax-params"></a>
+
+# Filter: bricks/polylang/builder_ajax_params
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-polylang-builder_ajax_params/
+
+*Filters the Polylang AJAX parameters injected into builder media requests.*
+
+Filters the Polylang AJAX parameters injected into builder media requests. Use it to add or adjust language-aware parameters for the media library in the builder.
+
+## Parameters
+
+- `$params` (array): Parameters added to media AJAX requests.
+- `$post_id` (int): The current builder post ID.
+
+## Example usage
+
+```php
+add_filter( 'bricks/polylang/builder_ajax_params', function( $params, $post_id ) {
+    $params['lang'] = pll_current_language();
+
+    return $params;
+}, 10, 2 );
+```
+
+---
+
 <a id="developer-hooks-filters-bricks-pagination-total-pages"></a>
 
 # Filter: bricks/pagination/total_pages
@@ -7773,33 +7800,6 @@ add_filter( 'bricks/pagination/total_pages', function( $total_page, $query_setti
 
   return ceil( count( $my_custom_loop_results ) / $post_per_page );
 }, 10, 3);
-```
-
----
-
-<a id="developer-hooks-filters-bricks-polylang-builder-ajax-params"></a>
-
-# Filter: bricks/polylang/builder_ajax_params
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-polylang-builder_ajax_params/
-
-*Filters the Polylang AJAX parameters injected into builder media requests.*
-
-Filters the Polylang AJAX parameters injected into builder media requests. Use it to add or adjust language-aware parameters for the media library in the builder.
-
-## Parameters
-
-- `$params` (array): Parameters added to media AJAX requests.
-- `$post_id` (int): The current builder post ID.
-
-## Example usage
-
-```php
-add_filter( 'bricks/polylang/builder_ajax_params', function( $params, $post_id ) {
-    $params['lang'] = pll_current_language();
-
-    return $params;
-}, 10, 2 );
 ```
 
 ---
@@ -7918,35 +7918,6 @@ add_filter( 'bricks/query/archive_query_supported_object_types', function( $obje
 
 ---
 
-<a id="developer-hooks-filters-bricks-query-cache-key"></a>
-
-# Filter: bricks/query/cache_key
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-cache_key/
-
-*Filters the cache key used for a Bricks query loop.*
-
-Filters the cache key used for a Bricks query loop. Use it when external context, such as language, should split query cache entries.
-
-## Parameters
-
-- `$cache_key` (string): The generated query cache key.
-- `$query` (Bricks\Query): The Bricks query instance.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query/cache_key', function( $cache_key, $query ) {
-    if ( function_exists( 'pll_current_language' ) ) {
-        $cache_key .= '_' . pll_current_language();
-    }
-
-    return $cache_key;
-}, 10, 2 );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-query-fake-result"></a>
 
 # Filter: bricks/query/fake_result
@@ -7977,27 +7948,31 @@ add_filter( 'bricks/query/fake_result', function( $results, $query ) {
 
 ---
 
-<a id="developer-hooks-filters-bricks-query-force-loop-index"></a>
+<a id="developer-hooks-filters-bricks-query-cache-key"></a>
 
-# Filter: bricks/query/force_loop_index
+# Filter: bricks/query/cache_key
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-force_loop_index/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-cache_key/
 
-*Forces Bricks\\Query::getloopindex() to return a specific value. This is useful for AJAX contexts (like popups) where you need to simulate a specific loop.*
+*Filters the cache key used for a Bricks query loop.*
 
-Forces `Bricks\Query::get_loop_index()` to return a specific value. This is useful for AJAX contexts (like popups) where you need to simulate a specific loop iteration to render correct data or styles.
+Filters the cache key used for a Bricks query loop. Use it when external context, such as language, should split query cache entries.
 
 ## Parameters
 
-- `$index` (*string|int*): The forced loop index. Default is `''` (empty string), meaning no override.
+- `$cache_key` (string): The generated query cache key.
+- `$query` (Bricks\Query): The Bricks query instance.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/query/force_loop_index', function( $index ) {
-    // Example: Force loop index to 0
-    return 0;
-} );
+add_filter( 'bricks/query/cache_key', function( $cache_key, $query ) {
+    if ( function_exists( 'pll_current_language' ) ) {
+        $cache_key .= '_' . pll_current_language();
+    }
+
+    return $cache_key;
+}, 10, 2 );
 ```
 
 ---
@@ -8059,6 +8034,31 @@ add_filter( 'bricks/query/prepare_query_vars_from_settings', function( $settings
 
     return $settings;
 }, 10, 2 );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-query-force-loop-index"></a>
+
+# Filter: bricks/query/force_loop_index
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-force_loop_index/
+
+*Forces Bricks\\Query::getloopindex() to return a specific value. This is useful for AJAX contexts (like popups) where you need to simulate a specific loop.*
+
+Forces `Bricks\Query::get_loop_index()` to return a specific value. This is useful for AJAX contexts (like popups) where you need to simulate a specific loop iteration to render correct data or styles.
+
+## Parameters
+
+- `$index` (*string|int*): The forced loop index. Default is `''` (empty string), meaning no override.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query/force_loop_index', function( $index ) {
+    // Example: Force loop index to 0
+    return 0;
+} );
 ```
 
 ---
@@ -8182,62 +8182,6 @@ add_filter( 'bricks/query/run_fake', function( $results, $query ) {
 
 ---
 
-<a id="developer-hooks-filters-bricks-query-api-body"></a>
-
-# Filter: bricks/query_api/body
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-body/
-
-*Filters the body used by a Query API element request.*
-
-Filters the body data used by a Query API element request before Bricks adds it to the HTTP request.
-
-Bricks only builds a body for request methods that support one in the Query API implementation, currently `POST`.
-
-## Parameters
-
-- `$body_data` (string|array|null): The request body data Bricks has built.
-- `$element_id` (string): The Query API element ID.
-- `$query_api` (object): The Query API integration instance.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_api/body', function( $body_data, $element_id, $query_api ) {
-    return $body_data;
-}, 10, 3 );
-```
-
----
-
-<a id="developer-hooks-filters-bricks-query-api-headers"></a>
-
-# Filter: bricks/query_api/headers
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-headers/
-
-*Filters the headers used by a Query API element request.*
-
-Filters the headers used by a Query API element request before Bricks sends it.
-
-## Parameters
-
-- `$headers` (array): HTTP request headers.
-- `$element_id` (string): The Query API element ID.
-- `$query_api` (object): The Query API integration instance.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_api/headers', function( $headers, $element_id, $query_api ) {
-    $headers['X-Client'] = 'my-site';
-
-    return $headers;
-}, 10, 3 );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-query-supress-render-content"></a>
 
 # Filter: bricks/query/supress_render_content
@@ -8268,6 +8212,34 @@ add_filter( 'bricks/query/supress_render_content', function( $suppress, $query )
 
 ---
 
+<a id="developer-hooks-filters-bricks-query-api-body"></a>
+
+# Filter: bricks/query_api/body
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-body/
+
+*Filters the body used by a Query API element request.*
+
+Filters the body data used by a Query API element request before Bricks adds it to the HTTP request.
+
+Bricks only builds a body for request methods that support one in the Query API implementation, currently `POST`.
+
+## Parameters
+
+- `$body_data` (string|array|null): The request body data Bricks has built.
+- `$element_id` (string): The Query API element ID.
+- `$query_api` (object): The Query API integration instance.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_api/body', function( $body_data, $element_id, $query_api ) {
+    return $body_data;
+}, 10, 3 );
+```
+
+---
+
 <a id="developer-hooks-filters-bricks-query-api-request-args"></a>
 
 # Filter: bricks/query_api/request_args
@@ -8291,6 +8263,34 @@ add_filter( 'bricks/query_api/request_args', function( $args, $element_id, $quer
     $args['timeout'] = 20;
 
     return $args;
+}, 10, 3 );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-query-api-headers"></a>
+
+# Filter: bricks/query_api/headers
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_api-headers/
+
+*Filters the headers used by a Query API element request.*
+
+Filters the headers used by a Query API element request before Bricks sends it.
+
+## Parameters
+
+- `$headers` (array): HTTP request headers.
+- `$element_id` (string): The Query API element ID.
+- `$query_api` (object): The Query API integration instance.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_api/headers', function( $headers, $element_id, $query_api ) {
+    $headers['X-Client'] = 'my-site';
+
+    return $headers;
 }, 10, 3 );
 ```
 
@@ -8557,6 +8557,33 @@ add_filter( 'bricks/query_filters/element_data', function( $element_data, $eleme
 
 ---
 
+<a id="developer-hooks-filters-bricks-query-filters-get-filter-object-ids"></a>
+
+# Filter: bricks/query_filters/get_filter_object_ids
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-get_filter_object_ids/
+
+*Filters the object IDs used to build query filter counts.*
+
+Filters the object IDs used to build query filter counts. Use it when an integration needs to supply or alter the base object IDs for a query/filter source.
+
+## Parameters
+
+- `$all_object_ids` (array): The object IDs Bricks has collected.
+- `$query_id` (string): The query element ID.
+- `$query_type` (string): The query type being processed.
+- `$source` (string): The filter source.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_filters/get_filter_object_ids', function( $all_object_ids, $query_id, $query_type, $source ) {
+    return $all_object_ids;
+}, 10, 4 );
+```
+
+---
+
 <a id="developer-hooks-filters-bricks-query-filters-filter-query-vars"></a>
 
 # Filter: bricks/query_filters/filter_query_vars
@@ -8584,33 +8611,6 @@ add_filter( 'bricks/query_filters/filter_query_vars', function( $query_vars, $fi
     }
 
     return $query_vars;
-}, 10, 4 );
-```
-
----
-
-<a id="developer-hooks-filters-bricks-query-filters-get-filter-object-ids"></a>
-
-# Filter: bricks/query_filters/get_filter_object_ids
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-get_filter_object_ids/
-
-*Filters the object IDs used to build query filter counts.*
-
-Filters the object IDs used to build query filter counts. Use it when an integration needs to supply or alter the base object IDs for a query/filter source.
-
-## Parameters
-
-- `$all_object_ids` (array): The object IDs Bricks has collected.
-- `$query_id` (string): The query element ID.
-- `$query_type` (string): The query type being processed.
-- `$source` (string): The filter source.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_filters/get_filter_object_ids', function( $all_object_ids, $query_id, $query_type, $source ) {
-    return $all_object_ids;
 }, 10, 4 );
 ```
 
@@ -8681,6 +8681,51 @@ add_filter( 'bricks/query_filters/index_post/meta_exists', function( $exists, $p
 
 ---
 
+<a id="developer-hooks-filters-bricks-query-filters-index-post-source"></a>
+
+# Filter: bricks/query_filters/index_post/{source}
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-index_post-source/
+
+*Filters index rows generated for a post when the filter source is unknown or provided by an integration.*
+
+Filters the index rows generated for a post when the filter source is unknown or handled by a third-party provider. The `{$source}` portion of the hook name corresponds to the filter source (e.g., `wcField` or a custom source).
+
+## Parameters
+
+- `$rows` (*array*): Array of index rows to be inserted into the database. Default is `[]`.
+- `$post_id` (*int*): The ID of the post being indexed.
+- `$elements` (*array*): Array of filter elements targeting this post.
+
+Each row must include `filter_id`, `object_id`, `object_type`, `filter_value`, `filter_value_display`, `filter_value_id`, and `filter_value_parent`.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_filters/index_post/my_custom_source', function( $rows, $post_id, $elements ) {
+    foreach ( $elements as $element ) {
+        // Calculate filter value for this post
+        $value = get_post_meta( $post_id, 'my_custom_field', true );
+
+        if ( $value ) {
+            $rows[] = [
+                'filter_id'            => $element['filter_id'],
+                'object_id'            => $post_id,
+                'object_type'          => 'post',
+                'filter_value'         => $value,
+                'filter_value_display' => $value,
+                'filter_value_id'      => 0,
+                'filter_value_parent'  => 0,
+            ];
+        }
+    }
+
+    return $rows;
+}, 10, 3 );
+```
+
+---
+
 <a id="developer-hooks-filters-bricks-query-filters-index-post-wcfield"></a>
 
 # Filter: bricks/query_filters/index_post/wcField
@@ -8745,51 +8790,6 @@ add_filter( 'bricks/query_filters/index_user/meta_exists', function( $exists, $u
 
     return $exists;
 }, 10, 4 );
-```
-
----
-
-<a id="developer-hooks-filters-bricks-query-filters-index-post-source"></a>
-
-# Filter: bricks/query_filters/index_post/{source}
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters-index_post-source/
-
-*Filters index rows generated for a post when the filter source is unknown or provided by an integration.*
-
-Filters the index rows generated for a post when the filter source is unknown or handled by a third-party provider. The `{$source}` portion of the hook name corresponds to the filter source (e.g., `wcField` or a custom source).
-
-## Parameters
-
-- `$rows` (*array*): Array of index rows to be inserted into the database. Default is `[]`.
-- `$post_id` (*int*): The ID of the post being indexed.
-- `$elements` (*array*): Array of filter elements targeting this post.
-
-Each row must include `filter_id`, `object_id`, `object_type`, `filter_value`, `filter_value_display`, `filter_value_id`, and `filter_value_parent`.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_filters/index_post/my_custom_source', function( $rows, $post_id, $elements ) {
-    foreach ( $elements as $element ) {
-        // Calculate filter value for this post
-        $value = get_post_meta( $post_id, 'my_custom_field', true );
-
-        if ( $value ) {
-            $rows[] = [
-                'filter_id'            => $element['filter_id'],
-                'object_id'            => $post_id,
-                'object_type'          => 'post',
-                'filter_value'         => $value,
-                'filter_value_display' => $value,
-                'filter_value_id'      => 0,
-                'filter_value_parent'  => 0,
-            ];
-        }
-    }
-
-    return $rows;
-}, 10, 3 );
 ```
 
 ---
@@ -8888,6 +8888,73 @@ add_filter( 'bricks/query_filters_cf_integration/register_providers', function( 
 
 ---
 
+<a id="developer-hooks-filters-bricks-query-filters-indexer-post-wcfield"></a>
+
+# Filter: bricks/query_filters_indexer/post/wcField
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters_indexer-post-wcfield/
+
+*A specialized hook for the Query Filters Indexer to generate index rows for WooCommerce product fields (like price, stock status, rating) when processing a.*
+
+A specialized hook for the Query Filters Indexer to generate index rows for WooCommerce product fields (like price, stock status, rating) when processing a filter job.
+
+## Parameters
+
+- `$rows` (*array*): Array of index rows to be inserted. Default is `[]`.
+- `$post` (*WP_Post|int*): The product object or ID being indexed.
+- `$filter_id` (*string*): The ID of the filter element.
+- `$filter_settings` (*array*): The settings of the filter element.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_filters_indexer/post/wcField', function( $rows, $post, $filter_id, $filter_settings ) {
+    // This filter is typically used internally by Bricks to handle WooCommerce fields.
+    // However, you could hook into it to index custom WooCommerce product data via the 'wcField' source.
+    
+    // Check if indexing a specific custom WC field
+    if ( isset( $filter_settings['sourceFieldType'] ) && $filter_settings['sourceFieldType'] === 'my_custom_wc_field' ) {
+        // ... generate and return rows ...
+    }
+
+    return $rows;
+}, 10, 4 );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-query-filters-indexer-validate-job-settings"></a>
+
+# Filter: bricks/query_filters_indexer/validate_job_settings
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters_indexer-validate_job_settings/
+
+*Validates the settings of a filter job before the Query Filters Indexer processes it. This is used for unknown or custom filter sources to ensure they have the.*
+
+Validates the settings of a filter job before the Query Filters Indexer processes it. This is used for unknown or custom filter sources to ensure they have the necessary configuration.
+
+## Parameters
+
+- `$validate` (*bool*): Whether the settings are valid. Default is `false` for unknown sources.
+- `$filter_source` (*string*): The source of the filter data (e.g., `wcField`, `customSource`).
+- `$filter_settings` (*array*): The settings of the filter element.
+
+## Example usage
+
+```php
+add_filter( 'bricks/query_filters_indexer/validate_job_settings', function( $validate, $filter_source, $filter_settings ) {
+    // Validate settings for a custom source
+    if ( $filter_source === 'my_custom_source' ) {
+        // Check if required 'my_key' setting is present
+        return ! empty( $filter_settings['my_key'] );
+    }
+
+    return $validate;
+}, 10, 3 );
+```
+
+---
+
 <a id="developer-hooks-filters-bricks-query-filters-indexer-post-filter-source"></a>
 
 # Filter: bricks/query_filters_indexer/post/{filter_source}
@@ -8932,41 +8999,6 @@ add_filter( 'bricks/query_filters_indexer/post/my_custom_source', function( $row
 
 ---
 
-<a id="developer-hooks-filters-bricks-query-filters-indexer-post-wcfield"></a>
-
-# Filter: bricks/query_filters_indexer/post/wcField
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters_indexer-post-wcfield/
-
-*A specialized hook for the Query Filters Indexer to generate index rows for WooCommerce product fields (like price, stock status, rating) when processing a.*
-
-A specialized hook for the Query Filters Indexer to generate index rows for WooCommerce product fields (like price, stock status, rating) when processing a filter job.
-
-## Parameters
-
-- `$rows` (*array*): Array of index rows to be inserted. Default is `[]`.
-- `$post` (*WP_Post|int*): The product object or ID being indexed.
-- `$filter_id` (*string*): The ID of the filter element.
-- `$filter_settings` (*array*): The settings of the filter element.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_filters_indexer/post/wcField', function( $rows, $post, $filter_id, $filter_settings ) {
-    // This filter is typically used internally by Bricks to handle WooCommerce fields.
-    // However, you could hook into it to index custom WooCommerce product data via the 'wcField' source.
-    
-    // Check if indexing a specific custom WC field
-    if ( isset( $filter_settings['sourceFieldType'] ) && $filter_settings['sourceFieldType'] === 'my_custom_wc_field' ) {
-        // ... generate and return rows ...
-    }
-
-    return $rows;
-}, 10, 4 );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-remote-get"></a>
 
 # Filter: bricks/remote_get
@@ -8993,38 +9025,6 @@ add_filter( 'bricks/remote_get', function( $args, $url ) {
 
     return $args;
 }, 10, 2 );
-```
-
----
-
-<a id="developer-hooks-filters-bricks-query-filters-indexer-validate-job-settings"></a>
-
-# Filter: bricks/query_filters_indexer/validate_job_settings
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query_filters_indexer-validate_job_settings/
-
-*Validates the settings of a filter job before the Query Filters Indexer processes it. This is used for unknown or custom filter sources to ensure they have the.*
-
-Validates the settings of a filter job before the Query Filters Indexer processes it. This is used for unknown or custom filter sources to ensure they have the necessary configuration.
-
-## Parameters
-
-- `$validate` (*bool*): Whether the settings are valid. Default is `false` for unknown sources.
-- `$filter_source` (*string*): The source of the filter data (e.g., `wcField`, `customSource`).
-- `$filter_settings` (*array*): The settings of the filter element.
-
-## Example usage
-
-```php
-add_filter( 'bricks/query_filters_indexer/validate_job_settings', function( $validate, $filter_source, $filter_settings ) {
-    // Validate settings for a custom source
-    if ( $filter_source === 'my_custom_source' ) {
-        // Check if required 'my_key' setting is present
-        return ! empty( $filter_settings['my_key'] );
-    }
-
-    return $validate;
-}, 10, 3 );
 ```
 
 ---
@@ -9059,31 +9059,6 @@ add_filter( 'bricks/remote_post', function( $args, $url ) {
 
 ---
 
-<a id="developer-hooks-filters-bricks-render-footer"></a>
-
-# Filter: bricks/render_footer
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-render_footer/
-
-*Filters the rendered HTML of the Bricks footer template. This allows you to wrap the footer in custom markup or modify its output before it is echoed to the.*
-
-Filters the rendered HTML of the Bricks footer template. This allows you to wrap the footer in custom markup or modify its output before it is echoed to the page.
-
-## Parameters
-
-- `$footer_html` (*string*): The rendered HTML of the footer.
-
-## Example usage
-
-```php
-add_filter( 'bricks/render_footer', function( $footer_html ) {
-    // Example: Wrap the footer in a custom container
-    return '<div class="custom-footer-wrapper">' . $footer_html . '</div>';
-} );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-render-header"></a>
 
 # Filter: bricks/render_header
@@ -9106,6 +9081,31 @@ add_filter( 'bricks/render_header', function( $header_html ) {
     $notification = '<div class="notification-bar">Welcome!</div>';
     
     return $notification . $header_html;
+} );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-render-footer"></a>
+
+# Filter: bricks/render_footer
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-render_footer/
+
+*Filters the rendered HTML of the Bricks footer template. This allows you to wrap the footer in custom markup or modify its output before it is echoed to the.*
+
+Filters the rendered HTML of the Bricks footer template. This allows you to wrap the footer in custom markup or modify its output before it is echoed to the page.
+
+## Parameters
+
+- `$footer_html` (*string*): The rendered HTML of the footer.
+
+## Example usage
+
+```php
+add_filter( 'bricks/render_footer', function( $footer_html ) {
+    // Example: Wrap the footer in a custom container
+    return '<div class="custom-footer-wrapper">' . $footer_html . '</div>';
 } );
 ```
 
@@ -9162,33 +9162,6 @@ Bricks casts the filtered value with `absint()`. If the filtered value is empty 
 ```php
 add_filter( 'bricks/resolve_attachment_id', function( $attachment_id ) {
     return $attachment_id;
-} );
-```
-
----
-
-<a id="developer-hooks-filters-bricks-rtl-languages"></a>
-
-# Filter: bricks/rtl_languages
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-rtl_languages/
-
-*Filters the list of language codes that Bricks considers right-to-left (RTL). This affects the layout direction of the builder interface when a specific locale.*
-
-Filters the list of language codes that Bricks considers right-to-left (RTL). This affects the layout direction of the builder interface when a specific locale is active.
-
-## Parameters
-
-- `$languages` (*array*): Array of RTL language codes (e.g., `['ar', 'he', 'fa']`).
-
-## Example usage
-
-```php
-add_filter( 'bricks/rtl_languages', function( $languages ) {
-    // Add a custom RTL language code
-    $languages[] = 'abc';
-
-    return $languages;
 } );
 ```
 
@@ -9269,28 +9242,28 @@ Section hook assignments use a separate condition evaluator from template scorin
 
 ---
 
-<a id="developer-hooks-filters-bricks-support-masonry-element"></a>
+<a id="developer-hooks-filters-bricks-rtl-languages"></a>
 
-# Filter: bricks/support_masonry_element
+# Filter: bricks/rtl_languages
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-support_masonry_element/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-rtl_languages/
 
-*Filters the list of element names that support the Masonry layout option. By default, this includes section, container, block, and div.*
+*Filters the list of language codes that Bricks considers right-to-left (RTL). This affects the layout direction of the builder interface when a specific locale.*
 
-Filters the list of element names that support the Masonry layout option. By default, this includes `section`, `container`, `block`, and `div`.
+Filters the list of language codes that Bricks considers right-to-left (RTL). This affects the layout direction of the builder interface when a specific locale is active.
 
 ## Parameters
 
-- `$element_names` (*array*): Array of element names (slugs) that support Masonry.
+- `$languages` (*array*): Array of RTL language codes (e.g., `['ar', 'he', 'fa']`).
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/support_masonry_element', function( $element_names ) {
-    // Enable Masonry support for a custom element
-    $element_names[] = 'my-custom-grid';
+add_filter( 'bricks/rtl_languages', function( $languages ) {
+    // Add a custom RTL language code
+    $languages[] = 'abc';
 
-    return $element_names;
+    return $languages;
 } );
 ```
 
@@ -9322,6 +9295,33 @@ add_filter( 'bricks/security_check_before_save/new_elements', function( $new_ele
 
     return $new_elements;
 }, 10, 2 );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-support-masonry-element"></a>
+
+# Filter: bricks/support_masonry_element
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-support_masonry_element/
+
+*Filters the list of element names that support the Masonry layout option. By default, this includes section, container, block, and div.*
+
+Filters the list of element names that support the Masonry layout option. By default, this includes `section`, `container`, `block`, and `div`.
+
+## Parameters
+
+- `$element_names` (*array*): Array of element names (slugs) that support Masonry.
+
+## Example usage
+
+```php
+add_filter( 'bricks/support_masonry_element', function( $element_names ) {
+    // Enable Masonry support for a custom element
+    $element_names[] = 'my-custom-grid';
+
+    return $element_names;
+} );
 ```
 
 ---
@@ -9380,33 +9380,6 @@ add_filter( 'bricks/svg/allowed_tags', function( $tags ) {
 
 ---
 
-<a id="developer-hooks-filters-bricks-template-preview-supported-content-types"></a>
-
-# Filter: bricks/template_preview/supported_content_types
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-template_preview-supported_content_types/
-
-*Filters the list of content types available for selection in the \"Populate Content\" (Template Preview) setting. This allows you to add custom preview contexts.*
-
-Filters the list of content types available for selection in the "Populate Content" (Template Preview) setting. This allows you to add custom preview contexts.
-
-## Parameters
-
-- `$types` (*array*): Associative array where keys are the content type IDs and values are their labels.
-
-## Example usage
-
-```php
-add_filter( 'bricks/template_preview/supported_content_types', function( $types ) {
-    // Example: Add a custom preview type
-    $types['my_custom_preview'] = esc_html__( 'My Custom Preview', 'my-plugin' );
-
-    return $types;
-} );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-svg-bypass-sanitization"></a>
 
 # Filter: bricks/svg/bypass_sanitization
@@ -9433,6 +9406,33 @@ add_filter( 'bricks/svg/bypass_sanitization', function( $bypass, $file ) {
 
     return $bypass;
 }, 10, 2 );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-template-preview-supported-content-types"></a>
+
+# Filter: bricks/template_preview/supported_content_types
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-template_preview-supported_content_types/
+
+*Filters the list of content types available for selection in the \"Populate Content\" (Template Preview) setting. This allows you to add custom preview contexts.*
+
+Filters the list of content types available for selection in the "Populate Content" (Template Preview) setting. This allows you to add custom preview contexts.
+
+## Parameters
+
+- `$types` (*array*): Associative array where keys are the content type IDs and values are their labels.
+
+## Example usage
+
+```php
+add_filter( 'bricks/template_preview/supported_content_types', function( $types ) {
+    // Example: Add a custom preview type
+    $types['my_custom_preview'] = esc_html__( 'My Custom Preview', 'my-plugin' );
+
+    return $types;
+} );
 ```
 
 ---
@@ -9555,31 +9555,6 @@ add_filter( 'bricks/theme_styles', function( $styles ) {
 
 ---
 
-<a id="developer-hooks-filters-bricks-user-activation-email-from-name"></a>
-
-# Filter: bricks/user_activation_email/from_name
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-user_activation_email-from_name/
-
-*Filters the sender name for Bricks user activation emails.*
-
-Filters the sender name for Bricks user activation emails.
-
-## Parameters
-
-- `$from_name` (string): The email sender name.
-- `$user_id` (int): The user ID receiving the activation email.
-
-## Example usage
-
-```php
-add_filter( 'bricks/user_activation_email/from_name', function( $from_name, $user_id ) {
-    return get_bloginfo( 'name' );
-}, 10, 2 );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-user-activation-email-content"></a>
 
 # Filter: bricks/user_activation_email/content
@@ -9600,6 +9575,31 @@ Filters the content for Bricks user activation emails.
 ```php
 add_filter( 'bricks/user_activation_email/content', function( $content, $user_id ) {
     return $content;
+}, 10, 2 );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-user-activation-email-from-name"></a>
+
+# Filter: bricks/user_activation_email/from_name
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-user_activation_email-from_name/
+
+*Filters the sender name for Bricks user activation emails.*
+
+Filters the sender name for Bricks user activation emails.
+
+## Parameters
+
+- `$from_name` (string): The email sender name.
+- `$user_id` (int): The user ID receiving the activation email.
+
+## Example usage
+
+```php
+add_filter( 'bricks/user_activation_email/from_name', function( $from_name, $user_id ) {
+    return get_bloginfo( 'name' );
 }, 10, 2 );
 ```
 
@@ -9626,31 +9626,6 @@ Filters the subject for Bricks user activation emails.
 add_filter( 'bricks/user_activation_email/subject', function( $subject, $user_id ) {
     return '[Site access] Activate your account';
 }, 10, 2 );
-```
-
----
-
-<a id="developer-hooks-filters-bricks-webhook-timeout"></a>
-
-# Filter: bricks/webhook/timeout
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-webhook-timeout/
-
-*Allows you to modify the timeout duration (in seconds) for webhook requests triggered by the Form element.*
-
-Allows you to modify the timeout duration (in seconds) for webhook requests triggered by the Form element.
-
-## Parameters
-
-- `$timeout` (int): The timeout duration in seconds. Default is `15`.
-
-## Example usage
-
-```php
-add_filter( 'bricks/webhook/timeout', function( $timeout ) {
-    // Increase timeout to 30 seconds
-    return 30;
-} );
 ```
 
 ---
@@ -9708,6 +9683,31 @@ add_filter( 'bricks/woocommerce/ajax_render_post_id', function( $post_id, $wc_pa
 
 ---
 
+<a id="developer-hooks-filters-bricks-webhook-timeout"></a>
+
+# Filter: bricks/webhook/timeout
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-webhook-timeout/
+
+*Allows you to modify the timeout duration (in seconds) for webhook requests triggered by the Form element.*
+
+Allows you to modify the timeout duration (in seconds) for webhook requests triggered by the Form element.
+
+## Parameters
+
+- `$timeout` (int): The timeout duration in seconds. Default is `15`.
+
+## Example usage
+
+```php
+add_filter( 'bricks/webhook/timeout', function( $timeout ) {
+    // Increase timeout to 30 seconds
+    return 30;
+} );
+```
+
+---
+
 <a id="developer-hooks-filters-bricks-woocommerce-cart-proceed-label"></a>
 
 # Filter: bricks/woocommerce/cart_proceed_label
@@ -9728,6 +9728,32 @@ Allows you to modify the text of the "Proceed to checkout" button in the WooComm
 add_filter( 'bricks/woocommerce/cart_proceed_label', function( $label ) {
     return 'Go to Checkout';
 } );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-woocommerce-dynamic-fragments-html"></a>
+
+# Filter: bricks/woocommerce/dynamic_fragments/html
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-dynamic_fragments-html/
+
+*Filters rendered HTML for a WooCommerce dynamic fragment.*
+
+Filters rendered HTML for a single WooCommerce dynamic fragment.
+
+## Parameters
+
+- `$html` (string): Rendered fragment HTML.
+- `$target` (array): The fragment target being rendered.
+- `$render_data` (array): Bricks render data used for the fragment.
+
+## Example usage
+
+```php
+add_filter( 'bricks/woocommerce/dynamic_fragments/html', function( $html, $target, $render_data ) {
+    return $html;
+}, 10, 3 );
 ```
 
 ---
@@ -9781,27 +9807,27 @@ add_filter( 'bricks/woocommerce/dynamic_fragments/targets', function( $targets )
 
 ---
 
-<a id="developer-hooks-filters-bricks-woocommerce-dynamic-fragments-html"></a>
+<a id="developer-hooks-filters-bricks-woocommerce-predefined-elements-generated-payload"></a>
 
-# Filter: bricks/woocommerce/dynamic_fragments/html
+# Filter: bricks/woocommerce/predefined_elements/generated_payload
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-dynamic_fragments-html/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-generated_payload/
 
-*Filters rendered HTML for a WooCommerce dynamic fragment.*
+*Filters a generated WooCommerce predefined element payload.*
 
-Filters rendered HTML for a single WooCommerce dynamic fragment.
+Filters a generated WooCommerce predefined element payload before Bricks returns it.
 
 ## Parameters
 
-- `$html` (string): Rendered fragment HTML.
-- `$target` (array): The fragment target being rendered.
-- `$render_data` (array): Bricks render data used for the fragment.
+- `$response` (array): The generated payload response.
+- `$preset` (string): The preset ID being generated.
+- `$context` (array): Generation context for the preset.
 
 ## Example usage
 
 ```php
-add_filter( 'bricks/woocommerce/dynamic_fragments/html', function( $html, $target, $render_data ) {
-    return $html;
+add_filter( 'bricks/woocommerce/predefined_elements/generated_payload', function( $response, $preset, $context ) {
+    return $response;
 }, 10, 3 );
 ```
 
@@ -9831,32 +9857,6 @@ add_filter( 'bricks/woocommerce/predefined_elements/local_presets', function( $p
 
 ---
 
-<a id="developer-hooks-filters-bricks-woocommerce-predefined-elements-generated-payload"></a>
-
-# Filter: bricks/woocommerce/predefined_elements/generated_payload
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-generated_payload/
-
-*Filters a generated WooCommerce predefined element payload.*
-
-Filters a generated WooCommerce predefined element payload before Bricks returns it.
-
-## Parameters
-
-- `$response` (array): The generated payload response.
-- `$preset` (string): The preset ID being generated.
-- `$context` (array): Generation context for the preset.
-
-## Example usage
-
-```php
-add_filter( 'bricks/woocommerce/predefined_elements/generated_payload', function( $response, $preset, $context ) {
-    return $response;
-}, 10, 3 );
-```
-
----
-
 <a id="developer-hooks-filters-bricks-woocommerce-predefined-elements-remote-payload"></a>
 
 # Filter: bricks/woocommerce/predefined_elements/remote_payload
@@ -9876,6 +9876,32 @@ Filters the remote WooCommerce predefined elements payload after Bricks decodes 
 ```php
 add_filter( 'bricks/woocommerce/predefined_elements/remote_payload', function( $remote_payload ) {
     return $remote_payload;
+} );
+```
+
+---
+
+<a id="developer-hooks-filters-bricks-woocommerce-predefined-elements-remote-url"></a>
+
+# Filter: bricks/woocommerce/predefined_elements/remote_url
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-remote_url/
+
+*Filters the remote URL for WooCommerce predefined element presets.*
+
+Filters the remote URL Bricks uses to fetch WooCommerce predefined element presets. Return an empty string to keep remote fetching disabled.
+
+When a URL is returned, Bricks appends `schemaVersion`, `site`, and `time` query arguments before making the request.
+
+## Parameters
+
+- `$remote_url` (string): The remote preset endpoint URL.
+
+## Example usage
+
+```php
+add_filter( 'bricks/woocommerce/predefined_elements/remote_url', function( $remote_url ) {
+    return 'https://example.com/bricks-woo-presets.json';
 } );
 ```
 
@@ -9908,32 +9934,6 @@ add_filter( 'bricks/woocommerce/products_filters/options', function( $options, $
 
     return $options;
 }, 10, 2 );
-```
-
----
-
-<a id="developer-hooks-filters-bricks-woocommerce-predefined-elements-remote-url"></a>
-
-# Filter: bricks/woocommerce/predefined_elements/remote_url
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-remote_url/
-
-*Filters the remote URL for WooCommerce predefined element presets.*
-
-Filters the remote URL Bricks uses to fetch WooCommerce predefined element presets. Return an empty string to keep remote fetching disabled.
-
-When a URL is returned, Bricks appends `schemaVersion`, `site`, and `time` query arguments before making the request.
-
-## Parameters
-
-- `$remote_url` (string): The remote preset endpoint URL.
-
-## Example usage
-
-```php
-add_filter( 'bricks/woocommerce/predefined_elements/remote_url', function( $remote_url ) {
-    return 'https://example.com/bricks-woo-presets.json';
-} );
 ```
 
 ---
@@ -10087,6 +10087,38 @@ add_filter( 'bricks/wpml/exclude_controls_from_translation', function( $excluded
 
 ---
 
+<a id="developer-hooks-filters-bricks-query-max-items-in-builder"></a>
+
+# Filter: bricks_query_max_items_in_builder
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks_query_max_items_in_builder/
+
+*Filters builder query results for custom object types when Bricks applies the builder max-results limit.*
+
+Filters dynamic query results in the builder when Bricks applies the builder query max-results limit.
+
+Bricks handles built-in `post`, `term`, `user`, and supported provider object types internally. This filter runs for custom query object types that Bricks does not know how to trim itself.
+
+## Parameters
+
+- `$result` (mixed): The current query result.
+- `$query_instance` (Bricks\Query): The Bricks query instance.
+- `$builder_query_max_results` (int): The maximum number of results Bricks allows in the builder.
+
+## Example usage
+
+```php
+add_filter( 'bricks_query_max_items_in_builder', function( $result, $query_instance, $builder_query_max_results ) {
+    if ( is_array( $result ) ) {
+        return array_slice( $result, 0, $builder_query_max_results );
+    }
+
+    return $result;
+}, 10, 3 );
+```
+
+---
+
 <a id="developer-hooks-filters-bricks-wpml-translatable-control-types"></a>
 
 # Filter: bricks/wpml/translatable_control_types
@@ -10146,38 +10178,6 @@ Available page-level custom-code keys are:
 - `customScriptsBodyFooter`
 
 After adding the filter, update the source page and send its translation to WPML again. The opted-in code field then appears in the WPML translation job. Review the translated value before publishing, especially when automatic translation is enabled, because a changed quote, variable, selector, or function name can break the code.
-
----
-
-<a id="developer-hooks-filters-bricks-query-max-items-in-builder"></a>
-
-# Filter: bricks_query_max_items_in_builder
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks_query_max_items_in_builder/
-
-*Filters builder query results for custom object types when Bricks applies the builder max-results limit.*
-
-Filters dynamic query results in the builder when Bricks applies the builder query max-results limit.
-
-Bricks handles built-in `post`, `term`, `user`, and supported provider object types internally. This filter runs for custom query object types that Bricks does not know how to trim itself.
-
-## Parameters
-
-- `$result` (mixed): The current query result.
-- `$query_instance` (Bricks\Query): The Bricks query instance.
-- `$builder_query_max_results` (int): The maximum number of results Bricks allows in the builder.
-
-## Example usage
-
-```php
-add_filter( 'bricks_query_max_items_in_builder', function( $result, $query_instance, $builder_query_max_results ) {
-    if ( is_array( $result ) ) {
-        return array_slice( $result, 0, $builder_query_max_results );
-    }
-
-    return $result;
-}, 10, 3 );
-```
 
 ---
 
@@ -10340,31 +10340,33 @@ add_filter( 'bricks/allowed_html_tags', function( $allowed_html_tags ) {
 
 ---
 
-<a id="developer-hooks-filters-filter-bricks-auth-custom-login-redirect"></a>
+<a id="developer-hooks-filters-filter-bricks-assets-generate-css-from-element"></a>
 
-# Filter: bricks/auth/custom_login_redirect
+# Filter: bricks/assets/generate_css_from_element
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_login_redirect/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-generate_css_from_element/
 
-*This filter allows customization of the redirect page ID for the login page.*
+*Add custom element names to Bricks CSS generation so looped child styles are included for supported custom elements.*
 
-This filter allows customization of the redirect page ID for the login page.
+This filter allows you to include your custom query loop supported element to generate the children styles in Bricks. (@since 1.9.2)
 
-## Example Usage:
+## Parameters
+
+- `$element_names` (array): Additional loop-capable element names. Defaults to an empty array.
+- `$current_element` (array): The element currently being processed for CSS generation.
+- `$css_type` (string): The CSS generation area, such as `header`, `footer`, or `content`.
 
 ```php
-add_filter( 'bricks/auth/custom_login_redirect', function( $selected_login_page_id ) {
-    return /* New login page ID */;
-});
+add_filter( 'bricks/assets/generate_css_from_element', function( $element_names, $current_element, $css_type ) {
+  // $css_type is a string (e.g. header, footer, content, etc.)
+  // Add your custom element name so the looping children styles are generated.
+  if ( ! in_array( 'my-custom-element-name', $element_names ) ) {
+    $element_names[] = 'my-custom-element-name';
+  }
+
+  return $element_names;
+}, 10, 3 );
 ```
-
-**Parameters:**
-
-- `$selected_login_page_id` (int|false): The ID of the custom login page if set; otherwise, `false`.
-
-**Return:**
-
-- (int|false): The custom page ID for login redirection, or `false` if no custom page is designated.
 
 ---
 
@@ -10397,33 +10399,31 @@ If you use this filter to remove the embed of Google Fonts but you still like to
 
 ---
 
-<a id="developer-hooks-filters-filter-bricks-assets-generate-css-from-element"></a>
+<a id="developer-hooks-filters-filter-bricks-auth-custom-login-redirect"></a>
 
-# Filter: bricks/assets/generate_css_from_element
+# Filter: bricks/auth/custom_login_redirect
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-generate_css_from_element/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-auth-custom_login_redirect/
 
-*Add custom element names to Bricks CSS generation so looped child styles are included for supported custom elements.*
+*This filter allows customization of the redirect page ID for the login page.*
 
-This filter allows you to include your custom query loop supported element to generate the children styles in Bricks. (@since 1.9.2)
+This filter allows customization of the redirect page ID for the login page.
 
-## Parameters
-
-- `$element_names` (array): Additional loop-capable element names. Defaults to an empty array.
-- `$current_element` (array): The element currently being processed for CSS generation.
-- `$css_type` (string): The CSS generation area, such as `header`, `footer`, or `content`.
+## Example Usage:
 
 ```php
-add_filter( 'bricks/assets/generate_css_from_element', function( $element_names, $current_element, $css_type ) {
-  // $css_type is a string (e.g. header, footer, content, etc.)
-  // Add your custom element name so the looping children styles are generated.
-  if ( ! in_array( 'my-custom-element-name', $element_names ) ) {
-    $element_names[] = 'my-custom-element-name';
-  }
-
-  return $element_names;
-}, 10, 3 );
+add_filter( 'bricks/auth/custom_login_redirect', function( $selected_login_page_id ) {
+    return /* New login page ID */;
+});
 ```
+
+**Parameters:**
+
+- `$selected_login_page_id` (int|false): The ID of the custom login page if set; otherwise, `false`.
+
+**Return:**
+
+- (int|false): The custom page ID for login redirection, or `false` if no custom page is designated.
 
 ---
 
@@ -10666,27 +10666,6 @@ add_filter( 'bricks/builder/image_size_options', function( $image_sizes ) {
 
 ---
 
-<a id="developer-hooks-filters-filter-bricks-code-allow-execution"></a>
-
-# Filter: bricks/code/allow_execution
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-allow_execution/
-
-*An alternative to the Disable code execution setting under Bricks > Settings > Builder Access. You can use this PHP filter to disable/enable code execution.*
-
-An alternative to the **Disable code execution** setting under `Bricks > Settings > Builder Access`. You can use this PHP filter to disable/enable code execution programmatically.
-
-![](https://academy.bricksbuilder.io/assets/disallow-code-execution-hook.png)
-
-```php
-add_filter( 'bricks/code/allow_execution', function( $allow ) {
-  // Only allows to return false to disable code execution programmatically
-  return false;
-} );
-```
-
----
-
 <a id="developer-hooks-filters-filter-bricks-builder-mapstyles"></a>
 
 # Filter: bricks/builder/map_styles
@@ -10737,6 +10716,27 @@ add_filter( 'bricks/code/disable_execution', function( $disable ) {
 ```
 
 Use this filter to enforce stricter security by disabling code execution, regardless of other configurations on your site.
+
+---
+
+<a id="developer-hooks-filters-filter-bricks-code-allow-execution"></a>
+
+# Filter: bricks/code/allow_execution
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-allow_execution/
+
+*An alternative to the Disable code execution setting under Bricks > Settings > Builder Access. You can use this PHP filter to disable/enable code execution.*
+
+An alternative to the **Disable code execution** setting under `Bricks > Settings > Builder Access`. You can use this PHP filter to disable/enable code execution programmatically.
+
+![](https://academy.bricksbuilder.io/assets/disallow-code-execution-hook.png)
+
+```php
+add_filter( 'bricks/code/allow_execution', function( $allow ) {
+  // Only allows to return false to disable code execution programmatically
+  return false;
+} );
+```
 
 ---
 
@@ -10835,28 +10835,6 @@ add_filter( 'bricks/code/echo_function_names', function($function_name) {
 
 ---
 
-<a id="developer-hooks-filters-filter-bricks-code-disallow-keywords"></a>
-
-# Filter: bricks/code/disallow_keywords
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-disallow_keywords/
-
-*This filter introduces another level of security when using the Code element to run code.*
-
-This filter introduces another level of security when using the Code element to run code.
-
-With the filter `bricks/code/disallow_keywords` you'll be able to prevent the code execution if specific keywords are found in the code, thus reducing the risk of using this element. To add keywords to this check, use the following example:
-
-```php
-add_filter( 'bricks/code/disallow_keywords', function( $keywords ) {
-  $</meta>keywords[] = 'wpdb';
-
-  return $</meta>keywords;
-} );
-```
-
----
-
 <a id="developer-hooks-filters-filter-bricks-comments-timestamp"></a>
 
 # Filter: bricks/comments/timestamp
@@ -10930,6 +10908,28 @@ add_filter( 'bricks/content/html_after_begin', function( $html_after_begin, $bri
 
 ---
 
+<a id="developer-hooks-filters-filter-bricks-code-disallow-keywords"></a>
+
+# Filter: bricks/code/disallow_keywords
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-disallow_keywords/
+
+*This filter introduces another level of security when using the Code element to run code.*
+
+This filter introduces another level of security when using the Code element to run code.
+
+With the filter `bricks/code/disallow_keywords` you'll be able to prevent the code execution if specific keywords are found in the code, thus reducing the risk of using this element. To add keywords to this check, use the following example:
+
+```php
+add_filter( 'bricks/code/disallow_keywords', function( $keywords ) {
+  $</meta>keywords[] = 'wpdb';
+
+  return $</meta>keywords;
+} );
+```
+
+---
+
 <a id="developer-hooks-filters-filter-bricks-content-html-before-end"></a>
 
 # Filter: bricks/content/html_before_end
@@ -10953,6 +10953,37 @@ add_filter( 'bricks/content/html_before_end', function( $html_after_begin, $bric
     return $html_after_begin . $my_popup_html;
 }, 10, 4 );
 ```
+
+---
+
+<a id="developer-hooks-filters-filter-bricks-content-tag"></a>
+
+# Filter: bricks/content/tag
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-tag/
+
+*Filter which HTML tag Bricks uses for the #brx-content wrapper around rendered page content.*
+
+The `bricks/content/tag` (@since 1.11.1) filter lets you set the HTML tag for the `#brx-content` node that your Bricks content data is wrapped in.
+
+Make sure the HTML tag you return is an [allowed HTML tag](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-allowed_html_tags/).
+
+## Example Usage:
+
+```php
+add_filter( 'bricks/content/tag', function( $tag ) {
+    // Set #brx-content tag to 'div' (default: main)
+    return 'div';
+} );
+```
+
+**Parameters:**
+
+- `$tag` (string): The default HTML tag, which is `main`.
+
+**Return:**
+
+- (string): The HTML tag you want to render instead of the default.
 
 ---
 
@@ -11003,37 +11034,6 @@ add_filter( 'bricks/dynamic_data/exclude_tags', function( $tags ) {
 ```
 
 Adding this code to your child theme will prevent Bricks from replacing these tags with an empty string.
-
----
-
-<a id="developer-hooks-filters-filter-bricks-content-tag"></a>
-
-# Filter: bricks/content/tag
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-content-tag/
-
-*Filter which HTML tag Bricks uses for the #brx-content wrapper around rendered page content.*
-
-The `bricks/content/tag` (@since 1.11.1) filter lets you set the HTML tag for the `#brx-content` node that your Bricks content data is wrapped in.
-
-Make sure the HTML tag you return is an [allowed HTML tag](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-allowed_html_tags/).
-
-## Example Usage:
-
-```php
-add_filter( 'bricks/content/tag', function( $tag ) {
-    // Set #brx-content tag to 'div' (default: main)
-    return 'div';
-} );
-```
-
-**Parameters:**
-
-- `$tag` (string): The default HTML tag, which is `main`.
-
-**Return:**
-
-- (string): The HTML tag you want to render instead of the default.
 
 ---
 
@@ -11338,6 +11338,35 @@ Since Bricks 1.5, the `$settings` and `$name` arguments are deprecated. You may 
 
 ---
 
+<a id="developer-hooks-filters-filter-bricks-elements-element-name-controls"></a>
+
+# Filter: bricks/elements/&#123;element_name&#125;/controls
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-elements-element_name-controls/
+
+*Since Bricks 1.3.2 it is possible to add custom controls to any element like so:*
+
+Since Bricks 1.3.2 it is possible to add custom controls to any element like so:
+
+```php
+add_filter( 'bricks/elements/posts/controls', function( $controls ) {
+    $controls['ignoreStickyPosts'] = [
+        'tab'      => 'content',
+        'group'    => 'query',
+        'label'    => esc_html__( 'Ignore Sticky Posts', 'my_plugin' ),
+        'type'     => 'checkbox'
+    ];
+
+    return $controls;
+} );
+```
+
+Note: the above example adds a new checkbox to the **posts** element, using the filter `bricks/elements/**posts**/controls`. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
+
+You might also be interested in the filter [`bricks/posts/query_vars`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-query_vars/) to manipulate the posts element query.
+
+---
+
 <a id="developer-hooks-filters-filter-bricks-element-settings"></a>
 
 # Filter: bricks/element/settings
@@ -11420,35 +11449,6 @@ add_filter( 'bricks/elements/heading/control_groups', function( $control_groups 
 ```
 
 Note: the above example adds a new control group with the title "**Custom controls**" to the **heading** element, using the filter `bricks/elements/**heading**/control_groups`. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
-
----
-
-<a id="developer-hooks-filters-filter-bricks-elements-element-name-controls"></a>
-
-# Filter: bricks/elements/&#123;element_name&#125;/controls
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-elements-element_name-controls/
-
-*Since Bricks 1.3.2 it is possible to add custom controls to any element like so:*
-
-Since Bricks 1.3.2 it is possible to add custom controls to any element like so:
-
-```php
-add_filter( 'bricks/elements/posts/controls', function( $controls ) {
-    $controls['ignoreStickyPosts'] = [
-        'tab'      => 'content',
-        'group'    => 'query',
-        'label'    => esc_html__( 'Ignore Sticky Posts', 'my_plugin' ),
-        'type'     => 'checkbox'
-    ];
-
-    return $controls;
-} );
-```
-
-Note: the above example adds a new checkbox to the **posts** element, using the filter `bricks/elements/**posts**/controls`. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
-
-You might also be interested in the filter [`bricks/posts/query_vars`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-query_vars/) to manipulate the posts element query.
 
 ---
 
@@ -11663,6 +11663,45 @@ In this example, the filter modifies the value of a specific meta key ('specific
 
 ---
 
+<a id="developer-hooks-filters-filter-bricks-frontend-render-element"></a>
+
+# Filter: bricks/frontend/render_element
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-frontend-render_element/
+
+*The bricks/frontend/renderelement filter allows you to modify the HTML output of any element in Bricks on the frontend. This powerful hook can be used for a.*
+
+The `bricks/frontend/render_element` filter allows you to modify the HTML output of any element in Bricks on the frontend. This powerful hook can be used for a variety of customization tasks, such as adding comments, modifying content, or dynamically adjusting HTML. (@since 2.0)
+
+```php
+add_filter( 'bricks/frontend/render_element', function( $html, $element ) {
+    // Do not modify the HTML in the builder
+    if (
+        bricks_is_builder_main() ||
+        bricks_is_builder_iframe() ||
+        bricks_is_builder_call()
+    ) {
+        return $html;
+    }
+
+    // Add comments before and after an element with a specific ID
+    if ( $element->id === 'regxve' ) {
+        $html = '<!-- Start of the element -->' . $html . '<!-- End of the element -->';
+    }
+
+    // Modify the content of a Basic Text element
+    if ( $element->id === 'wtktgp' ) {
+        // Replace "|" with ">>" in the HTML
+        $html = str_replace( '|', '>>', $html );
+    }
+
+    return $html;
+}, 10, 2 );
+
+```
+
+---
+
 <a id="developer-hooks-filters-filter-bricks-frontend-render-data"></a>
 
 # Filter: bricks/frontend/render_data
@@ -11716,45 +11755,6 @@ add_filter('bricks/frontend/render_data', function($content, $post, $area) {
 ```
 
 In this example, a callback function is defined within the add_filter function call targeting the `bricks/frontend/render_data` filter. This callback function modifies every heading tag present in the content to include a unique ID attribute. This can be useful for navigation purposes, such as creating a table of contents.
-
----
-
-<a id="developer-hooks-filters-filter-bricks-frontend-render-element"></a>
-
-# Filter: bricks/frontend/render_element
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-frontend-render_element/
-
-*The bricks/frontend/renderelement filter allows you to modify the HTML output of any element in Bricks on the frontend. This powerful hook can be used for a.*
-
-The `bricks/frontend/render_element` filter allows you to modify the HTML output of any element in Bricks on the frontend. This powerful hook can be used for a variety of customization tasks, such as adding comments, modifying content, or dynamically adjusting HTML. (@since 2.0)
-
-```php
-add_filter( 'bricks/frontend/render_element', function( $html, $element ) {
-    // Do not modify the HTML in the builder
-    if (
-        bricks_is_builder_main() ||
-        bricks_is_builder_iframe() ||
-        bricks_is_builder_call()
-    ) {
-        return $html;
-    }
-
-    // Add comments before and after an element with a specific ID
-    if ( $element->id === 'regxve' ) {
-        $html = '<!-- Start of the element -->' . $html . '<!-- End of the element -->';
-    }
-
-    // Modify the content of a Basic Text element
-    if ( $element->id === 'wtktgp' ) {
-        // Replace "|" with ">>" in the HTML
-        $html = str_replace( '|', '>>', $html );
-    }
-
-    return $html;
-}, 10, 2 );
-
-```
 
 ---
 
@@ -11887,74 +11887,6 @@ add_filter( 'bricks/link_css_selectors', function( $link_css_selectors ) {
 
 ---
 
-<a id="developer-hooks-filters-filter-bricks-maintenance-should-apply"></a>
-
-# Filter: bricks/maintenance/should_apply
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-maintenance-should_apply/
-
-*Override whether Bricks maintenance mode or coming-soon mode should be applied for the current request.*
-
-Use this filter `(@since 2.0)` to override whether maintenance mode should be enforced for the current request.
-
-By default, Bricks checks if the user is in the admin area or builder, if the current page is the login page, if the user can bypass maintenance, or if the current post is in the excluded list.
-
-This filter runs *after* all of those checks have passed, giving you a final opportunity to apply custom logic before showing the maintenance or coming soon page.
-
-## Parameters:
-
-- `$apply_maintenance` (bool): Whether maintenance mode should apply. Defaults to `true` after all core checks pass.
-- `$mode` (string): The current maintenance mode. Either `'maintenance'` or `'coming_soon'`.
-
-## Return:
-
-- `(bool)`: `true` to apply maintenance mode, `false` to bypass it.
-
-## Example Usage:
-
-In the following example, anyone with the correct `preview_key` in the URL (e.g. `https://domain.com?preview_key=letmein123`) will bypass maintenance mode. This is especially useful for sharing a live preview with clients or collaborators without requiring login access.
-
-```php
-add_filter( 'bricks/maintenance/should_apply', function( $apply_maintenance, $mode ) {
-    $valid_key = 'letmein123';
-
-    // Bypass maintenance mode if a valid preview key is present in the URL
-    if ( isset( $_GET['preview_key'] ) && $_GET['preview_key'] === $valid_key ) {
-        return false;
-    }
-
-    // Keep default behavior for all other cases
-    return $apply_maintenance;
-}, 10, 2 );
-```
-
-### Improved version with cookie persistence:
-
-You can improve this behavior further by **persisting the preview access across page loads** using a cookie. Otherwise, the user would only bypass maintenance on the first page they visit (where the key is present in the URL), and get blocked again when navigating elsewhere.
-
-```php
-add_filter( 'bricks/maintenance/should_apply', function( $apply_maintenance, $mode ) {
-    $valid_key   = 'letmein123';
-    $cookie_name = 'bricks_preview_key';
-
-    // Check preview key in URL
-    if ( isset( $_GET['preview_key'] ) && $_GET['preview_key'] === $valid_key ) {
-        // Set a cookie for 1 hour
-        setcookie( $cookie_name, $valid_key, time() + HOUR_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN );
-        return false;
-    }
-
-    // Check cookie on subsequent requests
-    if ( isset( $_COOKIE[ $cookie_name ] ) && $_COOKIE[ $cookie_name ] === $valid_key ) {
-        return false;
-    }
-
-    return $apply_maintenance;
-}, 10, 2 );
-```
-
----
-
 <a id="developer-hooks-filters-filter-bricks-nav-menu-menu"></a>
 
 # Filter: bricks/nav_menu/menu
@@ -11992,37 +11924,6 @@ add_filter( 'bricks/nav_menu/menu', function( $menu, $post_id, $element ) {
   return $menu;
 }, 10, 3 );
 ```
-
----
-
-<a id="developer-hooks-filters-filter-bricks-password-protection-cookie-expires"></a>
-
-# Filter: bricks/password_protection/cookie_expires
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-cookie-expires/
-
-*Adjust the expiration time for the password cookie used by the password protection template. By default, when a password is set in the template settings, the.*
-
-Adjust the expiration time for the password cookie used by [the password protection template](https://academy.bricksbuilder.io/builder/features/password-protection/). By default, when a password is set in the template settings, the cookie expires after **10 days**. This filter allows you to customize how long the cookie remains valid.
-
-## Example Usage:
-
-```php
-add_filter( 'bricks/password_protection/cookie_expires', function( $expire ) {
-    // Set cookie expiration to 1 hour (3600 seconds)
-    return time() + 3600;
-} );
-```
-
-In this example, the password cookie will expire after 1 hour, requiring users to re-enter the password if they revisit the page after that time.
-
-**Parameters:**
-
-- `$expire` (int): The default expiration timestamp for the password cookie, which is set to **10 days**.
-
-**Return:**
-
-- (int): The Unix timestamp for when the cookie should expire.
 
 ---
 
@@ -12102,42 +12003,102 @@ add_filter( 'bricks/placeholder_image', function( $image, $is_svg, $format ) {
 
 ---
 
-<a id="developer-hooks-filters-filter-bricks-posts-merge-query"></a>
+<a id="developer-hooks-filters-filter-bricks-maintenance-should-apply"></a>
 
-# Filter: bricks/posts/merge_query
+# Filter: bricks/maintenance/should_apply
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-merge_query/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-maintenance-should_apply/
 
-*Since Bricks 1.3.7 you'll be able to decide if a certain element query should be merged with the WordPress main query, in the archive or search templates, using.*
+*Override whether Bricks maintenance mode or coming-soon mode should be applied for the current request.*
 
-Since Bricks 1.3.7 you'll be able to decide if a certain element query should be merged with the WordPress main query, in the archive or search templates, using the following filter:
+Use this filter `(@since 2.0)` to override whether maintenance mode should be enforced for the current request.
+
+By default, Bricks checks if the user is in the admin area or builder, if the current page is the login page, if the user can bypass maintenance, or if the current post is in the excluded list.
+
+This filter runs *after* all of those checks have passed, giving you a final opportunity to apply custom logic before showing the maintenance or coming soon page.
+
+## Parameters:
+
+- `$apply_maintenance` (bool): Whether maintenance mode should apply. Defaults to `true` after all core checks pass.
+- `$mode` (string): The current maintenance mode. Either `'maintenance'` or `'coming_soon'`.
+
+## Return:
+
+- `(bool)`: `true` to apply maintenance mode, `false` to bypass it.
+
+## Example Usage:
+
+In the following example, anyone with the correct `preview_key` in the URL (e.g. `https://domain.com?preview_key=letmein123`) will bypass maintenance mode. This is especially useful for sharing a live preview with clients or collaborators without requiring login access.
 
 ```php
-add_filter( 'bricks/posts/merge_query', function( $merge, $element_id ) {
-  if ( $element_id === 'wghgco' ) {
-    return false;
-  }
+add_filter( 'bricks/maintenance/should_apply', function( $apply_maintenance, $mode ) {
+    $valid_key = 'letmein123';
 
-  return $merge;
+    // Bypass maintenance mode if a valid preview key is present in the URL
+    if ( isset( $_GET['preview_key'] ) && $_GET['preview_key'] === $valid_key ) {
+        return false;
+    }
+
+    // Keep default behavior for all other cases
+    return $apply_maintenance;
 }, 10, 2 );
 ```
 
-The filter callback receives two arguments:
+### Improved version with cookie persistence:
 
-- `$merge` is a boolean variable indicating whether the query should be merged or not (default: true)
-- `$element_id` is a string containing the element ID
+You can improve this behavior further by **persisting the preview access across page loads** using a cookie. Otherwise, the user would only bypass maintenance on the first page they visit (where the key is present in the URL), and get blocked again when navigating elsewhere.
 
-This is triggered for all the Bricks elements containing one internal WP_Query query like the Posts and the Carousel element, or any other element where the Query Loop is enabled (Container, Slider, Accordion).
+```php
+add_filter( 'bricks/maintenance/should_apply', function( $apply_maintenance, $mode ) {
+    $valid_key   = 'letmein123';
+    $cookie_name = 'bricks_preview_key';
 
-> **Note**
->
-> Starting from Bricks 1.7, you can achieve the same result by utilizing the "Disable Query Merge" option in the [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/#posts-query), without the need for a PHP filter. Use this filter for more advanced situations.
+    // Check preview key in URL
+    if ( isset( $_GET['preview_key'] ) && $_GET['preview_key'] === $valid_key ) {
+        // Set a cookie for 1 hour
+        setcookie( $cookie_name, $valid_key, time() + HOUR_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN );
+        return false;
+    }
 
-## How to find the element ID? {#find-element-id}
+    // Check cookie on subsequent requests
+    if ( isset( $_COOKIE[ $cookie_name ] ) && $_COOKIE[ $cookie_name ] === $valid_key ) {
+        return false;
+    }
 
-Each element in Bricks has a unique ID. You may find the element ID when editing the element and looking into the Global CSS classes input. By default, it shows the element HTML ID (e.g. `#bricks-element-wghgco`). For the purpose of this filter, we only need the last portion of the string, the six-character long element ID (e.g. `wghgco`).
+    return $apply_maintenance;
+}, 10, 2 );
+```
 
-![](https://academy.bricksbuilder.io/assets/Screenshot-2021-12-29-at-09.19.37.png)
+---
+
+<a id="developer-hooks-filters-filter-bricks-password-protection-cookie-expires"></a>
+
+# Filter: bricks/password_protection/cookie_expires
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-cookie-expires/
+
+*Adjust the expiration time for the password cookie used by the password protection template. By default, when a password is set in the template settings, the.*
+
+Adjust the expiration time for the password cookie used by [the password protection template](https://academy.bricksbuilder.io/builder/features/password-protection/). By default, when a password is set in the template settings, the cookie expires after **10 days**. This filter allows you to customize how long the cookie remains valid.
+
+## Example Usage:
+
+```php
+add_filter( 'bricks/password_protection/cookie_expires', function( $expire ) {
+    // Set cookie expiration to 1 hour (3600 seconds)
+    return time() + 3600;
+} );
+```
+
+In this example, the password cookie will expire after 1 hour, requiring users to re-enter the password if they revisit the page after that time.
+
+**Parameters:**
+
+- `$expire` (int): The default expiration timestamp for the password cookie, which is set to **10 days**.
+
+**Return:**
+
+- (int): The Unix timestamp for when the cookie should expire.
 
 ---
 
@@ -12372,6 +12333,45 @@ add_filter( 'bricks/posts/query_vars', function( $query_vars, $settings, $elemen
 
 ---
 
+<a id="developer-hooks-filters-filter-bricks-posts-merge-query"></a>
+
+# Filter: bricks/posts/merge_query
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-merge_query/
+
+*Since Bricks 1.3.7 you'll be able to decide if a certain element query should be merged with the WordPress main query, in the archive or search templates, using.*
+
+Since Bricks 1.3.7 you'll be able to decide if a certain element query should be merged with the WordPress main query, in the archive or search templates, using the following filter:
+
+```php
+add_filter( 'bricks/posts/merge_query', function( $merge, $element_id ) {
+  if ( $element_id === 'wghgco' ) {
+    return false;
+  }
+
+  return $merge;
+}, 10, 2 );
+```
+
+The filter callback receives two arguments:
+
+- `$merge` is a boolean variable indicating whether the query should be merged or not (default: true)
+- `$element_id` is a string containing the element ID
+
+This is triggered for all the Bricks elements containing one internal WP_Query query like the Posts and the Carousel element, or any other element where the Query Loop is enabled (Container, Slider, Accordion).
+
+> **Note**
+>
+> Starting from Bricks 1.7, you can achieve the same result by utilizing the "Disable Query Merge" option in the [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/#posts-query), without the need for a PHP filter. Use this filter for more advanced situations.
+
+## How to find the element ID? {#find-element-id}
+
+Each element in Bricks has a unique ID. You may find the element ID when editing the element and looking into the Global CSS classes input. By default, it shows the element HTML ID (e.g. `#bricks-element-wghgco`). For the purpose of this filter, we only need the last portion of the string, the six-character long element ID (e.g. `wghgco`).
+
+![](https://academy.bricksbuilder.io/assets/Screenshot-2021-12-29-at-09.19.37.png)
+
+---
+
 <a id="developer-hooks-filters-filter-bricks-query-init-loop-index"></a>
 
 # Filter: bricks/query/init_loop_index
@@ -12401,6 +12401,44 @@ add_filter( 'bricks/query/init_loop_index', function ( $initial_index, $object_t
 }, 10, 3 );
 
 ```
+
+---
+
+<a id="developer-hooks-filters-filter-bricks-query-loop-object"></a>
+
+# Filter: bricks/query/loop_object
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object/
+
+*The Bricks Query Loop supports 3 types of queries by default (Posts, Terms, and Users). But it can be extended to support any other query. While iterating.*
+
+The Bricks [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/) supports 3 types of queries by default (Posts, Terms, and Users). But it can be extended to support [any other query](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-run/). While iterating through the query results, the iteration object could be manipulated using the `bricks/query/loop_object` like so:
+
+```php
+add_filter( 'bricks/query/loop_object', function( $loop_object, $loop_key, $query_obj ) {
+    if ( $query_obj->object_type !== 'my_query_type' ) {
+	return $loop_object;
+    }
+
+    // Perform some logic, for example:
+    // global $post;
+    // $post = get_post( $loop_object );
+    // setup_postdata( $post );
+
+    return $loop_object;
+}, 10, 3 );
+```
+
+The filter callback receives two arguments:
+
+- `$loop_object` is the current loop iteration value (from the results array)
+- `$loop_key` is the current loop iteration key (from the results array)
+- `$query_obj` is an instance of the `\Bricks\Query` class object
+
+Related hooks:
+
+- To add a query type to the Query control use [`bricks/setup/control_options`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/)
+- To perform the custom query type and output the results use [`bricks/query/run`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-run/)
 
 ---
 
@@ -12449,44 +12487,6 @@ Since 1.9.2, you can define `$query_vars['bricks_force_run'] = true` to achieve 
 
 ---
 
-<a id="developer-hooks-filters-filter-bricks-query-loop-object"></a>
-
-# Filter: bricks/query/loop_object
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object/
-
-*The Bricks Query Loop supports 3 types of queries by default (Posts, Terms, and Users). But it can be extended to support any other query. While iterating.*
-
-The Bricks [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/) supports 3 types of queries by default (Posts, Terms, and Users). But it can be extended to support [any other query](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-run/). While iterating through the query results, the iteration object could be manipulated using the `bricks/query/loop_object` like so:
-
-```php
-add_filter( 'bricks/query/loop_object', function( $loop_object, $loop_key, $query_obj ) {
-    if ( $query_obj->object_type !== 'my_query_type' ) {
-	return $loop_object;
-    }
-
-    // Perform some logic, for example:
-    // global $post;
-    // $post = get_post( $loop_object );
-    // setup_postdata( $post );
-
-    return $loop_object;
-}, 10, 3 );
-```
-
-The filter callback receives two arguments:
-
-- `$loop_object` is the current loop iteration value (from the results array)
-- `$loop_key` is the current loop iteration key (from the results array)
-- `$query_obj` is an instance of the `\Bricks\Query` class object
-
-Related hooks:
-
-- To add a query type to the Query control use [`bricks/setup/control_options`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/)
-- To perform the custom query type and output the results use [`bricks/query/run`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-run/)
-
----
-
 <a id="developer-hooks-filters-filter-bricks-query-loop-object-id"></a>
 
 # Filter: bricks/query/loop_object_id
@@ -12520,6 +12520,31 @@ add_filter( 'bricks/query/loop_object_id', function( $object_id, $object, $query
 
 ---
 
+<a id="developer-hooks-filters-filter-bricks-query-no-results-content"></a>
+
+# Filter: bricks/query/no_results_content
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-no_results_content/
+
+*You can programmatically change the query loop \"no results content\" using this filter.*
+
+You can programmatically change the query loop "no results content" using this filter.
+
+```php
+add_filter( 'bricks/query/no_results_content', function( $content, $settings, $element_id ) {
+
+  // Check if the query element id is the one you want
+  if( $element_id !== 'srixvr' ) return $content;
+
+  // Use a bricks section template as the no results content
+  $content = do_shortcode('[bricks_template id="3981"]');
+
+  return $content;
+}, 10, 3 );
+```
+
+---
+
 <a id="developer-hooks-filters-filter-bricks-query-loop-object-type"></a>
 
 # Filter: bricks/query/loop_object_type
@@ -12542,6 +12567,99 @@ add_filter( 'bricks/query/loop_object_type', function( $object_type, $object, $q
     return 'post';
 }, 10, 3 );
 ```
+
+---
+
+<a id="developer-hooks-filters-filter-bricks-query-result-count"></a>
+
+# Filter: bricks/query/result_count
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_count/
+
+*Filter the result count Bricks reports for a query object before pagination or related UI uses that total.*
+
+This filter allows you to modify the query result count (@since 1.8).
+
+```php
+add_filter( 'bricks/query/result_count', function( $result_count, $query_obj ) {
+  // Return: Element ID is not "lbsijo", nor is it a post query
+  if( $query_obj->element_id !== 'lbsijo' || $query_obj->object_type !== 'post' ) {
+    return $result_count;
+  }
+
+  // Perform your logic here
+  // Use $query_obj->query_result to access the query result
+  $new_count = 123;
+  return $new_count;
+}, 10, 2 );
+```
+
+---
+
+<a id="developer-hooks-filters-filter-bricks-query-result-max-num-pages"></a>
+
+# Filter: bricks/query/result_max_num_pages
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_max_num_pages/
+
+*Filter the maximum number of pages Bricks reports for a query object, including the value used by Pagination.*
+
+This filter allows you to modify the query result maximum number of pages (@since 1.9.1). This value is used for the Pagination element as well.
+
+```php
+add_filter( 'bricks/query/result_max_num_pages', function( $max_num_pages, $query_obj ) {
+  // Return: Element ID is not "lbsijo", nor is it a post query
+  if( $query_obj->element_id !== 'lbsijo' || $query_obj->object_type !== 'post' ) {
+    return $max_num_pages;
+  }
+
+  // Perform your logic here
+  // Use $query_obj->query_result to access the query result
+  $max_num_pages = 3;
+  return $max_num_pages;
+}, 10, 2 );
+```
+
+---
+
+<a id="developer-hooks-filters-filter-bricks-query-run"></a>
+
+# Filter: bricks/query/run
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-run/
+
+*The Bricks Query Loop supports 3 types of queries by default (Posts, Terms and Users). But it can be extended to support any other query. To return a custom.*
+
+The Bricks [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/) supports 3 types of queries by default (Posts, Terms and Users). But it can be extended to support any other query. To return a custom query result, Bricks can be extended using the WP filter `bricks/query/run` like so:
+
+```php
+add_filter( 'bricks/query/run', function( $results, $query_obj ) {
+    if ( $query_obj->object_type !== 'my_query_type' ) {
+	return $results;
+    }
+
+    // Perform the query
+    // Assign the results to $results (array)
+
+    return $results;
+}, 10, 2 );
+```
+
+The filter callback receives two arguments:
+
+- `$results` is the results array (empty by default). The loop will iterate through this array.
+- `$query_obj` is an instance of the `\Bricks\Query` class object
+
+Note: This hook should be used to add different types of query results. If you want to alter the posts, terms, or users query, use the following hooks:
+
+- **Posts**: [`bricks/posts/query_vars`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-query_vars/)
+- **Terms**: [bricks/terms/query_vars](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-terms-query_vars/)
+- **Users**: [bricks/users/query_vars](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-users-query_vars/)
+
+Related hooks:
+
+- To add a query type to the Query control use [`bricks/setup/control_options`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/)
+- To manage the object on every loop iteration use [`bricks/query/loop_object`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object/)
 
 ---
 
@@ -12605,121 +12723,28 @@ For native query limits and offsets, use the [Query Loop controls](https://acade
 
 ---
 
-<a id="developer-hooks-filters-filter-bricks-query-no-results-content"></a>
+<a id="developer-hooks-filters-filter-bricks-registered-post-types-args"></a>
 
-# Filter: bricks/query/no_results_content
+# Filter: bricks/registered_post_types_args
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-no_results_content/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-registered_post_types_args/
 
-*You can programmatically change the query loop \"no results content\" using this filter.*
+*Available since version 1.6, this filter allows you to customise the post type args that are used to query the post type as shown in the Bricks settings & the.*
 
-You can programmatically change the query loop "no results content" using this filter.
-
-```php
-add_filter( 'bricks/query/no_results_content', function( $content, $settings, $element_id ) {
-
-  // Check if the query element id is the one you want
-  if( $element_id !== 'srixvr' ) return $content;
-
-  // Use a bricks section template as the no results content
-  $content = do_shortcode('[bricks_template id="3981"]');
-
-  return $content;
-}, 10, 3 );
-```
-
----
-
-<a id="developer-hooks-filters-filter-bricks-query-result-max-num-pages"></a>
-
-# Filter: bricks/query/result_max_num_pages
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_max_num_pages/
-
-*Filter the maximum number of pages Bricks reports for a query object, including the value used by Pagination.*
-
-This filter allows you to modify the query result maximum number of pages (@since 1.9.1). This value is used for the Pagination element as well.
+Available since version 1.6, this filter allows you to customise the post type args that are used to query the post type as shown in the Bricks settings & the builder (e.g. Query control post types, etc.)
 
 ```php
-add_filter( 'bricks/query/result_max_num_pages', function( $max_num_pages, $query_obj ) {
-  // Return: Element ID is not "lbsijo", nor is it a post query
-  if( $query_obj->element_id !== 'lbsijo' || $query_obj->object_type !== 'post' ) {
-    return $max_num_pages;
-  }
+add_filter( 'bricks/registered_post_types_args', function( $args ) {
+  // Default: Return only public post types
+  // $args['public'] = true;
 
-  // Perform your logic here
-  // Use $query_obj->query_result to access the query result
-  $max_num_pages = 3;
-  return $max_num_pages;
-}, 10, 2 );
+  // Custom: Return all registered post types
+  unset( $args['public'] );
+
+  // Available arguments: https://developer.wordpress.org/reference/functions/get_post_types/#comment-2184
+  return $args;
+} );
 ```
-
----
-
-<a id="developer-hooks-filters-filter-bricks-query-result-count"></a>
-
-# Filter: bricks/query/result_count
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_count/
-
-*Filter the result count Bricks reports for a query object before pagination or related UI uses that total.*
-
-This filter allows you to modify the query result count (@since 1.8).
-
-```php
-add_filter( 'bricks/query/result_count', function( $result_count, $query_obj ) {
-  // Return: Element ID is not "lbsijo", nor is it a post query
-  if( $query_obj->element_id !== 'lbsijo' || $query_obj->object_type !== 'post' ) {
-    return $result_count;
-  }
-
-  // Perform your logic here
-  // Use $query_obj->query_result to access the query result
-  $new_count = 123;
-  return $new_count;
-}, 10, 2 );
-```
-
----
-
-<a id="developer-hooks-filters-filter-bricks-query-run"></a>
-
-# Filter: bricks/query/run
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-run/
-
-*The Bricks Query Loop supports 3 types of queries by default (Posts, Terms and Users). But it can be extended to support any other query. To return a custom.*
-
-The Bricks [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/) supports 3 types of queries by default (Posts, Terms and Users). But it can be extended to support any other query. To return a custom query result, Bricks can be extended using the WP filter `bricks/query/run` like so:
-
-```php
-add_filter( 'bricks/query/run', function( $results, $query_obj ) {
-    if ( $query_obj->object_type !== 'my_query_type' ) {
-	return $results;
-    }
-
-    // Perform the query
-    // Assign the results to $results (array)
-
-    return $results;
-}, 10, 2 );
-```
-
-The filter callback receives two arguments:
-
-- `$results` is the results array (empty by default). The loop will iterate through this array.
-- `$query_obj` is an instance of the `\Bricks\Query` class object
-
-Note: This hook should be used to add different types of query results. If you want to alter the posts, terms, or users query, use the following hooks:
-
-- **Posts**: [`bricks/posts/query_vars`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-query_vars/)
-- **Terms**: [bricks/terms/query_vars](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-terms-query_vars/)
-- **Users**: [bricks/users/query_vars](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-users-query_vars/)
-
-Related hooks:
-
-- To add a query type to the Query control use [`bricks/setup/control_options`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/)
-- To manage the object on every loop iteration use [`bricks/query/loop_object`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object/)
 
 ---
 
@@ -12746,31 +12771,6 @@ The filter callback receives two arguments:
 - `$query_vars` is an associative array used to feed the [WP_Query](https://developer.wordpress.org/reference/classes/wp_query/) class
 - `$settings` is an associative array containing the element settings set in the builder
 - `$element_id` is a string containing the element ID
-
----
-
-<a id="developer-hooks-filters-filter-bricks-registered-post-types-args"></a>
-
-# Filter: bricks/registered_post_types_args
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-registered_post_types_args/
-
-*Available since version 1.6, this filter allows you to customise the post type args that are used to query the post type as shown in the Bricks settings & the.*
-
-Available since version 1.6, this filter allows you to customise the post type args that are used to query the post type as shown in the Bricks settings & the builder (e.g. Query control post types, etc.)
-
-```php
-add_filter( 'bricks/registered_post_types_args', function( $args ) {
-  // Default: Return only public post types
-  // $args['public'] = true;
-
-  // Custom: Return all registered post types
-  unset( $args['public'] );
-
-  // Available arguments: https://developer.wordpress.org/reference/functions/get_post_types/#comment-2184
-  return $args;
-} );
-```
 
 ---
 
