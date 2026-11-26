@@ -40,7 +40,7 @@ Let's walk through the element builder properties and methods:
 | --- | --- |
 | **$name** required | Unique element identifier (all lowercase, no spaces). To avoid any conflicts with other elements please prefix your element name, e.g.: `prefix-element-test`. |
 | **$icon** | Icon font CSS class. Bricks includes the following icon fonts. Use any icon font CSS class to represent your element in the builder panel:  [Fontawesome 6](https://fontawesome.com/icons?d=gallery&m=free) (i.e. "fas fa-anchor") [Ionicons 4](https://ionicons.com/v4/cheatsheet.html) (i.e. "ion-md-alarm") [Themify Icons](https://themify.me/themify-icons) (i.e. "ti-bolt-alt") |
-| **$css_selector** | By default all CSS control settings are applied to the element wrapper:  `.bricks-element-wrapper`. If you want the default CSS selector to target a child HTML element, set this selector here. |
+| **$css_selector** | Leave this property empty to target the element root by default. Output `$this->render_attributes( '_root' )` on the root tag. To target a descendant by default, set `$css_selector` to a selector such as `.prefix-test-content`. Bricks uses this value for `css` rules that omit `selector`. A rule with its own `selector` keeps that value. |
 | **$nestable** | Omit for plain elements. Set to `true` to create a [nestable element](https://academy.bricksbuilder.io/developer/elements/nestable-elements/). |
 | **$scripts** | An array of JavaScript scripts that run when an element is rendered on the frontend or updated in the builder. The Counter element, for example, uses a script named "bricksCounter" (defined in *frontend.min.js*).<br /><br />To load this script we use: `public $scripts = ['bricksCounter'];`<br /><br />Please prefix all your scripts. E.g.: `prefixElementTest` |
 | **get_label()** required | Return localised element label. |
@@ -48,11 +48,11 @@ Let's walk through the element builder properties and methods:
 | **set_control_groups()** | By default, all element controls show ungrouped in the builder panel under the "Content" tab. Define custom control groups for your element controls by setting the following properties for each control group: **title** — Localized control group title. **tab** — Set to either "content" or "style". |
 | **set_controls()** required | Define element controls. For an overview of all available controls and their settings visit: [Element Controls](https://academy.bricksbuilder.io/developer/controls/element-controls/) |
 | **enqueue_scripts()** | Load element-specific scripts and styles. Those are loaded only on pages where this element is used. Results in better performance. Example: `wp_enqueue_script( 'prefix-element-test', get_template_directory_uri() . '/js/custom.js', ['jquery'], '1.0', true );` |
-| **render()** required | Renders element HTML. Define HTML attributes via `$this->set_attribute()` and output them via `$this->render_attribute()` |
+| **render()** required | Renders element HTML. Define HTML attributes with `$this->set_attribute()` and output them with `$this->render_attributes()`. |
 | **`set_attribute( $key, $attribute, $value )`** | Helper function to set HTML attributes for any HTML tag. `$key` serves as the unique identifier for this HTML tag. `$attribute` is the HTML attribute name. `$value` is a string or array which holds the attribute value(s). |
 | **`render_attributes( $key )`** | Helper function to render HTML attributes defined via `$this->set_attribute()`. `$key` serves as the unique identifier for this HTML tag. |
 | **`render_dynamic_data_tag( $tag, $context, $args )`** | Helper function to render dynamic data tags inside the render function using `$this->render_dynamic_data_tag(...)`. An example of a `$tag` is the `{post_title}`. Using this helper function sets the correct post Id depending on the environment where the element is being rendered. |
-| **`render_dynamic_data( $content )`** | Helper function to render content (string) that could contain dynamic data tags. Use this helper function inside the render function calling `$this->render_dynamic_data(...)`. Using this helper function sets the correct post Id depending on the environment where the element is being rendered. |
+| **`render_dynamic_data( $content )`** | Resolves dynamic tags in a string using the element's post context or the current post in a post query loop. Call `$this->render_dynamic_data()` inside `render()` before outputting text that supports tags. See [Render dynamic text](#render-dynamic-text). |
 
 Let's populate our element properties and methods with some data:
 
@@ -67,7 +67,7 @@ class Prefix_Element_Test extends \Bricks\Element {
   public $category     = 'general'; // Use predefined element category 'general'
   public $name         = 'prefix-test'; // Make sure to prefix your elements
   public $icon         = 'ti-bolt-alt'; // Themify icon font class
-  public $css_selector = '.prefix-test-wrapper'; // Default CSS selector
+  public $css_selector = '.prefix-test-content'; // Default target for CSS rules without a selector
   public $scripts      = ['prefixElementTest']; // Script(s) run when element is rendered on frontend or updated in builder
 
   // Return localised element label
@@ -134,12 +134,12 @@ class Prefix_Element_Test extends \Bricks\Element {
     // Add 'class' attribute to element root tag
     $this->set_attribute( '_root', 'class', $root_classes );
 
-    // Render element HTML
-    // '_root' attribute is required (contains element ID, class, etc.)
-    echo "<div {$this->render_attributes( '_root' )}>"; // Element root attributes
-      if ( ! empty( $this->settings['content'] ) ) {
-        echo "<div>{$this->settings['content']}</div>";
-      }
+    $content = $this->render_dynamic_data( $this->settings['content'] ?? '' );
+
+    echo "<div {$this->render_attributes( '_root' )}>";
+    if ( $content !== '' ) {
+      echo '<div class="prefix-test-content">' . esc_html( $content ) . '</div>';
+    }
     echo '</div>';
   }
 }
@@ -179,3 +179,26 @@ The `register_element` method accepts 3 arguments:
 > **Note**
 >
 > **Note:** Using the `$name` and `$element_class` arguments will improve the loading performance.
+
+## Render dynamic text
+
+For a [text control](https://academy.bricksbuilder.io/developer/controls/text-control/) that accepts dynamic tags, resolve the control value inside `render()` with `$this->render_dynamic_data()` before output. The initial Builder canvas and frontend can resolve tags in the finished HTML, which can hide a missing helper call. A re-render after a setting change can return the element's HTML without that extra pass.
+
+```php
+public function set_controls() {
+  $this->controls['content'] = [
+    'label' => esc_html__( 'Content', 'bricks' ),
+    'type' => 'text',
+  ];
+}
+
+public function render() {
+  $content = $this->render_dynamic_data( $this->settings['content'] ?? '' );
+
+  echo '<div ' . $this->render_attributes( '_root' ) . '>' . esc_html( $content ) . '</div>';
+}
+```
+
+Use `esc_html()` for plain-text output, as in this example.
+
+Enter `{post_title}` in **Content**, save, and reload the Builder to check the initial canvas. Then edit **Content** to read `Page: {post_title}` and check that the canvas updates with the prefix and the resolved title. Save again and check the same output on the frontend.

@@ -1,7 +1,7 @@
 # Bricks Builder Documentation: Integrations
 
-<!-- content-sha256: 6adc51e0448c248edb4836997c5257978a68a41d081bca1088305197b740d173 -->
-<!-- content last changed: 2026-11-25 09:55 UTC -->
+<!-- content-sha256: 3e461a316e2a51e7c404b73e446827f5da99ca7f2911815f2ca5cf2ee414d21f -->
+<!-- content last changed: 2026-11-26 09:32 UTC -->
 
 Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricksbuilder.io/), refreshed daily. Content © Bricks. 28 pages.
 
@@ -12,25 +12,25 @@ Unofficial Markdown export of the Bricks Builder Academy (https://academy.bricks
   - [How to use WPML with Bricks](#integrations-how-to-use-wpml-with-bricks)
 - [Integrations](#integrations)
   - [How to get your Instagram Access Token](#integrations-instagram-access-token)
-  - [Unsplash Integration](#integrations-unsplash)
   - [Map (Leaflet)](#integrations-map-leaflet)
   - [How to use Polylang with Bricks](#integrations-polylang)
+  - [Unsplash Integration](#integrations-unsplash)
     - [Bricks components as blocks](#integrations-gutenberg-components-as-blocks)
     - [WooCommerce advanced modular elements](#integrations-woocommerce-advanced-modular-elements)
     - [Cart (WooCommerce)](#integrations-woocommerce-cart)
     - [Checkout (WooCommerce)](#integrations-woocommerce-checkout)
     - [Create a custom mini cart with Dynamic fragment](#integrations-woocommerce-create-custom-mini-cart-dynamic-fragment)
+    - [Creating dynamic WooCommerce archive pages](#integrations-woocommerce-creating-dynamic-woocommerce-archive-pages)
     - [Element: Checkout Coupon](#integrations-woocommerce-element-checkout-coupon)
     - [Element: Checkout Login](#integrations-woocommerce-element-checkout-login)
-    - [Creating dynamic WooCommerce archive pages](#integrations-woocommerce-creating-dynamic-woocommerce-archive-pages)
     - [How to Create Product Quick View with Bricks](#integrations-woocommerce-how-to-create-product-quick-view-with-bricks)
   - [WooCommerce](#integrations-woocommerce)
-    - [Checkout v2 multistep checkout](#integrations-woocommerce-multistep-checkout-v2)
     - [Product Archive (WooCommerce)](#integrations-woocommerce-product-archive-woocommerce)
+    - [Checkout v2 multistep checkout](#integrations-woocommerce-multistep-checkout-v2)
     - [Product Variation Swatches (WooCommerce)](#integrations-woocommerce-product-variation-swatches)
-    - [Woo Setup Wizard](#integrations-woocommerce-woo-setup-wizard)
     - [Single Product (WooCommerce)](#integrations-woocommerce-single-product)
     - [WooCommerce Account Builder](#integrations-woocommerce-woocommerce-account-builder)
+    - [Woo Setup Wizard](#integrations-woocommerce-woo-setup-wizard)
     - [WooCommerce Builder](#integrations-woocommerce-woocommerce-builder)
     - [WooCommerce Notices](#integrations-woocommerce-woocommerce-notices)
     - [WooCommerce Template Hooks](#integrations-woocommerce-woocommerce-template-hooks)
@@ -462,44 +462,6 @@ For more information, refer to Meta’s official documentation: [Create a Meta A
 
 ---
 
-<a id="integrations-unsplash"></a>
-
-# Unsplash Integration
-
-Source: https://academy.bricksbuilder.io/integrations/unsplash/
-
-*Connect Unsplash to Bricks so you can browse, download, and optionally rename royalty-free images directly from the builder.*
-
-Finding affordable, high-quality, commercially useable photography for your website (that doesn't scream stock photography) is really hard. Bricks is putting an end to it.
-
-[Unsplash.com](https://unsplash.com?ref=bricksbuilder), the world's largest and most generous community of photographers, allows you to use their photography royalty free (commercial use included). No linking back or attribution required. Unsplash operates under a so-called "do whatever you want" [license](https://unsplash.com/license).
-
-Browse and download any Unsplash photo inside the builder by clicking the **Browse Unsplash** button below eligible image and image gallery controls after entering your Unsplash API key. The button appears only on controls that support Unsplash and have not disabled it.
-
-https://youtu.be/yLgi-L2doIM
-
-## Rename & Download
-
-Hover over any photo and click the** Download** button to download a photo from Unsplash directly into your WordPress media library. All resizing is done automatically in the background for you.
-
-File renaming is disabled by default. If you want to enter a custom filename before downloading a photo, enable the "Rename images" checkbox in the top right corner of the Unsplash popup.
-
-## How To Generate Your Unsplash API Key
-
-To receive access to Unsplash's photo library you need to generate an API key. It's 100% free and only takes two minutes.
-
-1. Create an Unsplash developer account if you don't already have one:
-[https://unsplash.com/developers](https://unsplash.com/developers)
-2. Log in and visit [https://unsplash.com/oauth/applications](https://unsplash.com/oauth/applications)
-3. Click **New Application**, check all boxes and click **Accept terms**.
-4. Fill out the application name and description and click **Create application**.
-5. Scroll down to **Keys** and copy the **Access key**.
-6. Return to your WordPress dashboard. Go to **Bricks > Settings > API Keys** and paste your Unsplash API key under **Unsplash API Key**. Click Save.
-
-If you click on **Browse Unsplash** below an eligible image or image gallery control in the builder, the latest Unsplash photos should now appear, ready for you to download.
-
----
-
 <a id="integrations-map-leaflet"></a>
 
 # Map (Leaflet)
@@ -753,6 +715,44 @@ To learn more about Polylang and its various features, you can refer to the foll
 3. [Polylang advanced](https://polylang.pro/doc-category/polylang-advanced/): This section provides more advanced Polylang guides.
 
 These resources can provide additional insights and answers to more specific or complex issues you might encounter when using Polylang.
+
+---
+
+<a id="integrations-unsplash"></a>
+
+# Unsplash Integration
+
+Source: https://academy.bricksbuilder.io/integrations/unsplash/
+
+*Connect Unsplash to Bricks so you can browse, download, and optionally rename royalty-free images directly from the builder.*
+
+Finding affordable, high-quality, commercially useable photography for your website (that doesn't scream stock photography) is really hard. Bricks is putting an end to it.
+
+[Unsplash.com](https://unsplash.com?ref=bricksbuilder), the world's largest and most generous community of photographers, allows you to use their photography royalty free (commercial use included). No linking back or attribution required. Unsplash operates under a so-called "do whatever you want" [license](https://unsplash.com/license).
+
+Browse and download any Unsplash photo inside the builder by clicking the **Browse Unsplash** button below eligible image and image gallery controls after entering your Unsplash API key. The button appears only on controls that support Unsplash and have not disabled it.
+
+https://youtu.be/yLgi-L2doIM
+
+## Rename & Download
+
+Hover over any photo and click the** Download** button to download a photo from Unsplash directly into your WordPress media library. All resizing is done automatically in the background for you.
+
+File renaming is disabled by default. If you want to enter a custom filename before downloading a photo, enable the "Rename images" checkbox in the top right corner of the Unsplash popup.
+
+## How To Generate Your Unsplash API Key
+
+To receive access to Unsplash's photo library you need to generate an API key. It's 100% free and only takes two minutes.
+
+1. Create an Unsplash developer account if you don't already have one:
+[https://unsplash.com/developers](https://unsplash.com/developers)
+2. Log in and visit [https://unsplash.com/oauth/applications](https://unsplash.com/oauth/applications)
+3. Click **New Application**, check all boxes and click **Accept terms**.
+4. Fill out the application name and description and click **Create application**.
+5. Scroll down to **Keys** and copy the **Access key**.
+6. Return to your WordPress dashboard. Go to **Bricks > Settings > API Keys** and paste your Unsplash API key under **Unsplash API Key**. Click Save.
+
+If you click on **Browse Unsplash** below an eligible image or image gallery control in the builder, the latest Unsplash photos should now appear, ready for you to download.
 
 ---
 
@@ -1613,88 +1613,6 @@ To test the mini cart:
 
 ---
 
-<a id="integrations-woocommerce-element-checkout-coupon"></a>
-
-# Element: Checkout Coupon
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/
-
-*Use the Bricks Checkout Coupon element inside WooCommerce checkout templates to render and style the coupon form.*
-
-This Checkout coupon element, available @since 1.11.1, allows you to display the coupon field in various locations on the checkout page, making it easy for customers to apply discount codes during their purchase.
-
-In previous versions, you couldn’t control the location of the checkout coupon. Additionally, styling options were limited, and adjustments required custom CSS. With this new, dedicated checkout coupon element you now have greater control over placement and design.
-
-To use this element, first enable it under **`Bricks > Settings > WooCommerce`** by turning on **`Enable Bricks WooCommerce "Checkout coupon" element`**.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-setting.png)
-
-> **Note**
->
-> WooCommerce **`Enable the use of coupon codes`** must also be active under **WooCommerce > Settings > General**. When the Bricks Checkout Coupon element is enabled, the native WooCommerce checkout coupon form is removed, so add this element where you want the coupon form to appear.
-
-> **Note**
->
-> **Note:** This element is specifically designed for the Checkout page and will only work when placed on the **Checkout template** or the Checkout page itself, depending on your design requirements.
-
-**Key Controls**
-
-**Location:**
-
-- By default, the **Checkout Coupon** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment
-- Custom location settings only apply on the actual frontend (Checkout page). To ensure correct placement, add this element at the top of your Checkout template.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-element-controls.png)
-
-![](https://academy.bricksbuilder.io/assets/element-location-example.png)
-
-Enable **Toggleable form** to hide the form until its prompt is clicked. For the expanded icon and transition controls added in Bricks 2.5, see the [Checkout Coupon settings](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-coupon/#settings).
-
----
-
-<a id="integrations-woocommerce-element-checkout-login"></a>
-
-# Element: Checkout Login
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-login/
-
-*Use the Bricks Checkout Login element inside WooCommerce checkout templates to render and style the returning-customer login prompt.*
-
-The Checkout Login element allows for a convenient login option directly on the checkout page, enabling returning customers to sign in before completing their purchase.
-
-This feature becomes available once you've enabled **`Enable log-in during checkout`** under **`WooCommerce > Settings > Accounts & Privacy`**.
-
-In previous versions, the placement of the checkout login form was fixed, and styling options were limited, requiring custom CSS for adjustments. Now, you can control both placement and appearance.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-enable-login-during-checkout.png)
-
-To use this element, activate it under **`Bricks > Settings > WooCommerce`** by toggling on **`Enable Bricks WooCommerce "Checkout login" element`**.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-login-setting.png)
-
-> **Note**
->
-> When the Bricks Checkout Login element is enabled, the native WooCommerce checkout login form is removed. Add this element where you want the returning-customer login prompt to appear. The WooCommerce **`Enable log-in during checkout`** setting must stay enabled; on the frontend, the element does not render for users who are already logged in.
-
-> **Note**
->
-> **Note:** This element is specifically intended for the Checkout page. Place it within the **Checkout template** or directly on the Checkout page, depending on your design needs.
-
-**Key Controls**
-
-**Location:**
-
-- By default, the **Checkout Login** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment.
-- Custom location settings only apply on the frontend. To ensure the login form appears in the desired location, add this element at the beginning of your Checkout template.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-login-element-controls.png)
-
-![](https://academy.bricksbuilder.io/assets/element-location-example.png)
-
-Enable **Toggleable form** to hide the form until its prompt is clicked. For the expanded icon and transition controls added in Bricks 2.5, see the [Checkout Login settings](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-login/#settings).
-
----
-
 <a id="integrations-woocommerce-creating-dynamic-woocommerce-archive-pages"></a>
 
 # Creating dynamic WooCommerce archive pages
@@ -1843,6 +1761,88 @@ Custom WooCommerce Archive Template
 
 ---
 
+<a id="integrations-woocommerce-element-checkout-coupon"></a>
+
+# Element: Checkout Coupon
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/
+
+*Use the Bricks Checkout Coupon element inside WooCommerce checkout templates to render and style the coupon form.*
+
+This Checkout coupon element, available @since 1.11.1, allows you to display the coupon field in various locations on the checkout page, making it easy for customers to apply discount codes during their purchase.
+
+In previous versions, you couldn’t control the location of the checkout coupon. Additionally, styling options were limited, and adjustments required custom CSS. With this new, dedicated checkout coupon element you now have greater control over placement and design.
+
+To use this element, first enable it under **`Bricks > Settings > WooCommerce`** by turning on **`Enable Bricks WooCommerce "Checkout coupon" element`**.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-setting.png)
+
+> **Note**
+>
+> WooCommerce **`Enable the use of coupon codes`** must also be active under **WooCommerce > Settings > General**. When the Bricks Checkout Coupon element is enabled, the native WooCommerce checkout coupon form is removed, so add this element where you want the coupon form to appear.
+
+> **Note**
+>
+> **Note:** This element is specifically designed for the Checkout page and will only work when placed on the **Checkout template** or the Checkout page itself, depending on your design requirements.
+
+**Key Controls**
+
+**Location:**
+
+- By default, the **Checkout Coupon** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment
+- Custom location settings only apply on the actual frontend (Checkout page). To ensure correct placement, add this element at the top of your Checkout template.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-element-controls.png)
+
+![](https://academy.bricksbuilder.io/assets/element-location-example.png)
+
+Enable **Toggleable form** to hide the form until its prompt is clicked. For the expanded icon and transition controls added in Bricks 2.5, see the [Checkout Coupon settings](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-coupon/#settings).
+
+---
+
+<a id="integrations-woocommerce-element-checkout-login"></a>
+
+# Element: Checkout Login
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-login/
+
+*Use the Bricks Checkout Login element inside WooCommerce checkout templates to render and style the returning-customer login prompt.*
+
+The Checkout Login element allows for a convenient login option directly on the checkout page, enabling returning customers to sign in before completing their purchase.
+
+This feature becomes available once you've enabled **`Enable log-in during checkout`** under **`WooCommerce > Settings > Accounts & Privacy`**.
+
+In previous versions, the placement of the checkout login form was fixed, and styling options were limited, requiring custom CSS for adjustments. Now, you can control both placement and appearance.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-enable-login-during-checkout.png)
+
+To use this element, activate it under **`Bricks > Settings > WooCommerce`** by toggling on **`Enable Bricks WooCommerce "Checkout login" element`**.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-login-setting.png)
+
+> **Note**
+>
+> When the Bricks Checkout Login element is enabled, the native WooCommerce checkout login form is removed. Add this element where you want the returning-customer login prompt to appear. The WooCommerce **`Enable log-in during checkout`** setting must stay enabled; on the frontend, the element does not render for users who are already logged in.
+
+> **Note**
+>
+> **Note:** This element is specifically intended for the Checkout page. Place it within the **Checkout template** or directly on the Checkout page, depending on your design needs.
+
+**Key Controls**
+
+**Location:**
+
+- By default, the **Checkout Login** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment.
+- Custom location settings only apply on the frontend. To ensure the login form appears in the desired location, add this element at the beginning of your Checkout template.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-login-element-controls.png)
+
+![](https://academy.bricksbuilder.io/assets/element-location-example.png)
+
+Enable **Toggleable form** to hide the form until its prompt is clicked. For the expanded icon and transition controls added in Bricks 2.5, see the [Checkout Login settings](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-login/#settings).
+
+---
+
 <a id="integrations-woocommerce-how-to-create-product-quick-view-with-bricks"></a>
 
 # How to Create Product Quick View with Bricks
@@ -1935,6 +1935,90 @@ Bricks includes dedicated WooCommerce elements and template workflows so you can
 - [WooCommerce Account Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/) for account templates
 - [WooCommerce Template Hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/) for hook-aware template work
 - [WooCommerce Notices](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-notices/) for notice styling and output
+
+---
+
+<a id="integrations-woocommerce-product-archive-woocommerce"></a>
+
+# Product Archive (WooCommerce)
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/product-archive-woocommerce/
+
+*Build WooCommerce product archive templates in Bricks for shop, category, tag, and other archive views.*
+
+> **Note**
+>
+> The template type "WooCommerce – Product Archive" is only visible if WooCommerce is installed & active.
+
+Create a template of type "WooCommerce – Product Archive" in Bricks to design your product archive pages (product categories, tags, attributes, etc.).
+
+To create this template, go to the Bricks templates screen and add a new template. Then select the template type **"WooCommerce – Product Archive"** from the top-right dropdown:
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-template-type-product-archive.png)
+
+Click "Publish" or "Save Draft". Then "Edit with Bricks" to open the builder.
+
+It is also possible to create/edit this and other templates in the Bricks editor interface by clicking on the Folders icon or pressing CMD / CTRL + SHIFT + L.
+
+> **Note**
+>
+> Please remember to add [template hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/#product-archive-template-hooks) if you are using third-party plugins.
+
+## Product Archive Elements {#elements}
+
+![](https://academy.bricksbuilder.io/assets/woocommerc-product-archive-elements-580x1024.png)
+
+### Archive title
+
+There is no specific element to add a heading to the product archive.
+
+To add a heading to this template you could use the Post Title element or add a Heading element with the `{archive_title}` tag.
+
+### Breadcrumbs
+
+Use the breadcrumbs element to output the navigation links from "Home", and higher level categories until the content displayed in the page.
+
+This element uses the WooCommerce breadcrumbs default engine to generate each part of the breadcrumbs path.
+
+### Products archive description
+
+The products archive description will render the product category (or any other product taxonomy term) description.
+
+If used in a template that renders the **Shop** page, it will output the page content (from the Gutenberg/blocks editor).
+
+### Products
+
+This is the main element to list products in a grid. You have controls to customize the style and layout, tweak the query, and select which content (fields) you want to show for each product.
+
+This element interconnects with the **Products Filter**, **Products Pagination**, **Products Orderby** and the **Products Total Results** elements.
+
+This means that the query results will be conditioned by the filters and the orderby conditions and it will also impact the pagination and the total results elements output.
+
+The query used inside the products element to generate the grid of products will merge the query arguments from the element with the default WooCommerce query in the case the page rendered is the product archive or the product taxonomy archive (product category or product tag). This means that if you are seeing a certain product category archive page you only get a list of products from that category.
+
+### Products filter
+
+The products filter element allows you to add query filters to the page so the visitor could search/narrow down the list of products presented.
+
+This element contains three filter types:
+
+- **Taxonomy**: filter the list by one or multiple taxonomy terms.
+- **Product attributes**: filter the list by product attributes like size, color or any other custom attribute used.
+- **Others**: Special set of filters like a product **price dual-range slider**, a** stars rating** filter, a status **stock** filter or a simple **search** input. In this set, you will also find a **Reset filters** option which you would set to add a reset product filters button.
+
+When using the taxonomy or product attributes filters, you may select different filter inputs, like a dropdown, a set of checkboxes, a radio list, a text list, or a box list.
+
+### Products pagination
+
+List of page links that allow the visitor to navigate through the different products' list pages.
+
+### Products orderby
+
+Adds a dropdown to the layout where the visitor could change the order of the products in the presented list. The default sort options are by popularity, by average rating, by latest, and by price (low to high and high to low). This list uses the WooCommerce default list and it can be extended using the WooCommerce hooks or third-party plugins.
+
+### Products total results
+
+Use this element to output the number of results returned by the current products query.
 
 ---
 
@@ -2085,90 +2169,6 @@ After generating the multistep layout:
 
 ---
 
-<a id="integrations-woocommerce-product-archive-woocommerce"></a>
-
-# Product Archive (WooCommerce)
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/product-archive-woocommerce/
-
-*Build WooCommerce product archive templates in Bricks for shop, category, tag, and other archive views.*
-
-> **Note**
->
-> The template type "WooCommerce – Product Archive" is only visible if WooCommerce is installed & active.
-
-Create a template of type "WooCommerce – Product Archive" in Bricks to design your product archive pages (product categories, tags, attributes, etc.).
-
-To create this template, go to the Bricks templates screen and add a new template. Then select the template type **"WooCommerce – Product Archive"** from the top-right dropdown:
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-template-type-product-archive.png)
-
-Click "Publish" or "Save Draft". Then "Edit with Bricks" to open the builder.
-
-It is also possible to create/edit this and other templates in the Bricks editor interface by clicking on the Folders icon or pressing CMD / CTRL + SHIFT + L.
-
-> **Note**
->
-> Please remember to add [template hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/#product-archive-template-hooks) if you are using third-party plugins.
-
-## Product Archive Elements {#elements}
-
-![](https://academy.bricksbuilder.io/assets/woocommerc-product-archive-elements-580x1024.png)
-
-### Archive title
-
-There is no specific element to add a heading to the product archive.
-
-To add a heading to this template you could use the Post Title element or add a Heading element with the `{archive_title}` tag.
-
-### Breadcrumbs
-
-Use the breadcrumbs element to output the navigation links from "Home", and higher level categories until the content displayed in the page.
-
-This element uses the WooCommerce breadcrumbs default engine to generate each part of the breadcrumbs path.
-
-### Products archive description
-
-The products archive description will render the product category (or any other product taxonomy term) description.
-
-If used in a template that renders the **Shop** page, it will output the page content (from the Gutenberg/blocks editor).
-
-### Products
-
-This is the main element to list products in a grid. You have controls to customize the style and layout, tweak the query, and select which content (fields) you want to show for each product.
-
-This element interconnects with the **Products Filter**, **Products Pagination**, **Products Orderby** and the **Products Total Results** elements.
-
-This means that the query results will be conditioned by the filters and the orderby conditions and it will also impact the pagination and the total results elements output.
-
-The query used inside the products element to generate the grid of products will merge the query arguments from the element with the default WooCommerce query in the case the page rendered is the product archive or the product taxonomy archive (product category or product tag). This means that if you are seeing a certain product category archive page you only get a list of products from that category.
-
-### Products filter
-
-The products filter element allows you to add query filters to the page so the visitor could search/narrow down the list of products presented.
-
-This element contains three filter types:
-
-- **Taxonomy**: filter the list by one or multiple taxonomy terms.
-- **Product attributes**: filter the list by product attributes like size, color or any other custom attribute used.
-- **Others**: Special set of filters like a product **price dual-range slider**, a** stars rating** filter, a status **stock** filter or a simple **search** input. In this set, you will also find a **Reset filters** option which you would set to add a reset product filters button.
-
-When using the taxonomy or product attributes filters, you may select different filter inputs, like a dropdown, a set of checkboxes, a radio list, a text list, or a box list.
-
-### Products pagination
-
-List of page links that allow the visitor to navigate through the different products' list pages.
-
-### Products orderby
-
-Adds a dropdown to the layout where the visitor could change the order of the products in the presented list. The default sort options are by popularity, by average rating, by latest, and by price (low to high and high to low). This list uses the WooCommerce default list and it can be extended using the WooCommerce hooks or third-party plugins.
-
-### Products total results
-
-Use this element to output the number of results returned by the current products query.
-
----
-
 <a id="integrations-woocommerce-product-variation-swatches"></a>
 
 # Product Variation Swatches (WooCommerce)
@@ -2284,132 +2284,6 @@ You can style unavailable swatches with custom CSS:
 There is no separate Bricks setting that forces every out-of-stock option to be hidden or disabled. If a swatch does not receive the disabled state, check the product's stock settings and the exact variation combination in WooCommerce first.
 
 That's it. With variation swatches, you can now turn standard variation dropdowns into polished, interactive product selectors, designed your way, directly in the Bricks builder.
-
----
-
-<a id="integrations-woocommerce-woo-setup-wizard"></a>
-
-# Woo Setup Wizard
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/
-
-*Create or repair Bricks WooCommerce shop, product, cart, checkout, and account layouts with guided setup checks and presets.*
-
-The Woo Setup Wizard helps you check, create, and repair the main WooCommerce layouts used by Bricks.
-
-Go to **Bricks > Woo Setup Wizard** to review the current setup status for the store. The wizard checks the Shop, Single product, Cart, Checkout, and My Account areas, then shows the available setup actions for each area.
-
-![](https://academy.bricksbuilder.io/assets/woo-setup-wizard.png)
-
-The wizard is not dependent on **Enable advanced modular elements**. It can set up the classic WooCommerce builder workflow without that setting. Advanced v2 setup types may appear in the wizard, but they stay disabled until advanced modular elements are enabled under **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
-
-## When to use it
-
-Use the wizard when you want Bricks to review the WooCommerce setup and create the expected page or template structure for you.
-
-- Set up WooCommerce pages after installing Bricks on a new store.
-- Repair a Cart, Checkout, or My Account page that is missing the expected Bricks content.
-- Replace WooCommerce block content with Bricks page content.
-- Create the classic Bricks WooCommerce templates for shop, product, cart, checkout, or account areas.
-- Create Cart v2, Checkout v2, or Account Page v2 structures for the assigned WooCommerce pages.
-- Review whether existing published WooCommerce templates may conflict with a selected setup.
-
-> **Caution**
->
-> The wizard can replace Bricks page content, clear WooCommerce block markup from the assigned page, switch the page editor mode to Bricks, create Bricks templates, or draft existing published WooCommerce templates for the same area. Review the setup summary before running an action on an existing store.
-
-## Areas checked
-
-The wizard checks these WooCommerce areas:
-
-- **Shop**: shop page and product archive template setup.
-- **Single product**: single product template setup.
-- **Cart**: assigned Cart page, classic cart templates, and Cart v2 page structure.
-- **Checkout**: assigned Checkout page, classic checkout templates, and Checkout v2 page structure.
-- **My Account**: assigned My Account page, classic account templates, and Account Page v2 page structure.
-
-## Setup types
-
-Each area can offer one or more setup types, depending on the selected WooCommerce area and whether advanced modular elements are enabled.
-
-| Area | Setup types |
-| --- | --- |
-| Shop | Standard (v1) |
-| Single product | Standard (v1) |
-| Cart | Standard (v1), Advanced (v2) |
-| Checkout | Standard (v1), Advanced (v2), Advanced multistep (v2) |
-| My Account | Standard (v1), Advanced (v2) |
-
-![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-advanced-off.png)
-
-**Standard (v1)** creates or repairs the classic Bricks WooCommerce workflow. This setup uses the assigned WooCommerce page together with the traditional Bricks WooCommerce template types or shortcode-based page content.
-
-**Advanced (v2)** replaces the assigned WooCommerce page content with the matching v2 parent element and generated state structure. Use it for Cart, Checkout, and My Account pages when you want to edit related WooCommerce screens as states on one page.
-
-**Advanced multistep (v2)** is available for Checkout. It creates a Checkout v2 page with a ready-made [multistep checkout structure](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/).
-
-## Status checks
-
-The wizard reports missing, incomplete, or incompatible setup details before you run an action.
-
-Common checks include:
-
-- Required WooCommerce page is not assigned.
-- Assigned WooCommerce page was deleted.
-- Assigned page is still edited with the WordPress editor instead of Bricks.
-- Assigned page contains WooCommerce block content.
-- Required v2 parent element is missing from the assigned page.
-- Required v2 states are missing. My Account v2 includes Order withdrawal only when the WooCommerce feature is enabled.
-- Required v2 state elements are empty.
-- Existing published WooCommerce templates may conflict with the selected setup.
-- Classic setup is missing expected WooCommerce shortcodes or template types.
-
-![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-errors.png)
-
-The wizard does not create or assign missing WooCommerce pages. If a page is not assigned, assign it first in the WooCommerce settings, then return to **Bricks > Woo Setup Wizard**.
-
-## What setup can change
-
-Depending on the selected area and setup type, the wizard can:
-
-- Write Bricks page content to the assigned WooCommerce page.
-- Clear WordPress `post_content` when it contains WooCommerce block markup.
-- Set the assigned page editor mode to Bricks.
-- Create Bricks WooCommerce templates from presets.
-- Draft existing published WooCommerce templates for the same template type when they would conflict.
-- Generate external CSS files when file-based CSS generation is enabled.
-- Ask for overwrite confirmation when the target page already contains Bricks data.
-
-![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-confirmation.png)
-
-## Before running setup
-
-Review the setup summary before confirming any action.
-
-- Confirm the correct WooCommerce pages are assigned in the WooCommerce settings.
-- Duplicate or export important pages and templates on existing stores.
-- Check whether the selected setup edits pages, templates, or both.
-- Review whether existing WooCommerce templates will be drafted.
-- If the site uses custom breakpoints, review responsive styles after setup. Presets are authored with the default Bricks breakpoint keys, such as `mobile_landscape` and `mobile_portrait`.
-
-## After setup
-
-Open the generated page or template in Bricks and review the result.
-
-- For classic layouts, confirm the expected WooCommerce template types and shortcodes are in place.
-- For Cart v2, review the Filled cart and Empty cart states.
-- For Checkout v2, review Checkout, Login required, Pay, Thank you, and Order receipt states.
-- For Advanced multistep Checkout v2, test the checkout step navigation and interactions.
-- For Account Page v2, review the account navigation, login, password, address, order, download, and edit account states. Include Order withdrawal when enabled.
-- Test the live Cart, Checkout, and My Account flows with WooCommerce products and customer sessions.
-
-## Related docs
-
-- [WooCommerce Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/)
-- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/)
-- [Cart](https://academy.bricksbuilder.io/integrations/woocommerce/cart/)
-- [Checkout](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/)
-- [WooCommerce Account Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/)
 
 ---
 
@@ -2657,6 +2531,132 @@ The process of creating those account endpoint templates is the same for all oth
 | WooCommerce - Account - Addresses | `edit-address/` | Account - Addresses |
 | WooCommerce - Account - Edit address | `edit-address/billing/`<br />`edit-address/shipping/` | Account - Edit address |
 | WooCommerce - Account - Edit account | `edit-account/` | Account - Edit account |
+
+---
+
+<a id="integrations-woocommerce-woo-setup-wizard"></a>
+
+# Woo Setup Wizard
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/
+
+*Create or repair Bricks WooCommerce shop, product, cart, checkout, and account layouts with guided setup checks and presets.*
+
+The Woo Setup Wizard helps you check, create, and repair the main WooCommerce layouts used by Bricks.
+
+Go to **Bricks > Woo Setup Wizard** to review the current setup status for the store. The wizard checks the Shop, Single product, Cart, Checkout, and My Account areas, then shows the available setup actions for each area.
+
+![](https://academy.bricksbuilder.io/assets/woo-setup-wizard.png)
+
+The wizard is not dependent on **Enable advanced modular elements**. It can set up the classic WooCommerce builder workflow without that setting. Advanced v2 setup types may appear in the wizard, but they stay disabled until advanced modular elements are enabled under **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
+
+## When to use it
+
+Use the wizard when you want Bricks to review the WooCommerce setup and create the expected page or template structure for you.
+
+- Set up WooCommerce pages after installing Bricks on a new store.
+- Repair a Cart, Checkout, or My Account page that is missing the expected Bricks content.
+- Replace WooCommerce block content with Bricks page content.
+- Create the classic Bricks WooCommerce templates for shop, product, cart, checkout, or account areas.
+- Create Cart v2, Checkout v2, or Account Page v2 structures for the assigned WooCommerce pages.
+- Review whether existing published WooCommerce templates may conflict with a selected setup.
+
+> **Caution**
+>
+> The wizard can replace Bricks page content, clear WooCommerce block markup from the assigned page, switch the page editor mode to Bricks, create Bricks templates, or draft existing published WooCommerce templates for the same area. Review the setup summary before running an action on an existing store.
+
+## Areas checked
+
+The wizard checks these WooCommerce areas:
+
+- **Shop**: shop page and product archive template setup.
+- **Single product**: single product template setup.
+- **Cart**: assigned Cart page, classic cart templates, and Cart v2 page structure.
+- **Checkout**: assigned Checkout page, classic checkout templates, and Checkout v2 page structure.
+- **My Account**: assigned My Account page, classic account templates, and Account Page v2 page structure.
+
+## Setup types
+
+Each area can offer one or more setup types, depending on the selected WooCommerce area and whether advanced modular elements are enabled.
+
+| Area | Setup types |
+| --- | --- |
+| Shop | Standard (v1) |
+| Single product | Standard (v1) |
+| Cart | Standard (v1), Advanced (v2) |
+| Checkout | Standard (v1), Advanced (v2), Advanced multistep (v2) |
+| My Account | Standard (v1), Advanced (v2) |
+
+![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-advanced-off.png)
+
+**Standard (v1)** creates or repairs the classic Bricks WooCommerce workflow. This setup uses the assigned WooCommerce page together with the traditional Bricks WooCommerce template types or shortcode-based page content.
+
+**Advanced (v2)** replaces the assigned WooCommerce page content with the matching v2 parent element and generated state structure. Use it for Cart, Checkout, and My Account pages when you want to edit related WooCommerce screens as states on one page.
+
+**Advanced multistep (v2)** is available for Checkout. It creates a Checkout v2 page with a ready-made [multistep checkout structure](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/).
+
+## Status checks
+
+The wizard reports missing, incomplete, or incompatible setup details before you run an action.
+
+Common checks include:
+
+- Required WooCommerce page is not assigned.
+- Assigned WooCommerce page was deleted.
+- Assigned page is still edited with the WordPress editor instead of Bricks.
+- Assigned page contains WooCommerce block content.
+- Required v2 parent element is missing from the assigned page.
+- Required v2 states are missing. My Account v2 includes Order withdrawal only when the WooCommerce feature is enabled.
+- Required v2 state elements are empty.
+- Existing published WooCommerce templates may conflict with the selected setup.
+- Classic setup is missing expected WooCommerce shortcodes or template types.
+
+![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-errors.png)
+
+The wizard does not create or assign missing WooCommerce pages. If a page is not assigned, assign it first in the WooCommerce settings, then return to **Bricks > Woo Setup Wizard**.
+
+## What setup can change
+
+Depending on the selected area and setup type, the wizard can:
+
+- Write Bricks page content to the assigned WooCommerce page.
+- Clear WordPress `post_content` when it contains WooCommerce block markup.
+- Set the assigned page editor mode to Bricks.
+- Create Bricks WooCommerce templates from presets.
+- Draft existing published WooCommerce templates for the same template type when they would conflict.
+- Generate external CSS files when file-based CSS generation is enabled.
+- Ask for overwrite confirmation when the target page already contains Bricks data.
+
+![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-confirmation.png)
+
+## Before running setup
+
+Review the setup summary before confirming any action.
+
+- Confirm the correct WooCommerce pages are assigned in the WooCommerce settings.
+- Duplicate or export important pages and templates on existing stores.
+- Check whether the selected setup edits pages, templates, or both.
+- Review whether existing WooCommerce templates will be drafted.
+- If the site uses custom breakpoints, review responsive styles after setup. Presets are authored with the default Bricks breakpoint keys, such as `mobile_landscape` and `mobile_portrait`.
+
+## After setup
+
+Open the generated page or template in Bricks and review the result.
+
+- For classic layouts, confirm the expected WooCommerce template types and shortcodes are in place.
+- For Cart v2, review the Filled cart and Empty cart states.
+- For Checkout v2, review Checkout, Login required, Pay, Thank you, and Order receipt states.
+- For Advanced multistep Checkout v2, test the checkout step navigation and interactions.
+- For Account Page v2, review the account navigation, login, password, address, order, download, and edit account states. Include Order withdrawal when enabled.
+- Test the live Cart, Checkout, and My Account flows with WooCommerce products and customer sessions.
+
+## Related docs
+
+- [WooCommerce Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/)
+- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/)
+- [Cart](https://academy.bricksbuilder.io/integrations/woocommerce/cart/)
+- [Checkout](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/)
+- [WooCommerce Account Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/)
 
 ---
 

@@ -150,34 +150,6 @@ add_filter( 'bricks/theme_style_name', function( $name, $theme_style ) {
 
 ---
 
-# Filter: bricks/theme_styles/control_groups
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-theme_styles-control_groups/
-
-*Filters the control groups available in the Theme Styles settings panel. This allows you to add new sections or tabs to organize custom Theme Style controls.*
-
-Filters the control groups available in the Theme Styles settings panel. This allows you to add new sections or tabs to organize custom Theme Style controls.
-
-## Parameters
-
-- `$control_groups` (*array*): Associative array of control groups.
-
-## Example usage
-
-```php
-add_filter( 'bricks/theme_styles/control_groups', function( $control_groups ) {
-    // Add a new control group for 'My Plugin'
-    $control_groups['my_plugin'] = [
-        'title' => esc_html__( 'My Plugin Settings', 'my-plugin' ),
-        'tab'   => 'content', // or 'style'
-    ];
-
-    return $control_groups;
-} );
-```
-
----
-
 # Filter: bricks/theme_styles/controls
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-theme_styles-controls/
@@ -202,6 +174,34 @@ add_filter( 'bricks/theme_styles/controls', function( $controls ) {
     ];
 
     return $controls;
+} );
+```
+
+---
+
+# Filter: bricks/theme_styles/control_groups
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-theme_styles-control_groups/
+
+*Filters the control groups available in the Theme Styles settings panel. This allows you to add new sections or tabs to organize custom Theme Style controls.*
+
+Filters the control groups available in the Theme Styles settings panel. This allows you to add new sections or tabs to organize custom Theme Style controls.
+
+## Parameters
+
+- `$control_groups` (*array*): Associative array of control groups.
+
+## Example usage
+
+```php
+add_filter( 'bricks/theme_styles/control_groups', function( $control_groups ) {
+    // Add a new control group for 'My Plugin'
+    $control_groups['my_plugin'] = [
+        'title' => esc_html__( 'My Plugin Settings', 'my-plugin' ),
+        'tab'   => 'content', // or 'style'
+    ];
+
+    return $control_groups;
 } );
 ```
 
@@ -305,6 +305,29 @@ add_filter( 'bricks/user_activation_email/subject', function( $subject, $user_id
 
 ---
 
+# Filter: bricks/webhook/timeout
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-webhook-timeout/
+
+*Allows you to modify the timeout duration (in seconds) for webhook requests triggered by the Form element.*
+
+Allows you to modify the timeout duration (in seconds) for webhook requests triggered by the Form element.
+
+## Parameters
+
+- `$timeout` (int): The timeout duration in seconds. Default is `15`.
+
+## Example usage
+
+```php
+add_filter( 'bricks/webhook/timeout', function( $timeout ) {
+    // Increase timeout to 30 seconds
+    return 30;
+} );
+```
+
+---
+
 # Filter: bricks/woo_setup_wizard/register_presets
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woo_setup_wizard-register_presets/
@@ -354,29 +377,6 @@ add_filter( 'bricks/woocommerce/ajax_render_post_id', function( $post_id, $wc_pa
 
 ---
 
-# Filter: bricks/webhook/timeout
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-webhook-timeout/
-
-*Allows you to modify the timeout duration (in seconds) for webhook requests triggered by the Form element.*
-
-Allows you to modify the timeout duration (in seconds) for webhook requests triggered by the Form element.
-
-## Parameters
-
-- `$timeout` (int): The timeout duration in seconds. Default is `15`.
-
-## Example usage
-
-```php
-add_filter( 'bricks/webhook/timeout', function( $timeout ) {
-    // Increase timeout to 30 seconds
-    return 30;
-} );
-```
-
----
-
 # Filter: bricks/woocommerce/cart_proceed_label
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-cart_proceed_label/
@@ -395,6 +395,29 @@ Allows you to modify the text of the "Proceed to checkout" button in the WooComm
 add_filter( 'bricks/woocommerce/cart_proceed_label', function( $label ) {
     return 'Go to Checkout';
 } );
+```
+
+---
+
+# Filter: bricks/woocommerce/dynamic_fragments/fragments
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-dynamic_fragments-fragments/
+
+*Filters WooCommerce dynamic fragments before the AJAX response is sent.*
+
+Filters WooCommerce dynamic fragments before Bricks returns the AJAX response.
+
+## Parameters
+
+- `$fragments` (array): Selector-keyed fragment HTML.
+- `$targets` (array): Mounted fragment targets from the current page.
+
+## Example usage
+
+```php
+add_filter( 'bricks/woocommerce/dynamic_fragments/fragments', function( $fragments, $targets ) {
+    return $fragments;
+}, 10, 2 );
 ```
 
 ---
@@ -419,29 +442,6 @@ Filters rendered HTML for a single WooCommerce dynamic fragment.
 add_filter( 'bricks/woocommerce/dynamic_fragments/html', function( $html, $target, $render_data ) {
     return $html;
 }, 10, 3 );
-```
-
----
-
-# Filter: bricks/woocommerce/dynamic_fragments/fragments
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-dynamic_fragments-fragments/
-
-*Filters WooCommerce dynamic fragments before the AJAX response is sent.*
-
-Filters WooCommerce dynamic fragments before Bricks returns the AJAX response.
-
-## Parameters
-
-- `$fragments` (array): Selector-keyed fragment HTML.
-- `$targets` (array): Mounted fragment targets from the current page.
-
-## Example usage
-
-```php
-add_filter( 'bricks/woocommerce/dynamic_fragments/fragments', function( $fragments, $targets ) {
-    return $fragments;
-}, 10, 2 );
 ```
 
 ---
@@ -514,28 +514,6 @@ add_filter( 'bricks/woocommerce/predefined_elements/local_presets', function( $p
 
 ---
 
-# Filter: bricks/woocommerce/predefined_elements/remote_payload
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-remote_payload/
-
-*Filters the remote WooCommerce predefined elements payload.*
-
-Filters the remote WooCommerce predefined elements payload after Bricks decodes the response and before it validates/caches the payload.
-
-## Parameters
-
-- `$remote_payload` (array|mixed): Decoded remote payload data.
-
-## Example usage
-
-```php
-add_filter( 'bricks/woocommerce/predefined_elements/remote_payload', function( $remote_payload ) {
-    return $remote_payload;
-} );
-```
-
----
-
 # Filter: bricks/woocommerce/predefined_elements/remote_url
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-remote_url/
@@ -585,6 +563,28 @@ add_filter( 'bricks/woocommerce/products_filters/options', function( $options, $
 
     return $options;
 }, 10, 2 );
+```
+
+---
+
+# Filter: bricks/woocommerce/predefined_elements/remote_payload
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-predefined_elements-remote_payload/
+
+*Filters the remote WooCommerce predefined elements payload.*
+
+Filters the remote WooCommerce predefined elements payload after Bricks decodes the response and before it validates/caches the payload.
+
+## Parameters
+
+- `$remote_payload` (array|mixed): Decoded remote payload data.
+
+## Example usage
+
+```php
+add_filter( 'bricks/woocommerce/predefined_elements/remote_payload', function( $remote_payload ) {
+    return $remote_payload;
+} );
 ```
 
 ---
@@ -657,6 +657,33 @@ Returning the original `$label` for other methods preserves their existing names
 
 ---
 
+# Filter: bricks/wpml/exclude_controls_from_translation
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-wpml-exclude_controls_from_translation/
+
+*Filters Bricks control keys excluded from WPML translation.*
+
+Filters Bricks control keys excluded from WPML translation. Return the control keys that should not be translated for the current element/control context.
+
+## Parameters
+
+- `$excluded_keys` (array): Control keys excluded from translation.
+- `$element` (array): The Bricks element data.
+- `$control` (array): The control definition.
+- `$key` (string): The current control key or repeater field key.
+
+## Example usage
+
+```php
+add_filter( 'bricks/wpml/exclude_controls_from_translation', function( $excluded_keys, $element, $control, $key ) {
+    $excluded_keys[] = 'my_untranslated_control';
+
+    return $excluded_keys;
+}, 10, 4 );
+```
+
+---
+
 # Filter: bricks/woocommerce/shipping_options/secondary_label
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-shipping_options-secondary_label/
@@ -700,63 +727,6 @@ add_filter( 'bricks/woocommerce/shipping_options/secondary_label', function( $la
 ```
 
 When a plugin provides a customized full label, that label remains in the primary position and the collection instruction appears as the secondary label.
-
----
-
-# Filter: bricks/wpml/exclude_controls_from_translation
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks-wpml-exclude_controls_from_translation/
-
-*Filters Bricks control keys excluded from WPML translation.*
-
-Filters Bricks control keys excluded from WPML translation. Return the control keys that should not be translated for the current element/control context.
-
-## Parameters
-
-- `$excluded_keys` (array): Control keys excluded from translation.
-- `$element` (array): The Bricks element data.
-- `$control` (array): The control definition.
-- `$key` (string): The current control key or repeater field key.
-
-## Example usage
-
-```php
-add_filter( 'bricks/wpml/exclude_controls_from_translation', function( $excluded_keys, $element, $control, $key ) {
-    $excluded_keys[] = 'my_untranslated_control';
-
-    return $excluded_keys;
-}, 10, 4 );
-```
-
----
-
-# Filter: bricks_query_max_items_in_builder
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks_query_max_items_in_builder/
-
-*Filters builder query results for custom object types when Bricks applies the builder max-results limit.*
-
-Filters dynamic query results in the builder when Bricks applies the builder query max-results limit.
-
-Bricks handles built-in `post`, `term`, `user`, and supported provider object types internally. This filter runs for custom query object types that Bricks does not know how to trim itself.
-
-## Parameters
-
-- `$result` (mixed): The current query result.
-- `$query_instance` (Bricks\Query): The Bricks query instance.
-- `$builder_query_max_results` (int): The maximum number of results Bricks allows in the builder.
-
-## Example usage
-
-```php
-add_filter( 'bricks_query_max_items_in_builder', function( $result, $query_instance, $builder_query_max_results ) {
-    if ( is_array( $result ) ) {
-        return array_slice( $result, 0, $builder_query_max_results );
-    }
-
-    return $result;
-}, 10, 3 );
-```
 
 ---
 
@@ -940,6 +910,64 @@ function disable_template_in_builder( $active_templates, $post_id, $content_type
 
 ---
 
+# Filter: bricks_query_max_items_in_builder
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/bricks_query_max_items_in_builder/
+
+*Filters builder query results for custom object types when Bricks applies the builder max-results limit.*
+
+Filters dynamic query results in the builder when Bricks applies the builder query max-results limit.
+
+Bricks handles built-in `post`, `term`, `user`, and supported provider object types internally. This filter runs for custom query object types that Bricks does not know how to trim itself.
+
+## Parameters
+
+- `$result` (mixed): The current query result.
+- `$query_instance` (Bricks\Query): The Bricks query instance.
+- `$builder_query_max_results` (int): The maximum number of results Bricks allows in the builder.
+
+## Example usage
+
+```php
+add_filter( 'bricks_query_max_items_in_builder', function( $result, $query_instance, $builder_query_max_results ) {
+    if ( is_array( $result ) ) {
+        return array_slice( $result, 0, $builder_query_max_results );
+    }
+
+    return $result;
+}, 10, 3 );
+```
+
+---
+
+# Filter: bricks/assets/generate_css_from_element
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-generate_css_from_element/
+
+*Add custom element names to Bricks CSS generation so looped child styles are included for supported custom elements.*
+
+This filter allows you to include your custom query loop supported element to generate the children styles in Bricks. (@since 1.9.2)
+
+## Parameters
+
+- `$element_names` (array): Additional loop-capable element names. Defaults to an empty array.
+- `$current_element` (array): The element currently being processed for CSS generation.
+- `$css_type` (string): The CSS generation area, such as `header`, `footer`, or `content`.
+
+```php
+add_filter( 'bricks/assets/generate_css_from_element', function( $element_names, $current_element, $css_type ) {
+  // $css_type is a string (e.g. header, footer, content, etc.)
+  // Add your custom element name so the looping children styles are generated.
+  if ( ! in_array( 'my-custom-element-name', $element_names ) ) {
+    $element_names[] = 'my-custom-element-name';
+  }
+
+  return $element_names;
+}, 10, 3 );
+```
+
+---
+
 # Filter: bricks/allowed_html_tags
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-allowed_html_tags/
@@ -972,34 +1000,6 @@ add_filter( 'bricks/allowed_html_tags', function( $allowed_html_tags ) {
 > **Note**
 >
 > **Only allow HTML tags that are considered safe, as anyone with builder access can use them!**
-
----
-
-# Filter: bricks/assets/generate_css_from_element
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-assets-generate_css_from_element/
-
-*Add custom element names to Bricks CSS generation so looped child styles are included for supported custom elements.*
-
-This filter allows you to include your custom query loop supported element to generate the children styles in Bricks. (@since 1.9.2)
-
-## Parameters
-
-- `$element_names` (array): Additional loop-capable element names. Defaults to an empty array.
-- `$current_element` (array): The element currently being processed for CSS generation.
-- `$css_type` (string): The CSS generation area, such as `header`, `footer`, or `content`.
-
-```php
-add_filter( 'bricks/assets/generate_css_from_element', function( $element_names, $current_element, $css_type ) {
-  // $css_type is a string (e.g. header, footer, content, etc.)
-  // Add your custom element name so the looping children styles are generated.
-  if ( ! in_array( 'my-custom-element-name', $element_names ) ) {
-    $element_names[] = 'my-custom-element-name';
-  }
-
-  return $element_names;
-}, 10, 3 );
-```
 
 ---
 
@@ -1170,25 +1170,6 @@ add_filter( 'bricks/auth/custom_reset_password_redirect', function( $selected_re
 
 ---
 
-# Filter: bricks/body/attributes
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-body-attributes/
-
-*Filter the HTML attributes Bricks adds to the body tag on the frontend.*
-
-Filter to add HTML attributes to the `body` tag (@since 1.5).
-
-```php
-add_filter( 'bricks/body/attributes', function( $attributes ) {
-  // Add 'data-is-body' HTML attribute to footer with value 'y'
-  $attributes['data-is-body'] = 'y';
-
-  return $attributes;
-} );
-```
-
----
-
 # Filter: bricks/builder/codemirror_config
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-codemirror_config/
@@ -1251,6 +1232,25 @@ add_filter( 'bricks/builder/elements', function( $elements ) {
 
 ---
 
+# Filter: bricks/body/attributes
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-body-attributes/
+
+*Filter the HTML attributes Bricks adds to the body tag on the frontend.*
+
+Filter to add HTML attributes to the `body` tag (@since 1.5).
+
+```php
+add_filter( 'bricks/body/attributes', function( $attributes ) {
+  // Add 'data-is-body' HTML attribute to footer with value 'y'
+  $attributes['data-is-body'] = 'y';
+
+  return $attributes;
+} );
+```
+
+---
+
 # Filter: bricks/builder/image_size_options
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-builder-image_size_options/
@@ -1307,6 +1307,25 @@ add_filter( 'bricks/builder/map_styles', function( $map_styles ) {
 
 ---
 
+# Filter: bricks/code/allow_execution
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-allow_execution/
+
+*An alternative to the Disable code execution setting under Bricks > Settings > Builder Access. You can use this PHP filter to disable/enable code execution.*
+
+An alternative to the **Disable code execution** setting under `Bricks > Settings > Builder Access`. You can use this PHP filter to disable/enable code execution programmatically.
+
+![](https://academy.bricksbuilder.io/assets/disallow-code-execution-hook.png)
+
+```php
+add_filter( 'bricks/code/allow_execution', function( $allow ) {
+  // Only allows to return false to disable code execution programmatically
+  return false;
+} );
+```
+
+---
+
 # Filter: bricks/code/disable_execution
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-disable_execution/
@@ -1328,20 +1347,21 @@ Use this filter to enforce stricter security by disabling code execution, regard
 
 ---
 
-# Filter: bricks/code/allow_execution
+# Filter: bricks/code/disallow_keywords
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-allow_execution/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-disallow_keywords/
 
-*An alternative to the Disable code execution setting under Bricks > Settings > Builder Access. You can use this PHP filter to disable/enable code execution.*
+*This filter introduces another level of security when using the Code element to run code.*
 
-An alternative to the **Disable code execution** setting under `Bricks > Settings > Builder Access`. You can use this PHP filter to disable/enable code execution programmatically.
+This filter introduces another level of security when using the Code element to run code.
 
-![](https://academy.bricksbuilder.io/assets/disallow-code-execution-hook.png)
+With the filter `bricks/code/disallow_keywords` you'll be able to prevent the code execution if specific keywords are found in the code, thus reducing the risk of using this element. To add keywords to this check, use the following example:
 
 ```php
-add_filter( 'bricks/code/allow_execution', function( $allow ) {
-  // Only allows to return false to disable code execution programmatically
-  return false;
+add_filter( 'bricks/code/disallow_keywords', function( $keywords ) {
+  $</meta>keywords[] = 'wpdb';
+
+  return $</meta>keywords;
 } );
 ```
 
@@ -1503,26 +1523,6 @@ add_filter( 'bricks/content/html_after_begin', function( $html_after_begin, $bri
 
     return $html_after_begin . $my_additional_html;
 }, 10, 4 );
-```
-
----
-
-# Filter: bricks/code/disallow_keywords
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-code-disallow_keywords/
-
-*This filter introduces another level of security when using the Code element to run code.*
-
-This filter introduces another level of security when using the Code element to run code.
-
-With the filter `bricks/code/disallow_keywords` you'll be able to prevent the code execution if specific keywords are found in the code, thus reducing the risk of using this element. To add keywords to this check, use the following example:
-
-```php
-add_filter( 'bricks/code/disallow_keywords', function( $keywords ) {
-  $</meta>keywords[] = 'wpdb';
-
-  return $</meta>keywords;
-} );
 ```
 
 ---
@@ -1915,30 +1915,26 @@ Since Bricks 1.5, the `$settings` and `$name` arguments are deprecated. You may 
 
 ---
 
-# Filter: bricks/elements/&#123;element_name&#125;/controls
+# Filter: bricks/elements/{element_name}/control_groups
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-elements-element_name-controls/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-elements-element_name-control_groups/
 
-*Since Bricks 1.3.2 it is possible to add custom controls to any element like so:*
+*Since Bricks 1.4 it is possible to add custom control groups to a specific element like so:*
 
-Since Bricks 1.3.2 it is possible to add custom controls to any element like so:
+Since Bricks 1.4 it is possible to add custom control groups to a specific element like so:
 
 ```php
-add_filter( 'bricks/elements/posts/controls', function( $controls ) {
-    $controls['ignoreStickyPosts'] = [
-        'tab'      => 'content',
-        'group'    => 'query',
-        'label'    => esc_html__( 'Ignore Sticky Posts', 'my_plugin' ),
-        'type'     => 'checkbox'
+add_filter( 'bricks/elements/heading/control_groups', function( $control_groups ) {
+    $control_groups['custom_controls'] = [
+        'tab'      => 'content', // or 'style'
+        'title'    => esc_html__( 'Custom controls', 'my_plugin' ),
     ];
 
-    return $controls;
+    return $control_groups;
 } );
 ```
 
-Note: the above example adds a new checkbox to the **posts** element, using the filter `bricks/elements/**posts**/controls`. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
-
-You might also be interested in the filter [`bricks/posts/query_vars`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-query_vars/) to manipulate the posts element query.
+Note: the above example adds a new control group with the title "**Custom controls**" to the **heading** element, using the filter `bricks/elements/**heading**/control_groups`. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
 
 ---
 
@@ -2000,26 +1996,30 @@ add_filter('bricks/element/settings', function( $settings, $element ) {
 
 ---
 
-# Filter: bricks/elements/{element_name}/control_groups
+# Filter: bricks/elements/&#123;element_name&#125;/controls
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-elements-element_name-control_groups/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-elements-element_name-controls/
 
-*Since Bricks 1.4 it is possible to add custom control groups to a specific element like so:*
+*Since Bricks 1.3.2 it is possible to add custom controls to any element like so:*
 
-Since Bricks 1.4 it is possible to add custom control groups to a specific element like so:
+Since Bricks 1.3.2 it is possible to add custom controls to any element like so:
 
 ```php
-add_filter( 'bricks/elements/heading/control_groups', function( $control_groups ) {
-    $control_groups['custom_controls'] = [
-        'tab'      => 'content', // or 'style'
-        'title'    => esc_html__( 'Custom controls', 'my_plugin' ),
+add_filter( 'bricks/elements/posts/controls', function( $controls ) {
+    $controls['ignoreStickyPosts'] = [
+        'tab'      => 'content',
+        'group'    => 'query',
+        'label'    => esc_html__( 'Ignore Sticky Posts', 'my_plugin' ),
+        'type'     => 'checkbox'
     ];
 
-    return $control_groups;
+    return $controls;
 } );
 ```
 
-Note: the above example adds a new control group with the title "**Custom controls**" to the **heading** element, using the filter `bricks/elements/**heading**/control_groups`. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
+Note: the above example adds a new checkbox to the **posts** element, using the filter `bricks/elements/**posts**/controls`. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
+
+You might also be interested in the filter [`bricks/posts/query_vars`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-query_vars/) to manipulate the posts element query.
 
 ---
 
@@ -2130,53 +2130,6 @@ add_action(
 
 ---
 
-# Filter: bricks/form/create_post/meta_value
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-create_post-meta_value/
-
-*This filter is used within the Create post form action in Bricks.*
-
-This filter is used within the [Create post](https://academy.bricksbuilder.io/builder/features/create-update-posts-on-the-frontend/) form action in Bricks.
-
-It allows developers to alter the meta values of new posts created from form submissions before they are saved to the database.
-
-**Functionality:**
-
-This filter activates during the execution of the 'Create Post' action. It provides an opportunity to modify the meta values based on custom logic or specific project requirements. This can include data formatting, validation, files handling, or applying conditional transformations to the meta values.
-
-**Example Usage:**
-
-```php
-add_filter(
-	'bricks/form/create_post/meta_value',
-	function( $meta_value, $meta_key, $form_settings, $form_fields ) {
-		if ( $meta_key === 'my_meta_key' ) {
-			// Custom logic for 'my_meta_key'
-			$meta_value = transform_meta_value( $meta_value );
-		}
-		// Additional custom logic can be implemented here
-		return $meta_value;
-	},
-	10,
-	4
-);
-```
-
-In this example, the filter modifies the value of the meta key 'my_meta_key' using a custom function `transform_meta_value`.
-
-**Parameters:**
-
-- `$meta_value` (mixed): The original value of the meta field.
-- `$meta_key` (string): The key of the meta field being modified.
-- `$form_settings` (array): The settings of the form from which the post is created.
-- `$form_fields` (array): The form fields data.
-
-**Return:**
-
-- (mixed): The modified value of the meta field, which will be saved with the post.
-
----
-
 # Filter: bricks/form/update_post/meta_value
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-update_post-meta_value/
@@ -2221,43 +2174,6 @@ In this example, the filter modifies the value of a specific meta key ('specific
 **Return:**
 
 - (mixed): The modified value of the meta field, which will be updated in the post's meta data.
-
----
-
-# Filter: bricks/frontend/render_element
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-frontend-render_element/
-
-*The bricks/frontend/renderelement filter allows you to modify the HTML output of any element in Bricks on the frontend. This powerful hook can be used for a.*
-
-The `bricks/frontend/render_element` filter allows you to modify the HTML output of any element in Bricks on the frontend. This powerful hook can be used for a variety of customization tasks, such as adding comments, modifying content, or dynamically adjusting HTML. (@since 2.0)
-
-```php
-add_filter( 'bricks/frontend/render_element', function( $html, $element ) {
-    // Do not modify the HTML in the builder
-    if (
-        bricks_is_builder_main() ||
-        bricks_is_builder_iframe() ||
-        bricks_is_builder_call()
-    ) {
-        return $html;
-    }
-
-    // Add comments before and after an element with a specific ID
-    if ( $element->id === 'regxve' ) {
-        $html = '<!-- Start of the element -->' . $html . '<!-- End of the element -->';
-    }
-
-    // Modify the content of a Basic Text element
-    if ( $element->id === 'wtktgp' ) {
-        // Replace "|" with ">>" in the HTML
-        $html = str_replace( '|', '>>', $html );
-    }
-
-    return $html;
-}, 10, 2 );
-
-```
 
 ---
 
@@ -2312,6 +2228,90 @@ add_filter('bricks/frontend/render_data', function($content, $post, $area) {
 ```
 
 In this example, a callback function is defined within the add_filter function call targeting the `bricks/frontend/render_data` filter. This callback function modifies every heading tag present in the content to include a unique ID attribute. This can be useful for navigation purposes, such as creating a table of contents.
+
+---
+
+# Filter: bricks/form/create_post/meta_value
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-form-create_post-meta_value/
+
+*This filter is used within the Create post form action in Bricks.*
+
+This filter is used within the [Create post](https://academy.bricksbuilder.io/builder/features/create-update-posts-on-the-frontend/) form action in Bricks.
+
+It allows developers to alter the meta values of new posts created from form submissions before they are saved to the database.
+
+**Functionality:**
+
+This filter activates during the execution of the 'Create Post' action. It provides an opportunity to modify the meta values based on custom logic or specific project requirements. This can include data formatting, validation, files handling, or applying conditional transformations to the meta values.
+
+**Example Usage:**
+
+```php
+add_filter(
+	'bricks/form/create_post/meta_value',
+	function( $meta_value, $meta_key, $form_settings, $form_fields ) {
+		if ( $meta_key === 'my_meta_key' ) {
+			// Custom logic for 'my_meta_key'
+			$meta_value = transform_meta_value( $meta_value );
+		}
+		// Additional custom logic can be implemented here
+		return $meta_value;
+	},
+	10,
+	4
+);
+```
+
+In this example, the filter modifies the value of the meta key 'my_meta_key' using a custom function `transform_meta_value`.
+
+**Parameters:**
+
+- `$meta_value` (mixed): The original value of the meta field.
+- `$meta_key` (string): The key of the meta field being modified.
+- `$form_settings` (array): The settings of the form from which the post is created.
+- `$form_fields` (array): The form fields data.
+
+**Return:**
+
+- (mixed): The modified value of the meta field, which will be saved with the post.
+
+---
+
+# Filter: bricks/frontend/render_element
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-frontend-render_element/
+
+*The bricks/frontend/renderelement filter allows you to modify the HTML output of any element in Bricks on the frontend. This powerful hook can be used for a.*
+
+The `bricks/frontend/render_element` filter allows you to modify the HTML output of any element in Bricks on the frontend. This powerful hook can be used for a variety of customization tasks, such as adding comments, modifying content, or dynamically adjusting HTML. (@since 2.0)
+
+```php
+add_filter( 'bricks/frontend/render_element', function( $html, $element ) {
+    // Do not modify the HTML in the builder
+    if (
+        bricks_is_builder_main() ||
+        bricks_is_builder_iframe() ||
+        bricks_is_builder_call()
+    ) {
+        return $html;
+    }
+
+    // Add comments before and after an element with a specific ID
+    if ( $element->id === 'regxve' ) {
+        $html = '<!-- Start of the element -->' . $html . '<!-- End of the element -->';
+    }
+
+    // Modify the content of a Basic Text element
+    if ( $element->id === 'wtktgp' ) {
+        // Replace "|" with ">>" in the HTML
+        $html = str_replace( '|', '>>', $html );
+    }
+
+    return $html;
+}, 10, 2 );
+
+```
 
 ---
 
@@ -2434,116 +2434,6 @@ add_filter( 'bricks/link_css_selectors', function( $link_css_selectors ) {
 
 ---
 
-# Filter: bricks/nav_menu/menu
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-nav_menu-menu/
-
-*The bricks/navmenu/menu filter allows you to modify the navigation menu dynamically in Bricks Builder based on your conditions.*
-
-The `bricks/nav_menu/menu` filter allows you to modify the navigation menu dynamically in Bricks Builder based on your conditions.
-
-In the following example, we'll demonstrate how to change the navigation menu if the user is logged in.
-
-This can be useful for displaying different menus to guests and logged-in users without using multiple Nab Menu elements and Bricks conditions.
-
-**Example: **Use "My Account Menu" on the "Nav Menu" element (id: `kybsde`) if the user is logged in.
-
-![](https://academy.bricksbuilder.io/assets/nav_menu-filter.png)
-
-You can retrieve the menu ID via the URL parameter after selecting it.
-
-![](https://academy.bricksbuilder.io/assets/nav_menu-menu-id.png)
-
-```php
-add_filter( 'bricks/nav_menu/menu', function( $menu, $post_id, $element ) {
-  // Only target this nav menu element
-  if( $element['id'] !== 'kdkdge' ) {
-    return $menu;
-  }
-
-  // If logged-in, use the menu ID 4
-  if( is_user_logged_in() ) {
-    $menu = 4;
-  }
-
-  return $menu;
-}, 10, 3 );
-```
-
----
-
-# Filter: bricks/password_protection/is_active
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-is_active/
-
-*Use this filter to add custom rules that determine whether a password protection template should be active. By default, the template’s visibility is controlled.*
-
-Use this filter to add custom rules that determine whether a [password protection template](https://academy.bricksbuilder.io/builder/features/password-protection/) should be active. By default, the template’s visibility is controlled by settings such as logged-in status, valid password cookies, and scheduling through the password protection template settings in the builder. This filter allows you to extend those checks, adding more dynamic criteria once the default settings have been applied.
-
-## Example Usage:
-
-```php
-add_filter( 'bricks/password_protection/is_active', function( $is_active, $template_id, $settings ) {
-    // Bypass password protection for users with the 'manage_options' capability
-    if ( current_user_can( 'manage_options' ) ) {
-        return false;
-    }
-
-    // Maintain default logic for other cases
-    return $is_active;
-}, 10, 3 );
-```
-
-In this example, any user with the `manage_options` capability (typically administrators) will bypass the password protection, while other users will follow the default settings.
-
-**Parameters:**
-
-- `$is_active` (bool): The initial status of whether the password protection is active.
-- `$template_id` (int): The ID of the password protection template.
-- `$settings` (array): The template settings.
-
-**Return:**
-
-- (bool): `true` to keep the template active, `false` to disable it.
-
----
-
-# Filter: bricks/placeholder_image
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-placeholder_image/
-
-*The bricks/placeholderimage filter allows you to override the default placeholder image used in Bricks. This can be useful when you want to display a custom.*
-
-The `bricks/placeholder_image` filter allows you to override the default placeholder image used in Bricks. This can be useful when you want to display a custom placeholder for elements when performing template import or pasting elements from another website. `(@since 2.0)`
-
-## Parameters
-
-- `$image` *(string)* – The default placeholder image path or URL.
-- `$is_svg` *(bool)* – Whether the placeholder should be an SVG. Leave as is.
-- `$format` *(string)* – Can be `'url'` or `'path'` depending on the context Bricks needs it for. Leave as is.
-
-```php
-add_filter( 'bricks/placeholder_image', function( $image, $is_svg, $format ) {
-  // Custom placeholder images (SVG and non-SVG file required)
-  // SVG file: /uploads/2025/04/my-placeholder.svg
-  // Non-SVG file: /uploads/2025/04/my-placeholder-img.png
-  $relative_path = $is_svg ? '2025/04/my-placeholder.svg' : '2025/04/my-placeholder-img.png';
-  $upload_dir    = wp_get_upload_dir();
-
-  if ( $format === 'path' ) {
-    // Return absolute path to the image
-    $image = $upload_dir['basedir'] . '/' . $relative_path;
-  } else {
-    // Return full URL to the image
-    $image = $upload_dir['baseurl'] . '/' . $relative_path;
-  }
-
-  return $image;
-}, 10, 3 );
-```
-
----
-
 # Filter: bricks/maintenance/should_apply
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-maintenance-should_apply/
@@ -2636,3 +2526,114 @@ In this example, the password cookie will expire after 1 hour, requiring users t
 **Return:**
 
 - (int): The Unix timestamp for when the cookie should expire.
+
+---
+
+# Filter: bricks/password_protection/is_active
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-password_protection-is_active/
+
+*Use this filter to add custom rules that determine whether a password protection template should be active. By default, the template’s visibility is controlled.*
+
+Use this filter to add custom rules that determine whether a [password protection template](https://academy.bricksbuilder.io/builder/features/password-protection/) should be active. By default, the template’s visibility is controlled by settings such as logged-in status, valid password cookies, and scheduling through the password protection template settings in the builder. This filter allows you to extend those checks, adding more dynamic criteria once the default settings have been applied.
+
+## Example Usage:
+
+```php
+add_filter( 'bricks/password_protection/is_active', function( $is_active, $template_id, $settings ) {
+    // Bypass password protection for users with the 'manage_options' capability
+    if ( current_user_can( 'manage_options' ) ) {
+        return false;
+    }
+
+    // Maintain default logic for other cases
+    return $is_active;
+}, 10, 3 );
+```
+
+In this example, any user with the `manage_options` capability (typically administrators) will bypass the password protection, while other users will follow the default settings.
+
+**Parameters:**
+
+- `$is_active` (bool): The initial status of whether the password protection is active.
+- `$template_id` (int): The ID of the password protection template.
+- `$settings` (array): The template settings.
+
+**Return:**
+
+- (bool): `true` to keep the template active, `false` to disable it.
+
+---
+
+# Filter: bricks/nav_menu/menu
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-nav_menu-menu/
+
+*The bricks/navmenu/menu filter allows you to modify the navigation menu dynamically in Bricks Builder based on your conditions.*
+
+The `bricks/nav_menu/menu` filter allows you to modify the navigation menu dynamically in Bricks Builder based on your conditions.
+
+In the following example, we'll demonstrate how to change the navigation menu if the user is logged in.
+
+This can be useful for displaying different menus to guests and logged-in users without using multiple Nab Menu elements and Bricks conditions.
+
+**Example: **Use "My Account Menu" on the "Nav Menu" element (id: `kybsde`) if the user is logged in.
+
+![](https://academy.bricksbuilder.io/assets/nav_menu-filter.png)
+
+You can retrieve the menu ID via the URL parameter after selecting it.
+
+![](https://academy.bricksbuilder.io/assets/nav_menu-menu-id.png)
+
+```php
+add_filter( 'bricks/nav_menu/menu', function( $menu, $post_id, $element ) {
+  // Only target this nav menu element
+  if( $element['id'] !== 'kdkdge' ) {
+    return $menu;
+  }
+
+  // If logged-in, use the menu ID 4
+  if( is_user_logged_in() ) {
+    $menu = 4;
+  }
+
+  return $menu;
+}, 10, 3 );
+```
+
+---
+
+# Filter: bricks/posts/merge_query
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-merge_query/
+
+*Since Bricks 1.3.7 you'll be able to decide if a certain element query should be merged with the WordPress main query, in the archive or search templates, using.*
+
+Since Bricks 1.3.7 you'll be able to decide if a certain element query should be merged with the WordPress main query, in the archive or search templates, using the following filter:
+
+```php
+add_filter( 'bricks/posts/merge_query', function( $merge, $element_id ) {
+  if ( $element_id === 'wghgco' ) {
+    return false;
+  }
+
+  return $merge;
+}, 10, 2 );
+```
+
+The filter callback receives two arguments:
+
+- `$merge` is a boolean variable indicating whether the query should be merged or not (default: true)
+- `$element_id` is a string containing the element ID
+
+This is triggered for all the Bricks elements containing one internal WP_Query query like the Posts and the Carousel element, or any other element where the Query Loop is enabled (Container, Slider, Accordion).
+
+> **Note**
+>
+> Starting from Bricks 1.7, you can achieve the same result by utilizing the "Disable Query Merge" option in the [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/#posts-query), without the need for a PHP filter. Use this filter for more advanced situations.
+
+## How to find the element ID? {#find-element-id}
+
+Each element in Bricks has a unique ID. You may find the element ID when editing the element and looking into the Global CSS classes input. By default, it shows the element HTML ID (e.g. `#bricks-element-wghgco`). For the purpose of this filter, we only need the last portion of the string, the six-character long element ID (e.g. `wghgco`).
+
+![](https://academy.bricksbuilder.io/assets/Screenshot-2021-12-29-at-09.19.37.png)

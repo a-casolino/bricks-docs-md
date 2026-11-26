@@ -45,7 +45,7 @@ The following control parameters are available for all control types. To dive de
 | type | string |  | Set the control type (see the list below for a list of all available control types). |
 | inline | bool | false | Set to true to show control label and input on the same line. |
 | small | bool | false | Set to true to show a control input of 60px width. By default inline label and input have equal widths of 50%. |
-| css | array |  | Array with CSS rule definitions. Each CSS rule is a separate array and requires a `property` and `selector` parameter. |
+| css | array |  | Array of CSS rules. Each rule sets a `property` and can specify a `selector` such as `.content` to target a descendant. Omit `selector` to use the element's [`$css_selector` default](https://academy.bricksbuilder.io/developer/elements/create-your-own-elements/#builder) or the root if that default is empty. Set `selector` to an empty string to target the root even when the element defines a default descendant selector. |
 | default | string/array |  | Default control value. Either a string or an array (depending on the control type, see control list below for specific control default) |
 | pasteStyles | bool | true | Set to true excludes setting from being pasted via the builders' custom right click "Paste Styles". Recommended for all controls that output HTML content instead of CSS. |
 | description | string |  | Optional description for controls that need additional explanation or link to a resource. |

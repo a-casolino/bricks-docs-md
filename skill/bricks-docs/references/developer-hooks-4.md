@@ -227,40 +227,82 @@ add_filter( 'bricks/posts/query_vars', function( $query_vars, $settings, $elemen
 
 ---
 
-# Filter: bricks/posts/merge_query
+# Filter: bricks/placeholder_image
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-posts-merge_query/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-placeholder_image/
 
-*Since Bricks 1.3.7 you'll be able to decide if a certain element query should be merged with the WordPress main query, in the archive or search templates, using.*
+*The bricks/placeholderimage filter allows you to override the default placeholder image used in Bricks. This can be useful when you want to display a custom.*
 
-Since Bricks 1.3.7 you'll be able to decide if a certain element query should be merged with the WordPress main query, in the archive or search templates, using the following filter:
+The `bricks/placeholder_image` filter allows you to override the default placeholder image used in Bricks. This can be useful when you want to display a custom placeholder for elements when performing template import or pasting elements from another website. `(@since 2.0)`
+
+## Parameters
+
+- `$image` *(string)* – The default placeholder image path or URL.
+- `$is_svg` *(bool)* – Whether the placeholder should be an SVG. Leave as is.
+- `$format` *(string)* – Can be `'url'` or `'path'` depending on the context Bricks needs it for. Leave as is.
 
 ```php
-add_filter( 'bricks/posts/merge_query', function( $merge, $element_id ) {
-  if ( $element_id === 'wghgco' ) {
-    return false;
+add_filter( 'bricks/placeholder_image', function( $image, $is_svg, $format ) {
+  // Custom placeholder images (SVG and non-SVG file required)
+  // SVG file: /uploads/2025/04/my-placeholder.svg
+  // Non-SVG file: /uploads/2025/04/my-placeholder-img.png
+  $relative_path = $is_svg ? '2025/04/my-placeholder.svg' : '2025/04/my-placeholder-img.png';
+  $upload_dir    = wp_get_upload_dir();
+
+  if ( $format === 'path' ) {
+    // Return absolute path to the image
+    $image = $upload_dir['basedir'] . '/' . $relative_path;
+  } else {
+    // Return full URL to the image
+    $image = $upload_dir['baseurl'] . '/' . $relative_path;
   }
 
-  return $merge;
+  return $image;
+}, 10, 3 );
+```
+
+---
+
+# Filter: bricks/query/force_run
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-force_run/
+
+*Bricks has enhanced query performance in 1.9.1. Now, each unique query is executed only once per page load, and subsequently, the query results are reused on.*
+
+Bricks has enhanced query performance in 1.9.1. Now, each unique query is executed only once per page load, and subsequently, the query results are reused on the same page. Consequently, certain queries-related PHP filters will no longer be triggered multiple times.
+
+The following filters may be impacted:
+
+- `bricks/posts/merge_query`
+- `bricks/posts/query_vars`
+- `bricks/terms/query_vars`
+- `bricks/users/query_vars`
+- `bricks/query/run`
+- `bricks/query/result`
+- `bricks/query/result_count`
+- `bricks/query/result_max_num_pages`
+
+Nevertheless, developers can utilize this filter to disable this setting for certain queries under specific circumstances.
+
+```php
+// Return boolean (default: false)
+add_filter( 'bricks/query/force_run', function( $force_run, $query ) {
+  // Get element ID
+  $element_id  = $query::get_query_element_id();
+  // Get element settings
+  $settings = $query->settings;
+
+  if ( isset( $settings['usingFacetWP'] ) ) {
+    $force_run = true;
+  }
+
+  return $force_run;
 }, 10, 2 );
 ```
 
-The filter callback receives two arguments:
+Since 1.9.2, you can define `$query_vars['bricks_force_run'] = true` to achieve the same result as well. This will be handy if you are using the Bricks Query Editor or PHP filters like `bricks/posts/query_vars`  etc.
 
-- `$merge` is a boolean variable indicating whether the query should be merged or not (default: true)
-- `$element_id` is a string containing the element ID
-
-This is triggered for all the Bricks elements containing one internal WP_Query query like the Posts and the Carousel element, or any other element where the Query Loop is enabled (Container, Slider, Accordion).
-
-> **Note**
->
-> Starting from Bricks 1.7, you can achieve the same result by utilizing the "Disable Query Merge" option in the [Query Loop](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/#posts-query), without the need for a PHP filter. Use this filter for more advanced situations.
-
-## How to find the element ID? {#find-element-id}
-
-Each element in Bricks has a unique ID. You may find the element ID when editing the element and looking into the Global CSS classes input. By default, it shows the element HTML ID (e.g. `#bricks-element-wghgco`). For the purpose of this filter, we only need the last portion of the string, the six-character long element ID (e.g. `wghgco`).
-
-![](https://academy.bricksbuilder.io/assets/Screenshot-2021-12-29-at-09.19.37.png)
+![](https://academy.bricksbuilder.io/assets/bricks-query-force-run-query-vars.png)
 
 ---
 
@@ -330,46 +372,49 @@ Related hooks:
 
 ---
 
-# Filter: bricks/query/force_run
+# Filter: bricks/query/loop_object_type
 
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-force_run/
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object_type/
 
-*Bricks has enhanced query performance in 1.9.1. Now, each unique query is executed only once per page load, and subsequently, the query results are reused on.*
+*Bricks will use \\Bricks\\Query::getloopobjecttype() to retrieve the looping iteration's object type. This static function is used in many places. It plays an.*
 
-Bricks has enhanced query performance in 1.9.1. Now, each unique query is executed only once per page load, and subsequently, the query results are reused on the same page. Consequently, certain queries-related PHP filters will no longer be triggered multiple times.
-
-The following filters may be impacted:
-
-- `bricks/posts/merge_query`
-- `bricks/posts/query_vars`
-- `bricks/terms/query_vars`
-- `bricks/users/query_vars`
-- `bricks/query/run`
-- `bricks/query/result`
-- `bricks/query/result_count`
-- `bricks/query/result_max_num_pages`
-
-Nevertheless, developers can utilize this filter to disable this setting for certain queries under specific circumstances.
+Bricks will use `\Bricks\Query::get_loop_object_type()` to retrieve the looping iteration's object type. This static function is used in many places. It plays an important role in many conditions. The possible return object_type should be 'post', 'term', or 'user' only.
 
 ```php
-// Return boolean (default: false)
-add_filter( 'bricks/query/force_run', function( $force_run, $query ) {
-  // Get element ID
-  $element_id  = $query::get_query_element_id();
-  // Get element settings
-  $settings = $query->settings;
+// This is the example when Bricks set the object_type in woo cart query, so inside each iteration, it will be treat as a post/product object_type
+add_filter( 'bricks/query/loop_object_type', function( $object_type, $object, $query_id ) {
+    $query_object_type = \Bricks\Query::get_query_object_type( $query_id );
 
-  if ( isset( $settings['usingFacetWP'] ) ) {
-    $force_run = true;
-  }
+    if ( $query_object_type !== 'wooCart' ) {
+	return $object_type;
+    }
 
-  return $force_run;
-}, 10, 2 );
+    return 'post';
+}, 10, 3 );
 ```
 
-Since 1.9.2, you can define `$query_vars['bricks_force_run'] = true` to achieve the same result as well. This will be handy if you are using the Bricks Query Editor or PHP filters like `bricks/posts/query_vars`  etc.
+---
 
-![](https://academy.bricksbuilder.io/assets/bricks-query-force-run-query-vars.png)
+# Filter: bricks/query/no_results_content
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-no_results_content/
+
+*You can programmatically change the query loop \"no results content\" using this filter.*
+
+You can programmatically change the query loop "no results content" using this filter.
+
+```php
+add_filter( 'bricks/query/no_results_content', function( $content, $settings, $element_id ) {
+
+  // Check if the query element id is the one you want
+  if( $element_id !== 'srixvr' ) return $content;
+
+  // Use a bricks section template as the no results content
+  $content = do_shortcode('[bricks_template id="3981"]');
+
+  return $content;
+}, 10, 3 );
+```
 
 ---
 
@@ -404,52 +449,6 @@ add_filter( 'bricks/query/loop_object_id', function( $object_id, $object, $query
 
 ---
 
-# Filter: bricks/query/no_results_content
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-no_results_content/
-
-*You can programmatically change the query loop \"no results content\" using this filter.*
-
-You can programmatically change the query loop "no results content" using this filter.
-
-```php
-add_filter( 'bricks/query/no_results_content', function( $content, $settings, $element_id ) {
-
-  // Check if the query element id is the one you want
-  if( $element_id !== 'srixvr' ) return $content;
-
-  // Use a bricks section template as the no results content
-  $content = do_shortcode('[bricks_template id="3981"]');
-
-  return $content;
-}, 10, 3 );
-```
-
----
-
-# Filter: bricks/query/loop_object_type
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object_type/
-
-*Bricks will use \\Bricks\\Query::getloopobjecttype() to retrieve the looping iteration's object type. This static function is used in many places. It plays an.*
-
-Bricks will use `\Bricks\Query::get_loop_object_type()` to retrieve the looping iteration's object type. This static function is used in many places. It plays an important role in many conditions. The possible return object_type should be 'post', 'term', or 'user' only.
-
-```php
-// This is the example when Bricks set the object_type in woo cart query, so inside each iteration, it will be treat as a post/product object_type
-add_filter( 'bricks/query/loop_object_type', function( $object_type, $object, $query_id ) {
-    $query_object_type = \Bricks\Query::get_query_object_type( $query_id );
-
-    if ( $query_object_type !== 'wooCart' ) {
-	return $object_type;
-    }
-
-    return 'post';
-}, 10, 3 );
-```
-
----
-
 # Filter: bricks/query/result_count
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_count/
@@ -471,6 +470,64 @@ add_filter( 'bricks/query/result_count', function( $result_count, $query_obj ) {
   return $new_count;
 }, 10, 2 );
 ```
+
+---
+
+# Filter: bricks/query/result
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result/
+
+*Modify fetched Bricks query results, including sorting posts or slicing an array returned by an ACF loop.*
+
+Available since Bricks 1.8, `bricks/query/result` lets you modify fetched query results before the loop renders them. The result type depends on the query: a native post query returns a `WP_Query` object, while an ACF loop can return an array. Use [`bricks/query/run`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-run/) when adding a custom query type.
+
+## Sort post results
+
+```php
+// Use this filter to rearrange it by post title (PHP way instead of query orderby)
+add_filter( 'bricks/query/result', function( $result, $query_obj ){
+  // Return: Element ID is not "djvsvi", nor is it a post query
+  if ( $query_obj->element_id !== 'djvsvi' || $query_obj->object_type !== 'post' ) {
+    return $result;
+  }
+
+  // Sort by post title (descending)
+  // Result is WP_Query object with posts
+  if ( $result->have_posts() ) {
+    $posts = $result->posts;
+
+    usort( $posts, function( $a, $b ) {
+      return strcmp( $b->post_title, $a->post_title );
+    });
+
+    $result->posts = $posts;
+  }
+
+  return $result;
+}, 10, 2 );
+```
+
+## Slice an ACF array
+
+For an ACF Relationship loop that returns an array, use a result filter scoped to the loop element to skip or limit items. Replace `abc123` with the loop element's raw Bricks ID, without the `brxe-` prefix or a `#`.
+
+This example skips the first item and returns up to three of the remaining items:
+
+```php
+add_filter( 'bricks/query/result', function( $result, $query ) {
+    if ( $query->element_id !== 'abc123' || ! is_array( $result ) ) {
+        return $result;
+    }
+
+    return array_slice( $result, 1, 3 );
+}, 10, 2 );
+```
+
+With four items in the ACF array, the loop renders the second, third, and fourth items in their existing editorial order. The saved ACF entries remain unchanged. To keep the first item and display up to three items, use `array_slice( $result, 0, 3 )` instead.
+
+Slicing here does not automatically recalculate the query's total count, maximum number of pages, or summary positions. If the loop has a summary or pagination, keep that metadata consistent with the intended behavior using [`bricks/query/result_count`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_count/), [`bricks/query/result_max_num_pages`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_max_num_pages/), [`bricks/query/result_start`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-result_start/), and [`bricks/query/result_end`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-result_end/). A fixed slice does not fetch another page.
+
+For native query limits and offsets, use the [Query Loop controls](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/). The `result_start` and `result_end` filters change summary metadata only; they do not slice the results.
 
 ---
 
@@ -534,64 +591,6 @@ Related hooks:
 
 - To add a query type to the Query control use [`bricks/setup/control_options`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/)
 - To manage the object on every loop iteration use [`bricks/query/loop_object`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-loop_object/)
-
----
-
-# Filter: bricks/query/result
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result/
-
-*Modify fetched Bricks query results, including sorting posts or slicing an array returned by an ACF loop.*
-
-Available since Bricks 1.8, `bricks/query/result` lets you modify fetched query results before the loop renders them. The result type depends on the query: a native post query returns a `WP_Query` object, while an ACF loop can return an array. Use [`bricks/query/run`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-run/) when adding a custom query type.
-
-## Sort post results
-
-```php
-// Use this filter to rearrange it by post title (PHP way instead of query orderby)
-add_filter( 'bricks/query/result', function( $result, $query_obj ){
-  // Return: Element ID is not "djvsvi", nor is it a post query
-  if ( $query_obj->element_id !== 'djvsvi' || $query_obj->object_type !== 'post' ) {
-    return $result;
-  }
-
-  // Sort by post title (descending)
-  // Result is WP_Query object with posts
-  if ( $result->have_posts() ) {
-    $posts = $result->posts;
-
-    usort( $posts, function( $a, $b ) {
-      return strcmp( $b->post_title, $a->post_title );
-    });
-
-    $result->posts = $posts;
-  }
-
-  return $result;
-}, 10, 2 );
-```
-
-## Slice an ACF array
-
-For an ACF Relationship loop that returns an array, use a result filter scoped to the loop element to skip or limit items. Replace `abc123` with the loop element's raw Bricks ID, without the `brxe-` prefix or a `#`.
-
-This example skips the first item and returns up to three of the remaining items:
-
-```php
-add_filter( 'bricks/query/result', function( $result, $query ) {
-    if ( $query->element_id !== 'abc123' || ! is_array( $result ) ) {
-        return $result;
-    }
-
-    return array_slice( $result, 1, 3 );
-}, 10, 2 );
-```
-
-With four items in the ACF array, the loop renders the second, third, and fourth items in their existing editorial order. The saved ACF entries remain unchanged. To keep the first item and display up to three items, use `array_slice( $result, 0, 3 )` instead.
-
-Slicing here does not automatically recalculate the query's total count, maximum number of pages, or summary positions. If the loop has a summary or pagination, keep that metadata consistent with the intended behavior using [`bricks/query/result_count`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_count/), [`bricks/query/result_max_num_pages`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-result_max_num_pages/), [`bricks/query/result_start`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-result_start/), and [`bricks/query/result_end`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-result_end/). A fixed slice does not fetch another page.
-
-For native query limits and offsets, use the [Query Loop controls](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/). The `result_start` and `result_end` filters change summary metadata only; they do not slice the results.
 
 ---
 
@@ -777,41 +776,6 @@ The filter callback receives 2 arguments:
 
 ---
 
-# Filter: bricks/setup/control_options
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/
-
-*Bricks offers a WordPress filter to add or remove control options. The control options are used throughout Bricks and allow you to manage the options of the:*
-
-Bricks offers a WordPress filter to add or remove control options. The control options are used throughout Bricks and allow you to manage the options of the:
-
-- Template Types (e.g. Header, Footer, Single, Section...)
-- Background position, repeat, attachment or size
-- Button sizes
-- Button or Heading styles
-- Border styles
-- Font weight and style
-- CSS position
-- Query types (e.g. Posts, Terms, Users, ..)
-- Query order by, compare, operator and value type
-- Image Sizes
-- Taxonomies
-- User roles
-
-To manage any of these options or add new ones, use the WP hook `bricks/setup/control_options` like so:
-
-```php
-add_filter( 'bricks/setup/control_options', function( $control_options ) {
-    $control_options['templateTypes']['my_template_type'] = esc_html__( 'My Template Type', 'my-plugin' );
-
-    return $control_options;
-} );
-```
-
-Note: the above example adds a new template type. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
-
----
-
 # Filter: bricks/terms/query_vars
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-terms-query_vars/
@@ -869,6 +833,41 @@ add_filter( 'bricks/terms/query_vars', function( $query_vars, $settings, $elemen
     return $query_vars;
 }, 10, 4 );
 ```
+
+---
+
+# Filter: bricks/setup/control_options
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-setup-control_options/
+
+*Bricks offers a WordPress filter to add or remove control options. The control options are used throughout Bricks and allow you to manage the options of the:*
+
+Bricks offers a WordPress filter to add or remove control options. The control options are used throughout Bricks and allow you to manage the options of the:
+
+- Template Types (e.g. Header, Footer, Single, Section...)
+- Background position, repeat, attachment or size
+- Button sizes
+- Button or Heading styles
+- Border styles
+- Font weight and style
+- CSS position
+- Query types (e.g. Posts, Terms, Users, ..)
+- Query order by, compare, operator and value type
+- Image Sizes
+- Taxonomies
+- User roles
+
+To manage any of these options or add new ones, use the WP hook `bricks/setup/control_options` like so:
+
+```php
+add_filter( 'bricks/setup/control_options', function( $control_options ) {
+    $control_options['templateTypes']['my_template_type'] = esc_html__( 'My Template Type', 'my-plugin' );
+
+    return $control_options;
+} );
+```
+
+Note: the above example adds a new template type. To learn about other Bricks controls, visit the [Controls section](https://academy.bricksbuilder.io/developer/controls/).
 
 ---
 
@@ -1082,6 +1081,16 @@ add_filter( 'bricks/builder/save_messages', function( $messages ) {
 
 ---
 
+# Filter Hooks
+
+Source: https://academy.bricksbuilder.io/developer/hooks/filters/
+
+*Documented Bricks filter hooks for builder settings, rendering, queries, authentication, code execution, and frontend behavior.*
+
+These are all documented Bricks filter hooks:
+
+---
+
 # Filter: bricks/builder/standard_fonts
 
 Source: https://academy.bricksbuilder.io/developer/hooks/filters/filter-standard-fonts/
@@ -1105,13 +1114,3 @@ add_filter( 'bricks/builder/standard_fonts', function( $standard_fonts ) {
   return $standard_fonts;
 } );
 ```
-
----
-
-# Filter Hooks
-
-Source: https://academy.bricksbuilder.io/developer/hooks/filters/
-
-*Documented Bricks filter hooks for builder settings, rendering, queries, authentication, code execution, and frontend behavior.*
-
-These are all documented Bricks filter hooks:

@@ -6,6 +6,8 @@ The text control displays a text input field. You can set the following paramete
 - `trigger`: 'keyup'/'enter'. (Default: keyup)
 - `inlineEditing`: Set to true to enable
 
+If the control accepts dynamic tags, resolve its value inside `render()` before output. See [Render dynamic text](https://academy.bricksbuilder.io/developer/elements/create-your-own-elements/#render-dynamic-text).
+
 ```php
 class Prefix_Element_Text extends \Bricks\Element {
   // Set builder controls
@@ -23,11 +25,11 @@ class Prefix_Element_Text extends \Bricks\Element {
 
   // Render element HTML
   public function render() {
-    if ( isset( $this->settings['exampleText'] ) ) {
-      echo $this->settings['exampleText'];
-    } else {
-      esc_html_e( 'No text provided.', 'bricks' );
-    }
+    $text = isset( $this->settings['exampleText'] )
+      ? $this->render_dynamic_data( $this->settings['exampleText'] )
+      : __( 'No text provided.', 'bricks' );
+
+    echo '<div ' . $this->render_attributes( '_root' ) . '>' . esc_html( $text ) . '</div>';
   }
 }
 ```

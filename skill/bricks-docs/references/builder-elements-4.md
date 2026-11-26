@@ -1,2276 +1,1251 @@
-# Divider
+# Checkout v2
 
-Source: https://academy.bricksbuilder.io/builder/elements/layout/divider/
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-v2/
 
-*The Divider element creates horizontal or vertical separator lines with optional icons.*
+*Displays the WooCommerce checkout page as editable Checkout, Login required, Pay, Thank you, and Order receipt states.*
 
-The Divider element creates horizontal or vertical separator lines with optional icons.
+Displays the WooCommerce checkout page as editable Checkout, Login required, Pay, Thank you, and Order receipt states.
 
-## Settings
-
-- **Height** (number with units) - The height/thickness of the divider line. Default: 1.
-
-- **Width** (number with units) - The width/length of the divider line.
-
-- **Style** (select) - The line style. Options: `solid`, `dashed`, `dotted`, `double`, `groove`, `ridge`, `inset`, `outset`. Default: `solid`.
-
-- **Direction** (select) - Orientation of the divider. Options: `horizontal`, `vertical`. Default: `horizontal`.
-
-- **Align** (justify-content) - Alignment of the divider within its container. Options: `flex-start`, `center`, `flex-end`.
-
-- **Color** (color) - Color of the divider line and icon.
-
-### Icon
-
-- **Icon** (icon) - Add an icon that appears on the divider line.
-
-- **Typography** (typography) - Style settings for the icon (size, font properties). Only available when an icon is selected.
-
-> **Developer reference**
+> **Note**
 >
-> See the [Divider Schema](https://academy.bricksbuilder.io/developer/schema/elements/divider/) for the full JSON schema of this element's settings and controls.
+> This element requires **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
+
+## Where this element works
+
+Checkout page.
+
+## Key settings
+
+- **State** (radio) - Switches the builder preview between checkout states.
+
+## States
+
+- **Checkout** - Customer details, order summary, payment options, and place order layout.
+- **Login required** - Login screen shown when WooCommerce requires login before an order-related checkout screen.
+- **Pay** - Payment screen for unpaid orders.
+- **Thank you** - Order confirmation screen after checkout.
+- **Order receipt** - Receipt screen for unpaid order links that no longer need payment.
+
+![](https://academy.bricksbuilder.io/assets/checkout-v2-states.png)
+
+## Generated structures
+
+The Checkout state can generate these structures:
+
+- **Complete checkout**
+- **Billing fields**
+- **Shipping fields**
+- **Payment options**
+- **Additional fields**
+- **Order summary**
+- **Place order**
+
+When **Complete checkout** is selected, **Generate as multistep** creates a ready-made multistep checkout layout.
+
+The **Billing fields** and **Complete checkout** structures also generate the account credential fields currently required by WooCommerce. Bricks places these fields inside a **Checkout account fields** wrapper so WooCommerce's account-creation settings control their frontend visibility.
+
+The Login required, Pay, Thank you, and Order receipt states each provide a complete block for that state.
+
+> **Note**
+>
+> Some Checkout v2 support elements, including generated form fields, checkout steps, step navigation items, payment options, and place order sections, rely on the correct Checkout v2 state context. If you cannot find a support element in the regular Elements panel, use **Insert a structure** and then edit the generated element in the Structure panel.
+
+![](https://academy.bricksbuilder.io/assets/checkout-v2-structure-example.png)
+
+## Customize the Checkout state
+
+https://youtu.be/xD0ihyBFErQ
+
+Everything inside the Checkout state is a regular Bricks element. Each form field is its own **WooCommerce form field** element with **Label**, **Hide label**, and **Placeholder** settings, so you can move, group, and lay out fields like any other elements.
+
+The layout from the Woo Setup Wizard also uses the Bricks **Notice**, **Checkout coupon**, and **Checkout login** elements. Enable them under **Bricks > Settings > WooCommerce**, next to **Enable advanced modular elements**.
+
+Common changes after generating the checkout:
+
+- **Collapse the login form:** Select **Checkout login** and enable **Toggleable form**. Returning customers then see a single "Returning customer? Click here to login" line that opens the form.
+- **Remove a field:** Select the **Checkout** state and choose the field under **Remove unwanted fields** > **Billing** or **Shipping**. This removes it from WooCommerce's checkout fields. Delete the field's element in the Structure panel as well. In Bricks 2.4.3, the element otherwise still renders as an optional field, and WooCommerce ignores anything customers type into it.
+- **Reorder fields:** Drag field elements in the Structure panel. The generated layout places **Billing: Apartment** after the email field, so you may want to move it below **Billing: Street address**.
+- **Style all fields at once:** Use the **Style** groups on the **Checkout** state, such as **Input / Textarea / Select** for borders and corners, instead of styling each field. The searchable Country and State dropdowns have their own **Select2** groups, so give them the same border.
+- **Style the button:** Select **Checkout place order** to set the button's background, text color, and border radius.
+- **Show the order number:** Click **Switch**, choose the **Thank you** state, and add `{woo_order_number}` to its heading, for example `Thank you! Order #{woo_order_number} is confirmed`. The builder previews a sample order, so the number only appears on real orders.
+
+The builder preview of the Checkout state uses a sample cart and shows sample notices and hook placeholders such as `{do_action:woocommerce_...}`. They do not appear on the frontend. Test the result on the frontend with a real cart.
+
+### Floating labels
+
+The **Floating label** style (Checkout state > **Style**) places field labels inside the fields and moves them up when a field has a value. The Woo Setup Wizard enables it for the Checkout and Login required states. Keep the field labels visible for it to work.
+
+In Bricks 2.4.3, when the store sells to a single country, the Country field renders as a plain select and its floating label overlaps the selected country. Until this is fixed, add this rule under **Bricks > Settings > Custom code > Custom CSS**:
+
+```css
+.bricks-floating-label .brxe-woocommerce-form-field:has(> .woocommerce-input-wrapper > select:not(.select2-hidden-accessible)) > label {
+  top: 10px;
+  transform: scale(.75);
+  transform-origin: left top;
+}
+```
+
+## Shipping option labels
+
+> **Note**
+>
+> The customized shipping-label behavior and Bricks filters described below are available since Bricks 2.4.5.
+
+The **Shipping options** element displays the available shipping methods for each package. An ordinary rate shows the method name as its primary label and the formatted price or **Free** as its secondary label.
+
+When a plugin or custom callback changes `woocommerce_cart_shipping_method_full_label` and supplies usable label content, Bricks displays that complete label once as the primary label. Safe HTML is preserved. For example, a customized label containing **Pickup points: $19.90** appears once, without an additional **Pickup points** name or separate price. If the customization contains no text or meaningful image alternative text, Bricks keeps the method name as the primary label.
+
+Select **Shipping options** in the Structure panel to style its labels:
+
+- **Label** controls style the primary label, including a customized full label.
+- **Secondary label** controls style the separate price or other secondary content, when present.
+
+Review existing checkout layouts that styled a plugin's full label through **Secondary label**. The customized full label now uses **Label** styles.
+
+Developers can customize each label independently with [`bricks/woocommerce/shipping_options/primary_label`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-shipping_options-primary_label/) and [`bricks/woocommerce/shipping_options/secondary_label`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-woocommerce-shipping_options-secondary_label/). Both receive the label HTML, the calculated `WC_Shipping_Rate`, and the Shipping options element instance. These filters change the displayed labels without changing the calculated shipping charge or selected rate.
+
+The secondary filter receives an empty string when a customized full label supplies the primary label. Return separate secondary content if needed, or an empty string to omit it. Bricks only adds the input's `aria-describedby` link when a secondary label is rendered.
+
+## Payment section for free orders
+
+In the **Checkout** state, payment methods are hidden when the cart does not require payment, such as after a coupon reduces the total to zero. They reappear when a shipping or coupon change makes payment necessary again.
+
+The `brx-woo-payment-section` class lets the surrounding payment section, including its heading, hide and reappear with the payment methods. Newly generated **Payment options** and **Complete checkout** structures include this class on the **Payment Options** wrapper, including the multistep layout.
+
+Existing checkout layouts are not updated automatically. If the class is missing, add it manually:
+
+1. Edit the assigned Checkout page with Bricks and select the **Checkout** state.
+2. In the Structure panel, select the wrapper containing the payment heading and **Payment options** element. In generated layouts, this is the **Payment Options** Block.
+3. Open **Style > CSS > CSS classes** and add `brx-woo-payment-section` without a leading dot. Keep any existing classes, separated by spaces.
+4. Keep the terms checkbox and **Place order** controls outside this wrapper so customers can still submit free orders. In a multistep layout, add the class to the payment section wrapper inside the step, rather than the entire Checkout step.
+5. Save and test the checkout on the frontend with both a zero total and a total that requires payment.
+
+Without this wrapper class, the payment methods still hide for free orders, but the surrounding heading and section can remain visible.
+
+## Account creation during checkout
+
+Checkout v2 follows the guest checkout and account creation settings under **WooCommerce > Settings > Accounts & Privacy**.
+
+| Guest checkout | Account creation during checkout | Checkout behavior |
+| --- | --- | --- |
+| Enabled | Disabled | Guests can check out without account fields. |
+| Enabled | Enabled | Guests can select **Create an account?** to reveal the required account fields. |
+| Disabled | Enabled | Account creation is required. The account fields remain visible without the optional **Create an account?** checkbox. |
+| Disabled | Disabled | Logged-out customers see the Checkout v2 **Login required** state. |
+
+WooCommerce decides which credential fields are required:
+
+| Generate account login | Send password setup link | Credential fields |
+| --- | --- | --- |
+| Enabled | Enabled | None |
+| Disabled | Enabled | Username |
+| Enabled | Disabled | Password |
+| Disabled | Disabled | Username and password |
+
+Generated username and password fields are required. Bricks reads these fields from WooCommerce's current checkout field registry, including fields added by third-party plugins, instead of assuming a fixed set.
+
+The **Allow customers to create an account on the My Account page** setting applies to Account Page v2 registration and does not change account creation during Checkout v2.
+
+## Multistep checkout
+
+Use [Checkout v2 multistep checkout](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/) when you want the Checkout state split into multiple steps.
+
+You can create the multistep layout with the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) by choosing **Advanced multistep (v2)**, or generate it from the Checkout state by selecting **Complete checkout** and enabling **Generate as multistep**.
+
+![](https://academy.bricksbuilder.io/assets/checkout-v2-multistep.png)
+
+The generated layout includes Checkout steps navigation, checkout step nav items, checkout step wrappers, and next/back interactions.
+
+![](https://academy.bricksbuilder.io/assets/checkout-v2-multistep-structure-example.png)
+
+![](https://academy.bricksbuilder.io/assets/checkout-v2-multistep-frontend.png)
+
+## Field maintenance
+
+When order notes are disabled in WooCommerce, a saved Order notes field can remain visible in the builder while being hidden on the frontend. Remove unused notes elements or empty headings from **Additional fields**, keeping any fields used by checkout extensions.
+
+Checkout v2 includes a **Sync checkout fields** control group with actions to compare generated fields with the site's current WooCommerce checkout fields:
+
+- **Check checkout fields**
+- **Generate missing fields**
+- **Remove invalid fields**
+- **Remove duplicate fields**
+
+Use these after changing WooCommerce checkout fields, for example the **Company name**, **Address line 2**, or **Phone** field in **Appearance > Customize > WooCommerce > Checkout**, or after installing or removing plugins that change checkout fields. The layout does not follow those changes by itself, because every field is its own element.
+
+https://youtu.be/caoSy6gGefE
+
+Select the **Checkout** state and click **Check checkout fields**. Bricks compares the field elements in the state with the checkout fields WooCommerce currently uses and lists them as missing, invalid, or duplicate. Invalid field elements are also marked in red in the Structure panel. The **Generate missing fields**, **Remove invalid fields**, and **Remove duplicate fields** buttons appear once the check has found something to fix.
+
+- **Generate missing fields** adds an element for each missing field. Billing, shipping, and additional fields are added at the top of the Checkout state, not inside their sections. Drag each one into place in the Structure panel, for example below **Billing: Last name**. A shipping field left at the top also shows when the customer does not ship to a different address.
+- **Remove invalid fields** deletes field elements that WooCommerce no longer uses, such as Phone after the field is set to **Hidden**.
+- **Remove duplicate fields** deletes extra elements for the same field.
+
+New elements copy the field's current label and placeholder from WooCommerce. Field sync does not update the labels or placeholders of existing field elements.
+
+In Bricks 2.4.3, a removed field can stay visible in the builder canvas even though the Structure panel no longer lists it. Save and reload the builder; the canvas then matches the frontend.
+
+The audit includes WooCommerce's `account` field section. Missing account fields are inserted into the **Checkout account fields** wrapper.
+
+Enabling **Generate account login** or **Send password setup link** does not remove the corresponding saved username or password element from an existing Checkout v2 structure. Until you run field sync, an element that WooCommerce no longer registers can still render as an optional field, but WooCommerce does not process its value because it generates that credential. Run **Check checkout fields**, then **Remove invalid fields**.
+
+Checkout structures created with a Bricks 2.4 beta may contain a standalone **Create account** checkbox or may not contain the account wrapper. Regenerate the checkout structure or use the field sync actions after updating. Bricks creates the wrapper when missing account fields are generated and removes an obsolete standalone checkbox after the replacement wrapper and checkbox exist.
+
+![](https://academy.bricksbuilder.io/assets/checkout-v2-sync-checkout-fields.png)
+
+## Query loops, dynamic tags, and interactions
+
+For saved Thank you layouts, see [Failed-order messages](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/#failed-order-messages) to replace a typed payment failure message with `{woo_order_failed_text}`.
+
+Checkout v2 supports WooCommerce v2 query loops for applied coupons, fees, taxes, order items, order totals, order downloads, and customer notes.
+
+It also adds checkout/order tags such as `{woo_checkout_current_step_number}`, `{woo_order_number}`, `{woo_order_total}`, `{woo_order_item_count}`, and `{woo_order_total_with_item_count}`.
+
+For multistep checkout layouts, use the **Checkout step** interaction action to move to the next step, previous step, a specific step, or a specific checkout field.
+
+See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/) for the complete reference.
+
+## Usage tips
+
+- Use [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) or the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) to create the recommended Checkout v2 structure.
+- Design every checkout state that customers can reach, especially Pay, Thank you, Order receipt, and Login required.
+- Use the classic [Checkout template workflow](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/) if you prefer separate checkout templates.
 
 ---
 
-# List
+# Dynamic fragment
 
-Source: https://academy.bricksbuilder.io/builder/elements/layout/list/
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/dynamic-fragment/
 
-*The List element creates customizable lists with icons, titles, meta information, descriptions, and optional highlight labels.*
+*Re-renders WooCommerce cart-dependent content after cart changes.*
 
-The List element creates customizable lists with icons, titles, meta information, descriptions, and optional highlight labels.
+Re-renders WooCommerce cart-dependent content after cart changes.
+
+https://youtu.be/Q6wYRAvVN0Y
+
+> **Note**
+>
+> This element requires **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
+
+## Where this element works
+
+WooCommerce-aware Bricks layouts, such as page content, headers, and footers that need to update after cart changes.
+
+## Key settings
+
+- **Insert a structure** (select) - Choose a generated starter structure.
+- **Generate** (button) - Adds the selected structure to the element.
+
+## Generated structures
+
+- **Mini cart**
+- **Free shipping progress**
+
+Generated structures are appended to the current content and do not overwrite existing content.
+
+![](https://academy.bricksbuilder.io/assets/dynamic-fragment-states.png)
+
+## Usage tips
+
+- Use Dynamic fragment for cart-dependent content outside the main Cart page, such as a [custom mini cart](https://academy.bricksbuilder.io/integrations/woocommerce/create-custom-mini-cart-dynamic-fragment/), free shipping progress, or cart totals.
+- Keep the fragment focused on content that needs to refresh after add-to-cart, remove-from-cart, or quantity changes.
+- Keep the Dynamic fragment wrapper outside other query loops. A cart loop can be placed inside the fragment.
+
+## Free shipping progress
+
+The **Free shipping progress** structure adds a Progress Bar that shows how much more the cart needs for free shipping. Place the Dynamic fragment where shoppers see it on every page, for example a bar at the top of the header template, so it updates as products are added.
+
+- **Minimum amount:** Bricks reads it from WooCommerce. It is the **Minimum order amount** of the **Free shipping** method in the shipping zone that matches the cart, with **Free shipping requires** set to a minimum order amount (alone or combined with a coupon). Change it in **WooCommerce > Settings > Shipping**, not in Bricks. If several free shipping methods match, Bricks uses the one with the smallest remaining amount.
+- **Cart amount:** the cart subtotal minus coupon discounts, unless **Apply minimum order rule before coupon discount** is enabled on the free shipping method.
+- **Label:** `Add {woo_free_shipping_remaining} more for free shipping`.
+- **Value:** `{woo_free_shipping_progress:value}`, a number from 0 to 100 (the percentage of the minimum the cart has reached).
+- **Conditions:** the bar only renders while a minimum exists (`{woo_free_shipping_min_amount:value}` is not 0) and the cart is below it (`{woo_free_shipping_progress:value}` is less than 100).
+
+Once the cart reaches the minimum, the bar is hidden. The structure has no message for that state. To show one, add an element such as Basic Text inside the same Dynamic fragment and give it the condition **Dynamic data** `{woo_free_shipping_progress:value}` `==` `100`.
+
+![Builder showing a Dynamic fragment in the header template with the generated Free shipping progress bar and a Basic Text "Your order ships free" with a condition that shows it when the free shipping progress equals 100.](https://academy.bricksbuilder.io/assets/dynamic-fragment-free-shipping-reached-condition.webp)
+
+The Builder canvas previews a sample cart, so the bar can show "Add $0.00 more" and the conditions are not applied there. Check the real amounts on the frontend with products in the cart.
+
+## Custom mini cart
+
+For a mini cart, add a Dynamic fragment inside an Offcanvas in the header template and generate the **Mini cart** structure. A second Dynamic fragment in the header holds the cart icon and item count, so the count updates too. [Create a custom mini cart with Dynamic fragment](https://academy.bricksbuilder.io/integrations/woocommerce/create-custom-mini-cart-dynamic-fragment/) walks through the full setup, including the interactions that open the panel.
+
+See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/) for the cart tags you can use inside the fragment.
+
+## Refresh behavior
+
+Dynamic fragment refreshes after WooCommerce cart, coupon, and checkout events such as add to cart, remove from cart, cart emptied, cart totals updated, checkout updated, and coupon apply/remove events.
+
+After a refresh, Bricks reruns frontend functions and dispatches:
+
+```js
+document.body.addEventListener('bricks/woocommerce/fragments/refreshed', (event) => {
+  console.log(event.detail.fragments)
+})
+```
+
+This refresh event also covers initial synchronization and checkout recalculations that do not change cart items. For a custom success notice or popup, use the [Bricks cart contents changed](https://academy.bricksbuilder.io/builder/features/interactions/#cart-contents-changed) interaction trigger, available since Bricks 2.4. It runs after a confirmed AJAX addition, removal, or quantity change and the related UI updates finish.
+
+## Limitations
+
+- Dynamic fragment is frontend-only.
+- Do not place the Dynamic fragment wrapper inside a query loop.
+- Component instances are not supported.
+- The source area must be header, content, or footer.
+
+---
+
+# Notice
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/notice/
+
+*Displays WooCommerce system notices (success, info, and error messages).*
+
+Displays WooCommerce system notices (success, info, and error messages).
+
+## Where this element works
+
+Shop/archive templates and WooCommerce pages where the related data exists.
+
+## Key settings
+
+- **Preview notice type** (select)
+
+## Usage tips
+
+- Keep notice styles highly readable so customers can quickly understand errors and confirmation messages.
+- Check all notice types (success, info, error) in real cart and checkout scenarios.
+
+Since Bricks 2.5, use a Notice element in a non-AJAX popup with the [Coupon error interaction](https://academy.bricksbuilder.io/builder/features/interactions/#coupon-error) to show the returned coupon error. Follow the [WooCommerce Notice setup](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-notices/#woocommerce-notice-element) before placing the element.
+
+---
+
+# Mini cart
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/mini-cart/
+
+*Displays a mini cart icon with cart count and dropdown cart details.*
+
+Displays a mini cart icon with cart count and dropdown cart details.
 
 ## Settings
 
-### List Items
+- **Icon** (icon) - Cart icon. Default: ti-shopping-cart.
+- **Icon typography** (typography) - Typography for cart icon. Only available when Icon is set.
+- **Open on add to cart (AJAX)** (checkbox) - Open mini cart when products are added via AJAX.
 
-- **List items** (repeater) - Add and configure list items. Each item has:
-  - **Icon** (icon) - Optional icon for the list item
-  - **Title** (text) - Main title text
-  - **Link title** (link) - Make the title clickable
-  - **Meta** (text) - Additional meta information (e.g., price, date)
-  - **Description** (textarea) - Longer description text
-  - **Highlight** (checkbox) - Mark this item as highlighted
-  - **Highlight label** (text) - Custom label text for highlighted items. Only available when highlight is enabled.
+### Hide an empty cart (since 2.5)
 
-### List Item
+Enable **Hide if empty** to hide the entire Mini cart element on the frontend when the cart has no products. It remains visible in the Builder so you can edit it. This is separate from **Cart count > Visibility**, which only controls the count badge. The element updates after AJAX cart changes.
 
-- **Justify content** (justify-content) - Horizontal alignment of list item content. Controls `justify-content` property for `.content` and `.description` selectors.
+### Cart count
 
-- **Align items** (align-items) - Vertical alignment of list item content. Options: `flex-start`, `center`, `flex-end`, `baseline`. Controls `align-items` property for `.content` and `.description` selectors. Excludes `stretch` option.
+- **Visibility** (select) - Show/hide cart count. Options: Hide (Always), Show (Always). Default: Hide if empty.
+- **Background color** (color) - Cart count background color. Only available when Visibility is not Hide (Always).
+- **Border** (border) - Cart count border settings. Only available when Visibility is not Hide (Always).
+- **Typography** (typography) - Cart count typography. Only available when Visibility is not Hide (Always).
+- **Transform** (transform) - Cart count transform. Only available when Visibility is not Hide (Always) and Off-Canvas is not Top or Bottom.
+- **Height** (number with units) - Cart count height. Only available when Visibility is not Hide (Always).
+- **Width** (number with units) - Cart count width. Only available when Visibility is not Hide (Always).
+- **Top** (number with units) - Cart count top position. Only available when Visibility is not Hide (Always).
+- **Right** (number with units) - Cart count right position. Only available when Visibility is not Hide (Always).
+- **Bottom** (number with units) - Cart count bottom position. Only available when Visibility is not Hide (Always).
+- **Left** (number with units) - Cart count left position. Only available when Visibility is not Hide (Always).
 
-- **Margin** (spacing) - Margin around each list item. Controls `margin` property for `li` selector.
+### Cart subtotal
 
-- **Padding** (spacing) - Padding inside each list item. Controls `padding` property for `li` selector.
+- **Position** (select) - Subtotal position. Options: Right, Left.
+- **Gap** (number with units) - Gap between icon and subtotal. Only available when Position is set.
+- **Typography** (typography) - Subtotal typography. Only available when Position is set.
 
-- **Odd background** (color) - Background color for odd-numbered list items. Controls `background-color` property for `li:nth-child(odd)` selector.
+### Custom empty cart template (since 2.5)
 
-- **Even background** (color) - Background color for even-numbered list items. Controls `background-color` property for `li:nth-child(even)` selector.
+To show a custom empty state in the cart details instead:
 
-- **Border** (border) - Border styling for list items. Controls `border` property for `li` selector.
+1. Create and publish a **Section** template containing the empty-cart message or layout.
+2. Select the Mini cart and open **Content > Cart details**.
+3. Leave **Hide** off and select the Section under **Empty cart template**.
+4. Enable **Preview empty state** to inspect the template in the Builder. This preview setting does not change the visitor's cart.
+5. Save and test the frontend with an empty cart, then add and remove a product.
 
-- **Auto width** (checkbox) - Enable automatic width for list items. Sets `justify-content` to `initial` for `.content` selector and `flex-grow` to `0` for `.separator` selector.
+Leave **Hide if empty** off if visitors should be able to open this empty state. An unpublished, empty, or non-Section template cannot be used. Avoid placing the Mini cart inside the same Section template selected as its empty state.
 
-### Highlight
+<div className="screenshot screenshot--control-panel">
 
-- **Block** (checkbox) - Display highlight label as block element. Controls `display` property for `li[data-highlight]::before` selector.
+![Mini cart controls with Hide if empty off, an Empty cart template selected, and Preview empty state enabled.](https://academy.bricksbuilder.io/assets/builder/release-2.5/mini-cart-empty-panel.webp)
 
-- **Padding** (spacing) - Padding for highlight label. Controls `padding` property for `li[data-highlight]::before` selector.
+</div>
 
-- **Background** (color) - Background color for highlight label. Controls `background-color` property for `li[data-highlight]::before` selector.
+The selected Section replaces the default empty-cart message:
 
-- **Border** (border) - Border styling for highlight label. Controls `border` property for `li[data-highlight]::before` selector.
+![An empty Mini cart displays a custom message and an Explore the collection button.](https://academy.bricksbuilder.io/assets/builder/release-2.5/mini-cart-empty-result.webp)
 
-- **Typography** (typography) - Typography settings for highlight label. Controls `font` property for `li[data-highlight]::before` selector.
+### Cart details
 
-- **Content** (separator) - Visual separator in the control panel.
+- **Hide** (checkbox) - Hide cart details dropdown.
+- **Don't close on click outside mini cart** (checkbox) - Prevent auto-close on outside clicks. Only available when Hide is not checked.
+- **Off-Canvas** (select) - Off-canvas position. Options: Top, Right, Bottom, Left. Only available when Hide is not checked.
+- **Height** (number with units) - Cart details height. Only available when Hide is not checked and Off-Canvas is not Top or Bottom.
+- **Width** (number with units) - Cart details width. Default: 400px. Only available when Hide is not checked and Off-Canvas is not Top or Bottom.
+- **Image width** (number with units) - Product image width. Default: 60px. Only available when Hide is not checked.
+- **Padding** (spacing) - Cart details padding. Only available when Hide is not checked.
+- **Position** (dimensions) - Cart details position. Only available when Hide is not checked and Off-Canvas is Disabled.
+- **Transform** (transform) - Cart details transform. Only available when Hide is not checked and Off-Canvas is not Top or Bottom.
+- **Background** (color) - Cart details background color. Only available when Hide is not checked.
+- **Border** (border) - Cart details border settings. Only available when Hide is not checked.
+- **Box shadow** (box-shadow) - Cart details box shadow. Only available when Hide is not checked.
+- **Typography (Title)** (typography) - Title typography. Only available when Hide is not checked.
+- **Typography (Quantity)** (typography) - Quantity typography. Only available when Hide is not checked.
 
-- **Padding** (spacing) - Padding for highlighted item content. Controls `padding` property for `li[data-highlight] .content` selector.
+#### Buttons
 
-- **Background** (color) - Background color for highlighted item content. Controls `background-color` property for `li[data-highlight] .content` selector.
+- **Background color** (color) - Button background color. Only available when Hide is not checked.
+- **Border** (border) - Button border settings. Only available when Hide is not checked.
+- **Typography** (typography) - Button typography. Only available when Hide is not checked.
 
-- **Border** (border) - Border styling for highlighted item content. Controls `border` property for `li[data-highlight] .content` selector.
+#### Close
 
-- **Text color** (color) - Text color for highlighted item content. Controls `color` property for `li[data-highlight] .content .title`, `li[data-highlight] .content .meta`, and `li[data-highlight] .content .description` selectors.
+- **Icon** (icon) - Close icon. Only available when Hide is not checked.
+- **Typography** (typography) - Close typography. Only available when Hide is not checked and Icon is set. Excludes: font-family, font-weight, font-style, text-align, text-decoration, text-transform, line-height, letter-spacing.
+- **Position** (dimensions) - Close position. Only available when Hide is not checked and Icon is set.
+- **Padding** (spacing) - Close padding. Only available when Hide is not checked and Icon is set.
+- **Background color** (color) - Close background color. Only available when Hide is not checked and Icon is set.
+- **Border** (border) - Close border settings. Only available when Hide is not checked and Icon is set.
 
-### Icon
+---
 
-- **Icon** (icon) - Default icon for all list items.
+# Products archive description
 
-- **After title** (checkbox) - Position icon after the title instead of before.
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-archive-description/
 
-- **Width** (number with units) - Width of the icon. Controls `width` property for `.icon` selector.
+*Displays the description for WooCommerce product archives (shop page, categories, tags).*
 
-- **Height** (number with units) - Height of the icon. Controls `height` property for `.icon` selector.
+Displays the description for WooCommerce product archives (shop page, categories, tags).
 
-- **Size** (number with units) - Font size of the icon. Controls `font-size` property for `.icon` selector, and `height`/`width` properties for `.icon svg` selector.
+---
 
-- **Color** (color) - Color of the icon. Controls `color` property for `.icon` selector.
+# Products filter
 
-- **Background color** (color) - Background color of the icon. Controls `background-color` property for `.icon` selector.
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-filter/
 
-- **Border** (border) - Border styling for the icon. Controls `border` property for `.icon` selector.
+*Displays product filters for WooCommerce product listings.*
 
-- **Box shadow** (box-shadow) - Box shadow for the icon. Controls `box-shadow` property for `.icon` selector.
+Displays product filters for WooCommerce product listings.
+
+## Settings
+
+- **Filters** (repeater) - Product filter configurations.
+  - **Filter type** (select) - Type of filter. Options: Taxonomy, Product attribute, Other.
+  - **Filter by** (select) - Specific filter to apply (depends on type).
+  - **Filter input** (select) - Input type. Options: Dropdown, Checkbox, Radio list, Text list, Box list.
+  - **Any option text** (text) - Text for "any" option. Default: "Any".
+  - **Only parent terms** (checkbox) - Show only parent terms.
+  - **Show empty terms** (checkbox) - Include terms with no products.
+  - **Filter title** (text) - Title for the filter.
+  - **Hide title** (checkbox) - Hide filter title.
+  - **Collapse** (checkbox) - Make filter collapsible.
+- **Spacing** (number) - Gap between filters. Default: 30px.
+
+### Title
+- **Margin** (spacing) - Title margin. Default: 0 0 15px 0.
+- **Padding** (spacing) - Title padding.
+- **Typography** (typography) - Title typography.
+- **Background color** (color) - Title background color.
+
+---
+
+# Products pagination
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-pagination/
+
+*Displays pagination for WooCommerce product listings.*
+
+Displays pagination for WooCommerce product listings.
+
+## Settings
+
+- **Alignment** (align-items) - Pagination alignment.
+- **Previous Icon** (icon) - Icon for previous page link.
+- **Next Icon** (icon) - Icon for next page link.
+- **End Size** (number) - How many numbers on either the start and the end list edges. Minimum: 1.
+- **Mid Size** (number) - How many numbers to either side of the current page. Minimum: 1.
+
+---
+
+# Products orderby
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-orderby/
+
+*Displays a dropdown to sort WooCommerce products.*
+
+Displays a dropdown to sort WooCommerce products.
+
+## Settings
+
+- **Order by** (select) - Available sorting options. Multiple selection. Leave empty to use WooCommerce default list.
+
+---
+
+# Products total results
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products-total-results/
+
+*Displays the total number of products found and current result range.*
+
+Displays the total number of products found and current result range.
+
+---
+
+# Products
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/products/
+
+*Displays WooCommerce products in a grid layout with customizable fields and widgets.*
+
+Displays WooCommerce products in a grid layout with customizable fields and widgets.
+
+## Settings
+
+- **Columns** (number) - Number of columns. Range: 1-6. Default: 4. Supports breakpoints.
+- **Gap** (number) - Spacing between products. Default: 30px.
+
+### Query
+- Product query controls (via Woocommerce_Helpers::get_product_query_controls).
+
+### Fields
+- **Content** (repeater) - Dynamic data fields to display. Default includes WooCommerce hooks and product fields like title, image, price, add to cart.
+- **Link entire product** (checkbox) - Make entire product clickable if no field links exist.
+
+### Widgets
+- **Show Before Grid** (select) - Widgets to show before products grid. Options: Pagination, Result Count, Order by. Multiple selection.
+- **Show After Grid** (select) - Widgets to show after products grid. Options: Pagination, Result Count, Order by. Multiple selection.
+- **Sort by options** (select) - Available sorting options. Default: Default sorting. Multiple selection.
+
+---
+
+# WooCommerce Template Hook
+
+Source: https://academy.bricksbuilder.io/builder/elements/woocommerce/template-hook/
+
+*Renders output from a selected WooCommerce template hook so you can place WooCommerce hook content in your layout.*
+
+Renders output from a selected WooCommerce template hook so you can place WooCommerce hook content in your layout.
+
+## Where this element works
+
+Any WooCommerce template where the selected hook is executed.
+
+## Key settings
+
+- **Template** (select)
+- **Hook** (select)
+- **Show tips** (checkbox)
+
+## Usage tips
+
+- Pick hooks intentionally and avoid duplicating WooCommerce default output in the same area.
+- If expected content does not appear, confirm the selected hook runs in the current template context.
+
+---
+
+# Accordion (nestable)
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/accordion-nested/
+
+*The Nestable Accordion element allows creating hierarchical collapsible content with drag-and-drop nesting in the builder.*
+
+The Nestable Accordion element allows creating hierarchical collapsible content with drag-and-drop nesting in the builder.
+
+## Settings
+
+- **Children** (nestable) - Drag and drop elements to create accordion items. Each item can contain nested content. Set "ID" on items to open via anchor link (no spaces, no pound sign).
+
+- **Expand item indexes** (text) - Comma-separated indexes of items to expand on page load (starting at 0).
+
+- **Independent toggle** (checkbox) - Allow multiple items to be open simultaneously. Enable to open & close an item without toggling other items.
+
+- **Transition (ms)** (number) - Animation duration for expanding/collapsing in milliseconds. Default: 200.
+
+- **FAQ schema** (checkbox) - Generate FAQPage structured data (JSON-LD) for search engines.
 
 ### Title
 
-- **Margin** (spacing) - Margin around the title. Controls `margin` property for `.title` selector.
+- **Min. height** (number with units) - Minimum height for title areas. Default: 50px.
 
-- **HTML tag** (text) - HTML tag for the title. Supports dynamic data. Default placeholder: `span`. Validates HTML tag format.
+- **Margin** (spacing) - Margin around title wrappers.
 
-- **Typography** (typography) - Typography settings for the title. Controls `font` property for `.title` selector.
+- **Padding** (spacing) - Padding inside title wrappers.
 
-### Meta
+- **Background color** (color) - Background color for title wrappers.
 
-- **Margin** (spacing) - Margin around the meta text. Controls `margin` property for `.meta` selector.
+- **Border** (border) - Border styling for title wrappers.
 
-- **Typography** (typography) - Typography settings for the meta text. Controls `font` property for `.meta` selector.
+- **Typography** (typography) - Typography settings for title text and headings.
 
-### Description
+#### Active Title
 
-- **Typography** (typography) - Typography settings for the description. Controls `font` property for `.description` selector.
+- **Background color** (color) - Background color for active/expanded title wrappers.
 
-### Separator
+- **Border** (border) - Border styling for active/expanded title wrappers.
 
-- **Disable** (checkbox) - Disable the separator line between items. Controls `display` property for `.separator` selector (sets to `none`). Triggers re-render.
+- **Typography** (typography) - Typography settings for active/expanded title text and headings.
 
-- **Style** (select) - Border style for the separator. Options from border style control options. Controls `border-top-style` property for `.separator` selector. Only available when separator is not disabled.
+### Content
 
-- **Width** (number with units) - Width of the separator. Controls `flex-basis` property for `.separator` selector and sets `flex-grow` to `0`. Only available when separator is not disabled.
+- **Margin** (spacing) - Margin around content wrappers.
 
-- **Height** (number with units) - Height/thickness of the separator. Controls `border-top-width` property for `.separator` selector. Only available when separator is not disabled.
+- **Padding** (spacing) - Padding inside content wrappers. Default: 15px top/bottom, 0px left/right.
 
-- **Color** (color) - Color of the separator. Controls `border-top-color` property for `.separator` selector. Only available when separator is not disabled.
+- **Background color** (color) - Background color for content wrappers.
+
+- **Border** (border) - Border styling for content wrappers.
+
+- **Typography** (typography) - Typography settings for content text.
 
 > **Developer reference**
 >
-> See the [List Schema](https://academy.bricksbuilder.io/developer/schema/elements/list/) for the full JSON schema of this element's settings and controls.
+> See the [Accordion (Nestable) Schema](https://academy.bricksbuilder.io/developer/schema/elements/accordion-nested/) for the full JSON schema of this element's settings and controls.
 
 ---
 
-# Section
+# Accordion
 
-Source: https://academy.bricksbuilder.io/builder/elements/layout/section/
+Source: https://academy.bricksbuilder.io/builder/elements/general/accordion/
 
-*The Section element allows you to structure/divide your page into self-containing areas (think: one topic per section).*
+*The Accordion element creates collapsible content sections with titles and expandable content.*
 
-The Section element allows you to structure/divide your page into self-containing areas (think: one topic per section).
-
-The [Understanding the Layout](https://academy.bricksbuilder.io/builder/styling/layout/) article covers in more detail how to best use the layout elements in Bricks.
-
-The Section element is the outermost building block for structuring and dividing your page. Use sections to separate and space out individual parts of your page, such as hero sections, content areas, or footers.
-
-The Section element has a default width of 100%, uses the `section` tag, and flexbox. Sections take up 100% of the available width and adjust in height according to their content. They are stacked vertically on top of each other.
-
-It should be used at the root level to structure your page into self-containing areas. When adding a Section to the canvas, a Container element is added inside of the Section automatically. You can delete this Container if not needed. It's just the default behaviour to speed up your site creation process.
-
-<figure>
-
-![](https://academy.bricksbuilder.io/assets/bricks-1.5-section-element-1024x484.jpg)
-
-<figcaption>
-
-Example: Section > Container > Heading
-
-</figcaption>
-
-</figure>
-
-**Tip:** Use sections as the root level elements in your page structure. They work great for creating distinct page sections with different backgrounds, spacing, and layouts.
+The Accordion element creates collapsible content sections with titles and expandable content.
 
 ## Settings
 
-- **Grid column** (text) - CSS grid column span when parent uses grid layout. Controls `grid-column` property.
+- **Accordion** (repeater) - Add accordion items. Each item has:
+  - **Title** (text) - The clickable title of the accordion item.
+  - **ID** (text) - Anchor ID for linking to the item (no spaces, no pound sign).
+  - **Subtitle** (text) - Optional subtitle below the title.
+  - **Content** (rich text) - The expandable content of the item.
 
-- **Grid row** (text) - CSS grid row span when parent uses grid layout. Controls `grid-row` property.
+- **Expand item indexes** (text) - Comma-separated indexes of items to expand on page load (starting at 0).
 
-- **Query loop** - Enable query loop functionality for dynamic content. Available for Container, Block, Div, and Section elements.
+- **Independent toggle** (checkbox) - Allow multiple items to be open simultaneously. Enable to open & close an item without toggling other items.
 
-- **Link** (link) - Link settings when using anchor tag. Required when HTML tag is set to 'a'.
+- **Transition (ms)** (number) - Animation duration for expanding/collapsing in milliseconds. Default: 200.
 
-- **HTML tag** (select) - HTML tag for the section element. Options: div, section, a [Link], article, nav, ol, ul, li, aside, address, figure, custom. Default: section.
+- **FAQ schema** (checkbox) - Generate FAQPage structured data (JSON-LD) for search engines.
 
-- **Custom tag** (text) - Custom HTML tag when "custom" is selected. Without attributes. Required when HTML tag is 'custom'.
+### Title
 
-- **Display** (select) - CSS display property. Options: flex, grid, block, inline-block, inline, none. Default: flex.
+- **HTML tag** (select) - HTML tag for titles. Options: `div`, `h1`-`h6`. Default: `h3`.
 
-### Grid Layout (when Display is grid)
+- **Icon** (icon) - Icon for collapsed state. Default: right arrow (ion-ios-arrow-forward).
 
-- **Gap** (number with units) - Gap between grid items. Controls `grid-gap` property.
+- **Icon typography** (typography) - Font settings for the collapsed icon.
 
-- **Grid template columns** (text) - CSS grid template columns. Supports dynamic data and variables.
+- **Icon expanded** (icon) - Icon for expanded state. Default: down arrow (ion-ios-arrow-down).
 
-- **Grid template rows** (text) - CSS grid template rows. Supports dynamic data and variables.
+- **Icon expanded typography** (typography) - Font settings for the expanded icon.
 
-- **Grid auto columns** (text) - Grid auto columns size. Supports dynamic data and variables.
+- **Icon position** (select) - Position of the icon relative to text. Default: Right.
 
-- **Grid auto rows** (text) - Grid auto rows size. Supports dynamic data and variables.
+- **Icon rotate in °** (number) - Rotation angle for the icon in degrees. Icon rotation for expanded accordion.
 
-- **Grid auto flow** (select) - Grid auto flow direction. Options: row, column, dense.
+- **Margin** (spacing) - Margin around title wrappers.
 
-- **Justify items** (justify-content) - Grid justify items alignment.
+- **Padding** (spacing) - Padding inside title wrappers.
 
-- **Align items** (align-items) - Grid align items alignment.
+- **Title typography** (typography) - Typography settings for title text.
 
-- **Justify content** (justify-content) - Grid justify content alignment.
+- **Subtitle typography** (typography) - Typography settings for subtitle text.
 
-- **Align content** (align-items) - Grid align content alignment.
+- **Background color** (color) - Background color for title wrappers.
 
-### Flex Layout (when Display is flex)
+- **Border** (border) - Border styling for title wrappers.
 
-- **Flex wrap** (select) - Flexbox wrapping behavior. Options: No wrap, Wrap, Wrap reverse.
+- **Box shadow** (box-shadow) - Box shadow for title wrappers.
 
-- **Direction** (direction) - Flexbox direction (row/column). Controls `flex-direction` property.
+- **Active typography** (typography) - Typography settings for active/expanded title text.
 
-- **Align self** (align-items) - Align self for this flex item. Controls `align-self` property with `!important`.
+- **Active background** (color) - Background color for active/expanded title wrappers.
 
-- **Align main axis** (justify-content) - Justify content alignment. Controls `justify-content` property.
+- **Active border** (border) - Border styling for active/expanded title wrappers.
 
-- **Align cross axis** (align-items) - Align items alignment. Controls `align-items` property.
+### Content
 
-- **Column gap** (number with units) - Gap between flex columns. Controls `column-gap` property.
+- **Margin** (spacing) - Margin around content wrappers.
 
-- **Row gap** (number with units) - Gap between flex rows. Controls `row-gap` property.
+- **Padding** (spacing) - Padding inside content wrappers.
 
-- **Flex grow** (number) - Flex grow factor. Minimum: 0. Controls `flex-grow` property. Default placeholder: 0.
+- **Content typography** (typography) - Typography settings for content text.
 
-- **Flex shrink** (number) - Flex shrink factor. Minimum: 0. Controls `flex-shrink` property. Default placeholder: 1.
+- **Background color** (color) - Background color for content wrappers.
 
-- **Flex basis** (text) - Flex basis value. Supports dynamic data and variables. Controls `flex-basis` property. Default placeholder: auto.
-
-### Order
-
-- **Order** (number) - Flexbox order. Minimum: -999. Controls `order` property. Default placeholder: 0. Available when display is not 'none'.
-
-### Style
-
-These controls can be accessed under the **Style** tab in the element settings.
-
-### Masonry
-
-- **Masonry layout** (checkbox) - Enable masonry layout for child elements.
-- **Columns** (number) - Number of masonry columns. Default: 3. Controls `--columns` CSS property.
-- **Spacing** (number with units) - Spacing between masonry items. Default: 10px. Controls `--gutter` CSS property.
-- **Horizontal order** (checkbox) - Enable horizontal ordering in masonry layout.
-- **Transition: Duration** (number with units) - Animation duration for masonry transitions. Default: 0.4s. Set to "0" to disable default animations.
-- **Reveal animation** (select) - Animation type for masonry items. Options: Scale, Fade, Slide from left, Slide from right, Skew. Default: Scale. Only applies to new items added to the DOM.
-
-## Theme Style: Element – Section
-
-You can change the section `width`, `min-width`, `max-width`, `margin`, and `padding` in your theme styles under the "Elements > Section" group.
-
-## Background lazy loading
-
-From Bricks 2.5, enable **Style > Background > Disable lazy load** to load this element's background images and videos without waiting for them to become visible. The checkbox is hidden when lazy loading is already disabled globally or for the page.
-
-See [Lazy Loading](https://academy.bricksbuilder.io/builder/features/lazy-loading/) for setup steps and how this differs from the Image and Logo elements' Loading controls.
+- **Border** (border) - Border styling for content wrappers.
 
 > **Developer reference**
 >
-> See the [Section Schema](https://academy.bricksbuilder.io/developer/schema/elements/section/) for the full JSON schema of this element's settings and controls.
+> See the [Accordion Schema](https://academy.bricksbuilder.io/developer/schema/elements/accordion/) for the full JSON schema of this element's settings and controls.
 
 ---
 
-# Audio
+# Alert
 
-Source: https://academy.bricksbuilder.io/builder/elements/media/audio/
+Source: https://academy.bricksbuilder.io/builder/elements/general/alert/
 
-*The Audio element embeds audio files with a customizable player interface.*
+*The Alert element displays informational messages with different types and optional dismiss functionality.*
 
-The Audio element embeds audio files with a customizable player interface.
+The Alert element displays informational messages with different types and optional dismiss functionality.
 
 ## Settings
 
-- **Source** (select) - The audio source type. Options: `file` (media library), `external` (external URL), `dynamic` (dynamic data). Default: `file`.
+- **Content** (rich text) - The alert message content. Supports dynamic data and rich text.
 
-- **File** (audio) - Select an audio file from the media library. Available when source is "file".
+- **Type** (select) - The alert style type. Options: `info`, `success`, `warning`, `danger`, `muted`. Default: `info`.
 
-- **External URL** (text) - Enter an external audio file URL. Available when source is "external".
-
-- **Dynamic Data** (text with dynamic data) - Select audio from dynamic data source. Available when source is "dynamic".
-
-- **Custom title** (text) - Override the audio title. Not available for external sources.
-
-- **Show artist** (checkbox) - Display the artist name from audio metadata. Not available for external sources or when custom title is set.
-
-- **Show title** (checkbox) - Display the audio title from metadata. Not available for external sources or when custom title is set.
-
-- **Autoplay** (checkbox) - Automatically play the audio on page load. Note: Autoplay is blocked in most modern browsers.
-
-- **Loop** (checkbox) - Loop the audio playback.
-
-- **Tag** (select) - HTML tag for the audio title. Options: `p`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`. Default: `p`.
-
-- **Preload** (select) - Audio preload behavior. Options: `none`, `metadata`, `auto`. Default: `none`.
-
-- **Theme** (select) - Audio player color theme. Options: `light`, `dark`. Default: `light`.
+- **Dismissable** (checkbox) - Adds a close button to allow users to dismiss the alert.
 
 > **Developer reference**
 >
-> See the [Audio Schema](https://academy.bricksbuilder.io/developer/schema/elements/audio/) for the full JSON schema of this element's settings and controls.
+> See the [Alert Schema](https://academy.bricksbuilder.io/developer/schema/elements/alert/) for the full JSON schema of this element's settings and controls.
 
 ---
 
-# Carousel
+# Animated typing
 
-Source: https://academy.bricksbuilder.io/builder/elements/media/carousel/
+Source: https://academy.bricksbuilder.io/builder/elements/general/animated-typing/
 
-*The Carousel element displays images or posts in a swipeable carousel with customizable navigation and effects, using the Swiper library.*
+*The Animated Typing element creates a typewriter effect that cycles through a list of strings with customizable timing and behavior.*
 
-The Carousel element displays images or posts in a swipeable carousel with customizable navigation and effects, using the Swiper library.
+The Animated Typing element creates a typewriter effect that cycles through a list of strings with customizable timing and behavior.
 
 ## Settings
 
-- **Type** (select) - Content type. Options: `media`, `posts`. Default: `media`.
+- **Tag** (select) - The HTML tag to use for the element. Options: `div`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`. Default: `div`.
 
-- **Images** (image-gallery) - Select images for the carousel. Only shown for media type.
+- **Prefix** (text) - Text displayed before the animated strings. Default: "We ".
 
-- **Query** (query) - Configure which posts to display. Only shown for posts type.
+- **Suffix** (text) - Text displayed after the animated strings. Default: " for you!".
+
+- **Strings** (repeater) - List of strings to cycle through. Each item has a **Text** field. Default: "design", "code", "launch".
 
 ### Settings
 
-- **Adaptive height** (checkbox) - Adjust height to content.
+- **Type speed in ms** (number) - Speed of typing each character. Default: 55.
 
-- **Height** (number with units) - Fixed carousel height. Default: 300px. Not available when adaptive height is enabled.
+- **Back speed in ms** (number) - Speed of deleting each character. Default: 30.
 
-- **Spacing** (number) - Spacing between slides in pixels. Default: 0.
+- **Start delay in ms** (number) - Delay before starting the animation. Default: 500.
 
-- **Initial slide** (number) - Starting slide index. Default: 0.
+- **Back delay in ms** (number) - Delay before starting to delete. Default: 500.
 
-- **Items to show** (number) - Number of slides visible at once. Default: 2. Supports breakpoints.
+- **Cursor character** (text) - Character used as the cursor. Default: "|".
 
-- **Items to scroll** (number) - Number of slides to advance per swipe. Default: 1. Supports breakpoints.
+- **Loop** (checkbox) - Repeat the animation indefinitely. Default: checked.
 
-- **Effect** (select) - Transition effect. Options: `slide`, `fade`, `cube`, `coverflow`, `flip`. Default: `slide`.
-
-- **Align items** (align-items) - Vertical alignment of slides. Only shown when adaptive height is enabled.
-
-- **Loop** (checkbox) - Enable infinite loop. Default: true.
-
-- **Center mode** (checkbox) - Center the active slide.
-
-- **Disable lazy load** (checkbox) - Load all images immediately.
-
-- **Autoplay** (checkbox) - Enable automatic sliding.
-
-- **Pause on hover** (checkbox) - Pause autoplay on hover.
-
-- **Stop on last slide** (checkbox) - Stop autoplay on last slide.
-
-- **Autoplay delay in ms** (number) - Delay between slides in milliseconds. Default: 3000.
-
-- **Animation speed in ms** (number) - Transition speed in milliseconds. Default: 300.
-
-### Image
-
-- **Hide image** (checkbox) - Hide images in post carousels.
-
-- **Image size** (select) - Size of images.
-
-- **Link to lightbox** (checkbox) - Open images in lightbox. Only for media type.
-
-- **Image size** (select) - Size of images in lightbox.
-
-- **Image click action** (select) - Action when clicking images. Options: `zoom`, `zoom-or-close`, `toggle-controls`, `next`, `close`. Default: `zoom`.
-
-- **Animation** (select) - Lightbox animation type. Default: `zoom`.
-
-- **Caption** (checkbox) - Show image captions in lightbox.
-
-- **Thumbnail navigation** (checkbox) - Show thumbnail navigation in lightbox.
-
-- **Thumbnail size** (number with units) - Size of thumbnails. Default: 60px.
-
-- **Padding** (dimensions) - Lightbox padding in pixels.
-
-- **Lightbox: ID** (text, since 2.5) - Group this media Carousel's images with other Carousels, Image Galleries, or Image elements that use the same lightbox ID. Enable **Link to lightbox** first. Leave the ID empty to keep the Carousel's own lightbox group.
-
-### Fields
-
-- **Fields** (repeater) - Configure which post fields to display. Each field has:
-  - **Dynamic data** (text) - Dynamic data tag (e.g., `{post_title:link}`, `{post_excerpt:20}`).
-  - **HTML tag** (select) - HTML tag for the field. Options: `div`, `p`, `h1`-`h6`. Default: `div`.
-  - **Width** (number with units) - Field width.
-  - **Margin** (spacing) - Field margin.
-  - **Padding** (spacing) - Field padding.
-  - **Background color** (color) - Field background color.
-  - **Border** (border) - Field border styling.
-  - **Typography** (typography) - Field text styling.
-  - **Overlay** (checkbox) - Show field as overlay.
-
-### Content
-
-- **Alignment** (select) - Content alignment. Options: `top left`, `top center`, `top right`, `middle left`, `middle center`, `middle right`, `bottom left`, `bottom center`, `bottom right`.
-
-- **Min. height** (number with units) - Minimum content height.
-
-- **Margin** (spacing) - Content wrapper margin.
-
-- **Padding** (spacing) - Content wrapper padding.
-
-- **Background color** (color) - Content wrapper background color.
-
-### Overlay
-
-- **Show on hover** (checkbox) - Show overlay only on hover.
-
-- **Fade in animation** (select) - Overlay animation. Options: `fade-in-up`, `fade-in-right`, `fade-in-down`, `fade-in-left`, `zoom-in`, `zoom-out`.
-
-- **Alignment** (select) - Overlay alignment. Options: `top left`, `top center`, `top right`, `middle left`, `middle center`, `middle right`, `bottom left`, `bottom center`, `bottom right`.
-
-- **Margin** (spacing) - Overlay margin.
-
-- **Padding** (spacing) - Overlay padding.
-
-- **Background color** (color) - Overlay background color.
-
-- **Inner background color** (color) - Inner overlay background color.
-
-## Arrows
-
-- **Show arrows** (checkbox) - Display navigation arrows. Default: true.
-
-- **Height** (number with units) - Arrow button height. Default: 50px.
-
-- **Width** (number with units) - Arrow button width. Default: 50px.
-
-- **Background** (color) - Arrow button background color.
-
-- **Border** (border) - Arrow button border styling.
-
-- **Typography** (typography) - Arrow button text styling.
-
-### Prev arrow
-
-- **Prev arrow** (icon) - Previous arrow icon. Default: `ion-ios-arrow-back`.
-
-- **Top** (number with units) - Previous arrow top position. Default: 50%.
-
-- **Right** (number with units) - Previous arrow right position.
-
-- **Bottom** (number with units) - Previous arrow bottom position.
-
-- **Left** (number with units) - Previous arrow left position. Default: 50px.
-
-### Next arrow
-
-- **Next arrow** (icon) - Next arrow icon. Default: `ion-ios-arrow-forward`.
-
-- **Top** (number with units) - Next arrow top position.
-
-- **Right** (number with units) - Next arrow right position.
-
-- **Bottom** (number with units) - Next arrow bottom position.
-
-- **Left** (number with units) - Next arrow left position.
-
-## Dots
-
-- **Show dots** (checkbox) - Display pagination dots.
-
-- **Dynamic dots** (checkbox) - Enable dynamic bullet pagination.
-
-- **Vertical** (checkbox) - Display dots vertically.
-
-- **Height** (number with units) - Dot height.
-
-- **Width** (number with units) - Dot width.
-
-- **Top** (number with units) - Dots container top position.
-
-- **Right** (number with units) - Dots container right position.
-
-- **Bottom** (number with units) - Dots container bottom position.
-
-- **Left** (number with units) - Dots container left position.
-
-- **Border** (border) - Dot border styling.
-
-- **Color** (color) - Inactive dot color.
-
-- **Active color** (color) - Active dot color.
-
-- **Margin** (spacing) - Margin around individual dots. Default: 0px top, 5px right, 0px bottom, 0px left.
+- **Shuffle** (checkbox) - Randomize the order of strings each cycle.
 
 > **Developer reference**
 >
-> See the [Carousel Schema](https://academy.bricksbuilder.io/developer/schema/elements/carousel/) for the full JSON schema of this element's settings and controls.
+> See the [Anim. Typing Schema](https://academy.bricksbuilder.io/developer/schema/elements/animated-typing/) for the full JSON schema of this element's settings and controls.
 
 ---
 
-# File
+# Back to Top
 
-Source: https://academy.bricksbuilder.io/builder/elements/media/file/
+Source: https://academy.bricksbuilder.io/builder/elements/general/back-to-top/
 
-*Add downloadable files and links in Bricks from the Media Library, external URLs, or dynamic data, with optional inline PDF previews.*
+*The Back to Top element renders a button (default tag: button) that scrolls the visitor back to the top of the page. It is nestable: you typically place an Icon.*
 
-The File element displays a document as a linked file name, a download button, or both. PDF files can also appear in a browser-native inline preview.
-
-The element is available in Bricks 2.4. Find it under **Elements > Media > File**.
-
-![File element selected in the Bricks builder with the Source control and the File name, Download button, and PDF preview groups visible.](https://academy.bricksbuilder.io/assets/bricks-file-element-controls.webp)
-
-## Choose the file source
-
-Use the **Source** control to choose where the file comes from:
-
-- **File**: Select a file from the WordPress Media Library. This is the default source.
-- **External URL**: Enter the direct URL of a file hosted on this site or another site.
-- **Dynamic data**: Select a file or media value from [dynamic data](https://academy.bricksbuilder.io/builder/dynamic-content/dynamic-data/). In a template, each post can supply its own document through a custom field.
-
-If a dynamic field returns more than one media item, the File element uses the first item.
-
-## File name
-
-The file name is shown as a link by default. It opens the file instead of forcing a download.
-
-The **File name** group contains these controls:
-
-- **Hide file name**: Removes the linked file name.
-- **Custom file name**: Replaces the name from the Media Library or file URL. This control supports dynamic data.
-- **Open in new tab**: Opens the file-name link in a new browser tab. It also applies to the fallback link inside a PDF preview.
-
-When no custom name is set, Bricks uses the Media Library filename or extracts the filename from the URL.
-
-## Download button
-
-The download button is shown by default. Use the **Download button** group to change its label, size, style, outline, and circle settings, or enable **Hide download button**.
-
-The filename link and download button have different purposes: the filename link opens the file, while the button uses the browser's download behavior. A browser or external file host can still open the file instead of downloading it.
-
-## PDF preview
-
-Bricks displays the preview when it recognizes the source as a PDF. A Media Library file is identified by its `application/pdf` MIME type. External and dynamic URLs are identified by a `.pdf` extension in the URL path.
-
-An external URL without `.pdf` in its path is not treated as a PDF, even if the server returns PDF content.
-
-The preview fills the element width and is 600px high by default. Its controls are in the **PDF preview** group:
-
-- **Hide PDF preview**: Removes the inline preview. The file name and download button remain available unless you hide them separately.
-- **Preview title**: Sets the accessible label for the embedded PDF. When left empty, Bricks generates a label from the file name.
-- **Height**: Sets the preview height. Use [responsive editing](https://academy.bricksbuilder.io/builder/interface/responsive-editing/) to adjust it at different breakpoints.
-- **Display**: Keep the preview inline at every viewport width, or use **Inline on desktop, hidden on mobile**.
-- **Hide at breakpoint**: Chooses the viewport width at which the preview is hidden. This appears when **Inline on desktop, hidden on mobile** is selected. If you do not choose a breakpoint, Bricks uses the Mobile landscape breakpoint, with 767px as the fallback width.
-- **Load PDF on click**: Delays loading the PDF until the visitor activates the preview placeholder.
-- **Preview image**: Sets the image shown before a click. This appears when **Load PDF on click** is enabled.
-
-With **Load PDF on click** enabled, Bricks uses the custom preview image first. If none is set, it uses a preview generated for the Media Library attachment when WordPress has one. Otherwise, the placeholder shows a PDF icon and the file name.
-
-![File element showing the generated PDF preview image before the PDF loads.](https://academy.bricksbuilder.io/assets/bricks-file-element-load-pdf-before.webp)
-
-![File element after loading the PDF in the browser-native inline viewer.](https://academy.bricksbuilder.io/assets/bricks-file-element-load-pdf-after.webp)
-
-> **Keep a file link available**
->
-> If the PDF preview is hidden at a breakpoint, its internal fallback link is hidden with it. Keep the file name or download button visible so visitors can still reach the document at that breakpoint.
-
-## Example: A PDF from a custom field
-
-Suppose each property post has a PDF brochure stored in a file field:
-
-1. Add the File element to the property template.
-2. Set **Source** to **Dynamic data**.
-3. Select the brochure file field.
-4. Enter a **Custom file name**, such as `{post_title} brochure`.
-5. Enable **Load PDF on click** if you do not want the browser to request the PDF when the page first loads.
-6. Add a **Preview image**, or let Bricks use the attachment preview when one is available.
-7. Keep the file name or download button visible as the non-preview way to reach the brochure.
-
-Open two property posts on the frontend. Each one displays the PDF stored on that post while keeping the same template layout.
-
-## Browser behavior and document access
-
-The File element uses the browser's built-in PDF support. The PDF toolbar, rendering, and print or download options can differ between browsers and devices.
-
-Hiding a download button or browser controls does not secure the PDF. The visitor's browser still receives the file URL and file contents. Protect restricted documents at the server or application level before using them in the File element.
-
-Non-PDF files do not receive an inline preview. They use the linked file name and download button.
-
----
-
-# Image gallery
-
-Source: https://academy.bricksbuilder.io/builder/elements/media/image-gallery/
-
-*The Image Gallery element displays a collection of images in various layouts with optional lightbox functionality.*
-
-The Image Gallery element displays a collection of images in various layouts with optional lightbox functionality.
+The **Back to Top** element renders a button (default tag: `button`) that scrolls the visitor back to the top of the page. It is **nestable**: you typically place an **Icon** and/or **Text** element inside it (the defaults use an up-arrow icon and the label “Back to Top”).
 
 ## Settings
 
-- **Images** (image-gallery) - Select and upload images for the gallery. Since Bricks 2.5, drop local images onto this control to append them, or hold **Shift** while dropping to replace the selection. See [Drop images onto an Image Gallery](https://academy.bricksbuilder.io/builder/features/media-browser/#drop-images-onto-an-image-gallery).
+- **HTML tag** (text) — Root element tag. Default: `button`.
 
-- **Layout** (select) - Gallery layout type. Options: `grid`, `masonry`, `metro`. Default: `grid`.
+- **aria-label** (text) — Accessible name when the control has no visible descriptive text.
 
-- **Columns** (number) - Number of columns in the grid. Minimum: 2. Default: 3. Not available for metro layout.
+### Position
 
-- **Spacing** (number with units) - Gap between images. Default: 0.
+- **Position** (select) — CSS `position` (placeholder suggests `fixed`).
+- **Top**, **Right**, **Bottom**, **Left** (number with units) — Position offsets.
 
-- **Image height** (number with units) - Fixed height for images. Not available for masonry or metro layouts.
+### Misc
 
-- **Image ratio** (text) - Aspect ratio for images (e.g., 4/3, 16/9, 1/1). Not available for masonry or metro layouts.
+Bricks surfaces **z-index**, **gap** (space between nested children), and **CSS transition** on this element (moved from the default tabs).
 
-- **Image caption** (checkbox) - Display image captions.
-
-- **Link to** (select) - Link behavior for images. Options: `lightbox`, `attachment page`, `media file`, `custom URL`.
-
-- **Custom links** (repeater) - Define custom URLs for each image. Only shown when "Link to" is set to "custom URL".
-
-### Lightbox
-
-- **Image size** (select) - Size of images in lightbox. Default: Full.
-
-- **Image click action** (select) - Action when clicking images. Options: `zoom`, `zoom or close`, `toggle controls`, `next`, `close`. Default: `zoom`.
-
-- **Animation** (select) - Lightbox transition animation.
-
-- **Caption** (checkbox) - Show image captions in lightbox.
-
-- **Thumbnail navigation** (checkbox) - Enable thumbnail navigation.
-
-- **Thumbnail size** (number with units) - Size of thumbnails. Default: 60px.
-
-- **Padding (px)** (dimensions) - Padding around the lightbox.
-
-- **Lightbox: ID** (text) - Group images with the same ID together in the same lightbox.
-
-- **Fetch priority** (select) - Image loading priority. Options: `high`, `low`, `auto`.
+- **Visible after** (number) — Show the button only after the user has scrolled this many pixels. If empty and **Visible on scroll up** is off, the button stays visible.
+- **Visible on scroll up** (checkbox) — Show the button when the user scrolls upward.
+- **Smooth scroll** (checkbox) — Smooth scroll to the top when activated.
+- **Move focus to top** (checkbox) — Move keyboard focus to the top of the page after activation (accessibility).
 
 > **Developer reference**
 >
-> See the [Image Gallery Schema](https://academy.bricksbuilder.io/developer/schema/elements/image-gallery/) for the full JSON schema of this element's settings and controls.
+> See the [Back to Top Schema](https://academy.bricksbuilder.io/developer/schema/elements/back-to-top/) for the full JSON schema of this element's settings and controls.
 
 ---
 
-# Instagram feed
+# Breadcrumbs
 
-Source: https://academy.bricksbuilder.io/builder/elements/media/instagram-feed/
+Source: https://academy.bricksbuilder.io/builder/elements/general/breadcrumbs/
 
-*The Instagram feed element loads media from the Instagram Graph API using an access token saved in Bricks → Settings → API keys (instagramAccessToken). Without.*
+*Breadcrumbs are an essential part of website navigation, providing users with a clear path to navigate through the site hierarchy. They improve the overall user.*
 
-The **Instagram feed** element loads media from the **Instagram Graph API** using an **access token** saved in **Bricks → Settings → API keys** (`instagramAccessToken`). Without a token, the element shows a placeholder asking you to connect the account.
+Breadcrumbs are an essential part of website navigation, providing users with a clear path to navigate through the site hierarchy. They improve the overall user experience by helping users know their location within the site and easily navigate back to previous pages.
 
-Responses are **cached** in a transient to limit API calls; cache length is configurable.
+The Breadcrumbs element generates different breadcrumb items depending on the type of page being viewed.
 
-## Requirements
+It supports various page types, including single posts or pages (`is_singular()`), the homepage (`is_home()`), categories (`is_category()`), taxonomies (`is_tax()`), post type archives (`is_post_type_archive()`), tags (`is_tag()`), date archives (`is_date()`), author pages (`is_author()`), search results (`is_search()`), and error pages (`is_404()`).
 
-Add a valid **Instagram access token** under **Bricks → Settings → API keys**. The element’s info message links there when the global token is missing.
-
-## Layout
-
-- **Columns** (number) — CSS grid columns for the list (`ul`). Placeholder: `3`. Valid range on the front end: `1–6`.
-
-- **Posts** (number) — How many posts to request (min `1`, max `100`). Placeholder: `9`.
-
-## Image
-
-- **Object fit** (select) — Applied to `img`.
-
-- **Aspect ratio** (text).
-
-- **Height**, **Width** (number with units).
-
-- **Gap** (number with units) — Gap on the `ul` grid.
-
-- **Border** (border) — Image border.
-
-- **Link** (checkbox) — Wrap each image in a link to the Instagram permalink.
-
-## Carousel
-
-Optional styling for the **carousel** badge on **CAROUSEL_ALBUM** items:
-
-- **Icon** (icon), **Icon color** (color), **Icon size** (number with units), **Icon position** (dimensions).
-
-## Video
-
-Optional styling for the **video** play overlay on **VIDEO** items:
-
-- **Icon** (icon), **Icon color** (color), **Icon size** (number with units), **Icon position** (dimensions).
-
-## Caption
-
-- **Enable** (checkbox) — Show the post caption below the image.
-
-When enabled: **Background color**, **Border**, **Typography** on `.caption`.
-
-## Follow
-
-Optional “Follow us” row linking to `instagram.com/{username}`:
-
-- **Text** (text) — Default mentions `@yourhandle`; replace with your copy or dynamic data.
-
-- **Position** (select) — `top` or `bottom`.
-
-- **Icon** (icon) — Default Instagram logo.
-
-- **Typography** — `.follow` text.
-
-## Cache
-
-- **Duration** (select) — `30 minutes`, `1 hour`, `1 day`, or `1 week` (stored as seconds: `1800`, `3600`, `86400`, `604800`). Default placeholder: 1 hour.
-
-> **Developer reference**
->
-> See the [Instagram feed Schema](https://academy.bricksbuilder.io/developer/schema/elements/instagram-feed/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Logo
-
-Source: https://academy.bricksbuilder.io/builder/elements/media/logo/
-
-*The Logo element displays your site logo with support for regular, inverse, and dark-mode logo variants, custom dimensions, and fallback text.*
-
-The Logo element displays your site logo and can switch between logo variants for dark mode and sticky headers.
+![](https://academy.bricksbuilder.io/assets/breadcrumbs-element.png)
 
 ## Settings
 
-- **Logo** (image) - Select the main logo image from the media library. Minimum dimension should be twice the logo height/width for proper retina display. For SVG logos, set height and width in px values.
+- **Gap** (number with units) - Gap between breadcrumb items. Controls `gap` property.
 
-- **Logo inverse** (image) - Alternative logo image for sticky scrolling headers. Only available when the main logo is set.
+### Structure
 
-- **Logo dark mode** (image) - Alternative logo image used when dark mode is active. Only available when the main logo is set.
+This section allows you to customize the structure of breadcrumb items. Currently it supports single pages and the date archive.
 
-- **Height** (number with units) - Logo height. Maximum: 400. Default: `auto`. Only available when logo is set.
+#### Date archive structure
 
-- **Width** (number with units) - Logo width. Maximum: 999. Default: `auto`. Only available when logo is set.
+![](https://academy.bricksbuilder.io/assets/date-archive-context.png)
 
-- **Text** (text) - Fallback text displayed if logo image isn't set or available. Default: Site name from WordPress settings.
+#### Single page structure
 
-- **Loading** (select) - Image loading behavior. Options: `eager`, `lazy`. Default: `eager`.
+![](https://academy.bricksbuilder.io/assets/breadcrumbs-structure-section.png)
 
-- **Link to** (link) - Configure where the logo links. Default: Site home page.
+By default, Bricks displays breadcrumb items as follows:
 
-## Logo variants
+For posts:  
+`Home` > `Parent categories (if any)` > `Category (if any)` > `Post parents (if any)` > `Current post`
 
-Logo variants are available starting in Bricks 2.4. Add them in the Logo element settings under **Logo variants**.
+For other post types:  
+`Home` > `Post archives` > `Post parents (if any)` > `Current post`  
+  
+You can customize the breadcrumb structure for different post types. You can also group multiple post types together if you want them to share the same structure. Any post type not specifically defined in your custom structures will automatically use the default structure.
 
-When [dark mode](https://academy.bricksbuilder.io/builder/features/color-manager/#using-dark-mode) is active and **Logo dark mode** is configured, Bricks swaps the main logo image for the dark-mode logo. If no dark-mode logo is configured, the main logo stays visible.
+**Example 1:**  
+For the Tanks post type singular page, I want to display the post type archive and the custom taxonomy as breadcrumb items.
 
-If the Logo element is inside a sticky header and **Logo inverse** is configured, the inverse logo is used while the header is scrolling. This takes priority over the dark-mode logo during the sticky scrolling state.
+![](https://academy.bricksbuilder.io/assets/structure-example-1.png)
+
+![](https://academy.bricksbuilder.io/assets/result-example-1.png)
+
+**Example 2:**  
+For the products singular page, I want to display custom taxonomy as breadcrumb items.
+
+![](https://academy.bricksbuilder.io/assets/structure-example-2.png)
+
+![](https://academy.bricksbuilder.io/assets/result-example-2.png)
+
+- **Post types** (repeater) - Define custom breadcrumb structures for specific post types.
+  - **Post types** (select, multiple) - Select post types to apply this structure to. Options: registered post types. Default: Posts.
+  - **Hide current post** (checkbox) - Hide the current post from breadcrumbs.
+  - **Show parent posts** (checkbox) - Show parent posts in hierarchy.
+  - **Show post type archive** (checkbox) - Show post type archive link.
+  - **Show taxonomy** (checkbox) - Show taxonomy in breadcrumbs.
+  - **Taxonomy slug** (text) - Taxonomy slug to display. Required when Show taxonomy is enabled. Default: "category".
+  - **Taxonomy info** (info) - Only the first assigned term will be displayed. Only shown when Show taxonomy is enabled.
+  - **Show parent terms** (checkbox) - Show parent terms in hierarchy. Only works if the first assigned term is a child term.
+
+- **Date** (separator) - Date-related breadcrumb settings.
+
+- **Add context** (checkbox) - Add context to dates on archive templates.
+
+### Home
+
+![](https://academy.bricksbuilder.io/assets/breadcrumbs-home-section.png)
+
+In this section, you can customize the root item (home) of the breadcrumb trail. Adjust the URL, change the label text, select an icon, and determine the icon's position.
+
+- **URL** (text) - Custom URL for home link. Default: home URL.
+
+- **Text** (text) - Label for home link. Default: "Home".
+
+- **Icon** (icon) - Icon for home link.
+
+- **Icon: Gap** (number with units) - Gap between home icon and label. Controls `gap` property for `.item:has(> svg), .item:has(> i)` selector. Only available when Icon is set.
+
+- **Icon: Position** (select) - Position of home icon. Options: Before, After. Default: Before. Only available when Icon is set.
+
+- **Hide label** (checkbox) - Hide home label when icon is present. Only available when Icon is set.
+
+### Separator
+
+![](https://academy.bricksbuilder.io/assets/breadcrumbs-separator-section.png)
+
+Here, you can modify the appearance and behavior of the separators between breadcrumb links, adjusting both display mode and styling.
+
+- **Separator** (select) - Separator type. Options: Text, Icon, None. Default: Text.
+
+- **Separator** (text) - Separator text. Default: "/". Only available when Separator is Text or empty.
+
+- **Icon** (icon) - Separator icon. Only available when Separator is Icon.
+
+- **Color** (color) - Separator color. Controls `color` property for `.separator` selector.
+
+- **Size** (number with units) - Separator size. Controls `font-size` property for `.separator` selector.
+
+### Item
+
+![](https://academy.bricksbuilder.io/assets/breadcrumbs-item-section.png)
+
+This section allows you to style each breadcrumb link.
+
+- **Padding** (spacing) - Padding for breadcrumb items. Controls `padding` property for `.item` selector.
+
+- **Background color** (color) - Background color for breadcrumb items. Controls `background-color` property for `.item` selector.
+
+- **Border** (border) - Border settings for breadcrumb items. Controls `border` property for `.item` selector.
+
+- **Typography** (typography) - Typography for breadcrumb items. Controls `font` property for `.item` selector.
+
+### Current
+
+![](https://academy.bricksbuilder.io/assets/breadcrumbs-current-section.png)
+
+Use these settings to style the last item in the breadcrumb trail, which represents the current page or post.
+
+- **Padding** (spacing) - Padding for current page item. Controls `padding` property for `.item[aria-current="page"]` selector.
+
+- **Background color** (color) - Background color for current page item. Controls `background-color` property for `.item[aria-current="page"]` selector.
+
+- **Border** (border) - Border settings for current page item. Controls `border` property for `.item[aria-current="page"]` selector.
+
+- **Typography** (typography) - Typography for current page item. Controls `font` property for `.item[aria-current="page"]` selector.
 
 > **Developer reference**
 >
-> See the [Logo Schema](https://academy.bricksbuilder.io/developer/schema/elements/logo/) for the full JSON schema of this element's settings and controls.
+> See the [Breadcrumbs Schema](https://academy.bricksbuilder.io/developer/schema/elements/breadcrumbs/) for the full JSON schema of this element's settings and controls.
 
 ---
 
-# Lottie
+# Code
 
-Source: https://academy.bricksbuilder.io/builder/elements/media/lottie/
+Source: https://academy.bricksbuilder.io/builder/elements/general/code/
 
-*Add Lottie JSON or .lottie animations and control playback on load, visibility, hover, click, scroll, or through interactions.*
+*The Code element allows you to add and execute PHP, HTML, CSS, or JavaScript code with syntax highlighting and optional code execution.*
 
-The **Lottie** element, available in Bricks 2.5, displays vector animations from Lottie JSON or `.lottie` files. Use it for an animated illustration or a small interaction such as an icon that plays when a card receives hover or keyboard focus.
-
-## Add an animation
-
-1. Add a **Lottie** element from the **Media** elements.
-2. Choose a **Source**:
-   - **File**: Select a Lottie JSON or `.lottie` attachment.
-   - **External URL**: Enter a public animation URL. The server must allow cross-origin requests. Leaving the URL empty shows the bundled sample animation.
-   - **Dynamic data**: Select media supplied by a dynamic-data tag.
-3. Set **Width** and **Height** if the animation needs a specific size.
-4. Choose when it should play, then save and check the frontend.
-
-For a `.lottie` file containing several animations, enter the manifest's **Animation ID**. Leave it empty to use the first animation. The setting has no effect on JSON files.
-
-Bricks enables JSON and `.lottie` uploads for users who can upload files in WordPress and have permission to add the Lottie element. Other site upload restrictions still apply. If an upload is rejected, check those permissions and the site’s allowed file types.
-
-A remote URL must return the animation file itself, rather than a web page containing a player.
-
-<div className="screenshot screenshot--control-panel">
-
-![Lottie settings with External URL selected, the empty URL showing the Sample animation placeholder, and Play set to None (Interactions).](https://academy.bricksbuilder.io/assets/builder/release-2.5/lottie-source-panel.webp)
-
-</div>
-
-## Choose when to play
-
-Use **Play** to choose the trigger:
-
-| Play setting            | Behavior                                                                                                                                  |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **On page load**        | Start after the animation loads.                                                                                                          |
-| **When visible**        | Play when the element enters the viewport. Choose **Reset and replay** or **Pause and resume** under **On leaving viewport**.             |
-| **On hover or focus**   | Play when the trigger receives pointer hover or keyboard focus. **On mouse leave** can reset, pause, reverse, or finish the current play. |
-| **On click**            | Choose **Play and pause**, **Play from start**, or **Play forward, then reverse**.                                                        |
-| **Sync with scroll**    | Advance through the animation as the element moves through the viewport.                                                                  |
-| **None (Interactions)** | Control playback through Bricks interactions.                                                                                             |
-
-**Delay (ms)** postpones playback for **On page load** and **When visible**. The default is `0`. With **Pause and resume**, the delay applies to the initial start, not resuming playback. Use **Delay between loops** to pause between repeats.
-
-For **When visible**, enable **Play once** to disable looping and automatic replay after completion until the page reloads.
-
-For hover and click, **Trigger element** can be **Self**, **Parent**, or **CSS selector**. A custom selector uses the closest matching ancestor first, then the first matching element on the page. Use **Parent** when an illustration should respond to its containing card.
-
-### Sync with scroll
-
-**Start (%)** controls where the element's top edge starts playback, measured from the bottom of the viewport (`0`) to the top (`100`). **End (%)** controls where its bottom edge finishes playback. The defaults are `0` and `100`.
-
-Scroll playback follows scroll progress. Loop, loop count, loop delay, and speed controls do not apply in this mode.
-
-## Playback settings
-
-- **Loop**: Repeat playback. Enabled by default.
-- **Loop count**: Number of plays. Leave empty for continuous looping.
-- **Delay between loops (ms)**: Pause between repeats.
-- **Speed**: Playback multiplier, from `0.1` to `10`. The default is `1`.
-- **Direction**: Play forward or in reverse.
-- **Start frame** and **End frame**: Limit playback to a section of the animation. Leave empty to use its full length.
-- **Frame when stopped**: Show the first or last frame before playback and after a reset.
-- **Lazy load**: Load the animation near the viewport. Enabled by default. Global or page-level **Disable lazy load** settings override it.
-
-## Control playback with interactions
-
-To play an animation from a separate Button:
-
-1. Set the Lottie element's **Play** to **None (Interactions)**.
-2. Add a **Click** interaction to the Button.
-3. Choose **Lottie: Playback** as the action.
-4. Choose **Play**, **Pause**, **Play and pause**, **Stop**, or **Play from start**.
-5. Target the Lottie element, or a wrapper containing it, through the interaction target controls.
-6. Save and test the Button on the frontend.
-
-Use separate play and pause controls if visitors need to control a repeating animation. See [Interactions](https://academy.bricksbuilder.io/builder/features/interactions/) for trigger and target setup.
-
-<div className="screenshot screenshot--control-panel">
-
-![Button Click interaction using Lottie: Playback, Play and pause, and a CSS selector that targets the Lottie element.](https://academy.bricksbuilder.io/assets/builder/release-2.5/lottie-playback-panel.webp)
-
-</div>
-
-## Accessibility and reduced motion
-
-Add a **Text alternative** when the animation conveys information. Leave it empty for decorative animations. A Lottie element that uses itself as a hover or click trigger is keyboard focusable; give it a meaningful text alternative so its purpose is clear.
-
-When a visitor prefers reduced motion, Bricks shows the selected **Frame when stopped** instead of playing the animation. Keep essential text and actions outside the animation so they remain available in that state.
-
-## Troubleshooting
-
-- **Animation could not be loaded**: Check that the URL returns a supported JSON or `.lottie` file and that a remote host permits cross-origin requests.
-- **Wrong animation in a .lottie file**: Check **Animation ID** against the file's manifest.
-- **Animation starts only after scrolling**: Check **Lazy load** and the selected **Play** trigger.
-- **A card does not trigger playback**: Check **Trigger element** and the custom CSS selector. For a keyboard-triggered card, the card itself must be focusable.
-
----
-
-# Slider (nestable)
-
-Source: https://academy.bricksbuilder.io/builder/elements/media/slider-nested/
-
-*Build sliders with nested content, continuous auto scroll, and accessible pause and play controls.*
-
-The Slider (nestable) element lets you build slides from editable Bricks elements. It uses Splide for slide navigation, autoplay, and, since Bricks 2.5, continuous auto scroll.
+The Code element allows you to add and execute PHP, HTML, CSS, or JavaScript code with syntax highlighting and optional code execution.
 
 ## Settings
 
-- **Children** (nestable) - Drag and drop elements to create slider slides.
+### Code Execution
 
-### Options
+Available only for users with code execution permissions:
 
-- **Options type** (select) - Use default settings or provide custom JSON options. Options: `default`, `custom`.
+- **Execute code** (checkbox) - Run the code on your site instead of displaying it. Only add code you consider safe.
 
-- **Custom options** (code) - A [Splide options](https://splidejs.com/guides/options/) object in JSON format. Shown when Options type is **Custom**. This replaces the options generated by the default controls, so include any autoplay or auto scroll settings you need in that object.
+- **Parse dynamic data** (checkbox) - Parse dynamic data tags within the code. Only available when execute code is enabled.
 
-- **Type** (select) - Slider behavior. Options: `loop`, `slide`, `fade`. Default: `loop`.
+- **Suppress PHP errors** (checkbox) - Hide caught PHP error diagnostics for this element. An authorized user can add `brx_code_errors=1` to the page URL to override suppression. This parameter does not grant permission to view diagnostics. Only available when execute code is enabled.
 
-- **Direction** (select) - Slide direction. Options: `left to right`, `right to left`, `vertical`. Supports breakpoints.
+- **Render without wrapper** (checkbox) - Render on the frontend without the div wrapper. Style tab settings won't apply when this is enabled. Only available when execute code is enabled.
 
-- **Keyboard** (select) - Keyboard navigation. Options: `off`, `focused`, `global`. Default: `global`. Supports breakpoints.
+### Code Editors
 
-- **Auto height** (checkbox) - Adjust height to content. May cause layout shift. Using "Auto height" might lead to CLS (Cumulative Layout Shift).
+Use these editors to enter the code to display or execute:
 
-- **Height** (number with units) - Fixed slider height. Default: 50vh. Not available when auto height is enabled. Supports breakpoints.
+- **PHP & HTML** (code editor) - PHP and HTML code editor with syntax highlighting. Supports dynamic data and variables. Default example includes HTML heading and PHP date output.
 
-- **Spacing** (number with units) - Gap between slides. Default: 0. Supports breakpoints.
+- **CSS** (code editor) - CSS code editor with syntax highlighting. CSS is automatically wrapped in style tags. Supports dynamic data and variables.
 
-- **Start index** (number) - Initial slide index. Default: 0.
+- **JavaScript** (code editor) - JavaScript code editor with syntax highlighting. JavaScript is automatically wrapped in script tags. Supports dynamic data.
 
-- **Items to show** (number) - Number of slides visible at once. Default: 1. Supports breakpoints. Not available for fade type.
+### Syntax Highlighting
 
-- **Items to scroll** (number) - Number of slides to scroll at once. Default: 1. Supports breakpoints. Not available for fade type.
+Available when code execution is disabled:
 
-- **Speed in ms** (number) - Transition speed. Default: 400. Supports breakpoints.
+- **Theme** (select) - Code syntax highlighting theme. Options: `github` (light), `tomorrow` (light), `tomorrow-night` (dark), `tranquil-heart` (dark). Default: None. Can also be set globally via theme styles.
 
-- **Focus** (number) - Determines which slide should be active if the carousel has multiple slides in a page. Number/"center". Supports breakpoints.
+## Inspect PHP execution errors {#php-errors}
 
-#### Autoplay
+Since Bricks 2.5, a caught PHP exception, parse error, or PHP `Error` can appear as a red diagnostic on the affected Code element. The notice contains the error type and message.
 
-- **Autoplay** (checkbox) - Enable automatic slide progression.
+To inspect it, open the Builder or view the frontend while logged in with the Bricks **Execute code** capability and code execution enabled. Anonymous visitors and users without that permission do not receive these diagnostic details. This also applies to frontend AJAX and REST renders.
 
-- **Pause on hover** (checkbox) - Pause autoplay when hovering over slider.
+If **Suppress PHP errors** is enabled, turn it off while diagnosing the element, or add `brx_code_errors=1` to the page URL. The URL parameter only overrides suppression after the permission check; it does not expose errors to an unauthorized visitor.
 
-- **Pause on focus** (checkbox) - Pause autoplay when slider is focused.
+Fix the PHP, sign the changed code, and render the element again. A successful evaluation clears the previous diagnostic. When execution fails, Bricks discards partial output from that evaluation rather than displaying it alongside the error. PHP warnings, notices, and deprecations are not converted into these caught-error diagnostics.
 
-- **Interval in ms** (number) - Time between slides. Default: 3000.
+For errors in a PHP Query Editor rather than a Code element, see [Query editor (PHP)](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/#query-editor).
 
-#### Auto scroll {#auto-scroll}
+## Component properties {#component-properties}
 
-Auto scroll moves slides continuously. Autoplay advances from one slide to the next after an interval. For a continuous row of reviews or logos, use **Auto scroll** with **Type → Loop** and leave Autoplay disabled.
-
-Auto scroll controls appear under **Options** when **Options type** is **Default**.
-
-| Setting | Behavior | Default |
-| --- | --- | --- |
-| **Auto scroll** | Enable continuous slide movement. | Disabled |
-| **Speed** | Movement speed, adjustable in steps of `0.1`. Positive and negative values move in opposite directions; `0` stops movement. This is separate from **Speed in ms**, which controls slide transitions. | `1` |
-| **Pause on hover** | Pause while the pointer is over the slider. | Disabled |
-| **Pause on focus** | Pause while focus is inside the slider. | Disabled |
-
-<div className="screenshot screenshot--control-panel">
-
-![Auto scroll enabled with speed -0.6 and pause on hover and focus.](https://academy.bricksbuilder.io/assets/builder/release-2.5/slider-auto-scroll-settings.webp)
-
-</div>
-
-The slider's **Direction** setting selects the horizontal or vertical layout. **Fade** does not support auto scroll. The Auto scroll controls apply across screen sizes; they do not have separate breakpoint values. Custom JSON options can define breakpoint-specific behavior.
-
-Autoplay and auto scroll stay off in the Builder so you can select and edit slide content. Save the page and view the frontend to check movement. This also applies when you use Custom options.
-
-Add a [Playback control](#playback-control) so visitors can pause the slider. Pause on hover or focus alone does not provide a pause control for everyone.
-
-#### Rewind
-
-Available when type is not "loop":
-
-- **Rewind** (checkbox) - Enable rewind functionality.
-
-- **Rewind by drag** (checkbox) - Allow rewinding by dragging.
-
-- **Speed in ms** (number) - Rewind transition speed.
-
-### Playback control {#playback-control}
-
-Since Bricks 2.5, **Playback control → Show playback control** adds a native pause/play button for autoplay and auto scroll. It is disabled by default. The button sits outside the moving slides and changes its label between **Pause** and **Play**.
-
-Set your own labels in the **Pause** and **Play** fields. Use the controls in the same group to set typography, background, border, padding, and position.
-
-<div className="screenshot screenshot--control-panel">
-
-![Playback control enabled with Pause reviews and Play reviews labels.](https://academy.bricksbuilder.io/assets/builder/release-2.5/slider-playback-settings.webp)
-
-</div>
-
-![A continuous review slider with its native Pause reviews button outside the cards.](https://academy.bricksbuilder.io/assets/builder/release-2.5/slider-reviews.webp)
-
-With the native control enabled, keyboard focus entering the slider pauses playback until the visitor chooses **Play**. A deliberate pause remains in place after hovering, resizing, or updating the slider. Hover pauses are temporary when **Pause on hover** is enabled.
-
-Bricks stops automatic movement when the visitor requests reduced motion and hides the native button when playback is unavailable. A Play action does not override the reduced-motion preference.
-
-To use your own button, add a [Slider playback interaction](https://academy.bricksbuilder.io/builder/features/interactions/#slider-playback) and target the slider. This can pause, resume, or toggle both autoplay and auto scroll.
-
-### Slide
-
-- **Padding** (spacing) - Padding inside slides.
-
-- **Align horizontal** (align-items) - Horizontal alignment of slide content. Options: `flex-start`, `center`, `flex-end`.
-
-- **Align vertical** (justify-content) - Vertical alignment of slide content. Options: `flex-start`, `center`, `flex-end`, `space-between`, `space-around`.
-
-- **Background** (background) - Background styling for slides.
-
-- **Border** (border) - Border styling for slides.
-
-### Arrows
-
-- **Show** (checkbox) - Display navigation arrows.
-
-- **Height** (number with units) - Arrow button height. Default: 50px.
-
-- **Width** (number with units) - Arrow button width. Default: 50px.
-
-- **Background** (color) - Arrow button background color.
-
-- **Border** (border) - Arrow button border styling.
-
-- **Color** (color) - Arrow icon color.
-
-- **Size** (number with units) - Arrow icon size.
-
-- **Text shadow** (text-shadow) - Text shadow for arrow icons.
-
-#### Disabled
-
-- **Background** (color) - Background color for disabled arrows.
-
-- **Border** (border) - Border styling for disabled arrows.
-
-- **Color** (color) - Icon color for disabled arrows.
-
-- **Opacity** (number) - Opacity for disabled arrows (0-1).
-
-#### Prev arrow
-
-- **Prev arrow** (icon) - Custom icon for previous arrow.
-
-- **Top** (number with units) - Top position. Default: 50%.
-
-- **Right** (number with units) - Right position.
-
-- **Bottom** (number with units) - Bottom position.
-
-- **Left** (number with units) - Left position.
-
-- **Transform** (transform) - CSS transform for previous arrow.
-
-#### Next arrow
-
-- **Next arrow** (icon) - Custom icon for next arrow.
-
-- **Top** (number with units) - Top position. Default: 50%.
-
-- **Right** (number with units) - Right position.
-
-- **Bottom** (number with units) - Bottom position.
-
-- **Left** (number with units) - Left position.
-
-- **Transform** (transform) - CSS transform for next arrow.
-
-### Pagination
-
-- **Show** (checkbox) - Display pagination dots. Default: enabled.
-
-- **Margin** (spacing) - Margin around pagination dots. Default: 5px on all sides.
-
-- **Height** (number with units) - Dot height. Default: 10px.
-
-- **Width** (number with units) - Dot width. Default: 10px.
-
-- **Color** (color) - Dot color and background color.
-
-- **Border** (border) - Border styling for dots.
-
-#### Active
-
-- **Height** (number with units) - Height for active dot.
-
-- **Width** (number with units) - Width for active dot.
-
-- **Color** (color) - Color for active dot.
-
-- **Border** (border) - Border styling for active dot.
-
-> **Developer reference**
->
-> See the [Slider (Nestable) Schema](https://academy.bricksbuilder.io/developer/schema/elements/slider-nested/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Slider
-
-Source: https://academy.bricksbuilder.io/builder/elements/media/slider/
-
-*The Slider element creates a full-width image slider with customizable slides containing titles, content, and buttons, using the Swiper library.*
-
-The Slider element creates a full-width image slider with customizable slides containing titles, content, and buttons, using the Swiper library.
-
-## Security scanner reports
-
-Bricks 2.4 patches the legacy Swiper build used by the classic Slider element. The bundled asset is a Bricks-patched vendored Swiper 8 legacy build with the CVE-2026-27212 / GHSA-hmx5-qpq5-p643 mitigation backported.
-
-Bricks keeps the Swiper 8 runtime behavior so existing sliders continue to behave as before, including loop configurations that depend on Swiper 8 duplicate slides. The public `bricks-swiper` script version is `bricks-cve-2026-27212-p1`, and the bundled file no longer reports stock `Swiper 8.4.4` in its header.
-
-Some security scanners may still fingerprint the underlying minified Swiper 8 code and flag it. Use this VEX or exception note: `Bricks-patched vendored Swiper 8 legacy build with CVE-2026-27212 backport.`
-
-## Settings
-
-- **Slides** (repeater) - Add slider slides. Each slide has:
-  - **Title** (text) - Slide title.
-  - **Title Tag** (select) - HTML tag for title. Options: `h1`-`h6`. Default: `h3`.
-  - **Content** (rich text) - Slide content.
-  - **Button text** (text) - Call-to-action button text.
-  - **Button style** (select) - Button style. Default: `light`.
-  - **Button size** (select) - Button size.
-  - **Button width** (number with units) - Button width.
-  - **Button link** (link) - Button destination.
-  - **Button background** (color) - Button background color.
-  - **Button border** (border) - Button border styling.
-  - **Button box shadow** (box-shadow) - Button shadow.
-  - **Button typography** (typography) - Button text styling.
-  - **Background** (background) - Slide background (color, image, gradient).
-  - **Overlay** (color) - Overlay color over the background.
-
-- **Slides to show** (number) - Number of slides visible at once. Default: 1.
-
-- **Slides to scroll** (number) - Number of slides to advance per transition. Default: 1.
-
-- **Spacing** (number) - Spacing between slides in pixels. Default: 0.
-
-- **Height** (number with units) - Slider height. Default: 300px.
-
-- **Effect** (select) - Transition effect. Options: `slide`, `fade`, `cube`, `coverflow`, `flip`. Default: `slide`.
-
-- **Loop** (select) - Enable infinite loop. Options: `enable`, `disable`. Default: `enable`.
-
-- **Center mode** (checkbox) - Center the active slide.
-
-- **Disable lazy load** (checkbox) - Load all images immediately.
-
-- **Autoplay** (checkbox) - Enable automatic sliding.
-
-- **Pause on hover** (checkbox) - Pause autoplay on hover.
-
-- **Stop on last slide** (checkbox) - Stop autoplay on the last slide.
-
-- **Autoplay delay in ms** (number) - Delay between slides in milliseconds. Default: 3000.
-
-- **Animation speed in ms** (number) - Transition speed in milliseconds. Default: 300.
-
-### Title
-
-- **Title margin** (spacing) - Margin around slide titles.
-
-- **Title typography** (typography) - Font settings for slide titles.
-
-### Content
-
-- **Content width** (number with units) - Maximum width of slide content.
-
-- **Content background** (color) - Background color for slide content.
-
-- **Content typography** (typography) - Font settings for slide content.
-
-- **Content margin** (spacing) - Margin around slide content.
-
-- **Content padding** (spacing) - Padding inside slide content. Default: 30px top, 60px right, 30px bottom, 60px left.
-
-- **Content align horizontal** (justify-content) - Horizontal alignment of content within slides.
-
-- **Content align vertical** (align-items) - Vertical alignment of content within slides.
-
-- **Content text align** (text-align) - Text alignment within slide content.
-
-### Button
-
-- **Button style** (select) - Global button style. Default: `light`.
-
-- **Button size** (select) - Global button size.
-
-- **Button width** (number with units) - Global button width.
-
-- **Background** (color) - Global button background color.
-
-- **Border** (border) - Global button border styling.
-
-- **Box shadow** (box-shadow) - Global button shadow.
-
-- **Typography** (typography) - Global button text styling.
-
-### Background
-
-- **Top** (number with units) - Background image top position.
-
-- **Right** (number with units) - Background image right position.
-
-- **Bottom** (number with units) - Background image bottom position.
-
-- **Left** (number with units) - Background image left position.
-
-## Arrows
-
-- **Show arrows** (checkbox) - Display navigation arrows. Default: true.
-
-- **Height** (number with units) - Arrow button height. Default: 50px.
-
-- **Width** (number with units) - Arrow button width. Default: 50px.
-
-- **Background** (color) - Arrow button background color.
-
-- **Border** (border) - Arrow button border styling.
-
-- **Typography** (typography) - Arrow button text styling.
-
-### Prev arrow
-
-- **Prev arrow** (icon) - Previous arrow icon. Default: `ion-ios-arrow-back`.
-
-- **Top** (number with units) - Previous arrow top position. Default: 50%.
-
-- **Right** (number with units) - Previous arrow right position.
-
-- **Bottom** (number with units) - Previous arrow bottom position.
-
-- **Left** (number with units) - Previous arrow left position. Default: 50px.
-
-- **Transform** (transform) - Previous arrow transformations.
-
-### Next arrow
-
-- **Next arrow** (icon) - Next arrow icon. Default: `ion-ios-arrow-forward`.
-
-- **Top** (number with units) - Next arrow top position.
-
-- **Right** (number with units) - Next arrow right position.
-
-- **Bottom** (number with units) - Next arrow bottom position.
-
-- **Left** (number with units) - Next arrow left position.
-
-- **Transform** (transform) - Next arrow transformations.
-
-## Dots
-
-- **Show dots** (checkbox) - Display pagination dots.
-
-- **Dynamic dots** (checkbox) - Enable dynamic bullet pagination.
-
-- **Vertical** (checkbox) - Display dots vertically.
-
-- **Height** (number with units) - Dot height.
-
-- **Width** (number with units) - Dot width.
-
-- **Top** (number with units) - Dots container top position.
-
-- **Right** (number with units) - Dots container right position.
-
-- **Bottom** (number with units) - Dots container bottom position.
-
-- **Left** (number with units) - Dots container left position.
-
-- **Border** (border) - Dot border styling.
-
-- **Color** (color) - Inactive dot color.
-
-- **Active color** (color) - Active dot color.
-
-- **Margin** (spacing) - Margin around individual dots.
-
-> **Developer reference**
->
-> See the [Slider Schema](https://academy.bricksbuilder.io/developer/schema/elements/slider/) for the full JSON schema of this element's settings and controls.
-
----
-
-# SVG
-
-Source: https://academy.bricksbuilder.io/builder/elements/media/svg/
-
-*The SVG element displays SVG graphics from files, dynamic data, custom code, or icon sets.*
-
-The SVG element displays SVG graphics from files, dynamic data, custom code, or icon sets.
-
-## Settings
-
-- **Source** (select) - SVG source type. Options: `file` (default), `dynamicData`, `code`, `iconSet`.
-
-- **File** (svg upload) - Upload an SVG file from your computer. Available when source is "file".
-
-- **Icon set** (icon) - Select an SVG from custom icon libraries. Available when source is "iconSet".
-
-- **Dynamic data** (text with dynamic data) - Load SVG from dynamic data. Supported field types: File, Image, SVG code, URL. Available when source is "dynamicData".
-
-- **Code** (code editor) - Paste SVG code directly. Only available to users with code execution permissions. Ensure SVG code is safe and doesn't contain malicious code. Consider using an SVG cleaner like svgomg.net. Available when source is "code".
-
-### Styling
-
-- **Height** (number with units) - SVG height.
-
-- **Width** (number with units) - SVG width.
-
-- **Stroke width** (number) - Width of SVG stroke lines. Minimum: 1.
-
-- **Stroke color** (color) - Color of SVG stroke elements (excludes elements with `stroke="none"`).
-
-- **Fill** (color) - Fill color for SVG shapes (excludes elements with `fill="none"`).
-
-- **Link** (link) - Make the SVG clickable by adding a link.
-
-## Label a linked SVG
-
-To give a linked SVG a link label without custom code:
-
-1. Add an SVG element, set **Source** to **File**, and select your SVG file.
-2. Open **Link**, select **Custom URL**, and enter your homepage URL.
-3. In the Link control's **aria-label** field, enter `Site home`.
-
-Bricks adds `aria-label="Site home"` to the surrounding `<a>` element.
-
-[Custom attributes](https://academy.bricksbuilder.io/builder/features/custom-attributes/) added under **Style > Attributes** apply to the `<svg>` element, including when it has a link. Use **Link > aria-label** to set the label directly on the link.
-
-For example, if you also add a custom attribute named `data-icon` with the value `home`, the relevant HTML is:
+Since Bricks 2.5, a Code element inside a component can display that instance's property values in its HTML output. Enable **Execute code** and **Parse dynamic data**, then use the copied property tag in the **PHP & HTML** editor:
 
 ```html
-<a href="https://academy.bricksbuilder.io/" class="bricks-link-wrapper" aria-label="Site home">
-  <svg data-icon="home" viewBox="0 0 24 24">
-    <!-- SVG shapes -->
-  </svg>
-</a>
+<p>Book {prop.title} today.</p>
 ```
 
-This example uses `/` as the homepage URL and omits generated SVG IDs and classes.
+Property tags are resolved in the rendered HTML after PHP execution. They are not substituted into PHP source, the CSS or JavaScript editors, script/style blocks, or executable HTML attributes. When code execution is disabled, the element displays the tag as part of the code snippet.
+
+For PHP logic, call `bricks_get_component_property()` with the reference key. It returns the typed value, or a `WP_Error` when the property cannot be resolved. Check the result and escape it for the output context:
+
+```php
+<?php
+$title = bricks_get_component_property( 'title' );
+
+if ( ! is_wp_error( $title ) && is_scalar( $title ) ) {
+    echo '<p>' . esc_html( (string) $title ) . '</p>';
+}
+?>
+```
+
+The PHP accessor requires **Execute code** and the usual code permissions and signature. It does not require **Parse dynamic data**. Both approaches need an active component instance. See [Properties as Dynamic Data](https://academy.bricksbuilder.io/builder/features/components/#property-dynamic-data) for reference keys and supported property fields.
 
 > **Developer reference**
 >
-> See the [SVG Schema](https://academy.bricksbuilder.io/developer/schema/elements/svg/) for the full JSON schema of this element's settings and controls.
+> See the [Code Schema](https://academy.bricksbuilder.io/developer/schema/elements/code/) for the full JSON schema of this element's settings and controls.
 
 ---
 
-# Add to cart
+# Countdown
 
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-add-to-cart/
+Source: https://academy.bricksbuilder.io/builder/elements/general/countdown/
 
-*Displays the Add to cart form for the current product, including quantity and variation handling for variable products.*
+*The Countdown element displays a countdown timer to a specified date with customizable fields and actions.*
 
-Displays the Add to cart form for the current product, including quantity and variation handling for variable products.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- **Typography** (typography)
-- **Background color** (color)
-- **Border** (border)
-- **Margin** (spacing)
-- **Padding** (spacing)
-- **Description typography** (typography)
-- **Price typography** (typography)
-- **Regular price typography** (typography)
-- **Sale price typography** (typography)
-- **Wrap** (select)
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
-
----
-
-# Product additional information
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-additional-information/
-
-*Displays the product attributes table shown in WooCommerce under Additional information.*
-
-Displays the product attributes table shown in WooCommerce under Additional information.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- **Heading** (text)
-- **Typography** (typography)
-- **Width** (number)
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
-
----
-
-# Product content
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-content/
-
-*Displays the full product description (main content) from the product editor.*
-
-Displays the full product description (main content) from the product editor.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- This element uses standard WooCommerce output and inherited style controls.
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
-
----
-
-# Product gallery
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-gallery/
-
-*Displays the WooCommerce product gallery with main product image and thumbnail navigation.*
-
-Displays the WooCommerce product gallery with main product image and thumbnail navigation.
+The Countdown element displays a countdown timer to a specified date with customizable fields and actions.
 
 ## Settings
 
-- **Product image size** (select) - Image size for the main product image. Default: woocommerce_single.
-- **Thumbnail image size** (select) - Image size for thumbnail images. Default: woocommerce_gallery_thumbnail.
-- **Lightbox image size** (select) - Image size for lightbox/fullscreen view. Default: woocommerce_single.
-- **Thumbnail position** (select) - Position of thumbnail navigation relative to main image. Options: bottom, top, left, right. Default: bottom.
-- **Thumbnail width** (number) - Width of thumbnail images in pixels.
-- **Thumbnail height** (number) - Height of thumbnail images in pixels.
-- **Thumbnail border** (border) - Border styling for thumbnail images.
-- **Thumbnail border (Active)** (border) - Border styling for active/selected thumbnail image.
-- **Slider** (checkbox) - Enable thumbnail slider functionality.
-- **Slider: Height (px)** (number) - Maximum height of thumbnail slider when positioned left/right.
-- **Slider: Gap (px)** (number) - Gap between thumbnail images in slider. Default: 30.
-- **Max. items** (number) - Maximum number of thumbnail items shown in horizontal slider. Default: 4.
-- **Prev arrow** (icon) - Icon for previous arrow navigation. Default: ti-angle-left.
-- **Next arrow** (icon) - Icon for next arrow navigation. Default: ti-angle-right.
-- **Background** (color) - Background color for navigation arrows.
-- **Border** (border) - Border styling for navigation arrows.
-- **Color** (color) - Icon color for navigation arrows.
-- **Size** (number) - Font size for navigation arrow icons.
-- **Height** (number) - Height of navigation arrow buttons.
-- **Width** (number) - Width of navigation arrow buttons.
+- **Date** (datepicker) - The target date and time for the countdown.
 
----
+- **Time zone** (select) - The time zone for the countdown calculation. Options include various UTC offsets. Default: UTC+00:00.
 
-# Product price
+- **Date Reached** (select) - Action when the countdown reaches zero. Options: `countdown` (show countdown), `hide` (hide element), `text` (show custom text). Default: `countdown`.
 
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-price/
-
-*Displays the WooCommerce product price, including regular price, sale price, and price range for variable products.*
-
-Displays the WooCommerce product price, including regular price, sale price, and price range for variable products.
-
-## Selected variation price (since 2.5) {#variation-price}
-
-On a variable product, the Product price element updates to the selected variation's price as soon as a customer picks a variation. Clearing the selection shows the original price or price range again. This also works for products inside query loops and quick views.
-
-If all variations have the same price, WooCommerce doesn't provide a separate variation price, so the element keeps showing the original price.
-
-## Settings
-
-- **Hide regular price** (checkbox) - Hide the regular price when a sale price is active.
-- **Regular price typography** (typography) - Typography settings for the regular price text.
-- **Sale price typography** (typography) - Typography settings for the sale price text.
-
----
-
-# Product rating
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-rating/
-
-*Displays the product star rating and review count for the current product.*
-
-Displays the product star rating and review count for the current product.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- **Star color** (color)
-- **Empty star color** (color)
-- **Hide reviews link** (checkbox)
-- **Reviews link** (separator)
-- **Text** (text)
-- **No ratings** (separator)
-- **Show empty stars** (checkbox)
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
-
----
-
-# Product meta
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-meta/
-
-*Displays product meta details such as SKU, categories, and tags.*
-
-Displays product meta details such as SKU, categories, and tags.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- **Direction** (direction)
-- **Spacing** (number)
-- **Separator** (text)
-- **Separator color** (color)
-- **Typography** (typography)
-- **Fields** (repeater)
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
-
----
-
-# Related products
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-related/
-
-*Displays related products based on the current product context.*
-
-Displays related products based on the current product context.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- **Heading** (text)
-- **Heading typography** (typography)
-- **Max. products** (number)
-- **Columns** (number)
-- **Order by** (select)
-- **Order** (select)
-- **Gap** (number)
-- **Align** (text-align)
-- **Image height** (number)
-- **Padding** (spacing)
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
-
----
-
-# Product reviews
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-reviews/
-
-*Displays the WooCommerce reviews section for the current product.*
-
-Displays the WooCommerce reviews section for the current product.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- **Title** (typography)
-- **Label** (typography)
-- **Textarea** (select)
-- **Author** (typography)
-- **Date** (typography)
-- **Description** (typography)
-- **Size** (number)
-- **Background color** (color)
-- **Fill color** (color)
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
-
----
-
-# Product short description
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-short-description/
-
-*Displays the WooCommerce product short description (excerpt) on single product pages.*
-
-Displays the WooCommerce product short description (excerpt) on single product pages.
-
----
-
-# Product stock
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-stock/
-
-*Displays the WooCommerce product stock status and quantity information.*
-
-Displays the WooCommerce product stock status and quantity information.
-
-## Settings
-
-### In stock
-- **Custom text** (text) - Custom text to display when product is in stock.
-- **Typography** (typography) - Typography settings for in stock text.
-- **Background color** (color) - Background color for in stock status.
-
-### Low stock / On backorder
-- **Custom text** (text) - Custom text to display when product has low stock or is on backorder.
-- **Typography** (typography) - Typography settings for low stock/backorder text.
-- **Background color** (color) - Background color for low stock/backorder status.
-
-### Out of stock
-- **Custom text** (text) - Custom text to display when product is out of stock.
-- **Typography** (typography) - Typography settings for out of stock text.
-- **Background color** (color) - Background color for out of stock status.
-
----
-
-# Product tabs
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-tabs/
-
-*Displays WooCommerce product tabs such as description, additional information, and reviews.*
-
-Displays WooCommerce product tabs such as description, additional information, and reviews.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- **Direction** (direction)
-- **Alignment** (justify-content)
-- **Padding** (spacing)
-- **Typography** (typography)
-- **Background color** (color)
-- **Border** (border)
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
-
----
-
-# Product title
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-title/
-
-*Displays the title of the current WooCommerce product.*
-
-Displays the title of the current WooCommerce product.
-
-## Settings
-
-- **HTML tag** (select) - HTML tag for the title. Options: h1, h2, h3, h4, h5, h6. Default: h1.
-- **Prefix** (text) - Text to display before the title.
-- **Prefix block** (checkbox) - Display prefix as block element.
-- **Suffix** (text) - Text to display after the title.
-- **Suffix block** (checkbox) - Display suffix as block element.
-- **Link to product** (checkbox) - Make the title a link to the product.
-
----
-
-# Product up/cross-sells
-
-Source: https://academy.bricksbuilder.io/builder/elements/product/product-upsells/
-
-*Displays up-sell and cross-sell products linked to the current product.*
-
-Displays up-sell and cross-sell products linked to the current product.
-
-## Where this element works
-
-Single Product templates (or product preview context).
-
-## Key settings
-
-- **Type** (select)
-- **Heading** (text)
-- **Heading typography** (typography)
-- **Max. products** (number)
-- **Columns** (number)
-- **Gap** (number)
-- **Order by** (select)
-- **Order** (select)
-- **Padding** (spacing)
-- **Background color** (color)
-
-## Usage tips
-
-- Use this element inside a Single Product template to guarantee a valid product context.
-- Combine it with Product title, Product price, and Product gallery for complete product detail layouts.
-
----
-
-# Query results summary
-
-Source: https://academy.bricksbuilder.io/builder/elements/query/query-results-summary/
-
-*Display a query's reported starting position, ending position, and total result count, with updates for pagination, Load More, Infinite Scroll, and Query Filters.*
-
-The Query Results Summary element, introduced in version 1.12.2, allows you to display a dynamic count of results within a query, helping users understand which items they are currently viewing in relation to the total number of results. This is particularly useful for search results, archive pages, and paginated lists where users navigate through multiple pages of content. It can be found in the elements panel under the "Query" category.
-
-**Note:** If a third-party plugin disables Bricks Query history via the [`bricks/query/force_run`](https://academy.bricksbuilder.io/developer/hooks/filters/filter-bricks-query-force_run/) hook, the results summary may display incorrect information.
-
-## Compatibility
-
-The **Query Results Summary** element updates with Bricks' native AJAX actions, including:
-
-- AJAX Pagination
-- Load More
-- Infinite Scroll
-- Query Filters
-
-This ensures that the summary updates dynamically as users interact with query-based elements on the page.
-
-Example:
-
-![](https://academy.bricksbuilder.io/assets/query-results-summary-element-example.png)
-
-## Settings
-
-![](https://academy.bricksbuilder.io/assets/query-results-summary-element-controls.png)
-
-### Query
-
-Select the **target query** for which the summary should be displayed.
-
-For a listing with synced map markers, select the results loop containing [Map Connectors](https://academy.bricksbuilder.io/builder/elements/general/map-connector/). The summary describes that loop's results. See [map queries and interactive listings](https://academy.bricksbuilder.io/builder/dynamic-content/query-loop/#map-queries).
-
-### Format
-
-Customize the summary text using placeholders:
-
-- `%start%`: The numeric starting position reported by the query.
-- `%end%`: The numeric ending position reported by the query.
-- `%total%`: The total number of results.
-
-Default format: `Results: %start% - %end% of %total% posts`
-
-Example output: Results: 1 - 5 of 14 posts
-
-Native post, term, and user queries normally report one-based positions. A query without a populated range, including a provider-backed ACF loop, can report `0` for the start or end position.
-
-Developers can override the reported positions with [`bricks/query/result_start`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-result_start/) and [`bricks/query/result_end`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-query-result_end/). These filters change summary metadata only. They do not skip or limit items, change the total count, or fetch another page.
-
-### Text: One Result
-
-Define a custom message when the query returns exactly **one** result to handle singular/plural differences.
-
-Default text: One post found
-
-### Text: No Results
-
-Specify a custom message when the query returns **zero** results.
-
-Default text: No posts found
-
-> **Developer reference**
->
-> See the [Query Results Summary Schema](https://academy.bricksbuilder.io/developer/schema/elements/query-results-summary/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Excerpt
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/excerpt/
-
-*Displays the excerpt of the current post or page.*
-
-Displays the excerpt of the current post or page.
-
-## Settings
-
-- **Excerpt length** (number) - Number of words to display. Default: 15.
-- **More text** (text) - Text to append when excerpt is truncated. Default: "...".
-- **Keep formatting** (checkbox) - Preserve HTML formatting in the excerpt.
-
-> **Developer reference**
->
-> See the [Excerpt Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-excerpt/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Author
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/author/
-
-*Display the current post author in Bricks, including avatar, name, bio, and optional links to the author archive or website.*
-
-Displays information about the post author.
-
-## Settings
-
-### Avatar
-- **Show avatar** (checkbox) - Display author avatar. Default: true.
-- **Avatar size** (number) - Avatar dimensions. Default: 60px.
-- **Avatar position** (select) - Avatar placement. Options: Top, Right, Bottom, Left. Default: Left.
-- **Avatar border** (border) - Avatar border settings.
-- **Avatar box shadow** (box-shadow) - Avatar shadow settings.
-
-### Name
-- **Show name** (checkbox) - Display author name. Default: true.
-- **Link to website** (checkbox) - Make name link to author website. Default: true.
-- **Typography** (typography) - Name typography.
-- **HTML tag** (text) - HTML tag for name. Default: h2.
-
-### Bio
-- **Show bio** (checkbox) - Display author biography. Default: true.
-- **Typography** (typography) - Bio typography.
-
-### Posts
-- **Show link to author posts** (checkbox) - Display button linking to all author posts. Default: true.
-- **Padding** (spacing) - Button padding.
-- **Text** (text) - Button text. Default: "All author posts".
-- **Size** (select) - Button size.
-- **Style** (select) - Button style. Default: primary.
-- **Background** (color) - Button background color.
-- **Border** (border) - Button border.
-- **Typography** (typography) - Button typography.
-
-> **Developer reference**
->
-> See the [Author Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-author/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Meta data
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/meta-data/
-
-*Displays post meta information like author, date, comments, etc.*
-
-Displays post meta information like author, date, comments, etc.
-
-## Settings
-
-- **Meta** (repeater) - Dynamic data fields to display. Default includes: `{author_name}`, `{post_date}`, `{post_comments}`.
-- **Direction** (direction) - Flex direction for meta items layout.
-- **Gap** (number) - Spacing between meta items. Default: 20px.
-- **Separator** (text) - Text to display between meta items.
-- **Separator color** (color) - Color of the separator text.
-
-> **Developer reference**
->
-> See the [Meta Data Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-meta/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Comments
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/comments/
-
-*The Comments element displays post comments and comment form. It offers two display modes: custom styling with full control over appearance, or default.*
-
-The Comments element displays post comments and comment form. It offers two display modes: custom styling with full control over appearance, or default WordPress styling.
-
-## Settings
-
-### Source
-
-- **Source** (select) - Choose comment display mode. Options: Bricks (custom styling), WordPress (WordPress default styling). Default: Bricks.
-
-### Custom styling controls
-
-When **Source** is set to "Bricks", the following controls are available for customizing the comment display and form:
-
-#### Title
-
-- **Show title** (checkbox) - Display comments section title. Default: true.
-
-- **HTML tag** (select) - HTML tag for title. Options: div, h1-h6. Default: h3. Only available when Show title is enabled.
-
-- **Typography** (typography) - Title typography. Controls `font` property for `.comments-title` selector. Only available when Show title is enabled.
-
-#### Avatar
-
-- **Show avatar** (checkbox) - Display commenter avatars. Default: true.
-
-- **Size** (number with units) - Avatar dimensions. Default: 60px. Triggers re-render.
-
-- **Border** (border) - Avatar border settings. Controls `border` property for `.avatar` selector.
-
-- **Box shadow** (box-shadow) - Avatar shadow settings. Controls `box-shadow` property for `.avatar` selector.
-
-#### Comment
-
-- **Author: HTML tag** (select) - HTML tag for commenter names. Options: div, h1-h6. Default: h5. Triggers re-render.
-
-- **Author: Typography** (typography) - Commenter name typography. Controls `font` property for `.comment-author .fn` selector.
-
-- **Meta: Typography** (typography) - Comment meta typography. Controls `font` property for `.comment-meta` selector.
-
-- **Content: Typography** (typography) - Comment content typography. Controls `font` property for `.comment-content` selector.
-
-#### Form
-
-##### Form title
-
-- **Show** (checkbox) - Display comment form title. Default: true.
-
-- **HTML tag** (select) - HTML tag for form title. Options: div, h1-h6. Default: h4. Triggers re-render. Only available when Show is enabled.
-
-- **Text** (text) - Form title text. Default placeholder: "Leave your comment". Only available when Show is enabled.
-
-##### Label
-
-- **Show** (checkbox) - Display form field labels. Default: true.
-
-- **Typography** (typography) - Label typography. Controls `font` property for `label` selector. Only available when Show is enabled.
-
-- **Placeholder typography** (typography) - Placeholder text typography. Controls `font` property for `::placeholder` selector. Only available when Show is enabled.
-
-##### Cookie consent
-
-- **Show** (checkbox) - Display cookie consent checkbox.
-
-- **Required** (checkbox) - Make cookie consent required. Only available when Show is enabled.
-
-- **Text** (text) - Cookie consent text. Only available when Show is enabled.
-
-##### Fields
-
-- **Fields** (select, multiple) - Form fields to display. Options: Name, Email, Website. Default: Name, Email, Website.
-
-##### Field styling
-
-- **Background color** (color) - Form field background color. Controls `background-color` property for `.form-group input` and `.form-group textarea` selectors.
-
-- **Border** (border) - Form field border settings. Controls `border` property for `.form-group input` and `.form-group textarea` selectors.
-
-- **Typography** (typography) - Form field typography. Controls `font` property for `.form-group input` and `.form-group textarea` selectors.
-
-- **Textarea: Resize** (select) - Textarea resize behavior. Options: None, Vertical, Horizontal, Both. Default: Vertical. Controls `resize` property for `.form-group textarea` selector.
-
-#### Submit button
-
-- **Text** (text) - Submit button text. Default placeholder: "Submit Comment". Supports dynamic data.
-
-- **Size** (select) - Button size. Options from button sizes control options. Default placeholder: "Default".
-
-- **Style** (select) - Button style. Options from styles control options. Default: primary.
-
-- **Background** (color) - Button background color. Controls `background-color` property for `.bricks-button` selector.
-
-- **Border** (border) - Button border settings. Controls `border` property for `.bricks-button` selector.
-
-- **Typography** (typography) - Button typography. Controls `font` property for `.bricks-button` selector.
-
-### WordPress default styling
-
-When **Source** is set to "WordPress", the element uses your theme's default comment styling and form layout. No additional styling controls are available - WordPress handles all comment display through the standard `comments_template()` function.
-
-> **Developer reference**
->
-> See the [Comments Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-comments/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Post navigation
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/post-navigation/
-
-*Displays navigation links to previous and next posts.*
-
-Displays navigation links to previous and next posts.
-
-The element uses WordPress adjacent-post navigation. **Previous** points to the previous post according to WordPress's post-date order, and **Next** points to the next one. This can look reversed when visitors arrive from a posts list sorted by date in descending order.
-
-## Settings
-
-- **Direction** (direction) - Layout direction for navigation items.
-- **Max. post width** (number) - Maximum width for post navigation items.
-- **In same term** (checkbox) - Navigate within same taxonomy term.
-- **Excluded terms** (select) - Terms to exclude from navigation.
-- **Taxonomy** (select) - Taxonomy for same term navigation. Default: category.
-
-### Label
-- **Show label** (checkbox) - Display navigation labels. Default: true.
-- **Prev label** (text) - Label for previous post. Default: "Previous post".
-- **Next label** (text) - Label for next post. Default: "Next post".
-- **Label typography** (typography) - Typography for navigation labels.
-
-### Title
-- **Show title** (checkbox) - Display post titles in navigation. Default: true.
-- **Title tag** (text) - HTML tag for post titles. Default: h5.
-- **Title typography** (typography) - Typography for post titles.
-- **Alignment: Previous post** (justify-content) - Alignment for previous post section.
-- **Alignment: Next post** (justify-content) - Alignment for next post section.
-
-### Arrows
-- **Prev arrow** (icon) - Icon for previous post navigation.
-- **Next arrow** (icon) - Icon for next post navigation.
-- **Typography** (typography) - Typography for arrow icons.
-
-You can change the labels and arrows to match the wording used by your design. The element does not include a setting that reverses the underlying adjacent-post lookup. Changing that order requires custom PHP through WordPress's adjacent-post filters, or a custom navigation implementation.
-
-### Image
-- **Show image** (checkbox) - Display post featured images. Default: true.
-- **Size** (select) - WordPress image size. Default: Thumbnail.
-- **Height** (number) - Image height. Default: 60px.
-- **Width** (number) - Image width. Default: 60px.
-- **Border** (border) - Image border settings.
-
-> **Developer reference**
->
-> See the [Post Navigation Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-navigation/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Post reading time
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/post-reading-time/
-
-*Displays the estimated reading time for a post based on the selected content.*
-
-Displays the estimated reading time for a post based on the selected content.
-
-## Settings
-
-- **Content** (select) - Choose the content to calculate reading time from. Options: post_content, post_excerpt, custom_content. Default: post_content.
-- **Prefix** (text) - Text to display before the reading time. Default: "Reading time:".
-- **Suffix** (text) - Text to display after the reading time. Default: "min".
-- **Words per minute** (number) - Average reading speed in words per minute. Default: 200.
-- **Calculation method** (select) - Method to use for calculation. Options: words, characters. Default: words.
-
-> **Developer reference**
->
-> See the [Reading Time Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-reading-time/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Post content
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/post-content/
-
-*The Post Content element is a placeholder in the builder that tells Bricks to fetch the post content into the layout you're building.*
-
-The **Post Content** element is a placeholder in the builder that tells Bricks to fetch the post content into the layout you're building.
-
-Since Bricks 1.3.5 you can select the source from which to pull the content:
-
-- WordPress Editor (Gutenberg/Classic editor)
-- Bricks Data
-
-The **Data Source** control is only visible when the Post Content element is used in Bricks templates.
-
-If the **Post Content** element is placed in a Page/Post, etc. the WordPress content is fetched by default.
-
-## How to use the Post Content element
-
-Inside the builder, go to the Elements panel and look for the **Post Content** element in the Single elements group or use the element search bar in the panel header. Click or drag the Post Content element onto the canvas.
-
-![](https://academy.bricksbuilder.io/assets/post-content-element.png)
-
-If the element is inserted when editing a post or page, it will automatically show the WordPress editor content on the canvas unless there is no Page/Post content. That content is also shown on the front end.
-
-This is useful when creating a **Single Post template** in which you want to show the WordPress content (e.g. a single blog post).
-
-## Lightbox for Gutenberg images
-
-Since Bricks 2.5, the **Lightbox** setting opens media-linked Gutenberg images in the Bricks lightbox. It is off by default and available when the Post Content element uses WordPress as its data source.
-
-1. In the WordPress block editor, link the images in your Image or Gallery blocks to **Media file**.
-2. In Bricks, select the **Post Content** element. If you are editing a template, set **Data source** to **WordPress**.
-3. Enable **Lightbox** in the element's **Content** tab, save, and check the images on the frontend.
-
-<div className="screenshot screenshot--control-panel">
-
-![Post Content settings with Lightbox enabled for media-linked Gutenberg images.](https://academy.bricksbuilder.io/assets/post-content-lightbox.webp)
-
-</div>
-
-Images within each Gallery block are grouped together so visitors can navigate between them. Separate galleries stay in separate groups, and standalone Image blocks open individually.
-
-The image must come from the WordPress Media Library and link to its full-size media file URL. Custom links, attachment-page links, and images without valid attachment dimensions keep their existing behavior. Unlinked images using WordPress's native **Expand on click** lightbox are unaffected.
-
-This setting changes the rendered output without rewriting your saved Gutenberg blocks. It does not apply when **Data source** is **Bricks**. For more on working with both editors, see [Gutenberg integration](https://academy.bricksbuilder.io/integrations/gutenberg/).
-
-## Fetching Bricks Data with the Post Content element
-
-In certain scenarios, you'd like to edit each post with Bricks instead of using the WordPress editor such as when using more complex layouts that aren't possible with WordPress.
-
-In this case, you need to set the **Data Source** to "Bricks" in the Post Content settings:
-
-![](https://academy.bricksbuilder.io/assets/post-content-data-source.png)
-
-## Creating different page layouts using the Post Content
-
-When using a Bricks template as your page layout this template is rendered on the frontend instead of the individual page created with Bricks.
-
-If you use the **Post Content** element and set the **Data Source** to Bricks, you can design different page templates and still fetch each page content built with Bricks.
-
-A common use case would be to build a page template with two areas: the main area (which is populated with the page content), and a fixed sidebar for all the pages.
-
-To get the Bricks-built content of each page, the Data Source of the Post Content element needs to be set to "Bricks":
-
-<figure>
-
-![](https://academy.bricksbuilder.io/assets/page-template-post-content-element-1024x636.png)
-
-<figcaption>
-
-Bricks Page Template using a Post Content element to fetch page bricks data
-
-</figcaption>
-
-</figure>
-
-## Settings
-
-- **Data source** (select) - Choose content source. Options: WordPress, Bricks. Default: WordPress. The select is only available for templates, since on pages it automatically uses WordPress as the source.
-- **Lightbox** (checkbox) - Open media-linked Gutenberg images in the Bricks lightbox. Default: Off. Available for the WordPress data source. Each Gallery block forms its own group.
-
-> **Developer reference**
->
-> See the [Post Content Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-content/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Post reading progress bar
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/post-reading-progress-bar/
-
-*Shows a progress bar indicating how much of the post has been read.*
-
-Shows a progress bar indicating how much of the post has been read.
-
-## Settings
-
-- **Content** (select) - Choose the content to track reading progress for. Options: post_content, post_excerpt, custom_content. Default: post_content.
-- **Position** (select) - Position of the progress bar. Options: top, bottom. Default: top.
-- **Height** (number) - Height of the progress bar in pixels. Default: 4.
-- **Background color** (color) - Background color of the progress bar.
-- **Progress color** (color) - Color of the progress indicator.
-- **Show percentage** (checkbox) - Display the reading percentage as text.
-
-> **Developer reference**
->
-> See the [Reading Progress Bar Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-reading-progress-bar/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Post title
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/post-title/
-
-*Displays the title of the current post or page.*
-
-Displays the title of the current post or page.
-
-## Settings
-
-- **HTML tag** (select) - HTML tag for the title. Options: h1, h2, h3, h4, h5, h6. Default: h1.
-- **Type** (select) - Title type. Options: Hero, Lead.
-- **Style** (select) - Title style from theme styles.
-- **Link to post** (checkbox) - Make the title a link to the post.
-- **Add context** (checkbox) - Add context to title on archive/search templates (for template use only).
-
-### Prefix
-- **Prefix** (text) - Text to display before the title.
-- **Spacing** (number) - Spacing between prefix and title.
-- **Block** (checkbox) - Display prefix as block element.
-- **Typography** (typography) - Typography settings for prefix text.
-
-### Suffix
-- **Suffix** (text) - Text to display after the title.
-- **Spacing** (number) - Spacing between title and suffix.
-- **Block** (checkbox) - Display suffix as block element.
-- **Typography** (typography) - Typography settings for suffix text.
-
-> **Developer reference**
->
-> See the [Post Title Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-title/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Post table of contents
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/post-toc/
-
-*Generates a table of contents based on the headings in the post content.*
-
-Generates a table of contents based on the headings in the post content.
-
-## Settings
-
-- **Content** (select) - Choose the content to generate table of contents from. Options: post_content, post_excerpt, custom_content. Default: post_content.
-- **Heading selectors** (text) - CSS selectors for headings to include. Default: "h1,h2,h3,h4,h5,h6".
-- **List style** (select) - Style for the list items. Options: none, disc, circle, square, decimal, decimal-leading-zero, lower-roman, upper-roman, lower-greek, lower-latin, upper-latin, armenian, georgian, lower-alpha, upper-alpha. Default: none.
-- **Item typography** (typography) - Typography settings for list items.
-- **Item padding** (dimensions) - Padding for list items.
-- **Item background color** (color) - Background color for list items.
-- **Item border** (border) - Border settings for list items.
-- **Active item typography** (typography) - Typography settings for active list items.
-- **Active item background color** (color) - Background color for active list items.
-- **Active item border** (border) - Border settings for active list items.
-
-> **Developer reference**
->
-> See the [Table Of Contents Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-toc/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Social sharing
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/social-sharing/
-
-*Displays social media sharing buttons for the current post.*
-
-Displays social media sharing buttons for the current post.
-
-## Settings
-
-- **Share via** (repeater) - Social media services to include. Default includes: Facebook, X, LinkedIn, WhatsApp, Pinterest, Telegram, VKontakte, Bluesky, Viber (since Bricks 2.5), Email.
-  - **Service** (select) - Social media platform.
-  - **Excerpt** (checkbox) - Include post excerpt in share (WhatsApp only).
-  - **Icon** (icon) - Custom icon for the service.
-  - **Background** (color) - Button background color.
-  - **Color** (color) - Button text/icon color.
-- **Use brand colors** (checkbox) - Apply default brand colors to buttons. Default: true.
-- **Direction** (direction) - Layout direction for sharing buttons.
-- **Open in new tab** (checkbox) - Open sharing links in new tabs.
-- **Rel attribute** (text) - Link rel attribute. Default: "nofollow".
-
-> **Developer reference**
->
-> See the [Social Sharing Schema](https://academy.bricksbuilder.io/developer/schema/elements/post-sharing/) for the full JSON schema of this element's settings and controls.
-
----
-
-# Related posts
-
-Source: https://academy.bricksbuilder.io/builder/elements/single/related-posts/
-
-*Displays posts related to the current post based on shared taxonomies.*
-
-Displays posts related to the current post based on shared taxonomies.
-
-## Settings
-
-### Title
-- **Title** (text) - Section title text.
-- **HTML tag** (select) - HTML tag for title. Options: h2, h3, h4, h5, h6. Default: h2.
-- **Margin** (spacing) - Title margin.
-- **Typography** (typography) - Title typography.
-
-### Query
-- **Post type** (select) - Post type to query.
-- **Max. related posts** (number) - Maximum number of related posts. Default: 3.
-- **Order** (select) - Sort order. Default: Descending.
-- **Order by** (select) - Sort criteria. Default: Random.
-- **Common taxonomies** (select) - Taxonomies posts must share. Default: category, post_tag.
-
-### Layout
-- **Gap** (number) - Spacing between posts. Default: 30px.
-- **Posts per row** (number) - Number of posts per row. Default: 3.
+- **Date Reached: Custom text** (text) - Custom text to display when the date is reached. Only shown when "Date Reached" is set to "text".
 
 ### Fields
-- **Content** (repeater) - Dynamic data fields to display. Default includes: `{post_title:link}`, `{post_date}`, `{post_excerpt:20}`.
-  - **Dynamic data** (text) - Dynamic data expression.
-  - **HTML tag** (select) - HTML tag for field. Default: div.
-  - **Margin** (spacing) - Field margin.
-  - **Padding** (spacing) - Field padding.
-  - **Background color** (color) - Field background color.
-  - **Border** (border) - Field border.
-  - **Typography** (typography) - Field typography.
 
-### Image
-- **Disable** (checkbox) - Hide post images.
-- **Aspect ratio** (text) - Image aspect ratio.
-- **Image size** (select) - WordPress image size.
-- **Position** (select) - Image position. Options: Top, Right, Bottom, Left. Default: Top.
-- **Height** (number) - Image height.
-- **Width** (number) - Image width.
-- **Margin** (spacing) - Image margin.
+- **Fields** (repeater) - Configure the countdown display fields. Each field has:
+  - **Prefix** (text) - Text before the field value.
+  - **Format** (text) - Format string using %D (days), %H (hours), %M (minutes), %S (seconds). Lowercase removes leading zeros. Default: "%D days", "%H hours", "%M minutes", "%S seconds".
+  - **Suffix** (text) - Text after the field value.
 
-### Content
-- **Width** (number) - Content area width.
-- **Padding** (spacing) - Content area padding.
-- **Background color** (color) - Content area background color.
-- **Overlay content** (checkbox) - Overlay content on image.
-- **Horizontal alignment** (align-items) - Content horizontal alignment (overlay mode).
-- **Vertical alignment** (justify-content) - Content vertical alignment (overlay mode).
+- **Direction** (direction) - Flex direction for the fields container.
+
+- **Align main axis** (justify-content) - Justify content alignment for fields.
+
+- **Align cross axis** (align-items) - Align items for fields.
+
+### Field
+
+- **Direction** (direction) - Flex direction for individual fields.
+
+- **Margin** (spacing) - Margin around individual fields. Default: 0 5px 0 0.
+
+## Dynamic target dates
+
+The Date control accepts a date returned by dynamic data. Bricks supports common date strings such as `YYYY-MM-DD HH:MM`, `YYYY-MM-DD`, and ISO 8601, plus Unix timestamps in seconds or milliseconds.
+
+The dynamic tag must resolve to a plain date or timestamp. Place the Countdown inside a query loop or template to let each post or product resolve its own target date.
+
+For a WooCommerce sale countdown, use the sale end date as the target. The Countdown tracks one date, so use element conditions when it should appear only after a sale starts or while a product is on sale. Bricks does not provide dedicated WooCommerce sale start and end date tags. Store the target in a custom field or provide it through a custom dynamic tag or helper that returns one of the supported formats.
 
 > **Developer reference**
 >
-> See the [Related Posts Schema](https://academy.bricksbuilder.io/developer/schema/elements/related-posts/) for the full JSON schema of this element's settings and controls.
+> See the [Countdown Schema](https://academy.bricksbuilder.io/developer/schema/elements/countdown/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Counter
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/counter/
+
+*The Counter element animates a number from a starting value to an ending value with customizable prefix, suffix, and formatting.*
+
+The Counter element animates a number from a starting value to an ending value with customizable prefix, suffix, and formatting.
+
+## Settings
+
+- **Count from** (text) - The starting number for the animation. Default: 0.
+
+- **Count to** (text) - The ending number for the animation. Default: 1000.
+
+- **Animation in ms** (number) - Duration of the counting animation in milliseconds. Default: 1000.
+
+- **Typography** (typography) - Font settings for the counter number.
+
+### Prefix
+
+- **Prefix** (text) - Text displayed before the counter number.
+
+- **Typography** (typography) - Font settings for the prefix text.
+
+### Suffix
+
+- **Suffix** (text) - Text displayed after the counter number.
+
+- **Typography** (typography) - Font settings for the suffix text.
+
+### Separator
+
+- **Thousand separator** (checkbox) - Add thousand separators to the number.
+
+- **Separator** (text) - Character used as the thousand separator. Default: ",". Only shown when "Thousand separator" is enabled.
+
+> **Developer reference**
+>
+> See the [Counter Schema](https://academy.bricksbuilder.io/developer/schema/elements/counter/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Dropdown
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/dropdown/
+
+*The Dropdown element is a nestable menu item: a toggle (link/text + optional icon button) with a dropdown panel (default inner structure is a Div with tag ul.*
+
+The **Dropdown** element is a **nestable** menu item: a toggle (link/text + optional icon button) with a **dropdown panel** (default inner structure is a **Div** with tag `ul` and class `brx-dropdown-content` containing links). Use it inside [Nav (Nestable)](https://academy.bricksbuilder.io/builder/elements/general/nav-nested/) or similar structures.
+
+Default HTML tag for the root is **`li`**. The script `bricksSubmenuPosition` handles positioning.
+
+## Top-level
+
+- **HTML tag** (text) — Root tag; validated in the builder. Placeholder: `li`.
+
+- **Text** (text) — Label for the trigger. Default: “Dropdown”.
+
+- **Link to** (link) — Optional link around the text (lightbox fields excluded).
+
+- **Attribute: aria-label** (text) — Applied to the **toggle button** when an icon is present. Placeholder: “Toggle dropdown”.
+
+## Icon
+
+- **Icon** (icon) — If set, shown in the toggle **button** next to the text.
+
+- **Icon padding** (spacing) — On `.brx-submenu-toggle button`.
+
+- **Gap** (number with units) — Flex gap on `.brx-submenu-toggle`.
+
+- **Icon position** (select) — Uses flex direction (`row-reverse` when set to place icon on the **left**).
+
+- **Icon size** (number with units) — `font-size` on the button.
+
+- **Icon color** (color).
+
+- **Icon transform**, **Icon transform (Open)** (transform) — Default vs `aria-expanded="true"`.
+
+- **Icon transition** (text) — CSS `transition` on the button.
+
+## Caret
+
+Optional triangle on the dropdown root (adds class `caret` when **Size** is set):
+
+- **Size** (number with units) — `border-width` on `> .brx-dropdown-content::before`.
+
+- **Color** (color) — `border-bottom-color` (when size ≠ 0).
+
+- **Transform** (transform).
+
+- **Position** (dimensions).
+
+## Content
+
+- **Position: Static** (checkbox) — Keeps the panel in document flow (e.g. inside [Offcanvas](https://academy.bricksbuilder.io/builder/elements/general/offcanvas/)). Static dropdowns **always toggle on click**, not hover.
+
+- **Toggle on** (select) — `click`, `hover`, or `click or hover`. Hidden when **Static** is enabled (click only).
+
+- **Min. width** (number with units) — On `.brx-dropdown-content`.
+
+- **Transition** (text), **Transform**, **Transform (Open)** — Panel motion (`&.open > .brx-dropdown-content` for open state).
+
+- **Background** (background), **Border**, **Box shadow**, **Typography** — Panel chrome on `.brx-dropdown-content`.
+
+### Item
+
+Row styling for direct links and submenu toggles inside the panel:
+
+- **Justify content** (justify-content).
+
+- **Padding** (spacing).
+
+- **Background** (color), **Border** (border), **Typography**, **Transition** (text).
+
+### Active
+
+States matching `aria-current="page"` / `.aria-current`:
+
+- **Background**, **Border**, **Typography**.
+
+## Mega menu
+
+- **Enable** (checkbox) — Full-width style mega panel (`brx-has-megamenu`); “covers entire available width” by default.
+
+- **Width** (since Bricks 2.5) — Set the mega panel width directly, such as `900px`, `80%`, a CSS variable, or a `clamp()` value. Leave empty to use the full horizontal reference width. Percentages are measured against that reference.
+
+- **Alignment** (since Bricks 2.5) — Position a custom-width panel at the left, center, or right of the horizontal reference area. Default: Left.
+
+- **CSS selector (Horizontal)** (text) — Optional: choose the horizontal reference element. Leave empty to use the page body.
+
+- **CSS selector (Vertical)** (text) — Optional: vertical alignment reference.
+
+Width and alignment support responsive breakpoint values. See [Set a custom mega menu width](https://academy.bricksbuilder.io/builder/features/menu-builder/#mega-menu-width) for examples.
+
+## Multilevel
+
+- **Enable** (checkbox) — Shows one submenu level at a time; toggles on click; inner dropdowns inherit multilevel behavior.
+
+- **Back: Text** (text) — Back control label (default “Back”).
+
+- **Back: Typography**, **Back: Background** — `.brx-multilevel-back` styling.
+
+> **Developer reference**
+>
+> See the [Dropdown Schema](https://academy.bricksbuilder.io/developer/schema/elements/dropdown/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# Facebook page
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/facebook-page/
+
+*The Facebook Page element embeds a Facebook page plugin with customizable display options.*
+
+The Facebook Page element embeds a Facebook page plugin with customizable display options.
+
+## Settings
+
+- **Facebook page URL** (text) - The URL of the Facebook page to embed. Default: "https://facebook.com/facebook".
+
+- **Height (px)** (number) - Height of the embedded page in pixels. Minimum: 70, Maximum: 500. Default: 500.
+
+- **Width (px)** (number) - Width of the embedded page in pixels. Minimum: 180, Maximum: 500. Default: 340.
+
+- **Tabs** (select) - Tabs to display on the page plugin. Options: `timeline`, `events`, `messages`. Multiple selection allowed.
+
+- **Hide cover** (checkbox) - Hide the page cover photo.
+
+- **Show friends' photos** (checkbox) - Display profile photos of the page's friends.
+
+- **Hide CTA button** (checkbox) - Hide the call-to-action button.
+
+- **Small header** (checkbox) - Use a smaller header size.
+
+> **Developer reference**
+>
+> See the [Facebook Page Schema](https://academy.bricksbuilder.io/developer/schema/elements/facebook-page/) for the full JSON schema of this element's settings and controls.
+
+---
+
+# HTML
+
+Source: https://academy.bricksbuilder.io/builder/elements/general/html/
+
+*The HTML element outputs raw HTML from a single code field. In the theme it is marked deprecated (deprecated flag): prefer the Code element, blocks, or native.*
+
+The **HTML** element outputs **raw HTML** from a single code field. In the theme it is marked **deprecated** (`deprecated` flag): prefer the [Code](https://academy.bricksbuilder.io/builder/elements/general/code/) element, blocks, or native elements for new layouts so you keep validation, security, and editor consistency.
+
+It exists for **backward compatibility** and for the **Gutenberg** block mapping (`core/html`) when converting content.
+
+## Settings
+
+- **Raw HTML** (code) — HTML source, editor mode `text/html`. Default includes a sample heading and paragraph.
+
+If the field is empty, the element shows a “No HTML markup defined” placeholder on the front end.
+
+> **Developer reference**
+>
+> See the [HTML Schema](https://academy.bricksbuilder.io/developer/schema/elements/html/) for the full JSON schema of this element's settings and controls.

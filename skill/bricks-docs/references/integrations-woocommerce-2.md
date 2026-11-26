@@ -1,145 +1,124 @@
-# WooCommerce Account Builder
+# Woo Setup Wizard
 
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/
 
-*Customize WooCommerce account-area screens in Bricks with the classic Account builder templates or the Account Page v2 advanced modular workflow.*
+*Create or repair Bricks WooCommerce shop, product, cart, checkout, and account layouts with guided setup checks and presets.*
 
-Bricks 1.9 introduces the My Account builder, which lets you customize the account area of your WooCommerce site.
+The Woo Setup Wizard helps you check, create, and repair the main WooCommerce layouts used by Bricks.
 
-This includes the My Account page (logged-in), the account login/register/lost & reset password pages (shown when not logged-in), and all My Account endpoints (e.g., Orders, Downloads, etc.).
+Go to **Bricks > Woo Setup Wizard** to review the current setup status for the store. The wizard checks the Shop, Single product, Cart, Checkout, and My Account areas, then shows the available setup actions for each area.
 
-> **Note**
+![](https://academy.bricksbuilder.io/assets/woo-setup-wizard.png)
+
+The wizard is not dependent on **Enable advanced modular elements**. It can set up the classic WooCommerce builder workflow without that setting. Advanced v2 setup types may appear in the wizard, but they stay disabled until advanced modular elements are enabled under **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
+
+## When to use it
+
+Use the wizard when you want Bricks to review the WooCommerce setup and create the expected page or template structure for you.
+
+- Set up WooCommerce pages after installing Bricks on a new store.
+- Repair a Cart, Checkout, or My Account page that is missing the expected Bricks content.
+- Replace WooCommerce block content with Bricks page content.
+- Create the classic Bricks WooCommerce templates for shop, product, cart, checkout, or account areas.
+- Create Cart v2, Checkout v2, or Account Page v2 structures for the assigned WooCommerce pages.
+- Review whether existing published WooCommerce templates may conflict with a selected setup.
+
+> **Caution**
 >
-> Starting in Bricks 2.4, you can also build the My Account page directly with [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) and the [Account Page v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page-v2/). The classic account template workflow below is still supported.
+> The wizard can replace Bricks page content, clear WooCommerce block markup from the assigned page, switch the page editor mode to Bricks, create Bricks templates, or draft existing published WooCommerce templates for the same area. Review the setup summary before running an action on an existing store.
 
-> **Note**
->
-> **IMPORTANT:** In order to ensure that all your customizations to the WooCommerce My Account templates are properly applied, it is imperative that you complete the "[My Account Page (logged in)](#my-account-page)" step.
+## Areas checked
 
-## Account Page v2 workflow
+The wizard checks these WooCommerce areas:
 
-With advanced modular elements enabled, Account Page v2 keeps the account wrapper, navigation, login state, password states, and account endpoint states together on the assigned My Account page.
+- **Shop**: shop page and product archive template setup.
+- **Single product**: single product template setup.
+- **Cart**: assigned Cart page, classic cart templates, and Cart v2 page structure.
+- **Checkout**: assigned Checkout page, classic checkout templates, and Checkout v2 page structure.
+- **My Account**: assigned My Account page, classic account templates, and Account Page v2 page structure.
 
-Use the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) and choose **Advanced (v2)** to replace the assigned My Account page content with the Account Page v2 element and generated state structure.
+## Setup types
 
-Account Page v2 includes states for:
+Each area can offer one or more setup types, depending on the selected WooCommerce area and whether advanced modular elements are enabled.
 
-- Dashboard
-- Orders
-- View order
-- Downloads
-- Addresses
-- Edit address
-- Edit account
-- Payment methods
-- Add payment method
-- Login
-- Lost password
-- Lost password confirmation
-- Reset password
-- Order withdrawal (WooCommerce 11.1 or later, with Order Withdrawal enabled)
+| Area | Setup types |
+| --- | --- |
+| Shop | Standard (v1) |
+| Single product | Standard (v1) |
+| Cart | Standard (v1), Advanced (v2) |
+| Checkout | Standard (v1), Advanced (v2), Advanced multistep (v2) |
+| My Account | Standard (v1), Advanced (v2) |
 
-Each state can generate a complete starter block through **Insert a structure**. Address and account forms use editable Bricks form field elements, so you can style and reorder them after generation.
+![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-advanced-off.png)
 
-The Account edit-address state has its own field sync because WooCommerce account address editing and checkout use different field contexts. Use it after plugins or WooCommerce settings change address fields.
+**Standard (v1)** creates or repairs the classic Bricks WooCommerce workflow. This setup uses the assigned WooCommerce page together with the traditional Bricks WooCommerce template types or shortcode-based page content.
 
-Account Page v2 also adds query loops and dynamic tags for account orders, order actions, account downloads, account addresses, order data, downloads, and customer notes. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#account-tags).
+**Advanced (v2)** replaces the assigned WooCommerce page content with the matching v2 parent element and generated state structure. Use it for Cart, Checkout, and My Account pages when you want to edit related WooCommerce screens as states on one page.
 
-### Endpoints added by plugins
+**Advanced multistep (v2)** is available for Checkout. It creates a Checkout v2 page with a ready-made [multistep checkout structure](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/).
 
-Account Page v2 provides editable states for the built-in WooCommerce account routes listed above. An endpoint registered by another plugin does not appear automatically as an additional editable state in the builder.
+## Status checks
 
-WooCommerce account endpoints are routes on the assigned My Account page, not separate WordPress pages. A plugin that registers an endpoint and its output callback correctly can still render its content through WooCommerce on that page, but Bricks does not provide a dedicated Account Page v2 state for designing that endpoint.
+The wizard reports missing, incomplete, or incompatible setup details before you run an action.
 
-If a plugin endpoint is blank on the frontend, temporarily test the My Account page with WooCommerce's default account output or without the Account Page v2 element. If it remains blank, check the plugin's endpoint registration. If it works only without Account Page v2, include the plugin name and endpoint slug when contacting Bricks support.
+Common checks include:
 
-## My Account Page (logged in) {#my-account-page}
+- Required WooCommerce page is not assigned.
+- Assigned WooCommerce page was deleted.
+- Assigned page is still edited with the WordPress editor instead of Bricks.
+- Assigned page contains WooCommerce block content.
+- Required v2 parent element is missing from the assigned page.
+- Required v2 states are missing. My Account v2 includes Order withdrawal only when the WooCommerce feature is enabled.
+- Required v2 state elements are empty.
+- Existing published WooCommerce templates may conflict with the selected setup.
+- Classic setup is missing expected WooCommerce shortcodes or template types.
 
-To design your My Account page (navigation + content wrapper), **please edit your "My Account" page directly**. You'll find a dedicated "Account Page" element that you can add and adjust its settings to your liking.
+![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-errors.png)
 
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-my-account-page-1.png)
+The wizard does not create or assign missing WooCommerce pages. If a page is not assigned, assign it first in the WooCommerce settings, then return to **Bricks > Woo Setup Wizard**.
 
-<figcaption>
+## What setup can change
 
-Custom My Account page using the "Account - Page" element
+Depending on the selected area and setup type, the wizard can:
 
-</figcaption>
+- Write Bricks page content to the assigned WooCommerce page.
+- Clear WordPress `post_content` when it contains WooCommerce block markup.
+- Set the assigned page editor mode to Bricks.
+- Create Bricks WooCommerce templates from presets.
+- Draft existing published WooCommerce templates for the same template type when they would conflict.
+- Generate external CSS files when file-based CSS generation is enabled.
+- Ask for overwrite confirmation when the target page already contains Bricks data.
 
-> **Note**
->
-> **IMPORTANT:** If you have the *"Enable Bricks WooCommerce "Notice" element"* Bricks setting enabled, please make sure that you have added the "Notice" element to your account page or to all account templates individually. So the notifications when submitting the account forms (e.g., address, reset password, etc.) are displayed.
+![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-confirmation.png)
 
-Starting in Bricks 2.4, the classic **Account - Page** element supports WooCommerce's native Order Withdrawal flow for guests and logged-in customers when the WooCommerce feature is enabled; use the [Account Page v2 Order withdrawal state](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page-v2/#order-withdrawal) to customize its layout.
+## Before running setup
 
-## Account - Login / Register {#my-account-login-register}
+Review the setup summary before confirming any action.
 
-The login form is displayed when a not-logged-in visitor views the My Account page. And the registration form, if you have the *"Allow customers to create an account on the "My account" page"* WooCommerce setting enabled.
+- Confirm the correct WooCommerce pages are assigned in the WooCommerce settings.
+- Duplicate or export important pages and templates on existing stores.
+- Check whether the selected setup edits pages, templates, or both.
+- Review whether existing WooCommerce templates will be drafted.
+- If the site uses custom breakpoints, review responsive styles after setup. Presets are authored with the default Bricks breakpoint keys, such as `mobile_landscape` and `mobile_portrait`.
 
-You can design your account login/registration layout by creating a new template type "WooCommerce - Account - Login".
+## After setup
 
-When editing this template, you'll find dedicated elements for the **"Account - Login form"** & **"Account - Register form"** as shown in the screenshot below:
+Open the generated page or template in Bricks and review the result.
 
-You should also check the **Account creation** settings located at *WooCommerce > Settings > Accounts & Privacy* section to control what form to be displayed via **Account - Register form** element.
+- For classic layouts, confirm the expected WooCommerce template types and shortcodes are in place.
+- For Cart v2, review the Filled cart and Empty cart states.
+- For Checkout v2, review Checkout, Login required, Pay, Thank you, and Order receipt states.
+- For Advanced multistep Checkout v2, test the checkout step navigation and interactions.
+- For Account Page v2, review the account navigation, login, password, address, order, download, and edit account states. Include Order withdrawal when enabled.
+- Test the live Cart, Checkout, and My Account flows with WooCommerce products and customer sessions.
 
-![](https://academy.bricksbuilder.io/assets/woocommerce-account-creation-settings.png)
+## Related docs
 
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-account-login-register.png)
-
-<figcaption>
-
-Custom account login/register template
-
-</figcaption>
-
-> **Note**
->
-> **IMPORTANT:** Ensure you have inserted a Basic Text element with `{do_action:woocommerce_before_customer_login_form}` before your Login and Register form. And another Basic Text element with `{do_action:woocommerce_after_customer_login_form}` after the forms.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-do-action-account-login.png)
-
-<figcaption>
-
-Example do_action location. Before and after the login/register forms.
-
-</figcaption>
-
-## Account - Lost / reset password {#my-account-lost-reset-password}
-
-The WooCommerce account builder in Bricks also provides the following dedicated templates and elements for the lost & reset password pages:
-
-| **Account page** | **Template type** | **Elements** |
-| --- | --- | --- |
-| Lost password | WooCommerce - Account - Lost password | Account - Lost password |
-| Lost password confirmation | WooCommerce - Account - Lost password (Confirmation) | Displayed after submitting the lost password form. No special elements.<br /><br />Example:<br />*A password reset email has been sent to the email address on file for your account, but may take several minutes to show up in your inbox. Please wait at least 10 minutes before attempting another reset.* |
-| Reset password | WooCommerce - Account - Reset password | Account - Reset password |
-
-## Templates for specific account endpoints {#my-account-endpoints}
-
-Designing the account content area for individual account endpoints (Orders, Downloads, etc.) is possible by creating templates of the corresponding template type.
-
-In the example below, we created a "WooCommerce - Account - Orders" template, to which we then added the "Account - Orders" that we styled a bit.
-
-![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-account-orders-1024x384.png)
-
-> **Note**
->
-> When editing the template for an account endpoint (Orders, Downloads, etc.), the drag & drop area is located inside the account content area. Offering a better preview in the builder than just rendering an empty canvas without the account navigation.
-
-The process of creating those account endpoint templates is the same for all other WooCommerce account template types.
-
-## Account template types & elements
-
-| **Template type** | **Endpoint** | **Element** |
-| --- | --- | --- |
-| WooCommerce - Account - Dashboard | `/` | - |
-| WooCommerce - Account - Orders | `orders/` | Account - Orders |
-| WooCommerce - Account - View order | `view-order/{order_id}/` | Account - View order |
-| WooCommerce - Account - Downloads | `downloads/` | Account - Downloads |
-| WooCommerce - Account - Payment methods | `payment-methods/` | Account - Payment methods |
-| WooCommerce - Account - Add payment method | `add-payment-method/` | Account - Add payment method |
-| WooCommerce - Account - Addresses | `edit-address/` | Account - Addresses |
-| WooCommerce - Account - Edit address | `edit-address/billing/`<br />`edit-address/shipping/` | Account - Edit address |
-| WooCommerce - Account - Edit account | `edit-account/` | Account - Edit account |
+- [WooCommerce Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/)
+- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/)
+- [Cart](https://academy.bricksbuilder.io/integrations/woocommerce/cart/)
+- [Checkout](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/)
+- [WooCommerce Account Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/)
 
 ---
 

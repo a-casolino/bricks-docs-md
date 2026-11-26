@@ -1,3 +1,150 @@
+# Page Settings
+
+Source: https://academy.bricksbuilder.io/builder/interface/page-settings/
+
+*Use Bricks page settings to control per-page markup, styling, SEO metadata, social sharing output, and custom code.*
+
+Page Settings control output for the page, post, or content template you are currently editing. They are different from global Bricks settings and different from an individual element's controls.
+
+Use Page Settings when a setting should apply to the whole current page, such as body classes, header/footer visibility, page-level scroll snap, SEO metadata, social sharing data, or page-specific code.
+
+## Open Page Settings
+
+Open the builder and click the **Settings** icon in the toolbar. Choose **Page Settings**.
+
+Page Settings are available only when the current user has permission to access them. Some groups can also be hidden by global settings.
+
+Use the **Reset** icon in the panel header to clear all page settings with a single click.
+
+## How Page Settings are applied
+
+Page Settings are stored with the current Bricks document. On the frontend, Bricks reads those settings while rendering the page.
+
+Some settings change markup, such as body classes or disabling the header. Some generate CSS, such as scroll snap and Custom CSS. Some print metadata or scripts into the document head or body. Some settings are visible in the builder immediately, while others should be checked on the frontend.
+
+![](https://academy.bricksbuilder.io/assets/bricks-page-settings.png)
+
+## General settings
+
+The General group contains page-wide output options.
+
+| Setting | What it does |
+| --- | --- |
+| CSS classes (body) | Adds space-separated classes to the page `<body>` tag. Dynamic data can be used when appropriate. |
+| Disable header | Prevents the active Bricks header from rendering on this page. Not shown for header or footer templates. |
+| Disable footer | Prevents the active Bricks footer from rendering on this page. Not shown for header or footer templates. |
+| Disable lazy load | Disables Bricks' built-in lazy loading for images, videos, background images, and background videos on the current page. Background videos honor this setting from Bricks 2.5. |
+| Disable popups | Prevents Bricks popups from rendering on the current page. |
+| Page layout | Overrides the page layout inherited from Theme Styles. |
+| Page background | Overrides the page background inherited from Theme Styles. |
+| Content margin | Overrides the content margin inherited from Theme Styles when available. |
+
+Use these settings for page-specific exceptions. If you need the same behavior on many pages, use global settings, Theme Styles, or templates instead.
+
+For a single background, use the element's **Style > Background > Disable lazy load** control (Bricks 2.5). See [Lazy Loading](https://academy.bricksbuilder.io/builder/features/lazy-loading/) for the available scopes and how they affect the element control.
+
+## Scroll snap
+
+The Scroll snap group configures page-level CSS scroll snapping.
+
+| Setting | What it does |
+| --- | --- |
+| Type | Sets the page scroll-snap type on the `html` element. |
+| Snapping elements selector | Defines which elements should snap. Defaults to Bricks sections when left empty. |
+| Align | Sets the snap alignment of snapping elements. |
+| Margin | Sets scroll margin for snapping elements. |
+| Padding | Sets scroll padding on the `html` element. |
+| Stop | Sets scroll-snap-stop behavior. |
+
+Scroll snap is primarily a frontend behavior. Test it on the frontend, not only in the builder canvas. Layout height, overflow, sticky headers, and browser behavior can affect the result.
+
+If you use a custom selector, make sure the selector matches the elements that should become snap points. If the selector matches nothing, the page can have scroll snap enabled without visible snapping.
+
+## One Page Navigation {#one-page-nav}
+
+If enabled, Bricks adds a vertical dot menu to the right edge of the page in a fixed position, with each dot linking to the page's root element.
+
+![](https://academy.bricksbuilder.io/assets/bricks-one-page-navigation-1024x534.png)
+
+One Page Navigation is shown only where it applies, such as normal pages and content templates. It is not shown for header or footer templates.
+
+The navigation uses the IDs Bricks renders for root elements. Add custom CSS IDs when you need stable, readable anchors or when root elements are generated dynamically.
+
+> **Note**
+>
+> If a root element is inside a query loop, use dynamic data in the CSS ID, such as a post ID or slug, so every repeated root element has a unique anchor.
+
+![](https://academy.bricksbuilder.io/assets/one-page-navigation-loop-unique-css-id.png)
+
+The One Page Navigation controls style the dot menu and its active state:
+
+- Spacing
+- Item width and height
+- Item color
+- Border
+- Box shadow
+- Active item width and height
+- Active item color
+- Active border
+- Active box shadow
+
+The active dot changes based on the root element currently in the scroll range.
+
+## SEO
+
+The SEO group controls page-level metadata. This group is hidden when Bricks SEO output is disabled globally.
+
+| Setting | What it does |
+| --- | --- |
+| Permalink | Updates the post slug. Use lowercase words separated by dashes. |
+| Title | Updates the WordPress post title after applying the change. |
+| Document title | Sets the frontend SEO title without changing the WordPress post title. |
+| Meta description | Prints a page-level meta description. |
+| Meta keywords | Prints page-level meta keywords. |
+| Meta robots | Prints robots directives such as `noindex` or `nofollow`. |
+
+Use **Save new title/permalink** after changing the post title or permalink in the SEO group. Other page settings are saved through the normal builder save flow.
+
+If you use a dedicated SEO plugin, decide which tool owns the metadata. Avoid setting competing metadata in multiple places.
+
+## Social media
+
+The Social media group controls Open Graph style sharing data for the current URL. This group is hidden when Bricks Open Graph output is disabled globally.
+
+| Setting | Default when empty |
+| --- | --- |
+| Title | The post/page title. |
+| Description | The post/page excerpt. |
+| Image | The featured image. |
+
+Use this group when a page needs a social title, description, or image that differs from its normal SEO data.
+
+## Custom Code
+
+The Custom Code group adds page-specific CSS and scripts.
+
+| Setting | Output location |
+| --- | --- |
+| Custom CSS | Inline CSS in the document `<head>`. Supports breakpoint-specific values. |
+| Header scripts | Before the closing `</head>` tag. |
+| Body (header) scripts | Immediately after the opening `<body>` tag. |
+| Body (footer) scripts | Before the closing `</body>` tag. |
+
+Script fields are shown only to users who are allowed to add unfiltered HTML. Users without that capability see an informational notice instead.
+
+Use page-level code sparingly. Prefer element settings, classes, Theme Styles, global settings, or properly enqueued code when the behavior should be reused across the site.
+
+## Common mistakes
+
+- **Changing SEO title but not applying it:** Use **Save new title/permalink** for title and slug changes.
+- **Expecting header/footer disable to affect templates globally:** These settings affect only the current page render.
+- **Using duplicate IDs for One Page Navigation:** Give repeated root elements unique IDs, especially inside query loops.
+- **Testing scroll snap only in the builder:** Always test on the frontend.
+- **Adding scripts without the right capability:** Script fields require permission to add unfiltered HTML.
+- **Using page code for reusable behavior:** Page Custom Code is local to the current page. Use global settings or enqueue code for site-wide behavior.
+
+---
+
 # Responsive Editing
 
 Source: https://academy.bricksbuilder.io/builder/interface/responsive-editing/
@@ -278,153 +425,6 @@ In Bricks 1.11.1, we introduced the responsive control indicator which helps you
 
 ---
 
-# Page Settings
-
-Source: https://academy.bricksbuilder.io/builder/interface/page-settings/
-
-*Use Bricks page settings to control per-page markup, styling, SEO metadata, social sharing output, and custom code.*
-
-Page Settings control output for the page, post, or content template you are currently editing. They are different from global Bricks settings and different from an individual element's controls.
-
-Use Page Settings when a setting should apply to the whole current page, such as body classes, header/footer visibility, page-level scroll snap, SEO metadata, social sharing data, or page-specific code.
-
-## Open Page Settings
-
-Open the builder and click the **Settings** icon in the toolbar. Choose **Page Settings**.
-
-Page Settings are available only when the current user has permission to access them. Some groups can also be hidden by global settings.
-
-Use the **Reset** icon in the panel header to clear all page settings with a single click.
-
-## How Page Settings are applied
-
-Page Settings are stored with the current Bricks document. On the frontend, Bricks reads those settings while rendering the page.
-
-Some settings change markup, such as body classes or disabling the header. Some generate CSS, such as scroll snap and Custom CSS. Some print metadata or scripts into the document head or body. Some settings are visible in the builder immediately, while others should be checked on the frontend.
-
-![](https://academy.bricksbuilder.io/assets/bricks-page-settings.png)
-
-## General settings
-
-The General group contains page-wide output options.
-
-| Setting | What it does |
-| --- | --- |
-| CSS classes (body) | Adds space-separated classes to the page `<body>` tag. Dynamic data can be used when appropriate. |
-| Disable header | Prevents the active Bricks header from rendering on this page. Not shown for header or footer templates. |
-| Disable footer | Prevents the active Bricks footer from rendering on this page. Not shown for header or footer templates. |
-| Disable lazy load | Disables Bricks' built-in lazy loading for images, videos, background images, and background videos on the current page. Background videos honor this setting from Bricks 2.5. |
-| Disable popups | Prevents Bricks popups from rendering on the current page. |
-| Page layout | Overrides the page layout inherited from Theme Styles. |
-| Page background | Overrides the page background inherited from Theme Styles. |
-| Content margin | Overrides the content margin inherited from Theme Styles when available. |
-
-Use these settings for page-specific exceptions. If you need the same behavior on many pages, use global settings, Theme Styles, or templates instead.
-
-For a single background, use the element's **Style > Background > Disable lazy load** control (Bricks 2.5). See [Lazy Loading](https://academy.bricksbuilder.io/builder/features/lazy-loading/) for the available scopes and how they affect the element control.
-
-## Scroll snap
-
-The Scroll snap group configures page-level CSS scroll snapping.
-
-| Setting | What it does |
-| --- | --- |
-| Type | Sets the page scroll-snap type on the `html` element. |
-| Snapping elements selector | Defines which elements should snap. Defaults to Bricks sections when left empty. |
-| Align | Sets the snap alignment of snapping elements. |
-| Margin | Sets scroll margin for snapping elements. |
-| Padding | Sets scroll padding on the `html` element. |
-| Stop | Sets scroll-snap-stop behavior. |
-
-Scroll snap is primarily a frontend behavior. Test it on the frontend, not only in the builder canvas. Layout height, overflow, sticky headers, and browser behavior can affect the result.
-
-If you use a custom selector, make sure the selector matches the elements that should become snap points. If the selector matches nothing, the page can have scroll snap enabled without visible snapping.
-
-## One Page Navigation {#one-page-nav}
-
-If enabled, Bricks adds a vertical dot menu to the right edge of the page in a fixed position, with each dot linking to the page's root element.
-
-![](https://academy.bricksbuilder.io/assets/bricks-one-page-navigation-1024x534.png)
-
-One Page Navigation is shown only where it applies, such as normal pages and content templates. It is not shown for header or footer templates.
-
-The navigation uses the IDs Bricks renders for root elements. Add custom CSS IDs when you need stable, readable anchors or when root elements are generated dynamically.
-
-> **Note**
->
-> If a root element is inside a query loop, use dynamic data in the CSS ID, such as a post ID or slug, so every repeated root element has a unique anchor.
-
-![](https://academy.bricksbuilder.io/assets/one-page-navigation-loop-unique-css-id.png)
-
-The One Page Navigation controls style the dot menu and its active state:
-
-- Spacing
-- Item width and height
-- Item color
-- Border
-- Box shadow
-- Active item width and height
-- Active item color
-- Active border
-- Active box shadow
-
-The active dot changes based on the root element currently in the scroll range.
-
-## SEO
-
-The SEO group controls page-level metadata. This group is hidden when Bricks SEO output is disabled globally.
-
-| Setting | What it does |
-| --- | --- |
-| Permalink | Updates the post slug. Use lowercase words separated by dashes. |
-| Title | Updates the WordPress post title after applying the change. |
-| Document title | Sets the frontend SEO title without changing the WordPress post title. |
-| Meta description | Prints a page-level meta description. |
-| Meta keywords | Prints page-level meta keywords. |
-| Meta robots | Prints robots directives such as `noindex` or `nofollow`. |
-
-Use **Save new title/permalink** after changing the post title or permalink in the SEO group. Other page settings are saved through the normal builder save flow.
-
-If you use a dedicated SEO plugin, decide which tool owns the metadata. Avoid setting competing metadata in multiple places.
-
-## Social media
-
-The Social media group controls Open Graph style sharing data for the current URL. This group is hidden when Bricks Open Graph output is disabled globally.
-
-| Setting | Default when empty |
-| --- | --- |
-| Title | The post/page title. |
-| Description | The post/page excerpt. |
-| Image | The featured image. |
-
-Use this group when a page needs a social title, description, or image that differs from its normal SEO data.
-
-## Custom Code
-
-The Custom Code group adds page-specific CSS and scripts.
-
-| Setting | Output location |
-| --- | --- |
-| Custom CSS | Inline CSS in the document `<head>`. Supports breakpoint-specific values. |
-| Header scripts | Before the closing `</head>` tag. |
-| Body (header) scripts | Immediately after the opening `<body>` tag. |
-| Body (footer) scripts | Before the closing `</body>` tag. |
-
-Script fields are shown only to users who are allowed to add unfiltered HTML. Users without that capability see an informational notice instead.
-
-Use page-level code sparingly. Prefer element settings, classes, Theme Styles, global settings, or properly enqueued code when the behavior should be reused across the site.
-
-## Common mistakes
-
-- **Changing SEO title but not applying it:** Use **Save new title/permalink** for title and slug changes.
-- **Expecting header/footer disable to affect templates globally:** These settings affect only the current page render.
-- **Using duplicate IDs for One Page Navigation:** Give repeated root elements unique IDs, especially inside query loops.
-- **Testing scroll snap only in the builder:** Always test on the frontend.
-- **Adding scripts without the right capability:** Script fields require permission to add unfiltered HTML.
-- **Using page code for reusable behavior:** Page Custom Code is local to the current page. Use global settings or enqueue code for site-wide behavior.
-
----
-
 # Review Links
 
 Source: https://academy.bricksbuilder.io/builder/interface/review-links/
@@ -596,6 +596,106 @@ If you are editing a Bricks page draft, its **Publish** action first reviews and
 
 ---
 
+# Site Versions
+
+Source: https://academy.bricksbuilder.io/builder/interface/site-versions/
+
+*Work on several Bricks pages and shared styles in a named version, review the changes, and publish them together.*
+
+A site version holds a named set of changes across several pages, templates, and shared styles. Use one for work such as a new service offering that changes the homepage, service pages, and their shared components.
+
+Site versions are available in Bricks 2.5 through the experimental [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) feature. Enable **Bricks > Settings > Builder > Drafts > Enable drafts** first. It is disabled by default.
+
+You need Builder access and the WordPress permission to edit other users' posts to create and edit site versions. Your permissions for individual pages, templates, and global resources still apply.
+
+## Create a site version {#create}
+
+1. Open a page in the Builder.
+2. Open the version menu just before **Save**. It shows **Live**, **Draft**, or the name of the site version you are editing.
+3. Choose **New site version…**.
+4. Enter a name, such as `Autumn services`.
+5. If you have a draft or site version open, use **Start from** to keep that source or choose **Live**.
+6. Click **Create**. Bricks opens the new site version on the current page.
+
+When starting from the open draft or version, Bricks saves its pending edits before copying its saved changes. Starting from **Live** uses saved live data. It does not include unsaved edits on the live canvas. Save those edits first, or put them in a [page draft](https://academy.bricksbuilder.io/builder/interface/drafts/) and create the site version from that draft.
+
+A new version can start with no changes. It does not copy and freeze the whole site: items you have not changed continue to follow live data.
+
+![Creating Autumn services from the open page draft in the Versions dialog.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/site-version-create.webp)
+
+## Work across pages {#work-across-pages}
+
+The toolbar shows the site's version name while you edit it. **Save** writes changes in that context. Open another page through the Builder's page navigation to continue in the same site version. Pending edits are saved before leaving the current page.
+
+Use the version menu to switch between **Live**, this page's **Draft** when one exists, and the available site versions. The checkmark marks the version open in the Builder. Switching from a draft or version saves pending changes first; switching away from unsaved live edits asks for confirmation.
+
+A page draft belongs to one page and its templates. A site version can hold changes from several pages. See [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) for the shared editing rules.
+
+### What stays in the version
+
+Page and template changes stay in the version until you publish them. Changes to shared items already used by live content, such as a card component or a global class, also stay there. Theme Styles, breakpoints, and Style Manager changes are held for publishing.
+
+Reusable items that do not affect live content become available across the site immediately. For example, a new class is available on other pages and templates as you work, without publishing the version. Changes to a class already used by live pages stay in the version until publication. See the [shared-data rules](https://academy.bricksbuilder.io/builder/interface/drafts/#shared-data) for details, including custom CSS that affects other elements.
+
+Media Library changes and personal Builder preferences remain shared too. Save notices identify items shared immediately; the version's **Changes** list shows work still held for publication.
+
+Untouched items keep following the live site. If someone updates a different component while you work, that update remains visible in your version. Publishing a shared style updates every live page using it, including pages you did not edit in this version.
+
+## Manage versions {#manage}
+
+Open the version menu and choose **Manage versions…**. The **Versions** dialog also lists page drafts that you have permission to edit.
+
+The left side contains the creation form and the version list, with page/shared-change counts. Select a name to inspect it on the right. Selecting a row does not switch the Builder into that version, and does not change the source used by **Start from** when creating another version.
+
+The right side contains the selected version's name, owner, update time, actions, **Changes**, and [Review links](https://academy.bricksbuilder.io/builder/interface/review-links/) when enabled. Save your current work before checking this overview; it lists saved changes.
+
+![The split Versions dialog with drafts and named versions on the left, and saved changes and review-link settings on the right.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/site-versions-manager.webp)
+
+| Action | What it does |
+| --- | --- |
+| **Rename** (pencil) | Edit the selected version's name. Press Enter or leave the field to save; Escape cancels. |
+| **Open** | Edit the selected version. A site version opens on the page currently in the Builder. A page draft for another page opens that page. |
+| **Compare** | Open a comparison with live over the Builder. For the page you're editing, use **Compare with live** in its version menu. |
+| **Preview** | Open the saved version's frontend preview in a new tab. An editor needs permission to view it; use a review link for someone without a login. |
+| **Discard version** (trash) | Confirm deletion of the selected version's unpublished changes. It does not undo changes that already went live. |
+
+**Open** is available when the selected version is not already open in the Builder.
+
+**Changes** groups the work under **Pages and templates** and **Shared styles**. It includes available before/after values, such as color swatches. Longer groups show eight changes initially; use **Show all** to expand them. Items already matching live are omitted.
+
+For comparisons, responsive preview widths, and trying several designs, see [Explore Alternatives and Compare](https://academy.bricksbuilder.io/builder/interface/explore-alternatives/).
+
+## Publish a site version {#publish}
+
+Open the site version you want to publish, then click **Publish** beside the version menu. On narrower screens, choose **Publish version…** from the menu instead.
+
+1. Bricks saves pending changes into the version and opens the publish review.
+2. Review **Pages and templates** and **Shared styles**. Check the reach of shared changes before continuing.
+3. If live content also changed, resolve each conflict with **Your draft** or **The live version**. Page-content conflicts can offer choices for individual elements; independent element changes can be combined.
+4. Click **Publish version** and wait for confirmation.
+
+If the version changes again after you review it, Bricks asks you to review the updated work before publishing.
+
+![Publish version review for Autumn services with Your draft and The live version choices for a changed global class.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/site-version-publish.webp)
+
+After publishing, the Builder returns to **Live**. The named site version remains available for more work; changes that were published or settled by keeping live are removed from it. Open it again from the version menu to continue. Existing review links are turned off when publishing succeeds, so create fresh links for any later review.
+
+### Undo a publish
+
+When a publish changes live content, Bricks creates an undo point. Click **Undo** in the published message, or open **Manage versions… > Undo a publish** and confirm **Undo** for the relevant publish. Save or discard unsaved live edits before undoing.
+
+Undo points are kept for 30 days by default. This cleanup period can be changed with [`bricks/drafts/keep_days`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-drafts-keep_days/). Active editable versions are not removed by that age limit.
+
+Undo points restore the affected live data from before that publish. They are separate from editable site versions. For recovering one shared item without undoing a whole publish, use [Global Data History](https://academy.bricksbuilder.io/builder/interface/global-data-history/).
+
+## Discard a version {#discard}
+
+Open the version and click **Discard**, or select it under **Manage versions…** and use the trash icon. Confirm **Discard version**. If it was open in the Builder, Bricks returns you to Live.
+
+Discarding removes the version's unpublished work and stops its review links. It keeps changes already shared live. When discarding from the toolbar, Bricks can offer **Discard, keep them** or **Discard and delete them** for new shared items that no page, live style, or other open draft uses.
+
+---
+
 # Structure Panel Search and Filters
 
 Source: https://academy.bricksbuilder.io/builder/interface/structure-panel-search/
@@ -709,106 +809,6 @@ Click a selected filter to turn it off. The **×** badge on the funnel button cl
 Clear the search text and all filters to restore the full tree and its previous expanded and collapsed branches. Drag and drop and **Expand/collapse all** are unavailable while search or filters are active.
 
 Search follows the tree for the current editing context. On a page, component instances expose their slots and assigned slot content; open the main component to search its internal elements. Search and filters reset when you enter or leave component editing or navigate to another page in the builder.
-
----
-
-# Site Versions
-
-Source: https://academy.bricksbuilder.io/builder/interface/site-versions/
-
-*Work on several Bricks pages and shared styles in a named version, review the changes, and publish them together.*
-
-A site version holds a named set of changes across several pages, templates, and shared styles. Use one for work such as a new service offering that changes the homepage, service pages, and their shared components.
-
-Site versions are available in Bricks 2.5 through the experimental [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) feature. Enable **Bricks > Settings > Builder > Drafts > Enable drafts** first. It is disabled by default.
-
-You need Builder access and the WordPress permission to edit other users' posts to create and edit site versions. Your permissions for individual pages, templates, and global resources still apply.
-
-## Create a site version {#create}
-
-1. Open a page in the Builder.
-2. Open the version menu just before **Save**. It shows **Live**, **Draft**, or the name of the site version you are editing.
-3. Choose **New site version…**.
-4. Enter a name, such as `Autumn services`.
-5. If you have a draft or site version open, use **Start from** to keep that source or choose **Live**.
-6. Click **Create**. Bricks opens the new site version on the current page.
-
-When starting from the open draft or version, Bricks saves its pending edits before copying its saved changes. Starting from **Live** uses saved live data. It does not include unsaved edits on the live canvas. Save those edits first, or put them in a [page draft](https://academy.bricksbuilder.io/builder/interface/drafts/) and create the site version from that draft.
-
-A new version can start with no changes. It does not copy and freeze the whole site: items you have not changed continue to follow live data.
-
-![Creating Autumn services from the open page draft in the Versions dialog.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/site-version-create.webp)
-
-## Work across pages {#work-across-pages}
-
-The toolbar shows the site's version name while you edit it. **Save** writes changes in that context. Open another page through the Builder's page navigation to continue in the same site version. Pending edits are saved before leaving the current page.
-
-Use the version menu to switch between **Live**, this page's **Draft** when one exists, and the available site versions. The checkmark marks the version open in the Builder. Switching from a draft or version saves pending changes first; switching away from unsaved live edits asks for confirmation.
-
-A page draft belongs to one page and its templates. A site version can hold changes from several pages. See [Drafts](https://academy.bricksbuilder.io/builder/interface/drafts/) for the shared editing rules.
-
-### What stays in the version
-
-Page and template changes stay in the version until you publish them. Changes to shared items already used by live content, such as a card component or a global class, also stay there. Theme Styles, breakpoints, and Style Manager changes are held for publishing.
-
-Reusable items that do not affect live content become available across the site immediately. For example, a new class is available on other pages and templates as you work, without publishing the version. Changes to a class already used by live pages stay in the version until publication. See the [shared-data rules](https://academy.bricksbuilder.io/builder/interface/drafts/#shared-data) for details, including custom CSS that affects other elements.
-
-Media Library changes and personal Builder preferences remain shared too. Save notices identify items shared immediately; the version's **Changes** list shows work still held for publication.
-
-Untouched items keep following the live site. If someone updates a different component while you work, that update remains visible in your version. Publishing a shared style updates every live page using it, including pages you did not edit in this version.
-
-## Manage versions {#manage}
-
-Open the version menu and choose **Manage versions…**. The **Versions** dialog also lists page drafts that you have permission to edit.
-
-The left side contains the creation form and the version list, with page/shared-change counts. Select a name to inspect it on the right. Selecting a row does not switch the Builder into that version, and does not change the source used by **Start from** when creating another version.
-
-The right side contains the selected version's name, owner, update time, actions, **Changes**, and [Review links](https://academy.bricksbuilder.io/builder/interface/review-links/) when enabled. Save your current work before checking this overview; it lists saved changes.
-
-![The split Versions dialog with drafts and named versions on the left, and saved changes and review-link settings on the right.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/site-versions-manager.webp)
-
-| Action | What it does |
-| --- | --- |
-| **Rename** (pencil) | Edit the selected version's name. Press Enter or leave the field to save; Escape cancels. |
-| **Open** | Edit the selected version. A site version opens on the page currently in the Builder. A page draft for another page opens that page. |
-| **Compare** | Open a comparison with live over the Builder. For the page you're editing, use **Compare with live** in its version menu. |
-| **Preview** | Open the saved version's frontend preview in a new tab. An editor needs permission to view it; use a review link for someone without a login. |
-| **Discard version** (trash) | Confirm deletion of the selected version's unpublished changes. It does not undo changes that already went live. |
-
-**Open** is available when the selected version is not already open in the Builder.
-
-**Changes** groups the work under **Pages and templates** and **Shared styles**. It includes available before/after values, such as color swatches. Longer groups show eight changes initially; use **Show all** to expand them. Items already matching live are omitted.
-
-For comparisons, responsive preview widths, and trying several designs, see [Explore Alternatives and Compare](https://academy.bricksbuilder.io/builder/interface/explore-alternatives/).
-
-## Publish a site version {#publish}
-
-Open the site version you want to publish, then click **Publish** beside the version menu. On narrower screens, choose **Publish version…** from the menu instead.
-
-1. Bricks saves pending changes into the version and opens the publish review.
-2. Review **Pages and templates** and **Shared styles**. Check the reach of shared changes before continuing.
-3. If live content also changed, resolve each conflict with **Your draft** or **The live version**. Page-content conflicts can offer choices for individual elements; independent element changes can be combined.
-4. Click **Publish version** and wait for confirmation.
-
-If the version changes again after you review it, Bricks asks you to review the updated work before publishing.
-
-![Publish version review for Autumn services with Your draft and The live version choices for a changed global class.](https://academy.bricksbuilder.io/assets/builder/drafts-and-versions/site-version-publish.webp)
-
-After publishing, the Builder returns to **Live**. The named site version remains available for more work; changes that were published or settled by keeping live are removed from it. Open it again from the version menu to continue. Existing review links are turned off when publishing succeeds, so create fresh links for any later review.
-
-### Undo a publish
-
-When a publish changes live content, Bricks creates an undo point. Click **Undo** in the published message, or open **Manage versions… > Undo a publish** and confirm **Undo** for the relevant publish. Save or discard unsaved live edits before undoing.
-
-Undo points are kept for 30 days by default. This cleanup period can be changed with [`bricks/drafts/keep_days`](https://academy.bricksbuilder.io/developer/hooks/filters/bricks-drafts-keep_days/). Active editable versions are not removed by that age limit.
-
-Undo points restore the affected live data from before that publish. They are separate from editable site versions. For recovering one shared item without undoing a whole publish, use [Global Data History](https://academy.bricksbuilder.io/builder/interface/global-data-history/).
-
-## Discard a version {#discard}
-
-Open the version and click **Discard**, or select it under **Manage versions…** and use the trash icon. Confirm **Discard version**. If it was open in the Builder, Bricks returns you to Live.
-
-Discarding removes the version's unpublished work and stops its review links. It keeps changes already shared live. When discarding from the toolbar, Bricks can offer **Discard, keep them** or **Discard and delete them** for new shared items that no page, live style, or other open draft uses.
 
 ---
 

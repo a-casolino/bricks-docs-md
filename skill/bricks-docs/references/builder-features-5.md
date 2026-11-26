@@ -1,3 +1,767 @@
+# Popup Builder
+
+Source: https://academy.bricksbuilder.io/builder/features/popup-builder/
+
+*Build popups in Bricks with popup templates, template conditions, popup settings, interactions, limits, AJAX rendering, looping context, JavaScript helpers, and popup events.*
+
+The Popup Builder lets you create fully custom popups in Bricks. A popup is a Bricks template with the template type **Popup**. Bricks renders the popup HTML on the front end, keeps it hidden by default, and opens or closes it through [Interactions](https://academy.bricksbuilder.io/builder/features/interactions/) or JavaScript.
+
+Use popups for modals, newsletter forms, exit-intent offers, quick views, map info boxes, and contextual content in query loops.
+
+https://youtu.be/R9isNzCSO_A
+
+## Create a popup template {#create-popup-template}
+
+Create a new template and choose the **Popup** template type.
+
+![](https://academy.bricksbuilder.io/assets/popup-template-type.png)
+
+Save the template, then edit it with Bricks.
+
+Popup templates look different from normal page templates:
+
+- The canvas shows only the popup: the content box in the middle, over the dimmed backdrop.
+- Template Settings includes a **Popup** group next to **Conditions** and **Populate Content**.
+
+![](https://academy.bricksbuilder.io/assets/popup-template-type-screen.png)
+
+Build the popup body like any other Bricks layout: add sections, containers, forms, buttons, icons, images, or dynamic data to the canvas.
+
+## Popup availability and template conditions {#popup-template-conditions}
+
+Template conditions decide where Bricks renders a popup template. Open **Settings > Template Settings > Conditions** and choose the pages where the popup should be available.
+
+![](https://academy.bricksbuilder.io/assets/popup-condition.png)
+
+For example, a newsletter popup that can open from the global footer usually needs a condition such as Entire website. A product quick-view popup may only need to be available on shop or product archive pages.
+
+If a popup is not rendered on the current page, an interaction cannot open it because there is no popup element in the DOM. If a page has **Disable popups** enabled in Page Settings, Bricks does not render page popups.
+
+You can render multiple popup templates on the same page.
+
+## Popup settings {#popup-settings}
+
+Popup-specific settings are under **Settings > Template Settings > Popup**.
+
+![](https://academy.bricksbuilder.io/assets/popup-settings.png)
+
+Theme Styles also have a Popup control group for site-wide defaults. It covers the popup's styling, the backdrop, the content box and the breakpoint display. Behavior settings such as **Close on**, AJAX and the popup limit are only available in the template settings of each popup.
+
+The main popup settings include:
+
+- **Padding**: padding on the popup wrapper.
+- **Align main axis** and **Align cross axis**: position the popup content inside the viewport.
+- **Close on**: by default (placeholder **Backdrop & ESC**), a click on the backdrop and the ESC key both close the popup. Choose **Backdrop (Click)**, **ESC (Key)**, or **None** to change that.
+- **Z-index**: controls popup stacking.
+- **Scroll (body)**: allow the page body to scroll while the popup is open. If disabled, Bricks adds `no-scroll` to the body while the popup is open.
+- **Scroll to top**: scroll popup content to the top when opening.
+- **Disable auto focus**: prevent Bricks from focusing the first focusable element inside the popup.
+- **Disable auto focus on close**: prevent Bricks from moving focus back to the element that was focused before the popup opened.
+- **Info Box (Map)**: use this popup template as the info box of a map element.
+- **Fetch content via AJAX**: render popup content on demand instead of in the initial DOM.
+- **AJAX loader**: choose a loader animation and optional selector, color, and scale for AJAX popups.
+- **Breakpoints**: choose where the popup is allowed to display.
+- **Backdrop**: **Disable backdrop**, the backdrop **Background**, and its **Transition**.
+- **Content**: style the `.brx-popup-content` wrapper.
+- **Popup limit**: restrict how often the popup can open.
+
+On the front end, Bricks traps keyboard focus inside open popups, restores focus after closing, supports ESC/backdrop closing according to the **Close on** setting, and emits popup JavaScript events.
+
+> **Note**
+>
+> Clicking outside the popup or pressing ESC only closes the popup if the **Close on** setting includes that behavior. If you set Close on to None, add your own close interaction or JavaScript.
+
+## Popup interactions {#popup-interactions}
+
+Further down the popup settings panel, the **Interactions** group lets the popup react to events. Popup template interactions use the same interaction system as elements, plus two popup-specific triggers:
+
+- **Show popup**: runs after this popup opens.
+- **Hide popup**: runs after this popup closes.
+
+Use these triggers when the popup itself should run follow-up actions, such as starting an animation, setting storage, or updating another element after the popup has opened or closed.
+
+> **Note**
+>
+> For **Hide popup**, target a CSS selector rather than the popup directly. The trigger runs after the popup has already closed.
+
+Most popups are opened by an interaction on another element. For example, add a Click interaction to a Button, set **Target** to Popup, select the popup template, and use **Show element**.
+
+A common automatic popup uses **Content loaded**:
+
+![](https://academy.bricksbuilder.io/assets/bricks-popup-builder-interaction-content-loaded-465x1024.png)
+
+If no popup interaction exists on the popup itself and no other element interaction opens the popup, the popup stays hidden.
+
+## Popup open and close lifecycle {#popup-lifecycle}
+
+When Bricks opens a popup, it follows this front-end flow:
+
+1. Resolve the popup element by template ID or element node.
+2. Check popup limits.
+3. Check popup breakpoint rules.
+4. Remove the `hide` class.
+5. Add `no-scroll` to the body unless body scroll is allowed.
+6. Fetch AJAX popup content if the popup is configured for AJAX.
+7. Insert AJAX content into `.brx-popup-content`, if content was fetched.
+8. Emit `bricks/ajax/popup/loaded`, only for AJAX content that was inserted.
+9. Emit `bricks/popup/open`.
+10. Increment the popup counters.
+
+When Bricks closes a popup, it adds the `hide` class, removes `no-scroll` from the body if no other non-body-scroll popup is open, and emits `bricks/popup/close`.
+
+This lifecycle matters for custom code:
+
+- Listen to `bricks/ajax/popup/loaded` when you need newly fetched AJAX popup DOM to exist.
+- Listen to `bricks/popup/open` when you need the popup to be open.
+- Listen to `bricks/popup/close` when you need cleanup after close.
+
+## Popup limit {#limit}
+
+By default, a popup can open every time it is triggered. Use **Settings > Template Settings > Popup > Popup limit** to restrict how often it opens.
+
+Bricks checks limits before opening the popup. Once a limit is reached, the popup does not open and the open event is not emitted.
+
+The limit applies to every way of opening the popup: an automatic trigger, a click on a button, or `bricksOpenPopup()`. Use limits for popups that open on their own. A popup that a visitor opens with a button stops opening once its limit is reached.
+
+There are four popup limit controls:
+
+| Limit type | Browser storage | Description |
+| --- | --- | --- |
+| Per page load | `window.brx_popup_{id}_total` | Resets after the page reloads. |
+| Per session | `sessionStorage.brx_popup_{id}_total` | Resets when the browser session/tab storage is cleared. |
+| Across sessions | `localStorage.brx_popup_{id}_total` | Persists until local storage is cleared. |
+| Show again after .. hours | `localStorage.brx_popup_{id}_lastShown` | Stores the last shown timestamp and waits the configured number of hours before allowing another open. |
+
+![](https://academy.bricksbuilder.io/assets/bricks-1.6-popup-limit.png)
+
+The page-load, session, and across-session counters increment each time the popup is successfully opened. The hour-based setting stores the last shown timestamp when the popup passes its limit check.
+
+## Popup breakpoints {#popup-breakpoints}
+
+Popup breakpoint settings control whether a popup is allowed to display at the current viewport width.
+
+Bricks supports two modes:
+
+- **Start display at breakpoint**: show the popup at or above the selected breakpoint width.
+- **Display on breakpoints**: show the popup only inside the selected breakpoint ranges.
+
+If the current viewport does not match the popup breakpoint rule, Bricks does not open the popup.
+
+## Closing a popup {#closing-popup}
+
+You can close a popup in several ways:
+
+- Use the popup **Close on** setting for backdrop click and/or ESC.
+- Add a close icon or button inside the popup and give it a Hide element interaction targeting the popup.
+- Use a reusable close element that targets `.brx-popup`.
+- Call `bricksClosePopup()` from JavaScript.
+
+### Example: Add popup close icon {#example-close-icon}
+
+Add an Icon element to your popup. Set its cursor to pointer under **Styles > Layout > Misc**.
+
+> **Tip**
+>
+> An icon can't be reached with the keyboard. To make the close control keyboard accessible, use a Button element instead and set its **HTML tag** to `button`. Without a link, a Button element renders as a `span` by default.
+
+Open the Icon element's Interactions panel and add:
+
+- Trigger: Click
+- Target: Popup
+- Popup: the current popup
+- Action: Hide element
+
+![](https://academy.bricksbuilder.io/assets/popup-close-icon-interaction.png)
+
+If you want to reuse the same close icon in different popups, create it as a [Component](https://academy.bricksbuilder.io/builder/features/components/). Then use:
+
+- Target: CSS selector
+- CSS selector: `.brx-popup`
+- Action: Hide element
+
+![](https://academy.bricksbuilder.io/assets/popup-global-close-icon-interaction.png)
+
+## JavaScript helper functions and events {#events-functions}
+
+Bricks exposes popup helper functions and custom events on the front end.
+
+### Open or close a popup via JavaScript {#popup-js-functions}
+
+Use `bricksOpenPopup` and `bricksClosePopup` to open or close Bricks popups.
+
+Both functions accept a popup template ID or a popup element node:
+
+```php
+bricksOpenPopup(3321)
+bricksClosePopup(3321)
+```
+
+```php
+const popup = document.querySelector('.brx-popup[data-popup-id="3321"]')
+
+bricksOpenPopup(popup)
+bricksClosePopup(popup)
+```
+
+### Example: Open popup by selector {#open-popup-by-selector}
+
+```php
+document.querySelectorAll('.brxe-heading, .my-custom-selector').forEach((el) => {
+  el.addEventListener('click', () => {
+    bricksOpenPopup(3321)
+  })
+})
+```
+
+### Listen to popup open or close events {#popup-js-events}
+
+Use `bricks/popup/open` and `bricks/popup/close` to run code when a popup opens or closes.
+
+<span id="bricks-popup-open-close-code"></span>
+
+```php
+document.addEventListener('bricks/popup/open', (event) => {
+  const popupId = event.detail.popupId
+  const popupElement = event.detail.popupElement
+
+  if (popupId == 3321) {
+    console.log('3321 popup is opened')
+  }
+})
+
+document.addEventListener('bricks/popup/close', (event) => {
+  const popupId = event.detail.popupId
+  const popupElement = event.detail.popupElement
+
+  if (popupId == 3321) {
+    console.log('3321 popup is closed')
+  }
+})
+```
+
+Use `event.detail.popupId` and `event.detail.popupElement`. The property is `detail`, not `details`.
+
+## Popup inside query loop {#query-loop}
+
+You can add a popup inside a query loop with the **Template** element. Inside the popup template, dynamic data can reference the current loop item.
+
+The example below shows a Quick View button inside a product query loop. The button uses an interaction to show the selected Quick View popup.
+
+![](https://academy.bricksbuilder.io/assets/bricks-1.6-popup-inside-query-loop-1024x403.jpg)
+
+For Bricks 1.7.1 and newer, Bricks can build loop-specific popup HTML for query loop popups. For older versions, do not set the interaction on the Query Loop div itself; set it on an element inside the loop item.
+
+![](https://academy.bricksbuilder.io/assets/query-loop-popup-template-interaction-structure.png)
+
+<figcaption>
+
+Example layout structure to trigger a looping popup for Bricks versions earlier than 1.7.1
+
+</figcaption>
+
+### Example: Open a looping popup by query element ID and loop index {#open-looping-popup-by-query-element-id-and-loop-index}
+
+If a looping popup is already rendered on the page, you can target it by its query element ID and loop index:
+
+```php
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    const queryId = 'vfiqrn'
+    const targetPopup = document.querySelector(
+      `.brx-popup[data-popup-loop="${queryId}"][data-popup-loop-index="7"]`
+    )
+
+    bricksOpenPopup(targetPopup)
+  }, 200)
+})
+```
+
+The small delay is useful in custom code elements because it gives Bricks frontend globals and popup markup time to initialize.
+
+## AJAX popup {#ajax}
+
+AJAX popups were introduced in Bricks 1.9.4. Enable **Fetch content via AJAX** when you want Bricks to keep the initial DOM lighter and fetch popup content only when the popup opens.
+
+This is especially useful for popups inside query loops, where rendering every popup's full content on initial page load can be expensive.
+
+![](https://academy.bricksbuilder.io/assets/ajax-popup-controls-in-popup-template.png)
+
+When AJAX is enabled:
+
+- The popup wrapper is rendered on the page.
+- `.brx-popup-content` starts empty outside the builder preview.
+- Bricks fetches the content from the REST endpoint when the popup opens.
+- Returned HTML and dynamic CSS are inserted into `.brx-popup-content`.
+- Additional nested popup HTML can be appended to the body if the AJAX content contains looping AJAX popups.
+
+AJAX popup rendering supports post, term, and user context. Dynamic data that does not have a stable object ID, such as some repeater rows, cannot always be resolved as an AJAX popup context.
+
+### Query loops inside AJAX popups (since 2.5) {#ajax-query-loops}
+
+Query loops inside an AJAX popup support **Load more**, **Infinite scroll** and AJAX pagination. Pagination links point to the page that opened the popup, not to the popup request, and query filters inside the popup keep working. The selected page is restored when the popup is reopened or the page is reloaded.
+
+Each popup query keeps its own post, term, or user context instead of inheriting the context of the page that opened it.
+
+### AJAX popup context settings {#ajax-context-settings}
+
+When an interaction opens a popup, Bricks exposes context controls for AJAX popups:
+
+![](https://academy.bricksbuilder.io/assets/context-controls-in-interactions-ui.png)
+
+Bricks tries to infer the current context automatically. Inside normal post, term, and user loops, this often works. In nested query loops, component instances, custom field repeaters, or more complex dynamic data setups, automatic context can be wrong or unavailable.
+
+Use these fields when dynamic data in the AJAX popup renders empty or from the wrong object:
+
+- **Context type**: Post, Term, or User.
+- **Context ID**: the object ID to render dynamic data against.
+
+You can use dynamic data such as `{post_id}`, `{term_id}`, or a custom field value that resolves to a post, term, or user ID.
+
+![](https://academy.bricksbuilder.io/assets/example-for-woo-product-quick-view-setup.png)
+
+<figcaption>
+
+A looping product quick-view popup structure in Bricks
+
+</figcaption>
+
+> **Note**
+>
+> Do not use a repeater row number as popup context. AJAX popup context expects an object Bricks can resolve, such as a post, term, or user.
+
+### Open an AJAX popup with context in JavaScript {#open-ajax-popup}
+
+Since Bricks 1.9.4, `bricksOpenPopup` accepts three parameters:
+
+- `object`: popup ID or popup element node.
+- `timeout`: timeout in milliseconds used by popup animation/counter logic.
+- `additionalParams`: AJAX popup context data.
+
+```php
+bricksOpenPopup(
+  1190,
+  0,
+  {
+    popupContextId: 668,
+    popupContextType: 'post'
+  }
+)
+
+bricksOpenPopup(
+  2350,
+  0,
+  {
+    popupContextId: 39,
+    popupContextType: 'term'
+  }
+)
+```
+
+For users, the Interactions panel usually handles these parameters. Use JavaScript when you are opening popups from custom scripts.
+
+### AJAX popup events {#ajax-events}
+
+AJAX popups emit three AJAX-specific events:
+
+- `bricks/ajax/popup/start`: emitted before the AJAX popup request is made.
+- `bricks/ajax/popup/end`: emitted after the AJAX popup request finishes.
+- `bricks/ajax/popup/loaded`: emitted after fetched popup content is inserted into the DOM.
+
+Each event uses `event.detail.popupId` and `event.detail.popupElement`.
+
+```php
+document.addEventListener('bricks/ajax/popup/loaded', (event) => {
+  const popupId = event.detail.popupId
+  const popupElement = event.detail.popupElement
+
+  if (popupId == 3321) {
+    console.log('3321 AJAX popup content DOM loaded')
+  }
+})
+```
+
+The AJAX popup open sequence is:
+
+1. `bricks/ajax/popup/start`
+2. `bricks/ajax/popup/end`
+3. `bricks/ajax/popup/loaded`
+4. `bricks/popup/open`
+
+`bricks/ajax/popup/loaded` only fires when AJAX content is inserted. Non-AJAX popups emit `bricks/popup/open` directly after opening.
+
+## Popup setup examples {#popup-setup-examples}
+
+### Example: Show popup when the mouse leaves the browser window {#example-mouse-leaves}
+
+After creating the popup template and layout, open **Settings > Template Settings > Popup**, scroll to Interactions, and add a **Mouse leave window** interaction that shows the popup.
+
+![](https://academy.bricksbuilder.io/assets/popup-builder-mouse-leave-open.png)
+
+For a real exit-intent popup, combine this with popup limits or browser storage conditions so the popup does not appear too often.
+
+### Example: Show popup before a date/time {#example-date-time}
+
+Template conditions decide where the popup template is available. Element Conditions can decide whether the popup content renders.
+
+To show a popup only before a specific date, add an [Element Condition](https://academy.bricksbuilder.io/builder/features/element-conditions/) to the outermost popup element.
+
+![](https://academy.bricksbuilder.io/assets/bricks-popup-builder-element-conditions-1536x624.png)
+
+If that condition is not fulfilled, Bricks does not render the popup content and skips the popup HTML. A trigger that targets that popup has no popup element to open on the page.
+
+### Example: Use popup open/close as triggers {#example-popup-open-close-trigger}
+
+Popup template interactions can react after the popup opens or closes.
+
+For example:
+
+1. Open **Settings > Template Settings > Popup > Interactions**.
+2. Add a **Show popup** trigger.
+3. Set the action to Browser storage: Count.
+4. Store a key such as `newsletter_popup_opened`.
+
+You can then use interaction conditions elsewhere to check that key and adjust page behavior.
+
+---
+
+# Remote Components
+
+Source: https://academy.bricksbuilder.io/builder/features/remote-components/
+
+*Share Bricks components between sites, review their dependencies, and import updates from the Component Manager.*
+
+Remote Components let one Bricks site expose selected components and another Bricks site import them from the Component Manager. Use this for component libraries that you maintain across client sites, staging sites, or related projects.
+
+Remote Components are available in Bricks 2.4. Both sites need Bricks 2.4 or later for remote component browsing and dependency-complete imports.
+
+A remote import creates a local component. It does not keep a live connection to the source site, but Bricks records where the component came from so a later import can detect and apply source changes.
+
+## Before You Start
+
+You need:
+
+- A **source site** that contains the components you want to share.
+- A **destination site** where you want to import them.
+- A non-Plain WordPress permalink structure on the source site.
+- Permission to configure Bricks settings on both sites.
+- The required [builder permissions](#permissions) for the user importing the component.
+
+## 1. Expose Components on the Source Site
+
+On the source site:
+
+1. Go to **Bricks > Settings > Templates & components**.
+2. Under **My components**, enable **My components access**.
+3. If needed, choose components under **Exclude components**.
+4. Configure the shared **Remote access** controls.
+5. Save the settings.
+
+![Remote component access and shared remote access settings in Bricks](https://academy.bricksbuilder.io/assets/remote-components-source-access-settings.webp)
+
+### Exclude Components
+
+Components selected under **Exclude components** do not appear in the remote catalog.
+
+Bricks also blocks the import of any component that depends on an excluded component. For example, if a Card component contains an excluded Button component, the Card may appear in the catalog, but the destination site cannot import it until the Button is allowed or removed from the Card.
+
+### Restrict Remote Access
+
+The **Remote access** settings apply to both remote templates and remote components:
+
+- **Whitelist URLs** allows only the listed destination sites to connect. Enter one URL per line. Leave it empty to allow requests from any site that meets the other access requirements.
+- **Password protection** requires destination sites to send the same password. Use the password generator or enter your own value.
+
+Enabling **My components access** without a whitelist or password allows other Bricks sites that know the source URL to browse the exposed component catalog.
+
+## 2. Add the Source to the Destination Site
+
+On the destination site:
+
+1. Go to **Bricks > Settings > Templates & components**.
+2. Find **Remote libraries** and click **Add**.
+3. Enter the source site's full **URL**.
+4. Enter a **Name** to control how the source appears in the builder. This is optional.
+5. If the source uses password protection, enter its **Remote access** password.
+6. Save the settings.
+
+The same remote-library entry can provide templates, components, or both, depending on what the source site exposes.
+
+![A configured HappyFiles remote library on the destination Bricks site](https://academy.bricksbuilder.io/assets/remote-components-remote-library-settings.webp)
+
+## 3. Browse the Remote Component Library
+
+Open the builder, click the folder icon to open the [Builder Browser](https://academy.bricksbuilder.io/builder/features/builder-browser/), and select **Components**.
+
+Use the **Source** dropdown to switch from **My components** to a configured remote site. Remote libraries appear only when the current user has **Access remote components** permission.
+
+For a remote source, you can:
+
+- Search by component name.
+- Filter by category.
+- Switch between grid and list view.
+- Click **Refresh** to request the catalog again.
+- Click **Load more** when the catalog has additional pages.
+- View source-provided component thumbnails.
+
+![A HappyFiles remote component library open in the Bricks Builder Browser](https://academy.bricksbuilder.io/assets/remote-components-builder-browser.webp)
+
+If the source cannot be reached or does not support Remote Components, the Component Manager shows the returned source error instead of a component list.
+
+## 4. Review and Import a Component
+
+Click the import icon on a remote component. Bricks first inspects the package and opens a review for the component and any related design-system data.
+
+Save pending component, global class, global variable, and color changes before importing. Bricks blocks the import when these local changes are unsaved so it does not overwrite a newer in-memory design system with an older saved version.
+
+The review can include:
+
+- Nested components.
+- Global classes and their categories.
+- Global variables, their categories, and variables referenced by other variables.
+- Color palettes containing referenced colors.
+
+Matching local dependencies are skipped automatically. You can skip the Global classes, Global variables, or Color palettes step. The skipped group is not added. When you skip global classes, Bricks also removes those class assignments from the imported component. Review the component after using **Skip**.
+
+Referenced images hosted on the configured source site are downloaded to the destination Media Library when the importing user can upload files. Images from other hosts are left unchanged.
+
+![The Global classes step of the remote component import review](https://academy.bricksbuilder.io/assets/remote-components-import-review.webp)
+
+### Name Conflicts
+
+If an unrelated local component already has the same name, Bricks asks for a name for the imported component and suggests one based on the remote-source name. The local component is left unchanged.
+
+Nested components with conflicting names are renamed during the import. Their references are remapped to the imported local copies.
+
+### Previously Imported Components
+
+Bricks tracks each imported component by its remote source and remote component ID.
+
+- If the remote package is unchanged, Bricks reports that the component is already imported.
+- If the remote component or one of its nested components changed, the review marks the existing local copy for replacement.
+- Replacing a previously imported component keeps its local identity, so existing instances use the updated definition.
+
+Local components that merely share the same name are not treated as previous imports. Provenance, not the label, controls repeat-import behavior.
+
+After a successful import, Bricks returns to **My components**, refreshes the affected components and design-system data, and highlights the imported component.
+
+On a multisite installation configured to use main-site components, the import uses that shared component store instead of creating a separate child-site copy.
+
+Bricks validates the package before writing it and prevents concurrent remote imports. If an import fails after changes begin, Bricks restores the saved component and design-system data.
+
+## What Does Not Transfer Automatically
+
+The package includes the component graph and the referenced Bricks design-system data listed above. Some site-specific features need attention on the destination site.
+
+Bricks shows portability warnings when it detects items such as:
+
+- Query or Global Query settings.
+- Icons.
+- Executable code.
+- Dynamic data.
+- Custom fonts.
+- Element types that the destination site does not support.
+
+A warning does not always block the import. It tells you to verify the imported component against the destination site's plugins, content model, fonts, icon sets, queries, and code permissions.
+
+Code signatures from the source are not trusted. Bricks removes source signatures and runs imported code through the destination site's normal signing and code-permission flow. Users without code-execution permission receive redacted code-sensitive settings.
+
+### Missing Global Classes
+
+If a component references a global class ID that no longer exists on the source site, the review shows the missing ID and blocks the normal import.
+
+Fix the source component before trying again:
+
+1. Edit the component on the source site.
+2. Remove or replace the missing class reference.
+3. Save the component and design-system data.
+4. Refresh the remote library on the destination site.
+5. Import the component again.
+
+Skipping the Global classes step skips every class listed in that step, not only the missing class. Bricks removes those class assignments from the imported component.
+
+## Permissions
+
+Remote component operations combine separate [builder permissions](https://academy.bricksbuilder.io/builder/interface/builder-access/#components):
+
+| Task | Required permissions |
+| --- | --- |
+| See configured remote sources and browse their catalogs | **Access remote components** |
+| Import a component from a remote source | **Access remote components** and **Import/export components** |
+| Insert the imported local component onto a page | **Insert components** |
+| Insert a remote template that contains components | **Access remote templates**, **Insert templates**, **Access remote components**, **Import/export components**, and **Insert components** |
+| Save a remote template to My Templates when it contains components | **Access remote templates**, **Import/export templates**, **Access remote components**, and **Import/export components** |
+
+Administrators have full builder access. Other users need a custom builder capability with the permissions required for their workflow.
+
+## Troubleshooting
+
+### A Remote Site Is Missing From the Source Dropdown
+
+- Confirm the remote library is saved under **Bricks > Settings > Templates & components**.
+- Confirm the current user has **Access remote components** permission.
+- Reload the builder after saving the settings.
+
+### The Source Loads, but No Components Appear
+
+- Enable **My components access** on the source site.
+- Check whether the components are selected under **Exclude components**.
+- Confirm the destination URL matches the source whitelist exactly after URL normalization.
+- Confirm the destination has the current **Remote access** password.
+- Confirm both sites run Bricks 2.4 or later.
+
+### An Import Says the Component Depends on an Excluded Component
+
+Allow the nested dependency under **Exclude components**, or remove that nested component from the component you are sharing. Bricks will not create an incomplete component graph.
+
+### Bricks Asks You to Save Changes First
+
+Save the current component, class, variable, and color changes, then start the import again. If another import changed the saved design system while the review was open, inspect the component again to create a current import plan.
+
+For local component creation, properties, variants, slots, and instance behavior, see [Components](https://academy.bricksbuilder.io/builder/features/components/). For sharing templates between sites, see [Remote Templates](https://academy.bricksbuilder.io/builder/features/remote-templates/).
+
+---
+
+# Remote Templates
+
+Source: https://academy.bricksbuilder.io/builder/features/remote-templates/
+
+*Connect Bricks sites, browse shared template libraries, and transfer templates with their component dependencies.*
+
+Remote Templates let you browse and insert templates from another Bricks installation without exporting and importing files manually.
+
+The workflow has two sides:
+
+- The **source site** exposes selected templates through its remote library.
+- The **destination site** adds that site under **Remote libraries** and accesses its templates from the Builder Browser.
+
+## 1. Expose Templates on the Source Site
+
+On the site that contains the templates:
+
+1. Go to **Bricks > Settings > Templates & components**.
+2. Under **My templates**, enable **My templates access**.
+3. Use **Exclude templates** to hide any templates that should not be shared.
+4. Configure the shared **Remote access** controls.
+5. Save the settings.
+
+![Bricks Templates and components settings with My templates access enabled and Exclude templates visible](https://academy.bricksbuilder.io/assets/bricks-settings-remote-templates-access.webp)
+
+The **Remote access** settings apply to remote templates and remote components:
+
+- **Whitelist URLs** restricts access to the listed destination sites. Enter one URL per line.
+- **Password protection** requires destination sites to provide the same password.
+
+If both fields are empty, any Bricks site that knows the source URL can request the templates exposed by **My templates access**.
+
+The source site's WordPress permalink structure must not be set to **Plain**.
+
+![](https://academy.bricksbuilder.io/assets/permalink-structure-not-plain-type-for-remote-templates-01.png)
+
+## 2. Add a Remote Site on the Destination Site
+
+On the site where you want to use the templates:
+
+1. Go to **Bricks > Settings > Templates & components**.
+2. Under **Remote libraries**, click **Add**.
+3. Enter the source site's full **URL**.
+4. Optionally enter a **Name**. Bricks shows this instead of the URL in source dropdowns.
+5. Enter the source site's **Remote access** password, if it uses one.
+6. Save the settings.
+
+You can add multiple remote sites. The same entry can provide templates, components, or both.
+
+![Remote libraries settings with Name, URL, and Password fields](https://academy.bricksbuilder.io/assets/bricks-settings-remote-libraries.webp)
+
+## 3. Browse Remote Templates
+
+Open the builder, click the folder icon, and select **Templates** in the [Builder Browser](https://academy.bricksbuilder.io/builder/features/builder-browser/).
+
+Choose the remote site under **Source**. You can search the library, filter its templates, switch between grid and list view, and use **Reload** to request the source again.
+
+The current user needs **Access remote templates** permission to see configured remote sites.
+
+![Builder Browser Templates view with HappyFiles selected as the remote source](https://academy.bricksbuilder.io/assets/bricks-browser-remote-templates.webp)
+
+## Insert a Remote Template
+
+Click **Insert** to add the template to the current canvas. The **Replace content** control decides whether Bricks replaces the current canvas or adds the template to it.
+
+Use **Import images** to download eligible template and component images to the destination Media Library. Leave it disabled to use placeholder images where the normal template import flow supports them.
+
+When the remote template includes related design-system data, Bricks may open additional reviews for theme styles, color palettes, variables, global classes, or Style Manager settings.
+
+Remote code signatures are not trusted. Bricks removes source signatures, and users without code-execution permission do not receive executable Code, SVG, or custom-query settings from the remote template.
+
+### Templates That Use Components
+
+In Bricks 2.4 and later, inserting a remote template also requests the components used by that template. The dependency package includes nested components and their referenced global classes, variable categories and variables, and color palettes.
+
+Bricks remaps the template to the imported local component and design-system IDs before inserting it. Save pending component, class, variable, and color changes before starting the insert.
+
+If a component from this source was imported before and changed remotely, Bricks asks whether to replace the local component before inserting the template. Replacing it updates the existing local component definition and its instances.
+
+If the template depends on a component excluded from remote access on the source site, Bricks blocks the dependency package instead of inserting an incomplete component graph.
+
+## Import to Templates
+
+Click **Import to templates** on a non-local template to save it into **My Templates** instead of inserting it directly onto the current canvas.
+
+For a configured Bricks remote site, Bricks first localizes supported component and design-system dependencies, then passes the template through the regular template import flow. The current user needs **Import/export templates** permission.
+
+## Compatibility With Older Remote Sites
+
+Bricks 2.4 introduces a versioned remote-library package for templates with component dependencies.
+
+When a configured source does not support that package protocol, Bricks falls back to the legacy Remote Templates response. The template can still use the older insertion workflow, but the legacy response does not provide the dependency-complete component package. Update the source site before sharing templates that use components.
+
+## Permissions
+
+Remote template operations use separate builder permissions:
+
+| Task                                                                 | Required permissions                                                                                                     |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| See configured remote sites                                          | **Access remote templates**                                                                                              |
+| Insert a remote template without component dependencies              | **Access remote templates** and **Insert templates**                                                                     |
+| Save a remote template under My Templates                            | **Access remote templates** and **Import/export templates**                                                              |
+| Insert a remote template with component dependencies                 | The insert permissions above, plus **Access remote components**, **Import/export components**, and **Insert components** |
+| Import a remote template with component dependencies to My Templates | The template import permissions above, plus **Access remote components** and **Import/export components**                |
+
+See [Builder Access & Capabilities](https://academy.bricksbuilder.io/builder/interface/builder-access/) for assigning these permissions.
+
+## Fetching and Caching
+
+Bricks keeps fetched template data outside the WordPress database. Remote template data can be cached in the builder browser for up to seven days per source. Use **Reload** when you need the source again before that cache expires.
+
+Remote-library capability checks and component catalogs use shorter server-side caches. In the Component Manager, **Refresh** bypasses those short caches and requests the source again.
+
+## Troubleshooting
+
+### A Remote Site Does Not Appear
+
+- Confirm the remote library row is saved under **Templates & components**.
+- Confirm the current user has **Access remote templates** permission.
+
+### A Remote Site Appears but Does Not Load
+
+Check the source site:
+
+- **My templates access** is enabled.
+- Permalinks are not set to **Plain**.
+- The destination site's URL is included under **Whitelist URLs**, when used.
+- The password saved on the destination matches **Remote access > Password protection**.
+- The expected templates are not selected under **Exclude templates**.
+
+### A Template With Components Cannot Be Inserted
+
+- Save pending component, class, variable, and color changes on the destination.
+- Confirm the user has the required component permissions.
+- Confirm every component dependency is available and not excluded on the source.
+- Update the source to Bricks 2.4 or later if it only supports the legacy template response.
+
+For the template library controls and local template actions, see [Template Library](https://academy.bricksbuilder.io/builder/features/template-library/).
+
+---
+
 # Save Form Submissions
 
 Source: https://academy.bricksbuilder.io/builder/features/save-form-submissions/
@@ -507,6 +1271,106 @@ In Bricks 2.5, change this combination under **Manage → Keyboard shortcuts**. 
 
 ---
 
+# SVG Uploads
+
+Source: https://academy.bricksbuilder.io/builder/features/svg-uploads/
+
+*Enable SVG uploads in Bricks, understand the security tradeoffs, and manage SVG assets inside the builder workflow.*
+
+WordPress does not allow SVG file uploads by default because SVG is an XML-based image format that can contain malicious code. SVG files are especially risky when they come from unknown sources or are uploaded by untrusted users.
+
+## How to enable SVG support
+
+You can enable SVG uploads by user role under **Bricks > Settings > General > SVG uploads**.
+
+Bricks only lists roles that can edit posts. When a role is enabled, Bricks grants that role the `bricks_upload_svg` capability and adds `svg` and `svgz` to the allowed upload MIME types for users with that capability.
+
+You can also override SVG upload access for an individual user from the user's WordPress profile. An individual user setting can enable or disable SVG uploads separately from the user's role default.
+
+Once SVG uploads are enabled for a user, Bricks tries to sanitize uploaded SVG files during the WordPress upload process.
+
+> **Note**
+>
+> No built-in SVG sanitizer can guarantee that every malicious SVG will be made safe. Upload SVG files only from trusted sources, and enable SVG uploads only for users you trust.
+
+## What Bricks sanitizes
+
+Bricks sanitizes uploaded files whose upload type is `image/svg+xml`.
+
+During upload, Bricks:
+
+- Allows `.svg` and `.svgz` uploads for users with SVG upload capability.
+- Runs SVG uploads through the `enshrined/svg-sanitize` sanitizer library.
+- Minifies the sanitized SVG output.
+- Detects gzipped SVG content, decodes it for sanitization, and re-encodes it afterward.
+- Blocks the upload with an error message if sanitization fails.
+- Removes the forced 1px image dimensions WordPress can assign to SVG attachments.
+
+SVG media uploads are different from the **SVG element > Source: Code** workflow. Pasted SVG source code in the SVG element is treated as executable Bricks code, requires code execution capability, and requires a valid code signature.
+
+## Bypass sanitization {#bypass-sanitization}
+
+Although it is wise to sanitize SVG files uploaded to WordPress, there may be situations where you want to bypass the Bricks SVG sanitizer because another trusted process handles sanitization.
+
+To bypass Bricks SVG sanitization, use the `bricks/svg/bypass_sanitization` filter:
+
+```php
+add_filter( 'bricks/svg/bypass_sanitization', function( $bypass, $file ) {
+  // Perform your own checks before bypassing Bricks sanitization.
+
+  return $bypass;
+}, 10, 2 );
+```
+
+Filter callback parameters:
+
+- `$bypass` is a boolean. Return `true` to bypass Bricks sanitization.
+- `$file` is the uploaded file array from `$_FILES`.
+
+To bypass Bricks SVG sanitization for every SVG upload:
+
+```php
+add_filter( 'bricks/svg/bypass_sanitization', '__return_true' );
+```
+
+Only bypass sanitization when you fully control the SVG source or run another trusted sanitizer before the file is stored.
+
+## Sanitizer allowed tags and attributes {#allowed-tags-attributes}
+
+The sanitizer uses the default allowed tags and attributes from the `enshrined/svg-sanitize` library. In some edge cases, you may need to allow additional SVG tags or attributes. In high-security environments, you may want to narrow the allowed lists.
+
+Bricks exposes two filters:
+
+```php
+add_filter( 'bricks/svg/allowed_tags', function( $tags ) {
+    $tags[] = 'filter'; // Allow the "filter" tag.
+
+    return $tags;
+} );
+```
+
+```php
+add_filter( 'bricks/svg/allowed_attributes', function( $attributes ) {
+    $attributes[] = 'filterUnits'; // Allow the "filterUnits" attribute.
+
+    return $attributes;
+} );
+```
+
+Use these filters carefully. Allowing extra SVG tags or attributes can reintroduce security risk, especially for attributes that can reference external resources or execute script-like behavior.
+
+## Security checklist
+
+Before enabling SVG uploads:
+
+- Enable SVG uploads only for trusted roles or trusted individual users.
+- Upload SVG files only from trusted sources.
+- Keep sanitization enabled unless you have another trusted sanitizer in place.
+- Review any custom allowed tags or attributes.
+- Do not treat media-upload SVG sanitization as protection for SVG element source code; SVG element source code uses the code execution and code signature security model.
+
+---
+
 # Template Library
 
 Source: https://academy.bricksbuilder.io/builder/features/template-library/
@@ -614,720 +1478,6 @@ Now select **Export** from the **Bulk Actions** dropdown, and click **Apply**:
 A ZIP file of your selected templates will be generated and downloaded onto your computer.
 
 This ZIP file contains all templates as individual JSON files. Either unzip it to import individual templates or import the entire ZIP file to bulk import all templates at once.
-
----
-
-# User activation
-
-Source: https://academy.bricksbuilder.io/builder/features/user-activation/
-
-*Configure user activation in Bricks for registration flows that require email confirmation before an account becomes active.*
-
-Starting with **Bricks 2.1**, you can enable **User activation** for WordPress registrations. Once enabled, newly registered users receive an activation email and must click the activation link before they can log in.
-
-> **Note**
->
-> **IMPORTANT: This feature applies to all new user registrations, not just those submitted via the Form element.**
-
-## Quick overview {#quick-overview}
-
-Here is a step-by-step overview of how this feature works once it's enabled.
-
-1. A new user account is created.
-2. Bricks stores a generated activation key and marks the user as **pending**.
-3. Bricks sends the activation email to the new user's email address.
-4. The activation link points to the configured **Verification success page** with `user_id` and `activation_key` query parameters.
-5. When the user opens that valid link, Bricks deletes the activation key and marks the user as **active**.
-6. If **Auto login after activation** is enabled, Bricks logs the user in after successful activation.
-7. If the activation link is invalid, Bricks redirects the user to the configured **Verification failure page**.
-8. Pending users cannot log in. Bricks returns an inactive-account login error.
-
-Users created before User activation was enabled do not have activation status meta. Bricks treats them as active.
-
-## Configuration and controls {#configuration-and-controls}
-
-Inside the WordPress dashboard, go to **Bricks > Settings > General** and scroll to **User activation**.
-
-![](https://academy.bricksbuilder.io/assets/bricks-user-activation-settings.png)
-
-**User activation**: Enable this to require new users to verify their email after registration. After enabling it, the rest of the settings become available.
-
-> **Note**
->
-> When User activation is enabled, the Form element's registration **Auto log in user** setting is not available. Use **Auto login after activation** instead.
-
-**Auto login after activation**: Automatically logs the user in after successful email verification.
-
-**Verification success page**: The page used for successful activation links. Bricks expects the activation link to point to this page. If the user opens this page without `user_id` and `activation_key`, Bricks simply renders the page normally.
-
-**Verification failure page**: The page users are redirected to when activation fails because the user ID or activation key is missing or invalid.
-
-**User activation: Email**:
-
-- **From email address**: Optional sender email. If empty, WordPress' normal `wp_mail_from` value is used.
-- **From name**: Optional sender name. If empty, WordPress' normal `wp_mail_from_name` value is used.
-- **Subject**: Email subject. If empty, Bricks uses "Activate your account".
-- **Email content**: Email body. If empty, Bricks sends a default activation message.
-- **HTML email**: Sends the email as HTML. If enabled and the content is not a full HTML document, Bricks converts line breaks with `nl2br()`.
-
-Available email placeholders:
-
-| Placeholder | Output |
-| --- | --- |
-| `{{site_name}}` | Site name |
-| `{{site_tagline}}` | Site tagline |
-| `{{site_url}}` | Site URL |
-| `{{username}}` | User login |
-| `{{user_display_name}}` | User display name |
-| `{{user_first_name}}` | User first name |
-| `{{user_last_name}}` | User last name |
-| `{{user_email}}` | User email |
-| `{{activation_link}}` | Activation URL, or an HTML link when HTML email is enabled |
-| `{{activation_url}}` | Plain activation URL |
-
-## Registration behavior
-
-User activation hooks into WordPress' `user_register` flow while the feature is enabled. This means it affects:
-
-- Users registered through the Bricks Form element.
-- Users registered through other WordPress registration flows that trigger `user_register`.
-
-For Bricks Form element registrations:
-
-- The registration action still validates username, email, password, password length, and role.
-- Administrator and Super Admin roles are blocked as registration targets for security.
-- If the username is not mapped, Bricks can generate it from the email address.
-- If the password is not mapped or submitted, Bricks can generate one.
-- Auto-login after registration is skipped while User activation is enabled.
-
-If **Send WordPress notification** is enabled in the registration form action, Bricks triggers WordPress' `register_new_user` action after creating the user. The activation email is still sent by the User activation feature.
-
-## Activation link behavior
-
-The activation URL is built from your configured **Verification success page** plus two query parameters:
-
-```text
-?user_id=123&activation_key=generated_key
-```
-
-When the request reaches the success page, Bricks checks those parameters:
-
-- Missing `user_id` or `activation_key`: the success page renders normally.
-- Empty `user_id` or `activation_key`: the user is redirected to the failure page.
-- Invalid activation key: the user is redirected to the failure page.
-- Valid activation key: the account is marked active and the activation key is deleted.
-- Already active user: Bricks skips activation and renders the success page normally.
-
-Both the success page and failure page should be published pages.
-
-## Users page {#users-page}
-
-A new **Activation status** column appears on the WordPress **Users** page.
-
-![](https://academy.bricksbuilder.io/assets/bricks-user-activation-admin-column.png)
-
-Possible statuses:
-
-- **Active**: user can log in normally.
-- **Inactive**: user has pending activation status and cannot log in until activated.
-
-For each user, you can perform different actions based on their activation status by hovering over the user entry:
-
-For an **active** user, **Mark as inactive** prevents the user from logging in.
-
-For an **inactive** user, **Resend activation email** sends a new activation link using the current email template, and **Mark as active** manually marks the user as active without email verification.
-
-Only users with the WordPress `edit_users` capability can change activation status or resend activation emails from the Users screen.
-
-## Login behavior
-
-When a pending user tries to log in, Bricks blocks authentication and shows an inactive-account error. Users with `active` status, and users with no activation status from before the feature was enabled, can log in normally.
-
-If you also use [Custom Authentication Pages](https://academy.bricksbuilder.io/builder/features/custom-authentication-pages/), the same activation check applies to the Bricks **User login** form action because it uses WordPress authentication.
-
-## Email customization filters
-
-The email settings can also be adjusted programmatically:
-
-- `bricks/user_activation_email/from_name`
-- `bricks/user_activation_email/subject`
-- `bricks/user_activation_email/content`
-
-These filters are useful for multilingual sites or projects that need different email text per user or context.
-
----
-
-# Visual Grid Builder
-
-Source: https://academy.bricksbuilder.io/builder/features/visual-grid-builder/
-
-*Design CSS Grid layouts in Bricks with the Visual Grid Builder instead of hand-writing grid-template values.*
-
-https://youtu.be/V-YTXvwg6Fc
-
-The new **Visual Grid Builder **allows you to visually design and manage your grid layouts. The feature is available for any element with the `display` control set to `grid`, and allows you to:
-
-- **Adjust grid size**: Modify the number of columns and rows to fit your design needs.
-- **Resize and move elements**: Easily adjust the size and position of elements within your grid through simple drag and drop.
-- **Query loop support**: Tweak any query loop item inside your grid.
-- **Breakpoint support**: Create different grid layouts for various breakpoints to ensure responsiveness.
-- **Rename elements**: Organize your layout by renaming elements for better identification.
-- **Edit elements**: Hover over any grid item and click the pencil icon to continue editing it in the element panel.
-- **Reset options**: Reset the entire grid or individual elements on the current breakpoint.
-- **History**: Use history buttons to go back and forth between changes.
-- **Fill grid**: Auto-fill any empty grid cells with one click using Block elements.
-- **ID & class level**: Visually design your grid on the element ID or class-level.
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-21.17.50@2x-1.png)
-
-<figcaption>
-
-Visual Grid Builder modal
-
-</figcaption>
-
-## How it works {#how-it-works}
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-21.39.14@2x.png)
-
-### Accessing the Visual Grid Builder {#access}
-
-Begin by setting the `display` property of your grid layout element to `grid`. Once activated, the Visual Grid Builder icon appears next to the `grid` value.
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-21.43.02@2x.png)
-
-> **Note**
->
-> *NOTE: The visual grid builder (icon) is not available when bulk-editing elements.*
-
-### Styling elements
-
-The Visual Grid Builder allows you to style both individual elements and elements that are part of a query loop. The approach to styling depends on whether you are working at the class or ID level. Here’s an overview of how this works:
-
-**Static elements:**
-
-- **ID level**: When you resize or move a static element, the changes are reflected in the `Grid Item` controls, specifically updating the `Grid Column` and `Grid Row` properties. This approach is straightforward and directly modifies the element's grid positioning.
-- **Class level**: If you have defined the grid at the class level, any resizing or movement of the element will save the changes as custom CSS. These custom styles are applied to the `Custom CSS` control of the main element.
-
-**Query loop element:**
-
-- **ID or class level**: When working with elements that are part of a query loop, changes to size or position are saved as custom CSS in the `Custom CSS` control of the main element, regardless of whether you are styling at the ID or class level.
-
-**Important**: It is crucial not to alter the auto-generated CSS styles, as they are essential for maintaining the layout's integrity. These styles are clearly marked with code comments, making them easy to identify and preserve. After moving or resizing an element, the CSS will automatically update to reflect the new values. If you choose to reset an element, the auto-generated custom CSS will be cleared, reverting the element to its original state.
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-22.04.21@2x.png)
-
-## Controls {#controls}
-
-**Grid actions:**
-
-1. **Reset (Grid)**: Resets all grid styles for the currently selected breakpoint.
-2. **Breakpoints**: Toggle between different breakpoints without leaving the editor.
-3. **History**: Undo or redo actions.
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-22.06.50@2x.png)
-
-**Grid controls: **
-
-1. **Columns and rows**: Adjust the number of columns and rows within the grid.
-2. **Gap**: Modify the gap between grid elements using any valid CSS value, including variables.
-3. **Use min/max**: Toggle to set column or row size to `minmax(0, 1fr)` for better flexibility.
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-22.11.56@2x.png)
-
-When you open the Visual Grid Builder, it will automatically detect and adjust the column and row controls to match your existing grid configuration.
-
-**Grid panel controls: **
-
-1. **Individual Columns and rows**: Precisely control the size of columns and rows.
-2. **Elements**: Edit the elements within the grid.
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-22.20.35@2x.png)
-
-Sizes aure automatically calculated from your main element settings. For instance, `repeat(3, 2fr)` is converted to `2fr 2fr 2fr`. You can also customize sizes using values like `1fr`, `300px`, or `minmax(0, 1fr)` or any other valid value, to adjust the design to your needs.
-
-**Single element controls: **
-
-1. **Resize**: Click and drag the borders to resize elements.
-2. **Move**: Click and drag within the element to reposition it.
-3. **Rename**: Click on the element label to rename it.
-4. **Reset**: Reset all styling for the element on the current breakpoint.
-5. **Edit**: Close the Visual Grid Builder and select the element in the structure panel for further editing.
-
-![](https://academy.bricksbuilder.io/assets/CleanShot-2025-04-04-at-22.31.58@2x.png)
-
-You can also view the index of each element, and if an element is part of a query loop, its specific index within the loop will be displayed, starting at 0.
-
-## When columns or rows cannot be reduced {#grid-reduction}
-
-Since Bricks 2.5, the Visual Grid Builder shows a notice when an item’s placement prevents reducing the number of columns or rows. Items causing the issue are highlighted in orange when identified.
-
-Move or resize those items to fit within the desired grid, then reduce the count again.
-
----
-
-# SVG Uploads
-
-Source: https://academy.bricksbuilder.io/builder/features/svg-uploads/
-
-*Enable SVG uploads in Bricks, understand the security tradeoffs, and manage SVG assets inside the builder workflow.*
-
-WordPress does not allow SVG file uploads by default because SVG is an XML-based image format that can contain malicious code. SVG files are especially risky when they come from unknown sources or are uploaded by untrusted users.
-
-## How to enable SVG support
-
-You can enable SVG uploads by user role under **Bricks > Settings > General > SVG uploads**.
-
-Bricks only lists roles that can edit posts. When a role is enabled, Bricks grants that role the `bricks_upload_svg` capability and adds `svg` and `svgz` to the allowed upload MIME types for users with that capability.
-
-You can also override SVG upload access for an individual user from the user's WordPress profile. An individual user setting can enable or disable SVG uploads separately from the user's role default.
-
-Once SVG uploads are enabled for a user, Bricks tries to sanitize uploaded SVG files during the WordPress upload process.
-
-> **Note**
->
-> No built-in SVG sanitizer can guarantee that every malicious SVG will be made safe. Upload SVG files only from trusted sources, and enable SVG uploads only for users you trust.
-
-## What Bricks sanitizes
-
-Bricks sanitizes uploaded files whose upload type is `image/svg+xml`.
-
-During upload, Bricks:
-
-- Allows `.svg` and `.svgz` uploads for users with SVG upload capability.
-- Runs SVG uploads through the `enshrined/svg-sanitize` sanitizer library.
-- Minifies the sanitized SVG output.
-- Detects gzipped SVG content, decodes it for sanitization, and re-encodes it afterward.
-- Blocks the upload with an error message if sanitization fails.
-- Removes the forced 1px image dimensions WordPress can assign to SVG attachments.
-
-SVG media uploads are different from the **SVG element > Source: Code** workflow. Pasted SVG source code in the SVG element is treated as executable Bricks code, requires code execution capability, and requires a valid code signature.
-
-## Bypass sanitization {#bypass-sanitization}
-
-Although it is wise to sanitize SVG files uploaded to WordPress, there may be situations where you want to bypass the Bricks SVG sanitizer because another trusted process handles sanitization.
-
-To bypass Bricks SVG sanitization, use the `bricks/svg/bypass_sanitization` filter:
-
-```php
-add_filter( 'bricks/svg/bypass_sanitization', function( $bypass, $file ) {
-  // Perform your own checks before bypassing Bricks sanitization.
-
-  return $bypass;
-}, 10, 2 );
-```
-
-Filter callback parameters:
-
-- `$bypass` is a boolean. Return `true` to bypass Bricks sanitization.
-- `$file` is the uploaded file array from `$_FILES`.
-
-To bypass Bricks SVG sanitization for every SVG upload:
-
-```php
-add_filter( 'bricks/svg/bypass_sanitization', '__return_true' );
-```
-
-Only bypass sanitization when you fully control the SVG source or run another trusted sanitizer before the file is stored.
-
-## Sanitizer allowed tags and attributes {#allowed-tags-attributes}
-
-The sanitizer uses the default allowed tags and attributes from the `enshrined/svg-sanitize` library. In some edge cases, you may need to allow additional SVG tags or attributes. In high-security environments, you may want to narrow the allowed lists.
-
-Bricks exposes two filters:
-
-```php
-add_filter( 'bricks/svg/allowed_tags', function( $tags ) {
-    $tags[] = 'filter'; // Allow the "filter" tag.
-
-    return $tags;
-} );
-```
-
-```php
-add_filter( 'bricks/svg/allowed_attributes', function( $attributes ) {
-    $attributes[] = 'filterUnits'; // Allow the "filterUnits" attribute.
-
-    return $attributes;
-} );
-```
-
-Use these filters carefully. Allowing extra SVG tags or attributes can reintroduce security risk, especially for attributes that can reference external resources or execute script-like behavior.
-
-## Security checklist
-
-Before enabling SVG uploads:
-
-- Enable SVG uploads only for trusted roles or trusted individual users.
-- Upload SVG files only from trusted sources.
-- Keep sanitization enabled unless you have another trusted sanitizer in place.
-- Review any custom allowed tags or attributes.
-- Do not treat media-upload SVG sanitization as protection for SVG element source code; SVG element source code uses the code execution and code signature security model.
-
----
-
-# Wireframe Templates
-
-Source: https://academy.bricksbuilder.io/builder/features/wireframe-templates/
-
-*Start from Bricks wireframe templates to speed up structure planning before you commit to final styling and content.*
-
-https://youtu.be/B53_o8GfpvQ
-
-## What are Wireframes
-
-Wireframes are premade layouts that allow you to build your templates and pages quickly and effortlessly.
-
-Focusing on structure, layout, and functionality. They contain minimal styling, use placeholder texts, and only represent the overall structure of a specific area on your website such as a section, grid, or card.
-
-Get an overview of all currently available wireframe templates: [https://templates.bricksbuilder.io/wireframes/](https://templates.bricksbuilder.io/wireframes/)
-
-Primarily intended for building new pages, but can also be used in existing websites.
-
-![](https://academy.bricksbuilder.io/assets/Wireframes-Sample-Page-Builder_4.jpg)
-
-Bricks wireframes are based on classes and variables to keep them as flexible, maintainable, and extensible as possible.
-
-In other words, most don't contain styles on the element ID (see [Styling: Classes, IDs and CSS variables](#styling-classes-ids-variables)), but almost every element is assigned a class.
-
-If you have never worked with classes or variables before, we recommend the following free courses and articles:
-
-- [https://www.youtube.com/watch?v=NtRmIp4eMjs](https://www.youtube.com/watch?v=NtRmIp4eMjs)
-- [https://www.youtube.com/playlist?list=PL4-IK0AVhVjOT2KBB5TSbD77OmfHvtqUi](https://www.youtube.com/playlist?list=PL4-IK0AVhVjOT2KBB5TSbD77OmfHvtqUi)
-- [https://css-tricks.com/a-complete-guide-to-custom-properties/](https://css-tricks.com/a-complete-guide-to-custom-properties/)
-- [https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
-
-- [/builder/styling/global-class-manager/](https://academy.bricksbuilder.io/builder/styling/global-class-manager/)
-- [/builder/styling/global-variables-manager/](https://academy.bricksbuilder.io/builder/styling/global-variables-manager/)
-
-## Prerequisites
-
-Please enable the necessary settings to use the wireframes to their full extent.
-
-### Required settings
-
-**Bricks > Settings > General:**
-
-1. SVG Uploads (Administrator) must be activated
-2. Class Manager & Variable Manager not deactivated
-
-### Optional settings
-
-**Bricks > Settings > Performance:**
-
-1. Disable chaining element & global class
-
-**Bricks > Settings > WooCommerce:**
-
-1. Miscellaneous: Enable Bricks WooCommerce "Notice" element
-2. Products: Set Product badge "Sale" to percentage or text
-3. Ajax Add to cart: Enable AJAX add to cart
-
-## Types of wireframes
-
-By default, the wireframe templates are organised through **Template bundle**, **Template type**, and **Template tags**.
-
-Use these filters to find the most suitable wireframe template quickly.
-
-![](https://academy.bricksbuilder.io/assets/Wireframes-Sample-Page-Builder_5.jpg)
-
-### Template bundles
-
-Template bundles categorize templates by theme/topic.
-
-The **Blog** bundle, for instance, includes Article/Post layouts along with individual Article Cards, Article Sections, and Article Grids. Similarly, the **FAQs** bundle features individual (FAQ) accordions and FAQ sections.
-
-| **Bundle** |
-| --- |
-| 404 |
-| Avatars |
-| Blog |
-| Contact |
-| Content |
-| CTAs |
-| FAQs |
-| Features |
-| … |
-
-### Template Types
-
-A template type is assigned to each wireframe template. The template types are comparable to the [WordPress Template Hierarchy](https://developer.wordpress.org/themes/basics/template-hierarchy/) and let WordPress know what kind of template it is (e.g., a single template for single posts, an archive, a WooCommerce cart, ...).
-
-Using [Template Conditions](https://academy.bricksbuilder.io/builder/features/template-settings/#template-conditions), you can specify in detail where and when most template types are displayed. Section templates are inserted manually unless you assign them to a hook; hook-injected Section templates can still use conditions.
-
-| **Type** |
-| --- |
-| Header |
-| Footer |
-| Single |
-| Section |
-| Archive |
-| Popup |
-| WooCommerce - Single Product |
-| WooCommerce - Account - Orders |
-| … |
-
-Additional information: [/builder/features/an-intro-to-templates/#template-types](https://academy.bricksbuilder.io/builder/features/an-intro-to-templates/#template-types)
-
-### Template Tags
-
-Template tags organize the templates according to their function.
-
-| **Tag** | **Tag Description** |
-| --- | --- |
-| Single | A single element or a small group of elements, such as a custom list, feature card, image/media groups, forms, intros, etc., that can be used anywhere. |
-| Grid | A layout grid, usually with CSS grid or flexbox, grouping single templates, e.g., feature cards. |
-| Section | A section usually contains one or more grid templates or individual layouts. |
-| Template | A fully functional template (see template types) such as a single post/product, archive, header, footer, 404, … |
-| Popup | A popup layout is, strictly speaking, a template, too, but it has its tag, so it’s easier to find |
-
-## Template structure and layout
-
-Most Bricks Wireframe templates have a modular structure, i.e., several templates are combined into one template. Imagine a section that contains a grid with various cards. This results in a total of three templates:
-
-1. A card template (tag "Single")
-2. A grid template (tag "Grid"), which contains the cards
-3. The section template (tag "Section"), which contains the grid template including cards
-
-Each of these templates is available as an individual template.
-
-For example, you can use the card in a different context or place the grid template with cards in a different section ("mix and match").
-
-### Example: "Feature Section 01"
-
-![](https://academy.bricksbuilder.io/assets/Wireframes-Sample-Page-Builder_3.jpg)
-
-"Feature Section 01" contains a total of three templates:
-
-1. Intro 01 (template tag "Single")
-2. Feature Grid 01 (template tag "Grid")
-3. Feature Card 01 (template tag "Single")
-
-In this case, all templates have the same index (01) because they were created within the same context. You may also see templates with different or no indexes, which is perfectly fine and doesn’t affect how you can use them.
-
-### Example: "Feature Section 04"
-
-If we take a closer look at "Feature Section 04", we can see that the "Content Wrapper" block has no index - "Media Group 04", on the other hand, does.
-
-This means that the content wrapper only applies to this template (Feature Section 04) and does not exist as a separate template. "Media Group 04", on the other hand, exists as a separate template and can, therefore, also be used in different places.
-
-![](https://academy.bricksbuilder.io/assets/Wireframes-Sample-Page-Builder_2.jpg)
-
-### When do I use a section template, and when do I use a grid?
-
-Each page of your website should be divided into sections.
-
-Sections represent, semantically speaking, a new topic. For example, your homepage could contain the following sections: Hero Section, Feature Section, About Us Section, and a CTA or Contact Section.
-
-Make sure to not place sections within sections.
-
-Grid templates are placed within sections. If they belong together thematically, you can put several grids in a section.
-
-A negative example is adding a blog post grid and a product grid to the same section. Both grids should be placed in a separate section because they make no semantic sense together.
-
-### Can I customize the templates and add additional elements or delete elements that are not needed?
-
-Of course, you can customize the templates and add or delete elements you don't need.
-
-It is best to save the customized template in your custom templates so that you can reuse it. If you import the template from the Template Library again, it will not contain the structural changes you have made. However, changes to imported classes or variables will persist across the site unless you delete or override them by re-importing the original class (more on that later).
-
-Remember that the templates are only a starting point and are by no means finished, complete, or 100% suitable for every project. You are welcome to add your own sections, grids, and single templates to adapt them to your project.
-
-## Styling: Theme Styles / CSS Variables / Color Palette Import
-
-When importing a wireframe, you will be asked whether you want to import the associated CSS variables, theme style, and color palette.
-
-### CSS Variables
-
-Since CSS variables are used almost exclusively, importing the variables is strongly recommended for the intended styling. When Bricks asks whether to import the associated variables, choose **Yes** for wireframes unless you intentionally want to map or recreate the variables yourself. You can choose **No** and continue the import, but the wireframe may not look as intended until those variables exist on your site.
-
-### Theme Style
-
-The theme style contains basic settings like responsive font sizes using the default 62.5% HTML font size, section padding, container width, gaps, and others. If you already use a custom theme style, transfer the settings to your theme style (if necessary) and leave the brxwireframes theme style as a reference without a condition. This way, you can always fall back on it in case of doubt. If you are not yet using a custom theme style, don't forget to assign a condition “entire website” to the wireframes theme style.
-
-### Color Palette
-
-In some templates it is necessary to use colors (e.g. for overlays, border-, background- or text-colors). For this purpose, we created 12 neutral color variables (--brxw-color-neutral-xxx), which are also available in a "Bricks Wireframes" color palette. We recommend importing the color palette, as this gives you a visual reference of the [existing variables](#styling-colors) and allows you to quickly assign the colors to other elements.
-
-## Styling: Classes, IDs and CSS variables {#styling-classes-ids-variables}
-
-As mentioned in the introduction, the Bricks wireframes are class- and variable-based to keep them as flexible, maintainable, and extendable as possible.
-
-All classes and CSS variables use `**brxw-**` as a prefix to prevent overlaps with existing classes and variables.
-
-Almost every element within a template is assigned at least one class whose naming convention is based on the [BEM ("Block Element Modifier") methodology](https://getbem.com/).
-
-**Blocks **are independent parent elements. An example could be a card, a menu, or a grid. Block classes only contain hyphens. *Example:* .brxw-article-card-01
-
-**Elements** are the child elements within a block. They are connected to the block by two underscores. *Example:* .brxw-article-card-01__title
-
-**Modifiers** are variants of a block or element that change the status or appearance. Modifiers are connected to the block or element by two hyphens.
-*Example:* .brxw-article-card-01--dark.
-
-Block, element, and modifier classes can be easily distinguished based on the spelling alone. However, it may be confusing that BEM uses the terms "block" and "element" just like Bricks. If you need clarification, just remember this: BEM Block classes can be used on all Bricks parent elements - it doesn't matter if the parent element is a Bricks block, div, section, container, nav menu, or icon list.
-
-BEM element classes are applied to Bricks elements within a BEM block, regardless of which Bricks elements you use.
-
-### Example: Article Card 01
-
-| **Block Class** | **Element Classes** |
-| --- | --- |
-| .brxw-article-card-01 | .brxw-article-card-01__body |
-|  | .brxw-article-card-01__title |
-|  | .brxw-article-card-01__taxonomy |
-|  | .brxw-article-card-01__text |
-|  | .brxw-article-card-01__footer |
-|  | .brxw-article-card-01__date |
-|  | .brxw-article-card-01__author |
-|  | .brxw-article-card-01__media-wrapper |
-|  | .brxw-article-card-01__media |
-
-### Important to know:
-
-- **Not all blocks must have children - they can exist independently**
-- **Blocks can have other blocks as children**
-*Example:* The section element in the “Article section 04 template” is an independent block (.brxw-article-section-04) and contains two different blocks: .brxw-intro-02 and .brxw-article-grid-04, which in turn have children.
-- **Elements cannot exist without a parent block.**
-*Example:* .brxw-intro-02__title cannot exist without its parent block .brxw-intro-02
-
-#### When do I style on the existing brxw-classes, when on custom classes, and when on the ID?
-
-You should consider carefully where and how often you want to insert the relevant template. There are different possibilities depending on this.
-
-For templates that are used multiple times (e.g., a section placed various times, cards in a loop, etc.), styling on classes (brxw- or custom) is preferable to ID styling, as the CSS ID must be unique and may, therefore, only occur once per page.
-
-##### Existing brxw-classes
-
-Styling on the existing brxw-classes is the standard method for giving the elements the desired styling. You can also adjust the values, such as the number of grid columns within the templates, to your needs - they are not set in stone.
-
-If you import the same template again from the Template Library elsewhere, it will automatically receive the same styling and the exact customizations that you have applied to the brxw-class.
-
-##### Custom classes
-
-In addition to the brxw-classes, you can add custom classes containing your custom styles. In most cases, this also makes it possible to overwrite the existing values of the brxw-classes.
-
-However, if you insert the same template elsewhere from the Template Library, you must add your custom classes manually, if desired. Alternatively, you can save the customized template including the custom classes in your templates to reuse it later.
-
-##### IDs
-
-Sometimes, you can use the ID to style your elements or to overwrite class styles.
-
-Imagine you place the same section template twice on your homepage. You select the section class and assign it a background color that applies to both sections accordingly. To "exceptionally" give the second section a different background color, you can style on the section ID to overwrite the class.
-
-**Remember:** IDs always have a higher specificity than classes. Accordingly, it is impossible to overwrite an ID style with a class but the other way around. If you re-import the same template from the Template Library, the section will not contain any ID styles but will include the changed class styles.
-
-#### Can I rename the existing classes?
-
-You can rename the `brxw-` classes if you wish. However, remember to do this for the block and contained element classes of the child elements, if available ([Class Manager](https://academy.bricksbuilder.io/builder/styling/global-class-manager/)).
-
-If you import the same template again, it will use your class names and style changes. However, this also means you cannot re-import the original template unchanged.
-
-Suppose you want to retain the option of re-importing the original template **without** changes to the class name or styles. In that case, it is not enough to rename the classes, as they still have the same ID in the database, i.e., the same unique identifier. In this case, you would have to duplicate the classes ([Class Manager](https://academy.bricksbuilder.io/builder/styling/global-class-manager/)) so that they each have a new, unique identifier, reassign them to the elements, and remove the "old" classes from the elements.
-
-#### I have accidentally deleted a brxw-class. Can I restore it?
-
-Yes. In the first step, look in the Class Manager’s trash (top right), and if the class is still there, you can restore it directly.
-
-If you have emptied the trash, you can simply re-import the template.
-
-In both cases, remember to reassign the class to the elements on which it is missing, as it will be removed from the elements as soon as it is deleted.
-
-### CSS variables
-
-If values are assigned to a `brxw-` class (or theme style settings), the values are defined as CSS variables, with few exceptions. You can find the variables and values in the [Global Variables Manager](https://academy.bricksbuilder.io/builder/styling/global-variables-manager/).
-
-![](https://academy.bricksbuilder.io/assets/Variable-Manager.png)
-
-CSS variables offer the advantage of reusability, flexibility, and easy maintenance of styles, as they define central values that all elements in the CSS can use. For example, if you want to increase or decrease the gap of your grids, you only need to adjust the value of the variable `–brxw-grid-gap`. The change now affects every grid in which the variable is used.
-
-#### Variable categories
-
-The available variables cover essential areas such as CSS grids, font sizes, spacing, gaps, border radius, and others, which are sufficient for the "start" of a project. If you need additional categories or variables, you can create them as per your requirements in the variable manager.
-
-| **Variable Category** | **Examples** | **Purpose** |
-| --- | --- | --- |
-| Grids | –brxw-grid-1, –brxw-grid-2, …, –brxw-grid-12 | Used within CSS Grids to set the number of columns |
-| Spacing | –brxw-space-xs, –brxw-space-2xl, … | Used within margins, paddings, widths, heights, gaps, … |
-| Typography | –brxw-text-xs, –brxw-text-m, –brxw-text-2xl | 9 (fluid) font sizes from xs to 5xl |
-| … |  |  |
-
-#### Variable values
-
-The brxw-variables use [CSS clamp functions](https://developer.mozilla.org/en-US/docs/Web/CSS/clamp) for font sizes, spacing, and border-radius, which calculate the value based on a minimum, preferred, and maximum value depending on the viewport (minimum/maximum width). This has the advantage that you do not manually adjust the font size or padding in the mobile breakpoint, for example, as it is automatically adjusted (reduced or enlarged).
-
-As a basis for this calculation, the wireframe templates assume a minimum viewport of 320px, and a maximum viewport of 1440px, which should be a good starting point for typical websites.
-
-#### I already use a framework and CSS variables (e.g., ACSS, Frames, or CoreFramework). Can I continue to use my variables?
-
-Of course, you can continue to use your existing variables. However, remember that the values of your variables will probably differ from those of the brxw-variables.
-
-As there is a lot of overlap with other frameworks, you can use your existing variables as the brxw-variable value. This allows you to adapt the wireframe templates to your existing layout and spacing without editing each template.
-
-##### Example ACSS
-
-| **ACSS Variable** | **brxw-Variable** | **Extended brxw-variable** |
-| --- | --- | --- |
-| --container-gap: var(--space-xl) | --brxw-container-gap: var(--brxw-space-2xl) | –brxw-container-gap: var(--container-gap) |
-| --grid-gap: var(--space-l) | --brxw-grid-gap: var(--brxw-space-l) | –brxw-grid-gap: var(--grid-gap) |
-| –space-m: clamp(2rem, calc(1.09375vw + 1.65rem), 3.4rem) | –brxw-space-m: clamp(1.6rem, calc(0.36vw + 1.49rem), 2rem) | –brxw-space-m: var(--space-m) |
-| –h2: clamp(2.592rem, calc(1.725vw + 2.04rem), 4.8rem) | –brxw-text-fluid-3xl: clamp(2.56rem, calc(1.04vw + 2.23rem), 3.73rem) | –brxw-text-3xl: var(--h2) |
-| … |  |  |
-
-##### Example Core Framework
-
-| **Core Framework Variable** | **brxw-Variable** | **Extended brxw-Variable** |
-| --- | --- | --- |
-| --space-m:clamp(1.6rem, calc(1.11vw + 1.24rem), 2.8rem) | --brxw-space-m: clamp(1.6rem, calc(0.36vw + 1.49rem), 2rem) | –brxw-space-m: var(--space-m) |
-| --radius-m: clamp(1rem, calc(-0.19vw + 1.26rem), 1.2rem) | –brxw-radius-m: clamp(1rem, calc(-0.18vw + 1.26rem), 1.2rem) | –brxw-radius-m: var(--radius-m) |
-| … |  |  |
-
-##### Custom responsive variable values (clamp)
-
-If you want to use other viewport sizes (instead of 320px min, 1440px max), all variable values that use clamp /Fluid Typography, Spacing, Radius) must/should be customized/regenerated.
-
-We do not recommend doing this manually (unless you are a math genius). Instead, you can use the built-in **Fluid Typography Scale Generator** located in the Variable Manager to create new text or spacing variables. The radius variables were created with CoreFramework (free) because they are not based on a base value but should have individual min and max values.
-
-![](https://academy.bricksbuilder.io/assets/Fluid-Variables.png)
-
-Alternatively, you can use generators that provide you with the ready-made clamp functions. Depending on which generator you use, you can adjust the variable name/prefix directly in the generator, or you have to do this later in a code editor of your choice.
-
-All generators mentioned are currently (September 2025) free of charge and are not affiliated or connected with Bricks:
-
-1. [fluid-type-scale.com](https://www.fluid-type-scale.com/calculate?minFontSize=16&minWidth=320&minRatio=1.25&maxFontSize=18&maxWidth=1440&maxRatio=1.333&steps=xs,s,m,l,xl,2xl,3xl,4xl,5xl&baseStep=m&prefix=brxw-text&useContainerWidth=false&includeFallbacks=false&useRems=true&remValue=10&decimals=2&previewFont=Inter&previewText=Almost+before+we+knew+it,+we+had+left+the+ground&previewWidth=1280)
-2. [utopia.fyi](https://utopia.fyi/type/calculator/?c=320,16,1.25,1440,18,1.333,4,2,&s=0.75%7C0.5%7C0.25,1.5%7C2%7C3%7C4%7C6,s-l&g=s,l,xl,12)
-3. [coreframework.com](https://coreframework.com)
-
-## Styling: Color Palettes {#styling-colors}
-
-Most wireframes do not contain any colors unless absolutely necessary or beneficial (e.g., overlays, borders, backgrounds, text-colors). For this purpose, we have created a neutral color palette (shades of grey) with 12 color-steps from light to dark, which can be imported during template import.
-
-The colors are defined in CSS variables, located in the Variable Manager (--brxw-color-neutral-25, --brxw-color-neutral-50, --brxw-color-neutral-100, ..., --brxw-color-neutral-950) and can be adjusted there. If you don't want to use any predefined colors at all, delete the color variables from the variable manager.
-
-There are various free generators for creating custom color palettes (to add primary or secondary colors, or change the existing neutral color values). We have had good experiences with these generators, for example:
-
-- [https://components.ai/color-scale/rnjyBVIn24NiNNH0ob2W](https://components.ai/color-scale/rnjyBVIn24NiNNH0ob2W)
-- [https://uicolors.app/create](https://uicolors.app/create)
-
-## Custom CSS / JS / Code
-
-### Custom CSS
-
-We try to avoid custom CSS. However, some layouts or customizations would not be possible without it.
-
-### Custom JS / Code
-
-Custom JS or PHP is only used if the use case requires it. We've commented the code used in as much detail as possible. When using a template with a Code element, remember to enable code execution and sign the code.
-
-## Frequently asked questions
-
-- **Why are there no wireframes for Category X or Y?**
-  - Bricks is designed to give you the flexibility to create exactly what you need. New wireframes may be added over time, but you can also create your own wireframes for any category or design.
-- **Can I request new wireframes?**
-  - Of course! We’re always open to hearing your ideas. While we can't guarantee every suggestion will be implemented, your input helps us better understand what’s important to the community. Feel free to contact us by email (subject: "Wireframes") or share your suggestions in the forum under the Feature Requests/Improvements category (prefix your title with "Wireframes").
-- **Who can I contact if I have found a potential bug?**
-  - Please contact us by email (subject "Wireframes") or create a new report in the forums bugs category (title prefix: "Wireframes"). Please tell us the name of the template and the issue in as much detail as possible.
-
-Happy wireframing!
 
 ---
 
@@ -1578,3 +1728,143 @@ Use preview images to make large template libraries easier to scan. They do not 
 **Header or footer is missing only on one page:** Open that page and check **Settings > Page Settings > General** for **Disable header** or **Disable footer**.
 
 **A Search Results template does not change results:** Enable custom Search Criteria, configure the fields you need, and make sure the result Query Loop is using the main query.
+
+---
+
+# User activation
+
+Source: https://academy.bricksbuilder.io/builder/features/user-activation/
+
+*Configure user activation in Bricks for registration flows that require email confirmation before an account becomes active.*
+
+Starting with **Bricks 2.1**, you can enable **User activation** for WordPress registrations. Once enabled, newly registered users receive an activation email and must click the activation link before they can log in.
+
+> **Note**
+>
+> **IMPORTANT: This feature applies to all new user registrations, not just those submitted via the Form element.**
+
+## Quick overview {#quick-overview}
+
+Here is a step-by-step overview of how this feature works once it's enabled.
+
+1. A new user account is created.
+2. Bricks stores a generated activation key and marks the user as **pending**.
+3. Bricks sends the activation email to the new user's email address.
+4. The activation link points to the configured **Verification success page** with `user_id` and `activation_key` query parameters.
+5. When the user opens that valid link, Bricks deletes the activation key and marks the user as **active**.
+6. If **Auto login after activation** is enabled, Bricks logs the user in after successful activation.
+7. If the activation link is invalid, Bricks redirects the user to the configured **Verification failure page**.
+8. Pending users cannot log in. Bricks returns an inactive-account login error.
+
+Users created before User activation was enabled do not have activation status meta. Bricks treats them as active.
+
+## Configuration and controls {#configuration-and-controls}
+
+Inside the WordPress dashboard, go to **Bricks > Settings > General** and scroll to **User activation**.
+
+![](https://academy.bricksbuilder.io/assets/bricks-user-activation-settings.png)
+
+**User activation**: Enable this to require new users to verify their email after registration. After enabling it, the rest of the settings become available.
+
+> **Note**
+>
+> When User activation is enabled, the Form element's registration **Auto log in user** setting is not available. Use **Auto login after activation** instead.
+
+**Auto login after activation**: Automatically logs the user in after successful email verification.
+
+**Verification success page**: The page used for successful activation links. Bricks expects the activation link to point to this page. If the user opens this page without `user_id` and `activation_key`, Bricks simply renders the page normally.
+
+**Verification failure page**: The page users are redirected to when activation fails because the user ID or activation key is missing or invalid.
+
+**User activation: Email**:
+
+- **From email address**: Optional sender email. If empty, WordPress' normal `wp_mail_from` value is used.
+- **From name**: Optional sender name. If empty, WordPress' normal `wp_mail_from_name` value is used.
+- **Subject**: Email subject. If empty, Bricks uses "Activate your account".
+- **Email content**: Email body. If empty, Bricks sends a default activation message.
+- **HTML email**: Sends the email as HTML. If enabled and the content is not a full HTML document, Bricks converts line breaks with `nl2br()`.
+
+Available email placeholders:
+
+| Placeholder | Output |
+| --- | --- |
+| `{{site_name}}` | Site name |
+| `{{site_tagline}}` | Site tagline |
+| `{{site_url}}` | Site URL |
+| `{{username}}` | User login |
+| `{{user_display_name}}` | User display name |
+| `{{user_first_name}}` | User first name |
+| `{{user_last_name}}` | User last name |
+| `{{user_email}}` | User email |
+| `{{activation_link}}` | Activation URL, or an HTML link when HTML email is enabled |
+| `{{activation_url}}` | Plain activation URL |
+
+## Registration behavior
+
+User activation hooks into WordPress' `user_register` flow while the feature is enabled. This means it affects:
+
+- Users registered through the Bricks Form element.
+- Users registered through other WordPress registration flows that trigger `user_register`.
+
+For Bricks Form element registrations:
+
+- The registration action still validates username, email, password, password length, and role.
+- Administrator and Super Admin roles are blocked as registration targets for security.
+- If the username is not mapped, Bricks can generate it from the email address.
+- If the password is not mapped or submitted, Bricks can generate one.
+- Auto-login after registration is skipped while User activation is enabled.
+
+If **Send WordPress notification** is enabled in the registration form action, Bricks triggers WordPress' `register_new_user` action after creating the user. The activation email is still sent by the User activation feature.
+
+## Activation link behavior
+
+The activation URL is built from your configured **Verification success page** plus two query parameters:
+
+```text
+?user_id=123&activation_key=generated_key
+```
+
+When the request reaches the success page, Bricks checks those parameters:
+
+- Missing `user_id` or `activation_key`: the success page renders normally.
+- Empty `user_id` or `activation_key`: the user is redirected to the failure page.
+- Invalid activation key: the user is redirected to the failure page.
+- Valid activation key: the account is marked active and the activation key is deleted.
+- Already active user: Bricks skips activation and renders the success page normally.
+
+Both the success page and failure page should be published pages.
+
+## Users page {#users-page}
+
+A new **Activation status** column appears on the WordPress **Users** page.
+
+![](https://academy.bricksbuilder.io/assets/bricks-user-activation-admin-column.png)
+
+Possible statuses:
+
+- **Active**: user can log in normally.
+- **Inactive**: user has pending activation status and cannot log in until activated.
+
+For each user, you can perform different actions based on their activation status by hovering over the user entry:
+
+For an **active** user, **Mark as inactive** prevents the user from logging in.
+
+For an **inactive** user, **Resend activation email** sends a new activation link using the current email template, and **Mark as active** manually marks the user as active without email verification.
+
+Only users with the WordPress `edit_users` capability can change activation status or resend activation emails from the Users screen.
+
+## Login behavior
+
+When a pending user tries to log in, Bricks blocks authentication and shows an inactive-account error. Users with `active` status, and users with no activation status from before the feature was enabled, can log in normally.
+
+If you also use [Custom Authentication Pages](https://academy.bricksbuilder.io/builder/features/custom-authentication-pages/), the same activation check applies to the Bricks **User login** form action because it uses WordPress authentication.
+
+## Email customization filters
+
+The email settings can also be adjusted programmatically:
+
+- `bricks/user_activation_email/from_name`
+- `bricks/user_activation_email/subject`
+- `bricks/user_activation_email/content`
+
+These filters are useful for multilingual sites or projects that need different email text per user or context.

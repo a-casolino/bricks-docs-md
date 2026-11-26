@@ -740,84 +740,6 @@ To test the mini cart:
 
 ---
 
-# Element: Checkout Coupon
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/
-
-*Use the Bricks Checkout Coupon element inside WooCommerce checkout templates to render and style the coupon form.*
-
-This Checkout coupon element, available @since 1.11.1, allows you to display the coupon field in various locations on the checkout page, making it easy for customers to apply discount codes during their purchase.
-
-In previous versions, you couldn’t control the location of the checkout coupon. Additionally, styling options were limited, and adjustments required custom CSS. With this new, dedicated checkout coupon element you now have greater control over placement and design.
-
-To use this element, first enable it under **`Bricks > Settings > WooCommerce`** by turning on **`Enable Bricks WooCommerce "Checkout coupon" element`**.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-setting.png)
-
-> **Note**
->
-> WooCommerce **`Enable the use of coupon codes`** must also be active under **WooCommerce > Settings > General**. When the Bricks Checkout Coupon element is enabled, the native WooCommerce checkout coupon form is removed, so add this element where you want the coupon form to appear.
-
-> **Note**
->
-> **Note:** This element is specifically designed for the Checkout page and will only work when placed on the **Checkout template** or the Checkout page itself, depending on your design requirements.
-
-**Key Controls**
-
-**Location:**
-
-- By default, the **Checkout Coupon** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment
-- Custom location settings only apply on the actual frontend (Checkout page). To ensure correct placement, add this element at the top of your Checkout template.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-element-controls.png)
-
-![](https://academy.bricksbuilder.io/assets/element-location-example.png)
-
-Enable **Toggleable form** to hide the form until its prompt is clicked. For the expanded icon and transition controls added in Bricks 2.5, see the [Checkout Coupon settings](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-coupon/#settings).
-
----
-
-# Element: Checkout Login
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-login/
-
-*Use the Bricks Checkout Login element inside WooCommerce checkout templates to render and style the returning-customer login prompt.*
-
-The Checkout Login element allows for a convenient login option directly on the checkout page, enabling returning customers to sign in before completing their purchase.
-
-This feature becomes available once you've enabled **`Enable log-in during checkout`** under **`WooCommerce > Settings > Accounts & Privacy`**.
-
-In previous versions, the placement of the checkout login form was fixed, and styling options were limited, requiring custom CSS for adjustments. Now, you can control both placement and appearance.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-enable-login-during-checkout.png)
-
-To use this element, activate it under **`Bricks > Settings > WooCommerce`** by toggling on **`Enable Bricks WooCommerce "Checkout login" element`**.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-login-setting.png)
-
-> **Note**
->
-> When the Bricks Checkout Login element is enabled, the native WooCommerce checkout login form is removed. Add this element where you want the returning-customer login prompt to appear. The WooCommerce **`Enable log-in during checkout`** setting must stay enabled; on the frontend, the element does not render for users who are already logged in.
-
-> **Note**
->
-> **Note:** This element is specifically intended for the Checkout page. Place it within the **Checkout template** or directly on the Checkout page, depending on your design needs.
-
-**Key Controls**
-
-**Location:**
-
-- By default, the **Checkout Login** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment.
-- Custom location settings only apply on the frontend. To ensure the login form appears in the desired location, add this element at the beginning of your Checkout template.
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-login-element-controls.png)
-
-![](https://academy.bricksbuilder.io/assets/element-location-example.png)
-
-Enable **Toggleable form** to hide the form until its prompt is clicked. For the expanded icon and transition controls added in Bricks 2.5, see the [Checkout Login settings](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-login/#settings).
-
----
-
 # Creating dynamic WooCommerce archive pages
 
 Source: https://academy.bricksbuilder.io/integrations/woocommerce/creating-dynamic-woocommerce-archive-pages/
@@ -964,6 +886,84 @@ Custom WooCommerce Archive Template
 
 ---
 
+# Element: Checkout Coupon
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-coupon/
+
+*Use the Bricks Checkout Coupon element inside WooCommerce checkout templates to render and style the coupon form.*
+
+This Checkout coupon element, available @since 1.11.1, allows you to display the coupon field in various locations on the checkout page, making it easy for customers to apply discount codes during their purchase.
+
+In previous versions, you couldn’t control the location of the checkout coupon. Additionally, styling options were limited, and adjustments required custom CSS. With this new, dedicated checkout coupon element you now have greater control over placement and design.
+
+To use this element, first enable it under **`Bricks > Settings > WooCommerce`** by turning on **`Enable Bricks WooCommerce "Checkout coupon" element`**.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-setting.png)
+
+> **Note**
+>
+> WooCommerce **`Enable the use of coupon codes`** must also be active under **WooCommerce > Settings > General**. When the Bricks Checkout Coupon element is enabled, the native WooCommerce checkout coupon form is removed, so add this element where you want the coupon form to appear.
+
+> **Note**
+>
+> **Note:** This element is specifically designed for the Checkout page and will only work when placed on the **Checkout template** or the Checkout page itself, depending on your design requirements.
+
+**Key Controls**
+
+**Location:**
+
+- By default, the **Checkout Coupon** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment
+- Custom location settings only apply on the actual frontend (Checkout page). To ensure correct placement, add this element at the top of your Checkout template.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-coupon-element-controls.png)
+
+![](https://academy.bricksbuilder.io/assets/element-location-example.png)
+
+Enable **Toggleable form** to hide the form until its prompt is clicked. For the expanded icon and transition controls added in Bricks 2.5, see the [Checkout Coupon settings](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-coupon/#settings).
+
+---
+
+# Element: Checkout Login
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/element-checkout-login/
+
+*Use the Bricks Checkout Login element inside WooCommerce checkout templates to render and style the returning-customer login prompt.*
+
+The Checkout Login element allows for a convenient login option directly on the checkout page, enabling returning customers to sign in before completing their purchase.
+
+This feature becomes available once you've enabled **`Enable log-in during checkout`** under **`WooCommerce > Settings > Accounts & Privacy`**.
+
+In previous versions, the placement of the checkout login form was fixed, and styling options were limited, requiring custom CSS for adjustments. Now, you can control both placement and appearance.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-enable-login-during-checkout.png)
+
+To use this element, activate it under **`Bricks > Settings > WooCommerce`** by toggling on **`Enable Bricks WooCommerce "Checkout login" element`**.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-login-setting.png)
+
+> **Note**
+>
+> When the Bricks Checkout Login element is enabled, the native WooCommerce checkout login form is removed. Add this element where you want the returning-customer login prompt to appear. The WooCommerce **`Enable log-in during checkout`** setting must stay enabled; on the frontend, the element does not render for users who are already logged in.
+
+> **Note**
+>
+> **Note:** This element is specifically intended for the Checkout page. Place it within the **Checkout template** or directly on the Checkout page, depending on your design needs.
+
+**Key Controls**
+
+**Location:**
+
+- By default, the **Checkout Login** element will appear where it’s placed in the layout. However, you can choose alternative positions, such as: Before Order Review Heading, After Order Review Heading, Before Payment.
+- Custom location settings only apply on the frontend. To ensure the login form appears in the desired location, add this element at the beginning of your Checkout template.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-checkout-login-element-controls.png)
+
+![](https://academy.bricksbuilder.io/assets/element-location-example.png)
+
+Enable **Toggleable form** to hide the form until its prompt is clicked. For the expanded icon and transition controls added in Bricks 2.5, see the [Checkout Login settings](https://academy.bricksbuilder.io/builder/elements/woocommerce/checkout-login/#settings).
+
+---
+
 # How to Create Product Quick View with Bricks
 
 Source: https://academy.bricksbuilder.io/integrations/woocommerce/how-to-create-product-quick-view-with-bricks/
@@ -1052,6 +1052,88 @@ Bricks includes dedicated WooCommerce elements and template workflows so you can
 - [WooCommerce Account Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/) for account templates
 - [WooCommerce Template Hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/) for hook-aware template work
 - [WooCommerce Notices](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-notices/) for notice styling and output
+
+---
+
+# Product Archive (WooCommerce)
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/product-archive-woocommerce/
+
+*Build WooCommerce product archive templates in Bricks for shop, category, tag, and other archive views.*
+
+> **Note**
+>
+> The template type "WooCommerce – Product Archive" is only visible if WooCommerce is installed & active.
+
+Create a template of type "WooCommerce – Product Archive" in Bricks to design your product archive pages (product categories, tags, attributes, etc.).
+
+To create this template, go to the Bricks templates screen and add a new template. Then select the template type **"WooCommerce – Product Archive"** from the top-right dropdown:
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-template-type-product-archive.png)
+
+Click "Publish" or "Save Draft". Then "Edit with Bricks" to open the builder.
+
+It is also possible to create/edit this and other templates in the Bricks editor interface by clicking on the Folders icon or pressing CMD / CTRL + SHIFT + L.
+
+> **Note**
+>
+> Please remember to add [template hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/#product-archive-template-hooks) if you are using third-party plugins.
+
+## Product Archive Elements {#elements}
+
+![](https://academy.bricksbuilder.io/assets/woocommerc-product-archive-elements-580x1024.png)
+
+### Archive title
+
+There is no specific element to add a heading to the product archive.
+
+To add a heading to this template you could use the Post Title element or add a Heading element with the `{archive_title}` tag.
+
+### Breadcrumbs
+
+Use the breadcrumbs element to output the navigation links from "Home", and higher level categories until the content displayed in the page.
+
+This element uses the WooCommerce breadcrumbs default engine to generate each part of the breadcrumbs path.
+
+### Products archive description
+
+The products archive description will render the product category (or any other product taxonomy term) description.
+
+If used in a template that renders the **Shop** page, it will output the page content (from the Gutenberg/blocks editor).
+
+### Products
+
+This is the main element to list products in a grid. You have controls to customize the style and layout, tweak the query, and select which content (fields) you want to show for each product.
+
+This element interconnects with the **Products Filter**, **Products Pagination**, **Products Orderby** and the **Products Total Results** elements.
+
+This means that the query results will be conditioned by the filters and the orderby conditions and it will also impact the pagination and the total results elements output.
+
+The query used inside the products element to generate the grid of products will merge the query arguments from the element with the default WooCommerce query in the case the page rendered is the product archive or the product taxonomy archive (product category or product tag). This means that if you are seeing a certain product category archive page you only get a list of products from that category.
+
+### Products filter
+
+The products filter element allows you to add query filters to the page so the visitor could search/narrow down the list of products presented.
+
+This element contains three filter types:
+
+- **Taxonomy**: filter the list by one or multiple taxonomy terms.
+- **Product attributes**: filter the list by product attributes like size, color or any other custom attribute used.
+- **Others**: Special set of filters like a product **price dual-range slider**, a** stars rating** filter, a status **stock** filter or a simple **search** input. In this set, you will also find a **Reset filters** option which you would set to add a reset product filters button.
+
+When using the taxonomy or product attributes filters, you may select different filter inputs, like a dropdown, a set of checkboxes, a radio list, a text list, or a box list.
+
+### Products pagination
+
+List of page links that allow the visitor to navigate through the different products' list pages.
+
+### Products orderby
+
+Adds a dropdown to the layout where the visitor could change the order of the products in the presented list. The default sort options are by popularity, by average rating, by latest, and by price (low to high and high to low). This list uses the WooCommerce default list and it can be extended using the WooCommerce hooks or third-party plugins.
+
+### Products total results
+
+Use this element to output the number of results returned by the current products query.
 
 ---
 
@@ -1200,88 +1282,6 @@ After generating the multistep layout:
 
 ---
 
-# Product Archive (WooCommerce)
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/product-archive-woocommerce/
-
-*Build WooCommerce product archive templates in Bricks for shop, category, tag, and other archive views.*
-
-> **Note**
->
-> The template type "WooCommerce – Product Archive" is only visible if WooCommerce is installed & active.
-
-Create a template of type "WooCommerce – Product Archive" in Bricks to design your product archive pages (product categories, tags, attributes, etc.).
-
-To create this template, go to the Bricks templates screen and add a new template. Then select the template type **"WooCommerce – Product Archive"** from the top-right dropdown:
-
-![](https://academy.bricksbuilder.io/assets/woocommerce-template-type-product-archive.png)
-
-Click "Publish" or "Save Draft". Then "Edit with Bricks" to open the builder.
-
-It is also possible to create/edit this and other templates in the Bricks editor interface by clicking on the Folders icon or pressing CMD / CTRL + SHIFT + L.
-
-> **Note**
->
-> Please remember to add [template hooks](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-template-hooks/#product-archive-template-hooks) if you are using third-party plugins.
-
-## Product Archive Elements {#elements}
-
-![](https://academy.bricksbuilder.io/assets/woocommerc-product-archive-elements-580x1024.png)
-
-### Archive title
-
-There is no specific element to add a heading to the product archive.
-
-To add a heading to this template you could use the Post Title element or add a Heading element with the `{archive_title}` tag.
-
-### Breadcrumbs
-
-Use the breadcrumbs element to output the navigation links from "Home", and higher level categories until the content displayed in the page.
-
-This element uses the WooCommerce breadcrumbs default engine to generate each part of the breadcrumbs path.
-
-### Products archive description
-
-The products archive description will render the product category (or any other product taxonomy term) description.
-
-If used in a template that renders the **Shop** page, it will output the page content (from the Gutenberg/blocks editor).
-
-### Products
-
-This is the main element to list products in a grid. You have controls to customize the style and layout, tweak the query, and select which content (fields) you want to show for each product.
-
-This element interconnects with the **Products Filter**, **Products Pagination**, **Products Orderby** and the **Products Total Results** elements.
-
-This means that the query results will be conditioned by the filters and the orderby conditions and it will also impact the pagination and the total results elements output.
-
-The query used inside the products element to generate the grid of products will merge the query arguments from the element with the default WooCommerce query in the case the page rendered is the product archive or the product taxonomy archive (product category or product tag). This means that if you are seeing a certain product category archive page you only get a list of products from that category.
-
-### Products filter
-
-The products filter element allows you to add query filters to the page so the visitor could search/narrow down the list of products presented.
-
-This element contains three filter types:
-
-- **Taxonomy**: filter the list by one or multiple taxonomy terms.
-- **Product attributes**: filter the list by product attributes like size, color or any other custom attribute used.
-- **Others**: Special set of filters like a product **price dual-range slider**, a** stars rating** filter, a status **stock** filter or a simple **search** input. In this set, you will also find a **Reset filters** option which you would set to add a reset product filters button.
-
-When using the taxonomy or product attributes filters, you may select different filter inputs, like a dropdown, a set of checkboxes, a radio list, a text list, or a box list.
-
-### Products pagination
-
-List of page links that allow the visitor to navigate through the different products' list pages.
-
-### Products orderby
-
-Adds a dropdown to the layout where the visitor could change the order of the products in the presented list. The default sort options are by popularity, by average rating, by latest, and by price (low to high and high to low). This list uses the WooCommerce default list and it can be extended using the WooCommerce hooks or third-party plugins.
-
-### Products total results
-
-Use this element to output the number of results returned by the current products query.
-
----
-
 # Product Variation Swatches (WooCommerce)
 
 Source: https://academy.bricksbuilder.io/integrations/woocommerce/product-variation-swatches/
@@ -1398,130 +1398,6 @@ That's it. With variation swatches, you can now turn standard variation dropdown
 
 ---
 
-# Woo Setup Wizard
-
-Source: https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/
-
-*Create or repair Bricks WooCommerce shop, product, cart, checkout, and account layouts with guided setup checks and presets.*
-
-The Woo Setup Wizard helps you check, create, and repair the main WooCommerce layouts used by Bricks.
-
-Go to **Bricks > Woo Setup Wizard** to review the current setup status for the store. The wizard checks the Shop, Single product, Cart, Checkout, and My Account areas, then shows the available setup actions for each area.
-
-![](https://academy.bricksbuilder.io/assets/woo-setup-wizard.png)
-
-The wizard is not dependent on **Enable advanced modular elements**. It can set up the classic WooCommerce builder workflow without that setting. Advanced v2 setup types may appear in the wizard, but they stay disabled until advanced modular elements are enabled under **Bricks > Settings > WooCommerce > Enable advanced modular elements**.
-
-## When to use it
-
-Use the wizard when you want Bricks to review the WooCommerce setup and create the expected page or template structure for you.
-
-- Set up WooCommerce pages after installing Bricks on a new store.
-- Repair a Cart, Checkout, or My Account page that is missing the expected Bricks content.
-- Replace WooCommerce block content with Bricks page content.
-- Create the classic Bricks WooCommerce templates for shop, product, cart, checkout, or account areas.
-- Create Cart v2, Checkout v2, or Account Page v2 structures for the assigned WooCommerce pages.
-- Review whether existing published WooCommerce templates may conflict with a selected setup.
-
-> **Caution**
->
-> The wizard can replace Bricks page content, clear WooCommerce block markup from the assigned page, switch the page editor mode to Bricks, create Bricks templates, or draft existing published WooCommerce templates for the same area. Review the setup summary before running an action on an existing store.
-
-## Areas checked
-
-The wizard checks these WooCommerce areas:
-
-- **Shop**: shop page and product archive template setup.
-- **Single product**: single product template setup.
-- **Cart**: assigned Cart page, classic cart templates, and Cart v2 page structure.
-- **Checkout**: assigned Checkout page, classic checkout templates, and Checkout v2 page structure.
-- **My Account**: assigned My Account page, classic account templates, and Account Page v2 page structure.
-
-## Setup types
-
-Each area can offer one or more setup types, depending on the selected WooCommerce area and whether advanced modular elements are enabled.
-
-| Area | Setup types |
-| --- | --- |
-| Shop | Standard (v1) |
-| Single product | Standard (v1) |
-| Cart | Standard (v1), Advanced (v2) |
-| Checkout | Standard (v1), Advanced (v2), Advanced multistep (v2) |
-| My Account | Standard (v1), Advanced (v2) |
-
-![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-advanced-off.png)
-
-**Standard (v1)** creates or repairs the classic Bricks WooCommerce workflow. This setup uses the assigned WooCommerce page together with the traditional Bricks WooCommerce template types or shortcode-based page content.
-
-**Advanced (v2)** replaces the assigned WooCommerce page content with the matching v2 parent element and generated state structure. Use it for Cart, Checkout, and My Account pages when you want to edit related WooCommerce screens as states on one page.
-
-**Advanced multistep (v2)** is available for Checkout. It creates a Checkout v2 page with a ready-made [multistep checkout structure](https://academy.bricksbuilder.io/integrations/woocommerce/multistep-checkout-v2/).
-
-## Status checks
-
-The wizard reports missing, incomplete, or incompatible setup details before you run an action.
-
-Common checks include:
-
-- Required WooCommerce page is not assigned.
-- Assigned WooCommerce page was deleted.
-- Assigned page is still edited with the WordPress editor instead of Bricks.
-- Assigned page contains WooCommerce block content.
-- Required v2 parent element is missing from the assigned page.
-- Required v2 states are missing. My Account v2 includes Order withdrawal only when the WooCommerce feature is enabled.
-- Required v2 state elements are empty.
-- Existing published WooCommerce templates may conflict with the selected setup.
-- Classic setup is missing expected WooCommerce shortcodes or template types.
-
-![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-errors.png)
-
-The wizard does not create or assign missing WooCommerce pages. If a page is not assigned, assign it first in the WooCommerce settings, then return to **Bricks > Woo Setup Wizard**.
-
-## What setup can change
-
-Depending on the selected area and setup type, the wizard can:
-
-- Write Bricks page content to the assigned WooCommerce page.
-- Clear WordPress `post_content` when it contains WooCommerce block markup.
-- Set the assigned page editor mode to Bricks.
-- Create Bricks WooCommerce templates from presets.
-- Draft existing published WooCommerce templates for the same template type when they would conflict.
-- Generate external CSS files when file-based CSS generation is enabled.
-- Ask for overwrite confirmation when the target page already contains Bricks data.
-
-![](https://academy.bricksbuilder.io/assets/woo-setup-wizard-confirmation.png)
-
-## Before running setup
-
-Review the setup summary before confirming any action.
-
-- Confirm the correct WooCommerce pages are assigned in the WooCommerce settings.
-- Duplicate or export important pages and templates on existing stores.
-- Check whether the selected setup edits pages, templates, or both.
-- Review whether existing WooCommerce templates will be drafted.
-- If the site uses custom breakpoints, review responsive styles after setup. Presets are authored with the default Bricks breakpoint keys, such as `mobile_landscape` and `mobile_portrait`.
-
-## After setup
-
-Open the generated page or template in Bricks and review the result.
-
-- For classic layouts, confirm the expected WooCommerce template types and shortcodes are in place.
-- For Cart v2, review the Filled cart and Empty cart states.
-- For Checkout v2, review Checkout, Login required, Pay, Thank you, and Order receipt states.
-- For Advanced multistep Checkout v2, test the checkout step navigation and interactions.
-- For Account Page v2, review the account navigation, login, password, address, order, download, and edit account states. Include Order withdrawal when enabled.
-- Test the live Cart, Checkout, and My Account flows with WooCommerce products and customer sessions.
-
-## Related docs
-
-- [WooCommerce Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-builder/)
-- [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/)
-- [Cart](https://academy.bricksbuilder.io/integrations/woocommerce/cart/)
-- [Checkout](https://academy.bricksbuilder.io/integrations/woocommerce/checkout/)
-- [WooCommerce Account Builder](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/)
-
----
-
 # Single Product (WooCommerce)
 
 Source: https://academy.bricksbuilder.io/integrations/woocommerce/single-product/
@@ -1617,3 +1493,148 @@ The product up/cross-sells element renders linked product recommendations. You c
 WooCommerce product editor screen - Linked Products
 
 </figcaption>
+
+---
+
+# WooCommerce Account Builder
+
+Source: https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-account-builder/
+
+*Customize WooCommerce account-area screens in Bricks with the classic Account builder templates or the Account Page v2 advanced modular workflow.*
+
+Bricks 1.9 introduces the My Account builder, which lets you customize the account area of your WooCommerce site.
+
+This includes the My Account page (logged-in), the account login/register/lost & reset password pages (shown when not logged-in), and all My Account endpoints (e.g., Orders, Downloads, etc.).
+
+> **Note**
+>
+> Starting in Bricks 2.4, you can also build the My Account page directly with [WooCommerce advanced modular elements](https://academy.bricksbuilder.io/integrations/woocommerce/advanced-modular-elements/) and the [Account Page v2 element](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page-v2/). The classic account template workflow below is still supported.
+
+> **Note**
+>
+> **IMPORTANT:** In order to ensure that all your customizations to the WooCommerce My Account templates are properly applied, it is imperative that you complete the "[My Account Page (logged in)](#my-account-page)" step.
+
+## Account Page v2 workflow
+
+With advanced modular elements enabled, Account Page v2 keeps the account wrapper, navigation, login state, password states, and account endpoint states together on the assigned My Account page.
+
+Use the [Woo Setup Wizard](https://academy.bricksbuilder.io/integrations/woocommerce/woo-setup-wizard/) and choose **Advanced (v2)** to replace the assigned My Account page content with the Account Page v2 element and generated state structure.
+
+Account Page v2 includes states for:
+
+- Dashboard
+- Orders
+- View order
+- Downloads
+- Addresses
+- Edit address
+- Edit account
+- Payment methods
+- Add payment method
+- Login
+- Lost password
+- Lost password confirmation
+- Reset password
+- Order withdrawal (WooCommerce 11.1 or later, with Order Withdrawal enabled)
+
+Each state can generate a complete starter block through **Insert a structure**. Address and account forms use editable Bricks form field elements, so you can style and reorder them after generation.
+
+The Account edit-address state has its own field sync because WooCommerce account address editing and checkout use different field contexts. Use it after plugins or WooCommerce settings change address fields.
+
+Account Page v2 also adds query loops and dynamic tags for account orders, order actions, account downloads, account addresses, order data, downloads, and customer notes. See [WooCommerce v2 query loops and dynamic tags](https://academy.bricksbuilder.io/integrations/woocommerce/woocommerce-v2-query-loops-dynamic-tags/#account-tags).
+
+### Endpoints added by plugins
+
+Account Page v2 provides editable states for the built-in WooCommerce account routes listed above. An endpoint registered by another plugin does not appear automatically as an additional editable state in the builder.
+
+WooCommerce account endpoints are routes on the assigned My Account page, not separate WordPress pages. A plugin that registers an endpoint and its output callback correctly can still render its content through WooCommerce on that page, but Bricks does not provide a dedicated Account Page v2 state for designing that endpoint.
+
+If a plugin endpoint is blank on the frontend, temporarily test the My Account page with WooCommerce's default account output or without the Account Page v2 element. If it remains blank, check the plugin's endpoint registration. If it works only without Account Page v2, include the plugin name and endpoint slug when contacting Bricks support.
+
+## My Account Page (logged in) {#my-account-page}
+
+To design your My Account page (navigation + content wrapper), **please edit your "My Account" page directly**. You'll find a dedicated "Account Page" element that you can add and adjust its settings to your liking.
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-my-account-page-1.png)
+
+<figcaption>
+
+Custom My Account page using the "Account - Page" element
+
+</figcaption>
+
+> **Note**
+>
+> **IMPORTANT:** If you have the *"Enable Bricks WooCommerce "Notice" element"* Bricks setting enabled, please make sure that you have added the "Notice" element to your account page or to all account templates individually. So the notifications when submitting the account forms (e.g., address, reset password, etc.) are displayed.
+
+Starting in Bricks 2.4, the classic **Account - Page** element supports WooCommerce's native Order Withdrawal flow for guests and logged-in customers when the WooCommerce feature is enabled; use the [Account Page v2 Order withdrawal state](https://academy.bricksbuilder.io/builder/elements/woocommerce/account-page-v2/#order-withdrawal) to customize its layout.
+
+## Account - Login / Register {#my-account-login-register}
+
+The login form is displayed when a not-logged-in visitor views the My Account page. And the registration form, if you have the *"Allow customers to create an account on the "My account" page"* WooCommerce setting enabled.
+
+You can design your account login/registration layout by creating a new template type "WooCommerce - Account - Login".
+
+When editing this template, you'll find dedicated elements for the **"Account - Login form"** & **"Account - Register form"** as shown in the screenshot below:
+
+You should also check the **Account creation** settings located at *WooCommerce > Settings > Accounts & Privacy* section to control what form to be displayed via **Account - Register form** element.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-account-creation-settings.png)
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-account-login-register.png)
+
+<figcaption>
+
+Custom account login/register template
+
+</figcaption>
+
+> **Note**
+>
+> **IMPORTANT:** Ensure you have inserted a Basic Text element with `{do_action:woocommerce_before_customer_login_form}` before your Login and Register form. And another Basic Text element with `{do_action:woocommerce_after_customer_login_form}` after the forms.
+
+![](https://academy.bricksbuilder.io/assets/woocommerce-do-action-account-login.png)
+
+<figcaption>
+
+Example do_action location. Before and after the login/register forms.
+
+</figcaption>
+
+## Account - Lost / reset password {#my-account-lost-reset-password}
+
+The WooCommerce account builder in Bricks also provides the following dedicated templates and elements for the lost & reset password pages:
+
+| **Account page** | **Template type** | **Elements** |
+| --- | --- | --- |
+| Lost password | WooCommerce - Account - Lost password | Account - Lost password |
+| Lost password confirmation | WooCommerce - Account - Lost password (Confirmation) | Displayed after submitting the lost password form. No special elements.<br /><br />Example:<br />*A password reset email has been sent to the email address on file for your account, but may take several minutes to show up in your inbox. Please wait at least 10 minutes before attempting another reset.* |
+| Reset password | WooCommerce - Account - Reset password | Account - Reset password |
+
+## Templates for specific account endpoints {#my-account-endpoints}
+
+Designing the account content area for individual account endpoints (Orders, Downloads, etc.) is possible by creating templates of the corresponding template type.
+
+In the example below, we created a "WooCommerce - Account - Orders" template, to which we then added the "Account - Orders" that we styled a bit.
+
+![](https://academy.bricksbuilder.io/assets/bricks-woocommerce-account-orders-1024x384.png)
+
+> **Note**
+>
+> When editing the template for an account endpoint (Orders, Downloads, etc.), the drag & drop area is located inside the account content area. Offering a better preview in the builder than just rendering an empty canvas without the account navigation.
+
+The process of creating those account endpoint templates is the same for all other WooCommerce account template types.
+
+## Account template types & elements
+
+| **Template type** | **Endpoint** | **Element** |
+| --- | --- | --- |
+| WooCommerce - Account - Dashboard | `/` | - |
+| WooCommerce - Account - Orders | `orders/` | Account - Orders |
+| WooCommerce - Account - View order | `view-order/{order_id}/` | Account - View order |
+| WooCommerce - Account - Downloads | `downloads/` | Account - Downloads |
+| WooCommerce - Account - Payment methods | `payment-methods/` | Account - Payment methods |
+| WooCommerce - Account - Add payment method | `add-payment-method/` | Account - Add payment method |
+| WooCommerce - Account - Addresses | `edit-address/` | Account - Addresses |
+| WooCommerce - Account - Edit address | `edit-address/billing/`<br />`edit-address/shipping/` | Account - Edit address |
+| WooCommerce - Account - Edit account | `edit-account/` | Account - Edit account |
